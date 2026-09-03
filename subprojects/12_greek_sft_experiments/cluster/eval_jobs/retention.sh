@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Retention (Apertus Table-14 suite + the Greek loglik tasks), lm_eval 0.4.11 in the frozen env, OFFLINE caches.
+# Usage: MODEL=<dir> LABEL=<run> GPU=0 bash retention.sh   [TASKS=... to override]
+set -euo pipefail; source "$(dirname "$0")/common.sh"; GPU=${GPU:-0}; TASKS=${TASKS:-$RETENTION_TASKS}
+cache=$ROUND/cache/retention; mkdir -p "$cache"; [ -d "$cache/hf_datasets" ] || cp -r "$RETENTION_CACHE_SRC/$(ls $RETENTION_CACHE_SRC | head -1)"/. "$cache"/
+hb "retention start $LABEL gpu=$GPU tasks=$TASKS"
+CUDA_VISIBLE_DEVICES=$GPU uenv run --view=default $UENV_IMAGE -- bash -c "
+  set -euo pipefail
+  export PYTHONPATH=$PYENV LD_LIBRARY_PATH=$PYENV/scipy.libs:$PYENV/numpy.libs:$PYENV/scikit_learn.libs:\${LD_LIBRARY_PATH:-}
+  export HF_HOME=$cache/hf_home HF_DATASETS_CACHE=$cache/hf_datasets XDG_CACHE_HOME=$cache/xdg TMPDIR=$cache/tmp HF_DATASETS_OFFLINE=1 HF_HUB_OFFLINE=1
+  python3 '$LM_EVAL_REPAIR_SCRIPT' --target '$PYENV' || true
+  python3 -m lm_eval --model hf --model_args pretrained=$MODEL,dtype=bfloat16,trust_remote_code=True --tasks $TASKS --batch_size auto --output_path $OUT/retention/results.json --log_samples
+" > "$OUT/logs/retention.log" 2>&1
+hb "retention done $LABEL"; tail -25 "$OUT/logs/retention.log" | grep -E '^\|' | head -20
