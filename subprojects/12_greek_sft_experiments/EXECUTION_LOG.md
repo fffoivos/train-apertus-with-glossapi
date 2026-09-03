@@ -12,3 +12,5 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-04 02:06 | WP1b | 2 | sol | GREEN: dry-run prints both commands; card pull reproduces GreekMMLU 0.5678 / native macro 0.4993 for E0b (and E0b_last 0.5485/0.4341) | 0/0 | 0.00 |
 | 2026-09-04 02:12 | E0a | job 3285828 | claude | workbench opened (debug 01:29, preflight OK CHF 4.04 projected); GreekMMLU + native suite + retention on Apertus-8B-Instruct launched | 1.5/— | 0.00 |
 | 2026-09-04 02:14 | WP1c, WP1f | 2 | sol | GREEN (offline tests OK, dry runs exit 0) | 0/0 | 0.00 |
+| 2026-09-04 02:24 | WP3 | 2 | sol | GREEN (offline test OK, dry run exit 0) | 0/0 | 0.00 |
+| 2026-09-04 02:24 | E0a | job 3285828 | claude | native suite cannot score Instruct (frozen model contract = CPT vocab) — dropped for E0a; retention relaunched with the 9 Table-14 tasks (offline cache); GreekMMLU running | 1.5/— | 0.00 |

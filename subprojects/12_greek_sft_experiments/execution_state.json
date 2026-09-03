@@ -40,7 +40,7 @@
    "acceptance": "python3 evals/interviews/test_driver.py"
   },
   "WP3_knownness": {
-   "status": "running (attempt 2)",
+   "status": "done (green 02:24; Sol question generation still to run by Claude)",
    "deps": [],
    "executor": "sol",
    "acceptance": "python3 evals/knownness/score_claims.py --dry-run"
@@ -172,6 +172,11 @@
   {
    "date": "2026-09-04 01:50",
    "what": "Retention harness = evals-post-train with the shared infra01 vLLM image (/capstor/store/cscs/swissai/infra01/container-images/vllm_container_0221.sqsh, world-readable); Greek/native scorer = the subproject-09 stack on Clariden",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 02:24",
+   "what": "Native-Greek suite NOT run on Apertus-8B-Instruct: the frozen scorer's model contract pins the CPT vocab/tokenizer (vocab_size/rope/max_pos/tokenizer sha checks) — by design; E0a gets GreekMMLU + retention only. SFT checkpoints keep the CPT tokenizer so the contract holds for them.",
    "by": "claude"
   }
  ]
