@@ -25,8 +25,8 @@ chose the sources is subproject `11_greek_posttraining` (formerly numbered 10).
 
 Vendored copies have their `.git` removed; the upstream commit and URL are recorded next to each.
 
-## Next
+## Plan
 
-Examine the post-training recipes (hyper-parameters, chat template, packing, max length 4096 as
-the recipes use) against the Greek data's shape, decide the first experiment (base checkpoint
-from 09, data mix, evaluation), then run it on Clariden.
+`SFT_PLAN_20260903.md` — the recipes and the literature examined against our data's shape, six
+unknowns, an eight-run first round (E0–E6) with its evaluation, and the pre-flight list. Owner
+decisions are marked ▶ in it.
