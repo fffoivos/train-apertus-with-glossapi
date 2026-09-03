@@ -30,3 +30,15 @@ Vendored copies have their `.git` removed; the upstream commit and URL are recor
 `SFT_PLAN_20260903.md` — the recipes and the literature examined against our data's shape, six
 unknowns, an eight-run first round (E0–E6) with its evaluation, and the pre-flight list. Owner
 decisions are marked ▶ in it.
+
+## Data landed (2026-09-04)
+
+All eleven configs are on the private HF dataset `fffoivos/Greek-SFT-translated-and-adapted`
+(renamed from `natural-greek-sft-no-robots`): the seven Greek configs (17,968 rows) plus the
+cross-language slices adapted to the Greek point of view in their own language (D37, "reading 2"):
+`euroblocks_fr` 799, `euroblocks_de` 808, `apertus_en` 3,818 (persona math / GSM8K / persona
+code / magpie-ultra), `no_robots_en_pov` 9,499 (human English with the Greek twin's entity moves,
+5,217 rows transposed). Math rows whose final answer the adapter changed were independently
+checked and the unconfirmed ones dropped (D38: fr 3, de 7, en 182 — 154 of them
+"underdetermined" persona problems, restorable). The plan's mix table (§5c) should be re-read
+with these counts: the English skills slice is 3.8k, not 4k, and fr/de are ~0.8k each.
