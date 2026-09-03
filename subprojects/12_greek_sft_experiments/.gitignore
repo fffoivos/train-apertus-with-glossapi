@@ -5,3 +5,5 @@ results/**
 evals/**/cache/
 *.pt
 *.safetensors
+EXECUTION_LOG.raw
+briefs/*.out.md
