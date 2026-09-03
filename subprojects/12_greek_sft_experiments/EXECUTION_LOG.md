@@ -19,3 +19,4 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-04 02:36 | E0a | job 3285828 | claude | MISTAKE: my watcher polled login-node pgrep for the retention wrapper, saw nothing and closed the workbench 7 min in — retention killed, E0a has NO results yet (0.11 nh, CHF 0.30). Fix: cluster/wb_watch.sh watches job state + GPU processes on the node. E0a evals to be re-run batched with the first SFT checkpoint | 1.5/0.111 | 0.30 |
 | 2026-09-04 02:40 | WP1d | 1 | sol | GREEN: ILSP ifeval_greek + mgsm_greek lm-eval tasks, 17 tests pass, dry run exit 0 | 0/0 | 0.30 |
 | 2026-09-04 02:45 | WP0 | 2 | sol | GREEN: --check OK; dev 658 rows; contamination: 5 exact GreekMMLU hits removed, 0 remain; E1 tokens 6.18M with the CPT tokenizer (plan said 9.34M with the Instruct tokenizer) | 0/0 | 0.30 |
+| 2026-09-04 02:50 | WP2 | 2 | sol | GREEN: dry run exit 0; test_trainer_local OK (5 checks) | 0/0 | 0.30 |

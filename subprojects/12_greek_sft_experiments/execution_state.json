@@ -14,7 +14,7 @@
    "acceptance": "python3 data/build_sft_mix.py --check"
   },
   "WP2_trainer": {
-   "status": "running (attempt 2)",
+   "status": "done (green 02:50: dry run OK; local test: mask, packing, reload max_abs_diff=0, dry-run, heartbeat)",
    "deps": [],
    "executor": "sol",
    "acceptance": "python3 cluster/sft_train.py --dry-run --config cluster/configs/E1_lr1e-5.yaml && python3 cluster/test_trainer_local.py"
