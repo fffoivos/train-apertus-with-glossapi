@@ -18,8 +18,8 @@ run_task() {
   hb "native shard $shard gpu=$gpu"
   CUDA_VISIBLE_DEVICES=$gpu uenv run --view=default $UENV_IMAGE -- env PYTHONPATH="$WHEEL" HF_HUB_OFFLINE=1 python3 \
     "$SUITE_RUNNER" --contract "$contract" --manifest "$manifest" --native-runner "$SUITE_NATIVE_RUNNER" \
-    --model "$LABEL=$MODEL" --output-dir "$d" --dtype float32 --benchmarks "$benchmarks" \
-    --row-index "$row_index" --row-count "$row_count" > "$OUT/logs/native_$shard.log" 2>&1
+    --model "$LABEL=$MODEL" --output-dir "$d" --dtype float32 --scorer-mode legacy --benchmarks "$benchmarks" \
+    --candidate-batch-size 1 --example-batch-size 16 --max-examples-per-benchmark 0 --row-shard-index "$row_index" --row-shard-count "$row_count" > "$OUT/logs/native_$shard.log" 2>&1
 }
 mkdir -p "$OUT/native"
 # four GPU lanes, shards dealt round-robin
