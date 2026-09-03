@@ -3,8 +3,8 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 0.0,
- "chf_used": 0.0,
+ "nh_used": 0.111,
+ "chf_used": 0.3,
  "cursor": "wave1",
  "steps": {
   "WP0_data": {
@@ -69,7 +69,7 @@
    "checkpoint": "before the first GPU minute"
   },
   "E0_baselines": {
-   "status": "running: E0a Greek evals on workbench job 3285828 (debug, 01:29) since 02:12 — greekmmlu GPU0, native 4 lanes, retention GPU1",
+   "status": "E0a attempt 1 lost (watcher bug, 0.11 nh); E0b numbers pulled from card; E0a Greek/retention to re-run batched with the first SFT checkpoint",
    "deps": [
     "R1_review",
     "WP1b_greek_eval",
