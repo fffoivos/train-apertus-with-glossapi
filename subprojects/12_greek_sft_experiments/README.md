@@ -2,13 +2,13 @@
 
 > **In one line:** the first supervised fine-tuning experiments of the Greek-continued-pretrained
 > Apertus-8B (subproject 09) on the natural-Greek SFT data built in the sister repo
-> `fffoivos/natural-greek-sft` — no_robots-el plus the six wave-1 sources.
+> `fffoivos/Greek-SFT-translated-and-adapted` — no_robots-el plus the six wave-1 sources.
 > **Period:** opened 2026-09-03. **Status:** references gathered; recipes under examination; no run yet.
 
 ## Where the data comes from
 
-The training data is produced and documented in `fffoivos/natural-greek-sft` (private GitHub) and
-stored as one private HF dataset, `fffoivos/natural-greek-sft`, with one config per
+The training data is produced and documented in `fffoivos/Greek-SFT-translated-and-adapted` (private GitHub) and
+stored as one private HF dataset, `fffoivos/Greek-SFT-translated-and-adapted`, with one config per
 source (`no_robots`, `coconot`, `personas_if`, `smolcon`, `oasst`, `everyday`, `systemchats`).
 The dataset card describes the method (adaptation, not translation: frame moved into Greek
 reality, content frozen; the no_robots voice measured and enforced; size anchors by task type;
