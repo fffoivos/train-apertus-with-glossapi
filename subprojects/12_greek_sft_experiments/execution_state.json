@@ -1,0 +1,29 @@
+{
+  "plan": "EXECUTION_PLAN_20260904.md",
+  "protocol": "CLUSTER_PROTOCOL.md",
+  "cap_chf": 90.0, "rate_chf_per_nh": 2.69, "nh_used": 0.0, "chf_used": 0.0,
+  "cursor": "wave1",
+  "steps": {
+    "WP0_data":        {"status": "pending", "deps": [], "executor": "sol", "acceptance": "python3 data/build_sft_mix.py --check"},
+    "WP2_trainer":     {"status": "pending", "deps": [], "executor": "sol", "acceptance": "python3 cluster/sft_train.py --dry-run --config cluster/configs/E1_lr1e-5.yaml && python3 cluster/test_trainer_local.py"},
+    "WP1b_greek_eval": {"status": "pending", "deps": [], "executor": "sol", "acceptance": "bash evals/greek/run.sh --dry-run"},
+    "WP1c_dev":        {"status": "pending", "deps": ["WP0_data"], "executor": "sol", "acceptance": "python3 evals/dev/test_dev_harness.py"},
+    "WP1f_interviews": {"status": "pending", "deps": [], "executor": "sol", "acceptance": "python3 evals/interviews/test_driver.py"},
+    "WP3_knownness":   {"status": "pending", "deps": [], "executor": "sol", "acceptance": "python3 evals/knownness/score_claims.py --dry-run"},
+    "WP1a_retention":  {"status": "pending", "deps": [], "executor": "sol", "acceptance": "bash evals/retention/run.sh --dry-run"},
+    "WP1d_ifeval_el":  {"status": "pending", "deps": [], "executor": "sol", "acceptance": "python3 -m pytest evals/ifeval_greek/tests -q"},
+    "WP1e_gsm8k_el":   {"status": "pending", "deps": [], "executor": "sol+pipeline", "acceptance": "python3 evals/gsm8k_el/check_numbers.py"},
+    "R1_review":       {"status": "pending", "deps": ["WP0_data", "WP2_trainer"], "executor": "claude-p fable", "acceptance": "BLOCKERS: 0 | HIGH: 0", "checkpoint": "before the first GPU minute"},
+    "E0_baselines":    {"status": "pending", "deps": ["R1_review", "WP1b_greek_eval", "WP1c_dev"], "executor": "claude", "nh": 3.0, "gate": "G1"},
+    "smoke":           {"status": "pending", "deps": ["E0_baselines"], "executor": "claude", "nh": 0.5, "gate": "G2"},
+    "R2_review":       {"status": "pending", "deps": ["smoke"], "executor": "claude-p fable", "checkpoint": "after smoke: trainer behaviour + throughput + re-budget"},
+    "gridA":           {"status": "pending", "deps": ["R2_review"], "executor": "claude", "nh": 8.0, "runs": ["E1_lr1e-5_3ep", "E1_lr5e-6_3ep"]},
+    "gridA_evals":     {"status": "pending", "deps": ["gridA"], "executor": "claude", "nh": 5.0},
+    "pickA":           {"status": "pending", "deps": ["gridA_evals"], "executor": "claude+advisor", "gate": "G3 (provisional, owner confirms in the morning)"},
+    "replicate+E1last":{"status": "pending", "deps": ["pickA"], "executor": "claude", "nh": 5.0},
+    "R3_review":       {"status": "pending", "deps": ["replicate+E1last"], "executor": "claude-p fable", "checkpoint": "before phase-B spend"},
+    "phaseB":          {"status": "pending", "deps": ["R3_review"], "executor": "claude", "nh": 9.0, "runs": ["E2", "E3", "E3prime"]},
+    "readout":         {"status": "pending", "deps": ["phaseB"], "executor": "sol drafts, claude verifies", "gate": "G4 owner"}
+  },
+  "decisions": []
+}

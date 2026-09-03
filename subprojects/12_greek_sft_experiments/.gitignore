@@ -1,0 +1,7 @@
+data/*.jsonl
+data/**/*.jsonl
+results/**
+!results/.keep
+evals/**/cache/
+*.pt
+*.safetensors
