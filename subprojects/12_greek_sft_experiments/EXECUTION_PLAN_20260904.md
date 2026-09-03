@@ -30,6 +30,8 @@ is only a proxy for this.
 | **Claude** (this session) | writes each Sol brief, reviews the diff, runs the acceptance test, operates the cluster (submit, monitor, collect), keeps the ledger and the budget | trust Sol's word for a result; submit a job without a green acceptance |
 | **Sol** (gpt-5.6-sol via `codex exec`) | executes one work package at a time from a written brief: code, configs, data builds, local tests | reach the cluster; spend node-hours; touch files outside the brief's paths; decide anything |
 
+Cluster use follows `CLUSTER_PROTOCOL.md` (owner, 2026-09-04): nothing new runs under `sbatch`; every script meets the GPU inside a one-node workbench allocation Claude is attached to, after a Mac dry run and a 20-step probe; idle allocations are cancelled by a 15-minute watchdog; a mechanical budget guard refuses submissions over the cap; Sol never touches the cluster and every cluster-bound brief carries the protocol's cluster clause (`briefs/_TEMPLATE.md`).
+
 Assignment protocol, every step: (1) Claude writes `briefs/WPn.md` — context files to read, deliverable paths, the acceptance command, the size budget; (2) Sol runs in the repo with the brief as its prompt; (3) Claude runs the acceptance command *itself*, reads the diff, and either commits with the WP tag or returns the brief with the failing output; (4) one line in `EXECUTION_LOG.md` per attempt (WP, attempt, verdict, cost). A WP is never marked done on Sol's own report.
 
 ## 1. Scope — the lean round (owner, 2026-09-04)
