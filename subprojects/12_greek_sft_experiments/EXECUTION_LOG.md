@@ -9,3 +9,4 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-04 01:45 | wave1 | 1 | sol | all six briefs FAILED before any command: codex tool bridge "unknown field code_mode_host_duration_ns" (CLI 0.144.1 vs the ChatGPT app-server); fixed by `-c features.code_mode_host=false` (probe OK); relaunched | 0/0 | 0.00 |
 | 2026-09-04 01:55 | WP1d/e | — | claude | ILSP public Greek IFEval (541) + MGSM (250) found → WP1d becomes an lm-eval wrap, WP1e dropped; WP1d launched | 0/0 | 0.00 |
 | 2026-09-04 01:52 | cluster prep | 1 | claude | venv build + model prefetch on the login node (uenv pytorch/v2.9.1, $SCRATCH/venvs/sft); first attempt failed (no pip / wrong uenv syntax), relaunched | 0/0 | 0.00 |
+| 2026-09-04 02:06 | WP1b | 2 | sol | GREEN: dry-run prints both commands; card pull reproduces GreekMMLU 0.5678 / native macro 0.4993 for E0b (and E0b_last 0.5485/0.4341) | 0/0 | 0.00 |

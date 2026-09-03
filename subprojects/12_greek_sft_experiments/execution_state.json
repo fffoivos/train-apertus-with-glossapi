@@ -20,7 +20,7 @@
    "acceptance": "python3 cluster/sft_train.py --dry-run --config cluster/configs/E1_lr1e-5.yaml && python3 cluster/test_trainer_local.py"
   },
   "WP1b_greek_eval": {
-   "status": "running (attempt 2)",
+   "status": "done (green 02:06; cluster GreekMMLU/native run via cluster/eval_jobs with the frozen copies)",
    "deps": [],
    "executor": "sol",
    "acceptance": "bash evals/greek/run.sh --dry-run"
