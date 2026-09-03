@@ -1,0 +1,2 @@
+4c061de Update copyright year in LICENSE file
+https://github.com/swiss-ai/apertus-finetuning-recipes.git

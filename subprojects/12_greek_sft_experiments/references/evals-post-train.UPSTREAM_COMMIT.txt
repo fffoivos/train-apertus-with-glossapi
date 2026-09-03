@@ -1,0 +1,2 @@
+b322d4d Merge pull request #37 from swiss-ai/add/aa-omniscience
+https://github.com/swiss-ai/evals-post-train.git
