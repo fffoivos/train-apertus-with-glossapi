@@ -4,6 +4,24 @@ Status: DRAFT for the owner's review, 2026-09-04. Companion to `SFT_PLAN_2026090
 (the *why*; §1–8). This document is the *how*: work packages, who does what, gates, budget,
 and the caveats we carry into the runs.
 
+## 0a. Vibes first (owner, 2026-09-04)
+
+The thing that matters most after SFT is how the model *reads* — natural Greek, the house voice,
+a Greek assistant rather than a translated American one. The evals are guards, not targets: a
+run that scores better and reads worse loses. So the readout leads with the blind reading, the
+numbers follow, and the preference round (§9 of the plan) is calibrated on the owner's own
+ratings.
+
+**The instrument — blind reading (WP1c):** 40 fixed prompts spanning the eleven categories
+(some Greek reality, some math/code, some fr/de/en), every arm's answer shown unlabeled and in
+shuffled order per prompt; the owner marks best and worst per prompt and flags each answer with
+any of: *not Greek*, *American underneath*, *assistant mannerism*, *wrong fact*, *too long*,
+*too short*. Per-arm vibe score = best − worst counts; the flags are the qualitative readout.
+About one hour of the owner's time per round. The page is an artifact that saves the ratings
+in place (artifact capability), so the ratings become data: the calibration set for the DPO
+judges (§9) and the reference for the automatic voice score (stylometry vs no_robots-el), which
+is only a proxy for this.
+
 ## 0. Roles and the rule of engagement
 
 | role | does | does not |
@@ -35,7 +53,7 @@ and actual node-hours.
 | **WP0 data** | `data/build_sft_mix.py` → per-arm `train.jsonl`/`dev.jsonl` from the 11 HF configs: Apertus-Instruct chat template applied on the CPT tokenizer, 2% held-out per config (fixed seed, row_ids listed), E3′ built from the rows' `messages_en`, token stats per arm, **contamination report** (SFT rows × eval prompts: ellinika-bench, GreekMMLU, native suite, gsm8k, ifeval) | Sol | script runs end to end on the Mac; every control token of the template exists in the CPT tokenizer (`added_tokens` check); dev/train disjoint; overlap report = 0 exact / listed near-duplicates; token totals within 2% of §5a′ | 0 nh |
 | **WP1a retention harness** | evals-post-train on Clariden: container/uenv, the five tasks, vLLM backend, one launcher that takes a HF revision and writes `results/<run>/retention.json` | Sol writes; Claude runs | dry run on E0b completes; numbers for Apertus-Instruct reproduce the paper's table within 1 pt on two tasks | ~1.5 nh |
 | **WP1b Greek harness** | one launcher for ellinika-bench (el+en), GreekMMLU + native suite (the subproject-09 FP32 loglik scorer, unchanged), `results/<run>/greek.json` | Sol | E0b reproduces the CPT card: GreekMMLU 56.78 ± 0.1, native-8 macro 49.9 ± 0.2 | ~0.5 nh |
-| **WP1c dev harness** | `dev_generate.py` (50 dev prompts per arm, greedy, 512 tokens) + **format gate** (EOT termination, Greek script share, turn structure) + **voice score** (natural-greek-sft `style_compare.py` against no_robots-el) + **reading page** builder (30 fixed prompts × runs, HTML) | Sol | runs on E0b's generations; gate thresholds documented; page renders | ~0.2 nh/run |
+| **WP1c dev harness** | `dev_generate.py` (50 dev prompts per arm, greedy, 512 tokens) + **format gate** (EOT termination, Greek script share, turn structure) + **voice score** (natural-greek-sft `style_compare.py` against no_robots-el) + **blind reading page** (40 fixed prompts × arms, unlabeled, shuffled per prompt, best/worst + flags saved in place — §0a) | Sol | runs on E0b's generations; gate thresholds documented; page renders and saves a rating | ~0.2 nh/run |
 | **WP1d ifeval_greek** | 541 IFEval prompts adapted to Greek through the natural-greek-sft pipeline (personas_if profile, house voice off — prompts only), **Greek-aware checkers** (the ~25 constraint types; capitalisation, comma, word-count and language rules rewritten for Greek), scorer = strict + loose accuracy | Sol (pipeline run by Claude) | 30-prompt owner-readable sample; every checker has a unit test with a Greek pass and fail case; Apertus-Instruct scores > 0 and < English IFEval | Sol tokens only |
 | **WP1e gsm8k_el-250** | 250 GSM8K test problems adapted (frame moves, numbers verbatim, boxed answer), exact-match scorer | Sol (pipeline by Claude) | numbers identical to source for all 250 (automatic); 20 read by owner | Sol tokens only |
 | **WP2 trainer** | TRL SFT script per `apertus-finetuning-recipes` (packing, `assistant_only_loss`, lr 1e-5 cosine, 2 epochs, 4096, eff. batch 64, fp32 master weights, checkpoint per epoch), Slurm launcher for Clariden (1 node × 4 GH200; nodes=2 flag), `configs/E*.yaml`, smoke config (200 steps) | Sol | dry run on the Mac with a 20M-parameter stand-in: loss mask verified on 3 examples (user tokens −100), packing boundaries respected, checkpoint reloads; launcher lints | 0 nh |
@@ -54,7 +72,7 @@ Order: WP0 ‖ WP2 ‖ WP1a–c (day 1) → WP1d, WP1e, WP3 (day 2) → G1 basel
 | **G1** | do the harnesses reproduce known numbers? | WP1a/b acceptance on E0b and Instruct | fix harness, no training |
 | **G2** | does the trainer work? | smoke: loss falls, checkpoint reloads, format gate ≥ 95% on 50 dev prompts, measured tokens/node-hour → re-budget | fix trainer; if throughput < 7 M tokens/nh, re-scope |
 | **G3** | how big is seed noise? | E1-s0 vs E1-s1 on every eval → readability bar | if bar > expected effects, add a seed to E3/E3′ (+4 nh) before reading them |
-| **G4** | what did we learn, what next? | WP5 readout | pick deferred arms |
+| **G4** | which arm reads best, and do the numbers allow it? | **the blind reading first** (owner's best/worst + flags per arm), then WP5's table: no arm is picked whose retention or GreekMMLU fell below E0b by more than the seed spread | pick deferred arms; if vibes and numbers disagree, the disagreement is the finding |
 
 ## 4. Caveats we carry (read before G0)
 
