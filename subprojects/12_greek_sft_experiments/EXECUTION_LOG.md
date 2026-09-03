@@ -17,3 +17,4 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-04 02:30 | E0a | job 3285828 | claude | GreekMMLU killed (too slow for the debug walltime: ~100 q/min); retention (9 Table-14 tasks) running on GPU1; workbench closes when retention ends | 1.5/— | 0.00 |
 | 2026-09-04 02:14 | E0a | job 3285828 | claude | workbench closed after retention (GreekMMLU stopped, native n/a for Instruct) | —/0.111 | 0.30 |
 | 2026-09-04 02:36 | E0a | job 3285828 | claude | MISTAKE: my watcher polled login-node pgrep for the retention wrapper, saw nothing and closed the workbench 7 min in — retention killed, E0a has NO results yet (0.11 nh, CHF 0.30). Fix: cluster/wb_watch.sh watches job state + GPU processes on the node. E0a evals to be re-run batched with the first SFT checkpoint | 1.5/0.111 | 0.30 |
+| 2026-09-04 02:40 | WP1d | 1 | sol | GREEN: ILSP ifeval_greek + mgsm_greek lm-eval tasks, 17 tests pass, dry run exit 0 | 0/0 | 0.30 |

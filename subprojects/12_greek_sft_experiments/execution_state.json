@@ -52,7 +52,7 @@
    "acceptance": "bash evals/retention/run.sh --dry-run"
   },
   "WP1d_ifeval_el": {
-   "status": "running",
+   "status": "done (green 02:40; 17 tests, dry run OK)",
    "deps": [],
    "executor": "sol",
    "acceptance": "python -m pytest evals/ilsp/tests -q && bash evals/ilsp/run.sh x y --dry-run",
