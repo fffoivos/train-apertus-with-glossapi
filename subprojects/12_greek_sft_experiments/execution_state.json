@@ -178,6 +178,11 @@
    "date": "2026-09-04 02:24",
    "what": "Native-Greek suite NOT run on Apertus-8B-Instruct: the frozen scorer's model contract pins the CPT vocab/tokenizer (vocab_size/rope/max_pos/tokenizer sha checks) — by design; E0a gets GreekMMLU + retention only. SFT checkpoints keep the CPT tokenizer so the contract holds for them.",
    "by": "claude"
+  },
+  {
+   "date": "2026-09-04 02:30",
+   "what": "E0a GreekMMLU stopped: the frozen fp32 evaluator ran at ~100 q/min on one GPU (16,632 q → ~166 min) vs 84 min left on the debug workbench; low-value number for the Instruct contrast. Consequence for the grid: GreekMMLU per checkpoint must be row-sharded over 4 GPUs (suite runner --row-shard-*) or run in a normal-partition workbench; decide at E0b.",
+   "by": "claude"
   }
  ]
 }

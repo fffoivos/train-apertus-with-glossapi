@@ -14,3 +14,4 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-04 02:14 | WP1c, WP1f | 2 | sol | GREEN (offline tests OK, dry runs exit 0) | 0/0 | 0.00 |
 | 2026-09-04 02:24 | WP3 | 2 | sol | GREEN (offline test OK, dry run exit 0) | 0/0 | 0.00 |
 | 2026-09-04 02:24 | E0a | job 3285828 | claude | native suite cannot score Instruct (frozen model contract = CPT vocab) — dropped for E0a; retention relaunched with the 9 Table-14 tasks (offline cache); GreekMMLU running | 1.5/— | 0.00 |
+| 2026-09-04 02:30 | E0a | job 3285828 | claude | GreekMMLU killed (too slow for the debug walltime: ~100 q/min); retention (9 Table-14 tasks) running on GPU1; workbench closes when retention ends | 1.5/— | 0.00 |
