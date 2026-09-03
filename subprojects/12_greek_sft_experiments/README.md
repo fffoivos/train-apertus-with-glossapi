@@ -8,7 +8,7 @@
 ## Where the data comes from
 
 The training data is produced and documented in `fffoivos/natural-greek-sft` (private GitHub) and
-stored as one private HF dataset, `fffoivos/natural-greek-sft-no-robots`, with one config per
+stored as one private HF dataset, `fffoivos/natural-greek-sft`, with one config per
 source (`no_robots`, `coconot`, `personas_if`, `smolcon`, `oasst`, `everyday`, `systemchats`).
 The dataset card describes the method (adaptation, not translation: frame moved into Greek
 reality, content frozen; the no_robots voice measured and enforced; size anchors by task type;
