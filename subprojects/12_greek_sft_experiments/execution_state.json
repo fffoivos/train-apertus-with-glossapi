@@ -26,7 +26,7 @@
    "acceptance": "bash evals/greek/run.sh --dry-run"
   },
   "WP1c_dev": {
-   "status": "running (attempt 2)",
+   "status": "done (green 02:14)",
    "deps": [
     "WP0_data"
    ],
@@ -34,7 +34,7 @@
    "acceptance": "python3 evals/dev/test_dev_harness.py"
   },
   "WP1f_interviews": {
-   "status": "running (attempt 2)",
+   "status": "done (green 02:12; seeds are Sol drafts, owner/Claude to replace)",
    "deps": [],
    "executor": "sol",
    "acceptance": "python3 evals/interviews/test_driver.py"
@@ -69,7 +69,7 @@
    "checkpoint": "before the first GPU minute"
   },
   "E0_baselines": {
-   "status": "pending",
+   "status": "running: E0a Greek evals on workbench job 3285828 (debug, 01:29) since 02:12 — greekmmlu GPU0, native 4 lanes, retention GPU1",
    "deps": [
     "R1_review",
     "WP1b_greek_eval",
