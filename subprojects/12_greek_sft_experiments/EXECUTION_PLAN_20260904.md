@@ -35,14 +35,17 @@ Assignment protocol, every step: (1) Claude writes `briefs/WPn.md` — context f
 ## 1. Scope — the lean round (owner, 2026-09-04)
 
 Runs: **E0a** (Apertus-8B-Instruct, Greek evals only), **E0b** (Greek-CPT base `18-avg`, all evals),
-**smoke** (200 steps of E1), **E1 ×2 seeds** (Greek 17.6k), **E2** (Greek + no_robots_en_pov),
+**smoke** (200 steps of E1), **phase A: the E1 grid** (Greek 17.6k at lr 1e-5 and 5e-6, 3 epochs each,
+warmup + constant lr, every epoch checkpoint evaluated → pick (lr, epoch); then one seed replicate
+of the winner with the cosine schedule = the noise floor), **phase B** at the winning setting: **E2** (Greek + no_robots_en_pov),
 **E3** (Greek + apertus_en + euroblocks fr/de, Greek point of view), **E3′** (E3 with the *raw*
 slices: `messages_en` of the same rows). Retention tasks (evals-post-train ×5) on E0b, E1-s0, E3,
 E3′ only; Greek evals on every model. Plus the **known-ness scorer** (labels only, no filtering).
 
-Deferred, to be run only after the G4 readout: E1-last, E4, E5a, E7/E7′/E8. Cut: E5b, E6.
+Deferred, to be run only after the G4 readout: E1-last, E4, E7/E7′/E8, E9 (raw replay, pre-built). E5/E6 are
+absorbed by the grid.
 
-Budget: ~23 node-hours ≈ **CHF 62**; **cap CHF 80** (≈30 node-hours) at CHF 2.69/node-hour.
+Budget: ~28 node-hours ≈ **CHF 75**; **cap CHF 80** (≈30 node-hours) at CHF 2.69/node-hour.
 The account holds CHF 2,095.08 ≈ 779 node-hours. Every submission is logged with its projected
 and actual node-hours.
 
@@ -71,7 +74,7 @@ Order: WP0 ‖ WP2 ‖ WP1a–c (day 1) → WP1d, WP1e, WP3 (day 2) → G1 basel
 | **G0** | approve this plan and the CHF 80 cap | this document | revise scope |
 | **G1** | do the harnesses reproduce known numbers? | WP1a/b acceptance on E0b and Instruct | fix harness, no training |
 | **G2** | does the trainer work? | smoke: loss falls, checkpoint reloads, format gate ≥ 95% on 50 dev prompts, measured tokens/node-hour → re-budget | fix trainer; if throughput < 7 M tokens/nh, re-scope |
-| **G3** | how big is seed noise? | E1-s0 vs E1-s1 on every eval → readability bar | if bar > expected effects, add a seed to E3/E3′ (+4 nh) before reading them |
+| **G3** | which (lr, epoch) wins the grid, and how big is seed noise? | the six checkpoints' Greek evals + blind reading; the replicate vs the winner → readability bar | if bar > expected effects, add a seed to E3/E3′ (+4 nh) before reading them |
 | **G4** | which arm reads best, and do the numbers allow it? | **the blind reading first** (owner's best/worst + flags per arm), then WP5's table: no arm is picked whose retention or GreekMMLU fell below E0b by more than the seed spread | pick deferred arms; if vibes and numbers disagree, the disagreement is the finding |
 
 ## 4. Caveats we carry (read before G0)
