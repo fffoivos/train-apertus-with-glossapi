@@ -2,7 +2,7 @@
 # Retention (Apertus Table-14 suite + the Greek loglik tasks), lm_eval 0.4.11 in the frozen env, OFFLINE caches.
 # Usage: MODEL=<dir> LABEL=<run> GPU=0 bash retention.sh   [TASKS=... to override]
 set -euo pipefail; source "$(dirname "$0")/common.sh"; GPU=${GPU:-0}; TASKS=${TASKS:-$RETENTION_TASKS}
-cache=$ROUND/cache/retention; mkdir -p "$cache"; [ -d "$cache/hf_datasets" ] || cp -r "$RETENTION_CACHE_SRC/$(ls $RETENTION_CACHE_SRC | head -1)"/. "$cache"/
+cache=$ROUND/cache/retention; mkdir -p "$cache"; [ -d "$cache/hf_datasets" ] || cp -r "$RETENTION_CACHE_SRC"/. "$cache"/
 hb "retention start $LABEL gpu=$GPU tasks=$TASKS"
 CUDA_VISIBLE_DEVICES=$GPU uenv run --view=default $UENV_IMAGE -- bash -c "
   set -euo pipefail
