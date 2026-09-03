@@ -1,0 +1,861 @@
+{
+  "arms": {
+    "E1": {
+      "dev": {
+        "assistant_content_tokens": 135625,
+        "assistant_token_share": 0.57265849,
+        "max_length": 2003,
+        "planning_reference_tokens": 294128,
+        "rows": 658,
+        "rows_over_4096": 0,
+        "tokens": 236834
+      },
+      "train": {
+        "assistant_content_tokens": 3524685,
+        "assistant_token_share": 0.57011902,
+        "expected_tokens": 9340000,
+        "max_length": 3035,
+        "planning_reference_relative_error": 0.01876574,
+        "planning_reference_relative_error_at_reported_precision": 0.01927195,
+        "planning_reference_tokens": 9164728,
+        "planning_reference_tokens_millions_at_reported_precision": 9.16,
+        "planning_reference_within_2_percent": true,
+        "rows": 17602,
+        "rows_over_4096": 0,
+        "tokens": 6182367
+      }
+    },
+    "E2": {
+      "dev": {
+        "assistant_content_tokens": 135625,
+        "assistant_token_share": 0.57265849,
+        "max_length": 2003,
+        "planning_reference_tokens": 294128,
+        "rows": 658,
+        "rows_over_4096": 0,
+        "tokens": 236834
+      },
+      "train": {
+        "assistant_content_tokens": 5287679,
+        "assistant_token_share": 0.56497186,
+        "expected_tokens": 12600000,
+        "max_length": 3112,
+        "planning_reference_relative_error": 0.02016254,
+        "planning_reference_relative_error_at_reported_precision": 0.01984127,
+        "planning_reference_tokens": 12345952,
+        "planning_reference_tokens_millions_at_reported_precision": 12.35,
+        "planning_reference_within_2_percent": true,
+        "rows": 26910,
+        "rows_over_4096": 0,
+        "tokens": 9359190
+      }
+    },
+    "E3": {
+      "dev": {
+        "assistant_content_tokens": 135625,
+        "assistant_token_share": 0.57265849,
+        "max_length": 2003,
+        "planning_reference_tokens": 294128,
+        "rows": 658,
+        "rows_over_4096": 0,
+        "tokens": 236834
+      },
+      "train": {
+        "assistant_content_tokens": 5203462,
+        "assistant_token_share": 0.57989155,
+        "expected_tokens": 12190000,
+        "max_length": 4024,
+        "planning_reference_relative_error": 0.01920705,
+        "planning_reference_relative_error_at_reported_precision": 0.01886792,
+        "planning_reference_tokens": 11955866,
+        "planning_reference_tokens_millions_at_reported_precision": 11.96,
+        "planning_reference_within_2_percent": true,
+        "rows": 22919,
+        "rows_over_4096": 0,
+        "tokens": 8973164
+      }
+    },
+    "E3prime": {
+      "dev": {
+        "assistant_content_tokens": 135625,
+        "assistant_token_share": 0.57265849,
+        "max_length": 2003,
+        "planning_reference_tokens": 294128,
+        "rows": 658,
+        "rows_over_4096": 0,
+        "tokens": 236834
+      },
+      "train": {
+        "assistant_content_tokens": 6591677,
+        "assistant_token_share": 0.6296143,
+        "max_length": 4075,
+        "planning_reference_tokens": 13452649,
+        "rows": 22910,
+        "rows_over_4096": 0,
+        "tokens": 10469389
+      }
+    }
+  },
+  "configs": {
+    "apertus_en": {
+      "adapted": {
+        "all_output": {
+          "assistant_content_tokens": 1362034,
+          "assistant_token_share": 0.58975659,
+          "max_length": 4024,
+          "planning_reference_tokens": 2309810,
+          "rows": 3818,
+          "rows_over_4096": 0,
+          "tokens": 2309485
+        },
+        "dev": {
+          "assistant_content_tokens": 24285,
+          "assistant_token_share": 0.56791076,
+          "max_length": 1194,
+          "planning_reference_tokens": 42775,
+          "rows": 76,
+          "rows_over_4096": 0,
+          "tokens": 42762
+        },
+        "train": {
+          "assistant_content_tokens": 1337749,
+          "assistant_token_share": 0.59016871,
+          "max_length": 4024,
+          "planning_reference_tokens": 2267035,
+          "rows": 3742,
+          "rows_over_4096": 0,
+          "tokens": 2266723
+        }
+      },
+      "adapted_dropped": {},
+      "adapted_eligible_rows": 3818,
+      "adapted_overlength_rows_excluded": 0,
+      "exact_contamination_rows_dropped_from_train": 0,
+      "raw": {
+        "all_output": {
+          "assistant_content_tokens": 2588828,
+          "assistant_token_share": 0.71082202,
+          "max_length": 4075,
+          "planning_reference_tokens": 3642912,
+          "rows": 3809,
+          "rows_over_4096": 0,
+          "tokens": 3642020
+        },
+        "dev": {
+          "assistant_content_tokens": 49412,
+          "assistant_token_share": 0.70480836,
+          "max_length": 2192,
+          "planning_reference_tokens": 70118,
+          "rows": 76,
+          "rows_over_4096": 0,
+          "tokens": 70107
+        },
+        "train": {
+          "assistant_content_tokens": 2539416,
+          "assistant_token_share": 0.71094005,
+          "max_length": 4075,
+          "planning_reference_tokens": 3572794,
+          "rows": 3733,
+          "rows_over_4096": 0,
+          "tokens": 3571913
+        }
+      },
+      "raw_dropped": {},
+      "raw_eligible_rows": 3818,
+      "raw_overlength_rows_excluded": 9,
+      "source_rows": 3818,
+      "split_dev_ids": 76
+    },
+    "coconot": {
+      "adapted": {
+        "all_output": {
+          "assistant_content_tokens": 60513,
+          "assistant_token_share": 0.41553421,
+          "max_length": 652,
+          "planning_reference_tokens": 202567,
+          "rows": 999,
+          "rows_over_4096": 0,
+          "tokens": 145627
+        },
+        "dev": {
+          "assistant_content_tokens": 1459,
+          "assistant_token_share": 0.45808477,
+          "max_length": 258,
+          "planning_reference_tokens": 4463,
+          "rows": 20,
+          "rows_over_4096": 0,
+          "tokens": 3185
+        },
+        "train": {
+          "assistant_content_tokens": 59054,
+          "assistant_token_share": 0.41458278,
+          "max_length": 652,
+          "planning_reference_tokens": 198104,
+          "rows": 979,
+          "rows_over_4096": 0,
+          "tokens": 142442
+        }
+      },
+      "adapted_dropped": {},
+      "adapted_eligible_rows": 999,
+      "adapted_overlength_rows_excluded": 0,
+      "exact_contamination_rows_dropped_from_train": 0,
+      "source_rows": 999,
+      "split_dev_ids": 20
+    },
+    "euroblocks_de": {
+      "adapted": {
+        "all_output": {
+          "assistant_content_tokens": 176885,
+          "assistant_token_share": 0.64697298,
+          "max_length": 894,
+          "planning_reference_tokens": 273406,
+          "rows": 808,
+          "rows_over_4096": 0,
+          "tokens": 273404
+        },
+        "dev": {
+          "assistant_content_tokens": 3434,
+          "assistant_token_share": 0.64055214,
+          "max_length": 678,
+          "planning_reference_tokens": 5361,
+          "rows": 16,
+          "rows_over_4096": 0,
+          "tokens": 5361
+        },
+        "train": {
+          "assistant_content_tokens": 173451,
+          "assistant_token_share": 0.6471014,
+          "max_length": 894,
+          "planning_reference_tokens": 268045,
+          "rows": 792,
+          "rows_over_4096": 0,
+          "tokens": 268043
+        }
+      },
+      "adapted_dropped": {},
+      "adapted_eligible_rows": 808,
+      "adapted_overlength_rows_excluded": 0,
+      "exact_contamination_rows_dropped_from_train": 0,
+      "raw": {
+        "all_output": {
+          "assistant_content_tokens": 270998,
+          "assistant_token_share": 0.73156892,
+          "max_length": 1802,
+          "planning_reference_tokens": 370443,
+          "rows": 808,
+          "rows_over_4096": 0,
+          "tokens": 370434
+        },
+        "dev": {
+          "assistant_content_tokens": 5674,
+          "assistant_token_share": 0.74024788,
+          "max_length": 959,
+          "planning_reference_tokens": 7665,
+          "rows": 16,
+          "rows_over_4096": 0,
+          "tokens": 7665
+        },
+        "train": {
+          "assistant_content_tokens": 265324,
+          "assistant_token_share": 0.73138554,
+          "max_length": 1802,
+          "planning_reference_tokens": 362778,
+          "rows": 792,
+          "rows_over_4096": 0,
+          "tokens": 362769
+        }
+      },
+      "raw_dropped": {},
+      "raw_eligible_rows": 808,
+      "raw_overlength_rows_excluded": 0,
+      "source_rows": 808,
+      "split_dev_ids": 16
+    },
+    "euroblocks_fr": {
+      "adapted": {
+        "all_output": {
+          "assistant_content_tokens": 170993,
+          "assistant_token_share": 0.65435085,
+          "max_length": 1318,
+          "planning_reference_tokens": 261344,
+          "rows": 799,
+          "rows_over_4096": 0,
+          "tokens": 261317
+        },
+        "dev": {
+          "assistant_content_tokens": 3416,
+          "assistant_token_share": 0.64623534,
+          "max_length": 651,
+          "planning_reference_tokens": 5286,
+          "rows": 16,
+          "rows_over_4096": 0,
+          "tokens": 5286
+        },
+        "train": {
+          "assistant_content_tokens": 167577,
+          "assistant_token_share": 0.6545184,
+          "max_length": 1318,
+          "planning_reference_tokens": 256058,
+          "rows": 783,
+          "rows_over_4096": 0,
+          "tokens": 256031
+        }
+      },
+      "adapted_dropped": {},
+      "adapted_eligible_rows": 799,
+      "adapted_overlength_rows_excluded": 0,
+      "exact_contamination_rows_dropped_from_train": 0,
+      "raw": {
+        "all_output": {
+          "assistant_content_tokens": 267534,
+          "assistant_token_share": 0.74407803,
+          "max_length": 2210,
+          "planning_reference_tokens": 359560,
+          "rows": 799,
+          "rows_over_4096": 0,
+          "tokens": 359551
+        },
+        "dev": {
+          "assistant_content_tokens": 5282,
+          "assistant_token_share": 0.73249203,
+          "max_length": 628,
+          "planning_reference_tokens": 7211,
+          "rows": 16,
+          "rows_over_4096": 0,
+          "tokens": 7211
+        },
+        "train": {
+          "assistant_content_tokens": 262252,
+          "assistant_token_share": 0.74431515,
+          "max_length": 2210,
+          "planning_reference_tokens": 352349,
+          "rows": 783,
+          "rows_over_4096": 0,
+          "tokens": 352340
+        }
+      },
+      "raw_dropped": {},
+      "raw_eligible_rows": 799,
+      "raw_overlength_rows_excluded": 0,
+      "source_rows": 799,
+      "split_dev_ids": 16
+    },
+    "everyday": {
+      "adapted": {
+        "all_output": {
+          "assistant_content_tokens": 197103,
+          "assistant_token_share": 0.43982166,
+          "max_length": 314,
+          "planning_reference_tokens": 632427,
+          "rows": 1999,
+          "rows_over_4096": 0,
+          "tokens": 448143
+        },
+        "dev": {
+          "assistant_content_tokens": 3971,
+          "assistant_token_share": 0.4410752,
+          "max_length": 314,
+          "planning_reference_tokens": 12598,
+          "rows": 40,
+          "rows_over_4096": 0,
+          "tokens": 9003
+        },
+        "train": {
+          "assistant_content_tokens": 193132,
+          "assistant_token_share": 0.43979596,
+          "max_length": 307,
+          "planning_reference_tokens": 619829,
+          "rows": 1959,
+          "rows_over_4096": 0,
+          "tokens": 439140
+        }
+      },
+      "adapted_dropped": {},
+      "adapted_eligible_rows": 2000,
+      "adapted_overlength_rows_excluded": 0,
+      "exact_contamination_rows_dropped_from_train": 1,
+      "source_rows": 2000,
+      "split_dev_ids": 40
+    },
+    "no_robots": {
+      "adapted": {
+        "all_output": {
+          "assistant_content_tokens": 2011366,
+          "assistant_token_share": 0.5536905,
+          "max_length": 3035,
+          "planning_reference_tokens": 5341056,
+          "rows": 9495,
+          "rows_over_4096": 0,
+          "tokens": 3632654
+        },
+        "dev": {
+          "assistant_content_tokens": 38240,
+          "assistant_token_share": 0.55376951,
+          "max_length": 2003,
+          "planning_reference_tokens": 100047,
+          "rows": 190,
+          "rows_over_4096": 0,
+          "tokens": 69054
+        },
+        "train": {
+          "assistant_content_tokens": 1973126,
+          "assistant_token_share": 0.55368897,
+          "max_length": 3035,
+          "planning_reference_tokens": 5241009,
+          "rows": 9305,
+          "rows_over_4096": 0,
+          "tokens": 3563600
+        }
+      },
+      "adapted_dropped": {},
+      "adapted_eligible_rows": 9499,
+      "adapted_overlength_rows_excluded": 0,
+      "exact_contamination_rows_dropped_from_train": 4,
+      "source_rows": 9499,
+      "split_dev_ids": 190
+    },
+    "no_robots_en_pov": {
+      "adapted": {
+        "all_output": {
+          "assistant_content_tokens": 1799413,
+          "assistant_token_share": 0.55556643,
+          "max_length": 3112,
+          "planning_reference_tokens": 3243347,
+          "rows": 9498,
+          "rows_over_4096": 0,
+          "tokens": 3238880
+        },
+        "dev": {
+          "assistant_content_tokens": 36419,
+          "assistant_token_share": 0.58686369,
+          "max_length": 1404,
+          "planning_reference_tokens": 62123,
+          "rows": 190,
+          "rows_over_4096": 0,
+          "tokens": 62057
+        },
+        "train": {
+          "assistant_content_tokens": 1762994,
+          "assistant_token_share": 0.55495506,
+          "max_length": 3112,
+          "planning_reference_tokens": 3181224,
+          "rows": 9308,
+          "rows_over_4096": 0,
+          "tokens": 3176823
+        }
+      },
+      "adapted_dropped": {},
+      "adapted_eligible_rows": 9499,
+      "adapted_overlength_rows_excluded": 1,
+      "exact_contamination_rows_dropped_from_train": 0,
+      "source_rows": 9499,
+      "split_dev_ids": 190
+    },
+    "oasst": {
+      "adapted": {
+        "all_output": {
+          "assistant_content_tokens": 450504,
+          "assistant_token_share": 0.69867029,
+          "max_length": 2641,
+          "planning_reference_tokens": 942889,
+          "rows": 1489,
+          "rows_over_4096": 0,
+          "tokens": 644802
+        },
+        "dev": {
+          "assistant_content_tokens": 8393,
+          "assistant_token_share": 0.66269246,
+          "max_length": 1103,
+          "planning_reference_tokens": 18608,
+          "rows": 30,
+          "rows_over_4096": 0,
+          "tokens": 12665
+        },
+        "train": {
+          "assistant_content_tokens": 442111,
+          "assistant_token_share": 0.69939111,
+          "max_length": 2641,
+          "planning_reference_tokens": 924281,
+          "rows": 1459,
+          "rows_over_4096": 0,
+          "tokens": 632137
+        }
+      },
+      "adapted_dropped": {},
+      "adapted_eligible_rows": 1489,
+      "adapted_overlength_rows_excluded": 0,
+      "exact_contamination_rows_dropped_from_train": 0,
+      "source_rows": 1489,
+      "split_dev_ids": 30
+    },
+    "personas_if": {
+      "adapted": {
+        "all_output": {
+          "assistant_content_tokens": 513496,
+          "assistant_token_share": 0.65460034,
+          "max_length": 2376,
+          "planning_reference_tokens": 1221433,
+          "rows": 1980,
+          "rows_over_4096": 0,
+          "tokens": 784442
+        },
+        "dev": {
+          "assistant_content_tokens": 9552,
+          "assistant_token_share": 0.64245359,
+          "max_length": 1251,
+          "planning_reference_tokens": 22952,
+          "rows": 40,
+          "rows_over_4096": 0,
+          "tokens": 14868
+        },
+        "train": {
+          "assistant_content_tokens": 503944,
+          "assistant_token_share": 0.65483501,
+          "max_length": 2376,
+          "planning_reference_tokens": 1198481,
+          "rows": 1940,
+          "rows_over_4096": 0,
+          "tokens": 769574
+        }
+      },
+      "adapted_dropped": {
+        "missing_assistant": 1
+      },
+      "adapted_eligible_rows": 1980,
+      "adapted_overlength_rows_excluded": 0,
+      "exact_contamination_rows_dropped_from_train": 0,
+      "source_rows": 1981,
+      "split_dev_ids": 40
+    },
+    "smolcon": {
+      "adapted": {
+        "all_output": {
+          "assistant_content_tokens": 140217,
+          "assistant_token_share": 0.49956534,
+          "max_length": 1314,
+          "planning_reference_tokens": 436222,
+          "rows": 1000,
+          "rows_over_4096": 0,
+          "tokens": 280678
+        },
+        "dev": {
+          "assistant_content_tokens": 2877,
+          "assistant_token_share": 0.46576008,
+          "max_length": 725,
+          "planning_reference_tokens": 9879,
+          "rows": 20,
+          "rows_over_4096": 0,
+          "tokens": 6177
+        },
+        "train": {
+          "assistant_content_tokens": 137340,
+          "assistant_token_share": 0.50032605,
+          "max_length": 1314,
+          "planning_reference_tokens": 426343,
+          "rows": 980,
+          "rows_over_4096": 0,
+          "tokens": 274501
+        }
+      },
+      "adapted_dropped": {},
+      "adapted_eligible_rows": 1000,
+      "adapted_overlength_rows_excluded": 0,
+      "exact_contamination_rows_dropped_from_train": 0,
+      "source_rows": 1000,
+      "split_dev_ids": 20
+    },
+    "systemchats": {
+      "adapted": {
+        "all_output": {
+          "assistant_content_tokens": 219557,
+          "assistant_token_share": 0.59761452,
+          "max_length": 1259,
+          "planning_reference_tokens": 566717,
+          "rows": 1000,
+          "rows_over_4096": 0,
+          "tokens": 367389
+        },
+        "dev": {
+          "assistant_content_tokens": 3579,
+          "assistant_token_share": 0.55782419,
+          "max_length": 843,
+          "planning_reference_tokens": 10036,
+          "rows": 20,
+          "rows_over_4096": 0,
+          "tokens": 6416
+        },
+        "train": {
+          "assistant_content_tokens": 215978,
+          "assistant_token_share": 0.59832176,
+          "max_length": 1259,
+          "planning_reference_tokens": 556681,
+          "rows": 980,
+          "rows_over_4096": 0,
+          "tokens": 360973
+        }
+      },
+      "adapted_dropped": {},
+      "adapted_eligible_rows": 1000,
+      "adapted_overlength_rows_excluded": 0,
+      "exact_contamination_rows_dropped_from_train": 0,
+      "source_rows": 1000,
+      "split_dev_ids": 20
+    }
+  },
+  "contamination": {
+    "final_exact_hits": 0,
+    "pre_drop_exact_hits": 5,
+    "pre_drop_near_hits": 0,
+    "train_rows_dropped": 5
+  },
+  "dev_all": {
+    "assistant_content_tokens": 135625,
+    "assistant_token_share": 0.57265849,
+    "max_length": 2003,
+    "planning_reference_tokens": 294128,
+    "rows": 658,
+    "rows_over_4096": 0,
+    "tokens": 236834
+  },
+  "evaluation_sources": {
+    "ellinika_bench": {
+      "files": 216,
+      "path": "~/Projects/apertus-local-chat/benchmark/data",
+      "prompts": 1788,
+      "sha256": "80fbf436d83efbf21566e607275cc60c5a8df8cb50ada42af2c2c16567627f1a",
+      "status": "available"
+    },
+    "greek_mmlu": {
+      "cache_sha256": "52395e626d8ecd4ffe6219acd41df252987eb4a83da59cd01627b0be00b35411",
+      "config": "All",
+      "prompts": 16632,
+      "repo": "dascim/GreekMMLU",
+      "revision": "6a03aa06b68beb932fb75edff3a34e50b3674649",
+      "split": "test",
+      "status": "available"
+    },
+    "gsm8k": {
+      "cache_sha256": "12d2145d474994b29bd487cfd2cd3a01a725e30cca4f0850da5df2a07f4b2d77",
+      "config": "main",
+      "prompts": 1319,
+      "repo": "openai/gsm8k",
+      "revision": "740312add88f781978c0658806c59bc2815b9866",
+      "split": "test",
+      "status": "available"
+    },
+    "ifeval": {
+      "cache_sha256": "e0c1fda7f338da3d98bb178ec4a382935d0f4fced2c33816564e98759d567c21",
+      "config": "default",
+      "prompts": 541,
+      "repo": "google/IFEval",
+      "revision": "966cd89545d6b6acfd7638bc708b98261ca58e84",
+      "split": "train",
+      "status": "available"
+    },
+    "native_greek_suite": {
+      "reason": "not accessible via HfApi at build time",
+      "repo": "fffoivos/native-greek-suite",
+      "status": "unavailable"
+    }
+  },
+  "identity": {
+    "base_tokenizer": {
+      "repo": "fffoivos/apertus-8b-greek-cpt",
+      "requested_revision": "18-avg-uniform5-tokens30B-50B",
+      "revision": "c7f806e268083c64ce831bc46483bf98e5ddcee1"
+    },
+    "chat_template": {
+      "render_date": "2026-09-04",
+      "repo": "swiss-ai/Apertus-8B-Instruct-2509",
+      "revision": "b946d40447b2b597999b9c86d44bee0b452c919f"
+    },
+    "evaluation_sources": {
+      "greek_mmlu": {
+        "config": "All",
+        "repo": "dascim/GreekMMLU",
+        "revision": "6a03aa06b68beb932fb75edff3a34e50b3674649",
+        "split": "test",
+        "status": "available"
+      },
+      "gsm8k": {
+        "config": "main",
+        "repo": "openai/gsm8k",
+        "revision": "740312add88f781978c0658806c59bc2815b9866",
+        "split": "test",
+        "status": "available"
+      },
+      "ifeval": {
+        "config": "default",
+        "repo": "google/IFEval",
+        "revision": "966cd89545d6b6acfd7638bc708b98261ca58e84",
+        "split": "train",
+        "status": "available"
+      },
+      "native_greek_suite": {
+        "reason": "not accessible via HfApi at build time",
+        "repo": "fffoivos/native-greek-suite",
+        "status": "unavailable"
+      }
+    },
+    "source_dataset": {
+      "files": {
+        "apertus_en": {
+          "bytes": 48326414,
+          "sha256": "51ac9e467c24961b54c16b4fd67e5107b1f20b6f259503750d052b97c59fd237"
+        },
+        "coconot": {
+          "bytes": 6370532,
+          "sha256": "e3bf7858487fd20b8ee7cd7f8506e40d104ca7e734f5fe518970438586d55524"
+        },
+        "euroblocks_de": {
+          "bytes": 6260258,
+          "sha256": "c4f787b2a7f50f10e11ae1d1ceddfe23dae6bd71674f496537e4d8c816794f22"
+        },
+        "euroblocks_fr": {
+          "bytes": 6127797,
+          "sha256": "5e407bb85af8eb11ca096fcb65a9670028657c09d404571a35aabf610824a3ce"
+        },
+        "everyday": {
+          "bytes": 16432291,
+          "sha256": "e1d733e9e727e9cbee4d6a173bebdbe6f07eef127f0d6c963d305f2e0490a279"
+        },
+        "no_robots": {
+          "bytes": 112847244,
+          "sha256": "82dbd4db5341358b54b96d3ba94e87bd995aa7d24beecba42ed02da884238b38"
+        },
+        "no_robots_en_pov": {
+          "bytes": 38358222,
+          "sha256": "77ae5f9fbbe570eb3ae85360f01e033d55d18602102eec87a97f39e0f52b9745"
+        },
+        "oasst": {
+          "bytes": 20310360,
+          "sha256": "7d5717bf70c2cf00093b03b735b94f0dd4986222ad64d32f1dc8c7bbbd56fd5e"
+        },
+        "personas_if": {
+          "bytes": 26965446,
+          "sha256": "a37642c2e9faf6393c6204f759b336da903ae92f9d8e5d6ac5f8884cbb2881d9"
+        },
+        "smolcon": {
+          "bytes": 9627212,
+          "sha256": "3402f820aed4af571d391ab88ac72f98fcfe3a71ca3ff10d5e7b6d07d05c8254"
+        },
+        "systemchats": {
+          "bytes": 13530558,
+          "sha256": "8ae39386bcbb971d140d8e19329a4e6d6c918fb762deb9bb20ec95eb816218a9"
+        }
+      },
+      "repo": "fffoivos/Greek-SFT-translated-and-adapted",
+      "revision": "ff2057d016a8f19002eca1ad6a9b657c80a4ac55"
+    }
+  },
+  "parameters": {
+    "assistant_token_definition": "tokens in assistant content, excluding role control tokens",
+    "containment_threshold": 0.5,
+    "dev_fraction": 0.02,
+    "max_length": 4096,
+    "ngram_size": 8,
+    "planning_estimate_comparison": "2 percent comparison is performed at the 0.01M precision of the approximate section 5a-prime figures; unrounded counts and errors are also retained",
+    "planning_reference_tokens_definition": "same render tokenized with the unextended Apertus Instruct tokenizer; retained only to audit the supplied section 5a-prime estimates",
+    "seed": 1234,
+    "split_method": "lowest sha256(seed\\0config\\0row_id), exact rounded 2% count",
+    "tokens_definition": "rendered template tokenized with the Greek-CPT tokenizer"
+  },
+  "schema_version": "greek_sft_wp0_stats_v1",
+  "template_validation": {
+    "base_bos_token": "<s>",
+    "base_bos_token_id": 1,
+    "base_eos_token": "</s>",
+    "base_eos_token_id": 2,
+    "base_tokenizer_size_with_added_tokens": 148992,
+    "base_vocab_size": 148992,
+    "chat_template_sha256": "56f72c27fa2e565312a830b7315a455c79fb452fdbe7a5b7595d8a094f282b07",
+    "non_emitted_template_sentinel": {
+      "base_vocab_member": false,
+      "reason": "template validation sentinel; WP0 rows are text-only",
+      "reference_vocab_member": false,
+      "token": "<|image|>"
+    },
+    "required_text_control_tokens": {
+      "<s>": {
+        "base_id": 1,
+        "in_base_added_vocab": true,
+        "reference_id": 1,
+        "same_id": true
+      },
+      "<|assistant_end|>": {
+        "base_id": 68,
+        "in_base_added_vocab": true,
+        "reference_id": 68,
+        "same_id": true
+      },
+      "<|assistant_start|>": {
+        "base_id": 67,
+        "in_base_added_vocab": true,
+        "reference_id": 67,
+        "same_id": true
+      },
+      "<|developer_end|>": {
+        "base_id": 64,
+        "in_base_added_vocab": true,
+        "reference_id": 64,
+        "same_id": true
+      },
+      "<|developer_start|>": {
+        "base_id": 63,
+        "in_base_added_vocab": true,
+        "reference_id": 63,
+        "same_id": true
+      },
+      "<|inner_prefix|>": {
+        "base_id": 69,
+        "in_base_added_vocab": true,
+        "reference_id": 69,
+        "same_id": true
+      },
+      "<|inner_suffix|>": {
+        "base_id": 70,
+        "in_base_added_vocab": true,
+        "reference_id": 70,
+        "same_id": true
+      },
+      "<|system_end|>": {
+        "base_id": 62,
+        "in_base_added_vocab": true,
+        "reference_id": 62,
+        "same_id": true
+      },
+      "<|system_start|>": {
+        "base_id": 61,
+        "in_base_added_vocab": true,
+        "reference_id": 61,
+        "same_id": true
+      },
+      "<|tools_prefix|>": {
+        "base_id": 71,
+        "in_base_added_vocab": true,
+        "reference_id": 71,
+        "same_id": true
+      },
+      "<|tools_suffix|>": {
+        "base_id": 72,
+        "in_base_added_vocab": true,
+        "reference_id": 72,
+        "same_id": true
+      },
+      "<|user_end|>": {
+        "base_id": 66,
+        "in_base_added_vocab": true,
+        "reference_id": 66,
+        "same_id": true
+      },
+      "<|user_start|>": {
+        "base_id": 65,
+        "in_base_added_vocab": true,
+        "reference_id": 65,
+        "same_id": true
+      }
+    },
+    "text_control_token_count": 13
+  }
+}
