@@ -37,15 +37,16 @@ Assignment protocol, every step: (1) Claude writes `briefs/WPn.md` — context f
 Runs: **E0a** (Apertus-8B-Instruct, Greek evals only), **E0b** (Greek-CPT base `18-avg`, all evals),
 **smoke** (200 steps of E1), **phase A: the E1 grid** (Greek 17.6k at lr 1e-5 and 5e-6, 3 epochs each,
 warmup + constant lr, every epoch checkpoint evaluated → pick (lr, epoch); then one seed replicate
-of the winner with the cosine schedule = the noise floor), **phase B** at the winning setting: **E2** (Greek + no_robots_en_pov),
+of the winner with the cosine schedule = the noise floor, and **E1-last** = the winning setting on the
+terminal checkpoint `17`/`main`, read against the winner at G3 to fix phase B's base), **phase B** at the winning setting: **E2** (Greek + no_robots_en_pov),
 **E3** (Greek + apertus_en + euroblocks fr/de, Greek point of view), **E3′** (E3 with the *raw*
 slices: `messages_en` of the same rows). Retention tasks (evals-post-train ×5) on E0b, E1-s0, E3,
 E3′ only; Greek evals on every model. Plus the **known-ness scorer** (labels only, no filtering).
 
-Deferred, to be run only after the G4 readout: E1-last, E4, E7/E7′/E8, E9 (raw replay, pre-built). E5/E6 are
+Deferred, to be run only after the G4 readout: E4, E7/E7′/E8, E9 (raw replay, pre-built). E5/E6 are
 absorbed by the grid.
 
-Budget: ~28 node-hours ≈ **CHF 75**; **cap CHF 80** (≈30 node-hours) at CHF 2.69/node-hour.
+Budget: ~30 node-hours ≈ **CHF 81**; **cap CHF 90** (≈30 node-hours) at CHF 2.69/node-hour.
 The account holds CHF 2,095.08 ≈ 779 node-hours. Every submission is logged with its projected
 and actual node-hours.
 
