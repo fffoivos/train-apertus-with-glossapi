@@ -188,6 +188,11 @@
    "date": "2026-09-04 02:45",
    "what": "Token budget corrected: the CPT tokenizer (148,992 vocab) tokenizes the Greek data ~34% shorter than the Instruct tokenizer I used in §5a′ (E1 6.18M vs 9.34M) — training cost per epoch is a third lower than planned",
    "by": "claude"
+  },
+  {
+   "date": "2026-09-04 03:05",
+   "what": "GreekMMLU cannot be row-sharded: the frozen suite runner's contract has no 'greekmmlu' benchmark id and the native runner has no shard flags → ~2.8 h per model on one GPU (fp32). Plan: GreekMMLU only for the grid's epoch-3 endpoints, the replicate, E1-last and the winner epoch, one model per GPU in ONE normal-partition workbench (~3 h, ~3 nh ≈ CHF 8) — a >2 h job, so it waits for the owner's morning notice per CLUSTER_PROTOCOL §6. The native suite (sharded over 4 GPUs, ~40 min) and the ILSP/dev/interview evals run per checkpoint in debug workbenches.",
+   "by": "claude"
   }
  ]
 }

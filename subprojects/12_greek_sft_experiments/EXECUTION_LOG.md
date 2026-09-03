@@ -20,3 +20,4 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-04 02:40 | WP1d | 1 | sol | GREEN: ILSP ifeval_greek + mgsm_greek lm-eval tasks, 17 tests pass, dry run exit 0 | 0/0 | 0.30 |
 | 2026-09-04 02:45 | WP0 | 2 | sol | GREEN: --check OK; dev 658 rows; contamination: 5 exact GreekMMLU hits removed, 0 remain; E1 tokens 6.18M with the CPT tokenizer (plan said 9.34M with the Instruct tokenizer) | 0/0 | 0.30 |
 | 2026-09-04 02:50 | WP2 | 2 | sol | GREEN: dry run exit 0; test_trainer_local OK (5 checks) | 0/0 | 0.30 |
+| 2026-09-04 03:05 | E0b | job 3286292 | claude | workbench (debug 01:29): ILSP ifeval_greek+mgsm_greek_4shot on the base with the imposed template (GPU0), dev50/reading40 generation baseline (GPU1); GreekMMLU shard probe FAILED by design (no greekmmlu in the suite contract) → GreekMMLU batch deferred to a morning normal-partition workbench | 0.7/— | 0.30 |
