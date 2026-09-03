@@ -8,7 +8,7 @@
  "cursor": "wave1",
  "steps": {
   "WP0_data": {
-   "status": "running (attempt 2)",
+   "status": "done (green 02:45: --check OK; 5 GreekMMLU-overlapping rows removed; E1 6.18M CPT-tokenizer tokens, E2 9.36M, E3 8.97M, E3prime 10.47M)",
    "deps": [],
    "executor": "sol",
    "acceptance": "python3 data/build_sft_mix.py --check"
@@ -182,6 +182,11 @@
   {
    "date": "2026-09-04 02:30",
    "what": "E0a GreekMMLU stopped: the frozen fp32 evaluator ran at ~100 q/min on one GPU (16,632 q → ~166 min) vs 84 min left on the debug workbench; low-value number for the Instruct contrast. Consequence for the grid: GreekMMLU per checkpoint must be row-sharded over 4 GPUs (suite runner --row-shard-*) or run in a normal-partition workbench; decide at E0b.",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 02:45",
+   "what": "Token budget corrected: the CPT tokenizer (148,992 vocab) tokenizes the Greek data ~34% shorter than the Instruct tokenizer I used in §5a′ (E1 6.18M vs 9.34M) — training cost per epoch is a third lower than planned",
    "by": "claude"
   }
  ]
