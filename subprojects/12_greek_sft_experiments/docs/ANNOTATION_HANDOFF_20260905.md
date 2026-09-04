@@ -123,17 +123,17 @@ Repository: `subprojects/12_greek_sft_experiments/`, git range for this work `57
 | Greek rewriting reading page | artifact, see the log | `cluster/greek_rewrite_page.py <gen.jsonl> <out.html> 40 [edit.jsonl]` |
 | chained Sol queue (`ps -fl` shows the `sh -c until …` waiters) | `~/sft_annot/sol_chain.log`, `sol_chain2.log` | samples -> Greek generation -> science -> coding 20k -> Precise IF spot-check -> Greek correction pass |
 
-Counts at 23:39 Friday, Mac clock (`build_keep_lists.py`, Sol verdicts applied; `judges` column omitted):
+Counts at 23:39 Friday, Mac clock (`build_keep_lists.py`, Sol verdicts applied; the 300-row spot-check samples are omitted):
 
-| block | labelled | keep | adapt | drop | identity | wrong |
-|---|---|---|---|---|---|---|
-| dolci_chat 5305 4180 242 | 883 | 364 | 760 | {'gpt-5.6-luna': | 4582, | 'gpt-5.6-sol': |
-| dolci_safety 11282 7230 1167 | 2885 | 2292 | 1737 | {'gpt-5.6-luna': | 11076, | 'gpt-5.6-sol': |
-| greek_ours_census1k 236 | 228 | 3 | 5 | 3 | 4 | {'gpt-5.6-luna': |
-| tulu_flan 1323 | 1115 | 15 | 193 | 2 | 193 | {'gpt-5.6-sol': |
-| ifeval_like (checker) 56339 | 56292 | 0 | 47 | 0 | 47 | {'checker': |
-| openmath (checker) 100000 | 99971 | 0 | 29 | 0 | 29 | {'checker': |
-| puzzles (checker) 12503 | 11163 | 0 | 1318 | 0 | 1318 | {'checker': |
+| block | labelled | keep | adapt | drop | identity | wrong | judges |
+|---|---|---|---|---|---|---|---|
+| dolci_chat | 5,305 | 4,180 | 242 | 883 | 364 | 760 | luna 4582, sol 723 |
+| dolci_safety | 11,282 | 7,230 | 1,167 | 2,885 | 2,292 | 1,737 | luna 11076, sol 206 |
+| greek_ours_census1k | 236 | 228 | 3 | 5 | 3 | 4 | luna 236 |
+| tulu_flan | 1,323 | 1,115 | 15 | 193 | 2 | 193 | sol 1323 |
+| ifeval_like (checker) | 56,339 | 56,292 | 0 | 47 | 0 | 47 | checker 56339 |
+| openmath (checker) | 100,000 | 99,971 | 0 | 29 | 0 | 29 | checker 100000 |
+| puzzles (checker) | 12,503 | 11,163 | 0 | 1,318 | 0 | 1,318 | checker 12503 |
 
 ## 6. Known defects and their state
 
