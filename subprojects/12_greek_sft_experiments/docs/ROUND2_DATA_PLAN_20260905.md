@@ -49,25 +49,25 @@ after the judges; hits are dropped and counted per block; the written train file
 Licence question (review F8): the Qwen question in §6 also covers OpenMathInstruct-2, whose answers are Llama-3.1-405B output under the Llama 3.1
 licence naming clause; one decision for both.
 
-## 3. Timeline to Sunday, with the judge rates measured tonight
+## 3. Timeline to Sunday, Mac clock (EEST), with the measured rates
 
-Rates: Luna 4,160 rows an hour at 64 workers (measured on safety, first 1,000 rows); Sol 1,300 to 1,700 at 24 on chat, 825 on puzzles;
-checker exact and free. Times are Athens time. Nemotron 100k therefore takes 24 h, not 20: done Sunday about 03:00, tool use 30k by about 10:00.
+Rates: Luna 4,160 to 4,350 rows an hour at 64 workers (safety); Sol 1,100 rows an hour generating Greek at high effort, 1,000 to 1,400 on
+chat and reasoning at medium, 825 on puzzles; checker exact and free. Revised after the review: Nemotron is exact-length-filtered, shuffled
+and split into halves A and B (option C needs A only); multilingual goes to Luna before tool use, tool use gets a 3,000-row Luna sample plus
+the regex scan; Sol alternates routing with science chunks so the 24 workers are never split.
 
-| when | Luna (64 workers) | Sol (24 workers) | me (CPU, cluster login node, polite) |
+| when (Mac clock) | Luna (64 workers) | Sol (24 workers) | me (CPU on the login node, polite) |
 |---|---|---|---|
-| Fri 23:45 | safety, 13k left, about 3 h | spot-checks, 26 code + 300 reasoning rows, 20 min | exports running: multilingual 25k, Nemotron 150k |
-| Sat 03:00 | Nemotron 100k, about 20 h | Greek rewriting set, 2,000 rows, high effort, about 5 h | exports: OpenMath 100k, Python Algorithms 60k, Verifiable Reasoning 30k, Precise IF 137k, ifeval-like 56k |
-| Sat 08:00 | | Science 20k, about 13 h | re-run IFEval checkers on ifeval-like; Sol spot-checks on Precise IF 300 and OpenMath 300; owner reads 40 Greek rewriting rows: https://claude.ai/code/artifact/dc57edac-97cc-472e-810e-e336f03d63f2 |
-| Sat 21:00 | Nemotron running | Science done; coding 20k under Sol, about 13 h | assemble-mix script, decontamination lists, tokenizer run on a 5% dry run |
-| Sun 03:00 | Nemotron done; tool use 30k, about 7 h | technical rows of Nemotron, about 12k, 8 h, in parallel with coding on the same 24 workers only if the account allows, else after | |
-| Sun 10:00 | tool use done, or cut to the lexicon scan if late | coding and Nemotron technical rows done | |
-| Sun 10:00 to 22:00 | | correction pass on the Greek rewriting rows, 2 h | keep-lists merged, mix assembled, decontaminated against all ILSP sets + IFEval/GSM8K, tokenized, receipts, plan updated |
-| Mon | | | training launch, only once the cap decision is in |
+| Fri 23:00 | safety, about 9,500 left, 2.3 h | Greek rewriting to 2,000 rows (00:00); OpenAssistant technical rows routed | multilingual export landed; Nemotron halves prepared |
+| Sat 01:30 | Nemotron half A, ~48k rows after the length filter, about 11.5 h | routing pass, then Science in 3,000-row chunks alternating with routing, 15 to 20 h | exports done; Precise IF sample 300 queued on Sol |
+| Sat 13:00 | multilingual 25k, 6 h | Science continues | assembly script final; blind read pages for the owner (Greek set + 20 Luna keep rows) |
+| Sat 19:00 | tool-use 3k sample, 45 min; then Nemotron half B if time allows | coding 20k in chunks, 13 h | keep-lists merged as blocks finish |
+| Sun 08:00 | Nemotron B continues or is cut | Precise IF spot-check, Greek correction pass, last routing pass | full assembly under the 208M-token budget, decontamination, trainer dry run on the cluster (gate) |
+| Sun 14:00 to 22:00 | | | receipts, plan and handoff updated, training config written |
+| Mon | | | training launch once the cap decision is in |
 
-Slack: about 6 hours on Luna, about 10 hours on Sol. If Luna runs slower than 5,000 an hour, tool use is cut to the 30k we need,
-then multilingual goes to the lexicon identity scan instead of Luna. Nothing on the critical path waits for the owner except the
-two decisions in section 6.
+Cut order if it slips: Nemotron half B, then tool use beyond the sample (regex scan only), then multilingual to the multilingual regex scan.
+Nothing on the critical path waits for the owner except the decisions in section 6.
 
 ## 4. Budget for stage 1 under the current cap
 
