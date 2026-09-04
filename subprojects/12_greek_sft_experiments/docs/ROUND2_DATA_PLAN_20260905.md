@@ -50,7 +50,7 @@ checker exact and free. Times are Athens time. Nemotron 100k therefore takes 24 
 |---|---|---|---|
 | Fri 23:45 | safety, 13k left, about 3 h | spot-checks, 26 code + 300 reasoning rows, 20 min | exports running: multilingual 25k, Nemotron 150k |
 | Sat 03:00 | Nemotron 100k, about 20 h | Greek rewriting set, 2,000 rows, high effort, about 5 h | exports: OpenMath 100k, Python Algorithms 60k, Verifiable Reasoning 30k, Precise IF 137k, ifeval-like 56k |
-| Sat 08:00 | | Science 20k, about 13 h | re-run IFEval checkers on ifeval-like; Sol spot-checks on Precise IF 300 and OpenMath 300; owner reads 40 Greek rewriting rows |
+| Sat 08:00 | | Science 20k, about 13 h | re-run IFEval checkers on ifeval-like; Sol spot-checks on Precise IF 300 and OpenMath 300; owner reads 40 Greek rewriting rows: https://claude.ai/code/artifact/dc57edac-97cc-472e-810e-e336f03d63f2 |
 | Sat 21:00 | Nemotron running | Science done; coding 20k under Sol, about 13 h | assemble-mix script, decontamination lists, tokenizer run on a 5% dry run |
 | Sun 03:00 | Nemotron done; tool use 30k, about 7 h | technical rows of Nemotron, about 12k, 8 h, in parallel with coding on the same 24 workers only if the account allows, else after | |
 | Sun 10:00 | tool use done, or cut to the lexicon scan if late | coding and Nemotron technical rows done | |
