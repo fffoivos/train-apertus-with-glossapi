@@ -3,8 +3,8 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 13.474,
- "chf_used": 36.25,
+ "nh_used": 14.696,
+ "chf_used": 39.53,
  "cursor": "morning report published 07:07; phase B light evals + guards + known-ness finishing; owner gates G3/GreekMMLU/next arms",
  "steps": {
   "WP0_data": {
@@ -306,6 +306,13 @@
    "voice_delta": 0.959,
    "int_mean": 2.91,
    "int_language": 4.08
+  },
+  "knownness_base": {
+   "claims": 10388,
+   "known": 970,
+   "weakly": 239,
+   "unknown": 9179,
+   "caveat": "base-model QA-format probe; unknown is an upper bound"
   }
  },
  "artifacts": {

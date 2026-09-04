@@ -306,3 +306,30 @@ slices the dev sets are the *adapted* conversations, so E3′ is expected to be 
 euroblocks_fr 1.308 → 1.542, euroblocks_de 1.475 → 1.649. That is a measure of how different the adapted text is,
 not of quality; the adaptation verdict is the light evals (Greek IFEval, MGSM, voice, interviews, and the fr/de/en answers in the
 interviews), landing ~08:10.
+
+
+## Known-ness of the training rows' Greek-reality claims (base model probe, Gekhman-style)
+
+| config | claims | known (greedy) | weakly known (1 of 4 samples) | unknown |
+|---|---|---|---|---|
+| apertus_en | 1620 | 573 (35%) | 70 (4%) | 977 (60%) |
+| coconot | 413 | 41 (10%) | 11 (3%) | 361 (87%) |
+| euroblocks_de | 259 | 32 (12%) | 9 (3%) | 218 (84%) |
+| euroblocks_fr | 283 | 25 (9%) | 9 (3%) | 249 (88%) |
+| everyday | 865 | 39 (5%) | 14 (2%) | 812 (94%) |
+| no_robots | 4690 | 183 (4%) | 86 (2%) | 4421 (94%) |
+| oasst | 540 | 32 (6%) | 4 (1%) | 504 (93%) |
+| personas_if | 1056 | 22 (2%) | 21 (2%) | 1013 (96%) |
+| smolcon | 59 | 1 (2%) | 1 (2%) | 57 (97%) |
+| systemchats | 603 | 22 (4%) | 14 (2%) | 567 (94%) |
+| **all** | 10388 | 970 (9%) | 239 (2%) | 9179 (88%) |
+
+Per Sol's own basis for the claim — inferred: known 14, weakly 3, unknown 141; known: known 952, weakly 235, unknown 8993; uncertain: known 4, weakly 1, unknown 45. Corpus-presence (the second signal) was not run tonight.
+
+**Read this with care.** The probe asks the *base* model a short question four-shot and matches the gold answer by normalized
+containment within 48 tokens. A base model that has not been instruction-tuned fails that format for many facts it does hold,
+and Greek answers admit many surface forms; so "unknown" here is an upper bound on ignorance, not a measurement of it. The
+apertus_en slice (English questions, math/code personas) scores 37% known; the Greek slices 3–11%. Two things follow: the
+knowledge-alignment risk of plan §8 is real and large by this probe; and the probe itself needs calibration — run it on the
+SFT'd pick (which can answer in the format) and on a set of claims known to be true and in the CPT corpus before E7 filters
+on these labels. Rows: 5,684 with claims → labels none / known / mixed / unknown are in `results/E0b/knownness/knownness_rows.jsonl`.
