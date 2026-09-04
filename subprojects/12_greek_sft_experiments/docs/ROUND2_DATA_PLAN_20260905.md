@@ -33,7 +33,7 @@ small blocks stay whole and the big ones are scaled to the token budget over the
 | block | source | written by | checked how | rows (A) | mean tokens |
 |---|---|---|---|---|---|
 | constraint following | Dolci Precise IF, Sol-screened subset only | 2025 models | constraint checkers at the source verify FORMAT only; Sol spot-check of 300 (12k window): 27% unusable (contradictory arithmetic, wrong facts, off-task, inappropriate); so only a Sol-screened 20k subset enters, about 14k keep | 20k screened | 600 |
-| constraint following | argilla ifeval-like, filtered | Qwen2.5-72B, 2024 | our re-run of the IFEval checkers on all 56,339 rows: 47 fail | 56k | 256 |
+| constraint following | argilla ifeval-like, filtered | Qwen2.5-72B, 2024 | our re-run of the IFEval checkers on all 56,339 rows: 47 fail; Sol content spot-check of 300: 5 unusable (1.7%), 0 identity | 56k | 256 |
 | math | OpenMathInstruct-2, GSM8K-style | Llama-3.1-405B, 2024 | our re-run of the final-answer match on 100,000 rows: 29 mismatch | 100k | 342 |
 | chat and advice | Nemotron IF-Chat v3, chat split, half A (half B if time allows) | GLM-5, 2026 | exact-length prefilter (16.9% over the window), EU-language gate, Luna screen, Sol on technical rows, backstop | 34k + 34k | 1,584 |
 | chat, human-written | OpenAssistant (Dolci Chat) | volunteers, 2023; 42% Spanish, 30% English | Luna, Sol on technical rows and as second opinion, EU-language gate (Catalan kept) | 3.8k | 350 |
@@ -72,7 +72,9 @@ show zero. This is what closes the one non-negotiable goal, because the judge's 
 identity lines.
 
 **Tone.** The rubric records chatbot mannerisms and unasked second-person commands. Rows flagged for mannerisms are dropped from the chat, safety,
-multilingual and science blocks (OpenAssistant 19% of kept rows, safety 39%); unasked commands are reported and can be dropped by flag.
+multilingual, science and Greek blocks (OpenAssistant 19% of kept rows, safety 39%, our Greek set 9%); unasked commands are reported and can be
+dropped by flag. Blocks no judge labels (ifeval-like, OpenMath, reasoning, puzzles, tool use) get a cheap lexicon at assembly that drops rows
+whose last assistant turn opens or closes with a chatbot phrase; on ifeval-like that is about 15% of rows, matching Sol's 17% in the spot-check.
 
 **Language.** Chat blocks pass an EU-language gate (English, Greek, the EU official languages, Catalan); Russian, Chinese, Thai, Ukrainian,
 Vietnamese rows are out (Nemotron 16.5%, OpenAssistant 9%).
