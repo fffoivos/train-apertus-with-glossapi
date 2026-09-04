@@ -1,0 +1,65 @@
+{
+ "model": "gpt-5.6-luna",
+ "effort": "medium",
+ "tier": "default",
+ "n": 88,
+ "parsed": 88,
+ "wall_seconds": 60,
+ "rows_per_hour": 5268,
+ "mean_call_seconds": 27.3,
+ "workers": 48,
+ "agreement_exact": 0.625,
+ "agreement_within1": 0.92,
+ "dispositions": {
+  "keep": 44,
+  "drop": 32,
+  "adapt": 12
+ },
+ "level_by_lexicon": {
+  "0": {
+   "0": 39,
+   "1": 4
+  },
+  "1": {
+   "0": 13,
+   "1": 5,
+   "2": 7,
+   "3": 1
+  },
+  "2": {
+   "2": 11,
+   "1": 2,
+   "0": 5
+  },
+  "3": {
+   "0": 1
+  }
+ },
+ "frame_types": {
+  "none": 69,
+  "currency_units": 15,
+  "institution_procedure": 2,
+  "law_rights": 1,
+  "identity": 1
+ },
+ "skills": {
+  "code": 13,
+  "reasoning": 5,
+  "explanation": 8,
+  "math": 28,
+  "refusal": 8,
+  "creative_writing": 5,
+  "advice": 9,
+  "constraint_following": 1,
+  "conversation": 2,
+  "extraction_classification": 6,
+  "rewriting_summarising": 3
+ },
+ "mannerism": 17,
+ "imperatives": 12,
+ "quality": {
+  "3": 40,
+  "1": 26,
+  "2": 22
+ }
+}
