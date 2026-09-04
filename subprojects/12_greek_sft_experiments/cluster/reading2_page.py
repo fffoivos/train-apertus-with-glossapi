@@ -10,7 +10,7 @@ NAMES={'E0b':'base model (no SFT)','E1_lr1e-5_ep1':'lr 1e-5 · epoch 1','E1_lr1e
  'E3_cos_ep2':'Greek + adapted imports · epoch 2','E3prime_cos_ep2':'Greek + raw imports · epoch 2'}
 ORDER=list(NAMES)
 gen={r:{json.loads(l)['prompt_id']:json.loads(l) for l in open(f'results/{r}/dev/reading40_gen.jsonl')} for r in ORDER}
-E=html.escape
+E=lambda t: html.escape(t).replace('\ufffd','&#xFFFD;')
 css="""
 :root{--bg:#f3f4f2;--paper:#ffffff;--ink:#1c1f1a;--muted:#5f645b;--rule:#d6d9d2;--accent:#2f6b4f;--bad:#a23b2a;--good:#2f6b4f;--band:#e9ede6;--pick:#fff4d6;
 --sans:"IBM Plex Sans",-apple-system,Segoe UI,Helvetica,Arial,sans-serif;--serif:"Source Serif 4",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}

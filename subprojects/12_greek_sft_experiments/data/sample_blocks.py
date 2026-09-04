@@ -7,11 +7,12 @@ from huggingface_hub import HfApi, hf_hub_download
 from datasets import load_dataset
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-src = open(os.path.join(HERE, 'vantage_scan.py')).read(); exec(src[:src.index('SOURCES = [')])
-OUT = sys.argv[1]; random.seed(99); api = HfApi()
+_argv = sys.argv; sys.argv = [_argv[0], os.path.join(HERE, 'vscan_prefix_tmp')]  # the prefix makedirs(argv[1])
+src = open(os.path.join(HERE, 'vantage_scan.py')).read(); exec(src[:src.index('SOURCES = [')]); sys.argv = _argv
+OUT = sys.argv[1] if len(sys.argv) > 1 else os.environ['SAMPLE_OUT']; random.seed(99); api = HfApi()
 
 def turns_of(row):
-    msgs = row.get('messages')
+    msgs = row.get('el_messages') or row.get('messages')  # our Greek files keep the Greek conversation under el_messages
     if isinstance(msgs, str):
         try: msgs = json.loads(msgs)
         except Exception: msgs = None
@@ -20,8 +21,10 @@ def turns_of(row):
         for m in msgs:
             if not isinstance(m, dict): continue
             c = text_of(m.get('content'))
+            if m.get('role') == 'system' and m.get('functions'): c = (c + '\n<functions> ' + str(m['functions'])[:1500] + ('…' if len(str(m['functions'])) > 1500 else '') + ' </functions>').strip()
             if m.get('role') == 'assistant' and not c.strip():
-                if m.get('tool_calls'): c = 'TOOL_CALLS: ' + json.dumps(m.get('tool_calls'), ensure_ascii=False)[:2000]
+                if m.get('function_calls'): c = 'TOOL_CALLS: ' + str(m['function_calls'])[:2000]
+                elif m.get('tool_calls'): c = 'TOOL_CALLS: ' + json.dumps(m.get('tool_calls'), ensure_ascii=False)[:2000]
                 elif isinstance(m.get('content'), dict) and m['content'].get('blocks'):
                     calls = [b for b in m['content']['blocks'] if isinstance(b, dict) and b.get('calls')]
                     if calls: c = 'TOOL_CALLS: ' + json.dumps(calls, ensure_ascii=False)[:2000]
@@ -119,15 +122,18 @@ add('SmolTalk2 · summarize', stream_rows('HuggingFaceTB/smoltalk2', 'SFT', 'smo
 add('SmolTalk2 · table tasks', stream_rows('HuggingFaceTB/smoltalk2', 'SFT', 'table_gpt_no_think', 2, 3000), {'repo': 'HuggingFaceTB/smoltalk2'})
 add('SmolTalk2 · multilingual, eight languages', stream_rows('HuggingFaceTB/smoltalk2', 'SFT', 'smoltalk_multilingual_8languages_lang_5_no_think', 4, 4000), {'repo': 'HuggingFaceTB/smoltalk2'})
 add('OpenMathInstruct-2 (GSM8K-style)', stream_rows('nvidia/OpenMathInstruct-2', 'default', 'train', 4, 4000), {'repo': 'nvidia/OpenMathInstruct-2'})
-add('EuroBlocks · French and German', stream_rows('utter-project/EuroBlocks-SFT-Synthetic-1124', 'default', 'train', 4, 6000, lambda r: str(r.get('language', '')).lower()[:2] in ('fr', 'de', 'ge')), {'repo': 'utter-project/EuroBlocks-SFT-Synthetic-1124'})
+add('EuroBlocks · French and German', stream_rows('utter-project/EuroBlocks-SFT-Synthetic-1124', 'default', 'train', 4, 120000, lambda r: r.get('langid') in ('fr', 'de')), {'repo': 'utter-project/EuroBlocks-SFT-Synthetic-1124'})
 # --- our Greek data (private HF dataset cached under HF_HOME)
 try:
-    cands = sorted(glob.glob(os.environ.get('HF_HOME', '') + '/hub/datasets--fffoivos--Greek-SFT-translated-and-adapted/snapshots/*/**/*.jsonl', recursive=True))
+    cands = sorted(c for c in glob.glob(os.environ.get('HF_HOME', '') + '/hub/datasets--fffoivos--Greek-SFT-translated-and-adapted/snapshots/*/data/*.jsonl') if 'sol_completions' not in c)
     rows = []
-    for f in cands[:8]:
+    for f in cands:  # one random row per training file, tagged with the file name
+        fr = []
         for l in open(f):
-            try: rows.append(json.loads(l))
+            try: fr.append(json.loads(l))
             except Exception: pass
-    random.shuffle(rows); add('Ours · Greek, adapted (no_robots, everyday, skills…)', rows[:8], {'repo': 'fffoivos/Greek-SFT-translated-and-adapted', 'files': [os.path.basename(c) for c in cands[:8]]})
+        if fr:
+            r = random.choice(fr); r['_file'] = os.path.basename(f).replace('natural_greek_sft_', '').replace('.jsonl', ''); rows.append(r)
+    add('Ours · Greek, adapted (no_robots, everyday, skills…)', rows, {'repo': 'fffoivos/Greek-SFT-translated-and-adapted', 'files': [os.path.basename(c) for c in cands]})
 except Exception as e: print('greek ERROR', e, flush=True)
 print('DONE', len(samples), flush=True)
