@@ -1,0 +1,722 @@
+{
+ "01": {
+  "prompt_id": "no_robots:532b8f6e815532239d65ee866f7be3898afe1f13c4969cbb23085d7b929e3d6f",
+  "map": {
+   "A": "E1_lr5e-6_ep2",
+   "B": "E1_lr1e-5_ep1",
+   "C": "E3_cos_ep2",
+   "D": "E0b",
+   "E": "E1_lr5e-6_ep1",
+   "F": "E1_lr5e-6_ep3",
+   "G": "E2_cos_ep2",
+   "H": "E1_cos_ep2",
+   "I": "E1last_ep2",
+   "J": "E3prime_cos_ep2",
+   "K": "E1_lr1e-5_ep2",
+   "L": "E1_lr1e-5_ep3",
+   "M": "E1_cos_s44_ep2"
+  }
+ },
+ "02": {
+  "prompt_id": "no_robots:21794730983599476cf54bde398866e57cf9d186352df722875b911a770cd0ec",
+  "map": {
+   "A": "E1_cos_s44_ep2",
+   "B": "E3_cos_ep2",
+   "C": "E1_lr1e-5_ep3",
+   "D": "E3prime_cos_ep2",
+   "E": "E0b",
+   "F": "E1last_ep2",
+   "G": "E1_lr5e-6_ep3",
+   "H": "E1_lr1e-5_ep1",
+   "I": "E1_lr5e-6_ep2",
+   "J": "E1_cos_ep2",
+   "K": "E2_cos_ep2",
+   "L": "E1_lr1e-5_ep2",
+   "M": "E1_lr5e-6_ep1"
+  }
+ },
+ "03": {
+  "prompt_id": "no_robots:b5136e54f8e17aa388de24274428a7da9daf56893e41395fa74e8eadc6008b9f",
+  "map": {
+   "A": "E1_lr5e-6_ep1",
+   "B": "E1_lr5e-6_ep2",
+   "C": "E1_lr1e-5_ep2",
+   "D": "E1_lr1e-5_ep1",
+   "E": "E0b",
+   "F": "E1_lr1e-5_ep3",
+   "G": "E1_lr5e-6_ep3",
+   "H": "E3_cos_ep2",
+   "I": "E2_cos_ep2",
+   "J": "E1last_ep2",
+   "K": "E1_cos_ep2",
+   "L": "E1_cos_s44_ep2",
+   "M": "E3prime_cos_ep2"
+  }
+ },
+ "04": {
+  "prompt_id": "no_robots:3fbbce1853361e861a2aaf3ca359787de5596104f7c239d1bf5dac930ade362d",
+  "map": {
+   "A": "E1_lr5e-6_ep3",
+   "B": "E0b",
+   "C": "E1_cos_s44_ep2",
+   "D": "E1_lr1e-5_ep3",
+   "E": "E1_cos_ep2",
+   "F": "E1_lr5e-6_ep2",
+   "G": "E2_cos_ep2",
+   "H": "E1last_ep2",
+   "I": "E3_cos_ep2",
+   "J": "E1_lr1e-5_ep2",
+   "K": "E1_lr1e-5_ep1",
+   "L": "E1_lr5e-6_ep1",
+   "M": "E3prime_cos_ep2"
+  }
+ },
+ "05": {
+  "prompt_id": "coconot:coconot_703d2e61",
+  "map": {
+   "A": "E1last_ep2",
+   "B": "E1_lr5e-6_ep2",
+   "C": "E1_lr1e-5_ep3",
+   "D": "E1_cos_ep2",
+   "E": "E1_lr5e-6_ep1",
+   "F": "E3_cos_ep2",
+   "G": "E1_lr1e-5_ep2",
+   "H": "E3prime_cos_ep2",
+   "I": "E1_cos_s44_ep2",
+   "J": "E1_lr1e-5_ep1",
+   "K": "E2_cos_ep2",
+   "L": "E0b",
+   "M": "E1_lr5e-6_ep3"
+  }
+ },
+ "06": {
+  "prompt_id": "coconot:coconot_b02cd424",
+  "map": {
+   "A": "E1_lr1e-5_ep2",
+   "B": "E1_cos_ep2",
+   "C": "E2_cos_ep2",
+   "D": "E1_lr5e-6_ep2",
+   "E": "E3prime_cos_ep2",
+   "F": "E1_lr5e-6_ep3",
+   "G": "E3_cos_ep2",
+   "H": "E1last_ep2",
+   "I": "E0b",
+   "J": "E1_lr1e-5_ep3",
+   "K": "E1_cos_s44_ep2",
+   "L": "E1_lr5e-6_ep1",
+   "M": "E1_lr1e-5_ep1"
+  }
+ },
+ "07": {
+  "prompt_id": "coconot:coconot_afe46859",
+  "map": {
+   "A": "E1last_ep2",
+   "B": "E1_cos_ep2",
+   "C": "E1_lr1e-5_ep2",
+   "D": "E3_cos_ep2",
+   "E": "E1_lr5e-6_ep3",
+   "F": "E0b",
+   "G": "E1_lr5e-6_ep1",
+   "H": "E1_cos_s44_ep2",
+   "I": "E1_lr1e-5_ep1",
+   "J": "E1_lr5e-6_ep2",
+   "K": "E3prime_cos_ep2",
+   "L": "E1_lr1e-5_ep3",
+   "M": "E2_cos_ep2"
+  }
+ },
+ "08": {
+  "prompt_id": "coconot:coconot_1110979d",
+  "map": {
+   "A": "E1_cos_ep2",
+   "B": "E1_cos_s44_ep2",
+   "C": "E1last_ep2",
+   "D": "E1_lr5e-6_ep1",
+   "E": "E1_lr1e-5_ep3",
+   "F": "E3prime_cos_ep2",
+   "G": "E1_lr1e-5_ep1",
+   "H": "E3_cos_ep2",
+   "I": "E1_lr5e-6_ep3",
+   "J": "E0b",
+   "K": "E1_lr5e-6_ep2",
+   "L": "E1_lr1e-5_ep2",
+   "M": "E2_cos_ep2"
+  }
+ },
+ "09": {
+  "prompt_id": "personas_if:personas_if_2cc6dbc7",
+  "map": {
+   "A": "E0b",
+   "B": "E1_cos_s44_ep2",
+   "C": "E1_lr5e-6_ep3",
+   "D": "E2_cos_ep2",
+   "E": "E1last_ep2",
+   "F": "E3prime_cos_ep2",
+   "G": "E3_cos_ep2",
+   "H": "E1_lr5e-6_ep1",
+   "I": "E1_cos_ep2",
+   "J": "E1_lr5e-6_ep2",
+   "K": "E1_lr1e-5_ep3",
+   "L": "E1_lr1e-5_ep2",
+   "M": "E1_lr1e-5_ep1"
+  }
+ },
+ "10": {
+  "prompt_id": "personas_if:personas_if_92ef20a0",
+  "map": {
+   "A": "E1_cos_ep2",
+   "B": "E1last_ep2",
+   "C": "E1_cos_s44_ep2",
+   "D": "E1_lr5e-6_ep2",
+   "E": "E1_lr1e-5_ep1",
+   "F": "E1_lr1e-5_ep3",
+   "G": "E1_lr1e-5_ep2",
+   "H": "E2_cos_ep2",
+   "I": "E1_lr5e-6_ep1",
+   "J": "E3_cos_ep2",
+   "K": "E3prime_cos_ep2",
+   "L": "E1_lr5e-6_ep3",
+   "M": "E0b"
+  }
+ },
+ "11": {
+  "prompt_id": "personas_if:personas_if_c493245c",
+  "map": {
+   "A": "E1_lr1e-5_ep2",
+   "B": "E1_cos_s44_ep2",
+   "C": "E2_cos_ep2",
+   "D": "E1_cos_ep2",
+   "E": "E3prime_cos_ep2",
+   "F": "E3_cos_ep2",
+   "G": "E1_lr1e-5_ep1",
+   "H": "E1_lr1e-5_ep3",
+   "I": "E1_lr5e-6_ep1",
+   "J": "E1last_ep2",
+   "K": "E1_lr5e-6_ep2",
+   "L": "E0b",
+   "M": "E1_lr5e-6_ep3"
+  }
+ },
+ "12": {
+  "prompt_id": "personas_if:personas_if_d08ef71c",
+  "map": {
+   "A": "E1_cos_s44_ep2",
+   "B": "E1_lr5e-6_ep3",
+   "C": "E0b",
+   "D": "E1_lr5e-6_ep1",
+   "E": "E2_cos_ep2",
+   "F": "E3_cos_ep2",
+   "G": "E1_lr1e-5_ep1",
+   "H": "E1_lr1e-5_ep2",
+   "I": "E3prime_cos_ep2",
+   "J": "E1_cos_ep2",
+   "K": "E1last_ep2",
+   "L": "E1_lr1e-5_ep3",
+   "M": "E1_lr5e-6_ep2"
+  }
+ },
+ "13": {
+  "prompt_id": "smolcon:smolcon_809496c8",
+  "map": {
+   "A": "E1_lr1e-5_ep1",
+   "B": "E3prime_cos_ep2",
+   "C": "E1_cos_s44_ep2",
+   "D": "E1_cos_ep2",
+   "E": "E1_lr1e-5_ep2",
+   "F": "E1_lr5e-6_ep3",
+   "G": "E1_lr1e-5_ep3",
+   "H": "E1_lr5e-6_ep2",
+   "I": "E0b",
+   "J": "E1_lr5e-6_ep1",
+   "K": "E3_cos_ep2",
+   "L": "E1last_ep2",
+   "M": "E2_cos_ep2"
+  }
+ },
+ "14": {
+  "prompt_id": "smolcon:smolcon_8ca2f6fc",
+  "map": {
+   "A": "E2_cos_ep2",
+   "B": "E1last_ep2",
+   "C": "E3prime_cos_ep2",
+   "D": "E1_lr5e-6_ep1",
+   "E": "E1_lr5e-6_ep2",
+   "F": "E1_lr1e-5_ep2",
+   "G": "E1_cos_s44_ep2",
+   "H": "E1_lr5e-6_ep3",
+   "I": "E3_cos_ep2",
+   "J": "E0b",
+   "K": "E1_lr1e-5_ep1",
+   "L": "E1_lr1e-5_ep3",
+   "M": "E1_cos_ep2"
+  }
+ },
+ "15": {
+  "prompt_id": "smolcon:smolcon_6afb16ab",
+  "map": {
+   "A": "E1_lr5e-6_ep3",
+   "B": "E1_lr1e-5_ep1",
+   "C": "E1_lr1e-5_ep2",
+   "D": "E1_cos_s44_ep2",
+   "E": "E0b",
+   "F": "E2_cos_ep2",
+   "G": "E1_lr5e-6_ep1",
+   "H": "E3_cos_ep2",
+   "I": "E1_cos_ep2",
+   "J": "E3prime_cos_ep2",
+   "K": "E1last_ep2",
+   "L": "E1_lr5e-6_ep2",
+   "M": "E1_lr1e-5_ep3"
+  }
+ },
+ "16": {
+  "prompt_id": "smolcon:smolcon_eea71f81",
+  "map": {
+   "A": "E3_cos_ep2",
+   "B": "E1last_ep2",
+   "C": "E1_lr1e-5_ep1",
+   "D": "E1_cos_s44_ep2",
+   "E": "E1_lr1e-5_ep3",
+   "F": "E2_cos_ep2",
+   "G": "E0b",
+   "H": "E1_lr5e-6_ep3",
+   "I": "E1_lr5e-6_ep2",
+   "J": "E1_lr5e-6_ep1",
+   "K": "E1_cos_ep2",
+   "L": "E1_lr1e-5_ep2",
+   "M": "E3prime_cos_ep2"
+  }
+ },
+ "17": {
+  "prompt_id": "oasst:oasst_3a7b6601",
+  "map": {
+   "A": "E1_lr1e-5_ep1",
+   "B": "E1_cos_ep2",
+   "C": "E1_lr1e-5_ep3",
+   "D": "E1_lr5e-6_ep3",
+   "E": "E1_lr5e-6_ep2",
+   "F": "E1_lr5e-6_ep1",
+   "G": "E0b",
+   "H": "E3_cos_ep2",
+   "I": "E2_cos_ep2",
+   "J": "E3prime_cos_ep2",
+   "K": "E1last_ep2",
+   "L": "E1_cos_s44_ep2",
+   "M": "E1_lr1e-5_ep2"
+  }
+ },
+ "18": {
+  "prompt_id": "oasst:oasst_9afb4fa3",
+  "map": {
+   "A": "E1last_ep2",
+   "B": "E1_lr1e-5_ep3",
+   "C": "E1_cos_ep2",
+   "D": "E3prime_cos_ep2",
+   "E": "E1_lr1e-5_ep1",
+   "F": "E1_lr5e-6_ep3",
+   "G": "E1_lr5e-6_ep1",
+   "H": "E1_lr1e-5_ep2",
+   "I": "E1_lr5e-6_ep2",
+   "J": "E0b",
+   "K": "E3_cos_ep2",
+   "L": "E2_cos_ep2",
+   "M": "E1_cos_s44_ep2"
+  }
+ },
+ "19": {
+  "prompt_id": "oasst:oasst_844dc4c4",
+  "map": {
+   "A": "E3_cos_ep2",
+   "B": "E1_lr5e-6_ep3",
+   "C": "E2_cos_ep2",
+   "D": "E1_lr5e-6_ep2",
+   "E": "E3prime_cos_ep2",
+   "F": "E1_lr1e-5_ep2",
+   "G": "E1_cos_s44_ep2",
+   "H": "E1_cos_ep2",
+   "I": "E1_lr1e-5_ep3",
+   "J": "E1_lr1e-5_ep1",
+   "K": "E1_lr5e-6_ep1",
+   "L": "E1last_ep2",
+   "M": "E0b"
+  }
+ },
+ "20": {
+  "prompt_id": "oasst:oasst_3e946918",
+  "map": {
+   "A": "E1_lr5e-6_ep3",
+   "B": "E3prime_cos_ep2",
+   "C": "E1_lr1e-5_ep3",
+   "D": "E1_cos_ep2",
+   "E": "E1_cos_s44_ep2",
+   "F": "E0b",
+   "G": "E1_lr5e-6_ep1",
+   "H": "E1_lr1e-5_ep1",
+   "I": "E1_lr5e-6_ep2",
+   "J": "E1_lr1e-5_ep2",
+   "K": "E1last_ep2",
+   "L": "E2_cos_ep2",
+   "M": "E3_cos_ep2"
+  }
+ },
+ "21": {
+  "prompt_id": "everyday:everyday_12546217",
+  "map": {
+   "A": "E1_lr1e-5_ep2",
+   "B": "E1_cos_s44_ep2",
+   "C": "E1_cos_ep2",
+   "D": "E0b",
+   "E": "E1last_ep2",
+   "F": "E3_cos_ep2",
+   "G": "E3prime_cos_ep2",
+   "H": "E1_lr1e-5_ep3",
+   "I": "E1_lr5e-6_ep1",
+   "J": "E1_lr1e-5_ep1",
+   "K": "E1_lr5e-6_ep2",
+   "L": "E2_cos_ep2",
+   "M": "E1_lr5e-6_ep3"
+  }
+ },
+ "22": {
+  "prompt_id": "everyday:everyday_29cd8efd",
+  "map": {
+   "A": "E1_lr1e-5_ep2",
+   "B": "E1_lr1e-5_ep1",
+   "C": "E3prime_cos_ep2",
+   "D": "E1_cos_s44_ep2",
+   "E": "E1_lr5e-6_ep3",
+   "F": "E1_lr5e-6_ep2",
+   "G": "E1_cos_ep2",
+   "H": "E1_lr1e-5_ep3",
+   "I": "E1last_ep2",
+   "J": "E1_lr5e-6_ep1",
+   "K": "E2_cos_ep2",
+   "L": "E0b",
+   "M": "E3_cos_ep2"
+  }
+ },
+ "23": {
+  "prompt_id": "everyday:everyday_37c43fc8",
+  "map": {
+   "A": "E2_cos_ep2",
+   "B": "E1last_ep2",
+   "C": "E1_lr1e-5_ep3",
+   "D": "E3prime_cos_ep2",
+   "E": "E3_cos_ep2",
+   "F": "E1_lr1e-5_ep2",
+   "G": "E0b",
+   "H": "E1_lr1e-5_ep1",
+   "I": "E1_lr5e-6_ep2",
+   "J": "E1_cos_s44_ep2",
+   "K": "E1_lr5e-6_ep3",
+   "L": "E1_cos_ep2",
+   "M": "E1_lr5e-6_ep1"
+  }
+ },
+ "24": {
+  "prompt_id": "everyday:everyday_553e0d74",
+  "map": {
+   "A": "E1last_ep2",
+   "B": "E1_lr5e-6_ep2",
+   "C": "E1_lr1e-5_ep2",
+   "D": "E1_lr1e-5_ep3",
+   "E": "E1_lr1e-5_ep1",
+   "F": "E0b",
+   "G": "E2_cos_ep2",
+   "H": "E3_cos_ep2",
+   "I": "E1_lr5e-6_ep1",
+   "J": "E1_cos_s44_ep2",
+   "K": "E3prime_cos_ep2",
+   "L": "E1_lr5e-6_ep3",
+   "M": "E1_cos_ep2"
+  }
+ },
+ "25": {
+  "prompt_id": "systemchats:systemchats_f84b03dd",
+  "map": {
+   "A": "E1_lr5e-6_ep3",
+   "B": "E1_lr5e-6_ep2",
+   "C": "E1_cos_s44_ep2",
+   "D": "E3_cos_ep2",
+   "E": "E2_cos_ep2",
+   "F": "E1_lr5e-6_ep1",
+   "G": "E1_lr1e-5_ep3",
+   "H": "E1last_ep2",
+   "I": "E1_lr1e-5_ep2",
+   "J": "E0b",
+   "K": "E1_lr1e-5_ep1",
+   "L": "E3prime_cos_ep2",
+   "M": "E1_cos_ep2"
+  }
+ },
+ "26": {
+  "prompt_id": "systemchats:systemchats_d1e07174",
+  "map": {
+   "A": "E1_lr5e-6_ep3",
+   "B": "E3prime_cos_ep2",
+   "C": "E1_lr5e-6_ep2",
+   "D": "E0b",
+   "E": "E1_lr1e-5_ep1",
+   "F": "E1_lr1e-5_ep2",
+   "G": "E3_cos_ep2",
+   "H": "E1_lr1e-5_ep3",
+   "I": "E1last_ep2",
+   "J": "E1_cos_s44_ep2",
+   "K": "E2_cos_ep2",
+   "L": "E1_lr5e-6_ep1",
+   "M": "E1_cos_ep2"
+  }
+ },
+ "27": {
+  "prompt_id": "systemchats:systemchats_82aaa8ca",
+  "map": {
+   "A": "E2_cos_ep2",
+   "B": "E1_lr5e-6_ep2",
+   "C": "E1_cos_ep2",
+   "D": "E1_lr1e-5_ep3",
+   "E": "E0b",
+   "F": "E1_lr5e-6_ep3",
+   "G": "E1_cos_s44_ep2",
+   "H": "E3_cos_ep2",
+   "I": "E1_lr1e-5_ep2",
+   "J": "E1_lr1e-5_ep1",
+   "K": "E3prime_cos_ep2",
+   "L": "E1last_ep2",
+   "M": "E1_lr5e-6_ep1"
+  }
+ },
+ "28": {
+  "prompt_id": "systemchats:systemchats_d35d06ce",
+  "map": {
+   "A": "E3_cos_ep2",
+   "B": "E1_lr5e-6_ep2",
+   "C": "E1last_ep2",
+   "D": "E1_lr1e-5_ep2",
+   "E": "E3prime_cos_ep2",
+   "F": "E0b",
+   "G": "E1_lr5e-6_ep3",
+   "H": "E1_cos_s44_ep2",
+   "I": "E1_lr1e-5_ep3",
+   "J": "E1_lr1e-5_ep1",
+   "K": "E1_cos_ep2",
+   "L": "E2_cos_ep2",
+   "M": "E1_lr5e-6_ep1"
+  }
+ },
+ "29": {
+  "prompt_id": "no_robots_en_pov:931da2761203a96fce6235b2d2ca915844471cafe9e797ed098c864e39ac2bf6",
+  "map": {
+   "A": "E1last_ep2",
+   "B": "E3_cos_ep2",
+   "C": "E1_lr5e-6_ep2",
+   "D": "E1_lr1e-5_ep1",
+   "E": "E1_cos_s44_ep2",
+   "F": "E1_lr1e-5_ep3",
+   "G": "E1_cos_ep2",
+   "H": "E3prime_cos_ep2",
+   "I": "E0b",
+   "J": "E1_lr5e-6_ep1",
+   "K": "E2_cos_ep2",
+   "L": "E1_lr1e-5_ep2",
+   "M": "E1_lr5e-6_ep3"
+  }
+ },
+ "30": {
+  "prompt_id": "no_robots_en_pov:2851653adbd07d91bb4bb1178667964d9772a53c19c63dd38b2c5ec0354b44bd",
+  "map": {
+   "A": "E2_cos_ep2",
+   "B": "E3prime_cos_ep2",
+   "C": "E3_cos_ep2",
+   "D": "E1last_ep2",
+   "E": "E1_cos_s44_ep2",
+   "F": "E1_cos_ep2",
+   "G": "E1_lr5e-6_ep2",
+   "H": "E1_lr5e-6_ep3",
+   "I": "E1_lr1e-5_ep3",
+   "J": "E0b",
+   "K": "E1_lr1e-5_ep2",
+   "L": "E1_lr5e-6_ep1",
+   "M": "E1_lr1e-5_ep1"
+  }
+ },
+ "31": {
+  "prompt_id": "no_robots_en_pov:83792e000abf73ce72d2d1011c8c61e8f33541ad6a91776b042fdb0841b850f1",
+  "map": {
+   "A": "E3prime_cos_ep2",
+   "B": "E1_lr5e-6_ep3",
+   "C": "E0b",
+   "D": "E1_lr5e-6_ep1",
+   "E": "E1_cos_s44_ep2",
+   "F": "E1_lr1e-5_ep3",
+   "G": "E3_cos_ep2",
+   "H": "E1_lr5e-6_ep2",
+   "I": "E2_cos_ep2",
+   "J": "E1_lr1e-5_ep2",
+   "K": "E1_lr1e-5_ep1",
+   "L": "E1last_ep2",
+   "M": "E1_cos_ep2"
+  }
+ },
+ "32": {
+  "prompt_id": "apertus_en:apertus_en_a8fc3aa8",
+  "map": {
+   "A": "E1last_ep2",
+   "B": "E1_cos_ep2",
+   "C": "E1_cos_s44_ep2",
+   "D": "E3prime_cos_ep2",
+   "E": "E1_lr1e-5_ep1",
+   "F": "E0b",
+   "G": "E1_lr5e-6_ep1",
+   "H": "E3_cos_ep2",
+   "I": "E1_lr1e-5_ep3",
+   "J": "E1_lr5e-6_ep3",
+   "K": "E2_cos_ep2",
+   "L": "E1_lr1e-5_ep2",
+   "M": "E1_lr5e-6_ep2"
+  }
+ },
+ "33": {
+  "prompt_id": "apertus_en:apertus_en_30e0fb35",
+  "map": {
+   "A": "E0b",
+   "B": "E1_lr1e-5_ep1",
+   "C": "E1_lr5e-6_ep2",
+   "D": "E1_lr5e-6_ep1",
+   "E": "E1_cos_ep2",
+   "F": "E1_lr1e-5_ep3",
+   "G": "E2_cos_ep2",
+   "H": "E1_cos_s44_ep2",
+   "I": "E1_lr1e-5_ep2",
+   "J": "E1last_ep2",
+   "K": "E3prime_cos_ep2",
+   "L": "E1_lr5e-6_ep3",
+   "M": "E3_cos_ep2"
+  }
+ },
+ "34": {
+  "prompt_id": "apertus_en:apertus_en_c337416c",
+  "map": {
+   "A": "E3_cos_ep2",
+   "B": "E2_cos_ep2",
+   "C": "E1_lr1e-5_ep3",
+   "D": "E1_lr5e-6_ep3",
+   "E": "E0b",
+   "F": "E1_lr5e-6_ep2",
+   "G": "E1_cos_s44_ep2",
+   "H": "E1last_ep2",
+   "I": "E1_lr1e-5_ep1",
+   "J": "E3prime_cos_ep2",
+   "K": "E1_lr5e-6_ep1",
+   "L": "E1_lr1e-5_ep2",
+   "M": "E1_cos_ep2"
+  }
+ },
+ "35": {
+  "prompt_id": "euroblocks_fr:euroblocks_fr_f033c020",
+  "map": {
+   "A": "E1_lr5e-6_ep2",
+   "B": "E1_lr1e-5_ep2",
+   "C": "E1_lr5e-6_ep3",
+   "D": "E1_lr1e-5_ep1",
+   "E": "E1_cos_ep2",
+   "F": "E1_cos_s44_ep2",
+   "G": "E1last_ep2",
+   "H": "E2_cos_ep2",
+   "I": "E0b",
+   "J": "E3_cos_ep2",
+   "K": "E3prime_cos_ep2",
+   "L": "E1_lr5e-6_ep1",
+   "M": "E1_lr1e-5_ep3"
+  }
+ },
+ "36": {
+  "prompt_id": "euroblocks_fr:euroblocks_fr_372deeba",
+  "map": {
+   "A": "E3prime_cos_ep2",
+   "B": "E1_lr1e-5_ep3",
+   "C": "E1_lr1e-5_ep1",
+   "D": "E1_lr1e-5_ep2",
+   "E": "E3_cos_ep2",
+   "F": "E1_cos_s44_ep2",
+   "G": "E1_lr5e-6_ep3",
+   "H": "E2_cos_ep2",
+   "I": "E1_lr5e-6_ep2",
+   "J": "E1_lr5e-6_ep1",
+   "K": "E1last_ep2",
+   "L": "E0b",
+   "M": "E1_cos_ep2"
+  }
+ },
+ "37": {
+  "prompt_id": "euroblocks_fr:euroblocks_fr_8af3157b",
+  "map": {
+   "A": "E1_lr1e-5_ep1",
+   "B": "E1_lr5e-6_ep1",
+   "C": "E1_cos_ep2",
+   "D": "E1_lr1e-5_ep2",
+   "E": "E3prime_cos_ep2",
+   "F": "E1_lr5e-6_ep3",
+   "G": "E1_cos_s44_ep2",
+   "H": "E1last_ep2",
+   "I": "E1_lr1e-5_ep3",
+   "J": "E3_cos_ep2",
+   "K": "E1_lr5e-6_ep2",
+   "L": "E0b",
+   "M": "E2_cos_ep2"
+  }
+ },
+ "38": {
+  "prompt_id": "euroblocks_de:euroblocks_de_466b64cc",
+  "map": {
+   "A": "E1_lr5e-6_ep1",
+   "B": "E1_lr1e-5_ep1",
+   "C": "E0b",
+   "D": "E1_lr1e-5_ep2",
+   "E": "E1_lr5e-6_ep2",
+   "F": "E1_lr1e-5_ep3",
+   "G": "E1_cos_s44_ep2",
+   "H": "E1_lr5e-6_ep3",
+   "I": "E3prime_cos_ep2",
+   "J": "E2_cos_ep2",
+   "K": "E1last_ep2",
+   "L": "E3_cos_ep2",
+   "M": "E1_cos_ep2"
+  }
+ },
+ "39": {
+  "prompt_id": "euroblocks_de:euroblocks_de_5bf6300d",
+  "map": {
+   "A": "E1_lr1e-5_ep3",
+   "B": "E3prime_cos_ep2",
+   "C": "E1_cos_s44_ep2",
+   "D": "E1_lr5e-6_ep2",
+   "E": "E2_cos_ep2",
+   "F": "E1_lr1e-5_ep1",
+   "G": "E0b",
+   "H": "E1_lr1e-5_ep2",
+   "I": "E1_lr5e-6_ep3",
+   "J": "E1last_ep2",
+   "K": "E1_cos_ep2",
+   "L": "E1_lr5e-6_ep1",
+   "M": "E3_cos_ep2"
+  }
+ },
+ "40": {
+  "prompt_id": "euroblocks_de:euroblocks_de_9d6a4b8d",
+  "map": {
+   "A": "E1_lr5e-6_ep3",
+   "B": "E3_cos_ep2",
+   "C": "E1_cos_ep2",
+   "D": "E1_cos_s44_ep2",
+   "E": "E1_lr1e-5_ep1",
+   "F": "E1last_ep2",
+   "G": "E1_lr5e-6_ep2",
+   "H": "E2_cos_ep2",
+   "I": "E1_lr1e-5_ep3",
+   "J": "E1_lr1e-5_ep2",
+   "K": "E3prime_cos_ep2",
+   "L": "E1_lr5e-6_ep1",
+   "M": "E0b"
+  }
+ }
+}

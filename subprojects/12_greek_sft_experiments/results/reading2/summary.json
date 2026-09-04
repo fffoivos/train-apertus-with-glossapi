@@ -1,0 +1,447 @@
+{
+ "all_39": {
+  "E0b": {
+   "n": 39,
+   "answers": 1.13,
+   "greek": 2.26,
+   "language_ok": 0.97,
+   "constraint_ok": 0,
+   "stops": 0,
+   "warmth": 1.72,
+   "command": 0.05,
+   "mannerism": 0.03
+  },
+  "E1_lr1e-5_ep1": {
+   "n": 39,
+   "answers": 2.95,
+   "greek": 3.85,
+   "language_ok": 0.97,
+   "constraint_ok": 0.55,
+   "stops": 0.85,
+   "warmth": 2.95,
+   "command": 0.03,
+   "mannerism": 0.05
+  },
+  "E1_lr1e-5_ep2": {
+   "n": 39,
+   "answers": 3.13,
+   "greek": 3.87,
+   "language_ok": 1,
+   "constraint_ok": 0.55,
+   "stops": 0.87,
+   "warmth": 2.92,
+   "command": 0.03,
+   "mannerism": 0.03
+  },
+  "E1_lr1e-5_ep3": {
+   "n": 39,
+   "answers": 3.38,
+   "greek": 3.9,
+   "language_ok": 1,
+   "constraint_ok": 0.45,
+   "stops": 0.9,
+   "warmth": 3.03,
+   "command": 0.1,
+   "mannerism": 0.03
+  },
+  "E1_lr5e-6_ep1": {
+   "n": 39,
+   "answers": 2.79,
+   "greek": 3.59,
+   "language_ok": 0.87,
+   "constraint_ok": 0.45,
+   "stops": 0.59,
+   "warmth": 2.87,
+   "command": 0.03,
+   "mannerism": 0.03
+  },
+  "E1_lr5e-6_ep2": {
+   "n": 39,
+   "answers": 2.85,
+   "greek": 3.77,
+   "language_ok": 0.9,
+   "constraint_ok": 0.55,
+   "stops": 0.87,
+   "warmth": 2.95,
+   "command": 0.05,
+   "mannerism": 0.03
+  },
+  "E1_lr5e-6_ep3": {
+   "n": 39,
+   "answers": 3.21,
+   "greek": 3.9,
+   "language_ok": 1,
+   "constraint_ok": 0.55,
+   "stops": 0.9,
+   "warmth": 2.97,
+   "command": 0,
+   "mannerism": 0.05
+  },
+  "E1_cos_ep2": {
+   "n": 39,
+   "answers": 3.1,
+   "greek": 3.95,
+   "language_ok": 1,
+   "constraint_ok": 0.36,
+   "stops": 0.92,
+   "warmth": 3.03,
+   "command": 0.03,
+   "mannerism": 0.05
+  },
+  "E1_cos_s44_ep2": {
+   "n": 39,
+   "answers": 3,
+   "greek": 3.9,
+   "language_ok": 0.97,
+   "constraint_ok": 0.64,
+   "stops": 0.92,
+   "warmth": 2.97,
+   "command": 0.03,
+   "mannerism": 0.03
+  },
+  "E1last_ep2": {
+   "n": 39,
+   "answers": 3.15,
+   "greek": 3.92,
+   "language_ok": 1,
+   "constraint_ok": 0.45,
+   "stops": 0.92,
+   "warmth": 2.97,
+   "command": 0,
+   "mannerism": 0.05
+  },
+  "E2_cos_ep2": {
+   "n": 39,
+   "answers": 3,
+   "greek": 3.92,
+   "language_ok": 1,
+   "constraint_ok": 0.36,
+   "stops": 0.9,
+   "warmth": 3,
+   "command": 0.05,
+   "mannerism": 0.05
+  },
+  "E3_cos_ep2": {
+   "n": 39,
+   "answers": 3.15,
+   "greek": 3.82,
+   "language_ok": 1,
+   "constraint_ok": 0.55,
+   "stops": 0.9,
+   "warmth": 2.92,
+   "command": 0.08,
+   "mannerism": 0.05
+  },
+  "E3prime_cos_ep2": {
+   "n": 39,
+   "answers": 2.95,
+   "greek": 3.92,
+   "language_ok": 1,
+   "constraint_ok": 0.27,
+   "stops": 0.92,
+   "warmth": 2.92,
+   "command": 0.05,
+   "mannerism": 0.05
+  }
+ },
+ "greek_30": {
+  "E0b": {
+   "n": 27,
+   "answers": 1.11,
+   "greek": 2.26,
+   "language_ok": 0.96,
+   "constraint_ok": 0,
+   "stops": 0,
+   "warmth": 1.67,
+   "command": 0.07,
+   "mannerism": 0.04
+  },
+  "E1_lr1e-5_ep1": {
+   "n": 27,
+   "answers": 3.11,
+   "greek": 3.93,
+   "language_ok": 1,
+   "constraint_ok": 0.5,
+   "stops": 0.89,
+   "warmth": 2.93,
+   "command": 0.04,
+   "mannerism": 0.07
+  },
+  "E1_lr1e-5_ep2": {
+   "n": 27,
+   "answers": 3.22,
+   "greek": 3.89,
+   "language_ok": 1,
+   "constraint_ok": 0.5,
+   "stops": 0.89,
+   "warmth": 2.89,
+   "command": 0.04,
+   "mannerism": 0.04
+  },
+  "E1_lr1e-5_ep3": {
+   "n": 27,
+   "answers": 3.52,
+   "greek": 3.93,
+   "language_ok": 1,
+   "constraint_ok": 0.4,
+   "stops": 0.89,
+   "warmth": 3.04,
+   "command": 0.11,
+   "mannerism": 0.04
+  },
+  "E1_lr5e-6_ep1": {
+   "n": 27,
+   "answers": 2.93,
+   "greek": 3.74,
+   "language_ok": 1,
+   "constraint_ok": 0.5,
+   "stops": 0.7,
+   "warmth": 2.81,
+   "command": 0.04,
+   "mannerism": 0.04
+  },
+  "E1_lr5e-6_ep2": {
+   "n": 27,
+   "answers": 2.96,
+   "greek": 3.89,
+   "language_ok": 1,
+   "constraint_ok": 0.6,
+   "stops": 0.85,
+   "warmth": 2.93,
+   "command": 0.04,
+   "mannerism": 0.04
+  },
+  "E1_lr5e-6_ep3": {
+   "n": 27,
+   "answers": 3.48,
+   "greek": 3.96,
+   "language_ok": 1,
+   "constraint_ok": 0.6,
+   "stops": 0.89,
+   "warmth": 2.96,
+   "command": 0,
+   "mannerism": 0.07
+  },
+  "E1_cos_ep2": {
+   "n": 27,
+   "answers": 3.26,
+   "greek": 4,
+   "language_ok": 1,
+   "constraint_ok": 0.4,
+   "stops": 0.93,
+   "warmth": 3.04,
+   "command": 0.04,
+   "mannerism": 0.07
+  },
+  "E1_cos_s44_ep2": {
+   "n": 27,
+   "answers": 3.11,
+   "greek": 3.96,
+   "language_ok": 1,
+   "constraint_ok": 0.6,
+   "stops": 0.93,
+   "warmth": 2.96,
+   "command": 0.04,
+   "mannerism": 0.04
+  },
+  "E1last_ep2": {
+   "n": 27,
+   "answers": 3.15,
+   "greek": 3.96,
+   "language_ok": 1,
+   "constraint_ok": 0.4,
+   "stops": 0.93,
+   "warmth": 2.96,
+   "command": 0,
+   "mannerism": 0.07
+  },
+  "E2_cos_ep2": {
+   "n": 27,
+   "answers": 3.15,
+   "greek": 3.96,
+   "language_ok": 1,
+   "constraint_ok": 0.4,
+   "stops": 0.89,
+   "warmth": 3,
+   "command": 0.07,
+   "mannerism": 0.07
+  },
+  "E3_cos_ep2": {
+   "n": 27,
+   "answers": 3.19,
+   "greek": 3.89,
+   "language_ok": 1,
+   "constraint_ok": 0.5,
+   "stops": 0.89,
+   "warmth": 2.89,
+   "command": 0.11,
+   "mannerism": 0.07
+  },
+  "E3prime_cos_ep2": {
+   "n": 27,
+   "answers": 3.19,
+   "greek": 3.96,
+   "language_ok": 1,
+   "constraint_ok": 0.3,
+   "stops": 0.89,
+   "warmth": 2.89,
+   "command": 0.07,
+   "mannerism": 0.07
+  }
+ },
+ "nonGreek_9": {
+  "E0b": {
+   "n": 12,
+   "answers": 1.17,
+   "greek": 2.25,
+   "language_ok": 1,
+   "constraint_ok": 0,
+   "stops": 0,
+   "warmth": 1.83,
+   "command": 0,
+   "mannerism": 0
+  },
+  "E1_lr1e-5_ep1": {
+   "n": 12,
+   "answers": 2.58,
+   "greek": 3.67,
+   "language_ok": 0.92,
+   "constraint_ok": 1,
+   "stops": 0.75,
+   "warmth": 3,
+   "command": 0,
+   "mannerism": 0
+  },
+  "E1_lr1e-5_ep2": {
+   "n": 12,
+   "answers": 2.92,
+   "greek": 3.83,
+   "language_ok": 1,
+   "constraint_ok": 1,
+   "stops": 0.83,
+   "warmth": 3,
+   "command": 0,
+   "mannerism": 0
+  },
+  "E1_lr1e-5_ep3": {
+   "n": 12,
+   "answers": 3.08,
+   "greek": 3.83,
+   "language_ok": 1,
+   "constraint_ok": 1,
+   "stops": 0.92,
+   "warmth": 3,
+   "command": 0.08,
+   "mannerism": 0
+  },
+  "E1_lr5e-6_ep1": {
+   "n": 12,
+   "answers": 2.5,
+   "greek": 3.25,
+   "language_ok": 0.58,
+   "constraint_ok": 0,
+   "stops": 0.33,
+   "warmth": 3,
+   "command": 0,
+   "mannerism": 0
+  },
+  "E1_lr5e-6_ep2": {
+   "n": 12,
+   "answers": 2.58,
+   "greek": 3.5,
+   "language_ok": 0.67,
+   "constraint_ok": 0,
+   "stops": 0.92,
+   "warmth": 3,
+   "command": 0.08,
+   "mannerism": 0
+  },
+  "E1_lr5e-6_ep3": {
+   "n": 12,
+   "answers": 2.58,
+   "greek": 3.75,
+   "language_ok": 1,
+   "constraint_ok": 0,
+   "stops": 0.92,
+   "warmth": 3,
+   "command": 0,
+   "mannerism": 0
+  },
+  "E1_cos_ep2": {
+   "n": 12,
+   "answers": 2.75,
+   "greek": 3.83,
+   "language_ok": 1,
+   "constraint_ok": 0,
+   "stops": 0.92,
+   "warmth": 3,
+   "command": 0,
+   "mannerism": 0
+  },
+  "E1_cos_s44_ep2": {
+   "n": 12,
+   "answers": 2.75,
+   "greek": 3.75,
+   "language_ok": 0.92,
+   "constraint_ok": 1,
+   "stops": 0.92,
+   "warmth": 3,
+   "command": 0,
+   "mannerism": 0
+  },
+  "E1last_ep2": {
+   "n": 12,
+   "answers": 3.17,
+   "greek": 3.83,
+   "language_ok": 1,
+   "constraint_ok": 1,
+   "stops": 0.92,
+   "warmth": 3,
+   "command": 0,
+   "mannerism": 0
+  },
+  "E2_cos_ep2": {
+   "n": 12,
+   "answers": 2.67,
+   "greek": 3.83,
+   "language_ok": 1,
+   "constraint_ok": 0,
+   "stops": 0.92,
+   "warmth": 3,
+   "command": 0,
+   "mannerism": 0
+  },
+  "E3_cos_ep2": {
+   "n": 12,
+   "answers": 3.08,
+   "greek": 3.67,
+   "language_ok": 1,
+   "constraint_ok": 1,
+   "stops": 0.92,
+   "warmth": 3,
+   "command": 0,
+   "mannerism": 0
+  },
+  "E3prime_cos_ep2": {
+   "n": 12,
+   "answers": 2.42,
+   "greek": 3.83,
+   "language_ok": 1,
+   "constraint_ok": 0,
+   "stops": 1,
+   "warmth": 3,
+   "command": 0,
+   "mannerism": 0
+  }
+ },
+ "rater_noise_floor_seed_pair": {
+  "answers": 0.1,
+  "greek": 0.05,
+  "language_ok": 0.03,
+  "constraint_ok": 0.28,
+  "stops": 0.0,
+  "warmth": 0.06,
+  "command": 0.0,
+  "mannerism": 0.02
+ }
+}
