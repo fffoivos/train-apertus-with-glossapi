@@ -5,7 +5,7 @@
  "rate_chf_per_nh": 2.69,
  "nh_used": 0.742,
  "chf_used": 2.0,
- "cursor": "wave1",
+ "cursor": "probe20 (first GPU contact) + R1b re-review",
  "steps": {
   "WP0_data": {
    "status": "done (green 02:45: --check OK; 5 GreekMMLU-overlapping rows removed; E1 6.18M CPT-tokenizer tokens, E2 9.36M, E3 8.97M, E3prime 10.47M)",
@@ -69,7 +69,7 @@
    "checkpoint": "before the first GPU minute"
   },
   "E0_baselines": {
-   "status": "E0a attempt 1 lost (watcher bug, 0.11 nh); E0b numbers pulled from card; E0a Greek/retention to re-run batched with the first SFT checkpoint",
+   "status": "partial: E0b card numbers pulled; E0b dev50 format-gate baseline + reading40 generations done (results/E0b/dev); E0b ILSP killed at 259/791 (rerun with batch 32 later); E0a Greek/retention lost to the watcher bug (rerun batched); known-ness scorer pending questions",
    "deps": [
     "R1_review",
     "WP1b_greek_eval",
@@ -80,7 +80,7 @@
    "gate": "G1"
   },
   "smoke": {
-   "status": "pending",
+   "status": "probe20 running on job 3286621 (03:40)",
    "deps": [
     "E0_baselines"
    ],
