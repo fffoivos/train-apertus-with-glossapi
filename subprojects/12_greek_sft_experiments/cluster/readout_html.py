@@ -24,18 +24,23 @@ while i < len(lines):
         body.append('<div class="tw"><table><thead><tr>' + ''.join(f'<th>{inline(c)}</th>' for c in hdr) + '</tr></thead><tbody>' + ''.join('<tr>' + ''.join(f'<td>{inline(c)}</td>' for c in r) + '</tr>' for r in rows) + '</tbody></table></div>'); continue
     m = re.match(r'^(#{1,3})\s+(.*)', l)
     if m: flush(); body.append(f'<h{len(m.group(1))}>{inline(m.group(2))}</h{len(m.group(1))}>'); i += 1; continue
-    if re.match(r'^\s*[-*]\s+', l):
-        flush(); items = []
-        while i < len(lines) and re.match(r'^\s*[-*]\s+', lines[i]): items.append(re.sub(r'^\s*[-*]\s+', '', lines[i])); i += 1
-        body.append('<ul>' + ''.join(f'<li>{inline(x)}</li>' for x in items) + '</ul>'); continue
-    if re.match(r'^\s*\d+\.\s+', l):
-        flush(); items = []
-        while i < len(lines) and re.match(r'^\s*\d+\.\s+', lines[i]): items.append(re.sub(r'^\s*\d+\.\s+', '', lines[i])); i += 1
-        body.append('<ol>' + ''.join(f'<li>{inline(x)}</li>' for x in items) + '</ol>'); continue
+    if l.strip() == '---':
+        flush(); body.append('<hr>'); i += 1; continue
+    for pat, tag in ((r'^\s*[-*]\s+', 'ul'), (r'^\s*\d+\.\s+', 'ol')):
+        if re.match(pat, l):
+            flush(); items = []
+            while i < len(lines) and re.match(pat, lines[i]):
+                item = re.sub(pat, '', lines[i]); i += 1
+                while i < len(lines) and lines[i].strip() and not re.match(r'^\s*([-*]|\d+\.)\s+|^#|^\|', lines[i]):   # continuation lines
+                    item += ' ' + lines[i].strip(); i += 1
+            body.append(f'<{tag}>' + ''.join(f'<li>{inline(x)}</li>' for x in items) + f'</{tag}>'); break
+    else:
+        pass
+    if re.match(r'^\s*([-*]|\d+\.)\s+', l): continue
     if not l.strip(): flush(); i += 1; continue
     para.append(l.strip()); i += 1
 flush()
-css = '''<style>
+css = '''<style>\nhr{border:0;border-top:1px solid var(--rule);margin:28px 0}
 :root{--bg:#f5f3ee;--paper:#fffdf9;--ink:#1e1c18;--muted:#5e5a51;--rule:#d9d3c6;--accent:#1f5f7a;--band:#e9eef0;
 --sans:"IBM Plex Sans",-apple-system,Segoe UI,Helvetica,Arial,sans-serif;--serif:"Source Serif 4",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#15171a;--paper:#1d2024;--ink:#e8e4da;--muted:#a49d90;--rule:#3a3f46;--accent:#7fb8d1;--band:#242a30}}
