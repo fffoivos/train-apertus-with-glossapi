@@ -3,14 +3,14 @@
 interview rubric means. Usage: grid_table.py [--md out.md]"""
 import json, glob, os, sys, statistics
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); R = f'{HERE}/results'
-RUNS = {'E1_lr1e-5': 'E1_lr1e-5_3ep_const', 'E1_lr5e-6': 'E1_lr5e-6_3ep_const'}
+RUNS = {'E1_lr1e-5': 'E1_lr1e-5_3ep_const', 'E1_lr5e-6': 'E1_lr5e-6_3ep_const', 'E1_cos_s44': 'E1_cos_s44', 'E1_cos': 'E1_cos', 'E1last': 'E1last_cos', 'E2_cos': 'E2_cos', 'E3_cos': 'E3_cos', 'E3prime_cos': 'E3prime_cos'}
 def load(p):
     try: return json.load(open(p))
     except Exception: return None
 rows = []
 for d in sorted(glob.glob(f'{R}/*')):
     L = os.path.basename(d); row = {'label': L}
-    for prefix, run in RUNS.items():
+    for prefix, run in sorted(RUNS.items(), key=lambda kv: -len(kv[0])):
         if L.startswith(prefix + '_ep'):
             ep = L.split('_ep')[-1]; dl = load(f'{R}/{run}/dev_losses.json') or {}
             row['dev_no_robots'] = (dl.get('no_robots') or {}).get(ep); row['dev_mean_el'] = statistics.mean([v[ep] for k, v in dl.items() if ep in v and k in ('no_robots','coconot','personas_if','smolcon','oasst','everyday','systemchats')]) if dl else None
