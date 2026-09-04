@@ -1,0 +1,14 @@
+[
+  {
+    "accuracy": 0.5507455507455508,
+    "benchmark": "greekmmlu",
+    "choice_nll": 1.1803155816730653,
+    "choice_nll_sum": 19631.00875438642,
+    "correct": 9160,
+    "correct_answer_bpb": 0.2377775144883206,
+    "correct_answer_neg_log2_sum": 226250.77391847028,
+    "correct_answer_utf8_bytes": 951523,
+    "n": 16632,
+    "subject": "__all__"
+  }
+]

@@ -1,7 +1,7 @@
 # Round One Readout
 
 *Autonomous run, night of 2026-09-03 → 04. Written 2026-09-04 07:06; the sections below are the running record and
-update as chains finish (last update 09:20; round one complete). CHF used so far: 52.07 of the 90 cap (rate CHF 2.69 per node-hour).*
+update as chains finish (last update 09:20; round one complete). CHF used so far: 61.04 of the 90 cap (rate CHF 2.69 per node-hour).*
 
 ## Executive summary
 
@@ -418,3 +418,15 @@ Greek IFEval and Greek MGSM, scored with our harness, on five public instruct mo
 ## Blind reading, round two (Claude as rater, tone axis)
 
 Rescored by Claude, blind, on all 13 runs × 40 prompts with a tone axis (warmth, unsolicited commands, chatbot mannerisms). Page: https://claude.ai/code/artifact/fa8d4fa7-f210-4a1f-8ae5-9bb6d2814e97 · summary in results/reading2/summary.md. Headline: epoch 3 reads better than epoch 2 on answer quality (Greek prompts 3.52 vs 3.22, rater noise 0.1), all fine-tuned runs are tonally flat (warmth ≈ 3.0), mannerisms are rare and concentrated on two prompts, and six failures are shared by every run (list loops, the Caribbean 'we', arithmetic with two multipliers, the dementia vignette, exact-count constraints).
+
+## GreekMMLU (decontaminated subset, 16,159 questions; frozen fp32 scorer, same as the CPT card)
+
+| model | GreekMMLU |
+|---|---|
+| CPT base, averaged checkpoint (card) | 56.8% |
+| ours: the pick, lr 1e-5, epoch 2 | 56.0% |
+| ours: adapted imports, epoch 2 | 55.2% |
+| Apertus-8B-Instruct (no Greek CPT) | 54.9% |
+| Llama-Krikri-8B-Instruct | 52.0% |
+
+SFT costs the base under a point of Greek knowledge (seed noise on this set is about 0.4 points). The Greek CPT is what separates us from Apertus-Instruct and Krikri here: the only axis where we lead both. Incident: the four scorers finished by 14:27 but the receipt finalizer's path no longer exists on the cluster, so the workbench idled to its 3:20 timeout; clean-subset accuracy was recomputed from the saved predictions and the frozen manifest.

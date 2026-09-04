@@ -1,0 +1,26 @@
+{
+ "E1_lr1e-5_ep2": {
+  "full_n": 16632,
+  "full_acc": 0.5594,
+  "clean_n": 16159,
+  "clean_acc": 0.5602
+ },
+ "E3_cos_ep2": {
+  "full_n": 16632,
+  "full_acc": 0.5507,
+  "clean_n": 16159,
+  "clean_acc": 0.5518
+ },
+ "peer_krikri": {
+  "full_n": 16632,
+  "full_acc": 0.5201,
+  "clean_n": 16159,
+  "clean_acc": 0.5197
+ },
+ "peer_apertus_instruct": {
+  "full_n": 16632,
+  "full_acc": 0.5483,
+  "clean_n": 16159,
+  "clean_acc": 0.5486
+ }
+}

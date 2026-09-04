@@ -3,9 +3,9 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 19.356,
- "chf_used": 52.07,
- "cursor": "EVALUATION PLAN: A done, C done, B (GreekMMLU batch) launching",
+ "nh_used": 22.691,
+ "chf_used": 61.04,
+ "cursor": "EVALUATION PLAN complete (A, B, C); round-two planning: data review done, vantage scans + Terra probe running",
  "steps": {
   "WP0_data": {
    "status": "done (green 02:45: --check OK; 5 GreekMMLU-overlapping rows removed; E1 6.18M CPT-tokenizer tokens, E2 9.36M, E3 8.97M, E3prime 10.47M)",
@@ -169,14 +169,8 @@
    "nh": 0.945
   },
   "greekmmlu_min": {
-   "status": "pending Part A",
-   "models": [
-    "E1_lr1e-5_ep2",
-    "E3_cos_ep2",
-    "peer_krikri",
-    "peer_apertus_instruct"
-   ],
-   "est_nh": 3
+   "status": "done 14:27 (scorers); finalizer path missing -> clean-subset accuracy recomputed from predictions + manifest; workbench idled to timeout (~1.9 nh lost)",
+   "job": 3292398
   },
   "peer_qwen35": {
    "status": "done 14:07",
@@ -383,6 +377,13 @@
     "ifeval_strict_avg": 0.694,
     "mgsm": 0.876
    }
+  },
+  "greekmmlu_clean16159": {
+   "cpt_base_18avg_card": 0.5678,
+   "E1_lr1e-5_ep2": 0.5602,
+   "E3_cos_ep2": 0.5518,
+   "peer_apertus_instruct": 0.5486,
+   "peer_krikri": 0.5197
   }
  },
  "artifacts": {
