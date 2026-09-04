@@ -230,6 +230,11 @@
    "date": "2026-09-04 04:25",
    "what": "Dev-loss read of the grid: lr 1e-5 bottoms at epoch 2 (no_robots 1.452, oasst 1.397, personas_if 1.370, everyday 1.182) and rises at epoch 3 (overfitting onset); lr 5e-6 still improving at epoch 3 (no_robots 1.457) ≈ 1e-5's epoch 2. Candidates for the pick: (1e-5, ep2) vs (5e-6, ep3); vibes/ILSP/guards decide, provisional = (1e-5, ep2) if tied (cheaper)",
    "by": "claude"
+  },
+  {
+   "date": "2026-09-04 04:27",
+   "what": "Rehearsal probe20_ep1 closed: native suite ran on an SFT eval copy (19/21 shards with metrics before close — the frozen scorer accepts eval copies), interviews 3 rounds with the Opus interviewer, dev/ILSP lanes OOM'd next to native (fixed: light vs native split), two drivers were corrupted by live edits (fixed: per-label exec copies). Rehearsal purpose met; its numbers are not used.",
+   "by": "claude"
   }
  ],
  "results": {
