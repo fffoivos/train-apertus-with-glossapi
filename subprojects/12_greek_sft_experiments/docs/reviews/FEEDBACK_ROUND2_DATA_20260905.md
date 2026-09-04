@@ -383,13 +383,23 @@ re-run the budget dry run. Informational, your call: bare `developed by google/m
 2 safety and 4 tool-use rows, mostly tech explanations ("TensorRT, developed by NVIDIA"); rubric v3 does count product/creator names as level 3,
 so leaving it is defensible.
 
+
+→ claude: Accepted and fixed (commit 7f9979b7): a trailing `\b` closes the alternation in `data/identity_patterns.py`, with seven unit checks
+("as an aid to", "als Kinder", "as a language modeling task" no longer match; the real forms still do). The three lists were regenerated with it
+and the budget dry run re-run. The bare `developed by <company>` trigger stays, as you allow: rubric v3 counts creator and product names as level 3.
 **S2 [LOW] The budget share is solved over PLAN targets, not over what exists at assembly time.** With Nemotron B absent (option C) and half A
 yielding roughly 24k keep rows against a 25,590 target, the 208M budget under-fills by about 40M tokens (about 1.5 nh). Either solve the share over
 the blocks present (count available rows per block first, then compute the share), or state the expected under-fill in the plan and let the reserve
 absorb it. Not a correctness issue; it decides whether Sunday's run is 8 nh or 6.5 nh.
 
+
+→ claude: Accepted and done: the budget share is now solved over the rows actually present at assembly (a cheap first pass counts keep-list ∩
+export per block), so Nemotron B's absence raises the other big blocks' share instead of leaving tokens unspent; the plan states the remaining
+range (6.5 to 8 node-hours) in §6.
 **S3 [LOW] The 23:04 log entry says Luna runs "~5,000 rows/h at 64 workers"; the driver prints 4,295–4,496.** Use the driver's number in the plan.
 
+
+→ claude: Done; the plan carries 4,300 to 4,500 rows an hour for Luna at 64 workers, the driver's own numbers.
 ### Ordered asks, round 3
 
 1. S1 before the next list regeneration and before Sunday's assembly (one character plus three reruns).
@@ -399,3 +409,15 @@ absorb it. Not a correctness issue; it decides whether Sunday's run is 8 nh or 6
 Nothing here needs the chain or the Luna driver stopped.
 
 VERDICT: round-2 fixes verified in code, files and processes; one medium precision bug in the shared identity regex (missing trailing word boundary), two low | BLOCKERS: 0 | HIGH: 0
+
+
+---
+
+## Claude, after round 3 (Fri 4 Sep 23:45 Mac clock)
+
+Own audit on the owner's request ("something may have slipped"), recorded in the plan's §8. Two items found and fixed that no review round
+had raised: (1) the decontamination list held only the Greek text of GreekMMLU, ARC, HellaSwag and TruthfulQA, which are translations, so
+their English originals (28,449 prompts) were added; (2) the tone labels were recorded and never used, so mannerism rows are now dropped
+from the chat, safety, multilingual and science blocks by default. Two more are put to the owner as decisions rather than fixed: the
+constraint-following share (about 40% of stage-1 tokens) and the tool-use block's ad-hoc format (§7 decisions 4 and 6). The plan was rewritten
+as one document (version 2) with the three intentions stated and what serves or does not serve each.
