@@ -4,12 +4,14 @@
 #   + interviews rounds 1–3 (GPU2) with the interviewer/scorer on the Mac between rounds; voice score on the Mac.
 # Usage: cluster/eval_checkpoint.sh <ckpt_dir_on_cluster> <label> [skip_native=0]
 set -u
-CK=$1; LABEL=$2; SKIP_NATIVE=${3:-0}
+CK_RAW=$1; LABEL=$2; SKIP_NATIVE=${3:-0}
 S=/iopsstor/scratch/cscs/fffoivos; R=$S/sft_round1; EV=$R/evals/$LABEL
 HERE="$(cd "$(dirname "$0")/.." && pwd)"; P=/private/tmp/claude-501/-Users-foivoskarounos-zamparloukos/b9019f62-a4f0-4001-b1b9-3a1a58e99c50/scratchpad/sftdata/bin/python
 LOCAL=$HERE/results/$LABEL; mkdir -p $LOCAL/interviews
+CK=$R/eval_copies/$LABEL   # transformers-4-compatible copy (base config/tokenizer + chat template, weights symlinked)
 sshc() { ssh -o BatchMode=yes clariden "$@" 2>/dev/null; }
 say() { echo "[$(date '+%H:%M')] eval $LABEL: $*"; }
+sshc "bash $R/make_eval_copy.sh $CK_RAW $CK" | tail -2
 bash $HERE/cluster/preflight.sh 1.2 "eval_$LABEL" | tail -1 | grep -q '^OK' || { say "preflight refused"; exit 1; }
 if [ -n "${EVAL_JOB:-}" ]; then J=$EVAL_JOB; else J=$(sshc "bash $R/workbench.sh open ev_$LABEL debug 01:29:00" | tail -1); fi; [[ "$J" =~ ^[0-9]+$ ]] || { say "workbench open failed: [$J]"; exit 1; }; say "workbench $J"
 NODE_ENV="export HF_HOME=$R/hf_home HF_HUB_OFFLINE=1 HF_TOKEN=\$(cat $R/hf_home/token); source $S/venvs/sft/bin/activate; cd $R/evals_code"
