@@ -79,8 +79,8 @@ def build_prompt(language: str, question: str) -> str:
         parts.append(f"{labels[0]}: {exemplar_question}\n{labels[1]}: {exemplar_answer}")
     parts.append(f"{labels[0]}: {question}\n{labels[1]}:")
     prompt = "\n\n".join(parts)
-    if language != "el" and contains_greek(prompt):
-        raise ValueError(f"Greek script found in {language} model prompt")
+    if language != "el" and contains_greek("\n\n".join(parts[:-1])):
+        raise ValueError(f"Greek script found in {language} model prompt")   # exemplars/instructions only: a claim's own Greek names may appear in the question
     return prompt
 
 
