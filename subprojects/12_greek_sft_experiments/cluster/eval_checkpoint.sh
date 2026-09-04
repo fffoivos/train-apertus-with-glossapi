@@ -11,7 +11,7 @@ LOCAL=$HERE/results/$LABEL; mkdir -p $LOCAL/interviews
 sshc() { ssh -o BatchMode=yes clariden "$@" 2>/dev/null; }
 say() { echo "[$(date '+%H:%M')] eval $LABEL: $*"; }
 bash $HERE/cluster/preflight.sh 1.2 "eval_$LABEL" | tail -1 | grep -q '^OK' || { say "preflight refused"; exit 1; }
-J=$(sshc "bash $R/workbench.sh open ev_$LABEL debug 01:29:00" | tail -1); [[ "$J" =~ ^[0-9]+$ ]] || { say "workbench open failed: [$J]"; exit 1; }; say "workbench $J"
+if [ -n "${EVAL_JOB:-}" ]; then J=$EVAL_JOB; else J=$(sshc "bash $R/workbench.sh open ev_$LABEL debug 01:29:00" | tail -1); fi; [[ "$J" =~ ^[0-9]+$ ]] || { say "workbench open failed: [$J]"; exit 1; }; say "workbench $J"
 NODE_ENV="export HF_HOME=$R/hf_home HF_HUB_OFFLINE=1 HF_TOKEN=\$(cat $R/hf_home/token); source $S/venvs/sft/bin/activate; cd $R/evals_code"
 lane() { # lane <name> <gpu> <cmd-inside-uenv-bash>
   local name=$1 gpu=$2 cmd=$3
@@ -33,7 +33,7 @@ wait_file $EV/interviews/turn3.jsonl 30 && scp -q clariden:$EV/interviews/turn3.
 wait_file "$EV/ilsp/*/results*.json" 40 || say "ILSP results missing"
 wait_file $EV/dev/reading40_gen.jsonl 20 || say "reading40 missing"
 if [ "$SKIP_NATIVE" = 0 ]; then for i in $(seq 1 60); do n=$(sshc "ls $EV/native 2>/dev/null | grep -c -E '^(demos|other_mcq|oyxoy)'"); [ "${n:-0}" -ge 21 ] && sshc "for d in $EV/native/*; do [ -f \$d/metrics.csv ] || exit 1; done" && break; sleep 60; done; fi
-sshc "bash $R/workbench.sh close $J" | tail -1; bash $HERE/cluster/ledger.sh $J "eval_$LABEL" "checkpoint evals (native/ILSP/dev/interviews)" | tail -1
+if [ -z "${EVAL_JOB:-}" ]; then sshc "bash $R/workbench.sh close $J" | tail -1; bash $HERE/cluster/ledger.sh $J "eval_$LABEL" "checkpoint evals (native/ILSP/dev/interviews)" | tail -1; else say "reused workbench $J left open"; fi
 scp -rq clariden:$EV/dev clariden:$EV/ilsp $LOCAL/ 2>/dev/null; [ "$SKIP_NATIVE" = 0 ] && scp -rq clariden:$EV/native $LOCAL/ 2>/dev/null
 (cd $HERE/evals && $P dev/voice_score.py $LOCAL/dev/dev_gen.jsonl) > $LOCAL/dev/voice.log 2>&1; say "voice: $(tail -n 1 $LOCAL/dev/voice.log | cut -c1-120)"
 (cd $HERE/evals && $P interviews/score.py --run $LABEL --out-dir $LOCAL/interviews) > $LOCAL/interviews/score.log 2>&1; say "interview score: $(tail -n 1 $LOCAL/interviews/score.log | cut -c1-120)"
