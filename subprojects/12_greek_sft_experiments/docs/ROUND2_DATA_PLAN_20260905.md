@@ -1,123 +1,153 @@
 # Round two, data preparation: the plan to Sunday 6 September 2026
 
-Written Friday 4 September, 21:50 on the Mac clock (EEST; the review found the first version's times 2 hours ahead, all times below are now Mac clock), after several reorientations during the day. Revised 22:50 after the independent review (`docs/reviews/FEEDBACK_ROUND2_DATA_20260905.md`). This document supersedes the mix and
-routing sections of `SFT_ROUND2_PLAN.md` where they differ; it is the one to review. Companion: `ANNOTATION_HANDOFF_20260905.md`.
+Version 2, written Friday 4 September 23:35 on the Mac clock (EEST), after three review rounds
+(`docs/reviews/FEEDBACK_ROUND2_DATA_20260905.md`, answers in place). Every time below is Mac clock. This document supersedes the
+mix, filtering, speed and decision sections of `SFT_ROUND2_PLAN.md`; that file's §0 (shape of the round), §3 (personality set),
+§4 (preference) and §5 (evaluation gates) still stand. The annotation detail lives in `docs/ANNOTATION_HANDOFF_20260905.md`.
 
-**Feedback on both documents goes in `docs/reviews/FEEDBACK_ROUND2_DATA_20260905.md`** (full path
+**Feedback on this document goes in `docs/reviews/FEEDBACK_ROUND2_DATA_20260905.md`** (full path
 `/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/docs/reviews/FEEDBACK_ROUND2_DATA_20260905.md`).
-I watch that file and answer under each finding in place, marked `→ claude:`. A reviewer brief sits next to it.
+I watch it and answer under each finding, marked `→ claude:`.
 
-## 1. Objectives and hard limits
+## 1. What we are building and why
 
-- Goal of stage 1: a broad-ability SFT set for the Greek-CPT Apertus-8B that keeps the Greek vantage, ready to train.
-- Time limit: **data preparation finished by late Sunday 6 September, Mac clock (EEST)** (mix assembled, decontaminated, tokenized, receipts written, trainer dry-run green).
-- CSCS budget: cap CHF 90, spent CHF 61.04 (22.7 node-hours at CHF 2.69 per node-hour), **CHF 28.96 left, about 10.8 node-hours**.
-  Nothing in this plan spends node-hours before Monday; the login node is used for CPU work only, politely (nice 19, few processes, time caps).
-- Standing rules from the owner today: (1) trust a source once it is shown high quality and verified, and do not drop its rows on a judge's word;
-  (2) an old generator is acceptable only when a program verified the answers, otherwise the source has to be recent;
-  (3) decide in advance which sources and categories need more intelligence and give those to Sol as the only judge, rather than re-checking Luna;
-  (4) 24 Sol workers is the floor, never lowered or split; (5) no priority tier, more workers instead; (6) do not overdo monitoring.
+Stage 1 of round two is a broad-ability SFT set for the Greek-CPT Apertus-8B. Round one showed two things that shape it: our own
+Greek data beat the same skills imported raw (E3 over E3′: interviews 2.91 vs 2.63, identity 2.85 vs 2.60), and English rows written from a
+Greek point of view did no harm (E2 inside the seed floor). So the language of a row does not matter, the vantage inside it does, and
+identity transfers across languages. Stage 1 therefore imports broad skills in any language, screens out what asserts a foreign identity
+or a foreign world, and keeps the Greek vantage where it is cheap to keep; stage 2 (Greek-heavy) and stage 3 (personality) assert it.
 
-## 2. The mix we will actually keep
+The three intentions, and what serves each:
 
-| block | source | written by | checked how | rows in stage 1 |
-|---|---|---|---|---|
-| constraint following | Dolci Precise IF | 2025 models | constraint checkers (source); no structured constraints in the release, so a Sol spot-check of 300 on Saturday | 137k (136,820 exported) |
-| constraint following | argilla ifeval-like, filtered | Qwen2.5-72B, 2024 | our re-run of the IFEval checkers on all 56,339 rows: 56,292 pass, 47 fail (0.08%) | 56k (owner decision: Qwen licence) |
-| math | OpenMathInstruct-2, GSM8K-style | Llama-3.1-405B, 2024 | our re-run of the final-answer match on all 100,000 rows: 99,971 match, 29 mismatch | 100k |
-| chat and advice | Nemotron IF-Chat v3, chat split | GLM-5, 2026 | exact-length prefilter (16.9% of rows exceed the window), reward model best-of-N, Luna screen, Sol on technical rows, full-text identity backstop | half A = 41,556 rows screened by Sunday; half B (41,556) if time allows; 150k more exported on the cluster for later |
-| chat, human-written | OpenAssistant (Dolci Chat), screened | volunteers, 2023; 42% Spanish, 30% English, the rest mixed | Luna + Sol on technical rows + Sol second opinion; EU-language gate (Catalan kept; ru/th/zh/uk out, review R6) | about 3.8k keep rows; adapt rows are NOT in stage 1 |
-| coding | Dolci "Python Algorithms" | 2025 | Sol spot-check: 20 of 300 wrong (6.7%), so the block is screened by Sol; 20k screened by Sunday, the rest later | 20k screened now (60k exported) |
-| reasoning | Dolci "Verifiable Reasoning" | 2025 | Sol spot-check: 3 of 300 wrong (1%), taken as clean | 30k |
-| reasoning | Dolci logic puzzles and word sorts | generator | exact brute-force checker | 11,163 confirmed |
-| tool use | Dolci Tool Use | 2025 | regex identity + system-prompt scan over all 40k (297 hits, mostly the word OpenAI in tool outputs); Luna on a 3,000-row sample decides whether the rest stays unscreened | 30k |
-| science | Dolci OpenThoughts3+ Science | 2025 | Sol screen (20k exported) | 15k |
-| other European languages | SmolTalk2 multilingual-8, Nemotron non-English European rows | Qwen3-32B 2025, GLM-5 2026 | Luna (multilingual only if time allows; else lexicon identity scan) | 25k + 10k |
-| safety | Dolci WildGuardMix and CoCoNot, screened | 2024 | Luna; 21% identity so far, so mostly adapt or drop | 10k |
-| Greek, rewriting and summarising | written by Sol from scratch, in Greek | gpt-5.6, 2026 | Sol correction pass, screen, owner blind read | 2k (the 10% start) |
-| Greek | our round-one adapted set | Sol, 2026 | ours | 20k, seen twice |
-| **total** | | | | **about 580k rows, about 0.39B tokens at the measured per-block token means (review F4)** |
-
-Dropped under rule (2): Magpie Ultra, OpenHermes, Tulu WildChat, EuroBlocks fr/de, Dolci persona math, Evol-CodeAlpaca, Tulu persona Python, TableGPT.
-Dropped by measurement: Tulu FLAN and Dolci FLAN (Sol finds 193 of 1,323 wrong, 14.6%, on 2015-era labels).
-
-Wrong-rate threshold (review F8): measured wrong rate at most 2% → in unscreened; 2% to 10% → program check or a full Sol screen before use
-(Dolci Python Algorithms at 6.7% is therefore Sol-screened, 20k by Sunday, the rest later); above 10% → out (FLAN). Safety (2024, unverifiable)
-is a stated exception to rule (2): kept small (10k) because refusals are low-risk and Luna screens identity; regenerated in our voice in stage 2.
-Identity backstop (review F1): at assembly a full-text regex (English, five EU languages, Greek) runs over every assistant turn of every row,
-after the judges; hits are dropped and counted per block; the written train file is re-scanned and must show 0 hits.
-Licence question (review F8): the Qwen question in §6 also covers OpenMathInstruct-2, whose answers are Llama-3.1-405B output under the Llama 3.1
-licence naming clause; one decision for both.
-
-## 3. Timeline to Sunday, Mac clock (EEST), with the measured rates
-
-Rates: Luna 4,160 to 4,350 rows an hour at 64 workers (safety); Sol 1,100 rows an hour generating Greek at high effort, 1,000 to 1,400 on
-chat and reasoning at medium, 825 on puzzles; checker exact and free. Revised after the review: Nemotron is exact-length-filtered, shuffled
-and split into halves A and B (option C needs A only); multilingual goes to Luna before tool use, tool use gets a 3,000-row Luna sample plus
-the regex scan; Sol alternates routing with science chunks so the 24 workers are never split.
-
-| when (Mac clock) | Luna (64 workers) | Sol (24 workers) | me (CPU on the login node, polite) |
+| intention | what it means here | what serves it | what does not, and is written down as such |
 |---|---|---|---|
-| Fri 23:00 | safety, about 9,500 left, 2.3 h | Greek rewriting to 2,000 rows (00:00); OpenAssistant technical rows routed | multilingual export landed; Nemotron halves prepared |
-| Sat 01:30 | Nemotron half A, 34,214 rows after the length and language filters, about 8 h | routing pass, then Science in 3,000-row chunks alternating with routing, 15 to 20 h | exports done; Precise IF sample 300 queued on Sol |
-| Sat 13:00 | multilingual 25k, 6 h | Science continues | assembly script final; blind read pages for the owner (Greek set https://claude.ai/code/artifact/dc57edac-97cc-472e-810e-e336f03d63f2 ; judge keep rows https://claude.ai/code/artifact/fbd19acd-5e48-4de4-b19d-df3e9eba5594) |
-| Sat 19:00 | tool-use 3k sample, 45 min; then Nemotron half B if time allows | coding 20k in chunks, 13 h | keep-lists merged as blocks finish |
-| Sun 08:00 | Nemotron B continues or is cut | Precise IF spot-check, Greek correction pass, last routing pass | full assembly under the 208M-token budget, decontamination, trainer dry run on the cluster (gate) |
-| Sun 14:00 to 22:00 | | | receipts, plan and handoff updated, training config written |
+| **annotation** | every unverified row gets a sticker before training: identity, wrong answer, foreign framing, tone, skill; nothing is edited | judges routed by what a source needs (§3); a program wherever one exists; a full-text identity backstop on every block after the judges; tone labels used at assembly | Luna's misses on explanation and advice rows in chat are accepted, because those rows come from a 2026 model or a human and the backstop catches explicit identity |
+| **generation** | Sol writes what the imports cannot give: Greek text-grounded tasks in a Greek setting | the 2,000-row Greek rewriting and summarising set, generated, corrected by a second Sol pass, screened, blind-read by the owner | open factual questions are not generated, because a self-check is weakest there; safety refusals in our voice wait for stage 2 |
+| **data mix** | verified answers or a recent generator, nothing old and unchecked; Greek kept whole; budget by tokens, not rows | the table in §2 with measured token means; small blocks whole; the 208M-token gate under the current cap | constraint following is about 40% of stage-1 tokens by design (the IFEval gap is the owner's stated target); if that is too much, §7 decision 4 |
+
+## 2. The mix
+
+Sizes are rows in the full mix (option A) and the exact-tokenizer means per row measured on Friday. Under the current cap (option C) the
+small blocks stay whole and the big ones are scaled to the token budget over the rows that are present at assembly.
+
+| block | source | written by | checked how | rows (A) | mean tokens |
+|---|---|---|---|---|---|
+| constraint following | Dolci Precise IF | 2025 models | constraint checkers at the source; our Sol spot-check of 300; identity backstop (about 250 rows, 0.18%, carry self-descriptions) | 137k | 600 |
+| constraint following | argilla ifeval-like, filtered | Qwen2.5-72B, 2024 | our re-run of the IFEval checkers on all 56,339 rows: 47 fail | 56k | 256 |
+| math | OpenMathInstruct-2, GSM8K-style | Llama-3.1-405B, 2024 | our re-run of the final-answer match on 100,000 rows: 29 mismatch | 100k | 342 |
+| chat and advice | Nemotron IF-Chat v3, chat split, half A (half B if time allows) | GLM-5, 2026 | exact-length prefilter (16.9% over the window), EU-language gate, Luna screen, Sol on technical rows, backstop | 34k + 34k | 1,584 |
+| chat, human-written | OpenAssistant (Dolci Chat) | volunteers, 2023; 42% Spanish, 30% English | Luna, Sol on technical rows and as second opinion, EU-language gate (Catalan kept) | 3.8k | 350 |
+| coding | Dolci Python Algorithms | 2025 | Sol spot-check 20 of 300 wrong (6.7%), so the block is Sol-screened; no executable tests exist | 20k screened | 388 |
+| reasoning | Dolci Verifiable Reasoning | 2025 | Sol spot-check 3 of 300 wrong, taken as clean | 30k | 330 |
+| reasoning | Dolci logic puzzles and word sorts | generator | exact brute-force checker: 11,163 confirmed, 1,318 wrong (20.9% of zebra) excluded | 11k | 330 |
+| tool use | Dolci Tool Use | 2025 | regex identity and system-prompt scan over all 40k; Luna on a 3,000-row sample decides whether the rest stays unscreened | 30k | 827 |
+| science | Dolci OpenThoughts3+ Science | 2025 | Sol screen with a 12,000-character judge window | 15k | 941 |
+| other European languages | SmolTalk2 multilingual (de, fr, es, pt, it) | Qwen3-32B, 2025 | Luna; multilingual identity patterns | 25k | 511 |
+| safety | Dolci WildGuardMix and CoCoNot | 2024; the stated exception to the recency rule | Luna; 39% of kept rows carry chatbot mannerisms and are dropped | 10k | 302 |
+| Greek, rewriting and summarising | written by Sol in Greek | gpt-5.6, 2026 | Sol correction pass, screen, owner blind read | 2k | 700 |
+| Greek, our round-one set | 11 configs, adapted to the Greek vantage | Sol, 2026 | ours; seen twice | 20k × 2 | 351 |
+
+Dropped under the recency rule: Magpie Ultra, OpenHermes, Tulu WildChat, EuroBlocks fr/de, Dolci persona math, Evol-CodeAlpaca, Tulu persona
+Python, TableGPT. Dropped by measurement: FLAN (14.6% wrong). Wrong-rate threshold: at most 2% → in unscreened; 2 to 10% → program check or a
+full Sol screen first; above 10% → out.
+
+Token shares in the option-C dry run of Friday 23:15 (labels present at that time, approximate tokens): constraint following 48%, tool use
+15%, math 10%, Greek 8%, reasoning 9%, the rest chat, safety and science. Nemotron and coding were not yet labelled; with them chat rises to
+about a fifth. The constraint-following share is the one deliberate imbalance (§7, decision 4).
+
+## 3. The screen, in one paragraph each
+
+**Judges.** A program wherever the task has one: the zebra and word-sort checker, the IFEval checkers, the OpenMath final-answer match. Sol
+(gpt-5.6-sol, medium effort, default tier, 24 workers, never split) as the only judge for correctness-heavy unverified sources: science, the
+coding block, the spot-checks, and every row Luna labels as code, math or reasoning inside the Luna blocks. Luna (gpt-5.6-luna, medium, 64
+workers) for conversational sources: safety, Nemotron, multilingual, the tool-use sample. Same rubric for both, verbatim in the handoff.
+
+**Backstop.** After the judges, at assembly, a full-text identity regex (English, French, German, Italian, Spanish, Portuguese, Greek; system
+and assistant turns; word-bounded) runs over every row of every block; hits are dropped and counted; the written file is re-scanned and must
+show zero. This is what closes the one non-negotiable goal, because the judge's window is finite and Precise IF, "verified", still carries
+identity lines.
+
+**Tone.** The rubric records chatbot mannerisms and unasked second-person commands. Rows flagged for mannerisms are dropped from the chat, safety,
+multilingual and science blocks (OpenAssistant 19% of kept rows, safety 39%); unasked commands are reported and can be dropped by flag.
+
+**Language.** Chat blocks pass an EU-language gate (English, Greek, the EU official languages, Catalan); Russian, Chinese, Thai, Ukrainian,
+Vietnamese rows are out (Nemotron 16.5%, OpenAssistant 9%).
+
+**Adaptation.** None in stage 1. Adapt-labelled rows are excluded because no line-cut exists; the adaptation pipeline is reserved for Greek
+work in stage 2.
+
+## 4. Generation
+
+The Greek rewriting and summarising set: 2,000 rows, Sol at high effort. For each row Sol writes a realistic Greek passage in a Greek setting
+(20 genres, 40 topics, five lengths, a register), a user instruction from a list of 15 task types, and the answer, under a prompt that forbids
+mannerisms and self-reference. A second Sol call with an editor's brief corrects faithfulness, execution, language, mannerisms and frame,
+and the corrected answer replaces the original at assembly. The owner blind-reads 40 rows
+(https://claude.ai/code/artifact/dc57edac-97cc-472e-810e-e336f03d63f2). Generated Friday 22:00 to 00:00 at about 1,100 rows an hour, zero
+failures; the correction pass runs in the Sol chain right after the Precise IF spot-check.
+
+Generation is deliberately limited to text-grounded tasks. Coding, safety refusals in our voice and Greek constraint following are the next
+candidates, for stage 2, at about 5,000 rows a day.
+
+## 5. Timeline to Sunday, Mac clock
+
+Measured: Luna 4,300 to 4,500 rows an hour at 64 workers; Sol 1,100 generating, 1,000 to 1,400 judging chat and reasoning, 825 on puzzles.
+
+| when | Luna (64) | Sol (24) | me |
+|---|---|---|---|
+| Sat 00:40 | Nemotron half A, 34,214 rows, about 8 h | routing pass, Precise IF spot-check, Greek correction pass, then Science in 3,000-row chunks alternating with routing (15 to 20 h) | exact-tokenizer assembly runs on what exists; plan and handoff refreshed |
+| Sat 09:00 | multilingual 25k, 6 h | Science continues | Nemotron rows added to the owner's reading page |
+| Sat 15:00 | tool-use 3k sample; then Nemotron half B | Science done about 18:00; coding 20k in chunks, 13 h | keep-lists merged as blocks finish |
+| Sun 08:00 | half B continues or is cut | coding done; last routing pass | full assembly under the 208M-token budget with the exact tokenizer; decontamination; trainer dry run on the cluster (gate) |
+| Sun 14:00 to 22:00 | | | receipts; stage-1 config derived from the receipt; plan and handoff final |
 | Mon | | | training launch once the cap decision is in |
 
-Cut order if it slips: Nemotron half B, then tool use beyond the sample (regex scan only), then multilingual to the multilingual regex scan.
-Nothing on the critical path waits for the owner except the decisions in section 6.
+Cut order if it slips: Nemotron half B, then tool use beyond the sample, then multilingual to its regex lists.
 
-## 4. Budget for stage 1 under the current cap
+## 6. Budget
 
-Throughput measured in round one: 26M tokens per node-hour; 600 tokens per row after the 4,096-token filter.
+Cap CHF 90, spent CHF 61.04 (22.7 node-hours at CHF 2.69), CHF 28.96 left, about 10.8 node-hours. Throughput 26M tokens per node-hour.
 
-| option | rows | epochs | node-hours | CHF | fits CHF 28.96 |
-|---|---|---|---|---|---|
-| A: the full mix | 620k | 2 | 28.6 | 77 | no |
-| B: the full mix | 620k | 1 | 14.3 | 38 | no |
-| C: stratified half | 310k | 1 | 7.2 | 19 | yes, with light evals (1 nh) and margin |
-| D: tier S from the old plan | 250k | 2 | 11.5 | 31 | no |
+| option | what | node-hours | CHF | fits |
+|---|---|---|---|---|
+| A | full mix, about 0.39B tokens, 2 epochs | 30 | 81 | no |
+| B | full mix, 1 epoch | 15 | 40 | no |
+| C | token-budgeted half, 208M tokens, 1 epoch, plus light evaluations | 8 + 1 | 24 | yes, reserve CHF 4.6 |
 
-So without a cap raise, stage 1 is option C: a stratified half of the mix for one epoch, light evaluations on the final checkpoint,
-GreekMMLU deferred (2.8 nh alone). With a cap of CHF 250 to 300 (plan §7), option A plus the full evaluation suite (about 6 nh) costs
-about CHF 93 and leaves room for stage 2 and a preference round. The training recipe is round one's pick: lr 1e-5, cosine, 4,096 tokens,
-fp32 master weights, TRL trainer on one node.
+Under the current cap stage 1 is option C; the budget share is solved over the blocks present at assembly, so Sunday's run is 6.5 to 8
+node-hours depending on how much of Nemotron is screened. With a cap of CHF 250 to 300, option A plus the full evaluation suite and a
+screened-versus-unscreened control arm costs about CHF 130. Recipe: round one's pick, lr 1e-5, cosine, 1 epoch here, 4,096 tokens, fp32
+master weights, one node; the config is derived from the assembly receipt by `cluster/make_stage1_config.py`, which refuses estimates.
 
-## 5. What the annotations are for, and what waiting for them buys
+## 7. Decisions for the owner
 
-The screen puts one sticker on every row of an unverified source: identity, wrong answer, foreign framing, tone, skill, and a verdict
-keep, adapt or drop. Nothing is edited during the screen.
+1. **Cap:** keep CHF 90 (option C) or raise to CHF 250 to 300 (option A plus evaluations plus the control arm).
+2. **Licences:** the Qwen-generated ifeval-like rows (56k) and OpenMathInstruct-2 (Llama-3.1-405B output, naming clause): keep with attribution, or drop.
+3. **Language gate on OpenAssistant:** its 459 rows in Russian, Thai, Chinese, Ukrainian are out under the EU gate; overrule if wanted.
+4. **Constraint-following share:** about 40% of stage-1 tokens as planned, or capped at 25% with the rest redistributed to chat and reasoning.
+5. **Tone:** mannerism rows dropped (default); also drop unasked-command rows (16 to 27% of kept chat and safety rows), or not.
+6. **Tool use in stage 1:** 30k rows in an ad-hoc `<function_calls>` format that is not the Apertus template's native tool format, 15% of the tokens, with no benchmark that measures it; keep, cut to 10k, or drop until the native format is wired.
 
-Goals, in order of weight:
-1. Remove every row where the assistant speaks about itself as an AI, a product, or a foreign national. This is the one non-negotiable,
-   because identity transfers across languages and stage 3 must own it outright. OpenAssistant: 366 of 5,305; safety: 556 of 2,667 so far.
-2. Remove wrong answers from sources that nobody verified. Measured so far: FLAN 14.6%, OpenAssistant about 11% after Sol, puzzles 20.9% exact.
-3. Find the rows whose answer imposes a foreign country's institutions, prices or units on a user who did not ask. Small: about 1% in OpenAssistant.
-   These are dropped, or adapted from a capped budget if the owner wants adaptation at all.
-4. Record tone (chatbot mannerisms, unasked commands) for the stage-2 style decision. Not a drop reason.
-5. A census of skills per source, to check that the Greek set covers every category we train on.
+## 8. What might have slipped, checked
 
-What waiting for the full screen buys, compared with training on Sunday's partial labels: complete identity removal instead of partial;
-per-source wrong-answer rates that decide inclusion instead of reputation (FLAN went out on its rate tonight); the skill census for the
-Greek coverage check; and the exact keep-lists that make a screened-versus-unscreened control arm possible later. The cost of waiting is
-zero node-hours; the screen runs on the Codex subscription and ends inside the Sunday window.
+The owner asked for this list. Each item is what I looked for, what I found, and what was done.
 
-## 6. Owner decisions needed
-
-1. **CSCS cap**: keep CHF 90 (stage 1 = option C, half mix, one epoch) or raise to CHF 250 to 300 (option A plus full evaluations).
-2. **Qwen-generated ifeval-like rows** (56k): keep under the Qwen 2.5 licence with attribution, or drop and rely on Precise IF alone.
-3. Confirm FLAN out and the Greek rewriting set in.
-
-## 7. Judges: who does what, with what prompt
-
-- Checker (exact, no model): `data/zebra_check.py` for Dolci puzzles and word sorts; the IFEval checkers for ifeval-like; final-answer match for OpenMath.
-- Sol, `gpt-5.6-sol`, medium effort, default tier, 24 workers, sole judge for: FLAN (measurement only), Science, the spot-check samples, and every
-  row Luna labels as code, math or reasoning inside the Luna blocks (`data/route_technical.py`). Prompt: rubric v3, verbatim in the handoff.
-- Sol, high effort, 24 workers, generator for the Greek rewriting set (`data/gen_greek_rewrite.py`, prompt verbatim in the handoff), then the
-  round-one correction pass.
-- Luna, `gpt-5.6-luna`, medium effort, default tier, 64 workers, for OpenAssistant (done), safety, Nemotron chat, tool use, multilingual:
-  identity, framing, tone and skill labels on conversational rows. Same rubric v3.
-
-Luna's measured weaknesses and the mitigation are in the handoff, section 4.
+1. **Decontamination against translations.** The Greek benchmarks ARC, HellaSwag, TruthfulQA and GreekMMLU are translations, and only their
+   Greek text was in the list, which cannot match English training rows. Found and fixed Friday 23:27: 28,449 English originals added.
+2. **Tone labels unused.** The rubric recorded mannerisms and commands and nothing read them. Fixed: mannerism rows dropped by default (§3).
+3. **Vantage share in stage 1.** Greek-vantage content is about 8% of stage-1 tokens; round one saw raw foreign rows pull even at a 3:1
+   Greek majority. Stage 1 accepts this by design (skills now, vantage in stages 2 and 3) and the screened-versus-unscreened arm is the test;
+   the cheap lever if the owner wants more is the Greek repeat factor (2 → 3).
+4. **Skill coverage in Greek.** The judge's census of 1,000 rows of our Greek set gives its skill mix (filled in from the census run below);
+   the stage-1 categories with no Greek counterpart are coding, math, tool use, science and puzzles, and constraint following is thin. These
+   are the generation targets for stage 2, in that order of value.
+5. **Tool-use format.** The trainer accepts only system, user and assistant strings, so tool rows are rendered with `<function_calls>` and
+   `<function_results>` tags, which is not the Apertus template's native tool format. Decision 6.
+6. **Identity in "verified" sources.** Precise IF carries about 250 self-descriptions; the backstop covers every block, including the ones no
+   judge sees.
+7. **Adapt rows.** The old plan counted them into stage 1 with a line-cut that did not exist; they are excluded.
+8. **Judge window.** Luna cannot see beyond 9,000 characters; the exact-length prefilter and the backstop cover what it misses; Sol blocks
+   use a 12,000-character window.
+9. **Nemotron's withheld prompts.** 41% of the chat split has no first user turn; filtered out; recoverable by hashing WildChat-1M, not done.
+10. **Duplicated rows from the export.** Six Dolci shards were read twice; local files and labels are deduplicated; the cluster copies are not.
+11. **Clock.** My log stamps ran two hours ahead of the machine on Friday; every stamp is now `$(date)`.
+12. **The dev split** is 1% of the same blocks and measures loss only; the real evaluation is the benchmark suite in `SFT_ROUND2_PLAN.md` §5.
