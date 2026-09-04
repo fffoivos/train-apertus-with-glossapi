@@ -49,7 +49,7 @@ def build_prompt(transcript: dict[str, Any]) -> str:
     rubric_lines = "\n".join(f"- {key}: {description}" for key, description in RUBRIC.items())
     payload = json.dumps(transcript, ensure_ascii=False, separators=(",", ":"))
     metric_schema = ",".join(
-        f'"{key}":{{"score":1,"evidence":"one line"}}' for key in RUBRIC
+        f'"{key}":{{"score":1,"evidence":"at most twelve words"}}' for key in RUBRIC
     )
     return f"""Score one three-turn assistant conversation. You are not comparing systems and are not told any run, model, arm, or display position.
 
@@ -76,11 +76,41 @@ def load_call_claude() -> Callable[..., Any]:
     return call_claude
 
 
+def close_truncated(text: str) -> str:
+    """Close an output cut mid-way (judges hit an output cap around ~350 tokens): terminate an open string,
+    drop a dangling key/colon, then close the open braces. Scores precede evidence in each metric, so a
+    truncated tail loses only evidence text."""
+    in_str = False; esc = False; depth = 0
+    for ch in text:
+        if in_str:
+            if esc: esc = False
+            elif ch == "\\": esc = True
+            elif ch == '"': in_str = False
+        else:
+            if ch == '"': in_str = True
+            elif ch == "{": depth += 1
+            elif ch == "}": depth -= 1
+    t = text + ('"' if in_str else "")
+    t = t.rstrip()
+    t = t.rstrip(",")
+    if t.endswith(":"):
+        t = t[:t.rfind('"', 0, t.rfind('"'))].rstrip().rstrip(",")
+    return t + "}" * max(depth, 0)
+
+
 def lenient_json(body: str) -> dict:
     """Parse the first {...} object; escape stray double quotes inside strings when the strict parse fails
     (both judges sometimes quote evidence with unescaped quotes — 2026-09-04)."""
     a, b = body.find("{"), body.rfind("}")
     text = body[a:b + 1]
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+    try:
+        return json.loads(close_truncated(text))
+    except json.JSONDecodeError:
+        pass
     for _ in range(40):
         try:
             return json.loads(text)
