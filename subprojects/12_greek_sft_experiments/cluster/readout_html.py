@@ -33,6 +33,7 @@ while i < len(lines):
                 item = re.sub(pat, '', lines[i]); i += 1
                 while i < len(lines) and lines[i].strip() and not re.match(r'^\s*([-*]|\d+\.)\s+|^#|^\|', lines[i]):   # continuation lines
                     item += ' ' + lines[i].strip(); i += 1
+                items.append(item)
             body.append(f'<{tag}>' + ''.join(f'<li>{inline(x)}</li>' for x in items) + f'</{tag}>'); break
     else:
         pass
