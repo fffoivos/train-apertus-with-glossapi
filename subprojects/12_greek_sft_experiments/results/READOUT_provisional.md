@@ -1,7 +1,7 @@
 # Round One Readout
 
 *Autonomous run, night of 2026-09-03 → 04. Written 2026-09-04 07:06; the sections below are the running record and
-update as chains finish (last update 09:20; round one complete). CHF used so far: 47.81 of the 90 cap (rate CHF 2.69 per node-hour).*
+update as chains finish (last update 09:20; round one complete). CHF used so far: 50.35 of the 90 cap (rate CHF 2.69 per node-hour).*
 
 ## Executive summary
 
@@ -393,3 +393,27 @@ Both SFT checkpoints sit above the base on the macro; the pick and the rival are
 
 E1-last's NLI goes 0.387 → 0.388 and WiC 0.336 → 0.737: the deficit persists after SFT. All SFT checkpoints on the averaged base share one profile (macro-8 ≈ 0.57): NLI flat, WiC and metaphor +0.2,
 the MCQ sets +0.03–0.06 — systematic to SFT. E1-last recovers WiC (0.34 → 0.74) but not NLI (0.39) or metaphor (0.34 vs 0.55–0.58 for the averaged-base checkpoints): macro-8 0.500 vs ≈0.575. Together with the light evals (MGSM 0.33 vs 0.42), the terminal checkpoint is the worse starting point on every axis. The averaged base stays.
+
+## Peers on the same harness (2026-09-04, evaluation plan Part A)
+
+Greek IFEval and Greek MGSM, scored with our harness, on four public instruct models. The harness agrees with ILSP's published numbers (Krikri 66.8% here vs 67.5% on its card; Meltemi 32.6% vs 32.7%), so the comparison holds.
+
+| model | IFEval prompt-strict | IFEval inst-strict | IFEval strict avg | Greek MGSM |
+|---|---|---|---|---|
+| Llama-Krikri-8B-Instruct (ILSP card: 67.5%) | 0.614 | 0.723 | **66.8%** | 0.676 |
+| Apertus-8B-Instruct-2509 (no Greek CPT) | 0.505 | 0.615 | **56.0%** | 0.532 |
+| Gemma-3-12B-it (50% larger) | 0.675 | 0.763 | **71.9%** | 0.908 |
+| Meltemi-7B-Instruct-v1.5 (ILSP card: 32.7%) | 0.277 | 0.375 | **32.6%** | 0.208 |
+| ours: lr 1e-5, epoch 3 | 0.512 | 0.612 | **56.2%** | 0.392 |
+| ours: adapted imports, epoch 2 | 0.497 | 0.601 | **54.9%** | 0.384 |
+| ours: lr 5e-6, epoch 3 | 0.486 | 0.584 | **53.5%** | 0.416 |
+| ours: the pick, lr 1e-5, epoch 2 | 0.479 | 0.586 | **53.3%** | 0.400 |
+| ours: paired English, epoch 2 | 0.473 | 0.568 | **52.1%** | 0.404 |
+| ours: raw imports, epoch 2 | 0.470 | 0.579 | **52.4%** | 0.408 |
+| ours: from the terminal CPT checkpoint | 0.429 | 0.540 | **48.4%** | 0.328 |
+
+**Reading.** Our best run sits level with Apertus-8B-Instruct on instruction following (56.2% vs 56.0%) and 11 points below Krikri. On Greek math every one of our runs is below Apertus-8B-Instruct (0.40 vs 0.53) and far below Krikri (0.68) and Gemma (0.91). Greek CPT plus twenty thousand SFT rows did not buy math; the peers were trained on millions of rows including math and constraint data. Meltemi is below all of ours on both.
+
+## Blind reading, round two (Claude as rater, tone axis)
+
+Rescored by Claude, blind, on all 13 runs × 40 prompts with a tone axis (warmth, unsolicited commands, chatbot mannerisms). Page: https://claude.ai/code/artifact/fa8d4fa7-f210-4a1f-8ae5-9bb6d2814e97 · summary in results/reading2/summary.md. Headline: epoch 3 reads better than epoch 2 on answer quality (Greek prompts 3.52 vs 3.22, rater noise 0.1), all fine-tuned runs are tonally flat (warmth ≈ 3.0), mannerisms are rare and concentrated on two prompts, and six failures are shared by every run (list loops, the Caribbean 'we', arithmetic with two multipliers, the dementia vignette, exact-count constraints).
