@@ -42,7 +42,8 @@ Calibration on 100 Dolci puzzle rows against the exact checker (`~/sft_annot/cal
 | judge | rows Luna/Sol called wrong | actually wrong (checker) | false drops | missed wrong |
 |---|---|---|---|---|
 | Luna, 51 zebra puzzles | 11 | 8 | 6 | 3 |
-| Sol, same 100 rows | PENDING, fills in when the run ends | | | |
+| Sol, same 51 zebra puzzles | 10 | 8 | 4 | 2 |
+| word sorts, 49 rows, all correct per checker | Luna 0, Sol 0 called wrong | 0 | 0 | 0 |
 
 Sol as second opinion on Luna's "wrong answer" drops in OpenAssistant (`~/sft_annot/labels/dolci_chat.sol.jsonl`): 487 rows,
 349 confirmed, 138 overturned (28%). Examples of overturns: the counterfeit-bill puzzle (Luna 140, Sol 100, Sol right), a
@@ -66,8 +67,9 @@ Verifiable Reasoning PENDING.
 3. **Cannot verify numbers or logic.** Mitigation: checkers wherever the task has one.
 4. **Strengths worth keeping it for:** identity 4 of 4 with no false positives; consistent tone labels; 3,900 to 5,000 rows an hour.
 
-Sol's own errors are not caught by a third judge. What bounds them: the checker calibration (pending numbers above), the 300-row
-spot-checks, and the owner's blind reads.
+Sol's own errors are not caught by a third judge. What bounds them: the checker calibration above (Sol on puzzles: 4 false drops among 43
+correct rows, 9%, and 2 of 8 wrong rows missed, against Luna's 6 and 3; better, not clean, at 825 rows an hour on this reasoning-heavy
+material), the 300-row spot-checks, and the owner's blind reads. Consequence: where a checker exists it stays the authority over Sol too.
 
 ## 5. Files and how to reproduce every number
 
