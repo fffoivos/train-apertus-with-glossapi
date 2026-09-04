@@ -196,3 +196,40 @@ when its evals finish.)
 
 Mean Greek dev loss: reference 1.370, E2 1.368 (-0.001; seed floor ≈ 0.02 on the mean). The English twin dev set
 (`no_robots_en_pov`, held out on both sides) is where E2 should move: 1.861 → 1.716. Light evals of E2 follow.
+
+
+## Seed-only floor on the light evals (E1_cos seed 43 vs 44)
+
+| metric | seed 43 | seed 44 | gap |
+|---|---|---|---|
+| ifeval_greek strict | 0.460 | 0.470 | 0.010 |
+| mgsm_greek | 0.416 | 0.444 | 0.028 |
+| gate stop rate | 0.88 | 0.92 | 0.04 |
+| voice Delta | 1.000 | 0.946 | 0.054 |
+| interview mean | 2.61 | 2.59 | 0.02 |
+
+So the grid winner's edge over the cosine reference on voice (0.853 vs ~0.97) and interviews (2.83 vs ~2.60) is
+larger than seed noise — the constant-lr epoch-2 checkpoint reads better than the cosine endpoint. Worth an owner look:
+phase B is trained with the cosine schedule (the recipe's), so its reference is the cosine pair.
+
+## Phase B dev losses at epoch 2 — E2 and E3 vs the E1 reference
+
+| config | E1 reference (2 seeds) | E2 | E3 (skills + fr/de, Greek POV) |
+|---|---|---|---|
+| apertus_en | 1.256 | 1.361 (+0.105) | 1.144 (-0.112) |
+| coconot | 1.587 | 1.596 (+0.009) | 1.587 (+0.000) |
+| euroblocks_de | 1.602 | 1.573 (-0.029) | 1.475 (-0.127) |
+| euroblocks_fr | 1.466 | 1.433 (-0.033) | 1.308 (-0.158) |
+| everyday | 1.211 | 1.209 (-0.002) | 1.213 (+0.002) |
+| no_robots | 1.453 | 1.454 (+0.001) | 1.457 (+0.004) |
+| no_robots_en_pov | 1.861 | 1.716 (-0.145) | 1.908 (+0.047) |
+| oasst | 1.462 | 1.413 (-0.049) | 1.407 (-0.055) |
+| personas_if | 1.400 | 1.376 (-0.024) | 1.374 (-0.026) |
+| smolcon | 1.121 | 1.164 (+0.042) | 1.170 (+0.048) |
+| systemchats | 1.352 | 1.367 (+0.015) | 1.367 (+0.015) |
+
+Mean Greek dev loss: reference 1.370, E3 1.368 (-0.002). Where the mixes are supposed to move the model:
+E2 on the English twins (`no_robots_en_pov` 1.861 → 1.716), E3 on the skills and fr/de slices
+(`apertus_en` 1.256 → 1.144, `euroblocks_fr` 1.466 → 1.308, `euroblocks_de` 1.602 → 1.475). Greek dev loss is unchanged by either mix
+(within the 0.02 seed floor). E3′ (the same rows raw) is training; its dev loss on the adapted dev sets is the
+adaptation question's first number, the light evals the second.
