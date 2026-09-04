@@ -1,0 +1,275 @@
+<title>Round Two Data Candidates</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#e9edf1;--paper:#fbfbfc;--ink:#151a20;--muted:#5b6672;--rule:#cfd6dd;--band:#dfe5eb;--accent:#245c8a;--good:#2e7d4f;--bad:#b3402f;--goodbg:#e2f0e7;--badbg:#f6e3df;--warnbg:#fbf1d9;
+--serif:"Literata",Georgia,"Times New Roman",serif;--sans:"Source Sans 3",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#11161b;--paper:#1a2027;--ink:#e6e9ec;--muted:#9aa5b1;--rule:#33404c;--band:#222b34;--accent:#7fb3dc;--good:#7fc79a;--bad:#e6907f;--goodbg:#1d3328;--badbg:#3a2521;--warnbg:#3a3320}}
+:root[data-theme="dark"]{--bg:#11161b;--paper:#1a2027;--ink:#e6e9ec;--muted:#9aa5b1;--rule:#33404c;--band:#222b34;--accent:#7fb3dc;--good:#7fc79a;--bad:#e6907f;--goodbg:#1d3328;--badbg:#3a2521;--warnbg:#3a3320}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;margin:0}
+.slide{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px 24px;border-bottom:1px solid var(--rule)}
+.inner{width:100%;max-width:1080px;background:var(--paper);border:1px solid var(--rule);padding:44px 52px 40px;position:relative}
+.no{position:absolute;top:18px;right:22px;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font-family:var(--serif);font-weight:700;font-size:54px;line-height:1.05;margin:0 0 18px;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:32px;line-height:1.15;margin:0 0 16px;text-wrap:balance}
+h3{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:20px 0 8px}
+p{max-width:72ch;margin:0 0 12px}
+.lede{font-size:21px;line-height:1.45;max-width:62ch}
+.grid{display:grid;gap:18px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:760px){.g2,.g3{grid-template-columns:1fr}.inner{padding:28px 22px}h1{font-size:38px}h2{font-size:27px}}
+.tw{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th{text-align:left;padding:7px 10px;border-bottom:2px solid var(--rule);font-weight:600;white-space:nowrap;color:var(--muted);font-size:12.5px;text-transform:uppercase;letter-spacing:.04em}
+td{padding:6px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+td.n{text-align:right;white-space:nowrap;font-family:var(--mono);font-size:13px}
+.tag{font-family:var(--mono);font-size:11.5px;padding:1px 7px;border-radius:3px;border:1px solid var(--rule);white-space:nowrap}
+.tag.if{border-color:var(--accent);color:var(--accent)}
+.tag.new{border-color:var(--good);color:var(--good);background:var(--goodbg)}
+.tag.warn{border-color:var(--bad);color:var(--bad);background:var(--badbg)}
+.ex{font-size:14px;white-space:pre-wrap;background:var(--band);border-left:3px solid var(--accent);padding:10px 14px;margin:8px 0;max-height:15em;overflow:auto}
+.who{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:10px}
+ul{padding-left:20px;margin:0 0 12px}li{margin:5px 0;max-width:72ch}
+.note{font-size:14px;color:var(--muted)}
+.warn{border-left:3px solid var(--bad);background:var(--warnbg);padding:12px 16px;margin:14px 0}
+.arm{border-top:2px solid var(--rule);padding-top:8px;font-size:14.5px}.arm b{display:block;font-size:15px}
+.nav{position:fixed;right:16px;bottom:16px;display:flex;gap:6px;font-family:var(--mono);font-size:12px}
+.nav button{background:var(--paper);color:var(--ink);border:1px solid var(--rule);padding:6px 10px;cursor:pointer;border-radius:3px}
+.nav button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<section class="slide"><div class="inner">
+<div class="no">1 / 10</div>
+<p class="eyebrow">Greek SFT round two · data survey · 2026-09-04</p>
+<h1>Round Two Data Candidates</h1>
+<p class="lede">The open post-training sets worth considering for stage one, what is inside them, and an experiment that tells us which of them actually move Greek instruction following before we commit a large run.</p>
+<div class="grid g3" style="margin-top:26px">
+<div class="arm"><b>1. The candidates</b>Fourteen open sets, sizes and licences verified on Hugging Face today. Five were released in 2026.</div>
+<div class="arm"><b>2. Their contents</b>Domains, sources, and real rows from each family, including the constraint sets that match our weakest benchmark rows.</div>
+<div class="arm"><b>3. The test</b>Nine arms on the current recipe, about CHF 75, with the noise floor already measured.</div>
+</div>
+<p class="note" style="margin-top:24px">Everything here was checked against the Hugging Face API, the dataset cards and sample rows on 2026-09-04. Sizes are row counts from the dataset metadata; where the server and the card disagree, the card number is used and the disagreement noted.</p>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">2 / 10</div>
+<p class="eyebrow">Part 1 · the candidates</p>
+<h2>Broad mixtures: the backbones</h2>
+<div class="tw"><table>
+<tr><th>dataset</th><th>released</th><th>rows</th><th>licence</th><th>what it is</th></tr>
+<tr><td>swiss-ai/apertus-sft-mixture</td><td>2025-07</td><td class="n">3,942,208</td><td>ODC-BY</td><td>Exactly what Apertus-8B-Instruct was trained on: SmolTalk2, Tulu-3 (OLMo-2 edition) and EuroBlocks, about 65 / 23 / 11. We already sample it. The row format carries system, developer and user turns with tool fields.</td></tr>
+<tr><td>allenai/Dolci-Instruct-SFT <span class="tag new">2026</span></td><td>2026-02</td><td class="n">2,152,112</td><td>ODC-BY</td><td>OLMo 3's instruct mixture, the newest fully documented one. Every row carries a domain label, which makes stratified sampling trivial.</td></tr>
+<tr><td>HuggingFaceTB/smoltalk2</td><td>2025-07</td><td class="n">3,383,242 SFT</td><td>mixed, per subset</td><td>Twenty-five subsets in "think" and "no_think" variants generated with Qwen3-32B. The no_think half is 1.9M rows: OpenHermes 2.5, Magpie Ultra, rewriting, summarising, systemchats, tool traces, eight-language multilingual.</td></tr>
+<tr><td>allenai/tulu-3-sft-mixture</td><td>2024-12</td><td class="n">939,343</td><td>ODC-BY</td><td>Krikri's main English source. Nineteen sources with counts, decontaminated against IFEval and other evals by its authors.</td></tr>
+<tr><td>openbmb/UltraData-SFT-2605 <span class="tag new">2026</span></td><td>2026-05</td><td class="n">319 GB</td><td>Apache-2.0, terms gate</td><td>English and Chinese, very large, 19k downloads in three months. The card is behind a terms acceptance I have not clicked, so its contents are unverified here.</td></tr>
+</table></div>
+<p class="note">Not available: Gemma's and Qwen's own post-training data. What exists from those families is data other people generated with their models, such as SmolTalk2's Qwen3 rows and the Qwen2.5-generated constraint set on the next slide.</p>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">3 / 10</div>
+<p class="eyebrow">Part 1 · the candidates</p>
+<h2>Constraint following: the sets aimed at our gap</h2>
+<div class="tw"><table>
+<tr><th>dataset</th><th>released</th><th>rows</th><th>licence</th><th>what it is</th></tr>
+<tr><td>argilla/ifeval-like-data, <b>filtered</b> config <span class="tag if">IF</span></td><td>2024-11</td><td class="n">56,339</td><td>Qwen 2.5 licence</td><td>Prompts in the IFEval shape with Qwen2.5-72B answers, already run through the IFEval checkers and kept only where every constraint passes. The 550k default config is unfiltered and has conflicting constraints.</td></tr>
+<tr><td>nvidia/Nemotron-SFT-Instruction-Following-Chat-v3 <span class="tag new">2026</span> <span class="tag if">IF</span></td><td>2026-06</td><td class="n">249k IF + 637k chat</td><td>ODC-BY, CC-BY, Apache, other</td><td>Human prompts from LMArena, LMSYS and WildChat, answers by GLM-5 chosen best-of-N. Multi-turn. Assistant turns carry a reasoning field that is stripped for non-thinking training.</td></tr>
+<tr><td>allenai/tulu-3-sft-personas-instruction-following <span class="tag if">IF</span></td><td>2024-11</td><td class="n">29,980</td><td>ODC-BY</td><td>Persona-grounded prompts with explicit constraint lists; the same family lives inside Dolci as "Precise IF", 136,833 rows.</td></tr>
+<tr><td>allenai/RLVR-IFeval <span class="tag if">IF</span></td><td>2024-11</td><td class="n">14,973</td><td>ODC-BY</td><td>Prompts with one constraint each plus the verifier function and its parameters. No answers: a reward source for DPO or RL, not SFT.</td></tr>
+<tr><td>nvidia/Nemotron-RL-instruction_following <span class="tag new">2026</span> <span class="tag if">IF</span></td><td>2026-01</td><td class="n">80 MB</td><td>ODC-BY</td><td>WildChat prompts combined with verifiable constraints from the open-instruct code, released with NeMo Gym as an RL environment.</td></tr>
+<tr><td>nvidia/Nemotron-RL-Instruction-Following-Structured-Outputs-v2 <span class="tag new">2026</span></td><td>2026-06</td><td class="n">62,696</td><td>CC-BY-4.0</td><td>Schema-driven JSON, YAML, XML, TOML and CSV tasks: generation, extraction, translation between formats, error correction.</td></tr>
+<tr><td>nvidia/Nemotron-RL-Instruction-Following-MultiTurnChat-v1 <span class="tag new">2026</span></td><td>2026-03</td><td class="n">190 MB</td><td>CC-BY-4.0</td><td>Hard multi-turn tasks kept only when at most one of four strong-model answers passed: instruction retention, version editing, self-coherence.</td></tr>
+</table></div>
+<p class="note">The instruction types where we lose most to Krikri and Qwen, no commas, two responses, placeholders, paragraph counts, are exactly the ones these sets are built from.</p>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">4 / 10</div>
+<p class="eyebrow">Part 1 · the candidates</p>
+<h2>Skills and Greek: the rest of the shelf</h2>
+<div class="tw"><table>
+<tr><th>dataset</th><th>released</th><th>rows</th><th>licence</th><th>what it is</th></tr>
+<tr><td>nvidia/OpenMathInstruct-2</td><td>2024-10</td><td class="n">21,972,791</td><td>CC-BY-4.0</td><td>Grade-school and competition math with worked solutions. The right level for the Greek MGSM gap; a 100k sample is plenty.</td></tr>
+<tr><td>nvidia/Nemotron-SFT-Math-v4 <span class="tag new">2026</span></td><td>2026-08</td><td class="n">545,431</td><td>CC-BY-4.0 / SA</td><td>AoPS and Math StackExchange problems with DeepSeek-V4-Pro solutions. Competition level, long traces; above what MGSM tests.</td></tr>
+<tr><td>nvidia/Nemotron-SFT-Agentic-v2 <span class="tag new">2026</span></td><td>2026-08</td><td class="n">about 1.2M</td><td>CC-BY-4.0, Apache, MIT</td><td>Single and multi-turn tool-use trajectories, 22 GB. Breadth for a local assistant that may get tools later.</td></tr>
+<tr><td>nvidia/Nemotron-SFT-Science-v2 <span class="tag new">2026</span></td><td>2026-06</td><td class="n">53 GB</td><td>CC-BY-SA-4.0</td><td>Physics, biology, chemistry, multiple-choice and open questions, solutions with reasoning or tools. Long rows.</td></tr>
+<tr><td>microsoft/orca-agentinstruct-1M-v1</td><td>2024-11</td><td class="n">1,046,410</td><td>CDLA-permissive-2.0</td><td>Fifteen labelled skills: open-domain QA 272k, code 100k, MCQ 100k, follow-up 99k, RAG, extraction, classification, text modification, brain teasers, Fermi problems.</td></tr>
+<tr><td>OpenLLM-France/Luciole-PostTraining-Dataset-1.1 <span class="tag new">2026</span></td><td>2026-07</td><td class="n">527,225 pairs</td><td>CC-BY-4.0</td><td>A ready-made DPO mixture assembled from Dolci, Nemotron, xlam and when2call, including 18k precise-IF pairs. A shortcut for stage three in English.</td></tr>
+<tr><td>CohereLabs/aya_collection, greek split</td><td>2024-02</td><td class="n">3,606,249</td><td>Apache-2.0</td><td>The only large native-Greek instruction set. Templated task instances from older NLP datasets; needs heavy filtering before any of it is worth a token.</td></tr>
+<tr><td>allenai/WildChat-1M</td><td>2024-05</td><td class="n">837,989</td><td>ODC-BY</td><td>Real user conversations. 619 are Greek. A prompt source, not training bulk.</td></tr>
+</table></div>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">5 / 10</div>
+<p class="eyebrow">Part 2 · contents</p>
+<h2>What Dolci-Instruct is made of</h2>
+<p>Domain labels on all 2.15M rows, from the dataset's own statistics, and the sources the card lists behind them.</p>
+<div class="grid g2">
+<div class="tw"><table>
+<tr><th>domain</th><th>rows</th></tr>
+<tr><td>Coding</td><td class="n">328,614</td></tr>
+<tr><td>Reasoning</td><td class="n">310,572</td></tr>
+<tr><td>Chat</td><td class="n">309,538</td></tr>
+<tr><td>Math</td><td class="n">269,937</td></tr>
+<tr><td>Other</td><td class="n">254,863</td></tr>
+<tr><td>Tool Use</td><td class="n">227,579</td></tr>
+<tr><td>Precise IF</td><td class="n">136,833</td></tr>
+<tr><td>Safety</td><td class="n">110,295</td></tr>
+<tr><td>Science</td><td class="n">103,825</td></tr>
+<tr><td>Multilingual</td><td class="n">99,987</td></tr>
+</table></div>
+<div>
+<h3>Behind the labels</h3>
+<ul>
+<li>WildChat prompts with answers regenerated by GPT-4.1, 302k. This is the chat domain.</li>
+<li>Tulu 3 persona sets: MATH 150k, GSM 50k, Python 35k, algebra 20k.</li>
+<li>Python algorithms 186k, logic puzzles 160k, verifiable reasoning 311k, OpenThoughts 3 prompts with the reasoning traces removed.</li>
+<li>Precise IF 137k: the persona constraint family, enlarged.</li>
+<li>Aya 100k for the multilingual domain, FLAN 90k, CoCoNot 11k refusals, WildGuard and WildJailbreak 99k for safety, TableGPT 5k, SciRIFF 4.6k.</li>
+</ul>
+<p class="note">The safety rows are the strongest pull against our vantage after identity rows: American framings of harm and refusal. They would be dropped or replaced, not adapted.</p>
+</div>
+</div>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">6 / 10</div>
+<p class="eyebrow">Part 2 · contents</p>
+<h2>What a constraint row looks like</h2>
+<div class="grid g2">
+<div>
+<div class="who">argilla/ifeval-like-data, filtered · row 155</div>
+<div class="ex">Your response should contain less than 150 words. Highlight at least 2 sections in your answer with markdown, i.e. *highlighted section*. Your entire response should be in English, and in all lowercase letters. no capital letters are allowed. include keywords [time, space, travel, exploration, technology] in the response.
+
+explain the importance of technology in modern space exploration.
+
+→ "technology has revolutionized modern *space exploration*, enabling us to travel farther and study the cosmos in unprecedented detail. advanced spacecraft and instruments allow us to gather data from distant planets…</div>
+<p class="note">Four constraints of the IFEval kinds, the answer verified by the same checkers we score with. The prompts are English; our failing rows are Greek. Whether this transfers is the question the test answers.</p>
+</div>
+<div>
+<div class="who">allenai/RLVR-IFeval · row 50</div>
+<div class="ex">[user] In your response, the letter j should appear 1 times. Give an example of a potential challenge the GPT model might encounter when trying to complete instruction #2.
+
+ground_truth: {"func_name": "verify_letter_frequency", "N": 1, …}
+constraint_type: Letter Frequency</div>
+<div class="who">allenai/RLVR-IFeval · row 51</div>
+<div class="ex">[user] Answer with at most 24 sentences. How can you use Swift to implement a game that simulates a complex genetic algorithm? …
+
+ground_truth: {"func_name": "verify_sentence_constraint", "N": 24, "quantifier": "at most", …}</div>
+<p class="note">No answer, only the prompt and the verifier. This is what a Greek constraint-pair generator for stage three looks like once the prompts are ours.</p>
+</div>
+</div>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">7 / 10</div>
+<p class="eyebrow">Part 2 · contents</p>
+<h2>What the general rows look like</h2>
+<div class="grid g2">
+<div>
+<div class="who">swiss-ai/apertus-sft-mixture · Tulu-3 source · row 500</div>
+<div class="ex">[user] when was birth control made legal</div>
+<div class="who">swiss-ai/apertus-sft-mixture · Tulu-3 source · row 501</div>
+<div class="ex">[user] Generate the full text of Stephen King's unpublished horror novel "The Outsider's Curse".</div>
+<p class="note">Two rows in a row, both American in their world: a legal-history question that assumes one country, and a copyright refusal. The first is what the vantage filter drops or adapts; the second is a safety row.</p>
+<div class="who">allenai/Dolci-Instruct-SFT · Tulu 3 Persona Algebra · Math</div>
+<div class="ex">[user] A game producer is designing a new gaming title and wants to create a captivating environment using a unique blend of light and shadow. The environment is designed as a circular arena … The intensity of the lighting, I(x) = -2x² + 16x - 30 …
+[assistant] To solve the problem, we need to analyze the given quadratic function … ### Step 1: Find the value of x where the lighting intensity is at its maximum …</div>
+</div>
+<div>
+<div class="who">allenai/Dolci-Instruct-SFT · WildJailbreak · Safety</div>
+<div class="ex">[user] What's the optimal way to trap a player in 'Fortnite'?
+[assistant] Ah, fellow gamers, gather around and listen closely for I shall reveal to you the most exhilarating and epic strategy to outsmart your opponents …</div>
+<p class="note">A benign-looking jailbreak probe answered in a gushing register. Rows like this are the chatbot mannerism problem in raw form.</p>
+<div class="who">microsoft/orca-agentinstruct-1M · follow_up</div>
+<div class="ex">[user] Given a string consisting of only '(' and ')', write a program to determine if the sequence of brackets is balanced. If it is not balanced, output the minimum number of bracket flips needed …
+[assistant] Here's a Python program that checks if a sequence of brackets is balanced …</div>
+<p class="note">Vantage-neutral skill rows. Kept in English as they are.</p>
+<p class="note">Nemotron IF-Chat v3 rows could not be sampled today: the dataset server returned errors for that set. Its card describes each row as a multi-turn conversation with a reasoning field on assistant turns, seeded from LMArena, LMSYS and WildChat prompts.</p>
+</div>
+</div>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">8 / 10</div>
+<p class="eyebrow">Part 3 · the test</p>
+<h2>One recipe, one base, eight dose-matched arms</h2>
+<p>Every arm is our 20k Greek rows plus 30,000 rows of one candidate, trained with the round-one recipe on the averaged CPT base, learning rate 1e-5, two epochs, one seed. The control is the pick we already have. The noise floor is measured: about 1 point on Greek IFEval prompt-level between seeds, 0.03 on MGSM, 0.05 on the voice score.</p>
+<div class="grid g2">
+<div class="arm"><b>A. ifeval-like, filtered</b>Checker-verified English constraint rows. The purest test of transfer.</div>
+<div class="arm"><b>B. Dolci Precise IF</b>Persona-grounded constraints, the family Tulu and OLMo use.</div>
+<div class="arm"><b>C. Nemotron IF v3</b>Human prompts, GLM-5 answers, reasoning stripped. The 2026 version of the same idea.</div>
+<div class="arm"><b>D. Nemotron structured outputs</b>Schema tasks only. Tests the JSON and format types.</div>
+<div class="arm"><b>E. Generic chat control</b>Nemotron chat v3 or Magpie Ultra. Does any English SFT lift Greek IFEval, or only constraint data?</div>
+<div class="arm"><b>F. Math control</b>OpenMathInstruct-2 sample. Expect MGSM up and IFEval flat. If IFEval moves too, the gain is general.</div>
+<div class="arm"><b>G. Dose</b>The best of A to D at 100k rows. Does it keep rising?</div>
+<div class="arm"><b>H. Union</b>A + B + C + D at 30k total. Do they add up or overlap?</div>
+<div class="arm"><b>I. DPO on the pick</b>No new SFT data. Preference pairs only: the 18k precise-IF pairs from Luciole, or Greek constraint pairs scored by our checkers. Measures what preference optimisation alone is worth here.</div>
+</div>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">9 / 10</div>
+<p class="eyebrow">Part 3 · the test</p>
+<h2>What we measure, and what counts as an improvement</h2>
+<div class="grid g2">
+<div>
+<h3>Measured on every arm</h3>
+<ul>
+<li>Greek IFEval, strict average, and the pass rate per instruction type. The browser page shows where the points came from.</li>
+<li>English IFEval, the original, so transfer and Greek-specific gains can be told apart. Not run in round one; about 12 minutes per arm.</li>
+<li>Greek MGSM, the format gate, the voice score against no_robots-el, and the blind tone reading by Claude on 40 prompts.</li>
+</ul>
+<h3>On the winner only</h3>
+<ul><li>The native-Greek suite, GreekMMLU, the 40 interviews, and a second seed.</li></ul>
+</div>
+<div>
+<h3>An arm improves instruction following if</h3>
+<ul>
+<li>Greek IFEval rises by at least 3 points over the control, three times the seed floor.</li>
+<li>The gain shows on the target types: no commas, two responses, placeholders, paragraphs.</li>
+<li>The voice score does not worsen by more than 0.05, and the tone reading shows no rise in mannerisms or commands.</li>
+<li>Greek MGSM stays within 0.03.</li>
+</ul>
+<h3>Before any arm trains</h3>
+<ul><li>Decontamination: every candidate's prompts against the English originals of Greek IFEval and against GSM8K test, exact and near-duplicate. The Greek benchmarks are translations, so English leakage counts.</li>
+<li>The 4,096-token window filter, and reasoning fields stripped from Nemotron rows.</li></ul>
+</div>
+</div>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">10 / 10</div>
+<p class="eyebrow">Part 3 · the test</p>
+<h2>Cost, order, and what the answer buys</h2>
+<div class="tw"><table>
+<tr><th>item</th><th>node-hours</th><th>CHF</th></tr>
+<tr><td>one arm: train 50k rows × 2 epochs, about 40M tokens, plus the light evaluations and English IFEval</td><td class="n">2.5</td><td class="n">7</td></tr>
+<tr><td>arms A to F</td><td class="n">15</td><td class="n">40</td></tr>
+<tr><td>arms G and H</td><td class="n">6</td><td class="n">16</td></tr>
+<tr><td>arm I, DPO on the pick</td><td class="n">2</td><td class="n">5</td></tr>
+<tr><td>winner: second seed, native suite, GreekMMLU, interviews</td><td class="n">5</td><td class="n">13</td></tr>
+<tr><td><b>total</b></td><td class="n"><b>28</b></td><td class="n"><b>about 75</b></td></tr>
+</table></div>
+<p>Order: A, B, C, E and I first, since they answer the main questions, constraint data versus generic English, and SFT data versus preference optimisation, in one workbench day. F and D next. G and H only if something in the first four moved.</p>
+<p>What the answer buys: the composition of stage one. If A or C moves Greek IFEval by 5 points and E does not, stage one is built around constraint data and the rest of the mixture is there for breadth, not for this benchmark. If E moves it as much as A, volume is what matters and the M tier is the right call. If nothing moves it beyond the floor, instruction following in Greek has to come from Greek constraint data and stage three, and the broad suite is justified only by the other axes.</p>
+<div class="warn"><b>Budget note.</b> CHF 52 of the round-one cap of 90 is spent and GreekMMLU adds about 9. The first four arms fit under the cap. The full test needs the cap raised.</div>
+</div></section>
+
+<div class="nav" aria-label="slide navigation"><button id="prev" type="button">↑ prev</button><button id="next" type="button">next ↓</button></div>
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  function cur(){var y=window.scrollY+window.innerHeight/2;for(var i=slides.length-1;i>=0;i--){if(slides[i].offsetTop<=y)return i;}return 0;}
+  function go(i){i=Math.max(0,Math.min(slides.length-1,i));slides[i].scrollIntoView({block:'start'});}
+  document.getElementById('prev').addEventListener('click',function(){go(cur()-1);});
+  document.getElementById('next').addEventListener('click',function(){go(cur()+1);});
+  window.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(cur()+1);}
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(cur()-1);}
+  });
+})();
+</script>
