@@ -26,3 +26,4 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-04 03:40 | probe20 | job 3286621 | claude | workbench (debug 01:29) opened; 20-step trainer probe launched (smoke.yaml, --max-steps 20) while R1b re-review runs in parallel (trade-off logged: probe is mechanical, CHF <1) | 0.5/— | 2.00 |
 | 2026-09-04 04:22 | probe20 | job 3286621 | claude | GREEN after 3 fixes (out-dir, hub for kernel, nvtx): 20 steps, loss 1.75→1.69, ~7.3k tok/s/node (26M tok/nh, 1.7× Meditron); eval + epoch snapshot OK → G2; smoke skipped | 0.5/— | 2.00 |
 | 2026-09-04 04:26 | gridA run1 | job 3286621 | claude | E1_lr1e-5_3ep_const launched on the probe workbench (1:13 left; est. 55 min) | 1.5/— | 2.00 |
+| 2026-09-04 04:35 | R1b | 1 | claude-fable-5 (asserted) | VERDICT: both fixes verified firsthand; BLOCKERS 0, HIGH 0; 3 LOW doc-drift items fixed | 0/0 | 2.00 |

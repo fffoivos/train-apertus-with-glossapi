@@ -59,7 +59,7 @@
    "note": "SUPERSEDES the build: ilsp/ifeval_greek (541, IFEval schema) and ilsp/mgsm_greek (250) exist publicly — wrap them as lm-eval tasks with Greek-aware checkers"
   },
   "R1_review": {
-   "status": "done 03:15: BLOCKERS 0, HIGH 2 (F1 en_pov dev-twin leak; F2 batch-unit ambiguity) — both fixed 03:25 (twin dev ids; 16 packed seqs/step), re-review R1b launched; F3–F6 LOW logged",
+   "status": "done: R1 BLOCKERS 0 HIGH 2 → fixed → R1b BLOCKERS 0 HIGH 0 (claude-fable-5 asserted); data + trainer CERTIFIED 04:35; LOW doc drift fixed",
    "deps": [
     "WP0_data",
     "WP2_trainer"
