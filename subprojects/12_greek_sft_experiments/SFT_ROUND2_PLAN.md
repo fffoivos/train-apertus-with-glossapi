@@ -1,4 +1,4 @@
-# Greek SFT, round two: plan (draft 1, 2026-09-04)
+# Greek SFT, round two: plan (draft 2, 2026-09-04)
 
 Owner's brief: select broad public SFT suites without being conservative; filter or adapt only the rows that pull hardest
 against Greek-centredness; then tune a personality that knows it is a Greek model made by ΕΕΛΛΑΚ, running locally, talking
@@ -105,12 +105,17 @@ the template at inference.
 
 ## 4. Stage 3, preference
 
-Three pair sources. Constraint pairs: fresh Greek prompts with IFEval-shaped constraints, several samples from the stage-2
-model, scored by the checkers, pass versus fail as chosen versus rejected. Free to score, and aimed at the exact rows we
-lose to Krikri: commas, two responses, placeholders, paragraph counts. Judged pairs: Greek and cross-language prompts from
-the interview and WildChat-Greek distributions, two samples, Sol and Opus as judges with the round-one rubric plus tone.
-Identity pairs: the personality probe distribution, chosen answers consistent with the persona, rejected answers that claim
-another identity or the chatbot register. DPO with the stage-2 model as reference, one epoch, then the full suite.
+Three pair sources, two scorers. Constraint pairs: fresh Greek prompts with IFEval-shaped constraints, several samples from
+the stage-2 model, scored by the checkers, pass versus fail as chosen versus rejected. Identity pairs: the personality probe
+distribution, scored by rules. Judged pairs: Greek and cross-language prompts from the interview and WildChat-Greek
+distributions, two samples, Sol as the only judge with the round-one rubric plus tone. Opus is not used anywhere in the
+batch path: it shares the owner's Claude quota and throttles on the five-hour window. DPO with the stage-2 model as
+reference, one epoch, then the full suite.
+
+The evidence for the stage: Tulu 3 on the same base family as Krikri gains 8 points of IFEval from DPO at 8B (72.8 to
+81.1) and 1 to 2 more from verifiable-reward RL; at 70B the DPO gain is under a point. Tulu 3 used about 270k pairs. That
+scale is affordable on GPU (roughly 30 to 40 node-hours for one epoch) and the judged share is bounded by Sol's throughput,
+which is one of the numbers to measure below.
 
 ## 5. Evaluation gates
 
@@ -119,20 +124,53 @@ with the tone axis, the native-Greek suite, GreekMMLU on the stage-end checkpoin
 must not lose native-suite or GreekMMLU points against the CPT base beyond noise. Stage 2 must recover the wave-1 voice
 score and pass the identity probe. Stage 3 must beat stage 2 on Greek IFEval without losing on the reading.
 
-## 6. Budget and time
+## 6. Speeds: what is measured, what is not, and the tests that settle it
+
+Every duration in this plan rests on a handful of rates. Half are measured from round one; the other half are guesses
+until a short test replaces them. The tests are cheap and most run inside work we want anyway.
+
+**Measured in round one**
+
+| rate | value | source |
+|---|---|---|
+| SFT training, packed 4,096-token sequences, one node | 26M tokens per node-hour | E1 runs, 3 epochs of 20k Greek rows in 32 minutes |
+| Greek rows | about 230 tokens each | the dev split |
+| light evaluations per checkpoint (IFEval, MGSM, gate, voice, 40 interviews) | about 0.5 node-hour, 25 minutes of wall-clock | 14 checkpoints |
+| Greek IFEval plus MGSM on a peer model, batch 32 | 35 to 55 minutes for 8B to 12B | five peers today |
+| native-Greek suite, four lanes | about 1 node-hour per model | four checkpoints |
+| GreekMMLU, frozen fp32 scorer | 2.8 hours per model, cannot be split | today's batch |
+| Sol adaptation pipeline, 16 generation and 24 edit workers | about 20k rows per week | wave 1 |
+
+**Not measured yet, with the test that measures it**
+
+| rate | guess | test | cost |
+|---|---|---|---|
+| SFT throughput on external rows, about 600 tokens each, after the 4,096 filter | same tokens per node-hour | 50k Dolci rows, one epoch, timed | 0.6 node-hour |
+| data preparation: download, filter, decontaminate, tokenise 1M rows | hours on the login node | 100k rows end to end, timed | no GPU |
+| Sol judging throughput, short rubric, 24 workers | about 3,000 pairs per hour | 500 pairs, timed | 15 minutes of Sol |
+| Sol generation for the personality set | wave-1 pace | 200 rows from the persona spec, timed | 30 minutes of Sol |
+| on-policy sampling, two answers per prompt | 2 node-hours per 10k with HF generate; a tenth of that with vLLM if present | 1k prompts, both paths if vLLM loads | 0.3 node-hour |
+| DPO training | 1 to 1.5 node-hours per 10k pairs per epoch | arm I: 18k precise-IF pairs on the pick, reference log-probs precomputed | 2 node-hours |
+| multi-node scaling of the trainer | unknown; only needed for tier L | 15-minute run on two nodes | 0.5 node-hour |
+| vantage filter: Sol labelling of the seed set and classifier training | hours | 2k rows labelled, classifier fitted, precision read on 200 held out | 1 hour of Sol |
+
+The first five tests fit in one debug workbench and one afternoon of Sol. Arm I doubles as the first stage-3 measurement.
+
+**Provisional totals, to be replaced by the tests**
 
 | item | node-hours | CHF |
 |---|---|---|
 | stage 1, tier S then M | 30 | 80 |
 | stage 2, two passes | 2 | 5 |
-| stage 3, DPO | 6 | 16 |
+| stage 3, DPO on 100k to 270k pairs | 12 to 40 | 32 to 108 |
 | evaluations, three stage ends | 15 | 40 |
-| total, ladder without L | about 53 | about 140 |
+| timing tests above | 4 | 11 |
+| total, ladder without tier L | 63 to 91 | 170 to 245 |
 | tier L on top | plus 100 | plus 270 |
 
-Round one spent CHF 50 of the 90 cap. The allocation is 779 node-hours. Data preparation is the long pole: filter
-classifier three days, 5k to 10k adapted rows about a week, personality set four days, all overlapping. Stage 1 tier M is a
-day of wall-clock on one node.
+Round one spent CHF 52 of the 90 cap. The allocation is 779 node-hours. Wall-clock is set by Sol, not by GPUs: the
+adapted rows, the personality set and the judged pairs all run through the same 24 workers, so they are scheduled in that
+order and overlap with stage-1 training.
 
 ## 7. Owner decisions before work starts
 
@@ -141,4 +179,5 @@ day of wall-clock on one node.
 3. Backbone: Apertus mixture, or Dolci as the newer fully open set.
 4. Include the Aya Greek split after filtering, or leave native Greek to our own rows.
 5. Accept Qwen3-generated rows from SmolTalk2. Apache-licensed outputs, no restriction.
-6. A new spending cap for the round, CHF 250 covers the ladder and DPO with margin.
+6. A new spending cap for the round. CHF 250 covers the ladder and a 100k-pair DPO; a 270k-pair DPO needs about CHF 300.
+7. Go-ahead for the timing tests, about CHF 11 and one afternoon of Sol, which turn the guesses above into numbers.
