@@ -291,9 +291,18 @@ adaptation question's first number, the light evals the second.
 |---|---|---|---|---|---|
 | E1 reference (seeds 43 / 44) | 0.460 / 0.470 | 0.416 / 0.444 | 0.88 / 0.92 | 1.000 / 0.946 | 2.61 / 2.59 |
 | E2 (+ paired English no_robots) | 0.473 | 0.404 | 0.92 | 0.943 | 2.56 |
-| E3 (+ skills and fr/de, Greek POV) | 0.497 | 0.384 | 0.90 | 0.959 | pending |
+| E3 (+ skills and fr/de, Greek POV) | 0.497 | 0.384 | 0.90 | 0.959 | **2.91** (language discipline 4.08, the best of all arms) |
 | E3′ (same rows, raw) | pending | pending | pending | pending | pending |
 
 E2 sits inside the seed floor on every Greek metric: the paired English rows neither help nor hurt the Greek behaviour
 (they move the English-twin dev loss, as intended). E3 raises Greek IFEval by ~0.03 (three times the seed floor) and lowers
 Greek MGSM by ~0.04 (at the floor's edge, and in the wrong direction for a math slice — worth a look at the MGSM outputs).
+
+
+## E3′ (raw slices) — dev losses at epoch 2, against E3 (adapted slices)
+
+Greek dev sets: E3 1.368, E3′ 1.370 (seed floor 0.02) — the raw slices do not disturb the Greek side either. On the imported
+slices the dev sets are the *adapted* conversations, so E3′ is expected to be worse there and is: apertus_en 1.144 → 1.382,
+euroblocks_fr 1.308 → 1.542, euroblocks_de 1.475 → 1.649. That is a measure of how different the adapted text is,
+not of quality; the adaptation verdict is the light evals (Greek IFEval, MGSM, voice, interviews, and the fr/de/en answers in the
+interviews), landing ~08:10.
