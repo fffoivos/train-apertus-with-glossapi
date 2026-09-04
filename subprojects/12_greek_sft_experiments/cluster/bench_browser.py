@@ -9,7 +9,10 @@ MODELS = [  # id, display name, results label
     ("ep3", "ours · lr 1e-5, epoch 3", "E1_lr1e-5_ep3"),
     ("krikri", "Llama-Krikri-8B-Instruct", "peer_krikri"),
     ("gemma", "Gemma-3-12B-it", "peer_gemma3_12b"),
+    ("qwen", "Qwen3.5-9B (thinking off)", "peer_qwen35_9b"),
 ]
+import os
+MODELS = [m for m in MODELS if glob.glob(f"results/{m[2]}/ilsp/*/samples_ifeval_greek_*.jsonl")]  # skip models not yet run
 FRIENDLY = {
  'punctuation:no_comma':'no commas','length_constraints:number_words':'N words','length_constraints:number_sentences':'N sentences',
  'keywords:forbidden_words':'forbidden words','detectable_format:number_highlighted_sections':'N *highlighted* sections','keywords:frequency':'a word N times',
@@ -109,8 +112,8 @@ main{padding:18px 28px 60px;max-width:1500px;margin:0 auto}
 JS = r"""
 const D = window.__DATA__;
 const $ = s => document.querySelector(s);
-const state = {tab:'ifeval', ours:'pick', type:'all', outcome:'all', q:'', page:0, per:40};
-const PEERS = ['krikri','gemma'];
+const state = {tab:'ifeval', ours:'pick', type:'all', outcome:'all', q:'', page:0, per:40, peerA:'krikri', peerB:'gemma'};
+let PEERS = ['krikri','gemma'];
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function nameOf(id){return D.models.find(m=>m.id===id).name;}
 function fmtKw(kw){return Object.entries(kw).map(([k,v])=>k+'='+(Array.isArray(v)?'['+v.join(', ')+']':v)).join(' · ');}
@@ -123,7 +126,7 @@ function filterIfeval(){
   const q=state.q.toLowerCase();
   return D.ifeval.filter(e=>{
     if(state.type!=='all' && !e.ids.includes(state.type)) return false;
-    const o=e.r[state.ours].ps, k=e.r.krikri.ps, g=e.r.gemma.ps;
+    const o=e.r[state.ours].ps, k=e.r[state.peerA].ps, g=e.r[state.peerB].ps;
     if(state.outcome==='ours_fail_krikri_pass' && !( !o && k)) return false;
     if(state.outcome==='ours_pass_krikri_fail' && !( o && !k)) return false;
     if(state.outcome==='all_pass' && !(o&&k&&g)) return false;
@@ -137,7 +140,7 @@ function filterIfeval(){
 function filterMgsm(){
   const q=state.q.toLowerCase();
   return D.mgsm.filter(e=>{
-    const o=e.r[state.ours].ok, k=e.r.krikri.ok, g=e.r.gemma.ok;
+    const o=e.r[state.ours].ok, k=e.r[state.peerA].ok, g=e.r[state.peerB].ok;
     if(state.outcome==='ours_fail_krikri_pass' && !(!o&&k)) return false;
     if(state.outcome==='ours_pass_krikri_fail' && !(o&&!k)) return false;
     if(state.outcome==='all_pass' && !(o&&k&&g)) return false;
@@ -186,6 +189,8 @@ function init(){
   const ts=$('#type'); const ids=Object.keys(D.friendly).sort((a,b)=>D.friendly[a].localeCompare(D.friendly[b]));
   ts.innerHTML='<option value="all">all instruction types</option>'+ids.map(i=>`<option value="${i}">${esc(D.friendly[i])}</option>`).join('');
   const os=$('#ours'); os.innerHTML=D.models.filter(m=>m.id.startsWith('pick')||m.id==='ep3').map(m=>`<option value="${m.id}">${esc(m.name)}</option>`).join('');
+  const peerOpts=D.models.filter(m=>!(m.id.startsWith('pick')||m.id==='ep3'));
+  for(const [sel,key] of [['#peerA','peerA'],['#peerB','peerB']]){const el=$(sel); el.innerHTML=peerOpts.map(m=>`<option value="${m.id}" ${m.id===state[key]?'selected':''}>${esc(m.name)}</option>`).join(''); el.onchange=()=>{state[key]=el.value;PEERS=[state.peerA,state.peerB];state.page=0;render();};}
   document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;state.page=0;document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();});
   ts.onchange=()=>{state.type=ts.value;state.page=0;render();};
   os.onchange=()=>{state.ours=os.value;state.page=0;render();};
@@ -206,8 +211,10 @@ page = f"""<title>Greek Benchmark Browser</title>
 <div class="ctl">
 <span class="tabs"><button type="button" data-tab="ifeval" aria-pressed="true">Greek IFEval</button> <button type="button" data-tab="mgsm" aria-pressed="false">Greek MGSM</button></span>
 <label>ours = <select id="ours"></select></label>
+<label>peer A <select id="peerA"></select></label>
+<label>peer B <select id="peerB"></select></label>
 <span id="typewrap"><label>type <select id="type"></select></label></span>
-<label>show <select id="outcome"><option value="all">everything</option><option value="ours_fail_krikri_pass">ours fails, Krikri passes</option><option value="ours_pass_krikri_fail">ours passes, Krikri fails</option><option value="ours_pass">ours passes</option><option value="ours_fail">ours fails</option><option value="all_pass">all three pass</option><option value="all_fail">all three fail</option></select></label>
+<label>show <select id="outcome"><option value="all">everything</option><option value="ours_fail_krikri_pass">ours fails, peer A passes</option><option value="ours_pass_krikri_fail">ours passes, peer A fails</option><option value="ours_pass">ours passes</option><option value="ours_fail">ours fails</option><option value="all_pass">all three pass</option><option value="all_fail">all three fail</option></select></label>
 <label>search <input type="search" id="q" placeholder="word in the prompt"></label>
 </div>
 </header>
