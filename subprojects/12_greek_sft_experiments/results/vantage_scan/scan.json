@@ -1,0 +1,888 @@
+{
+ "apertus_mixture": {
+  "hf": "swiss-ai/apertus-sft-mixture",
+  "config": "default",
+  "split": "train",
+  "rows_read": 30000,
+  "seconds": 56,
+  "buckets": {
+   "smoltalk2": {
+    "n": 3000,
+    "share_l1": 0.008,
+    "share_l2": 0.007,
+    "share_l3": 0.0,
+    "share_l2plus": 0.007,
+    "share_identity": 0.0,
+    "share_greek": 0.0,
+    "markers_per_1k_words": 0.16,
+    "top_markers": [
+     [
+      "currency",
+      71
+     ],
+     [
+      "us_civic",
+      47
+     ],
+     [
+      "places",
+      25
+     ],
+     [
+      "units",
+      11
+     ],
+     [
+      "education",
+      6
+     ]
+    ]
+   }
+  }
+ },
+ "dolci": {
+  "hf": "allenai/Dolci-Instruct-SFT",
+  "config": "default",
+  "split": "train",
+  "rows_read": 60000,
+  "seconds": 102,
+  "buckets": {
+   "Coding": {
+    "n": 3000,
+    "share_l1": 0.009,
+    "share_l2": 0.005,
+    "share_l3": 0.002,
+    "share_l2plus": 0.007,
+    "share_identity": 0.002,
+    "share_greek": 0.0,
+    "markers_per_1k_words": 0.33,
+    "top_markers": [
+     [
+      "currency",
+      77
+     ],
+     [
+      "places",
+      26
+     ],
+     [
+      "units",
+      19
+     ],
+     [
+      "us_civic",
+      5
+     ],
+     [
+      "formats",
+      4
+     ]
+    ]
+   },
+   "Precise IF": {
+    "n": 3000,
+    "share_l1": 0.058,
+    "share_l2": 0.063,
+    "share_l3": 0.001,
+    "share_l2plus": 0.064,
+    "share_identity": 0.001,
+    "share_greek": 0.005,
+    "markers_per_1k_words": 3.52,
+    "top_markers": [
+     [
+      "currency",
+      1374
+     ],
+     [
+      "units",
+      378
+     ],
+     [
+      "us_civic",
+      104
+     ],
+     [
+      "places",
+      91
+     ],
+     [
+      "us_institutions",
+      67
+     ]
+    ]
+   },
+   "Other": {
+    "n": 3000,
+    "share_l1": 0.03,
+    "share_l2": 0.013,
+    "share_l3": 0.0,
+    "share_l2plus": 0.013,
+    "share_identity": 0.0,
+    "share_greek": 0.0,
+    "markers_per_1k_words": 3.6,
+    "top_markers": [
+     [
+      "us_civic",
+      168
+     ],
+     [
+      "currency",
+      118
+     ],
+     [
+      "units",
+      30
+     ],
+     [
+      "places",
+      11
+     ],
+     [
+      "us_institutions",
+      3
+     ]
+    ]
+   },
+   "Math": {
+    "n": 3000,
+    "share_l1": 0.076,
+    "share_l2": 0.192,
+    "share_l3": 0.0,
+    "share_l2plus": 0.192,
+    "share_identity": 0.0,
+    "share_greek": 0.004,
+    "markers_per_1k_words": 4.83,
+    "top_markers": [
+     [
+      "currency",
+      3960
+     ],
+     [
+      "units",
+      1213
+     ],
+     [
+      "places",
+      78
+     ],
+     [
+      "us_civic",
+      19
+     ],
+     [
+      "education",
+      14
+     ]
+    ]
+   },
+   "Multilingual": {
+    "n": 3000,
+    "share_l1": 0.014,
+    "share_l2": 0.003,
+    "share_l3": 0.0,
+    "share_l2plus": 0.003,
+    "share_identity": 0.0,
+    "share_greek": 0.003,
+    "markers_per_1k_words": 0.37,
+    "top_markers": [
+     [
+      "places",
+      31
+     ],
+     [
+      "units",
+      21
+     ],
+     [
+      "us_civic",
+      15
+     ],
+     [
+      "currency",
+      14
+     ],
+     [
+      "formats",
+      9
+     ]
+    ]
+   },
+   "Science": {
+    "n": 3000,
+    "share_l1": 0.017,
+    "share_l2": 0.009,
+    "share_l3": 0.0,
+    "share_l2plus": 0.01,
+    "share_identity": 0.0,
+    "share_greek": 0.0,
+    "markers_per_1k_words": 0.21,
+    "top_markers": [
+     [
+      "units",
+      137
+     ],
+     [
+      "currency",
+      52
+     ],
+     [
+      "places",
+      31
+     ],
+     [
+      "education",
+      3
+     ],
+     [
+      "us_institutions",
+      2
+     ]
+    ]
+   },
+   "Safety": {
+    "n": 3000,
+    "share_l1": 0.05,
+    "share_l2": 0.019,
+    "share_l3": 0.015,
+    "share_l2plus": 0.034,
+    "share_identity": 0.015,
+    "share_greek": 0.003,
+    "markers_per_1k_words": 1.11,
+    "top_markers": [
+     [
+      "us_civic",
+      245
+     ],
+     [
+      "us_institutions",
+      77
+     ],
+     [
+      "places",
+      54
+     ],
+     [
+      "units",
+      33
+     ],
+     [
+      "currency",
+      27
+     ]
+    ]
+   },
+   "Chat": {
+    "n": 343,
+    "share_l1": 0.029,
+    "share_l2": 0.012,
+    "share_l3": 0.0,
+    "share_l2plus": 0.012,
+    "share_identity": 0.0,
+    "share_greek": 0.009,
+    "markers_per_1k_words": 0.5,
+    "top_markers": [
+     [
+      "currency",
+      15
+     ],
+     [
+      "us_civic",
+      7
+     ],
+     [
+      "units",
+      5
+     ],
+     [
+      "places",
+      2
+     ],
+     [
+      "formats",
+      2
+     ]
+    ]
+   }
+  }
+ },
+ "tulu3": {
+  "hf": "allenai/tulu-3-sft-mixture",
+  "config": "default",
+  "split": "train",
+  "rows_read": 40000,
+  "seconds": 55,
+  "buckets": {
+   "tulu_v3.9_synthetic_finalresp_wildguardm": {
+    "n": 3000,
+    "share_l1": 0.021,
+    "share_l2": 0.001,
+    "share_l3": 0.039,
+    "share_l2plus": 0.04,
+    "share_identity": 0.039,
+    "share_greek": 0.002,
+    "markers_per_1k_words": 0.38,
+    "top_markers": [
+     [
+      "us_civic",
+      28
+     ],
+     [
+      "places",
+      22
+     ],
+     [
+      "us_institutions",
+      14
+     ],
+     [
+      "units",
+      10
+     ],
+     [
+      "currency",
+      4
+     ]
+    ]
+   },
+   "tulu_v3.9_sciriff_10k": {
+    "n": 3000,
+    "share_l1": 0.009,
+    "share_l2": 0.001,
+    "share_l3": 0.0,
+    "share_l2plus": 0.001,
+    "share_identity": 0.0,
+    "share_greek": 0.0,
+    "markers_per_1k_words": 0.28,
+    "top_markers": [
+     [
+      "currency",
+      17
+     ],
+     [
+      "us_civic",
+      14
+     ],
+     [
+      "us_institutions",
+      10
+     ],
+     [
+      "places",
+      9
+     ],
+     [
+      "uk_institutions",
+      4
+     ]
+    ]
+   },
+   "tulu_v3.9_table_gpt_5k": {
+    "n": 1280,
+    "share_l1": 0.053,
+    "share_l2": 0.025,
+    "share_l3": 0.0,
+    "share_l2plus": 0.025,
+    "share_identity": 0.0,
+    "share_greek": 0.003,
+    "markers_per_1k_words": 7.43,
+    "top_markers": [
+     [
+      "currency",
+      75
+     ],
+     [
+      "us_civic",
+      59
+     ],
+     [
+      "formats",
+      31
+     ],
+     [
+      "places",
+      29
+     ],
+     [
+      "units",
+      27
+     ]
+    ]
+   },
+   "tulu_v3.9_aya_100k": {
+    "n": 271,
+    "share_l1": 0.026,
+    "share_l2": 0.004,
+    "share_l3": 0.0,
+    "share_l2plus": 0.004,
+    "share_identity": 0.0,
+    "share_greek": 0.004,
+    "markers_per_1k_words": 0.59,
+    "top_markers": [
+     [
+      "us_civic",
+      7
+     ],
+     [
+      "places",
+      3
+     ],
+     [
+      "units",
+      3
+     ],
+     [
+      "currency",
+      2
+     ]
+    ]
+   }
+  }
+ },
+ "smoltalk2_openhermes": {
+  "hf": "HuggingFaceTB/smoltalk2",
+  "config": "SFT",
+  "split": "OpenHermes_2.5_no_think",
+  "rows_read": 3000,
+  "seconds": 9,
+  "buckets": {
+   "openhermes": {
+    "n": 3000,
+    "share_l1": 0.045,
+    "share_l2": 0.003,
+    "share_l3": 0.0,
+    "share_l2plus": 0.003,
+    "share_identity": 0.0,
+    "share_greek": 0.01,
+    "markers_per_1k_words": 1.52,
+    "top_markers": [
+     [
+      "units",
+      85
+     ],
+     [
+      "places",
+      57
+     ],
+     [
+      "us_civic",
+      36
+     ],
+     [
+      "currency",
+      2
+     ],
+     [
+      "brands_services",
+      2
+     ]
+    ]
+   }
+  }
+ },
+ "smoltalk2_magpie": {
+  "hf": "HuggingFaceTB/smoltalk2",
+  "config": "SFT",
+  "split": "smoltalk_smollm3_smol_magpie_ultra_no_think",
+  "rows_read": 3000,
+  "seconds": 37,
+  "buckets": {
+   "magpie_ultra": {
+    "n": 3000,
+    "share_l1": 0.079,
+    "share_l2": 0.106,
+    "share_l3": 0.002,
+    "share_l2plus": 0.108,
+    "share_identity": 0.002,
+    "share_greek": 0.015,
+    "markers_per_1k_words": 1.46,
+    "top_markers": [
+     [
+      "currency",
+      1779
+     ],
+     [
+      "units",
+      1642
+     ],
+     [
+      "places",
+      291
+     ],
+     [
+      "us_civic",
+      247
+     ],
+     [
+      "us_institutions",
+      44
+     ]
+    ]
+   }
+  }
+ },
+ "smoltalk2_systemchats": {
+  "hf": "HuggingFaceTB/smoltalk2",
+  "config": "SFT",
+  "split": "smoltalk_smollm3_systemchats_30k_no_think",
+  "rows_read": 3000,
+  "seconds": 28,
+  "buckets": {
+   "systemchats": {
+    "n": 2998,
+    "share_l1": 0.106,
+    "share_l2": 0.082,
+    "share_l3": 0.16,
+    "share_l2plus": 0.242,
+    "share_identity": 0.16,
+    "share_greek": 0.021,
+    "markers_per_1k_words": 2.44,
+    "top_markers": [
+     [
+      "units",
+      652
+     ],
+     [
+      "currency",
+      595
+     ],
+     [
+      "places",
+      559
+     ],
+     [
+      "us_civic",
+      327
+     ],
+     [
+      "brands_services",
+      154
+     ]
+    ]
+   }
+  }
+ },
+ "smoltalk2_personas_if": {
+  "hf": "HuggingFaceTB/smoltalk2",
+  "config": "SFT",
+  "split": "tulu_3_sft_personas_instruction_following_no_think",
+  "rows_read": 3000,
+  "seconds": 28,
+  "buckets": {
+   "personas_if": {
+    "n": 3000,
+    "share_l1": 0.066,
+    "share_l2": 0.036,
+    "share_l3": 0.001,
+    "share_l2plus": 0.037,
+    "share_identity": 0.001,
+    "share_greek": 0.012,
+    "markers_per_1k_words": 1.14,
+    "top_markers": [
+     [
+      "us_civic",
+      359
+     ],
+     [
+      "places",
+      163
+     ],
+     [
+      "units",
+      145
+     ],
+     [
+      "currency",
+      116
+     ],
+     [
+      "us_institutions",
+      24
+     ]
+    ]
+   }
+  }
+ },
+ "smoltalk2_multilingual": {
+  "hf": "HuggingFaceTB/smoltalk2",
+  "config": "SFT",
+  "split": "smoltalk_multilingual_8languages_lang_5_no_think",
+  "rows_read": 3000,
+  "seconds": 19,
+  "buckets": {
+   "multilingual8": {
+    "n": 3000,
+    "share_l1": 0.015,
+    "share_l2": 0.013,
+    "share_l3": 0.0,
+    "share_l2plus": 0.013,
+    "share_identity": 0.0,
+    "share_greek": 0.007,
+    "markers_per_1k_words": 0.42,
+    "top_markers": [
+     [
+      "places",
+      139
+     ],
+     [
+      "currency",
+      123
+     ],
+     [
+      "units",
+      26
+     ],
+     [
+      "us_civic",
+      15
+     ],
+     [
+      "education",
+      7
+     ]
+    ]
+   }
+  }
+ },
+ "ifeval_like_filtered": {
+  "hf": "argilla/ifeval-like-data",
+  "config": "filtered",
+  "split": "train",
+  "rows_read": 3000,
+  "seconds": 9,
+  "buckets": {
+   "ifeval_like": {
+    "n": 3000,
+    "share_l1": 0.028,
+    "share_l2": 0.006,
+    "share_l3": 0.0,
+    "share_l2plus": 0.006,
+    "share_identity": 0.0,
+    "share_greek": 0.002,
+    "markers_per_1k_words": 0.52,
+    "top_markers": [
+     [
+      "units",
+      146
+     ],
+     [
+      "us_civic",
+      17
+     ],
+     [
+      "currency",
+      5
+     ],
+     [
+      "places",
+      2
+     ],
+     [
+      "us_institutions",
+      1
+     ]
+    ]
+   }
+  }
+ },
+ "nemotron_if_v3_if": {
+  "hf": "nvidia/Nemotron-SFT-Instruction-Following-Chat-v3",
+  "config": "default",
+  "split": "instruction_following",
+  "rows_read": 3000,
+  "seconds": 44,
+  "buckets": {
+   "nemotron_if": {
+    "n": 3000,
+    "share_l1": 0.109,
+    "share_l2": 0.078,
+    "share_l3": 0.0,
+    "share_l2plus": 0.078,
+    "share_identity": 0.0,
+    "share_greek": 0.017,
+    "markers_per_1k_words": 2.25,
+    "top_markers": [
+     [
+      "currency",
+      1398
+     ],
+     [
+      "us_civic",
+      573
+     ],
+     [
+      "places",
+      305
+     ],
+     [
+      "units",
+      239
+     ],
+     [
+      "us_institutions",
+      156
+     ]
+    ]
+   }
+  }
+ },
+ "nemotron_if_v3_chat": {
+  "hf": "nvidia/Nemotron-SFT-Instruction-Following-Chat-v3",
+  "config": "default",
+  "split": "chat",
+  "rows_read": 3000,
+  "seconds": 110,
+  "buckets": {
+   "nemotron_chat": {
+    "n": 3000,
+    "share_l1": 0.105,
+    "share_l2": 0.117,
+    "share_l3": 0.007,
+    "share_l2plus": 0.125,
+    "share_identity": 0.007,
+    "share_greek": 0.029,
+    "markers_per_1k_words": 1.03,
+    "top_markers": [
+     [
+      "currency",
+      2007
+     ],
+     [
+      "units",
+      598
+     ],
+     [
+      "us_civic",
+      475
+     ],
+     [
+      "places",
+      321
+     ],
+     [
+      "us_institutions",
+      126
+     ]
+    ]
+   }
+  }
+ },
+ "openmath2": {
+  "hf": "nvidia/OpenMathInstruct-2",
+  "config": "default",
+  "split": "train",
+  "rows_read": 3000,
+  "seconds": 14,
+  "buckets": {
+   "openmath2": {
+    "n": 3000,
+    "share_l1": 0.206,
+    "share_l2": 0.262,
+    "share_l3": 0.0,
+    "share_l2plus": 0.262,
+    "share_identity": 0.0,
+    "share_greek": 0.0,
+    "markers_per_1k_words": 13.52,
+    "top_markers": [
+     [
+      "currency",
+      5533
+     ],
+     [
+      "units",
+      1027
+     ],
+     [
+      "education",
+      25
+     ],
+     [
+      "places",
+      2
+     ]
+    ]
+   }
+  }
+ },
+ "orca_open_qa": {
+  "hf": "microsoft/orca-agentinstruct-1M-v1",
+  "config": "default",
+  "split": "open_domain_qa",
+  "rows_read": 3000,
+  "seconds": 19,
+  "buckets": {
+   "orca_open_qa": {
+    "n": 3000,
+    "share_l1": 0.065,
+    "share_l2": 0.077,
+    "share_l3": 0.02,
+    "share_l2plus": 0.098,
+    "share_identity": 0.02,
+    "share_greek": 0.007,
+    "markers_per_1k_words": 2.18,
+    "top_markers": [
+     [
+      "currency",
+      1299
+     ],
+     [
+      "us_civic",
+      507
+     ],
+     [
+      "units",
+      457
+     ],
+     [
+      "places",
+      184
+     ],
+     [
+      "us_institutions",
+      85
+     ]
+    ]
+   }
+  }
+ },
+ "aya_greek": {
+  "hf": "CohereLabs/aya_collection_language_split",
+  "config": "greek",
+  "split": "train",
+  "rows_read": 3000,
+  "seconds": 8,
+  "buckets": {
+   "aya_greek": {
+    "n": 3000,
+    "share_l1": 0.012,
+    "share_l2": 0.001,
+    "share_l3": 0.0,
+    "share_l2plus": 0.001,
+    "share_identity": 0.0,
+    "share_greek": 1.0,
+    "markers_per_1k_words": 0.24,
+    "top_markers": [
+     [
+      "us_institutions",
+      22
+     ],
+     [
+      "currency",
+      11
+     ],
+     [
+      "places",
+      7
+     ],
+     [
+      "education",
+      4
+     ],
+     [
+      "us_civic",
+      3
+     ]
+    ]
+   }
+  }
+ }
+}

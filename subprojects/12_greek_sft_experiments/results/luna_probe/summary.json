@@ -1,0 +1,58 @@
+{
+ "model": "gpt-5.6-luna",
+ "effort": "medium",
+ "tier": "priority",
+ "n": 48,
+ "parsed": 48,
+ "wall_seconds": 41,
+ "rows_per_hour": 4237,
+ "mean_call_seconds": 16.9,
+ "workers": 24,
+ "agreement_exact": 0.625,
+ "agreement_within1": 0.938,
+ "dispositions": {
+  "keep": 21,
+  "drop": 16,
+  "adapt": 11
+ },
+ "level_by_lexicon": {
+  "0": {
+   "0": 18,
+   "1": 2
+  },
+  "1": {
+   "0": 6,
+   "1": 2,
+   "2": 5
+  },
+  "2": {
+   "2": 10,
+   "1": 2,
+   "0": 3
+  },
+  "3": {}
+ },
+ "frame_types": {
+  "none": 33,
+  "currency_units": 12,
+  "safety_policy": 1,
+  "geography_setting": 1,
+  "law_rights": 1
+ },
+ "skills": {
+  "code": 13,
+  "math": 24,
+  "refusal": 3,
+  "explanation": 2,
+  "reasoning": 1,
+  "constraint_following": 3,
+  "advice": 2
+ },
+ "mannerism": 5,
+ "imperatives": 8,
+ "quality": {
+  "3": 22,
+  "2": 11,
+  "1": 15
+ }
+}
