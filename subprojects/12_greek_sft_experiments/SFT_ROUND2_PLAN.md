@@ -156,6 +156,17 @@ until a short test replaces them. The tests are cheap and most run inside work w
 
 The first five tests fit in one debug workbench and one afternoon of Sol. Arm I doubles as the first stage-3 measurement.
 
+
+**Measured 2026-09-04 afternoon (annotation, codex gpt-5.6-luna, medium effort, full nine-field schema)**
+
+| workers | tier | rows per hour | median call |
+|---|---|---|---|
+| 24 | priority | 4,240 | 17 s |
+| 48 | default | 5,270 | 26 s |
+| 88 | default | 5,900 | 29 s |
+
+Throughput grows sub-linearly with workers; 88 workers on the default tier is the working rate. At 5,900 rows per hour: the 250k screened pool takes 42 hours, all 805k training rows 5.7 days, a 1.1M candidate pool 7.8 days. Spot-check of five rows Luna rated "wrong" (quality 1): all five verdicts held on reading.
+
 **Provisional totals, to be replaced by the tests**
 
 | item | node-hours | CHF |
