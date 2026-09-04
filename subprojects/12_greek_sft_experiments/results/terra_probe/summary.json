@@ -1,0 +1,33 @@
+{
+ "model": "gpt-5.6-terra",
+ "effort": "medium",
+ "n": 48,
+ "parsed": 48,
+ "wall_seconds": 44,
+ "rows_per_hour": 3952,
+ "mean_call_seconds": 18.4,
+ "workers": 24,
+ "agreement_exact": 0.521,
+ "agreement_within1": 0.771,
+ "dispositions": {
+  "keep": 38,
+  "drop": 3,
+  "adapt": 7
+ },
+ "level_by_lexicon": {
+  "0": {
+   "0": 17,
+   "1": 3
+  },
+  "1": {
+   "0": 6,
+   "1": 4,
+   "2": 3
+  },
+  "2": {
+   "0": 11,
+   "2": 4
+  },
+  "3": {}
+ }
+}

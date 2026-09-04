@@ -1,0 +1,434 @@
+[
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Pure Python bit-rotation solution; no locale-specific assumptions.",
+  "source": "apertus_mixture",
+  "bucket": "smoltalk2",
+  "lexicon_level": 0,
+  "seconds": 30.4
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "General algorithmic explanation with no locale-specific assumptions.",
+  "source": "apertus_mixture",
+  "bucket": "smoltalk2",
+  "lexicon_level": 0,
+  "seconds": 32.8
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Algorithmic explanation and code are locale-neutral.",
+  "source": "apertus_mixture",
+  "bucket": "smoltalk2",
+  "lexicon_level": 0,
+  "seconds": 20.0
+ },
+ {
+  "level": 1,
+  "disposition": "keep",
+  "why": "Mathematica is a foreign product name, but the solution remains universally applicable.",
+  "source": "apertus_mixture",
+  "bucket": "smoltalk2",
+  "lexicon_level": 0,
+  "seconds": 23.0
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Technical explanation has no locale-specific assumptions.",
+  "source": "apertus_mixture",
+  "bucket": "smoltalk2",
+  "lexicon_level": 0,
+  "seconds": 22.2
+ },
+ {
+  "level": 1,
+  "disposition": "keep",
+  "why": "Foreign platforms and UTC appear, but advice is broadly applicable.",
+  "source": "apertus_mixture",
+  "bucket": "smoltalk2",
+  "lexicon_level": 0,
+  "seconds": 15.1
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Processing code and A4 dimensions are locale-neutral.",
+  "source": "apertus_mixture",
+  "bucket": "smoltalk2",
+  "lexicon_level": 0,
+  "seconds": 13.9
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Standalone C code with no locale-specific assumptions.",
+  "source": "apertus_mixture",
+  "bucket": "smoltalk2",
+  "lexicon_level": 0,
+  "seconds": 9.1
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Pure Python solution with no locale-specific assumptions.",
+  "source": "apertus_mixture",
+  "bucket": "smoltalk2",
+  "lexicon_level": 0,
+  "seconds": 19.6
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Code and StackExchange API instructions are locale-neutral.",
+  "source": "apertus_mixture",
+  "bucket": "smoltalk2",
+  "lexicon_level": 0,
+  "seconds": 21.7
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Locale-neutral Python recursion solution with no foreign assumptions.",
+  "source": "dolci",
+  "bucket": "Coding",
+  "lexicon_level": 0,
+  "seconds": 13.7
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Locale-neutral arithmetic word problem.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 1,
+  "seconds": 24.7
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Locale-neutral Python regex validation guidance.",
+  "source": "dolci",
+  "bucket": "Coding",
+  "lexicon_level": 0,
+  "seconds": 20.1
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Mathematical answer uses no locale-specific assumptions.",
+  "source": "dolci",
+  "bucket": "Precise IF",
+  "lexicon_level": 0,
+  "seconds": 20.2
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Generic linear-programming and recovery-time calculation; no locale-specific assumptions.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 0,
+  "seconds": 23.0
+ },
+ {
+  "level": 0,
+  "disposition": "drop",
+  "why": "Safety-policy refusal provides no useful Greek-assistant training content.",
+  "source": "dolci",
+  "bucket": "Safety",
+  "lexicon_level": 0,
+  "seconds": 22.3
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Pure mathematical optimization and calculation; no locale-specific assumptions.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 1,
+  "seconds": 20.1
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Mathematical translation discussion is locale-neutral and does not assume a foreign user context.",
+  "source": "dolci",
+  "bucket": "Precise IF",
+  "lexicon_level": 0,
+  "seconds": 21.2
+ },
+ {
+  "level": 1,
+  "disposition": "drop",
+  "why": "Safety refusal; foreign health agencies are incidental.",
+  "source": "dolci",
+  "bucket": "Safety",
+  "lexicon_level": 1,
+  "seconds": 23.1
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "General currency information; no advice assumes a foreign user's institutions or locale.",
+  "source": "dolci",
+  "bucket": "Precise IF",
+  "lexicon_level": 0,
+  "seconds": 26.0
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Locale-neutral arithmetic explanation; foreign names are incidental.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 0,
+  "seconds": 25.0
+ },
+ {
+  "level": 1,
+  "disposition": "keep",
+  "why": "Foreign place appears only as factual context.",
+  "source": "dolci",
+  "bucket": "Other",
+  "lexicon_level": 0,
+  "seconds": 22.1
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Algorithmic Python solution with no locale-dependent assumptions.",
+  "source": "dolci",
+  "bucket": "Coding",
+  "lexicon_level": 0,
+  "seconds": 29.6
+ },
+ {
+  "level": 1,
+  "disposition": "keep",
+  "why": "Dollar appears as branding; financial guidance contains no country-specific assumptions.",
+  "source": "dolci",
+  "bucket": "Precise IF",
+  "lexicon_level": 1,
+  "seconds": 21.5
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Pure cost arithmetic using values provided in the prompt.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 2,
+  "seconds": 8.5
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Locale-neutral arithmetic word problem.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 1,
+  "seconds": 22.7
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Pure arithmetic using values supplied in the prompt.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 2,
+  "seconds": 14.8
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Straightforward arithmetic using units supplied by the prompt.",
+  "source": "dolci",
+  "bucket": "Precise IF",
+  "lexicon_level": 1,
+  "seconds": 10.9
+ },
+ {
+  "level": 2,
+  "disposition": "adapt",
+  "why": "Uses dollar pricing, easily rewritten with euros for Greek users.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 2,
+  "seconds": 11.3
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Purely mathematical calculation; dollar units are inherited from the given problem.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 2,
+  "seconds": 15.8
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Mathematical solution; dollar references merely retain given units.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 2,
+  "seconds": 15.3
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Forensic guidance is locale-neutral; Fahrenheit is merely a converted measurement.",
+  "source": "dolci",
+  "bucket": "Precise IF",
+  "lexicon_level": 2,
+  "seconds": 15.5
+ },
+ {
+  "level": 2,
+  "disposition": "adapt",
+  "why": "Uses dollar-denominated budgeting; replace currency with euros while retaining the algebra.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 2,
+  "seconds": 19.8
+ },
+ {
+  "level": 1,
+  "disposition": "drop",
+  "why": "Safety-policy refusal; CDC reference is incidental.",
+  "source": "dolci",
+  "bucket": "Safety",
+  "lexicon_level": 1,
+  "seconds": 19.5
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Pure unit-rate calculation; foreign setting and miles are supplied by the prompt.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 2,
+  "seconds": 19.7
+ },
+ {
+  "level": 1,
+  "disposition": "keep",
+  "why": "Fremantle is mentioned, but the mathematical method is locale-independent.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 1,
+  "seconds": 15.1
+ },
+ {
+  "level": 2,
+  "disposition": "adapt",
+  "why": "Uses dollars, but the arithmetic word-problem skill transfers easily to euros.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 2,
+  "seconds": 19.3
+ },
+ {
+  "level": 2,
+  "disposition": "adapt",
+  "why": "Relies on US HIPAA and procedures, but consent-based medical-record guidance is valuable",
+  "source": "dolci",
+  "bucket": "Precise IF",
+  "lexicon_level": 1,
+  "seconds": 17.7
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Pure arithmetic; dollar amounts are supplied context, not locale-specific advice.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 1,
+  "seconds": 15.8
+ },
+ {
+  "level": 2,
+  "disposition": "adapt",
+  "why": "Uses dollars, but otherwise a useful locale-neutral arithmetic explanation.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 2,
+  "seconds": 13.0
+ },
+ {
+  "level": 2,
+  "disposition": "adapt",
+  "why": "Uses dollar-denominated investment framing; valuable mathematical analysis is easily localized.",
+  "source": "dolci",
+  "bucket": "Precise IF",
+  "lexicon_level": 1,
+  "seconds": 17.7
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Math solution preserves the currency specified in the prompt without giving locale-specific advice.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 2,
+  "seconds": 16.9
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Purely mathematical urban-planning reasoning with no foreign locale assumptions.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 2,
+  "seconds": 13.0
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Pure combinatorics; artist names are incidental and no locale-specific advice appears.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 1,
+  "seconds": 13.1
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Pure arithmetic word problem; no locale-dependent advice or assumptions.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 2,
+  "seconds": 9.3
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Mathematical calculation using currency supplied in the prompt.",
+  "source": "dolci",
+  "bucket": "Math",
+  "lexicon_level": 2,
+  "seconds": 12.2
+ },
+ {
+  "level": 2,
+  "disposition": "adapt",
+  "why": "Names 911; replace with Greek emergency numbers while retaining urgent medical guidance.",
+  "source": "dolci",
+  "bucket": "Safety",
+  "lexicon_level": 1,
+  "seconds": 17.7
+ },
+ {
+  "level": 0,
+  "disposition": "keep",
+  "why": "Generic shoe-review advice uses no locale-specific institutions, units, or procedures.",
+  "source": "dolci",
+  "bucket": "Precise IF",
+  "lexicon_level": 2,
+  "seconds": 10.3
+ }
+]
