@@ -9,7 +9,7 @@ SCHEMA = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'annotation_sc
 os.makedirs(OUT, exist_ok=True)
 
 RUBRIC = """You label ONE training row (a user prompt and an assistant answer) for a Greek assistant project. Judge the ASSISTANT ANSWER.
-The row may contain several turns: the USER field is the user turns in order, the ASSISTANT field the assistant turns in order; pair them in order. Text may be cut at 2,500 characters: judge what is shown and do NOT penalise truncation or a missing ending.
+The row may contain several turns: the USER field is the user turns in order, the ASSISTANT field the assistant turns in order; pair them in order. Long turns may be cut: judge what is shown and do NOT penalise truncation or a missing ending.
 
 vantage (0-3): does the answer presuppose a non-Greek world in a way that matters to a Greek user?
  0 neutral: math, code, tables, format tasks, tool calls, rewriting or summarising given text, general knowledge with no locale.
@@ -30,7 +30,8 @@ Return ONLY the JSON object."""
 
 def label(row):
     if row.get('turns'):
-        conv = '\n\n'.join(f"[{t.get('role','?').upper()}]\n{(t.get('content') or '')[:3000]}" for t in row['turns'])[:9000]
+        TC, TT = int(os.environ.get('TERRA_TURN_CAP', '3000')), int(os.environ.get('TERRA_TOTAL_CAP', '9000'))
+        conv = '\n\n'.join(f"[{t.get('role','?').upper()}]\n{(t.get('content') or '')[:TC]}" for t in row['turns'])[:TT]
         prompt = RUBRIC + "\n\nSOURCE: " + row['source'] + "\n\nCONVERSATION (turns in order; TOOL turns are the tool's own outputs, not fabrications by the assistant):\n" + conv
     else:
         prompt = RUBRIC + "\n\nSOURCE: " + row['source'] + "\n\nUSER:\n" + row['user'][:1500] + "\n\nASSISTANT:\n" + row['assistant'][:2500]

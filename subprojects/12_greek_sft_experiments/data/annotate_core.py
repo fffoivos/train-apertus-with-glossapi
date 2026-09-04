@@ -9,11 +9,12 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 _src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'terra_probe.py')).read()
 exec(_src[:_src.index('rows = [json.loads(l)')])  # RUBRIC, SCHEMA, MODEL, EFFORT, TIER, label()
 sys.argv = _argv
-EXP, OUT, W = sys.argv[1], sys.argv[2], int(sys.argv[3]); BLOCKS = sys.argv[4:]
+EXP, OUT, W = sys.argv[1], sys.argv[2], int(sys.argv[3]); BLOCKS = sys.argv[4:]; MAX_ROWS = int(os.environ.get('MAX_ROWS', '0'))  # 0 = whole block
 os.makedirs(OUT, exist_ok=True); lock = threading.Lock()
 
 for block in BLOCKS:
     src = f'{EXP}/{block}.jsonl'; dst = f'{OUT}/{block}.labels.jsonl'
+    if not os.path.exists(src): print(f'== {block}: export file missing, skipped', flush=True); continue
     done = set()
     if os.path.exists(dst):
         for l in open(dst):
@@ -23,6 +24,7 @@ for block in BLOCKS:
     for l in open(src):
         r = json.loads(l)
         if r['id'] not in done: rows.append(r)
+    if MAX_ROWS and len(rows) > MAX_ROWS: rows = rows[:MAX_ROWS]
     print(f'== {block}: {len(done)} done, {len(rows)} to go, {W} workers, {MODEL}/{EFFORT}/{TIER}', flush=True)
     if not rows: continue
     t0 = time.time(); n = 0; stats = collections.Counter()

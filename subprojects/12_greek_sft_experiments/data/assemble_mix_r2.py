@@ -38,7 +38,7 @@ class r1:  # the round-one helpers (data/build_sft_mix.py) inlined, so this scri
         return prompts, {"prompts": len(prompts)}
 
 ap = argparse.ArgumentParser(); ap.add_argument('--arm', default='R2_stage1'); ap.add_argument('--scale', type=float, default=1.0)
-ap.add_argument('--no-tokenizer', action='store_true'); ap.add_argument('--seed', type=int, default=2026); ap.add_argument('--dev-fraction', type=float, default=0.01)
+ap.add_argument('--no-tokenizer', action='store_true'); ap.add_argument('--max-tokens', type=int, default=4032); ap.add_argument('--seed', type=int, default=2026); ap.add_argument('--dev-fraction', type=float, default=0.01)
 args = ap.parse_args(); random.seed(args.seed)
 OUT = HERE / 'arms' / args.arm; OUT.mkdir(parents=True, exist_ok=True)
 
@@ -128,7 +128,10 @@ if not args.no_tokenizer:
     except Exception as e: print('tokenizer unavailable, approximate filter (chars/3.2):', str(e)[:100], flush=True)
 def n_tokens(messages):
     if tok is not None:
-        try: return len(tok.apply_chat_template(messages, tokenize=True))
+        try:
+            ids = tok.apply_chat_template(messages, tokenize=True)
+            if hasattr(ids, 'keys'): ids = ids['input_ids']
+            return len(ids)
         except Exception: pass
     return int(sum(len(m['content']) for m in messages) / 3.2)
 
@@ -164,7 +167,7 @@ for block, fname, mode, target, weight in PLAN:
         hit = contaminated(r['messages'])
         if hit: stats['contaminated'] += 1; continue
         n = n_tokens(r['messages'])
-        if n > r1.MAX_LENGTH: stats['too_long'] += 1; continue
+        if n > args.max_tokens: stats['too_long'] += 1; continue  # margin under the trainer's 4,096 so its own render never overflows
         r['block'] = block; r['tokens'] = n; taken.append(r)
     stats['taken'] = len(taken); stats['tokens'] = sum(r['tokens'] for r in taken)
     ndev = max(1, int(len(taken) * args.dev_fraction)) if taken else 0
