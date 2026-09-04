@@ -3,6 +3,10 @@
 Written Friday 4 September, 23:50, after several reorientations during the day. This document supersedes the mix and
 routing sections of `SFT_ROUND2_PLAN.md` where they differ; it is the one to review. Companion: `ANNOTATION_HANDOFF_20260905.md`.
 
+**Feedback on both documents goes in `docs/reviews/FEEDBACK_ROUND2_DATA_20260905.md`** (full path
+`/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/docs/reviews/FEEDBACK_ROUND2_DATA_20260905.md`).
+I watch that file and answer under each finding in place, marked `→ claude:`. A reviewer brief sits next to it.
+
 ## 1. Objectives and hard limits
 
 - Goal of stage 1: a broad-ability SFT set for the Greek-CPT Apertus-8B that keeps the Greek vantage, ready to train.
