@@ -97,7 +97,7 @@
    "checkpoint": "after smoke: trainer behaviour + throughput + re-budget"
   },
   "gridA": {
-   "status": "launching 04:25",
+   "status": "run 1 (lr 1e-5) training since 03:21 on job 3286621: step 169/285 at 03:42, epoch1 saved, eval_no_robots_loss 1.471; run 2 workbench 3286724 PENDING behind the debug 1-running limit",
    "deps": [
     "R2_review"
    ],
@@ -214,6 +214,11 @@
   {
    "date": "2026-09-04 04:40",
    "what": "R1 ask 4 (fp32 master under ZeRO-3): base vs probe20/epoch1 bitwise delta in bf16 = 14.85% of 8.20B elements changed after 20 steps at lr 1e-5 (the rl-study bf16-only failure mode showed 2.35%; fp32 control 7.19% at 5e-6) → consistent with fp32 master weights; norm weights changed most (up to 96%), xIELU scalars 0%",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 03:45",
+   "what": "Debug QoS = MaxSubmitJobsPerUser 2, MaxJobsPerUser 1 → only ONE debug workbench runs at a time. Consequence: grid runs are sequential in debug (run 2 starts when run 1's workbench ends); per-checkpoint evals reuse the training workbench's leftover time (EVAL_JOB=<id>, SKIP_NATIVE=1) or go to the normal partition (1:30 workbench, tried at 03:43); the native suite is batched two checkpoints per normal workbench",
    "by": "claude"
   }
  ]

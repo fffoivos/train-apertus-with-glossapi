@@ -28,3 +28,4 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-04 04:26 | gridA run1 | job 3286621 | claude | E1_lr1e-5_3ep_const launched on the probe workbench (1:13 left; est. 55 min) | 1.5/— | 2.00 |
 | 2026-09-04 04:35 | R1b | 1 | claude-fable-5 (asserted) | VERDICT: both fixes verified firsthand; BLOCKERS 0, HIGH 0; 3 LOW doc-drift items fixed | 0/0 | 2.00 |
 | 2026-09-04 04:40 | probe20 | — | claude | fp32-master check: 14.85% of weights changed bitwise (bf16) after 20 steps — consistent with fp32 master (bf16-only trap would be ~2%) | 0/0 | 2.00 |
+| 2026-09-04 03:45 | cluster | — | claude | debug QoS allows 1 running job/user → sequential grid; evals to reuse training workbenches or the normal partition; ledger rows above stamped 04:2x/04:3x/04:40 were written at 03:2x/03:3x/03:40 (clock slip, content correct) | 0/0 | 2.00 |
