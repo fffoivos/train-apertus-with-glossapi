@@ -3,8 +3,8 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 15.867,
- "chf_used": 42.68,
+ "nh_used": 16.824,
+ "chf_used": 45.26,
  "cursor": "morning report published 07:07; phase B light evals + guards + known-ness finishing; owner gates G3/GreekMMLU/next arms",
  "steps": {
   "WP0_data": {
@@ -325,6 +325,9 @@
    "gate_stop": 0.8,
    "voice_delta": 1.109,
    "int_mean": 2.63
+  },
+  "E1_cos_ep2_native": {
+   "macro8": 0.5733
   }
  },
  "artifacts": {

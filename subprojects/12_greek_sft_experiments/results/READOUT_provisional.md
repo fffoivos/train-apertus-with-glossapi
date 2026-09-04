@@ -40,8 +40,7 @@ E3 is also the best-reading arm of the whole round on the interviews.
 a base model largely fails, so this is an upper bound on ignorance. The risk of plan §8 is real; the probe needs calibration
 on the SFT'd pick before E7 filters on it.
 
-**Still running.** Native suites for the replicate and E1-last (the rival's is in: macro 0.514 vs the pick's 0.512 on nine
-keys, 0.574 vs 0.575 on the eight — a tie). GreekMMLU needs your go.
+**Still running.** E1-last's native suite (does its NLI/WiC deficit survive SFT?). The rival's and the replicate's are in: all three SFT checkpoints land on the same profile (macro-8 ≈ 0.57 vs the base's 0.50; NLI flat, WiC and metaphor up 0.2) — the guard passes and the jump is systematic. GreekMMLU needs your go.
 
 **Three decisions for you.**
 1. **G3:** confirm (lr 1e-5, 2 epochs) — after the blind reading: https://claude.ai/code/artifact/690e0be1-dff4-4d25-ac8e-d49b861ab19c
@@ -376,4 +375,4 @@ further from the reference. This is the result the dataset was built to test.
 | oyxoy_wsd_definition | 0.385 | 0.390 | 0.392 |
 | **macro (8)** | 0.499 | 0.574 | 0.577 |
 
-Both SFT checkpoints sit above the base on the macro; the pick and the rival are within a point of each other.
+Both SFT checkpoints sit above the base on the macro; the pick and the rival are within a point of each other. The replicate (seed 43, cosine) reproduces the pick's profile exactly (macro-8 0.573; WiC 0.775, metaphor 0.568, NLI 0.642) — the jump on the likelihood scorer is systematic to SFT, not a seed accident. E1-last's native is running.
