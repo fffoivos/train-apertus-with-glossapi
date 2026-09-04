@@ -101,11 +101,19 @@ Once a source is shown to be (a) high quality and (b) verified by a program, its
 verdict; only identity and framing labels apply, and where framing is negligible the source is not screened at all.
 The quality screen is for unverified sources, where wrong answers actually live.
 
-Judge tiering (owner, 2026-09-04): a checker wherever one exists (puzzles, word sorts, final-answer math, constraint
-checkers); Sol (gpt-5.6-sol, 24 workers, default tier) for rows that need raw intellect: correctness calls on unverified
-reasoning-heavy sources (persona math, science, coding) and a second opinion on every "wrong answer" drop Luna makes on
-chat rows, so that a Luna false drop costs a Sol call rather than a good row; Luna for the bulk identity, framing, tone
-and skill labels.
+Judge routing (owner, 2026-09-04, revised): decide in advance, by dataset and category, which rows need more
+intelligence and give those to Sol as their only judge; do not use Sol merely to re-check Luna's drops, because Luna also
+misses wrong answers. Checker wherever one exists.
+
+| judge | blocks | why |
+|---|---|---|
+| checker (exact) | Dolci logic puzzles and word sorts; constraint checkers and final-answer matches where the source has them | no model can beat a program |
+| Sol, gpt-5.6-sol, 24 workers | FLAN (Tulu and Dolci), OpenHermes, Magpie, Science, and every row Luna labels as code, math or reasoning inside the Luna blocks | correctness is the question and it needs reading and calculation |
+| Luna, gpt-5.6-luna, 48 workers | OpenAssistant (done), safety, WildChat, tool use, Nemotron chat | identity, framing, tone and skill labels; conversational rows where correctness is rarely the issue |
+
+Measured: Luna about 4,300 rows an hour; Sol about 1,700. Sol's share is roughly 77k block rows plus about 12% of the
+Luna blocks, two to three days alongside Luna's two days. On the OpenAssistant drops Sol overturned 28% of Luna's
+"wrong answer" verdicts, which is why correctness-heavy sources go to Sol outright.
 
 | source | how answers were checked | trust | screen |
 |---|---|---|---|

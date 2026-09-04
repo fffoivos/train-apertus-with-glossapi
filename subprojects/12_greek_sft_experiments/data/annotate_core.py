@@ -27,7 +27,7 @@ for block in BLOCKS:
     if not rows: continue
     t0 = time.time(); n = 0; stats = collections.Counter()
     def work(r):
-        j = label(r); j['id'] = r['id']; return j
+        j = label(r); j['id'] = r['id']; j['judge'] = MODEL; return j
     with open(dst, 'a') as fh, cf.ThreadPoolExecutor(W) as ex:
         for j in ex.map(work, rows):
             with lock:
