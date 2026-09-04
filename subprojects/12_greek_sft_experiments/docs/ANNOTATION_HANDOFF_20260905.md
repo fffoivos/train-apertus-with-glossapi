@@ -66,7 +66,9 @@ false drops, not its misses) and replaced by advance routing.
 Sol spot-checks of Dolci's new sources (`~/sft_annot/labels/dolci_*_sample.labels.jsonl`, 300 rows each): Python Algorithms 20 wrong (6.7%),
 so the block is Sol-screened before use; Verifiable Reasoning 3 wrong (1%), taken as clean. Our own checker runs on the sources that claim
 verification (cluster, `verified/`): ifeval-like 56,339 rows through the IFEval checkers, 47 fail (0.08%); OpenMath GSM-style 100,000 rows
-through the final-answer match, 29 mismatch (0.03%). Both claims hold; the puzzles were the exception.
+through the final-answer match, 29 mismatch (0.03%). Both claims hold for what the checkers check. Content is another matter: a Sol spot-check of 300 Precise IF rows with a 12,000-character window
+found 82 unusable (27%: contradictory arithmetic, wrong facts, off-task completions, one inappropriate roleplay), 3 identity, 6 foreign-framed.
+So Precise IF enters only as a Sol-screened 20k subset (chain 2, before coding), and ifeval-like gets the same 300-row content check.
 
 ## 4. Luna's weaknesses, and what is done about each
 

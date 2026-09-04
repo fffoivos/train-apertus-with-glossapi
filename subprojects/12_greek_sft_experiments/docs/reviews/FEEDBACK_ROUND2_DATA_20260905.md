@@ -421,3 +421,11 @@ their English originals (28,449 prompts) were added; (2) the tone labels were re
 from the chat, safety, multilingual and science blocks by default. Two more are put to the owner as decisions rather than fixed: the
 constraint-following share (about 40% of stage-1 tokens) and the tool-use block's ad-hoc format (§7 decisions 4 and 6). The plan was rewritten
 as one document (version 2) with the three intentions stated and what serves or does not serve each.
+
+## Claude, Sat 5 Sep 00:15 Mac clock: a material change after the three rounds
+
+The Precise IF spot-check (300 rows, Sol, 12,000-character window) came back at 27% unusable: contradictory arithmetic, wrong facts, off-task
+completions. The block's checkers verify constraints, not content, so "checker-verified" did not mean what the plan assumed. Under the plan's own
+threshold the 137k rows cannot enter unscreened. Changes: a 20k Precise IF subset is queued on Sol right after science and before coding; the
+assembler takes only its screened keep rows (about 14k expected); ifeval-like gets the same 300-row content check now; the constraint-following
+share falls from about 40% to about 20% of stage-1 tokens, which also settles decision 4. Plan §2, §7, §8 and the handoff §3 carry it.

@@ -23,7 +23,7 @@ The three intentions, and what serves each:
 |---|---|---|---|
 | **annotation** | every unverified row gets a sticker before training: identity, wrong answer, foreign framing, tone, skill; nothing is edited | judges routed by what a source needs (§3); a program wherever one exists; a full-text identity backstop on every block after the judges; tone labels used at assembly | Luna's misses on explanation and advice rows in chat are accepted, because those rows come from a 2026 model or a human and the backstop catches explicit identity |
 | **generation** | Sol writes what the imports cannot give: Greek text-grounded tasks in a Greek setting | the 2,000-row Greek rewriting and summarising set, generated, corrected by a second Sol pass, screened, blind-read by the owner | open factual questions are not generated, because a self-check is weakest there; safety refusals in our voice wait for stage 2 |
-| **data mix** | verified answers or a recent generator, nothing old and unchecked; Greek kept whole; budget by tokens, not rows | the table in §2 with measured token means; small blocks whole; the 208M-token gate under the current cap | constraint following is about 40% of stage-1 tokens by design (the IFEval gap is the owner's stated target); if that is too much, §7 decision 4 |
+| **data mix** | verified answers or a recent generator, nothing old and unchecked; Greek kept whole; budget by tokens, not rows | the table in §2 with measured token means; small blocks whole; the 208M-token gate under the current cap | "checker-verified" covers only what the checker checks: Precise IF passed its constraint checkers and failed a content spot-check at 27%, so the constraint block shrinks from about 40% to about 20% of tokens (§7 decision 4) |
 
 ## 2. The mix
 
@@ -32,7 +32,7 @@ small blocks stay whole and the big ones are scaled to the token budget over the
 
 | block | source | written by | checked how | rows (A) | mean tokens |
 |---|---|---|---|---|---|
-| constraint following | Dolci Precise IF | 2025 models | constraint checkers at the source; our Sol spot-check of 300; identity backstop (about 250 rows, 0.18%, carry self-descriptions) | 137k | 600 |
+| constraint following | Dolci Precise IF, Sol-screened subset only | 2025 models | constraint checkers at the source verify FORMAT only; Sol spot-check of 300 (12k window): 27% unusable (contradictory arithmetic, wrong facts, off-task, inappropriate); so only a Sol-screened 20k subset enters, about 14k keep | 20k screened | 600 |
 | constraint following | argilla ifeval-like, filtered | Qwen2.5-72B, 2024 | our re-run of the IFEval checkers on all 56,339 rows: 47 fail | 56k | 256 |
 | math | OpenMathInstruct-2, GSM8K-style | Llama-3.1-405B, 2024 | our re-run of the final-answer match on 100,000 rows: 29 mismatch | 100k | 342 |
 | chat and advice | Nemotron IF-Chat v3, chat split, half A (half B if time allows) | GLM-5, 2026 | exact-length prefilter (16.9% over the window), EU-language gate, Luna screen, Sol on technical rows, backstop | 34k + 34k | 1,584 |
@@ -107,7 +107,7 @@ Measured: Luna 4,300 to 4,500 rows an hour at 64 workers; Sol 1,100 generating, 
 | Sun 14:00 to 22:00 | | | receipts; stage-1 config derived from the receipt; plan and handoff final |
 | Mon | | | training launch once the cap decision is in |
 
-Cut order if it slips: Nemotron half B, then tool use beyond the sample, then multilingual to its regex lists.
+Cut order if it slips: Nemotron half B, then tool use beyond the sample, then multilingual to its regex lists. Sol's order after science is now Precise IF 20k, then coding (chain 2).
 
 ## 6. Budget
 
@@ -129,7 +129,7 @@ master weights, one node; the config is derived from the assembly receipt by `cl
 1. **Cap:** keep CHF 90 (option C) or raise to CHF 250 to 300 (option A plus evaluations plus the control arm).
 2. **Licences:** the Qwen-generated ifeval-like rows (56k) and OpenMathInstruct-2 (Llama-3.1-405B output, naming clause): keep with attribution, or drop.
 3. **Language gate on OpenAssistant:** its 459 rows in Russian, Thai, Chinese, Ukrainian are out under the EU gate; overrule if wanted.
-4. **Constraint-following share:** about 40% of stage-1 tokens as planned, or capped at 25% with the rest redistributed to chat and reasoning.
+4. **Constraint-following share:** now about 20% of stage-1 tokens (Sol-screened Precise IF about 14k rows plus ifeval-like 56k, pending its own content spot-check); raise it later only with more Sol screening of Precise IF.
 5. **Tone:** mannerism rows dropped (default); also drop unasked-command rows (16 to 27% of kept chat and safety rows), or not.
 6. **Tool use in stage 1:** 30k rows in an ad-hoc `<function_calls>` format that is not the Apertus template's native tool format, 15% of the tokens, with no benchmark that measures it; keep, cut to 10k, or drop until the native format is wired.
 
@@ -148,8 +148,9 @@ The owner asked for this list. Each item is what I looked for, what I found, and
    are the generation targets for stage 2, in that order of value.
 5. **Tool-use format.** The trainer accepts only system, user and assistant strings, so tool rows are rendered with `<function_calls>` and
    `<function_results>` tags, which is not the Apertus template's native tool format. Decision 6.
-6. **Identity in "verified" sources.** Precise IF carries about 250 self-descriptions; the backstop covers every block, including the ones no
-   judge sees.
+6. **"Verified" sources.** Precise IF carries about 250 self-descriptions and, worse, 27% content failures in a 300-row Sol spot-check: its
+   checkers verify constraints, not answers. Found Saturday 00:10 after the plan's first version. Only a Sol-screened subset enters; ifeval-like
+   gets the same content spot-check.
 7. **Adapt rows.** The old plan counted them into stage 1 with a line-cut that did not exist; they are excluded.
 8. **Judge window.** Luna cannot see beyond 9,000 characters; the exact-length prefilter and the backstop cover what it misses; Sol blocks
    use a 12,000-character window.
