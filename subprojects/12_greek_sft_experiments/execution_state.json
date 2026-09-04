@@ -3,9 +3,9 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 17.773,
- "chf_used": 47.81,
- "cursor": "EVALUATION PLAN 2026-09-04: Part C (blind reading + tone by Claude) DONE, page published for owner review; Part A (peers on Greek IFEval/MGSM) RUNNING on workbench 3291238; Part B (GreekMMLU minimal batch) waits for Part A",
+ "nh_used": 18.718,
+ "chf_used": 50.35,
+ "cursor": "EVALUATION PLAN: A done, C done, B (GreekMMLU batch) launching",
  "steps": {
   "WP0_data": {
    "status": "done (green 02:45: --check OK; 5 GreekMMLU-overlapping rows removed; E1 6.18M CPT-tokenizer tokens, E2 9.36M, E3 8.97M, E3prime 10.47M)",
@@ -164,14 +164,9 @@
    "summary": "results/reading2/summary.md"
   },
   "peer_ilsp": {
-   "status": "running",
+   "status": "done 13:05",
    "job": 3291238,
-   "lanes": [
-    "peer_krikri",
-    "peer_meltemi",
-    "peer_apertus_instruct",
-    "peer_gemma3_12b"
-   ]
+   "nh": 0.945
   },
   "greekmmlu_min": {
    "status": "pending Part A",
@@ -355,6 +350,25 @@
    "nli": 0.388,
    "wic": 0.737,
    "metaphor": 0.339
+  },
+  "peer_ilsp": {
+   "krikri": {
+    "ifeval_strict_avg": 0.668,
+    "mgsm": 0.676
+   },
+   "apertus_instruct": {
+    "ifeval_strict_avg": 0.56,
+    "mgsm": 0.532
+   },
+   "gemma3_12b": {
+    "ifeval_strict_avg": 0.719,
+    "mgsm": 0.908
+   },
+   "meltemi": {
+    "ifeval_strict_avg": 0.326,
+    "mgsm": 0.208
+   },
+   "harness_check": "Krikri 66.8 vs card 67.5, Meltemi 32.6 vs card 32.7: harnesses agree"
   }
  },
  "artifacts": {
