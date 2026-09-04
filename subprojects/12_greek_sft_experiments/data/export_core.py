@@ -27,7 +27,8 @@ BLOCKS = {
 STREAMS = {  # label -> (repo, config, split, target)
  'smoltalk2_magpie': ('HuggingFaceTB/smoltalk2', 'SFT', 'smoltalk_smollm3_smol_magpie_ultra_no_think', 40000),
  'smoltalk2_openhermes': ('HuggingFaceTB/smoltalk2', 'SFT', 'OpenHermes_2.5_no_think', 20000),
- 'nemotron_chat': ('nvidia/Nemotron-SFT-Instruction-Following-Chat-v3', 'default', 'chat', 100000),
+ 'nemotron_chat': ('nvidia/Nemotron-SFT-Instruction-Following-Chat-v3', 'default', 'chat', 150000),
+ 'smoltalk2_multilingual': ('HuggingFaceTB/smoltalk2', 'SFT', 'smoltalk_multilingual_8languages_lang_5_no_think', 25000),
 }
 def emit(fh, label, bucket, rid, row):
     u, a = user_text(row), assistant_text(row)

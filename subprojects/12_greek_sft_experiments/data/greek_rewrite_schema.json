@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["passage", "instruction", "answer"],
+  "properties": {
+    "passage": {"type": "string", "description": "the Greek source text the user provides"},
+    "instruction": {"type": "string", "description": "the user's request about the passage, in Greek"},
+    "answer": {"type": "string", "description": "the assistant's answer, in Greek"}
+  }
+}

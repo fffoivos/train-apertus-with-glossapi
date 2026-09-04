@@ -38,10 +38,13 @@ def label(row):
         tmp.write(prompt); p = tmp.name
     out = tempfile.mktemp(suffix='.json', prefix='terra_out_')
     t0 = time.time()
-    r = subprocess.run(['codex', 'exec', '-m', MODEL, '-c', f'model_reasoning_effort={EFFORT}', '-c', f'service_tier={TIER}', '--skip-git-repo-check', '-c', 'features.code_mode_host=false',
-                        '--sandbox', 'read-only', '--ephemeral', '--output-schema', SCHEMA, '-o', out, '-'], stdin=open(p), capture_output=True, text=True, timeout=600)
+    try:
+        r = subprocess.run(['codex', 'exec', '-m', MODEL, '-c', f'model_reasoning_effort={EFFORT}', '-c', f'service_tier={TIER}', '--skip-git-repo-check', '-c', 'features.code_mode_host=false',
+                            '--sandbox', 'read-only', '--ephemeral', '--output-schema', SCHEMA, '-o', out, '-'], stdin=open(p), capture_output=True, text=True, timeout=900)
+        txt = open(out).read() if os.path.exists(out) else r.stdout
+    except Exception as e:  # a timed-out or failed call must not kill the whole pool; it becomes a PARSE_FAIL row that can be re-run
+        txt = ''; print('call failed:', type(e).__name__, str(e)[:80], flush=True)
     dt = time.time() - t0
-    txt = open(out).read() if os.path.exists(out) else r.stdout
     try:
         j = json.loads(txt[txt.index('{'):txt.rindex('}') + 1])
     except Exception:
