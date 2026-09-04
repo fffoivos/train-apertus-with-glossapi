@@ -210,6 +210,11 @@
    "date": "2026-09-04 04:25",
    "what": "G2 passed on probe20; smoke skipped. Measured 26M tokens/node-hour → an E1 3-epoch grid run ≈ 18.5M tokens ≈ 45 min + overhead → fits a debug workbench; grid launched (run 1 on the probe's workbench, run 2 on a fresh one) while R1b is still certifying the R1 fixes (risk accepted: R1 passed in substance)",
    "by": "claude"
+  },
+  {
+   "date": "2026-09-04 04:40",
+   "what": "R1 ask 4 (fp32 master under ZeRO-3): base vs probe20/epoch1 bitwise delta in bf16 = 14.85% of 8.20B elements changed after 20 steps at lr 1e-5 (the rl-study bf16-only failure mode showed 2.35%; fp32 control 7.19% at 5e-6) → consistent with fp32 master weights; norm weights changed most (up to 96%), xIELU scalars 0%",
+   "by": "claude"
   }
  ]
 }
