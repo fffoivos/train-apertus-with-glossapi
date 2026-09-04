@@ -184,6 +184,9 @@
    "model": "Qwen/Qwen3.5-9B @c2022362",
    "thinking": "off (enable_thinking=False; assistant prompt ends with an empty <think> block)",
    "env": "sft5 transformers 5.16.1 first on PYTHONPATH, then lm_eval 0.4.11"
+  },
+  "round2_plan": {
+   "status": "draft 1 published, owner decisions pending (name/identity facts, tier, backbone, Aya, Qwen-generated rows, cap)"
   }
  },
  "decisions": [
@@ -384,7 +387,8 @@
   "evaluation_plan": "https://claude.ai/code/artifact/662e2918-13a6-4068-93aa-85f42732a996",
   "reading_round_two": "https://claude.ai/code/artifact/fa8d4fa7-f210-4a1f-8ae5-9bb6d2814e97",
   "greek_ifeval_deck": "https://claude.ai/code/artifact/f83dfe8a-eda3-4488-8818-72a3a198c6fc",
-  "greek_bench_browser": "https://claude.ai/code/artifact/06b69da8-3533-4f94-9a4b-fd2bcf810dde"
+  "greek_bench_browser": "https://claude.ai/code/artifact/06b69da8-3533-4f94-9a4b-fd2bcf810dde",
+  "sft_round2_plan": "https://claude.ai/code/artifact/69cb3de6-2feb-4997-af94-381629e3aba2"
  },
  "followups": [
   "ILSP harness: language:response_language scores 0 for every model (langdetect missing on the cluster); 31 instructions / 17 single-instruction prompts auto-fail; rescore saved samples offline after installing langdetect (up to +3.5 strict avg for all)"
