@@ -47,3 +47,6 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-04 06:10 | E1_cos_s44 | job 3288263 | claude | second cosine seed (44) for the seed-only noise floor | 1.5/— | — |
 | 2026-09-04 06:11 | native | job 3288014 | claude | native suite on the pick (E1 lr1e-5 ep2): macro(8) 0.574 vs base 0.499 (the 0.512 first printed included a 9th key, oyxoy_nli_exact_set); NLI −0.008, WiC +0.23, metaphor +0.21 → guard passes | —/— | 17.70 |
 | 2026-09-04 06:14 | E1last_cos + light eval | job 3288021 | claude | E1-last (rev 17) training + light evals of epoch2 | —/0.901 | 20.12 |
+| 2026-09-04 06:15 | knownness_base | job 3287968 | claude | known-ness scorer on the base | —/1.473 | 24.09 |
+| 2026-09-04 06:16 | E2_cos | job 3288295 | claude | launched (lr 1e-5, 2 ep, cosine) on normal | 1.5/— | — |
+| 2026-09-04 06:20 | E3_cos | job 3288299 | claude | launched (lr 1e-5, 2 ep, cosine) on normal | 1.5/— | — |
