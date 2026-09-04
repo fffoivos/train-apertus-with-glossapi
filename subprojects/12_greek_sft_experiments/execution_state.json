@@ -59,7 +59,7 @@
    "note": "SUPERSEDES the build: ilsp/ifeval_greek (541, IFEval schema) and ilsp/mgsm_greek (250) exist publicly — wrap them as lm-eval tasks with Greek-aware checkers"
   },
   "R1_review": {
-   "status": "pending",
+   "status": "done 03:15: BLOCKERS 0, HIGH 2 (F1 en_pov dev-twin leak; F2 batch-unit ambiguity) — both fixed 03:25 (twin dev ids; 16 packed seqs/step), re-review R1b launched; F3–F6 LOW logged",
    "deps": [
     "WP0_data",
     "WP2_trainer"
@@ -192,6 +192,18 @@
   {
    "date": "2026-09-04 03:05",
    "what": "GreekMMLU cannot be row-sharded: the frozen suite runner's contract has no 'greekmmlu' benchmark id and the native runner has no shard flags → ~2.8 h per model on one GPU (fp32). Plan: GreekMMLU only for the grid's epoch-3 endpoints, the replicate, E1-last and the winner epoch, one model per GPU in ONE normal-partition workbench (~3 h, ~3 nh ≈ CHF 8) — a >2 h job, so it waits for the owner's morning notice per CLUSTER_PROTOCOL §6. The native suite (sharded over 4 GPUs, ~40 min) and the ILSP/dev/interview evals run per checkpoint in debug workbenches.",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 03:20",
+   "what": "Batch unit = 16 packed 4096-token sequences per optimizer step (accum 4 × 4 GPUs), ~95 steps/epoch on E1; smoke = 30 steps",
+   "why": "R1 F2: 64 packed seqs gave 24 steps/epoch; 64 rows would be ~9 packed; chose the middle, in the range of Apertus (8) and Tülu 3 (~128k tokens/step)",
+   "by": "claude",
+   "doc": "reviews/R1_data_trainer.md"
+  },
+  {
+   "date": "2026-09-04 03:20",
+   "what": "no_robots_en_pov dev split := the no_robots dev twins (R1 F1); arms rebuilt",
    "by": "claude"
   }
  ]

@@ -453,7 +453,12 @@ def split_ids(rows: Sequence[dict[str, Any]], config: str) -> set[str]:
 
 
 def derive_splits(adapted: dict[str, list[dict[str, Any]]]) -> dict[str, set[str]]:
-    return {config: split_ids(adapted[config], config) for config in CONFIGS}
+    splits = {config: split_ids(adapted[config], config) for config in CONFIGS}
+    # R1 F1 (2026-09-04): no_robots_en_pov is the English twin of no_robots under the same row_ids;
+    # hold out the SAME conversations on both sides so no arm trains on a dev row's twin.
+    twin_ids = {row["row_id"] for row in adapted["no_robots_en_pov"]}
+    splits["no_robots_en_pov"] = {rid for rid in splits["no_robots"] if rid in twin_ids}
+    return splits
 
 
 def split_text(row_ids: set[str]) -> str:
@@ -924,7 +929,7 @@ def build_stats(
             "max_length": MAX_LENGTH,
             "ngram_size": NGRAM_SIZE,
             "containment_threshold": CONTAINMENT_THRESHOLD,
-            "split_method": "lowest sha256(seed\\0config\\0row_id), exact rounded 2% count",
+            "split_method": "lowest sha256(seed\\0config\\0row_id), exact rounded 2% count; no_robots_en_pov dev = no_robots dev twins (R1 F1)",
             "assistant_token_definition": "tokens in assistant content, excluding role control tokens",
             "tokens_definition": "rendered template tokenized with the Greek-CPT tokenizer",
             "planning_reference_tokens_definition": "same render tokenized with the unextended Apertus Instruct tokenizer; retained only to audit the supplied section 5a-prime estimates",

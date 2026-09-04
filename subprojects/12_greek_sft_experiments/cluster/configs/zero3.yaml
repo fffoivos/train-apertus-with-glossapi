@@ -12,7 +12,7 @@ rdzv_backend: static
 same_network: true
 use_cpu: false
 deepspeed_config:
-  gradient_accumulation_steps: 16
+  gradient_accumulation_steps: 4
   gradient_clipping: 1.0
   offload_optimizer_device: none
   offload_param_device: none

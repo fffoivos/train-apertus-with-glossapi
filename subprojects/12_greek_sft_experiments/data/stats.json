@@ -2,13 +2,13 @@
   "arms": {
     "E1": {
       "dev": {
-        "assistant_content_tokens": 135625,
-        "assistant_token_share": 0.57265849,
+        "assistant_content_tokens": 133028,
+        "assistant_token_share": 0.56398625,
         "max_length": 2003,
-        "planning_reference_tokens": 294128,
+        "planning_reference_tokens": 293169,
         "rows": 658,
         "rows_over_4096": 0,
-        "tokens": 236834
+        "tokens": 235871
       },
       "train": {
         "assistant_content_tokens": 3524685,
@@ -27,38 +27,38 @@
     },
     "E2": {
       "dev": {
-        "assistant_content_tokens": 135625,
-        "assistant_token_share": 0.57265849,
+        "assistant_content_tokens": 133028,
+        "assistant_token_share": 0.56398625,
         "max_length": 2003,
-        "planning_reference_tokens": 294128,
+        "planning_reference_tokens": 293169,
         "rows": 658,
         "rows_over_4096": 0,
-        "tokens": 236834
+        "tokens": 235871
       },
       "train": {
-        "assistant_content_tokens": 5287679,
-        "assistant_token_share": 0.56497186,
+        "assistant_content_tokens": 5290276,
+        "assistant_token_share": 0.56519119,
         "expected_tokens": 12600000,
         "max_length": 3112,
-        "planning_reference_relative_error": 0.02016254,
+        "planning_reference_relative_error": 0.02008643,
         "planning_reference_relative_error_at_reported_precision": 0.01984127,
-        "planning_reference_tokens": 12345952,
+        "planning_reference_tokens": 12346911,
         "planning_reference_tokens_millions_at_reported_precision": 12.35,
         "planning_reference_within_2_percent": true,
         "rows": 26910,
         "rows_over_4096": 0,
-        "tokens": 9359190
+        "tokens": 9360153
       }
     },
     "E3": {
       "dev": {
-        "assistant_content_tokens": 135625,
-        "assistant_token_share": 0.57265849,
+        "assistant_content_tokens": 133028,
+        "assistant_token_share": 0.56398625,
         "max_length": 2003,
-        "planning_reference_tokens": 294128,
+        "planning_reference_tokens": 293169,
         "rows": 658,
         "rows_over_4096": 0,
-        "tokens": 236834
+        "tokens": 235871
       },
       "train": {
         "assistant_content_tokens": 5203462,
@@ -77,13 +77,13 @@
     },
     "E3prime": {
       "dev": {
-        "assistant_content_tokens": 135625,
-        "assistant_token_share": 0.57265849,
+        "assistant_content_tokens": 133028,
+        "assistant_token_share": 0.56398625,
         "max_length": 2003,
-        "planning_reference_tokens": 294128,
+        "planning_reference_tokens": 293169,
         "rows": 658,
         "rows_over_4096": 0,
-        "tokens": 236834
+        "tokens": 235871
       },
       "train": {
         "assistant_content_tokens": 6591677,
@@ -427,22 +427,22 @@
           "tokens": 3238880
         },
         "dev": {
-          "assistant_content_tokens": 36419,
-          "assistant_token_share": 0.58686369,
-          "max_length": 1404,
-          "planning_reference_tokens": 62123,
+          "assistant_content_tokens": 33822,
+          "assistant_token_share": 0.55360592,
+          "max_length": 1686,
+          "planning_reference_tokens": 61164,
           "rows": 190,
           "rows_over_4096": 0,
-          "tokens": 62057
+          "tokens": 61094
         },
         "train": {
-          "assistant_content_tokens": 1762994,
-          "assistant_token_share": 0.55495506,
+          "assistant_content_tokens": 1765591,
+          "assistant_token_share": 0.55560412,
           "max_length": 3112,
-          "planning_reference_tokens": 3181224,
+          "planning_reference_tokens": 3182183,
           "rows": 9308,
           "rows_over_4096": 0,
-          "tokens": 3176823
+          "tokens": 3177786
         }
       },
       "adapted_dropped": {},
@@ -610,13 +610,13 @@
     "train_rows_dropped": 5
   },
   "dev_all": {
-    "assistant_content_tokens": 135625,
-    "assistant_token_share": 0.57265849,
+    "assistant_content_tokens": 133028,
+    "assistant_token_share": 0.56398625,
     "max_length": 2003,
-    "planning_reference_tokens": 294128,
+    "planning_reference_tokens": 293169,
     "rows": 658,
     "rows_over_4096": 0,
-    "tokens": 236834
+    "tokens": 235871
   },
   "evaluation_sources": {
     "ellinika_bench": {
@@ -758,7 +758,7 @@
     "planning_estimate_comparison": "2 percent comparison is performed at the 0.01M precision of the approximate section 5a-prime figures; unrounded counts and errors are also retained",
     "planning_reference_tokens_definition": "same render tokenized with the unextended Apertus Instruct tokenizer; retained only to audit the supplied section 5a-prime estimates",
     "seed": 1234,
-    "split_method": "lowest sha256(seed\\0config\\0row_id), exact rounded 2% count",
+    "split_method": "lowest sha256(seed\\0config\\0row_id), exact rounded 2% count; no_robots_en_pov dev = no_robots dev twins (R1 F1)",
     "tokens_definition": "rendered template tokenized with the Greek-CPT tokenizer"
   },
   "schema_version": "greek_sft_wp0_stats_v1",
