@@ -263,6 +263,10 @@
    "voice_delta": 1.0,
    "int_mean": 2.61,
    "dev_mean_el": 1.374
+  },
+  "E1_lr1e-5_ep2_native": {
+   "macro8": 0.5738,
+   "card_macro": 0.499
   }
  }
 }

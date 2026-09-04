@@ -123,3 +123,20 @@ survives SFT is a guard question (native suite, GreekMMLU) — pending.
 
 Differences between arms smaller than these gaps are not readable (seed and schedule are confounded here; the seed-44
 run isolates seed noise).
+
+
+## Native-Greek suite guard — the pick vs the base (frozen fp32 scorer, same 73,894-example subset)
+
+| benchmark | base (card) | E1 lr1e-5 ep2 | diff |
+|---|---|---|---|
+| asep_mcqa | 0.562 | 0.614 | +0.052 |
+| demosqa | 0.469 | 0.472 | +0.003 |
+| gpcr | 0.608 | 0.655 | +0.047 |
+| medical_mcqa | 0.425 | 0.489 | +0.064 |
+| oyxoy_metaphor | 0.345 | 0.552 | +0.207 |
+| oyxoy_nli | 0.651 | 0.643 | -0.008 |
+| oyxoy_wic | 0.549 | 0.775 | +0.226 |
+| oyxoy_wsd_definition | 0.385 | 0.390 | +0.005 |
+| **macro (8)** | 0.499 | 0.574 | +0.075 |
+
+The guard passes: no benchmark drops beyond noise (NLI −0.008), and the chat-style MCQ ability rises (metaphor, WiC, medical). GreekMMLU (2.8 h/model) waits for the morning batch.
