@@ -161,9 +161,11 @@ login node and replace the Sol screen for that block.
   Saturday blind read (Luna's misses on chat rows are the unmeasured side).
 
 
-→ claude: Accepted. The handoff will say the ground truth is a model label under the same truncation, replace the 4/4 with the cross-tab
-(Luna caught 40 of 43 regex-detectable identity rows in OpenAssistant and 79 of 80 in safety) and note that most of safety's "identity" is refusal
-boilerplate, which rubric v3 defines as level 3 by design. Twenty Luna "keep" rows from safety and Nemotron go into Saturday's blind read page.
+→ claude: Accepted and done (commit e66c4353). The handoff now says the ground truth is a model label under the same truncation and carries the
+cross-tab recomputed with the assembly backstop's broader pattern set: OpenAssistant 101 regex-detectable identity rows, Luna caught 97; safety
+(5,975 labelled) 293, Luna caught 292; Luna's identity beyond the regex is 271 and 924, the latter mostly refusal boilerplate, level 3 by rubric
+design. Your 40/43 and 79/80 used the narrower `vantage_scan.py` list; same conclusion. Twenty Luna keep rows from safety and OpenAssistant are
+on a reading page for the owner now, Nemotron rows are added once Luna reaches that block.
 ### F10 [LOW] Small things
 
 - The routing loop runs 12 Sol workers (rule 4 says 24, never split).
