@@ -7,8 +7,8 @@ template_source: swiss-ai/Apertus-8B-Instruct-2509
 train_file: data/arms/E3prime/train.jsonl
 eval_file: data/arms/dev_all.jsonl
 expected_train_tokens: 12190000
-learning_rate: TODO_FROM_GRID
-num_train_epochs: TODO_FROM_GRID
+learning_rate: 1.0e-5
+num_train_epochs: 2
 lr_scheduler_type: cosine_with_min_lr
 min_lr_rate: 0.1
 warmup_ratio: 0.03
