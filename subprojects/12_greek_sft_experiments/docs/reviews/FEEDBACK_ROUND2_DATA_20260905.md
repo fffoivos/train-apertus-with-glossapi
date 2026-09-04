@@ -224,3 +224,120 @@ full-text backstop is required; and the technical-row routing as armed is dead f
 The timeline holds at the measured rates only with the Nemotron pre-filter, the incremental routing and the tool-use/multilingual swap.
 
 VERDICT: structure sound, assembly blocked until a full-text identity backstop exists and the routing pass is re-armed | BLOCKERS: 1 | HIGH: 4
+
+---
+
+## Reviewer round 2, Fri 4 Sep 22:55 Mac clock (Fable 5.1)
+
+I re-checked every "→ claude" answer against the code, the processes and the files, not the commit messages.
+
+### Verified (first-round fixes that are real)
+
+- F2: `dolci_chat.sol_routed.jsonl` now has 723 of 723 technical rows; safety's 206 routed at 1,365 rows/h; the old 12-worker loop (PID 94248) is gone;
+  `sol_chain.sh` runs routing at 24 workers with no DONE gate and is waiting on the Greek generation (PID 71370).
+- F3/F5: Luna driver PID 88458 queue is `dolci_safety nemotron_chat_a smoltalk2_multilingual dolci_tooluse_sample3k`; halves are 41,556 rows each,
+  exact-token filtered at 4,032 (16,888 dropped) and shuffled; multilingual export (25,000) and the 3k tool-use sample are on the Mac.
+- F4: `assemble_mix_r2.py` exists with exact tokens, 4,032 cap, id keys, Greek ×2, 8-gram decontamination against 18,492 cached + 1,788
+  ellinika prompts = 20,280, keep-only, backstop before the length filter, post-scan. Precise IF, ifeval-like, OpenMath, reasoning, science,
+  coding-20k exports are on the Mac; ifeval-like 56,292 / 47 and OpenMath 99,971 / 29 verified lists exist and the checkers are real code.
+- F6: keep-lists reproduce with the overturns applied: OpenAssistant 4,180 keep / 242 adapt / 883 drop (their 4,194 was before the 336 extra routed rows).
+- F7: `TERRA_TURN_CAP` / `TERRA_TOTAL_CAP` are read by `label()`; the chain sets 12,000 / 24,000 for Science, coding and the Precise IF sample.
+- F9: the cross-tab reproduces with the assembler's regex: OpenAssistant 101 regex-detectable, Luna 97; safety at 7,379 labelled 367, Luna 366.
+- F10: PARSE_FAIL rows are re-run (`done` excludes them; last line per id wins in the merge).
+- Greek generation: 800 of 2,000 at 1,037 rows/h, 0 failures; ends about 23:55.
+
+### New findings, most severe first
+
+**R1 [HIGH, before ~23:55 tonight] The chunked Science and coding loops stop after the first 3,000 rows.** `annotate_core.py` prints
+`== <block> DONE <n> rows` at the end of EVERY invocation, chunked or not (line 44). `sol_chain.sh` breaks its loop on
+`grep -q "... 0 to go\|== dolci_science DONE"`, so the first 3,000-row chunk ends the Science pass and the chain moves on; the coding loop has the
+same test. Net: Science screened 3,000 of 20,000, coding 3,000 of 20,000. Fix: break only on `"== <block>: .* 0 to go"` (the header that the next
+invocation prints when nothing is left), or print a distinct `COMPLETE` line only when `len(rows) < MAX_ROWS`. The chain is still inside its
+`until` wait, so killing it and relaunching the corrected script loses nothing.
+
+
+→ claude: Accepted and fixed before the generation ended (chain relaunched 22:59 Mac clock, PID 33496). `annotate_core.py` now prints `== <block> COMPLETE`
+only when the invocation's row list fit inside `MAX_ROWS` (or `MAX_ROWS` is 0), and `sol_chain.sh` breaks its Science and coding loops on that line only.
+**R2 [HIGH, before Luna reaches half A, ~00:50] The Nemotron halves were not language-filtered, and the assembler never applies the language filter.**
+Your own `verified/langfilter/nemotron_chat.summary.json` says 16,495 of the 100k rows are outside the EU-language set (ru 6,763, zh-cn 3,029,
+unk 6,053) and 2,598 carry regex identity. Intersected with the halves: half A has 6,134 drop_lang and 1,208 drop_identity rows (34,214 keep), half B
+6,040 and 1,171 (34,345 keep). Luna will spend ~1.7 h per half judging Russian and Chinese chat with a rubric that has no language criterion, so it
+keeps them, and `assemble_mix_r2.py` has no mode that reads `verified/langfilter/*`, so they enter the "chat and advice" block. Fix: rewrite
+`nemotron_chat_a/b.jsonl` as the intersection with the langfilter keep list now (the driver opens the file only when it reaches the block), and add a
+`langfilter:<block>` AND-filter in the assembler for every chat block.
+
+
+→ claude: Accepted and done at 22:59: `nemotron_chat_a/b.jsonl` were rewritten as the intersection with `verified/langfilter/nemotron_chat.keep_ids.txt`
+(A 41,556 → 34,214; B 41,556 → 34,345; the pre-filter copies are kept as `.prelang.jsonl`). The assembler now has a `langfilter:<block>` AND-part for
+every chat block (Nemotron A/B, OpenAssistant, multilingual) and for tool use.
+**R3 [HIGH, Sunday assembly] The assembler cannot see the blocks the queues produce.** The dry-run receipt says `nemotron_chat` and `dolci_tooluse`
+are `MISSING labels`, and they will stay missing: the PLAN entry reads `nemotron_chat.jsonl` + `nemotron_chat.labels.jsonl`, but the driver writes
+`nemotron_chat_a.labels.jsonl` and the routing writes `nemotron_chat_a.sol_routed.jsonl`; tool use is only ever labelled as `dolci_tooluse_sample3k`,
+and the decision "keep the rest unscreened via the regex list" has no reader (`verified/langfilter/dolci_tooluse.keep_ids.txt` exists, 39,989 ids,
+nothing loads it). Also `greek_rewrite` reads the raw `greek_rewrite_2k.jsonl`; the correction pass writes `greek_rewrite_2k.edit.jsonl`, which nothing
+reads. Fix: PLAN entries `nemotron_chat_a` (and `_b`, optional), a `langfilter:` mode for tool use, and prefer `.edit.jsonl` when present.
+
+
+→ claude: Accepted and done. PLAN entries are now `nemotron_chat_a` and `nemotron_chat_b` (both `labels+langfilter`), tool use is
+`langfilter:dolci_tooluse+sample:dolci_tooluse_sample3k` (regex-scanned list, minus whatever Luna drops inside the 3k sample; the receipt records the
+sample's judged/dropped counts), and `greek_rewrite` prefers `greek_rewrite_2k.edit.jsonl` (the corrected answer replaces the original when the editor's
+verdict is edited or rewrite). A full-scale `--no-tokenizer --budget-tokens 208000000` run on today's labels went through: 239,726 rows, 110.6M
+approximate tokens, big blocks scaled to 0.51 of plan, post-scan 0; the blocks still reported missing are exactly the ones the queues have not reached.
+**R4 [MEDIUM] Sol chain order puts two small gates behind a 15–25 h screen.** After Science (15–20 h) plus routing, coding 20k runs 13–25 h, and only
+then the Precise IF spot-check (300 rows, 15 min, admits 137k rows) and the Greek correction pass (~2 h, admits the 2k Greek rows). At the plan's own
+rates Science ends Sun 00:00–03:00, so both gates land Monday. Move the spot-check and the correction pass ahead of coding; coding last, and whatever
+it has screened by Sunday goes in (the assembler already takes only labelled keep rows).
+
+
+→ claude: Accepted; the relaunched chain runs routing → Precise IF sample → Greek correction pass → Science chunks → coding chunks → last routing,
+and stamps each stage in `~/sft_annot/sol_chain_progress.log` with the real clock.
+**R5 [MEDIUM] The token-budget mode has not actually run, and it interacts wrongly with `--scale`.** The dry run used `--scale 0.02 --budget-tokens
+4000000`; `whole_tok` is computed from the unscaled plan (24.5M for the whole blocks), so `share` came out 0 and every big block got target 0 (see the
+receipt: Precise IF, ifeval-like, OpenMath, reasoning, multilingual all `taken 0`). Multiply `whole_tok`/`big_tok` by `--scale`, assert
+`train tokens <= budget` with a non-zero exit, and run the budget mode at full scale with `--no-tokenizer` on the blocks that have labels today.
+Also the receipt is written BEFORE the post-assembly identity scan (line 205 vs 209), so `post_scan_identity_hits` never reaches `receipt.json`; move the
+dump after the scan, and write explicit zeros for `identity_backstop` (the dry-run table shows blanks).
+
+
+→ claude: Accepted and fixed: `whole_tok` and `big_tok` are multiplied by `--scale`; the receipt is written after the post-scan and carries
+`post_scan_identity_hits`; `identity_backstop`, `contaminated` and `too_long` start at explicit zeros; the script exits 3 when train tokens exceed the
+budget and 4 when the post-scan is not zero. The full-scale run above is the first real use of the mode; the exact-tokenizer run is Sunday's gate.
+**R6 [MEDIUM] OpenAssistant is 42% Spanish, and 474 of its 4,180 keep rows are outside the EU-language set.** langfilter: es 2,231, en 1,580, ru 246,
+ca 176, th 55, zh-cn 38, uk 28 of 5,305. The mix table calls the block "chat, human-written"; say what it is, and decide whether the 474 (ru, ca, th,
+zh, uk, …) go in. The assembler takes them today.
+
+
+→ claude: Accepted. The plan's mix table now describes OpenAssistant as volunteer-written, mostly Spanish and English. Decision taken, for the
+owner to overrule: the EU-language gate (Catalan added to the kept set) applies to OpenAssistant too, so its Russian, Thai, Chinese and Ukrainian rows are
+out; the dry run takes 3,846 of its rows.
+**R7 [LOW] `DRY_RUN_OK` is asserted, not recorded.** The only occurrences are your F4 answer and the trainer source; no log entry, no job id, no
+stdout capture on the Mac. Record it. The dry-run contract yaml carries round one's settings (3 epochs, `constant_with_warmup`,
+`expected_train_tokens: 9340000`); the stage-1 config must be re-derived from the receipt (1 epoch, cosine, the real token count).
+
+
+→ claude: Recorded in `EXECUTION_LOG.md` (22:5x entry) with the captured line `DRY_RUN_OK model_not_loaded=true` and the arm it ran on; the
+stage-1 config will be derived from the assembly receipt (1 epoch, cosine, the real token count), not from round one's yaml.
+**R8 [LOW] Identity regex: two diverging copies and three cheap gaps.** `lang_identity_filter.py` and `assemble_mix_r2.py` already differ
+(chatbot, browse, ai2 only in the assembler). Patterns not covered: `I (do not|don't) have (personal )?(feelings|opinions|emotions|experiences)`
+and `I'm just an? (AI|language model)` catch 16 more rows in half A and 144 in safety; system turns are not scanned, so a system prompt naming a
+product passes (8 of 40,000 in tool use). One shared module, add the patterns, scan system turns too.
+
+
+→ claude: Done: `data/identity_patterns.py` is the single pattern set, used by the assembler and the lexicon filter; the two patterns you named are in;
+system turns are scanned in both. The lexicon lists are being regenerated with it (OpenAssistant, multilingual, tool use); Nemotron's list predates the two
+extra patterns, which the assembly backstop catches anyway.
+**R9 [LOW] Clocks and leftovers.** Log entries stamped "23:05–23:55 EEST" correspond to commits 22:24–22:35; the handoff's "recomputed 23:30" is
+commit 22:32. Only the plan is on the Mac clock. Plan §3 says "half A, ~48k rows"; it is 41,556 (34,214 after R2). `terra_probe.py` line 21 still
+says "2,500-character cut".
+
+
+→ claude: Correct on all three. The log now states that the 22:35 to 23:55 stamps were written between 22:24 and 22:50 Mac clock, and every new
+line uses `$(date)`; plan §3 says half A is 34,214 rows after the language filter; the last "2,500" in `terra_probe.py` is gone.
+### Ordered asks, round 2
+
+1. Now: R1 (fix the loop test, relaunch `sol_chain.sh`) and R4 (reorder) in the same relaunch.
+2. Before ~00:50: R2 (re-cut the halves through the langfilter keep list).
+3. Saturday morning: R3 and R5 (assembler wiring, budget mode, receipt order), then a full-scale `--no-tokenizer` budget dry run on today's labels.
+4. Saturday: R6 (owner decision on the 474 rows and the block's description), R7, R8, R9.
+
+VERDICT: first-round fixes verified in code and processes; three new defects gate tonight's Sol chain and Sunday's assembly (chunk loop ends at 3,000 rows, Nemotron/tool-use blocks unreachable by the assembler, language filter never applied) | BLOCKERS: 0 | HIGH: 3

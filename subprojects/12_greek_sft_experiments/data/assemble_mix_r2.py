@@ -48,29 +48,21 @@ PLAN = [
  ('dolci_precise_if', 'dolci_precise_if.jsonl', 'all', 137000, 1),
  ('ifeval_like', 'ifeval_like_raw.jsonl', 'verified:ifeval_like', 56000, 1),
  ('openmath_gsm', 'openmath_gsm_raw.jsonl', 'verified:openmath', 100000, 1),
- ('nemotron_chat', 'nemotron_chat.jsonl', 'labels', 100000, 1),
- ('dolci_chat', 'dolci_chat.jsonl', 'labels', 6000, 1),
+ ('nemotron_chat_a', 'nemotron_chat_a.jsonl', 'labels+langfilter:nemotron_chat', 50000, 1),
+ ('nemotron_chat_b', 'nemotron_chat_b.jsonl', 'labels+langfilter:nemotron_chat', 50000, 1),
+ ('dolci_chat', 'dolci_chat.jsonl', 'labels+langfilter:dolci_chat', 6000, 1),
  ('dolci_code_algo_20k', 'dolci_code_algo_20k.jsonl', 'labels', 20000, 1),
  ('dolci_reasoning', 'dolci_reasoning.jsonl', 'all', 30000, 1),
  ('puzzles', 'dolci_other.full.jsonl', 'verified:puzzles', 12000, 1),
- ('dolci_tooluse', 'dolci_tooluse.jsonl', 'labels', 30000, 1),
+ ('dolci_tooluse', 'dolci_tooluse.jsonl', 'langfilter:dolci_tooluse+sample:dolci_tooluse_sample3k', 30000, 1),  # regex-scanned; rows in the 3k sample use Luna's verdict
  ('dolci_science', 'dolci_science.jsonl', 'labels', 15000, 1),
- ('smoltalk2_multilingual', 'smoltalk2_multilingual.jsonl', 'labels_or_all', 25000, 1),
+ ('smoltalk2_multilingual', 'smoltalk2_multilingual.jsonl', 'labels_or_all+langfilter:smoltalk2_multilingual', 25000, 1),
  ('dolci_safety', 'dolci_safety.jsonl', 'labels', 10000, 1),
  ('greek_rewrite', 'greek_rewrite_2k.jsonl', 'all', 2000, 1),
  ('greek_ours', None, 'ours', 20000, 2),
 ]
 
-IDENT = re.compile(r"\b(as an? (ai|artificial intelligence|language model|large language model|llm|virtual assistant|ai assistant|ai language model|chatbot)|i am an? (ai|artificial intelligence|language model|large language model|llm|ai assistant|chatbot)|i'm an? (ai|artificial intelligence|language model|large language model|llm|ai assistant|chatbot)|i'm (chatgpt|claude|gemini|llama|olmo|gpt-4|gpt-3)|i am (chatgpt|claude|gemini|llama|olmo)|my (training|knowledge) (data|cutoff)|knowledge cutoff|i (do not|don't) have (access to )?real[- ]time|i cannot browse the internet|i (do not|don't) have the ability to (browse|access)|i am not able to access|developed by (openai|anthropic|google|meta|ai2|the allen institute|allen institute|mistral|nvidia|zhipu|z\.ai)|allen institute for ai|\bai2\b|"
-                   r"en tant qu'?(ia|intelligence artificielle|modèle de langage|assistant ia)|je suis un(e)? (ia|intelligence artificielle|modèle de langage)|"
-                   r"als (ki|künstliche intelligenz|sprachmodell|ki-assistent|ki-sprachmodell)|ich bin (eine? )?(ki|künstliche intelligenz|sprachmodell)|"
-                   r"come (ia|intelligenza artificiale|modello linguistico)|sono un(a)? (ia|intelligenza artificiale|modello linguistico)|"
-                   r"como (ia|inteligencia artificial|modelo de lenguaje|modelo de linguagem)|soy un(a)? (ia|inteligencia artificial|modelo de lenguaje)|sou um(a)? (ia|inteligência artificial|modelo de linguagem)|"
-                   r"ως (τεχνητή νοημοσύνη|γλωσσικό μοντέλο|μοντέλο τεχνητής)|είμαι (ένα |μια )?(τεχνητή νοημοσύνη|γλωσσικό μοντέλο))", re.I)
-def identity_hit(messages):
-    for m in messages:
-        if m['role'] == 'assistant' and IDENT.search(m['content']): return True
-    return False
+from identity_patterns import IDENT, identity_hit_messages as identity_hit  # shared with lang_identity_filter.py (review R8); scans assistant and system turns
 
 def load_ids(path):
     return set(l.strip() for l in open(path) if l.strip()) if os.path.exists(path) else None
@@ -88,13 +80,22 @@ def labels_keep(block):
                 if j.get('disposition'): keep[j['id']] = j.get('disposition')
     return {i for i, d in keep.items() if d == 'keep'}  # adapt rows are NOT taken: no line-cut exists yet, they would train the identity line in
 
+GREEK_EDITS = {}
+_ep = ANN / 'greek_rewrite_2k.edit.jsonl'
+if _ep.exists():
+    for _l in open(_ep):
+        _j = json.loads(_l); GREEK_EDITS[_j['id']] = _j
+    print(f'Greek correction pass loaded: {len(GREEK_EDITS)} rows', flush=True)
+
 def to_messages(row, block):
     """Trainer contract: system/user/assistant strings only. Tool rows: calls as <function_calls>, tool outputs as user turns."""
     if block == 'ifeval_like': return [dict(role='user', content=row['prompt']), dict(role='assistant', content=row['response'])]
     if block == 'openmath_gsm': return [dict(role='user', content=row['problem']), dict(role='assistant', content=row['generated_solution'])]
     if block == 'greek_rewrite':
         if not row.get('passage') or not row.get('answer'): return None
-        return [dict(role='user', content=f"{row['passage'].strip()}\n\n{row['instruction'].strip()}"), dict(role='assistant', content=row['answer'].strip())]
+        ans = row['answer']; e = GREEK_EDITS.get(row['id'])
+        if e and e.get('verdict') in ('edited', 'rewrite') and (e.get('edited_answer') or '').strip(): ans = e['edited_answer']
+        return [dict(role='user', content=f"{row['passage'].strip()}\n\n{row['instruction'].strip()}"), dict(role='assistant', content=ans.strip())]
     turns = row.get('turns') or [dict(role='user', content=row['user']), dict(role='assistant', content=row['assistant'])]
     out = []
     for t in turns:
@@ -150,10 +151,10 @@ def n_tokens(messages):
 
 # ---------- build ----------
 WHOLE = {'puzzles', 'dolci_chat', 'dolci_safety', 'greek_rewrite', 'greek_ours'}  # small blocks kept whole under a token budget
-PLAN_TOK = {'dolci_precise_if': 600, 'ifeval_like': 256, 'openmath_gsm': 342, 'nemotron_chat': 1584, 'dolci_chat': 350, 'dolci_code_algo_20k': 388, 'dolci_reasoning': 330, 'puzzles': 330, 'dolci_tooluse': 827, 'dolci_science': 941, 'smoltalk2_multilingual': 511, 'dolci_safety': 302, 'greek_rewrite': 700, 'greek_ours': 351}  # measured mean tokens per row (review F4)
+PLAN_TOK = {'dolci_precise_if': 600, 'ifeval_like': 256, 'openmath_gsm': 342, 'nemotron_chat_a': 1584, 'nemotron_chat_b': 1584, 'dolci_chat': 350, 'dolci_code_algo_20k': 388, 'dolci_reasoning': 330, 'puzzles': 330, 'dolci_tooluse': 827, 'dolci_science': 941, 'smoltalk2_multilingual': 511, 'dolci_safety': 302, 'greek_rewrite': 700, 'greek_ours': 351}  # measured mean tokens per row (review F4)
 receipt = dict(arm=args.arm, seed=args.seed, scale=args.scale, budget_tokens=args.budget_tokens, blocks=[], tokenizer='exact' if tok else 'approximate'); train, dev = [], []
 if args.budget_tokens:
-    whole_tok = sum(t * w * PLAN_TOK[b] for b, f, m, t, w in PLAN if b in WHOLE); big_tok = sum(t * w * PLAN_TOK[b] for b, f, m, t, w in PLAN if b not in WHOLE)
+    whole_tok = args.scale * sum(t * w * PLAN_TOK[b] for b, f, m, t, w in PLAN if b in WHOLE); big_tok = args.scale * sum(t * w * PLAN_TOK[b] for b, f, m, t, w in PLAN if b not in WHOLE)
     share = max(0.0, (args.budget_tokens - whole_tok) / big_tok) if big_tok else 0
     print(f'token budget {args.budget_tokens/1e6:.0f}M: whole blocks {whole_tok/1e6:.0f}M, big blocks scaled to {share:.2f} of plan ({big_tok*share/1e6:.0f}M)', flush=True)
 else: share = 1.0
@@ -168,20 +169,37 @@ for block, fname, mode, target, weight in PLAN:
     else:
         src = ANN / 'core_export' / fname if fname != 'greek_rewrite_2k.jsonl' else ANN / fname
         if not src.exists(): receipt['blocks'].append(dict(block=block, status='MISSING export', target=target)); print(f'{block}: export missing', flush=True); continue
-        keep = None
-        if mode == 'labels' or mode == 'labels_or_all':
-            keep = labels_keep(block)
-            if keep is None and mode == 'labels': receipt['blocks'].append(dict(block=block, status='MISSING labels', target=target)); print(f'{block}: labels missing', flush=True); continue
-        elif mode.startswith('verified:'):
-            keep = load_ids(ANN / 'verified' / mode.split(':')[1] / 'keep_ids.txt')
-            if keep is None: receipt['blocks'].append(dict(block=block, status='MISSING verified list', target=target)); print(f'{block}: verified list missing', flush=True); continue
+        keep = None; missing = None
+        for part in mode.split('+'):
+            k = None
+            if part in ('labels', 'labels_or_all'):
+                k = labels_keep(block)
+                if k is None and part == 'labels': missing = 'labels'
+                if k is None: continue
+            elif part.startswith('verified:'):
+                k = load_ids(ANN / 'verified' / part.split(':')[1] / 'keep_ids.txt')
+                if k is None: missing = 'verified list'
+            elif part.startswith('langfilter:'):
+                k = load_ids(ANN / 'verified' / 'langfilter' / f"{part.split(':')[1]}.keep_ids.txt")
+                if k is None: missing = 'langfilter list'
+            elif part.startswith('sample:'):  # rows judged in a sample block: drop those the judge dropped, keep the rest of the block as is
+                sk = labels_keep(part.split(':')[1]); sp = ANN / 'labels' / f"{part.split(':')[1]}.labels.jsonl"
+                if sk is not None and sp.exists():
+                    judged = {json.loads(l)['id'] for l in open(sp)}; dropped = judged - sk
+                    keep = (keep - dropped) if keep is not None else None
+                    receipt.setdefault('sample_notes', []).append(dict(block=block, sample=part.split(':')[1], judged=len(judged), dropped=len(dropped)))
+                continue
+            elif part == 'all': continue
+            if k is not None: keep = k if keep is None else (keep & k)
+            if missing: break
+        if missing: receipt['blocks'].append(dict(block=block, status=f'MISSING {missing}', target=target)); print(f'{block}: {missing} missing', flush=True); continue
         for l in open(src):
             r = json.loads(l); rid = str(r['key'] if block == 'ifeval_like' else r.get('id', r.get('_row', r.get('key', ''))))  # verified lists key ifeval-like rows by `key`
             if block == 'puzzles' and 'puzzle_data' not in rid: continue
             if keep is not None and rid not in keep: continue
             m = to_messages(r, block)
             if m: rows.append(dict(id=rid, messages=m))
-    random.shuffle(rows); taken = []; stats = collections.Counter(available=len(rows))
+    random.shuffle(rows); taken = []; stats = collections.Counter(available=len(rows), contaminated=0, too_long=0, identity_backstop=0)
     for r in rows:
         if len(taken) >= target: break
         hit = contaminated(r['messages'])
@@ -204,10 +222,13 @@ def dump(path, rows):
     return h.hexdigest()
 receipt['train'] = dict(rows=len(train), tokens=sum(r['tokens'] for r in train), sha256=dump(OUT / 'train.jsonl', train))
 receipt['dev'] = dict(rows=len(dev), tokens=sum(r['tokens'] for r in dev), sha256=dump(OUT / 'dev.jsonl', dev))
-json.dump(receipt, open(OUT / 'receipt.json', 'w'), indent=1)
 with open(OUT / 'summary.md', 'w') as f:
     f.write(f"# {args.arm}\n\ntrain {receipt['train']['rows']} rows, {receipt['train']['tokens']/1e6:.1f}M tokens ({receipt['tokenizer']}); dev {receipt['dev']['rows']} rows\n\n| block | status | target | available | taken | weight | contaminated | too long | identity backstop |\n|---|---|---|---|---|---|---|---|---|\n")
     for b in receipt['blocks']: f.write(f"| {b['block']} | {b['status']} | {b.get('target')} | {b.get('available','')} | {b.get('taken','')} | {b.get('weight','')} | {b.get('contaminated','')} | {b.get('too_long','')} | {b.get('identity_backstop','')} |\n")
 post = sum(1 for r in train if identity_hit(r['messages'])); receipt['post_scan_identity_hits'] = post
 print(f'post-assembly identity scan over the written train rows: {post} hits (must be 0)', flush=True)
+json.dump(receipt, open(OUT / 'receipt.json', 'w'), indent=1)  # written after the post-scan so the receipt carries it
+if args.budget_tokens and receipt['train']['tokens'] > args.budget_tokens:
+    print(f"BUDGET EXCEEDED: {receipt['train']['tokens']} train tokens > {args.budget_tokens}", flush=True); sys.exit(3)
+if post: print('IDENTITY POST-SCAN FAILED', flush=True); sys.exit(4)
 print(f"TRAIN {receipt['train']['rows']} rows {receipt['train']['tokens']/1e6:.1f}M tokens; DEV {receipt['dev']['rows']} -> {OUT}", flush=True)

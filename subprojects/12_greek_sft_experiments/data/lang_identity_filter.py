@@ -6,13 +6,9 @@ Writes <out_dir>/<block>.keep_ids.txt, .drop_lang_ids.txt, .drop_identity_ids.tx
 Usage: python3 lang_identity_filter.py <export.jsonl> <out_dir> <block> [--no-lang]"""
 import json, sys, os, re, collections
 IN, OUT, BLOCK = sys.argv[1], sys.argv[2], sys.argv[3]; NOLANG = '--no-lang' in sys.argv; os.makedirs(OUT, exist_ok=True)
-KEEP_LANGS = {'en', 'el', 'fr', 'de', 'it', 'es', 'pt', 'nl', 'sv', 'da', 'no', 'fi', 'pl', 'cs', 'sk', 'sl', 'hr', 'ro', 'hu', 'bg', 'lt', 'lv', 'et', 'ga', 'mt'}
-IDENT = re.compile(r"\b(as an? (ai|artificial intelligence|language model|large language model|llm|virtual assistant|ai assistant|ai language model)|i am an? (ai|artificial intelligence|language model|llm|ai assistant)|i'm an? (ai|artificial intelligence|language model|llm)|my (training|knowledge) (data|cutoff)|knowledge cutoff|i (do not|don't) have (access to )?real[- ]time|developed by (openai|anthropic|google|meta|ai2|allen institute|mistral|nvidia|zhipu|z\.ai)|(chatgpt|gpt-4|gpt-3|claude|gemini|llama|olmo|glm-5|qwen)\b.{0,40}\b(i am|i'm|my name)|"
-                   r"en tant qu'?(ia|intelligence artificielle|modèle de langage|assistant ia)|je suis un(e)? (ia|intelligence artificielle|modèle de langage)|"
-                   r"als (ki|künstliche intelligenz|sprachmodell|ki-assistent)|ich bin (eine? )?(ki|künstliche intelligenz|sprachmodell)|"
-                   r"come (ia|intelligenza artificiale|modello linguistico)|sono un(a)? (ia|intelligenza artificiale|modello linguistico)|"
-                   r"como (ia|inteligencia artificial|modelo de lenguaje|modelo de linguagem)|soy un(a)? (ia|inteligencia artificial|modelo de lenguaje)|sou um(a)? (ia|inteligência artificial|modelo de linguagem)|"
-                   r"ως (τεχνητή νοημοσύνη|γλωσσικό μοντέλο|μοντέλο τεχνητής)|είμαι (ένα |μια )?(τεχνητή νοημοσύνη|γλωσσικό μοντέλο))", re.I)
+KEEP_LANGS = {'en', 'el', 'ca', 'fr', 'de', 'it', 'es', 'pt', 'nl', 'sv', 'da', 'no', 'fi', 'pl', 'cs', 'sk', 'sl', 'hr', 'ro', 'hu', 'bg', 'lt', 'lv', 'et', 'ga', 'mt'}
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from identity_patterns import IDENT
 det = None
 if not NOLANG:
     try:
@@ -33,7 +29,8 @@ for line in open(IN):
         except Exception: lang = 'unk'
         langs[lang] += 1
         if lang != 'unk' and lang not in KEEP_LANGS: dl.append(rid); c['drop_lang'] += 1; continue
-    if IDENT.search(assistant_text(turns)[:20000]): di.append(rid); c['drop_identity'] += 1; continue
+    sys_and_asst = '\n'.join((t.get('content') or '') for t in turns if t.get('role') in ('assistant', 'system'))
+    if IDENT.search(sys_and_asst[:30000]): di.append(rid); c['drop_identity'] += 1; continue
     keep.append(rid); c['keep'] += 1
 for name, lst in (('keep', keep), ('drop_lang', dl), ('drop_identity', di)):
     open(f'{OUT}/{BLOCK}.{name}_ids.txt', 'w').write('\n'.join(lst) + '\n')

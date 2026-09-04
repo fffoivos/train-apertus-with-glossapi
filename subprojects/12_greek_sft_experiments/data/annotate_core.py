@@ -26,9 +26,10 @@ for block in BLOCKS:
     for l in open(src):
         r = json.loads(l)
         if r['id'] not in done: rows.append(r)
+    remainder_fits = (not MAX_ROWS) or len(rows) <= MAX_ROWS
     if MAX_ROWS and len(rows) > MAX_ROWS: rows = rows[:MAX_ROWS]
     print(f'== {block}: {len(done)} done, {len(rows)} to go, {W} workers, {MODEL}/{EFFORT}/{TIER}', flush=True)
-    if not rows: continue
+    if not rows: print(f'== {block} COMPLETE', flush=True); continue
     t0 = time.time(); n = 0; stats = collections.Counter()
     def work(r):
         j = label(r); j['id'] = r['id']; j['judge'] = MODEL; return j
@@ -41,4 +42,5 @@ for block in BLOCKS:
                     el = time.time() - t0
                     print(f'{block}: {n}/{len(rows)} {round(3600*n/el)} rows/h {dict(stats)} elapsed {round(el/60)} min', flush=True)
     print(f'== {block} DONE {n} rows in {round((time.time()-t0)/60)} min', flush=True)
+    if remainder_fits: print(f'== {block} COMPLETE', flush=True)  # the chunk loops break on this line only
 print('ALL DONE', flush=True)

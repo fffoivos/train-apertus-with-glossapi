@@ -26,11 +26,11 @@ I watch that file and answer under each finding in place, marked `→ claude:`. 
 | constraint following | argilla ifeval-like, filtered | Qwen2.5-72B, 2024 | our re-run of the IFEval checkers on all 56,339 rows: 56,292 pass, 47 fail (0.08%) | 56k (owner decision: Qwen licence) |
 | math | OpenMathInstruct-2, GSM8K-style | Llama-3.1-405B, 2024 | our re-run of the final-answer match on all 100,000 rows: 99,971 match, 29 mismatch | 100k |
 | chat and advice | Nemotron IF-Chat v3, chat split | GLM-5, 2026 | exact-length prefilter (16.9% of rows exceed the window), reward model best-of-N, Luna screen, Sol on technical rows, full-text identity backstop | half A = 41,556 rows screened by Sunday; half B (41,556) if time allows; 150k more exported on the cluster for later |
-| chat, human-written | OpenAssistant (Dolci Chat), screened | volunteers, 2023 | Luna + Sol on technical rows + Sol second opinion | about 4.2k keep rows; adapt rows are NOT in stage 1 (no line-cut exists; review F1) |
+| chat, human-written | OpenAssistant (Dolci Chat), screened | volunteers, 2023; 42% Spanish, 30% English, the rest mixed | Luna + Sol on technical rows + Sol second opinion; EU-language gate (Catalan kept; ru/th/zh/uk out, review R6) | about 3.8k keep rows; adapt rows are NOT in stage 1 |
 | coding | Dolci "Python Algorithms" | 2025 | Sol spot-check: 20 of 300 wrong (6.7%), so the block is screened by Sol; 20k screened by Sunday, the rest later | 20k screened now (60k exported) |
 | reasoning | Dolci "Verifiable Reasoning" | 2025 | Sol spot-check: 3 of 300 wrong (1%), taken as clean | 30k |
 | reasoning | Dolci logic puzzles and word sorts | generator | exact brute-force checker | 11,163 confirmed |
-| tool use | Dolci Tool Use | 2025 | Luna identity screen | 30k |
+| tool use | Dolci Tool Use | 2025 | regex identity + system-prompt scan over all 40k (297 hits, mostly the word OpenAI in tool outputs); Luna on a 3,000-row sample decides whether the rest stays unscreened | 30k |
 | science | Dolci OpenThoughts3+ Science | 2025 | Sol screen (20k exported) | 15k |
 | other European languages | SmolTalk2 multilingual-8, Nemotron non-English European rows | Qwen3-32B 2025, GLM-5 2026 | Luna (multilingual only if time allows; else lexicon identity scan) | 25k + 10k |
 | safety | Dolci WildGuardMix and CoCoNot, screened | 2024 | Luna; 21% identity so far, so mostly adapt or drop | 10k |
@@ -59,7 +59,7 @@ the regex scan; Sol alternates routing with science chunks so the 24 workers are
 | when (Mac clock) | Luna (64 workers) | Sol (24 workers) | me (CPU on the login node, polite) |
 |---|---|---|---|
 | Fri 23:00 | safety, about 9,500 left, 2.3 h | Greek rewriting to 2,000 rows (00:00); OpenAssistant technical rows routed | multilingual export landed; Nemotron halves prepared |
-| Sat 01:30 | Nemotron half A, ~48k rows after the length filter, about 11.5 h | routing pass, then Science in 3,000-row chunks alternating with routing, 15 to 20 h | exports done; Precise IF sample 300 queued on Sol |
+| Sat 01:30 | Nemotron half A, 34,214 rows after the length and language filters, about 8 h | routing pass, then Science in 3,000-row chunks alternating with routing, 15 to 20 h | exports done; Precise IF sample 300 queued on Sol |
 | Sat 13:00 | multilingual 25k, 6 h | Science continues | assembly script final; blind read pages for the owner (Greek set https://claude.ai/code/artifact/dc57edac-97cc-472e-810e-e336f03d63f2 ; judge keep rows https://claude.ai/code/artifact/fbd19acd-5e48-4de4-b19d-df3e9eba5594) |
 | Sat 19:00 | tool-use 3k sample, 45 min; then Nemotron half B if time allows | coding 20k in chunks, 13 h | keep-lists merged as blocks finish |
 | Sun 08:00 | Nemotron B continues or is cut | Precise IF spot-check, Greek correction pass, last routing pass | full assembly under the 208M-token budget, decontamination, trainer dry run on the cluster (gate) |

@@ -18,7 +18,7 @@ vantage (0-3): does the answer presuppose a non-Greek world in a way that matter
  3 asserted: the assistant describes itself as an AI, a language model or an assistant with capability or knowledge limits ("as an AI I cannot…", "I'm an AI, not a doctor", "my knowledge cutoff is…", "I don't have access to real-time data"), names a creator or product (OpenAI, Ai2, ChatGPT, OLMo), or speaks as a member of a foreign nation ("our national anthem"). Any such sentence makes the row level 3 even if the rest is useful.
 frame_type: what carries the framing (identity for level 3; "none" for levels 0-1).
 skill: the main thing the row teaches.
-quality: 1 wrong, harmful or useless in what is shown; 2 acceptable; 3 good. Incomplete because of the 2,500-character cut is NOT quality 1.
+quality: 1 wrong, harmful or useless in what is shown; 2 acceptable; 3 good. Incomplete because of the window cut is NOT quality 1.
 mannerism: true only if the answer opens or closes with chatbot phrases ("Great question!", "Certainly!", "I hope this helps", "Let me know if you need anything else") or gushes with exclamation marks.
 imperatives: true if the answer gives the user second-person commands they did not ask for.
 disposition:
