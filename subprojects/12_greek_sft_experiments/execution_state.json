@@ -126,7 +126,7 @@
    "gate": "G3"
   },
   "replicate+E1last": {
-   "status": "E1_cos DONE 05:41 (mean Greek dev loss 1.374 vs winner 1.350; schedule+seed confounded); light evals running; E1last_cos training",
+   "status": "E1_cos DONE 05:41, E1last_cos DONE 05:45 (mean Greek dev loss 1.364 vs 1.374); light evals of both epoch2 running",
    "deps": [
     "pickA"
    ],

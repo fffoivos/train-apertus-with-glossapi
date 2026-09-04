@@ -87,3 +87,24 @@ Mean Greek dev loss: winner 1.350, replicate 1.374 (+0.024). Caveat: the replica
 winner in BOTH seed (43 vs 42) and schedule (cosine-to-min-lr over 2 epochs vs constant, checkpoint taken mid-run), so
 this is not a pure seed-noise floor; it is the reference point for phase B, which shares its schedule. A second
 cosine seed would isolate seed noise (≈ 1 nh) — a candidate for the owner's morning decision.
+
+
+## E1-last (terminal CPT checkpoint) vs the replicate (averaged checkpoint), same recipe (1e-5, 2 ep, cosine)
+
+| config | E1_cos (18-avg base) | E1last_cos (rev 17 base) | diff |
+|---|---|---|---|
+| apertus_en | 1.240 | 1.364 | +0.124 |
+| coconot | 1.583 | 1.592 | +0.009 |
+| euroblocks_de | 1.632 | 1.665 | +0.033 |
+| euroblocks_fr | 1.472 | 1.502 | +0.030 |
+| everyday | 1.217 | 1.212 | -0.005 |
+| no_robots | 1.465 | 1.443 | -0.022 |
+| no_robots_en_pov | 1.880 | 1.900 | +0.020 |
+| oasst | 1.487 | 1.404 | -0.083 |
+| personas_if | 1.404 | 1.371 | -0.033 |
+| smolcon | 1.134 | 1.163 | +0.029 |
+| systemchats | 1.326 | 1.363 | +0.037 |
+
+Mean Greek dev loss: averaged base 1.374, terminal base 1.364 (-0.010). By dev loss the terminal checkpoint
+fine-tunes at least as well (lower on no_robots and oasst, higher on smolcon/systemchats). Whether its NLI/WiC deficit
+survives SFT is a guard question (native suite, GreekMMLU) — pending.
