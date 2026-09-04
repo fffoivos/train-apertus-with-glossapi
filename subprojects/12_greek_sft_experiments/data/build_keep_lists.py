@@ -13,7 +13,7 @@ def load(path):
     return d
 blocks = sorted(set(os.path.basename(f).split('.')[0] for f in glob.glob(f'{LAB}/*.labels.jsonl')))
 for b in blocks:
-    luna_or_sol = load(f'{LAB}/{b}.labels.jsonl'); routed = load(f'{LAB}/{b}.sol_routed.jsonl')
+    luna_or_sol = load(f'{LAB}/{b}.labels.jsonl'); routed = load(f'{LAB}/{b}.sol.jsonl'); routed.update(load(f'{LAB}/{b}.sol_routed.jsonl'))  # Sol overrides Luna (both passes)
     final = {}
     for i, j in luna_or_sol.items():
         j2 = routed.get(i, j); final[i] = (j2.get('disposition') or 'unlabelled', j2.get('judge', 'gpt-5.6-luna'), j2)

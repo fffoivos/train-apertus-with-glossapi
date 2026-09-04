@@ -18,7 +18,9 @@ for block in BLOCKS:
     done = set()
     if os.path.exists(dst):
         for l in open(dst):
-            try: done.add(json.loads(l)['id'])
+            try:
+                j = json.loads(l)
+                if j.get('why') != 'PARSE_FAIL' and j.get('vantage') is not None: done.add(j['id'])  # failed calls are re-run
             except Exception: pass
     rows = []
     for l in open(src):

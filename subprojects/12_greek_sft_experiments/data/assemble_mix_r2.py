@@ -38,7 +38,7 @@ class r1:  # the round-one helpers (data/build_sft_mix.py) inlined, so this scri
         return prompts, {"prompts": len(prompts)}
 
 ap = argparse.ArgumentParser(); ap.add_argument('--arm', default='R2_stage1'); ap.add_argument('--scale', type=float, default=1.0)
-ap.add_argument('--no-tokenizer', action='store_true'); ap.add_argument('--max-tokens', type=int, default=4032); ap.add_argument('--seed', type=int, default=2026); ap.add_argument('--dev-fraction', type=float, default=0.01)
+ap.add_argument('--no-tokenizer', action='store_true'); ap.add_argument('--max-tokens', type=int, default=4032); ap.add_argument('--budget-tokens', type=int, default=0, help='option C: total train tokens; small blocks whole, the rest scaled by their plan share'); ap.add_argument('--seed', type=int, default=2026); ap.add_argument('--dev-fraction', type=float, default=0.01)
 args = ap.parse_args(); random.seed(args.seed)
 OUT = HERE / 'arms' / args.arm; OUT.mkdir(parents=True, exist_ok=True)
 
@@ -61,6 +61,17 @@ PLAN = [
  ('greek_ours', None, 'ours', 20000, 2),
 ]
 
+IDENT = re.compile(r"\b(as an? (ai|artificial intelligence|language model|large language model|llm|virtual assistant|ai assistant|ai language model|chatbot)|i am an? (ai|artificial intelligence|language model|large language model|llm|ai assistant|chatbot)|i'm an? (ai|artificial intelligence|language model|large language model|llm|ai assistant|chatbot)|i'm (chatgpt|claude|gemini|llama|olmo|gpt-4|gpt-3)|i am (chatgpt|claude|gemini|llama|olmo)|my (training|knowledge) (data|cutoff)|knowledge cutoff|i (do not|don't) have (access to )?real[- ]time|i cannot browse the internet|i (do not|don't) have the ability to (browse|access)|i am not able to access|developed by (openai|anthropic|google|meta|ai2|the allen institute|allen institute|mistral|nvidia|zhipu|z\.ai)|allen institute for ai|\bai2\b|"
+                   r"en tant qu'?(ia|intelligence artificielle|modèle de langage|assistant ia)|je suis un(e)? (ia|intelligence artificielle|modèle de langage)|"
+                   r"als (ki|künstliche intelligenz|sprachmodell|ki-assistent|ki-sprachmodell)|ich bin (eine? )?(ki|künstliche intelligenz|sprachmodell)|"
+                   r"come (ia|intelligenza artificiale|modello linguistico)|sono un(a)? (ia|intelligenza artificiale|modello linguistico)|"
+                   r"como (ia|inteligencia artificial|modelo de lenguaje|modelo de linguagem)|soy un(a)? (ia|inteligencia artificial|modelo de lenguaje)|sou um(a)? (ia|inteligência artificial|modelo de linguagem)|"
+                   r"ως (τεχνητή νοημοσύνη|γλωσσικό μοντέλο|μοντέλο τεχνητής)|είμαι (ένα |μια )?(τεχνητή νοημοσύνη|γλωσσικό μοντέλο))", re.I)
+def identity_hit(messages):
+    for m in messages:
+        if m['role'] == 'assistant' and IDENT.search(m['content']): return True
+    return False
+
 def load_ids(path):
     return set(l.strip() for l in open(path) if l.strip()) if os.path.exists(path) else None
 
@@ -69,11 +80,13 @@ def labels_keep(block):
     if not p.exists(): return None
     for l in open(p):
         j = json.loads(l); keep[j['id']] = j.get('disposition')
-    p2 = ANN / 'labels' / f'{block}.sol_routed.jsonl'
-    if p2.exists():
-        for l in open(p2):
-            j = json.loads(l); keep[j['id']] = j.get('disposition')
-    return {i for i, d in keep.items() if d == 'keep'}
+    for extra in (f'{block}.sol.jsonl', f'{block}.sol_routed.jsonl'):  # Sol verdicts override Luna's (checker > Sol > Luna)
+        p2 = ANN / 'labels' / extra
+        if p2.exists():
+            for l in open(p2):
+                j = json.loads(l)
+                if j.get('disposition'): keep[j['id']] = j.get('disposition')
+    return {i for i, d in keep.items() if d == 'keep'}  # adapt rows are NOT taken: no line-cut exists yet, they would train the identity line in
 
 def to_messages(row, block):
     """Trainer contract: system/user/assistant strings only. Tool rows: calls as <function_calls>, tool outputs as user turns."""
@@ -136,9 +149,16 @@ def n_tokens(messages):
     return int(sum(len(m['content']) for m in messages) / 3.2)
 
 # ---------- build ----------
-receipt = dict(arm=args.arm, seed=args.seed, scale=args.scale, blocks=[], tokenizer='exact' if tok else 'approximate'); train, dev = [], []
+WHOLE = {'puzzles', 'dolci_chat', 'dolci_safety', 'greek_rewrite', 'greek_ours'}  # small blocks kept whole under a token budget
+PLAN_TOK = {'dolci_precise_if': 600, 'ifeval_like': 256, 'openmath_gsm': 342, 'nemotron_chat': 1584, 'dolci_chat': 350, 'dolci_code_algo_20k': 388, 'dolci_reasoning': 330, 'puzzles': 330, 'dolci_tooluse': 827, 'dolci_science': 941, 'smoltalk2_multilingual': 511, 'dolci_safety': 302, 'greek_rewrite': 700, 'greek_ours': 351}  # measured mean tokens per row (review F4)
+receipt = dict(arm=args.arm, seed=args.seed, scale=args.scale, budget_tokens=args.budget_tokens, blocks=[], tokenizer='exact' if tok else 'approximate'); train, dev = [], []
+if args.budget_tokens:
+    whole_tok = sum(t * w * PLAN_TOK[b] for b, f, m, t, w in PLAN if b in WHOLE); big_tok = sum(t * w * PLAN_TOK[b] for b, f, m, t, w in PLAN if b not in WHOLE)
+    share = max(0.0, (args.budget_tokens - whole_tok) / big_tok) if big_tok else 0
+    print(f'token budget {args.budget_tokens/1e6:.0f}M: whole blocks {whole_tok/1e6:.0f}M, big blocks scaled to {share:.2f} of plan ({big_tok*share/1e6:.0f}M)', flush=True)
+else: share = 1.0
 for block, fname, mode, target, weight in PLAN:
-    target = int(target * args.scale); rows = []
+    target = int(target * args.scale * (1.0 if (block in WHOLE or not args.budget_tokens) else share)); rows = []
     if mode == 'ours':
         for f in sorted((HERE / 'cache' / 'sources').glob('*.jsonl')):
             cfg = f.name.split('.')[0]
@@ -166,6 +186,7 @@ for block, fname, mode, target, weight in PLAN:
         if len(taken) >= target: break
         hit = contaminated(r['messages'])
         if hit: stats['contaminated'] += 1; continue
+        if identity_hit(r['messages']): stats['identity_backstop'] += 1; continue  # review F1: full-text regex over every assistant turn, after the judges
         n = n_tokens(r['messages'])
         if n > args.max_tokens: stats['too_long'] += 1; continue  # margin under the trainer's 4,096 so its own render never overflows
         r['block'] = block; r['tokens'] = n; taken.append(r)
@@ -173,7 +194,7 @@ for block, fname, mode, target, weight in PLAN:
     ndev = max(1, int(len(taken) * args.dev_fraction)) if taken else 0
     dev += taken[:ndev]; train += taken[ndev:] * weight
     receipt['blocks'].append(dict(block=block, status='ok', target=target, weight=weight, **stats))
-    print(f"{block:24s} available {stats['available']:7d} taken {stats['taken']:7d} x{weight} tokens {stats['tokens']:10d} contaminated {stats['contaminated']} too_long {stats['too_long']}", flush=True)
+    print(f"{block:24s} available {stats['available']:7d} taken {stats['taken']:7d} x{weight} tokens {stats['tokens']:10d} contaminated {stats['contaminated']} too_long {stats['too_long']} identity_backstop {stats['identity_backstop']}", flush=True)
 random.shuffle(train)
 def dump(path, rows):
     h = hashlib.sha256()
@@ -185,6 +206,8 @@ receipt['train'] = dict(rows=len(train), tokens=sum(r['tokens'] for r in train),
 receipt['dev'] = dict(rows=len(dev), tokens=sum(r['tokens'] for r in dev), sha256=dump(OUT / 'dev.jsonl', dev))
 json.dump(receipt, open(OUT / 'receipt.json', 'w'), indent=1)
 with open(OUT / 'summary.md', 'w') as f:
-    f.write(f"# {args.arm}\n\ntrain {receipt['train']['rows']} rows, {receipt['train']['tokens']/1e6:.1f}M tokens ({receipt['tokenizer']}); dev {receipt['dev']['rows']} rows\n\n| block | status | target | available | taken | weight | contaminated | too long |\n|---|---|---|---|---|---|---|---|\n")
-    for b in receipt['blocks']: f.write(f"| {b['block']} | {b['status']} | {b.get('target')} | {b.get('available','')} | {b.get('taken','')} | {b.get('weight','')} | {b.get('contaminated','')} | {b.get('too_long','')} |\n")
+    f.write(f"# {args.arm}\n\ntrain {receipt['train']['rows']} rows, {receipt['train']['tokens']/1e6:.1f}M tokens ({receipt['tokenizer']}); dev {receipt['dev']['rows']} rows\n\n| block | status | target | available | taken | weight | contaminated | too long | identity backstop |\n|---|---|---|---|---|---|---|---|---|\n")
+    for b in receipt['blocks']: f.write(f"| {b['block']} | {b['status']} | {b.get('target')} | {b.get('available','')} | {b.get('taken','')} | {b.get('weight','')} | {b.get('contaminated','')} | {b.get('too_long','')} | {b.get('identity_backstop','')} |\n")
+post = sum(1 for r in train if identity_hit(r['messages'])); receipt['post_scan_identity_hits'] = post
+print(f'post-assembly identity scan over the written train rows: {post} hits (must be 0)', flush=True)
 print(f"TRAIN {receipt['train']['rows']} rows {receipt['train']['tokens']/1e6:.1f}M tokens; DEV {receipt['dev']['rows']} -> {OUT}", flush=True)
