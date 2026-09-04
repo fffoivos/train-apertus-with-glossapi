@@ -3,9 +3,9 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 9.853,
- "chf_used": 26.5,
- "cursor": "gridA evals (light evals of six checkpoints in flight; native + GreekMMLU later)",
+ "nh_used": 11.355,
+ "chf_used": 30.54,
+ "cursor": "morning report published 07:07; phase B light evals + guards + known-ness finishing; owner gates G3/GreekMMLU/next arms",
  "steps": {
   "WP0_data": {
    "status": "done (green 02:45: --check OK; 5 GreekMMLU-overlapping rows removed; E1 6.18M CPT-tokenizer tokens, E2 9.36M, E3 8.97M, E3prime 10.47M)",
@@ -286,5 +286,9 @@
    "int_mean": 2.57,
    "dev_mean_el": 1.364
   }
+ },
+ "artifacts": {
+  "blind_reading": "https://claude.ai/code/artifact/690e0be1-dff4-4d25-ac8e-d49b861ab19c",
+  "round_one_readout": "https://claude.ai/code/artifact/162f6fc7-9d5d-4203-b379-701758d35257"
  }
 }
