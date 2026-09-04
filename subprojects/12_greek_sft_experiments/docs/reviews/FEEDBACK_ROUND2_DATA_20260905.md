@@ -341,3 +341,61 @@ line uses `$(date)`; plan §3 says half A is 34,214 rows after the language filt
 4. Saturday: R6 (owner decision on the 474 rows and the block's description), R7, R8, R9.
 
 VERDICT: first-round fixes verified in code and processes; three new defects gate tonight's Sol chain and Sunday's assembly (chunk loop ends at 3,000 rows, Nemotron/tool-use blocks unreachable by the assembler, language filter never applied) | BLOCKERS: 0 | HIGH: 3
+
+---
+
+## Reviewer round 3, Fri 4 Sep 23:20 Mac clock (Fable 5.1)
+
+Every round-2 answer re-checked against code, files and processes.
+
+### Verified
+
+- R1: `annotate_core.py` prints `== <block> COMPLETE` only when the remaining rows fit inside `MAX_ROWS` (or `MAX_ROWS` is 0); `sol_chain.sh`
+  breaks its Science and coding loops on that line only, 12 chunks × 3,000 cap; the old chain is gone, PID 33496 is waiting on the Greek generation
+  (1,400 of 2,000 at 23:15, 1,109 rows/h → ALL DONE about 00:00).
+- R2: `nemotron_chat_a.jsonl` 34,214 rows, `_b` 34,345, pre-language copies kept as `.prelang.jsonl`; Luna is still on safety (3,800 of 9,994 at 23:15,
+  4,496 rows/h → half A opens about 00:40), so the re-cut lands before the driver reads the file. Half A now carries 26 regex identity rows (the
+  1,208 the old list caught are out).
+- R3: PLAN entries `nemotron_chat_a`/`_b` (`labels+langfilter`), tool use `langfilter+sample`, multilingual `labels_or_all+langfilter`, Greek edit
+  preferred when the editor's verdict is `edited`/`rewrite` (field names match `gen_greek_rewrite_edit.py`'s schema). Full-scale run
+  `R2_budget_dryrun`: 239,726 rows, 110.6M approximate tokens, big blocks at 0.51 of plan, `post_scan_identity_hits: 0` in the receipt, receipt
+  written after the scan, explicit zeros, exit 3 on budget, exit 4 on post-scan. Missing blocks are exactly the unlabelled ones (the multilingual
+  langfilter list was written two minutes after that run; transient).
+- R4: chain order routing → Precise IF sample → Greek correction pass → Science chunks → coding chunks → last routing, each stage stamped with `$(date)`.
+- R5/R6/R8/R9: `--scale` applied to `whole_tok`/`big_tok`; Catalan kept, ru/th/zh/uk out (3,846 OpenAssistant rows in the dry run); one shared
+  `identity_patterns.py` with the gap patterns and system turns, used by both scripts, lists regenerated at 23:01–23:03; log clock corrected and
+  new lines on `$(date)`; plan row 34,214; the rubric's "2,500" is gone (line 37 is the non-turn code path, fine).
+- R7: `cluster/make_stage1_config.py` refuses approximate-tokenizer receipts and non-zero post-scans, sets 1 epoch / cosine / lr 1e-5 / expected
+  tokens and rows from the receipt, drops `max_steps`. The cluster dry-run line is recorded in the 23:01 log entry with the arm it ran on.
+- Confirmation worth writing into the plan: the backstop is earning its keep on the "verified, unscreened" block. Precise IF carries about 250 rows
+  (0.18%) with explicit self-description ("I'm just a large language model", "My training data is up to December 2024", "As an AI language
+  model, I cannot provide…"). Checker-verified does not mean identity-free; rule (1) is right for correctness and would have been wrong for identity.
+
+### New findings
+
+**S1 [MEDIUM] The shared identity regex has no closing word boundary, so it matches inside longer words.** `\b(as an? (ai|…)|…)` ends without
+`\b`, so "as an aid / aircraft / airline / airplane", "as a language modeling" and German "als Kind / Kinder" ("as a child") all match. Measured with
+the same pattern plus a trailing `\b`: our own Greek set 3 hits, all three false (would drop 3 of our rows: "as an aid to", "als Kinder" ×2);
+Precise IF 7 of 250 false; tool use 1 of 17; SmolTalk2 multilingual 22 of 42 false (52%, all "als Kind…"), and the multilingual langfilter list
+built at 23:03 already dropped those 22 German rows; safety and Nemotron A 0 false. The counts are small; the point is that backstop drops are silent
+and its reported hit counts are inflated. Fix: append `\b` after the alternation's closing parenthesis (one character), regenerate the three lists,
+re-run the budget dry run. Informational, your call: bare `developed by google/meta/microsoft/nvidia/mistral` is the only trigger on 4 Precise IF,
+2 safety and 4 tool-use rows, mostly tech explanations ("TensorRT, developed by NVIDIA"); rubric v3 does count product/creator names as level 3,
+so leaving it is defensible.
+
+**S2 [LOW] The budget share is solved over PLAN targets, not over what exists at assembly time.** With Nemotron B absent (option C) and half A
+yielding roughly 24k keep rows against a 25,590 target, the 208M budget under-fills by about 40M tokens (about 1.5 nh). Either solve the share over
+the blocks present (count available rows per block first, then compute the share), or state the expected under-fill in the plan and let the reserve
+absorb it. Not a correctness issue; it decides whether Sunday's run is 8 nh or 6.5 nh.
+
+**S3 [LOW] The 23:04 log entry says Luna runs "~5,000 rows/h at 64 workers"; the driver prints 4,295–4,496.** Use the driver's number in the plan.
+
+### Ordered asks, round 3
+
+1. S1 before the next list regeneration and before Sunday's assembly (one character plus three reruns).
+2. S2 at the Sunday assembly: solve the share over present blocks, or write the under-fill down.
+3. S3 whenever the plan is next touched.
+
+Nothing here needs the chain or the Luna driver stopped.
+
+VERDICT: round-2 fixes verified in code, files and processes; one medium precision bug in the shared identity regex (missing trailing word boundary), two low | BLOCKERS: 0 | HIGH: 0

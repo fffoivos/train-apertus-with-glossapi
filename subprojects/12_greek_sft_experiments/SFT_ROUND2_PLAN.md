@@ -1,3 +1,5 @@
+> **Status 2026-09-05:** §1 (dataset selection), §1a, §2 (filtering), §2a/§2b, §6 (speeds) and §7 (decisions) are SUPERSEDED by `docs/ROUND2_DATA_PLAN_20260905.md`, the document under review. §0 (shape of the round), §3 (personality set), §4 (preference) and §5 (evaluation gates) still stand and are referenced from there.
+
 # Greek SFT, round two: plan (draft 2, 2026-09-04)
 
 Owner's brief: select broad public SFT suites without being conservative; filter or adapt only the rows that pull hardest

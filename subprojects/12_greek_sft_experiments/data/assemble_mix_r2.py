@@ -38,7 +38,8 @@ class r1:  # the round-one helpers (data/build_sft_mix.py) inlined, so this scri
         return prompts, {"prompts": len(prompts)}
 
 ap = argparse.ArgumentParser(); ap.add_argument('--arm', default='R2_stage1'); ap.add_argument('--scale', type=float, default=1.0)
-ap.add_argument('--no-tokenizer', action='store_true'); ap.add_argument('--max-tokens', type=int, default=4032); ap.add_argument('--budget-tokens', type=int, default=0, help='option C: total train tokens; small blocks whole, the rest scaled by their plan share'); ap.add_argument('--seed', type=int, default=2026); ap.add_argument('--dev-fraction', type=float, default=0.01)
+ap.add_argument('--no-tokenizer', action='store_true'); ap.add_argument('--max-tokens', type=int, default=4032); ap.add_argument('--budget-tokens', type=int, default=0, help='option C: total train tokens; small blocks whole, the rest scaled by their plan share');
+ap.add_argument('--keep-mannerism', action='store_true', help='keep rows the judge flagged for chatbot mannerisms (default: dropped in chat and safety blocks)'); ap.add_argument('--drop-imperatives', action='store_true', help='also drop rows flagged for unasked second-person commands'); ap.add_argument('--seed', type=int, default=2026); ap.add_argument('--dev-fraction', type=float, default=0.01)
 args = ap.parse_args(); random.seed(args.seed)
 OUT = HERE / 'arms' / args.arm; OUT.mkdir(parents=True, exist_ok=True)
 
@@ -66,6 +67,20 @@ from identity_patterns import IDENT, identity_hit_messages as identity_hit  # sh
 
 def load_ids(path):
     return set(l.strip() for l in open(path) if l.strip()) if os.path.exists(path) else None
+
+TONE_BLOCKS = {'nemotron_chat_a', 'nemotron_chat_b', 'dolci_chat', 'dolci_safety', 'smoltalk2_multilingual', 'dolci_science'}
+def labels_tone_drop(block):
+    """ids the judge flagged for mannerism (and optionally unasked imperatives); Sol's verdict wins where it exists."""
+    flags = {}
+    for name in (f'{block}.labels.jsonl', f'{block}.sol.jsonl', f'{block}.sol_routed.jsonl'):
+        p = ANN / 'labels' / name
+        if not p.exists(): continue
+        for l in open(p):
+            j = json.loads(l); flags[j['id']] = (bool(j.get('mannerism')), bool(j.get('imperatives')))
+    out = set()
+    for i, (m, imp) in flags.items():
+        if (m and not args.keep_mannerism) or (imp and args.drop_imperatives): out.add(i)
+    return out
 
 def labels_keep(block):
     keep = {}; p = ANN / 'labels' / f'{block}.labels.jsonl'
@@ -153,13 +168,35 @@ def n_tokens(messages):
 WHOLE = {'puzzles', 'dolci_chat', 'dolci_safety', 'greek_rewrite', 'greek_ours'}  # small blocks kept whole under a token budget
 PLAN_TOK = {'dolci_precise_if': 600, 'ifeval_like': 256, 'openmath_gsm': 342, 'nemotron_chat_a': 1584, 'nemotron_chat_b': 1584, 'dolci_chat': 350, 'dolci_code_algo_20k': 388, 'dolci_reasoning': 330, 'puzzles': 330, 'dolci_tooluse': 827, 'dolci_science': 941, 'smoltalk2_multilingual': 511, 'dolci_safety': 302, 'greek_rewrite': 700, 'greek_ours': 351}  # measured mean tokens per row (review F4)
 receipt = dict(arm=args.arm, seed=args.seed, scale=args.scale, budget_tokens=args.budget_tokens, blocks=[], tokenizer='exact' if tok else 'approximate'); train, dev = [], []
+def present_rows(block, fname, mode):
+    """cheap first pass: how many rows this block can actually contribute today (keep lists ∩ export), for the budget share (review S2)"""
+    if mode == 'ours': return 32892
+    src = ANN / 'core_export' / fname if fname != 'greek_rewrite_2k.jsonl' else ANN / fname
+    if not src.exists(): return 0
+    keep = None
+    for part in mode.split('+'):
+        k = None
+        if part in ('labels', 'labels_or_all'): k = labels_keep(block)
+        elif part.startswith('verified:'): k = load_ids(ANN / 'verified' / part.split(':')[1] / 'keep_ids.txt')
+        elif part.startswith('langfilter:'): k = load_ids(ANN / 'verified' / 'langfilter' / f"{part.split(':')[1]}.keep_ids.txt")
+        if k is None and part in ('labels',) : return 0
+        if k is None and part.startswith(('verified:', 'langfilter:')): return 0
+        if k is not None: keep = k if keep is None else (keep & k)
+    n = 0
+    for l in open(src):
+        if keep is None: n += 1; continue
+        r = json.loads(l); rid = str(r['key'] if block == 'ifeval_like' else r.get('id', r.get('_row', r.get('key', ''))))
+        if rid in keep: n += 1
+    return n
 if args.budget_tokens:
-    whole_tok = args.scale * sum(t * w * PLAN_TOK[b] for b, f, m, t, w in PLAN if b in WHOLE); big_tok = args.scale * sum(t * w * PLAN_TOK[b] for b, f, m, t, w in PLAN if b not in WHOLE)
+    avail = {b: min(present_rows(b, f, m), int(t * args.scale)) for b, f, m, t, w in PLAN}
+    print('present rows per block:', {b: n for b, n in avail.items()}, flush=True)
+    whole_tok = sum(avail[b] * w * PLAN_TOK[b] for b, f, m, t, w in PLAN if b in WHOLE); big_tok = sum(avail[b] * w * PLAN_TOK[b] for b, f, m, t, w in PLAN if b not in WHOLE)
     share = max(0.0, (args.budget_tokens - whole_tok) / big_tok) if big_tok else 0
     print(f'token budget {args.budget_tokens/1e6:.0f}M: whole blocks {whole_tok/1e6:.0f}M, big blocks scaled to {share:.2f} of plan ({big_tok*share/1e6:.0f}M)', flush=True)
 else: share = 1.0
 for block, fname, mode, target, weight in PLAN:
-    target = int(target * args.scale * (1.0 if (block in WHOLE or not args.budget_tokens) else share)); rows = []
+    target = int((min(avail[block], int(target * args.scale)) if args.budget_tokens else target * args.scale) * (1.0 if (block in WHOLE or not args.budget_tokens) else share)); rows = []
     if mode == 'ours':
         for f in sorted((HERE / 'cache' / 'sources').glob('*.jsonl')):
             cfg = f.name.split('.')[0]
@@ -193,13 +230,15 @@ for block, fname, mode, target, weight in PLAN:
             if k is not None: keep = k if keep is None else (keep & k)
             if missing: break
         if missing: receipt['blocks'].append(dict(block=block, status=f'MISSING {missing}', target=target)); print(f'{block}: {missing} missing', flush=True); continue
+        tone_drop = labels_tone_drop(block) if block in TONE_BLOCKS else set(); tone_dropped = 0
         for l in open(src):
             r = json.loads(l); rid = str(r['key'] if block == 'ifeval_like' else r.get('id', r.get('_row', r.get('key', ''))))  # verified lists key ifeval-like rows by `key`
+            if rid in tone_drop: tone_dropped += 1; continue
             if block == 'puzzles' and 'puzzle_data' not in rid: continue
             if keep is not None and rid not in keep: continue
             m = to_messages(r, block)
             if m: rows.append(dict(id=rid, messages=m))
-    random.shuffle(rows); taken = []; stats = collections.Counter(available=len(rows), contaminated=0, too_long=0, identity_backstop=0)
+    random.shuffle(rows); taken = []; stats = collections.Counter(available=len(rows), contaminated=0, too_long=0, identity_backstop=0, tone_dropped=(tone_dropped if mode != 'ours' else 0))
     for r in rows:
         if len(taken) >= target: break
         hit = contaminated(r['messages'])
@@ -212,7 +251,7 @@ for block, fname, mode, target, weight in PLAN:
     ndev = max(1, int(len(taken) * args.dev_fraction)) if taken else 0
     dev += taken[:ndev]; train += taken[ndev:] * weight
     receipt['blocks'].append(dict(block=block, status='ok', target=target, weight=weight, **stats))
-    print(f"{block:24s} available {stats['available']:7d} taken {stats['taken']:7d} x{weight} tokens {stats['tokens']:10d} contaminated {stats['contaminated']} too_long {stats['too_long']} identity_backstop {stats['identity_backstop']}", flush=True)
+    print(f"{block:24s} available {stats['available']:7d} taken {stats['taken']:7d} x{weight} tokens {stats['tokens']:10d} contaminated {stats['contaminated']} too_long {stats['too_long']} identity_backstop {stats['identity_backstop']} tone_dropped {stats['tone_dropped']}", flush=True)
 random.shuffle(train)
 def dump(path, rows):
     h = hashlib.sha256()

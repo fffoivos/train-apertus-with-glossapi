@@ -15,7 +15,7 @@ IDENT = re.compile(
     r"|als (ki|künstliche intelligenz|sprachmodell|ki-assistent|ki-sprachmodell)|ich bin (eine? )?(ki|künstliche intelligenz|sprachmodell)"
     r"|come (ia|intelligenza artificiale|modello linguistico)|sono un(a)? (ia|intelligenza artificiale|modello linguistico)"
     r"|como (ia|inteligencia artificial|modelo de lenguaje|modelo de linguagem)|soy un(a)? (ia|inteligencia artificial|modelo de lenguaje)|sou um(a)? (ia|inteligência artificial|modelo de linguagem)"
-    r"|ως (τεχνητή νοημοσύνη|γλωσσικό μοντέλο|μοντέλο τεχνητής)|είμαι (ένα |μια )?(τεχνητή νοημοσύνη|γλωσσικό μοντέλο))", re.I)
+    r"|ως (τεχνητή νοημοσύνη|γλωσσικό μοντέλο|μοντέλο τεχνητής)|είμαι (ένα |μια )?(τεχνητή νοημοσύνη|γλωσσικό μοντέλο))\b", re.I)  # trailing word boundary (review S1): no "as an aid", "als Kind"
 def identity_hit_messages(messages):
     """messages: list of {role, content}; True if any assistant or system turn carries an identity statement."""
     return any(m.get('role') in ('assistant', 'system') and IDENT.search(m.get('content') or '') for m in messages)
