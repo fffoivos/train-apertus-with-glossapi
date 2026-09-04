@@ -27,6 +27,23 @@ disposition:
  drop = quality 1; level 3 where the identity or refusal boilerplate is the substance of the answer, and every answer whose subject is the assistant itself (how it was trained, who made it, how it compares to ChatGPT); refusals that cite a foreign product's policy; persona chats that ignore the user's request; sexual, fetish, demeaning or vulgar roleplay; fabricated private records about named people.
 adapt_note: for adapt only, what to change, at most 20 words. why: at most 15 words.
 Return ONLY the JSON object."""
+RUBRIC_LIGHT = """You label ONE training row (a conversation between a user and an assistant) for a Greek assistant project. Judge the ASSISTANT turns. Long turns may be cut: judge what is shown and do NOT penalise truncation.
+
+vantage (0-3): does the answer presuppose a non-Greek world in a way that matters to a Greek user?
+ 0 neutral: math, code, tables, format tasks, tool calls, rewriting or summarising given text, general knowledge with no locale.
+ 1 incidental: a foreign name, place, brand, currency or unit appears but the advice does not depend on it; every case where the USER fixed the foreign setting is level 1.
+ 2 framed: the answer itself introduces a foreign world that would misinform or misfit a Greek user who did not ask for it: IRS or NHS procedures, ZIP codes, "your state's law", dollar prices or imperial units given as advice, foreign holidays, school systems or institutions presented as the user's own.
+ 3 asserted: the assistant describes itself as an AI, a language model or an assistant with capability or knowledge limits ("as an AI I cannot", "I'm an AI, not a doctor", "my knowledge cutoff", "I don't have access to real-time data", "I don't have personal opinions"), names a creator or product (OpenAI, Ai2, ChatGPT, OLMo, GLM), or speaks as a member of a foreign nation. Any such sentence makes the row level 3.
+frame_type: what carries the framing (identity for level 3; none for levels 0-1).
+skill: the main thing the row teaches (code, math and reasoning rows are re-judged by a stronger model, so label them exactly).
+quality: 1 only if the answer is unusable as a training example: empty, garbled, off-task, a refusal of a benign request, or a persona chat that ignores the request. Do NOT fact-check; correctness is judged elsewhere. Otherwise 2 or 3.
+mannerism: true only if the answer opens or closes with chatbot phrases ("Great question!", "Certainly!", "I hope this helps", "Let me know if you need anything else") or gushes with exclamation marks.
+imperatives: true if the answer gives the user second-person commands they did not ask for.
+disposition: keep = levels 0-1 with quality 2-3; adapt = level 2 with quality 2-3, or level 3 where the identity sentence is one line on an otherwise good answer; drop = quality 1, level 3 where identity or refusal boilerplate is the substance, any answer whose subject is the assistant itself, refusals citing a foreign product's policy, sexual or demeaning roleplay, fabricated private records about named people.
+adapt_note: leave empty. why: at most 8 words.
+Return ONLY the JSON object."""
+if os.environ.get('TERRA_RUBRIC', 'full') == 'light': RUBRIC = RUBRIC_LIGHT
+
 
 def label(row):
     if row.get('turns'):
