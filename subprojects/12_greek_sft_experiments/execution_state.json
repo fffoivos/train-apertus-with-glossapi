@@ -126,7 +126,7 @@
    "gate": "G3"
   },
   "replicate+E1last": {
-   "status": "launching 05:18 at (1e-5, 2 epochs, cosine): E1_cos seed 43 + E1last_cos (rev 17)",
+   "status": "training since 05:22: E1_cos on job , E1last_cos on job  (lr 1e-5, 2 epochs, cosine)",
    "deps": [
     "pickA"
    ],
