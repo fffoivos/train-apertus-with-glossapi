@@ -28,14 +28,27 @@ in {code, math, reasoning} sends the row to Sol, whose label replaces Luna's).
 ## 3. Measured performance of the judges
 
 Ground truth v2 (`results/ground_truth/gt_v2_rows.jsonl`, labels `gt_v2_labels.json`): 63 rows, 7 per screened block, full turns,
-hand-labelled by me under rubric v3; 2 excluded (Nemotron rows whose prompt is withheld). Scorer: `data/gt_score.py`.
+labelled by me (Claude, the rubric's author) under rubric v3, on the same truncated view the judge sees; 2 excluded (Nemotron rows whose prompt
+is withheld). Scorer: `data/gt_score.py`. **This is a model label, not human truth** (review F9): it measures agreement between two model readings
+of the same text. The base rate is 54 keep of 61, so "keep everything" would score 49/61. The stronger identity evidence is the cross-tab below.
 
 | measure | Luna | notes |
 |---|---|---|
 | same verdict as the hand label | 55 of 61 | |
-| identity rows found | 4 of 4, no false identity | the category that matters most |
+| identity rows found in the 63-row set | 4 of 4, no false identity | too few rows to bound: the cross-tab below is the evidence |
 | rows to act on (adapt or drop): recall | 6 of 7 | the miss is a level-2 case: a recipe on US ingredients and units |
 | rows to act on: precision vs my labels | 6 of 11 | the 5 extra drops are correctness calls; 2 verified right, 1 verified wrong, 2 arguable |
+
+Identity cross-tab on the labelled blocks (regex = the assembly backstop pattern set, English + five EU languages + Greek, over the full assistant
+text; Luna = `frame_type == identity`), recomputed 23:30 Fri:
+
+| block | rows | regex-detectable identity | of which Luna caught | Luna identity total | Luna beyond the regex |
+|---|---|---|---|---|---|
+| OpenAssistant | 5,305 | 101 | 97 (96%) | 368 | 271 |
+| safety (partial) | 5,975 | 293 | 292 (99.7%) | 1,216 | 924, mostly refusal boilerplate, which rubric v3 defines as level 3 by design |
+
+So Luna misses about 1 in 25 explicit self-descriptions in chat and almost none in safety; the assembly backstop removes the rest by regex.
+Luna's unmeasured side is what it keeps: 20 kept rows per block go to the owner's blind read.
 
 Calibration on 100 Dolci puzzle rows against the exact checker (`~/sft_annot/calib/`):
 
@@ -45,8 +58,8 @@ Calibration on 100 Dolci puzzle rows against the exact checker (`~/sft_annot/cal
 | Sol, same 51 zebra puzzles | 10 | 8 | 4 | 2 |
 | word sorts, 49 rows, all correct per checker | Luna 0, Sol 0 called wrong | 0 | 0 | 0 |
 
-Sol as second opinion on Luna's "wrong answer" drops in OpenAssistant (`~/sft_annot/labels/dolci_chat.sol.jsonl`): 487 rows,
-349 confirmed, 138 overturned (28%). Examples of overturns: the counterfeit-bill puzzle (Luna 140, Sol 100, Sol right), a
+Sol as second opinion on Luna's "wrong answer" drops in OpenAssistant (`~/sft_annot/labels/dolci_chat.sol.jsonl`): 610 unique rows,
+441 confirmed, 169 kept or adapt (27.7%); these verdicts override Luna's in the keep-lists and the assembler (review F6). Examples of overturns: the counterfeit-bill puzzle (Luna 140, Sol 100, Sol right), a
 first-aid answer Luna called dangerous and Sol appropriate. This pass was stopped on the owner's instruction (it only catches Luna's
 false drops, not its misses) and replaced by advance routing.
 
@@ -95,7 +108,7 @@ Repository: `subprojects/12_greek_sft_experiments/`, git range for this work `57
 | Greek rewriting reading page | artifact, see the log | `cluster/greek_rewrite_page.py <gen.jsonl> <out.html> 40 [edit.jsonl]` |
 | chained Sol queue (`ps -fl` shows the `sh -c until …` waiters) | `~/sft_annot/sol_chain.log`, `sol_chain2.log` | samples -> Greek generation -> science -> coding 20k -> Precise IF spot-check -> Greek correction pass |
 
-Counts at 23:40 Friday (`build_keep_lists.py`):
+Counts at 21:40 Friday, Mac clock (`build_keep_lists.py`; refreshed Saturday):
 
 | block | labelled | keep | adapt | drop | identity | wrong |
 |---|---|---|---|---|---|---|
