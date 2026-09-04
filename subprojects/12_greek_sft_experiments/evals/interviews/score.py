@@ -76,12 +76,43 @@ def load_call_claude() -> Callable[..., Any]:
     return call_claude
 
 
+def lenient_json(body: str) -> dict:
+    """Parse the first {...} object; escape stray double quotes inside strings when the strict parse fails
+    (both judges sometimes quote evidence with unescaped quotes — 2026-09-04)."""
+    a, b = body.find("{"), body.rfind("}")
+    text = body[a:b + 1]
+    for _ in range(40):
+        try:
+            return json.loads(text)
+        except json.JSONDecodeError as exc:
+            pos = exc.pos
+            # find the offending quote: the last '"' before pos that is not preceded by a backslash
+            q = text.rfind('"', 0, pos)
+            if q <= 0:
+                raise
+            text = text[:q] + '\\"' + text[q + 1:]
+    return json.loads(text)
+
+
+def raw_claude(prompt: str, timeout: int = 600) -> str:
+    import subprocess, os, signal
+    p = subprocess.Popen(["claude", "-p", "--model", "opus", "--effort", "medium", "--output-format", "json"],
+                         stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, cwd="/tmp", start_new_session=True)
+    try:
+        out, err = p.communicate(prompt, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        os.killpg(os.getpgid(p.pid), signal.SIGKILL); raise RuntimeError("claude timed out")
+    if p.returncode:
+        raise RuntimeError((err or "")[-200:])
+    return json.loads(out)["result"]
+
+
 def opus_score(prompt: str) -> tuple[dict[str, Any], int]:
     call_claude = load_call_claude()
     errors: list[str] = []
     for attempt in range(1, 4):
         try:
-            result = call_claude(prompt, timeout=600)
+            result = lenient_json(raw_claude(prompt, timeout=600))
             if not isinstance(result, dict):
                 raise ValueError("Opus returned non-object JSON")
             return result, attempt
@@ -97,8 +128,7 @@ def opus_score(prompt: str) -> tuple[dict[str, Any], int]:
             out_path = tmp.name
         rc, stderr_tail = run_sol(prompt, out_path, timeout=900)
         body = open(out_path, encoding="utf-8").read(); _os.unlink(out_path)
-        a, b = body.find("{"), body.rfind("}")
-        result = json.loads(body[a:b + 1])
+        result = lenient_json(body)
         if not isinstance(result, dict):
             raise ValueError("Sol returned non-object JSON")
         result["_engine"] = "sol_fallback"
