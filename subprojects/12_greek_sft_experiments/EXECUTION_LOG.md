@@ -39,3 +39,4 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-04 05:14 | pickA | — | claude | PROVISIONAL pick (lr 1e-5, 2 epochs): lowest dev loss, stop 0.90, voice Delta 0.853; ILSP within noise of (5e-6, ep3); E1_cos + E1last_cos set and launching | 0/0 | 12.69 |
 | 2026-09-04 05:14 | E1_cos E1_cos.yaml rep | job  | claude | launched (lr 1e-5, 2 epochs, cosine) on a normal workbench | 1.5/— | 12.69 |
 | 2026-09-04 05:14 | E1last_cos E1last_cos.yaml last | job  | claude | launched (lr 1e-5, 2 epochs, cosine) on a normal workbench | 1.5/— | 12.69 |
+| 2026-09-04 05:16 | E1_cos | job 3288016 | claude | replicate (seed 43; lr 1e-5, 2 ep, cosine) launched on normal (earlier attempt got no workbench: normal allows ~4 jobs/user) | 1.5/— | 12.69 |
