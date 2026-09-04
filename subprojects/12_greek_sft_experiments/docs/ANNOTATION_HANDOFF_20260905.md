@@ -86,6 +86,21 @@ Sol's own errors are not caught by a third judge. What bounds them: the checker 
 correct rows, 9%, and 2 of 8 wrong rows missed, against Luna's 6 and 3; better, not clean, at 825 rows an hour on this reasoning-heavy
 material), the 300-row spot-checks, and the owner's blind reads. Consequence: where a checker exists it stays the authority over Sol too.
 
+## 4a. Added after review rounds 2 and 3 (Friday night)
+
+- **Tone is used.** Rows the judge flags for chatbot mannerisms are dropped at assembly from the chat, safety, multilingual and science blocks
+  (OpenAssistant 19% of kept rows, safety 39%); unasked second-person commands (16% and 27%) are reported and dropped only with `--drop-imperatives`.
+- **Language gate.** `data/lang_identity_filter.py` keeps rows whose first user turn is English, Greek, an EU official language or Catalan; the
+  assembler ANDs its keep list into every chat block. Nemotron: 16.5% non-EU (ru 6,763, zh 3,029 of 100k); OpenAssistant 459 of 5,305; multilingual 6.
+- **One identity pattern set**, `data/identity_patterns.py`, word-bounded (review S1), scanning system and assistant turns, shared by the lexicon
+  filter and the assembly backstop. Precise IF, a checker-verified block, carries about 250 self-descriptions (0.18%): verified is not identity-free.
+- **Judge window** configurable (`TERRA_TURN_CAP`, `TERRA_TOTAL_CAP`): Sol blocks 12,000 / 24,000; Luna 3,000 / 9,000 plus the exact-length prefilter.
+- **Decontamination** now includes the English originals of MMLU, ARC, HellaSwag and TruthfulQA (28,449 prompts), since the Greek benchmarks are
+  their translations; found in my own audit, not by a review round.
+- **Assembly** (`data/assemble_mix_r2.py`): exact tokens, 4,032 cap, id keys, Greek ×2, backstop with post-scan, Sol verdicts over Luna's,
+  `langfilter:` and `sample:` modes, corrected Greek answers preferred, token budget solved over present blocks, exit 3 on budget and 4 on post-scan.
+  The trainer's own dry run on the cluster passed on a 2% exact-tokenizer arm (`DRY_RUN_OK model_not_loaded=true`).
+
 ## 5. Files and how to reproduce every number
 
 Repository: `subprojects/12_greek_sft_experiments/`, git range for this work `578f927b..HEAD` (Friday 4 September).
