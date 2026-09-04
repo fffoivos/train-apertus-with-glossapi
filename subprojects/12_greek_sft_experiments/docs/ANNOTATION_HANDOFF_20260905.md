@@ -101,6 +101,10 @@ material), the 300-row spot-checks, and the owner's blind reads. Consequence: wh
   `langfilter:` and `sample:` modes, corrected Greek answers preferred, token budget solved over present blocks, exit 3 on budget and 4 on post-scan.
   The trainer's own dry run on the cluster passed on a 2% exact-tokenizer arm (`DRY_RUN_OK model_not_loaded=true`).
 
+- **Luna's light rubric** (from Saturday 00:20, Nemotron A, multilingual, tool-use sample): same identity, framing, tone and skill definitions;
+  `quality` means usable-or-not, not correctness (Sol judges correctness on the routed rows); no `adapt_note`; `why` at most 8 words. Selected by
+  `TERRA_RUBRIC=light`; the `judge` field stays `gpt-5.6-luna`, so blocks judged under the full rubric (OpenAssistant, safety) are told apart by block.
+
 ## 5. Files and how to reproduce every number
 
 Repository: `subprojects/12_greek_sft_experiments/`, git range for this work `578f927b..HEAD` (Friday 4 September).
