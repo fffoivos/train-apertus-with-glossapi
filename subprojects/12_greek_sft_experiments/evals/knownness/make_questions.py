@@ -150,8 +150,8 @@ def prompt_for_batch(language: str, claims: list[dict[str, Any]]) -> str:
     payload = [{"id": item["claim_id"], "claim": item["claim"]} for item in claims]
     prompt = f"{instructions}\n\nOutput language: {language_name}.\n{schema}\n\nInput:\n"
     prompt += json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
-    if language != "el" and contains_greek(prompt):
-        raise ValueError(f"Greek script found in {language} question-generation prompt")
+    if language != "el" and contains_greek(f"{instructions}\n{schema}"):
+        raise ValueError(f"Greek script found in {language} question-generation prompt")   # the instructions only; claim payloads may quote Greek names
     return prompt
 
 
