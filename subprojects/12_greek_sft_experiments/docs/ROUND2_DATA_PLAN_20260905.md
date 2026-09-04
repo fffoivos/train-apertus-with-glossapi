@@ -84,8 +84,10 @@ work in stage 2.
 
 The Greek rewriting and summarising set: 2,000 rows, Sol at high effort. For each row Sol writes a realistic Greek passage in a Greek setting
 (20 genres, 40 topics, five lengths, a register), a user instruction from a list of 15 task types, and the answer, under a prompt that forbids
-mannerisms and self-reference. A second Sol call with an editor's brief corrects faithfulness, execution, language, mannerisms and frame,
-and the corrected answer replaces the original at assembly. The owner blind-reads 40 rows
+mannerisms and self-reference. A second Sol call applies the round-one Γ editing contract (the `natural-greek-sft` editor: task, faithfulness, reading; Greek prefers
+the compact form; correct only listed faults; never edit a valid form) extended with execution and faithfulness checks, and the corrected
+answer replaces the original at assembly. The generator prompt carries the same compact-Greek rule and a vouched-facts rule (institutions,
+services and procedures must exist or be plausible in Greece; only person names are invented). The owner blind-reads 40 rows
 (https://claude.ai/code/artifact/dc57edac-97cc-472e-810e-e336f03d63f2). Generated Friday 22:00 to 00:00 at about 1,100 rows an hour, zero
 failures; the correction pass runs in the Sol chain right after the Precise IF spot-check.
 
