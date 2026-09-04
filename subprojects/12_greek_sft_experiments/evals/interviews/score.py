@@ -89,7 +89,23 @@ def opus_score(prompt: str) -> tuple[dict[str, Any], int]:
             errors.append(f"attempt {attempt}: {type(exc).__name__}: {exc}")
             if attempt < 3:
                 time.sleep(2 ** attempt)
-    raise RuntimeError("Opus scoring failed three times: " + " | ".join(errors))
+    # Sol fallback (Claude, 2026-09-04): the headless Opus lane intermittently returns malformed JSON.
+    try:
+        import tempfile, os as _os
+        from nsft.engines import run_sol
+        with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False, prefix="score_sol_") as tmp:
+            out_path = tmp.name
+        rc, stderr_tail = run_sol(prompt, out_path, timeout=900)
+        body = open(out_path, encoding="utf-8").read(); _os.unlink(out_path)
+        a, b = body.find("{"), body.rfind("}")
+        result = json.loads(body[a:b + 1])
+        if not isinstance(result, dict):
+            raise ValueError("Sol returned non-object JSON")
+        result["_engine"] = "sol_fallback"
+        return result, 4
+    except Exception as exc:
+        errors.append(f"sol fallback: {type(exc).__name__}: {exc}")
+    raise RuntimeError("Opus scoring failed three times and Sol fallback failed: " + " | ".join(errors))
 
 
 def validate_score(result: dict[str, Any]) -> dict[str, dict[str, Any]]:
