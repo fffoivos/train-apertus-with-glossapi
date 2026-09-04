@@ -61,7 +61,9 @@ def edit(r):
 rows = [json.loads(l) for l in open(IN)]; rows = [r for r in rows if r.get('passage') and r.get('answer')]
 done = set()
 if os.path.exists(OUT):
-    for l in open(OUT): done.add(json.loads(l)['id'])
+    for l in open(OUT):
+        j = json.loads(l)
+        if j.get('verdict'): done.add(j['id'])  # failed calls are re-run
 todo = [r for r in rows if r['id'] not in done]; print(f'{len(done)} done, {len(todo)} to go, {W} workers, {MODEL}/{EFFORT}', flush=True)
 lock = threading.Lock(); t0 = time.time(); n = 0; stats = collections.Counter()
 with open(OUT, 'a') as fh, cf.ThreadPoolExecutor(W) as ex:
