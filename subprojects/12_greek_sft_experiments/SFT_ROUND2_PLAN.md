@@ -11,7 +11,7 @@ from constraint data plus preference optimisation, and raw imported rows pull th
 |---|---|---|---|
 | 1. broad SFT | 0.25M to 4M public rows, English-heavy, filtered | skills that transfer: instruction following, math, code, formats, tools | 6 to 100 node-hours by tier |
 | 2. Greek pass | our 20k adapted rows + personality set + filtered native Greek + 10% replay of stage 1 | voice, vantage, identity, Greek conventions; low learning rate | under 2 node-hours |
-| 3. preference | checker-verified constraint pairs + judged Greek pairs + identity pairs, DPO | pass Krikri on instruction following, hold the voice | about 6 node-hours |
+| 3. preference | checker-verified constraint pairs + Sol-judged Greek pairs + identity pairs, DPO, 100k to 270k pairs | pass Krikri on instruction following, hold the voice | 12 to 40 node-hours |
 
 Each stage ends with the round-one evaluation suite plus a new identity probe. The base stays the averaged CPT checkpoint.
 
