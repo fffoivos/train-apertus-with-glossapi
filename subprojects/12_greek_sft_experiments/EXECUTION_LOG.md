@@ -33,3 +33,4 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-04 03:57 | gridA run1 | job 3286621 | claude | E1_lr1e-5_3ep_const DONE: 285 steps in 1,901 s (~9.4k tok/s), train loss 1.376, epoch1/2/3 saved; per-config dev losses in results/E1_lr1e-5_3ep_const/dev_losses.json | 1.5/— | 2.00 |
 | 2026-09-04 04:19 | light_run1_ep12 | job 3287430 | claude | light evals of run-1 epoch1+epoch2 | —/0.345 | 2.92 |
 | 2026-09-04 04:21 | gridA run2 | job 3287233 | claude | E1_lr5e-6_3ep_const DONE: 285 steps in 1,913 s, train loss 1.471, epoch1/2/3 saved; dev losses in results/E1_lr5e-6_3ep_const/dev_losses.json | 1.5/— | 2.92 |
+| 2026-09-04 04:25 | rehearsal probe20_ep1 | job 3287229 | claude | eval pipeline rehearsal (native suite + interviews; ILSP/dev50 OOM lesson) | —/0.688 | 4.77 |
