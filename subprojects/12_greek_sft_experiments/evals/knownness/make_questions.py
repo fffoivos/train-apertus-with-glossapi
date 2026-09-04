@@ -257,13 +257,22 @@ def main() -> int:
                 responses = validate_response(cached, expected_ids)
                 status = "cached"
             except ValueError:
-                rc, stderr = run_sol(prompt, cached, timeout=args.timeout)
-                if rc != 0:
-                    raise SystemExit(f"ERROR: Sol failed rc={rc}: {stderr}")
-                try:
-                    responses = validate_response(cached, expected_ids)
-                except ValueError as exc:
-                    raise SystemExit(f"ERROR: invalid Sol response {cached.name}: {exc}") from exc
+                responses = None
+                for attempt in range(1, 4):                       # invalid → regenerate up to 3× (Claude, 2026-09-04)
+                    rc, stderr = run_sol(prompt, cached, timeout=args.timeout)
+                    if rc != 0:
+                        print(f"WARN Sol rc={rc} attempt={attempt}: {stderr[-120:]}", flush=True)
+                        continue
+                    try:
+                        responses = validate_response(cached, expected_ids)
+                        break
+                    except ValueError as exc:
+                        print(f"WARN invalid Sol response {cached.name} attempt={attempt}: {exc}", flush=True)
+                        cached.unlink(missing_ok=True)
+                if responses is None:
+                    print(f"SKIP batch language={language} ids={expected_ids[:2]}… after 3 invalid responses", flush=True)
+                    completed_batches += 1
+                    continue
                 status = "generated"
             for item in responses:
                 generated[item["id"]] = item
@@ -272,6 +281,8 @@ def main() -> int:
 
     output: list[dict[str, Any]] = []
     for claim in claims:
+        if claim["claim_id"] not in generated:
+            continue                                            # skipped batch
         response = generated[claim["claim_id"]]
         output.append(
             {
