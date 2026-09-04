@@ -1,6 +1,6 @@
 # Round two, data preparation: the plan to Sunday 6 September 2026
 
-Written Friday 4 September, 23:50, after several reorientations during the day. This document supersedes the mix and
+Written Friday 4 September, 21:50 on the Mac clock (EEST; the review found the first version's times 2 hours ahead, all times below are now Mac clock), after several reorientations during the day. Revised 22:50 after the independent review (`docs/reviews/FEEDBACK_ROUND2_DATA_20260905.md`). This document supersedes the mix and
 routing sections of `SFT_ROUND2_PLAN.md` where they differ; it is the one to review. Companion: `ANNOTATION_HANDOFF_20260905.md`.
 
 **Feedback on both documents goes in `docs/reviews/FEEDBACK_ROUND2_DATA_20260905.md`** (full path
@@ -10,7 +10,7 @@ I watch that file and answer under each finding in place, marked `→ claude:`. 
 ## 1. Objectives and hard limits
 
 - Goal of stage 1: a broad-ability SFT set for the Greek-CPT Apertus-8B that keeps the Greek vantage, ready to train.
-- Time limit: **data preparation finished by late Sunday 6 September** (mix assembled, decontaminated, tokenized, receipts written).
+- Time limit: **data preparation finished by late Sunday 6 September, Mac clock (EEST)** (mix assembled, decontaminated, tokenized, receipts written, trainer dry-run green).
 - CSCS budget: cap CHF 90, spent CHF 61.04 (22.7 node-hours at CHF 2.69 per node-hour), **CHF 28.96 left, about 10.8 node-hours**.
   Nothing in this plan spends node-hours before Monday; the login node is used for CPU work only, politely (nice 19, few processes, time caps).
 - Standing rules from the owner today: (1) trust a source once it is shown high quality and verified, and do not drop its rows on a judge's word;
@@ -26,7 +26,7 @@ I watch that file and answer under each finding in place, marked `→ claude:`. 
 | constraint following | argilla ifeval-like, filtered | Qwen2.5-72B, 2024 | our re-run of the IFEval checkers on all 56,339 rows: 56,292 pass, 47 fail (0.08%) | 56k (owner decision: Qwen licence) |
 | math | OpenMathInstruct-2, GSM8K-style | Llama-3.1-405B, 2024 | our re-run of the final-answer match on all 100,000 rows: 99,971 match, 29 mismatch | 100k |
 | chat and advice | Nemotron IF-Chat v3, chat split | GLM-5, 2026 | reward model best-of-N; Luna screen; Sol on technical rows | 100k screened (150k exported) |
-| chat, human-written | OpenAssistant (Dolci Chat), screened | volunteers, 2023 | Luna + Sol on technical rows | 4.3k (4,088 keep + 232 adapt) |
+| chat, human-written | OpenAssistant (Dolci Chat), screened | volunteers, 2023 | Luna + Sol on technical rows + Sol second opinion | about 4.2k keep rows; adapt rows are NOT in stage 1 (no line-cut exists; review F1) |
 | coding | Dolci "Python Algorithms" | 2025 | Sol spot-check: 20 of 300 wrong (6.7%), so the block is screened by Sol; 20k screened by Sunday, the rest later | 20k screened now (60k exported) |
 | reasoning | Dolci "Verifiable Reasoning" | 2025 | Sol spot-check: 3 of 300 wrong (1%), taken as clean | 30k |
 | reasoning | Dolci logic puzzles and word sorts | generator | exact brute-force checker | 11,163 confirmed |
@@ -36,10 +36,18 @@ I watch that file and answer under each finding in place, marked `→ claude:`. 
 | safety | Dolci WildGuardMix and CoCoNot, screened | 2024 | Luna; 21% identity so far, so mostly adapt or drop | 10k |
 | Greek, rewriting and summarising | written by Sol from scratch, in Greek | gpt-5.6, 2026 | Sol correction pass, screen, owner blind read | 2k (the 10% start) |
 | Greek | our round-one adapted set | Sol, 2026 | ours | 20k, seen twice |
-| **total** | | | | **about 580k rows, about 0.35B tokens** |
+| **total** | | | | **about 580k rows, about 0.39B tokens at the measured per-block token means (review F4)** |
 
 Dropped under rule (2): Magpie Ultra, OpenHermes, Tulu WildChat, EuroBlocks fr/de, Dolci persona math, Evol-CodeAlpaca, Tulu persona Python, TableGPT.
 Dropped by measurement: Tulu FLAN and Dolci FLAN (Sol finds 193 of 1,323 wrong, 14.6%, on 2015-era labels).
+
+Wrong-rate threshold (review F8): measured wrong rate at most 2% → in unscreened; 2% to 10% → program check or a full Sol screen before use
+(Dolci Python Algorithms at 6.7% is therefore Sol-screened, 20k by Sunday, the rest later); above 10% → out (FLAN). Safety (2024, unverifiable)
+is a stated exception to rule (2): kept small (10k) because refusals are low-risk and Luna screens identity; regenerated in our voice in stage 2.
+Identity backstop (review F1): at assembly a full-text regex (English, five EU languages, Greek) runs over every assistant turn of every row,
+after the judges; hits are dropped and counted per block; the written train file is re-scanned and must show 0 hits.
+Licence question (review F8): the Qwen question in §6 also covers OpenMathInstruct-2, whose answers are Llama-3.1-405B output under the Llama 3.1
+licence naming clause; one decision for both.
 
 ## 3. Timeline to Sunday, with the judge rates measured tonight
 
