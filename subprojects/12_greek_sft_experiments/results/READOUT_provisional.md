@@ -176,3 +176,23 @@ and worse on instruction following. **The averaged checkpoint stays the base.** 
 Mean Greek dev loss: 1.374 vs 1.365 (-0.008); largest per-config seed gap 0.052. Differences between arms
 below ~0.05 on a single config or ~0.02 on the mean are seed noise. (Light-eval floor from seed 44 follows
 when its evals finish.)
+
+
+## Phase B — E2 (Greek + the paired English no_robots) vs the E1 reference, dev losses at epoch 2
+
+| config | E1 reference (mean of 2 seeds) | E2 (E1 + no_robots_en_pov) | diff |
+|---|---|---|---|
+| apertus_en | 1.256 | 1.361 | +0.105 |
+| coconot | 1.587 | 1.596 | +0.009 |
+| euroblocks_de | 1.602 | 1.573 | -0.029 |
+| euroblocks_fr | 1.466 | 1.433 | -0.033 |
+| everyday | 1.211 | 1.209 | -0.002 |
+| no_robots | 1.453 | 1.454 | +0.001 |
+| no_robots_en_pov | 1.861 | 1.716 | -0.145 |
+| oasst | 1.462 | 1.413 | -0.049 |
+| personas_if | 1.400 | 1.376 | -0.024 |
+| smolcon | 1.121 | 1.164 | +0.042 |
+| systemchats | 1.352 | 1.367 | +0.015 |
+
+Mean Greek dev loss: reference 1.370, E2 1.368 (-0.001; seed floor ≈ 0.02 on the mean). The English twin dev set
+(`no_robots_en_pov`, held out on both sides) is where E2 should move: 1.861 → 1.716. Light evals of E2 follow.
