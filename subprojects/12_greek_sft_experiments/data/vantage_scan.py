@@ -32,8 +32,12 @@ def text_of(content):
     if isinstance(content, str): return content
     if isinstance(content, dict):
         if content.get('text'): return content['text']
-        parts = content.get('parts') or []
-        return ' '.join(p.get('text', '') for p in parts if isinstance(p, dict))
+        out = []
+        for key in ('parts', 'blocks'):
+            for p in (content.get(key) or []):
+                if isinstance(p, dict) and p.get('text'): out.append(p['text'])
+                elif isinstance(p, str): out.append(p)
+        return ' '.join(out)
     if isinstance(content, list): return ' '.join(text_of(c) for c in content)
     return str(content)
 
@@ -72,9 +76,9 @@ def score(a):
     return level, dict(hits), ident, greek
 
 SOURCES = [  # (label, hf id, config, split, bucket_fn, max_read)
- ('apertus_mixture', 'swiss-ai/apertus-sft-mixture', 'default', 'train', lambda r: r.get('dataset_source'), 120000),
- ('dolci', 'allenai/Dolci-Instruct-SFT', 'default', 'train', lambda r: r.get('domain'), 200000),
- ('tulu3', 'allenai/tulu-3-sft-mixture', 'default', 'train', lambda r: (r.get('source') or '').split('/')[-1][:40], 120000),
+ ('apertus_mixture', 'swiss-ai/apertus-sft-mixture', 'default', 'train', lambda r: r.get('dataset_source'), 30000),
+ ('dolci', 'allenai/Dolci-Instruct-SFT', 'default', 'train', lambda r: r.get('domain'), 60000),
+ ('tulu3', 'allenai/tulu-3-sft-mixture', 'default', 'train', lambda r: (r.get('source') or '').split('/')[-1][:40], 40000),
  ('smoltalk2_openhermes', 'HuggingFaceTB/smoltalk2', 'SFT', 'OpenHermes_2.5_no_think', lambda r: 'openhermes', PER),
  ('smoltalk2_magpie', 'HuggingFaceTB/smoltalk2', 'SFT', 'smoltalk_smollm3_smol_magpie_ultra_no_think', lambda r: 'magpie_ultra', PER),
  ('smoltalk2_systemchats', 'HuggingFaceTB/smoltalk2', 'SFT', 'smoltalk_smollm3_systemchats_30k_no_think', lambda r: 'systemchats', PER),
@@ -97,12 +101,14 @@ for label, hf, cfg, split, bucket_fn, max_read in SOURCES:
         if label in ('apertus_mixture', 'dolci', 'tulu3'): ds = ds.shuffle(seed=7, buffer_size=20000)
         for row in ds:
             read += 1
+            if read % 5000 == 0: print(f'  {label}: {read} rows read, kept {sum(kept.values())}', flush=True)
             b = bucket_fn(row) or 'none'
             if kept[b] >= PER:
                 if read >= max_read: break
                 continue
             a = assistant_text(row)
             if not a.strip():
+                if read >= max_read: break
                 continue
             lvl, hits, ident, greek = score(a)
             s = per_bucket[b]; s['n'] += 1; s['l'][lvl] += 1; s['ident'] += int(ident); s['greek'] += int(greek); s['words'] += len(a.split())
