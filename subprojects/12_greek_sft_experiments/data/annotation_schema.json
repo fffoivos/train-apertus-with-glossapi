@@ -1,0 +1,86 @@
+{
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "vantage",
+  "frame_type",
+  "skill",
+  "quality",
+  "mannerism",
+  "imperatives",
+  "disposition",
+  "adapt_note",
+  "why"
+ ],
+ "properties": {
+  "vantage": {
+   "type": "integer",
+   "enum": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  "frame_type": {
+   "type": "string",
+   "enum": [
+    "none",
+    "currency_units",
+    "institution_procedure",
+    "law_rights",
+    "holiday_culture",
+    "geography_setting",
+    "brand_product",
+    "identity",
+    "safety_policy",
+    "other"
+   ]
+  },
+  "skill": {
+   "type": "string",
+   "enum": [
+    "constraint_following",
+    "math",
+    "code",
+    "reasoning",
+    "explanation",
+    "advice",
+    "creative_writing",
+    "rewriting_summarising",
+    "extraction_classification",
+    "conversation",
+    "refusal",
+    "other"
+   ]
+  },
+  "quality": {
+   "type": "integer",
+   "enum": [
+    1,
+    2,
+    3
+   ]
+  },
+  "mannerism": {
+   "type": "boolean"
+  },
+  "imperatives": {
+   "type": "boolean"
+  },
+  "disposition": {
+   "type": "string",
+   "enum": [
+    "keep",
+    "adapt",
+    "drop"
+   ]
+  },
+  "adapt_note": {
+   "type": "string"
+  },
+  "why": {
+   "type": "string"
+  }
+ }
+}
