@@ -11,7 +11,7 @@ LOCAL=$HERE/results/$LABEL; mkdir -p $LOCAL/interviews
 sshc() { ssh -o BatchMode=yes clariden "$@" 2>/dev/null; }
 say() { echo "[$(date '+%H:%M')] eval $LABEL: $*"; }
 bash $HERE/cluster/preflight.sh 1.2 "eval_$LABEL" | tail -1 | grep -q '^OK' || { say "preflight refused"; exit 1; }
-J=$(sshc "bash $R/workbench.sh open ev_$LABEL debug 01:29:00" | tail -1); say "workbench $J"
+J=$(sshc "bash $R/workbench.sh open ev_$LABEL debug 01:29:00" | tail -1); [[ "$J" =~ ^[0-9]+$ ]] || { say "workbench open failed: [$J]"; exit 1; }; say "workbench $J"
 NODE_ENV="export HF_HOME=$R/hf_home HF_HUB_OFFLINE=1 HF_TOKEN=\$(cat $R/hf_home/token); source $S/venvs/sft/bin/activate; cd $R/evals_code"
 lane() { # lane <name> <gpu> <cmd-inside-uenv-bash>
   local name=$1 gpu=$2 cmd=$3
