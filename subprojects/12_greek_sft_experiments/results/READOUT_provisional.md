@@ -1,4 +1,54 @@
-# Round one — provisional readout (autonomous run, 2026-09-04 05:20)
+# Round One Readout
+
+*Autonomous run, night of 2026-09-03 → 04. Written 2026-09-04 07:06; the sections below are the running record and
+update as chains finish. CHF used so far: 26.50 of the 90 cap (rate CHF 2.69 per node-hour).*
+
+## Executive summary
+
+**What ran.** The full first round of Greek SFT on the Greek-CPT Apertus-8B, executed by Sol from written briefs, certified by
+an independent Fable review before the first GPU minute (BLOCKERS 0; two HIGH findings fixed and re-certified), and driven on
+Clariden through one-node workbenches. Phase A: two learning rates × three epochs on the Greek data (E1), every epoch checkpoint
+evaluated on Greek IFEval, Greek MGSM, a format gate, a stylometric voice score against no_robots-el, and 40 unseen three-turn
+interviews scored by an LLM judge. Then a replicate (cosine schedule, second seed), a third seed, the E1-last arm on the terminal
+CPT checkpoint, and phase B (E2, E3; E3′ finishing). Guards: the frozen native-Greek suite on the pick; GreekMMLU waits for a
+three-hour batch that needs your notice (>2 h job, protocol §6).
+
+**The pick (provisional, G3 is yours): lr 1e-5, 2 epochs.** Lowest dev loss, best stop rate, the only checkpoint with a voice
+Delta under 1.0 (0.85), interviews tied with epoch 3 within judge noise; epoch 3 at 1e-5 has started to overfit by dev loss;
+lr 5e-6 needs three epochs to reach the same place.
+
+**Guards so far.** Native-Greek suite on the pick: macro 0.574 vs the base's 0.499, no benchmark down beyond noise (NLI −0.008),
+WiC and metaphor up 0.2 — a jump large enough to deserve a second look; the replicate's and E1-last's natives are queued.
+
+**E1-last is settled:** the terminal CPT checkpoint fine-tunes to the same dev loss but clearly worse Greek math (MGSM 0.33 vs
+0.42, four times the seed floor) and instruction following. The averaged checkpoint stays the base.
+
+**Noise floors.** Seed only (two cosine seeds): ifeval ±0.01, MGSM ±0.03, voice ±0.05, interviews ±0.02, mean Greek dev loss
+±0.01. Seed + schedule (constant epoch-2 vs cosine): the constant-lr checkpoint reads better than the cosine endpoint on voice
+(0.85 vs 0.95–1.00) and interviews (2.83 vs 2.60) — a real difference, and a question for you: phase B uses the recipe's cosine
+schedule.
+
+**Phase B so far (dev losses; light evals landing).** Neither E2 (paired English) nor E3 (skills + fr/de, Greek point of view)
+moves the Greek dev loss (within ±0.02); each moves its own slice as intended (English twins 1.86 → 1.72; apertus_en 1.26 → 1.14,
+fr 1.47 → 1.31, de 1.60 → 1.48). E3′ (raw slices) is the adaptation control and finishes around 07:40.
+
+**What is still running or pending.** Light evals of E2/E3/E3′; native suites for the replicate, E1-last and the (5e-6, ep3)
+rival; the known-ness scorer on the base (labels for the §8 knowledge question); GreekMMLU (needs your go).
+
+**Three decisions for you.**
+1. **G3:** confirm (lr 1e-5, 2 epochs) — after the blind reading: https://claude.ai/code/artifact/690e0be1-dff4-4d25-ac8e-d49b861ab19c
+   (40 prompts × 7 runs, unlabeled; press Save to get the ratings JSON and paste it to me).
+2. **GreekMMLU batch:** ~3 node-hours (≈ CHF 8) in one normal-partition workbench, four models in parallel (pick, replicate,
+   E1-last, the 5e-6 rival) — a job over two hours, so it waits for your word.
+3. **Next arms:** E7 (unknown-claim rows removed) once the known-ness labels exist; a constant-lr vs cosine check for phase B
+   if you agree the schedule difference is real; the preference round (§9) on the pick.
+
+**Incidents worth knowing.** Sol's backend was down for 25 minutes early on; the headless Opus lane returned truncated or
+malformed JSON for the interview judge (fixed with a repair pass and a Sol fallback); two eval drivers were corrupted by
+live edits (fixed: drivers run from per-label copies); the native suite OOMs any lane sharing its GPUs (light and native evals
+now run separately). Every fix is committed; the ledger is honest about the node-hours these cost.
+
+---
 
 **Status:** the phase-A grid (two learning rates × three epochs) is trained and measured on the light evals. The
 provisional pick is **lr 1e-5, 2 epochs**. The replicate (seed 43) and the E1-last arm are training on it now. The
