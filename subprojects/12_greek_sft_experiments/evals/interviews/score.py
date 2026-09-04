@@ -104,7 +104,12 @@ def raw_claude(prompt: str, timeout: int = 600) -> str:
         os.killpg(os.getpgid(p.pid), signal.SIGKILL); raise RuntimeError("claude timed out")
     if p.returncode:
         raise RuntimeError((err or "")[-200:])
-    return json.loads(out)["result"]
+    try:
+        return json.loads(out)["result"]
+    except Exception:
+        dump = os.environ.get("SCORE_DUMP_DIR", "/tmp"); import time as _t
+        open(f"{dump}/score_envelope_fail_{int(_t.time())}.txt", "w").write(out + "\n---STDERR---\n" + (err or ""))
+        raise
 
 
 def opus_score(prompt: str) -> tuple[dict[str, Any], int]:
@@ -112,7 +117,14 @@ def opus_score(prompt: str) -> tuple[dict[str, Any], int]:
     errors: list[str] = []
     for attempt in range(1, 4):
         try:
-            result = lenient_json(raw_claude(prompt, timeout=600))
+            body = raw_claude(prompt, timeout=600)
+            try:
+                result = lenient_json(body)
+            except Exception:
+                import os as _os, time as _t
+                dump = _os.environ.get("SCORE_DUMP_DIR", "/tmp")
+                open(f"{dump}/score_raw_fail_{int(_t.time())}.txt", "w").write(body)
+                raise
             if not isinstance(result, dict):
                 raise ValueError("Opus returned non-object JSON")
             return result, attempt
