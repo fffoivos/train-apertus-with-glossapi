@@ -7,7 +7,7 @@ S=/iopsstor/scratch/cscs/fffoivos; R=$S/sft_round1; OUT=$R/runs/$LABEL; CTL=$R/r
 cat > $CTL/run.sh <<EOS
 #!/bin/bash
 set -euo pipefail
-export SCRATCH=$S HF_HOME=$R/hf_home HF_HUB_CACHE=$R/hf_home/hub HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 HF_DATASETS_OFFLINE=1 TOKENIZERS_PARALLELISM=false PYTHONUNBUFFERED=1
+export SCRATCH=$S HF_HOME=$R/hf_home HF_HUB_CACHE=$R/hf_home/hub HF_HUB_OFFLINE=0 TRANSFORMERS_OFFLINE=0 HF_DATASETS_OFFLINE=1   # hub ON: the kernels lib resolves version=1 of vllm-flash-attn3 via the Hub even when the snapshot is cached (2026-09-04) TOKENIZERS_PARALLELISM=false PYTHONUNBUFFERED=1
 export HF_TOKEN=\$(cat $R/hf_home/token)
 source $S/venvs/sft5/bin/activate
 cd $R
