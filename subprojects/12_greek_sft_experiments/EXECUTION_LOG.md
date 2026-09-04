@@ -62,3 +62,5 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-04 08:22 | native_guards | job 3288578 | claude | native suite for E1_cos_ep2 (E1last moved to its own workbench) | —/0.957 | 45.26 |
 | 2026-09-04 09:15 | native_E1last_ep2 | job 3289061 | claude | native suite | —/0.949 | 47.81 |
 | 2026-09-04 09:16 | round one | — | claude | COMPLETE pending owner gates; natives: pick 0.574, rival 0.577, replicate 0.573, E1-last 0.500 (base 0.499/0.434); readout + blind reading published | —/17.773 | 47.81 |
+| 2026-09-04 13:11 | eval plan | C | claude | blind reading + tone: 13 runs x 40 prompts scored, page published; prompt 15 excluded (answer in prompt) | — | — |
+| 2026-09-04 13:11 | eval plan | A | claude | peer ILSP lanes launched on wb 3291238 (Meltemi needed sentencepiece; launcher zsh word-split bug fixed) | ~1.2 proj | — |
