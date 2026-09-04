@@ -1,7 +1,7 @@
 # Round One Readout
 
 *Autonomous run, night of 2026-09-03 → 04. Written 2026-09-04 07:06; the sections below are the running record and
-update as chains finish (last update 07:56). CHF used so far: 26.50 of the 90 cap (rate CHF 2.69 per node-hour).*
+update as chains finish (last update 07:56). CHF used so far: 42.68 of the 90 cap (rate CHF 2.69 per node-hour).*
 
 ## Executive summary
 
