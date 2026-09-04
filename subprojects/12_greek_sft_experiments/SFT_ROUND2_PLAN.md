@@ -52,6 +52,37 @@ Recommendation: run S and M as a ladder, measure after each, decide L on the cur
 conservative" argues for M as the floor. Token counts assume 600 tokens per row after the 4,096-token filter; rows longer
 than the window are dropped, not truncated, as in wave 1.
 
+### 1a. Stage-1 mix, recalculated 2026-09-04 late (owner rule: verified answers, or a recent generator; old and unchecked is out)
+
+| block | source | generator, year | checked | rows |
+|---|---|---|---|---|
+| verified constraints | Dolci Precise IF | 2025 models | constraint checkers | 137k |
+| verified constraints | ifeval-like filtered | Qwen2.5-72B, 2024 | constraint checkers | 56k |
+| math | OpenMathInstruct-2 | Llama-3.1-405B, 2024 | final answer vs ground truth | 100k (replaces the 60k persona GSM, GPT-4o unverified) |
+| chat and advice | Nemotron IF-Chat v3 chat | GLM-5, 2026 | reward model best-of-N; our Luna screen, Sol on technical rows | 150k (about 375k rows have their prompt; hash recovery of the WildChat-seeded rest is optional) |
+| chat, human-written | OpenAssistant, screened | volunteers, 2023 | our screen | about 4k |
+| coding | Dolci "Python Algorithms" (186k available) | 2025 | unknown; Sol spot-check of 300 rows first | 60k if the spot-check is clean, else Sol-generated |
+| coding, extra | Sol-generated answers to code prompts | gpt-5.6, 2026 | Sol | 20k to 40k, if needed |
+| rewriting, summarising | Nemotron rows Luna labels rewriting, plus Sol-generated | 2026 | Sol | 20k + 20k |
+| reasoning | Dolci "Verifiable Reasoning" (311k available) | 2025 | Sol spot-check of 300 rows | 30k |
+| reasoning | Dolci logic puzzles and word sorts | generator | brute-force checker | 11k confirmed |
+| tool use | Dolci Tool Use | 2025 | Luna identity screen | 30k |
+| science | Dolci OpenThoughts3+ Science | 2025 | Sol screen | 15k |
+| other European languages | SmolTalk2 multilingual-8 | Qwen3-32B, 2025 (to confirm) | Luna | 25k |
+| other European languages | Nemotron non-English European rows | GLM-5, 2026 | Luna | 10k |
+| safety | Dolci WildGuardMix, CoCoNot, screened | 2024 | Luna | 10k now; regenerate in our voice with Sol in stage 2 |
+| Greek | our adapted set | Sol, 2026 | ours | 20k, seen twice |
+| **total** | | | | **about 720k to 760k** |
+
+Dropped under the rule: Magpie Ultra (Llama-3.1-405B 2024, style-filtered only), OpenHermes (GPT-4/3.5 2023), Tulu WildChat
+(GPT-4 answers 2023-24), FLAN (2015-era labels, 12% wrong under Sol), EuroBlocks fr/de (2024 synthetic), Dolci persona
+math and Evol-CodeAlpaca and persona Python (GPT-4/4o, unverified), TableGPT.
+
+Sol generation budget: round one produced about 3k adapted rows a day at 16 workers, so roughly 5k a day at 24; a
+40k to 60k generation programme is one to two weeks and competes with the personality set. Priority order: rewriting
+and summarising (needs nothing but source texts), safety refusals in our voice, coding only if the Dolci spot-check
+fails.
+
 ## 2. Filtering: what pulls against Greek-centredness, ranked by impact
 
 Impact = how strongly a row fixes the assistant's world × how many such rows there are. Only the top of the list is worth

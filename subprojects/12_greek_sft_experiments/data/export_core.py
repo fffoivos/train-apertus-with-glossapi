@@ -18,6 +18,9 @@ BLOCKS = {
  'dolci_tooluse': ('allenai/Dolci-Instruct-SFT', 'domain', {'Tool Use'}, 40000, 24),
  'dolci_safety':  ('allenai/Dolci-Instruct-SFT', 'domain', {'Safety'}, 20000, 24),
  'dolci_other':   ('allenai/Dolci-Instruct-SFT', 'domain', {'Other'}, 20000, 24),
+ 'dolci_science': ('allenai/Dolci-Instruct-SFT', 'domain', {'Science'}, 20000, 15),
+ 'dolci_code_algo_sample': ('allenai/Dolci-Instruct-SFT', 'source_dataset', {'Dolci Instruct Python Algorithms'}, 300, 15),
+ 'dolci_reasoning_sample': ('allenai/Dolci-Instruct-SFT', 'source_dataset', {'Verifiable Reasoning'}, 300, 15),
  'tulu_flan':     ('allenai/tulu-3-sft-mixture', 'source', {'ai2-adapt-dev/flan_v2_converted'}, 10000, 6),
  'tulu_wildchat': ('allenai/tulu-3-sft-mixture', 'source', {'ai2-adapt-dev/tulu_v3.9_wildchat_100k'}, 40000, 6),
 }
