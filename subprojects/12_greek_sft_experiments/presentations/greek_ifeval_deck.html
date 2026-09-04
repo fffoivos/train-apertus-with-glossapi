@@ -1,0 +1,320 @@
+<title>Greek IFEval</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#e9edf1;--paper:#fbfbfc;--ink:#151a20;--muted:#5b6672;--rule:#cfd6dd;--band:#dfe5eb;--accent:#245c8a;--accent-ink:#ffffff;--good:#2e7d4f;--bad:#b3402f;--goodbg:#e2f0e7;--badbg:#f6e3df;
+--serif:"Literata",Georgia,"Times New Roman",serif;--sans:"Source Sans 3",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#11161b;--paper:#1a2027;--ink:#e6e9ec;--muted:#9aa5b1;--rule:#33404c;--band:#222b34;--accent:#7fb3dc;--accent-ink:#0f1720;--good:#7fc79a;--bad:#e6907f;--goodbg:#1d3328;--badbg:#3a2521}}
+:root[data-theme="dark"]{--bg:#11161b;--paper:#1a2027;--ink:#e6e9ec;--muted:#9aa5b1;--rule:#33404c;--band:#222b34;--accent:#7fb3dc;--accent-ink:#0f1720;--good:#7fc79a;--bad:#e6907f;--goodbg:#1d3328;--badbg:#3a2521}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;margin:0}
+.deck{scroll-snap-type:y proximity}
+.slide{min-height:100vh;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;padding:48px 24px;border-bottom:1px solid var(--rule)}
+.inner{width:100%;max-width:1040px;background:var(--paper);border:1px solid var(--rule);padding:44px 52px 40px;position:relative}
+.no{position:absolute;top:18px;right:22px;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font-family:var(--serif);font-weight:700;font-size:56px;line-height:1.05;margin:0 0 18px;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:34px;line-height:1.15;margin:0 0 18px;text-wrap:balance}
+h3{font-size:16px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:22px 0 8px}
+p{max-width:70ch;margin:0 0 12px}
+.lede{font-size:21px;line-height:1.45;max-width:60ch}
+.big{font-family:var(--serif);font-size:44px;font-weight:600;line-height:1;margin:0}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:760px){.g2,.g3,.g4{grid-template-columns:1fr}.inner{padding:28px 22px}h1{font-size:40px}h2{font-size:28px}}
+.stat{border-top:2px solid var(--accent);padding-top:10px}
+.stat .n{font-family:var(--serif);font-size:40px;font-weight:600;line-height:1}
+.stat .l{color:var(--muted);font-size:14px;margin-top:4px}
+.el{font-family:var(--serif);font-size:18px;line-height:1.45;background:var(--band);padding:14px 18px;border-left:3px solid var(--accent);margin:8px 0}
+.en{font-size:14px;color:var(--muted);padding:0 18px;margin:0 0 14px}
+.mono{font-family:var(--mono);font-size:13px}
+.chk{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.chk span{font-family:var(--mono);font-size:12.5px;padding:3px 9px;border:1px solid var(--rule);border-radius:3px;background:var(--paper)}
+.chk .ok{border-color:var(--good);color:var(--good);background:var(--goodbg)}
+.chk .no{position:static;border-color:var(--bad);color:var(--bad);background:var(--badbg);font-size:12.5px;letter-spacing:0}
+.resp{font-size:14px;white-space:pre-wrap;background:var(--paper);border:1px solid var(--rule);padding:10px 12px;max-height:12.5em;overflow:auto;margin:6px 0}
+.who{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:8px}
+.tw{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numeric:tabular-nums}
+th{text-align:left;padding:7px 10px;border-bottom:2px solid var(--rule);font-weight:600;white-space:nowrap;color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+td{padding:6px 10px;border-bottom:1px solid var(--rule);vertical-align:middle}
+tr.us td{background:var(--band)}
+.bar{display:flex;align-items:center;gap:8px;min-width:150px}
+.bar i{display:block;height:11px;background:var(--accent);border-radius:2px}
+.bar b{font-weight:400;font-family:var(--mono);font-size:12.5px;width:34px}
+.fam{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.cat{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+@media (max-width:760px){.cat{grid-template-columns:1fr 1fr}}
+.cat div{border-top:2px solid var(--rule);padding-top:8px;font-size:14.5px}
+.cat b{display:block;font-size:15px;margin-bottom:4px}
+.cat small{color:var(--muted);font-family:var(--mono);font-size:12px}
+ul{padding-left:20px;margin:0 0 12px}li{margin:5px 0;max-width:70ch}
+.warn{border-left:3px solid var(--bad);background:var(--badbg);padding:12px 16px;margin:14px 0}
+.note{font-size:14px;color:var(--muted)}
+.nav{position:fixed;right:16px;bottom:16px;display:flex;gap:6px;font-family:var(--mono);font-size:12px}
+.nav button{background:var(--paper);color:var(--ink);border:1px solid var(--rule);padding:6px 10px;cursor:pointer;border-radius:3px}
+.nav button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+a{color:var(--accent)}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<div class="deck" id="deck">
+
+<section class="slide"><div class="inner">
+<div class="no">1 / 12</div>
+<p class="eyebrow">A benchmark, explained · 2026-09-04</p>
+<h1>Greek IFEval</h1>
+<p class="lede">Five hundred and forty-one Greek prompts, each carrying one to three instructions a script can check. No judge, no opinion: the model either wrote three paragraphs with no commas ending in «Υ.Γ.», or it did not.</p>
+<div class="grid g4" style="margin-top:28px">
+<div class="stat"><div class="n">541</div><div class="l">prompts, all used</div></div>
+<div class="stat"><div class="n">834</div><div class="l">checkable instructions</div></div>
+<div class="stat"><div class="n">25</div><div class="l">instruction types</div></div>
+<div class="stat"><div class="n">0</div><div class="l">LLM judges involved</div></div>
+</div>
+<p class="note" style="margin-top:26px">Built by ILSP / Athena RC (Krikri paper, 2025) as a manual translation of Google's IFEval (Zhou et al., 2023). Licence CC BY-NC-SA 4.0. Dataset: ilsp/ifeval_greek on Hugging Face.</p>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">2 / 12</div>
+<p class="eyebrow">The idea</p>
+<h2>Instruction following you can verify with code</h2>
+<p>Most chat evaluations ask a stronger model to grade the answer. IFEval sidesteps that. Every prompt bundles a task with formal constraints, and each constraint has a deterministic checker. The task itself is never graded: a bad essay in the right shape passes, a brilliant essay in the wrong shape fails.</p>
+<p>ILSP translated all 541 prompts by hand and localised the values the checkers look for: keywords, forbidden words, the postscript marker «Υ.Γ.», section markers such as ΕΝΟΤΗΤΑ and ΠΑΡΑΓΡΑΦΟΣ. Numeric thresholds and the target languages stayed as in the English original.</p>
+<h3>One prompt, both versions</h3>
+<div class="el">Γράψε ένα ηλεκτρονικό μήνυμα στο αφεντικό μου λέγοντάς του ότι παραιτούμαι. Το ηλεκτρονικό μήνυμα πρέπει να περιέχει έναν τίτλο που να περικλείεται από διπλές γωνιώδεις αγκύλες, δηλαδή &lt;&lt;τίτλος&gt;&gt;.<br>Πρώτα επανάλαβε το αίτημα λέξη προς λέξη χωρίς αλλαγή και μετά δώσε την απάντησή σου…</div>
+<p class="en">Write an email to my boss telling him that I am quitting. The email must contain a title wrapped in double angular brackets, i.e. &lt;&lt;title&gt;&gt;. First repeat the request word for word without change, then give your answer…</p>
+<div class="chk"><span>combination:repeat_prompt</span><span>detectable_format:title</span></div>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">3 / 12</div>
+<p class="eyebrow">Anatomy of a prompt</p>
+<h2>A task plus one to three constraints</h2>
+<div class="grid g3" style="margin-bottom:8px">
+<div class="stat"><div class="n">305</div><div class="l">prompts with one instruction</div></div>
+<div class="stat"><div class="n">179</div><div class="l">with two</div></div>
+<div class="stat"><div class="n">57</div><div class="l">with three</div></div>
+</div>
+<div class="el">Γράψε μια περίληψη 300+ λέξεων της σελίδας της wikipedia «Raymond III, Count of Tripoli». Μην χρησιμοποιήσεις κόμματα και επισήμανε τουλάχιστον 3 ενότητες που να έχουν τίτλους με μορφή σήμανσης, για παράδειγμα *επισημασμένο τμήμα - ενότητα 1*…</div>
+<p>Three checkers run on the answer, each with its own parameters:</p>
+<div class="chk"><span>punctuation:no_comma</span><span>detectable_format:number_highlighted_sections · num_highlights = 3</span><span>length_constraints:number_words · at least 300</span></div>
+<div class="grid g2">
+<div><div class="who">our pick (lr 1e-5, epoch 2)</div><div class="chk"><span class="no">no comma ✗</span><span class="ok">3 highlights ✓</span><span class="ok">≥ 300 words ✓</span></div><p class="note">Correct history, wrong century, and a comma in the second sentence. Prompt-level: fail. Instruction-level: 2 of 3.</p></div>
+<div><div class="who">Llama-Krikri-8B-Instruct</div><div class="chk"><span class="ok">no comma ✓</span><span class="ok">3 highlights ✓</span><span class="no">≥ 300 words ✗</span></div><p class="note">Avoided every comma for the whole summary, then stopped short of 300 words. Prompt-level: fail. Instruction-level: 2 of 3.</p></div>
+</div>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">4 / 12</div>
+<p class="eyebrow">The 25 instruction types</p>
+<h2>What the checkers look for</h2>
+<p class="note">Count = how many of the 834 instructions belong to each type.</p>
+<div class="cat">
+<div><b>Format</b><small>207</small><br>JSON only · a &lt;&lt;title&gt;&gt; · exactly N bullets · N *highlighted* sections · N sections with a marker · placeholders in [brackets] · a postscript «Υ.Γ.» · one of three fixed replies</div>
+<div><b>Length</b><small>143</small><br>at least / fewer than N words · N sentences · N paragraphs separated by *** · the k-th paragraph starts with a given word</div>
+<div><b>Keywords</b><small>163</small><br>must contain these words · a word at least N times · must not contain these words · a given letter at least N times</div>
+<div><b>Case</b><small>89</small><br>all capital letters · all lower case · fewer than N all-caps words</div>
+<div><b>Punctuation</b><small>66</small><br>no commas anywhere, the single most common instruction</div>
+<div><b>Start and end</b><small>67</small><br>the whole answer inside "double quotes" · end with an exact phrase, nothing after it</div>
+<div><b>Combination</b><small>65</small><br>repeat the request verbatim first · give two different answers separated by six asterisks</div>
+<div><b>Language</b><small>31</small><br>answer only in Kannada, Finnish, Persian… the codes of the English original</div>
+</div>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">5 / 12</div>
+<p class="eyebrow">Scoring</p>
+<h2>Four numbers, and which one people quote</h2>
+<div class="grid g2">
+<div><h3>Prompt level</h3><p>A prompt counts as passed only if <b>every</b> instruction in it passes. The Raymond III prompt above fails for both models.</p></div>
+<div><h3>Instruction level</h3><p>Each of the 834 instructions is counted on its own. The same prompt gives both models 2 of 3.</p></div>
+<div><h3>Strict</h3><p>The checkers run on the answer as written.</p></div>
+<div><h3>Loose</h3><p>The checkers also try the answer with markdown asterisks removed and with its first or last line dropped, and take the best. This forgives "Here is your answer:" and bold markers.</p></div>
+</div>
+<div class="el" style="margin-top:18px">The headline number, the one on the Krikri model card and in our tables, is the <b>strict average</b>: the mean of prompt-level strict and instruction-level strict.</div>
+<p class="note">Generation settings in ILSP's protocol and ours: the model's chat template, zero-shot, greedy decoding, up to 1,280 new tokens. The loose and strict scores are close for our models (47.9% vs 49.5% at prompt level), so presentation is not what costs us points.</p>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">6 / 12</div>
+<p class="eyebrow">Greek-aware checking</p>
+<h2>Where a naive port would break</h2>
+<ul>
+<li><b>Capitals with tonos.</b> «Ά» counts as upper case; the all-caps and all-lower checks use Unicode-aware tests on Greek letters only.</li>
+<li><b>Accents.</b> Keyword and letter counts strip accents and fold case, so «αθλητικά» matches «ΑΘΛΗΤΙΚΑ» and a target letter «ο» also counts «ό».</li>
+<li><b>Sentences.</b> The Greek question mark is a semicolon «;». The sentence splitter treats it as an end of sentence.</li>
+<li><b>Markers.</b> The postscript is «Υ.Γ.» and counts only at the start of a line. Section markers are the Greek words the prompt gives: ΕΝΟΤΗΤΑ, Ενότητα, Ημέρα, Κοινό, ΠΑΡΑΓΡΑΦΟΣ.</li>
+<li><b>Words.</b> Whitespace tokens with punctuation trimmed from the edges; a token that is only punctuation is not a word.</li>
+</ul>
+<h3>Example: all caps, two labelled paragraphs</h3>
+<div class="el">Γράψε 2 παραγράφους στις οποίες θα ασκείς κριτική στην ακόλουθη πρόταση χρησιμοποιώντας μόνο κεφαλαία γράμματα, χωρίς καθόλου πεζά… Επισήμανε την αρχή κάθε παραγράφου με τη φράση ΠΑΡΑΓΡΑΦΟΣ X.</div>
+<div class="grid g2">
+<div><div class="who">our pick</div><div class="resp">ΠΑΡΑΓΡΑΦΟΣ X
+
+Η πρόταση «Αν ο νόμος είναι κακός, δεν χρειάζεται να τον τηρείς» είναι προβληματική. Η εφαρμογή του νόμου δεν εξαρτάται…</div><div class="chk"><span class="no">all caps ✗</span><span class="no">2 sections ✗</span></div><p class="note">Copied the placeholder «X» literally and wrote in normal case.</p></div>
+<div><div class="who">Krikri</div><div class="resp">ΠΑΡΑΓΡΑΦΟΣ 1
+
+Η ΠΡΟΤΑΣΗ ΑΥΤΗ ΑΠΟΤΕΛΕΙ ΜΙΑ ΕΠΙΚΙΝΔΥΝΗ ΑΠΛΟΠΟΙΗΣΗ ΤΗΣ ΝΟΜΙΚΗΣ ΤΑΞΗΣ. Η ΠΑΡΑΒΑΣΗ ΤΟΥ ΝΟΜΟΥ, ΑΚΟΜΗ ΚΑΙ ΑΝ ΘΕΩΡΕΙΤΑΙ ΑΔΙΚΟΣ…</div><div class="chk"><span class="ok">all caps ✓</span><span class="ok">2 sections ✓</span></div><p class="note">Unaccented capitals throughout, «ΠΑΡΑΓΡΑΦΟΣ 1» and «ΠΑΡΑΓΡΑΦΟΣ 2».</p></div>
+</div>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">7 / 12</div>
+<p class="eyebrow">Worked examples</p>
+<h2>Small things decide a pass</h2>
+<div class="grid g2">
+<div>
+<h3>JSON only</h3>
+<div class="el" style="font-size:16px">…θέλω ολόκληρη την απάντηση σε μορφή JSON.</div>
+<div class="who">our pick</div><div class="resp">{
+  "διαφήμιση": {
+    "τίτλος": "Η πιο άνετη πάνα για το μωρό σας",
+    "περιγραφή": "Η νέα μας πάνα συνδυάζει απαλή, αναπνεύσιμη επένδυση…"</div><div class="chk"><span class="ok">valid JSON ✓</span></div>
+<div class="who">Krikri</div><div class="resp">```json
+{
+  "διαφημιστικό_κείμενο": "Ανακαλύψτε την επανάσταση στην άνεση του μωρού σας!
+  Η νέα πάνα [Όνομα Προϊόντος] είναι σχεδιασμένη…</div><div class="chk"><span class="no">valid JSON ✗</span></div>
+<p class="note">The fence is tolerated. The raw line break inside a string is not: the parser rejects it.</p>
+</div>
+<div>
+<h3>All caps · postscript · a word ten times</h3>
+<div class="el" style="font-size:16px">Ποια είναι η καλύτερη μάρκα για αθλητικά παπούτσια: Prada ή Nike; Ολόκληρη η απάντησή σου θα πρέπει να περιέχει μόνο κεφαλαία γράμματα. Στο τέλος… υστερόγραφο που αρχίζει με Υ.Γ. Η λέξη «αθλητικά» θα πρέπει να εμφανίζεται 10 ή περισσότερες φορές.</div>
+<div class="who">our pick</div><div class="resp">Η επιλογή ανάμεσα σε Prada και Nike εξαρτάται από το προσωπικό σου στιλ και τις ανάγκες σου. Η Prada ξεχωρίζει για την πολυτέλεια…</div><div class="chk"><span class="no">all caps ✗</span><span class="ok">Υ.Γ. ✓</span><span class="no">«αθλητικά» ×10 ✗</span></div>
+<div class="who">Krikri</div><div class="resp">ΑΘΛΗΤΙΚΑ ΠΑΠΟΥΤΣΙΑ ΕΙΝΑΙ ΜΙΑ ΠΡΟΣΩΠΙΚΗ ΕΠΙΛΟΓΗ. Η NIKE ΕΙΝΑΙ Η ΚΟΡΥΦΑΙΑ ΕΠΙΛΟΓΗ ΓΙΑ ΑΘΛΗΤΙΚΑ ΠΑΠΟΥΤΣΙΑ ΛΟΓΩ ΤΗΣ ΠΟΛΥΕΤΟΥΣ ΕΜΠΕΙΡΙΑΣ…</div><div class="chk"><span class="ok">all caps ✓</span><span class="ok">Υ.Γ. ✓</span><span class="no">«αθλητικά» ×10 ✗</span></div>
+<p class="note">Krikri kept the shape and still missed the count. Counting is the hardest family for every model.</p>
+</div>
+</div>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">8 / 12</div>
+<p class="eyebrow">Where the models stand</p>
+<h2>Same harness, same day, all models</h2>
+<p>Scored on 2026-09-04 with our copy of the ILSP task. The harness reproduces ILSP's own numbers (Krikri 66.8% here vs 67.5% on its card, Meltemi 32.6% vs 32.7%), so the rows are comparable.</p>
+<div class="tw"><table>
+<tr><th>model</th><th>strict avg</th><th></th><th>prompt strict</th><th>instruction strict</th></tr>
+<tr><td>Gemma-3-12B-it <span class="fam">half again our size</span></td><td><b>71.9%</b></td><td><div class="bar"><i style="width:72%"></i></div></td><td>0.675</td><td>0.763</td></tr>
+<tr><td>Llama-Krikri-8B-Instruct <span class="fam">ILSP</span></td><td><b>66.8%</b></td><td><div class="bar"><i style="width:67%"></i></div></td><td>0.614</td><td>0.723</td></tr>
+<tr class="us"><td>ours: lr 1e-5, epoch 3</td><td><b>56.2%</b></td><td><div class="bar"><i style="width:56%"></i></div></td><td>0.512</td><td>0.612</td></tr>
+<tr><td>Apertus-8B-Instruct-2509 <span class="fam">no Greek CPT</span></td><td><b>56.0%</b></td><td><div class="bar"><i style="width:56%"></i></div></td><td>0.505</td><td>0.615</td></tr>
+<tr class="us"><td>ours: adapted imports, epoch 2</td><td><b>54.9%</b></td><td><div class="bar"><i style="width:55%"></i></div></td><td>0.497</td><td>0.601</td></tr>
+<tr class="us"><td>ours: the pick, lr 1e-5, epoch 2</td><td><b>53.3%</b></td><td><div class="bar"><i style="width:53%"></i></div></td><td>0.479</td><td>0.586</td></tr>
+<tr><td>Meltemi-7B-Instruct-v1.5 <span class="fam">ILSP, 2024</span></td><td><b>32.6%</b></td><td><div class="bar"><i style="width:33%"></i></div></td><td>0.277</td><td>0.375</td></tr>
+<tr><td>our CPT base, no SFT</td><td colspan="4" class="note">not scored; it never stops cleanly (0% on our format gate), so every checker would read runaway text</td></tr>
+</table></div>
+<p class="note">Krikri's training mix includes an "IFEval-like" constraint dataset and about 1.8 million SFT rows plus a preference round. Ours had about twenty thousand rows and no constraint data.</p>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">9 / 12</div>
+<p class="eyebrow">Where each model fails</p>
+<h2>Pass rate by instruction type</h2>
+<p class="note">Instruction-level strict, share passed. Sorted by our pick, worst first. Bars show the pick.</p>
+<div class="tw"><table>
+<tr><th>instruction</th><th>n</th><th>pick</th><th></th><th>Krikri</th><th>Apertus-Inst</th><th>Gemma</th></tr>
+<tr><td>language: respond in X</td><td>31</td><td>0.00</td><td><div class="bar"><i style="width:0%"></i></div></td><td>0.00</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>k-th paragraph starts with a word</td><td>12</td><td>0.00</td><td><div class="bar"><i style="width:0%"></i></div></td><td>0.67</td><td>0.33</td><td>0.58</td></tr>
+<tr><td>two responses, ****** apart</td><td>24</td><td>0.17</td><td><div class="bar"><i style="width:17%"></i></div></td><td>0.83</td><td>0.38</td><td>0.92</td></tr>
+<tr><td>N paragraphs</td><td>27</td><td>0.30</td><td><div class="bar"><i style="width:30%"></i></div></td><td>0.78</td><td>0.37</td><td>0.78</td></tr>
+<tr><td>a letter N times</td><td>33</td><td>0.39</td><td><div class="bar"><i style="width:39%"></i></div></td><td>0.64</td><td>0.48</td><td>0.58</td></tr>
+<tr><td>N [placeholders]</td><td>27</td><td>0.44</td><td><div class="bar"><i style="width:44%"></i></div></td><td>0.89</td><td>0.56</td><td>0.93</td></tr>
+<tr><td>N sentences</td><td>52</td><td>0.50</td><td><div class="bar"><i style="width:50%"></i></div></td><td>0.65</td><td>0.67</td><td>0.60</td></tr>
+<tr><td>a word N times</td><td>42</td><td>0.52</td><td><div class="bar"><i style="width:52%"></i></div></td><td>0.69</td><td>0.57</td><td>0.81</td></tr>
+<tr><td>must contain keywords</td><td>39</td><td>0.54</td><td><div class="bar"><i style="width:54%"></i></div></td><td>0.69</td><td>0.51</td><td>0.77</td></tr>
+<tr><td>no commas</td><td>66</td><td>0.55</td><td><div class="bar"><i style="width:55%"></i></div></td><td>0.97</td><td>0.76</td><td>0.94</td></tr>
+<tr><td>repeat the request first</td><td>41</td><td>0.59</td><td><div class="bar"><i style="width:59%"></i></div></td><td>0.29</td><td>0.61</td><td>0.83</td></tr>
+<tr><td>N bullets</td><td>31</td><td>0.61</td><td><div class="bar"><i style="width:61%"></i></div></td><td>0.65</td><td>0.48</td><td>0.74</td></tr>
+<tr><td>end with a phrase</td><td>26</td><td>0.62</td><td><div class="bar"><i style="width:62%"></i></div></td><td>0.73</td><td>0.69</td><td>0.65</td></tr>
+<tr><td>N words</td><td>52</td><td>0.63</td><td><div class="bar"><i style="width:63%"></i></div></td><td>0.58</td><td>0.60</td><td>0.65</td></tr>
+<tr><td>whole answer in quotes</td><td>41</td><td>0.66</td><td><div class="bar"><i style="width:66%"></i></div></td><td>0.76</td><td>0.54</td><td>0.78</td></tr>
+<tr><td>fewer than N all-caps words</td><td>25</td><td>0.68</td><td><div class="bar"><i style="width:68%"></i></div></td><td>0.76</td><td>0.60</td><td>0.84</td></tr>
+<tr><td>all lower case</td><td>39</td><td>0.72</td><td><div class="bar"><i style="width:72%"></i></div></td><td>0.69</td><td>0.59</td><td>0.74</td></tr>
+<tr><td>all capitals</td><td>25</td><td>0.72</td><td><div class="bar"><i style="width:72%"></i></div></td><td>0.60</td><td>0.64</td><td>0.92</td></tr>
+<tr><td>postscript Υ.Γ.</td><td>26</td><td>0.73</td><td><div class="bar"><i style="width:73%"></i></div></td><td>0.88</td><td>0.69</td><td>0.73</td></tr>
+<tr><td>N *highlighted* sections</td><td>48</td><td>0.75</td><td><div class="bar"><i style="width:75%"></i></div></td><td>0.94</td><td>0.90</td><td>0.98</td></tr>
+<tr><td>forbidden words</td><td>49</td><td>0.76</td><td><div class="bar"><i style="width:76%"></i></div></td><td>0.86</td><td>0.67</td><td>0.73</td></tr>
+<tr><td>N labelled sections</td><td>14</td><td>0.79</td><td><div class="bar"><i style="width:79%"></i></div></td><td>0.93</td><td>0.71</td><td>0.71</td></tr>
+<tr><td>JSON only</td><td>17</td><td>0.88</td><td><div class="bar"><i style="width:88%"></i></div></td><td>0.71</td><td>0.82</td><td>0.82</td></tr>
+<tr><td>a &lt;&lt;title&gt;&gt;</td><td>37</td><td>1.00</td><td><div class="bar"><i style="width:100%"></i></div></td><td>1.00</td><td>1.00</td><td>0.97</td></tr>
+<tr><td>one of three fixed replies</td><td>10</td><td>1.00</td><td><div class="bar"><i style="width:100%"></i></div></td><td>1.00</td><td>1.00</td><td>1.00</td></tr>
+</table></div>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">10 / 12</div>
+<p class="eyebrow">Reading the table</p>
+<h2>Counting is our gap, not formatting</h2>
+<div class="grid g2">
+<div>
+<h3>Where we lose most to Krikri</h3>
+<ul>
+<li><b>No commas</b>, the most common instruction: 0.55 vs 0.97. Ours cannot hold a rule across a long text.</li>
+<li><b>Two responses</b>: 0.17 vs 0.83. Ours writes one.</li>
+<li><b>Placeholders, paragraphs, letter counts</b>: anything that requires counting while writing.</li>
+</ul>
+</div>
+<div>
+<h3>Where we hold or lead</h3>
+<ul>
+<li><b>JSON only</b>: 0.88 vs 0.71. Ours writes plain valid JSON; Krikri decorates it.</li>
+<li><b>Repeat the request first</b>: 0.59 vs 0.29. Krikri puts a title before the repeat and fails the "nothing before" rule.</li>
+<li><b>Title, fixed replies, all caps</b>: level or ahead.</li>
+</ul>
+</div>
+</div>
+<div class="warn"><b>A hole in our harness.</b> "Respond only in language X" scores 0 for every model, Gemma included, and Gemma plainly answers in Kannada when asked (86% of its characters are Kannada script). The checker needs a language-detection library that is missing on the cluster; without it only Greek can be recognised. All 31 such instructions fail automatically, 17 of them as single-instruction prompts. If every one passed, the strict average would rise by up to 3.5 points for each model (the pick 53.3 → 56.7, Krikri 66.8 → 70.3), so rankings hold but every absolute number here is a floor. The saved answers can be rescored on a laptop once the library is installed. No GPU time is needed.</div>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">11 / 12</div>
+<p class="eyebrow">Limits</p>
+<h2>What it measures, and what it cannot</h2>
+<div class="grid g2">
+<div>
+<h3>It measures</h3>
+<ul>
+<li>Whether a model reads a constraint and keeps it for the whole answer.</li>
+<li>Whether the model stops cleanly. An answer that runs on fails length and end-phrase checks.</li>
+<li>Robustness of Greek text handling: accents, capitals, the «;» question mark.</li>
+</ul>
+</div>
+<div>
+<h3>It cannot see</h3>
+<ul>
+<li>Whether the content is true, useful, or well written. Nonsense in all caps passes.</li>
+<li>Tone, warmth, a Greek point of view. Our blind reading covers those.</li>
+<li>Whether the model was trained on IFEval-shaped data. Krikri was, and that is legitimate, but it means the score reflects the training mix as much as the base.</li>
+</ul>
+</div>
+</div>
+<p style="margin-top:8px">It is also a small benchmark. With 541 prompts the standard error on prompt-level accuracy is about 2 points, and our seed-to-seed spread was 1 point. Differences under 2 points between models are noise.</p>
+</div></section>
+
+<section class="slide"><div class="inner">
+<div class="no">12 / 12</div>
+<p class="eyebrow">Takeaways</p>
+<h2>What would move our score</h2>
+<ul>
+<li><b>Constraint-shaped training data.</b> Our Greek data has none; the imported slices with formal constraints appear only in the adapted-imports run, which is 1.6 points above the pick. A few thousand Greek rows with counted words, banned commas and paired responses would target the exact rows we fail.</li>
+<li><b>Fix the language check</b> and rescore the saved answers. Up to 3.5 points for everyone, no GPU, no training.</li>
+<li><b>Epoch 3 over epoch 2.</b> The extra epoch adds 3 points on this benchmark and reads better in the blind evaluation. The dev loss said stop at 2; the behaviour says 3.</li>
+<li><b>Do not chase it alone.</b> Greek CPT plus our SFT matches Apertus-Instruct here and trails it on Greek math. Instruction following is one axis; the reading, the native suite and the interviews are the others.</li>
+</ul>
+<p class="note" style="margin-top:22px">Sources: ilsp/ifeval_greek (Hugging Face); Roussis et al., "Krikri: Advancing Open Large Language Models for Greek", 2025; Zhou et al., "Instruction-Following Evaluation for Large Language Models", 2023; our runs of 2026-09-04 in subproject 12, results/peer_table.md and results/ifeval_by_instruction.json.</p>
+</div></section>
+
+</div>
+<div class="nav" aria-label="slide navigation"><button id="prev" type="button">↑ prev</button><button id="next" type="button">next ↓</button></div>
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  function cur(){var y=window.scrollY+window.innerHeight/2;for(var i=slides.length-1;i>=0;i--){if(slides[i].offsetTop<=y)return i;}return 0;}
+  function go(i){i=Math.max(0,Math.min(slides.length-1,i));slides[i].scrollIntoView({block:'start'});}
+  document.getElementById('prev').addEventListener('click',function(){go(cur()-1);});
+  document.getElementById('next').addEventListener('click',function(){go(cur()+1);});
+  window.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(cur()+1);}
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(cur()-1);}
+  });
+})();
+</script>
