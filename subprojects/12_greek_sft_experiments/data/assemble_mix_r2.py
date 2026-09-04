@@ -46,7 +46,7 @@ OUT = HERE / 'arms' / args.arm; OUT.mkdir(parents=True, exist_ok=True)
 # ---------- plan: block -> (export file, label source, target rows, weight) ----------
 # label source: 'labels' = keep rows from <block>.labels.jsonl (+ sol_routed overrides); 'verified:<dir>' = keep_ids.txt; 'all' = take all
 PLAN = [
- ('dolci_precise_if', 'dolci_precise_if.jsonl', 'all', 137000, 1),
+ ('dolci_precise_if_20k', 'dolci_precise_if_20k.jsonl', 'labels', 20000, 1),  # Sol spot-check found 27% unusable: only the Sol-screened subset trains
  ('ifeval_like', 'ifeval_like_raw.jsonl', 'verified:ifeval_like', 56000, 1),
  ('openmath_gsm', 'openmath_gsm_raw.jsonl', 'verified:openmath', 100000, 1),
  ('nemotron_chat_a', 'nemotron_chat_a.jsonl', 'labels+langfilter:nemotron_chat', 50000, 1),
@@ -166,7 +166,7 @@ def n_tokens(messages):
 
 # ---------- build ----------
 WHOLE = {'puzzles', 'dolci_chat', 'dolci_safety', 'greek_rewrite', 'greek_ours'}  # small blocks kept whole under a token budget
-PLAN_TOK = {'dolci_precise_if': 600, 'ifeval_like': 256, 'openmath_gsm': 342, 'nemotron_chat_a': 1584, 'nemotron_chat_b': 1584, 'dolci_chat': 350, 'dolci_code_algo_20k': 388, 'dolci_reasoning': 330, 'puzzles': 330, 'dolci_tooluse': 827, 'dolci_science': 941, 'smoltalk2_multilingual': 511, 'dolci_safety': 302, 'greek_rewrite': 700, 'greek_ours': 351}  # measured mean tokens per row (review F4)
+PLAN_TOK = {'dolci_precise_if_20k': 600, 'ifeval_like': 256, 'openmath_gsm': 342, 'nemotron_chat_a': 1584, 'nemotron_chat_b': 1584, 'dolci_chat': 350, 'dolci_code_algo_20k': 388, 'dolci_reasoning': 330, 'puzzles': 330, 'dolci_tooluse': 827, 'dolci_science': 941, 'smoltalk2_multilingual': 511, 'dolci_safety': 302, 'greek_rewrite': 700, 'greek_ours': 351}  # measured mean tokens per row (review F4)
 receipt = dict(arm=args.arm, seed=args.seed, scale=args.scale, budget_tokens=args.budget_tokens, blocks=[], tokenizer='exact' if tok else 'approximate'); train, dev = [], []
 def present_rows(block, fname, mode):
     """cheap first pass: how many rows this block can actually contribute today (keep lists ∩ export), for the budget share (review S2)"""
