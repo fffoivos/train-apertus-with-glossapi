@@ -3,8 +3,8 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 3.26,
- "chf_used": 8.77,
+ "nh_used": 4.716,
+ "chf_used": 12.69,
  "cursor": "gridA evals (light evals of six checkpoints in flight; native + GreekMMLU later)",
  "steps": {
   "WP0_data": {
@@ -117,15 +117,16 @@
    "nh": 5.0
   },
   "pickA": {
-   "status": "pending",
-   "deps": [
-    "gridA_evals"
-   ],
-   "executor": "claude+advisor",
-   "gate": "G3 (provisional, owner confirms in the morning)"
+   "status": "PROVISIONAL 05:18 (owner confirms in the morning)",
+   "pick": {
+    "lr": 1e-05,
+    "epochs": 2
+   },
+   "evidence": "lowest dev loss (no_robots 1.452, mean-el 1.350), best stop rate 0.90, voice Delta 0.853 (closest to no_robots-el; others 1.00–1.08), ifeval 0.479/mgsm 0.400 vs (5e-6,ep3) 0.486/0.416 and (1e-5,ep3) 0.512/0.392 — ties on ILSP, ep3@1e-5 shows dev-loss overfitting; interviews/reading pending",
+   "gate": "G3"
   },
   "replicate+E1last": {
-   "status": "pending",
+   "status": "launching 05:18 at (1e-5, 2 epochs, cosine): E1_cos seed 43 + E1last_cos (rev 17)",
    "deps": [
     "pickA"
    ],
