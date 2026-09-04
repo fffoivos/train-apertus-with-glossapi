@@ -105,9 +105,9 @@ The quality screen is for unverified sources, where wrong answers actually live.
 |---|---|---|---|
 | Dolci Precise IF, ifeval-like filtered | constraint checkers pass on every row | verified | none |
 | OpenMathInstruct-2 and its Dolci slice | final answer matches the GSM8K/MATH ground truth | verified | none |
-| Dolci logic puzzles | built from their own solution; one brute-forced by us, correct | verified | none; Luna's drops on them are ignored (calibration below) |
+| Dolci logic puzzles | NOT verified: our brute-force checker finds 8 of 51 zebra puzzles with a wrong final answer (16%); the 49 word-sort rows all correct; Luna as judge: 5 of the 8 caught, 6 correct rows falsely dropped | verifiable, unclean | checker, not judge: keep only rows the solver confirms (`data/zebra_check.py`) |
 | Dolci Tool Use | synthetic trajectories, schema-checked calls, no ground truth | partial | identity only |
-| Dolci Coding, Reasoning | mixed; to confirm from the card | partial | identity only until confirmed |
+| Dolci Coding, Reasoning | card documents no verification (Evol-CodeAlpaca and Tulu persona code are GPT-generated, unchecked; OpenThoughts3 traces removed) | unverified | identity only; quality screen on a sample before deciding |
 | Nemotron chat | best-of-N by a reward model, no truth check | rated, unverified | full |
 | Magpie, OpenHermes, WildChat-GPT-4 | model-written, style-filtered | unverified | full |
 | OpenAssistant | volunteer-written, unchecked | unverified | full (about a fifth dropped so far) |
