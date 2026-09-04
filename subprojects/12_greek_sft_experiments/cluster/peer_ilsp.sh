@@ -10,7 +10,7 @@ declare -A M=(
  [peer_apertus_instruct]=$HUB/models--swiss-ai--Apertus-8B-Instruct-2509/snapshots/b946d40447b2b597999b9c86d44bee0b452c919f
  [peer_gemma3_12b]=$HUB/models--google--gemma-3-12b-it/snapshots/96b6f1eccf38110c56df3a15bffe176da04bfd80
 )
-sshc() { ssh -o BatchMode=yes clariden "$@" 2>&1 | grep -v "WARNING\|store now\|openssh" || true; }
+sshc() { ssh -n -o BatchMode=yes clariden "$@" 2>&1 | grep -v "WARNING\|store now\|openssh" || true; }
 bash cluster/preflight.sh 1.2 peer_ilsp | tail -2
 J=$(sshc "bash $R/workbench.sh open peer_ilsp debug 01:29:00" | tail -1); echo "workbench $J"; echo "$J" > results/.peer_ilsp_job
 gpu=0

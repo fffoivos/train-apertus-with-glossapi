@@ -4,7 +4,7 @@
 set -uo pipefail
 HERE=$(cd "$(dirname "$0")/.." && pwd); cd "$HERE"
 S=/iopsstor/scratch/cscs/fffoivos; R=$S/sft_round1; HUB=$R/hf_home/hub
-sshc() { ssh -o BatchMode=yes clariden "$@" 2>&1 | grep -v "WARNING\|store now\|openssh" || true; }
+sshc() { ssh -n -o BatchMode=yes clariden "$@" 2>&1 | grep -v "WARNING\|store now\|openssh" || true; }
 bash cluster/preflight.sh 3.4 greekmmlu_batch | tail -2 | grep -q '^OK' || { echo "preflight refused"; exit 1; }
 J=$(sshc "bash $R/workbench.sh open greekmmlu normal 03:20:00" | tail -1); [[ "$J" =~ ^[0-9]+$ ]] || { echo "open failed: $J"; exit 1; }
 echo "workbench $J"; echo "$J" > results/.greekmmlu_job
