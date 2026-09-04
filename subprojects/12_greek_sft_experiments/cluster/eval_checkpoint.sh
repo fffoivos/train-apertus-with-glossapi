@@ -2,9 +2,11 @@
 # Evaluate one checkpoint end to end (Mac-orchestrated, one debug workbench ≤ 1:29):
 #   native suite (4 lanes, fp32) + ILSP ifeval_greek/mgsm_greek (GPU0) + dev50 gen/format gate + reading40 (GPU1)
 #   + interviews rounds 1–3 (GPU2) with the interviewer/scorer on the Mac between rounds; voice score on the Mac.
-# Usage: cluster/eval_checkpoint.sh <ckpt_dir_on_cluster> <label> [skip_native=0]
+# Usage: cluster/eval_checkpoint.sh <ckpt_dir_on_cluster> <label> [skip_native=1]
+# NOTE (2026-09-04 rehearsal): the fp32 native suite fills all four GPUs (76–97 GB each) and OOMs the other lanes →
+# run the LIGHT evals here (default) and the native suite separately with cluster/native_only.sh.
 set -u
-CK_RAW=$1; LABEL=$2; SKIP_NATIVE=${3:-0}
+CK_RAW=$1; LABEL=$2; SKIP_NATIVE=${3:-1}
 S=/iopsstor/scratch/cscs/fffoivos; R=$S/sft_round1; EV=$R/evals/$LABEL
 HERE="$(cd "$(dirname "$0")/.." && pwd)"; P=/private/tmp/claude-501/-Users-foivoskarounos-zamparloukos/b9019f62-a4f0-4001-b1b9-3a1a58e99c50/scratchpad/sftdata/bin/python
 LOCAL=$HERE/results/$LABEL; mkdir -p $LOCAL/interviews
