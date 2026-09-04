@@ -140,3 +140,18 @@ run isolates seed noise).
 | **macro (8)** | 0.499 | 0.574 | +0.075 |
 
 The guard passes: no benchmark drops beyond noise (NLI −0.008); the macro of the eight rises from 0.499 to 0.574, driven by WiC (+0.23), metaphor (+0.21) and the MCQ sets (+0.05–0.06). A jump this size on a likelihood scorer is worth a second look (same 73,894-example subset and fp32 scorer as the card; the SFT checkpoint is scored through an eval copy with the base tokenizer/config) — E1-last and the replicate natives will show whether it is systematic. GreekMMLU (2.8 h/model) waits for the morning batch.
+
+
+## E1-last light evals (terminal checkpoint base) vs the replicate (averaged base), same recipe
+
+| metric | replicate (18-avg base) | E1-last (rev 17 base) |
+|---|---|---|
+| ifeval_greek strict | 0.460 | 0.429 |
+| mgsm_greek | 0.416 | 0.328 |
+| gate stop rate | 0.88 | 0.88 |
+| voice Delta | 1.000 | 0.895 |
+| interview mean | 2.61 | 2.57 |
+| mean Greek dev loss | 1.374 | 1.364 |
+
+Dev loss ties, but the terminal checkpoint comes out clearly worse on Greek math (−0.09, four times the readability bar)
+and worse on instruction following. **The averaged checkpoint stays the base.** Its native/GreekMMLU guards are pending.
