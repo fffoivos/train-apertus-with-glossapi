@@ -6,6 +6,12 @@
 # NOTE (2026-09-04 rehearsal): the fp32 native suite fills all four GPUs (76–97 GB each) and OOMs the other lanes →
 # run the LIGHT evals here (default) and the native suite separately with cluster/native_only.sh.
 set -u
+# Never run this file directly while it may be edited: bash reads scripts incrementally (a live edit killed the ep3 driver
+# with a phantom syntax error, 2026-09-04). Launch through a per-label copy:
+if [ -z "${EVAL_DRIVER_COPY:-}" ]; then
+  HERE0="$(cd "$(dirname "$0")/.." && pwd)"; mkdir -p "$HERE0/results/$2"; cp "$0" "$HERE0/results/$2/driver.sh"
+  EVAL_DRIVER_COPY=1 exec bash "$HERE0/results/$2/driver.sh" "$@"
+fi
 CK_RAW=$1; LABEL=$2; SKIP_NATIVE=${3:-1}
 S=/iopsstor/scratch/cscs/fffoivos; R=$S/sft_round1; EV=$R/evals/$LABEL
 HERE="$(cd "$(dirname "$0")/.." && pwd)"; P=/private/tmp/claude-501/-Users-foivoskarounos-zamparloukos/b9019f62-a4f0-4001-b1b9-3a1a58e99c50/scratchpad/sftdata/bin/python
