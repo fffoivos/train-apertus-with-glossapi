@@ -1,7 +1,7 @@
 # Round One Readout
 
 *Autonomous run, night of 2026-09-03 → 04. Written 2026-09-04 07:06; the sections below are the running record and
-update as chains finish. CHF used so far: 26.50 of the 90 cap (rate CHF 2.69 per node-hour).*
+update as chains finish (last update 07:56). CHF used so far: 26.50 of the 90 cap (rate CHF 2.69 per node-hour).*
 
 ## Executive summary
 
@@ -28,12 +28,20 @@ WiC and metaphor up 0.2 — a jump large enough to deserve a second look; the re
 (0.85 vs 0.95–1.00) and interviews (2.83 vs 2.60) — a real difference, and a question for you: phase B uses the recipe's cosine
 schedule.
 
-**Phase B so far (dev losses; light evals landing).** Neither E2 (paired English) nor E3 (skills + fr/de, Greek point of view)
-moves the Greek dev loss (within ±0.02); each moves its own slice as intended (English twins 1.86 → 1.72; apertus_en 1.26 → 1.14,
-fr 1.47 → 1.31, de 1.60 → 1.48). E3′ (raw slices) is the adaptation control and finishes around 07:40.
+**Phase B (done).** Neither E2 (paired English) nor E3 (skills + fr/de) moves the Greek dev loss or the Greek light evals
+beyond the seed floor; each moves its own slice as intended. **The adaptation question is answered:** E3 (imported slices
+adapted to the Greek point of view) beats E3′ (the same rows raw) on interviews 2.91 vs 2.63 (floor 0.02), on the voice score
+0.96 vs 1.11 (floor 0.05), on clean stopping 90% vs 80%, and on Greek IFEval 0.497 vs 0.470 (floor 0.01), with Greek MGSM
+within the floor. The raw slices pull the model toward an American assistant (identity 2.60 vs 2.85, factuality 1.85 vs 2.27).
+E3 is also the best-reading arm of the whole round on the interviews.
 
-**What is still running or pending.** Light evals of E2/E3/E3′; native suites for the replicate, E1-last and the (5e-6, ep3)
-rival; the known-ness scorer on the base (labels for the §8 knowledge question); GreekMMLU (needs your go).
+**Known-ness of the training claims (base-model probe).** Of 10,388 Greek-reality claims the rows assert, the base answers
+9% greedily and 2% in one of four samples; 88% come out "unknown" — with a strong caveat: the probe is a four-shot QA format
+a base model largely fails, so this is an upper bound on ignorance. The risk of plan §8 is real; the probe needs calibration
+on the SFT'd pick before E7 filters on it.
+
+**Still running.** Native suites for the replicate and E1-last (the rival's is in: macro 0.514 vs the pick's 0.512 on nine
+keys, 0.574 vs 0.575 on the eight — a tie). GreekMMLU needs your go.
 
 **Three decisions for you.**
 1. **G3:** confirm (lr 1e-5, 2 epochs) — after the blind reading: https://claude.ai/code/artifact/690e0be1-dff4-4d25-ac8e-d49b861ab19c
