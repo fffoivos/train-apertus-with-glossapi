@@ -80,7 +80,7 @@
    "gate": "G1"
   },
   "smoke": {
-   "status": "probe20 running on job 3286621 (03:40)",
+   "status": "probe20 GREEN 04:21 UTC (job 3286621): 20 steps, loss 1.75→1.69, 1.30M tokens in 179 s ≈ 7.3k tok/s/node ≈ 26M tokens/node-hour, per-config eval + epoch snapshot written; 30-step smoke SKIPPED (redundant) → G2 passed on the probe",
    "deps": [
     "E0_baselines"
    ],
@@ -97,7 +97,7 @@
    "checkpoint": "after smoke: trainer behaviour + throughput + re-budget"
   },
   "gridA": {
-   "status": "pending",
+   "status": "launching 04:25",
    "deps": [
     "R2_review"
    ],
@@ -204,6 +204,11 @@
   {
    "date": "2026-09-04 03:20",
    "what": "no_robots_en_pov dev split := the no_robots dev twins (R1 F1); arms rebuilt",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 04:25",
+   "what": "G2 passed on probe20; smoke skipped. Measured 26M tokens/node-hour → an E1 3-epoch grid run ≈ 18.5M tokens ≈ 45 min + overhead → fits a debug workbench; grid launched (run 1 on the probe's workbench, run 2 on a fresh one) while R1b is still certifying the R1 fixes (risk accepted: R1 passed in substance)",
    "by": "claude"
   }
  ]
