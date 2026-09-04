@@ -51,9 +51,13 @@ Dropped under the recency rule: Magpie Ultra, OpenHermes, Tulu WildChat, EuroBlo
 Python, TableGPT. Dropped by measurement: FLAN (14.6% wrong). Wrong-rate threshold: at most 2% → in unscreened; 2 to 10% → program check or a
 full Sol screen first; above 10% → out.
 
-Token shares in the option-C dry run of Friday 23:15 (labels present at that time, approximate tokens): constraint following 48%, tool use
-15%, math 10%, Greek 8%, reasoning 9%, the rest chat, safety and science. Nemotron and coding were not yet labelled; with them chat rises to
-about a fifth. The constraint-following share is the one deliberate imbalance (§7, decision 4).
+Token shares in the option-C dry run of Friday 23:45 (labels present at that time, approximate tokens, 431,045 rows, 207.2M tokens, post-scan 0):
+constraint following 49% (Precise IF 40%, ifeval-like 9%), tool use 16%, math 11%, multilingual 8%, reasoning 6%, Greek 4.5%, puzzles 2%,
+safety, OpenAssistant and the Greek rewriting set under 1% each. Nemotron, coding and science were not yet labelled; because the share is solved
+over present blocks, their arrival pulls the big present blocks back down. The constraint-following share is the one deliberate imbalance (§7,
+decision 4). Other numbers from that run: the decontamination list is now 48,729 prompts (1.1M distinct 8-grams) and removes 1.4% of Precise IF
+and 2.4% of ifeval-like, both IFEval-shaped; the identity backstop removed 209 Precise IF rows; the tone rule removed 1,135 OpenAssistant and
+4,804 safety rows.
 
 ## 3. The screen, in one paragraph each
 

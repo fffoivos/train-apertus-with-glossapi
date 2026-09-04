@@ -123,15 +123,17 @@ Repository: `subprojects/12_greek_sft_experiments/`, git range for this work `57
 | Greek rewriting reading page | artifact, see the log | `cluster/greek_rewrite_page.py <gen.jsonl> <out.html> 40 [edit.jsonl]` |
 | chained Sol queue (`ps -fl` shows the `sh -c until …` waiters) | `~/sft_annot/sol_chain.log`, `sol_chain2.log` | samples -> Greek generation -> science -> coding 20k -> Precise IF spot-check -> Greek correction pass |
 
-Counts at 21:40 Friday, Mac clock (`build_keep_lists.py`; refreshed Saturday):
+Counts at 23:39 Friday, Mac clock (`build_keep_lists.py`, Sol verdicts applied; `judges` column omitted):
 
 | block | labelled | keep | adapt | drop | identity | wrong |
 |---|---|---|---|---|---|---|
-| OpenAssistant (Luna, Sol on 387 technical rows) | 5,305 | 4,088 | 232 | 985 | 366 | 858 |
-| safety (Luna, running) | 2,667 | 1,696 | 274 | 697 | 556 | 413 |
-| Tulu FLAN (Sol, stopped) | 1,323 | 1,115 | 15 | 193 | 2 | 193 |
-| Dolci Python Algorithms sample (Sol) | 274 | 255 | 0 | 19 | 0 | 19 |
-| puzzles and word sorts (checker) | 12,503 | 11,163 | 0 | 1,318 | 0 | 1,318 |
+| dolci_chat 5305 4180 242 | 883 | 364 | 760 | {'gpt-5.6-luna': | 4582, | 'gpt-5.6-sol': |
+| dolci_safety 11282 7230 1167 | 2885 | 2292 | 1737 | {'gpt-5.6-luna': | 11076, | 'gpt-5.6-sol': |
+| greek_ours_census1k 236 | 228 | 3 | 5 | 3 | 4 | {'gpt-5.6-luna': |
+| tulu_flan 1323 | 1115 | 15 | 193 | 2 | 193 | {'gpt-5.6-sol': |
+| ifeval_like (checker) 56339 | 56292 | 0 | 47 | 0 | 47 | {'checker': |
+| openmath (checker) 100000 | 99971 | 0 | 29 | 0 | 29 | {'checker': |
+| puzzles (checker) 12503 | 11163 | 0 | 1318 | 0 | 1318 | {'checker': |
 
 ## 6. Known defects and their state
 
