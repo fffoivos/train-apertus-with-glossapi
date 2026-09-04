@@ -3,8 +3,8 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 11.355,
- "chf_used": 30.54,
+ "nh_used": 12.398,
+ "chf_used": 33.35,
  "cursor": "morning report published 07:07; phase B light evals + guards + known-ness finishing; owner gates G3/GreekMMLU/next arms",
  "steps": {
   "WP0_data": {
