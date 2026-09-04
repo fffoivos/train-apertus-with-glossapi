@@ -27,8 +27,8 @@ today:
 | allenai/tulu-3-sft-mixture | 0.94M | ODC-BY | Krikri's main English source; personas math and IF, coding, WildChat-derived chat | decontaminated against IFEval by its authors |
 | allenai/Dolci-Instruct-SFT | 2.15M | ODC-BY | OLMo 3's SFT set, newer than Tulu 3, more math/code/tool use | fully open pipeline, same spirit as Apertus |
 | HuggingFaceTB/smoltalk2 | 4.78M | mixed | OpenHermes 2.5, Magpie Ultra, everyday, systemchats, multilingual-8, tool calling, table tasks; "think" and "no_think" variants | take the no_think subsets only; Qwen3-32B generated |
-| argilla/ifeval-like-data | 0.55M | "other", check | constraint-following rows of the IFEval shape | the single source most tied to the Krikri gap |
-| nvidia/OpenMathInstruct-2 | 14M | CC-BY-4.0 | grade-school to competition math with solutions | for the MGSM gap; sample, do not take whole |
+| argilla/ifeval-like-data | 0.55M | Qwen 2.5 licence, attribution | constraint-following rows of the IFEval shape, generated with Qwen2.5-72B, unfiltered so prompts can carry conflicting constraints | the single source most tied to the Krikri gap; keep only rows the IFEval checkers verify as satisfied |
+| nvidia/OpenMathInstruct-2 | 22M | CC-BY-4.0 | grade-school to competition math with solutions | for the MGSM gap; sample, do not take whole |
 | microsoft/orca-agentinstruct-1M | 1.05M | CDLA-permissive-2.0 | agentic multi-step tasks | breadth |
 | open-thoughts/OpenThoughts3-1.2M | 1.2M | Apache-2.0 | long reasoning traces | most rows exceed our 4,096-token window; take the short tail or skip |
 | nvidia/Nemotron-Post-Training-Dataset-v2 | 6.3M | CC-BY-4.0 | very large, math/code/chat, five European languages | optional bulk; no Greek |
