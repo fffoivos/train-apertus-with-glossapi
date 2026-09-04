@@ -3,8 +3,8 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 7.481,
- "chf_used": 20.12,
+ "nh_used": 8.954,
+ "chf_used": 24.09,
  "cursor": "gridA evals (light evals of six checkpoints in flight; native + GreekMMLU later)",
  "steps": {
   "WP0_data": {
@@ -245,6 +245,11 @@
   {
    "date": "2026-09-04 06:15",
    "what": "E1-last (terminal CPT checkpoint, same recipe) vs the replicate on the averaged base: ifeval 0.429 vs 0.460, mgsm 0.328 vs 0.416 (−0.09, well beyond the ~0.02 bar), voice 0.895 vs 1.000, interviews 2.57 vs 2.61, dev loss slightly better. The averaged checkpoint stays the base; the terminal one loses Greek math and instruction following after SFT despite equal dev loss. Native/GreekMMLU guards for E1-last pending",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 06:36",
+   "what": "Seed-only floor on dev loss (cosine, 2 ep): mean Greek 1.374 vs 1.365, max per-config gap 0.052",
    "by": "claude"
   }
  ],

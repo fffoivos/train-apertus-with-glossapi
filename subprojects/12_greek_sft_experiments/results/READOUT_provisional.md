@@ -155,3 +155,24 @@ The guard passes: no benchmark drops beyond noise (NLI −0.008); the macro of t
 
 Dev loss ties, but the terminal checkpoint comes out clearly worse on Greek math (−0.09, four times the readability bar)
 and worse on instruction following. **The averaged checkpoint stays the base.** Its native/GreekMMLU guards are pending.
+
+
+## Seed-only noise floor (E1_cos seed 43 vs seed 44, identical recipe) — dev losses at epoch 2
+
+| config | seed 43 | seed 44 | diff |
+|---|---|---|---|
+| apertus_en | 1.240 | 1.271 | +0.031 |
+| coconot | 1.583 | 1.591 | +0.008 |
+| euroblocks_de | 1.632 | 1.572 | -0.060 |
+| euroblocks_fr | 1.472 | 1.460 | -0.012 |
+| everyday | 1.217 | 1.205 | -0.012 |
+| no_robots | 1.465 | 1.441 | -0.024 |
+| no_robots_en_pov | 1.880 | 1.842 | -0.038 |
+| oasst | 1.487 | 1.437 | -0.050 |
+| personas_if | 1.404 | 1.396 | -0.008 |
+| smolcon | 1.134 | 1.109 | -0.025 |
+| systemchats | 1.326 | 1.378 | +0.052 |
+
+Mean Greek dev loss: 1.374 vs 1.365 (-0.008); largest per-config seed gap 0.052. Differences between arms
+below ~0.05 on a single config or ~0.02 on the mean are seed noise. (Light-eval floor from seed 44 follows
+when its evals finish.)
