@@ -3,8 +3,8 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 0.742,
- "chf_used": 2.0,
+ "nh_used": 1.087,
+ "chf_used": 2.92,
  "cursor": "probe20 (first GPU contact) + R1b re-review",
  "steps": {
   "WP0_data": {
@@ -226,5 +226,19 @@
    "what": "Format gate reading (run 1 epoch 3): ended_on_stop 0.88 / single_turn 0.88 / language_ok 0.94 vs base 0.00/0.00/0.86 — the 6 non-stops are max-length hits (3 English no_robots_en_pov prompts E1 never trained on, 1 apertus_en math, 1 fr, 1 Greek); Greek-only stop rate 13/14. The gate's 512-token cap conflates long legitimate answers with non-stopping → read the Greek subset and the trend across epochs, not the 0.95 threshold alone",
    "by": "claude"
   }
- ]
+ ],
+ "results": {
+  "E1_lr1e-5_ep3": {
+   "ifeval_greek_prompt_strict": 0.512,
+   "ifeval_greek_inst_strict": 0.6115,
+   "mgsm_greek": 0.392,
+   "format_gate": {
+    "stop": 0.88,
+    "lang": 0.94,
+    "single": 0.88
+   },
+   "voice_delta": 1.081,
+   "dev_loss_no_robots": 1.476
+  }
+ }
 }
