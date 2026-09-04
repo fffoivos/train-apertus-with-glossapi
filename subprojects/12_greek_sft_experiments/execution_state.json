@@ -3,8 +3,8 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 4.716,
- "chf_used": 12.69,
+ "nh_used": 5.696,
+ "chf_used": 15.32,
  "cursor": "gridA evals (light evals of six checkpoints in flight; native + GreekMMLU later)",
  "steps": {
   "WP0_data": {
@@ -109,7 +109,7 @@
    ]
   },
   "gridA_evals": {
-   "status": "in flight: light evals (ILSP + dev/gate/voice + interviews) — r1ep3 done (finisher), r1ep1 finishing, r1ep2 + r2ep1 on job 3287486, r2ep3 + r2ep2 on job 3287233; native suite pending (native_only.sh); GreekMMLU morning",
+   "status": "light evals DONE for all six (ILSP, gate, voice, 40 interviews each) 05:20; native for the two candidates running; GreekMMLU morning",
    "deps": [
     "gridA"
    ],
@@ -117,7 +117,7 @@
    "nh": 5.0
   },
   "pickA": {
-   "status": "PROVISIONAL 05:18 (owner confirms in the morning)",
+   "status": "PROVISIONAL 05:20, interviews consistent (tie within noise; voice + dev loss favour it): lr 1e-5, 2 epochs — owner confirms (G3)",
    "pick": {
     "lr": 1e-05,
     "epochs": 2
