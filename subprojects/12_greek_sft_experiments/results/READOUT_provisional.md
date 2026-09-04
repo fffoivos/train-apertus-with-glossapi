@@ -1,7 +1,7 @@
 # Round One Readout
 
 *Autonomous run, night of 2026-09-03 → 04. Written 2026-09-04 07:06; the sections below are the running record and
-update as chains finish (last update 07:56). CHF used so far: 47.81 of the 90 cap (rate CHF 2.69 per node-hour).*
+update as chains finish (last update 09:20; round one complete). CHF used so far: 47.81 of the 90 cap (rate CHF 2.69 per node-hour).*
 
 ## Executive summary
 
@@ -18,7 +18,7 @@ Delta under 1.0 (0.85), interviews tied with epoch 3 within judge noise; epoch 3
 lr 5e-6 needs three epochs to reach the same place.
 
 **Guards so far.** Native-Greek suite on the pick: macro 0.574 vs the base's 0.499, no benchmark down beyond noise (NLI −0.008),
-WiC and metaphor up 0.2 — a jump large enough to deserve a second look; the replicate's and E1-last's natives are queued.
+WiC and metaphor up 0.2 — a jump large enough to deserve a second look, now reproduced on the rival, the replicate and E1-last (see the four-way table).
 
 **E1-last is settled:** the terminal CPT checkpoint fine-tunes to the same dev loss but clearly worse Greek math (MGSM 0.33 vs
 0.42, four times the seed floor) and instruction following, and its NLI/metaphor deficit on the native suite survives SFT (macro-8
@@ -58,9 +58,7 @@ now run separately). Every fix is committed; the ledger is honest about the node
 
 ---
 
-**Status:** the phase-A grid (two learning rates × three epochs) is trained and measured on the light evals. The
-provisional pick is **lr 1e-5, 2 epochs**. The replicate (seed 43) and the E1-last arm are training on it now. The
-blind reading (owner) and the native-suite / GreekMMLU guards are still open, so nothing here is final.
+**Status:** round one is complete. Phase A (two learning rates × three epochs), the replicate, the third seed, E1-last and phase B (E2, E3, E3′) are trained and measured; the native-suite guard is done on all four checkpoints. Open: the blind reading (G3), the GreekMMLU batch (needs your go), and the next arms.
 
 ## Grid table (light evals)
 
