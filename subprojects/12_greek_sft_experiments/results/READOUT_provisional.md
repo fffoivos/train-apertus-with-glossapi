@@ -108,3 +108,18 @@ cosine seed would isolate seed noise (≈ 1 nh) — a candidate for the owner's 
 Mean Greek dev loss: averaged base 1.374, terminal base 1.364 (-0.010). By dev loss the terminal checkpoint
 fine-tunes at least as well (lower on no_robots and oasst, higher on smolcon/systemchats). Whether its NLI/WiC deficit
 survives SFT is a guard question (native suite, GreekMMLU) — pending.
+
+
+## Readability bar from the replicate (light evals, epoch 2)
+
+| metric | grid winner (seed 42, constant) | replicate (seed 43, cosine) | gap |
+|---|---|---|---|
+| ifeval_greek strict | 0.479 | 0.460 | 0.019 |
+| mgsm_greek | 0.400 | 0.416 | 0.016 |
+| gate stop rate | 0.90 | 0.88 | 0.02 |
+| voice Delta | 0.853 | 1.000 | 0.15 |
+| interview mean (1–5) | 2.83 | 2.61 | 0.22 |
+| mean Greek dev loss | 1.350 | 1.374 | 0.024 |
+
+Differences between arms smaller than these gaps are not readable (seed and schedule are confounded here; the seed-44
+run isolates seed noise).

@@ -236,6 +236,11 @@
    "date": "2026-09-04 04:27",
    "what": "Rehearsal probe20_ep1 closed: native suite ran on an SFT eval copy (19/21 shards with metrics before close — the frozen scorer accepts eval copies), interviews 3 rounds with the Opus interviewer, dev/ILSP lanes OOM'd next to native (fixed: light vs native split), two drivers were corrupted by live edits (fixed: per-label exec copies). Rehearsal purpose met; its numbers are not used.",
    "by": "claude"
+  },
+  {
+   "date": "2026-09-04 06:10",
+   "what": "Replicate (seed 43 + cosine) vs grid winner (seed 42, constant, ep2): ifeval 0.460 vs 0.479, mgsm 0.416 vs 0.400, voice Delta 1.000 vs 0.853, interview mean 2.61 vs 2.83, mean Greek dev loss 1.374 vs 1.350 → the readability bar for phase B is about ±0.02 on ifeval, ±0.15 on voice Delta, ±0.2 on the interview mean (seed+schedule confounded; seed-44 run isolates seed)",
+   "by": "claude"
   }
  ],
  "results": {
@@ -250,6 +255,14 @@
    },
    "voice_delta": 1.081,
    "dev_loss_no_robots": 1.476
+  },
+  "E1_cos_ep2": {
+   "ifeval_strict": 0.46,
+   "mgsm": 0.416,
+   "gate_stop": 0.88,
+   "voice_delta": 1.0,
+   "int_mean": 2.61,
+   "dev_mean_el": 1.374
   }
  }
 }
