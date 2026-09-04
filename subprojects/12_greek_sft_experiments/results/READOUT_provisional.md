@@ -139,4 +139,4 @@ run isolates seed noise).
 | oyxoy_wsd_definition | 0.385 | 0.390 | +0.005 |
 | **macro (8)** | 0.499 | 0.574 | +0.075 |
 
-The guard passes: no benchmark drops beyond noise (NLI −0.008), and the chat-style MCQ ability rises (metaphor, WiC, medical). GreekMMLU (2.8 h/model) waits for the morning batch.
+The guard passes: no benchmark drops beyond noise (NLI −0.008); the macro of the eight rises from 0.499 to 0.574, driven by WiC (+0.23), metaphor (+0.21) and the MCQ sets (+0.05–0.06). A jump this size on a likelihood scorer is worth a second look (same 73,894-example subset and fp32 scorer as the card; the SFT checkpoint is scored through an eval copy with the base tokenizer/config) — E1-last and the replicate natives will show whether it is systematic. GreekMMLU (2.8 h/model) waits for the morning batch.
