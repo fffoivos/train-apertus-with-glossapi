@@ -23,15 +23,13 @@ for d in sorted(glob.glob(f'{R}/*')):
     if v: row['voice_delta'] = (v.get('delta') or {}).get('generated_vs_no_robots'); row['gen_words_el'] = (v.get('word_counts') or {}).get('generated_el')
     sc = load(f'{d}/interviews/scores.json')
     if sc:
-        items = sc if isinstance(sc, list) else sc.get('conversations') or sc.get('scores') or []
-        dims = {}
-        for it in items:
-            s = it.get('scores') or it.get('rubric') or it
-            for k, x in (s.items() if isinstance(s, dict) else []):
-                if isinstance(x, dict): x = x.get('score')
-                if isinstance(x, (int, float)): dims.setdefault(k, []).append(x)
-        for k, xs in dims.items(): row[f'int_{k[:10]}'] = round(statistics.mean(xs), 2)
-        row['int_n'] = len(items)
+        av = sc.get('averages') or {}
+        for k, x in av.items():
+            if isinstance(x, dict): x = x.get('mean', x.get('score'))
+            if isinstance(x, (int, float)): row[f'int_{k[:12]}'] = round(x, 2)
+        vals = [v for v in row if v.startswith('int_')]
+        if vals: row['int_mean'] = round(statistics.mean(row[v] for v in vals), 2)
+        row['int_n'] = sc.get('count')
     if len(row) > 1: rows.append(row)
 cols = ['label', 'dev_no_robots', 'dev_mean_el', 'ifeval_strict', 'ifeval_inst', 'mgsm', 'gate_stop', 'gate_lang', 'voice_delta', 'gen_words_el'] + sorted({k for r in rows for k in r if k.startswith('int_')})
 fmt = lambda x: '' if x is None else (f'{x:.3f}' if isinstance(x, float) else str(x))
