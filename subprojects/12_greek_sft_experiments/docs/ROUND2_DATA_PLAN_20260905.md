@@ -25,7 +25,7 @@ I watch that file and answer under each finding in place, marked `→ claude:`. 
 | constraint following | Dolci Precise IF | 2025 models | constraint checkers (source); no structured constraints in the release, so a Sol spot-check of 300 on Saturday | 137k (136,820 exported) |
 | constraint following | argilla ifeval-like, filtered | Qwen2.5-72B, 2024 | our re-run of the IFEval checkers on all 56,339 rows: 56,292 pass, 47 fail (0.08%) | 56k (owner decision: Qwen licence) |
 | math | OpenMathInstruct-2, GSM8K-style | Llama-3.1-405B, 2024 | our re-run of the final-answer match on all 100,000 rows: 99,971 match, 29 mismatch | 100k |
-| chat and advice | Nemotron IF-Chat v3, chat split | GLM-5, 2026 | reward model best-of-N; Luna screen; Sol on technical rows | 100k screened (150k exported) |
+| chat and advice | Nemotron IF-Chat v3, chat split | GLM-5, 2026 | exact-length prefilter (16.9% of rows exceed the window), reward model best-of-N, Luna screen, Sol on technical rows, full-text identity backstop | half A = 41,556 rows screened by Sunday; half B (41,556) if time allows; 150k more exported on the cluster for later |
 | chat, human-written | OpenAssistant (Dolci Chat), screened | volunteers, 2023 | Luna + Sol on technical rows + Sol second opinion | about 4.2k keep rows; adapt rows are NOT in stage 1 (no line-cut exists; review F1) |
 | coding | Dolci "Python Algorithms" | 2025 | Sol spot-check: 20 of 300 wrong (6.7%), so the block is screened by Sol; 20k screened by Sunday, the rest later | 20k screened now (60k exported) |
 | reasoning | Dolci "Verifiable Reasoning" | 2025 | Sol spot-check: 3 of 300 wrong (1%), taken as clean | 30k |
