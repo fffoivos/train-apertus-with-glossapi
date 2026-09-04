@@ -97,7 +97,7 @@
    "checkpoint": "after smoke: trainer behaviour + throughput + re-budget"
   },
   "gridA": {
-   "status": "run 1 (lr 1e-5) training since 03:21 on job 3286621: step 169/285 at 03:42, epoch1 saved, eval_no_robots_loss 1.471; run 2 workbench 3286724 PENDING behind the debug 1-running limit",
+   "status": "run 1 (lr 1e-5, const) DONE 03:56: 3 epochs, 285 steps, 1,901 s train, 18.58M tokens, train loss 1.376, epoch1/2/3 saved; run 2 (lr 5e-6) training on normal job 3287233 since 03:46",
    "deps": [
     "R2_review"
    ],
