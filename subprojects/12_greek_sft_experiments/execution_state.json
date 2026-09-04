@@ -5,7 +5,7 @@
  "rate_chf_per_nh": 2.69,
  "nh_used": 1.087,
  "chf_used": 2.92,
- "cursor": "probe20 (first GPU contact) + R1b re-review",
+ "cursor": "gridA evals (light evals of six checkpoints in flight; native + GreekMMLU later)",
  "steps": {
   "WP0_data": {
    "status": "done (green 02:45: --check OK; 5 GreekMMLU-overlapping rows removed; E1 6.18M CPT-tokenizer tokens, E2 9.36M, E3 8.97M, E3prime 10.47M)",
@@ -97,7 +97,7 @@
    "checkpoint": "after smoke: trainer behaviour + throughput + re-budget"
   },
   "gridA": {
-   "status": "run 1 (lr 1e-5, const) DONE 03:56: 3 epochs, 285 steps, 1,901 s train, 18.58M tokens, train loss 1.376, epoch1/2/3 saved; run 2 (lr 5e-6) training on normal job 3287233 since 03:46",
+   "status": "DONE 04:20: run 1 (lr 1e-5) and run 2 (lr 5e-6), 3 epochs each, ~32 min training each on one node",
    "deps": [
     "R2_review"
    ],
@@ -109,7 +109,7 @@
    ]
   },
   "gridA_evals": {
-   "status": "pending",
+   "status": "in flight: light evals (ILSP + dev/gate/voice + interviews) — r1ep3 done (finisher), r1ep1 finishing, r1ep2 + r2ep1 on job 3287486, r2ep3 + r2ep2 on job 3287233; native suite pending (native_only.sh); GreekMMLU morning",
    "deps": [
     "gridA"
    ],
@@ -224,6 +224,11 @@
   {
    "date": "2026-09-04 04:06",
    "what": "Format gate reading (run 1 epoch 3): ended_on_stop 0.88 / single_turn 0.88 / language_ok 0.94 vs base 0.00/0.00/0.86 — the 6 non-stops are max-length hits (3 English no_robots_en_pov prompts E1 never trained on, 1 apertus_en math, 1 fr, 1 Greek); Greek-only stop rate 13/14. The gate's 512-token cap conflates long legitimate answers with non-stopping → read the Greek subset and the trend across epochs, not the 0.95 threshold alone",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 04:25",
+   "what": "Dev-loss read of the grid: lr 1e-5 bottoms at epoch 2 (no_robots 1.452, oasst 1.397, personas_if 1.370, everyday 1.182) and rises at epoch 3 (overfitting onset); lr 5e-6 still improving at epoch 3 (no_robots 1.457) ≈ 1e-5's epoch 2. Candidates for the pick: (1e-5, ep2) vs (5e-6, ep3); vibes/ILSP/guards decide, provisional = (1e-5, ep2) if tied (cheaper)",
    "by": "claude"
   }
  ],
