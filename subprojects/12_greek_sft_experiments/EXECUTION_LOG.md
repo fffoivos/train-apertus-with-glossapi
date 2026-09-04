@@ -51,3 +51,4 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-04 06:16 | E2_cos | job 3288295 | claude | launched (lr 1e-5, 2 ep, cosine) on normal | 1.5/— | — |
 | 2026-09-04 06:20 | E3_cos | job 3288299 | claude | launched (lr 1e-5, 2 ep, cosine) on normal | 1.5/— | — |
 | 2026-09-04 06:45 | E3prime_cos | job 3288520 | claude | launched (lr 1e-5, 2 ep, cosine) on normal | 1.5/— | — |
+| 2026-09-04 07:04 | E1_cos_s44 + light eval | job 3288263 | claude | second cosine seed + light evals | —/0.899 | 26.50 |

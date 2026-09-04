@@ -3,8 +3,8 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 8.954,
- "chf_used": 24.09,
+ "nh_used": 9.853,
+ "chf_used": 26.5,
  "cursor": "gridA evals (light evals of six checkpoints in flight; native + GreekMMLU later)",
  "steps": {
   "WP0_data": {
