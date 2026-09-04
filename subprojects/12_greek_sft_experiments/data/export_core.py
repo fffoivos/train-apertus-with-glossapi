@@ -13,16 +13,17 @@ OUT = sys.argv[1]; os.makedirs(OUT, exist_ok=True); random.seed(2026); api = HfA
 
 # block -> (repo, bucket column, wanted bucket values, target rows, shards to read)
 BLOCKS = {
- 'dolci_chat':    ('allenai/Dolci-Instruct-SFT', 'domain', {'Chat'}, 150000, 24),
+ 'dolci_chat':    ('allenai/Dolci-Instruct-SFT', 'domain', {'Chat'}, 20000, 24),
  'dolci_tooluse': ('allenai/Dolci-Instruct-SFT', 'domain', {'Tool Use'}, 40000, 24),
  'dolci_safety':  ('allenai/Dolci-Instruct-SFT', 'domain', {'Safety'}, 20000, 24),
  'dolci_other':   ('allenai/Dolci-Instruct-SFT', 'domain', {'Other'}, 20000, 24),
  'tulu_flan':     ('allenai/tulu-3-sft-mixture', 'source', {'ai2-adapt-dev/flan_v2_converted'}, 10000, 6),
+ 'tulu_wildchat': ('allenai/tulu-3-sft-mixture', 'source', {'ai2-adapt-dev/tulu_v3.9_wildchat_100k'}, 40000, 6),
 }
 STREAMS = {  # label -> (repo, config, split, target)
- 'smoltalk2_magpie': ('HuggingFaceTB/smoltalk2', 'SFT', 'smoltalk_smollm3_smol_magpie_ultra_no_think', 20000),
- 'smoltalk2_openhermes': ('HuggingFaceTB/smoltalk2', 'SFT', 'OpenHermes_2.5_no_think', 10000),
- 'nemotron_chat': ('nvidia/Nemotron-SFT-Instruction-Following-Chat-v3', 'default', 'chat', 10000),
+ 'smoltalk2_magpie': ('HuggingFaceTB/smoltalk2', 'SFT', 'smoltalk_smollm3_smol_magpie_ultra_no_think', 40000),
+ 'smoltalk2_openhermes': ('HuggingFaceTB/smoltalk2', 'SFT', 'OpenHermes_2.5_no_think', 20000),
+ 'nemotron_chat': ('nvidia/Nemotron-SFT-Instruction-Following-Chat-v3', 'default', 'chat', 100000),
 }
 def emit(fh, label, bucket, rid, row):
     u, a = user_text(row), assistant_text(row)
@@ -31,7 +32,17 @@ def emit(fh, label, bucket, rid, row):
     if isinstance(msgs, str):
         try: msgs = json.loads(msgs)
         except Exception: msgs = None
-    fh.write(json.dumps(dict(source=label, bucket=bucket, id=str(rid), user=u, assistant=a, turns=len(msgs) if isinstance(msgs, list) else 1), ensure_ascii=False) + '\n'); return True
+    turns = []
+    if isinstance(msgs, list):
+        for m in msgs:
+            if not isinstance(m, dict): continue
+            c = text_of(m.get('content'))
+            if m.get('role') == 'assistant' and not c.strip() and m.get('tool_calls'): c = 'TOOL_CALLS: ' + json.dumps(m.get('tool_calls'), ensure_ascii=False)[:1500]
+            if m.get('role') == 'assistant' and isinstance(m.get('content'), dict) and m['content'].get('blocks'):
+                calls = [b for b in m['content']['blocks'] if isinstance(b, dict) and b.get('calls')]
+                if calls and not c.strip(): c = 'TOOL_CALLS: ' + json.dumps(calls, ensure_ascii=False)[:1500]
+            turns.append(dict(role=m.get('role'), content=c))
+    fh.write(json.dumps(dict(source=label, bucket=bucket, id=str(rid), user=u, assistant=a, turns=turns, n_turns=len(turns) or 1), ensure_ascii=False) + '\n'); return True
 
 # parquet blocks, grouped per repo so each shard is read once
 by_repo = collections.defaultdict(list)
@@ -66,5 +77,5 @@ with open(f'{OUT}/gt_pool.jsonl', 'w') as gt:
     for label in list(BLOCKS) + list(STREAMS):
         rows = [l for l in open(f'{OUT}/{label}.jsonl')]
         random.shuffle(rows)
-        for l in rows[:30]: gt.write(l)
+        for l in rows[:40]: gt.write(l)
 print('DONE', flush=True)

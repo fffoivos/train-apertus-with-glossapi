@@ -24,12 +24,16 @@ imperatives: true if the answer gives the user second-person commands they did n
 disposition:
  keep = levels 0-1 with quality 2-3.
  adapt = the skill is valuable and the only problem is the frame: level 2 with quality 2-3, or level 3 where the identity sentence is one line on an otherwise good answer.
- drop = quality 1; level 3 where the identity or refusal boilerplate is the substance of the answer; refusals that cite a foreign product's policy; persona chats that ignore the user's request; sexual, fetish, demeaning or vulgar roleplay; fabricated private records about named people.
+ drop = quality 1; level 3 where the identity or refusal boilerplate is the substance of the answer, and every answer whose subject is the assistant itself (how it was trained, who made it, how it compares to ChatGPT); refusals that cite a foreign product's policy; persona chats that ignore the user's request; sexual, fetish, demeaning or vulgar roleplay; fabricated private records about named people.
 adapt_note: for adapt only, what to change, at most 20 words. why: at most 15 words.
 Return ONLY the JSON object."""
 
 def label(row):
-    prompt = RUBRIC + "\n\nSOURCE: " + row['source'] + "\n\nUSER:\n" + row['user'][:1500] + "\n\nASSISTANT:\n" + row['assistant'][:2500]
+    if row.get('turns'):
+        conv = '\n\n'.join(f"[{t.get('role','?').upper()}]\n{(t.get('content') or '')[:3000]}" for t in row['turns'])[:9000]
+        prompt = RUBRIC + "\n\nSOURCE: " + row['source'] + "\n\nCONVERSATION (turns in order; TOOL turns are the tool's own outputs, not fabrications by the assistant):\n" + conv
+    else:
+        prompt = RUBRIC + "\n\nSOURCE: " + row['source'] + "\n\nUSER:\n" + row['user'][:1500] + "\n\nASSISTANT:\n" + row['assistant'][:2500]
     with tempfile.NamedTemporaryFile('w', suffix='.txt', delete=False, prefix='terra_') as tmp:
         tmp.write(prompt); p = tmp.name
     out = tempfile.mktemp(suffix='.json', prefix='terra_out_')
@@ -42,7 +46,7 @@ def label(row):
         j = json.loads(txt[txt.index('{'):txt.rindex('}') + 1])
     except Exception:
         j = {'vantage': None, 'disposition': None, 'why': 'PARSE_FAIL', 'raw': txt[-300:]}
-    j.update(source=row['source'], bucket=row['bucket'], lexicon_level=row['level'], seconds=round(dt, 1))
+    j.update(source=row['source'], bucket=row['bucket'], lexicon_level=row.get('level'), gt_id=row.get('gt_id'), seconds=round(dt, 1))
     return j
 
 rows = [json.loads(l) for l in open(SAMPLE)][:N]

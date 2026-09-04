@@ -26,8 +26,8 @@
   "quality": 2,
   "mannerism": true,
   "imperatives": false,
-  "disposition": "drop",
-  "note": "\"as an AI text-based character\"; persona boilerplate + Of course!"
+  "disposition": "adapt",
+  "note": "\"as an AI text-based character\"; persona boilerplate + Of course! | v3 rule: strip the identity line, keep the guidance"
  },
  "3": {
   "vantage": 1,
@@ -186,8 +186,8 @@
   "quality": 2,
   "mannerism": true,
   "imperatives": false,
-  "disposition": "drop",
-  "note": "persona boilerplate + Absolutely!"
+  "disposition": "adapt",
+  "note": "persona boilerplate + Absolutely! | v3 rule: strip the identity line, keep the guidance"
  },
  "19": {
   "vantage": 3,
@@ -606,8 +606,8 @@
   "quality": 2,
   "mannerism": false,
   "imperatives": false,
-  "disposition": "drop",
-  "note": "\"as an AI\" tool refusal"
+  "disposition": "adapt",
+  "note": "\"as an AI\" tool refusal | v3 rule: strip the identity line, keep the guidance"
  },
  "61": {
   "vantage": 0,
@@ -746,8 +746,8 @@
   "quality": 2,
   "mannerism": true,
   "imperatives": false,
-  "disposition": "drop",
-  "note": "\"as an AI spaceship pilot\" + Absolutely"
+  "disposition": "adapt",
+  "note": "\"as an AI spaceship pilot\" + Absolutely | v3 rule: strip the identity line, keep the guidance"
  },
  "75": {
   "vantage": 1,
@@ -1386,8 +1386,8 @@
   "quality": 2,
   "mannerism": false,
   "imperatives": false,
-  "disposition": "drop",
-  "note": ""
+  "disposition": "adapt",
+  "note": " | v3 rule: strip the identity line, keep the guidance"
  },
  "139": {
   "vantage": 1,
