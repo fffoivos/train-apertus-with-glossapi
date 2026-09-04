@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+"""Export (1) a ground-truth candidate pool and (2) the core annotation subset as jsonl, one row = {source, bucket, id, user, assistant, meta}.
+Reads evenly spaced parquet shards (source-ordered datasets) and streaming splits. CPU only.
+Usage: python3 export_core.py <out_dir>"""
+import json, sys, os, random, time, collections
+import pyarrow.parquet as pq
+from huggingface_hub import HfApi, hf_hub_download
+from datasets import load_dataset
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+src = open(os.path.join(HERE, 'vantage_scan.py')).read(); exec(src[:src.index('SOURCES = [')])  # text_of, assistant_text, user_text
+OUT = sys.argv[1]; os.makedirs(OUT, exist_ok=True); random.seed(2026); api = HfApi()
+
+# block -> (repo, bucket column, wanted bucket values, target rows, shards to read)
+BLOCKS = {
+ 'dolci_chat':    ('allenai/Dolci-Instruct-SFT', 'domain', {'Chat'}, 150000, 24),
+ 'dolci_tooluse': ('allenai/Dolci-Instruct-SFT', 'domain', {'Tool Use'}, 40000, 24),
+ 'dolci_safety':  ('allenai/Dolci-Instruct-SFT', 'domain', {'Safety'}, 20000, 24),
+ 'dolci_other':   ('allenai/Dolci-Instruct-SFT', 'domain', {'Other'}, 20000, 24),
+ 'tulu_flan':     ('allenai/tulu-3-sft-mixture', 'source', {'ai2-adapt-dev/flan_v2_converted'}, 10000, 6),
+}
+STREAMS = {  # label -> (repo, config, split, target)
+ 'smoltalk2_magpie': ('HuggingFaceTB/smoltalk2', 'SFT', 'smoltalk_smollm3_smol_magpie_ultra_no_think', 20000),
+ 'smoltalk2_openhermes': ('HuggingFaceTB/smoltalk2', 'SFT', 'OpenHermes_2.5_no_think', 10000),
+ 'nemotron_chat': ('nvidia/Nemotron-SFT-Instruction-Following-Chat-v3', 'default', 'chat', 10000),
+}
+def emit(fh, label, bucket, rid, row):
+    u, a = user_text(row), assistant_text(row)
+    if not a.strip() or not u.strip(): return False
+    msgs = row.get('messages')
+    if isinstance(msgs, str):
+        try: msgs = json.loads(msgs)
+        except Exception: msgs = None
+    fh.write(json.dumps(dict(source=label, bucket=bucket, id=str(rid), user=u, assistant=a, turns=len(msgs) if isinstance(msgs, list) else 1), ensure_ascii=False) + '\n'); return True
+
+# parquet blocks, grouped per repo so each shard is read once
+by_repo = collections.defaultdict(list)
+for label, (repo, col, vals, target, k) in BLOCKS.items(): by_repo[repo].append((label, col, vals, target, k))
+counts = collections.Counter(); files_h = {label: open(f'{OUT}/{label}.jsonl', 'w') for label in BLOCKS}
+for repo, specs in by_repo.items():
+    files = sorted(f for f in api.list_repo_files(repo, repo_type='dataset') if f.endswith('.parquet') and 'train' in f)
+    k = max(s[4] for s in specs); pick = [files[int(i * (len(files) - 1) / max(1, k - 1))] for i in range(min(k, len(files)))]
+    print(f'{repo}: {len(files)} files, reading {len(pick)}', flush=True); t0 = time.time()
+    for f in pick:
+        if all(counts[s[0]] >= s[3] for s in specs): break
+        path = hf_hub_download(repo, f, repo_type='dataset'); pf = pq.ParquetFile(path)
+        for rg in range(pf.num_row_groups):
+            for row in pf.read_row_group(rg).to_pylist():
+                for label, col, vals, target, _ in specs:
+                    if counts[label] < target and row.get(col) in vals:
+                        # thin uniformly so the target spreads across shards
+                        if random.random() < 0.6 and emit(files_h[label], label, row.get(col), row.get('id') or row.get('conversation_id') or rg, row): counts[label] += 1
+        print(f'  {f}: ' + ', '.join(f'{s[0]}={counts[s[0]]}' for s in specs) + f' ({round(time.time()-t0)}s)', flush=True)
+for fh in files_h.values(): fh.close()
+for label, (repo, cfg, split, target) in STREAMS.items():
+    t0 = time.time(); n = 0
+    with open(f'{OUT}/{label}.jsonl', 'w') as fh:
+        try:
+            for i, row in enumerate(load_dataset(repo, cfg, split=split, streaming=True)):
+                if n >= target: break
+                if random.random() < 0.5 and emit(fh, label, split, i, row): n += 1
+        except Exception as e: print(label, 'ERROR', str(e)[:200], flush=True)
+    print(f'{label}: {n} rows in {round(time.time()-t0)}s', flush=True)
+# ground-truth candidate pool: 30 random rows per block, disjoint ids written to gt_pool.jsonl
+with open(f'{OUT}/gt_pool.jsonl', 'w') as gt:
+    for label in list(BLOCKS) + list(STREAMS):
+        rows = [l for l in open(f'{OUT}/{label}.jsonl')]
+        random.shuffle(rows)
+        for l in rows[:30]: gt.write(l)
+print('DONE', flush=True)
