@@ -21,7 +21,8 @@ lr 5e-6 needs three epochs to reach the same place.
 WiC and metaphor up 0.2 — a jump large enough to deserve a second look; the replicate's and E1-last's natives are queued.
 
 **E1-last is settled:** the terminal CPT checkpoint fine-tunes to the same dev loss but clearly worse Greek math (MGSM 0.33 vs
-0.42, four times the seed floor) and instruction following. The averaged checkpoint stays the base.
+0.42, four times the seed floor) and instruction following, and its NLI/metaphor deficit on the native suite survives SFT (macro-8
+0.500 vs 0.575). The averaged checkpoint stays the base.
 
 **Noise floors.** Seed only (two cosine seeds): ifeval ±0.01, MGSM ±0.03, voice ±0.05, interviews ±0.02, mean Greek dev loss
 ±0.01. Seed + schedule (constant epoch-2 vs cosine): the constant-lr checkpoint reads better than the cosine endpoint on voice
@@ -393,5 +394,4 @@ Both SFT checkpoints sit above the base on the macro; the pick and the rival are
 | **macro (8)** | 0.499 | 0.434 | 0.574 | 0.577 | 0.573 | 0.500 |
 
 E1-last's NLI goes 0.387 → 0.388 and WiC 0.336 → 0.737: the deficit persists after SFT. All SFT checkpoints on the averaged base share one profile (macro-8 ≈ 0.57): NLI flat, WiC and metaphor +0.2,
-the MCQ sets +0.03–0.06 — systematic to SFT. The averaged base remains the better starting point on the light evals
-(MGSM, IFEval, interviews); on this guard the two bases converge after SFT.
+the MCQ sets +0.03–0.06 — systematic to SFT. E1-last recovers WiC (0.34 → 0.74) but not NLI (0.39) or metaphor (0.34 vs 0.55–0.58 for the averaged-base checkpoints): macro-8 0.500 vs ≈0.575. Together with the light evals (MGSM 0.33 vs 0.42), the terminal checkpoint is the worse starting point on every axis. The averaged base stays.
