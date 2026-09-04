@@ -59,3 +59,6 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-04 07:54 | knownness2 | job 3288556 | claude | known-ness scorer on the base (rerun) | —/0.782 | 38.35 |
 | 2026-09-04 07:55 | native_rival | job 3288584 | claude | native suite for the (5e-6, ep3) rival | —/0.44 | 39.53 |
 | 2026-09-04 07:55 | E3prime_cos + light eval | job 3288520 | claude | training + light evals of epoch2 | —/1.171 | 42.68 |
+| 2026-09-04 08:22 | native_guards | job 3288578 | claude | native suite for E1_cos_ep2 (E1last moved to its own workbench) | —/0.957 | 45.26 |
+| 2026-09-04 09:15 | native_E1last_ep2 | job 3289061 | claude | native suite | —/0.949 | 47.81 |
+| 2026-09-04 09:16 | round one | — | claude | COMPLETE pending owner gates; natives: pick 0.574, rival 0.577, replicate 0.573, E1-last 0.500 (base 0.499/0.434); readout + blind reading published | —/17.773 | 47.81 |

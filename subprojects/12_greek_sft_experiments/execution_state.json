@@ -3,9 +3,9 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 16.824,
- "chf_used": 45.26,
- "cursor": "morning report published 07:07; phase B light evals + guards + known-ness finishing; owner gates G3/GreekMMLU/next arms",
+ "nh_used": 17.773,
+ "chf_used": 47.81,
+ "cursor": "ROUND ONE COMPLETE 09:20 pending owner gates: G3 (confirm lr 1e-5 / 2 ep after the blind reading), GreekMMLU batch (>2 h, ~CHF 8), next arms (schedule check, E7 after probe calibration, preference round)",
  "steps": {
   "WP0_data": {
    "status": "done (green 02:45: --check OK; 5 GreekMMLU-overlapping rows removed; E1 6.18M CPT-tokenizer tokens, E2 9.36M, E3 8.97M, E3prime 10.47M)",
@@ -155,11 +155,7 @@
    ]
   },
   "readout": {
-   "status": "pending",
-   "deps": [
-    "phaseB"
-   ],
-   "executor": "sol drafts, claude verifies",
+   "status": "published (living): https://claude.ai/code/artifact/162f6fc7-9d5d-4203-b379-701758d35257",
    "gate": "G4 owner"
   }
  },
@@ -328,6 +324,12 @@
   },
   "E1_cos_ep2_native": {
    "macro8": 0.5733
+  },
+  "E1last_ep2_native": {
+   "macro8": 0.5,
+   "nli": 0.388,
+   "wic": 0.737,
+   "metaphor": 0.339
   }
  },
  "artifacts": {
