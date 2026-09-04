@@ -50,8 +50,10 @@ Sol as second opinion on Luna's "wrong answer" drops in OpenAssistant (`~/sft_an
 first-aid answer Luna called dangerous and Sol appropriate. This pass was stopped on the owner's instruction (it only catches Luna's
 false drops, not its misses) and replaced by advance routing.
 
-Sol spot-checks of Dolci's new sources (`~/sft_annot/labels/dolci_*_sample.labels.jsonl`): Python Algorithms 19 of 274 wrong (7%);
-Verifiable Reasoning PENDING.
+Sol spot-checks of Dolci's new sources (`~/sft_annot/labels/dolci_*_sample.labels.jsonl`, 300 rows each): Python Algorithms 20 wrong (6.7%),
+so the block is Sol-screened before use; Verifiable Reasoning 3 wrong (1%), taken as clean. Our own checker runs on the sources that claim
+verification (cluster, `verified/`): ifeval-like 56,339 rows through the IFEval checkers, 47 fail (0.08%); OpenMath GSM-style 100,000 rows
+through the final-answer match, 29 mismatch (0.03%). Both claims hold; the puzzles were the exception.
 
 ## 4. Luna's weaknesses, and what is done about each
 

@@ -22,13 +22,13 @@ I watch that file and answer under each finding in place, marked `→ claude:`. 
 
 | block | source | written by | checked how | rows in stage 1 |
 |---|---|---|---|---|
-| constraint following | Dolci Precise IF | 2025 models | constraint checkers (source); our re-run on a sample | 137k |
-| constraint following | argilla ifeval-like, filtered | Qwen2.5-72B, 2024 | constraint checkers; our re-run with the IFEval checkers | 56k (owner decision: Qwen licence) |
-| math | OpenMathInstruct-2, GSM8K-style | Llama-3.1-405B, 2024 | final answer vs ground truth (source); Sol spot-check 300 | 100k |
+| constraint following | Dolci Precise IF | 2025 models | constraint checkers (source); no structured constraints in the release, so a Sol spot-check of 300 on Saturday | 137k (136,820 exported) |
+| constraint following | argilla ifeval-like, filtered | Qwen2.5-72B, 2024 | our re-run of the IFEval checkers on all 56,339 rows: 56,292 pass, 47 fail (0.08%) | 56k (owner decision: Qwen licence) |
+| math | OpenMathInstruct-2, GSM8K-style | Llama-3.1-405B, 2024 | our re-run of the final-answer match on all 100,000 rows: 99,971 match, 29 mismatch | 100k |
 | chat and advice | Nemotron IF-Chat v3, chat split | GLM-5, 2026 | reward model best-of-N; Luna screen; Sol on technical rows | 100k screened (150k exported) |
 | chat, human-written | OpenAssistant (Dolci Chat), screened | volunteers, 2023 | Luna + Sol on technical rows | 4.3k (4,088 keep + 232 adapt) |
-| coding | Dolci "Python Algorithms" | 2025 | Sol spot-check: 19 of 274 wrong (7%) so far | 60k |
-| reasoning | Dolci "Verifiable Reasoning" | 2025 | Sol spot-check 300 (pending) | 30k |
+| coding | Dolci "Python Algorithms" | 2025 | Sol spot-check: 20 of 300 wrong (6.7%), so the block is screened by Sol; 20k screened by Sunday, the rest later | 20k screened now (60k exported) |
+| reasoning | Dolci "Verifiable Reasoning" | 2025 | Sol spot-check: 3 of 300 wrong (1%), taken as clean | 30k |
 | reasoning | Dolci logic puzzles and word sorts | generator | exact brute-force checker | 11,163 confirmed |
 | tool use | Dolci Tool Use | 2025 | Luna identity screen | 30k |
 | science | Dolci OpenThoughts3+ Science | 2025 | Sol screen (20k exported) | 15k |
@@ -36,23 +36,24 @@ I watch that file and answer under each finding in place, marked `→ claude:`. 
 | safety | Dolci WildGuardMix and CoCoNot, screened | 2024 | Luna; 21% identity so far, so mostly adapt or drop | 10k |
 | Greek, rewriting and summarising | written by Sol from scratch, in Greek | gpt-5.6, 2026 | Sol correction pass, screen, owner blind read | 2k (the 10% start) |
 | Greek | our round-one adapted set | Sol, 2026 | ours | 20k, seen twice |
-| **total** | | | | **about 620k rows, about 0.37B tokens** |
+| **total** | | | | **about 580k rows, about 0.35B tokens** |
 
 Dropped under rule (2): Magpie Ultra, OpenHermes, Tulu WildChat, EuroBlocks fr/de, Dolci persona math, Evol-CodeAlpaca, Tulu persona Python, TableGPT.
 Dropped by measurement: Tulu FLAN and Dolci FLAN (Sol finds 193 of 1,323 wrong, 14.6%, on 2015-era labels).
 
 ## 3. Timeline to Sunday, with the judge rates measured tonight
 
-Rates: Luna 3,900 rows an hour at 48 workers, about 5,000 at 64 (to be confirmed at the first progress line); Sol 1,300 to 1,700 at 24;
-checker exact and free. Times are Athens time.
+Rates: Luna 4,160 rows an hour at 64 workers (measured on safety, first 1,000 rows); Sol 1,300 to 1,700 at 24 on chat, 825 on puzzles;
+checker exact and free. Times are Athens time. Nemotron 100k therefore takes 24 h, not 20: done Sunday about 03:00, tool use 30k by about 10:00.
 
 | when | Luna (64 workers) | Sol (24 workers) | me (CPU, cluster login node, polite) |
 |---|---|---|---|
 | Fri 23:45 | safety, 13k left, about 3 h | spot-checks, 26 code + 300 reasoning rows, 20 min | exports running: multilingual 25k, Nemotron 150k |
 | Sat 03:00 | Nemotron 100k, about 20 h | Greek rewriting set, 2,000 rows, high effort, about 5 h | exports: OpenMath 100k, Python Algorithms 60k, Verifiable Reasoning 30k, Precise IF 137k, ifeval-like 56k |
 | Sat 08:00 | | Science 20k, about 13 h | re-run IFEval checkers on ifeval-like; Sol spot-checks on Precise IF 300 and OpenMath 300; owner reads 40 Greek rewriting rows |
-| Sat 21:00 | Nemotron done; tool use 40k, about 8 h | technical rows of Nemotron, about 12k, 8 h | assemble-mix script, decontamination lists, tokenizer run on a 5% dry run |
-| Sun 05:00 | tool use done | Nemotron technical rows done | |
+| Sat 21:00 | Nemotron running | Science done; coding 20k under Sol, about 13 h | assemble-mix script, decontamination lists, tokenizer run on a 5% dry run |
+| Sun 03:00 | Nemotron done; tool use 30k, about 7 h | technical rows of Nemotron, about 12k, 8 h, in parallel with coding on the same 24 workers only if the account allows, else after | |
+| Sun 10:00 | tool use done, or cut to the lexicon scan if late | coding and Nemotron technical rows done | |
 | Sun 10:00 to 22:00 | | correction pass on the Greek rewriting rows, 2 h | keep-lists merged, mix assembled, decontaminated against all ILSP sets + IFEval/GSM8K, tokenized, receipts, plan updated |
 | Mon | | | training launch, only once the cap decision is in |
 

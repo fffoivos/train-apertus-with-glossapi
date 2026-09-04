@@ -11,6 +11,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 src = open(os.path.join(HERE, 'vantage_scan.py')).read(); exec(src[:src.index('SOURCES = [')])  # text_of, assistant_text, user_text
 OUT = sys.argv[1]; os.makedirs(OUT, exist_ok=True); random.seed(2026); api = HfApi()
 ONLY = set(os.environ.get('ONLY', '').split(',')) - {''}  # re-export only these blocks, then rebuild gt_pool
+THIN = float(os.environ.get('THIN', '0.6'))  # keep probability per matching row; 1.0 takes rows in shard order until the target
 
 # block -> (repo, bucket column, wanted bucket values, target rows, shards to read)
 BLOCKS = {
@@ -19,6 +20,9 @@ BLOCKS = {
  'dolci_safety':  ('allenai/Dolci-Instruct-SFT', 'domain', {'Safety'}, 20000, 24),
  'dolci_other':   ('allenai/Dolci-Instruct-SFT', 'domain', {'Other'}, 20000, 24),
  'dolci_science': ('allenai/Dolci-Instruct-SFT', 'domain', {'Science'}, 20000, 15),
+ 'dolci_code_algo': ('allenai/Dolci-Instruct-SFT', 'source_dataset', {'Dolci Instruct Python Algorithms'}, 60000, 15),
+ 'dolci_reasoning': ('allenai/Dolci-Instruct-SFT', 'source_dataset', {'Verifiable Reasoning'}, 30000, 15),
+ 'dolci_precise_if': ('allenai/Dolci-Instruct-SFT', 'domain', {'Precise IF'}, 137000, 15),
  'dolci_code_algo_sample': ('allenai/Dolci-Instruct-SFT', 'source_dataset', {'Dolci Instruct Python Algorithms'}, 300, 15),
  'dolci_reasoning_sample': ('allenai/Dolci-Instruct-SFT', 'source_dataset', {'Verifiable Reasoning'}, 300, 15),
  'tulu_flan':     ('allenai/tulu-3-sft-mixture', 'source', {'ai2-adapt-dev/flan_v2_converted'}, 10000, 6),
@@ -71,7 +75,7 @@ for repo, specs in by_repo.items():
                 for label, col, vals, target, _ in specs:
                     if counts[label] < target and row.get(col) in vals:
                         # thin uniformly so the target spreads across shards
-                        if random.random() < 0.6 and emit(files_h[label], label, row.get(col), row.get('id') or row.get('conversation_id') or rg, row): counts[label] += 1
+                        if random.random() < THIN and emit(files_h[label], label, row.get(col), row.get('id') or row.get('conversation_id') or rg, row): counts[label] += 1
         print(f'  {f}: ' + ', '.join(f'{s[0]}={counts[s[0]]}' for s in specs) + f' ({round(time.time()-t0)}s)', flush=True)
 for fh in files_h.values(): fh.close()
 for label, (repo, cfg, split, target) in STREAMS.items():
