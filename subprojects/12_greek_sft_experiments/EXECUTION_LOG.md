@@ -66,4 +66,4 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-04 13:11 | eval plan | A | claude | peer ILSP lanes launched on wb 3291238 (Meltemi needed sentencepiece; launcher zsh word-split bug fixed) | ~1.2 proj | — |
 | 2026-09-04 13:59 | eval plan A | job 3291238 | claude | peer ILSP: Krikri/Meltemi/Apertus-Instruct/Gemma-3-12B on Greek IFEval+MGSM | —/0.945 | 50.35 |
 | 2026-09-04 14:00 | eval plan | B | claude | GreekMMLU batch launched on normal wb 3292398 (pick, adapted imports, Krikri-Instruct, Apertus-Instruct) | 3.3 proj | — |
-| 
+| | 2026-09-04 14:08 | eval plan | B | claude | GreekMMLU batch LIVE on normal wb 3292398, 4 lanes (pick, adapted imports, Krikri-Instruct, Apertus-Instruct), ETA ~16:00. Incidents: eval env python_envs/lm_eval was mass-reinstalled at 12:27 by a process that was not this session (dill left without code, datasets import failed); dill 0.3.8 reinstalled. Launch loop with ssh inside while-read ate the lane list twice (fixed: ssh -n). One duplicate Apertus-Instruct lane OOMed and died; the original is running. ~8 min idle burn. | 3.3 proj | — |
