@@ -65,3 +65,25 @@ specifics (a GDPR-age claim, bank-deposit rules) — the knowledge-alignment ris
 ## Ledger
 
 See EXECUTION_LOG.md; CHF used at 05:20 ≈ 15.3 of the 90 cap.
+
+
+## Replicate (E1_cos) vs the grid winner — dev losses at epoch 2
+
+| config | grid winner (1e-5 const, ep2) | replicate (1e-5 cosine, 2 ep, seed 43) | diff |
+|---|---|---|---|
+| apertus_en | 1.318 | 1.240 | -0.078 |
+| coconot | 1.544 | 1.583 | +0.039 |
+| euroblocks_de | 1.584 | 1.632 | +0.048 |
+| euroblocks_fr | 1.421 | 1.472 | +0.051 |
+| everyday | 1.182 | 1.217 | +0.035 |
+| no_robots | 1.452 | 1.465 | +0.013 |
+| no_robots_en_pov | 1.847 | 1.880 | +0.033 |
+| oasst | 1.397 | 1.487 | +0.090 |
+| personas_if | 1.370 | 1.404 | +0.034 |
+| smolcon | 1.158 | 1.134 | -0.024 |
+| systemchats | 1.348 | 1.326 | -0.022 |
+
+Mean Greek dev loss: winner 1.350, replicate 1.374 (+0.024). Caveat: the replicate differs from the grid
+winner in BOTH seed (43 vs 42) and schedule (cosine-to-min-lr over 2 epochs vs constant, checkpoint taken mid-run), so
+this is not a pure seed-noise floor; it is the reference point for phase B, which shares its schedule. A second
+cosine seed would isolate seed noise (≈ 1 nh) — a candidate for the owner's morning decision.

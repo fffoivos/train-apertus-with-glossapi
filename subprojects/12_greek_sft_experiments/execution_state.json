@@ -126,7 +126,7 @@
    "gate": "G3"
   },
   "replicate+E1last": {
-   "status": "training since 05:22: E1_cos on job , E1last_cos on job  (lr 1e-5, 2 epochs, cosine)",
+   "status": "E1_cos DONE 05:41 (mean Greek dev loss 1.374 vs winner 1.350; schedule+seed confounded); light evals running; E1last_cos training",
    "deps": [
     "pickA"
    ],
