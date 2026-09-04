@@ -77,6 +77,43 @@ in roughly a week of pipeline time at 16 generation and 24 edit workers. Adaptin
 
 Every kept row also passes the decontamination list above and the 4,096-token filter.
 
+### 2a. Screening status (2026-09-04 evening)
+
+- Samples of every source, full text, to know the data: https://claude.ai/code/artifact/941df833-a155-45ab-af26-939f88e4db96
+- Ground truth v2: 63 rows (7 per screened block, full turns, tool calls rendered) hand-labelled with rubric v3.
+  Luna (gpt-5.6-luna, medium, default tier, 48 workers) against it: disposition agreement 55/61; flagged rows (adapt or drop)
+  precision 0.55 (6/11) and recall 0.86 (6/7); identity rows (level 3) recall 4/4 with no false identity. The five extra
+  Luna drops are answer-quality calls, not vantage calls: two verified right (a FLAN NLI row with the wrong label, a C++
+  answer with false claims about unique_ptr), one verified wrong (a logic puzzle brute-forced: the dataset answer is
+  correct), two arguable (a fabricated bibliography, an arbitrary FLAN emotion target). The one miss is a level-2 case
+  (a cheesecake recipe on US ingredients and units). Decision: the identity and drop categories are reliable enough;
+  the core annotation started at 48 workers on the default tier; quality-1 drops will be spot-checked before use.
+- Measured on long rows (median 1.5k, p90 8k characters): 3,734 rows per hour at 48 workers, mean call 34 s.
+- Data defects found while exporting: (1) Dolci Tool Use stores calls in a `function_calls` field, so the rows looked
+  empty; fixed. (2) The Nemotron IF-Chat v3 chat split withholds the first user prompt for rows seeded from WildChat-1M
+  (content null, only a sha256 of the prompt): 40.8% of the exported 100k, and 3,915 of the first 4,000 rows. Those rows
+  are unusable as-is; the export now drops them, so the usable chat split is roughly 60% of 637k. Recovering the prompts
+  by hashing WildChat-1M is possible but not done. (3) Dolci Chat in the release is OpenAssistant only, 6,952 rows.
+
+### 2b. Trust rule (owner, 2026-09-04): verified sources are trusted over the judge
+
+Once a source is shown to be (a) high quality and (b) verified by a program, its rows are not dropped on Luna's quality
+verdict; only identity and framing labels apply, and where framing is negligible the source is not screened at all.
+The quality screen is for unverified sources, where wrong answers actually live.
+
+| source | how answers were checked | trust | screen |
+|---|---|---|---|
+| Dolci Precise IF, ifeval-like filtered | constraint checkers pass on every row | verified | none |
+| OpenMathInstruct-2 and its Dolci slice | final answer matches the GSM8K/MATH ground truth | verified | none |
+| Dolci logic puzzles | built from their own solution; one brute-forced by us, correct | verified | none; Luna's drops on them are ignored (calibration below) |
+| Dolci Tool Use | synthetic trajectories, schema-checked calls, no ground truth | partial | identity only |
+| Dolci Coding, Reasoning | mixed; to confirm from the card | partial | identity only until confirmed |
+| Nemotron chat | best-of-N by a reward model, no truth check | rated, unverified | full |
+| Magpie, OpenHermes, WildChat-GPT-4 | model-written, style-filtered | unverified | full |
+| OpenAssistant | volunteer-written, unchecked | unverified | full (about a fifth dropped so far) |
+| FLAN | 2015-era labels through templates | unverified, noisy | full |
+| Safety (WildGuardMix, CoCoNot) | policy-labelled, answers unchecked | unverified | full |
+
 ## 3. Personality set
 
 A generated-and-edited set of about 4k rows that fixes who the model is, plus a held-out probe of about 100 questions.

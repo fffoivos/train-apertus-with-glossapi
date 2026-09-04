@@ -44,6 +44,7 @@ def emit(fh, label, bucket, rid, row):
                 calls = [b for b in m['content']['blocks'] if isinstance(b, dict) and b.get('calls')]
                 if calls and not c.strip(): c = 'TOOL_CALLS: ' + json.dumps(calls, ensure_ascii=False)[:1500]
             turns.append(dict(role=m.get('role'), content=c))
+    if turns and not next((t['content'] for t in turns if t['role'] == 'user'), '').strip(): return False  # first user prompt missing (Nemotron chat: seed prompts withheld, 41%)
     if not a.strip(): a = next((t['content'] for t in reversed(turns) if t['role'] == 'assistant' and t['content'].strip()), '')
     if not u.strip(): u = next((t['content'] for t in turns if t['role'] == 'user' and t['content'].strip()), '')
     if not a.strip() or not u.strip(): return False

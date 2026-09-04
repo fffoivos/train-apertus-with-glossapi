@@ -56,12 +56,13 @@ with cf.ThreadPoolExecutor(W) as ex:
         results.append(j); print(f"{len(results)}/{len(rows)} v={j.get('vantage')} {str(j.get('frame_type'))[:14]:14s} {str(j.get('skill'))[:14]:14s} q={j.get('quality')} m={int(bool(j.get('mannerism')))} i={int(bool(j.get('imperatives')))} {str(j.get('disposition')):5s} lex={j['lexicon_level']} {j['seconds']:5.1f}s {j.get('why','')[:50]}", flush=True)
 wall = time.time() - t0
 ok = [r for r in results if r.get('vantage') is not None]
-agree = sum(1 for r in ok if r['vantage'] == r['lexicon_level']); within1 = sum(1 for r in ok if abs(r['vantage'] - r['lexicon_level']) <= 1)
+lex = [r for r in ok if r.get('lexicon_level') is not None]
+agree = sum(1 for r in lex if r['vantage'] == r['lexicon_level']); within1 = sum(1 for r in lex if abs(r['vantage'] - r['lexicon_level']) <= 1)
 summary = dict(model=MODEL, effort=EFFORT, tier=TIER, n=len(rows), parsed=len(ok), wall_seconds=round(wall), rows_per_hour=round(3600 * len(rows) / wall),
                mean_call_seconds=round(sum(r['seconds'] for r in results) / len(results), 1), workers=W,
-               agreement_exact=round(agree / max(1, len(ok)), 3), agreement_within1=round(within1 / max(1, len(ok)), 3),
+               agreement_exact=round(agree / max(1, len(lex)), 3), agreement_within1=round(within1 / max(1, len(lex)), 3), lexicon_rows=len(lex),
                dispositions=dict(collections.Counter(r.get('disposition') for r in results)),
-               level_by_lexicon={str(k): dict(collections.Counter(r['vantage'] for r in ok if r['lexicon_level'] == k)) for k in range(4)},
+               level_by_lexicon={str(k): dict(collections.Counter(r['vantage'] for r in lex if r['lexicon_level'] == k)) for k in range(4)},
                frame_types=dict(collections.Counter(r.get('frame_type') for r in ok)), skills=dict(collections.Counter(r.get('skill') for r in ok)),
                mannerism=sum(1 for r in ok if r.get('mannerism')), imperatives=sum(1 for r in ok if r.get('imperatives')), quality=dict(collections.Counter(r.get('quality') for r in ok)))
 json.dump(results, open(f'{OUT}/labels.json', 'w'), ensure_ascii=False, indent=1); json.dump(summary, open(f'{OUT}/summary.json', 'w'), indent=1)
