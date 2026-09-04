@@ -39,7 +39,7 @@ class r1:  # the round-one helpers (data/build_sft_mix.py) inlined, so this scri
 
 ap = argparse.ArgumentParser(); ap.add_argument('--arm', default='R2_stage1'); ap.add_argument('--scale', type=float, default=1.0)
 ap.add_argument('--no-tokenizer', action='store_true'); ap.add_argument('--max-tokens', type=int, default=4032); ap.add_argument('--budget-tokens', type=int, default=0, help='option C: total train tokens; small blocks whole, the rest scaled by their plan share');
-ap.add_argument('--keep-mannerism', action='store_true', help='keep rows the judge flagged for chatbot mannerisms (default: dropped in chat and safety blocks)'); ap.add_argument('--drop-imperatives', action='store_true', help='also drop rows flagged for unasked second-person commands'); ap.add_argument('--seed', type=int, default=2026); ap.add_argument('--dev-fraction', type=float, default=0.01)
+ap.add_argument('--keep-lexicon-mannerism', action='store_true', help='keep rows whose last assistant turn opens/closes with a chatbot phrase (lexicon, all blocks; default dropped)'); ap.add_argument('--keep-mannerism', action='store_true', help='keep rows the judge flagged for chatbot mannerisms (default: dropped in chat and safety blocks)'); ap.add_argument('--drop-imperatives', action='store_true', help='also drop rows flagged for unasked second-person commands'); ap.add_argument('--seed', type=int, default=2026); ap.add_argument('--dev-fraction', type=float, default=0.01)
 args = ap.parse_args(); random.seed(args.seed)
 OUT = HERE / 'arms' / args.arm; OUT.mkdir(parents=True, exist_ok=True)
 
@@ -63,7 +63,7 @@ PLAN = [
  ('greek_ours', None, 'ours', 20000, 2),
 ]
 
-from identity_patterns import IDENT, identity_hit_messages as identity_hit  # shared with lang_identity_filter.py (review R8); scans assistant and system turns
+from identity_patterns import IDENT, identity_hit_messages as identity_hit, mannerism_hit_messages  # shared with lang_identity_filter.py (review R8); scans assistant and system turns
 
 def load_ids(path):
     return set(l.strip() for l in open(path) if l.strip()) if os.path.exists(path) else None
@@ -243,12 +243,13 @@ for block, fname, mode, target, weight in PLAN:
             if keep is not None and rid not in keep: continue
             m = to_messages(r, block)
             if m: rows.append(dict(id=rid, messages=m))
-    random.shuffle(rows); taken = []; stats = collections.Counter(available=len(rows), contaminated=0, too_long=0, identity_backstop=0, tone_dropped=(tone_dropped if mode != 'ours' else 0))
+    random.shuffle(rows); taken = []; stats = collections.Counter(available=len(rows), contaminated=0, too_long=0, identity_backstop=0, lexicon_mannerism=0, tone_dropped=(tone_dropped if mode != 'ours' else 0))
     for r in rows:
         if len(taken) >= target: break
         hit = contaminated(r['messages'])
         if hit: stats['contaminated'] += 1; continue
         if identity_hit(r['messages']): stats['identity_backstop'] += 1; continue  # review F1: full-text regex over every assistant turn, after the judges
+        if not args.keep_lexicon_mannerism and mannerism_hit_messages(r['messages']): stats['lexicon_mannerism'] += 1; continue  # chatbot openers/closers, all blocks
         n = n_tokens(r['messages'])
         if n > args.max_tokens: stats['too_long'] += 1; continue  # margin under the trainer's 4,096 so its own render never overflows
         r['block'] = block; r['tokens'] = n; taken.append(r)
@@ -256,7 +257,7 @@ for block, fname, mode, target, weight in PLAN:
     ndev = max(1, int(len(taken) * args.dev_fraction)) if taken else 0
     dev += taken[:ndev]; train += taken[ndev:] * weight
     receipt['blocks'].append(dict(block=block, status='ok', target=target, weight=weight, **stats))
-    print(f"{block:24s} available {stats['available']:7d} taken {stats['taken']:7d} x{weight} tokens {stats['tokens']:10d} contaminated {stats['contaminated']} too_long {stats['too_long']} identity_backstop {stats['identity_backstop']} tone_dropped {stats['tone_dropped']}", flush=True)
+    print(f"{block:24s} available {stats['available']:7d} taken {stats['taken']:7d} x{weight} tokens {stats['tokens']:10d} contaminated {stats['contaminated']} too_long {stats['too_long']} identity_backstop {stats['identity_backstop']} lexicon_mannerism {stats['lexicon_mannerism']} tone_dropped {stats['tone_dropped']}", flush=True)
 random.shuffle(train)
 def dump(path, rows):
     h = hashlib.sha256()

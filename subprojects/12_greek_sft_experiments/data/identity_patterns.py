@@ -19,3 +19,13 @@ IDENT = re.compile(
 def identity_hit_messages(messages):
     """messages: list of {role, content}; True if any assistant or system turn carries an identity statement."""
     return any(m.get('role') in ('assistant', 'system') and IDENT.search(m.get('content') or '') for m in messages)
+
+MANNERISM_OPEN = re.compile(r"^\s*(sure|certainly|absolutely|of course|great question|good question|excellent question|great|awesome|fantastic|wonderful)\b[!,.:]?", re.I)
+MANNERISM_CLOSE = re.compile(r"(i hope this helps|hope this helps|let me know if you (need|have|would like|want)|feel free to (ask|reach out|let me know)|happy to help|is there anything else|if you have any (other|further|more) questions)[^\n]{0,60}\s*$", re.I)
+def mannerism_hit_messages(messages):
+    """True if the LAST assistant turn opens with a chatbot opener or closes with a chatbot closer (cheap lexicon, all blocks)."""
+    for m in reversed(messages):
+        if m.get('role') == 'assistant':
+            c = (m.get('content') or '').strip()
+            return bool(MANNERISM_OPEN.match(c)) or bool(MANNERISM_CLOSE.search(c[-300:]))
+    return False
