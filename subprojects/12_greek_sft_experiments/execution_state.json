@@ -142,7 +142,7 @@
    "checkpoint": "before phase-B spend"
   },
   "phaseB": {
-   "status": "pending",
+   "status": "E2 DONE + light evals 07:18; E3 DONE, light evals landing (interviews pending); E3prime training (job 3288520, ends ~07:45)",
    "deps": [
     "R3_review"
    ],
@@ -285,6 +285,19 @@
    "voice_delta": 0.895,
    "int_mean": 2.57,
    "dev_mean_el": 1.364
+  },
+  "E2_cos_ep2": {
+   "ifeval_strict": 0.473,
+   "mgsm": 0.404,
+   "gate_stop": 0.92,
+   "voice_delta": 0.943,
+   "int_mean": 2.56
+  },
+  "E3_cos_ep2_partial": {
+   "ifeval_strict": 0.497,
+   "mgsm": 0.384,
+   "gate_stop": 0.9,
+   "voice_delta": 0.959
   }
  },
  "artifacts": {
