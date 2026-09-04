@@ -102,7 +102,7 @@ Measured: Luna 4,300 to 4,500 rows an hour at 64 workers; Sol 1,100 generating, 
 |---|---|---|---|
 | Sat 00:40 | Nemotron half A, 34,214 rows, about 8 h | routing pass, Precise IF spot-check, Greek correction pass, then Science in 3,000-row chunks alternating with routing (15 to 20 h) | exact-tokenizer assembly runs on what exists; plan and handoff refreshed |
 | Sat 09:00 | multilingual 25k, 6 h | Science continues | Nemotron rows added to the owner's reading page |
-| Sat 15:00 | tool-use 3k sample; then Nemotron half B | Science done about 18:00; coding 20k in chunks, 13 h | keep-lists merged as blocks finish |
+| Sat 15:00 | tool-use 3k sample; then our Greek set 32,892 (6 h), then Nemotron half B | Science done about 18:00; coding 20k in chunks, 13 h | keep-lists merged as blocks finish |
 | Sun 08:00 | half B continues or is cut | coding done; last routing pass | full assembly under the 208M-token budget with the exact tokenizer; decontamination; trainer dry run on the cluster (gate) |
 | Sun 14:00 to 22:00 | | | receipts; stage-1 config derived from the receipt; plan and handoff final |
 | Mon | | | training launch once the cap decision is in |
@@ -143,9 +143,11 @@ The owner asked for this list. Each item is what I looked for, what I found, and
 3. **Vantage share in stage 1.** Greek-vantage content is about 8% of stage-1 tokens; round one saw raw foreign rows pull even at a 3:1
    Greek majority. Stage 1 accepts this by design (skills now, vantage in stages 2 and 3) and the screened-versus-unscreened arm is the test;
    the cheap lever if the owner wants more is the Greek repeat factor (2 → 3).
-4. **Skill coverage in Greek.** The judge's census of 1,000 rows of our Greek set gives its skill mix (filled in from the census run below);
-   the stage-1 categories with no Greek counterpart are coding, math, tool use, science and puzzles, and constraint following is thin. These
-   are the generation targets for stage 2, in that order of value.
+4. **Skill coverage in Greek.** The judge's census of 1,000 rows of our Greek set: creative writing 23%, explanation 20%, advice 17%,
+   extraction and classification 8%, rewriting and summarising 7%, math 7%, code 5%, constraint following 5%, conversation 3%, reasoning 1%,
+   refusal 1%; tool use, science and puzzles 0. Stage-2 generation targets, by gap and value: reasoning, tool use, constraint following in
+   Greek (with checkers), code, science. The same census found in our own set 1.9% identity rows, 9% mannerisms, 17% unasked commands and
+   2.6% unusable answers, so the whole set (32,892 rows) is now queued for Luna after the tool-use sample and the assembler applies its labels.
 5. **Tool-use format.** The trainer accepts only system, user and assistant strings, so tool rows are rendered with `<function_calls>` and
    `<function_results>` tags, which is not the Apertus template's native tool format. Decision 6.
 6. **"Verified" sources.** Precise IF carries about 250 self-descriptions and, worse, 27% content failures in a 300-row Sol spot-check: its

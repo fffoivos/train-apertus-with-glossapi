@@ -170,7 +170,8 @@ PLAN_TOK = {'dolci_precise_if_20k': 600, 'ifeval_like': 256, 'openmath_gsm': 342
 receipt = dict(arm=args.arm, seed=args.seed, scale=args.scale, budget_tokens=args.budget_tokens, blocks=[], tokenizer='exact' if tok else 'approximate'); train, dev = [], []
 def present_rows(block, fname, mode):
     """cheap first pass: how many rows this block can actually contribute today (keep lists ∩ export), for the budget share (review S2)"""
-    if mode == 'ours': return 32892
+    if mode == 'ours':
+        k = labels_keep('greek_ours'); return len(k) if k is not None else 32892
     src = ANN / 'core_export' / fname if fname != 'greek_rewrite_2k.jsonl' else ANN / fname
     if not src.exists(): return 0
     keep = None
@@ -198,11 +199,15 @@ else: share = 1.0
 for block, fname, mode, target, weight in PLAN:
     target = int((min(avail[block], int(target * args.scale)) if args.budget_tokens else target * args.scale) * (1.0 if (block in WHOLE or not args.budget_tokens) else share)); rows = []
     if mode == 'ours':
+        ours_keep = labels_keep('greek_ours'); ours_tone = labels_tone_drop('greek_ours') if ours_keep is not None else set()  # Luna labels on our own set, when present
+        if ours_keep is not None: print(f'greek_ours: judge labels present, keep {len(ours_keep)}, tone drops {len(ours_tone)}', flush=True)
         for f in sorted((HERE / 'cache' / 'sources').glob('*.jsonl')):
             cfg = f.name.split('.')[0]
             for i, r in r1.read_jsonl(f):
                 msgs = r.get('el_messages') or r.get('messages')
-                if isinstance(msgs, list) and msgs: rows.append(dict(id=f"{cfg}:{r.get('row_id', i)}", messages=[dict(role=m['role'], content=m['content']) for m in msgs if m.get('role') in ('system', 'user', 'assistant')]))
+                rid = f"{cfg}:{r.get('row_id', i)}"
+                if ours_keep is not None and (rid not in ours_keep or rid in ours_tone): continue
+                if isinstance(msgs, list) and msgs: rows.append(dict(id=rid, messages=[dict(role=m['role'], content=m['content']) for m in msgs if m.get('role') in ('system', 'user', 'assistant')]))
     else:
         src = ANN / 'core_export' / fname if fname != 'greek_rewrite_2k.jsonl' else ANN / fname
         if not src.exists(): receipt['blocks'].append(dict(block=block, status='MISSING export', target=target)); print(f'{block}: export missing', flush=True); continue
