@@ -31,3 +31,5 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-04 03:45 | cluster | — | claude | debug QoS allows 1 running job/user → sequential grid; evals to reuse training workbenches or the normal partition; ledger rows above stamped 04:2x/04:3x/04:40 were written at 03:2x/03:3x/03:40 (clock slip, content correct) | 0/0 | 2.00 |
 | 2026-09-04 03:45 | gridA run2 | job 3287233 | claude | E1_lr5e-6_3ep_const launched on a NORMAL-partition workbench (started at once; debug pending job cancelled) | 1.5/— | 2.00 |
 | 2026-09-04 03:57 | gridA run1 | job 3286621 | claude | E1_lr1e-5_3ep_const DONE: 285 steps in 1,901 s (~9.4k tok/s), train loss 1.376, epoch1/2/3 saved; per-config dev losses in results/E1_lr1e-5_3ep_const/dev_losses.json | 1.5/— | 2.00 |
+| 2026-09-04 04:19 | light_run1_ep12 | job 3287430 | claude | light evals of run-1 epoch1+epoch2 | —/0.345 | 2.92 |
+| 2026-09-04 04:21 | gridA run2 | job 3287233 | claude | E1_lr5e-6_3ep_const DONE: 285 steps in 1,913 s, train loss 1.471, epoch1/2/3 saved; dev losses in results/E1_lr5e-6_3ep_const/dev_losses.json | 1.5/— | 2.92 |
