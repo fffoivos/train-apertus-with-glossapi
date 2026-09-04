@@ -220,6 +220,11 @@
    "date": "2026-09-04 03:45",
    "what": "Debug QoS = MaxSubmitJobsPerUser 2, MaxJobsPerUser 1 → only ONE debug workbench runs at a time. Consequence: grid runs are sequential in debug (run 2 starts when run 1's workbench ends); per-checkpoint evals reuse the training workbench's leftover time (EVAL_JOB=<id>, SKIP_NATIVE=1) or go to the normal partition (1:30 workbench, tried at 03:43); the native suite is batched two checkpoints per normal workbench",
    "by": "claude"
+  },
+  {
+   "date": "2026-09-04 04:06",
+   "what": "Format gate reading (run 1 epoch 3): ended_on_stop 0.88 / single_turn 0.88 / language_ok 0.94 vs base 0.00/0.00/0.86 — the 6 non-stops are max-length hits (3 English no_robots_en_pov prompts E1 never trained on, 1 apertus_en math, 1 fr, 1 Greek); Greek-only stop rate 13/14. The gate's 512-token cap conflates long legitimate answers with non-stopping → read the Greek subset and the trend across epochs, not the 0.95 threshold alone",
+   "by": "claude"
   }
  ]
 }
