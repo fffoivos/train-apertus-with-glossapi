@@ -1,0 +1,164 @@
+{
+  "claim_distribution": {
+    "known": 970,
+    "unknown": 9179,
+    "weakly_known": 239
+  },
+  "claims": 10388,
+  "claims_by_basis": {
+    "inferred": {
+      "known": 14,
+      "unknown": 141,
+      "weakly_known": 3
+    },
+    "known": {
+      "known": 952,
+      "unknown": 8993,
+      "weakly_known": 235
+    },
+    "uncertain": {
+      "known": 4,
+      "unknown": 45,
+      "weakly_known": 1
+    }
+  },
+  "claims_by_config": {
+    "apertus_en": {
+      "known": 573,
+      "unknown": 977,
+      "weakly_known": 70
+    },
+    "coconot": {
+      "known": 41,
+      "unknown": 361,
+      "weakly_known": 11
+    },
+    "euroblocks_de": {
+      "known": 32,
+      "unknown": 218,
+      "weakly_known": 9
+    },
+    "euroblocks_fr": {
+      "known": 25,
+      "unknown": 249,
+      "weakly_known": 9
+    },
+    "everyday": {
+      "known": 39,
+      "unknown": 812,
+      "weakly_known": 14
+    },
+    "no_robots": {
+      "known": 183,
+      "unknown": 4421,
+      "weakly_known": 86
+    },
+    "oasst": {
+      "known": 32,
+      "unknown": 504,
+      "weakly_known": 4
+    },
+    "personas_if": {
+      "known": 22,
+      "unknown": 1013,
+      "weakly_known": 21
+    },
+    "smolcon": {
+      "known": 1,
+      "unknown": 57,
+      "weakly_known": 1
+    },
+    "systemchats": {
+      "known": 22,
+      "unknown": 567,
+      "weakly_known": 14
+    }
+  },
+  "corpus_presence_distribution": {
+    "not_run": 10388
+  },
+  "knowledge_by_corpus_presence": {
+    "not_run": {
+      "known": 970,
+      "unknown": 9179,
+      "weakly_known": 239
+    }
+  },
+  "protocol": {
+    "greedy_temperature": 0,
+    "match": "normalized_token_containment",
+    "sample_count": 4,
+    "sample_temperature": 0.5,
+    "shots": 4
+  },
+  "row_distribution": {
+    "known": 660,
+    "mixed": 434,
+    "unknown": 4590
+  },
+  "rows": 5684,
+  "rows_by_config": {
+    "apertus_en": {
+      "known": 454,
+      "mixed": 119,
+      "unknown": 583
+    },
+    "coconot": {
+      "known": 29,
+      "mixed": 19,
+      "unknown": 237
+    },
+    "euroblocks_de": {
+      "known": 22,
+      "mixed": 15,
+      "unknown": 142
+    },
+    "euroblocks_fr": {
+      "known": 18,
+      "mixed": 16,
+      "unknown": 140
+    },
+    "everyday": {
+      "known": 18,
+      "mixed": 30,
+      "unknown": 465
+    },
+    "no_robots": {
+      "known": 74,
+      "mixed": 170,
+      "unknown": 1967
+    },
+    "oasst": {
+      "known": 14,
+      "mixed": 17,
+      "unknown": 261
+    },
+    "personas_if": {
+      "known": 17,
+      "mixed": 25,
+      "unknown": 469
+    },
+    "smolcon": {
+      "known": 1,
+      "mixed": 1,
+      "unknown": 33
+    },
+    "systemchats": {
+      "known": 13,
+      "mixed": 22,
+      "unknown": 293
+    }
+  },
+  "run": {
+    "batch_size": 16,
+    "device": "cuda",
+    "dtype": "bfloat16",
+    "limit": null,
+    "max_new_tokens": 48,
+    "model": "/iopsstor/scratch/cscs/fffoivos/sft_round1/models/E0b_tmpl",
+    "presence": null,
+    "questions": "/iopsstor/scratch/cscs/fffoivos/sft_round1/evals_code/knownness/questions_all.jsonl",
+    "row_universe_patterns": [],
+    "seed": 20260904
+  }
+}
