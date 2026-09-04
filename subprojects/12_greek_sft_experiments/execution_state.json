@@ -142,7 +142,7 @@
    "checkpoint": "before phase-B spend"
   },
   "phaseB": {
-   "status": "E2, E3 light evals DONE (E3 interviews 2.91 = best); E3prime trained 07:40, light evals running",
+   "status": "DONE 07:58: E2, E3, E3prime trained and light-evaluated; adaptation verdict written",
    "deps": [
     "R3_review"
    ],
@@ -251,6 +251,11 @@
    "date": "2026-09-04 06:36",
    "what": "Seed-only floor on dev loss (cosine, 2 ep): mean Greek 1.374 vs 1.365, max per-config gap 0.052",
    "by": "claude"
+  },
+  {
+   "date": "2026-09-04 07:58",
+   "what": "ADAPTATION VERDICT (provisional): E3 (Greek-POV adapted slices) beats E3′ (raw) on interviews 2.91 vs 2.63 (floor 0.02), voice 0.959 vs 1.109 (floor 0.05), stop 0.90 vs 0.80, ifeval 0.497 vs 0.470 (floor 0.01); MGSM within floor. Adapting the imported data to the Greek point of view is worth it.",
+   "by": "claude"
   }
  ],
  "results": {
@@ -313,6 +318,13 @@
    "weakly": 239,
    "unknown": 9179,
    "caveat": "base-model QA-format probe; unknown is an upper bound"
+  },
+  "E3prime_cos_ep2": {
+   "ifeval_strict": 0.47,
+   "mgsm": 0.408,
+   "gate_stop": 0.8,
+   "voice_delta": 1.109,
+   "int_mean": 2.63
   }
  },
  "artifacts": {

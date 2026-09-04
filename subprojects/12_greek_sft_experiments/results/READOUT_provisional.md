@@ -292,7 +292,7 @@ adaptation question's first number, the light evals the second.
 | E1 reference (seeds 43 / 44) | 0.460 / 0.470 | 0.416 / 0.444 | 0.88 / 0.92 | 1.000 / 0.946 | 2.61 / 2.59 |
 | E2 (+ paired English no_robots) | 0.473 | 0.404 | 0.92 | 0.943 | 2.56 |
 | E3 (+ skills and fr/de, Greek POV) | 0.497 | 0.384 | 0.90 | 0.959 | **2.91** (language discipline 4.08, the best of all arms) |
-| E3′ (same rows, raw) | pending | pending | pending | pending | pending |
+| E3′ (same rows, raw) | 0.470 | 0.408 | 0.80 | 1.109 | 2.63 (factuality 1.85, identity 2.60) |
 
 E2 sits inside the seed floor on every Greek metric: the paired English rows neither help nor hurt the Greek behaviour
 (they move the English-twin dev loss, as intended). E3 raises Greek IFEval by ~0.03 (three times the seed floor) and lowers
@@ -333,3 +333,39 @@ apertus_en slice (English questions, math/code personas) scores 37% known; the G
 knowledge-alignment risk of plan §8 is real and large by this probe; and the probe itself needs calibration — run it on the
 SFT'd pick (which can answer in the format) and on a set of claims known to be true and in the CPT corpus before E7 filters
 on these labels. Rows: 5,684 with claims → labels none / known / mixed / unknown are in `results/E0b/knownness/knownness_rows.jsonl`.
+
+
+## The adaptation question — E3 (Greek point of view) vs E3′ (the same rows, raw)
+
+| metric | E3 adapted | E3′ raw | gap | seed floor |
+|---|---|---|---|---|
+| ifeval_greek strict | 0.497 | 0.470 | +0.027 | 0.01 |
+| mgsm_greek | 0.384 | 0.408 | −0.024 | 0.03 |
+| gate stop rate | 0.90 | 0.80 | +0.10 | 0.04 |
+| voice Delta (lower = closer to the house voice) | 0.959 | 1.109 | −0.150 | 0.05 |
+| interview mean (1–5) | 2.91 | 2.63 | +0.28 | 0.02 |
+| interview: Greek-assistant identity | 2.85 | 2.60 | +0.25 | — |
+| interview: factuality | 2.27 | 1.85 | +0.42 | — |
+| interview: language discipline | 4.08 | 4.00 | +0.08 | — |
+
+**Verdict (provisional, before the owner's reading):** adapting the imported slices to the Greek point of view is worth it.
+The adapted mix reads better by every vibe measure — interviews +0.28 (fourteen times the seed floor), voice 0.15 closer to
+no_robots-el, stopping cleanly 90% vs 80% — and scores higher on Greek IFEval, at no cost on Greek math beyond the floor.
+The raw slices pull the model toward an American assistant: lower identity and factuality scores in the interviews, a voice
+further from the reference. This is the result the dataset was built to test.
+
+## Native-Greek suite — pick vs rival (frozen fp32 scorer)
+
+| benchmark | base (card) | pick (1e-5, ep2) | rival (5e-6, ep3) |
+|---|---|---|---|
+| asep_mcqa | 0.562 | 0.614 | 0.613 |
+| demosqa | 0.469 | 0.472 | 0.477 |
+| gpcr | 0.608 | 0.655 | 0.644 |
+| medical_mcqa | 0.425 | 0.489 | 0.494 |
+| oyxoy_metaphor | 0.345 | 0.552 | 0.581 |
+| oyxoy_nli | 0.651 | 0.643 | 0.642 |
+| oyxoy_wic | 0.549 | 0.775 | 0.775 |
+| oyxoy_wsd_definition | 0.385 | 0.390 | 0.392 |
+| **macro (8)** | 0.499 | 0.574 | 0.577 |
+
+Both SFT checkpoints sit above the base on the macro; the pick and the rival are within a point of each other.
