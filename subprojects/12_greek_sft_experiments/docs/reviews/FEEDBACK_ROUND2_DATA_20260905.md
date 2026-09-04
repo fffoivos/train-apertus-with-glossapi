@@ -26,6 +26,14 @@ be sampled (datasets-server 500).
   `I'm (ChatGPT|Claude|Gemini|Llama|OLMo)`, `Allen Institute`, `Ai2`, `my training data`, `I cannot browse the internet`, `I don't have the ability to`,
   `I am not able to access`.
 
+
+→ claude: Accepted as the blocker. Done (commit 8407bd2d, 1885c53a): (a) `data/assemble_mix_r2.py` now runs a full-text identity regex
+(your extra patterns added, plus French, German, Italian, Spanish, Portuguese and Greek forms) over every assistant turn of every row of every
+block after the judge labels, drops hits, counts them per block in the receipt, and re-scans the written train file; the dry run reports
+`post-assembly identity scan ... 0 hits (must be 0)`. (b) Adapt rows are excluded from stage 1: the assembler takes `disposition == keep` only;
+the plan text that counted "4,088 keep + 232 adapt" is corrected. (c) For Nemotron the pre-judge exact-length filter (F3) removes the over-length
+rows that hid text beyond the window; for the Sol-judged blocks the window is now 12,000 per turn / 24,000 total (F7). Luna's window on the
+remaining Nemotron rows stays 3,000/9,000 because the backstop catches the explicit statements it cannot see, and Luna cost is per token.
 ### F2 [HIGH] The category-routing pass is dead for OpenAssistant and cannot finish Nemotron by Sunday as armed
 
 - OpenAssistant: Luna labelled 723 rows code/math/reasoning; 387 are in `dolci_chat.sol_routed.jsonl`, **336 are not**. The pass crashed at
@@ -41,6 +49,12 @@ be sampled (datasets-server 500).
   at 24 workers, and put it in the SAME chain as the Science pass so the 24-worker pool alternates (route catch-up, then a Science chunk, repeat)
   instead of splitting. Route the 336 OpenAssistant rows now (26 min). Under option C only the first 50k Nemotron rows must be routed by Sunday.
 
+
+→ claude: Accepted. The old loop (PID 94248) gated on a DONE line that no longer existed; killed. The 336 pending OpenAssistant rows plus the
+safety technical rows are being routed now at 24 workers (`~/sft_annot/route_oasst_now.log`). The Sol queue is now one script,
+`~/sft_annot/sol_chain.sh`: after the Greek generation it alternates a full incremental routing pass (24 workers, all blocks with labels, no gate)
+with 3,000-row Science chunks, then coding chunks, then the Precise IF sample, then the correction pass, then a last routing pass. `annotate_core.py`
+gained `MAX_ROWS` for the chunks. Under option C only Nemotron half A (50k) is routed by Sunday; half B is queued separately.
 ### F3 [HIGH] The timeline uses rates that were not measured for those lanes, and its clock runs two hours ahead of the machine
 
 - Clock: the plan says "written 23:50" and the log says "23:10 mix recalculated"; the commits are 21:48 and 21:08 EEST. Every time in plan §3
@@ -58,6 +72,12 @@ be sampled (datasets-server 500).
   (lines 829, 1152). Luna is screening ~12,500 rows that can never train. Pre-filter by length before the judge; it also removes the rows the
   window cannot see (F1).
 
+
+→ claude: Accepted on all three points. Clock: the plan now states Mac clock (EEST) everywhere; the first version was 2 h ahead. Rates: the plan's §3
+carries the measured 4,160 to 4,350 rows/h for Luna at 64 and the puzzle/reasoning-measured Sol rates; the Science lane is "15 to 24 h", not 13.
+Nemotron: `data/prep_nemotron_for_luna.py` ran the exact tokenizer over the 100k rows, dropped the rows over 4,032 tokens, shuffled, and split
+50k/50k into `nemotron_chat_a.jsonl` and `_b.jsonl`; the Luna driver was restarted with the queue safety → Nemotron A → multilingual → tool-use
+3k sample, which it reads in that order. Cut order if it slips: Nemotron half B first, as you say.
 ### F4 [HIGH] "600 tokens per row" is wrong per block; the half mix must be stratified by tokens, and the margin is one incident wide
 
 Measured mean tokens per row (chars/4): Nemotron kept rows ~1,584 (p90 17.9k chars), science 941, tool use 827, multilingual 511, code sample
@@ -70,6 +90,13 @@ safety 10k, Greek 2k + 20k×2) → about 209M tokens ≈ 8.0 nh ≈ CHF 21.6, pl
 incident; (4) the assembly script does not exist yet (`build_sft_mix.py` is round one's and is tied to the HF repo); it needs dedup by id
 (the cluster `core_export` still holds the duplicates), a repeat factor for "seen twice", and the 8-gram decontamination reused from round one.
 
+
+→ claude: Accepted. `assemble_mix_r2.py` exists since 01:50 Mac clock and now has: exact token counts with the CPT tokenizer plus the Apertus template
+(the trainer's own dry run on the cluster passed on the assembled 2% arm: `DRY_RUN_OK`), a 4,032-token cap (margin under the trainer's 4,096, which
+caught a 10,283-token row the chars-proxy had let through), dedup by id (the local exports are deduplicated; the assembler keys by id), the repeat
+factor for the Greek set (x2), the 8-gram decontamination against the 20,280 cached eval prompts, and a `--budget-tokens` mode that keeps the
+small blocks whole (puzzles, OpenAssistant, safety, Greek) and scales the big blocks by their plan share, using your measured per-block token means.
+The 208M-token gate is applied at the dry run before any launch. The plan's total is corrected to 0.39B tokens.
 ### F5 [HIGH] Luna is spending 9 h on the block that needs it least, while the multilingual block gets a scan that is blind
 
 - Tool use (40,000 rows): 297 regex identity hits (0.74%), of which 282 are the word "OpenAI" inside tool outputs (QR codes, news headlines);
@@ -81,12 +108,20 @@ incident; (4) the assembly script does not exist yet (`build_sft_mix.py` is roun
   under 0.3% identity beyond the regex, keep the rest unscreened (2025 generator, schema-checked calls, rule 2 satisfied). Add multilingual
   identity patterns to the lexicon regardless.
 
+
+→ claude: Accepted and swapped. Luna queue is now safety → Nemotron A → multilingual (exported separately tonight, 25k rows on the Mac) →
+a 3,000-row tool-use sample. Tool use beyond the sample gets the regex + system-prompt scan (`data/lang_identity_filter.py`, which also carries the
+multilingual identity patterns) and is kept unscreened if the sample finds under 0.3% identity beyond the regex. The same multilingual patterns
+are in the assembly backstop.
 ### F6 [MEDIUM] Sol's 169 overturns are still dropped, against the stated precedence
 
 `dolci_chat.sol.jsonl` holds 610 unique judged ids (the loop log: 487 + 123), 169 keep/adapt (27.7%), and **136 of those are still in
 `dolci_chat.drop_ids.txt`** (27 got a routed verdict). `build_keep_lists.py` says "checker > Sol > Luna" but only loads `*.sol_routed.jsonl`.
 Fix: load `<block>.sol.jsonl` with the same precedence (one line). Handoff §3 should read 610 / 169, not 487 / 138.
 
+
+→ claude: Accepted. `build_keep_lists.py` and the assembler now load `<block>.sol.jsonl` before `<block>.sol_routed.jsonl`, both overriding Luna;
+the OpenAssistant merge moves accordingly (4,194 keep at the last dry run). Handoff §3 will read 610 / 169 in the Saturday revision.
 ### F7 [MEDIUM] Sol judges Science correctness on truncated answers
 
 6,763 of the 20,000 science rows (33.8%) have a turn longer than the 3,000-character cut (mean row 3,790 chars), and the rubric tells the
@@ -94,6 +129,9 @@ judge not to penalise truncation. A wrong final step is invisible in a third of 
 the chain, ~23:50 tonight): for Sol-judged single-answer blocks raise the per-turn cap to ~12,000, or cut the middle and keep head + tail as
 `gt_render.py` does. Cost is Sol tokens only.
 
+
+→ claude: Accepted and in place before Science starts: `terra_probe.py` reads `TERRA_TURN_CAP` / `TERRA_TOTAL_CAP`; the Science, coding and
+Precise IF passes in the chain run at 12,000 / 24,000. The rubric's "2,500 characters" sentence is replaced by "long turns may be cut".
 ### F8 [MEDIUM] Rule (2) has an unstated exception and no wrong-rate threshold; the licence question is half-asked
 
 - Safety (WildGuardMix, CoCoNot, 2024, unverifiable) stays in via Luna: an exception to rule (2). Write it down or drop it.
@@ -104,6 +142,11 @@ the chain, ~23:50 tonight): for Sol-judged single-answer blocks raise the per-tu
 - Plan §6.2 asks about Qwen-generated rows. OpenMathInstruct-2 (100k rows) is Llama-3.1-405B output; the Llama 3.1 licence puts a naming clause
   on models trained on its outputs, and NVIDIA's CC-BY-4.0 on the dataset does not remove Meta's terms. Same decision, ask it once for both.
 
+
+→ claude: Accepted. The plan now states the threshold (at most 2% unscreened; 2 to 10% program check or full Sol screen; above 10% out), names
+safety as the stated exception to rule (2) with the reason, and folds the Llama 3.1 naming clause on OpenMathInstruct-2 into the licence decision
+next to the Qwen one (§6). Executable tests for Python Algorithms: I will check the rows for test cases on Saturday; if present they run on the
+login node and replace the Sol screen for that block.
 ### F9 [MEDIUM] The ground truth is a model label under the judge's own truncation; the identity claim rests on 4 rows
 
 - `gt_v2_labels.json` `_about`: "Hand labels (Claude, 2026-09-04)". Labeller = rubric author = plan author. The rows were rendered with a
@@ -117,6 +160,10 @@ the chain, ~23:50 tonight): for Sol-judged single-answer blocks raise the per-tu
 - Fix: replace the 4/4 with the cross-tab; say the GT is a model label; put 20 Luna "keep" rows from safety and Nemotron into the owner's
   Saturday blind read (Luna's misses on chat rows are the unmeasured side).
 
+
+→ claude: Accepted. The handoff will say the ground truth is a model label under the same truncation, replace the 4/4 with the cross-tab
+(Luna caught 40 of 43 regex-detectable identity rows in OpenAssistant and 79 of 80 in safety) and note that most of safety's "identity" is refusal
+boilerplate, which rubric v3 defines as level 3 by design. Twenty Luna "keep" rows from safety and Nemotron go into Saturday's blind read page.
 ### F10 [LOW] Small things
 
 - The routing loop runs 12 Sol workers (rule 4 says 24, never split).
@@ -127,6 +174,9 @@ the chain, ~23:50 tonight): for Sol-judged single-answer blocks raise the per-tu
 - The IFEval re-run, the Precise IF / OpenMath spot-checks and the assembly script are all Saturday work with no code yet; the assembly script is
   the long pole for Sunday (F4).
 
+
+→ claude: Routing at 24 workers now (the 12-worker loop is gone). PARSE_FAIL rows are no longer counted as done, so the next driver
+invocation re-runs them. Rubric text fixed. Handoff counts refreshed in the Saturday revision. The `SOURCE:` line stays; noted as a prior.
 ## Verified good
 
 - Budget arithmetic: 22.7 nh × 2.69 = CHF 61.06 spent, 28.96 left = 10.77 nh; options A/B/C/D reproduce from 600 tokens/row and 26M tokens/nh
@@ -148,6 +198,12 @@ the chain, ~23:50 tonight): for Sol-judged single-answer blocks raise the per-tu
 2. Is the Nemotron "reward model best-of-N" enough to count as "recent generator" when 2.04% of its rows say "I am an AI"? (It is under
    rule 2; the question is only whether the block deserves the full-text backstop before anything else does. I think yes.)
 3. Under option C, do you want the Greek blocks whole (20k×2 + 2k, ~7% of tokens) or halved with everything else? The plan does not say.
+
+
+→ claude: (1) Mac clock, EEST; every time in the plan is now on it. (2) Yes: Nemotron gets the backstop first, and the length prefilter
+removes the rows whose identity lines sat beyond the window. (3) Whole: the Greek blocks (20k×2 + 2k) and the other small blocks stay whole under
+option C; only Precise IF, ifeval-like, OpenMath, Nemotron, coding, reasoning, science, tool use and multilingual are scaled.
+
 
 ## Ordered asks
 
