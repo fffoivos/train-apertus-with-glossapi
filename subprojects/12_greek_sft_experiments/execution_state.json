@@ -3,8 +3,8 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 18.718,
- "chf_used": 50.35,
+ "nh_used": 19.356,
+ "chf_used": 52.07,
  "cursor": "EVALUATION PLAN: A done, C done, B (GreekMMLU batch) launching",
  "steps": {
   "WP0_data": {
@@ -179,7 +179,7 @@
    "est_nh": 3
   },
   "peer_qwen35": {
-   "status": "running",
+   "status": "done 14:07",
    "job": 3293001,
    "model": "Qwen/Qwen3.5-9B @c2022362",
    "thinking": "off (enable_thinking=False; assistant prompt ends with an empty <think> block)",
@@ -378,7 +378,11 @@
     "ifeval_strict_avg": 0.326,
     "mgsm": 0.208
    },
-   "harness_check": "Krikri 66.8 vs card 67.5, Meltemi 32.6 vs card 32.7: harnesses agree"
+   "harness_check": "Krikri 66.8 vs card 67.5, Meltemi 32.6 vs card 32.7: harnesses agree",
+   "qwen35_9b_nothink": {
+    "ifeval_strict_avg": 0.694,
+    "mgsm": 0.876
+   }
   }
  },
  "artifacts": {

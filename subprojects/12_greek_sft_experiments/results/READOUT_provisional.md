@@ -1,7 +1,7 @@
 # Round One Readout
 
 *Autonomous run, night of 2026-09-03 → 04. Written 2026-09-04 07:06; the sections below are the running record and
-update as chains finish (last update 09:20; round one complete). CHF used so far: 50.35 of the 90 cap (rate CHF 2.69 per node-hour).*
+update as chains finish (last update 09:20; round one complete). CHF used so far: 52.07 of the 90 cap (rate CHF 2.69 per node-hour).*
 
 ## Executive summary
 
@@ -396,10 +396,11 @@ the MCQ sets +0.03–0.06 — systematic to SFT. E1-last recovers WiC (0.34 → 
 
 ## Peers on the same harness (2026-09-04, evaluation plan Part A)
 
-Greek IFEval and Greek MGSM, scored with our harness, on four public instruct models. The harness agrees with ILSP's published numbers (Krikri 66.8% here vs 67.5% on its card; Meltemi 32.6% vs 32.7%), so the comparison holds.
+Greek IFEval and Greek MGSM, scored with our harness, on five public instruct models (Qwen3.5-9B run with thinking off, 14:07). The harness agrees with ILSP's published numbers (Krikri 66.8% here vs 67.5% on its card; Meltemi 32.6% vs 32.7%), so the comparison holds.
 
 | model | IFEval prompt-strict | IFEval inst-strict | IFEval strict avg | Greek MGSM |
 |---|---|---|---|---|
+| Qwen3.5-9B, thinking off | 0.649 | 0.740 | **69.4%** | 0.876 |
 | Llama-Krikri-8B-Instruct (ILSP card: 67.5%) | 0.614 | 0.723 | **66.8%** | 0.676 |
 | Apertus-8B-Instruct-2509 (no Greek CPT) | 0.505 | 0.615 | **56.0%** | 0.532 |
 | Gemma-3-12B-it (50% larger) | 0.675 | 0.763 | **71.9%** | 0.908 |
@@ -412,7 +413,7 @@ Greek IFEval and Greek MGSM, scored with our harness, on four public instruct mo
 | ours: raw imports, epoch 2 | 0.470 | 0.579 | **52.4%** | 0.408 |
 | ours: from the terminal CPT checkpoint | 0.429 | 0.540 | **48.4%** | 0.328 |
 
-**Reading.** Our best run sits level with Apertus-8B-Instruct on instruction following (56.2% vs 56.0%) and 11 points below Krikri. On Greek math every one of our runs is below Apertus-8B-Instruct (0.40 vs 0.53) and far below Krikri (0.68) and Gemma (0.91). Greek CPT plus twenty thousand SFT rows did not buy math; the peers were trained on millions of rows including math and constraint data. Meltemi is below all of ours on both.
+**Reading.** Our best run sits level with Apertus-8B-Instruct on instruction following (56.2% vs 56.0%) and 11 points below Krikri. On Greek math every one of our runs is below Apertus-8B-Instruct (0.40 vs 0.53) and far below Krikri (0.68), Qwen3.5-9B (0.88) and Gemma (0.91). Qwen3.5-9B, a general model at our size with no Greek tuning, also beats Krikri on Greek IFEval (69.4% vs 66.8%). Greek CPT plus twenty thousand SFT rows did not buy math; the peers were trained on millions of rows including math and constraint data. Meltemi is below all of ours on both.
 
 ## Blind reading, round two (Claude as rater, tone axis)
 

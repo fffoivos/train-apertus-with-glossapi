@@ -1,5 +1,6 @@
 | model | IFEval prompt-strict | IFEval inst-strict | IFEval strict avg | Greek MGSM |
 |---|---|---|---|---|
+| Qwen3.5-9B, thinking off | 0.649 | 0.740 | **69.4%** | 0.876 |
 | Llama-Krikri-8B-Instruct (ILSP card: 67.5%) | 0.614 | 0.723 | **66.8%** | 0.676 |
 | Apertus-8B-Instruct-2509 (no Greek CPT) | 0.505 | 0.615 | **56.0%** | 0.532 |
 | Gemma-3-12B-it (50% larger) | 0.675 | 0.763 | **71.9%** | 0.908 |
