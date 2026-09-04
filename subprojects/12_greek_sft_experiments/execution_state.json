@@ -392,7 +392,8 @@
   "reading_round_two": "https://claude.ai/code/artifact/fa8d4fa7-f210-4a1f-8ae5-9bb6d2814e97",
   "greek_ifeval_deck": "https://claude.ai/code/artifact/f83dfe8a-eda3-4488-8818-72a3a198c6fc",
   "greek_bench_browser": "https://claude.ai/code/artifact/06b69da8-3533-4f94-9a4b-fd2bcf810dde",
-  "sft_round2_plan": "https://claude.ai/code/artifact/69cb3de6-2feb-4997-af94-381629e3aba2"
+  "sft_round2_plan": "https://claude.ai/code/artifact/69cb3de6-2feb-4997-af94-381629e3aba2",
+  "sft_data_candidates_deck": "https://claude.ai/code/artifact/89c261c7-052a-4b44-ae7f-6cc2e7182da8"
  },
  "followups": [
   "ILSP harness: language:response_language scores 0 for every model (langdetect missing on the cluster); 31 instructions / 17 single-instruction prompts auto-fail; rescore saved samples offline after installing langdetect (up to +3.5 strict avg for all)"
