@@ -60,7 +60,7 @@ the regex scan; Sol alternates routing with science chunks so the 24 workers are
 |---|---|---|---|
 | Fri 23:00 | safety, about 9,500 left, 2.3 h | Greek rewriting to 2,000 rows (00:00); OpenAssistant technical rows routed | multilingual export landed; Nemotron halves prepared |
 | Sat 01:30 | Nemotron half A, ~48k rows after the length filter, about 11.5 h | routing pass, then Science in 3,000-row chunks alternating with routing, 15 to 20 h | exports done; Precise IF sample 300 queued on Sol |
-| Sat 13:00 | multilingual 25k, 6 h | Science continues | assembly script final; blind read pages for the owner (Greek set + 20 Luna keep rows) |
+| Sat 13:00 | multilingual 25k, 6 h | Science continues | assembly script final; blind read pages for the owner (Greek set https://claude.ai/code/artifact/dc57edac-97cc-472e-810e-e336f03d63f2 ; judge keep rows https://claude.ai/code/artifact/fbd19acd-5e48-4de4-b19d-df3e9eba5594) |
 | Sat 19:00 | tool-use 3k sample, 45 min; then Nemotron half B if time allows | coding 20k in chunks, 13 h | keep-lists merged as blocks finish |
 | Sun 08:00 | Nemotron B continues or is cut | Precise IF spot-check, Greek correction pass, last routing pass | full assembly under the 208M-token budget, decontamination, trainer dry run on the cluster (gate) |
 | Sun 14:00 to 22:00 | | | receipts, plan and handoff updated, training config written |
