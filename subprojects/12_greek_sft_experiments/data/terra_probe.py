@@ -9,18 +9,22 @@ SCHEMA = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'annotation_sc
 os.makedirs(OUT, exist_ok=True)
 
 RUBRIC = """You label ONE training row (a user prompt and an assistant answer) for a Greek assistant project. Judge the ASSISTANT ANSWER.
+The row may contain several turns: the USER field is the user turns in order, the ASSISTANT field the assistant turns in order; pair them in order. Text may be cut at 2,500 characters: judge what is shown and do NOT penalise truncation or a missing ending.
 
 vantage (0-3): does the answer presuppose a non-Greek world in a way that matters to a Greek user?
  0 neutral: math, code, tables, format tasks, tool calls, rewriting or summarising given text, general knowledge with no locale.
- 1 incidental: a foreign name, place or brand appears, nothing in the advice depends on it.
- 2 framed: the answer assumes a foreign world in a way that would misinform or misfit a Greek user: advice or procedure bound to a foreign state (the IRS or NHS, ZIP codes, "your state's law", US or UK agencies and rules), prices or budgets given as advice in dollars, imperial units in advice, holidays, school systems, foreign institutions presented as the user's own. Currency or units that merely restate a math problem's givens are level 1, not 2.
- 3 asserted: the answer states an identity or locale outright ("as an AI developed by X", "I am ChatGPT", "as a US resident you"), or a refusal framed around a named foreign product's policy.
-frame_type: what carries the framing, if vantage >= 2 (else "none").
+ 1 incidental: a foreign name, place, brand, currency or unit appears but the advice does not depend on it. This includes every case where the USER fixed the foreign setting (asked about a US county, US law, a US trip, gave dollar amounts): answering inside the user's own frame is level 1.
+ 2 framed: the answer itself introduces a foreign world that would misinform or misfit a Greek user who did not ask for it: procedures of the IRS or NHS, ZIP codes, "your state's law", prices or budgets given as advice in dollars, imperial units in advice, holidays, school systems, foreign institutions presented as the user's own.
+ 3 asserted: the assistant describes itself as an AI, a language model or an assistant with capability or knowledge limits ("as an AI I cannot…", "I'm an AI, not a doctor", "my knowledge cutoff is…", "I don't have access to real-time data"), names a creator or product (OpenAI, Ai2, ChatGPT, OLMo), or speaks as a member of a foreign nation ("our national anthem"). Any such sentence makes the row level 3 even if the rest is useful.
+frame_type: what carries the framing (identity for level 3; "none" for levels 0-1).
 skill: the main thing the row teaches.
-quality: 1 wrong or useless, 2 acceptable, 3 good and complete.
-mannerism: true if the answer opens or closes with chatbot phrases ("Great question!", "Certainly!", "I hope this helps", "Let me know if"), or gushes.
-imperatives: true if the answer gives second-person commands the user did not ask for.
-disposition: keep = use as is (levels 0-1, quality 2-3); adapt = the skill is valuable and only the frame is wrong (level 2, quality 2-3), worth rewriting to a Greek frame; drop = remove: quality 1, identity rows (level 3), refusals that cite a foreign product's policy or read as boilerplate, chatbot-mannerism-heavy answers with no other value, framed rows whose skill is low.
+quality: 1 wrong, harmful or useless in what is shown; 2 acceptable; 3 good. Incomplete because of the 2,500-character cut is NOT quality 1.
+mannerism: true only if the answer opens or closes with chatbot phrases ("Great question!", "Certainly!", "I hope this helps", "Let me know if you need anything else") or gushes with exclamation marks.
+imperatives: true if the answer gives the user second-person commands they did not ask for.
+disposition:
+ keep = levels 0-1 with quality 2-3.
+ adapt = the skill is valuable and the only problem is the frame: level 2 with quality 2-3, or level 3 where the identity sentence is one line on an otherwise good answer.
+ drop = quality 1; level 3 where the identity or refusal boilerplate is the substance of the answer; refusals that cite a foreign product's policy; persona chats that ignore the user's request; sexual, fetish, demeaning or vulgar roleplay; fabricated private records about named people.
 adapt_note: for adapt only, what to change, at most 20 words. why: at most 15 words.
 Return ONLY the JSON object."""
 
