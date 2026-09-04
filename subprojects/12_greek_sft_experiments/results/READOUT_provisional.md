@@ -1,7 +1,7 @@
 # Round One Readout
 
 *Autonomous run, night of 2026-09-03 → 04. Written 2026-09-04 07:06; the sections below are the running record and
-update as chains finish (last update 07:56). CHF used so far: 42.68 of the 90 cap (rate CHF 2.69 per node-hour).*
+update as chains finish (last update 07:56). CHF used so far: 47.81 of the 90 cap (rate CHF 2.69 per node-hour).*
 
 ## Executive summary
 
@@ -40,7 +40,7 @@ E3 is also the best-reading arm of the whole round on the interviews.
 a base model largely fails, so this is an upper bound on ignorance. The risk of plan §8 is real; the probe needs calibration
 on the SFT'd pick before E7 filters on it.
 
-**Still running.** E1-last's native suite (does its NLI/WiC deficit survive SFT?). The rival's and the replicate's are in: all three SFT checkpoints land on the same profile (macro-8 ≈ 0.57 vs the base's 0.50; NLI flat, WiC and metaphor up 0.2) — the guard passes and the jump is systematic. GreekMMLU needs your go.
+**Guards complete except GreekMMLU.** All four SFT checkpoints pass the native-Greek suite (macro-8 ≈ 0.57 vs the base's 0.50; NLI flat, WiC and metaphor +0.2 — systematic). E1-last's NLI goes 0.387 → 0.388 and WiC 0.336 → 0.737: the deficit persists after SFT. GreekMMLU needs your go.
 
 **Three decisions for you.**
 1. **G3:** confirm (lr 1e-5, 2 epochs) — after the blind reading: https://claude.ai/code/artifact/690e0be1-dff4-4d25-ac8e-d49b861ab19c
@@ -376,3 +376,22 @@ further from the reference. This is the result the dataset was built to test.
 | **macro (8)** | 0.499 | 0.574 | 0.577 |
 
 Both SFT checkpoints sit above the base on the macro; the pick and the rival are within a point of each other. The replicate (seed 43, cosine) reproduces the pick's profile exactly (macro-8 0.573; WiC 0.775, metaphor 0.568, NLI 0.642) — the jump on the likelihood scorer is systematic to SFT, not a seed accident. E1-last's native is running.
+
+
+## Native-Greek suite — all four SFT checkpoints vs their bases (frozen fp32 scorer)
+
+| benchmark | base 18-avg (card) | base 17 terminal (card) | pick 1e-5 ep2 | rival 5e-6 ep3 | replicate (cos, s43) | E1-last (base 17) |
+|---|---|---|---|---|---|---|
+| asep_mcqa | 0.562 | 0.551 | 0.614 | 0.613 | 0.616 | 0.601 |
+| demosqa | 0.469 | 0.466 | 0.472 | 0.477 | 0.467 | 0.464 |
+| gpcr | 0.608 | 0.629 | 0.655 | 0.644 | 0.639 | 0.624 |
+| medical_mcqa | 0.425 | 0.384 | 0.489 | 0.494 | 0.487 | 0.463 |
+| oyxoy_metaphor | 0.345 | 0.339 | 0.552 | 0.581 | 0.568 | 0.339 |
+| oyxoy_nli | 0.651 | 0.387 | 0.643 | 0.642 | 0.642 | 0.388 |
+| oyxoy_wic | 0.549 | 0.336 | 0.775 | 0.775 | 0.775 | 0.737 |
+| oyxoy_wsd_definition | 0.385 | 0.381 | 0.390 | 0.392 | 0.391 | 0.384 |
+| **macro (8)** | 0.499 | 0.434 | 0.574 | 0.577 | 0.573 | 0.500 |
+
+E1-last's NLI goes 0.387 → 0.388 and WiC 0.336 → 0.737: the deficit persists after SFT. All SFT checkpoints on the averaged base share one profile (macro-8 ≈ 0.57): NLI flat, WiC and metaphor +0.2,
+the MCQ sets +0.03–0.06 — systematic to SFT. The averaged base remains the better starting point on the light evals
+(MGSM, IFEval, interviews); on this guard the two bases converge after SFT.
