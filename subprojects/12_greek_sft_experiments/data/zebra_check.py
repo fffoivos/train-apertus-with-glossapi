@@ -81,20 +81,22 @@ def solve(attrs, cons):
                 if k == 'gap1' and abs(p1 - p2) != 2: return False
                 if k == 'gap2' and abs(p1 - p2) != 3: return False
         return True
-    sols = []
+    sols = []; budget = [400000]
     def rec(i, assign):
-        if len(sols) > 1: return
+        if len(sols) > 1 or budget[0] <= 0: return
+        budget[0] -= 1
         if i == len(names): sols.append(dict(assign)); return
         for perm in itertools.permutations(attrs[names[i]]):
             assign[names[i]] = list(perm)
             if ok(assign): rec(i + 1, assign)
             del assign[names[i]]
-    rec(0, {}); return sols
+    rec(0, {}); return sols if budget[0] > 0 or len(sols) > 1 else None
 
 rows = [json.loads(l) for l in open(sys.argv[1])]
 labels = json.load(open(sys.argv[2])) if len(sys.argv) > 2 else None
 stats = dict(total=0, parsed=0, unique=0, agree=0, disagree=0, unparsed=0, multi=0); out = []
 for i, r in enumerate(rows):
+    if i and i % 500 == 0: print('progress', i, stats, file=sys.stderr, flush=True)
     text = r['user']; stats['total'] += 1
     ms = re.search(r'sort these words in (ascending|descending) order.*?list: (.+?)\s*$', text, re.S)
     if ms and 'houses' not in text:
@@ -113,6 +115,7 @@ for i, r in enumerate(rows):
         stats['unparsed'] += 1; out.append((i, 'unparsed-clue: ' + '; '.join(cl for cl, cc in zip(clues, cons) if cc is None)[:120])); continue
     stats['parsed'] += 1
     sols = solve(attrs, cons)
+    if sols is None: stats['budget'] = stats.get('budget', 0) + 1; out.append((i, 'unparsed budget')); continue
     if len(sols) != 1: stats['multi'] += 1; out.append((i, f'{len(sols)} solutions')); continue
     stats['unique'] += 1
     qattr = m.group(1).strip(); house = int(m.group(2)) - 1

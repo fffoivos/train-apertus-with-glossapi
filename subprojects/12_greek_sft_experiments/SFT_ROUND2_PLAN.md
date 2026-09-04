@@ -101,6 +101,12 @@ Once a source is shown to be (a) high quality and (b) verified by a program, its
 verdict; only identity and framing labels apply, and where framing is negligible the source is not screened at all.
 The quality screen is for unverified sources, where wrong answers actually live.
 
+Judge tiering (owner, 2026-09-04): a checker wherever one exists (puzzles, word sorts, final-answer math, constraint
+checkers); Sol (gpt-5.6-sol, 24 workers, default tier) for rows that need raw intellect: correctness calls on unverified
+reasoning-heavy sources (persona math, science, coding) and a second opinion on every "wrong answer" drop Luna makes on
+chat rows, so that a Luna false drop costs a Sol call rather than a good row; Luna for the bulk identity, framing, tone
+and skill labels.
+
 | source | how answers were checked | trust | screen |
 |---|---|---|---|
 | Dolci Precise IF, ifeval-like filtered | constraint checkers pass on every row | verified | none |
