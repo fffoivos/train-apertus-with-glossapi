@@ -17,6 +17,10 @@ b, i, d = sys.argv[1:4]
 cfg = json.load(open(f'{b}/tokenizer_config.json')); cfg['chat_template'] = open(f'{i}/chat_template.jinja').read()
 json.dump(cfg, open(f'{d}/tokenizer_config.json', 'w'), indent=1, ensure_ascii=False)
 g = json.load(open(f'{d}/generation_config.json')); g['eos_token_id'] = [2, 68]; json.dump(g, open(f'{d}/generation_config.json', 'w'), indent=1)
-c = json.load(open(f'{d}/config.json')); print('eval copy:', d, '| rope_theta' in c and 'rope_theta' or 'NO rope_theta', '| vocab', c.get('vocab_size'), '| tie', c.get('tie_word_embeddings'))
+c = json.load(open(f'{d}/config.json'))
+rp = c.get('rope_parameters') or c.get('rope_scaling') or {}
+if 'rope_theta' not in c and isinstance(rp, dict) and 'rope_theta' in rp:
+    c['rope_theta'] = rp['rope_theta']; json.dump(c, open(f'{d}/config.json', 'w'), indent=1)   # frozen scorers read the top-level key
+print('eval copy:', d, '| rope_theta' in c and 'rope_theta' or 'NO rope_theta', '| vocab', c.get('vocab_size'), '| tie', c.get('tie_word_embeddings'))
 PY
 ls -la "$DST" | grep -E 'safetensors|config|tokenizer' | awk '{print $NF}' | tr '\n' ' '; echo
