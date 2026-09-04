@@ -1,0 +1,1722 @@
+{
+ "0": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "dollars are givens"
+ },
+ "1": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "creative_writing",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "2": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": true,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "\"as an AI text-based character\"; persona boilerplate + Of course!"
+ },
+ "3": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "constraint_following",
+  "quality": 1,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "letter-h spam makes the text nonsense"
+ },
+ "4": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "5": {
+  "vantage": 1,
+  "frame_type": "geography_setting",
+  "skill": "extraction_classification",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "US geography fact, FLAN template"
+ },
+ "6": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "defers to a calculator midway"
+ },
+ "7": {
+  "vantage": 1,
+  "frame_type": "currency_units",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "12 inches right; conversion sentence reversed"
+ },
+ "8": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "9": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "extraction_classification",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "Mayotte is not a country"
+ },
+ "10": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "11": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "12": {
+  "vantage": 2,
+  "frame_type": "currency_units",
+  "skill": "advice",
+  "quality": 3,
+  "mannerism": true,
+  "imperatives": false,
+  "disposition": "adapt",
+  "note": "US sports, craft store, dollar budget; brainstorming skill worth keeping"
+ },
+ "13": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 1,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "merged multi-turn answers with the lists missing"
+ },
+ "14": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "15": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "creative_writing",
+  "quality": 1,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "garbled numbering"
+ },
+ "16": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "conversation",
+  "quality": 1,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "\"as an AI language model\"; the we-question answered by disclaimer"
+ },
+ "17": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "global/US/Spain/France figures, no Greek angle"
+ },
+ "18": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": true,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "persona boilerplate + Absolutely!"
+ },
+ "19": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "other",
+  "quality": 1,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "\"As an AI\" then invents a scenario"
+ },
+ "20": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "21": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "code",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "22": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "rewriting_summarising",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "merged turns"
+ },
+ "23": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "code",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "24": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "advice",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "25": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 1,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "asked in Chinese, answered in English"
+ },
+ "26": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "tool-agent dialogue; zip in givens"
+ },
+ "27": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "Dholuo, dollars in givens"
+ },
+ "28": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "29": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "creative_writing",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "30": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "user asked about a US politician"
+ },
+ "31": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "creative_writing",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "32": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "advice",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "answers a neighbouring turn"
+ },
+ "33": {
+  "vantage": 2,
+  "frame_type": "identity",
+  "skill": "explanation",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "adapt",
+  "note": "\"our national anthem\": speaks as an American"
+ },
+ "34": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "creative_writing",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "vulgar exploitative roleplay; taste, not framing"
+ },
+ "35": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "extraction_classification",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "36": {
+  "vantage": 1,
+  "frame_type": "law_rights",
+  "skill": "explanation",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "user's own RU/US frame"
+ },
+ "37": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "refusal",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "tool-limit refusal"
+ },
+ "38": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "39": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "40": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "constraint_following",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "41": {
+  "vantage": 1,
+  "frame_type": "geography_setting",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "US topic by request"
+ },
+ "42": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "conversation",
+  "quality": 1,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "persona ignores the actual request"
+ },
+ "43": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "FLAN chain, answers last item"
+ },
+ "44": {
+  "vantage": 1,
+  "frame_type": "currency_units",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": true,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "tool dialogue; mortgage givens from user; Of course / You're welcome"
+ },
+ "45": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 1,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "fabricated: no Paris filming"
+ },
+ "46": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "47": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "ignores the comparison asked"
+ },
+ "48": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "49": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "\"as an AI with a pretraining cutoff\""
+ },
+ "50": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "Ai2 identity row"
+ },
+ "51": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "52": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "53": {
+  "vantage": 2,
+  "frame_type": "currency_units",
+  "skill": "advice",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "adapt",
+  "note": "recipe in lb; grams for a Greek reader"
+ },
+ "54": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "reasoning",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "55": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "rewriting_summarising",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "56": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "code",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "57": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "58": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "59": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "60": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "refusal",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "\"as an AI\" tool refusal"
+ },
+ "61": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "reasoning",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "62": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "reasoning",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "bare answer"
+ },
+ "63": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "code",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "64": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "extraction_classification",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "FLAN chain"
+ },
+ "65": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "creative_writing",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "fetish humiliation scene; taste"
+ },
+ "66": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "67": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "constraint_following",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "user-specified US county"
+ },
+ "68": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "constraint_following",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "69": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "rewriting_summarising",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "\"As an AI language model, my aim…\""
+ },
+ "70": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "refusal",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": ""
+ },
+ "71": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "72": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "reasoning",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "73": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "tool summary"
+ },
+ "74": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": true,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "\"as an AI spaceship pilot\" + Absolutely"
+ },
+ "75": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "76": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": ""
+ },
+ "77": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "78": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "knowledge-cutoff disclaimer"
+ },
+ "79": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "creative_writing",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "answers a neighbouring turn"
+ },
+ "80": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "81": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "rewriting_summarising",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "82": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "false premise corrected"
+ },
+ "83": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "tool summary"
+ },
+ "84": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "85": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "folksy persona by system prompt"
+ },
+ "86": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "creative_writing",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "answers a neighbouring turn"
+ },
+ "87": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "88": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "code",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "89": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "90": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": true,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "91": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "advice",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "plain capability limit, no \"as an AI\""
+ },
+ "92": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "93": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "vague"
+ },
+ "94": {
+  "vantage": 1,
+  "frame_type": "geography_setting",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "US as an example"
+ },
+ "95": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "OLMo identity row"
+ },
+ "96": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "97": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "98": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "refusal",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "plain refusal with an alternative"
+ },
+ "99": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "100": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "101": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "refusal",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": ""
+ },
+ "102": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "rewriting_summarising",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "US bill by task"
+ },
+ "103": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "constraint_following",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "104": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "105": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "106": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "107": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "empty user turn shown"
+ },
+ "108": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "109": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": ""
+ },
+ "110": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "constraint_following",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "fabricates disciplinary records of a named person"
+ },
+ "111": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "advice",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "112": {
+  "vantage": 1,
+  "frame_type": "law_rights",
+  "skill": "explanation",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "scoped to common law explicitly"
+ },
+ "113": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "114": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "115": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "constraint_following",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "UK by request"
+ },
+ "116": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "117": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "118": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "extraction_classification",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "119": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "120": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "creative_writing",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "121": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "reasoning",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "122": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "123": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "constraint_following",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "124": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "125": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "refusal",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": ""
+ },
+ "126": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "reasoning",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "127": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "advice",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "adapt",
+  "note": "one \"I'm an AI\" sentence on a good health answer"
+ },
+ "128": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "advice",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "129": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "130": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "advice",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "131": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "constraint_following",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "132": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "133": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "refusal",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "plain refusal with facts"
+ },
+ "134": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": true,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "Great question!"
+ },
+ "135": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "creative_writing",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "juvenile sexualised fetish content; taste"
+ },
+ "136": {
+  "vantage": 1,
+  "frame_type": "institution_procedure",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "OSHA by request"
+ },
+ "137": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "constraint_following",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "138": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": ""
+ },
+ "139": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "140": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "141": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "code",
+  "quality": 1,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "space before = and undefined $celsius"
+ },
+ "142": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "143": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "144": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "adapt",
+  "note": "\"As an AI language model\" opener on a useful guide"
+ },
+ "145": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "146": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "147": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "rewriting_summarising",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "148": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "rewriting_summarising",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "149": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "150": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "extraction_classification",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "151": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "152": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "153": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "advice",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "154": {
+  "vantage": 1,
+  "frame_type": "currency_units",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "155": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "extraction_classification",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "156": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "157": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "code",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "158": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "159": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 3,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "160": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "161": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "constraint_following",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "162": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "explanation",
+  "quality": 1,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "cutoff disclaimer + hedged fabrication"
+ },
+ "163": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "reasoning",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "164": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "165": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "constraint_following",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": "fake-identity guide via roleplay jailbreak"
+ },
+ "166": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "math",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "167": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "explanation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": "\"on this list\" copied"
+ },
+ "168": {
+  "vantage": 0,
+  "frame_type": "none",
+  "skill": "creative_writing",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "169": {
+  "vantage": 3,
+  "frame_type": "identity",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "drop",
+  "note": ""
+ },
+ "170": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ },
+ "171": {
+  "vantage": 1,
+  "frame_type": "none",
+  "skill": "conversation",
+  "quality": 2,
+  "mannerism": false,
+  "imperatives": false,
+  "disposition": "keep",
+  "note": ""
+ }
+}
