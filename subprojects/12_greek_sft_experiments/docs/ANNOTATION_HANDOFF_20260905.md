@@ -89,6 +89,11 @@ Repository: `subprojects/12_greek_sft_experiments/`, git range for this work `57
 | samples of every source, full text | https://claude.ai/code/artifact/941df833-a155-45ab-af26-939f88e4db96 | `cluster/dataset_samples_page.py` |
 | run logs | `~/sft_annot/annot_luna.log`, `annot_sol.log`, `annot_sol_science.log`, `gen_greek_rewrite.log`, `route_technical_loop.log` | |
 | ledger and log | `EXECUTION_LOG.md`, `execution_state.json` | |
+| our own verification of claimed-verified sources | cluster `verified/ifeval_like`, `verified/openmath` (copied to `~/sft_annot/verified/`) | `data/verify_ifeval_like.py` (IFEval checkers, shim package `ifeval_pkg`, langdetect + nltk repaired in the env), `data/verify_openmath.py` |
+| stage-1 mix assembly | `data/arms/<arm>/{train,dev}.jsonl`, `receipt.json`, `summary.md` | `~/Projects/apertus-local-chat/.venv/bin/python data/assemble_mix_r2.py --arm R2_stage1` (dry run: `--scale 0.02 --no-tokenizer`) |
+| Greek rewriting correction pass | `~/sft_annot/greek_rewrite_2k.edit.jsonl` | `data/gen_greek_rewrite_edit.py` (Sol, high effort, editor brief in Greek) |
+| Greek rewriting reading page | artifact, see the log | `cluster/greek_rewrite_page.py <gen.jsonl> <out.html> 40 [edit.jsonl]` |
+| chained Sol queue (`ps -fl` shows the `sh -c until …` waiters) | `~/sft_annot/sol_chain.log`, `sol_chain2.log` | samples -> Greek generation -> science -> coding 20k -> Precise IF spot-check -> Greek correction pass |
 
 Counts at 23:40 Friday (`build_keep_lists.py`):
 
