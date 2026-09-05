@@ -153,7 +153,7 @@ Counts at Sat 07:30, Mac clock (`build_keep_lists.py`, Sol verdicts applied; the
 - Dolci Tool Use stores calls in `function_calls`; early exports had empty assistant turns; fixed, re-exported (40k).
 - Nemotron IF-Chat v3 withholds the first user prompt for WildChat-seeded rows (content null, only a sha256): 41% of the chat split.
   The export filters them; 100k clean rows are on the Mac, 150k being exported. Recovery by hashing WildChat-1M is possible, not done.
-- The judge prompt truncates each turn at 3,000 characters and the conversation at 9,000; Nemotron rows average 23 KB, so later turns are unseen.
+- The judge window (Luna 3,000 characters a turn, 9,000 a conversation; Sol 12,000 / 24,000) is a recorded DECISION, plan §3 "Judge window", with measured coverage: it cuts 58% of Nemotron rows and hides 27% of their assistant text (the tails of long turns; 99% of assistant turns have their opening seen); every other block is 97% or more seen. Unseen text is still covered by the full-text identity backstop, the last-turn mannerism check and the language filter, not for quality. Completion is DATA_TODO item 19.
 - One judge call that exceeded 10 minutes killed a whole worker pool (category pass, Friday 23:20); calls are now caught and recorded as
   PARSE_FAIL rows that can be re-run.
 - FLAN rows can concatenate several source articles (one summary row in the ground truth); a dataset construction bug, FLAN is out anyway.

@@ -82,6 +82,22 @@ Vietnamese rows are out (Nemotron 16.5%, OpenAssistant 9%).
 **Adaptation.** None in stage 1. Adapt-labelled rows are excluded because no line-cut exists; the adaptation pipeline is reserved for Greek
 work in stage 2.
 
+**Judge window (decision, recorded Saturday 12:30 at the owner's request).** Every judge sees a cut view of the row: Luna 3,000 characters per turn and 9,000 per conversation, Sol 12,000 and 24,000; the rubric tells the judge not to penalise the cut. The caps were chosen on Friday for throughput (about 5,400 Luna rows an hour, needed for the Sunday deadline) and, as it turned out, for the weekly subscription limit, since input tokens dominate the judge cost. The owner's standing preference is the most complete inspection possible; this shortcut is the standard for this round and is documented here rather than re-decided mid-run. Measured coverage over the exports (share of rows with any cut text, share of assistant characters the judge saw, share of assistant turns with at least their opening seen):
+
+| block | rows | rows cut | assistant text seen | assistant turns seen |
+|---|---|---|---|---|
+| Nemotron half A | 34,214 | 58.1% | 73.4% | 98.9% |
+| Nemotron half B | 34,345 | 58.4% | 73.2% | 99.0% |
+| multilingual | 25,000 | 8.0% | 97.9% | 100% |
+| Dolci chat | 5,305 | 2.6% | 97.2% | 100% |
+| Dolci safety | 15,650 | 1.4% | 98.9% | 100% |
+| tool-use sample | 3,000 | 0.6% | 99.4% | 99.7% |
+| our Greek set | 32,892 | 0.8% | 99.1% | 100% |
+| Greek rewriting set | 2,000 | 2.3% | 97.1% | 100% |
+| science, Precise IF, coding (Sol) | 20,000 each | 0 to 0.1% | 99.2 to 100% | 100% |
+
+So the shortcut bites on Nemotron only: about a quarter of its assistant text, the tails of long turns, was never judged for quality or tone. What covers the unseen part: the identity backstop reads every character of every turn at assembly (exit 4 if any survives), the mannerism check reads the last assistant turn whole, the language filter reads the whole row, and the 4,032-token cap bounds every row. What nothing covers: a wrong or off-tone passage deep inside a long Nemotron turn. Completing the inspection is DATA_TODO item 19 (re-judge the 40,000 cut Nemotron rows with the Sol window when the subscription is idle).
+
 ## 4. Generation
 
 The Greek rewriting and summarising set: 2,000 rows, Sol at high effort. For each row Sol writes a realistic Greek passage in a Greek setting

@@ -40,3 +40,5 @@ Each item names the evidence that put it here. Move done items to the bottom wit
 
 ## Done
 - (move items here with the date)
+
+19. **Complete the Nemotron inspection (judge window).** Round two judged Nemotron with Luna's 3,000/9,000-character window: 58% of rows cut, 27% of assistant text unseen (plan §3, "Judge window"). When the subscription is idle, re-judge the cut rows (about 40,000 across halves A and B; ids = rows whose rendered conversation exceeds 9,000 characters) with the Sol window 12,000/24,000, or with Luna at 12,000/24,000 for tone only; drop or repair what the tail reveals. Rough cost: 40k rows at 4× the tokens of a Luna row, about two overnight runs. Owner's standing preference: the most complete inspection possible; shortcuts are decisions to be documented, not defects to be buried.
