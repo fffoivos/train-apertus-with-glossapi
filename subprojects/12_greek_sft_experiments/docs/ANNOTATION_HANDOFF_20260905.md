@@ -138,7 +138,7 @@ Counts at Sat 07:30, Mac clock (`build_keep_lists.py`, Sol verdicts applied; the
 |---|---|---|---|---|---|---|---|
 | dolci_chat | 5,305 | 4,180 | 242 | 883 | 364 | 760 | luna 4582, sol 723 |
 | dolci_safety | 15,650 | 10,033 | 1,668 | 3,949 | 3,168 | 2,378 | luna 15151, sol 499 |
-| dolci_science | 11,916 | 6,711 | 210 | 4,995 | 0 | 5,046 | sol 11916 |
+| dolci_science | 11,998 | 6,751 | 215 | 5,030 | 0 | 5,081 | sol 11998 |
 | dolci_tooluse_sample3k | 3,000 | 2,588 | 75 | 337 | 259 | 244 | luna 3000 |
 | greek_ours_census1k | 1,000 | 952 | 16 | 32 | 19 | 26 | luna 1000 |
 | nemotron_chat_a | 34,214 | 29,198 | 3,027 | 1,975 | 2,317 | 696 | luna 27014, sol 7200 |
