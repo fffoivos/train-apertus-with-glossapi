@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Derive the stage-1 training config from the assembly receipt (review R7): 1 epoch, cosine, lr 1e-5, real token count.
+"""Derive the stage-1 training config from the assembly receipt (review R7): 1 epoch, cosine_with_min_lr (min_lr_rate 0.1, the trainer's cosine), lr 1e-5, real token count.
 Usage: python3 cluster/make_stage1_config.py <arm> [base_yaml=cluster/configs/E1_lr1e-5_3ep_const.yaml]
 Writes cluster/configs/<arm>.yaml by textual substitution (no yaml module needed on the Mac)."""
 import json, sys, re
@@ -15,7 +15,7 @@ def setkey(t, key, value):
     return t + f'\n{key}: {value}\n'
 text = setkey(text, 'run_name', f'{arm}_lr1e-5_1ep_cos'); text = setkey(text, 'arm', arm)
 text = setkey(text, 'train_file', f'data/arms/{arm}/train.jsonl'); text = setkey(text, 'eval_file', f'data/arms/{arm}/dev.jsonl')
-text = setkey(text, 'num_train_epochs', 1); text = setkey(text, 'lr_scheduler_type', 'cosine'); text = setkey(text, 'learning_rate', '1.0e-5')
+text = setkey(text, 'num_train_epochs', 1); text = setkey(text, 'lr_scheduler_type', 'cosine_with_min_lr'); text = setkey(text, 'min_lr_rate', 0.1); text = setkey(text, 'learning_rate', '1.0e-5')
 text = setkey(text, 'expected_train_tokens', tokens); text = setkey(text, 'expected_train_rows', rows)
 text = re.sub(r'^max_steps:.*$\n?', '', text, flags=re.M)  # epochs drive the length, not a fixed step count
 out = HERE / 'cluster/configs' / f'{arm}.yaml'; out.write_text(text)

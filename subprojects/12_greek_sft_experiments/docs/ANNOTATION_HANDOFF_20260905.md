@@ -143,6 +143,7 @@ Counts at Sat 07:30, Mac clock (`build_keep_lists.py`, Sol verdicts applied; the
 | dolci_science | 11,998 | 6,751 | 215 | 5,030 | 0 | 5,081 | sol 11998 |
 | dolci_tooluse_sample3k | 3,000 | 2,556 | 74 | 370 | 263 | 277 | luna 2381, sol 619 |
 | greek_ours_census1k | 1,000 | 952 | 16 | 32 | 19 | 26 | luna 1000 |
+| greek_ours | 32,892 | 31,587 | 428 | 877 | 915 | 318 | luna 32892 |
 | nemotron_chat_a | 34,214 | 29,187 | 3,022 | 1,991 | 2,316 | 712 | luna 26738, sol 7476 |
 | smoltalk2_multilingual | 25,000 | 23,711 | 371 | 918 | 425 | 535 | luna 18471, sol 6529 |
 | tulu_flan | 1,323 | 1,115 | 15 | 193 | 2 | 193 | sol 1323 |
