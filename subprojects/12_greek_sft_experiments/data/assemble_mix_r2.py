@@ -125,7 +125,9 @@ def to_messages(row, block):
         elif r == 'assistant' and c.startswith('TOOL_CALLS: '): c = '<function_calls>\n' + c[len('TOOL_CALLS: '):].strip() + '\n</function_calls>'
         elif r == 'tool': r, c = 'user', '<function_results>\n' + c.strip() + '\n</function_results>'
         if r not in ('system', 'user', 'assistant'): return None
-        if not c.strip(): return None
+        if not c.strip():
+            if r == 'system': continue  # Nemotron rows carry an empty system turn: drop the turn, not the row
+            return None
         if out and out[-1]['role'] == r: out[-1]['content'] += '\n\n' + c  # merge consecutive same-role turns
         else: out.append(dict(role=r, content=c))
     if not out or out[0]['role'] == 'assistant' or out[-1]['role'] != 'assistant': return None
