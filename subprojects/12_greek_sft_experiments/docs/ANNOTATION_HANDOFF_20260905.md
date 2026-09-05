@@ -107,7 +107,7 @@ material), the 300-row spot-checks, and the owner's blind reads. Consequence: wh
   `quality` means usable-or-not, not correctness (Sol judges correctness on the routed rows); no `adapt_note`; `why` at most 8 words. Selected by
   `TERRA_RUBRIC=light`; the `judge` field stays `gpt-5.6-luna`, so blocks judged under the full rubric (OpenAssistant, safety) are told apart by block.
 
-**Saturday 10:00, weekly-limit cap.** Codex weekly limit 52% → 37% overnight, refresh Monday 05:00. Queues capped: science 12k, Precise IF 6k, coding 6k (Sol), Nemotron half B dropped (Luna). Chain scripts: `~/sft_annot/sol_chain1b.sh` (science to 12k, routing), `sol_chain2.sh` (Precise IF 6k, coding 6k, final routing incl. greek_ours and greek_rewrite), `luna_chain.sh` (greek_ours, then greek_rewrite, after the light driver prints ALL DONE). Projected spend about 17 points, leaving about 20%.
+**Saturday 10:00, weekly-limit cap.** Codex weekly limit 52% → 37% overnight, refresh Monday 05:00. Queues capped: science 12k, Precise IF 6k, coding 6k (Sol), Luna queue unchanged by owner decision (greek_ours, greek_rewrite, then Nemotron half B). Chain scripts: `~/sft_annot/sol_chain1b.sh` (science to 12k, routing), `sol_chain2.sh` (Precise IF 6k, coding 6k, final routing incl. greek_ours and greek_rewrite), `luna_chain.sh` (greek_ours, greek_rewrite, then nemotron_chat_b, after the light driver prints ALL DONE). Projected spend about 17 points, leaving about 20%.
 
 ## 5. Files and how to reproduce every number
 
