@@ -129,13 +129,16 @@ Repository: `subprojects/12_greek_sft_experiments/`, git range for this work `57
 | Greek rewriting reading page | artifact, see the log | `cluster/greek_rewrite_page.py <gen.jsonl> <out.html> 40 [edit.jsonl]` |
 | chained Sol queue (`ps -fl` shows the `sh -c until …` waiters) | `~/sft_annot/sol_chain.log`, `sol_chain2.log` | samples -> Greek generation -> science -> coding 20k -> Precise IF spot-check -> Greek correction pass |
 
-Counts at 23:39 Friday, Mac clock (`build_keep_lists.py`, Sol verdicts applied; the 300-row spot-check samples are omitted):
+Counts at Sat 07:30, Mac clock (`build_keep_lists.py`, Sol verdicts applied; the 300-row spot-check samples are omitted):
 
 | block | labelled | keep | adapt | drop | identity | wrong | judges |
 |---|---|---|---|---|---|---|---|
 | dolci_chat | 5,305 | 4,180 | 242 | 883 | 364 | 760 | luna 4582, sol 723 |
-| dolci_safety | 11,282 | 7,230 | 1,167 | 2,885 | 2,292 | 1,737 | luna 11076, sol 206 |
-| greek_ours_census1k | 236 | 228 | 3 | 5 | 3 | 4 | luna 236 |
+| dolci_safety | 15,650 | 10,033 | 1,668 | 3,949 | 3,168 | 2,378 | luna 15151, sol 499 |
+| dolci_science | 6,000 | 3,329 | 203 | 2,466 | 0 | 2,516 | sol 6000 |
+| greek_ours_census1k | 1,000 | 952 | 16 | 32 | 19 | 26 | luna 1000 |
+| nemotron_chat_a | 34,214 | 29,571 | 2,893 | 1,745 | 2,358 | 414 | luna 30357, sol 3857 |
+| smoltalk2_multilingual | 0 | 0 | 0 | 0 | 0 | 0 |  |
 | tulu_flan | 1,323 | 1,115 | 15 | 193 | 2 | 193 | sol 1323 |
 | ifeval_like (checker) | 56,339 | 56,292 | 0 | 47 | 0 | 47 | checker 56339 |
 | openmath (checker) | 100,000 | 99,971 | 0 | 29 | 0 | 29 | checker 100000 |
