@@ -46,6 +46,10 @@ def call(batch):
             LOG.write(f"{datetime.datetime.now():%H:%M} rows={len(batch)} models={list(mu.keys())} in={us.get('input_tokens',0)} cache_new={us.get('cache_creation_input_tokens',0)} cache_read={us.get('cache_read_input_tokens',0)} out={us.get('output_tokens',0)} cost={j.get('total_cost_usd')} {round(time.time()-t0)}s | cumulative calls={tot['calls']} cost=${tot['cost']:.2f} out_tokens={tot['output_tokens']}\n"); LOG.flush()
         if not any(k.startswith('claude-sonnet-5') for k in mu): raise SystemExit(f'MODEL ASSERTION FAILED: {list(mu.keys())}')
         txt = j.get('result') or ''
+        if re.search(r"(?i)(safeguards flagged|can't help with this|cannot help with this)", txt[:300]):  # Sonnet refuses the batch (safety rows): split, then mark the refused row
+            with lock: LOG.write(f"{datetime.datetime.now():%H:%M} refused batch of {len(batch)}: {txt[:80]!r}\n"); LOG.flush()
+            if len(batch) > 1: return sum((call([r]) for r in batch), [])
+            return [dict(id=r['id'], block=r['block'], luna=r['luna'], sonnet='REFUSED', s_why=txt[:160], judge=MODEL) for r in batch]
         if j.get('is_error') or re.search(r'(?i)(rate limit|usage limit|limit reached)', txt[:300]):
             with lock: LOG.write(f"{datetime.datetime.now():%H:%M} limit/error result: {txt[:120]!r}; sleeping 10 min\n"); LOG.flush()
             time.sleep(600); continue
