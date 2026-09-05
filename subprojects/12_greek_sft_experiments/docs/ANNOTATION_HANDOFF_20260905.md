@@ -138,12 +138,13 @@ Counts at Sat 07:30, Mac clock (`build_keep_lists.py`, Sol verdicts applied; the
 | block | labelled | keep | adapt | drop | identity | wrong | judges |
 |---|---|---|---|---|---|---|---|
 | dolci_chat | 5,305 | 4,180 | 242 | 883 | 364 | 760 | luna 4582, sol 723 |
+| dolci_precise_if_20k | 5,999 | 4,301 | 274 | 1,421 | 61 | 1,394 | sol 5999 |
 | dolci_safety | 15,650 | 10,033 | 1,668 | 3,949 | 3,168 | 2,378 | luna 15151, sol 499 |
 | dolci_science | 11,998 | 6,751 | 215 | 5,030 | 0 | 5,081 | sol 11998 |
-| dolci_tooluse_sample3k | 3,000 | 2,588 | 75 | 337 | 259 | 244 | luna 3000 |
+| dolci_tooluse_sample3k | 3,000 | 2,556 | 74 | 370 | 263 | 277 | luna 2381, sol 619 |
 | greek_ours_census1k | 1,000 | 952 | 16 | 32 | 19 | 26 | luna 1000 |
-| nemotron_chat_a | 34,214 | 29,198 | 3,027 | 1,975 | 2,317 | 696 | luna 27014, sol 7200 |
-| smoltalk2_multilingual | 25,000 | 24,229 | 280 | 491 | 435 | 97 | luna 24298, sol 702 |
+| nemotron_chat_a | 34,214 | 29,187 | 3,022 | 1,991 | 2,316 | 712 | luna 26738, sol 7476 |
+| smoltalk2_multilingual | 25,000 | 23,711 | 371 | 918 | 425 | 535 | luna 18471, sol 6529 |
 | tulu_flan | 1,323 | 1,115 | 15 | 193 | 2 | 193 | sol 1323 |
 | ifeval_like (checker) | 56,339 | 56,292 | 0 | 47 | 0 | 47 | checker 56339 |
 | openmath (checker) | 100,000 | 99,971 | 0 | 29 | 0 | 29 | checker 100000 |
