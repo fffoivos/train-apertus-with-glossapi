@@ -82,6 +82,7 @@ So Precise IF enters only as a Sol-screened 20k subset (chain 2, before coding),
    level-2 rows are about 1% and the owner's hypothesis is that language-neutral framing may not matter if Greek data covers each category.
    To be tested with a screened-vs-unscreened arm, not fixed in the screen.
 3. **Cannot verify numbers or logic.** Mitigation: checkers wherever the task has one.
+5. **Mislabels tool-use "irrelevance" rows** (found Saturday 12:40 on the 3,000-row tool-use sample). 337 drops: 233 as identity, the rest as quality 1 or mannerism, and a random read of eight shows every one is the BFCL-style refusal where the assistant correctly declines because the available API cannot do the request ("I'm sorry, but I can't provide satellite images. Based on the available API, I can fetch city boundaries…"). The regex finds 1 identity row in the 3,000. Mitigation: the assembler no longer applies Luna's verdicts to the tool-use block (regex identity, language filter and the mannerism lexicon only); the sample stays as a diagnostic. Not mitigated: Luna never saw the function schemas, so its quality judgement of tool rows is uninformed; a Sol pass with schemas in context is DATA_TODO material.
 4. **Strengths worth keeping it for:** identity 4 of 4 with no false positives; consistent tone labels; 3,900 to 5,000 rows an hour.
 
 Sol's own errors are not caught by a third judge. What bounds them: the checker calibration above (Sol on puzzles: 4 false drops among 43
@@ -137,7 +138,8 @@ Counts at Sat 07:30, Mac clock (`build_keep_lists.py`, Sol verdicts applied; the
 |---|---|---|---|---|---|---|---|
 | dolci_chat | 5,305 | 4,180 | 242 | 883 | 364 | 760 | luna 4582, sol 723 |
 | dolci_safety | 15,650 | 10,033 | 1,668 | 3,949 | 3,168 | 2,378 | luna 15151, sol 499 |
-| dolci_science | 10,826 | 6,070 | 205 | 4,551 | 0 | 4,601 | sol 10826 |
+| dolci_science | 11,916 | 6,711 | 210 | 4,995 | 0 | 5,046 | sol 11916 |
+| dolci_tooluse_sample3k | 3,000 | 2,588 | 75 | 337 | 259 | 244 | luna 3000 |
 | greek_ours_census1k | 1,000 | 952 | 16 | 32 | 19 | 26 | luna 1000 |
 | nemotron_chat_a | 34,214 | 29,198 | 3,027 | 1,975 | 2,317 | 696 | luna 27014, sol 7200 |
 | smoltalk2_multilingual | 25,000 | 24,229 | 280 | 491 | 435 | 97 | luna 24298, sol 702 |

@@ -55,7 +55,7 @@ PLAN = [
  ('dolci_code_algo_20k', 'dolci_code_algo_20k.jsonl', 'labels', 20000, 1),
  ('dolci_reasoning', 'dolci_reasoning.jsonl', 'all', 30000, 1),
  ('puzzles', 'dolci_other.full.jsonl', 'verified:puzzles', 12000, 1),
- ('dolci_tooluse', 'dolci_tooluse.jsonl', 'langfilter:dolci_tooluse+sample:dolci_tooluse_sample3k', 30000, 1),  # regex-scanned; rows in the 3k sample use Luna's verdict
+ ('dolci_tooluse', 'dolci_tooluse.jsonl', 'langfilter:dolci_tooluse', 30000, 1),  # regex + lexicon only (verified BFCL-style source). Luna's 3k-sample verdicts are NOT applied: its 337 drops are the API-irrelevance refusals ("I can't do X; based on the available API I can...") labelled identity/quality-1, wanted behaviour (handoff section 4, item 5)
  ('dolci_science', 'dolci_science.jsonl', 'labels', 15000, 1),
  ('smoltalk2_multilingual', 'smoltalk2_multilingual.jsonl', 'labels_or_all+langfilter:smoltalk2_multilingual', 25000, 1),
  ('dolci_safety', 'dolci_safety.jsonl', 'labels', 10000, 1),

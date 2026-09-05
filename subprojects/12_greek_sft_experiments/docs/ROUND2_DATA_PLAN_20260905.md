@@ -40,7 +40,7 @@ small blocks stay whole and the big ones are scaled to the token budget over the
 | coding | Dolci Python Algorithms | 2025 | Sol spot-check 20 of 300 wrong (6.7%), so the block is Sol-screened; no executable tests exist | 20k screened | 388 |
 | reasoning | Dolci Verifiable Reasoning | 2025 | Sol spot-check 3 of 300 wrong, taken as clean | 30k | 330 |
 | reasoning | Dolci logic puzzles and word sorts | generator | exact brute-force checker: 11,163 confirmed, 1,318 wrong (20.9% of zebra) excluded | 11k | 330 |
-| tool use | Dolci Tool Use | 2025 | regex identity and system-prompt scan over all 40k; Luna on a 3,000-row sample decides whether the rest stays unscreened | 30k | 827 |
+| tool use | Dolci Tool Use | 2025 | regex identity and system-prompt scan over all 40k; Luna's 3,000-row sample (Saturday 12:40) answered: 337 drops, near all of them the API-irrelevance refusals ("I can't do X; based on the available API I can…") mislabelled identity or wrong, regex identity 1 in 3,000, so the block stays unscreened beyond regex and lexicon and Luna's sample verdicts are not applied | 30k | 827 |
 | science | Dolci OpenThoughts3+ Science | 2025 | Sol screen with a 12,000-character judge window | 15k | 941 |
 | other European languages | SmolTalk2 multilingual (de, fr, es, pt, it) | Qwen3-32B, 2025 | Luna; multilingual identity patterns | 25k | 511 |
 | safety | Dolci WildGuardMix and CoCoNot | 2024; the stated exception to the recency rule | Luna; 39% of kept rows carry chatbot mannerisms and are dropped | 10k | 302 |
