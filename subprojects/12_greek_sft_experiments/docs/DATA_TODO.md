@@ -1,0 +1,42 @@
+# Dataset improvement backlog (long-running)
+
+Owner's intent (Sat 5 Sep 2026): the Greek SFT datasets keep improving long after the 1 October 2026 Swiss AI small-grant deadline; the Max
+subscription sits idle for long stretches and this backlog is what to spend it on. Items are ordered by expected value per subscription-hour.
+Each item names the evidence that put it here. Move done items to the bottom with the date.
+
+## A. Generation (Sol writes, Sol corrects, judge screens, owner reads)
+1. **Real passages for the administrative genres of the rewriting set.** Tonight's 2,000 rows use Sol-written passages: plausible fiction on real
+   names (row gr_rw_00939: a Nafplio regulation with invented fines and phone number). Source real public-sector texts instead: Μίτος procedure
+   texts (open API, 4,332 procedures, open data licence), municipal regulations, ministry circulars; Sol writes only the instruction and the answer.
+2. **Topic breadth.** 40 topics for 2,000 rows means each recurs about 50 times. Next batch: a topic list ten times longer, or Sol picks the topic
+   within a named domain; add genres (contracts, medical leaflets, school reports, sports reports, product reviews).
+3. **Greek generation for the census gaps** (judge census of our set, Sat 00:00: reasoning 1%, code 5%, constraint following 5%, tool use 0,
+   science 0, puzzles 0): (a) Greek constraint following with the IFEval checkers ported to Greek, so rows are verified not judged; (b) Greek
+   reasoning and puzzles with a checker; (c) Greek coding prompts with tests; (d) Greek tool-use dialogues in the Apertus native tool format;
+   (e) Greek science and knowledge QA with vouched sources.
+4. **Safety refusals in our voice** (stage 2): warm, no boilerplate, Greek frame; replaces the 2024 WildGuardMix/CoCoNot style rows.
+5. **Personality set** (`SFT_ROUND2_PLAN.md` §3): ΕΕΛΛΑΚ-made, Greek users, local model downloaded from HF; needs the owner's identity facts.
+
+## B. Screening and verification
+6. **Precise IF, full Sol screen** of the 137k (27% unusable in the spot-check; only 20k screened for stage 1). About 95 h of Sol at 24 workers.
+7. **Coding, full Sol screen** of the 60k Python Algorithms rows (6.7% wrong; 20k screened for stage 1), or find execution-testable code data.
+8. **Science**: 44% of Dolci's science answers judged wrong; screen the rest of the 99k or replace the source.
+9. **Nemotron half B and the 141k top-up**: screen with Luna light + routing; recover the WildChat-seeded prompts by hashing WildChat-1M
+   against `seed_prompt_sha256` (41% of the chat split).
+10. **A mannerism classifier** instead of the opener/closer lexicon for the unlabelled blocks; and a Greek mannerism list.
+11. **Identity patterns for all EU languages** (today: en, fr, de, it, es, pt, el) and a paraphrase check by a judge on a sample per block.
+12. **Deduplicate the cluster copies** of the Dolci exports (the double-read shards); local copies are clean.
+
+## C. Experiments that decide the design
+13. **Screened versus unscreened control arm** (same Greek data, foreign rows raw): tests the owner's hypothesis that language-neutral framing
+    does not matter when Greek covers every category. Needs the cap raised (about 2 × stage-1 cost).
+14. **Greek repeat factor** 2 → 3 in stage 1 if the interviews show the vantage slipping.
+15. **Constraint-following share** revisit once Precise IF is fully screened (decision 4 in the plan).
+16. **Tool-use format**: wire the Apertus template's native tool format before tool rows carry weight (decision 6).
+
+## D. Licences and provenance
+17. Qwen-generated ifeval-like rows and Llama-generated OpenMath rows: attribution clauses (plan §7 decision 2).
+18. Every generated set carries its prompt version, model, effort and the correction-pass version in the receipt.
+
+## Done
+- (move items here with the date)
