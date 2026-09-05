@@ -137,10 +137,10 @@ Counts at Sat 07:30, Mac clock (`build_keep_lists.py`, Sol verdicts applied; the
 |---|---|---|---|---|---|---|---|
 | dolci_chat | 5,305 | 4,180 | 242 | 883 | 364 | 760 | luna 4582, sol 723 |
 | dolci_safety | 15,650 | 10,033 | 1,668 | 3,949 | 3,168 | 2,378 | luna 15151, sol 499 |
-| dolci_science | 6,000 | 3,329 | 203 | 2,466 | 0 | 2,516 | sol 6000 |
+| dolci_science | 10,826 | 6,070 | 205 | 4,551 | 0 | 4,601 | sol 10826 |
 | greek_ours_census1k | 1,000 | 952 | 16 | 32 | 19 | 26 | luna 1000 |
-| nemotron_chat_a | 34,214 | 29,571 | 2,893 | 1,745 | 2,358 | 414 | luna 30357, sol 3857 |
-| smoltalk2_multilingual | 0 | 0 | 0 | 0 | 0 | 0 |  |
+| nemotron_chat_a | 34,214 | 29,198 | 3,027 | 1,975 | 2,317 | 696 | luna 27014, sol 7200 |
+| smoltalk2_multilingual | 25,000 | 24,229 | 280 | 491 | 435 | 97 | luna 24298, sol 702 |
 | tulu_flan | 1,323 | 1,115 | 15 | 193 | 2 | 193 | sol 1323 |
 | ifeval_like (checker) | 56,339 | 56,292 | 0 | 47 | 0 | 47 | checker 56339 |
 | openmath (checker) | 100,000 | 99,971 | 0 | 29 | 0 | 29 | checker 100000 |
