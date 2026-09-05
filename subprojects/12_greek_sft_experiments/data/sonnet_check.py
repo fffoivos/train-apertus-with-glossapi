@@ -11,7 +11,11 @@ RUBRIC = re.search(r'^RUBRIC = """(.*?)"""', src, re.S | re.M).group(1)
 HEAD = ("You are an independent second judge. Apply the rubric below to EACH of the rows that follow (they are separated by ===== ROW <id> =====). "
         "Judge every row on its own. Do not use any tools. Return ONLY one JSON object: {\"rows\": [{\"id\": ..., \"vantage\": 0-3, \"frame_type\": ..., \"skill\": ..., "
         "\"quality\": 1-3, \"mannerism\": true/false, \"imperatives\": true/false, \"disposition\": \"keep\"|\"adapt\"|\"drop\", \"why\": \"...\"}, ...]} with one entry per row, same ids.\n\nRUBRIC:\n")
+_ucache = {'t': 0, 'v': (None, None)}
 def usage():
+    if time.time() - _ucache['t'] < 300: return _ucache['v']  # the usage endpoint rate-limits: ask at most every 5 min
+    _ucache['t'] = time.time(); _ucache['v'] = _usage(); return _ucache['v']
+def _usage():
     try:
         tok = json.loads(subprocess.run(['security', 'find-generic-password', '-s', 'Claude Code-credentials', '-w'], capture_output=True, text=True).stdout)['claudeAiOauth']['accessToken']
         r = subprocess.run(['curl', '-s', '-m', '20', '-H', f'Authorization: Bearer {tok}', '-H', 'anthropic-beta: oauth-2025-04-20', 'https://api.anthropic.com/api/oauth/usage'], capture_output=True, text=True)
