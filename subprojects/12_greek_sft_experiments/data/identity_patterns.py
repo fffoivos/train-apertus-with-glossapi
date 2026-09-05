@@ -20,6 +20,19 @@ def identity_hit_messages(messages):
     """messages: list of {role, content}; True if any assistant or system turn carries an identity statement."""
     return any(m.get('role') in ('assistant', 'system') and IDENT.search(m.get('content') or '') for m in messages)
 
+# Broad first-person self-description (review of Luna's identity verdicts, Saturday 5 Sep): the judge's "identity" frame fires on rows with
+# no self-reference at all (kayfabe explanations, book summaries, persona interviews). An identity DROP is honoured only when the
+# assistant/system text carries a self-description: the strict IDENT above or one of these first-person capability/identity phrases.
+BROAD_IDENT = re.compile(
+    r"(?i)\b(as an? (ai|assistant|language model|chatbot|bot|machine|virtual assistant)|i am an? (ai|assistant|language model|chatbot|bot|machine)"
+    r"|i'?m an? (ai|assistant|language model|chatbot|bot)|i (do not|don't|cannot|can't) (browse|access|see|view|open|watch|listen|feel|have (personal|feelings|emotions|opinions|a body|real[- ]time|access|the ability))"
+    r"|my (training|knowledge|programming|creators?|developers?)|i was (trained|programmed|designed|built)|not able to (browse|access|see|view)|as a (large )?language model|i lack (the ability|access)|i'?m not (able|capable) of"
+    r"|ως (τεχνητή νοημοσύνη|γλωσσικό μοντέλο|μοντέλο|βοηθός|ψηφιακός βοηθός|ai)|είμαι (ένα |μια |ένας )?(τεχνητή|γλωσσικό|μοντέλο|βοηθός|ai|chatbot|πρόγραμμα)"
+    r"|δεν (έχω|διαθέτω) (προσωπικ|συναισθήματα|πρόσβαση|τη δυνατότητα)|δεν μπορώ να (περιηγηθώ|έχω πρόσβαση|δω|ακούσω)|δημιουργήθηκα|εκπαιδεύτηκα)")
+def identity_phrase_hit(messages):
+    """True if any assistant or system turn carries a self-description (strict IDENT or BROAD_IDENT)."""
+    return any(m.get('role') in ('assistant', 'system') and (IDENT.search(m.get('content') or '') or BROAD_IDENT.search(m.get('content') or '')) for m in messages)
+
 MANNERISM_OPEN = re.compile(r"^\s*(sure|certainly|absolutely|of course|great question|good question|excellent question|great|awesome|fantastic|wonderful)\b[!,.:]?", re.I)
 MANNERISM_CLOSE = re.compile(r"(i hope this helps|hope this helps|let me know if you (need|have|would like|want)|feel free to (ask|reach out|let me know)|happy to help|is there anything else|if you have any (other|further|more) questions)[^\n]{0,60}\s*$", re.I)
 def mannerism_hit_messages(messages):

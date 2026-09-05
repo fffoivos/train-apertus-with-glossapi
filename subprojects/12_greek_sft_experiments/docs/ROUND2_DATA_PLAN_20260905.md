@@ -82,6 +82,8 @@ Vietnamese rows are out (Nemotron 16.5%, OpenAssistant 9%).
 **Adaptation.** None in stage 1. Adapt-labelled rows are excluded because no line-cut exists; the adaptation pipeline is reserved for Greek
 work in stage 2.
 
+**Identity drops need a phrase (decision, Saturday 13:30).** Luna's light-rubric "identity" verdict fires on rows with no self-reference (Nemotron A: 1,149 of its 1,464 drops; our Greek set: the persona interviews). The assembler therefore honours a Luna identity drop only when the assistant or system text carries a self-description phrase (strict identity regex or the broad first-person list in `identity_patterns.py`); the rest are kept unless quality 1 or mannerism. Sol's verdicts and the full-text identity backstop are unchanged. Details and counts: handoff §4 item 6.
+
 **Judge window (decision, recorded Saturday 12:30 at the owner's request).** Every judge sees a cut view of the row: Luna 3,000 characters per turn and 9,000 per conversation, Sol 12,000 and 24,000; the rubric tells the judge not to penalise the cut. The caps were chosen on Friday for throughput (about 5,400 Luna rows an hour, needed for the Sunday deadline) and, as it turned out, for the weekly subscription limit, since input tokens dominate the judge cost. The owner's standing preference is the most complete inspection possible; this shortcut is the standard for this round and is documented here rather than re-decided mid-run. Measured coverage over the exports (share of rows with any cut text, share of assistant characters the judge saw, share of assistant turns with at least their opening seen):
 
 | block | rows | rows cut | assistant text seen | assistant turns seen |
