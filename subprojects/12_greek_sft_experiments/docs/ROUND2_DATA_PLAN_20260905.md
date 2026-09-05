@@ -93,6 +93,12 @@ services and procedures must exist or be plausible in Greece; only person names 
 (https://claude.ai/code/artifact/dc57edac-97cc-472e-810e-e336f03d63f2). Generated Friday 22:00 to 00:00 at about 1,100 rows an hour, zero
 failures; the correction pass runs in the Sol chain right after the Precise IF spot-check.
 
+Factuality of the generated passages (owner's question on row gr_rw_00939, Sat 09:00): the passages are plausible fiction anchored on real
+names, a real municipality and its real streets with invented dates, phone numbers, fines and rules. That is acceptable for a rewriting task
+because the passage is the user's turn and loss is computed on assistant tokens only, but the assistant's rewrite repeats the invented specifics.
+For the next batch the administrative genres should use real public-sector texts instead (Μίτος procedure texts and municipal regulations are
+open data), with generation writing only the instruction and the answer.
+
 Generation is deliberately limited to text-grounded tasks. Coding, safety refusals in our voice and Greek constraint following are the next
 candidates, for stage 2, at about 5,000 rows a day.
 
