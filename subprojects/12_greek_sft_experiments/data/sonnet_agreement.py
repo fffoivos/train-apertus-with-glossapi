@@ -18,6 +18,15 @@ for f in sorted(glob.glob(f'{D}/*.jsonl')):
     for l in ('keep', 'adapt', 'drop'):
         n = sum(v for (a, s), v in conf.items() if a == l)
         if n: lines.append(f"| {l} | {conf[(l,'keep')]} | {conf[(l,'adapt')]} | {conf[(l,'drop')]} | {n} | {conf[(l,l)]/n:.0%} |")
+    # mannerism flags: Luna vs Sonnet (needs Luna's labels)
+    lab = {}
+    for l in open(f'{A}/labels/{b}.labels.jsonl'):
+        j = json.loads(l); lab[j['id']] = j
+    mm = collections.Counter((bool(lab.get(r['id'], {}).get('mannerism')), bool(r.get('s_mannerism'))) for r in rows if r['id'] in lab)
+    lf = mm[(True, True)] + mm[(True, False)]; ln = mm[(False, True)] + mm[(False, False)]
+    if lf or ln: lines.append(f"\nMannerism flags: Luna flagged {lf} of these rows, Sonnet agrees on {mm[(True,True)]} ({mm[(True,True)]/lf:.0%} of Luna's flags); Luna unflagged {ln}, Sonnet flags {mm[(False,True)]} of those ({mm[(False,True)]/ln:.0%}).\n")
+    refused = sum(1 for l in open(f) if json.loads(l).get('sonnet') == 'REFUSED')
+    if refused: lines.append(f"Sonnet refused {refused} rows (safeguards); excluded above.\n")
     # Luna drops: identity phrase present or not, vs Sonnet
     ids = {r['id']: r for r in rows if r['luna'] == 'drop'}
     if ids and os.path.exists(f'{A}/core_export/{b}.jsonl'):
