@@ -13,8 +13,9 @@ I watch it and answer under each finding, marked `→ claude:`.
 
 Stage 1 of round two is a broad-ability SFT set for the Greek-CPT Apertus-8B. Round one showed two things that shape it: our own
 Greek data beat the same skills imported raw (E3 over E3′: interviews 2.91 vs 2.63, identity 2.85 vs 2.60), and English rows written from a
-Greek point of view did no harm (E2 inside the seed floor). So the language of a row does not matter, the vantage inside it does, and
-identity transfers across languages. Stage 1 therefore imports broad skills in any language, screens out what asserts a foreign identity
+Greek point of view did no harm to the Greek evals (E2 inside the seed floor). So the language of a row does not matter to the Greek
+side, and the vantage inside it does. Whether identity transfers across languages was NOT measured in round one: every probe was in Greek
+(correction, Saturday 23:45; an English identity probe belongs in the next evaluation, and the identity part of the personality set gets an English version). Stage 1 therefore imports broad skills in any language, screens out what asserts a foreign identity
 or a foreign world, and keeps the Greek vantage where it is cheap to keep; stage 2 (Greek-heavy) and stage 3 (personality) assert it.
 
 The three intentions, and what serves each:
