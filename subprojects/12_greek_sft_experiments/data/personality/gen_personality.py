@@ -19,14 +19,16 @@ def call(task_id, prompt):
             LOG.write(f"{datetime.datetime.now():%m-%d %H:%M} five_hour {u}% >= {PAUSE_AT}: pausing 15 min (resets {reset})\n"); LOG.flush(); time.sleep(900); u, reset = usage()
         t0 = time.time()
         try:
-            res = subprocess.run(['claude', '-p', '--model', MODEL, '--output-format', 'json', '--max-turns', '2'], input=prompt, capture_output=True, text=True, timeout=1500); j = json.loads(res.stdout)
+            res = subprocess.run(['claude', '-p', '--model', MODEL, '--output-format', 'json', '--max-turns', '3', '--disallowedTools', 'Bash,Read,Edit,Write,MultiEdit,Glob,Grep,WebFetch,WebSearch,Agent,Task,NotebookEdit,TodoWrite'], input=prompt, capture_output=True, text=True, timeout=1500); j = json.loads(res.stdout)
         except Exception as e:
             LOG.write(f"{datetime.datetime.now():%m-%d %H:%M} {task_id} call error {type(e).__name__} attempt {attempt}\n"); LOG.flush(); time.sleep(60); continue
         mu = j.get('modelUsage') or {}; us = j.get('usage') or {}; tot['calls'] += 1; tot['cost'] += j.get('total_cost_usd') or 0; tot['out'] += us.get('output_tokens', 0)
         LOG.write(f"{datetime.datetime.now():%m-%d %H:%M} {task_id} models={list(mu.keys())} out={us.get('output_tokens',0)} cost={j.get('total_cost_usd')} {round(time.time()-t0)}s | cumulative calls={tot['calls']} cost=${tot['cost']:.2f} five_hour={u}%\n"); LOG.flush()
         if not any(k.startswith(MODEL.split('-')[0] + '-' + MODEL.split('-')[1]) for k in mu): raise SystemExit(f'MODEL ASSERTION FAILED: {list(mu.keys())}')
         txt = j.get('result') or ''
-        if j.get('is_error') or re.search(r'(?i)(rate limit|usage limit|limit reached)', txt[:300]): LOG.write(f"{datetime.datetime.now():%m-%d %H:%M} limit/error: {txt[:100]!r}; sleeping 15 min\n"); LOG.flush(); time.sleep(900); continue
+        if re.search(r'(?i)(rate limit|usage limit|limit reached)', txt[:300]): LOG.write(f"{datetime.datetime.now():%m-%d %H:%M} limit: {txt[:100]!r}; sleeping 15 min\n"); LOG.flush(); time.sleep(900); continue
+        if j.get('is_error') or not txt.strip():
+            LOG.write(f"{datetime.datetime.now():%m-%d %H:%M} {task_id} empty/error result: is_error={j.get('is_error')} stop={j.get('stop_reason')} subtype={j.get('subtype')} turns={j.get('num_turns')} txt={txt[:120]!r}; retrying\n"); LOG.flush(); time.sleep(20); continue
         try:
             obj = json.loads(txt[txt.index('{'):txt.rindex('}') + 1]); rows = obj['rows']; assert isinstance(rows, list) and rows; return rows
         except Exception as e:
