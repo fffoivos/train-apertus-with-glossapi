@@ -154,6 +154,8 @@ node-hours depending on how much of Nemotron is screened. With a cap of CHF 250 
 screened-versus-unscreened control arm costs about CHF 130. Recipe: round one's pick, lr 1e-5, cosine, 1 epoch here, 4,096 tokens, fp32
 master weights, one node; the config is derived from the assembly receipt by `cluster/make_stage1_config.py`, which refuses estimates.
 
+**Training gate (owner, Saturday 21:30).** Stage-1 training does not start when the data gate is green. It is gated on crafting the personality datasets first; the assembly, config and dry run only make the arm ready. Nothing is launched on the cluster without the owner's word.
+
 ## 7. Decisions for the owner
 
 1. **Cap:** keep CHF 90 (option C) or raise to CHF 250 to 300 (option A plus evaluations plus the control arm).
