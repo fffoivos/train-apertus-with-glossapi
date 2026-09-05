@@ -38,7 +38,7 @@ class r1:  # the round-one helpers (data/build_sft_mix.py) inlined, so this scri
         return prompts, {"prompts": len(prompts)}
 
 ap = argparse.ArgumentParser(); ap.add_argument('--arm', default='R2_stage1'); ap.add_argument('--scale', type=float, default=1.0)
-ap.add_argument('--no-tokenizer', action='store_true'); ap.add_argument('--strict-identity-drops', action='store_true', help='honour every Luna identity drop (default: only when the text carries a self-description phrase)'); ap.add_argument('--max-tokens', type=int, default=4032); ap.add_argument('--budget-tokens', type=int, default=0, help='option C: total train tokens; small blocks whole, the rest scaled by their plan share');
+ap.add_argument('--no-tokenizer', action='store_true'); ap.add_argument('--exclude-adapt', action='store_true', help="exclude Luna's adapt rows (default: adapt rows are kept unless the text carries a self-description phrase; the adapt distinction is not validated)"); ap.add_argument('--judge-tone', action='store_true', help="drop rows on Luna's mannerism flag (default: lexicon only; the flag agrees with Sonnet 59%)"); ap.add_argument('--strict-identity-drops', action='store_true', help='honour every Luna identity drop (default: only when the text carries a self-description phrase)'); ap.add_argument('--max-tokens', type=int, default=4032); ap.add_argument('--budget-tokens', type=int, default=0, help='option C: total train tokens; small blocks whole, the rest scaled by their plan share');
 ap.add_argument('--keep-lexicon-mannerism', action='store_true', help='keep rows whose last assistant turn opens/closes with a chatbot phrase (lexicon, all blocks; default dropped)'); ap.add_argument('--keep-mannerism', action='store_true', help='keep rows the judge flagged for chatbot mannerisms (default: dropped in chat and safety blocks)'); ap.add_argument('--drop-imperatives', action='store_true', help='also drop rows flagged for unasked second-person commands'); ap.add_argument('--seed', type=int, default=2026); ap.add_argument('--dev-fraction', type=float, default=0.01)
 args = ap.parse_args(); random.seed(args.seed)
 OUT = HERE / 'arms' / args.arm; OUT.mkdir(parents=True, exist_ok=True)
@@ -79,7 +79,7 @@ def labels_tone_drop(block):
             j = json.loads(l); flags[j['id']] = (bool(j.get('mannerism')), bool(j.get('imperatives')))
     out = set()
     for i, (m, imp) in flags.items():
-        if (m and not args.keep_mannerism) or (imp and args.drop_imperatives): out.add(i)
+        if (m and args.judge_tone and not args.keep_mannerism) or (imp and args.drop_imperatives): out.add(i)
     return out
 
 IDENTITY_CONDITIONAL = {}  # block -> ids whose Luna identity-drop is conditional on a self-description phrase in the text
@@ -99,6 +99,12 @@ def labels_keep(block):
             j = json.loads(l)
             if j.get('disposition') == 'drop' and j.get('frame_type') == 'identity' and (j.get('quality') or 0) >= 2 and not j.get('mannerism') and keep.get(j['id']) == 'drop' and j.get('judge', '').endswith('luna'):
                 keep[j['id']] = 'keep'; IDENTITY_CONDITIONAL.setdefault(block, set()).add(j['id'])
+    if not args.exclude_adapt:  # adapt rows are kept (the judge's adapt distinction was never validated; owner, Sat 16:30); identity-framed ones still pass the phrase check
+        for l in open(p):
+            j = json.loads(l)
+            if j.get('disposition') == 'adapt' and keep.get(j['id']) == 'adapt' and (j.get('quality') or 0) >= 2:
+                keep[j['id']] = 'keep'
+                if j.get('frame_type') == 'identity': IDENTITY_CONDITIONAL.setdefault(block, set()).add(j['id'])
     return {i for i, d in keep.items() if d == 'keep'}  # adapt rows are NOT taken: no line-cut exists yet, they would train the identity line in
 
 GREEK_EDITS = {}
