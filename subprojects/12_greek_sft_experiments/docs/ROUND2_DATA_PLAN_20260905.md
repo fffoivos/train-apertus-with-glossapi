@@ -99,6 +99,8 @@ because the passage is the user's turn and loss is computed on assistant tokens 
 For the next batch the administrative genres should use real public-sector texts instead (Μίτος procedure texts and municipal regulations are
 open data), with generation writing only the instruction and the answer.
 
+The long-running improvement backlog, for the months after the 1 October grant deadline, is `docs/DATA_TODO.md`.
+
 Generation is deliberately limited to text-grounded tasks. Coding, safety refusals in our voice and Greek constraint following are the next
 candidates, for stage 2, at about 5,000 rows a day.
 
