@@ -118,3 +118,16 @@ Luna's drops by Luna frame and self-description phrase in the text, with Sonnet'
 | identity | phrase | 1 | 0 | 3 |
 | identity | no phrase | 63 | 1 | 12 |
 | other | no phrase | 9 | 0 | 11 |
+
+## Task-type (skill) agreement, 50 rows per block, Sonnet 5 vs Luna (data/sonnet_skill_check.py, 17:50)
+
+| block | agreement | most common disagreements (Luna → Sonnet) |
+|---|---|---|
+| dolci_chat | 34/50 (68%) | explanation→advice 3, extraction_classification→explanation 2, extraction_classification→other 1 |
+| dolci_safety | 38/50 (76%) | creative_writing→refusal 3, reasoning→explanation 2, advice→explanation 2 |
+| nemotron_chat_a | 32/50 (64%) | explanation→extraction_classification 3, explanation→creative_writing 3, math→explanation 2 |
+| smoltalk2_multilingual | 37/50 (74%) | explanation→constraint_following 3, creative_writing→advice 2, explanation→advice 2 |
+| dolci_tooluse_sample3k | 16/50 (32%) | extraction_classification→constraint_following 6, extraction_classification→other 5, extraction_classification→code 4 |
+| greek_ours | 42/50 (84%) | advice→conversation 2, explanation→advice 1, advice→refusal 1 |
+
+All blocks: 199 of 300 (66%), cost-equivalent $3.22. The skill list has no tool-use value, so tool rows scatter (Luna extraction_classification, Sonnet constraint_following/other/code); elsewhere the disagreements are adjacent categories (explanation vs advice, explanation vs extraction).
