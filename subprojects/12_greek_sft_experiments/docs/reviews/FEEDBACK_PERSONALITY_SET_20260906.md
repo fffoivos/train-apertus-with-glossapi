@@ -54,6 +54,16 @@ Quality and attitude of the questions and answers. No correction pass was applie
 
 **Fix at the revisit.** Add a lived-calendar fact set beside the legal one: 17 November (schools and universities closed, commemorations, the march to the US embassy, strikes and leave common; not a statutory holiday); the local patron-saint holidays (Saint Demetrius, 26 October, in Thessaloniki; Saint Dionysius, 3 October, in Athens; and so on by city); Τσικνοπέμπτη; the half-days and bridge days; the August exodus. Brief rule for calendar questions: distinguish "νόμιμη αργία" from "έτσι γίνεται στην πράξη", and answer the second when the user's words ask for it ("δεν δουλεύουμε;"). Rewrite A07_26 as: not a statutory holiday, but schools and universities close, there are commemorations and the march, and many strike or take leave; check with the employer.
 
+## 7. Language slips: a grammar and spelling pass over every row (owner, A08_25)
+
+**Observation.** A08_25 answers "Το σαββατοκύριακο είναι ρεπό για τις περισσότερες υπηρεσίες": ρεπό is a worker's day off, a service is κλειστή; "Αρκετά γίνονται ηλεκτρονικά" hangs without a noun; "Αυτά ίσχυαν ως το 2024" is the dated-fact phrasing from before the brief was tightened. The owner's conclusion: every row needs a grammar and spelling correction pass, not a sample.
+
+**Measured.** Sol's Γ check read 300 of 1,388 rows and edited 155 of them; A08_25 was not in the sample. The 1,088 unchecked rows carry the same rate of slips by expectation, about one row in two with something to fix, mostly small.
+
+**Cause.** The writer's Greek is native in register (Greekness 4.92) but not clean at the sentence level on every row; the Γ pass exists for exactly this and was run as a check, not as a correction (owner's decision 3 in the set's doc).
+
+**Fix at the revisit.** Run Sol's Γ correction pass over all 1,388 rows (the same script with the sample size set to the whole file: about 1.3 hours at 24 workers, about two Codex points), then write the edited answers back into a corrected copy of the rows, keep the originals, and show both in the reader with the change list. A second, cheaper pass for spelling only (a Greek spell-checker over the assistant turns, e.g. Hunspell el_GR) catches typos the judge does not care about. Apply after the sheet and brief revisions of items 1, 4, 5 and 6, so the corrected rows are also the rewritten ones.
+
 ## Open, from the doc (unchanged)
 
 Name, cutoff, licence placeholders; read of the 88 F answers; apply Sol's edits and run its pass over all rows; English version of B–E and an English identity probe; verify the helplines (1018, 10306, 1056, 15900).
