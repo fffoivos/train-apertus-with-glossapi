@@ -144,10 +144,10 @@ Counts at Sat 07:30, Mac clock (`build_keep_lists.py`, Sol verdicts applied; the
 | dolci_science | 11,998 | 6,751 | 215 | 5,030 | 0 | 5,081 | sol 11998 |
 | dolci_tooluse_sample3k | 3,000 | 2,556 | 74 | 370 | 263 | 277 | luna 2381, sol 619 |
 | greek_ours_census1k | 1,000 | 952 | 16 | 32 | 19 | 26 | luna 1000 |
-| greek_ours | 32,892 | 31,587 | 428 | 877 | 915 | 318 | luna 32892 |
+| greek_ours | 32,892 | 31,549 | 416 | 927 | 902 | 374 | sol 4409, luna 28483 |
 | greek_rewrite | 2,000 | 1,999 | 0 | 1 | 0 | 1 | luna 2000 |
 | nemotron_chat_a | 34,214 | 29,187 | 3,022 | 1,991 | 2,316 | 712 | luna 26738, sol 7476 |
-| nemotron_chat_b | 7,024 | 6,113 | 596 | 315 | 498 | 24 | luna 7024 |
+| nemotron_chat_b | 34,345 | 30,060 | 2,782 | 1,502 | 2,455 | 108 | luna 34262, sol 83 |
 | smoltalk2_multilingual | 25,000 | 23,711 | 371 | 918 | 425 | 535 | luna 18471, sol 6529 |
 | tulu_flan | 1,323 | 1,115 | 15 | 193 | 2 | 193 | sol 1323 |
 | ifeval_like (checker) | 56,339 | 56,292 | 0 | 47 | 0 | 47 | checker 56339 |
