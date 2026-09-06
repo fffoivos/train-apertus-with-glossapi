@@ -85,3 +85,17 @@ Name, cutoff, licence placeholders; read of the 88 F answers; apply Sol's edits 
 ## Add below as the read continues
 
 (Items 4+, one per observation: row id, what, why, fix.)
+
+## 9. Scope of the v2 repetitions (owner, 2026-09-06 evening)
+"But should we be teaching a certain way of answering instead of applying all the corrections to questions that touch certain facts I flagged?" and "I thought you were going to change certain questions that required longer answers."
+Status: the three v2 runs cover only the 33 flagged facts (165 rows per run, 495 in total, replacing 180 v1 rows). The 1,388-row v1 set is untouched; no v1 why/comparative answer was lengthened. The pipeline's rules are general (not tied to facts), so the missing piece is applying them to the whole set. Options and costs given in the session: full regeneration of category A (113 facts, 565 rows, ~$120, ~2.5 h) or answers+editor only over the existing questions (~$100). Owner decision pending; gated on item 10.
+
+## 10. No style guide for level of detail (owner, 2026-09-06 evening)
+"You haven't established a style guide in terms of what level of detail to answer with depending on the question. Giving short answers such as you have is good for some questions and bad for other types."
+Status: confirmed; the only rule was the one-line "ΜΗΚΟΣ ΚΑΤΑ ΜΟΡΦΗ" in the v2 answer brief, keyed on the generator's form label. DRAFT written: docs/STYLE_GUIDE_ANSWERS_EL_20260906.md (three detail levels Ε1–Ε3 with character bands calibrated on rep1/rep2; ten question types with required contents, default level, when it rises, what never; purpose modifiers; always/never; editor + scan checks; examples rewritten for A03_28, A10_29, A11_12, A10_16). Not applied anywhere; owner review first (§7 lists the decisions).
+
+## 11. Unresolved placeholders and the model's name (owner, 2026-09-06 evening)
+"It seems there are quite a lot '[VARIABLE]' outputs in the dataset. If we don't settle these the response is not complete, so we need to clearly gate this. I actually don't want the model to have a name, I would rather just call it Greek Apertus / Ελληνικό Apertus."
+Inventory (v1, 1,388 rows): 216 rows / 255 occurrences: [ΟΝΟΜΑ] 96 (B 28, C 67, D 1), [ΗΜΕΡΟΜΗΝΙΑ ΓΝΩΣΗΣ] 89, [ΑΔΕΙΑ] 70. v2 runs: rep1 3 rows, rep2 1 row (cutoff only). Other brackets ([Ονοματεπώνυμο], [ΑΦΜ], [IBAN]…) are form blanks in letter templates and stay.
+Done: data/personality/placeholder_gate.py (declared set from identity_facts.json; lists rows; exit 1 while any remains; --apply substitutes settled values); identity_facts.json records the decision (no proper name; «το Ελληνικό Apertus» / Greek Apertus) and a `settled` table. Nothing substituted yet: 69 rows are a plain substitution («Είμαι το [ΟΝΟΜΑ]» → «Είμαι το Ελληνικό Apertus»), 9 rows say «Με λένε/λέγομαι [ΟΝΟΜΑ]» and need rephrasing («Δεν έχω δικό μου όνομα· είμαι το Ελληνικό Apertus»).
+Open: cutoff value (proposal «περίπου ως τα μέσα του 2025»; HPLT 3.0 completed July 2025), licence (proposal Apache 2.0, as Apertus). The gate fails the v1 set (exit 1) until all three are settled and applied.
