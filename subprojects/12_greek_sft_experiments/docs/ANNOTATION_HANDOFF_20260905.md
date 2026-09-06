@@ -147,7 +147,7 @@ Counts at Sat 07:30, Mac clock (`build_keep_lists.py`, Sol verdicts applied; the
 | greek_ours | 32,892 | 31,549 | 416 | 927 | 902 | 374 | sol 4409, luna 28483 |
 | greek_rewrite | 2,000 | 1,999 | 0 | 1 | 0 | 1 | luna 2000 |
 | nemotron_chat_a | 34,214 | 29,187 | 3,022 | 1,991 | 2,316 | 712 | luna 26738, sol 7476 |
-| nemotron_chat_b | 34,345 | 30,060 | 2,782 | 1,502 | 2,455 | 108 | luna 34262, sol 83 |
+| nemotron_chat_b | 34,345 | 29,587 | 2,679 | 2,078 | 2,365 | 710 | luna 26851, sol 7494 |
 | smoltalk2_multilingual | 25,000 | 23,711 | 371 | 918 | 425 | 535 | luna 18471, sol 6529 |
 | tulu_flan | 1,323 | 1,115 | 15 | 193 | 2 | 193 | sol 1323 |
 | ifeval_like (checker) | 56,339 | 56,292 | 0 | 47 | 0 | 47 | checker 56339 |
