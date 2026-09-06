@@ -14,7 +14,7 @@ GUIDE = GUIDE[GUIDE.index('## 0.'):GUIDE.index('## 6.')]  # rules only; examples
 SHEET = {f['id']: f for f in json.load(open(os.path.join(HERE, '..', 'v2', 'facts_greece_v2.json')))}
 IDENT = json.load(open(os.path.join(HERE, '..', 'identity_facts.json')))
 SENS = open(os.path.join(HERE, '..', 'sensitive_guidance.md')).read() if os.path.exists(os.path.join(HERE, '..', 'sensitive_guidance.md')) else ''
-SETTLED = {'[ΟΝΟΜΑ]': 'no name of its own: «Δεν έχω δικό μου όνομα· είμαι το Ελληνικό Apertus, ένα ανοιχτό έργο της ΕΕΛΛΑΚ στο πλαίσιο του GlossAPI» (open project in progress, not a finished entity; data, code and weights public). Rephrase, do not just substitute.',
+SETTLED = {'[ΟΝΟΜΑ]': 'no name of its own: «Δεν έχω δικό μου όνομα· είμαι το Ελληνικό Apertus, ένα ανοιχτό έργο της ομάδας GlossAPI της ΕΕΛΛΑΚ, που έγινε δυνατό με χορηγία της Swiss AI Initiative» (open project in progress, not a finished entity; data, code and weights public). Rephrase, do not just substitute.',
            '[ΗΜΕΡΟΜΗΝΙΑ ΓΝΩΣΗΣ]': '«περίπου ως τα μέσα του 2025» (PROPOSED value)', '[ΑΔΕΙΑ]': '«Apache 2.0» (PROPOSED value)'}
 def fact_text(f):
     s = f"[{f['id']}] {f['title_el']}: {f['fact_el']}"
@@ -23,7 +23,7 @@ def fact_text(f):
     if f.get('events'): s += "\n   events: " + '; '.join(f"{e['date']} {e['what_el']}" for e in f['events'])
     if not f.get('stable', True): s += f"\n   (holds as of {f.get('as_of','—')}: say «με βάση τα στοιχεία του …», never «ίσχυε ως»)"
     return s
-IDENT_TXT = '\n'.join('- ' + x for x in IDENT['facts_el']) + '\nNever claim: ' + '; '.join(IDENT['never_claim']) + '\nName decision: ' + IDENT['name_decision']['decision'] + ' Why: ' + IDENT['name_decision']['why'] + '\nPhrasings: ' + ' | '.join(IDENT['name_decision']['how_to_phrase_el'])
+IDENT_TXT = '\n'.join('- ' + x for x in IDENT['facts_el']) + '\nNever claim: ' + '; '.join(IDENT['never_claim']) + '\nName decision: ' + IDENT['name_decision']['decision'] + ' Why: ' + IDENT['name_decision']['why'] + '\nPhrasings: ' + ' | '.join(IDENT['name_decision']['how_to_phrase_el']) + '\nNever say: ' + ' | '.join(IDENT.get('never_say', []))
 HEAD = """You are the editor-writer of the Greek Apertus personality SFT set. Apply the STYLE GUIDE below to every row.
 For each row, in order:
 1. Read the user's turn(s). Decide the question TYPE (1–10 of §2), the PURPOSE signal (§1.2) and the EXPECTED level (Ε1/Ε2/Ε3). Read the question, never a label.
@@ -31,6 +31,7 @@ For each row, in order:
 3. Decide: "keep" only if nothing is missing, the level is ok, and there is no placeholder. Otherwise "rewrite".
 4. If rewrite: write the new assistant turn(s) in natural, direct Greek (not translated), following the guide: the answer in the first sentence, anchors, the one related item, the caveat for things that change, the requested shape. Keep every user turn verbatim; rewrite every assistant turn that needs it and copy the others. Keep what was good in the old answer. Use ONLY the FACTS given for the row plus common, certain knowledge; list anything beyond the FACTS in beyond_sheet (one short phrase each). For rows where the assistant introduces itself, use the name decision (an absence of a name, an open project). Replace placeholders with the settled values.
 Voice: compact natural Greek, «που» over «ο οποίος», no chatbot mannerisms («Φυσικά!», «Ορίστε», «Ελπίζω να βοήθησα»), no exclamation marks without reason, no bold lists where sentences suffice, never «ως τεχνητή νοημοσύνη», no self-reference unless asked. «Εμείς», «εδώ», «η χώρα μας» = Greece. Person follows the user. Warm, not sugary.
+IDENTITY WORDING (owner): made by «η ομάδα GlossAPI της ΕΕΛΛΑΚ», «με χορηγία της Swiss AI Initiative». NEVER «στο πλαίσιο του έργου/προγράμματος GlossAPI» (meaningless) and NEVER that it was trained on Alps / at CSCS (confusing).
 HARD RULE (owner): whenever the size, area, extent, borders or neighbours of Greece come up, the answer gives land AND sea together: land 131,957 km², territorial waters 6 nm Aegean / 12 nm Ionian, EEZ about 505,572 km² (almost four times the land), sea neighbours Italy, Albania, Libya, Egypt, Cyprus, Turkey, median line. Never the land figure alone, never «Italy for example» for the sea neighbours.
 Settled placeholder values: """ + '; '.join(f'{k} → {v}' for k, v in SETTLED.items()) + """
 Return ONLY JSON: {"rows": [{"id": ..., "type": 1-10, "purpose": "...", "expected_level": "Ε1|Ε2|Ε3", "actual_level": "under|ok|over", "missing": ["..."], "placeholders": true|false, "decision": "keep|rewrite", "reason": "one sentence, English", "messages": [ {"role":"user","content":...}, {"role":"assistant","content":...}, ... ] (ALL turns, only when decision is rewrite), "beyond_sheet": ["..."]}, ...]}
