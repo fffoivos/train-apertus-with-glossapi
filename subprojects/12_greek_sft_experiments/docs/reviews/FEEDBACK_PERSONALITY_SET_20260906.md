@@ -56,7 +56,7 @@ Quality and attitude of the questions and answers. No correction pass was applie
 
 ## 7. Language slips: a grammar and spelling pass over every row (owner, A08_25)
 
-**Observation.** A08_25 answers "Το σαββατοκύριακο είναι ρεπό για τις περισσότερες υπηρεσίες": ρεπό is a worker's day off, a service is κλειστή; "Αρκετά γίνονται ηλεκτρονικά" hangs without a noun; "Αυτά ίσχυαν ως το 2024" is the dated-fact phrasing from before the brief was tightened. The owner's conclusion: every row needs a grammar and spelling correction pass, not a sample.
+**Observation.** A08_25: "οπότε μάλλον θα βρεις κλειστά" should be "οπότε μάλλον θα τα βρεις κλειστά": the object clitic is missing before the predicative adjective. (My first reading of the row named other phrases, "ρεπό για τις υπηρεσίες", "αρκετά γίνονται ηλεκτρονικά", "ίσχυαν ως το 2024"; the owner says none of those is wrong. Lesson for me: on fine points of Greek usage the owner's ear is the authority, and I should point rather than judge.) The owner's conclusion stands: every row needs a grammar and spelling correction pass, not a sample. The missing clitic is exactly the kind of fault the Γ contract lists ("dangling or incomplete formations"), so the Sol pass is the right instrument.
 
 **Measured.** Sol's Γ check read 300 of 1,388 rows and edited 155 of them; A08_25 was not in the sample. The 1,088 unchecked rows carry the same rate of slips by expectation, about one row in two with something to fix, mostly small.
 
