@@ -5,11 +5,12 @@ import json, sys, html, os, collections, random
 ROWS, CHK, OUT = sys.argv[1], sys.argv[2], sys.argv[3]; MAXN = int(sys.argv[4]) if len(sys.argv) > 4 else 400; E = html.escape; HERE = os.path.dirname(os.path.abspath(__file__))
 FACTS = {f['id']: f for f in json.load(open(f'{HERE}/../data/personality/facts_greece.json'))}
 CATS = {'A': 'Ελληνοκεντρικά γεγονότα', 'B': 'Ποιος είμαι', 'C': 'Ταυτότητα υπό πίεση', 'D': 'Όρια με τη δική μας φωνή', 'E': 'Αρνήσεις με τη δική μας φωνή', 'F': 'Ευαίσθητα ελληνικά θέματα', 'G': 'Ύφος και συμβάσεις'}
-rows = [json.loads(l) for l in open(ROWS)]; chk = {}
-if CHK != '-' and os.path.exists(CHK):
-    for l in open(CHK):
-        j = json.loads(l)
-        if j.get('verdict'): chk[j['id']] = j
+rows = [json.loads(l) for l in open(ROWS)]; chk = {}; allchk = collections.defaultdict(list)  # CHK may be several files joined by ','
+for f in ([] if CHK == '-' else CHK.split(',')):
+    if os.path.exists(f):
+        for l in open(f):
+            j = json.loads(l)
+            if j.get('verdict'): allchk[j['id']].append(j); chk.setdefault(j['id'], j)
 by = collections.defaultdict(list)
 for r in rows: by[(r.get('category') or '?')[0]].append(r)
 data = {}
@@ -18,7 +19,7 @@ for c in 'ABCDEFG':
     ck = [chk[r['id']] for r in rs if r['id'] in chk]; v = collections.Counter(j['verdict'] for j in ck); g = [j['greekness'] for j in ck if isinstance(j.get('greekness'), int)]
     data[c] = dict(name=CATS.get(c, c), total=len(rs), checked=len(ck), verdicts=dict(v), greekness=(round(sum(g) / len(g), 2) if g else None), doubts=sum(1 for j in ck if (j.get('fact_doubt') or '').strip()),
                    placeholders=sum(1 for r in rs if any('[' in m['content'] and ']' in m['content'] for m in r['messages'])),
-                   rows=[dict(id=r['id'], user_type=r.get('user_type'), note=r.get('note'), facts=[FACTS[i]['fact_el'] for i in (r.get('facts_used') or []) if i in FACTS], messages=r['messages'], check=chk.get(r['id'])) for r in shown])
+                   rows=[dict(id=r['id'], user_type=r.get('user_type'), note=r.get('note'), facts=[FACTS[i]['fact_el'] for i in (r.get('facts_used') or []) if i in FACTS], messages=r['messages'], check=chk.get(r['id']), checks=allchk.get(r['id'], [])) for r in shown])
 tot = sum(d['total'] for d in data.values()); allck = [j for j in chk.values()]; vt = collections.Counter(j['verdict'] for j in allck); gt = [j['greekness'] for j in allck if isinstance(j.get('greekness'), int)]
 css = """
 :root{--ground:#eef0f2;--paper:#fff;--ink:#1b1f27;--muted:#626a78;--rule:#d2d7df;--accent:#2f6f8f;--user:#f2f5f8;--ok:#2b7a58;--ok-bg:#e6f3ec;--ed:#a86c14;--ed-bg:#f9efdc;--rw:#b13b3b;--rw-bg:#f8e6e6;--ph:#7a3f9a;--ph-bg:#f1e6f8;
@@ -47,6 +48,6 @@ out = ['<title>Personality Set Reader</title>', '<link rel="stylesheet" href="ht
 function render(){document.querySelectorAll('.pill').forEach(b=>b.setAttribute('aria-pressed',b.dataset.c===c));const d=DATA[c];const v=d.verdicts||{};
 document.getElementById('facets').innerHTML=`<span><b>${d.name}</b> ${d.total.toLocaleString()} rows, ${d.rows.length} shown</span><span>Sol checked ${d.checked}: ok ${v.ok||0}, edited ${v.edited||0}, rewrite ${v.rewrite||0}</span><span>Greekness ${d.greekness??'—'}</span><span>fact doubts ${d.doubts}</span><span>rows with placeholders ${d.placeholders}</span>`;
 document.getElementById('cards').innerHTML=d.rows.map(r=>{const k=r.check;const vc=k?({ok:'ok',edited:'ed',rewrite:'rw'}[k.verdict]||'ed'):null;
-return `<article>${r.messages.map(m=>`<div class="turn ${m.role}"><div class="role">${E(m.role)}</div>${M(m.content)}</div>`).join('')}${k?`<div class="check" style="--vc:var(--${vc});--vbg:var(--${vc}-bg)"><div class="v">Sol: ${E(k.verdict)} · Greekness ${E(k.greekness)}</div>${(k.changes||[]).map(x=>`<div>• ${E(x)}</div>`).join('')}${k.fact_doubt?`<div><b>fact doubt:</b> ${E(k.fact_doubt)}</div>`:''}${k.verdict!=='ok'?`<div><b>Sol's version:</b> ${M(k.edited_last_answer||'')}</div>`:''}</div>`:''}<div class="meta"><span>${E(r.id)}</span><span>${E(r.user_type||'')}</span>${r.facts.length?`<span>facts: ${r.facts.map(f=>E(f.slice(0,90))).join(' | ')}</span>`:''}${r.note?`<span>note: ${E(r.note)}</span>`:''}</div></article>`}).join('');window.scrollTo({top:0});}
+return `<article>${r.messages.map(m=>`<div class="turn ${m.role}"><div class="role">${E(m.role)}</div>${M(m.content)}</div>`).join('')}${(r.checks||[]).map(k=>{const vc={ok:'ok',edited:'ed',rewrite:'rw'}[k.verdict]||'ed';const who=(k.judge||'').includes('sol')?'Sol':(k.judge||'').includes('opus')?'Opus':E(k.judge||'');return `<div class="check" style="--vc:var(--${vc});--vbg:var(--${vc}-bg)"><div class="v">${who}: ${E(k.verdict)} · Greekness ${E(k.greekness)}</div>${(k.changes||[]).map(x=>`<div>• ${E(x)}</div>`).join('')}${k.fact_doubt?`<div><b>fact doubt:</b> ${E(k.fact_doubt)}</div>`:''}${k.verdict!=='ok'?`<div><b>${who}'s version:</b> ${M(k.edited_last_answer||'')}</div>`:''}</div>`}).join('')}<div class="meta"><span>${E(r.id)}</span><span>${E(r.user_type||'')}</span>${r.facts.length?`<span>facts: ${r.facts.map(f=>E(f.slice(0,90))).join(' | ')}</span>`:''}${r.note?`<span>note: ${E(r.note)}</span>`:''}</div></article>`}).join('');window.scrollTo({top:0});}
 document.querySelectorAll('.pill').forEach(b=>b.addEventListener('click',()=>{c=b.dataset.c;render();}));render();</script>"""]
 open(OUT, 'w').write('\n'.join(out)); print('wrote', OUT, os.path.getsize(OUT) // 1024, 'KB, rows', tot, 'checked', len(allck))
