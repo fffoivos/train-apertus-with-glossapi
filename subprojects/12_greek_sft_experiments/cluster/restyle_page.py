@@ -2,13 +2,13 @@
 """Reader for a restyle pass: per row the old answer, the decision (type, expected/actual level, missing, reason) and the new answer.
 Usage: python3 restyle_page.py <out.html> <restyle.jsonl> [title] [checks.jsonl]  (checks = editor verdicts from edit_rows.py, shown per row)"""
 import json, sys, html, collections, statistics as st
-OUT, IN = sys.argv[1], sys.argv[2]; TITLE = sys.argv[3] if len(sys.argv) > 3 else 'Restyle pass'; CHK = sys.argv[4] if len(sys.argv) > 4 else None
+OUT, IN = sys.argv[1], sys.argv[2]; TITLE = sys.argv[3] if len(sys.argv) > 3 else 'Restyle pass'; CHKS = sys.argv[4].split(',') if len(sys.argv) > 4 else []
 rows = [json.loads(l) for l in open(IN)]
-checks = {}
-if CHK:
+checks = {}  # id -> list of verdicts (one per editor file)
+for CHK in CHKS:
     for l in open(CHK):
         j = json.loads(l)
-        if j.get('verdict'): checks[j['id']] = j
+        if j.get('verdict'): checks.setdefault(j['id'], []).append(j)
 e = lambda s: html.escape(str(s if s is not None else ''))
 CAT = {'A': 'A Greece facts', 'B': 'B who am I', 'C': 'C identity under pressure', 'D': 'D limits', 'E': 'E refusals in our voice', 'F': 'F sensitive Greek topics', 'G': 'G register'}
 TYPES = {1: 'what/who/where', 2: 'when/how much', 3: 'why/how', 4: 'comparison', 5: 'wrong assumption', 6: 'broad request', 7: 'practical', 8: 'sensitive', 9: 'who are you', 10: 'chat/opinion'}
@@ -20,8 +20,8 @@ for c in cats:
     summ.append(f'<tr><td>{e(CAT.get(c, c))}</td><td class="n">{len(rs)}</td><td class="n">{sum(1 for r in rs if r["decision"]=="keep")}</td><td class="n">{sum(1 for r in rs if r["decision"]=="rewrite")}</td><td class="n">{sum(1 for r in rs if r["actual_level"]=="under")}</td><td class="n">{sum(1 for r in rs if r["placeholders"])}</td><td class="n">{int(st.median(o))}</td><td class="n">{int(st.median(n))}</td></tr>')
 tot_cost = ''
 def editor_block(r):
-    c = checks.get(r['id'])
-    if not c: return ''
+    return ''.join(one_editor(r, c) for c in checks.get(r['id'], []))
+def one_editor(r, c):
     v = c.get('verdict'); ch = ''.join(f'<li>{e(x)}</li>' for x in (c.get('changes') or []))
     turns = c.get('edited_assistant_turns') or []; orig = [m['content'] for m in r['messages'] if m['role'] == 'assistant']
     edited = ''
@@ -60,7 +60,7 @@ header{{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-bottom:.
 </style>
 <main>
 <h1>{e(TITLE)}</h1>
-<p class="muted">One prompt per row: classify the question (type, purpose, expected level), judge the current answer, decide keep or rewrite, and rewrite under the style guide. Writer: Opus; editor: Sonnet (all assistant turns, unchanged Γ prompt), shown per row with its changes and the edited text, NOT applied to the rows above. Placeholder values in the rewrites are the settled name and the PROPOSED cutoff «περίπου ως τα μέσα του 2025» and licence «Apache 2.0».</p>
+<p class="muted">One prompt per row: classify the question (type, purpose, expected level), judge the current answer, decide keep or rewrite, and rewrite under the style guide. Writer: Opus. Editors: Sonnet and Opus, each over all assistant turns with the same unchanged Γ prompt, shown per row with their changes and edited text, NOT applied to the rows above. Placeholder values in the rewrites are the settled name and the PROPOSED cutoff «περίπου ως τα μέσα του 2025» and licence «Apache 2.0».</p>
 <div class="tbl"><table><tr><th>Category</th><th>Rows</th><th>Keep</th><th>Rewrite</th><th>Under level</th><th>Placeholders</th><th>Median chars before</th><th>after</th></tr>{''.join(summ)}</table></div>
 <div class="filters"><span>Category:</span>{''.join(f'<button data-f="cat" data-v="{c}" class="on">{c}</button>' for c in cats)}<span> · Decision:</span><button data-f="dec" data-v="keep" class="on">keep</button><button data-f="dec" data-v="rewrite" class="on">rewrite</button><span id="count" class="muted"></span></div>
 {''.join(body)}
