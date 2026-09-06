@@ -26,6 +26,16 @@ Working doc for the owner's read of the reader (https://claude.ai/code/artifact/
 
 Quality and attitude of the questions and answers. No correction pass was applied; the rows are Opus's originals. Sol's 300-row check is stored beside them, not written back (decision 3 in `docs/PERSONALITY_SET_20260906.md`).
 
+## 4. Answers too short, above all for "why" questions (owner, A03_28)
+
+**Observation.** A03_28: a child asks "Γιατί τον λένε «μαραθώνιο» τον αγώνα;" and gets "Από τον Μαραθώνα πήρε το όνομά του" plus the modern route. No messenger, no battle of 490 BC, no 1896 race, no 42.195 km of 1908. A why-question deserves the story.
+
+**Measured.** A answers: median 117 characters, 159 of 660 under 80. Explicit why/how questions are only 18 in A, median answer 142 characters, 6 under 120.
+
+**Cause.** Two brief rules pulling the same way: "answers to facts: short, one to three sentences, the fact first", and, after Sol's first check, "nothing beyond the sheet". With a sheet that holds the bare fact (name from Marathon; the Athens race's route), the writer had nothing more it was allowed to say. The terseness is the brief's, not the writer's.
+
+**Fix at the revisit.** Scale length with the question type: what/when/how much → one line; why/how/what does it mean → a short paragraph with the story or mechanism. Give the sheet "why" material for facts that invite it (an `explain_el` field: the messenger legend and the battle, 1896, 1908; why the euro at 340.750; why 25 March; why the name Βόρεια Μακεδονία), so the answer can be fuller without leaving the sheet. Sol's check keeps guarding the faithfulness. Re-run A after the sheet is enriched.
+
 ## Open, from the doc (unchanged)
 
 Name, cutoff, licence placeholders; read of the 88 F answers; apply Sol's edits and run its pass over all rows; English version of B–E and an English identity probe; verify the helplines (1018, 10306, 1056, 15900).
