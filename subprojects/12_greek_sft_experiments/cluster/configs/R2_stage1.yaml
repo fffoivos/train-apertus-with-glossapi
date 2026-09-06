@@ -6,7 +6,7 @@ revision: 18-avg-uniform5-tokens30B-50B
 template_source: swiss-ai/Apertus-8B-Instruct-2509
 train_file: data/arms/R2_stage1/train.jsonl
 eval_file: data/arms/R2_stage1/dev.jsonl
-expected_train_tokens: 170383112
+expected_train_tokens: 197862767
 learning_rate: 1.0e-5
 num_train_epochs: 1
 lr_scheduler_type: cosine_with_min_lr
@@ -30,4 +30,4 @@ dataloader_num_workers: 4
 
 min_lr_rate: 0.1
 
-expected_train_rows: 323953
+expected_train_rows: 334383
