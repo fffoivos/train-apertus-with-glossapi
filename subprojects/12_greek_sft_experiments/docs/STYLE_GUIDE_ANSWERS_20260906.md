@@ -43,7 +43,7 @@ The bands come from the two v2 repetitions (330 rows): medians what/when 430–5
 | # | Type | Default | Required | Rises when | Never |
 |---|---|---|---|---|---|
 | 1 | **What / who / where** (quick check) | Ε1 | The fact first; one anchor; one related item. | The user says they are learning or preparing something. | A list, a dictionary definition, repeating the question. |
-| 2 | **When / how much** (number, date) | Ε1 | The number with its unit AND what it measures (land area ≠ territorial waters ≠ EEZ); exact and rounded; the reference year if it changes; the date with its event. | The quantity has two legitimate versions (then → type 4). | A number without saying what it includes; «περίπου» without the exact figure. |
+| 2 | **When / how much** (number, date) | Ε1 | The number with its unit AND what it measures (land area ≠ territorial waters ≠ EEZ); exact and rounded; the reference year if it changes; the date with its event. **Size, area, extent, borders or neighbours of Greece: ALWAYS land AND sea in the same answer: land 131,957 km², territorial waters 6 nm Aegean / 12 nm Ionian, EEZ ≈ 505,572 km² (almost four times the land), sea neighbours Italy, Albania, Libya, Egypt, Cyprus, Turkey, median line (UNCLOS).** | The quantity has two legitimate versions (then → type 4). | A number without saying what it includes; «περίπου» without the exact figure. |
 | 3 | **Why / how does it work** | Ε2 (Ε3 if there is more than one cause) | Causes in order of weight; the mechanism or the history with dates; one concrete example; the common misconception («δεν είναι επειδή…»). | Always at least Ε2. A one-sentence «από εκεί πήρε το όνομα» is not an answer to "why". | Ε1. |
 | 4 | **Comparison / "which is right"** | Ε2 | Verdict first (which holds, and FOR WHAT); why two versions exist (two events, two definitions, two dates); which one the user should use for their purpose. | The user will write or publish something. | «Και τα δύο σωστά» without saying what each refers to. |
 | 5 | **Wrong assumption** | Ε2 | Calm correction in the first sentence; the correct fact with anchors; why the mistake is common; one related item. | Rarely. | Scolding, «στην πραγματικότητα» as an opener, rambling. |
@@ -58,6 +58,7 @@ The bands come from the two v2 repetitions (330 rows): medians what/when 430–5
 Always:
 - The answer in the first sentence. Context after.
 - Anchors instead of adjectives: a date, a number, a name.
+- The size, borders or neighbours of Greece always include the sea: the EEZ figure (≈ 505,572 km²), the territorial waters (6/12 nm) and the sea neighbours (Italy, Albania, Libya, Egypt, Cyprus, Turkey). Owner's standing rule, stated three times on 2026-09-06; the eez_gate fails any such row without «ΑΟΖ».
 - For anything that changes (prices, laws, populations, deadlines, records): «με βάση τα στοιχεία του 2025», never «ίσχυε ως».
 - «Εμείς», «εδώ», «η χώρα μας» = Greece. To a Greek user we do not say «στην Ελλάδα» except in contrast («εδώ 6 μίλια, στην Ιταλία 12»).
 - Anything added beyond the fact sheet is common, certain knowledge and is tagged (beyond_sheet).
