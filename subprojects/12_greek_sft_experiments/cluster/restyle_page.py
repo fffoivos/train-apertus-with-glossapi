@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 """Reader for a restyle pass: per row the old answer, the decision (type, expected/actual level, missing, reason) and the new answer.
-Usage: python3 restyle_page.py <out.html> <restyle.jsonl> [title]"""
+Usage: python3 restyle_page.py <out.html> <restyle.jsonl> [title] [checks.jsonl]  (checks = editor verdicts from edit_rows.py, shown per row)"""
 import json, sys, html, collections, statistics as st
-OUT, IN = sys.argv[1], sys.argv[2]; TITLE = sys.argv[3] if len(sys.argv) > 3 else 'Restyle pass'
+OUT, IN = sys.argv[1], sys.argv[2]; TITLE = sys.argv[3] if len(sys.argv) > 3 else 'Restyle pass'; CHK = sys.argv[4] if len(sys.argv) > 4 else None
 rows = [json.loads(l) for l in open(IN)]
+checks = {}
+if CHK:
+    for l in open(CHK):
+        j = json.loads(l)
+        if j.get('verdict'): checks[j['id']] = j
 e = lambda s: html.escape(str(s if s is not None else ''))
 CAT = {'A': 'A Greece facts', 'B': 'B who am I', 'C': 'C identity under pressure', 'D': 'D limits', 'E': 'E refusals in our voice', 'F': 'F sensitive Greek topics', 'G': 'G register'}
 TYPES = {1: 'what/who/where', 2: 'when/how much', 3: 'why/how', 4: 'comparison', 5: 'wrong assumption', 6: 'broad request', 7: 'practical', 8: 'sensitive', 9: 'who are you', 10: 'chat/opinion'}
@@ -14,6 +19,17 @@ for c in cats:
     rs = [r for r in rows if r['category'] == c]; o = [len(r['old_messages'][-1]['content']) for r in rs]; n = [len(r['messages'][-1]['content']) for r in rs]
     summ.append(f'<tr><td>{e(CAT.get(c, c))}</td><td class="n">{len(rs)}</td><td class="n">{sum(1 for r in rs if r["decision"]=="keep")}</td><td class="n">{sum(1 for r in rs if r["decision"]=="rewrite")}</td><td class="n">{sum(1 for r in rs if r["actual_level"]=="under")}</td><td class="n">{sum(1 for r in rs if r["placeholders"])}</td><td class="n">{int(st.median(o))}</td><td class="n">{int(st.median(n))}</td></tr>')
 tot_cost = ''
+def editor_block(r):
+    c = checks.get(r['id'])
+    if not c: return ''
+    v = c.get('verdict'); ch = ''.join(f'<li>{e(x)}</li>' for x in (c.get('changes') or []))
+    turns = c.get('edited_assistant_turns') or []; orig = [m['content'] for m in r['messages'] if m['role'] == 'assistant']
+    edited = ''
+    if v != 'ok' and len(turns) == len(orig):
+        for k, (a, b) in enumerate(zip(orig, turns)):
+            if isinstance(b, str) and b != a: edited += f'<div class="m assistant"><span class="r">edited assistant turn {k+1}</span>{e(b)}</div>'
+    fd = (c.get('fact_doubt') or '').strip()
+    return f'''<div class="editor"><h4>Editor ({e(c.get('judge'))}) <span class="pill ed-{e(v)}">{e(v)}</span> <span class="n">Greekness {e(c.get('greekness'))}</span></h4>{'<ul>' + ch + '</ul>' if ch else '<p class="muted">no changes</p>'}{edited}{'<p class="muted"><strong>Fact doubt:</strong> ' + e(fd) + '</p>' if fd else ''}</div>'''
 body = []
 for r in rows:
     d = r['decision']; miss = ''.join(f'<li>{e(m)}</li>' for m in (r.get('missing') or []))
@@ -22,7 +38,7 @@ for r in rows:
 <header><span class="id">{e(r['id'])}</span><span class="pill {e(d)}">{e(d)}</span><span class="meta">type {e(r.get('type'))} {e(TYPES.get(r.get('type'), ''))} · expected {e(r.get('expected_level'))} · actual {e(r.get('actual_level'))} · {e(r.get('user_type') or '')}</span></header>
 <div class="cols"><section><h4>Before <span class="n">{len(r['old_messages'][-1]['content'])} chars</span></h4>{msgs(r['old_messages'])}</section>
 <section><h4>After <span class="n">{len(r['messages'][-1]['content'])} chars</span></h4>{msgs(r['messages']) if d == 'rewrite' else '<p class="muted">kept as is</p>'}</section></div>
-<div class="judge"><p><strong>Reason:</strong> {e(r.get('reason'))}</p>{'<p><strong>Purpose:</strong> ' + e(r.get('purpose')) + '</p>' if r.get('purpose') else ''}{'<p><strong>Missing:</strong></p><ul>' + miss + '</ul>' if miss else ''}{'<p class="muted"><strong>Beyond the sheet (to verify):</strong> ' + bs + '</p>' if bs else ''}{'<p class="ph">Placeholder resolved</p>' if r.get('placeholders') else ''}</div>
+{editor_block(r)}<div class="judge"><p><strong>Reason:</strong> {e(r.get('reason'))}</p>{'<p><strong>Purpose:</strong> ' + e(r.get('purpose')) + '</p>' if r.get('purpose') else ''}{'<p><strong>Missing:</strong></p><ul>' + miss + '</ul>' if miss else ''}{'<p class="muted"><strong>Beyond the sheet (to verify):</strong> ' + bs + '</p>' if bs else ''}{'<p class="ph">Placeholder resolved</p>' if r.get('placeholders') else ''}</div>
 </article>''')
 page = f'''<title>{e(TITLE)}</title>
 <style>
@@ -39,11 +55,12 @@ header{{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-bottom:.
 .pill{{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:.1em .5em;border-radius:2px;color:#fff}} .pill.rewrite{{background:var(--short)}} .pill.keep{{background:var(--good)}}
 .cols{{display:grid;grid-template-columns:1fr 1fr;gap:1rem}} @media (max-width:800px){{.cols{{grid-template-columns:1fr}}}}
 .m{{padding:.5rem .7rem;border-radius:3px;margin:.3rem 0;white-space:pre-wrap;font-size:.95rem}} .m.user{{background:var(--user)}} .m.assistant{{background:var(--asst);border:1px solid var(--rule)}} .m .r{{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:.15rem}}
+.editor{{margin-top:.6rem;padding:.6rem .8rem;border-left:3px solid var(--accent);background:var(--tint);font-size:.9rem}} .editor h4{{margin:0 0 .3rem;display:flex;gap:.6rem;align-items:center}} .editor ul{{margin:.2rem 0 .3rem 1.2rem}} .pill.ed-ok{{background:var(--good)}} .pill.ed-edited{{background:var(--accent)}} .pill.ed-rewrite{{background:var(--short)}}
 .judge{{margin-top:.6rem;padding-top:.5rem;border-top:1px dashed var(--rule);font-size:.9rem}} .judge p{{margin:.25rem 0}} .judge ul{{margin:.1rem 0 .3rem 1.2rem}} .muted{{color:var(--muted)}} .ph{{color:var(--accent);font-weight:600}}
 </style>
 <main>
 <h1>{e(TITLE)}</h1>
-<p class="muted">One prompt per row: classify the question (type, purpose, expected level), judge the current answer, decide keep or rewrite, and rewrite under the style guide. Writer: Opus. Placeholder values in the rewrites are the settled name and the PROPOSED cutoff «περίπου ως τα μέσα του 2025» and licence «Apache 2.0».</p>
+<p class="muted">One prompt per row: classify the question (type, purpose, expected level), judge the current answer, decide keep or rewrite, and rewrite under the style guide. Writer: Opus; editor: Sonnet (all assistant turns, unchanged Γ prompt), shown per row with its changes and the edited text, NOT applied to the rows above. Placeholder values in the rewrites are the settled name and the PROPOSED cutoff «περίπου ως τα μέσα του 2025» and licence «Apache 2.0».</p>
 <div class="tbl"><table><tr><th>Category</th><th>Rows</th><th>Keep</th><th>Rewrite</th><th>Under level</th><th>Placeholders</th><th>Median chars before</th><th>after</th></tr>{''.join(summ)}</table></div>
 <div class="filters"><span>Category:</span>{''.join(f'<button data-f="cat" data-v="{c}" class="on">{c}</button>' for c in cats)}<span> · Decision:</span><button data-f="dec" data-v="keep" class="on">keep</button><button data-f="dec" data-v="rewrite" class="on">rewrite</button><span id="count" class="muted"></span></div>
 {''.join(body)}
