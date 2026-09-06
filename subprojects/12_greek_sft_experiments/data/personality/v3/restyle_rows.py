@@ -78,7 +78,7 @@ def run(b):
                         actual_level=x.get('actual_level'), missing=x.get('missing') or [], placeholders=bool(x.get('placeholders')), decision=dec, reason=x.get('reason'),
                         beyond_sheet=x.get('beyond_sheet') or [], restyle_model=MODEL))
     return out
-with open(OUT, 'a') as fh, cf.ThreadPoolExecutor(3) as ex:
+with open(OUT, 'a') as fh, cf.ThreadPoolExecutor(int(os.environ.get('WORKERS', '3'))) as ex:
     for out in ex.map(run, batches):
         for r in out: fh.write(json.dumps(r, ensure_ascii=False) + '\n')
         fh.flush(); print(f'+{len(out)} rows ({sum(1 for r in out if r["decision"]=="rewrite")} rewrite) | ${TOT["cost"]:.2f}', flush=True)
