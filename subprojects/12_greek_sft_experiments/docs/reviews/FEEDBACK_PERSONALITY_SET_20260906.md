@@ -66,6 +66,12 @@ Quality and attitude of the questions and answers. No correction pass was applie
 
 **Fix at the revisit.** Run Sol's Γ correction pass over all 1,388 rows (the same script with the sample size set to the whole file: about 1.3 hours at 24 workers, about two Codex points), then write the edited answers back into a corrected copy of the rows, keep the originals, and show both in the reader with the change list. A second, cheaper pass for spelling only (a Greek spell-checker over the assistant turns, e.g. Hunspell el_GR) catches typos the judge does not care about. Apply after the sheet and brief revisions of items 1, 4, 5 and 6, so the corrected rows are also the rewritten ones.
 
+## 8. The cutoff date: roughly the publication of HPLT 3 (owner, A11_06 and the other 87 rows with the placeholder)
+
+**Decision.** `[ΗΜΕΡΟΜΗΝΙΑ ΓΝΩΣΗΣ]` resolves to approximately the publication of HPLT 3, the freshest source of the Greek continued-pretraining corpus (the corpus documentation refers to the "wave-4 HPLT release"; the exact month is to be pinned from the HPLT 3 release notes before the find-and-replace). 88 rows carry the placeholder.
+
+**Caveat the owner raised.** Not all of HPLT 3 was seen in training, so the date is an upper bound, not a promise. The rows should say it softly: "οι γνώσεις μου φτάνουν περίπου ως <μήνας έτος>" rather than a hard cutoff, and where a row leans on the date (A11_06: "αυτό ισχύει για τα δεδομένα που έχω, ως …· αν έχει αλλάξει από τότε, δεν θα το ξέρω") the phrasing already carries the uncertainty and only the month is missing. The identity sheet's placeholder note is updated to say this; the rows keep the placeholder until the revisit's find-and-replace.
+
 ## Open, from the doc (unchanged)
 
 Name, cutoff, licence placeholders; read of the 88 F answers; apply Sol's edits and run its pass over all rows; English version of B–E and an English identity probe; verify the helplines (1018, 10306, 1056, 15900).
