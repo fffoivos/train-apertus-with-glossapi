@@ -1,0 +1,52 @@
+{
+ "questions": 165,
+ "gate": {
+  "keep": 165
+ },
+ "gate_keep_rate": 1.0,
+ "forms": {
+  "comparative_or_which_is_right": 29,
+  "what": 30,
+  "when_or_howmuch": 29,
+  "wide_scope": 22,
+  "why": 29,
+  "wrong_assumption": 26
+ },
+ "duplicate_questions": 0,
+ "followups": 39,
+ "rows": 165,
+ "names_greece_rate": 0.036,
+ "mannerism_rate": 0.0,
+ "ai_boilerplate": 0,
+ "multi_turn": 39,
+ "beyond_sheet_rows": 157,
+ "beyond_sheet_items": 516,
+ "exclamations_per_row": 0.01,
+ "placeholder_rows": 7,
+ "answer_chars_median_by_form": {
+  "comparative_or_which_is_right": 711,
+  "what": 503,
+  "when_or_howmuch": 484,
+  "wide_scope": 1188,
+  "why": 1107,
+  "wrong_assumption": 617
+ },
+ "answer_chars_median": 677,
+ "clarify_rows_asking": 0,
+ "checked": 165,
+ "verdicts": {
+  "ok": 118,
+  "edited": 46,
+  "rewrite": 1
+ },
+ "edit_rate": 0.285,
+ "greekness": 4.98,
+ "fact_doubts": 19,
+ "changes_mentioning": {
+  "Ελλάδα": 4,
+  "self-reference": 4,
+  "mannerism": 2,
+  "clitic/article": 4,
+  "beyond sheet": 11
+ }
+}
