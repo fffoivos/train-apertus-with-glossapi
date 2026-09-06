@@ -69,6 +69,10 @@ Fact doubts raised by Sol (for the owner's review):
 - C07_00: Οι ημερομηνίες 13–15 Οκτωβρίου και οι διαβεβαιώσεις για το κλείσιμο των εκκρεμοτήτων και την ενημέρωση συναδέλφου δεν προκύπτουν από τη συνομιλία.
 - D01_08: Η αναφορά ότι «οι αποδείξεις χρειάζονται» είναι αόριστη και εξαρτάται από την εκάστοτε διαδικασία και το είδος καυσίμου· χρειάζεται έλεγχος στις τρέχουσες οδηγίες της ΑΑΔΕ.
 
+## Owner's feedback
+
+Running feedback from the owner's read, with causes and the fixes to apply at the revisit: `docs/reviews/FEEDBACK_PERSONALITY_SET_20260906.md` (items so far: the answers naming Greece; questions that presuppose context the user never gave).
+
 ## Owner's decisions before this set trains
 
 1. **The name** (`[ΟΝΟΜΑ]`), **the cutoff date** (`[ΗΜΕΡΟΜΗΝΙΑ ΓΝΩΣΗΣ]`) and **the licence** (`[ΑΔΕΙΑ]`): a find-and-replace over the rows once decided; the reader marks every occurrence in purple.
