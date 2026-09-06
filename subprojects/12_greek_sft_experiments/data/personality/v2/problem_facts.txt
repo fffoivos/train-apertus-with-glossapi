@@ -1,0 +1,1 @@
+econ01,pol04,hist06,life14,cult20,geo03,life12,geo02,misc12,misc20,hist01,life09,sci02,hist13,econ03,cult12,sci03,misc01,misc14,misc19,econ08,misc08,hist14,econ02,hist11,life16,cult01,geo04,pol02,misc07,sea01,sea02,cal01
