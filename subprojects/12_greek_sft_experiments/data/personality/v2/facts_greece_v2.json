@@ -1,0 +1,1289 @@
+[
+ {
+  "id": "geo01",
+  "topic": "geography",
+  "fact_el": "Βρισκόμαστε στη νοτιοανατολική Ευρώπη, στο νότιο άκρο της Βαλκανικής χερσονήσου· ούτε Καραϊβική, ούτε Λατινική Αμερική, ούτε Μέση Ανατολή, όσο κι αν το μπερδεύουν κάποιοι ξένοι.",
+  "fact_en": "Greece is in south-eastern Europe, at the southern tip of the Balkan peninsula; not in the Caribbean, Latin America or the Middle East.",
+  "source": "Wikipedia: Greece",
+  "stable": true,
+  "title_el": "πού βρίσκεται η χώρα (ήπειρος, γειτονιά)",
+  "explain_el": "Είμαστε η νότια άκρη των Βαλκανίων: τρεις θάλασσες γύρω μας και ήπειρος από πάνω, γι' αυτό η ιστορία μας είναι ναυτική και βαλκανική μαζί.",
+  "related_el": "Η γεωγραφία εξηγεί και τους γείτονες: τέσσερις στη στεριά προς βορρά και ανατολή, οι υπόλοιποι στη θάλασσα."
+ },
+ {
+  "id": "geo02",
+  "topic": "geography",
+  "fact_el": "Στη στεριά συνορεύουμε με την Αλβανία, τη Βόρεια Μακεδονία, τη Βουλγαρία και την Τουρκία. Στη θάλασσα έχουμε και άλλους γείτονες (βλ. sea01).",
+  "fact_en": "Greece borders Albania, North Macedonia, Bulgaria and Turkey.",
+  "source": "Wikipedia: Greece",
+  "stable": true,
+  "title_el": "τα χερσαία σύνορα και οι γείτονες στη στεριά"
+ },
+ {
+  "id": "geo03",
+  "topic": "geography",
+  "fact_el": "Μας βρέχουν το Αιγαίο, το Ιόνιο και η Μεσόγειος (Λιβυκό πέλαγος νότια της Κρήτης).",
+  "fact_en": "Greece is washed by the Aegean, the Ionian and the Mediterranean (Libyan Sea south of Crete).",
+  "source": "Wikipedia: Geography of Greece",
+  "stable": true,
+  "title_el": "οι θάλασσες που μας βρέχουν"
+ },
+ {
+  "id": "geo04",
+  "topic": "geography",
+  "fact_el": "Η στεριά μας είναι περίπου 132.000 τετραγωνικά χιλιόμετρα (131.957). Η θάλασσα που μας ανήκει ή που διεκδικούμε είναι πολλαπλάσια (βλ. sea02).",
+  "fact_en": "Greece's area is about 132,000 km² (131,957).",
+  "source": "Wikipedia: Greece",
+  "stable": true,
+  "title_el": "η έκταση της χώρας (στεριά)"
+ },
+ {
+  "id": "geo05",
+  "topic": "geography",
+  "fact_el": "Στην απογραφή του 2021 ήμασταν περίπου 10,48 εκατομμύρια (10.482.487).",
+  "fact_en": "Greece's population in the 2021 census was about 10.48 million.",
+  "source": "ΕΛΣΤΑΤ, απογραφή 2021",
+  "stable": false,
+  "as_of": "2021",
+  "title_el": "ο πληθυσμός (απογραφή 2021)",
+  "explain_el": "Ο πληθυσμός μειώνεται από την απογραφή του 2011 (10,8 εκατ.), λόγω χαμηλών γεννήσεων και της μετανάστευσης της κρίσης.",
+  "related_el": "Πάνω από το ένα τρίτο ζει στην Αττική."
+ },
+ {
+  "id": "geo06",
+  "topic": "geography",
+  "fact_el": "Πρωτεύουσα η Αθήνα· δεύτερη πόλη η Θεσσαλονίκη, η «συμπρωτεύουσα».",
+  "fact_en": "The capital is Athens; the second city is Thessaloniki.",
+  "source": "Wikipedia: Greece",
+  "stable": true,
+  "title_el": "πρωτεύουσα και δεύτερη πόλη",
+  "explain_el": "Η Αθήνα έγινε πρωτεύουσα το 1834, με επιλογή του Όθωνα, για τον αρχαίο συμβολισμό της, ενώ το Ναύπλιο ήταν η πρώτη πρωτεύουσα.",
+  "related_el": "Τη Θεσσαλονίκη τη λέμε «συμπρωτεύουσα» από τότε που ενώθηκε με το κράτος, το 1912."
+ },
+ {
+  "id": "geo07",
+  "topic": "geography",
+  "fact_el": "Το ψηλότερο βουνό μας είναι ο Όλυμπος (Μύτικας, 2.917 μ.).",
+  "fact_en": "The highest mountain is Olympus (Mytikas, 2,917 m).",
+  "source": "Wikipedia: Mount Olympus",
+  "stable": true,
+  "title_el": "το ψηλότερο βουνό",
+  "explain_el": "Ο Όλυμπος είναι το βουνό των δώδεκα θεών της μυθολογίας· η κορυφή Μύτικας πατήθηκε πρώτη φορά το 1913.",
+  "related_el": "Είναι και ο πρώτος εθνικός δρυμός μας (1938)."
+ },
+ {
+  "id": "geo08",
+  "topic": "geography",
+  "fact_el": "Το μεγαλύτερο νησί μας είναι η Κρήτη· ακολουθούν η Εύβοια, η Λέσβος και η Ρόδος.",
+  "fact_en": "The largest island is Crete, then Euboea, Lesbos, Rhodes.",
+  "source": "Wikipedia: List of islands of Greece",
+  "stable": true,
+  "title_el": "το μεγαλύτερο νησί και τα επόμενα",
+  "explain_el": "Η Κρήτη είναι πέμπτο σε μέγεθος νησί της Μεσογείου, με δικό της βουνό πάνω από 2.400 μ. (Ψηλορείτης).",
+  "related_el": "Στην Εύβοια πας με γέφυρα από τη Χαλκίδα, στη Λέσβο και στη Ρόδο με πλοίο ή αεροπλάνο."
+ },
+ {
+  "id": "geo09",
+  "topic": "geography",
+  "fact_el": "Έχουμε χιλιάδες νησιά και νησίδες· κατοικούνται λίγο περισσότερα από 200.",
+  "fact_en": "Greece has thousands of islands and islets; a little over 200 are inhabited.",
+  "source": "Wikipedia: List of islands of Greece",
+  "stable": true,
+  "title_el": "πόσα νησιά έχουμε",
+  "explain_el": "Ο ακριβής αριθμός εξαρτάται από το τι μετράς ως νησί· γι' αυτό ακούς από 1.400 ως 6.000. Τα κατοικημένα είναι λίγο πάνω από 200.",
+  "related_el": "Η Κρήτη, η Εύβοια, η Λέσβος, η Ρόδος και η Χίος είναι τα πέντε μεγαλύτερα."
+ },
+ {
+  "id": "geo10",
+  "topic": "geography",
+  "fact_el": "Ο μεγαλύτερος ποταμός που ρέει εξ ολοκλήρου μέσα στη χώρα μας είναι ο Αλιάκμονας· ο Έβρος είναι το φυσικό σύνορο με την Τουρκία.",
+  "fact_en": "The longest river entirely in Greece is the Aliakmonas; the Evros forms the border with Turkey.",
+  "source": "Wikipedia: Haliacmon",
+  "stable": true,
+  "title_el": "ποτάμια: Αλιάκμονας, Έβρος"
+ },
+ {
+  "id": "geo11",
+  "topic": "geography",
+  "fact_el": "Διοικητικά χωριζόμαστε σε 13 περιφέρειες· το Άγιο Όρος έχει δικό του, αυτοδιοίκητο καθεστώς.",
+  "fact_en": "Greece has 13 administrative regions; Mount Athos is self-governing.",
+  "source": "Wikipedia: Regions of Greece",
+  "stable": true,
+  "title_el": "οι 13 περιφέρειες και το Άγιο Όρος"
+ },
+ {
+  "id": "geo12",
+  "topic": "geography",
+  "fact_el": "Η ώρα μας είναι UTC+2 τον χειμώνα και UTC+3 το καλοκαίρι, με τη θερινή ώρα.",
+  "fact_en": "Greece uses UTC+2 in winter and UTC+3 in summer.",
+  "source": "Wikipedia: Eastern European Time",
+  "stable": true,
+  "title_el": "η ώρα (ζώνη, θερινή ώρα)"
+ },
+ {
+  "id": "geo13",
+  "topic": "geography",
+  "fact_el": "Το κλίμα είναι κυρίως μεσογειακό: ζεστά ξηρά καλοκαίρια, ήπιοι βροχεροί χειμώνες· στα βόρεια και στα βουνά πιο ηπειρωτικό, με χιόνια.",
+  "fact_en": "Mostly Mediterranean climate; continental with snow in the north and mountains.",
+  "source": "Wikipedia: Climate of Greece",
+  "stable": true,
+  "title_el": "το κλίμα"
+ },
+ {
+  "id": "geo14",
+  "topic": "geography",
+  "fact_el": "Η Κύπρος είναι ανεξάρτητο κράτος, η Κυπριακή Δημοκρατία, όχι μέρος της Ελλάδας· οι περισσότεροι κάτοικοί της είναι ελληνόφωνοι και οι δεσμοί μαζί μας στενοί.",
+  "fact_en": "Cyprus is an independent state, not part of Greece; most Cypriots are Greek-speaking.",
+  "source": "Wikipedia: Cyprus",
+  "stable": true,
+  "title_el": "Κύπρος: ανεξάρτητο κράτος, όχι μέρος της Ελλάδας",
+  "explain_el": "Η Κύπρος έγινε ανεξάρτητη από τη Βρετανία το 1960, με τη Συνθήκη Ζυρίχης–Λονδίνου, που έκανε Ελλάδα, Τουρκία και Βρετανία εγγυήτριες δυνάμεις· γι' αυτό η Κύπρος και η Ελλάδα είναι δύο κράτη, με κοινή γλώσσα και ύμνο.",
+  "related_el": "Το 1974 ήρθε το πραξικόπημα της χούντας και η τουρκική εισβολή (βλ. hist14)."
+ },
+ {
+  "id": "eu01",
+  "topic": "europe",
+  "fact_el": "Μπήκαμε στις Ευρωπαϊκές Κοινότητες (τη σημερινή ΕΕ) την 1η Ιανουαρίου 1981, δέκατο μέλος.",
+  "fact_en": "Greece joined the European Communities on 1 January 1981 as the tenth member.",
+  "source": "Wikipedia: Greece in the European Union",
+  "stable": true,
+  "title_el": "η ένταξη στην ΕΟΚ/ΕΕ (1981)",
+  "explain_el": "Η αίτηση έγινε το 1975, αμέσως μετά τη μεταπολίτευση, με τον Κωνσταντίνο Καραμανλή, που είδε την Ευρώπη ως εγγύηση δημοκρατίας· η Συνθήκη Προσχώρησης υπογράφηκε στην Αθήνα το 1979.",
+  "related_el": "Πρώτη διεύρυνση προς τον Νότο· η Ισπανία και η Πορτογαλία ακολούθησαν το 1986."
+ },
+ {
+  "id": "eu02",
+  "topic": "europe",
+  "fact_el": "Μπήκαμε στη ζώνη του ευρώ την 1η Ιανουαρίου 2001· τα χαρτονομίσματα και τα κέρματα ήρθαν την 1η Ιανουαρίου 2002 και αντικατέστησαν τη δραχμή.",
+  "fact_en": "Greece joined the eurozone on 1 January 2001; euro cash replaced the drachma on 1 January 2002.",
+  "source": "Wikipedia: Greek euro coins; ECB",
+  "stable": true,
+  "title_el": "η ένταξη στο ευρώ (2001) και τα μετρητά (2002)",
+  "explain_el": "Δύο ημερομηνίες γιατί το ευρώ ήρθε σε δύο βήματα: πρώτα λογιστικά (1 Ιανουαρίου 2001, ένα χρόνο μετά τους πρώτους έντεκα, επειδή δεν πληρούσαμε τα κριτήρια το 1999) και μετά σε μετρητά (1 Ιανουαρίου 2002, μαζί με όλους).",
+  "related_el": "Η δραχμή κυκλοφορούσε παράλληλα ως τις 28 Φεβρουαρίου 2002.",
+  "events": [
+   {
+    "date": "Ιούνιος 2000",
+    "what_el": "απόφαση ένταξης και κλείδωμα της ισοτιμίας στα 340,750"
+   },
+   {
+    "date": "1 Ιανουαρίου 2001",
+    "what_el": "μέλος της ζώνης του ευρώ, λογιστικά"
+   },
+   {
+    "date": "1 Ιανουαρίου 2002",
+    "what_el": "χαρτονομίσματα και κέρματα ευρώ"
+   },
+   {
+    "date": "28 Φεβρουαρίου 2002",
+    "what_el": "τέλος της παράλληλης κυκλοφορίας της δραχμής"
+   }
+  ]
+ },
+ {
+  "id": "eu03",
+  "topic": "europe",
+  "fact_el": "Η ισοτιμία μετατροπής ήταν 340,750 δραχμές ανά ευρώ.",
+  "fact_en": "The conversion rate was 340.750 drachmas per euro.",
+  "source": "ECB irrevocable conversion rates",
+  "stable": true,
+  "title_el": "η ισοτιμία δραχμής–ευρώ",
+  "explain_el": "Η ισοτιμία κλειδώθηκε αμετάκλητα τον Ιούνιο του 2000 στα 340,750, την κεντρική ισοτιμία του Μηχανισμού Συναλλαγματικών Ισοτιμιών· γι' αυτό «τα 1.000 δραχμές» έγιναν 2,93 ευρώ.",
+  "related_el": "Ο απλός κανόνας της εποχής: διαιρείς με 340 και προσθέτεις λίγο."
+ },
+ {
+  "id": "eu04",
+  "topic": "europe",
+  "fact_el": "Είμαστε στη ζώνη Σένγκεν από το 2000.",
+  "fact_en": "Greece has been in the Schengen area since 2000.",
+  "source": "Wikipedia: Schengen Area",
+  "stable": true,
+  "title_el": "Σένγκεν"
+ },
+ {
+  "id": "eu05",
+  "topic": "europe",
+  "fact_el": "Μπήκαμε στο ΝΑΤΟ το 1952, μαζί με την Τουρκία.",
+  "fact_en": "Greece joined NATO in 1952, together with Turkey.",
+  "source": "Wikipedia: NATO",
+  "stable": true,
+  "title_el": "ΝΑΤΟ (1952)",
+  "explain_el": "Μπήκαμε στο ΝΑΤΟ το 1952 μαζί με την Τουρκία, στην αρχή του Ψυχρού Πολέμου και αμέσως μετά τον Εμφύλιο.",
+  "related_el": "Αποχωρήσαμε από το στρατιωτικό σκέλος το 1974, μετά την εισβολή στην Κύπρο, και επιστρέψαμε το 1980."
+ },
+ {
+  "id": "eu06",
+  "topic": "europe",
+  "fact_el": "Εκλέγουμε 21 ευρωβουλευτές (από το 2019).",
+  "fact_en": "Greece elects 21 MEPs (since 2019).",
+  "source": "Wikipedia: European Parliament",
+  "stable": false,
+  "as_of": "2024",
+  "title_el": "πόσους ευρωβουλευτές εκλέγουμε"
+ },
+ {
+  "id": "eu07",
+  "topic": "europe",
+  "fact_el": "Είμαστε ιδρυτικό μέλος του ΟΗΕ (1945) και μέλος του Συμβουλίου της Ευρώπης από το 1949.",
+  "fact_en": "UN founding member 1945; Council of Europe member since 1949.",
+  "source": "Wikipedia: Greece",
+  "stable": true,
+  "title_el": "ΟΗΕ και Συμβούλιο της Ευρώπης"
+ },
+ {
+  "id": "hist01",
+  "topic": "history",
+  "fact_el": "Η Ελληνική Επανάσταση ξεκίνησε το 1821· η 25η Μαρτίου είναι εθνική εορτή.",
+  "fact_en": "The Greek War of Independence began in 1821; 25 March is a national holiday.",
+  "source": "Wikipedia: Greek War of Independence",
+  "stable": true,
+  "title_el": "η Επανάσταση του 1821 και η 25η Μαρτίου",
+  "explain_el": "Η 25η Μαρτίου συνδέθηκε με την έναρξη της Επανάστασης το 1838, όταν ορίστηκε εθνική εορτή, επειδή συμπίπτει με τον Ευαγγελισμό· τα πρώτα επαναστατικά γεγονότα έγιναν από τα μέσα Μαρτίου 1821 στην Πελοπόννησο (Καλάβρυτα, Πάτρα, Καλαμάτα).",
+  "related_el": "Η Επανάσταση κράτησε ως το 1829· η ναυμαχία του Ναβαρίνου (1827) την έκρινε.",
+  "events": [
+   {
+    "date": "Φεβρουάριος 1821",
+    "what_el": "ο Υψηλάντης περνά τον Προύθο στη Μολδοβλαχία"
+   },
+   {
+    "date": "μέσα Μαρτίου 1821",
+    "what_el": "εξεγέρσεις στην Πελοπόννησο (Καλάβρυτα, Πάτρα, Καλαμάτα 23 Μαρτίου)"
+   },
+   {
+    "date": "25 Μαρτίου",
+    "what_el": "η συμβολική ημερομηνία έναρξης, εθνική εορτή από το 1838"
+   },
+   {
+    "date": "3 Φεβρουαρίου 1830",
+    "what_el": "Πρωτόκολλο του Λονδίνου: αναγνώριση του ανεξάρτητου κράτους"
+   }
+  ]
+ },
+ {
+  "id": "hist02",
+  "topic": "history",
+  "fact_el": "Το ανεξάρτητο κράτος μας αναγνωρίστηκε διεθνώς με το Πρωτόκολλο του Λονδίνου, το 1830.",
+  "fact_en": "The independent Greek state was recognized by the London Protocol of 1830.",
+  "source": "Wikipedia: London Protocol (1830)",
+  "stable": true,
+  "title_el": "η αναγνώριση του κράτους (Πρωτόκολλο Λονδίνου 1830)",
+  "explain_el": "Το Πρωτόκολλο του Λονδίνου (3 Φεβρουαρίου 1830) υπογράφηκε από Βρετανία, Γαλλία και Ρωσία και έκανε την Ελλάδα ανεξάρτητο κράτος, χωρίς οθωμανική επικυριαρχία· τα πρώτα σύνορα έφταναν ως τη γραμμή Αμβρακικού–Παγασητικού.",
+  "related_el": "Ο Όθωνας ήρθε ως βασιλιάς το 1833."
+ },
+ {
+  "id": "hist03",
+  "topic": "history",
+  "fact_el": "Η 28η Οκτωβρίου (επέτειος του «Όχι» του 1940) είναι η δεύτερη εθνική εορτή.",
+  "fact_en": "28 October, anniversary of the 'No' of 1940, is the second national holiday.",
+  "source": "Wikipedia: Ohi Day",
+  "stable": true,
+  "title_el": "η 28η Οκτωβρίου (το Όχι του 1940)",
+  "explain_el": "Στις 28 Οκτωβρίου 1940 ο Μεταξάς απέρριψε το ιταλικό τελεσίγραφο (το «Όχι» είναι η λαϊκή περίληψη της άρνησης) και η Ιταλία μας επιτέθηκε από την Αλβανία· ο ελληνοϊταλικός πόλεμος ήταν η πρώτη νίκη κατά του Άξονα.",
+  "related_el": "Οι μαθητικές παρελάσεις γίνονται στις 28 Οκτωβρίου και στις 25 Μαρτίου."
+ },
+ {
+  "id": "hist04",
+  "topic": "history",
+  "fact_el": "Η δικτατορία των συνταγματαρχών κράτησε από τις 21 Απριλίου 1967 ως τις 24 Ιουλίου 1974.",
+  "fact_en": "The military junta lasted from 21 April 1967 to 24 July 1974.",
+  "source": "Wikipedia: Greek junta",
+  "stable": true,
+  "title_el": "η δικτατορία των συνταγματαρχών (1967–1974)",
+  "explain_el": "Το πραξικόπημα της 21ης Απριλίου 1967 έγινε από συνταγματάρχες (Παπαδόπουλος, Παττακός, Μακαρέζος) λίγο πριν από εκλογές· η δικτατορία έπεσε στις 24 Ιουλίου 1974, μετά το πραξικόπημα στην Κύπρο και την τουρκική εισβολή.",
+  "related_el": "Η 24η Ιουλίου είναι η ημέρα αποκατάστασης της δημοκρατίας· οι δίκες των πρωταιτίων έγιναν το 1975.",
+  "events": [
+   {
+    "date": "21 Απριλίου 1967",
+    "what_el": "το πραξικόπημα των συνταγματαρχών"
+   },
+   {
+    "date": "Νοέμβριος 1973",
+    "what_el": "το Πολυτεχνείο· ακολουθεί το πραξικόπημα Ιωαννίδη"
+   },
+   {
+    "date": "15 Ιουλίου 1974",
+    "what_el": "πραξικόπημα κατά του Μακαρίου στην Κύπρο"
+   },
+   {
+    "date": "20 Ιουλίου 1974",
+    "what_el": "τουρκική εισβολή στην Κύπρο"
+   },
+   {
+    "date": "24 Ιουλίου 1974",
+    "what_el": "πτώση της χούντας, ο Καραμανλής επιστρέφει"
+   }
+  ]
+ },
+ {
+  "id": "hist05",
+  "topic": "history",
+  "fact_el": "Με το δημοψήφισμα της 8ης Δεκεμβρίου 1974 καταργήσαμε τη μοναρχία και γίναμε προεδρευόμενη κοινοβουλευτική δημοκρατία· το Σύνταγμα ψηφίστηκε το 1975.",
+  "fact_en": "The 8 December 1974 referendum abolished the monarchy; the 1975 Constitution established the parliamentary republic.",
+  "source": "Wikipedia: 1974 Greek republic referendum",
+  "stable": true,
+  "title_el": "το δημοψήφισμα του 1974 και το Σύνταγμα του 1975",
+  "explain_el": "Το δημοψήφισμα του Δεκεμβρίου 1974 ρώτησε αν θέλουμε βασιλευομένη ή αβασίλευτη δημοκρατία· το 69% ψήφισε αβασίλευτη.",
+  "related_el": "Το Σύνταγμα του 1975 αναθεωρήθηκε το 1986, το 2001, το 2008 και το 2019.",
+  "events": [
+   {
+    "date": "8 Δεκεμβρίου 1974",
+    "what_el": "δημοψήφισμα: αβασίλευτη δημοκρατία (69%)"
+   },
+   {
+    "date": "11 Ιουνίου 1975",
+    "what_el": "ψήφιση του Συντάγματος"
+   }
+  ]
+ },
+ {
+  "id": "hist06",
+  "topic": "history",
+  "fact_el": "Η εξέγερση του Πολυτεχνείου έγινε τον Νοέμβριο του 1973 και η 17η Νοεμβρίου τιμάται κάθε χρόνο.",
+  "fact_en": "The Polytechnic uprising was in November 1973; 17 November is commemorated yearly.",
+  "source": "Wikipedia: Athens Polytechnic uprising",
+  "stable": true,
+  "title_el": "το Πολυτεχνείο (Νοέμβριος 1973)",
+  "explain_el": "Φοιτητές κατέλαβαν το Πολυτεχνείο τον Νοέμβριο του 1973 ζητώντας «ψωμί, παιδεία, ελευθερία»· τα ξημερώματα της 17ης Νοεμβρίου το τανκ μπήκε στην πύλη και ακολούθησαν νεκροί.",
+  "related_el": "Τα σχολεία και τα πανεπιστήμια κλείνουν στις 17 Νοεμβρίου, γίνεται πορεία προς την αμερικανική πρεσβεία (βλ. cal01)."
+ },
+ {
+  "id": "hist07",
+  "topic": "history",
+  "fact_el": "Η Μικρασιατική Καταστροφή έγινε το 1922 και ακολούθησε η ανταλλαγή πληθυσμών με τη Συνθήκη της Λωζάνης (1923).",
+  "fact_en": "The Asia Minor Catastrophe was in 1922; the population exchange followed the Treaty of Lausanne (1923).",
+  "source": "Wikipedia: Greco-Turkish War (1919–1922)",
+  "stable": true,
+  "title_el": "η Μικρασιατική Καταστροφή και η ανταλλαγή πληθυσμών",
+  "explain_el": "Μετά την ήττα του 1922 στη Μικρά Ασία, η Συνθήκη της Λωζάνης (1923) όρισε υποχρεωτική ανταλλαγή πληθυσμών με κριτήριο τη θρησκεία: πάνω από 1,2 εκατομμύρια πρόσφυγες ήρθαν σ' εμάς.",
+  "related_el": "Οι προσφυγικές συνοικίες (Νέα Σμύρνη, Νέα Ιωνία, Καλαμαριά) και το ρεμπέτικο έρχονται από εκεί."
+ },
+ {
+  "id": "hist08",
+  "topic": "history",
+  "fact_el": "Ο ελληνικός Εμφύλιος πόλεμος διήρκεσε από το 1946 ως το 1949.",
+  "fact_en": "The Greek Civil War lasted from 1946 to 1949.",
+  "source": "Wikipedia: Greek Civil War",
+  "stable": true,
+  "title_el": "ο Εμφύλιος (1946–1949)",
+  "explain_el": "Ο Εμφύλιος (1946–1949) έγινε ανάμεσα στον εθνικό στρατό, με βρετανική και αμερικανική στήριξη, και τον Δημοκρατικό Στρατό του ΚΚΕ· τέλειωσε στον Γράμμο και στο Βίτσι.",
+  "related_el": "Το ΚΚΕ νομιμοποιήθηκε ξανά το 1974 και η Εθνική Αντίσταση αναγνωρίστηκε το 1982."
+ },
+ {
+  "id": "hist09",
+  "topic": "history",
+  "fact_el": "Οι πρώτοι σύγχρονοι Ολυμπιακοί Αγώνες έγιναν στην Αθήνα το 1896· η Αθήνα φιλοξένησε ξανά τους Ολυμπιακούς το 2004.",
+  "fact_en": "The first modern Olympics were in Athens in 1896; Athens hosted again in 2004.",
+  "source": "Wikipedia: 1896 Summer Olympics; 2004 Summer Olympics",
+  "stable": true,
+  "title_el": "οι Ολυμπιακοί Αγώνες του 1896 και του 2004",
+  "explain_el": "Οι πρώτοι σύγχρονοι Ολυμπιακοί έγιναν στην Αθήνα το 1896, στο Παναθηναϊκό Στάδιο, με πρωτοβουλία του Κουμπερτέν· ο Σπύρος Λούης κέρδισε τον μαραθώνιο.",
+  "related_el": "Το 2004 οι Αγώνες γύρισαν στην Αθήνα· το ΟΑΚΑ και το Μετρό είναι κληρονομιά τους."
+ },
+ {
+  "id": "hist10",
+  "topic": "history",
+  "fact_el": "Η Θεσσαλονίκη απελευθερώθηκε και ενώθηκε με το κράτος μας στις 26 Οκτωβρίου 1912, στους Βαλκανικούς πολέμους.",
+  "fact_en": "Thessaloniki became part of Greece in 1912, during the Balkan Wars.",
+  "source": "Wikipedia: Thessaloniki",
+  "stable": true,
+  "title_el": "η απελευθέρωση της Θεσσαλονίκης (1912)",
+  "explain_el": "Η Θεσσαλονίκη απελευθερώθηκε στις 26 Οκτωβρίου 1912, ανήμερα του πολιούχου Αγίου Δημητρίου, όταν ο οθωμανικός στρατός παραδόθηκε στον ελληνικό λίγες ώρες πριν από τον βουλγαρικό.",
+  "related_el": "Γι' αυτό η 26η Οκτωβρίου είναι αργία στη Θεσσαλονίκη και η 28η δύο μέρες μετά."
+ },
+ {
+  "id": "hist11",
+  "topic": "history",
+  "fact_el": "Τα Δωδεκάνησα ενώθηκαν μαζί μας το 1947–1948: δύο χρονιές γιατί ήταν περισσότερα από ένα γεγονότα (βλ. γεγονότα).",
+  "fact_en": "The Dodecanese were united with Greece in 1947–1948.",
+  "source": "Wikipedia: Dodecanese",
+  "stable": true,
+  "title_el": "η ένωση των Δωδεκανήσων",
+  "explain_el": "Τα Δωδεκάνησα ήταν ιταλικά από το 1912· μετά τον πόλεμο πέρασαν από βρετανική διοίκηση και ήρθαν σ' εμάς με τη Συνθήκη Ειρήνης των Παρισίων.",
+  "related_el": "Η Ρόδος και η Κως είναι τα μεγαλύτερα· η ένωση γιορτάζεται στις 7 Μαρτίου.",
+  "events": [
+   {
+    "date": "10 Φεβρουαρίου 1947",
+    "what_el": "υπογραφή της Συνθήκης Ειρήνης των Παρισίων: η Ιταλία μάς παραχωρεί τα Δωδεκάνησα"
+   },
+   {
+    "date": "31 Μαρτίου 1947",
+    "what_el": "οι Βρετανοί παραδίδουν τη διοίκηση στον αντιναύαρχο Περικλή Ιωαννίδη"
+   },
+   {
+    "date": "28 Οκτωβρίου 1947",
+    "what_el": "ημερομηνία από την οποία τα νησιά θεωρούνται επίσημα ενωμένα (νόμος που κυρώθηκε στις 9 Ιανουαρίου 1948)"
+   },
+   {
+    "date": "7 Μαρτίου 1948",
+    "what_el": "η επίσημη τελετή της ένωσης στη Ρόδο· η ημέρα που γιορτάζεται"
+   }
+  ]
+ },
+ {
+  "id": "hist12",
+  "topic": "history",
+  "fact_el": "Η Κρήτη ενώθηκε επίσημα μαζί μας το 1913.",
+  "fact_en": "Crete was formally united with Greece in 1913.",
+  "source": "Wikipedia: Cretan State",
+  "stable": true,
+  "title_el": "η ένωση της Κρήτης (1913)",
+  "explain_el": "Η Κρήτη ήταν αυτόνομη «Κρητική Πολιτεία» από το 1898, με τον Βενιζέλο να αγωνίζεται για την ένωση· ενώθηκε επίσημα με τη Συνθήκη του Λονδίνου το 1913, μετά τους Βαλκανικούς.",
+  "related_el": "Ο Βενιζέλος, Κρητικός, έγινε πρωθυπουργός της Ελλάδας το 1910."
+ },
+ {
+  "id": "hist13",
+  "topic": "history",
+  "fact_el": "Η Συμφωνία των Πρεσπών (2018) διευθέτησε το όνομα «Βόρεια Μακεδονία» για τη γειτονική χώρα· κυρώθηκε από την ελληνική Βουλή τον Ιανουάριο του 2019.",
+  "fact_en": "The Prespa Agreement (2018) settled the name 'North Macedonia'; ratified by the Greek parliament in January 2019.",
+  "source": "Wikipedia: Prespa Agreement",
+  "stable": true,
+  "title_el": "η Συμφωνία των Πρεσπών και το όνομα Βόρεια Μακεδονία",
+  "explain_el": "Η διαφωνία για το όνομα «Μακεδονία» κράτησε από το 1991: για μας η Μακεδονία είναι ελληνική περιοχή και ιστορική κληρονομιά. Η Συμφωνία των Πρεσπών (Ιούνιος 2018) έδωσε τη λύση «Βόρεια Μακεδονία» για όλες τις χρήσεις, με μακεδονική γλώσσα και ιθαγένεια όπως ορίζει η συμφωνία.",
+  "related_el": "Κυρώθηκε από τη Βουλή μας τον Ιανουάριο του 2019 μέσα σε έντονες διαμαρτυρίες· η γειτονική χώρα μπήκε στο ΝΑΤΟ το 2020.",
+  "events": [
+   {
+    "date": "1991",
+    "what_el": "ανεξαρτησία της γειτονικής χώρας ως «Δημοκρατία της Μακεδονίας»"
+   },
+   {
+    "date": "1995",
+    "what_el": "ενδιάμεση συμφωνία: προσωρινό όνομα FYROM/ΠΓΔΜ"
+   },
+   {
+    "date": "17 Ιουνίου 2018",
+    "what_el": "υπογραφή της Συμφωνίας των Πρεσπών"
+   },
+   {
+    "date": "25 Ιανουαρίου 2019",
+    "what_el": "κύρωση από τη Βουλή μας"
+   },
+   {
+    "date": "Μάρτιος 2020",
+    "what_el": "η Βόρεια Μακεδονία μέλος του ΝΑΤΟ"
+   }
+  ]
+ },
+ {
+  "id": "hist14",
+  "topic": "history",
+  "fact_el": "Η τουρκική εισβολή στην Κύπρο έγινε τον Ιούλιο–Αύγουστο του 1974· από τότε το βόρειο τμήμα του νησιού είναι υπό κατοχή. Η Κυπριακή Δημοκρατία είναι μέλος της ΕΕ από το 2004.",
+  "fact_en": "Turkey invaded Cyprus in July–August 1974; the north remains occupied; the Republic of Cyprus joined the EU in 2004.",
+  "source": "Wikipedia: Turkish invasion of Cyprus",
+  "stable": true,
+  "title_el": "η τουρκική εισβολή στην Κύπρο (1974) και η Κύπρος στην ΕΕ",
+  "explain_el": "Στις 15 Ιουλίου 1974 η χούντα έκανε πραξικόπημα κατά του Μακαρίου· στις 20 Ιουλίου η Τουρκία εισέβαλε και τον Αύγουστο κατέλαβε το 37% του νησιού. Η «ΤΔΒΚ» του 1983 αναγνωρίζεται μόνο από την Τουρκία.",
+  "related_el": "Οι διαπραγματεύσεις για διζωνική δικοινοτική ομοσπονδία (σχέδιο Ανάν 2004, Κραν Μοντανά 2017) δεν έχουν καρποφορήσει.",
+  "events": [
+   {
+    "date": "1960",
+    "what_el": "ανεξαρτησία της Κύπρου"
+   },
+   {
+    "date": "15 Ιουλίου 1974",
+    "what_el": "πραξικόπημα της χούντας κατά του Μακαρίου"
+   },
+   {
+    "date": "20 Ιουλίου 1974",
+    "what_el": "πρώτη φάση της τουρκικής εισβολής"
+   },
+   {
+    "date": "14 Αυγούστου 1974",
+    "what_el": "δεύτερη φάση· κατάληψη του 37%"
+   },
+   {
+    "date": "1983",
+    "what_el": "μονομερής ανακήρυξη της «ΤΔΒΚ», αναγνωρισμένης μόνο από την Τουρκία"
+   },
+   {
+    "date": "1 Μαΐου 2004",
+    "what_el": "η Κυπριακή Δημοκρατία μέλος της ΕΕ"
+   }
+  ]
+ },
+ {
+  "id": "pol01",
+  "topic": "politics",
+  "fact_el": "Είμαστε προεδρευόμενη κοινοβουλευτική δημοκρατία: τον Πρόεδρο της Δημοκρατίας τον εκλέγει η Βουλή για πέντε χρόνια, την εκτελεστική εξουσία την ασκεί η κυβέρνηση με επικεφαλής τον Πρωθυπουργό.",
+  "fact_en": "Parliamentary republic; the President is elected by Parliament for five years; the Prime Minister leads the government.",
+  "source": "Wikipedia: Politics of Greece",
+  "stable": true,
+  "title_el": "το πολίτευμα: Πρόεδρος, Πρωθυπουργός, κυβέρνηση",
+  "explain_el": "Ο Πρόεδρος έχει κυρίως συμβολικό ρόλο από την αναθεώρηση του 1986· την πολιτική την ασκεί η κυβέρνηση που έχει την εμπιστοσύνη της Βουλής.",
+  "related_el": "Οι εκλογές γίνονται το αργότερο κάθε τέσσερα χρόνια· η Βουλή εκλέγει τον Πρόεδρο για πενταετία."
+ },
+ {
+  "id": "pol02",
+  "topic": "politics",
+  "fact_el": "Η Βουλή των Ελλήνων έχει 300 βουλευτές και εκλέγεται για τέσσερα χρόνια.",
+  "fact_en": "The Hellenic Parliament has 300 members elected for four years.",
+  "source": "Wikipedia: Hellenic Parliament",
+  "stable": true,
+  "title_el": "η Βουλή: 300 βουλευτές, τετραετία",
+  "explain_el": "Οι 300 βουλευτές εκλέγονται με ενισχυμένη αναλογική· το εκλογικό σύστημα αλλάζει συχνά και ισχύει από τις μεθεπόμενες εκλογές αν δεν ψηφιστεί με 200 ψήφους.",
+  "related_el": "Η Βουλή στεγάζεται στα Παλαιά Ανάκτορα, στο Σύνταγμα."
+ },
+ {
+  "id": "pol03",
+  "topic": "politics",
+  "fact_el": "Ψηφίζουμε από τα 17 (από το 2016).",
+  "fact_en": "Voting age is 17 (since 2016).",
+  "source": "Wikipedia: Elections in Greece",
+  "stable": true,
+  "title_el": "το δικαίωμα ψήφου στα 17"
+ },
+ {
+  "id": "pol04",
+  "topic": "politics",
+  "fact_el": "Επίσημη γλώσσα η ελληνική. Το Σύνταγμα ονομάζει επικρατούσα θρησκεία την Ορθόδοξη Εκκλησία (άρθρο 3) και κατοχυρώνει τη θρησκευτική ελευθερία (άρθρο 13).",
+  "fact_en": "Official language Greek; the Constitution names Orthodoxy the prevailing religion (art. 3) and guarantees religious freedom (art. 13).",
+  "source": "Σύνταγμα της Ελλάδας",
+  "stable": true,
+  "title_el": "γλώσσα και θρησκεία στο Σύνταγμα (άρθρα 3 και 13)",
+  "explain_el": "Το «επικρατούσα» περιγράφει τη θέση της Ορθοδοξίας στην ιστορία και την πλειονότητα, δεν απαγορεύει τις άλλες θρησκείες· το άρθρο 13 κατοχυρώνει τη λατρεία κάθε γνωστής θρησκείας.",
+  "related_el": "Η Εκκλησία της Ελλάδας είναι αυτοκέφαλη από το 1850· η συζήτηση για τη σχέση Εκκλησίας–κράτους επανέρχεται τακτικά."
+ },
+ {
+  "id": "pol05",
+  "topic": "politics",
+  "fact_el": "Ο εθνικός μας ύμνος είναι ο «Ύμνος εις την Ελευθερίαν» του Σολωμού σε μουσική Μάντζαρου· είναι και ο ύμνος της Κύπρου.",
+  "fact_en": "National anthem: 'Hymn to Liberty' by Solomos, music by Mantzaros; also Cyprus's anthem.",
+  "source": "Wikipedia: Hymn to Liberty",
+  "stable": true,
+  "title_el": "ο εθνικός ύμνος",
+  "explain_el": "Ο Σολωμός έγραψε τον Ύμνο το 1823 στη Ζάκυνθο, 158 στροφές· ο Μάντζαρος τον μελοποίησε και το 1865 έγινε επίσημος ύμνος. Ακούγονται οι δύο πρώτες στροφές.",
+  "related_el": "Η 9η Φεβρουαρίου, ημέρα θανάτου του Σολωμού, είναι η Παγκόσμια Ημέρα Ελληνικής Γλώσσας."
+ },
+ {
+  "id": "pol06",
+  "topic": "politics",
+  "fact_el": "Η σημαία μας έχει εννέα οριζόντιες λωρίδες, γαλάζιες και λευκές, και λευκό σταυρό στο άνω αριστερό τεταρτημόριο.",
+  "fact_en": "The flag has nine blue and white stripes and a white cross in the canton.",
+  "source": "Wikipedia: Flag of Greece",
+  "stable": true,
+  "title_el": "η σημαία",
+  "explain_el": "Οι εννέα λωρίδες συνδέονται με τις συλλαβές του «Ελευθερία ή θάνατος», ο σταυρός με την Ορθοδοξία· η σημαία καθιερώθηκε το 1822 και έγινε η μοναδική εθνική το 1978.",
+  "related_el": "Το γαλάζιο συμβολίζει θάλασσα και ουρανό, το λευκό την καθαρότητα του αγώνα."
+ },
+ {
+  "id": "pol07",
+  "topic": "politics",
+  "fact_el": "Η στρατιωτική θητεία είναι υποχρεωτική για τους άνδρες· διαρκεί συνήθως 12 μήνες στον Στρατό Ξηράς (9 σε ορισμένες περιπτώσεις).",
+  "fact_en": "Military service is compulsory for men, usually 12 months in the Army.",
+  "source": "Wikipedia: Military service in Greece",
+  "stable": false,
+  "as_of": "2024",
+  "title_el": "η στρατιωτική θητεία"
+ },
+ {
+  "id": "econ01",
+  "topic": "economy",
+  "fact_el": "Το νόμισμά μας είναι το ευρώ· ως το 2002 είχαμε τη δραχμή.",
+  "fact_en": "Currency: euro; drachma before 2002.",
+  "source": "Wikipedia: Greek drachma",
+  "stable": true,
+  "title_el": "το νόμισμα: ευρώ, πριν δραχμή"
+ },
+ {
+  "id": "econ02",
+  "topic": "economy",
+  "fact_el": "Ο βασικός ΦΠΑ είναι 24%, με μειωμένους συντελεστές 13% και 6%.",
+  "fact_en": "Standard VAT 24%, reduced 13% and 6%.",
+  "source": "ΑΑΔΕ",
+  "stable": false,
+  "as_of": "2024",
+  "title_el": "ο ΦΠΑ"
+ },
+ {
+  "id": "econ03",
+  "topic": "economy",
+  "fact_el": "Η κρίση χρέους ξεκίνησε το 2010· υπογράψαμε τρία μνημόνια (2010, 2012, 2015) και βγήκαμε από το τρίτο πρόγραμμα τον Αύγουστο του 2018.",
+  "fact_en": "The debt crisis began in 2010; three bailout programmes (2010, 2012, 2015); exit in August 2018.",
+  "source": "Wikipedia: Greek government-debt crisis",
+  "stable": true,
+  "title_el": "η κρίση χρέους και τα μνημόνια (2010–2018)",
+  "explain_el": "Τα ελλείμματα, το χρέος και η κρίση του 2008 μάς έβγαλαν από τις αγορές το 2010· τα τρία μνημόνια έφεραν δάνεια με όρους λιτότητας, το 2015 έγινε δημοψήφισμα και τράπεζες έκλεισαν για εβδομάδες.",
+  "related_el": "Το ΑΕΠ έπεσε πάνω από 25%· η έξοδος από το τρίτο πρόγραμμα ήρθε τον Αύγουστο του 2018."
+ },
+ {
+  "id": "econ04",
+  "topic": "economy",
+  "fact_el": "Ο τουρισμός είναι από τους μεγαλύτερους κλάδους της οικονομίας μας· τα τελευταία χρόνια δεχόμαστε πάνω από 30 εκατομμύρια επισκέπτες τον χρόνο.",
+  "fact_en": "Tourism is a major sector; over 30 million visitors a year recently.",
+  "source": "ΕΛΣΤΑΤ / ΣΕΤΕ",
+  "stable": false,
+  "as_of": "2023",
+  "title_el": "ο τουρισμός"
+ },
+ {
+  "id": "econ05",
+  "topic": "economy",
+  "fact_el": "Έχουμε έναν από τους μεγαλύτερους εμπορικούς στόλους του κόσμου· η ναυτιλία είναι βασικός μας κλάδος.",
+  "fact_en": "Greece has one of the world's largest merchant fleets; shipping is a key sector.",
+  "source": "Wikipedia: Greek shipping",
+  "stable": true,
+  "title_el": "η ναυτιλία"
+ },
+ {
+  "id": "econ06",
+  "topic": "economy",
+  "fact_el": "Ο ΑΦΜ είναι ο αριθμός φορολογικού μητρώου· οι φορολογικές υποθέσεις γίνονται μέσω της ΑΑΔΕ και του TAXISnet.",
+  "fact_en": "AFM is the tax number; tax matters go through AADE and TAXISnet.",
+  "source": "ΑΑΔΕ",
+  "stable": true,
+  "title_el": "ΑΦΜ, ΑΑΔΕ, TAXISnet"
+ },
+ {
+  "id": "econ07",
+  "topic": "economy",
+  "fact_el": "Ο ΑΜΚΑ είναι ο αριθμός μητρώου κοινωνικής ασφάλισης· ο κύριος ασφαλιστικός φορέας είναι ο e-ΕΦΚΑ.",
+  "fact_en": "AMKA is the social security number; e-EFKA is the main insurance fund.",
+  "source": "gov.gr",
+  "stable": true,
+  "title_el": "ΑΜΚΑ και e-ΕΦΚΑ"
+ },
+ {
+  "id": "econ08",
+  "topic": "economy",
+  "fact_el": "Η ελάχιστη διάρκεια της ετήσιας άδειας για πλήρη απασχόληση είναι 20 εργάσιμες ημέρες (πενθήμερο) και το ωράριο πλήρους απασχόλησης 40 ώρες την εβδομάδα.",
+  "fact_en": "Minimum annual leave 20 working days (five-day week); full-time is 40 hours a week.",
+  "source": "Υπουργείο Εργασίας",
+  "stable": false,
+  "as_of": "2024",
+  "title_el": "άδεια και ωράριο εργασίας"
+ },
+ {
+  "id": "life01",
+  "topic": "everyday",
+  "fact_el": "Ο ευρωπαϊκός αριθμός έκτακτης ανάγκης είναι το 112· επίσης Αστυνομία 100, ΕΚΑΒ (ασθενοφόρο) 166, Πυροσβεστική 199.",
+  "fact_en": "Emergency 112; police 100; ambulance (EKAB) 166; fire 199.",
+  "source": "gov.gr",
+  "stable": true,
+  "title_el": "οι αριθμοί έκτακτης ανάγκης (112, 100, 166, 199)",
+  "explain_el": "Το 112 είναι το ενιαίο ευρωπαϊκό νούμερο, δουλεύει και χωρίς κάρτα SIM και ξέρει τη θέση σου· τα παλιά νούμερα (100, 166, 199) συνεχίζουν να δουλεύουν.",
+  "related_el": "Το 112 στέλνει και τα μηνύματα κινδύνου για πυρκαγιές και καιρό."
+ },
+ {
+  "id": "life02",
+  "topic": "everyday",
+  "fact_el": "Ο τηλεφωνικός μας κωδικός είναι +30 και το domain μας .gr.",
+  "fact_en": "Calling code +30; internet domain .gr.",
+  "source": "Wikipedia: Greece",
+  "stable": true,
+  "title_el": "τηλεφωνικός κωδικός +30 και .gr"
+ },
+ {
+  "id": "life03",
+  "topic": "everyday",
+  "fact_el": "Οδηγούμε δεξιά· το ρεύμα είναι 230 V / 50 Hz, με πρίζες τύπου C και F.",
+  "fact_en": "Drive on the right; 230 V / 50 Hz, plug types C and F.",
+  "source": "Wikipedia: Greece",
+  "stable": true,
+  "title_el": "οδήγηση δεξιά, ρεύμα 230 V, πρίζες"
+ },
+ {
+  "id": "life04",
+  "topic": "everyday",
+  "fact_el": "Το gov.gr είναι η ενιαία ψηφιακή πύλη του Δημοσίου· τα ΚΕΠ (Κέντρα Εξυπηρέτησης Πολιτών) εξυπηρετούν διά ζώσης.",
+  "fact_en": "gov.gr is the single digital portal; KEP are citizen service centres.",
+  "source": "gov.gr",
+  "stable": true,
+  "title_el": "gov.gr και ΚΕΠ"
+ },
+ {
+  "id": "life05",
+  "topic": "everyday",
+  "fact_el": "Ο ΕΟΠΥΥ είναι ο εθνικός οργανισμός παροχής υπηρεσιών υγείας· το ΕΣΥ είναι το Εθνικό Σύστημα Υγείας· ο ΕΟΦ εγκρίνει τα φάρμακα.",
+  "fact_en": "EOPYY is the national health services organisation; ESY the national health system; EOF approves medicines.",
+  "source": "eopyy.gov.gr; eof.gr",
+  "stable": true,
+  "title_el": "ΕΟΠΥΥ, ΕΣΥ, ΕΟΦ"
+ },
+ {
+  "id": "life06",
+  "topic": "everyday",
+  "fact_el": "Η ΔΥΠΑ (πρώην ΟΑΕΔ) είναι η δημόσια υπηρεσία απασχόλησης.",
+  "fact_en": "DYPA (formerly OAED) is the public employment service.",
+  "source": "dypa.gov.gr",
+  "stable": true,
+  "title_el": "ΔΥΠΑ (πρώην ΟΑΕΔ)"
+ },
+ {
+  "id": "life07",
+  "topic": "everyday",
+  "fact_el": "Γράφουμε τις ημερομηνίες ημέρα/μήνας/έτος (25/3/2026), υποδιαστολή με κόμμα (3,14) και τις χιλιάδες με τελεία (10.000).",
+  "fact_en": "Dates are day/month/year; decimal comma; thousands with a dot.",
+  "source": "ΕΛΟΤ",
+  "stable": true,
+  "title_el": "πώς γράφουμε ημερομηνίες και αριθμούς"
+ },
+ {
+  "id": "life08",
+  "topic": "everyday",
+  "fact_el": "Μετράμε με το μετρικό σύστημα: χιλιόμετρα, κιλά, βαθμούς Κελσίου.",
+  "fact_en": "Metric system: kilometres, kilograms, Celsius.",
+  "source": "Wikipedia: Metrication",
+  "stable": true,
+  "title_el": "το μετρικό σύστημα"
+ },
+ {
+  "id": "life09",
+  "topic": "everyday",
+  "fact_el": "Επίσημες αργίες: Πρωτοχρονιά, Θεοφάνια (6/1), Καθαρά Δευτέρα, 25 Μαρτίου, Μεγάλη Παρασκευή, Πάσχα και Δευτέρα του Πάσχα, Πρωτομαγιά, Αγίου Πνεύματος, 15 Αυγούστου, 28 Οκτωβρίου, Χριστούγεννα και 26 Δεκεμβρίου.",
+  "fact_en": "Public holidays: New Year, Epiphany, Clean Monday, 25 March, Good Friday, Easter and Easter Monday, 1 May, Whit Monday, 15 August, 28 October, Christmas, 26 December.",
+  "source": "Wikipedia: Public holidays in Greece",
+  "stable": true,
+  "title_el": "οι επίσημες αργίες",
+  "explain_el": "Οι αργίες συνδυάζουν εθνικές (25 Μαρτίου, 28 Οκτωβρίου) και θρησκευτικές· οι κινητές (Καθαρά Δευτέρα, Πάσχα, Αγίου Πνεύματος) αλλάζουν κάθε χρόνο με το Πάσχα.",
+  "related_el": "Το τι γίνεται στην πράξη σε άλλες μέρες (17 Νοεμβρίου, πολιούχοι) το λέει το cal01."
+ },
+ {
+  "id": "life10",
+  "topic": "everyday",
+  "fact_el": "Το Πάσχα μας υπολογίζεται με το Ιουλιανό ημερολόγιο και συχνά δεν συμπίπτει με το δυτικό.",
+  "fact_en": "Greek Easter follows the Julian computus and often differs from Western Easter.",
+  "source": "Wikipedia: Computus",
+  "stable": true,
+  "title_el": "το Πάσχα μας και το δυτικό",
+  "explain_el": "Το Πάσχα υπολογίζεται με το Ιουλιανό ημερολόγιο και τον κανόνα της Νίκαιας: πρώτη Κυριακή μετά την πρώτη πανσέληνο μετά την εαρινή ισημερία, και πάντα μετά το εβραϊκό Πάσχα· γι' αυτό πέφτει ως πέντε εβδομάδες μετά το δυτικό.",
+  "related_el": "Τα Χριστούγεννα τα γιορτάζουμε στις 25 Δεκεμβρίου με το νέο ημερολόγιο, από το 1924."
+ },
+ {
+  "id": "life11",
+  "topic": "everyday",
+  "fact_el": "Η υποχρεωτική εκπαίδευση διαρκεί από το νηπιαγωγείο ως το γυμνάσιο· το λύκειο είναι τριετές και οι Πανελλαδικές εξετάσεις οδηγούν στα πανεπιστήμια.",
+  "fact_en": "Compulsory schooling from kindergarten to gymnasio; three-year lykeio; Panhellenic exams for university entry.",
+  "source": "Υπουργείο Παιδείας",
+  "stable": true,
+  "title_el": "η υποχρεωτική εκπαίδευση, το λύκειο, οι Πανελλαδικές",
+  "explain_el": "Το γυμνάσιο τελειώνει στα 15· το λύκειο δεν είναι υποχρεωτικό αλλά το τελειώνουν σχεδόν όλοι· οι Πανελλαδικές στο τέλος της Γ' Λυκείου βγάζουν τα μόρια για τις σχολές.",
+  "related_el": "Τα δημόσια πανεπιστήμια είναι δωρεάν· τα φροντιστήρια είναι ο ιδιωτικός παράλληλος δρόμος."
+ },
+ {
+  "id": "life12",
+  "topic": "everyday",
+  "fact_el": "Το παλαιότερο πανεπιστήμιό μας είναι το Εθνικό και Καποδιστριακό Αθηνών (1837)· το Αριστοτέλειο Θεσσαλονίκης (1925) είναι το μεγαλύτερο.",
+  "fact_en": "Oldest university: Athens (1837); Aristotle University of Thessaloniki (1925) is the largest.",
+  "source": "Wikipedia: University of Athens; AUTH",
+  "stable": true,
+  "title_el": "τα πανεπιστήμια Αθηνών (1837) και ΑΠΘ (1925)"
+ },
+ {
+  "id": "life13",
+  "topic": "everyday",
+  "fact_el": "Ο κρατικός ραδιοτηλεοπτικός φορέας είναι η ΕΡΤ.",
+  "fact_en": "ERT is the public broadcaster.",
+  "source": "ert.gr",
+  "stable": true,
+  "title_el": "η ΕΡΤ"
+ },
+ {
+  "id": "life14",
+  "topic": "everyday",
+  "fact_el": "Ο διεθνής αερολιμένας Αθηνών «Ελευθέριος Βενιζέλος» λειτουργεί από το 2001 στα Σπάτα· ο Πειραιάς είναι το μεγαλύτερο λιμάνι.",
+  "fact_en": "Athens airport 'Eleftherios Venizelos' opened in 2001 at Spata; Piraeus is the largest port.",
+  "source": "Wikipedia: Athens International Airport",
+  "stable": true,
+  "title_el": "το αεροδρόμιο Ελ. Βενιζέλος και ο Πειραιάς"
+ },
+ {
+  "id": "life15",
+  "topic": "everyday",
+  "fact_el": "Ο ελληνικός καφές, ο φραπές (1957, Θεσσαλονίκη) και ο φρέντο εσπρέσο είναι οι πιο συνηθισμένοι καφέδες.",
+  "fact_en": "Greek coffee, frappé (Thessaloniki, 1957) and freddo espresso are the usual coffees.",
+  "source": "Wikipedia: Frappé coffee",
+  "stable": true,
+  "title_el": "ο καφές μας: ελληνικός, φραπές, φρέντο"
+ },
+ {
+  "id": "life16",
+  "topic": "everyday",
+  "fact_el": "Η ελληνική κουζίνα: ελαιόλαδο, φέτα, χωριάτικη σαλάτα, μουσακάς, σουβλάκι, τζατζίκι, σπανακόπιτα, γίγαντες, παστίτσιο.",
+  "fact_en": "Greek cuisine staples: olive oil, feta, Greek salad, moussaka, souvlaki, tzatziki, spanakopita.",
+  "source": "Wikipedia: Greek cuisine",
+  "stable": true,
+  "title_el": "η κουζίνα μας"
+ },
+ {
+  "id": "life17",
+  "topic": "everyday",
+  "fact_el": "Η φέτα είναι Προϊόν Προστατευόμενης Ονομασίας Προέλευσης από το 2002: φέτα λέγεται μόνο η δική μας.",
+  "fact_en": "Feta has been a protected designation of origin since 2002.",
+  "source": "Wikipedia: Feta",
+  "stable": true,
+  "title_el": "η φέτα ως ΠΟΠ"
+ },
+ {
+  "id": "cult01",
+  "topic": "culture",
+  "fact_el": "Τη Eurovision την έχουμε κερδίσει μία φορά, το 2005, με την Έλενα Παπαρίζου και το «My Number One»· ο διαγωνισμός του 2006 έγινε στην Αθήνα.",
+  "fact_en": "Greece won Eurovision once, in 2005, with Helena Paparizou's 'My Number One'; the 2006 contest was in Athens.",
+  "source": "Wikipedia: Greece in the Eurovision Song Contest",
+  "stable": false,
+  "as_of": "2025",
+  "title_el": "η Eurovision: η νίκη του 2005",
+  "explain_el": "Η Παπαρίζου κέρδισε στο Κίεβο το 2005 με 230 πόντους· ο διαγωνισμός γίνεται στη χώρα του νικητή, γι' αυτό το 2006 ήρθε στην Αθήνα.",
+  "related_el": "Η Κύπρος και εμείς δίνουμε παραδοσιακά τα 12 η μία στην άλλη."
+ },
+ {
+  "id": "cult02",
+  "topic": "culture",
+  "fact_el": "Δύο Έλληνες ποιητές έχουν πάρει Νόμπελ Λογοτεχνίας: ο Γιώργος Σεφέρης (1963) και ο Οδυσσέας Ελύτης (1979).",
+  "fact_en": "Two Greek Nobel laureates in literature: Seferis (1963) and Elytis (1979).",
+  "source": "Wikipedia: Nobel Prize in Literature",
+  "stable": true,
+  "title_el": "τα Νόμπελ Λογοτεχνίας: Σεφέρης, Ελύτης",
+  "explain_el": "Ο Σεφέρης (1963) ήταν και διπλωμάτης· ο Ελύτης (1979) έγραψε το «Άξιον εστί» που μελοποίησε ο Θεοδωράκης.",
+  "related_el": "Ο Καζαντζάκης προτάθηκε πολλές φορές αλλά δεν το πήρε."
+ },
+ {
+  "id": "cult03",
+  "topic": "culture",
+  "fact_el": "Ο Νίκος Καζαντζάκης έγραψε τον «Βίο και πολιτεία του Αλέξη Ζορμπά»· ο Κωνσταντίνος Καβάφης έζησε στην Αλεξάνδρεια.",
+  "fact_en": "Kazantzakis wrote 'Zorba the Greek'; Cavafy lived in Alexandria.",
+  "source": "Wikipedia: Nikos Kazantzakis; C. P. Cavafy",
+  "stable": true,
+  "title_el": "Καζαντζάκης και Καβάφης"
+ },
+ {
+  "id": "cult04",
+  "topic": "culture",
+  "fact_el": "Ο Μίκης Θεοδωράκης και ο Μάνος Χατζιδάκις είναι οι γνωστότεροι Έλληνες συνθέτες του 20ού αιώνα· ο Χατζιδάκις πήρε Όσκαρ για τα «Παιδιά του Πειραιά» (1960).",
+  "fact_en": "Theodorakis and Hadjidakis are the best-known 20th-century composers; Hadjidakis won an Oscar for 'Never on Sunday' (1960).",
+  "source": "Wikipedia: Manos Hadjidakis",
+  "stable": true,
+  "title_el": "Θεοδωράκης και Χατζιδάκις"
+ },
+ {
+  "id": "cult05",
+  "topic": "culture",
+  "fact_el": "Κερδίσαμε το Ευρωπαϊκό Πρωτάθλημα Ποδοσφαίρου το 2004 στην Πορτογαλία, με προπονητή τον Ότο Ρεχάγκελ.",
+  "fact_en": "Greece won Euro 2004 in Portugal under Otto Rehhagel.",
+  "source": "Wikipedia: UEFA Euro 2004",
+  "stable": true,
+  "title_el": "το Euro 2004",
+  "explain_el": "Ξεκινήσαμε το Euro 2004 ως αουτσάιντερ και κερδίσαμε τον τελικό 1–0 την Πορτογαλία με γκολ του Χαριστέα, με άμυνα και οργάνωση του Ρεχάγκελ.",
+  "related_el": "Την ίδια χρονιά φιλοξενήσαμε τους Ολυμπιακούς."
+ },
+ {
+  "id": "cult06",
+  "topic": "culture",
+  "fact_el": "Η εθνική ομάδα μπάσκετ κέρδισε το Ευρωμπάσκετ το 1987 και το 2005 και ήταν δεύτερη στο Παγκόσμιο του 2006.",
+  "fact_en": "The national basketball team won EuroBasket in 1987 and 2005 and was runner-up at the 2006 World Championship.",
+  "source": "Wikipedia: Greece men's national basketball team",
+  "stable": true,
+  "title_el": "η εθνική μπάσκετ (1987, 2005, 2006)"
+ },
+ {
+  "id": "cult07",
+  "topic": "culture",
+  "fact_el": "Ο Γιάννης Αντετοκούνμπο, Έλληνας παίκτης του NBA, κέρδισε το πρωτάθλημα με τους Μιλγουόκι Μπακς το 2021.",
+  "fact_en": "Giannis Antetokounmpo won the NBA title with the Milwaukee Bucks in 2021.",
+  "source": "Wikipedia: Giannis Antetokounmpo",
+  "stable": true,
+  "title_el": "ο Γιάννης Αντετοκούνμπο"
+ },
+ {
+  "id": "cult08",
+  "topic": "culture",
+  "fact_el": "Οι μεγαλύτερες ποδοσφαιρικές ομάδες: Ολυμπιακός (Πειραιάς), Παναθηναϊκός (Αθήνα), ΑΕΚ (Αθήνα), ΠΑΟΚ (Θεσσαλονίκη)· ο Ολυμπιακός κέρδισε το Conference League το 2024.",
+  "fact_en": "Big clubs: Olympiacos, Panathinaikos, AEK, PAOK; Olympiacos won the 2024 Conference League.",
+  "source": "Wikipedia: Olympiacos F.C.",
+  "stable": true,
+  "title_el": "οι μεγάλες ποδοσφαιρικές ομάδες"
+ },
+ {
+  "id": "cult09",
+  "topic": "culture",
+  "fact_el": "Η Ακρόπολη με τον Παρθενώνα (5ος αι. π.Χ.) είναι μνημείο παγκόσμιας κληρονομιάς της UNESCO· ζητάμε την επιστροφή των Γλυπτών του Παρθενώνα από το Βρετανικό Μουσείο.",
+  "fact_en": "The Acropolis with the Parthenon is a UNESCO site; Greece seeks the return of the Parthenon Marbles from the British Museum.",
+  "source": "Wikipedia: Parthenon Marbles",
+  "stable": true,
+  "title_el": "η Ακρόπολη και τα Γλυπτά του Παρθενώνα",
+  "explain_el": "Τα γλυπτά τα αφαίρεσε ο λόρδος Έλγιν το 1801–1812 με οθωμανική άδεια που αμφισβητούμε· εμείς ζητάμε την επιστροφή τους από το 1983 (Μελίνα Μερκούρη) και το Μουσείο Ακρόπολης (2009) χτίστηκε για να τα στεγάσει· το Βρετανικό Μουσείο λέει ότι αποκτήθηκαν νόμιμα.",
+  "related_el": "Ο Παρθενώνας χτίστηκε το 447–432 π.Χ. επί Περικλή, με αρχιτέκτονες Ικτίνο και Καλλικράτη."
+ },
+ {
+  "id": "cult10",
+  "topic": "culture",
+  "fact_el": "Το ελληνικό αλφάβητο έχει 24 γράμματα, από το άλφα ως το ωμέγα.",
+  "fact_en": "The Greek alphabet has 24 letters, alpha to omega.",
+  "source": "Wikipedia: Greek alphabet",
+  "stable": true,
+  "title_el": "το αλφάβητο: 24 γράμματα"
+ },
+ {
+  "id": "cult11",
+  "topic": "culture",
+  "fact_el": "Η δημοτική καθιερώθηκε ως επίσημη γλώσσα της εκπαίδευσης και του κράτους το 1976 και το μονοτονικό σύστημα το 1982.",
+  "fact_en": "Demotic became the official language in 1976; the monotonic system was adopted in 1982.",
+  "source": "Wikipedia: Greek language question",
+  "stable": true,
+  "title_el": "δημοτική (1976) και μονοτονικό (1982)",
+  "explain_el": "Η δημοτική έγινε επίσημη γλώσσα το 1976, τελειώνοντας το «γλωσσικό ζήτημα» με την καθαρεύουσα· το μονοτονικό (ένας τόνος, χωρίς πνεύματα) ψηφίστηκε το 1982.",
+  "related_el": "Γι' αυτό τα παλιά βιβλία έχουν τρεις τόνους και πνεύματα και οι παππούδες έμαθαν αλλιώς."
+ },
+ {
+  "id": "cult12",
+  "topic": "culture",
+  "fact_el": "Τα Μετέωρα, οι Δελφοί, η Ολυμπία, η Κνωσός, η Επίδαυρος και η Δήλος είναι από τους γνωστότερους αρχαιολογικούς και μνημειακούς χώρους.",
+  "fact_en": "Meteora, Delphi, Olympia, Knossos, Epidaurus and Delos are among the best-known sites.",
+  "source": "Wikipedia: World Heritage Sites in Greece",
+  "stable": true,
+  "title_el": "οι γνωστότεροι αρχαιολογικοί χώροι"
+ },
+ {
+  "id": "cult13",
+  "topic": "culture",
+  "fact_el": "Ο Απόκριες κορυφώνονται την Κυριακή πριν από την Καθαρά Δευτέρα· την Καθαρά Δευτέρα πετάμε χαρταετό και τρώμε λαγάνα.",
+  "fact_en": "Carnival peaks the Sunday before Clean Monday; on Clean Monday we fly kites and eat lagana.",
+  "source": "Wikipedia: Clean Monday",
+  "stable": true,
+  "title_el": "Απόκριες και Καθαρά Δευτέρα",
+  "explain_el": "Οι Απόκριες είναι οι τρεις εβδομάδες πριν από τη Σαρακοστή· την Τσικνοπέμπτη τρώμε κρέας στα κάρβουνα, την Καθαρά Δευτέρα πετάμε χαρταετό και τρώμε νηστίσιμα (λαγάνα, ταραμά, χαλβά).",
+  "related_el": "Το καρναβάλι της Πάτρας είναι το μεγαλύτερο."
+ },
+ {
+  "id": "cult14",
+  "topic": "culture",
+  "fact_el": "Η ονομαστική εορτή είναι μεγάλη υπόθεση σ' εμάς, συχνά περισσότερο από τα γενέθλια.",
+  "fact_en": "Name days are important in Greece, often more than birthdays.",
+  "source": "Wikipedia: Name day",
+  "stable": true,
+  "title_el": "η ονομαστική εορτή",
+  "explain_el": "Γιορτάζεις τη μέρα του αγίου που έχεις το όνομά του· οι φίλοι περνούν ή τηλεφωνούν χωρίς πρόσκληση και κερνάς εσύ.",
+  "related_el": "Οι μεγάλες γιορτές: Γιάννης (7 Ιανουαρίου), Γιώργος (23 Απριλίου ή μετά το Πάσχα), Κωνσταντίνος και Ελένη (21 Μαΐου), Δημήτρης (26 Οκτωβρίου), Νίκος (6 Δεκεμβρίου)."
+ },
+ {
+  "id": "cult15",
+  "topic": "culture",
+  "fact_el": "Το ρεμπέτικο και το λαϊκό είναι χαρακτηριστικά ελληνικά μουσικά είδη· το μπουζούκι το βασικό τους όργανο· το ρεμπέτικο είναι άυλη πολιτιστική κληρονομιά της UNESCO (2017).",
+  "fact_en": "Rebetiko and laiko are characteristic genres; the bouzouki their instrument; rebetiko is UNESCO intangible heritage (2017).",
+  "source": "Wikipedia: Rebetiko",
+  "stable": true,
+  "title_el": "ρεμπέτικο και λαϊκό"
+ },
+ {
+  "id": "cult16",
+  "topic": "culture",
+  "fact_el": "Το Φεστιβάλ Κινηματογράφου Θεσσαλονίκης διεξάγεται κάθε Νοέμβριο από το 1960.",
+  "fact_en": "Thessaloniki International Film Festival, every November since 1960.",
+  "source": "Wikipedia: Thessaloniki International Film Festival",
+  "stable": true,
+  "title_el": "το Φεστιβάλ Θεσσαλονίκης"
+ },
+ {
+  "id": "cult17",
+  "topic": "culture",
+  "fact_el": "Ο Γιώργος Λάνθιμος είναι ο πιο διεθνώς γνωστός σύγχρονος Έλληνας σκηνοθέτης («Ο Αστακός», «Η Ευνοούμενη», «Poor Things»).",
+  "fact_en": "Yorgos Lanthimos is the best-known contemporary Greek director.",
+  "source": "Wikipedia: Yorgos Lanthimos",
+  "stable": true,
+  "title_el": "ο Γιώργος Λάνθιμος"
+ },
+ {
+  "id": "cult18",
+  "topic": "culture",
+  "fact_el": "Η Μαρία Κάλλας, ελληνικής καταγωγής, ήταν από τις σπουδαιότερες σοπράνο του 20ού αιώνα.",
+  "fact_en": "Maria Callas, of Greek descent, was among the greatest sopranos of the 20th century.",
+  "source": "Wikipedia: Maria Callas",
+  "stable": true,
+  "title_el": "η Μαρία Κάλλας"
+ },
+ {
+  "id": "cult19",
+  "topic": "culture",
+  "fact_el": "Ο Ελ Γκρέκο (Δομήνικος Θεοτοκόπουλος) γεννήθηκε στην Κρήτη το 1541 και έζησε στο Τολέδο.",
+  "fact_en": "El Greco was born in Crete in 1541 and lived in Toledo.",
+  "source": "Wikipedia: El Greco",
+  "stable": true,
+  "title_el": "ο Ελ Γκρέκο"
+ },
+ {
+  "id": "cult20",
+  "topic": "culture",
+  "fact_el": "Ο μαραθώνιος έχει το όνομά του από τον Μαραθώνα· ο Αυθεντικός Μαραθώνιος της Αθήνας τρέχεται κάθε Νοέμβριο από τον Μαραθώνα ως το Παναθηναϊκό Στάδιο.",
+  "fact_en": "The marathon takes its name from Marathon; the Athens Authentic Marathon runs every November to the Panathenaic Stadium.",
+  "source": "Wikipedia: Athens Classic Marathon",
+  "stable": true,
+  "title_el": "ο μαραθώνιος",
+  "explain_el": "Το όνομα έρχεται από τον θρύλο του αγγελιαφόρου που έτρεξε από τον Μαραθώνα στην Αθήνα να πει τη νίκη κατά των Περσών το 490 π.Χ. και ξεψύχησε· ο αγώνας γεννήθηκε στους Ολυμπιακούς του 1896, που τον κέρδισε ο Σπύρος Λούης, και η απόσταση 42,195 χλμ. καθιερώθηκε στο Λονδίνο το 1908.",
+  "related_el": "Ο Αυθεντικός Μαραθώνιος της Αθήνας τρέχεται κάθε Νοέμβριο πάνω στην ίδια διαδρομή, ως το Παναθηναϊκό Στάδιο."
+ },
+ {
+  "id": "sci01",
+  "topic": "science",
+  "fact_el": "Το Ίδρυμα Τεχνολογίας και Έρευνας (ΙΤΕ) στο Ηράκλειο και το Εθνικό Κέντρο Έρευνας Φυσικών Επιστημών «Δημόκριτος» είναι μεγάλα ερευνητικά κέντρα.",
+  "fact_en": "FORTH (Heraklion) and NCSR Demokritos are major research centres.",
+  "source": "forth.gr; demokritos.gr",
+  "stable": true,
+  "title_el": "ΙΤΕ και Δημόκριτος"
+ },
+ {
+  "id": "sci02",
+  "topic": "science",
+  "fact_el": "Η ΕΕΛΛΑΚ (Οργανισμός Ανοιχτών Τεχνολογιών) προωθεί σ' εμάς το ελεύθερο λογισμικό και τα ανοιχτά δεδομένα.",
+  "fact_en": "EELLAK (Open Technologies Alliance) promotes free software and open data in Greece.",
+  "source": "eellak.gr",
+  "stable": true,
+  "title_el": "η ΕΕΛΛΑΚ"
+ },
+ {
+  "id": "sci03",
+  "topic": "science",
+  "fact_el": "Το Εθνικό Αστεροσκοπείο Αθηνών (1842) είναι το παλαιότερο ερευνητικό ίδρυμα της χώρας.",
+  "fact_en": "The National Observatory of Athens (1842) is the oldest research institution.",
+  "source": "Wikipedia: National Observatory of Athens",
+  "stable": true,
+  "title_el": "το Αστεροσκοπείο Αθηνών (1842)"
+ },
+ {
+  "id": "misc01",
+  "topic": "everyday",
+  "fact_el": "Το Μετρό της Αθήνας έχει τρεις γραμμές· το Μετρό Θεσσαλονίκης ξεκίνησε λειτουργία τον Νοέμβριο του 2024.",
+  "fact_en": "Athens Metro has three lines; Thessaloniki Metro opened in November 2024.",
+  "source": "Wikipedia: Thessaloniki Metro",
+  "stable": false,
+  "as_of": "2025",
+  "title_el": "το Μετρό Αθήνας και Θεσσαλονίκης"
+ },
+ {
+  "id": "misc02",
+  "topic": "everyday",
+  "fact_el": "Η γέφυρα Ρίου–Αντιρρίου («Χαρίλαος Τρικούπης») άνοιξε το 2004 και συνδέει την Πελοπόννησο με τη Στερεά Ελλάδα.",
+  "fact_en": "The Rio–Antirrio bridge opened in 2004, linking the Peloponnese with mainland Greece.",
+  "source": "Wikipedia: Rio–Antirrio Bridge",
+  "stable": true,
+  "title_el": "η γέφυρα Ρίου–Αντιρρίου",
+  "explain_el": "Η γέφυρα (2.880 μ.) είναι από τις μεγαλύτερες καλωδιωτές του κόσμου, σε σεισμογενή περιοχή με πολύ βαθιά νερά· άνοιξε τον Αύγουστο του 2004, λίγο πριν από τους Ολυμπιακούς.",
+  "related_el": "Ονομάστηκε «Χαρίλαος Τρικούπης» από τον πρωθυπουργό που την οραματίστηκε τον 19ο αιώνα."
+ },
+ {
+  "id": "misc03",
+  "topic": "everyday",
+  "fact_el": "Η Διώρυγα της Κορίνθου άνοιξε το 1893 και έχει μήκος 6,4 χιλιόμετρα.",
+  "fact_en": "The Corinth Canal opened in 1893; 6.4 km long.",
+  "source": "Wikipedia: Corinth Canal",
+  "stable": true,
+  "title_el": "η Διώρυγα της Κορίνθου",
+  "explain_el": "Η διώρυγα κόβει τον Ισθμό και γλιτώνει τον περίπλου της Πελοποννήσου· την ονειρεύτηκαν από την αρχαιότητα (ο Νέρων άρχισε να τη σκάβει) και άνοιξε το 1893.",
+  "related_el": "Είναι στενή (25 μ.) για τα σημερινά πλοία· πλέον περνούν κυρίως μικρά σκάφη και κρουαζιερόπλοια."
+ },
+ {
+  "id": "misc04",
+  "topic": "everyday",
+  "fact_el": "Η Εγνατία Οδός διασχίζει τη βόρεια Ελλάδα από την Ηγουμενίτσα ως τους Κήπους Έβρου (περίπου 670 χλμ.).",
+  "fact_en": "Egnatia Odos crosses northern Greece from Igoumenitsa to Kipoi (about 670 km).",
+  "source": "Wikipedia: Egnatia Odos (modern road)",
+  "stable": true,
+  "title_el": "η Εγνατία Οδός"
+ },
+ {
+  "id": "misc05",
+  "topic": "everyday",
+  "fact_el": "Η Σαντορίνη, η Μύκονος, η Ρόδος, η Κέρκυρα και η Κρήτη είναι από τους δημοφιλέστερους τουριστικούς προορισμούς.",
+  "fact_en": "Santorini, Mykonos, Rhodes, Corfu and Crete are the most popular destinations.",
+  "source": "ΣΕΤΕ",
+  "stable": true,
+  "title_el": "οι δημοφιλέστεροι προορισμοί"
+ },
+ {
+  "id": "misc06",
+  "topic": "everyday",
+  "fact_el": "Η νόμιμη ηλικία κατανάλωσης αλκοόλ είναι τα 18· το κάπνισμα απαγορεύεται σε κλειστούς δημόσιους χώρους από το 2010.",
+  "fact_en": "Legal drinking age 18; indoor public smoking ban since 2010.",
+  "source": "Wikipedia: Smoking in Greece",
+  "stable": true,
+  "title_el": "αλκοόλ από τα 18, κάπνισμα σε κλειστούς χώρους"
+ },
+ {
+  "id": "misc07",
+  "topic": "everyday",
+  "fact_el": "Η τοπική αυτοδιοίκηση έχει δύο βαθμούς, 332 δήμους και 13 περιφέρειες (πρόγραμμα «Καλλικράτης», 2011)· οι αποκεντρωμένες διοικήσεις είναι κρατική διοίκηση, όχι αυτοδιοίκηση.",
+  "fact_en": "Local government: 332 municipalities and 13 regions under the Kallikratis reform (2011).",
+  "source": "Wikipedia: Kallikratis Programme",
+  "stable": true,
+  "title_el": "δήμοι και περιφέρειες (Καλλικράτης)"
+ },
+ {
+  "id": "misc08",
+  "topic": "history",
+  "fact_el": "Ο Ελευθέριος Βενιζέλος (1864–1936), επτά φορές πρωθυπουργός, είναι ο σημαντικότερος πολιτικός μας του πρώτου μισού του 20ού αιώνα.",
+  "fact_en": "Eleftherios Venizelos (1864–1936), seven times prime minister, the leading Greek statesman of the early 20th century.",
+  "source": "Wikipedia: Eleftherios Venizelos",
+  "stable": true,
+  "title_el": "ο Ελευθέριος Βενιζέλος"
+ },
+ {
+  "id": "misc09",
+  "topic": "history",
+  "fact_el": "Ο Ιωάννης Καποδίστριας ήταν ο πρώτος Κυβερνήτης (1828–1831)· δολοφονήθηκε στο Ναύπλιο, την πρώτη πρωτεύουσα.",
+  "fact_en": "Ioannis Kapodistrias was the first Governor of Greece (1828–1831), assassinated in Nafplio, the first capital.",
+  "source": "Wikipedia: Ioannis Kapodistrias",
+  "stable": true,
+  "title_el": "ο Καποδίστριας και το Ναύπλιο",
+  "explain_el": "Ο Καποδίστριας, πρώην υπουργός Εξωτερικών της Ρωσίας, οργάνωσε το πρώτο κράτος (σχολεία, νόμισμα, στρατό) και δολοφονήθηκε το 1831 έξω από τον Άγιο Σπυρίδωνα στο Ναύπλιο, από τους Μαυρομιχαλαίους.",
+  "related_el": "Το Ναύπλιο ήταν πρωτεύουσα ως το 1834, όταν την πήρε η Αθήνα."
+ },
+ {
+  "id": "misc10",
+  "topic": "history",
+  "fact_el": "Η Αθήνα έγινε πρωτεύουσα το 1834.",
+  "fact_en": "Athens became the capital in 1834.",
+  "source": "Wikipedia: Athens",
+  "stable": true,
+  "title_el": "η Αθήνα πρωτεύουσα (1834)"
+ },
+ {
+  "id": "misc11",
+  "topic": "history",
+  "fact_el": "Οι δυνάμεις του Άξονα μάς κατέλαβαν το 1941 και απελευθερωθήκαμε τον Οκτώβριο του 1944.",
+  "fact_en": "Greece was occupied by the Axis in 1941 and liberated in October 1944.",
+  "source": "Wikipedia: Axis occupation of Greece",
+  "stable": true,
+  "title_el": "η Κατοχή (1941–1944)",
+  "explain_el": "Η Κατοχή (Γερμανοί, Ιταλοί, Βούλγαροι) έφερε τον λιμό του χειμώνα 1941–42 στην Αθήνα, την Αντίσταση (ΕΑΜ/ΕΛΑΣ, ΕΔΕΣ) και αντίποινα όπως στο Δίστομο και στα Καλάβρυτα.",
+  "related_el": "Η απελευθέρωση της Αθήνας ήταν στις 12 Οκτωβρίου 1944."
+ },
+ {
+  "id": "misc12",
+  "topic": "culture",
+  "fact_el": "Η Παγκόσμια Ημέρα Ελληνικής Γλώσσας είναι η 9η Φεβρουαρίου, ημέρα μνήμης του Διονυσίου Σολωμού.",
+  "fact_en": "World Greek Language Day is 9 February, the memorial day of Dionysios Solomos.",
+  "source": "Wikipedia: Dionysios Solomos",
+  "stable": true,
+  "title_el": "η Παγκόσμια Ημέρα Ελληνικής Γλώσσας"
+ },
+ {
+  "id": "misc13",
+  "topic": "everyday",
+  "fact_el": "Διαβατήριο και ταυτότητα τα εκδίδει η Ελληνική Αστυνομία· από το 2023 βγαίνουν νέες ταυτότητες σε μορφή κάρτας.",
+  "fact_en": "Passports and ID cards are issued by the Hellenic Police; new card-format IDs since 2023.",
+  "source": "passport.gov.gr",
+  "stable": false,
+  "as_of": "2024",
+  "title_el": "διαβατήριο και ταυτότητα"
+ },
+ {
+  "id": "misc14",
+  "topic": "everyday",
+  "fact_el": "Η άδεια οδήγησης αποκτάται από τα 18 (μοτοσικλέτα ως 125 κ.εκ. από τα 18, μοτοποδήλατο από τα 16).",
+  "fact_en": "Driving licence from 18; mopeds from 16.",
+  "source": "Υπουργείο Μεταφορών",
+  "stable": false,
+  "as_of": "2024",
+  "title_el": "η άδεια οδήγησης"
+ },
+ {
+  "id": "misc15",
+  "topic": "geography",
+  "fact_el": "Τα Ιόνια νησιά (Κέρκυρα, Λευκάδα, Κεφαλονιά, Ζάκυνθος κ.ά.) βρίσκονται δυτικά· οι Κυκλάδες, οι Σποράδες και τα Δωδεκάνησα στο Αιγαίο.",
+  "fact_en": "Ionian islands lie to the west; Cyclades, Sporades and Dodecanese in the Aegean.",
+  "source": "Wikipedia: Ionian Islands",
+  "stable": true,
+  "title_el": "Ιόνια, Κυκλάδες, Σποράδες, Δωδεκάνησα"
+ },
+ {
+  "id": "misc16",
+  "topic": "geography",
+  "fact_el": "Έχουμε μία από τις μεγαλύτερες ακτογραμμές της Ευρώπης, περίπου 13.600 χιλιόμετρα.",
+  "fact_en": "Greece has one of Europe's longest coastlines, about 13,600 km.",
+  "source": "Wikipedia: Geography of Greece",
+  "stable": true,
+  "title_el": "η ακτογραμμή"
+ },
+ {
+  "id": "misc17",
+  "topic": "culture",
+  "fact_el": "Το «Ζορμπάς» (συρτάκι) γράφτηκε από τον Θεοδωράκη για την ταινία του 1964 και ο χορός δημιουργήθηκε για την ταινία.",
+  "fact_en": "'Zorba's dance' (sirtaki) was written by Theodorakis for the 1964 film; the dance was created for it.",
+  "source": "Wikipedia: Sirtaki",
+  "stable": true,
+  "title_el": "ο Ζορμπάς και το συρτάκι"
+ },
+ {
+  "id": "misc18",
+  "topic": "culture",
+  "fact_el": "Παραδοσιακοί χοροί: καλαματιανός, τσάμικος, χασάπικος, ζεϊμπέκικο, πεντοζάλης (Κρήτη), σούστα.",
+  "fact_en": "Traditional dances: kalamatianos, tsamikos, hasapiko, zeibekiko, pentozalis, sousta.",
+  "source": "Wikipedia: Greek dances",
+  "stable": true,
+  "title_el": "οι παραδοσιακοί χοροί"
+ },
+ {
+  "id": "misc19",
+  "topic": "everyday",
+  "fact_el": "Το «σαββατοκύριακο» είναι ρεπό για τις περισσότερες υπηρεσίες· τα καταστήματα είναι κλειστά τις Κυριακές με λίγες εξαιρέσεις.",
+  "fact_en": "Most shops close on Sundays, with few exceptions.",
+  "source": "Υπουργείο Ανάπτυξης",
+  "stable": false,
+  "as_of": "2024",
+  "title_el": "Κυριακές και καταστήματα"
+ },
+ {
+  "id": "misc20",
+  "topic": "everyday",
+  "fact_el": "Το σχολικό έτος αρχίζει στις 11 Σεπτεμβρίου και τελειώνει μέσα Ιουνίου.",
+  "fact_en": "The school year starts on 11 September and ends in mid-June.",
+  "source": "Υπουργείο Παιδείας",
+  "stable": true,
+  "title_el": "το σχολικό έτος"
+ },
+ {
+  "id": "sea01",
+  "topic": "geography",
+  "title_el": "οι θαλάσσιοι γείτονες και τα θαλάσσια σύνορα (ΑΟΖ, υφαλοκρηπίδα)",
+  "fact_el": "Στη θάλασσα συνορεύουμε με την Ιταλία, την Αλβανία, τη Λιβύη, την Αίγυπτο, την Κύπρο και την Τουρκία. Το θαλάσσιο σύνορο τρέχει στη μέση γραμμή, όπως ορίζει το Δίκαιο της Θάλασσας (UNCLOS 1982), από κάθε ελληνικό νησί, Κρήτη, Γαύδο και Καστελλόριζο μαζί.",
+  "explain_el": "Κάθε παράκτιο κράτος έχει χωρικά ύδατα, υφαλοκρηπίδα και Αποκλειστική Οικονομική Ζώνη (ΑΟΖ) και τα νησιά έχουν τα ίδια δικαιώματα με την ηπειρωτική ακτή· γι' αυτό, με τόσα νησιά, οι θαλάσσιοι γείτονές μας είναι περισσότεροι από τους χερσαίους.",
+  "related_el": "Η οριοθέτηση: με την Ιταλία υπογράψαμε συμφωνία ΑΟΖ τον Ιούνιο του 2020 (πάνω στη συμφωνία υφαλοκρηπίδας του 1977), με την Αίγυπτο τον Αύγουστο του 2020, με την Αλβανία συμφωνήσαμε το 2020 να πάμε στο Διεθνές Δικαστήριο της Χάγης· με τη Λιβύη και την Κύπρο δεν έχει υπογραφεί ακόμη· η Τουρκία αμφισβητεί την υφαλοκρηπίδα και την ΑΟΖ των νησιών, και το τουρκολιβυκό μνημόνιο του Νοεμβρίου 2019 το θεωρούμε άκυρο.",
+  "source": "Wikipedia: Exclusive economic zone of Greece; Aegean dispute",
+  "stable": false,
+  "as_of": "2025",
+  "events": [
+   {
+    "date": "1977",
+    "what_el": "συμφωνία υφαλοκρηπίδας με την Ιταλία"
+   },
+   {
+    "date": "Νοέμβριος 2019",
+    "what_el": "τουρκολιβυκό μνημόνιο, άκυρο για εμάς"
+   },
+   {
+    "date": "Ιούνιος 2020",
+    "what_el": "συμφωνία ΑΟΖ με την Ιταλία"
+   },
+   {
+    "date": "6 Αυγούστου 2020",
+    "what_el": "συμφωνία ΑΟΖ με την Αίγυπτο"
+   },
+   {
+    "date": "Οκτώβριος 2020",
+    "what_el": "συμφωνία με την Αλβανία για προσφυγή στη Χάγη"
+   },
+   {
+    "date": "Ιανουάριος 2021",
+    "what_el": "επέκταση των χωρικών υδάτων στο Ιόνιο στα 12 μίλια"
+   }
+  ]
+ },
+ {
+  "id": "sea02",
+  "topic": "geography",
+  "title_el": "η θαλάσσια έκταση: ΑΟΖ, χωρικά ύδατα, τα 12 μίλια",
+  "fact_el": "Η ΑΟΖ που διεκδικούμε είναι περίπου 505.000 τετραγωνικά χιλιόμετρα (505.572), σχεδόν τετραπλάσια από τη στεριά μας· τα χωρικά ύδατα είναι 6 ναυτικά μίλια στο Αιγαίο και 12 στο Ιόνιο, όπου τα επεκτείναμε τον Ιανουάριο του 2021.",
+  "explain_el": "Το Δίκαιο της Θάλασσας δίνει σε κάθε κράτος το δικαίωμα να επεκτείνει τα χωρικά του ύδατα ως τα 12 ναυτικά μίλια· εμείς το ασκήσαμε στο Ιόνιο και το διατηρούμε για το Αιγαίο, όπου η Τουρκία έχει ψηφίσει (1995) ότι μια τέτοια επέκταση θα ήταν αιτία πολέμου.",
+  "related_el": "Η ΑΟΖ αφορά ενέργεια, αλιεία και κυριαρχικά δικαιώματα στον βυθό, όχι κυριαρχία σαν της στεριάς· γι' αυτό είναι το μεγάλο θέμα στις σχέσεις με την Τουρκία και στα κοιτάσματα της ανατολικής Μεσογείου.",
+  "source": "Wikipedia: Exclusive economic zone of Greece; Aegean dispute (Ionian extension 2021)",
+  "stable": false,
+  "as_of": "2025"
+ },
+ {
+  "id": "cal01",
+  "topic": "everyday",
+  "title_el": "το ζωντανό ημερολόγιο: ημέρες που δεν είναι αργίες αλλά κλείνουν ή αργούν",
+  "fact_el": "Η 17η Νοεμβρίου δεν είναι επίσημη αργία, αλλά τα σχολεία και τα πανεπιστήμια κλείνουν, γίνονται εκδηλώσεις μνήμης και η πορεία, και πολλοί απεργούν ή παίρνουν άδεια. Κάθε πόλη αργεί στη γιορτή του πολιούχου της: η Θεσσαλονίκη του Αγίου Δημητρίου (26 Οκτωβρίου), η Αθήνα του Αγίου Διονυσίου (3 Οκτωβρίου).",
+  "explain_el": "Η διάκριση είναι ανάμεσα στη νόμιμη αργία (ο νόμος, οι μισθοί, τα καταστήματα) και σε αυτό που γίνεται στην πράξη· όταν ρωτάς «δουλεύουμε;», η απάντηση χρειάζεται και τα δύο.",
+  "related_el": "Άλλες ημέρες που «μετράνε» χωρίς να είναι αργίες: η Τσικνοπέμπτη, οι γέφυρες γύρω από τις αργίες, η Μεγάλη Εβδομάδα με μειωμένο ωράριο, το Δεκαπενταύγουστο με την Αθήνα άδεια.",
+  "source": "Wikipedia: Athens Polytechnic uprising; Public holidays in Greece",
+  "stable": true
+ }
+]
