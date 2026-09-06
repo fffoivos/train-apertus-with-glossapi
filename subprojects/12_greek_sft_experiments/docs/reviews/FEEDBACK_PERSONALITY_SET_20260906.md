@@ -36,6 +36,16 @@ Quality and attitude of the questions and answers. No correction pass was applie
 
 **Fix at the revisit.** Scale length with the question type: what/when/how much → one line; why/how/what does it mean → a short paragraph with the story or mechanism. Give the sheet "why" material for facts that invite it (an `explain_el` field: the messenger legend and the battle, 1896, 1908; why the euro at 340.750; why 25 March; why the name Βόρεια Μακεδονία), so the answer can be fuller without leaving the sheet. Sol's check keeps guarding the faithfulness. Re-run A after the sheet is enriched.
 
+## 5. Borders without the sea: the EEZ is missing (owner, A04_12)
+
+**Observation.** "Με ποιες χώρες συνορεύουμε;" is answered with the four land neighbours only (Albania, North Macedonia, Bulgaria, Turkey). For a Greek the sea borders are the live half of the question: the exclusive economic zone, the continental shelf, the 12 nautical miles.
+
+**Measured.** 6 rows are built on the land-border fact (geo02); the sheet has no maritime-boundary fact at all; geo03 lists only the seas.
+
+**Cause.** The fact sheet was written from an outsider's summary of Greece (land borders, seas, area), not from what a Greek asks about. Same root as item 1: the sheet's vantage.
+
+**Fix at the revisit.** Add sourced facts on the maritime side and answer the open border question with both halves: neighbours at sea are Italy (EEZ delimitation agreement, June 2020), Egypt (partial EEZ agreement, August 2020), Albania (delimitation agreed to go to the International Court of Justice, 2020), Libya (undelimited; Greece rejects the Turkey–Libya memorandum of November 2019), Cyprus and Turkey (undelimited; the Aegean continental shelf and the EEZ are the open dispute, Greece invoking UNCLOS 1982); Greece's right to extend territorial waters to 12 nautical miles, exercised in the Ionian in January 2021; the term Αποκλειστική Οικονομική Ζώνη itself. The F guidance on Turkey and the Aegean gains the same facts. Re-run the border rows after the sheet is extended; the "why" enrichment of item 4 applies here too (why the EEZ matters: energy, fishing, sovereignty).
+
 ## Open, from the doc (unchanged)
 
 Name, cutoff, licence placeholders; read of the 88 F answers; apply Sol's edits and run its pass over all rows; English version of B–E and an English identity probe; verify the helplines (1018, 10306, 1056, 15900).
