@@ -29,7 +29,7 @@ lane() { # lane <name> <gpu> <cmd-inside-uenv-bash>
 }
 if [ "$SKIP_NATIVE" = 0 ]; then sshc "cd $R; nohup setsid bash -c \"MODEL=$CK LABEL=$LABEL srun --jobid=$J --overlap --ntasks=1 --gpus-per-node=4 --cpus-per-task=96 --export=ALL bash $R/eval_jobs/native.sh\" > $R/logs/${LABEL}_native.launch.log 2>&1 & echo launched native"; fi
 lane ilsp 0 "export PYTHONPATH=$S/python_envs/lm_eval; deactivate 2>/dev/null; python3 -m lm_eval --model hf --model_args pretrained=$CK,dtype=bfloat16 --tasks ifeval_greek,mgsm_greek --apply_chat_template --include_path $R/evals_code/ilsp/tasks --batch_size 32 --output_path $EV/ilsp/ --log_samples"
-lane dev 1 "mkdir -p $EV/dev; python dev/dev_generate.py --model $CK --prompts $R/dev/dev50.jsonl --out $EV/dev/dev_gen.jsonl && python dev/format_gate.py $EV/dev/dev_gen.jsonl; python dev/dev_generate.py --model $CK --prompts $R/dev/reading40.jsonl --out $EV/dev/reading40_gen.jsonl"
+lane dev 1 "mkdir -p $EV/dev; python dev/dev_generate.py --model $CK --prompts $R/dev/dev50.jsonl --out $EV/dev/dev_gen.jsonl && python dev/format_gate.py $EV/dev/dev_gen.jsonl; python dev/dev_generate.py --model $CK --prompts $R/dev/reading40.jsonl --out $EV/dev/reading40_gen.jsonl; python dev/dev_generate.py --model $CK --prompts $R/dev/identity40.jsonl --out $EV/dev/identity40_gen.jsonl"
 lane int1 2 "mkdir -p $EV/interviews; python interviews/driver.py --model $CK --seeds $R/evals_code/interviews/seeds.jsonl --run $LABEL --round 1 --out-dir $EV/interviews"
 wait_file() { local f=$1 max=${2:-70}; for i in $(seq 1 $max); do sshc "[ -s $f ] && echo yes" | grep -q yes && return 0; sleep 60; done; return 1; }
 for k in 2 3; do
@@ -42,6 +42,7 @@ done
 wait_file $EV/interviews/turn3.jsonl 30 && scp -q clariden:$EV/interviews/turn3.jsonl $LOCAL/interviews/ 2>/dev/null
 wait_file "$EV/ilsp/*/results*.json" 40 || say "ILSP results missing"
 wait_file $EV/dev/reading40_gen.jsonl 20 || say "reading40 missing"
+wait_file $EV/dev/identity40_gen.jsonl 10 || say "identity40 missing"
 if [ "$SKIP_NATIVE" = 0 ]; then for i in $(seq 1 60); do n=$(sshc "ls $EV/native 2>/dev/null | grep -c -E '^(demos|other_mcq|oyxoy)'"); [ "${n:-0}" -ge 21 ] && sshc "for d in $EV/native/*; do [ -f \$d/metrics.csv ] || exit 1; done" && break; sleep 60; done; fi
 if [ -z "${EVAL_JOB:-}" ]; then sshc "bash $R/workbench.sh close $J" | tail -1; bash $HERE/cluster/ledger.sh $J "eval_$LABEL" "checkpoint evals (native/ILSP/dev/interviews)" | tail -1; else say "reused workbench $J left open"; fi
 scp -rq clariden:$EV/dev clariden:$EV/ilsp $LOCAL/ 2>/dev/null; [ "$SKIP_NATIVE" = 0 ] && scp -rq clariden:$EV/native $LOCAL/ 2>/dev/null
