@@ -3,9 +3,9 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 22.691,
- "chf_used": 61.04,
- "cursor": "ROUND TWO: stage-1 probe on wb 3317345 (2026-09-07); then sbatch R2_stage1 (7.6 nh), then stage 2 (1.05 nh), then evals",
+ "nh_used": 23.383,
+ "chf_used": 62.9,
+ "cursor": "ROUND TWO: stage-1 sbatch job 3317507 (R2_stage1, 12h walltime, saves every 750 steps) submitted 2026-09-07 20:41; then stage 2 (job), then evals",
  "steps": {
   "WP0_data": {
    "status": "done (green 02:45: --check OK; 5 GreekMMLU-overlapping rows removed; E1 6.18M CPT-tokenizer tokens, E2 9.36M, E3 8.97M, E3prime 10.47M)",
