@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Reader for a restyle pass: per row the old answer, the decision (type, expected/actual level, missing, reason) and the new answer.
-Usage: python3 restyle_page.py <out.html> <restyle.jsonl> [title] [checks.jsonl]  (checks = editor verdicts from edit_rows.py, shown per row)"""
+Usage: python3 restyle_page.py <out.html> <restyle.jsonl> [title] [checks.jsonl] [--final]
+  default: left = the ORIGINAL (v1) answer, right = the restyle output, editor block below.
+  --final: left = the restyle output (writer), right = the final text after the editor (rows the editor changed carry pre_edit_messages)."""
 import json, sys, html, collections, statistics as st
-OUT, IN = sys.argv[1], sys.argv[2]; TITLE = sys.argv[3] if len(sys.argv) > 3 else 'Restyle pass'; CHKS = sys.argv[4].split(',') if len(sys.argv) > 4 else []
+argv0 = [a for a in sys.argv if a != '--final']; OUT, IN = argv0[1], argv0[2]; TITLE = argv0[3] if len(argv0) > 3 else 'Restyle pass'; FINAL = '--final' in sys.argv; argv = [a for a in sys.argv if a != '--final']
+CHKS = argv[4].split(',') if len(argv) > 4 else []
 rows = [json.loads(l) for l in open(IN)]
 checks = {}  # id -> list of verdicts (one per editor file)
 for CHK in CHKS:
@@ -19,6 +22,13 @@ for c in cats:
     rs = [r for r in rows if r['category'] == c]; o = [len(r['old_messages'][-1]['content']) for r in rs]; n = [len(r['messages'][-1]['content']) for r in rs]
     summ.append(f'<tr><td>{e(CAT.get(c, c))}</td><td class="n">{len(rs)}</td><td class="n">{sum(1 for r in rs if r["decision"]=="keep")}</td><td class="n">{sum(1 for r in rs if r["decision"]=="rewrite")}</td><td class="n">{sum(1 for r in rs if r["actual_level"]=="under")}</td><td class="n">{sum(1 for r in rs if r["placeholders"])}</td><td class="n">{int(st.median(o))}</td><td class="n">{int(st.median(n))}</td></tr>')
 tot_cost = ''
+def cols(r, d):
+    if not FINAL:
+        return f'''<div class="cols"><section><h4>Before <span class="n">{len(r['old_messages'][-1]['content'])} chars</span></h4>{msgs(r['old_messages'])}</section>
+<section><h4>After <span class="n">{len(r['messages'][-1]['content'])} chars</span></h4>{msgs(r['messages']) if d == 'rewrite' else '<p class="muted">kept as is</p>'}</section></div>'''
+    writer = r.get('pre_edit_messages') or r['messages']; edited = bool(r.get('pre_edit_messages'))
+    return f'''<div class="cols"><section><h4>Restyle output (writer) <span class="n">{len(writer[-1]['content'])} chars</span></h4>{msgs(writer)}</section>
+<section><h4>After the editor (final) <span class="n">{len(r['messages'][-1]['content'])} chars</span></h4>{msgs(r['messages']) if edited else '<p class="muted">unchanged by the editor</p>'}</section></div>'''
 def editor_block(r):
     return ''.join(one_editor(r, c) for c in checks.get(r['id'], []))
 def one_editor(r, c):
@@ -27,7 +37,7 @@ def one_editor(r, c):
     edited = ''
     if v != 'ok' and len(turns) == len(orig):
         for k, (a, b) in enumerate(zip(orig, turns)):
-            if isinstance(b, str) and b != a: edited += f'<div class="m assistant"><span class="r">edited assistant turn {k+1}</span>{e(b)}</div>'
+            if isinstance(b, str) and b != a and not FINAL: edited += f'<div class="m assistant"><span class="r">edited assistant turn {k+1}</span>{e(b)}</div>'
     fd = (c.get('fact_doubt') or '').strip()
     return f'''<div class="editor"><h4>Editor ({e(c.get('judge'))}) <span class="pill ed-{e(v)}">{e(v)}</span> <span class="n">Greekness {e(c.get('greekness'))}</span></h4>{'<ul>' + ch + '</ul>' if ch else '<p class="muted">no changes</p>'}{edited}{'<p class="muted"><strong>Fact doubt:</strong> ' + e(fd) + '</p>' if fd else ''}</div>'''
 body = []
@@ -36,8 +46,7 @@ for r in rows:
     bs = ', '.join(e(x) for x in (r.get('beyond_sheet') or []))
     body.append(f'''<article class="row" data-cat="{e(r['category'])}" data-dec="{e(d)}">
 <header><span class="id">{e(r['id'])}</span><span class="pill {e(d)}">{e(d)}</span><span class="meta">type {e(r.get('type'))} {e(TYPES.get(r.get('type'), ''))} · expected {e(r.get('expected_level'))} · actual {e(r.get('actual_level'))} · {e(r.get('user_type') or '')}</span></header>
-<div class="cols"><section><h4>Before <span class="n">{len(r['old_messages'][-1]['content'])} chars</span></h4>{msgs(r['old_messages'])}</section>
-<section><h4>After <span class="n">{len(r['messages'][-1]['content'])} chars</span></h4>{msgs(r['messages']) if d == 'rewrite' else '<p class="muted">kept as is</p>'}</section></div>
+{cols(r, d)}
 {editor_block(r)}<div class="judge"><p><strong>Reason:</strong> {e(r.get('reason'))}</p>{'<p><strong>Purpose:</strong> ' + e(r.get('purpose')) + '</p>' if r.get('purpose') else ''}{'<p><strong>Missing:</strong></p><ul>' + miss + '</ul>' if miss else ''}{'<p class="muted"><strong>Beyond the sheet (to verify):</strong> ' + bs + '</p>' if bs else ''}{'<p class="ph">Placeholder resolved</p>' if r.get('placeholders') else ''}</div>
 </article>''')
 page = f'''<title>{e(TITLE)}</title>
@@ -60,7 +69,7 @@ header{{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-bottom:.
 </style>
 <main>
 <h1>{e(TITLE)}</h1>
-<p class="muted">One prompt per row: classify the question (type, purpose, expected level), judge the current answer, decide keep or rewrite, and rewrite under the style guide. Writer: Opus. Editors: Sonnet and Opus, each over all assistant turns with the same unchanged Γ prompt, shown per row with their changes and edited text, NOT applied to the rows above. Placeholder values in the rewrites are the settled name and the PROPOSED cutoff «περίπου ως τα μέσα του 2025» and licence «Apache 2.0».</p>
+<p class="muted">One prompt per row: classify the question (type, purpose, expected level), judge the current answer, decide keep or rewrite, and rewrite under the style guide. Left: the restyle output (writer, Opus). Right: the final text after the Opus editor; rows the editor left alone say so. The editor block lists the verdict and each change. Placeholder values in the rewrites are the settled name and the PROPOSED cutoff «περίπου ως τα μέσα του 2025» and licence «Apache 2.0».</p>
 <div class="tbl"><table><tr><th>Category</th><th>Rows</th><th>Keep</th><th>Rewrite</th><th>Under level</th><th>Placeholders</th><th>Median chars before</th><th>after</th></tr>{''.join(summ)}</table></div>
 <div class="filters"><span>Category:</span>{''.join(f'<button data-f="cat" data-v="{c}" class="on">{c}</button>' for c in cats)}<span> · Decision:</span><button data-f="dec" data-v="keep" class="on">keep</button><button data-f="dec" data-v="rewrite" class="on">rewrite</button><span id="count" class="muted"></span></div>
 {''.join(body)}
