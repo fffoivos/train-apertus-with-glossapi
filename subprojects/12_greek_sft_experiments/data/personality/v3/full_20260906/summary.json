@@ -1,0 +1,107 @@
+{
+ "rows": 1388,
+ "rewrite": 1214,
+ "keep": 173,
+ "expected": {
+  "Ε1": 515,
+  "Ε2": 804,
+  "Ε3": 68,
+  "null": 1
+ },
+ "actual": {
+  "under": 955,
+  "ok": 432,
+  "null": 1
+ },
+ "types": {
+  "1": 228,
+  "10": 99,
+  "2": 178,
+  "3": 60,
+  "4": 62,
+  "5": 242,
+  "6": 34,
+  "7": 205,
+  "8": 45,
+  "9": 234,
+  "null": 1
+ },
+ "beyond_sheet_rows": 1124,
+ "beyond_sheet_items": 3089,
+ "editor_verdicts": {
+  "edited": 251,
+  "ok": 1136,
+  "rewrite": 1
+ },
+ "greekness": 4.87,
+ "changes": {
+  "other": 108,
+  "grammar": 78,
+  "fidelity": 31,
+  "collocation / analytic form": 55,
+  "formula closer / self-reference": 12,
+  "naming Greece": 10,
+  "adjectives": 4
+ },
+ "changes_total": 298,
+ "fact_doubts": 267,
+ "per_category": {
+  "A": {
+   "rows": 660,
+   "rewrite": 653,
+   "edited": 102,
+   "median_before": 117,
+   "median_after": 538
+  },
+  "B": {
+   "rows": 180,
+   "rewrite": 168,
+   "edited": 43,
+   "median_before": 234,
+   "median_after": 522
+  },
+  "C": {
+   "rows": 100,
+   "rewrite": 89,
+   "edited": 22,
+   "median_before": 477,
+   "median_after": 505
+  },
+  "D": {
+   "rows": 120,
+   "rewrite": 98,
+   "edited": 31,
+   "median_before": 346,
+   "median_after": 690
+  },
+  "E": {
+   "rows": 120,
+   "rewrite": 68,
+   "edited": 20,
+   "median_before": 369,
+   "median_after": 648
+  },
+  "F": {
+   "rows": 88,
+   "rewrite": 82,
+   "edited": 17,
+   "median_before": 576,
+   "median_after": 977
+  },
+  "G": {
+   "rows": 120,
+   "rewrite": 56,
+   "edited": 17,
+   "median_before": 234,
+   "median_after": 299
+  }
+ },
+ "names_greece_before": 79,
+ "names_greece_after": 32,
+ "multi_turn": 243,
+ "cost_usd": {
+  "restyle": 125.53999999999999,
+  "editor": 115.74,
+  "demo_and_reruns": 14.01
+ }
+}

@@ -1,0 +1,10 @@
+== edited.jsonl: 1388 rows, 0 rows with declared placeholders
+      0  [ΟΝΟΜΑ]  [NO SETTLED VALUE]
+      0  [ΗΜΕΡΟΜΗΝΙΑ ΓΝΩΣΗΣ]  [NO SETTLED VALUE]
+      0  [ΑΔΕΙΑ]  [NO SETTLED VALUE]
+   other brackets (form blanks, not gated): [ημερομηνία]×18, [Ονοματεπώνυμο]×16, [αριθμός]×10, [τηλέφωνο]×8, [όνομα]×5, [0-9]×5, [μήνας]×3, [Επώνυμο]×3
+   GATE OK
+== edited.jsonl: 1388 rows, 5 ask size/borders/neighbours, 0 without ΑΟΖ
+GATE OK
+== edited.jsonl: 1388 rows, 0 with forbidden wording
+GATE OK

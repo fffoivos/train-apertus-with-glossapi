@@ -158,6 +158,7 @@ screened-versus-unscreened control arm costs about CHF 130. Recipe: round one's 
 master weights, one node; the config is derived from the assembly receipt by `cluster/make_stage1_config.py`, which refuses estimates.
 
 **Personality set, first draft (Sunday 07:35).** 1,388 Greek rows in seven categories written natively by Opus 5 from fact sheets, Sol-checked on 300 (Greekness 4.92/5; ok 134 / edited 155 / rewrite 11); doc `docs/PERSONALITY_SET_20260906.md`, reader https://claude.ai/code/artifact/820812e8-7e92-4e92-90dd-f4cbd27c724c; three placeholders (name, cutoff, licence) and six owner decisions listed in the doc before it can train.
+- 2026-09-07: personality set v3 DELIVERED (restyle + Opus editor + gates over all 1,388 rows; 1,214 rewritten, 252 editor-edited, gates green): docs/PERSONALITY_SET_V3_20260906.md. Training still gated; open items in that doc (beyond-sheet verification is the big one).
 
 **Training gate (owner, Saturday 21:30).** Stage-1 training does not start when the data gate is green. It is gated on crafting the personality datasets first; the assembly, config and dry run only make the arm ready. Nothing is launched on the cluster without the owner's word.
 

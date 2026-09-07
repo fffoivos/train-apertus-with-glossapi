@@ -1,0 +1,2 @@
+
+- 2026-09-07 14:35 | personality set v3: full restyle (Opus, $125.5) + all-turns editor (Opus, rule β narrowed, $115.7) + fill pass over 1,388 rows; gates green (placeholders 0, EEZ 5/5, wording 0); reader artifact + docs/PERSONALITY_SET_V3_20260906.md; open: beyond-sheet verification (1,124 rows / 3,089 items, 267 doubts), cutoff/licence proposals, v2 rows, languages, helplines, Sol pass, assembly; training gated.
