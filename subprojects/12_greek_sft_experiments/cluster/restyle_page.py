@@ -3,7 +3,7 @@
 Usage: python3 restyle_page.py <out.html> <restyle.jsonl> [title] [checks.jsonl] [--final]
   default: left = the ORIGINAL (v1) answer, right = the restyle output, editor block below.
   --final: left = the restyle output (writer), right = the final text after the editor (rows the editor changed carry pre_edit_messages)."""
-import json, sys, html, collections, statistics as st
+import json, sys, html, collections, statistics as st, re, difflib
 argv0 = [a for a in sys.argv if a != '--final']; OUT, IN = argv0[1], argv0[2]; TITLE = argv0[3] if len(argv0) > 3 else 'Restyle pass'; FINAL = '--final' in sys.argv; argv = [a for a in sys.argv if a != '--final']
 CHKS = argv[4].split(',') if len(argv) > 4 else []
 rows = [json.loads(l) for l in open(IN)]
@@ -15,6 +15,25 @@ for CHK in CHKS:
 e = lambda s: html.escape(str(s if s is not None else ''))
 CAT = {'A': 'A Greece facts', 'B': 'B who am I', 'C': 'C identity under pressure', 'D': 'D limits', 'E': 'E refusals in our voice', 'F': 'F sensitive Greek topics', 'G': 'G register'}
 TYPES = {1: 'what/who/where', 2: 'when/how much', 3: 'why/how', 4: 'comparison', 5: 'wrong assumption', 6: 'broad request', 7: 'practical', 8: 'sensitive', 9: 'who are you', 10: 'chat/opinion'}
+def diff_pair(a, b):
+    ta = re.findall(r'\s+|\w+|[^\w\s]', a); tb = re.findall(r'\s+|\w+|[^\w\s]', b)
+    L = []; R = []
+    for op, i1, i2, j1, j2 in difflib.SequenceMatcher(None, ta, tb, autojunk=False).get_opcodes():
+        x = e(''.join(ta[i1:i2])); y = e(''.join(tb[j1:j2]))
+        if op == 'equal': L.append(x); R.append(y)
+        elif op == 'delete': L.append(f'<del>{x}</del>')
+        elif op == 'insert': R.append(f'<ins>{y}</ins>')
+        else: L.append(f'<del>{x}</del>'); R.append(f'<ins>{y}</ins>')
+    return ''.join(L), ''.join(R)
+def msgs_diff(writer, final):
+    left = []; right = []
+    for mw, mf in zip(writer, final):
+        if mw['role'] == 'assistant' and mf['role'] == 'assistant' and mw['content'] != mf['content']:
+            l, r = diff_pair(mw['content'], mf['content'])
+            left.append(f'<div class="m assistant"><span class="r">assistant</span>{l}</div>'); right.append(f'<div class="m assistant"><span class="r">assistant</span>{r}</div>')
+        else:
+            h = f'<div class="m {mw["role"]}"><span class="r">{e(mw["role"])}</span>{e(mw["content"])}</div>'; left.append(h); right.append(h)
+    return ''.join(left), ''.join(right)
 def msgs(ms):
     return ''.join(f'<div class="m {m["role"]}"><span class="r">{e(m["role"])}</span>{e(m["content"])}</div>' for m in ms)
 cats = sorted({r['category'] for r in rows}); summ = []
@@ -27,8 +46,10 @@ def cols(r, d):
         return f'''<div class="cols"><section><h4>Before <span class="n">{len(r['old_messages'][-1]['content'])} chars</span></h4>{msgs(r['old_messages'])}</section>
 <section><h4>After <span class="n">{len(r['messages'][-1]['content'])} chars</span></h4>{msgs(r['messages']) if d == 'rewrite' else '<p class="muted">kept as is</p>'}</section></div>'''
     writer = r.get('pre_edit_messages') or r['messages']; edited = bool(r.get('pre_edit_messages'))
-    return f'''<div class="cols"><section><h4>Restyle output (writer) <span class="n">{len(writer[-1]['content'])} chars</span></h4>{msgs(writer)}</section>
-<section><h4>After the editor (final) <span class="n">{len(r['messages'][-1]['content'])} chars</span></h4>{msgs(r['messages']) if edited else '<p class="muted">unchanged by the editor</p>'}</section></div>'''
+    if edited and len(writer) == len(r['messages']): lh, rh = msgs_diff(writer, r['messages'])
+    else: lh, rh = msgs(writer), (msgs(r['messages']) if edited else '<p class="muted">unchanged by the editor</p>')
+    return f'''<div class="cols"><section><h4>Restyle output (writer) <span class="n">{len(writer[-1]['content'])} chars</span></h4>{lh}</section>
+<section><h4>After the editor (final) <span class="n">{len(r['messages'][-1]['content'])} chars</span></h4>{rh}</section></div>'''
 def editor_block(r):
     return ''.join(one_editor(r, c) for c in checks.get(r['id'], []))
 def one_editor(r, c):
@@ -65,11 +86,12 @@ header{{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-bottom:.
 .cols{{display:grid;grid-template-columns:1fr 1fr;gap:1rem}} @media (max-width:800px){{.cols{{grid-template-columns:1fr}}}}
 .m{{padding:.5rem .7rem;border-radius:3px;margin:.3rem 0;white-space:pre-wrap;font-size:.95rem}} .m.user{{background:var(--user)}} .m.assistant{{background:var(--asst);border:1px solid var(--rule)}} .m .r{{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:.15rem}}
 .editor{{margin-top:.6rem;padding:.6rem .8rem;border-left:3px solid var(--accent);background:var(--tint);font-size:.9rem}} .editor h4{{margin:0 0 .3rem;display:flex;gap:.6rem;align-items:center}} .editor ul{{margin:.2rem 0 .3rem 1.2rem}} .pill.ed-ok{{background:var(--good)}} .pill.ed-edited{{background:var(--accent)}} .pill.ed-rewrite{{background:var(--short)}}
+ins{{text-decoration:underline;text-decoration-thickness:2px;text-decoration-color:var(--accent);text-underline-offset:2px;background:color-mix(in srgb,var(--accent) 14%,transparent)}} del{{text-decoration:line-through;text-decoration-color:var(--short);color:var(--short);background:color-mix(in srgb,var(--short) 12%,transparent)}}
 .judge{{margin-top:.6rem;padding-top:.5rem;border-top:1px dashed var(--rule);font-size:.9rem}} .judge p{{margin:.25rem 0}} .judge ul{{margin:.1rem 0 .3rem 1.2rem}} .muted{{color:var(--muted)}} .ph{{color:var(--accent);font-weight:600}}
 </style>
 <main>
 <h1>{e(TITLE)}</h1>
-<p class="muted">One prompt per row: classify the question (type, purpose, expected level), judge the current answer, decide keep or rewrite, and rewrite under the style guide. Left: the restyle output (writer, Opus). Right: the final text after the Opus editor; rows the editor left alone say so. The editor block lists the verdict and each change. Placeholder values in the rewrites are the settled name and the PROPOSED cutoff «περίπου ως τα μέσα του 2025» and licence «Apache 2.0».</p>
+<p class="muted">One prompt per row: classify the question (type, purpose, expected level), judge the current answer, decide keep or rewrite, and rewrite under the style guide. Left: the restyle output (writer, Opus). Right: the final text after the Opus editor; rows the editor left alone say so. The editor block lists the verdict and each change. In the columns, what the editor removed is struck through on the left and what it inserted is underlined on the right. Placeholder values in the rewrites are the settled name and the PROPOSED cutoff «περίπου ως τα μέσα του 2025» and licence «Apache 2.0».</p>
 <div class="tbl"><table><tr><th>Category</th><th>Rows</th><th>Keep</th><th>Rewrite</th><th>Under level</th><th>Placeholders</th><th>Median chars before</th><th>after</th></tr>{''.join(summ)}</table></div>
 <div class="filters"><span>Category:</span>{''.join(f'<button data-f="cat" data-v="{c}" class="on">{c}</button>' for c in cats)}<span> · Decision:</span><button data-f="dec" data-v="keep" class="on">keep</button><button data-f="dec" data-v="rewrite" class="on">rewrite</button><span id="count" class="muted"></span></div>
 {''.join(body)}
