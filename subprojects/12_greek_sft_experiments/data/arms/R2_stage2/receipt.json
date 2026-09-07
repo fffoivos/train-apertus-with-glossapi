@@ -1,0 +1,14 @@
+{
+ "arm": "R2_stage2",
+ "source": "stage-1 arm (screened, decontaminated, exact tokenizer) + personality_v3",
+ "train": {
+  "rows": 52379,
+  "tokens": 27352264
+ },
+ "dev": {
+  "rows": 3240,
+  "tokens": 1881535
+ },
+ "planned_optimizer_steps": 418,
+ "note": "counts from the Mac dry run with the HF model id; the cluster config points model_name_or_path at runs/R2_stage1/epoch1"
+}
