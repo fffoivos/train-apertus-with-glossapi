@@ -547,7 +547,8 @@ def _sft_kwargs(config: dict[str, Any]) -> dict[str, Any]:
         "completion_only_loss": False,
         "shuffle_dataset": True,
         "eval_strategy": "epoch",
-        "save_strategy": "epoch",
+        "save_strategy": "steps" if int(config.get("save_steps", 0)) > 0 else "epoch",
+        **({"save_steps": int(config["save_steps"])} if int(config.get("save_steps", 0)) > 0 else {}),
         "logging_strategy": "steps",
         "logging_steps": 1,
         "logging_first_step": True,
@@ -556,7 +557,7 @@ def _sft_kwargs(config: dict[str, Any]) -> dict[str, Any]:
         "disable_tqdm": bool(config.get("disable_tqdm", False)),
         "seed": int(config["seed"]),
         "data_seed": int(config["seed"]),
-        "save_total_limit": None,
+        "save_total_limit": (int(config["save_total_limit"]) if config.get("save_total_limit") else None),
         "dataloader_num_workers": int(config.get("dataloader_num_workers", 0)),
         "dataloader_pin_memory": bool(config.get("dataloader_pin_memory", torch.cuda.is_available())),
         "optim": config.get("optim", "adamw_torch"),
@@ -695,7 +696,7 @@ def run(config: dict[str, Any], data: ValidatedData, tokenizer) -> None:
             processing_class=tokenizer,
             callbacks=[HeartbeatCallback(heartbeat)],
         )
-        trainer.train()
+        trainer.train(resume_from_checkpoint=(config.get("resume_from_checkpoint") or None))
         checkpoint = _save_final_if_needed(trainer, tokenizer, out_dir)
         if config.get("verify_checkpoint_reload", False):
             difference = verify_reload(trainer, checkpoint, tokenizer, data.train_rows[0])
