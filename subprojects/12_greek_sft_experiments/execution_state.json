@@ -5,7 +5,7 @@
  "rate_chf_per_nh": 2.69,
  "nh_used": 22.691,
  "chf_used": 61.04,
- "cursor": "EVALUATION PLAN complete (A, B, C); round-two planning: data review done, vantage scans + Terra probe running",
+ "cursor": "ROUND TWO: stage-1 probe on wb 3317345 (2026-09-07); then sbatch R2_stage1 (7.6 nh), then stage 2 (1.05 nh), then evals",
  "steps": {
   "WP0_data": {
    "status": "done (green 02:45: --check OK; 5 GreekMMLU-overlapping rows removed; E1 6.18M CPT-tokenizer tokens, E2 9.36M, E3 8.97M, E3prime 10.47M)",
