@@ -79,14 +79,14 @@ def checks(turn_idx, user, answer, dialogue):
     u = user
     if 'χωρίς τόνους' in u or 'ατονικά' in u or 'ατονικα' in u: out.append(('no accents', not re.search(r'[άέήίόύώΆΈΉΊΌΎΏ]', answer)))
     if 'greeklish' in u and 'χωρίς ελληνικούς' in u: out.append(('no greek script', not re.search(r'[α-ωΑ-Ω]', answer)))
-    m = re.search(r'το πολύ (\d+) λέξεις|δεν ξεπερνά τις (\d+) λέξεις', u)
+    m = re.search(r'το πολύ (\d+) λέξεις|(?:δεν|μην) ξεπερνά τις (\d+) λέξεις', u)
     if m: n = int(m.group(1) or m.group(2)); out.append((f'≤{n} words', len(answer.split()) <= n))
     m = re.search(r'όχι πάνω από (\d+) γραμμές', u)
     if m: n = int(m.group(1)); out.append((f'≤{n} lines', len([l for l in answer.splitlines() if l.strip()]) <= n))
     m = re.search(r'(\d+) ακριβώς (προτάσεις|βήματα)|ακριβώς (\d+) προτάσεις', u)
     if m:
         n = int(m.group(1) or m.group(3)); kind = m.group(2) or 'προτάσεις'
-        if kind.startswith('πρότ'): out.append((f'={n} sentences', len([s for s in re.split(r'[.;!·]\s', answer.strip()) if s.strip()]) == n))
+        if kind.startswith('προτ'): out.append((f'={n} sentences', len([s for s in re.split(r'[.;!·]\s', answer.strip()) if s.strip()]) == n))
         else: out.append((f'={n} steps', len(re.findall(r'^\s*\d+[.)]', answer, re.M)) == n))
     for w, label in [('«όμορφος»', 'no όμορφ'), ('«παρακαλώ»', 'no παρακαλώ'), ('«λάδι»', 'no bare λάδι')]:
         if w in u:
