@@ -99,3 +99,52 @@ knownness: {tau: 0.5, action: hedge, k: 8}
 decoding: {repetition_penalty: 1.1, no_repeat_ngram: 4, resample_guard: true}
 training: {sft: {lr: 1e-5, epochs: 2, replay: 0.05, personality_weight: 4}, dpo: {beta: 0.1}}
 ```
+
+## 8. R0 results · picky-user benchmark baseline (60 simulated dialogues per model, Sol user with the owner's chats as exemplars, sampling temperature 0.8, no repetition penalty)
+
+| metric | arm B (round two) | stage 1 (no personality pass) | Apertus-8B-Instruct-2509 | Llama-Krikri-8B-Instruct |
+|---|---:|---:|---:|---:|
+| loop rate (sentence ×3 in one answer) | 0.0% | 0.0% | 0.8% | 0.0% |
+| tail-copy rate (last sentence = previous answer's) | 14.4% | 17.5% | 18.5% | 0.7% |
+| dead dialogues (3 broken turns in a row) | 20.0% | 23.3% | 23.3% | 0.0% |
+| stale rate after a switch or correction | 77.5% | 83.9% | 76.9% | 67.6% |
+| stop instructions honoured | 92.5% | 76.0% | 69.5% | 97.6% |
+| language slips | 0.0% | 1.4% | 0.3% | 0.9% |
+| coherent turns (judge) | 71.2% | 69.1% | 60.4% | 86.9% |
+| requests honoured (judge) | 47.5% | 44.8% | 37.8% | 61.4% |
+| premise score 0–2 (judge) | 1.34 | 0.76 | 0.99 | 0.86 |
+| tone: fine / curt / snarky / servile | 55.3% / 27.4% / 16.7% / 0.6% | 60.3% / 28.8% / 9.3% / 1.6% | 64.2% / 2.6% / 3.1% / 30.1% | 77.4% / 3.3% / 2.8% / 16.5% |
+| mean answer words | 27 | 22 | 69 | 53 |
+
+### Per move (share of turns broken by regex: loop, tail copy, or the new request not addressed; and judged coherent)
+
+| move | arm B (round two) broken / coherent | stage 1 (no personality pass) broken / coherent | Apertus-8B-Instruct-2509 broken / coherent | Llama-Krikri-8B-Instruct broken / coherent |
+|---|---:|---:|---:|---:|
+| absurd_premise | 81.0% / 95.2% | 57.9% / 94.7% | 57.9% / 68.4% | 60.9% / 91.3% |
+| conv_reference | 73.3% / 66.7% | 52.9% / 64.7% | 68.8% / 56.2% | 40.0% / 60.0% |
+| correction | 86.1% / 52.3% | 89.4% / 35.3% | 81.3% / 39.0% | 69.3% / 75.4% |
+| dismissal | 73.7% / 57.9% | 80.0% / 73.3% | 57.9% / 21.1% | 52.6% / 47.4% |
+| false_claim | 77.3% / 77.3% | 61.9% / 100.0% | 65.2% / 87.0% | 33.3% / 100.0% |
+| greeklish_short | 55.9% / 73.5% | 72.7% / 78.8% | 62.5% / 50.0% | 42.9% / 88.6% |
+| impossible_self | 65.2% / 87.0% | 73.9% / 91.3% | 66.7% / 75.0% | 67.9% / 96.4% |
+| insult | 73.5% / 58.8% | 78.1% / 65.6% | 51.4% / 51.4% | 36.8% / 81.6% |
+| interjection | 69.7% / 54.5% | 65.6% / 78.1% | 90.6% / 81.2% | 65.6% / 81.2% |
+| meta_other | 56.2% / 81.2% | 56.2% / 75.0% | 66.7% / 66.7% | 52.6% / 84.2% |
+| nonword | 60.0% / 100.0% | 42.9% / 92.9% | 46.7% / 80.0% | 66.7% / 94.4% |
+| plain_request | 69.8% / 83.7% | 70.2% / 83.5% | 58.1% / 75.1% | 57.2% / 94.8% |
+| roleplay | 70.0% / 90.0% | 60.0% / 80.0% | 47.4% / 68.4% | 52.0% / 88.0% |
+| rude_accusation | 75.0% / 83.3% | 100.0% / 64.3% | 83.3% / 33.3% | 85.7% / 100.0% |
+| sarcasm | 71.4% / 57.1% | 69.2% / 69.2% | 100.0% / 23.1% | 64.3% / 78.6% |
+| slang | 63.6% / 81.8% | 55.0% / 70.0% | 47.4% / 68.4% | 56.5% / 82.6% |
+| stop | 69.8% / 45.3% | 62.0% / 62.0% | 64.4% / 49.2% | 47.6% / 85.7% |
+| threat | 76.7% / 56.7% | 86.7% / 56.7% | 87.5% / 34.4% | 80.6% / 90.3% |
+| topic_switch | 81.8% / 95.5% | 82.6% / 65.2% | 75.0% / 80.0% | 60.0% / 80.0% |
+
+### Reading the baseline
+
+- **Repetition is an Apertus-family trait, not a personality-pass artefact.** Tail copying and dead dialogues sit at 14–18% and 20–23% for arm B, stage 1 and Apertus-8B-Instruct alike, and at 0.7% and 0% for Krikri (Llama 3 base). Arm B is slightly better than stage 1, so the ×4 personality pass did not sharpen the loop. Within-answer loops are near zero at 300 tokens under vLLM sampling; the owner's laptop loops ran at 512 tokens in 8-bit MLX, which the R1 decoding arm was to test and did not get to (walltime).
+- **Where arm B leads**: stop instructions honoured 92.5% (stage 1 76%, Apertus 70%, Krikri 98%) and premise handling 1.34 of 2 (stage 1 0.76, Apertus 0.99, Krikri 0.86): the personality set's premise-checking rows and its meta-instruction rows show.
+- **Where arm B trails Krikri**: coherence 71% vs 87%, requests honoured 48% vs 61%, and tone: 55% fine with 27% curt and 17% snarky, against Krikri's 77% fine. Apertus-Instruct is servile 30% of the time; ours is curt instead. The brevity of the personality set (27 words a turn against Krikri's 53) reads as curtness under this judge.
+- **Stale rate is not yet trustworthy**: it checks for the simulator's key noun as an exact substring, and Greek inflection makes it fail for every model (68–84%); it needs stem-tolerant matching before it is used as an acceptance metric.
+- **R1 (repetition penalty) did not run**: the four R0 runs used the whole two-hour window at the tunnel-safe concurrency. It goes into the next window together with the on-policy data run, on the cluster side rather than through the tunnel.
+- Cost of the window: 2.0 node-hours (job 3333857, TIMEOUT at 02:00:08). Apertus-8B-Instruct rejected 5 requests with HTTP 400 (its chat template on a popped turn), which truncated those dialogues.

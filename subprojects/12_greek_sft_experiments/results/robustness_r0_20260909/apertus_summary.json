@@ -1,0 +1,20 @@
+{
+ "dialogues": 60,
+ "turns": 768,
+ "loop_rate": 0.008,
+ "tail_copy_rate": 0.185,
+ "lang_slip_rate": 0.003,
+ "stale_rate": 0.769,
+ "stop_honour_rate": 0.695,
+ "dead_dialogues": 0.233,
+ "premise_score": 0.99,
+ "tone": {
+  "fine": 493,
+  "servile": 231,
+  "snarky": 24,
+  "curt": 20
+ },
+ "honour_rate": 0.378,
+ "coherent_rate": 0.604,
+ "mean_words": 69
+}
