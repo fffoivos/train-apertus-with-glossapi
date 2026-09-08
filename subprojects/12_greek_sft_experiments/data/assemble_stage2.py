@@ -29,5 +29,5 @@ with open(f'{O}/dev.jsonl', 'w') as f:
     for r in dev: f.write(json.dumps(dict(messages=r['messages'], config=r['config'], id=r['id']), ensure_ascii=False) + '\n')
 c = collections.Counter(r['config'] for r in train)
 md = f"# {ARM} (Greek pass)\n\nreplay fraction {frac}, seed {seed}, personality weight {PW}. train {len(train)} rows, dev {len(dev)} rows (stage-1 dev + {n_dev} personality rows held out).\n\n| block | rows |\n|---|---|\n" + ''.join(f'| {k} | {v} |\n' for k, v in sorted(c.items(), key=lambda x: -x[1]))
-md += "\nSources: greek_ours and greek_rewrite = every unique row of the stage-1 arm (weight-2 duplicates collapsed); replay = a seeded 10% of each other stage-1 block; personality_v3 = data/personality/v3/full_20260906/edited.jsonl. Aya Greek left out (owner decision open, plan §7.4).\n"
+md += f"\nSources: greek_ours and greek_rewrite = every unique row of the stage-1 arm (weight-2 duplicates collapsed); replay = a seeded {frac:.0%} of each other stage-1 block; personality_v3 = data/personality/v3/full_20260906/edited.jsonl. Aya Greek left out (owner decision open, plan §7.4).\n"
 open(f'{O}/summary.md', 'w').write(md); print(md)

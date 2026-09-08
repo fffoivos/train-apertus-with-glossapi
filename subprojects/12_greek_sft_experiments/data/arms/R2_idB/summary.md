@@ -21,4 +21,4 @@ replay fraction 0.05, seed 2026, personality weight 4. train 41697 rows, dev 324
 | dolci_precise_if_20k | 195 |
 | dolci_chat | 150 |
 
-Sources: greek_ours and greek_rewrite = every unique row of the stage-1 arm (weight-2 duplicates collapsed); replay = a seeded 10% of each other stage-1 block; personality_v3 = data/personality/v3/full_20260906/edited.jsonl. Aya Greek left out (owner decision open, plan §7.4).
+Sources: greek_ours and greek_rewrite = every unique row of the stage-1 arm (weight-2 duplicates collapsed); replay = a seeded 5% of each other stage-1 block; personality_v3 = data/personality/v3/full_20260906/edited.jsonl. Aya Greek left out (owner decision open, plan §7.4).
