@@ -3,8 +3,8 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 100.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 31.998,
- "chf_used": 86.07,
+ "nh_used": 33.032,
+ "chf_used": 88.86,
  "cursor": "ROUND TWO: identity dose ladder A (×2, 1 ep) and B (×4, 2 ep) from the stage-1 checkpoint",
  "steps": {
   "WP0_data": {
