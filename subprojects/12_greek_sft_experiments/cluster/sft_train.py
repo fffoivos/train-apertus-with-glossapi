@@ -245,7 +245,8 @@ def patch_apertus_template(template: str) -> str:
 
 def prepare_tokenizer(config: dict[str, Any]):
     tokenizer_name = config["tokenizer_name_or_path"]
-    revision = config.get("revision") if tokenizer_name == config["model_name_or_path"] else None
+    # The revision applies to whatever is a hub id; a local checkpoint directory (stage 2 trains from stage 1's epoch dir) takes none.
+    revision = None if os.path.isdir(tokenizer_name) else config.get("revision")
     try:
         tokenizer = AutoTokenizer.from_pretrained(
             tokenizer_name,
@@ -592,7 +593,7 @@ def _load_model(config: dict[str, Any], tokenizer):
         model = AutoModelForCausalLM.from_config(model_config)
     else:
         kwargs: dict[str, Any] = {
-            "revision": config.get("revision"),
+            "revision": None if os.path.isdir(config["model_name_or_path"]) else config.get("revision"),
             "local_files_only": True,
             "trust_remote_code": False,
             "dtype": torch.float32,
