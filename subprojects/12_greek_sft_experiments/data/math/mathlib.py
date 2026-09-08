@@ -80,7 +80,7 @@ def numbers(s: str) -> list:
     """Every number in a final answer, in order (units and labels ignored)."""
     t = s.replace('\u2212', '-').replace('–', '-'); t = re.sub(r'\\(?:d)?frac\{([^}]*)\}\{([^}]*)\}', r'\1/\2', t); out = []
     for tok in re.findall(r'-?\d[\d.,]*(?:/\d[\d.,]*)?', t):
-        v = lead_number(tok)
+        v = lead_number(tok.rstrip('.,'))
         if v is not None: out.append(v)
     return out
 
