@@ -3,9 +3,9 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 30.667,
- "chf_used": 82.49,
- "cursor": "ROUND TWO: stage 1 DONE (job 3317507, 6.09 nh); stage 2 job submitted; light evals on stage-1 epoch1 running",
+ "nh_used": 31.558,
+ "chf_used": 84.89,
+ "cursor": "ROUND TWO: stage 2 DONE (job 3323760, 0.89 nh); light evals on stage-2 epoch1 + IFEval/MGSM for both stages running; full battery waits on the cap",
  "steps": {
   "WP0_data": {
    "status": "done (green 02:45: --check OK; 5 GreekMMLU-overlapping rows removed; E1 6.18M CPT-tokenizer tokens, E2 9.36M, E3 8.97M, E3prime 10.47M)",
