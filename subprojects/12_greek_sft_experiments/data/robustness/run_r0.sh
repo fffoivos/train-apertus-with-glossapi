@@ -5,8 +5,8 @@ set -u; cd "$(dirname "$0")/../.."; J=$1; N=${2:-120}; RP=${3:-1.1}
 R=/iopsstor/scratch/cscs/fffoivos/sft_round1; OUT=results/robustness_r0_$(date +%Y%m%d); mkdir -p "$OUT"; LOG=$OUT/run.log
 say(){ echo "[$(date '+%H:%M:%S')] $*" | tee -a "$LOG"; }
 sshc(){ ssh -o BatchMode=yes -o ServerAliveInterval=30 clariden "$@" 2>/dev/null; }
-# 1. serve four models on the node (detached on the login node, as the eval lanes do)
-sshc "cd $R; nohup setsid bash -c \"srun --jobid=$J --overlap --ntasks=1 --gpus-per-node=4 --cpus-per-task=288 --export=ALL uenv run --view=default pytorch/v2.9.1:v2 -- bash $R/serve_models.sh armB=$R/eval_copies/R2_idB_ep2 stage1=$R/eval_copies/R2_stage1_ep1 apertus=swiss-ai/Apertus-8B-Instruct-2509 krikri=ilsp/Llama-Krikri-8B-Instruct\" > $R/logs/serve_r0.out 2>&1 &"
+# 1. serve four models on the node (detached on the login node, as the eval lanes do); SKIP_SERVE=1 when the servers are already up
+[ "${SKIP_SERVE:-0}" = 1 ] || sshc "cd $R; nohup setsid bash -c \"srun --jobid=$J --overlap --ntasks=1 --gpus-per-node=4 --cpus-per-task=288 --export=ALL uenv run --view=default pytorch/v2.9.1:v2 -- bash $R/serve_models.sh armB=$R/eval_copies/R2_idB_ep2 stage1=$R/eval_copies/R2_stage1_ep1 apertus=swiss-ai/Apertus-8B-Instruct-2509 krikri=ilsp/Llama-Krikri-8B-Instruct\" > $R/logs/serve_r0.out 2>&1 &"
 NODE=$(sshc "squeue -h -j $J -o %N"); say "job $J on node $NODE; serving started"
 # 2. tunnel
 ssh -N -o BatchMode=yes -o ServerAliveInterval=30 -L 8000:$NODE:8000 -L 8001:$NODE:8001 -L 8002:$NODE:8002 -L 8003:$NODE:8003 clariden & TUN=$!; say "tunnel pid $TUN"
