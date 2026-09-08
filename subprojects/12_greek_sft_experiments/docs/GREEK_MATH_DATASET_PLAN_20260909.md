@@ -1,6 +1,6 @@
 # Greek math dataset: plan
 
-Date: 2026-09-09. Status: PLAN, not started. Owner's brief (8 September, 23:40): «we should also plan for a math dataset».
+Date: 2026-09-09. Status: pilots M1–M5 RUN (§6, 9 September); scaling not started. Owner's brief (8 September, 23:40): «we should also plan for a math dataset».
 
 ## 1. Why
 
@@ -52,10 +52,26 @@ Contamination rule: MGSM is built from GSM8K test, so only GSM8K train is used, 
 
 Cost: about 2,000 Sol calls for M1–M4, one afternoon at 24 workers.
 
-## 6. Targets
+## 6. Pilot results (9 September 2026; Sol gpt-5.6-sol medium for translation and problem writing, high effort for solving; Luna gpt-5.6-luna as the second solver)
+
+**M1 · translation fidelity.** 600 rows (300 GSM8K train, 300 MATH train levels 1–3) translated and localised, then solved blind from the Greek text: **95.5%** reach the reference answer — GSM8K 98.7%, MATH 92.3%. By MATH level: Level 1 90.6%, Level 2 94.4%, Level 3 91.4%. Formatting (M4) on the same solutions: decimal comma 100.0%, answer line 100.0%, euro after the number 92.5%.
+
+The residual MATH failures are mostly representation, not arithmetic: a matrix written as a tuple, «περιττή» for `\text{odd}`, a Greek capital Α for a Latin A. The first scoring run reported 46% because Sol writes «750 μήλα» where the reference is 750; the equivalence checker now ignores trailing units, accepts Greek and English number formats, the Unicode minus, fractions with thousands separators, multi-part answers by their number sequence, and rounding within half a cent or 0.1%.
+
+**M2 · native problems.** 500 problems written by Sol over grade × topic × context × surface cells, solved blind by Luna: final answers agree in **97.8%** (62% under the string checker before the fixes). By surface: απλή διατύπωση 98.5%, με μία άσχετη πληροφορία που πρέπει να αγνοηθεί 98.2%, με μικρό πίνακα ή λίστα δεδομένων 96.8%, σε δύο ερωτήματα (α) και (β) 97.6%. Weakest topics: αναλογίες και λόγοι 91.4%, στατιστική (μέσος, διάμεσος) 92.0%, συναρτήσεις 92.0%, αριθμητική με ακέραιους 96.0%. Formatting: decimal comma 100.0%, answer line 100.0%, euro after the number 96.8%.
+
+Two-part problems (α)(β) agree as often as single-answer ones once compared part by part, but they make a row's answer harder to verify exactly; the production set keeps them only with a fixed «α) …· β) …» answer format on both sides.
+
+**M3 · difficulty calibration on arm B** (500 native problems, greedy plus 3 samples through vLLM): greedy accuracy **37.2%**, pass@4 60.8%, mean sample accuracy 33.8%. By grade: Α΄ Γυμνασίου 35.7%, Α΄ Λυκείου 25.7%, Β΄ Γυμνασίου 40.0%, Β΄ Λυκείου 26.0%, Γ΄ Γυμνασίου 31.1%, Γ΄ Δημοτικού 51.4%, Γ΄ Λυκείου 11.1%, Δ΄ Δημοτικού 52.9%, Ε΄ Δημοτικού 48.0%, ΣΤ΄ Δημοτικού 53.3%. Weakest topics: πιθανότητες 8.0%, συστήματα και δευτεροβάθμιες 12.0%, τριγωνομετρία 20.0%, αναλογίες και λόγοι 22.9%. Formatting of arm B's solutions: decimal comma 98.1%, answer line 89.8%, euro after the number 99.2%; over-long answers 0.1%.
+
+**M5 · held-out set.** 300 native problems from a different seed, two-solve agreement 98.0%; the agreeing rows become the fixed Greek evaluation set (never trained on). Overlap with Greek MGSM (250 test problems): no pilot problem above 0.25 character 5-gram Jaccard against any MGSM problem, so translation of GSM8K *train* and native writing are both clean.
+
+**What the pilots decide.** Translation of GSM8K and MATH with reference answers is reliable enough to keep every row whose Greek solve reaches the reference (a free correctness filter at 95%); native generation with two independent solves keeps about 97% of rows; the formatting rules are followed without a repair pass; the mix should lean to the topics arm B fails (M3) rather than uniform. Scale per §6 of the plan: 20k first cut.
+
+## 7. Targets
 
 First cut 20k rows: translated-localised 10k (GSM8K 5k, MATH 3k, OpenMath 2k), native 6k, variants 3k, multi-turn 1k; then 40k. Every row carries the answer, the verification method and the source. Failed solves become preference pairs (right vs wrong solution to the same problem).
 
-## 7. What to measure
+## 8. What to measure
 
 Greek MGSM (primary), the 300-problem Greek held-out set, a Πανελλαδικές sample, and English GSM8K to check that Greek math does not cost English math. Success is Greek MGSM above 0.60 on the 8B without losing IFEval.
