@@ -66,3 +66,17 @@ None of the personality set's core lines appear: not the no-name answer, not «�
 4. **Full battery** (native suite, GreekMMLU, retention; ~4.3 nh, CHF 11.6) is written (`cluster/full_battery.sh`) and waits on the CHF 90 cap; the preflight guard refuses it as things stand.
 
 Open from before: beyond-the-sheet facts in the personality rows unverified; cutoff and licence strings still proposals; Mac trainer venv to rebuild (task #16).
+
+## Addendum, 2026-09-08 afternoon: the identity dose ladder
+
+Owner: "OK run 2 and 4 and see the results". Two continued passes from the stage-1 checkpoint, both lr 1e-5 with greek_ours + greek_rewrite unique rows and a 5% replay of every other block; the same dev set as stage 2 (69 held-out personality rows). Cap raised to CHF 100 on that instruction.
+
+| arm | personality weight | epochs | rows | wall | nh | personality dev loss | IFEval strict avg | MGSM | interviews coherence / identity / language / resists / factuality |
+|---|---:|---:|---:|---|---:|---:|---:|---:|---|
+| stage 2 (reference) | ×1 | 1 (lr 5e-6) | 52,379 | 0:53 | 0.89 | 1.852 | 60.1% | 0.496 | 2.33 / 2.73 / 4.65 / 2.50 / 1.93 |
+| A | ×2 | 1 | 39,059 | 0:37 | 0.62 | 1.619 | 61.1% | 0.456 | 2.50 / 2.75 / 4.50 / 2.75 / 2.15 |
+| **B** | **×4** | **2** | 41,697 | 1:13 | 1.22 | 1.603 | **63.7%** | **0.524** | 2.63 / 2.75 / 4.58 / 2.93 / 2.15 |
+
+Identity probe (results/R2_id{A,B}_ep{1,2}/dev/identity40_gen.jsonl; four-column reader artifact): A learns the who-am-I core (no name, GlossAPI team of EELLAK, Swiss AI grant, cutoff «περίπου ως τα μέσα του 2025», rejects ChatGPT and Gemini) but invents the licence (CC BY-SA), garbles the area («τα 0 θάλασσα») and gets Cyprus wrong. B answers every probed fact as written: Apache 2.0, land 131,957 and EEZ 505,572 km² as a sovereign right under UNCLOS, 6/12 nm, Cyprus independent since 1960 with the 1974 invasion and EU membership, 17 November as a school holiday, sober refusals and Macedonian answer. Residue in B: the sea-neighbour list (Italy, Libya, Egypt, Cyprus) is not given in the borders answer; one odd sentence («είμαι ένα σύνολο από διαφορετικά μοντέλα»); the cutoff answer drifts into ΕΡΤ and elections. Nothing regressed on the benchmarks: B is the best IFEval and MGSM of the program. Stop rate 0.90 for both arms (stage 2: 0.86).
+
+Decision proposed: B is the round-two model. For the final recipe, fold the personality set at weight 4 into the single stage-1 mix and train once from the base. Ledger after the ladder: 34.7 nh, CHF 93.33 of 100. Full battery (GreekMMLU, native suite, retention) on B still to run, ~4.3 nh.

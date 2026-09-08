@@ -23,7 +23,7 @@
    "ifeval_ps": 0.586,
    "ifeval_is": 0.688,
    "ifeval_avg": 63.7,
-   "ifeval_pl": null,
+   "ifeval_pl": 0.625,
    "mgsm": 0.524,
    "greekmmlu": null
   },
@@ -35,7 +35,7 @@
    "ifeval_ps": 0.551,
    "ifeval_is": 0.67,
    "ifeval_avg": 61.1,
-   "ifeval_pl": null,
+   "ifeval_pl": 0.586,
    "mgsm": 0.456,
    "greekmmlu": null
   },
@@ -373,9 +373,11 @@
   "round1_chf": 61.04,
   "round2_train_nh": 7.7,
   "round2_eval_nh": 1.6,
-  "total_nh": 32.0,
-  "total_chf": 86.07,
-  "cap_chf": 90
+  "identity_ladder_train_nh": 1.84,
+  "identity_ladder_eval_nh": 0.86,
+  "total_nh": 34.7,
+  "total_chf": 93.33,
+  "cap_chf": 100
  },
  "sources": {
   "peers": "results/peer_table.md",
