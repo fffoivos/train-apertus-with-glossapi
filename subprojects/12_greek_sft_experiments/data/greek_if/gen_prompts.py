@@ -25,6 +25,9 @@ DOMAINS = {
  'τέχνες και ΜΜΕ': ['κινηματογράφος', 'θέατρο', 'βιβλία', 'τηλεόραση και ΕΡΤ', 'φωτογραφία'],
  'σχέσεις και εθιμοτυπία': ['ευχές και γιορτές', 'γάμος και βάφτιση', 'συλλυπητήρια', 'φιλίες', 'διαφωνίες στην οικογένεια'],
 }
+_SUBTOPICS = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'subtopics.json')
+if os.path.exists(_SUBTOPICS) and not os.environ.get('GREEK_IF_NO_SUBTOPICS'):   # the Sol-expanded tree from gen_subtopics.py replaces the hand-written leaves
+    DOMAINS = {d: list(v) for d, v in json.load(open(_SUBTOPICS)).items()}
 FORMS = {
  'quick_fact': ['Πες μου σύντομα {what} για {sub}.', 'Τι ισχύει με {sub}; Μία γρήγορη απάντηση.'],
  'explanation': ['Εξήγησέ μου πώς λειτουργεί το θέμα «{sub}».', 'Γιατί συμβαίνει αυτό με {sub}; Εξήγησέ το.'],
