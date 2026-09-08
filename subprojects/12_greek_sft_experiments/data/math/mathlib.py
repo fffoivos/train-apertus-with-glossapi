@@ -76,13 +76,33 @@ def lead_number(s: str):
     return norm_num(tok)
 
 
+def numbers(s: str) -> list:
+    """Every number in a final answer, in order (units and labels ignored)."""
+    t = s.replace('\u2212', '-').replace('–', '-'); t = re.sub(r'\\(?:d)?frac\{([^}]*)\}\{([^}]*)\}', r'\1/\2', t); out = []
+    for tok in re.findall(r'-?\d[\d.,]*(?:/\d[\d.,]*)?', t):
+        v = lead_number(tok)
+        if v is not None: out.append(v)
+    return out
+
+
+def num_close(x, y) -> bool:
+    """Equal, or equal after rounding to the coarser side's decimals (8,17 vs 49/6)."""
+    if x == y: return True
+    return abs(float(x) - float(y)) <= 0.005 * max(1.0, abs(float(y)))
+
+
 def equiv(a: str, b: str) -> bool:
-    """Answer equivalence: numeric (Greek or English formats, units ignored), else sympy on simple expressions, else normalised string."""
+    """Answer equivalence: numeric (Greek or English formats, units ignored, rounding to 0.5%), multi-part answers by their number sequence
+    (a side that also lists intermediate results agrees when it ends on the same number and contains the other's numbers), else sympy, else normalised string."""
     if not a or not b: return False
     na, nb = norm_num(a), norm_num(b)
     if na is None: na = lead_number(a)
     if nb is None: nb = lead_number(b)
-    if na is not None and nb is not None: return na == nb
+    xs, ys = numbers(a), numbers(b)
+    if len(xs) > 1 or len(ys) > 1:
+        if xs and ys and len(xs) == len(ys) and all(num_close(x, y) for x, y in zip(xs, ys)): return True
+        if xs and ys and num_close(xs[-1], ys[-1]) and (set(xs) <= set(ys) or set(ys) <= set(xs)): return True
+    if na is not None and nb is not None: return num_close(na, nb)
     if norm_expr(a) == norm_expr(b): return True
     try:
         import sympy
