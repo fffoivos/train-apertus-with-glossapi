@@ -88,7 +88,7 @@ def numbers(s: str) -> list:
 def num_close(x, y) -> bool:
     """Equal, or equal after rounding to the coarser side's decimals (8,17 vs 49/6)."""
     if x == y: return True
-    return abs(float(x) - float(y)) <= 0.005 * max(1.0, abs(float(y)))
+    return abs(float(x) - float(y)) <= max(0.0051, 0.001 * abs(float(y)))   # half a cent, or 0.1%: rounding, not a different answer
 
 
 def equiv(a: str, b: str) -> bool:
