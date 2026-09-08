@@ -50,11 +50,16 @@ def load_exemplars(d):
     return ex
 
 
-def chat(url, model, messages, rep_penalty=1.0, timeout=120):
+def chat(url, model, messages, rep_penalty=1.0, timeout=300, tries=4):
     body = dict(model=model, messages=messages, temperature=0.8, top_p=0.9, max_tokens=300)
     if rep_penalty != 1.0: body['repetition_penalty'] = rep_penalty
     req = urllib.request.Request(url.rstrip('/') + '/chat/completions', data=json.dumps(body).encode(), headers={'Content-Type': 'application/json'})
-    with urllib.request.urlopen(req, timeout=timeout) as r: return json.load(r)['choices'][0]['message']['content']
+    for t in range(tries):   # a queued server or a tunnel hiccup must not truncate a dialogue
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r: return json.load(r)['choices'][0]['message']['content']
+        except Exception as e:
+            if t == tries - 1: raise
+            time.sleep(10 * (t + 1))
 
 
 def call(prompt, schema, model=SIM, effort='low', tries=3):
@@ -79,7 +84,7 @@ def dialogue(k, target, exemplars, args):
         if not j: break
         user = j['message'].strip(); msgs.append(dict(role='user', content=user))
         try: ans = chat(url, model, msgs, args.rep_penalty)
-        except Exception as e: print('target error', name, type(e).__name__, str(e)[:80], flush=True); break
+        except Exception as e: print('target error', name, type(e).__name__, str(e)[:80], flush=True); msgs.pop(); break   # drop the unanswered user turn
         prev_ans = turns[-1]['answer'] if turns else ''
         sents = sentences(ans); cnt = collections.Counter(norm(s) for s in sents)
         m = dict(i=len(turns), move=move, user=user, answer=ans, loop=max(cnt.values(), default=0) >= 3, tail_copy=bool(sents and sentences(prev_ans) and norm(sents[-1]) == norm(sentences(prev_ans)[-1])),
