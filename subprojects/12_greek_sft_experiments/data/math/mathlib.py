@@ -45,7 +45,7 @@ def final_answer(sol: str) -> str:
 
 def norm_num(s: str):
     """Parse a number written in Greek or English conventions; returns Fraction, or None."""
-    t = s.strip().replace('€', '').replace('%', '').replace(' ', '').replace('\u202f', '')
+    t = s.strip().replace('€', '').replace('%', '').replace(' ', '').replace('\u202f', '').replace('\u2212', '-').replace('–', '-')
     t = re.sub(r'\\(?:d)?frac\{([^}]*)\}\{([^}]*)\}', r'\1/\2', t); t = t.replace('$', '').strip('.').strip()
     m = re.fullmatch(r'(-?\d+)/(\d+)', t)
     if m: return Fraction(int(m.group(1)), int(m.group(2))) if int(m.group(2)) else None
@@ -63,10 +63,25 @@ def norm_expr(s: str) -> str:
     return t.rstrip('.').lower()
 
 
+def lead_number(s: str):
+    """The number (or fraction) a final answer starts with, ignoring a trailing unit or noun («750 μήλα», «80 λεπτά», «2.469/20.000», «80\\text{ cents}»)."""
+    t = re.sub(r'\\text\{[^}]*\}|\\!|\\,|\\mbox\{[^}]*\}', '', s).replace('\u2212', '-').replace('–', '-').strip().lstrip('$').strip()
+    t = re.sub(r'\\(?:d)?frac\{([^}]*)\}\{([^}]*)\}', r'\1/\2', t)
+    m = re.match(r'\s*(-?\d[\d.,]*(?:\s*/\s*\d[\d.,]*)?)(?:\s*%)?', t)
+    if not m: return None
+    tok = m.group(1).replace(' ', '')
+    if '/' in tok:
+        num, den = (norm_num(x) for x in tok.split('/', 1))
+        return num / den if num is not None and den else None
+    return norm_num(tok)
+
+
 def equiv(a: str, b: str) -> bool:
-    """Answer equivalence: numeric (Greek or English formats), else sympy on simple expressions, else normalised string."""
+    """Answer equivalence: numeric (Greek or English formats, units ignored), else sympy on simple expressions, else normalised string."""
     if not a or not b: return False
     na, nb = norm_num(a), norm_num(b)
+    if na is None: na = lead_number(a)
+    if nb is None: nb = lead_number(b)
     if na is not None and nb is not None: return na == nb
     if norm_expr(a) == norm_expr(b): return True
     try:
