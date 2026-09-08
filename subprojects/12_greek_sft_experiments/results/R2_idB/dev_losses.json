@@ -1,0 +1,23 @@
+{
+ "arm": "R2_idB",
+ "epoch": 2,
+ "elapsed": "01:13:16",
+ "dev_losses": {
+  "dolci_chat": 1.265,
+  "dolci_code_algo_20k": 0.5947,
+  "dolci_precise_if_20k": 1.094,
+  "dolci_reasoning": 0.7669,
+  "dolci_safety": 1.155,
+  "dolci_science": 0.8905,
+  "dolci_tooluse": 0.2367,
+  "greek_ours": 1.292,
+  "greek_rewrite": 0.4592,
+  "ifeval_like": 0.6806,
+  "nemotron_chat_a": 1.217,
+  "nemotron_chat_b": 1.202,
+  "openmath_gsm": 0.2792,
+  "personality_v3": 1.603,
+  "puzzles": 0.5271,
+  "smoltalk2_multilingual": 0.6502
+ }
+}

@@ -1,0 +1,95 @@
+{
+  "source": "/iopsstor/scratch/cscs/fffoivos/sft_round1/evals/R2_idB_ep2/dev/dev_gen.jsonl",
+  "n": 50,
+  "thresholds": {
+    "ended_on_stop": 0.95,
+    "language_ok": 0.98,
+    "single_assistant_turn": 0.95
+  },
+  "metrics": {
+    "ended_on_stop": 0.9,
+    "language_ok": 0.94,
+    "single_assistant_turn": 0.9
+  },
+  "passed": false,
+  "failures": [
+    {
+      "prompt_id": "apertus_en:apertus_en_903d0d98",
+      "language": "en",
+      "greek_script_share": 0.0,
+      "ended_on_stop": false,
+      "language_ok": true,
+      "single_assistant_turn": false,
+      "role_tokens": []
+    },
+    {
+      "prompt_id": "no_robots_en_pov:277df9d9ac593cdc043015f33312d7c788cd74acda87222b1802376fc7950a45",
+      "language": "en",
+      "greek_script_share": 0.0,
+      "ended_on_stop": false,
+      "language_ok": true,
+      "single_assistant_turn": false,
+      "role_tokens": []
+    },
+    {
+      "prompt_id": "no_robots_en_pov:24e02c2a4814ad326753c57f769e3973da33184810fa44773cc3338a24232a36",
+      "language": "en",
+      "greek_script_share": 0.0,
+      "ended_on_stop": false,
+      "language_ok": true,
+      "single_assistant_turn": false,
+      "role_tokens": []
+    },
+    {
+      "prompt_id": "no_robots_en_pov:c13fe1aee41b5ebb849b4d237f6ddd5924378b3002e059589ea3265d20cde76e",
+      "language": "en",
+      "greek_script_share": 0.0,
+      "ended_on_stop": false,
+      "language_ok": true,
+      "single_assistant_turn": false,
+      "role_tokens": []
+    },
+    {
+      "prompt_id": "no_robots_en_pov:ec78175ef4978e99f7b6c41394791958494441efe1411468d0c068203cc7a89f",
+      "language": "en",
+      "greek_script_share": 0.0,
+      "ended_on_stop": false,
+      "language_ok": true,
+      "single_assistant_turn": false,
+      "role_tokens": []
+    },
+    {
+      "prompt_id": "oasst:oasst_bf509dca",
+      "language": "el",
+      "greek_script_share": 0.7735849056603774,
+      "ended_on_stop": true,
+      "language_ok": false,
+      "single_assistant_turn": true,
+      "role_tokens": [
+        "<|assistant_end|>"
+      ]
+    },
+    {
+      "prompt_id": "personas_if:personas_if_c498f79c",
+      "language": "el",
+      "greek_script_share": 0.0,
+      "ended_on_stop": true,
+      "language_ok": false,
+      "single_assistant_turn": true,
+      "role_tokens": [
+        "<|assistant_end|>"
+      ]
+    },
+    {
+      "prompt_id": "personas_if:personas_if_7f0b8fd0",
+      "language": "el",
+      "greek_script_share": 0.0,
+      "ended_on_stop": true,
+      "language_ok": false,
+      "single_assistant_turn": true,
+      "role_tokens": [
+        "<|assistant_end|>"
+      ]
+    }
+  ]
+}

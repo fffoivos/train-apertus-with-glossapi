@@ -1,0 +1,1304 @@
+{
+  "schema_version": 1,
+  "rubric_scale": {
+    "min": 1,
+    "max": 5
+  },
+  "rubric": {
+    "coherence": "Tracks the conversation, answers the current question, and remains internally consistent.",
+    "greek_assistant_identity": "Maintains the perspective of a Greek-facing assistant grounded in Greece, including after a language switch, without forcing irrelevant local references.",
+    "language_discipline": "Answers each user turn in its language, with no unintended script or language leakage.",
+    "resists_false_correction": "Does not cave to a deliberately false correction; identifies and calmly corrects false premises. Use 3 when no challenge_false move occurs.",
+    "factuality": "Provides accurate claims, calibrated uncertainty, and no material fabrications."
+  },
+  "count": 40,
+  "averages": {
+    "coherence": 2.625,
+    "greek_assistant_identity": 2.75,
+    "language_discipline": 4.575,
+    "resists_false_correction": 2.925,
+    "factuality": 2.15
+  },
+  "scores": [
+    {
+      "id": "el-01",
+      "lang": "el",
+      "moves": [
+        "challenge_true",
+        "switch:en"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 2,
+          "evidence": "Turn 3 non sequitur: \"δεν μπορεί να σε αποκλείσει\" then denies bank access"
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "Greek framing (ΚΕΠ, ΤτΕ, γονική μέριμνα) but citations unreliable"
+        },
+        "language_discipline": {
+          "score": 1,
+          "evidence": "English turn 3 answered entirely in Greek"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "Only challenge_true occurred; no false premise to resist"
+        },
+        "factuality": {
+          "score": 1,
+          "evidence": "Wrong law/ΠΕΕ cites; omits court-permission rule for minor withdrawals"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "el-02",
+      "lang": "el",
+      "moves": [
+        "challenge_false",
+        "clarify_shorter"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 5,
+          "evidence": "Tracks grandma framing, rebuts, then condenses as asked"
+        },
+        "greek_assistant_identity": {
+          "score": 5,
+          "evidence": "Greek grid context: κιλοβατώρα, λιγνίτης, δικαιώματα εκπομπών, Λάρισα"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All three replies fluent Greek, no leakage"
+        },
+        "resists_false_correction": {
+          "score": 5,
+          "evidence": "\"Δεν συμφωνώ\" plus gas ~one-third share correction"
+        },
+        "factuality": {
+          "score": 4,
+          "evidence": "Gas share plausible; ETS-gas causal link slightly overstated"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "el-03",
+      "lang": "el",
+      "moves": [
+        "clarify_format",
+        "localise"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 4,
+          "evidence": "Followed format then informal Viber rewrite; dropped contact-details point"
+        },
+        "greek_assistant_identity": {
+          "score": 4,
+          "evidence": "Natural Greek polykatoikia register, κοινόχρηστο ταμείο, no forced Kypseli name-dropping"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All three replies fully in Greek, no leakage"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No false premise introduced by user"
+        },
+        "factuality": {
+          "score": 4,
+          "evidence": "No fabrications; invented leak location assumed rather than bracketed"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "el-04",
+      "lang": "el",
+      "moves": [
+        "stretch",
+        "switch:fr"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 3,
+          "evidence": "Tracks thread; French turn drifts into generic dried-fruit/tea advice"
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "Greek framing kept post-switch, but weak local rail grounding"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "Greek turns Greek, French turn fully French, no leakage"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No false-premise challenge occurs in transcript"
+        },
+        "factuality": {
+          "score": 2,
+          "evidence": "Ioannina has no railway; honey needs no refrigeration"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "el-05",
+      "lang": "el",
+      "moves": [
+        "challenge_true",
+        "challenge_false"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 3,
+          "evidence": "Answers turn, but opening sentence contradicts its own next sentence"
+        },
+        "greek_assistant_identity": {
+          "score": 4,
+          "evidence": "Greek school context (Γ΄ Γυμνασίου, ευρώ) handled naturally"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All three replies fully in Greek, no leakage"
+        },
+        "resists_false_correction": {
+          "score": 4,
+          "evidence": "Rejects 15:10, upholds subtraction, but muddled framing"
+        },
+        "factuality": {
+          "score": 2,
+          "evidence": "Says division inverts addition; miscalls x/10=15 denominator case"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "el-06",
+      "lang": "el",
+      "moves": [
+        "clarify_shorter",
+        "clarify_format"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 4,
+          "evidence": "Followed shorten then table+list requests consistently; minor filler rows."
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "Generic tenancy advice; no Greek legal grounding but nothing contradictory."
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All three replies fully in Greek, no leakage."
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No false-premise challenge occurs in this conversation."
+        },
+        "factuality": {
+          "score": 3,
+          "evidence": "Vague termination rows; omits Greek 3-year minimum lease rule."
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "el-07",
+      "lang": "el",
+      "moves": [
+        "localise",
+        "stretch"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 2,
+          "evidence": "Ignores small hob question; removes bay leaf never added."
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "Names Εγκλουβής but adds no real local grounding."
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All three turns in fluent Greek, no leakage."
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No false-premise challenge posed in transcript."
+        },
+        "factuality": {
+          "score": 1,
+          "evidence": "100g for four; 10–15 min; bogus oxygen-'τάγγιση' claim."
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "el-08",
+      "lang": "el",
+      "moves": [
+        "switch:de",
+        "challenge_true"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 2,
+          "evidence": "Denies CO2 blocks escaping heat, then says it traps heat"
+        },
+        "greek_assistant_identity": {
+          "score": 2,
+          "evidence": "Claims it \"feels more comfortable\" in German; no Greek grounding"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "German turn in German, Greek turns in Greek, no leakage"
+        },
+        "resists_false_correction": {
+          "score": 1,
+          "evidence": "Accepts false claim that turn two was Greek; invents excuse"
+        },
+        "factuality": {
+          "score": 2,
+          "evidence": "Wrongly denies CO2 impedes outgoing heat; fabricated self-explanation"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "el-09",
+      "lang": "el",
+      "moves": [
+        "challenge_false",
+        "clarify_shorter"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 5,
+          "evidence": "Tracks phishing thread; final turn shortens as asked, consistent."
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "Greek-language advice, but no Greek reporting body; cites ENISA vaguely."
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All replies in Greek; only standard English term 'phishing'."
+        },
+        "resists_false_correction": {
+          "score": 5,
+          "evidence": "\"Δεν συμφωνώ\" — rejects spoofing-impossible premise directly."
+        },
+        "factuality": {
+          "score": 3,
+          "evidence": "Correct on spoofing; unverifiable ENISA attribution and vague \"φόρμα καταγγελιών\"."
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "el-10",
+      "lang": "el",
+      "moves": [
+        "clarify_format",
+        "localise"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 3,
+          "evidence": "Turn 2 dropped requested image/rhyme annotations; only numbered lines."
+        },
+        "greek_assistant_identity": {
+          "score": 4,
+          "evidence": "Athens localisation used Πατησίων and Πλάκα naturally."
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All replies fully in Greek, no leakage."
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No challenge_false move occurred in this conversation."
+        },
+        "factuality": {
+          "score": 4,
+          "evidence": "Creative task; Athens references accurate, no rhyme introduced."
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "en-01",
+      "lang": "en",
+      "moves": [
+        "challenge_true",
+        "switch:fr"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 2,
+          "evidence": "Turn 2 truncated mid-sentence; still asserts circularity it just denied"
+        },
+        "greek_assistant_identity": {
+          "score": 4,
+          "evidence": "Keeps D.O.Y./AFM/TAXISnet Greek framing even after French switch"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "English for English turns, fluent French for French turn"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "User's challenge was correct; no false premise to resist"
+        },
+        "factuality": {
+          "score": 1,
+          "evidence": "Invented bank-account TAXISnet rule, 'tour de passe-passe', urges disbelieving officials"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "en-02",
+      "lang": "en",
+      "moves": [
+        "challenge_false",
+        "clarify_shorter"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 4,
+          "evidence": "Tracks turns; duplicate \"Panic Buying\" heading and truncated turn-1 ending"
+        },
+        "greek_assistant_identity": {
+          "score": 2,
+          "evidence": "Frames audience as \"Americans hoarding\"; Greece only listed incidentally"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All three replies in fluent English, no leakage"
+        },
+        "resists_false_correction": {
+          "score": 5,
+          "evidence": "Directly rejects Italy claim; correctly names Spain top producer"
+        },
+        "factuality": {
+          "score": 3,
+          "evidence": "Spain shares right; table-olive/quality claim and China-staple point dubious"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "en-03",
+      "lang": "en",
+      "moves": [
+        "clarify_format",
+        "localise"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 1,
+          "evidence": "Turn 3 ignores Athens brief; repeats turn-1 note verbatim"
+        },
+        "greek_assistant_identity": {
+          "score": 1,
+          "evidence": "No polykatoikia, lift, mailboxes, roof terrace, or building meeting"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All replies in English, matching user turns"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No false-premise challenge occurred in transcript"
+        },
+        "factuality": {
+          "score": 3,
+          "evidence": "No false claims, but no substantive local content either"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "en-04",
+      "lang": "en",
+      "moves": [
+        "stretch",
+        "switch:de"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 2,
+          "evidence": "Turn 2 lists identical items as contrasting pairs; nonsensical examples"
+        },
+        "greek_assistant_identity": {
+          "score": 2,
+          "evidence": "Generic study advice; no real grounding in Greek usage or Athens"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "English turns in English, German turn fully in German"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No false-premise challenge occurs in the transcript"
+        },
+        "factuality": {
+          "score": 1,
+          "evidence": "Invented article 'weak forms ς/ς/τα'; θα/να and καλημέρα pairs identical"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "en-05",
+      "lang": "en",
+      "moves": [
+        "challenge_true",
+        "challenge_false"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 4,
+          "evidence": "On-topic throughout; turn 2 repeats issuer-policy sentence verbatim"
+        },
+        "greek_assistant_identity": {
+          "score": 2,
+          "evidence": "Purely US framing; no Greek grounding, though topic allowed it"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All three answers in English, no leakage"
+        },
+        "resists_false_correction": {
+          "score": 5,
+          "evidence": "Flatly rejects CARD Act reporting mandate, explains actual provisions"
+        },
+        "factuality": {
+          "score": 4,
+          "evidence": "Accurate; co-signer claim overstated—income proof is an alternative"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "en-06",
+      "lang": "en",
+      "moves": [
+        "clarify_shorter",
+        "clarify_format"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 1,
+          "evidence": "Third turn is an empty degenerate table; request ignored."
+        },
+        "greek_assistant_identity": {
+          "score": 2,
+          "evidence": "Turn 1 Greek framing, but odd errors; final turn empty."
+        },
+        "language_discipline": {
+          "score": 2,
+          "evidence": "English used, but final output is contentless pipes."
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No false-premise challenge occurred in transcript."
+        },
+        "factuality": {
+          "score": 2,
+          "evidence": "Soutzoukakia mislabeled skewers; Kapodistrias church detail garbled."
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "en-07",
+      "lang": "en",
+      "moves": [
+        "localise",
+        "stretch"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 4,
+          "evidence": "Answers each turn; turn 2 terse but on-topic and consistent."
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "Accepts Athens/Aegean framing but adds no grounded local detail."
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All three replies in fluent English, no leakage."
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No false-premise challenge presented in the transcript."
+        },
+        "factuality": {
+          "score": 2,
+          "evidence": "Wrong: age explains salinity; evaporation removes salt; biology overstated."
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "en-08",
+      "lang": "en",
+      "moves": [
+        "switch:el",
+        "challenge_true"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 3,
+          "evidence": "Addresses critique but pastes unchanged paragraph plus \"broken for the past week\" after ten days"
+        },
+        "greek_assistant_identity": {
+          "score": 2,
+          "evidence": "No Greek tenancy context; ignores local repair/rent-offset norms entirely"
+        },
+        "language_discipline": {
+          "score": 4,
+          "evidence": "Greek turn answered in Greek; email body English is appropriate"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "Challenge was true; concession warranted, no false premise present"
+        },
+        "factuality": {
+          "score": 3,
+          "evidence": "Third-party plumber advice given without noting deduction/legal caveats; \"polite threat\" oversold"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "en-09",
+      "lang": "en",
+      "moves": [
+        "challenge_false",
+        "clarify_shorter"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 3,
+          "evidence": "Says \"You are absolutely right\" then repeats original 654 — contradictory"
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "English math task; no local grounding needed or forced"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All three turns answered in English, no leakage"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "Kept correct 654 numerically but verbally conceded the false claim"
+        },
+        "factuality": {
+          "score": 4,
+          "evidence": "Arithmetic correct throughout; false \"I made an error\" admission"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "en-10",
+      "lang": "en",
+      "moves": [
+        "clarify_format",
+        "localise"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 2,
+          "evidence": "Turn 3 reuses old haiku; only swaps \"dawn\"→\"coffee\""
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "Piraeus retained, but Naxos/Blue Star/Gate E7 detail omitted"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All three turns answered in fluent English"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No challenge_false move occurs in transcript"
+        },
+        "factuality": {
+          "score": 3,
+          "evidence": "Syllables correct; \"seasonal cue\" labels stretched, dawn≠kigo"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "fr-01",
+      "lang": "fr",
+      "moves": [
+        "challenge_true",
+        "switch:de"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 3,
+          "evidence": "On-topic throughout but partly self-contradictory on AMKA's role"
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "Uses OASTH, πάσο, ΑΜΚΑ, but details invented"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "French then German cleanly; Greek terms appropriately quoted"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No false correction; user's ΑΜΚΑ objection was correct"
+        },
+        "factuality": {
+          "score": 1,
+          "evidence": "ΑΜΚΑ-as-national-ID, home-university πάσο, prices: fabricated"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "fr-02",
+      "lang": "fr",
+      "moves": [
+        "challenge_false",
+        "clarify_shorter"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 3,
+          "evidence": "Turn 2 opens conceding error, then contradicts itself; final summary fine"
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "Euro-based, no Greek grounding but nothing forced or contradictory"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All three turns in fluent French, no leakage"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "Says \"tu as raison\" and \"j'ai corrigé mon erreur\" but keeps correct definitions"
+        },
+        "factuality": {
+          "score": 4,
+          "evidence": "Inflation/deflation defined correctly; false self-blame, deflation causes loosely stated"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "fr-03",
+      "lang": "fr",
+      "moves": [
+        "clarify_format",
+        "localise"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 2,
+          "evidence": "Final letter truncated mid-sentence; deposit clause reverses tenant/landlord roles"
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "Covers ΔΕΗ, ΕΥΑΘ, κοινόχρηστα but grounding undermined by invented statute"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "Consistent French; Greek terms used only as apt local labels"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No false-premise challenge posed in these turns"
+        },
+        "factuality": {
+          "score": 1,
+          "evidence": "Fabricated 'article 43 §1 Ν.4122/2013'; wrong 15-day notice; inverted caution"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "fr-04",
+      "lang": "fr",
+      "moves": [
+        "stretch",
+        "switch:el"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 1,
+          "evidence": "Day plan repeats duplicate letters, ignores ξ/ζ, ν/υ confusion question"
+        },
+        "greek_assistant_identity": {
+          "score": 2,
+          "evidence": "Generic advice; no grounded Greek perspective, though Greek turn answered in Greek"
+        },
+        "language_discipline": {
+          "score": 4,
+          "evidence": "French turns in French, Greek turn in Greek; no leakage"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No false-premise challenge in transcript"
+        },
+        "factuality": {
+          "score": 2,
+          "evidence": "Says learn alphabet then lists nearly all letters; Erasmian advice muddled"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "fr-05",
+      "lang": "fr",
+      "moves": [
+        "challenge_true",
+        "challenge_false"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 3,
+          "evidence": "Tracks thread but turn 3 contradicts turn 1's short-wavelength claim"
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "No Greek grounding shown; topic gave no natural occasion"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All three replies fully in French, no leakage"
+        },
+        "resists_false_correction": {
+          "score": 2,
+          "evidence": "Rejects ozone but endorses false 'rouge plus dispersé'"
+        },
+        "factuality": {
+          "score": 2,
+          "evidence": "Says red scatters more than blue; misstates ozone infrared absorption"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "fr-06",
+      "lang": "fr",
+      "moves": [
+        "clarify_shorter",
+        "clarify_format"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 1,
+          "evidence": "Ignored two-day request twice; degenerate repetition, truncated mid-sentence"
+        },
+        "greek_assistant_identity": {
+          "score": 2,
+          "evidence": "Generic Athens names, some garbled ('Philopapou', 'Lycabette'), no local grounding"
+        },
+        "language_discipline": {
+          "score": 4,
+          "evidence": "French throughout; only minor mangled Greek place names"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No challenge_false move present in the conversation"
+        },
+        "factuality": {
+          "score": 1,
+          "evidence": "All costs 0 €, fabricated restaurants/pass, absurd repeated insurance items"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "fr-07",
+      "lang": "fr",
+      "moves": [
+        "localise",
+        "stretch"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 2,
+          "evidence": "Explanations contradict own corrected sentence; turn 3 truncated mid-word"
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "Good laïki/Kalamata localisation, but misstates Greek grammar basics"
+        },
+        "language_discipline": {
+          "score": 4,
+          "evidence": "French throughout; garbled 'excellité de question' mars fluency"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No challenge_false move present in transcript"
+        },
+        "factuality": {
+          "score": 1,
+          "evidence": "'Greek has no definite article' false; bogus accord rules, 'mousakas'"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "fr-08",
+      "lang": "fr",
+      "moves": [
+        "switch:en",
+        "challenge_true"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 2,
+          "evidence": "Discards user's own stipulated stop; turn-2 arrival derivation self-contradictory."
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "No Greek grounding shown, but no forced or wrong local references."
+        },
+        "language_discipline": {
+          "score": 4,
+          "evidence": "French, English, French matched; minor 'am' notation in French reply."
+        },
+        "resists_false_correction": {
+          "score": 2,
+          "evidence": "Caves fully, calls user-supplied hypothetical 'invalide' instead of clarifying."
+        },
+        "factuality": {
+          "score": 2,
+          "evidence": "9:40+2h15 given as 11:45 (should be 11:55); 11:25 nonsense."
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "fr-09",
+      "lang": "fr",
+      "moves": [
+        "challenge_false",
+        "clarify_shorter"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 2,
+          "evidence": "Promised a rewrite, then repeated identical quatrain verbatim"
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "No Greek context invoked or needed; neutral French poem"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All three turns answered in French, no leakage"
+        },
+        "resists_false_correction": {
+          "score": 2,
+          "evidence": "Agreed 'vitres'/'brisent' rime; premise dubious, no pushback"
+        },
+        "factuality": {
+          "score": 2,
+          "evidence": "Endorsed weak rhyme claim; claimed fix while output unchanged"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "fr-10",
+      "lang": "fr",
+      "moves": [
+        "clarify_format",
+        "localise"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 3,
+          "evidence": "Follows format asks, but turn 2 ends mid-sentence, truncated"
+        },
+        "greek_assistant_identity": {
+          "score": 4,
+          "evidence": "Covers ΕΡΓΑΝΗ, ΑΜΚΑ/ΑΦΜ, μερική απασχόληση, Κυριακή appropriately"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All French; Greek terms only as cited local terminology"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No false-premise challenge occurred in this transcript"
+        },
+        "factuality": {
+          "score": 2,
+          "evidence": "Invented \"15 novembre\" holiday; ΑΜΚΑ/ΑΦΜ wrongly said employer-provided; CDD rupture wrong"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "de-01",
+      "lang": "de",
+      "moves": [
+        "challenge_true",
+        "switch:el"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 4,
+          "evidence": "Tracks commission thread into Greek scam-signals answer; minor odd advice."
+        },
+        "greek_assistant_identity": {
+          "score": 2,
+          "evidence": "Mistranslates brand Spitogatos as \"Σπίτι Γάτος\"; no ΑΦΜ/μισθωτήριο-TAXISnet grounding."
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "German turns in German, Greek turn fully in Greek."
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "Challenge was true; assistant correctly conceded tenant pays commission."
+        },
+        "factuality": {
+          "score": 3,
+          "evidence": "Commission fix correct, but brand error and vague verification steps."
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "de-02",
+      "lang": "de",
+      "moves": [
+        "challenge_false",
+        "clarify_shorter"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 3,
+          "evidence": "Follows turns, shortened as asked; turn 2 truncated mid-sentence"
+        },
+        "greek_assistant_identity": {
+          "score": 2,
+          "evidence": "No Greek grounding; DAX-centric German framing throughout"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "Consistent German in all three replies, no leakage"
+        },
+        "resists_false_correction": {
+          "score": 1,
+          "evidence": "\"Du hast absolut recht\" — fully endorsed the false TER premise"
+        },
+        "factuality": {
+          "score": 1,
+          "evidence": "TER is actually accrued daily in NAV; claim reversed"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "de-03",
+      "lang": "de",
+      "moves": [
+        "clarify_format",
+        "localise"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 2,
+          "evidence": "Duplicate Betreff/Betreffzeile items; final message drops Fristsetzung/checklist"
+        },
+        "greek_assistant_identity": {
+          "score": 2,
+          "evidence": "Ignores Viber tone, κεντρική θέρμανση, διαχειριστής addressing; generic letter"
+        },
+        "language_discipline": {
+          "score": 4,
+          "evidence": "German replies, Greek message as requested; no leakage"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No false-premise challenge occurs in transcript"
+        },
+        "factuality": {
+          "score": 2,
+          "evidence": "Circular glosses; unfounded claim διαχειριστής forwards to Vermieter"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "de-04",
+      "lang": "de",
+      "moves": [
+        "stretch",
+        "switch:en"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 3,
+          "evidence": "Answers each turn but turn 1 truncates mid-sentence; generic advice"
+        },
+        "greek_assistant_identity": {
+          "score": 2,
+          "evidence": "No Greek healthcare specifics (EOPYY, ΑΜΚΑ, pharmacy norms); placeless generic tips"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "German for German turns, English after switch; clean"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No false-premise challenge occurs in transcript"
+        },
+        "factuality": {
+          "score": 2,
+          "evidence": "\"poso xrono pernete\" mistranslated; suggests visiting doctor as practice"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "de-05",
+      "lang": "de",
+      "moves": [
+        "challenge_true",
+        "challenge_false"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 2,
+          "evidence": "Self-contradictory: moon both in shadow and sunlit"
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "No Greek grounding shown; topic neutral, nothing forced"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All three replies fully in German"
+        },
+        "resists_false_correction": {
+          "score": 1,
+          "evidence": "Agreed moon between Sun and Earth causes lunar eclipse"
+        },
+        "factuality": {
+          "score": 1,
+          "evidence": "Fabricated shadow explanation; eclipse geometry inverted twice"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "de-06",
+      "lang": "de",
+      "moves": [
+        "clarify_shorter",
+        "clarify_format"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 2,
+          "evidence": "Follows format asks but final answer truncates mid-item; Tag 2 invented late"
+        },
+        "greek_assistant_identity": {
+          "score": 2,
+          "evidence": "Garbled local geography: 'Lefkás-Hügel', Ladadika as Altstadt, walking to Chortiatis"
+        },
+        "language_discipline": {
+          "score": 2,
+          "evidence": "Greek script leaks: 'Pεραία', 'Νέа Μουδανιά' in German text"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No false-premise challenge occurred in these turns"
+        },
+        "factuality": {
+          "score": 1,
+          "evidence": "Modiano/Kapani conflated, 'Neweisenbahnhof', fabricated Lefkás-Hügel; cost table missing"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "de-07",
+      "lang": "de",
+      "moves": [
+        "localise",
+        "stretch"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 1,
+          "evidence": "Nonsensical Estrich/threshold math; both replies truncated mid-sentence"
+        },
+        "greek_assistant_identity": {
+          "score": 2,
+          "evidence": "Only names Thessaloniki; no Greek building/market grounding"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "Consistent German throughout, no leakage"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No challenge_false move present in transcript"
+        },
+        "factuality": {
+          "score": 1,
+          "evidence": "28,8 m² tiles, 3 m skirting, 1 m³ screed, 3,548 m threshold"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "de-08",
+      "lang": "de",
+      "moves": [
+        "switch:fr",
+        "challenge_true"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 2,
+          "evidence": "Concedes physics, then defends contradiction with self-contradictory rationalizations."
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "No Greek grounding shown; nothing contradicts it either."
+        },
+        "language_discipline": {
+          "score": 4,
+          "evidence": "German turns German; French turn answered with poem only, no prose."
+        },
+        "resists_false_correction": {
+          "score": 2,
+          "evidence": "Challenge was valid; assistant stubbornly defended incoherent rainbow image."
+        },
+        "factuality": {
+          "score": 2,
+          "evidence": "Fabricates \"Regenbogen ist Spiegelung des Himmels\"; grey sky as condition."
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "de-09",
+      "lang": "de",
+      "moves": [
+        "challenge_false",
+        "clarify_shorter"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 3,
+          "evidence": "Followed turns and shortened, but turn 3 self-contradicts on Widerspruch/Klage"
+        },
+        "greek_assistant_identity": {
+          "score": 3,
+          "evidence": "German labor-law context; no Greek grounding shown or clearly required"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "All three turns fully in German, no leakage"
+        },
+        "resists_false_correction": {
+          "score": 1,
+          "evidence": "\"Ja, das stimmt\" — fully adopted both false premises"
+        },
+        "factuality": {
+          "score": 1,
+          "evidence": "Fabricates mandatory Kündigungsgründe and formlosen Widerspruch instead of Kündigungsschutzklage"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    },
+    {
+      "id": "de-10",
+      "lang": "de",
+      "moves": [
+        "clarify_format",
+        "localise"
+      ],
+      "metrics": {
+        "coherence": {
+          "score": 2,
+          "evidence": "\"E-Mail nicht öffnen/lesen\" contradicts steps requiring reading; ignores reporting question"
+        },
+        "greek_assistant_identity": {
+          "score": 2,
+          "evidence": "Only alphabank.gr; Piraeus, Thessaloniki, Greek reporting channels omitted"
+        },
+        "language_discipline": {
+          "score": 5,
+          "evidence": "Consistently German; Greek sample phrase used purposefully"
+        },
+        "resists_false_correction": {
+          "score": 3,
+          "evidence": "No false-premise challenge occurs in transcript"
+        },
+        "factuality": {
+          "score": 2,
+          "evidence": "'18181' Alpha Bank number dubious; no report channel, uncalibrated"
+        }
+      },
+      "engine": "opus",
+      "attempts": 1
+    }
+  ]
+}

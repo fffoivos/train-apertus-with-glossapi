@@ -3,9 +3,9 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 100.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 33.032,
- "chf_used": 88.86,
- "cursor": "ROUND TWO: identity dose ladder A (×2, 1 ep) and B (×4, 2 ep) from the stage-1 checkpoint",
+ "nh_used": 34.697,
+ "chf_used": 93.33,
+ "cursor": "ROUND TWO: identity ladder done; B (×4, 2 ep) = best model; full battery pending",
  "steps": {
   "WP0_data": {
    "status": "done (green 02:45: --check OK; 5 GreekMMLU-overlapping rows removed; E1 6.18M CPT-tokenizer tokens, E2 9.36M, E3 8.97M, E3prime 10.47M)",
