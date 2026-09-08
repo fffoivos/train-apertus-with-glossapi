@@ -1,0 +1,1 @@
+{"type":"object","properties":{"requests":{"type":"array","items":{"type":"object","properties":{"form":{"type":"string"},"persona":{"type":"string"},"text":{"type":"string"}},"required":["form","persona","text"],"additionalProperties":false}}},"required":["requests"],"additionalProperties":false}
