@@ -3,8 +3,8 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 90.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 31.558,
- "chf_used": 84.89,
+ "nh_used": 31.998,
+ "chf_used": 86.07,
  "cursor": "ROUND TWO: stage 2 DONE (job 3323760, 0.89 nh); light evals on stage-2 epoch1 + IFEval/MGSM for both stages running; full battery waits on the cap",
  "steps": {
   "WP0_data": {
