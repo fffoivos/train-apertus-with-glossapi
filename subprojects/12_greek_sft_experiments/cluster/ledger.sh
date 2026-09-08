@@ -2,7 +2,7 @@
 # Record a finished job's actual node-hours: ledger.sh <jobid> <WP> <note>   (runs on the Mac)
 set -euo pipefail; cd "$(dirname "$0")/.."
 jid=$1; wp=$2; note=$3
-read -r el nodes <<<"$(ssh -o BatchMode=yes clariden "sacct -j $jid -n -X -o Elapsed,AllocNodes" | head -1)"
+read -r el nodes <<<"$(ssh -4 -o BatchMode=yes clariden "sacct -j $jid -n -X -o Elapsed,AllocNodes" | head -1)"
 nh=$(python3 -c "
 h,m,s=[int(x) for x in '$el'.split('-')[-1].split(':')]; d=int('$el'.split('-')[0]) if '-' in '$el' else 0
 print(round((d*24+h+m/60+s/3600)*int('$nodes'),3))")
