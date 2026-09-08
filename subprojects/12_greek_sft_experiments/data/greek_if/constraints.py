@@ -156,13 +156,63 @@ def check_all(answer: str, constraints: list[dict], request: str = '') -> list[d
     res = []
     for c in constraints:
         f = FAMILIES[c['family']]
-        if c['family'] == 'repeat_request': ok = strip_accents(answer.strip()).lower().startswith(strip_accents(request.strip()).lower()[:40])
+        if c['family'] == 'repeat_request': ok = _repeat_ok(answer, request)
         elif not f['checkable']: ok = None
         else:
             try: ok = bool(f['check'](answer, c['params']))
             except Exception: ok = False
         res.append(dict(family=c['family'], ok=ok, checkable=ok is not None))
     return res
+
+# ---- amendments after pilot E1–E6 (2026-09-08): checker fixes found by failure analysis, third phrasings, surface-tolerant matching ----
+_GL = dict(zip('αβγδεζηθικλμνξοπρστυφχψωάέήίόύώϊϋΐΰς', ['a','b','g','d','e','z','i','th','i','k','l','m','n','x','o','p','r','s','t','y','f','x','ps','w','a','e','i','i','o','y','w','i','y','i','y','s']))
+def greeklish(s: str) -> str: return ''.join(_GL.get(ch.lower(), ch) for ch in s)
+def norm(s: str) -> str: return re.sub(r'\s+', ' ', strip_accents(s).lower()).strip()
+_LEAD = '«»"“”\'‘’*_-•·(\\[ \t'
+def variants(w: str) -> set: n = norm(w); return {n, greeklish(n)}
+def contains(text: str, w: str) -> bool: t = norm(text); return any(v in t for v in variants(w))
+def sentences(s: str) -> list[str]:   # list numbers («1.») and ano teleia are not sentence ends
+    s = re.sub(r'(?<!\S)(\d+)\.(?=\s)', r'\1)', s.strip()); parts = re.split(r'(?<=[.;!…?])\s+|\n+', s)
+    return [p for p in parts if re.search(rf'[{GREEK}A-Za-z0-9]', p)]
+def first_word(par: str) -> str: return norm(par).lstrip(_LEAD).split(' ')[0].strip('.,;:!«»"\'’') if norm(par).lstrip(_LEAD) else ''
+FAMILIES['no_accents']['check'] = lambda a, p: not polytonic_marks(a) and not re.search(r'[άέήίόύώΆΈΉΊΌΎΏΐΰ]', re.sub(r'\bή\b', 'η', a))   # the standalone disjunctive «ή» keeps its accent even in atonic writing
+FAMILIES['informal_singular']['check'] = lambda a, p: bool(re.search(r'\b(εσύ|εσένα|σου|μπορείς|θέλεις|έχεις|είσαι|χρειάζεσαι|ξέρεις|δες|κάνε|πήγαινε|ρώτα|πρόσεξε|θυμήσου|\w{3,}(είς|εις|άς|ήσου))\b', a, re.I)) and not re.search(r'\b(σας|εσείς|μπορείτε|θέλετε|έχετε|είστε)\b', a, re.I)
+FAMILIES['paragraph_starts_with']['check'] = lambda a, p: len(paragraphs(a)) >= p['k'] and first_word(paragraphs(a)[p['k'] - 1]) in variants(p['w'])
+FAMILIES['start_with']['check'] = lambda a, p: any(norm(a).lstrip(_LEAD).startswith(v) for v in variants(p['s']))
+FAMILIES['end_with']['check'] = lambda a, p: any(norm(a).rstrip(_LEAD + '.!').endswith(v.rstrip('.!')) for v in variants(p['s']))
+FAMILIES['keywords_include']['check'] = lambda a, p: contains(a, p['w1']) and contains(a, p['w2'])
+FAMILIES['mention_entity']['check'] = lambda a, p: contains(a, p['e'])
+FAMILIES['formal_and_informal']['check'] = lambda a, p: bool(re.search(r'(?mi)^\s*[«"*]*\s*(επίσημη|episimi)\s*[:：]', strip_accents(a) if False else a)) and bool(re.search(r'(?mi)^\s*[«"*]*\s*(φιλική|filiki)\s*[:：]', a))
+FAMILIES['length_sentences_exact']['sample'] = lambda r: dict(n=r.choice([2, 3, 4, 5, 6]))
+def _repeat_ok(answer: str, request: str) -> bool:
+    a = norm(answer).lstrip(_LEAD); r = norm(request).lstrip(_LEAD)[:40]
+    return bool(r) and (a.startswith(r) or a.startswith(greeklish(r)))
+EXTRA_PHRASINGS = {
+ 'paragraph_starts_with': ['Θέλω η παράγραφος αριθμός {k} να αρχίζει με «{w}».'], 'sections_n': ['Θέλω {n} ενότητες, καθεμία με επικεφαλίδα «Ενότητα» και αύξοντα αριθμό.'],
+ 'highlight_n': ['Θέλω {n} ή περισσότερα σημεία μέσα σε αστερίσκους, έτσι: *σημείο*.'], 'placeholders_n': ['Βάλε τουλάχιστον {n} σημεία σε αγκύλες, τύπου [ποσό], για να τα συμπληρώσω εγώ.'],
+ 'constrained_answer': ['Η απάντηση να είναι αποκλειστικά «Ναι», «Όχι» ή «Ίσως», χωρίς επεξήγηση.'], 'two_responses': ['Γράψε δύο εναλλακτικές απαντήσεις και χώρισέ τες με μια γραμμή ******.'],
+ 'numbered_greek': ['Τα σημεία να είναι αριθμημένα α΄, β΄, γ΄ και όχι με ψηφία.'], 'keyword_freq': ['Θέλω να δω τη λέξη «{w}» τουλάχιστον {n} φορές.'],
+ 'letter_freq': ['Χρησιμοποίησε το γράμμα «{l}» τουλάχιστον {n} φορές συνολικά.'], 'greeklish_only': ['Grapse mono se greeklish, oxi ellinika grammata.'],
+ 'all_caps_greek': ['Απάντησε μόνο με κεφαλαία, από την αρχή ως το τέλος.'], 'all_lower': ['ολα πεζα, χωρις κανενα κεφαλαιο γραμμα.'],
+ 'monotonic_only': ['Μονοτονικό μόνο· όχι πνεύματα ή περισπωμένες.', 'Γράψε σε απλό μονοτονικό, χωρίς πολυτονικά σημάδια.'],
+ 'formal_plural': ['Θέλω πληθυντικό ευγενείας από την αρχή ως το τέλος.'], 'informal_singular': ['Μίλα μου στον ενικό, σαν να είμαστε φίλοι.'],
+ 'no_comma': ['Απόφυγε εντελώς τα κόμματα.'], 'greek_question_mark': ['Κάνε τουλάχιστον μία ερώτηση και χρησιμοποίησε το ελληνικό ερωτηματικό «;», όχι «?».'],
+ 'no_exclamation': ['Ούτε ένα θαυμαστικό στην απάντηση.'], 'ano_teleia_list': ['Στις απαριθμήσεις βάλε άνω τελεία (·) ανάμεσα στα στοιχεία.'],
+ 'start_with': ['Άρχισε ακριβώς έτσι: «{s}».'], 'end_with': ['Κλείσε ακριβώς με τη φράση «{s}».'], 'wrap_in_quotes': ['Η απάντηση να αρχίζει με « και να τελειώνει με ».'],
+ 'repeat_request': ['Επανέλαβε πρώτα ολόκληρο το μήνυμά μου όπως ακριβώς το έγραψα και μετά απάντησε.'],
+ 'formal_and_informal': ['Γράψε την απάντηση δύο φορές, μία με πληθυντικό ευγενείας και μία στον ενικό, με ετικέτες «Επίσημη:» και «Φιλική:».'],
+ 'mention_number': ['Θέλω τουλάχιστον έναν αριθμό με ψηφία μέσα στην απάντηση.'], 'mention_euro': ['Γράψε τουλάχιστον ένα ποσό σε ευρώ με αριθμό.'],
+ 'mention_date': ['Ανάφερε τουλάχιστον μία ημερομηνία, με τη μέρα πρώτα (π.χ. 15/10/2026).', 'Να υπάρχει τουλάχιστον μία πλήρης ημερομηνία (ημέρα, μήνας, έτος).'],
+ 'mention_entity': ['Πρέπει να αναφέρεις «{e}».'], 'avoid_entity': ['Μην πεις τίποτα για {e}.'], 'no_adjectives': ['Γράψε χωρίς επίθετα.'],
+ 'register_katharevousa': ['Απάντησε σε καθαρεύουσα.', 'Θέλω λόγιο ύφος καθαρεύουσας.'], 'child_register': ['Εξήγησέ το σε ένα οκτάχρονο παιδί.', 'Πες το απλά, όπως σε μικρό παιδί.'],
+}
+for _k, _v in EXTRA_PHRASINGS.items(): FAMILIES[_k]['phrasings'] = FAMILIES[_k]['phrasings'] + [x for x in _v if x not in FAMILIES[_k]['phrasings']]
+
+FAMILIES['sections_n']['check'] = lambda a, p: len(re.findall(r'(?mi)^\s*[«"*#]*\s*(ενοτητα|enotita)\s*\d+', strip_accents(a))) == p['n']   # «Ενότητα 1» in any case, accent or greeklish
+for _a, _b in (('repeat_request', 'title'), ('repeat_request', 'start_with'), ('repeat_request', 'wrap_in_quotes'), ('repeat_request', 'constrained_answer'), ('repeat_request', 'format_json')):
+    FAMILIES[_a]['incompatible'].add(_b); FAMILIES[_b]['incompatible'].add(_a)   # two constraints that both claim the first line never meet
+
+FAMILIES['mention_euro']['check'] = lambda a, p: bool(re.search(r'\d[\d.,]*\s?(€|ευρώ|ευρω|euro|evro)|€\s?\d', a, re.I))   # «25 €», «25 ευρώ» or the English «€25»
 
 if __name__ == '__main__':
     rng = random.Random(1)

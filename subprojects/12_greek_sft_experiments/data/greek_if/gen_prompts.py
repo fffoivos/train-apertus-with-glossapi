@@ -67,20 +67,28 @@ def surface(text, style, rng):
     return text
 
 BANK = {}   # (domain, subtopic, form) -> authored requests, loaded with --requests
-def build(rng, domain, sub, form, persona, level, families=None, phrasing_seed=None):
+ADDRESS = {'formal_plural', 'informal_singular', 'formal_and_informal', 'child_register'}
+TRANSLATE_OK = {'length_words_max', 'length_words_min', 'length_sentences_exact', 'length_paragraphs', 'title', 'no_comma', 'no_exclamation', 'all_lower', 'wrap_in_quotes', 'two_responses', 'bullets_n', 'highlight_n', 'end_with', 'start_with', 'postscript', 'keywords_exclude'}   # a translation must keep the content: only form constraints apply
+FORM_EXCLUDE = {'translate': set(C.FAMILIES) - TRANSLATE_OK,
+                'summarise': ADDRESS, 'rewrite': ADDRESS - {'formal_plural', 'informal_singular'}}   # constraints that cannot apply to the task are never drawn for it
+def build(rng, domain, sub, form, persona, level, families=None, phrasing_seed=None, fixed_seed=None):
     tmpl = rng.choice(FORMS[form]); text = rng.choice(TEXTS); authored = BANK.get((domain, sub, form))
     if authored:
-        b = rng.choice(authored); req = b['text']; persona = (b['persona'], b['persona_style']); text = None
+        fresh = [b for b in authored if not b.get('_used')] or authored   # each authored request is used once per build (no shared prefixes from reuse)
+        b = rng.choice(fresh); b['_used'] = True; req = b['text']; persona = (b['persona'], b['persona_style']); text = None
     else: req = tmpl.format(sub=sub, what=rng.choice(WHATS), wrong=rng.choice(WRONGS), text=text)
-    cons = C.sample_constraints(random.Random(phrasing_seed) if phrasing_seed is not None else rng, level, families)
+    fams = [f for f in (families or list(C.FAMILIES)) if f not in FORM_EXCLUDE.get(form, set())]
+    cons = C.sample_constraints(random.Random(fixed_seed) if fixed_seed is not None else rng, level, fams)
     if not cons: return None
+    if fixed_seed is not None:   # E6: same families and params, the phrasing re-drawn per variant
+        for c in cons: c['phrasing'] = rng.randrange(len(C.FAMILIES[c['family']]['phrasings'])); c['text'] = C.FAMILIES[c['family']]['phrasings'][c['phrasing']].format(**c['params'])
     lines = [c['text'] for c in cons]; rng.shuffle(lines)
+    req = surface(req, persona[1], rng) if not authored else req; lines = [surface(l, persona[1], rng) for l in lines]   # request and constraints take the writer's surface separately, so the stored request is what the model saw
     layout = rng.random()
     if layout < 0.55: prompt = req + '\n\n' + ' '.join(lines)                       # request, then the constraints
     elif layout < 0.8: prompt = ' '.join(lines) + '\n\n' + req                      # constraints first
     else: prompt = req + ' ' + lines[0] + ('\n\n' + ' '.join(lines[1:]) if len(lines) > 1 else '')   # split
     if rng.random() < 0.1 and cons: prompt += '\n\n' + rng.choice(['Το ξαναλέω: ', 'Προσοχή: ']) + cons[0]['text']
-    prompt = surface(prompt, persona[1], rng) if not authored else prompt   # authored requests already carry the persona's surface
     return dict(prompt=prompt, request=req, constraints=cons, level=len(cons), domain=domain, subtopic=sub, form=form, persona=persona[0], persona_style=persona[1], source_text=text if (text and '{text}' in tmpl) else None, authored=bool(authored))
 
 def main():
@@ -110,6 +118,9 @@ def main():
     elif a.design == 'E5':
         for fam in ['no_accents', 'all_caps_greek', 'greeklish_only', 'formal_plural', 'monotonic_only', 'greek_question_mark', 'ano_teleia_list', 'numbered_greek', 'wrap_in_quotes']:
             for _ in range(40): r = cell(level=1, families=[fam]); rows.append(r) if r else None
+    elif a.design == 'E4x':
+        for f in ('translate', 'summarise', 'rewrite'):
+            for _ in range(30): r = cell(form=f, level=2); rows.append(r) if r else None
     elif a.design == 'E7':
         for fam in [n for n in C.FAMILIES if not C.FAMILIES[n]['checkable']]:
             for _ in range(20): r = cell(level=1, families=[fam]); rows.append(r) if r else None
@@ -117,7 +128,7 @@ def main():
         for i in range(60):
             d = rng.choice(doms); s = rng.choice(DOMAINS[d]); f = rng.choice(list(FORMS)); p = rng.choice(PERSONAS); seed = 1000 + i
             for v in range(3):
-                r = build(random.Random(seed * 10 + v), d, s, f, p, 2, fams, phrasing_seed=None)
+                r = build(random.Random(seed * 10 + v), d, s, f, p, 2, fams, fixed_seed=seed)
                 if r: r['pair_id'] = i; r['variant'] = v; rows.append(r)
     else:
         while len(rows) < a.n:

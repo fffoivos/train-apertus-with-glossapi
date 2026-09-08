@@ -27,7 +27,16 @@ def main():
     pairs = collections.defaultdict(list)
     for s in scored:
         if s['pair_id'] is not None: pairs[s['pair_id']].append(s['all_pass'])
-    invariance = dict(pairs=len(pairs), unanimous=rate([len(set(v)) == 1 for v in pairs.values() if len(v) == 3])) if pairs else None
+    invariance = None
+    if pairs:
+        same, diff = [], []
+        byid = {s['id']: s for s in scored}
+        for pid in pairs:
+            vs = [s for s in scored if s['pair_id'] == pid]
+            for x, y in itertools.combinations(vs, 2):
+                px = [c.get('phrasing') for c in rows[x['id']]['constraints']]; py = [c.get('phrasing') for c in rows[y['id']]['constraints']]
+                (same if px == py else diff).append(x['all_pass'] == y['all_pass'])
+        invariance = dict(pairs=len(pairs), unanimous=rate([len(set(v)) == 1 for v in pairs.values() if len(v) == 3]), agree_same_phrasing=rate(same), n_same=len(same), agree_different_phrasing=rate(diff), n_diff=len(diff))
     # diversity of the prompts (all prompts, answered or not)
     P = list(rows.values()); rng = random.Random(0); samp = rng.sample(P, min(400, len(P))); grams = [ngrams(r['prompt']) for r in samp]
     pair_j = [jacc(a, b) for a, b in itertools.combinations(grams, 2)]; toks = [w for r in P for w in C.words(r['prompt'])]

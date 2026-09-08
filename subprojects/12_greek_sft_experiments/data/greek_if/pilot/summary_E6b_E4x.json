@@ -1,0 +1,440 @@
+{
+ "overall": {
+  "n": 270,
+  "prompt_pass": 0.929
+ },
+ "by_design": {
+  "E4x": {
+   "n": 90,
+   "prompt_pass": 0.955,
+   "mean_words": 46
+  },
+  "E6": {
+   "n": 180,
+   "prompt_pass": 0.917,
+   "mean_words": 61
+  }
+ },
+ "by_level": {
+  "2": {
+   "n": 270,
+   "prompt_pass": 0.929,
+   "mean_words": 56
+  }
+ },
+ "by_domain": {
+  "αθλητισμός": {
+   "n": 10,
+   "prompt_pass": 1.0,
+   "mean_words": 35
+  },
+  "γλώσσα": {
+   "n": 13,
+   "prompt_pass": 1.0,
+   "mean_words": 154
+  },
+  "δημόσιες υπηρεσίες": {
+   "n": 14,
+   "prompt_pass": 1.0,
+   "mean_words": 45
+  },
+  "εκπαίδευση": {
+   "n": 17,
+   "prompt_pass": 1.0,
+   "mean_words": 46
+  },
+  "επιστήμη": {
+   "n": 19,
+   "prompt_pass": 1.0,
+   "mean_words": 36
+  },
+  "εργασία": {
+   "n": 14,
+   "prompt_pass": 0.929,
+   "mean_words": 54
+  },
+  "ιστορία και πολιτισμός": {
+   "n": 20,
+   "prompt_pass": 0.65,
+   "mean_words": 98
+  },
+  "καθημερινότητα": {
+   "n": 18,
+   "prompt_pass": 1.0,
+   "mean_words": 51
+  },
+  "σχέσεις και εθιμοτυπία": {
+   "n": 35,
+   "prompt_pass": 0.914,
+   "mean_words": 46
+  },
+  "τέχνες και ΜΜΕ": {
+   "n": 10,
+   "prompt_pass": 0.9,
+   "mean_words": 37
+  },
+  "ταξίδια στην Ελλάδα": {
+   "n": 25,
+   "prompt_pass": 1.0,
+   "mean_words": 46
+  },
+  "ταξίδια στο εξωτερικό": {
+   "n": 11,
+   "prompt_pass": 1.0,
+   "mean_words": 33
+  },
+  "τεχνολογία": {
+   "n": 20,
+   "prompt_pass": 0.75,
+   "mean_words": 40
+  },
+  "υγεία": {
+   "n": 19,
+   "prompt_pass": 0.895,
+   "mean_words": 78
+  },
+  "φαγητό": {
+   "n": 14,
+   "prompt_pass": 1.0,
+   "mean_words": 58
+  },
+  "χρήματα": {
+   "n": 11,
+   "prompt_pass": 1.0,
+   "mean_words": 40
+  }
+ },
+ "by_form": {
+  "comparison": {
+   "n": 18,
+   "prompt_pass": 0.889,
+   "mean_words": 60
+  },
+  "correction": {
+   "n": 12,
+   "prompt_pass": 1.0,
+   "mean_words": 55
+  },
+  "creative": {
+   "n": 15,
+   "prompt_pass": 1.0,
+   "mean_words": 91
+  },
+  "explanation": {
+   "n": 6,
+   "prompt_pass": 1.0,
+   "mean_words": 50
+  },
+  "howto": {
+   "n": 12,
+   "prompt_pass": 1.0,
+   "mean_words": 163
+  },
+  "list": {
+   "n": 18,
+   "prompt_pass": 0.944,
+   "mean_words": 41
+  },
+  "opinion": {
+   "n": 15,
+   "prompt_pass": 0.933,
+   "mean_words": 97
+  },
+  "planning": {
+   "n": 15,
+   "prompt_pass": 1.0,
+   "mean_words": 49
+  },
+  "quick_fact": {
+   "n": 21,
+   "prompt_pass": 1.0,
+   "mean_words": 28
+  },
+  "rewrite": {
+   "n": 48,
+   "prompt_pass": 0.875,
+   "mean_words": 51
+  },
+  "summarise": {
+   "n": 39,
+   "prompt_pass": 0.947,
+   "mean_words": 38
+  },
+  "translate": {
+   "n": 51,
+   "prompt_pass": 0.863,
+   "mean_words": 45
+  }
+ },
+ "by_persona_style": {
+  "atonic": {
+   "n": 13,
+   "prompt_pass": 0.769,
+   "mean_words": 47
+  },
+  "casual": {
+   "n": 87,
+   "prompt_pass": 0.943,
+   "mean_words": 50
+  },
+  "formal": {
+   "n": 52,
+   "prompt_pass": 0.942,
+   "mean_words": 46
+  },
+  "greeklish": {
+   "n": 6,
+   "prompt_pass": 1.0,
+   "mean_words": 55
+  },
+  "neutral": {
+   "n": 84,
+   "prompt_pass": 0.929,
+   "mean_words": 73
+  },
+  "simple": {
+   "n": 28,
+   "prompt_pass": 0.926,
+   "mean_words": 45
+  }
+ },
+ "per_family": {
+  "repeat_request": {
+   "n": 14,
+   "pass_rate": 0.714,
+   "level1": null
+  },
+  "length_paragraphs": {
+   "n": 20,
+   "pass_rate": 0.75,
+   "level1": null
+  },
+  "postscript": {
+   "n": 13,
+   "pass_rate": 0.769,
+   "level1": null
+  },
+  "no_comma": {
+   "n": 15,
+   "pass_rate": 0.867,
+   "level1": null
+  },
+  "keywords_exclude": {
+   "n": 10,
+   "pass_rate": 0.9,
+   "level1": null
+  },
+  "length_sentences_exact": {
+   "n": 10,
+   "pass_rate": 0.9,
+   "level1": null
+  },
+  "mention_date": {
+   "n": 11,
+   "pass_rate": 0.909,
+   "level1": null
+  },
+  "all_lower": {
+   "n": 16,
+   "pass_rate": 0.938,
+   "level1": null
+  },
+  "keywords_include": {
+   "n": 18,
+   "pass_rate": 0.944,
+   "level1": null
+  },
+  "avoid_entity": {
+   "n": 22,
+   "pass_rate": 0.955,
+   "level1": null
+  },
+  "letter_freq": {
+   "n": 11,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "bullets_n": {
+   "n": 23,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "greek_only": {
+   "n": 12,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "informal_singular": {
+   "n": 7,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "numbered_greek": {
+   "n": 16,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "two_responses": {
+   "n": 17,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "sections_n": {
+   "n": 18,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "monotonic_only": {
+   "n": 17,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "end_with": {
+   "n": 11,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "ano_teleia_list": {
+   "n": 16,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "highlight_n": {
+   "n": 9,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "length_words_max": {
+   "n": 13,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "mention_euro": {
+   "n": 19,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "mention_number": {
+   "n": 19,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "start_with": {
+   "n": 16,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "no_exclamation": {
+   "n": 14,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "wrap_in_quotes": {
+   "n": 8,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "all_caps_greek": {
+   "n": 3,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "formal_plural": {
+   "n": 6,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "greeklish_only": {
+   "n": 12,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "paragraph_starts_with": {
+   "n": 16,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "length_words_min": {
+   "n": 12,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "greek_question_mark": {
+   "n": 8,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "mention_entity": {
+   "n": 14,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "title": {
+   "n": 10,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "no_accents": {
+   "n": 10,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "placeholders_n": {
+   "n": 11,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "keyword_freq": {
+   "n": 5,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "format_json": {
+   "n": 12,
+   "pass_rate": 1.0,
+   "level1": null
+  },
+  "constrained_answer": {
+   "n": 1,
+   "pass_rate": 1.0,
+   "level1": null
+  }
+ },
+ "wording_invariance": {
+  "pairs": 60,
+  "unanimous": 0.933,
+  "agree_same_phrasing": 0.957,
+  "n_same": 23,
+  "agree_different_phrasing": 0.955,
+  "n_diff": 157
+ },
+ "diversity": {
+  "prompts": 270,
+  "answered": 270,
+  "domains": 16,
+  "subtopics": 71,
+  "forms": 12,
+  "form_family_cells": 177,
+  "mean_pairwise_5gram_jaccard": 0.0505,
+  "type_token_ratio": 0.0841,
+  "shared_12token_prefix_share": 0.1481,
+  "near_duplicate_rate_within_domain": {
+   "καθημερινότητα": 0.007,
+   "ταξίδια στην Ελλάδα": 0.037,
+   "ταξίδια στο εξωτερικό": 0.073,
+   "επιστήμη": 0.029,
+   "φαγητό": 0.033,
+   "τεχνολογία": 0.011,
+   "εκπαίδευση": 0.044,
+   "γλώσσα": 0.013,
+   "τέχνες και ΜΜΕ": 0.067,
+   "χρήματα": 0.036,
+   "εργασία": 0.011,
+   "δημόσιες υπηρεσίες": 0.033,
+   "αθλητισμός": 0.044,
+   "υγεία": 0.029,
+   "ιστορία και πολιτισμός": 0.032,
+   "σχέσεις και εθιμοτυπία": 0.015
+  }
+ }
+}

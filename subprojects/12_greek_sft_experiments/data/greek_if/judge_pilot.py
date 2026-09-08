@@ -7,7 +7,7 @@ from concurrent.futures import ThreadPoolExecutor
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(HERE, '..', 'personality', 'v2')); import claude_call
 MODEL = os.environ.get('JUDGE_MODEL', 'opus'); W = int(os.environ.get('WORKERS', '3')); LOG = os.path.join(HERE, 'pilot', 'judge_usage.log')
 BRIEF = ('Είσαι αυστηρός κριτής τήρησης οδηγιών. Δίνεται ένα μήνυμα χρήστη στα ελληνικά και η απάντηση ενός βοηθού. Για ΚΑΘΕ οδηγία της λίστας απόφασε αν η απάντηση την τηρεί πλήρως (pass) ή όχι (fail), '
-         'με μία φράση αιτιολόγησης που δείχνει το σημείο της απάντησης που κρίνει. Κρίνε μόνο την τήρηση της οδηγίας, όχι την ποιότητα. Επίστρεψε ΜΟΝΟ JSON: {"verdicts":[{"family":…,"pass":true|false,"why":…}]}.\n\n'
+         'με μία φράση αιτιολόγησης που δείχνει το σημείο της απάντησης που κρίνει. Κρίνε μόνο την τήρηση της οδηγίας, όχι την ποιότητα. Επίστρεψε ΜΟΝΟ JSON: {{"verdicts":[{{"family":…,"pass":true|false,"why":…}}]}}.\n\n'
          'Οδηγίες προς έλεγχο:\n{cons}\n\n=== Μήνυμα χρήστη ===\n{prompt}\n\n=== Απάντηση ===\n{answer}')
 lock = threading.Lock()
 def judge(r, ans, out_path):

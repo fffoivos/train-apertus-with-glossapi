@@ -1,6 +1,6 @@
 # Greek instruction-following dataset: plan and pilot design
 
-Date: 2026-09-08 (evening). Owner's brief: plans and experiments for the Greek instruction-following set; vary subjects and questions; cover every dimension of instruction following the literature names. Status: PLAN + pilot design; the repo inventory (§3) and the pilot numbers (§6) are filled in as they land.
+Date: 2026-09-08 (evening). Owner's brief: plans and experiments for the Greek instruction-following set; vary subjects and questions; cover every dimension of instruction following the literature names. Status: pilots E0–E7 RUN and reported (§6, 2026-09-08 evening); §7 targets stand, amended by §6's decisions.
 
 ## 1. Why this set, and what it must move
 
@@ -80,9 +80,155 @@ Diversity readouts on the union: distinct subjects covered, distinct (form, fami
 
 Cost: about 700 rows for E1 to E6 at Sol's usual rate, one afternoon of the 24 workers; E7 a few dozen Opus calls.
 
-## 6. Results
+## 6. Results (pilot of 2026-09-08, Sol gpt-5.6-sol at medium effort, 24 workers, batches of 8; every number from the checkers unless marked judge)
 
-Filled after the pilot.
+**Volume and cost.** 2920 E1–E6 prompts answered in 32 minutes (about 6,100 rows an hour, 8 answers per call), plus 600 E0, 270 E6b/E4x, 80 E7 and the 2,016-request bank (18 minutes): 5,886 Sol answers and 84 authoring calls in one evening; Codex weekly window at 0.0% before the run.
+
+**Headline.** Prompt-level pass (every constraint of the prompt satisfied) on E1–E6 is **94.5%** after the checker fixes below (92.1% before them). By composition level: L1 97.4% (n=2020), L2 91.1% (n=720), L3 85.0% (n=60), L4 76.7% (n=60), L5 66.7% (n=60). Level 5 is the only level under the 50–60% yield floor the plan set; levels 1–3 are cheap to fill by first-try generation, level 4–5 rows need a retry or rewrite pass.
+
+### E1 · yield per constraint family (level 1 column = single-constraint prompts; all = every level)
+
+| family | group | all levels | n | level 1 |
+|---|---|---:|---:|---:|
+| informal_singular | style | 79.1% | 86 | 85.7% |
+| repeat_request | combination | 82.2% | 45 | – |
+| formal_plural † | style | 88.1% | 135 | 88.7% |
+| formal_and_informal | combination | 89.7% | 78 | 97.6% |
+| no_accents † | language | 90.0% | 140 | 93.8% |
+| greeklish_only † | language | 90.3% | 134 | 96.3% |
+| letter_freq | keywords | 90.4% | 94 | 90.2% |
+| paragraph_starts_with | length | 91.2% | 91 | 100.0% |
+| all_caps_greek † | case | 91.7% | 121 | 90.1% |
+| constrained_answer | format | 91.8% | 85 | 92.9% |
+| postscript | format | 92.9% | 84 | 97.7% |
+| mention_date | content | 93.3% | 89 | 95.1% |
+| length_sentences_exact | length | 94.1% | 85 | 100.0% |
+| keywords_include | keywords | 94.8% | 97 | 97.6% |
+| numbered_greek † | format | 95.1% | 122 | 100.0% |
+| length_words_min | length | 96.7% | 90 | 95.0% |
+| keywords_exclude | keywords | 96.9% | 98 | 97.6% |
+| sections_n | format | 97.4% | 78 | 100.0% |
+| all_lower | case | 97.5% | 80 | 100.0% |
+| length_paragraphs | length | 97.7% | 87 | 100.0% |
+| end_with | startend | 97.7% | 86 | 95.1% |
+| mention_entity | content | 97.8% | 93 | 97.7% |
+| keyword_freq | keywords | 97.9% | 96 | 97.5% |
+| avoid_entity | content | 98.1% | 106 | 97.5% |
+| format_json | format | 98.6% | 71 | 100.0% |
+| start_with | startend | 98.8% | 80 | 97.6% |
+| two_responses | format | 98.9% | 88 | 100.0% |
+| mention_euro | content | 99.0% | 97 | 100.0% |
+| no_comma | punctuation | 99.1% | 107 | 100.0% |
+| greek_question_mark † | punctuation | 99.2% | 126 | 100.0% |
+| ano_teleia_list † | punctuation | 99.2% | 126 | 98.8% |
+| length_words_max | length | 100.0% | 106 | 100.0% |
+| title | format | 100.0% | 86 | 100.0% |
+| bullets_n | format | 100.0% | 91 | 100.0% |
+| highlight_n | format | 100.0% | 101 | 100.0% |
+| placeholders_n | format | 100.0% | 90 | 100.0% |
+| greek_only | language | 100.0% | 86 | 100.0% |
+| monotonic_only † | language | 100.0% | 123 | 100.0% |
+| no_exclamation | punctuation | 100.0% | 105 | 100.0% |
+| wrap_in_quotes † | startend | 100.0% | 143 | 100.0% |
+| mention_number | content | 100.0% | 88 | 100.0% |
+
+† Greek-specific family (E5). Under 90% after the fixes: `informal_singular` (the model often answers without addressing the reader; a real failure), `repeat_request` (fails when combined with other first-line constraints, now made incompatible, and on greeklish prompts), `letter_freq` (the model cannot count letters, same as IFEval in English), `greeklish_only` (slips Greek letters mid-word), `formal_plural`/`no_accents` mostly on translate/rewrite forms where the constraint fights the task (excluded from those forms in the generator now).
+
+### E2 · yield by composition level
+
+| level | n | prompt pass | mean answer words |
+|---|---:|---:|---:|
+| 1 | 2020 | 97.4% | 52 |
+| 2 | 720 | 91.1% | 60 |
+| 3 | 60 | 85.0% | 83 |
+| 4 | 60 | 76.7% | 78 |
+| 5 | 60 | 66.7% | 76 |
+
+### E3 · subject variability (level 2, 15 rows per domain; near-duplicate = character 5-gram Jaccard > 0.5 within the domain)
+
+| domain | pass | mean words | near-dup rate |
+|---|---:|---:|---:|
+| χρήματα | 92.3% | 62 | 0.2% |
+| αθλητισμός | 93.5% | 52 | 0.5% |
+| ταξίδια στην Ελλάδα | 93.6% | 56 | 1.0% |
+| σχέσεις και εθιμοτυπία | 93.7% | 54 | 0.3% |
+| εργασία | 93.8% | 54 | 0.6% |
+| υγεία | 94.0% | 62 | 0.6% |
+| γλώσσα | 94.1% | 49 | 0.4% |
+| καθημερινότητα | 94.1% | 54 | 1.0% |
+| ταξίδια στο εξωτερικό | 94.4% | 55 | 0.5% |
+| επιστήμη | 94.7% | 56 | 1.6% |
+| ιστορία και πολιτισμός | 94.9% | 58 | 0.6% |
+| δημόσιες υπηρεσίες | 95.6% | 65 | 0.7% |
+| τεχνολογία | 95.6% | 53 | 0.8% |
+| φαγητό | 95.6% | 57 | 0.4% |
+| τέχνες και ΜΜΕ | 96.1% | 48 | 1.1% |
+| εκπαίδευση | 96.2% | 56 | 0.9% |
+
+The subject does not move the yield beyond noise (spread 92.3%–96.2% on 240 rows a domain across all designs); it moves answer length. Near-duplicate prompts inside a domain are under 2% everywhere.
+
+### E4 · question-form variability (all designs, level 2 in E4)
+
+| form | pass | mean words |
+|---|---:|---:|
+| translate | 85.1% | 43 |
+| quick_fact | 93.1% | 36 |
+| opinion | 93.5% | 67 |
+| creative | 94.4% | 42 |
+| planning | 95.2% | 69 |
+| rewrite | 95.2% | 47 |
+| comparison | 95.6% | 53 |
+| list | 95.8% | 66 |
+| explanation | 96.2% | 76 |
+| summarise | 96.3% | 34 |
+| correction | 96.7% | 50 |
+| howto | 97.6% | 84 |
+
+Translation is the one form where constraints fight the task: 85.1% before, because content constraints (mention a euro amount, a date, avoid an entity) cannot be honoured while translating faithfully. The generator now draws only form constraints for translation (16 families); the re-run E4x gives translate 86.3% (n=51), summarise 94.7%, rewrite 87.5%.
+
+### E5 · Greek-only families and the writer's surface
+
+The Greek-specific families (†) all pass at 90% or more at level 1 except `no_accents` before the fix (70%: the model kept the accent on the standalone disjunctive «ή», which atonic Greek writing keeps too; the checker now tolerates it) and `formal_plural` (88%, mostly translation prompts). By the persona's writing surface: atonic 93.1% (n=130), casual 95.1% (n=1053), formal 94.6% (n=773), greeklish 90.1% (n=164), neutral 94.8% (n=542), simple 94.6% (n=258). Greeklish and unaccented prompts cost 3–6 points: the model answers them well but sometimes echoes the surface (writes «telika» or «enotita 1» when the constraint word arrived in greeklish), which the checkers now accept as compliance.
+
+### E6 · wording invariance (E6b, 60 (subject, constraint-set) pairs × 3 phrasings, constraints and parameters held fixed)
+
+Unanimous verdict across the three phrasings: 93.3%. Pairwise agreement when the two prompts used different phrasings: 95.5% (n=157); when they happened to use the same phrasing: 95.7% (n=23). Phrasing changes the verdict no more than the model's own run-to-run noise does; the first E6 run (53% unanimous) had a design bug, it re-drew the constraints per variant, and is discarded.
+
+### E7 · non-checkable families, two judges (Opus on the Claude lane, Sol cross-vendor; 20 rows each, level 1)
+
+| family | Opus pass | Sol pass | agreement |
+|---|---:|---:|---:|
+| repeat_request | 95.0% | 100.0% | 95.0% |
+| no_adjectives | 100.0% | 100.0% | 100.0% |
+| register_katharevousa | 90.0% | 95.0% | 95.0% |
+| child_register | 50.0% | 85.0% | 65.0% |
+
+`no_adjectives` and `register_katharevousa` are judgeable with high agreement and Sol satisfies them; `child_register` is where the judges disagree (Opus 50%, Sol 85%): "explain as to an eight-year-old" is a matter of degree, so it stays out of the verifiable set or gets a stricter definition (second person, one image or comparison, no word over four syllables) that a checker can approximate. `repeat_request` is regex-checkable and stays in the checkable set.
+
+### E0 · request variability: template-written vs Sol-authored requests (300 rows each, level 2, same cells)
+
+| arm | pass | mean answer words | prompt 5-gram Jaccard | type-token ratio | 12-token shared prefix |
+|---|---:|---:|---:|---:|---:|
+| templates (2 per form) | 94.0% | 63 | 0.0364 | 0.1005 | 4.7% |
+| authored bank (2,016 requests, 84 subtopics × 12 forms × personas) | 86.0% | 118 | 0.0271 | 0.2621 | 6.3% |
+
+Authored requests are the ones to train on: 2.6× the lexical variety, half the answer-length collapse (the template arm's answers are short because the requests are thin), realistic situations with places, amounts and people (see the bank), at a cost of 8 points of first-try yield, which is the price of harder, longer answers and is recovered by the retry pass. The template arm is kept only as the control.
+
+### Diversity of the union (E1–E6 prompts)
+
+2920 prompts over 16 domains, 84 subtopics, 12 forms and 528 (form, family) cells; mean pairwise 5-gram Jaccard 0.0322; 19.9% of prompts share a 12-token prefix with another (E1's 40 single-family rows per family reuse the family's phrasings; in the mixed designs the share is under 7%).
+
+### Checker and generator fixes the pilot forced (all applied; the numbers above are after them)
+
+1. Sentence counting: list numbers («1.») and the ano teleia are not sentence ends. 2. `no_accents` tolerates the standalone «ή». 3. Informal-singular detection broadened to second-person verb forms; formal/informal matching is case-insensitive. 4. Surface-tolerant matching: expected words, start/end phrases, section labels and keywords match accent-stripped, case-folded and in greeklish transliteration (the model rightly echoes the writer's surface). 5. Leading quotes, bullets and asterisks are stripped before first-word and start-phrase checks. 6. `mention_euro` accepts the English «€25» order. 7. The stored request is the surfaced one the model saw (greeklish/atonic), so `repeat_request` compares like with like. 8. Constraints that claim the first line are mutually incompatible with `repeat_request`. 9. Form-level exclusions: address-register constraints never go on summaries; translation gets form constraints only. 10. Every family has at least three phrasings (was one or two for 27 families). 11. Authored requests are used once per build. 12. E6 holds the constraint set fixed and re-draws only the phrasing.
+
+### What the pilot decides for the set (§7)
+
+- Generate with the authored request bank (scale it 10×: 84 subtopics → about 800 leaves, 3 requests per cell per form), constraints from the 40 checkable families plus `no_adjectives`/`register_katharevousa` under the two-judge gate; drop `child_register` until it has a checkable definition.
+- Level mix as planned (25/30/25/12/8); expect first-try yield about 97/91/85/77/67% by level, so a retry pass on failures (same prompt, the failing constraints named) is needed mainly at levels 4–5; every kept row carries its checker verdict.
+- The failed answers are not waste: they are the rejected half of DPO pairs on the same prompt.
+- Weekly Codex budget: 5,900 answers cost well under 1% of the window; 30k rows plus retries fit in one week of Sol at 24 workers with room to spare.
+
 
 ## 7. From pilot to the set
 
