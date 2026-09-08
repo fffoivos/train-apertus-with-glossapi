@@ -71,7 +71,7 @@ def translate(out, n_gsm=300, n_math=300):
 
 
 def native(out, n=500):
-    os.makedirs(out, exist_ok=True); rng = random.Random(11); per = 5
+    os.makedirs(out, exist_ok=True); rng = random.Random(int(os.environ.get('NATIVE_SEED', '11'))); per = 5   # NATIVE_SEED=… for the held-out set (M5)
     cells = [(rng.choice(GRADES), rng.choice(TOPICS), rng.choice(CONTEXTS), rng.choice(SURFACES)) for _ in range(n // per)]
     pp = f'{out}/problems.jsonl'; have = len(done_ids(pp)) // per; todo = list(enumerate(cells))[have:]; print(len(todo), 'cells to write', flush=True)
     def wbatch(ic):
