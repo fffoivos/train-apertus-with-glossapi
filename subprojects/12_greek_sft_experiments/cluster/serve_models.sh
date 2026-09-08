@@ -9,7 +9,7 @@ source /iopsstor/scratch/cscs/fffoivos/venvs/vllm/bin/activate
 echo "NODE $(hostname)"; i=0; pids=()
 for spec in "$@"; do
   name=${spec%%=*}; path=${spec#*=}; port=$((8000 + i))
-  CUDA_VISIBLE_DEVICES=$i vllm serve "$path" --served-model-name "$name" --port "$port" --dtype bfloat16 --max-model-len 4096 --gpu-memory-utilization 0.85 --disable-log-requests > "$R/serve_${name}.log" 2>&1 &
+  CUDA_VISIBLE_DEVICES=$i vllm serve "$path" --served-model-name "$name" --port "$port" --dtype bfloat16 --max-model-len 4096 --gpu-memory-utilization 0.85 > "$R/serve_${name}.log" 2>&1 &
   pids+=($!); echo "$name → :$port (GPU $i, pid ${pids[-1]})"; i=$((i + 1))
 done
 for p in "${pids[@]}"; do wait "$p"; done
