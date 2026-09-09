@@ -4,7 +4,8 @@
 set -u; cd "$(dirname "$0")"; LOG=queue_runner2.log
 say(){ echo "$(date '+%F %T') $*" | tee -a "$LOG"; }
 say "queue2 started: waiting for QUEUE DONE"; while ! grep -q 'QUEUE DONE' queue_runner.log 2>/dev/null; do sleep 300; done
-for L in S1:2000 S2:2000 S3:2000 S4:1000; do lane=${L%%:*}; n=${L##*:}; say "lane $lane × $n"; WORKERS=24 python3 convskills/gen_suite.py convskills/v1 --lane $lane --n $n --seed 3 >> "$LOG" 2>&1; say "$lane: $(cat convskills/v1/${lane}_summary.json 2>/dev/null | cut -c1-200)"; done
+# lane sizes halved 12:45 to keep a reserve in the Codex weekly window (47% used, reset Tue 15)
+for L in S1:1000 S2:1000 S3:1000 S4:500; do lane=${L%%:*}; n=${L##*:}; say "lane $lane × $n"; WORKERS=24 python3 convskills/gen_suite.py convskills/v1 --lane $lane --n $n --seed 3 >> "$LOG" 2>&1; say "$lane: $(cat convskills/v1/${lane}_summary.json 2>/dev/null | cut -c1-200)"; done
 python3 - <<'PY' >> "$LOG" 2>&1
 import json, glob
 rows = [json.loads(l) for f in sorted(glob.glob('convskills/v1/S[1-4].jsonl')) for l in open(f)]
