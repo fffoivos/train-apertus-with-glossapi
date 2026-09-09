@@ -3,8 +3,8 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 105.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 36.699,
- "chf_used": 98.72,
+ "nh_used": 38.184,
+ "chf_used": 102.71,
  "cursor": "ROUND TWO: identity ladder done; B (×4, 2 ep) = best model; full battery pending",
  "steps": {
   "WP0_data": {

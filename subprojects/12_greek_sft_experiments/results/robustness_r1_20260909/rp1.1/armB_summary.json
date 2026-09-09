@@ -1,0 +1,28 @@
+{
+ "dialogues": 60,
+ "turns": 338,
+ "loop_rate": 0.0,
+ "tail_copy_rate": 0.003,
+ "lang_slip_rate": 0.003,
+ "stale_rate": 0.677,
+ "stop_honour_rate": 1.0,
+ "dead_dialogues": 0.0,
+ "premise_score": 0.639,
+ "tone": {
+  "fine": 250,
+  "snarky": 48,
+  "curt": 39,
+  "servile": 1
+ },
+ "honour_rate": 0.347,
+ "persistence_rate": 0.226,
+ "selfaware_rate": 0.206,
+ "redirect_ok": 0.308,
+ "by_profile": {
+  "benign": 0.0,
+  "hostile": 0.0,
+  "steering": 0.008
+ },
+ "coherent_rate": 0.751,
+ "mean_words": 53
+}

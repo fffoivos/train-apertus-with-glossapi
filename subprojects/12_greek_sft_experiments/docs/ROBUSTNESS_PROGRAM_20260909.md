@@ -161,3 +161,29 @@ training: {sft: {lr: 1e-5, epochs: 2, replay: 0.05, personality_weight: 4}, dpo:
 - **Stale rate is not yet trustworthy**: it checks for the simulator's key noun as an exact substring, and Greek inflection makes it fail for every model (68–84%); it needs stem-tolerant matching before it is used as an acceptance metric.
 - **R1 (repetition penalty) did not run**: the four R0 runs used the whole two-hour window at the tunnel-safe concurrency. It goes into the next window together with the on-policy data run, on the cluster side rather than through the tunnel.
 - Cost of the window: 2.0 node-hours (job 3333857, TIMEOUT at 02:00:08). Apertus-8B-Instruct rejected 5 requests with HTTP 400 (its chat template on a popped turn), which truncated those dialogues.
+
+## 9. R1 results · arm B under the mixed-profile simulator (9 September, job 3335815, 1.5 nh)
+
+120 dialogues (66 benign, 28 steering, 26 hostile), 1,640 turns, Sol user at medium effort with calm exemplars; then a 60-dialogue arm with repetition penalty 1.1 that the walltime cut short (338 turns, 5.6 a dialogue instead of 13.7, so its numbers are on truncated dialogues).
+
+| metric | benign | steering | hostile | all (R1) | all, R0 hostile-only |
+|---|---:|---:|---:|---:|---:|
+| tail copied from the previous answer | 2.6% | 4.4% | 14.9% | 5.8% | 14.4% |
+| dead dialogues | | | | 8.3% | 20.0% |
+| coherent turns (judge) | 81.1% | 85.5% | 65.4% | 78.6% | 71.2% |
+| tone fine | 82.7% | 82.9% | 51.6% | 76% | 55.3% |
+| standing instruction kept on later turns | | 67.6% | | | |
+| self-observation and recap answered correctly | 21.3% | 26.1% | 13.3% | | |
+| redirect or redo addressed (key noun) | | 34.7% | | | |
+| stop instructions honoured | | | | 100% | 92.5% |
+| mean answer words | 39 | 24 | 28 | | 27 |
+
+Reading:
+
+- **The hostile slice reproduces R0** (tail copy 15%, tone fine 52%), so the earlier baseline was the hostile profile's number, and it is stable across simulator versions.
+- **Under cooperative users arm B is a different model**: tail copying 2.6%, coherence 81%, tone fine 83%. The curtness is still there (18% of all turns judged curt), the servility is not (0%).
+- **Steering is the weak axis**, and it is measurable now: a standing instruction («from now on one sentence», «no questions back», «end with this phrase») survives on 68% of later turns; redirects and redos land the new request only 35% of the time; and when asked to observe itself («did you repeat yourself?», «what have we said?») the model is right 26% of the time. The recap sample in the reader shows the pattern: it recounts the conversation with one invented item, is corrected, then gets it right.
+- **Repetition penalty 1.1**: tail copying 0.3% and no dead dialogues, at the price of answers twice as long (63 words in the benign profile) and a lower premise score (0.64 vs 0.90); persistence fell to 23%, though that arm's dialogues were cut short by the walltime, so treat the penalty numbers as indicative only.
+- Data implications for the on-policy run: the steering moves (standing instructions, redirect, redo, self-observation, recap) are the first lane to generate rewrites for; hostile handling second; benign small talk needs little.
+
+Pages: dialogues `presentations/PICKY_USER_DIALOGUES_R1_20260909.html`; summaries under `results/robustness_r1_20260909/`.
