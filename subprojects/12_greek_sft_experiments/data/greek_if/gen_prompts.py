@@ -64,7 +64,7 @@ def greeklish(s):
     return ''.join(m.get(ch, m.get(ch.lower(), ch).upper() if ch.isupper() else ch) for ch in s)
 def surface(text, style, rng):
     if style == 'atonic': return C.strip_accents(text).replace('ϊ', 'ι').replace('ϋ', 'υ')
-    if style == 'greeklish' and rng.random() < 0.7: return greeklish(text.lower())
+    if style == 'greeklish': return greeklish(text.lower())   # pure greeklish (astra review: mixed script must be a labelled condition, not a leak)
     if style == 'formal': return text.replace('Πες μου', 'Θα μπορούσατε να μου πείτε').replace('Δώσε μου', 'Θα ήθελα').replace('Εξήγησέ μου', 'Εξηγήστε μου')
     if style == 'simple': return text.replace(';', ';').replace('Εξήγησέ μου', 'Πες μου απλά')
     return text
@@ -91,7 +91,8 @@ def build(rng, domain, sub, form, persona, level, families=None, phrasing_seed=N
     if fixed_seed is not None:   # E6: same families and params, the phrasing re-drawn per variant
         for c in cons: c['phrasing'] = rng.randrange(len(C.FAMILIES[c['family']]['phrasings'])); c['text'] = C.FAMILIES[c['family']]['phrasings'][c['phrasing']].format(**c['params'])
     lines = [c['text'] for c in cons]; rng.shuffle(lines)
-    req = surface(req, persona[1], rng) if not authored else req; lines = [surface(l, persona[1], rng) for l in lines]   # request and constraints take the writer's surface separately, so the stored request is what the model saw
+    if persona[1] == 'greeklish' and rng.random() < 0.3: persona = (persona[0], 'mixed')   # 30% of greeklish writers mix scripts, labelled as such
+    req = surface(req, 'greeklish' if persona[1] == 'mixed' else persona[1], rng) if not authored else req; lines = [surface(l, persona[1], rng) for l in lines]   # 'mixed': request greeklish, constraints Greek
     layout = rng.random()
     if layout < LAYOUT_REQUEST_FIRST: prompt = req + '\n\n' + ' '.join(lines)                       # request, then the constraints
     elif layout < LAYOUT_REQUEST_FIRST + LAYOUT_CONSTRAINTS_FIRST: prompt = ' '.join(lines) + '\n\n' + req                      # constraints first
