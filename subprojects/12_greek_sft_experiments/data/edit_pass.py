@@ -32,6 +32,7 @@ def render(batch, kind):
 def guard(r, new_turns, kind):
     """Keep the edit only if it breaks nothing the row is verified on. Returns (accept, reason)."""
     if kind == 'if':
+        if not r.get('meta', {}).get('constraints'): return True, ''   # conversation-skills rows carry no constraint list: language edits accepted (their mechanical checks ran at generation)
         res = C.check_all(new_turns[-1], r['meta']['constraints'], r['user'])
         bad = [x['family'] for x in res if x['ok'] is False]
         return (not bad, 'constraints broken: ' + ','.join(bad) if bad else '')
