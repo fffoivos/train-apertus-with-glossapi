@@ -70,6 +70,7 @@ def surface(text, style, rng):
     return text
 
 BANK = {}   # (domain, subtopic, form) -> authored requests, loaded with --requests
+LAYOUT_REQUEST_FIRST, LAYOUT_CONSTRAINTS_FIRST = 0.55, 0.25   # v1; v2 uses 0.75/0.10 so constraint phrasings stop dominating the prompt openers
 ADDRESS = {'formal_plural', 'informal_singular', 'formal_and_informal', 'child_register'}
 TRANSLATE_OK = {'length_words_max', 'length_words_min', 'length_sentences_exact', 'length_paragraphs', 'title', 'no_comma', 'no_exclamation', 'all_lower', 'wrap_in_quotes', 'two_responses', 'bullets_n', 'highlight_n', 'end_with', 'start_with', 'postscript', 'keywords_exclude'}   # a translation must keep the content: only form constraints apply
 FORM_EXCLUDE = {'translate': set(C.FAMILIES) - TRANSLATE_OK,
@@ -88,18 +89,23 @@ def build(rng, domain, sub, form, persona, level, families=None, phrasing_seed=N
     lines = [c['text'] for c in cons]; rng.shuffle(lines)
     req = surface(req, persona[1], rng) if not authored else req; lines = [surface(l, persona[1], rng) for l in lines]   # request and constraints take the writer's surface separately, so the stored request is what the model saw
     layout = rng.random()
-    if layout < 0.55: prompt = req + '\n\n' + ' '.join(lines)                       # request, then the constraints
-    elif layout < 0.8: prompt = ' '.join(lines) + '\n\n' + req                      # constraints first
+    if layout < LAYOUT_REQUEST_FIRST: prompt = req + '\n\n' + ' '.join(lines)                       # request, then the constraints
+    elif layout < LAYOUT_REQUEST_FIRST + LAYOUT_CONSTRAINTS_FIRST: prompt = ' '.join(lines) + '\n\n' + req                      # constraints first
     else: prompt = req + ' ' + lines[0] + ('\n\n' + ' '.join(lines[1:]) if len(lines) > 1 else '')   # split
     if rng.random() < 0.1 and cons: prompt += '\n\n' + rng.choice(['Το ξαναλέω: ', 'Προσοχή: ']) + cons[0]['text']
     return dict(prompt=prompt, request=req, constraints=cons, level=len(cons), domain=domain, subtopic=sub, form=form, persona=persona[0], persona_style=persona[1], source_text=text if (text and '{text}' in tmpl) else None, authored=bool(authored))
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('out'); ap.add_argument('--n', type=int, default=300); ap.add_argument('--seed', type=int, default=7)
-    ap.add_argument('--levels', default='1,2,3,4,5'); ap.add_argument('--level-weights', default='.3,.3,.2,.12,.08'); ap.add_argument('--families', default=''); ap.add_argument('--domains', default=''); ap.add_argument('--design', default=''); ap.add_argument('--requests', default='', help='authored request bank from gen_requests.py')
+    ap.add_argument('--levels', default='1,2,3,4,5'); ap.add_argument('--level-weights', default='.3,.3,.2,.12,.08'); ap.add_argument('--families', default=''); ap.add_argument('--domains', default=''); ap.add_argument('--design', default=''); ap.add_argument('--requests', default='', help='authored request bank from gen_requests.py'); ap.add_argument('--exclude', default='', help='comma-separated prompts.jsonl files whose requests must not be reused'); ap.add_argument('--layout', default='', help='request_first,constraints_first weights, e.g. 0.75,0.10')
     a = ap.parse_args(); rng = random.Random(a.seed); rows = []
+    global LAYOUT_REQUEST_FIRST, LAYOUT_CONSTRAINTS_FIRST
+    if a.layout: LAYOUT_REQUEST_FIRST, LAYOUT_CONSTRAINTS_FIRST = (float(x) for x in a.layout.split(','))
+    used = {json.loads(l)['request'] for f in a.exclude.split(',') if f for l in open(f)}
     if a.requests:
-        for l in open(a.requests): b = json.loads(l); BANK.setdefault((b['domain'], b['subtopic'], b['form']), []).append(b)
+        for l in open(a.requests):
+            b = json.loads(l)
+            if b['text'] not in used: BANK.setdefault((b['domain'], b['subtopic'], b['form']), []).append(b)
         print('request bank:', sum(len(v) for v in BANK.values()), 'requests in', len(BANK), 'cells')
     levels = [int(x) for x in a.levels.split(',')]; weights = [float(x) for x in a.level_weights.split(',')]
     fams = a.families.split(',') if a.families else None; doms = a.domains.split(',') if a.domains else list(DOMAINS)
