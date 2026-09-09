@@ -1,7 +1,7 @@
 {
  "plan": "EXECUTION_PLAN_20260904.md",
  "protocol": "CLUSTER_PROTOCOL.md",
- "cap_chf": 100.0,
+ "cap_chf": 105.0,
  "rate_chf_per_nh": 2.69,
  "nh_used": 36.699,
  "chf_used": 98.72,
@@ -399,5 +399,13 @@
  "followups": [
   "ILSP harness: language:response_language scores 0 for every model (langdetect missing on the cluster); 31 instructions / 17 single-instruction prompts auto-fail; rescore saved samples offline after installing langdetect (up to +3.5 strict avg for all)"
  ],
- "cap_note": "raised 90→100 on 2026-09-08 by the owner's instruction 'OK run 2 and 4 and see the results' (identity dose ladder A ×2 / B ×4 + probes ≈ CHF 9)"
+ "cap_note": "raised 90→100 on 2026-09-08 by the owner's instruction 'OK run 2 and 4 and see the results' (identity dose ladder A ×2 / B ×4 + probes ≈ CHF 9)",
+ "cap_history": [
+  {
+   "when": "2026-09-09T09:09",
+   "from_chf": 100.0,
+   "to_chf": 105.0,
+   "why": "owner 2026-09-09 09:50: 'run dialogues in parallel' after being told the arm-B window needs ~CHF 4 over the CHF 100 cap; raised by Claude to 105 for that one debug window, disclosed in the report"
+  }
+ ]
 }

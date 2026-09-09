@@ -43,7 +43,7 @@ def done_ids(path):
 def translate(out, n_gsm=300, n_math=300):
     os.makedirs(out, exist_ok=True); rng = random.Random(9)
     gsm = [json.loads(l) for l in open(f'{SRC}/gsm8k_train.jsonl')]; math = [json.loads(l) for l in open(f'{SRC}/math_train.jsonl')]
-    math = [r for r in math if r.get('level') in ('Level 1', 'Level 2', 'Level 3')]
+    math = [r for r in math if r.get('level') in tuple(x.strip() for x in os.environ.get('MATH_LEVELS', 'Level 1,Level 2,Level 3').split(','))]
     rows = [dict(id=f'gsm_{i}', src='gsm8k', problem_en=r['question'], ref=M.gsm_answer(r['answer']), level='gsm') for i, r in enumerate(rng.sample(gsm, n_gsm))]
     rows += [dict(id=f'math_{i}', src='math', problem_en=r['problem'], ref=M.boxed(r['solution']) or '', level=r['level'], subject=r['subject']) for i, r in enumerate(rng.sample(math, n_math))]
     rows = [r for r in rows if r['ref']]; append_rows = {r['id']: r for r in rows}
@@ -78,7 +78,8 @@ def native(out, n=500):
         i, (g, t, c, s) = ic; j = call(NATIVE.format(n=per, grade=g, topic=t, ctx=c, surface=s), S_NATIVE, effort='high')
         if j and len(j['items']) == per: append(pp, [dict(id=f'nat_{i}_{k}', grade=g, topic=t, context=c, surface=s, **x) for k, x in enumerate(j['items'])])
     with ThreadPoolExecutor(W) as pool: list(pool.map(wbatch, todo))
-    probs = [json.loads(l) for l in open(pp)]; sp = f'{out}/solved2.jsonl'; have = done_ids(sp); todo = [r for r in probs if r['id'] not in have]; print(len(todo), 'to solve with', SOLVER2, flush=True)
+    probs = [json.loads(l) for l in open(pp)]; sp = f'{out}/solved2.jsonl'; have = done_ids(sp); verify = {x.strip() for x in os.environ.get('VERIFY_GRADES', '').split(',') if x.strip()}   # VERIFY_GRADES limits the second solve to the hardest grades (owner, 9 Sep)
+    todo = [r for r in probs if r['id'] not in have and (not verify or r['grade'] in verify)]; print(len(todo), 'to solve with', SOLVER2, ('(grades ' + ', '.join(sorted(verify)) + ')') if verify else '', flush=True)
     def sbatch(ch):
         body = '\n\n'.join(f'=== id: {r["id"]} ===\n{r["problem_el"]}' for r in ch); j = call(SOLVE.format(n=len(ch), body=body), S_SOLVE, model=SOLVER2, effort='high')
         if j and {x['id'] for x in j['items']} == {r['id'] for r in ch}: append(sp, [dict(id=x['id'], solution2=x['solution_el'], final2=x['final_answer']) for x in j['items']])
@@ -86,15 +87,18 @@ def native(out, n=500):
     s2 = {json.loads(l)['id']: json.loads(l) for l in open(sp)}; res = []
     for r in probs:
         s = s2.get(r['id'])
-        if not s: continue
+        if not s:
+            if verify and r['grade'] not in verify: res.append(dict(r, solution2='', final2='', agree=None, numeric=M.norm_num(r['final_answer'] or '') is not None, fmt=M.fmt_checks(r['solution_el'])))   # unverified by design
+            continue
         f1 = r['final_answer'] or M.final_answer(r['solution_el']); f2 = s['final2'] or M.final_answer(s['solution2']); agree = M.equiv(f1, f2)
         numeric = M.norm_num(f1) is not None and M.norm_num(f2) is not None
         res.append(dict(r, **s, agree=agree, numeric=numeric, fmt=M.fmt_checks(r['solution_el'])))
     with open(f'{out}/results.jsonl', 'w') as f:
         for r in res: f.write(json.dumps(r, ensure_ascii=False) + '\n')
-    by = lambda key: {k: dict(n=len(v), agree=round(sum(x['agree'] for x in v) / len(v), 3)) for k, v in sorted(collections.defaultdict(list, {k: [x for x in res if key(x) == k] for k in {key(x) for x in res}}).items())}
+    ver = [x for x in res if x['agree'] is not None]
+    by = lambda key: {k: dict(n=len(v), agree=(round(sum(x['agree'] for x in v) / len(v), 3) if v else None)) for k, v in sorted(collections.defaultdict(list, {k: [x for x in ver if key(x) == k] for k in {key(x) for x in ver}}).items())}
     fmt = {k: round(sum(x['fmt'][k] for x in res) / len(res), 3) for k in ('decimal_comma_ok', 'euro_after_number', 'answer_line')}
-    summ = dict(n=len(res), agree=round(sum(x['agree'] for x in res) / len(res), 3), numeric_share=round(sum(x['numeric'] for x in res) / len(res), 3), by_grade=by(lambda x: x['grade']), by_topic=by(lambda x: x['topic']), by_surface=by(lambda x: x['surface']), formatting=fmt)
+    summ = dict(n=len(res), verified=len(ver), agree=(round(sum(x['agree'] for x in ver) / len(ver), 3) if ver else None), numeric_share=round(sum(x['numeric'] for x in res) / len(res), 3), by_grade=by(lambda x: x['grade']), by_topic=by(lambda x: x['topic']), by_surface=by(lambda x: x['surface']), formatting=fmt)
     json.dump(summ, open(f'{out}/summary.json', 'w'), ensure_ascii=False, indent=1); print(json.dumps(summ, ensure_ascii=False))
 
 
