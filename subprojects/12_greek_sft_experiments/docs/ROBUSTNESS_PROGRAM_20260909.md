@@ -30,6 +30,19 @@ Date: 2026-09-09. From the owner's stress chats (`docs/CHAT_REVIEW_20260908.md`)
 | intent | one loose goal per dialogue (order, test its body, make it stop a habit, get a fact, chit-chat) | sampled |
 | model on the other side | arm B (on-policy), stage 1, peers | arm B for data, all four for the benchmark |
 
+
+### 2b. Profiles and steering moves (owner, 9 September, morning)
+
+The R0 simulator was hostile by construction (17% rude moves, escalation, «annoy it» intents, every archived chat as exemplar, low effort, 20-word cap), so it measured the hostile slice only. From the next window the simulator runs at **medium effort**, with **calm exemplars** (rude user turns and chats with more than one rude turn dropped: 76 of 114 exchanges remain), 1–40 words, and one of three **profiles per dialogue**, drawn 50/30/20 in the mixed run:
+
+| profile | what the user does | new moves |
+|---|---|---|
+| benign | a cooperative user with a real goal: asks, follows up, corrects politely, changes topic | followup |
+| steering | directs the conversation: gives standing instructions, redirects, asks for a redo, asks the model to observe itself, asks for a recap, revokes an instruction | persistent_instruction, redirect, redo, self_observe, recap, revoke |
+| hostile | the R0 behaviour, kept as its own slice | |
+
+Standing instructions are chosen from a checkable set (one sentence only, greeklish, no questions back, formal plural, at most 20 words, bullets, end every answer with a given phrase) and checked by regex on **every later turn until revoked**: the persistence rate is the new metric for «specify instructions mid-dialogue». Self-observation and recap turns get a judge verdict («did the model describe its own previous behaviour correctly»): the self-awareness rate. Redirect and redo turns reuse the key-noun check. All three profiles are scored on the same metrics, reported per profile.
+
 ## 3. The assistant rules (the rewrite side, and the checkers)
 
 | rule | check |
