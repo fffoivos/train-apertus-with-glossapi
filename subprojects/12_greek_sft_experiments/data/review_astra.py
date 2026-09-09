@@ -21,7 +21,7 @@ def latest_rollout(): return max(glob.glob(f'{HOME}/.codex/sessions/*/*/*/rollou
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('name'); ap.add_argument('brief'); ap.add_argument('out'); ap.add_argument('--rows', default=''); ap.add_argument('--n', type=int, default=60); ap.add_argument('--seed', type=int, default=1); ap.add_argument('--fields', default=''); ap.add_argument('--model', default='gpt-6-astra'); ap.add_argument('--effort', default='xhigh'); ap.add_argument('--max-chars', type=int, default=2500); ap.add_argument('--codex-bin', default='/Users/foivoskarounos-zamparloukos/codex-new/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex', help='the newer CLI that gpt-6-astra requires; the pipelines keep the old one')
+    ap = argparse.ArgumentParser(); ap.add_argument('name'); ap.add_argument('brief'); ap.add_argument('out'); ap.add_argument('--rows', default=''); ap.add_argument('--n', type=int, default=60); ap.add_argument('--seed', type=int, default=1); ap.add_argument('--fields', default=''); ap.add_argument('--model', default='gpt-6-astra'); ap.add_argument('--effort', default='xhigh'); ap.add_argument('--max-chars', type=int, default=40000); ap.add_argument('--codex-bin', default='/Users/foivoskarounos-zamparloukos/codex-new/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex', help='the newer CLI that gpt-6-astra requires; the pipelines keep the old one')
     a = ap.parse_args(); brief = open(a.brief).read(); sample = ''
     if a.rows:
         rows = [json.loads(l) for l in open(a.rows)]; rng = random.Random(a.seed); pick = rng.sample(rows, min(a.n, len(rows))); fields = a.fields.split(',') if a.fields else None

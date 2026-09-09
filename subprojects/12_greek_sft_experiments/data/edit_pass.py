@@ -23,7 +23,7 @@ def turns_of(r): return r.get('turns') or [dict(role='user', content=r['user']),
 def render(batch, kind):
     parts = []
     for r in batch:
-        conv = '\n\n'.join(f"[{m['role'].upper()}]\n{m['content']}" for m in turns_of(r))
+        conv = '\n\n'.join(f"[{m['role'].upper()}]{' (ΠΛΑΙΣΙΟ: μην το αλλάξεις, επίστρεψέ το αυτούσιο)' if m.get('train') is False else ''}\n{m['content']}" for m in turns_of(r))
         cons = ('ΠΕΡΙΟΡΙΣΜΟΙ: ' + ' | '.join(c['text'] for c in r['meta']['constraints']) + '\n') if kind == 'if' and r.get('meta', {}).get('constraints') else ''
         parts.append(f"===== ROW {r['id']} =====\n{cons}ΣΥΝΟΜΙΛΙΑ:\n{conv}")
     return HEAD.format(kind_rules=KIND[kind]) + GAMMA + f"\n\nΚρίνεις {len(batch)} γραμμές, χωριστά (===== ROW <id> =====). Επίστρεψε ΜΟΝΟ JSON {{\"rows\":[{{\"id\",\"verdict\": ok|edited,\"edited_assistant_turns\":[όλες οι απαντήσεις του βοηθού με τη σειρά],\"changes\":[\"πριν → μετά, γιατί\"],\"greekness\":1-5}}]}} με ακριβώς τα {len(batch)} ids.\n\n" + '\n\n'.join(parts)
@@ -66,7 +66,7 @@ def main():
             if ok:
                 k = 0; turns = []
                 for m in turns_of(r):
-                    if m['role'] == 'assistant': turns.append(dict(role='assistant', content=new[k])); k += 1
+                    if m['role'] == 'assistant': turns.append(dict(m, content=(m['content'] if m.get('train') is False else new[k]))); k += 1   # keep extra keys (train flag); context-only turns (train=False, e.g. planted tics) are never edited
                     else: turns.append(m)
                 rr['turns'] = turns; rr['assistant'] = turns[-1]['content']; rr['pre_edit_assistant'] = r['assistant']; rr['edited_by'] = a.model; rr['edit_changes'] = c['changes']; stats['edited'] += 1
             else: rr['edit_reverted'] = why; stats['reverted'] += 1

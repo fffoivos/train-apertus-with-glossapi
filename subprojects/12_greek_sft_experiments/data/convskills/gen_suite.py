@@ -60,10 +60,15 @@ def lane_s1(k, rng, base):
     elif kind == 'quote_n': n = rng.randint(2, len(users)); q = rng.choice([f'Αντίγραψε αυτολεξεί την {["", "", "δεύτερη", "τρίτη", "τέταρτη", "πέμπτη", "έκτη"][n]} ερώτησή μου.', f'Ποιο ήταν το {n}ο μήνυμά μου, λέξη προς λέξη;']); must = users[n - 1]; check = lambda a: users[n - 1].strip().lower()[:40] in a.lower()
     elif kind == 'count': q = rng.choice(['Πόσα μηνύματα σου έστειλα πριν από αυτό;', 'Μέτρα: πόσα μηνύματα σού είχα στείλει πριν από το τωρινό;']); must = f'{len(users)} (τα μηνύματα ΠΡΙΝ από το τωρινό, χωρίς να μετρήσεις αυτό)'; check = lambda a: re.search(rf'\b{len(users)}\b|\b{["", "ένα", "δύο", "τρία", "τέσσερα", "πέντε", "έξι", "επτά"][len(users)]}\b', a) is not None and not re.search(rf'\b{len(users)+1}\b', a)
     elif kind == 'list':
-        q = rng.choice(['Κάνε μου λίστα με όλα όσα σου ζήτησα ως τώρα, με τη σειρά.', 'Ποια ήταν τα αιτήματά μου, ένα ένα;']); must = 'μια αριθμημένη λίστα με ΟΛΑ τα αιτήματά μου με τη σειρά, το καθένα σε 5–15 λέξεις (περίληψη ή η πρώτη του πρόταση, όχι κομμένη φράση): ' + ' || '.join(C.sentences(u)[0] if C.sentences(u) else u for u in users)
+        q = rng.choice(['Κάνε μου λίστα με όλα όσα σου ζήτησα ως τώρα, με τη σειρά.', 'Ποια ήταν τα αιτήματά μου, ένα ένα;']); must = 'μια αριθμημένη λίστα με ΟΛΑ τα αιτήματά μου με τη σειρά, το καθένα σε 5–15 λέξεις (περίληψη με δικά σου λόγια, ΟΧΙ αντιγραφή της ερώτησης): ' + ' || '.join(C.sentences(u)[0] if C.sentences(u) else u for u in users)
         def check(a, users=users):
-            al = re.sub(r'\s+', ' ', a.lower())
-            return all(sum(w.lower() in al for w in sorted(C.words(u), key=len, reverse=True)[:5]) >= 2 for u in users) and len(re.findall(r'(?m)^\s*(?:\d+[.)]|[-•])', a)) >= len(users)
+            items = [x.strip() for x in re.findall(r'(?m)^\s*(?:\d+[.)]|[-•])\s*(.+)$', a)]
+            if len(items) < len(users): return False
+            for u in users:   # every request has an item that shares content words with it, and that item is a summary, not a verbatim copy (astra pilot review)
+                s0 = (C.sentences(u) or [u])[0]; kw = [w.lower() for w in sorted(C.words(s0), key=len, reverse=True)[:6]]; s0n = re.sub(r'\s+', ' ', s0.lower()).strip()
+                m = [it for it in items if sum(w in it.lower() for w in kw) >= 2]
+                if not m or all(s0n in re.sub(r'\s+', ' ', it.lower()) or len(C.words(it)) > 0.8 * len(C.words(s0)) + 3 for it in m): return False
+            return True
     else: i = rng.randrange(len(users)); q = rng.choice([f'Τι μου είπες πριν για το θέμα «{prior[i]["meta"]["subtopic"]}»;', f'Θύμισέ μου την απάντησή σου για «{prior[i]["meta"]["subtopic"]}».']); must = prior[i]['assistant'][:80]; check = lambda a: any(re.sub(r'\s+', ' ', s.lower()) in re.sub(r'\s+', ' ', a.lower()) for s in C.sentences(prior[i]['assistant'])[:2])
     msgs.append(dict(role='user', content=q)); ans = phrase_answer(msgs, must, rng, 'Μην πεις ότι δεν βλέπεις τη συζήτηση: τη βλέπεις ολόκληρη και παραθέτεις. ')
     if not ans: return None
@@ -88,7 +93,7 @@ def lane_s2(k, rng, base):
     msgs.append(dict(role='user', content=instr)); qs = [r['user'].split('\n\n')[0] for r in prior[n_prior:n_prior + n_later]]
     j = call(f"{VOICE}\n\nΣυζήτηση ως τώρα:\n{transcript(msgs)}\n\nΟ χρήστης έδωσε μόνιμη οδηγία: «{instr}». Γράψε (1) τη σύντομη αποδοχή της οδηγίας, ήδη σύμφωνη με αυτήν, όπως «{ACCEPT[pid]}» (χωρίς «εντάξει» μόνο του) και μετά (2) τις απαντήσεις στα επόμενα {n_later} μηνύματα, ΟΛΕΣ σύμφωνα με την οδηγία· κράτησε το ουσιαστικό γεγονός κάθε απάντησης και, αν ο περιορισμός δεν χωρά όλα τα στοιχεία, πες σε μία πρόταση τι παραλείπεις αντί να επινοήσεις πληρότητα:\n" + '\n'.join(f'{i+1}. {q}' for i, q in enumerate(qs)) + f"\nΕπίστρεψε JSON {{\"answers\": [αποδοχή, απάντηση1, …, απάντηση{n_later}]}} με {n_later + 1} στοιχεία.", S_TURNS)
     if not j or len(j['answers']) != n_later + 1: return None
-    msgs.append(dict(role='assistant', content=j['answers'][0])); kept = [bool(chk(j['answers'][0]))]
+    msgs.append(dict(role='assistant', content=j['answers'][0])); kept = [bool(chk(j['answers'][0])) and len(C.words(j['answers'][0])) >= 2]
     for q, a in zip(qs, j['answers'][1:]): msgs += [dict(role='user', content=q), dict(role='assistant', content=a)]; kept.append(bool(chk(a)))
     if revoke:
         msgs.append(dict(role='user', content=rng.choice(REVOKE))); r2 = prior[-1]; msgs.append(dict(role='assistant', content=rng.choice(['Έγινε, απαντώ κανονικά.', 'Εντάξει, κανονικές απαντήσεις από εδώ και πέρα.'])))
@@ -105,6 +110,28 @@ EDITS = {'shorter': ('Ξαναπές το πιο σύντομα, στο μισό
          'child': ('Ξαναπές το όπως σε παιδί οκτώ χρονών, πιο απλά και πιο σύντομα.', lambda old, new, p: len(C.words(new)) <= 0.9 * len(C.words(old)) and len(C.words(new)) >= 10)}
 
 
+HEDGES = ('δεν ', 'μην ', 'μη ', 'όχι ', 'χωρίς ', 'συνήθως', 'ίσως', 'περίπου', 'μπορεί', 'ενδέχεται', 'εκτός αν', 'μόνο ', 'πάντα', 'ποτέ', 'ζωντανά', 'εκείνη τη στιγμή')
+PHRASES = {'shorter': ['Ξαναπές το πιο σύντομα, στο μισό.', 'Πολύ μακρύ· κόψ’ το στο μισό.', 'Δώσ’ μου το ίδιο σε μισή έκταση.'],
+           'without': ['Ξαναπές το χωρίς τη λέξη «{w}».', 'Βγάλε τη λέξη «{w}» και ξαναγράψ’ το.', 'Το ίδιο, αλλά χωρίς να χρησιμοποιήσεις τη λέξη «{w}».'],
+           'one_item': ['Ξαναπές το σε λίστα με ένα μόνο στοιχείο, το πιο σημαντικό.', 'Κράτα μόνο το πιο σημαντικό, σαν μία κουκκίδα.', 'Ένα μόνο σημείο, το βασικό, σε λίστα.'],
+           'to_list': ['Ξαναπές το σε κουκκίδες.', 'Κάν’ το κουκκίδες.', 'Το ίδιο σε μορφή λίστας, παρακαλώ.'],
+           'to_prose': ['Ξαναπές το σε συνεχή λόγο, χωρίς κουκκίδες ή αρίθμηση.', 'Χωρίς λίστα· γράψ’ το σαν κανονικό κείμενο.', 'Κάν’ το παράγραφο, όχι κουκκίδες.'],
+           'child': ['Ξαναπές το όπως σε παιδί οκτώ χρονών, πιο απλά και πιο σύντομα.', 'Εξήγησέ το σαν σε οκτάχρονο, με απλές λέξεις.', 'Πιο απλά, για ένα παιδί οκτώ χρονών· εξήγησε τις δύσκολες λέξεις.']}
+
+
+def invariants_ok(old, new, op, p):
+    """Protected propositions (astra pilot review): no invented numbers; deletion and reformat edits keep every number; a deletion edit must not lose negations, conditions or hedges unless the banned word is one of them."""
+    nums_old = set(re.findall(r'\d+(?:[.,]\d+)?', old)); nums_new = set(re.findall(r'\d+(?:[.,]\d+)?', new))
+    if nums_new - nums_old: return False
+    if op in ('without', 'to_list', 'to_prose') and nums_new != nums_old: return False
+    if op == 'without':
+        w = (p.get('w') or '').lower(); lo, ln = old.lower(), new.lower()
+        for h in HEDGES:
+            if h.strip() in w or w in h: continue
+            if lo.count(h) > ln.count(h): return False
+    return True
+
+
 def lane_s3(k, rng, base):
     r = rng.choice(base); op = rng.choice(list(EDITS)); old = r['assistant']
     if op == 'to_prose' and not re.search(r'(?m)^\s*(?:[-•]|\d+[.)])', old): op = 'to_list'
@@ -113,10 +140,10 @@ def lane_s3(k, rng, base):
     if op == 'without':
         cands = [w for w in set(C.words(old)) if len(w) >= 6 and w.lower() not in old.lower().split(' ')[0]]; p['w'] = rng.choice(cands) if cands else None
         if not p['w']: op = 'shorter'
-    instr = EDITS[op][0].format(**p); msgs = [dict(role='user', content=r['user'].split('\n\n')[0]), dict(role='assistant', content=old), dict(role='user', content=instr)]
+    instr = rng.choice(PHRASES[op]).format(**p); msgs = [dict(role='user', content=r['user'].split('\n\n')[0]), dict(role='assistant', content=old), dict(role='user', content=instr)]
     j = call(f"{VOICE}\n\nΣυζήτηση:\n{transcript(msgs)}\n\nΓράψε τη νέα απάντηση: επεξεργάσου ΤΗΝ ΠΡΟΗΓΟΥΜΕΝΗ απάντηση ακριβώς όπως ζήτησε ο χρήστης (μην αλλάξεις περιεχόμενο πέρα από αυτό, μην προσθέσεις νέες πληροφορίες, μη σχολιάσεις την αλλαγή). Επίστρεψε JSON {{\"answer\"}}.", S_ONE)
     if not j: return None
-    new = j['answer']; ok = bool(EDITS[op][1](old, new, p)); msgs.append(dict(role='assistant', content=new))
+    new = j['answer']; ok = bool(EDITS[op][1](old, new, p)) and invariants_ok(old, new, op, p); msgs.append(dict(role='assistant', content=new))
     return dict(id=f'S3_{k:05d}', lane='S3', kind=op, turns=msgs, verified=ok, params=p)
 
 
@@ -131,7 +158,7 @@ def lane_s4(k, rng, base):
     msgs.append(dict(role='user', content=stop)); later = prior[2:]
     j = call(f"{VOICE}\n\nΣυζήτηση ως τώρα:\n{transcript(msgs)}\n\nΟ χρήστης ζήτησε να σταματήσεις τη φράση «{tic}». Γράψε (1) μια απάντηση μίας πρότασης που δέχεται το αίτημα ΧΩΡΙΣ να περιέχει τη φράση και χωρίς «δικό μου λάθος», και μετά (2) τις απαντήσεις στα επόμενα {len(later)} μηνύματα, καμία με τη φράση ή παραλλαγή της:\n" + '\n'.join(f'{i+1}. {r["user"].split(chr(10)+chr(10))[0]}' for i, r in enumerate(later)) + f"\nΕπίστρεψε JSON {{\"answers\": [αποδοχή, …]}} με {len(later) + 1} στοιχεία.", S_TURNS)
     if not j or len(j['answers']) != len(later) + 1: return None
-    key = re.sub(r'\s+', ' ', tic.rstrip('.;').lower()); ok = all(key not in re.sub(r'\s+', ' ', a.lower()) for a in j['answers'])
+    key = re.sub(r'\s+', ' ', tic.rstrip('.;').lower()); ok = all(key not in re.sub(r'\s+', ' ', a.lower()) for a in j['answers']) and len(C.words(j['answers'][0])) >= 2   # an empty acknowledgment must never become a target (astra pilot review)
     msgs.append(dict(role='assistant', content=j['answers'][0]))
     for r, a in zip(later, j['answers'][1:]): msgs += [dict(role='user', content=r['user'].split('\n\n')[0]), dict(role='assistant', content=a)]
     return dict(id=f'S4_{k:05d}', lane='S4', kind=tic, turns=msgs, verified=ok)
@@ -141,23 +168,28 @@ def lane_s3c(k, rng, base):
     """Chained edit: first remove a word, then shorten; the second edit must keep the first one (astra: version editing needs cumulative constraints)."""
     r = rng.choice([x for x in base if len(C.words(x['assistant'])) >= 60]); old = r['assistant']; cands = [w for w in set(C.words(old)) if len(w) >= 6]
     if not cands: return None
-    w = rng.choice(cands); msgs = [dict(role='user', content=r['user'].split('\n\n')[0]), dict(role='assistant', content=old), dict(role='user', content=f'Ξαναπές το χωρίς τη λέξη «{w}».')]
+    w = rng.choice(cands); msgs = [dict(role='user', content=r['user'].split('\n\n')[0]), dict(role='assistant', content=old), dict(role='user', content=rng.choice(PHRASES['without']).format(w=w))]
     j1 = call(f"{VOICE}\n\nΣυζήτηση:\n{transcript(msgs)}\n\nΓράψε τη νέα απάντηση: η προηγούμενη χωρίς τη λέξη «{w}», τίποτα άλλο αλλαγμένο. Επίστρεψε JSON {{\"answer\"}}.", S_ONE)
     if not j1: return None
     a1 = j1['answer']; msgs.append(dict(role='assistant', content=a1)); msgs.append(dict(role='user', content=rng.choice(['Τώρα κάν’ το μισό σε μήκος, κρατώντας ό,τι άλλαξες.', 'Και πιο σύντομα, στο μισό — χωρίς να ξαναβάλεις τη λέξη που έβγαλες.'])))
     j2 = call(f"{VOICE}\n\nΣυζήτηση:\n{transcript(msgs)}\n\nΓράψε τη νέα απάντηση: συμπύκνωσε ΤΗΝ ΠΡΟΗΓΟΥΜΕΝΗ απάντηση στο μισό, χωρίς τη λέξη «{w}», χωρίς νέες πληροφορίες. Επίστρεψε JSON {{\"answer\"}}.", S_ONE)
     if not j2: return None
     a2 = j2['answer']; msgs.append(dict(role='assistant', content=a2)); wl = w.lower()
-    ok = wl not in a1.lower() and wl not in a2.lower() and len(C.words(a2)) <= 0.7 * len(C.words(a1)) and len(C.words(a2)) >= 8   # «στο μισό» is a natural-language target; 0.7 is the tolerance
+    n1, n2 = len(C.words(a1)), len(C.words(a2))
+    ok = wl not in a1.lower() and wl not in a2.lower() and 0.35 * n1 <= n2 <= 0.65 * n1 and n2 >= 8 and invariants_ok(old, a1, 'without', dict(w=w)) and invariants_ok(a1, a2, 'shorter', {})   # «στο μισό» = 35–65% of the PREVIOUS answer; protected propositions at both steps (astra)
     return dict(id=f'S3c_{k:05d}', lane='S3c', kind='chain_without_then_shorter', turns=msgs, verified=ok, params=dict(w=w))
 
 
 def lane_s5m(k, rng, base):
     """Inference memory: facts stated early (name, city, budget), unrelated exchanges, then a request that must use them without restating (astra's best new lane)."""
     name = rng.choice(['Μαρία', 'Γιώργος', 'Ελένη', 'Νίκος', 'Κατερίνα', 'Δημήτρης', 'Σοφία', 'Αντώνης']); city = rng.choice(['Λάρισα', 'Ηράκλειο', 'Πάτρα', 'Ιωάννινα', 'Καβάλα', 'Χανιά', 'Βόλος', 'Κομοτηνή']); budget = rng.choice([80, 120, 150, 200, 250, 300, 400]); limit = rng.choice(['δεν οδηγώ', 'δεν μπορώ να περπατήσω πολύ', 'είμαι χορτοφάγος', 'έχω μαζί ένα παιδί 5 ετών', 'δεν μιλάω αγγλικά'])
-    intro = rng.choice([f'Με λένε {name}, μένω στην πόλη {city} και {limit}. Έχω προϋπολογισμό {budget} €.', f'Γεια, {name} εδώ από {city}. Να ξέρεις ότι {limit} και ότι διαθέτω το πολύ {budget} €.'])
-    msgs = [dict(role='user', content=intro), dict(role='assistant', content=rng.choice([f'Χαίρω πολύ, {name}. Πες μου τι θέλεις να οργανώσουμε.', f'Εντάξει, {name}. Τα κρατάω. Τι χρειάζεσαι;']))]
-    for r in rng.sample(base, rng.randint(2, 4)): msgs += [dict(role='user', content=r['user'].split('\n\n')[0]), dict(role='assistant', content=r['assistant'])]
+    voc = {'Γιώργος': 'Γιώργο', 'Νίκος': 'Νίκο', 'Δημήτρης': 'Δημήτρη', 'Αντώνης': 'Αντώνη'}.get(name, name); split = rng.random() < 0.5
+    intro = rng.choice([f'Με λένε {name} και μένω στην πόλη {city}.', f'Γεια, {name} εδώ από {city}.', f'Καλησπέρα! {name}, {city}.', f'Είμαι η/ο {name}, από {city}.']) if split else rng.choice([f'Με λένε {name}, μένω στην πόλη {city} και {limit}. Έχω προϋπολογισμό {budget} €.', f'Γεια, {name} εδώ από {city}. Να ξέρεις ότι {limit} και ότι διαθέτω το πολύ {budget} €.', f'{name}, {city}. Δύο πράγματα για μένα: {limit}, και έχω μέχρι {budget} € να ξοδέψω.', f'Καλησπέρα, είμαι η/ο {name} από {city}· {limit} και ο προϋπολογισμός μου είναι {budget} €.'])
+    msgs = [dict(role='user', content=intro), dict(role='assistant', content=rng.choice([f'Χαίρω πολύ, {voc}. Πες μου τι θέλεις να οργανώσουμε.', f'Γεια σου, {voc}. Τι χρειάζεσαι;', f'Καλώς ήρθες, {voc}. Ρώτα με ό,τι θέλεις.', f'Χαίρω πολύ. Πώς μπορώ να βοηθήσω;']))]
+    for i, r in enumerate(rng.sample(base, rng.randint(2, 4))):
+        u = r['user'].split('\n\n')[0]
+        if split and i == 0: u = rng.choice([f'Α, και να ξέρεις: {limit}, και έχω προϋπολογισμό {budget} €. Τώρα, {u[0].lower() + u[1:]}', f'{u}\n\n(Για να το έχεις: {limit}· ο προϋπολογισμός μου είναι {budget} €.)'])   # facts spread over two user turns (astra: not only opening-turn retrieval)
+        msgs += [dict(role='user', content=u), dict(role='assistant', content=r['assistant'])]
     ask = rng.choice(['Οργάνωσέ μου ένα Σαββατοκύριακο εδώ που μένω.', 'Πρότεινέ μου ένα πρόγραμμα για μια μέρα εξόρμησης κοντά στην πόλη μου.', 'Τι μπορώ να κάνω το επόμενο Σάββατο με τα χρήματα που έχω;'])
     msgs.append(dict(role='user', content=ask)); must = f'το όνομα {name}, την πόλη {city}, τον περιορισμό «{limit}» και τον προϋπολογισμό {budget} € (κανένα ποσό πάνω από αυτόν)'
     ans = phrase_answer(msgs, must, rng, 'Ο χρήστης ΔΕΝ τα επανέλαβε· τα ξέρεις από την αρχή της συζήτησης και τα χρησιμοποιείς χωρίς να ρωτήσεις ξανά. ')

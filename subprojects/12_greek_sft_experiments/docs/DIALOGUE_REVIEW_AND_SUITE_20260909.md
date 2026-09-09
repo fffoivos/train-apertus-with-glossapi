@@ -97,3 +97,26 @@ Review: docs/reviews/ASTRA_convskills_prompts_20260909.md. Changes in data/convs
 - New lane **S5m** inference memory (name/city/budget/limitation stated at turn 1, 2–4 unrelated exchanges, then a request that must use them; regex: city + no amount above budget + a limitation keyword).
 - Pilot sizes (queue 2): S1 150, S2 250, S3 250, S3c 100, S4 75, S5m 150 = 975 dialogues, then the correction pass. Scale after the pilot's astra review and the Codex reset (15 Sep).
 - Not yet built: S5 grounded self-observation, S8 identity contrasts, S12 repairs (contract in ROBUSTNESS_PROGRAM §10). Trainer loss-mask prerequisite = DATA_TODO 26.
+
+## 7. Pilot (2026-09-09/10), astra review and disposition
+
+**Pilot:** 974 dialogues generated (S1 150, S2 249, S3 250, S3c 100, S4 75, S5m 150), 858 verified mechanically (S1 84.7%, S2 75.5%, S3 92.0%, S3c 95.0%, S4 100%, S5m 95.3%); weak kinds S1 list 25% and said_about 68%, S2 greeklish 17.9% and no_questions 56%, S3 shorter 70%. Correction pass (Sol editor): main lanes 620 rows, 504 edited / 116 ok, greekness 4.65; S3c+S5m 238 rows (the queue's assembly glob had skipped them), 214 edited / 24 ok, greekness 4.38; final rows_all.jsonl = 858 rows. Long dialogues timed out at batch 15 (finished at batch 5), and the editor's guard crashed on rows without a constraint list (fixed).
+
+**Rejection audit (asked for by the review):** of the 32 rejected greeklish rows, 19 are writer failures (Sol answered mostly in Greek script), 6 are near-misses with a few Greek letters (strict checker), 7 other; all 15 rejected S1 list rows were numbered lists that paraphrased the requests, which the old overlap check penalised while it accepted verbatim copies, so the check was inverted in spirit (fixed below).
+
+**Review:** docs/reviews/ASTRA_convskills_pilot_20260910.md (gpt-6-astra, xhigh, 60 rows). Verdict: do not scale yet; repair the gates. 1 BLOCKER, 3 HIGH, 3 MEDIUM.
+
+| Finding | Root cause found | Applied |
+|---|---|---|
+| BLOCKER export truncated 41/60 records | review_astra.py clipped each record at 2,500 chars | clip raised to 40,000; the next review gets complete dialogues |
+| HIGH S4 planted tics absent from the context turns (4/4) | the correction editor removed the planted mannerisms («Ελπίζω να βοήθησα» is on its removal list) and the re-assembly dropped the `train: false` flag | edit_pass now keeps every turn key and never edits `train: false` turns (the editor sees them marked as context); rows re-assembled without new calls: 75/75 S4 rows have both planted turns with the tic; S4 and S2 acceptances must be ≥ 2 words (an empty acknowledgment is never a target) |
+| HIGH edits lose qualifiers («ζωντανά», «συνήθως», «χωρίς χειρονομία») | checks tested only deletion/length | `invariants_ok`: no invented numbers in any edit; deletion and reformat edits keep every number; a deletion edit may not reduce negations/conditions/hedges unless the banned word is one; applied to S3 and both S3c steps |
+| HIGH final acceptance after correction/assembly | correction ran before assembly checks; no final manifest | rows re-assembled from checks with the fixed editor; the lane summaries above are post-correction; a final manifest with hashes and a full re-verification script is DATA_TODO 29 (before the training arm) |
+| MEDIUM «στο μισό» admits 66% | tolerance 0.7 | band 35–65% of the previous answer, plus invariants |
+| MEDIUM diversity (all S3 «Ξαναπές το», one S3c order, two S5m intro templates, «Εντάξει, Δημήτρης») | templates | three phrasings per edit operation (S3 and S3c), four S5m intro templates, vocatives fixed (Γιώργο/Νίκο/Δημήτρη/Αντώνη), facts split across two user turns in half of S5m; S3c operation order and S5m fact updates remain to do (DATA_TODO 30) |
+| MEDIUM child edits keep technical words | check is length-only | logged; a vocabulary check needs a word list, deferred |
+| S1 list accepted copies, rejected summaries | overlap check | new check: every request has a list item sharing ≥ 2 content words that is NOT a verbatim copy and not longer than 80% of the request sentence; the target text asks for a summary in the assistant's own words |
+
+Also from the review, carried forward: audit the rejected rows per lane before scaling (done above for greeklish and list); S2 `no_questions` semantics (questions addressed to the user vs any interrogative) and suffix acceptances (quoting the phrase vs ending with it) need explicit rules (DATA_TODO 31); provisional allocation for the training arm at 3k/4k/5k rows (S1 600/800/1,000, S2 750/1,000/1,250, S3 375/500/625, S3c 375/500/625, S4 300/400/500, S5m 600/800/1,000), S2 balanced by subtype after filtering with revocation in at least half; track supervised tokens, not only rows; review ≥ 60 complete accepted rows per lane before scaling.
+
+**Status:** pilot rows (858) kept as pilot material; scaling waits for the Codex reset (15 Sep) and the owner's go; trainer loss masking (DATA_TODO 26) is still a prerequisite for S4.
