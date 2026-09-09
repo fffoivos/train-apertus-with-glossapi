@@ -60,7 +60,7 @@ PERSONAS = [
  ('προγραμματιστής', 'neutral'), ('γιαγιά που μόλις έμαθε κινητό', 'simple'), ('φοιτητής νομικής', 'formal'), ('οδηγός ταξί', 'casual'),
 ]
 def greeklish(s):
-    m = dict(zip('αβγδεζηθικλμνξοπρστυφχψωάέήίόύώϊϋ', ['a','b','g','d','e','z','i','th','i','k','l','m','n','x','o','p','r','s','t','y','f','x','ps','w','a','e','i','i','o','y','w','i','y']))
+    m = dict(zip('αβγδεζηθικλμνξοπρστυφχψωάέήίόύώϊϋςΐΰ', ['a','b','g','d','e','z','i','th','i','k','l','m','n','x','o','p','r','s','t','y','f','x','ps','w','a','e','i','i','o','y','w','i','y','s','i','y']))
     return ''.join(m.get(ch, m.get(ch.lower(), ch).upper() if ch.isupper() else ch) for ch in s)
 def surface(text, style, rng):
     if style == 'atonic': return C.strip_accents(text).replace('ϊ', 'ι').replace('ϋ', 'υ')
@@ -73,15 +73,19 @@ BANK = {}   # (domain, subtopic, form) -> authored requests, loaded with --reque
 LAYOUT_REQUEST_FIRST, LAYOUT_CONSTRAINTS_FIRST = 0.55, 0.25   # v1; v2 uses 0.75/0.10 so constraint phrasings stop dominating the prompt openers
 ADDRESS = {'formal_plural', 'informal_singular', 'formal_and_informal', 'child_register'}
 TRANSLATE_OK = {'length_words_max', 'length_words_min', 'length_sentences_exact', 'length_paragraphs', 'title', 'no_comma', 'no_exclamation', 'all_lower', 'wrap_in_quotes', 'two_responses', 'bullets_n', 'highlight_n', 'end_with', 'start_with', 'postscript', 'keywords_exclude'}   # a translation must keep the content: only form constraints apply
+CONTENT_ADD = {'mention_date', 'mention_euro', 'mention_number', 'mention_entity', 'avoid_entity', 'keywords_include', 'keyword_freq', 'letter_freq', 'placeholders_n'}   # families that make the answer add or invent content
+PADDING = {'keyword_freq', 'letter_freq', 'placeholders_n', 'sections_n', 'two_responses', 'length_words_min'}   # families that pad a short factual answer
 FORM_EXCLUDE = {'translate': set(C.FAMILIES) - TRANSLATE_OK,
-                'summarise': ADDRESS, 'rewrite': ADDRESS - {'formal_plural', 'informal_singular'}}   # constraints that cannot apply to the task are never drawn for it
+                'summarise': ADDRESS | CONTENT_ADD | {'length_words_min'}, 'rewrite': (ADDRESS - {'formal_plural', 'informal_singular'}) | CONTENT_ADD,   # astra review 2026-09-09: rewrites/summaries were inventing dates and amounts to satisfy constraints
+                'quick_fact': PADDING, 'correction': {'placeholders_n', 'letter_freq'}}
+ENTITY_DOMAINS = {'δημόσιες υπηρεσίες', 'υγεία', 'χρήματα', 'εργασία', 'τεχνολογία'}   # mention_entity/avoid_entity only where the entities (ΚΕΠ, ΕΟΠΥΥ, ΑΑΔΕ…) belong
 def build(rng, domain, sub, form, persona, level, families=None, phrasing_seed=None, fixed_seed=None):
     tmpl = rng.choice(FORMS[form]); text = rng.choice(TEXTS); authored = BANK.get((domain, sub, form))
     if authored:
         fresh = [b for b in authored if not b.get('_used')] or authored   # each authored request is used once per build (no shared prefixes from reuse)
         b = rng.choice(fresh); b['_used'] = True; req = b['text']; persona = (b['persona'], b['persona_style']); text = None
     else: req = tmpl.format(sub=sub, what=rng.choice(WHATS), wrong=rng.choice(WRONGS), text=text)
-    fams = [f for f in (families or list(C.FAMILIES)) if f not in FORM_EXCLUDE.get(form, set())]
+    fams = [f for f in (families or list(C.FAMILIES)) if f not in FORM_EXCLUDE.get(form, set()) and (domain in ENTITY_DOMAINS or f not in ('mention_entity', 'avoid_entity'))]
     cons = C.sample_constraints(random.Random(fixed_seed) if fixed_seed is not None else rng, level, fams)
     if not cons: return None
     if fixed_seed is not None:   # E6: same families and params, the phrasing re-drawn per variant
@@ -92,7 +96,7 @@ def build(rng, domain, sub, form, persona, level, families=None, phrasing_seed=N
     if layout < LAYOUT_REQUEST_FIRST: prompt = req + '\n\n' + ' '.join(lines)                       # request, then the constraints
     elif layout < LAYOUT_REQUEST_FIRST + LAYOUT_CONSTRAINTS_FIRST: prompt = ' '.join(lines) + '\n\n' + req                      # constraints first
     else: prompt = req + ' ' + lines[0] + ('\n\n' + ' '.join(lines[1:]) if len(lines) > 1 else '')   # split
-    if rng.random() < 0.1 and cons: prompt += '\n\n' + rng.choice(['Το ξαναλέω: ', 'Προσοχή: ']) + cons[0]['text']
+    if rng.random() < 0.1 and cons: prompt += '\n\n' + surface(rng.choice(['Το ξαναλέω: ', 'Προσοχή: ']) + cons[0]['text'], persona[1], rng)
     return dict(prompt=prompt, request=req, constraints=cons, level=len(cons), domain=domain, subtopic=sub, form=form, persona=persona[0], persona_style=persona[1], source_text=text if (text and '{text}' in tmpl) else None, authored=bool(authored))
 
 def main():

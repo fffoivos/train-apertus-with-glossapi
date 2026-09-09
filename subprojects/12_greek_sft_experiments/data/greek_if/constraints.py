@@ -214,6 +214,12 @@ for _a, _b in (('repeat_request', 'title'), ('repeat_request', 'start_with'), ('
 
 FAMILIES['mention_euro']['check'] = lambda a, p: bool(re.search(r'\d[\d.,]*\s?(€|ευρώ|ευρω|euro|evro)|€\s?\d', a, re.I))   # «25 €», «25 ευρώ» or the English «€25»
 
+# ---- amendments after the astra review of v1 (2026-09-09): literal contracts, direct phrasings, stem-aware exclusion ----
+FAMILIES['keywords_exclude']['check'] = lambda a, p: not re.search(r'\b' + re.escape(strip_accents(p['w']).lower()[:5]), strip_accents(a).lower())   # «ούτε παράγωγά της»: the stem (first five letters) must not appear
+FAMILIES['avoid_entity']['phrasings'] = ['Μην χρησιμοποιήσεις πουθενά τη λέξη «{e}».', 'Χωρίς τη λέξη «{e}» στην απάντηση.', 'Η λέξη «{e}» απαγορεύεται.']   # literal contract, matching the literal checker
+FAMILIES['greek_question_mark']['phrasings'] = ['Βάλε τουλάχιστον μία ερώτηση και χρησιμοποίησε το ελληνικό ερωτηματικό (;), ποτέ το λατινικό (?).', 'Κάνε τουλάχιστον μία ερώτηση με το ελληνικό ερωτηματικό «;»· το «?» απαγορεύεται.', 'Θέλω τουλάχιστον μία ερώτηση, με το ελληνικό «;» και όχι με «?».']
+FAMILIES['title']['phrasings'] = ['Βάλε τίτλο στην αρχή ανάμεσα σε δύο ζεύγη γωνιωδών αγκυλών, έτσι: <<Ο τίτλος μου>>.', 'Η απάντηση να έχει τίτλο γραμμένο ως <<τίτλος>> (με τα σύμβολα << και >>).', 'Ξεκίνα με έναν τίτλο σε μορφή <<τίτλος>>.']
+
 if __name__ == '__main__':
     rng = random.Random(1)
     print(len(FAMILIES), 'families;', len(CHECKABLE), 'checkable; groups', GROUPS)

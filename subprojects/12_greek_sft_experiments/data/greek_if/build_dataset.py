@@ -2,8 +2,15 @@
 """Assemble the verified set: first-try answers that pass, else retry answers that pass; failures become preference pairs when a passing answer exists.
 Usage: python3 build_dataset.py <prompts.jsonl> <answers.jsonl> <retry_answers.jsonl> <out_dir>
 Writes greek_if_sft.jsonl (core-export schema + metadata), greek_if_dpo.jsonl (prompt, chosen, rejected), rejected_only.jsonl, summary.json"""
-import collections, json, os, sys
+import collections, json, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE); import constraints as C
+FIDELITY_FORMS = {'rewrite', 'summarise', 'translate'}
+def fidelity_ok(prompt: str, answer: str) -> bool:
+    """Astra review 2026-09-09: rewrites invented dates and amounts. Every number of 2+ digits, year, date or euro amount in the answer must appear in the source text."""
+    src = re.sub(r'[.,]', '', prompt); toks = set(re.findall(r'\d{2,}', src))
+    for t in re.findall(r'\d{2,}', re.sub(r'[.,](?=\d{3})', '', answer)):
+        if t not in toks and not (len(t) == 2 and t in src): return False
+    return True
 def main():
     prompts_path, ans_path, retry_path, out = sys.argv[1:5]; os.makedirs(out, exist_ok=True)
     rows = [json.loads(l) for l in open(prompts_path)]
@@ -13,6 +20,8 @@ def main():
     for r in rows:
         cands = [(w, a) for w, a in (('first', first.get(r['id'])), ('retry', retry.get(r['id']))) if a]
         if not cands: stats['unanswered'] += 1; continue
+        if r['form'] in FIDELITY_FORMS: cands = [(w, a) for w, a in cands if fidelity_ok(r['prompt'], a)] or (stats.__setitem__('fidelity_dropped', stats['fidelity_dropped'] + 1) or [])
+        if not cands: continue
         verdicts = {w: C.check_all(a, r['constraints'], r['request']) for w, a in cands}
         ok = {w: all(x['ok'] for x in v if x['checkable']) for w, v in verdicts.items()}
         chosen = next((w for w in ('first', 'retry') if ok.get(w)), None)
