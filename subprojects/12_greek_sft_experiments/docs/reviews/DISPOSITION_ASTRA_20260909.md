@@ -1,0 +1,16 @@
+# Disposition of the five astra reviews (2026-09-09)
+
+Owner rule (9 Sep): after each experimentation/build phase, 1–3 reviews with ChatGPT's astra model at xhigh; no drastic action on
+completed sets, corrections allowed on queued ones. Reviews ran via data/review_astra.py (gpt-6-astra asserted from the rollout, Codex CLI
+0.153.4). Cost: the five reviews together moved the Codex weekly window by ≈0.0% per the limit probe (astra is not metered against the
+weekly cap the way Sol calls are; 9–10 min each). Window at 18:45: 57.0%, reset Tue 15 Sep 20:22.
+
+| Set | Status | Review | Verdict in short | Disposition |
+|---|---|---|---|---|
+| Greek IF v1 | completed (v1+v2 merged, correction running) | ASTRA_greek_if_v1 | checker gaps (final sigma, greeklish leaks, fidelity in rewrite/summarise/translate), constraint incompatibilities | applied to v3's recipe and to the merge (fidelity filter dropped 244 rows; constraints.py amendments); v1/v2 rows untouched beyond the filter |
+| Math cut1 | queued (build held) | ASTRA_math_cut1 | scorer artefacts (ratio, π, multipart finals), [asy] diagrams in translated rows, risky native topics verified only by grade, «μία πράξη ανά γραμμή» too literal | mathlib ratio/π/multipart; postfix_cut1.py (running): extra Sol second solve for 2,894 feature-routed native rows, multipart finals must carry both parts, 350 [asy] rows quarantined; then rebuild cut1 and release the queue; solution-style rule reworded for cut2 |
+| Convskills suite S1–S4 | queued (pilot in queue 2) | ASTRA_convskills_prompts | BLOCKER: S1 list targets were prefixes; BLOCKER: planted tics would be trained; base-pool leakage, seeds shared across lanes, count off-by-one, unnatural acceptances, greeklish share test | all applied in gen_suite.py (see DIALOGUE_REVIEW_AND_SUITE §6): full-sentence targets, `train: false`, held-out 10%, per-lane seeds, count phrasing, natural acceptances, strict greeklish, S2 position 1–3 + short bases; new S3c chained edits and S5m inference memory; pilot 975 dialogues |
+| Robustness R1 | completed experiment; simulator reused for S12 | ASTRA_robustness_r1 | BLOCKER: clipped evidence export; BLOCKER: key-noun flag unusable as a selector; judge rubric, move labels, scripted reactivity, rewrite rules | R1 numbers stand; simulate.py patched (per-turn finish/usage/prompt hash, judge fields uptake/honours/correct/consistent/realised_move/claim_truth/evidence, no invented history, `--policy naturalistic`); reports no longer count the heuristic as broken; S12 contract in ROBUSTNESS_PROGRAM §10; DATA_TODO 26–27 |
+| Personality v3 | completed and trained | ASTRA_personality_v3 | 7 factual targets to correct (11.7% of the sample), C rows refuse legitimate operations, D scoping, identity assurances overstated, EEZ rule unsafe as written, tone in 7 rows | no change to v3; corrections registry data/personality/FACT_CORRECTIONS_ASTRA_20260909.md for v4 and S8; DATA_TODO 28; the EEZ objection is recorded for the owner (rule stays as the owner's standing instruction; relevance-rule compromise proposed) |
+
+Owner decisions pending: (1) the EEZ relevance-rule compromise; (2) trainer loss-mask work (DATA_TODO 26) before S4/S12 rows are trained.

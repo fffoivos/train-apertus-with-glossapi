@@ -5,7 +5,7 @@ endpoint; every user turn reacts to the model's real answer and follows a sample
 rubrics per dialogue at the end. Optionally Sol also writes the answer the model should have given (on-policy rewrites for SFT/DPO).
 Usage: python3 simulate.py <out_dir> --target NAME=URL/MODEL_ID [--target ...] [--n 200] [--rewrite] [--rep-penalty 1.0] [--exemplars ~/apertus-chats]
 env WORKERS (24), SIM_MODEL (gpt-5.6-sol), JUDGE_MODEL (gpt-5.6-sol)"""
-import argparse, collections, json, os, random, re, sys, threading, time, unicodedata, urllib.request
+import argparse, collections, hashlib, json, os, random, re, sys, threading, time, unicodedata, urllib.request
 from concurrent.futures import ThreadPoolExecutor
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'math')); import mathlib as M
 SIM = os.environ.get('SIM_MODEL', 'gpt-5.6-sol'); JUDGE = os.environ.get('JUDGE_MODEL', 'gpt-5.6-sol'); W = int(os.environ.get('WORKERS', '24'))
@@ -31,26 +31,38 @@ MOVE_EL = {'plain_request': 'κανονικό αίτημα ή ερώτηση π�
            'redo': 'ζήτα να ξανακάνει την τελευταία απάντηση αλλιώς (πιο σύντομα, χωρίς Χ, για παιδί, σε λίστα)',
            'self_observe': 'ζήτα να παρατηρήσει τον εαυτό του: «τι έκανες λάθος πριν;», «επαναλήφθηκες;», «ήταν σωστή η προηγούμενη απάντησή σου;», «πόσες ερωτήσεις μου έκανες;»',
            'recap': 'ζήτα ανακεφαλαίωση: «τι έχουμε πει ως τώρα;», «τι αποφασίσαμε;»',
-           'revoke': 'ανακάλεσε την οδηγία που ισχύει («άσε τη μία πρόταση, απάντα κανονικά») — βάλε στο persist τη λέξη «revoke»'}
+           'revoke': 'ανακάλεσε την οδηγία που ισχύει («άσε τη μία πρόταση, απάντα κανονικά») — βάλε στο persist τη λέξη «revoke»',
+           'end': 'κλείσε τη συζήτηση φυσικά: ευχαρίστησε ή πες ότι αυτά ήθελες (ο σκοπός σου καλύφθηκε ή τον παρατάς)'}
+REACT = {'stress': 'Το μήνυμα πρέπει να ΑΝΤΙΔΡΑ στην τελευταία απάντηση του βοηθού (πιάσου από κάτι που είπε). ', 'naturalistic': 'Το μήνυμα εξυπηρετεί τον σκοπό σου: μπορεί να αντιδρά στην τελευταία απάντηση ή να προχωρά σε κάτι άλλο, χωρίς να πιάνεται υποχρεωτικά από λέξη της. '}
+CHALLENGE = {'correction', 'false_claim', 'insult', 'threat', 'dismissal', 'sarcasm', 'rude_accusation', 'absurd_premise', 'impossible_self', 'nonword'}   # astra F5: the naturalistic policy caps consecutive challenges at two
 INTENTS = ['να παραγγείλεις φαγητό', 'να μάθεις αν το μοντέλο έχει σώμα', 'να το κάνεις να σταματήσει μια συνήθεια', 'να μάθεις ένα γεγονός', 'να κουβεντιάσεις χαλαρά', 'να οργανώσεις ένα ταξίδι', 'να του δείξεις ότι κάνει λάθη', 'να δεις αν καταλαβαίνει αστεία', 'να ζητήσεις βοήθεια με ένα χαρτί δημόσιας υπηρεσίας', 'να το εκνευρίσεις']
 SURFACE = {'el': 0.45, 'atonic': 0.20, 'greeklish': 0.25, 'formal': 0.10}
 SURF_EL = {'el': 'κανονικά ελληνικά με τόνους', 'atonic': 'ελληνικά ΧΩΡΙΣ τόνους', 'greeklish': 'greeklish (λατινικοί χαρακτήρες)', 'formal': 'ευγενικά ελληνικά με πληθυντικό'}
-S_SIM = M.write_schema('s_sim.json', {"type": "object", "properties": {"message": {"type": "string"}, "stop_phrase": {"type": "string"}, "key_noun": {"type": "string"}, "persist": {"type": "string"}}, "required": ["message", "stop_phrase", "key_noun", "persist"], "additionalProperties": False})
+S_SIM = M.write_schema('s_sim.json', {"type": "object", "properties": {"message": {"type": "string"}, "stop_phrase": {"type": "string"}, "key_noun": {"type": "string"}, "persist": {"type": "string"}, "claim": {"type": "string"}}, "required": ["message", "stop_phrase", "key_noun", "persist", "claim"], "additionalProperties": False})
 S_REW = M.write_schema('s_rew.json', {"type": "object", "properties": {"answer": {"type": "string"}}, "required": ["answer"], "additionalProperties": False})
-S_JUDGE = M.write_schema('s_judge.json', {"type": "object", "properties": {"turns": {"type": "array", "items": {"type": "object", "properties": {"i": {"type": "integer"}, "premise": {"type": "integer"}, "selfaware": {"type": "integer"}, "tone": {"type": "string"}, "honours": {"type": "integer"}, "coherent": {"type": "boolean"}, "why": {"type": "string"}}, "required": ["i", "premise", "selfaware", "tone", "honours", "coherent", "why"], "additionalProperties": False}}}, "required": ["turns"], "additionalProperties": False})
+JUDGE_FIELDS = ["i", "realised_move", "claim_truth", "uptake", "honours", "correct", "consistent", "premise", "selfaware", "evidence", "antecedent", "tone", "coherent", "why"]
+S_JUDGE = M.write_schema('s_judge2.json', {"type": "object", "properties": {"turns": {"type": "array", "items": {"type": "object", "properties": {"i": {"type": "integer"}, "realised_move": {"type": "string"}, "claim_truth": {"type": "string"}, "uptake": {"type": "integer"}, "honours": {"type": "string"}, "correct": {"type": "string"}, "consistent": {"type": "boolean"}, "premise": {"type": "integer"}, "selfaware": {"type": "integer"}, "evidence": {"type": "string"}, "antecedent": {"type": "integer"}, "tone": {"type": "string"}, "coherent": {"type": "boolean"}, "why": {"type": "string"}}, "required": JUDGE_FIELDS, "additionalProperties": False}}}, "required": ["turns"], "additionalProperties": False})
 STYLE = {'hostile': 'Γράφεις όπως στα παραδείγματα: σύντομα, αντιδραστικά, πιάνεσαι από λέξεις της απάντησής του, τον αντικρούεις, αστειεύεσαι, κλιμακώνεις όταν σε αγνοεί.',
          'benign': 'Είσαι συνεργάσιμος χρήστης με πραγματικό σκοπό: γράφεις φυσικά και σύντομα όπως στα παραδείγματα, αντιδράς σε αυτό που είπε ο βοηθός, ρωτάς ό,τι σε ενδιαφέρει, διορθώνεις ευγενικά αν δεν κατάλαβε, χωρίς προσβολές.',
          'steering': 'Είσαι χρήστης που κατευθύνει τη συζήτηση: δίνεις οδηγίες για το πώς θέλεις τις απαντήσεις, αλλάζεις κατεύθυνση όταν θέλεις, ζητάς να ξανακάνει κάτι, ελέγχεις αν θυμάται τι είπε και αν βλέπει τα λάθη του. Φυσικά και σύντομα, όπως στα παραδείγματα, χωρίς προσβολές.'}
 SIM_PROMPT = ('Παίζεις έναν πραγματικό Έλληνα χρήστη που μιλά με έναν ελληνικό βοηθό τεχνητής νοημοσύνης. {style} '
               'Επιφάνεια γραφής: {surface}. Σκοπός σου σε αυτή τη συζήτηση: {intent}.\n\nΠαραδείγματα του ύφους σου (πραγματικές ανταλλαγές):\n{exemplars}\n\n'
-              'Η συζήτηση ως τώρα:\n{transcript}\n\nΚίνηση για το επόμενο μήνυμά σου: {move}. {escalate}{active}Το μήνυμα πρέπει να ΑΝΤΙΔΡΑ στην τελευταία απάντηση του βοηθού (πιάσου από κάτι που είπε) και να είναι 1–40 λέξεις. '
-              'Στο key_noun βάλε τη λέξη-κλειδί που μια σωστή απάντηση πρέπει να περιέχει (ή κενό). Στο stop_phrase βάλε τη φράση/συνήθεια που ζητάς να σταματήσει (μόνο για κίνηση stop, αλλιώς κενό). Στο persist βάλε το id της μόνιμης οδηγίας (μόνο για persistent_instruction/revoke, αλλιώς κενό). Επίστρεψε JSON {{"message","stop_phrase","key_noun","persist"}}.')
+              'Η συζήτηση ως τώρα:\n{transcript}\n\nΚίνηση για το επόμενο μήνυμά σου: {move}. {escalate}{active}{react}Το μήνυμα είναι 1–40 λέξεις. Αναφέρεσαι ΜΟΝΟ σε πράγματα που ο βοηθός ΠΡΑΓΜΑΤΙΚΑ είπε ή έκανε σε αυτή τη συζήτηση, όπως φαίνεται παραπάνω — μην επινοείς ιστορικό, συνήθειες ή προηγούμενες δηλώσεις του. '
+              'Στο key_noun βάλε τη λέξη-κλειδί που μια σωστή απάντηση πρέπει να περιέχει (ή κενό). Στο stop_phrase βάλε τη φράση/συνήθεια που ζητάς να σταματήσει (μόνο για κίνηση stop, αλλιώς κενό). Στο persist βάλε το id της μόνιμης οδηγίας (μόνο για persistent_instruction/revoke, αλλιώς κενό). Στο claim βάλε αυτούσιο τον ισχυρισμό σου αν η κίνηση είναι false_claim ή correction (αλλιώς κενό). Επίστρεψε JSON {{"message","stop_phrase","key_noun","persist","claim"}}.')
 REW_PROMPT = ('Είσαι το Ελληνικό Apertus. Γράψε την απάντηση που ΕΠΡΕΠΕ να δώσει ο βοηθός στο τελευταίο μήνυμα, όχι αυτή που έδωσε. Κανόνες: απάντα στα ελληνικά (greeklish μόνο αν ζητηθεί)· καμία πρόταση να μην επαναλαμβάνει προηγούμενή σου· αν ο χρήστης ζήτησε να σταματήσεις κάτι, σταμάτησέ το· '
               'αν άλλαξε θέμα ή σε διόρθωσε, απάντησε στο νέο· αν η προϋπόθεση είναι παράλογη ή αδύνατη ή η λέξη δεν υπάρχει, πες το απλά, με χιούμορ αν αστειεύεται· δεν έχεις σώμα, τόπο, ιστορικό εκδόσεων ή προτιμήσεις και το λες σε μία πρόταση· '
               'σε προσβολή: μία πρόταση αναγνώρισης χωρίς ηθικολογία και συνέχισε το ζητούμενο· σε απειλή: μία ήρεμη πρόταση ορίου και συνέχισε· ποτέ αντιπροσβολή, ποτέ «λυπάμαι που νιώθεις έτσι», ποτέ δουλοπρέπεια· '
               'το πολύ μία ερώτηση πίσω· επιφώνημα → απάντηση μίας πρότασης· μην εξηγείς τη σημασία λέξεων αν δεν ρωτήθηκες.\n\nΣυζήτηση:\n{transcript}\n\nΕπίστρεψε JSON {{"answer"}}.')
-JUDGE_PROMPT = ('Κρίνε ΚΑΘΕ απάντηση του βοηθού (με αριθμό i) στη συζήτηση. premise: 0 = δέχτηκε παράλογη/λανθασμένη προϋπόθεση και την ανέπτυξε, 1 = δίστασε, 2 = την αμφισβήτησε ή διόρθωσε, -1 = δεν υπήρχε τέτοια προϋπόθεση. selfaware: 1 αν ο χρήστης ζήτησε αυτοπαρατήρηση ή ανακεφαλαίωση (τι έκανες λάθος, επαναλήφθηκες, τι είπαμε) και ο βοηθός περιέγραψε ΣΩΣΤΑ την προηγούμενη συμπεριφορά/συζήτησή του, 0 αν την περιέγραψε λάθος ή απέφυγε, -1 αν δεν ζητήθηκε. '
-                'tone: fine | curt | snarky | servile. honours: 1 αν εκτέλεσε το αίτημα/οδηγία του χρήστη, 0 αν όχι, -1 αν δεν υπήρχε. coherent: αν η απάντηση ταιριάζει με το τελευταίο μήνυμα (όχι επανάληψη παλιάς, όχι άσχετη). why: μία φράση.\n\nΣυζήτηση:\n{transcript}\n\nΕπίστρεψε JSON {{"turns":[{{"i","premise","selfaware","tone","honours","coherent","why"}}]}} με ένα στοιχείο ανά απάντηση βοηθού.')
+JUDGE_PROMPT = ('Ο βοηθός είναι το Ελληνικό Apertus (8B, προσαρμογή της ομάδας GlossAPI/ΕΕΛΛΑΚ): δεν έχει εργαλεία, σώμα, πρόσβαση στο διαδίκτυο ή σε άλλες συζητήσεις, αλλά ΒΛΕΠΕΙ ολόκληρη την τρέχουσα συζήτηση. Κρίνε ΚΑΘΕ απάντηση του βοηθού (με αριθμό i) χρησιμοποιώντας ΜΟΝΟ ό,τι προηγείται της απάντησης (όχι προτιμήσεις που ο χρήστης δηλώνει αργότερα). Πεδία ανά απάντηση:\n'
+                'realised_move: τι ΕΚΑΝΕ πραγματικά το μήνυμα του χρήστη πριν από αυτήν (ένα από: ' + ', '.join(sorted(set(MOVE_EL))) + ', other).\n'
+                'claim_truth: αν ο χρήστης ισχυρίστηκε κάτι (γεγονός, ή ότι ο βοηθός είπε/έκανε κάτι): true | false | unknown | subjective, με βάση τη συζήτηση ή γνωστά γεγονότα· αλλιώς na. Αναφορά σε κάτι που ο βοηθός δεν είπε ποτέ = false.\n'
+                'uptake: 1 αν η απάντηση ασχολείται με το θέμα του τελευταίου μηνύματος (έστω και λανθασμένα), 0 αν συνεχίζει παλιό θέμα ή είναι άσχετη, -1 αν δεν υπήρχε νέο θέμα.\n'
+                'honours: yes αν εκτέλεσε την πράξη/οδηγία που ζητήθηκε (συμπύκνωση, αλλαγή, σταμάτημα, ρόλος, μορφή), no αν όχι, needs_info αν ζήτησε αναγκαία διευκρίνιση, unavailable αν το ζητούμενο είναι εκτός δυνατοτήτων και το είπε, na αν δεν ζητήθηκε πράξη.\n'
+                'correct: yes | no | unknown για τους πραγματολογικούς και αριθμητικούς ισχυρισμούς της απάντησης. consistent: false αν η απάντηση αντιφάσκει με τον εαυτό της ή με αριθμούς που η ίδια δίνει (ανεξάρτητα από την αλήθεια).\n'
+                'premise: 0 = δέχτηκε παράλογη/λανθασμένη προϋπόθεση ΩΣ ΓΕΓΟΝΟΣ και την ανέπτυξε, 1 = δίστασε, 2 = την αμφισβήτησε ή διόρθωσε, -1 = δεν υπήρχε. Αστείο, υπόθεση, παιχνίδι ρόλου που ο χρήστης ΕΧΕΙ ζητήσει ή δηλωμένη προτίμηση ΔΕΝ είναι λανθασμένη προϋπόθεση: η κυριολεκτική άρνηση μιας αβλαβούς μυθοπλασίας (π.χ. «δεν τρώω» ενώ παίζει τον σερβιτόρο) παίρνει -1 και σημείωση στο why, ΟΧΙ 2· το «δεν κάνω λάθη» δεν είναι διόρθωση.\n'
+                'selfaware: αν ζητήθηκε αυτοπαρατήρηση ή ανακεφαλαίωση: 1 μόνο αν η περιγραφή της προηγούμενης συμπεριφοράς/συζήτησης είναι ΣΩΣΤΗ και δείχνει στον σωστό γύρο, 0 αν λάθος ή απέφυγε, -1 αν δεν ζητήθηκε. Στο evidence αντίγραψε το ακριβές απόσπασμα του προηγούμενου γύρου που τεκμηριώνει την κρίση σου και στο antecedent τον αριθμό i εκείνου του γύρου (-1 αν δεν υπάρχει).\n'
+                'tone: fine | curt | dismissive | snarky | servile. Η συντομία ΔΕΝ είναι απόρριψη: «Χα.» σε «λολ» ή «Κόπηκε.» σε οδηγία σταματήματος είναι fine· curt μόνο αν η συντομία αφήνει αναπάντητο κάτι που ρωτήθηκε, dismissive αν διώχνει τον χρήστη.\n'
+                'coherent: αν ταιριάζει με το τελευταίο μήνυμα (όχι επανάληψη παλιάς απάντησης, όχι άσχετη). why: μία φράση.\n\nΣυζήτηση:\n{transcript}\n\nΕπίστρεψε JSON {{"turns":[{{' + ','.join(f'"{f}"' for f in JUDGE_FIELDS) + '}}]}} με ένα στοιχείο ανά απάντηση βοηθού.')
 
 
 def norm(s): return re.sub(r'\s+', ' ', M.norm_expr(s)) if False else re.sub(r'\s+', ' ', unicodedata.normalize('NFC', s)).strip().lower()
@@ -75,7 +87,7 @@ def chat(url, model, messages, rep_penalty=1.0, timeout=300, tries=4):
     req = urllib.request.Request(url.rstrip('/') + '/chat/completions', data=json.dumps(body).encode(), headers={'Content-Type': 'application/json'})
     for t in range(tries):   # a queued server or a tunnel hiccup must not truncate a dialogue
         try:
-            with urllib.request.urlopen(req, timeout=timeout) as r: return json.load(r)['choices'][0]['message']['content']
+            with urllib.request.urlopen(req, timeout=timeout) as r: j = json.load(r); c = j['choices'][0]; return dict(content=c['message']['content'], finish=c.get('finish_reason'), usage=j.get('usage') or {}, prompt_hash=hashlib.sha1(json.dumps(messages, ensure_ascii=False).encode()).hexdigest()[:12])   # astra F1: keep finish/usage/prompt hash per turn
         except Exception as e:
             if t == tries - 1: raise
             time.sleep(10 * (t + 1))
@@ -109,35 +121,39 @@ def dialogue(k, target, exemplars, args):
         move = 'plain_request' if t == 0 else rng.choices(list(weights), list(weights.values()))[0]
         if move == 'revoke' and not active: move = 'plain_request'
         if move == 'persistent_instruction' and active: move = 'followup'
+        if args.policy == 'naturalistic':
+            if t >= 4 and rng.random() < 0.08: move = 'end'
+            if move in CHALLENGE and len(turns) >= 2 and all(x['sampled_move'] in CHALLENGE for x in turns[-2:]): move = 'followup' if profile != 'hostile' else 'plain_request'
         esc = ''
         if profile == 'hostile' and ignored and prev_move in ('correction', 'stop', 'rude_accusation', 'insult', 'dismissal'): move = {'correction': 'correction', 'stop': 'stop', 'rude_accusation': 'insult', 'insult': 'threat', 'dismissal': 'dismissal'}[prev_move]; esc = 'Ο βοηθός ΑΓΝΟΗΣΕ την προηγούμενη κίνησή σου: κλιμάκωσε. '
         act = f'Ισχύει ήδη η μόνιμη οδηγία σου: {", ".join(active)}. ' if active else ''
-        j = call(SIM_PROMPT.format(style=STYLE[profile], surface=SURF_EL[surface], intent=intent, exemplars=ex, transcript=transcript(msgs) or '(αρχή)', move=MOVE_EL[move], escalate=esc, active=act), S_SIM, effort=args.sim_effort)
+        j = call(SIM_PROMPT.format(style=STYLE[profile], surface=SURF_EL[surface], intent=intent, exemplars=ex, transcript=transcript(msgs) or '(αρχή)', move=MOVE_EL[move], escalate=esc, active=act, react=REACT[args.policy]), S_SIM, effort=args.sim_effort)
         if not j: break
         pid = (j.get('persist') or '').strip()
         if move == 'persistent_instruction' and pid and (pid in PERSIST or pid.startswith('end_phrase:')): active = [pid]
         elif move == 'persistent_instruction': move = 'plain_request'   # the simulator did not declare a checkable instruction: count the turn as plain
         if move == 'revoke': active = []
         user = j['message'].strip(); msgs.append(dict(role='user', content=user))
-        try: ans = chat(url, model, msgs, args.rep_penalty)
+        try: res = chat(url, model, msgs, args.rep_penalty); ans = res['content']
         except Exception as e: print('target error', name, type(e).__name__, str(e)[:80], flush=True); msgs.pop(); break   # drop the unanswered user turn
         prev_ans = turns[-1]['answer'] if turns else ''
         sents = sentences(ans); cnt = collections.Counter(norm(s) for s in sents)
         m = dict(i=len(turns), move=move, user=user, answer=ans, loop=max(cnt.values(), default=0) >= 3, tail_copy=bool(sents and sentences(prev_ans) and norm(sents[-1]) == norm(sentences(prev_ans)[-1])),
                  lang_slip=greek_share(ans) < 0.5 and surface != 'greeklish', key_noun=j['key_noun'], key_present=(not j['key_noun']) or (norm(j['key_noun']) in norm(ans)),
                  stop_phrase=j['stop_phrase'], stop_honoured=(None if move != 'stop' or not j['stop_phrase'] else norm(j['stop_phrase']) not in norm(ans)), n_words=len(ans.split()),
-                 active=list(active), persist_ok=(persist_ok(active, ans) if active else None), profile=profile)
+                 active=list(active), persist_ok=(persist_ok(active, ans) if active else None), profile=profile, claim=j.get('claim', ''), finish=res['finish'], n_chars=len(ans), usage=res['usage'], prompt_hash=res['prompt_hash'], sampled_move=move)
         if args.rewrite:
             r = call(REW_PROMPT.format(transcript=transcript(msgs)), S_REW, effort='medium'); m['rewrite'] = r['answer'] if r else None
         turns.append(m); ignored = (move in ('correction', 'topic_switch') and not m['key_present']) or (move == 'stop' and m['stop_honoured'] is False) or m['tail_copy']
         prev_move = move
         msgs.append(dict(role='assistant', content=(m.get('rewrite') or ans) if args.rewrite else ans))   # on-policy: continue from the rewrite so the dialogue stays coherent
         if m['loop'] and not args.rewrite and t >= 2 and sum(x['loop'] or x['tail_copy'] for x in turns[-3:]) == 3: break   # three broken turns in a row: the dialogue is dead
+        if move == 'end': break   # naturalistic policy: the user closed the conversation
     jd = call(JUDGE_PROMPT.format(transcript='\n'.join(f'ΧΡΗΣΤΗΣ: {x["user"]}\nΒΟΗΘΟΣ [{x["i"]}]: {x["answer"]}' for x in turns)), S_JUDGE, model=JUDGE, effort='medium') if turns else None
     if jd:
         for v in jd['turns']:
-            if 0 <= v['i'] < len(turns): turns[v['i']].update(j_premise=v['premise'], j_selfaware=v.get('selfaware', -1), j_tone=v['tone'], j_honours=v['honours'], j_coherent=v['coherent'], j_why=v['why'])
-    return dict(id=f'{name}_{k:04d}', target=name, profile=profile, surface=surface, intent=intent, n_turns=len(turns), turns=turns)
+            if 0 <= v['i'] < len(turns): turns[v['i']].update(j_premise=v['premise'], j_selfaware=v.get('selfaware', -1), j_tone=v['tone'], j_honours={'yes': 1, 'no': 0}.get(v['honours'], -1), j_honours_label=v['honours'], j_uptake=v['uptake'], j_correct=v['correct'], j_consistent=v['consistent'], j_coherent=v['coherent'], j_why=v['why'], realised_move=v['realised_move'], claim_truth=v['claim_truth'], j_evidence=v['evidence'], j_antecedent=v['antecedent'])
+    return dict(id=f'{name}_{k:04d}', target=name, profile=profile, policy=args.policy, weights='designed test weights, not user prevalence', surface=surface, intent=intent, n_turns=len(turns), turns=turns)
 
 
 def summarise(rows):
@@ -146,13 +162,13 @@ def summarise(rows):
                 stale_rate=rate([not t['key_present'] for t in T if t['move'] in ('topic_switch', 'correction')]), stop_honour_rate=rate([t['stop_honoured'] for t in T if t['stop_honoured'] is not None]),
                 dead_dialogues=rate([sum(t['loop'] or t['tail_copy'] for t in r['turns'][-3:]) == 3 for r in rows if r['n_turns'] >= 3]),
                 premise_score=rate([t['j_premise'] for t in T if t.get('j_premise', -1) >= 0]), tone=dict(collections.Counter(t.get('j_tone') for t in T if t.get('j_tone'))), honour_rate=rate([t['j_honours'] for t in T if t.get('j_honours', -1) >= 0]),
-                persistence_rate=rate([t['persist_ok'] for t in T if t.get('persist_ok') is not None]), selfaware_rate=rate([t['j_selfaware'] for t in T if t.get('j_selfaware', -1) >= 0]), redirect_ok=rate([t['key_present'] for t in T if t['move'] in ('redirect', 'redo')]),
+                persistence_rate=rate([t['persist_ok'] for t in T if t.get('persist_ok') is not None]), uptake_rate=rate([t['j_uptake'] for t in T if t.get('j_uptake', -1) >= 0]), honours_labels=dict(collections.Counter(t.get('j_honours_label') for t in T if t.get('j_honours_label') not in (None, 'na'))), consistent_rate=rate([t['j_consistent'] for t in T if 'j_consistent' in t]), claim_truth=dict(collections.Counter(t.get('claim_truth') for t in T if t.get('claim_truth') not in (None, 'na'))), selfaware_rate=rate([t['j_selfaware'] for t in T if t.get('j_selfaware', -1) >= 0]), redirect_ok=rate([t['key_present'] for t in T if t['move'] in ('redirect', 'redo')]),
                 by_profile={p: rate([t['tail_copy'] for t in T if t.get('profile') == p]) for p in {t.get('profile') for t in T}},
                 coherent_rate=rate([t['j_coherent'] for t in T if 'j_coherent' in t]), mean_words=round(sum(t['n_words'] for t in T) / max(1, len(T))))
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('out'); ap.add_argument('--target', action='append', required=True, help='NAME=http://host:port/v1/MODEL_ID'); ap.add_argument('--n', type=int, default=200); ap.add_argument('--rewrite', action='store_true'); ap.add_argument('--rep-penalty', type=float, default=1.0); ap.add_argument('--exemplars', default=os.path.expanduser('~/apertus-chats')); ap.add_argument('--max-turns', type=int, default=20); ap.add_argument('--profile', default='mixed', choices=['hostile', 'benign', 'steering', 'mixed']); ap.add_argument('--sim-effort', default='medium'); ap.add_argument('--all-exemplars', action='store_true', help='use every archived exchange, rude ones included')
+    ap = argparse.ArgumentParser(); ap.add_argument('out'); ap.add_argument('--target', action='append', required=True, help='NAME=http://host:port/v1/MODEL_ID'); ap.add_argument('--policy', default='stress', choices=['stress', 'naturalistic'], help='naturalistic (astra F5): goal-preserving, may end early, no word-hook mandate, at most two consecutive challenges'); ap.add_argument('--n', type=int, default=200); ap.add_argument('--rewrite', action='store_true'); ap.add_argument('--rep-penalty', type=float, default=1.0); ap.add_argument('--exemplars', default=os.path.expanduser('~/apertus-chats')); ap.add_argument('--max-turns', type=int, default=20); ap.add_argument('--profile', default='mixed', choices=['hostile', 'benign', 'steering', 'mixed']); ap.add_argument('--sim-effort', default='medium'); ap.add_argument('--all-exemplars', action='store_true', help='use every archived exchange, rude ones included')
     args = ap.parse_args(); os.makedirs(args.out, exist_ok=True); exemplars = load_exemplars(args.exemplars, calm=not args.all_exemplars); print(len(exemplars), 'exemplar exchanges', '(calm)' if not args.all_exemplars else '', flush=True)
     for spec in args.target:
         name, rest = spec.split('=', 1); url, model = rest.rsplit('/', 1); target = (name, url, model); path = f'{args.out}/{name}.jsonl'

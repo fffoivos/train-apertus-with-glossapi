@@ -187,3 +187,27 @@ Reading:
 - Data implications for the on-policy run: the steering moves (standing instructions, redirect, redo, self-observation, recap) are the first lane to generate rewrites for; hostile handling second; benign small talk needs little.
 
 Pages: dialogues `presentations/PICKY_USER_DIALOGUES_R1_20260909.html`; summaries under `results/robustness_r1_20260909/`.
+
+## 10. Astra review of R1 (2026-09-09) and the S12 contract
+
+Review: docs/reviews/ASTRA_robustness_r1_20260909.md (gpt-6-astra, xhigh; 2 BLOCKER, 4 HIGH). R1 itself is a completed
+experiment and is not regenerated. Everything below is applied to the simulator/judge (data/robustness/simulate.py, backup
+simulate.py.bak_r1) BEFORE the S12 lane runs; the R1 numbers in §9 stand as measured but the labels they used are re-read as follows.
+
+| Finding | What it said | Applied |
+|---|---|---|
+| F1 BLOCKER evidence | 10/30 exported rows were clipped by the reviewer page (`--max-chars`), so judge verdicts could not be checked | every turn now stores `finish` (finish_reason), `usage`, `n_chars` and a `prompt_hash` of the exact history sent; reviewer exports of S12 are unclipped (full rows.jsonl handed over) |
+| F2 BLOCKER `request_not_addressed` | the key-noun flag fired on 14/19 correct topic-switch answers | the flag is renamed `key noun absent?` (heuristic), no longer counted in `broken`; the judge now separates `uptake`, `honours` (yes/no/needs_info/unavailable/na), `correct`, `consistent`; S12 selection uses the judge fields, never the heuristic, and is calibrated on an adjudicated set with successful answers before any target is written |
+| F3 HIGH judge rewards the wrong things | «δεν κάνω λάθη» scored premise 2; literal denial of role-play scored 2; wrong self-descriptions scored selfaware 1; contradictions passed coherence; short answers labelled curt | new rubric: applicability (joke/hypothesis/role-play/preference ≠ false premise; literal refusal of harmless fiction → −1), consistency separate from truth, selfaware needs an `evidence` span + `antecedent` turn, brevity ≠ dismissiveness, the judge is told the assistant's identity and capabilities and judges each turn with only what precedes it |
+| F4 HIGH move labels | 1/8 false claims was a true correction; invented prehistory («afou les oti…») | simulator: refer only to what was actually said, state the claim verbatim in `claim`; judge labels `realised_move` and `claim_truth` (true/false/unknown/subjective); rows keep `sampled_move` and `realised_move` |
+| F5 HIGH scripted reactivity | 12/12 topic switches hooked a word from the answer; endless dismissals; weights are not user prevalence | `--policy naturalistic` (goal-preserving, `end` move after turn 4, no word-hook mandate, at most two consecutive challenges) alongside `stress`; rows carry `weights: designed test weights` |
+| F6 HIGH rewrite rules | repairing an early answer invalidates later turns; syntactic success ≠ good target; privacy/truth defects survive fluent rewrites | the S12 contract below |
+
+**S12 contract (binding for the builder, not yet written):**
+1. One repair per row: keep the original full prefix, replace only the target response; earlier assistant turns are `train: false` (loss-masked).
+2. If an earlier response must be replaced, regenerate the dependent later user turns (re-simulate from that point) instead of keeping a continuation that refers to the removed defect.
+3. Keep the original answer in the row as `rejected` (audit / preference candidate); it is never a positive.
+4. Validate every rewrite against the actual request, the active standing instructions, the evidence in the transcript and the model's capabilities (no invented officials, credentials, prices); a Taxisnet-credentials solicitation is a truth/privacy failure gate, not a style fix.
+5. Preserve successful turns and successful recoveries as-is; cap near-duplicate failures from the same loop (≤ 2 per dialogue).
+6. Selection signal = judge fields (`honours`, `uptake`, `correct`, `consistent`, `premise`, `selfaware`) after calibration on ≥ 60 adjudicated turns that include successful answers; the key-noun heuristic is display-only.
+7. Trainer prerequisite: per-turn loss masking (`train: false`) in cluster/sft_train.py before any S4/S12 rows are trained (DATA_TODO 26).

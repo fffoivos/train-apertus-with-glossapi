@@ -84,3 +84,16 @@ Training and decoding around it: SFT in the Greek pass (with the personality set
 Cost: about 25,000 Sol calls for S1–S11 (three to four days of the 24 workers alongside the correction passes; Codex weekly window permitting), one cluster window of 2 node-hours for S12, one training arm (about CHF 4) and one evaluation window (about 1 node-hour).
 
 **Queue order** (after the running work: IF v2 → IF correction → math cut → math correction): S1–S5 first (regex-verifiable, cheapest, largest expected gain), S8 in parallel (small), then S12 when a cluster window is available, then S6, S7, S9–S11, then the tone and correction passes over all of it, then the training arm.
+
+
+## 6. Astra review of the suite prompts (2026-09-09) — applied before the pilot
+
+Review: docs/reviews/ASTRA_convskills_prompts_20260909.md. Changes in data/convskills/gen_suite.py, all before queue 2 reaches the lanes:
+- S1 `list` targets were 60-char prefixes (BLOCKER) → full first sentences + word-overlap check; `count` asks for the messages *before this one* and rejects the off-by-one number.
+- S4 planted-tic turns are `train: false` (BLOCKER: never a loss target); six stop phrasings incl. indirect («Γιατί λες συνέχεια…»).
+- Base pool: NEUTRAL restricted to length/no_exclamation/greek_only/monotonic_only/register/greek_question_mark (keyword/entity families leave visible padding); 10% of base rows held out from every lane (deterministic, by id hash); per-lane seeds so lanes no longer share base sequences.
+- S2: the standing instruction lands after 1–3 exchanges; tight limits (one_sentence, max20) draw bases whose full answer is ≤ 70 words; greeklish check is strict (no Greek letter); acceptances are natural and already compliant («Θα απαντώ με μία πρόταση.»); when the limit cannot hold every element the answer says what it omits.
+- New lane **S3c** chained edits (remove a word, then halve, keeping the removal; tolerance 0.7).
+- New lane **S5m** inference memory (name/city/budget/limitation stated at turn 1, 2–4 unrelated exchanges, then a request that must use them; regex: city + no amount above budget + a limitation keyword).
+- Pilot sizes (queue 2): S1 150, S2 250, S3 250, S3c 100, S4 75, S5m 150 = 975 dialogues, then the correction pass. Scale after the pilot's astra review and the Codex reset (15 Sep).
+- Not yet built: S5 grounded self-observation, S8 identity contrasts, S12 repairs (contract in ROBUSTNESS_PROGRAM §10). Trainer loss-mask prerequisite = DATA_TODO 26.

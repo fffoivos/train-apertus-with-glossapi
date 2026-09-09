@@ -22,8 +22,8 @@ with open('greek_if/final/greek_if_sft.jsonl', 'w') as out:
 print('FINAL greek_if_sft rows', n, 'fidelity dropped', fid)
 PY
 say "final IF set: $(tail -1 "$LOG")"
-# lane sizes halved 12:45 to keep a reserve in the Codex weekly window (47% used, reset Tue 15)
-for L in S1:1000 S2:1000 S3:1000 S4:500; do lane=${L%%:*}; n=${L##*:}; say "lane $lane × $n"; WORKERS=24 python3 convskills/gen_suite.py convskills/v1 --lane $lane --n $n --seed 3 >> "$LOG" 2>&1; say "$lane: $(cat convskills/v1/${lane}_summary.json 2>/dev/null | cut -c1-200)"; done
+# lane sizes: a 1,000-dialogue PILOT first (astra review 2026-09-09), scale after review and after the Codex reset
+for L in S1:150 S2:250 S3:250 S3c:100 S4:75 S5m:150; do lane=${L%%:*}; n=${L##*:}; say "lane $lane × $n"; WORKERS=24 python3 convskills/gen_suite.py convskills/v1 --lane $lane --n $n --seed 3 >> "$LOG" 2>&1; say "$lane: $(cat convskills/v1/${lane}_summary.json 2>/dev/null | cut -c1-200)"; done
 python3 - <<'PY' >> "$LOG" 2>&1
 import json, glob
 rows = [json.loads(l) for f in sorted(glob.glob('convskills/v1/S[1-4].jsonl')) for l in open(f)]

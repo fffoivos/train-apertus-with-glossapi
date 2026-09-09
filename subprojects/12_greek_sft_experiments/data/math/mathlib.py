@@ -59,7 +59,7 @@ def norm_num(s: str):
 
 
 def norm_expr(s: str) -> str:
-    t = s.strip().replace(' ', '').replace('\\left', '').replace('\\right', '').replace('\\dfrac', '\\frac').replace('\\tfrac', '\\frac').replace('$', '').replace('^\\circ', '').replace('°', '')
+    t = s.strip().replace('\\pi', 'π').replace(' ', '').replace('\\left', '').replace('\\right', '').replace('\\dfrac', '\\frac').replace('\\tfrac', '\\frac').replace('$', '').replace('^\\circ', '').replace('°', '')
     return t.rstrip('.').lower()
 
 
@@ -77,8 +77,8 @@ def lead_number(s: str):
 
 
 def numbers(s: str) -> list:
-    """Every number in a final answer, in order (units and labels ignored)."""
-    t = s.replace('\u2212', '-').replace('–', '-'); t = re.sub(r'\\(?:d)?frac\{([^}]*)\}\{([^}]*)\}', r'\1/\2', t); out = []
+    """Every number in a final answer, in order (units and labels ignored); «a : b» ratios read as a/b."""
+    t = re.sub(r'(\d)\s*:\s*(\d)', r'\1/\2', s.replace('\u2212', '-').replace('–', '-')); t = re.sub(r'\\(?:d)?frac\{([^}]*)\}\{([^}]*)\}', r'\1/\2', t); out = []
     for tok in re.findall(r'-?\d[\d.,]*(?:/\d[\d.,]*)?', t):
         v = lead_number(tok.rstrip('.,'))
         if v is not None: out.append(v)
@@ -96,8 +96,8 @@ def equiv(a: str, b: str) -> bool:
     (a side that also lists intermediate results agrees when it ends on the same number and contains the other's numbers), else sympy, else normalised string."""
     if not a or not b: return False
     na, nb = norm_num(a), norm_num(b)
-    if na is None: na = lead_number(a)
-    if nb is None: nb = lead_number(b)
+    if na is None: na = lead_number(re.sub(r'(\d)\s*:\s*(\d)', r'\1/\2', a))
+    if nb is None: nb = lead_number(re.sub(r'(\d)\s*:\s*(\d)', r'\1/\2', b))
     xs, ys = numbers(a), numbers(b)
     if len(xs) > 1 or len(ys) > 1:
         if xs and ys and len(xs) == len(ys) and all(num_close(x, y) for x, y in zip(xs, ys)): return True

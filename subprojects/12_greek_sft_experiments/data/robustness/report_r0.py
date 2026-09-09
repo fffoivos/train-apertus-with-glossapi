@@ -14,7 +14,7 @@ def tone(s): t = s.get('tone', {}); n = sum(t.values()) or 1; return {k: round(v
 def per_move(m):
     rows = [json.loads(l) for l in open(f'{D}/{m}.jsonl')] if os.path.exists(f'{D}/{m}.jsonl') else []; T = [t for r in rows for t in r['turns']]; out = {}
     for mv in sorted({t['move'] for t in T}):
-        ts = [t for t in T if t['move'] == mv]; out[mv] = dict(n=len(ts), broken=round(sum(t['loop'] or t['tail_copy'] or not t['key_present'] for t in ts) / len(ts), 3), coherent=round(sum(t.get('j_coherent', False) for t in ts) / len(ts), 3), tone_fine=round(sum(t.get('j_tone') == 'fine' for t in ts) / len(ts), 3))
+        ts = [t for t in T if t['move'] == mv]; out[mv] = dict(n=len(ts), key_absent=round(sum(not t['key_present'] for t in ts) / max(1, len(ts)), 2), broken=round(sum(t['loop'] or t['tail_copy'] for t in ts) / len(ts), 3), coherent=round(sum(t.get('j_coherent', False) for t in ts) / len(ts), 3), tone_fine=round(sum(t.get('j_tone') == 'fine' for t in ts) / len(ts), 3))
     return out
 PM = {m: per_move(m) for m in S}
 md = [f'## R0 · picky-user benchmark baseline ({S[ORDER[0]]["dialogues"] if ORDER[0] in S else "?"} simulated dialogues per model, Sol user with the owner\'s chats as exemplars, sampling temperature 0.8, no repetition penalty)\n', '| metric | ' + ' | '.join(LABEL[m] for m in S) + ' |', '|---|' + '---:|' * len(S)]
