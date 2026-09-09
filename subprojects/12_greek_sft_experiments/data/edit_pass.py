@@ -42,7 +42,7 @@ def guard(r, new_turns, kind):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('rows'); ap.add_argument('out'); ap.add_argument('--kind', required=True, choices=['if', 'math']); ap.add_argument('--model', default='gpt-5.6-sol'); ap.add_argument('--effort', default='medium'); ap.add_argument('--workers', type=int, default=int(os.environ.get('WORKERS', '24')))
+    ap = argparse.ArgumentParser(); ap.add_argument('rows'); ap.add_argument('out'); ap.add_argument('--kind', required=True, choices=['if', 'math']); ap.add_argument('--model', default='gpt-5.6-sol'); ap.add_argument('--effort', default='medium'); ap.add_argument('--workers', type=int, default=int(os.environ.get('WORKERS', '24'))); ap.add_argument('--batch', type=int, default=int(os.environ.get('BATCH', '15')), help='rows per editor call; 15 halves the per-call overhead that dominates the Codex window')
     a = ap.parse_args(); os.makedirs(a.out, exist_ok=True); checks_path = f'{a.out}/checks.jsonl'
     rows = [json.loads(l) for l in open(a.rows)]; have = {json.loads(l)['id'] for l in open(checks_path)} if os.path.exists(checks_path) else set(); todo = [r for r in rows if r['id'] not in have]
     print(len(rows), 'rows,', len(todo), 'to edit with', a.model, a.effort, a.workers, 'workers', flush=True)
@@ -55,7 +55,7 @@ def main():
                     for r in b: f.write(json.dumps(dict(id=r['id'], **{k: got[r['id']][k] for k in ('verdict', 'edited_assistant_turns', 'changes', 'greekness')}, editor=a.model), ensure_ascii=False) + '\n')
                 return
             except Exception as e: print('retry', t, type(e).__name__, str(e)[:100], flush=True)
-    with ThreadPoolExecutor(a.workers) as pool: list(pool.map(batch, [todo[i:i + 5] for i in range(0, len(todo), 5)]))
+    with ThreadPoolExecutor(a.workers) as pool: list(pool.map(batch, [todo[i:i + a.batch] for i in range(0, len(todo), a.batch)]))
     checks = {json.loads(l)['id']: json.loads(l) for l in open(checks_path)}; stats = collections.Counter(); out_rows = []
     for r in rows:
         c = checks.get(r['id']); rr = dict(r)

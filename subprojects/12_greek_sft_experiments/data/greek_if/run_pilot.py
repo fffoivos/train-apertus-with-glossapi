@@ -4,7 +4,7 @@ Usage: python3 run_pilot.py <answers.jsonl> <prompts.jsonl> [more prompts.jsonl 
 The model sees ONLY the user prompt (never the structured constraint list): the pilot measures first-try yield."""
 import json, os, subprocess, sys, tempfile, threading, time
 from concurrent.futures import ThreadPoolExecutor
-MODEL = os.environ.get('GEN_MODEL', 'gpt-5.6-sol'); EFFORT = os.environ.get('GEN_EFFORT', 'medium'); W = int(os.environ.get('WORKERS', '24')); B = int(os.environ.get('BATCH', '8'))
+MODEL = os.environ.get('GEN_MODEL', 'gpt-5.6-sol'); EFFORT = os.environ.get('GEN_EFFORT', 'medium'); W = int(os.environ.get('WORKERS', '24')); B = int(os.environ.get('BATCH', '16'))
 HERE = os.path.dirname(os.path.abspath(__file__)); SCHEMA = os.path.join(HERE, 'answers_schema.json'); TMP = os.environ.get('CLAUDE_JOB_DIR', tempfile.gettempdir()) + '/tmp'; os.makedirs(TMP, exist_ok=True)
 HEAD = ('Είσαι το Ελληνικό Apertus, ένας βοηθός που απαντά στα ελληνικά. Παρακάτω υπάρχουν {n} ανεξάρτητα μηνύματα χρηστών, το καθένα με ένα id. Απάντησε σε καθένα ξεχωριστά, όπως θα απαντούσε ο βοηθός στον χρήστη. '
         'Απάντησε στο ουσιαστικό αίτημα ΚΑΙ τήρησε ακριβώς όλες τις εφαρμόσιμες οδηγίες μορφής, μήκους, γλώσσας, ύφους και περιεχομένου που δίνει ο χρήστης, ακόμη κι αν φαίνονται ασυνήθιστες. Γράφε φυσικά, χωρίς περιττές επαναλήψεις και χωρίς γέμισμα για να καλύψεις έναν περιορισμό. '
