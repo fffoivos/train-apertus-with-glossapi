@@ -1,0 +1,35 @@
+{
+ "prompts": 12000,
+ "sft_rows": 11015,
+ "dpo_pairs": 588,
+ "rejected_only": 985,
+ "stats": {
+  "pass_first": 10427,
+  "fail_both": 985,
+  "pass_retry": 588
+ },
+ "by_level": {
+  "1": 3015,
+  "2": 3437,
+  "3": 2654,
+  "4": 1223,
+  "5": 686
+ },
+ "by_form": {
+  "translate": 910,
+  "opinion": 945,
+  "correction": 938,
+  "planning": 896,
+  "creative": 969,
+  "comparison": 899,
+  "howto": 892,
+  "quick_fact": 902,
+  "rewrite": 853,
+  "explanation": 904,
+  "summarise": 954,
+  "list": 953
+ },
+ "families": 40,
+ "min_family_rows": 262,
+ "mean_answer_words": 125
+}
