@@ -3,7 +3,7 @@
 Writes data/arms/<arm>/{train,dev}.jsonl (messages column, as the trainer expects), receipt.json, summary.md.
 Usage: python3 assemble_mix_r2.py --arm R2_stage1 [--scale 1.0] [--no-tokenizer]
 Reads ~/sft_annot (exports, labels, verified) and data/cache/sources (our Greek set). Deterministic (seed)."""
-import json, sys, os, re, random, hashlib, argparse, collections, unicodedata
+import datetime, json, sys, os, re, random, hashlib, argparse, collections, unicodedata
 from pathlib import Path
 HERE = Path(__file__).resolve().parent; ANN = Path.home() / 'sft_annot'
 sys.path.insert(0, str(HERE))
@@ -177,6 +177,27 @@ if not args.no_tokenizer:
         ref = AutoTokenizer.from_pretrained('swiss-ai/Apertus-8B-Instruct-2509'); tok.chat_template = ref.chat_template
         print('tokenizer loaded; exact length filter', flush=True)
     except Exception as e: print('tokenizer unavailable, approximate filter (chars/3.2):', str(e)[:100], flush=True)
+def n_tokens_split(messages):
+    """(rendered tokens, supervised assistant tokens) with the trainer's patched template; supervised = assistant content + end token of train=True turns."""
+    if not tok: return n_tokens(messages), None
+    try:
+        r = tok.apply_chat_template([dict(role=m['role'], content=m['content']) for m in messages], tokenize=True, return_dict=True, return_assistant_tokens_mask=True)
+        ids, mask = list(r['input_ids']), list(r.get('assistant_masks', []))
+        if not mask or len(mask) != len(ids): return len(ids), None
+        flags = [m.get('train', True) for m in messages if m['role'] == 'assistant']; end_id = tok.convert_tokens_to_ids('<|assistant_end|>')
+        runs, start = [], None
+        for i, b in enumerate(mask + [0]):
+            if b and start is None: start = i
+            elif not b and start is not None: runs.append((start, i)); start = None
+        groups, gs = [], None
+        for a, b in runs:
+            if gs is None: gs = a
+            if end_id in ids[a:b]: groups.append((gs, b)); gs = None
+        if len(groups) != len(flags): return len(ids), None
+        return len(ids), sum(b - a for (a, b), f in zip(groups, flags) if f)
+    except Exception: return n_tokens(messages), None
+
+
 def n_tokens(messages):
     if tok is not None:
         try:
@@ -274,15 +295,30 @@ for block, fname, mode, target, weight in PLAN:
         if r['id'] in cond and identity_phrase_hit(r['messages']): stats['identity_judge_confirmed'] += 1; continue  # Luna said identity AND the text says so: drop
         if identity_hit(r['messages']): stats['identity_backstop'] += 1; continue  # review F1: full-text regex over every assistant turn, after the judges
         if not args.keep_lexicon_mannerism and mannerism_hit_messages(r['messages']): stats['lexicon_mannerism'] += 1; continue  # chatbot openers/closers, all blocks
-        n = n_tokens(r['messages'])
-        if n > args.max_tokens: stats['too_long'] += 1; continue  # margin under the trainer's 4,096 so its own render never overflows
+        n, n_sup = n_tokens_split(r['messages'])
+        if n > args.max_tokens: stats['too_long'] += 1; continue
+        r['sup_tokens'] = n_sup  # margin under the trainer's 4,096 so its own render never overflows
         r['block'] = block; r['tokens'] = n; taken.append(r)
     stats['taken'] = len(taken); stats['tokens'] = sum(r['tokens'] for r in taken)
     ndev = max(1, int(len(taken) * args.dev_fraction)) if taken else 0
     dev += taken[:ndev]; train += taken[ndev:] * weight
-    receipt['blocks'].append(dict(block=block, status='ok', target=target, weight=weight, **stats))
+    # launch gate G1 (completeness review B1): unique rows, exclusions, copies, rendered and supervised tokens, per-block content hash, export provenance
+    h = hashlib.sha256()
+    for r in sorted(taken, key=lambda x: str(x['id'])): h.update((str(r['id']) + '\x1f' + json.dumps(r['messages'], ensure_ascii=False, sort_keys=True)).encode())
+    sup = [r['sup_tokens'] for r in taken[ndev:] if r.get('sup_tokens') is not None]
+    g1 = dict(unique_input_rows=stats['available'], unique_taken=len(taken), dev_rows=ndev, train_unique_rows=len(taken) - ndev, copies=weight, train_rows_effective=(len(taken) - ndev) * weight,
+              tokens_train_unique=sum(r['tokens'] for r in taken[ndev:]), tokens_train_effective=sum(r['tokens'] for r in taken[ndev:]) * weight,
+              supervised_tokens_unique=(sum(sup) if len(sup) == len(taken) - ndev else None), supervised_tokens_effective=(sum(sup) * weight if len(sup) == len(taken) - ndev else None),
+              masked_context_turns=sum(1 for r in taken for m in r['messages'] if m['role'] == 'assistant' and m.get('train') is False),
+              content_sha256=h.hexdigest(), export_file=str(src), export_sha256=(hashlib.sha256(open(src, 'rb').read()).hexdigest() if src.exists() and src.stat().st_size < 3e9 else None), export_mtime=datetime.datetime.fromtimestamp(src.stat().st_mtime).isoformat() if src.exists() else None)
+    receipt['blocks'].append(dict(block=block, status='ok', target=target, weight=weight, **stats, **g1))
     print(f"{block:24s} available {stats['available']:7d} taken {stats['taken']:7d} x{weight} tokens {stats['tokens']:10d} contaminated {stats['contaminated']} too_long {stats['too_long']} identity_backstop {stats['identity_backstop']} lexicon_mannerism {stats['lexicon_mannerism']} tone_dropped {stats['tone_dropped']}", flush=True)
 random.shuffle(train)
+# G1 invariants: no (block, id) in both train and dev; the same id never twice in dev
+_dev_keys = {(r['block'], str(r['id'])) for r in dev}; _leak = [k for r in train for k in [(r['block'], str(r['id']))] if k in _dev_keys]
+assert not _leak, f'train/dev leakage: {_leak[:5]}'
+assert len(_dev_keys) == len(dev), 'duplicate dev rows'
+receipt['g1'] = dict(train_dev_intersection=0, unique_train_rows=len({(r['block'], str(r['id'])) for r in train}), effective_train_rows=len(train), supervised_tokens_effective=sum(r['sup_tokens'] for r in train if r.get('sup_tokens') is not None), rows_without_supervised_count=sum(1 for r in train if r.get('sup_tokens') is None))
 def dump(path, rows):
     h = hashlib.sha256()
     with open(path, 'w') as f:
