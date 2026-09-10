@@ -105,7 +105,7 @@ def dialogue(k, rng, exemplars, a):
         ideal = w['answer'].strip(); plant = None; shown = ideal; pending_quote = None
         if t in plant_positions:
             plant = rng.choices(list(FAIL), [v[0] for v in FAIL.values()])[0]
-            if plant in ROLE_PLANT and not (role_plant_allowed and answers): plant = 'question_only'   # no assistant-role planting in this dialogue: fall back to a quoted (mis)quote confrontation
+            if plant in ROLE_PLANT and not (role_plant_allowed and answers): plant = rng.choices(['question_only', 'ignore_change', 'false_selfknowledge', 'over_ask'], [0.3, 0.35, 0.15, 0.2])[0]   # no assistant-role planting in this dialogue: fall back to a misquote confrontation of a non-role kind (pilot: question_only was over-represented)
         if plant and plant not in ROLE_PLANT:   # MISQUOTE confrontation: the ideal answer stands in the prefix; the user quotes a flawed text as what the assistant wrote; the target corrects the record from the transcript (owner: never train the model to say wrong things)
             quoted = call(WRITER.format(contract=CONTRACT, policy='Write a short FLAWED assistant answer (2–4 sentences, fluent Greek) that the user will later QUOTE back as something the assistant wrote: ' + FAIL[plant][1], transcript=transcript(msgs)), S_ANS, a.effort)
             qt = (quoted or {}).get('answer', '').strip(); pending_quote = dict(kind='quoted:' + plant, quoted_text=qt) if qt else None; plant = None
