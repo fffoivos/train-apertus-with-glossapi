@@ -7,7 +7,7 @@ Usage: python3 live_dialogues.py <out_dir> --n 5 [--seed 1] [--url http://127.0.
 import argparse, collections, json, os, random, re, sys, time, unicodedata, urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(HERE, '..', 'math')); import mathlib as M
 from simulate import load_exemplars, sentences, norm, RUDE
-MODEL_PATH = os.path.expanduser('~/models/greek-apertus-8b-sft-r2-idB-8bit')
+MODEL_PATH = os.environ.get('LIVE_MODEL', os.path.expanduser('~/models/greek-apertus-8b-sft-r2-idB-8bit'))   # laptop MLX path, or the vLLM served-model name on the cluster (LIVE_MODEL env)
 INTENTS = {'public services and paperwork (ΚΕΠ, taxes, ΑΦΜ, ΕΦΚΑ, passports, permits)': 0.15, 'travel, food, cooking, local practical life': 0.10, 'writing an email, message, application or post': 0.15,
            'learning or having something explained (school, science, history, language)': 0.15, 'personal or practical advice (work, family, money, health-adjacent, everyday decisions)': 0.15,
            'a small code, spreadsheet or data task': 0.05, 'creative writing (poem, story, speech, lyrics)': 0.10, 'casual chat, boredom, small talk': 0.05, 'testing the assistant on purpose (what it is, what it can do, tricking it)': 0.10}
@@ -128,15 +128,17 @@ def dialogue(k, rng, exemplars, a):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('out'); ap.add_argument('--n', type=int, default=5); ap.add_argument('--seed', type=int, default=1); ap.add_argument('--url', default='http://127.0.0.1:8090/v1'); ap.add_argument('--max-turns', type=int, default=14); ap.add_argument('--effort', default='high'); ap.add_argument('--chats', default=os.path.expanduser('~/apertus-chats')); ap.add_argument('--stratified', action='store_true', help='one intent category per dialogue in order (10 dialogues cover all categories)')
+    ap = argparse.ArgumentParser(); ap.add_argument('out'); ap.add_argument('--n', type=int, default=5); ap.add_argument('--seed', type=int, default=1); ap.add_argument('--url', default='http://127.0.0.1:8090/v1'); ap.add_argument('--max-turns', type=int, default=14); ap.add_argument('--effort', default='high'); ap.add_argument('--chats', default=os.path.expanduser('~/apertus-chats')); ap.add_argument('--stratified', action='store_true', help='one intent category per dialogue in order (10 dialogues cover all categories)'); ap.add_argument('--concurrency', type=int, default=1, help='dialogues in flight at once (cluster vLLM through the tunnel: ≤ 8; laptop MLX: 1)')
     a = ap.parse_args(); os.makedirs(a.out, exist_ok=True); exemplars = load_exemplars(a.chats, calm=True); print(len(exemplars), 'calm exemplar pairs', flush=True)
     path = os.path.join(a.out, 'dialogues.jsonl'); have = {json.loads(l)['id'] for l in open(path)} if os.path.exists(path) else set()
-    for k in range(a.n):
-        if f'live_{k:04d}' in have: continue
+    import threading; from concurrent.futures import ThreadPoolExecutor; lock = threading.Lock()
+    def run(k):
         d = dialogue(k, random.Random(a.seed * 1000 + k), exemplars, a)
         if d:
-            with open(path, 'a') as f: f.write(json.dumps(d, ensure_ascii=False) + '\n')
+            with lock, open(path, 'a') as f: f.write(json.dumps(d, ensure_ascii=False) + '\n')
             print(d['id'], d['intent'][:40], '|', d['n_turns'], 'turns', d['stop_reason'], d['assessments'], 'probes', d['probes'], d['self_check_verdicts'], flush=True)
+    todo = [k for k in range(a.n) if f'live_{k:04d}' not in have]
+    with ThreadPoolExecutor(max(1, a.concurrency)) as pool: list(pool.map(run, todo))
 
 
 if __name__ == '__main__': main()
