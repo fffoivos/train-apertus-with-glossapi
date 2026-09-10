@@ -176,7 +176,11 @@ if not args.no_tokenizer:
         tok = AutoTokenizer.from_pretrained('fffoivos/apertus-8b-greek-cpt', revision='18-avg-uniform5-tokens30B-50B')
         ref = AutoTokenizer.from_pretrained('swiss-ai/Apertus-8B-Instruct-2509'); tok.chat_template = ref.chat_template
         try:
-            sys.path.insert(0, str(HERE.parent / 'cluster')); from sft_train import patch_apertus_template; tok.chat_template = patch_apertus_template(tok.chat_template)   # generation markers → supervised-token counts (G1)
+            import ast as _ast
+            _src = open(HERE.parent / 'cluster' / 'sft_train.py').read(); _mod = _ast.parse(_src); _ns = {'re': re, 'ConfigError': RuntimeError, 'has_generation_markers': (lambda t: '{% generation %}' in t)}
+            for _n in _mod.body:   # take the trainer's own template patch without importing its heavy dependencies
+                if isinstance(_n, _ast.FunctionDef) and _n.name in ('has_generation_markers', 'patch_apertus_template'): exec(compile(_ast.Module(body=[_n], type_ignores=[]), 'sft_train_patch', 'exec'), _ns)
+            tok.chat_template = _ns['patch_apertus_template'](tok.chat_template)   # generation markers → supervised-token counts (G1)
         except Exception as e: print('template patch unavailable (supervised counts will be None):', str(e)[:80], flush=True)
         print('tokenizer loaded; exact length filter', flush=True)
     except Exception as e: print('tokenizer unavailable, approximate filter (chars/3.2):', str(e)[:100], flush=True)
