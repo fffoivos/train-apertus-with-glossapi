@@ -1,6 +1,6 @@
 {
  "rows": 273,
- "usable": 268,
+ "usable": 262,
  "excluded": [
   {
    "id": "674567315c67d815889df2db",
@@ -15,12 +15,36 @@
    "reason": "constraint undecidable in Greek (adjective/adverb repetition; Greek collapses distinctions the English keeps)"
   },
   {
+   "id": "6765f1c86539ceefe4b7ab4f",
+   "reason": "quarantined (pass 3): Greek τ-lipogram: the demonstration turn cannot avoid τ in natural Greek (adaptation failed)"
+  },
+  {
    "id": "6765f4400af93a24e8fbe1f1",
    "reason": "quarantined: target demands a song title and year the history never supplies (underdetermined)"
   },
   {
+   "id": "6765f48a4421592a0e41c067",
+   "reason": "quarantined (pass 3): banned pronoun list collides with Greek articles/clitics (Greek-introduced)"
+  },
+  {
    "id": "6765f4907e4dcd5e2143352b",
    "reason": "quarantined: target refers to the model touching clothing and offers examples that conflict with the user restriction (inherited)"
+  },
+  {
+   "id": "6765f83933f9e1448cddbeea",
+   "reason": "quarantined (pass 3): target polarity garbled in the English (refuse a drink or drink)"
+  },
+  {
+   "id": "6765f83aa5d32b513353ec07",
+   "reason": "quarantined (pass 3): asserted ranking does not follow from the stated costs (inherited)"
+  },
+  {
+   "id": "6781a94837c7655a14201b42",
+   "reason": "quarantined (pass 3): target asks about a dairy ban the history never states (inherited)"
+  },
+  {
+   "id": "6781aa5341e87994fefeced6",
+   "reason": "quarantined (pass 3): target refers to an English section that does not exist once the email is Greek (Greek-introduced)"
   }
  ],
  "adapted": [
@@ -33,9 +57,9 @@
   "target_questions": "270 checked, 1 wrong (fixed)",
   "conversations": "62 checked (59 random + nontransferable): fidelity no 15 (4 of them only the role-label leak), consistency no 5, testable no 3, naturalness ≤3: 2; the worst turn of every fidelity-no row re-translated with the checker note; not re-checked after repair"
  },
- "known_limits": "English number/unit formats inside Greek prose in some rows (50,000; 3.75; 2:00 PM; miles/feet), occasional εσύ/εσείς flips; the repair pass touched only the worst turn per flagged row; sample defect rate before repair 11/59 random rows (19%) excluding the label leak",
+ "known_limits": "the v3 re-translations and the mechanical post-pass (a.m./p.m., months, units, thousands) are NOT yet re-checked (fourth pass pending); register consistency is enforced by instruction only; the unchecked conversation 6765f839a02fd129919ef243 was included in the re-translation set",
  "pipeline": "Sol translate (chunked fallback for long conversations) → Claude cross-check (all target questions + 62 conversations) → programmatic role-label strip + TQ fix + nontransferable handling + worst-turn re-translation → frozen",
- "version": 2,
+ "version": 3,
  "tq_typo_fixed": 1,
  "judge_notes": [
   "6765f839a02fd129919ef243",
@@ -44,5 +68,7 @@
  ],
  "licence": "licence/permissions UNRESOLVED (no licence file in the upstream repository): internal evaluation only pending permission; no redistribution of the Greek conversations",
  "calibration": "43 conversations × (passing, failing) constructed by Sol; Claude Opus 5 judge: EN rubric false-fail 1/43, false-pass 3/43; EL rubric 1/43, 2/43 (the EL advantage is one response); not yet validated on real model outputs against human labels",
- "audit_counts": "Claude cross-check 1: 62 conversations checked (59 random + 3 non-transferable not in the draw): fidelity no 15, of which 4 only the role-label leak → 11 substantive among 62; the worst turn of each fidelity-no row re-translated; third cross-check (full re-check of repaired/late/chunked rows + fresh random audit + validity audit of all target questions) pending"
+ "audit_counts": "Claude cross-check 1: 62 conversations checked (59 random + 3 non-transferable not in the draw): fidelity no 15, of which 4 only the role-label leak → 11 substantive among 62; the worst turn of each fidelity-no row re-translated; third cross-check (full re-check of repaired/late/chunked rows + fresh random audit + validity audit of all target questions) pending",
+ "retranslated_v3": 33,
+ "crosscheck3": "target questions: 263 valid / 4 invalid / 6 underdetermined (all 10 now quarantined; 7 inherited from the English); conversations (75 = 15 repaired + 1 chunked + 3 late + 56 random): fidelity no 19 (random 11/56 = 19.6%, 5 content-bearing = 8.9%, CI 3.9–19.3%), consistency no 20 (mostly εσύ/εσείς), naturalness ≤3: 6; 9 of the 15 one-turn repairs still defective (3 made worse by the repair) → whole conversations re-translated with the checker notes; 0 role labels; number multisets agree 261/273 with all differences explained"
 }
