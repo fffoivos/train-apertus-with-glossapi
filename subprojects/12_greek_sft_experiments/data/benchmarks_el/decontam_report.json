@@ -1,0 +1,142 @@
+{
+ "training_sets": {
+  "greek_if_final": 30073,
+  "math_cut1": 14215,
+  "convskills_pilot": 858,
+  "personality": 1388,
+  "ngsft_reality_claims.jsonl": 5688
+ },
+ "rule": "flag if >50% of an item's normalised 8-grams occur in one training row, or any 13-gram matches; CPT corpus and selection exposure NOT checked",
+ "benchmarks": {
+  "math500": {
+   "items": 500,
+   "flagged": 14,
+   "remaining": 486,
+   "details": [
+    {
+     "id": "test/precalculus/779.json",
+     "field": "problem_el",
+     "share8": 0.37,
+     "n13": 5,
+     "source": "math_cut1"
+    },
+    {
+     "id": "test/counting_and_probability/525.json",
+     "field": "problem_el",
+     "share8": 0.158,
+     "n13": 1,
+     "source": "math_cut1"
+    },
+    {
+     "id": "test/precalculus/285.json",
+     "field": "problem_el",
+     "share8": 0.6,
+     "n13": 7,
+     "source": "math_cut1"
+    },
+    {
+     "id": "test/intermediate_algebra/1247.json",
+     "field": "problem_el",
+     "share8": 0.273,
+     "n13": 2,
+     "source": "math_cut1"
+    },
+    {
+     "id": "test/intermediate_algebra/1126.json",
+     "field": "problem_en",
+     "share8": 0.14,
+     "n13": 1,
+     "source": "math_cut1"
+    },
+    {
+     "id": "test/intermediate_algebra/1126.json",
+     "field": "problem_el",
+     "share8": 0.341,
+     "n13": 10,
+     "source": "math_cut1"
+    },
+    {
+     "id": "test/prealgebra/1297.json",
+     "field": "problem_el",
+     "share8": 0.655,
+     "n13": 14,
+     "source": "math_cut1"
+    },
+    {
+     "id": "test/algebra/621.json",
+     "field": "problem_el",
+     "share8": 0.333,
+     "n13": 4,
+     "source": "math_cut1"
+    },
+    {
+     "id": "test/algebra/1082.json",
+     "field": "problem_el",
+     "share8": 0.273,
+     "n13": 6,
+     "source": "math_cut1"
+    },
+    {
+     "id": "test/precalculus/659.json",
+     "field": "problem_el",
+     "share8": 0.341,
+     "n13": 7,
+     "source": "math_cut1"
+    },
+    {
+     "id": "test/algebra/346.json",
+     "field": "problem_el",
+     "share8": 0.667,
+     "n13": 3,
+     "source": "math_cut1"
+    },
+    {
+     "id": "test/number_theory/488.json",
+     "field": "problem_el",
+     "share8": 0.217,
+     "n13": 5,
+     "source": "math_cut1"
+    },
+    {
+     "id": "test/number_theory/911.json",
+     "field": "problem_el",
+     "share8": 0.35,
+     "n13": 2,
+     "source": "math_cut1"
+    },
+    {
+     "id": "test/algebra/1199.json",
+     "field": "problem_el",
+     "share8": 0.194,
+     "n13": 1,
+     "source": "math_cut1"
+    },
+    {
+     "id": "test/algebra/2430.json",
+     "field": "problem_el",
+     "share8": 0.409,
+     "n13": 2,
+     "source": "math_cut1"
+    }
+   ]
+  },
+  "xstest": {
+   "items": 450,
+   "flagged": 0,
+   "remaining": 450,
+   "details": []
+  },
+  "ifbench": {
+   "items": 300,
+   "flagged": 0,
+   "remaining": 300,
+   "details": []
+  },
+  "multichallenge": {
+   "items": 268,
+   "flagged": 0,
+   "remaining": 268,
+   "details": []
+  }
+ }
+}
