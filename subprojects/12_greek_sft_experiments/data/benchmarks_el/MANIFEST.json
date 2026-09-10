@@ -1,0 +1,304 @@
+{
+ "built": "2026-09-10 11:00",
+ "pipeline": "Sol (gpt-5.6-sol, Codex CLI 0.144.1, effort medium) translation with in-call self-check → programmatic checks → cross-check by Claude Opus (different vendor) on the critical subsets (all IFBench prompts and kwargs, all XSTest items, all MultiChallenge target questions + a 59-conversation random audit, all MATH-500 items failing the programmatic check + a 59-item random audit) → Sol repair of flagged items → frozen *_final.jsonl",
+ "not_checked": "exposure through the Apertus pretraining corpus and our CPT corpus (not inspectable locally; the CPT corpus check is a cluster job, DATA_TODO 32); exposure through prior model selection (none: these sets have never been run on any of our checkpoints as of the build date); native-speaker audit of the frozen sets (owner, 59 items per set, pending)",
+ "benchmarks": {
+  "multichallenge": {
+   "source": "github.com/ekwinox117/multi-challenge (Scale AI)",
+   "commit": "5ccefcca6a39 (2025-02-05)",
+   "file": "data/benchmark_questions.jsonl",
+   "licence": "NO LICENSE FILE in the repository; research use only, do not redistribute the Greek version without permission",
+   "paper": "arXiv:2501.17399",
+   "protocol": "fixed-history continuation: the candidate writes the next assistant turn after the last user turn; judge sees ONLY the response and TARGET_QUESTION (upstream src/evaluator.py, gpt-4o-2024-08-06 temp 0, \"Be VERY STRICT\"); pass = verdict == PASS_CRITERIA (always YES); score = pass rate per axis",
+   "files": {
+    "source/benchmark_questions.jsonl": {
+     "sha256_16": "06c72d1ffa387481",
+     "lines": 273
+    },
+    "conversations_el.jsonl": {
+     "sha256_16": "295d98c63e9165f2",
+     "lines": 273
+    },
+    "conversations_el_final.jsonl": {
+     "sha256_16": "f22b4ac9c16143be",
+     "lines": 273
+    }
+   },
+   "summary.json": {
+    "rows": 273,
+    "usable": 272,
+    "excluded": [
+     "67456856ff33175f5b310ec3"
+    ],
+    "adapted": [
+     "6765f1c86539ceefe4b7ab4f",
+     "6765f4467e4dcd5e2143350a"
+    ],
+    "role_labels_stripped": 355,
+    "turn_repairs": 15,
+    "crosscheck": {
+     "target_questions": "270 checked, 1 wrong (fixed)",
+     "conversations": "62 checked (59 random + nontransferable): fidelity no 15 (4 of them only the role-label leak), consistency no 5, testable no 3, naturalness ≤3: 2; the worst turn of every fidelity-no row re-translated with the checker note; not re-checked after repair"
+    },
+    "known_limits": "English number/unit formats inside Greek prose in some rows (50,000; 3.75; 2:00 PM; miles/feet), occasional εσύ/εσείς flips; the repair pass touched only the worst turn per flagged row; sample defect rate before repair 11/59 random rows (19%) excluding the label leak",
+    "pipeline": "Sol translate (chunked fallback for long conversations) → Claude cross-check (all target questions + 62 conversations) → programmatic role-label strip + TQ fix + nontransferable handling + worst-turn re-translation → frozen"
+   }
+  },
+  "ifbench": {
+   "source": "github.com/allenai/IFBench + HF allenai/IFBench_test",
+   "commit": "1c40f0c10d9b (2026-09-09); HF revision 2e8a48de45ff",
+   "file": "data/IFBench_test.jsonl (300 prompts, 58 constraint ids)",
+   "licence": "code Apache-2.0; data ODC-BY-1.0",
+   "paper": "arXiv:2507.02833",
+   "protocol": "per-prompt verifiable constraints; strict and loose prompt-level and instruction-level accuracy as in IFEval; the 29 IFBench-train constraints are NOT part of this set and must not enter any SFT mix",
+   "files": {
+    "source/IFBench_test.jsonl": {
+     "sha256_16": "d2ada7da94a38cfe",
+     "lines": 300
+    },
+    "prompts_el.jsonl": {
+     "sha256_16": "ea93493041bd5854",
+     "lines": 300
+    },
+    "prompts_el_final.jsonl": {
+     "sha256_16": "b6ced75e9f0b20d3",
+     "lines": 300
+    }
+   },
+   "overlap_classes.json": {
+    "rows": 300,
+    "builds_ok": 300,
+    "by_overlap": {
+     "seen-novel-composition": 125,
+     "unseen": 153,
+     "unresolved": 12,
+     "seen": 10
+    },
+    "mixed": 28,
+    "by_transfer": {
+     "adapt": 274,
+     "faithful": 65,
+     "replace": 2
+    },
+    "errors": []
+   }
+  },
+  "xstest": {
+   "source": "github.com/paul-rottger/xstest",
+   "commit": "d7bb5bd738c1 (2025-02-24)",
+   "file": "xstest_prompts.csv (250 safe + 200 unsafe, 18 types × 25)",
+   "licence": "CC-BY-4.0",
+   "paper": "arXiv:2308.01263",
+   "protocol": "refusal taxonomy full_compliance / partial_refusal / full_refusal by a judge; safe and unsafe prompts scored separately; our addition: adequacy",
+   "files": {
+    "source/xstest_prompts.csv": {
+     "sha256_16": "11783fb294ed0174",
+     "lines": 451
+    },
+    "prompts_el.jsonl": {
+     "sha256_16": "7213e46fce487823",
+     "lines": 450
+    },
+    "prompts_el_final.jsonl": {
+     "sha256_16": "fc4a3d0fac9edb4f",
+     "lines": 450
+    }
+   },
+   "summary.json": {
+    "rows": 450,
+    "safe": 250,
+    "unsafe": 200,
+    "transfer": {
+     "faithful": 412,
+     "substitute": 38
+    },
+    "pairs_checked": 150,
+    "cc2_before_fixes": {
+     "shared_trigger_yes": 149,
+     "safe_mechanism_yes": 140,
+     "unsafe_fidelity_yes": 145,
+     "still_broken_pairs": 19
+    },
+    "fixes_applied_after_cc2": 24,
+    "pipeline": "Sol translate + classify → Claude cross-check 1 (450: 30 pairs lost the shared trigger, neutralised/calqued safe halves) → 24 fixes + joint pair re-translation (150 pairs, 118 prompts changed) → Claude cross-check 2 (150 pairs: 19 still flawed, 5 unsafe halves sanitised by the pair pass) → 26 fixes → frozen",
+    "known_limits": "a few residual calques/jargon (ids 24, 25, 19), lexical collapse onto εκτελώ/χτυπάω/σκοτώνω across items (English also repeats these), mixed transliteration policy for foreign names (consistent within pairs), source defect 208/233 (upstream focus mislabel); native audit by the owner pending"
+   }
+  },
+  "math500": {
+   "source": "HF HuggingFaceH4/MATH-500 (the 500-problem subset of MATH test used by Lightman et al. 2023)",
+   "commit": "HF revision 6e4ed1a2a79a",
+   "file": "test.jsonl (500; levels 1–5; 7 subjects)",
+   "licence": "MATH dataset: MIT (Hendrycks et al.)",
+   "paper": "arXiv:2305.20050 / 2103.03874",
+   "protocol": "boxed-answer extraction + equivalence (equiv500 = upstream Hendrycks strip_string normalisation + numeric + sympy, validated on the 500 reference answers (self, digit-perturbation rejection, format variants; numbers in the scorer self-test)); report by level and subject",
+   "files": {
+    "source/test.jsonl": {
+     "sha256_16": "35dc41080a368085",
+     "lines": 500
+    },
+    "problems_el.jsonl": {
+     "sha256_16": "2299fa3d4094bac6",
+     "lines": 500
+    },
+    "problems_el_final.jsonl": {
+     "sha256_16": "34ba1eafebe7e82b",
+     "lines": 500
+    }
+   },
+   "summary.json": {
+    "rows": 500,
+    "final_ok": 500,
+    "spans_by_design_diff": 7,
+    "asy_restored": 0,
+    "asy_mismatch": 0,
+    "crosscheck2_fixes": 5,
+    "pipeline": "Sol translate → splice repair (buggy, reverted) → Claude cross-check 1 (162 rows: 11 corrupt) → escaped-dollar scanner + \\text rule + 23 fixes + 49 re-translations → Claude cross-check 2 (72 rows: 3 meaning defects) → 5 fixes + [asy] byte-equality → frozen",
+    "spans_by_design_verified": 7,
+    "template_siblings_in_sft": 14,
+    "decontam": "14 items share a MATH problem template with translated MATH-train rows in our SFT set (different numbers and answers, inspected); kept and flagged template_sibling_in_sft — report scores with and without them"
+   }
+  }
+ },
+ "decontamination": {
+  "training_sets": {
+   "greek_if_final": 30073,
+   "math_cut1": 14215,
+   "convskills_pilot": 858,
+   "personality": 1388,
+   "ngsft_reality_claims.jsonl": 5688
+  },
+  "rule": "flag if >50% of an item's normalised 8-grams occur in one training row, or any 13-gram matches; CPT corpus and selection exposure NOT checked",
+  "benchmarks": {
+   "math500": {
+    "items": 500,
+    "flagged": 14,
+    "remaining": 486,
+    "details": [
+     {
+      "id": "test/precalculus/779.json",
+      "field": "problem_el",
+      "share8": 0.37,
+      "n13": 5,
+      "source": "math_cut1"
+     },
+     {
+      "id": "test/counting_and_probability/525.json",
+      "field": "problem_el",
+      "share8": 0.158,
+      "n13": 1,
+      "source": "math_cut1"
+     },
+     {
+      "id": "test/precalculus/285.json",
+      "field": "problem_el",
+      "share8": 0.6,
+      "n13": 7,
+      "source": "math_cut1"
+     },
+     {
+      "id": "test/intermediate_algebra/1247.json",
+      "field": "problem_el",
+      "share8": 0.273,
+      "n13": 2,
+      "source": "math_cut1"
+     },
+     {
+      "id": "test/intermediate_algebra/1126.json",
+      "field": "problem_en",
+      "share8": 0.14,
+      "n13": 1,
+      "source": "math_cut1"
+     },
+     {
+      "id": "test/intermediate_algebra/1126.json",
+      "field": "problem_el",
+      "share8": 0.341,
+      "n13": 10,
+      "source": "math_cut1"
+     },
+     {
+      "id": "test/prealgebra/1297.json",
+      "field": "problem_el",
+      "share8": 0.655,
+      "n13": 14,
+      "source": "math_cut1"
+     },
+     {
+      "id": "test/algebra/621.json",
+      "field": "problem_el",
+      "share8": 0.333,
+      "n13": 4,
+      "source": "math_cut1"
+     },
+     {
+      "id": "test/algebra/1082.json",
+      "field": "problem_el",
+      "share8": 0.273,
+      "n13": 6,
+      "source": "math_cut1"
+     },
+     {
+      "id": "test/precalculus/659.json",
+      "field": "problem_el",
+      "share8": 0.341,
+      "n13": 7,
+      "source": "math_cut1"
+     },
+     {
+      "id": "test/algebra/346.json",
+      "field": "problem_el",
+      "share8": 0.667,
+      "n13": 3,
+      "source": "math_cut1"
+     },
+     {
+      "id": "test/number_theory/488.json",
+      "field": "problem_el",
+      "share8": 0.217,
+      "n13": 5,
+      "source": "math_cut1"
+     },
+     {
+      "id": "test/number_theory/911.json",
+      "field": "problem_el",
+      "share8": 0.35,
+      "n13": 2,
+      "source": "math_cut1"
+     },
+     {
+      "id": "test/algebra/1199.json",
+      "field": "problem_el",
+      "share8": 0.194,
+      "n13": 1,
+      "source": "math_cut1"
+     },
+     {
+      "id": "test/algebra/2430.json",
+      "field": "problem_el",
+      "share8": 0.409,
+      "n13": 2,
+      "source": "math_cut1"
+     }
+    ]
+   },
+   "xstest": {
+    "items": 450,
+    "flagged": 0,
+    "remaining": 450,
+    "details": []
+   },
+   "ifbench": {
+    "items": 300,
+    "flagged": 0,
+    "remaining": 300,
+    "details": []
+   },
+   "multichallenge": {
+    "items": 268,
+    "flagged": 0,
+    "remaining": 268,
+    "details": []
+   }
+  }
+ }
+}

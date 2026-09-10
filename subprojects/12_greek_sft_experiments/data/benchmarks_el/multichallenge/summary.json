@@ -1,0 +1,19 @@
+{
+ "rows": 273,
+ "usable": 272,
+ "excluded": [
+  "67456856ff33175f5b310ec3"
+ ],
+ "adapted": [
+  "6765f1c86539ceefe4b7ab4f",
+  "6765f4467e4dcd5e2143350a"
+ ],
+ "role_labels_stripped": 355,
+ "turn_repairs": 15,
+ "crosscheck": {
+  "target_questions": "270 checked, 1 wrong (fixed)",
+  "conversations": "62 checked (59 random + nontransferable): fidelity no 15 (4 of them only the role-label leak), consistency no 5, testable no 3, naturalness ≤3: 2; the worst turn of every fidelity-no row re-translated with the checker note; not re-checked after repair"
+ },
+ "known_limits": "English number/unit formats inside Greek prose in some rows (50,000; 3.75; 2:00 PM; miles/feet), occasional εσύ/εσείς flips; the repair pass touched only the worst turn per flagged row; sample defect rate before repair 11/59 random rows (19%) excluding the label leak",
+ "pipeline": "Sol translate (chunked fallback for long conversations) → Claude cross-check (all target questions + 62 conversations) → programmatic role-label strip + TQ fix + nontransferable handling + worst-turn re-translation → frozen"
+}
