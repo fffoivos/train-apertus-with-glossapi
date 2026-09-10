@@ -42,6 +42,7 @@ def guard(r, new_turns, kind):
         olds = [m['content'] for m in turns_of(r) if m['role'] == 'assistant']
         for o, n in zip(olds, new_turns):
             if o == n: continue
+            if o.strip() and not n.strip(): return False, 'emptied a turn'   # astra pilot review F1: an edit may never empty a supervised turn
             if len(_re.findall(r'[;?]', n)) > len(_re.findall(r'[;?]', o)): return False, 'question added'
             if len(n.split()) > 1.3 * len(o.split()) + 5 or len(n.split()) < 0.7 * len(o.split()) - 5: return False, 'length changed'
             if _re.search(r'(?:Θέλεις|Θες|Χρειάζεσαι) κάτι άλλο|Μπορώ να (?:σε )?βοηθήσω (?:σε )?κάτι άλλο|Πες μου (?:αν|τι άλλο)', n) and not _re.search(r'(?:Θέλεις|Θες|Χρειάζεσαι) κάτι άλλο|Μπορώ να (?:σε )?βοηθήσω (?:σε )?κάτι άλλο|Πες μου (?:αν|τι άλλο)', o): return False, 'closer added'

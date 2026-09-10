@@ -13,10 +13,23 @@ def main():
         for m in d['messages']:
             if m['role'] == 'user': msgs.append(dict(role='user', content=m['content'])); continue
             t = d['turns'][ti] if ti < len(d['turns']) else {}; ti += 1
-            ok = bool(t.get('train')) and bool(t.get('checks', {}).get('ok')) and t.get('assessment') in ('ok', 'confronted', None) and t.get('self_check_verdict') not in ('wrong', 'evasive')
-            if t.get('kind', '').startswith('recovery') or t.get('kind', '').startswith('misquote'): ok = bool(t.get('train')) and bool(t.get('checks', {}).get('ok')) and t.get('self_check_verdict') not in ('wrong', 'evasive')
-            stats['target_kept' if ok else ('planted' if not t.get('train') else 'target_rejected')] += 1; kinds[t.get('kind', '?').split(':')[0] + (':' + t['kind'].split(':')[1] if t.get('kind', '').count(':') else '')] += ok
-            msgs.append(dict(role='assistant', content=m['content'], train=ok, kind=t.get('kind'), assessment=t.get('assessment'), verdict=t.get('self_check_verdict')))
+            content_ok = bool((m.get('content') or '').strip())
+            why = []
+            if not t.get('train'): why.append('planted')
+            if not content_ok: why.append('empty')
+            if not t.get('checks', {}).get('ok'): why.append('checks:' + ','.join(k for k, v in t.get('checks', {}).items() if k != 'ok' and v and k != 'questions') + (f",questions={t.get('checks', {}).get('questions')}" if (t.get('checks', {}).get('questions') or 0) > 1 else ''))
+            if t.get('assessment') not in ('ok', 'confronted', None): why.append('assessment:' + str(t.get('assessment')))
+            if t.get('self_check_verdict') in ('wrong', 'evasive'): why.append('verdict:' + t['self_check_verdict'])
+            ok = not why   # F1 (astra pilot review): the same gate for ideal, recovery, misquote, clarify and closing turns; empty content never supervised
+            if ok: stats['target_kept'] += 1
+            elif not t.get('train'): stats['planted'] += 1
+            else:
+                stats['target_rejected'] += 1
+                for w in why: stats['reject:' + w.split(':')[0]] += 1
+            if ok and t.get('after_claim'): stats['kept_after_claim_' + t['after_claim']] += 1
+            if ok and t.get('kind') == 'clarify': stats['kept_clarify'] += 1
+            kinds[t.get('kind', '?').split(':')[0] + (':' + t['kind'].split(':')[1] if t.get('kind', '').count(':') else '')] += ok
+            msgs.append(dict(role='assistant', content=m['content'], train=ok, kind=t.get('kind'), assessment=t.get('assessment'), verdict=t.get('self_check_verdict'), reject=(None if ok else ';'.join(why))))
             n_train += ok
         if n_train: rows.append(dict(source='correcting', id=d['id'], intent=d['intent'], surface=d['surface'], temperament=d['temperament'], plants=d['plants'], n_turns=len(d['turns']), n_train=n_train, turns=msgs, user=msgs[-2]['content'] if len(msgs) >= 2 else '', assistant=msgs[-1]['content']))
         else: stats['dialogue_dropped'] += 1
