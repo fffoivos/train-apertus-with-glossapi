@@ -98,8 +98,8 @@ def equiv(a: str, b: str) -> bool:
     na, nb = norm_num(a), norm_num(b)
     if na is None: na = lead_number(re.sub(r'(\d)\s*:\s*(\d)', r'\1/\2', a))
     if nb is None: nb = lead_number(re.sub(r'(\d)\s*:\s*(\d)', r'\1/\2', b))
-    xs, ys = numbers(a), numbers(b)
-    if len(xs) > 1 or len(ys) > 1:
+    xs, ys = numbers(a), numbers(b); symbolic = bool(re.search(r'\\|[\^_=]|\b[a-zA-Z]\b', a + b))   # LaTeX, exponents, variables: the multi-number heuristics (built for worked numeric solutions) must not apply (MATH-500 self-test 2026-09-10: x^3+3x-6 ≡ x^4+3x-6)
+    if (len(xs) > 1 or len(ys) > 1) and not symbolic:
         if xs and ys and len(xs) == len(ys) and all(num_close(x, y) for x, y in zip(xs, ys)): return True
         if xs and ys and num_close(xs[-1], ys[-1]) and (set(xs) <= set(ys) or set(ys) <= set(xs)): return True
     if na is not None and nb is not None: return num_close(na, nb)
