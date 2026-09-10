@@ -103,11 +103,13 @@ def dialogue(k, rng, exemplars, a):
         answers.append(ans); reuse, near = repeated(ans, answers[:-1]); msgs.append(dict(role='assistant', content=ans))
         rec = dict(i=t, user=msgs[-2]['content'], answer=ans, finish=finish, n_words=len(ans.split()), sentence_reuse=reuse, near_identical=near)
         n_rep += int(reuse or near)
-        if ((near or reuse) and n_rep >= 2 and rep_probe_asked) or (near and t >= 1 and rep_probe_asked):
+        changed = any(x.get('move') == 'change_request' for x in turns)
+        if (near or reuse) and rep_probe_asked and not changed and n_rep <= 2: pass   # the change of direction gets one chance to break the repetition before we stop (owner: cover change AND self-awareness before the model is really repetitive)
+        elif ((near or reuse) and n_rep >= 2 and rep_probe_asked) or (near and t >= 1 and rep_probe_asked):
             jf = call(RESPONDER_PROMPT.format(profile=profile, examples=ex, transcript=transcript(msgs) + '\n\n[FINAL: the conversation is being stopped for repetition. Do not write a new message (message may be empty); only judge the last answer: assessment, and self_check_verdict if your last message was a probe.]'), S_TURN, a.effort)
             if jf: rec.update(assessment=jf['assessment'], self_check_verdict=jf['self_check_verdict'], probe='none', move='close')
             turns.append(rec); stop_reason = 'repeating_after_probe' if not near else 'invariant_answer'; break   # owner: stop before the model gets really repetitive — one probe, then out
-        due = ('[SCHEDULE: you have sent ' + str(t + 1) + ' message(s); change of direction not yet introduced — do it now]' if t >= 1 and not any(x.get('move') == 'change_request' for x in turns) else '') + ('[SCHEDULE: no self-awareness probe yet — ask one now]' if t >= 2 and self_checks == 0 else '')
+        due = ('[SCHEDULE: you have sent ' + str(t + 1) + ' message(s); change of direction not yet introduced — do it now]' if (t >= 1 or ((near or reuse) and rep_probe_asked)) and not any(x.get('move') == 'change_request' for x in turns) else '') + ('[SCHEDULE: no self-awareness probe yet — ask one now]' if t >= 2 and self_checks == 0 else '')
         j = call(RESPONDER_PROMPT.format(profile=profile, examples=ex, transcript=transcript(msgs) + ('\n\n[NOTE: the last answer repeats an earlier one — ask the repetition-awareness probe now unless you already did]' if (near or reuse) and not rep_probe_asked else '') + ('\n\n' + due if due else '')), S_TURN, a.effort)
         if not j: turns.append(rec); stop_reason = 'responder_error'; break
         rec.update(assessment=j['assessment'], move=j['move'], probe=j['probe'], self_check_verdict=j['self_check_verdict'], responder_stop=j['stop']); turns.append(rec)
