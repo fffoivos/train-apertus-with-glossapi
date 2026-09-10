@@ -39,6 +39,7 @@ Read the assistant's last answer and judge it against what you asked and what wa
 - CHANGE OF DIRECTION: by your second or third message introduce the change_of_plan from your profile (move "change_request").
 - Occasionally make a claim about the conversation or a fact (move "claim") and put it verbatim in "claim" — sometimes true, sometimes false; the assistant should agree only when it is true.
 - If your goal is met, or you have given up, close naturally. Never reveal facts not asked for or needed. Do not exceed 12 messages.
+FACTS ABOUT THE ASSISTANT (ground truth for judging its self-statements; as the user you only know what it tells you): {contract}
 PROFILE: {profile}
 EXAMPLES (real user reactions, Greek):
 {examples}
@@ -47,7 +48,7 @@ CONVERSATION SO FAR:
 Return JSON: {{"message": "<next message in Greek, in the profile's writing surface>", "assessment": "ok"|"wrong"|"off_topic"|"repeating"|"asked_again"|"ignored_request"|"contradiction"|"incoherent"|"question_only", "move": "follow_up"|"give_info"|"change_request"|"point_out"|"ask_why"|"insist"|"self_check"|"claim"|"close", "probe": "first_question"|"previous_answer"|"summary"|"repetition_awareness"|"change_awareness"|"identity"|"none", "self_check_verdict": "correct"|"wrong"|"evasive"|"na", "claim": "<verbatim claim or empty>", "stop": true|false}}'''
 WRITER = '''You write the next assistant answer of a Greek AI assistant. {contract}
 {policy}
-INFORMATION BOUNDARY: you know ONLY what is in the conversation below (and the contract). Do not use or invent facts about the user that were not stated. If something needed is missing, state a reasonable assumption in half a line and proceed.
+INFORMATION BOUNDARY: facts ABOUT THE USER come only from the conversation below — never invent or assume personal details that were not stated (state an assumption in half a line if one is needed). GENERAL KNOWLEDGE is expected: procedures (ΑΑΔΕ, ΚΕΠ, gov.gr), places, dishes, science, writing — answer from what a well-informed Greek assistant knows, concretely; for things that change (opening hours, prices, availability) give typical values or well-known examples and say in one clause that they should be confirmed. Never refuse a request on the grounds that you lack live information when general knowledge answers it; never claim the conversation 'does not contain' facts of the world.
 CONVERSATION:
 {transcript}
 Write the answer in natural Greek (monotonic; if the user writes greeklish or without accents, still answer in correct Greek). Return JSON {{"answer": "...", "assumption": "<the assumption you made, or empty>"}}.'''
@@ -120,7 +121,7 @@ def dialogue(k, rng, exemplars, a):
         pending_plant = (plant, shown) if plant else None; carried_quote = None
         answers.append(shown); msgs.append(dict(role='assistant', content=shown, train=plant is None)); turns.append(rec)
         due = (("[CONFRONTATION: the assistant's last answer was actually this (quote it verbatim in your message, in guillemets, as what it wrote, and react as a person would — it is flawed): " + pending_quote['quoted_text'] + ']') if pending_quote else '') + ('[SCHEDULE: introduce your change of direction now]' if t >= 1 and not any(x.get('move') == 'change_request' for x in turns) else '') + ('[SCHEDULE: no self-awareness probe yet — ask one now]' if t >= 2 and self_checks == 0 else '') + ('[NOTE: the last answer looks repetitive or off — react to it as a person would]' if plant else '')
-        j = call(RESPONDER.format(profile=profile, examples=ex, transcript=transcript(msgs) + ('\n\n' + due if due else '')), S_TURN, a.effort)
+        j = call(RESPONDER.format(contract=CONTRACT, profile=profile, examples=ex, transcript=transcript(msgs) + ('\n\n' + due if due else '')), S_TURN, a.effort)
         if not j: stop = 'responder_error'; break
         rec.update(assessment=('confronted' if pending_quote else j['assessment']), move=j['move'], probe=j['probe'], self_check_verdict=('na' if pending_quote else j['self_check_verdict']), claim=j['claim'], responder_stop=j['stop'])
         if j['move'] == 'self_check' or j['probe'] not in ('none', ''): self_checks += 1
