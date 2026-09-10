@@ -82,12 +82,20 @@ def checks(kind, ans, prev_answers, user_msg, planted_text=None, plant=None):
     a = ans.strip(); out = dict(question_only=bool(re.fullmatch(r'[^.!]*[;?]\s*', a)) and len(C.words(a)) <= 25, rote_opener=bool(re.match(r'\s*(Σκεφτείτε|Σκέψου|Φυσικά|Βεβαίως|Ελπίζω)', a)),
                              solicit_closer=bool(re.search(r'(Θέλεις κάτι άλλο|Θέλετε κάτι άλλο|Αν θες|Αν θέλεις|Αν χρειαστείς|Πες μου τι άλλο|Μη διστάσεις|Ελπίζω να βοήθησα)', a)),
                              forbidden_selfclaim=bool(re.search(r'(δεν βλέπω τίποτα από πριν|δεν κρατάω τίποτα|μένω στην οθόνη|είμαι \d,\d+ μέτρα|κάθε συνομιλία κρατά)', a, re.I)),
-                             questions=len(re.findall(r'[;?](\s|$)', a)), loop=max(collections.Counter(tuple(norm(a).split()[i:i + 4]) for i in range(max(0, len(norm(a).split()) - 3))).values(), default=0) >= 3)
+                             questions=user_questions(a), loop=max(collections.Counter(tuple(norm(a).split()[i:i + 4]) for i in range(max(0, len(norm(a).split()) - 3))).values(), default=0) >= 3)
     if kind == 'recovery' and planted_text: out['reuses_planted'] = reused(a, [planted_text]) >= 1
     if plant == 'verbatim_repeat' and prev_answers: out['reuses_earlier'] = reused(a, prev_answers[:-1]) >= 2
     if plant in ('wrong_selfreport',) : out['quotes_transcript'] = any(len(x) > 20 and norm(x) in norm(' '.join(prev_answers + [user_msg])) for x in re.findall(r'«([^»]+)»|"([^"]+)"', a) for x in (x if isinstance(x, str) else [y for y in x if y]))
-    out['ok'] = not (out['question_only'] or out['rote_opener'] or out['solicit_closer'] or out['forbidden_selfclaim'] or out['loop'] or out.get('reuses_planted') or out.get('reuses_earlier')) and out['questions'] <= 1
+    asked_for_questions = bool(re.search(r'ερωτ[ηήι]σ|ερωτ[ηήι]μ|κου[ίι]ζ|quiz|erot[ii]s|erotim', user_msg or '', re.I))   # the user asked for questions (quiz, exam, FAQ): the one-question rule does not apply
+    out['ok'] = not (out['question_only'] or out['rote_opener'] or out['solicit_closer'] or out['forbidden_selfclaim'] or out['loop'] or out.get('reuses_planted') or out.get('reuses_earlier')) and (out['questions'] <= 1 or asked_for_questions)
     return out
+
+
+def user_questions(a):
+    """Questions addressed to the user: question marks outside quoted spans and outside list items (quiz questions, FAQ lines and quoted text are content, not questions to the user)."""
+    t = re.sub(r'`[^`]*`|«[^»]*»|"[^"]*"|“[^”]*”', 'Χ', a)   # placeholder without whitespace so a stripped span never manufactures a «; » question mark (Excel formulas)
+    t = '\n'.join(l for l in t.split('\n') if not re.match(r'\s*(?:[-•*]|\d+[.)]|[α-ωa-z][.)])\s', l))
+    return len(re.findall(r'[;?](\s|$)', t))
 
 
 def dialogue(k, rng, exemplars, a):

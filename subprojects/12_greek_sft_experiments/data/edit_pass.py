@@ -12,12 +12,13 @@ HEAD = ("Είσαι επιμελητής που ΔΕΝ έγραψε αυτές �
         "ΔΕΝ αλλάζεις νόημα, περιεχόμενο, αριθμούς, ονόματα, δομή, μήκος ή ύφος πέρα από το γλωσσικά αναγκαίο· δεν προσθέτεις ούτε αφαιρείς προτάσεις· δεν κρίνεις την ορθότητα των πληροφοριών. Αφαιρούνται ΜΟΝΟ οι τυποποιημένες μανιέρες «Ελπίζω να βοήθησα», «Αν χρειαστείς κάτι άλλο…», «Μη διστάσεις…», «Φυσικά!» αν υπάρχουν. "
         "{kind_rules}\nΚρίνεις ΚΑΘΕ απάντηση του βοηθού και επιστρέφεις όλες τις απαντήσεις με τη σειρά, διορθωμένες όπου χρειάζεται και ΑΥΤΟΥΣΙΕΣ όπου όχι (verdict ok).\n\n")
 KIND = {'if': "ΠΡΟΣΟΧΗ: κάθε γραμμή έχει ΟΔΗΓΙΕΣ ΜΟΡΦΗΣ που ο χρήστης έδωσε (λίστα «ΠΕΡΙΟΡΙΣΜΟΙ»). Ό,τι διέπουν οι περιορισμοί ΔΕΝ το αγγίζεις: πλήθος λέξεων/προτάσεων/παραγράφων/κουκκίδων, τίτλους, ετικέτες, λέξεις-κλειδιά και τη συχνότητά τους, γράμματα-στόχους, γραφή χωρίς τόνους ή σε greeklish ή με κεφαλαία, στίξη που απαγορεύεται ή απαιτείται, φράσεις αρχής/τέλους, εισαγωγικά, JSON. Αν η απάντηση είναι ατονική ή greeklish ή κεφαλαία επειδή το ζήτησε ο χρήστης, μένει έτσι.",
+        'dialogue': "ΠΡΟΣΟΧΗ: είναι πολυ-turn συνομιλίες. Οι απαντήσεις που φέρουν την ένδειξη ΠΛΑΙΣΙΟ επιστρέφονται αυτούσιες. Στις υπόλοιπες ΔΕΝ προσθέτεις ούτε αφαιρείς ερωτήσεις προς τον χρήστη, δεν προσθέτεις καταληκτικές προσφορές («Θέλεις κάτι άλλο;» κ.λπ.), δεν αλλάζεις το μήκος πέρα από το γλωσσικά αναγκαίο και δεν αλλάζεις τι παραδέχεται ή τι διορθώνει ο βοηθός· διορθώνεις μόνο τη γλώσσα.",
         'math': "ΠΡΟΣΟΧΗ: είναι λύσεις μαθηματικών προβλημάτων. ΔΕΝ αλλάζεις κανέναν αριθμό, πράξη, σύμβολο, μονάδα ή την τελική απάντηση «Απάντηση: …»· δεν αλλάζεις τη μορφή αριθμών (δεκαδικό κόμμα, τελεία χιλιάδων, «€» μετά τον αριθμό). Διορθώνεις μόνο το ελληνικό κείμενο γύρω τους."}
 SCHEMA = M.write_schema('s_edit.json', {"type": "object", "properties": {"rows": {"type": "array", "items": {"type": "object", "properties": {"id": {"type": "string"}, "verdict": {"type": "string"}, "edited_assistant_turns": {"type": "array", "items": {"type": "string"}}, "changes": {"type": "array", "items": {"type": "string"}}, "greekness": {"type": "integer"}}, "required": ["id", "verdict", "edited_assistant_turns", "changes", "greekness"], "additionalProperties": False}}}, "required": ["rows"], "additionalProperties": False})
 lock = threading.Lock()
 
 
-def turns_of(r): return r.get('turns') or [dict(role='user', content=r['user']), dict(role='assistant', content=r['assistant'])]
+def turns_of(r): return r.get('turns') or r.get('messages') or [dict(role='user', content=r['user']), dict(role='assistant', content=r['assistant'])]
 
 
 def render(batch, kind):
@@ -36,6 +37,15 @@ def guard(r, new_turns, kind):
         res = C.check_all(new_turns[-1], r['meta']['constraints'], r['user'])
         bad = [x['family'] for x in res if x['ok'] is False]
         return (not bad, 'constraints broken: ' + ','.join(bad) if bad else '')
+    if kind == 'dialogue':
+        import re as _re
+        olds = [m['content'] for m in turns_of(r) if m['role'] == 'assistant']
+        for o, n in zip(olds, new_turns):
+            if o == n: continue
+            if len(_re.findall(r'[;?]', n)) > len(_re.findall(r'[;?]', o)): return False, 'question added'
+            if len(n.split()) > 1.3 * len(o.split()) + 5 or len(n.split()) < 0.7 * len(o.split()) - 5: return False, 'length changed'
+            if _re.search(r'(?:Θέλεις|Θες|Χρειάζεσαι) κάτι άλλο|Μπορώ να (?:σε )?βοηθήσω (?:σε )?κάτι άλλο|Πες μου (?:αν|τι άλλο)', n) and not _re.search(r'(?:Θέλεις|Θες|Χρειάζεσαι) κάτι άλλο|Μπορώ να (?:σε )?βοηθήσω (?:σε )?κάτι άλλο|Πες μου (?:αν|τι άλλο)', o): return False, 'closer added'
+        return True, ''
     if kind == 'math':
         old, new = M.final_answer(r['assistant']), M.final_answer(new_turns[-1])
         return (M.equiv(old, new) or (not old and not new), '' if M.equiv(old, new) else f'final answer changed {old!r} → {new!r}')
@@ -43,7 +53,7 @@ def guard(r, new_turns, kind):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('rows'); ap.add_argument('out'); ap.add_argument('--kind', required=True, choices=['if', 'math']); ap.add_argument('--model', default='gpt-5.6-sol'); ap.add_argument('--effort', default='medium'); ap.add_argument('--workers', type=int, default=int(os.environ.get('WORKERS', '24'))); ap.add_argument('--batch', type=int, default=int(os.environ.get('BATCH', '15')), help='rows per editor call; 15 halves the per-call overhead that dominates the Codex window')
+    ap = argparse.ArgumentParser(); ap.add_argument('rows'); ap.add_argument('out'); ap.add_argument('--kind', required=True, choices=['if', 'math', 'dialogue']); ap.add_argument('--model', default='gpt-5.6-sol'); ap.add_argument('--effort', default='medium'); ap.add_argument('--workers', type=int, default=int(os.environ.get('WORKERS', '24'))); ap.add_argument('--batch', type=int, default=int(os.environ.get('BATCH', '15')), help='rows per editor call; 15 halves the per-call overhead that dominates the Codex window')
     a = ap.parse_args(); os.makedirs(a.out, exist_ok=True); checks_path = f'{a.out}/checks.jsonl'
     rows = [json.loads(l) for l in open(a.rows)]; have = {json.loads(l)['id'] for l in open(checks_path)} if os.path.exists(checks_path) else set(); todo = [r for r in rows if r['id'] not in have]
     print(len(rows), 'rows,', len(todo), 'to edit with', a.model, a.effort, a.workers, 'workers', flush=True)
@@ -68,7 +78,7 @@ def main():
                 for m in turns_of(r):
                     if m['role'] == 'assistant': turns.append(dict(m, content=(m['content'] if m.get('train') is False else new[k]))); k += 1   # keep extra keys (train flag); context-only turns (train=False, e.g. planted tics) are never edited
                     else: turns.append(m)
-                rr['turns'] = turns; rr['assistant'] = turns[-1]['content']; rr['pre_edit_assistant'] = r['assistant']; rr['edited_by'] = a.model; rr['edit_changes'] = c['changes']; stats['edited'] += 1
+                rr['messages' if (not r.get('turns') and r.get('messages')) else 'turns'] = turns; rr['assistant'] = turns[-1]['content']; rr['pre_edit_assistant'] = r.get('assistant', [m['content'] for m in turns_of(r) if m['role'] == 'assistant'][-1]); rr['edited_by'] = a.model; rr['edit_changes'] = c['changes']; stats['edited'] += 1
             else: rr['edit_reverted'] = why; stats['reverted'] += 1
         else: stats['ok'] += 1
         rr['greekness'] = (c or {}).get('greekness'); out_rows.append(rr)
