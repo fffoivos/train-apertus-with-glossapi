@@ -123,10 +123,12 @@ def to_messages(row, block):
         ans = row['answer']; e = GREEK_EDITS.get(row['id'])
         if e and e.get('verdict') in ('edited', 'rewrite') and (e.get('edited_answer') or '').strip(): ans = e['edited_answer']
         return [dict(role='user', content=f"{row['passage'].strip()}\n\n{row['instruction'].strip()}"), dict(role='assistant', content=ans.strip())]
-    turns = row.get('turns') or [dict(role='user', content=row['user']), dict(role='assistant', content=row['assistant'])]
+    turns = row.get('turns') or row.get('messages') or [dict(role='user', content=row['user']), dict(role='assistant', content=row['assistant'])]
     out = []
     for t in turns:
         r, c = t.get('role'), (t.get('content') or '')
+        flag = t.get('train', True)  # context-only assistant turns (planted failures) carry train=False; the trainer masks them (DATA_TODO 26)
+        if flag is not True and flag is not False: return None
         if r == 'environment': r, c = 'user', '<function_results>\n' + c.strip() + '\n</function_results>'
         elif r == 'assistant' and c.startswith('TOOL_CALLS: '): c = '<function_calls>\n' + c[len('TOOL_CALLS: '):].strip() + '\n</function_calls>'
         elif r == 'tool': r, c = 'user', '<function_results>\n' + c.strip() + '\n</function_results>'
@@ -134,10 +136,16 @@ def to_messages(row, block):
         if not c.strip():
             if r == 'system': continue  # Nemotron rows carry an empty system turn: drop the turn, not the row
             return None
-        if out and out[-1]['role'] == r: out[-1]['content'] += '\n\n' + c  # merge consecutive same-role turns
-        else: out.append(dict(role=r, content=c))
+        if out and out[-1]['role'] == r:  # merge consecutive same-role turns; never across different train flags
+            if out[-1].get('train', True) != (flag if r == 'assistant' else True): return None
+            out[-1]['content'] += '\n\n' + c
+        else:
+            m = dict(role=r, content=c)
+            if r == 'assistant' and flag is False: m['train'] = False
+            out.append(m)
     if not out or out[0]['role'] == 'assistant' or out[-1]['role'] != 'assistant': return None
     if not any(m['role'] == 'user' for m in out): return None
+    if not any(m['role'] == 'assistant' and m.get('train', True) for m in out): return None  # nothing to supervise
     return out
 
 # ---------- evaluation prompts for decontamination ----------
