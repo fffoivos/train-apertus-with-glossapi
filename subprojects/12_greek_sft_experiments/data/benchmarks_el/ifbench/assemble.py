@@ -9,7 +9,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE); sys
 import instructions_registry_el as REG
 OVERLAP = {}   # id → overlap class from the transfer analysis table
 for line in open(os.path.join(HERE, 'TRANSFER_ANALYSIS.md')):
-    m = re.match(r'\| ([a-z_]+:[a-z_\-]+) \|.*\| (seen|seen-novel-composition|unseen|unresolved)[^|]*\| (faithful|adapt|replace|exclude)', line)
+    m = re.match(r'\| ([a-z_]+:[a-z_\-]+) \|.*\| (seen-novel-composition|unseen|unresolved|seen)[^|]*\| (faithful|adapt|replace|exclude)', line)
     if m: OVERLAP[m.group(1)] = dict(overlap=m.group(2), transfer=m.group(3))
 PROMPT_KW = {'ratio:overlap': 'reference_text', 'repeat:repeat_change': 'prompt_to_repeat', 'repeat:repeat_span': 'prompt_to_repeat'}
 
@@ -37,7 +37,10 @@ def main():
             try:
                 inst = REG.INSTRUCTION_DICT[iid](iid); d = inst.build_description(**kw); descs.append(d); inst.check_following('Δοκιμαστική απάντηση. Δεύτερη πρόταση!')
             except Exception as e: ok = False; errors.append(dict(id=r['id'], iid=iid, err=f'{type(e).__name__}: {str(e)[:120]}'))
-        body = r['body_el'].strip(); prompt_el = (body + ('\n\n' if '\n' in body or len(body) > 200 else ' ') + ' '.join(descs)).strip()
+        body = r['body_el'].strip()
+        removed = r['constraint_sentences_en'].strip(); constraint_only = len(removed) >= 0.85 * len(r['prompt_en'].strip()) or all(i.startswith('custom:') for i in r['instruction_ids'])
+        if constraint_only: body = ''   # the English prompt IS the constraint (custom:* tasks, CSV/MCQ/lists): the Greek prompt is the checker's own description, nothing else (assemble review 2026-09-10: duplicated and mismatched headers otherwise)
+        prompt_el = (body + ('\n\n' if '\n' in body or len(body) > 200 else ' ') + ' '.join(descs)).strip() if body else ' '.join(descs).strip()
         classes = [OVERLAP.get(i, {}).get('overlap', 'unresolved') for i in r['instruction_ids']]; rank = {'seen': 0, 'seen-novel-composition': 1, 'unresolved': 2, 'unseen': 3}
         final.append(dict(id=r['id'], prompt_en=r['prompt_en'], prompt_el=prompt_el, body_el=body, instruction_id_list=r['instruction_ids'], kwargs=kws, kwargs_en=r['kwargs_en'], descriptions_el=descs,
                           overlap_class=min(classes, key=lambda c: rank[c]), overlap_classes=classes, mixed_overlap=len(set(classes)) > 1, transfer=[OVERLAP.get(i, {}).get('transfer', 'adapt') for i in r['instruction_ids']], builds_ok=ok, notes=r['notes']))

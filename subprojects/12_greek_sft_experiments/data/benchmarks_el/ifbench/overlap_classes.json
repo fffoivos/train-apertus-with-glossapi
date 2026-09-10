@@ -1,0 +1,17 @@
+{
+ "rows": 300,
+ "builds_ok": 300,
+ "by_overlap": {
+  "seen-novel-composition": 125,
+  "unseen": 153,
+  "unresolved": 12,
+  "seen": 10
+ },
+ "mixed": 28,
+ "by_transfer": {
+  "adapt": 277,
+  "faithful": 65,
+  "replace": 2
+ },
+ "errors": []
+}
