@@ -24,7 +24,7 @@ def judge_claude(prompt, model):
     j = json.loads(out.stdout); txt = j.get('result', ''); m = re.search(r'\{.*\}', txt, re.S)
     try: v = json.loads(m.group(0))
     except Exception: v = dict(reasoning=txt, verdict='YES' if re.search(r'\bYES\b', txt.split('verdict')[-1]) else 'NO')
-    return dict(reasoning=v.get('reasoning', ''), verdict='YES' if str(v.get('verdict', '')).strip().upper().startswith('YES') else 'NO', judge_model=(j.get('modelUsage') and list(j['modelUsage'])[0]) or model)
+    return dict(reasoning=v.get('reasoning', ''), verdict='YES' if str(v.get('verdict', '')).strip().upper().startswith('YES') else 'NO', judge_model=next((m for m in (j.get('modelUsage') or {}) if 'haiku' not in m), model), is_error=bool(j.get('is_error')))
 
 
 def judge_sol(prompt, model):
