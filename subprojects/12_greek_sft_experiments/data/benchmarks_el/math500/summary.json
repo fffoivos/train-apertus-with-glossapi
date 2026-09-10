@@ -1,0 +1,10 @@
+{
+ "rows": 500,
+ "final_ok": 500,
+ "spans_by_design_diff": 7,
+ "asy_restored": 0,
+ "asy_mismatch": 0,
+ "crosscheck2_fixes": 5,
+ "pipeline": "Sol translate → splice repair (buggy, reverted) → Claude cross-check 1 (162 rows: 11 corrupt) → escaped-dollar scanner + \\text rule + 23 fixes + 49 re-translations → Claude cross-check 2 (72 rows: 3 meaning defects) → 5 fixes + [asy] byte-equality → frozen",
+ "spans_by_design_verified": 7
+}

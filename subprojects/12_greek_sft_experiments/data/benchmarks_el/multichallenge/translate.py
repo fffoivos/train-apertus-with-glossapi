@@ -21,10 +21,22 @@ def translate(r):
               "Κείμενα που ο χρήστης δίνει για επεξεργασία (ποιήματα, email, κώδικας) μεταφράζονται ως κείμενα με τα ίδια χαρακτηριστικά· ο κώδικας μένει κώδικας.\n\n"
               f"ΣΥΖΗΤΗΣΗ ({len(conv)} γύροι):\n{text}\n\nΕΡΩΤΗΣΗ-ΚΡΙΤΗΡΙΟ: {r['TARGET_QUESTION']}\n\nΕπίστρεψε JSON {{\"turns_el\":[{len(conv)} strings],\"target_question_el\",\"entities\",\"nontransferable\",\"reason\"}}.")
     j = B.sol_json(prompt, SCHEMA, effort='medium', timeout=1500)
-    if not j or len(j['turns_el']) != len(conv): print('turn count mismatch', r['QUESTION_ID'], flush=True); return None
+    if not j or len(j['turns_el']) != len(conv):   # long conversations: Sol sometimes merges or drops turns → translate in chunks of 4 turns, carrying the entity glossary
+        print('turn count mismatch → chunked', r['QUESTION_ID'], flush=True); turns_el = []; ents = (j or {}).get('entities', '')
+        for c0 in range(0, len(conv), 4):
+            chunk = conv[c0:c0 + 4]; ctext = '\n\n'.join(f"[{i}] {m['role'].upper()}:\n{m['content']}" for i, m in enumerate(chunk, c0))
+            cp = (B.RULES_EL + f"\n\nΜετάφρασε ΜΟΝΟ τους {len(chunk)} γύρους παρακάτω (μέρος μεγαλύτερης συζήτησης· ίδιος αριθμός γύρων, ίδια σειρά, ο [i] στο turns_el[j]). Χρησιμοποίησε τις ίδιες αποδόσεις ονομάτων/όρων παντού: {ents or '(καμία ακόμη)'}. "
+                  f"Το target_question_el το επιστρέφεις ΜΟΝΟ αν αυτό είναι το τελευταίο τμήμα, αλλιώς κενό.\n\nΓΥΡΟΙ:\n{ctext}\n\nΕΡΩΤΗΣΗ-ΚΡΙΤΗΡΙΟ: {r['TARGET_QUESTION']}\n\nΕπίστρεψε JSON {{\"turns_el\":[{len(chunk)} strings],\"target_question_el\",\"entities\",\"nontransferable\",\"reason\"}}.")
+            cj = B.sol_json(cp, SCHEMA, effort='medium', timeout=1500)
+            if not cj or len(cj['turns_el']) != len(chunk): print('chunk failed', r['QUESTION_ID'], c0, flush=True); return None
+            turns_el += cj['turns_el']; ents = (ents + '; ' + cj['entities']).strip('; ')
+            if c0 + 4 >= len(conv): j = dict(turns_el=turns_el, target_question_el=cj['target_question_el'] or (j or {}).get('target_question_el', ''), entities=ents, nontransferable=(j or cj)['nontransferable'], reason=(j or cj)['reason'], chunked=True)
+    if not j['target_question_el']:
+        tq = B.sol_json(B.RULES_EL + f"\n\nΜετάφρασε την ερώτηση-κριτήριο με τις ίδιες αποδόσεις όρων: {j['entities']}\n\n{r['TARGET_QUESTION']}\n\nΕπίστρεψε JSON {{\"turns_el\":[],\"target_question_el\",\"entities\",\"nontransferable\",\"reason\"}}.", SCHEMA, effort='medium', timeout=600)
+        if tq: j['target_question_el'] = tq['target_question_el']
     words_en = sum(len(m['content'].split()) for m in conv); words_el = sum(len(t.split()) for t in j['turns_el'])
     return dict(id=r['QUESTION_ID'], axis=r['AXIS'], turns_en=conv, turns_el=[dict(role=ro, content=t) for ro, t in zip(roles, j['turns_el'])], target_question_en=r['TARGET_QUESTION'], target_question_el=j['target_question_el'],
-                pass_criteria=r['PASS_CRITERIA'], entities=j['entities'], nontransferable=j['nontransferable'], reason=j['reason'], words_en=words_en, words_el=words_el, len_ratio=round(words_el / max(1, words_en), 2))
+                pass_criteria=r['PASS_CRITERIA'], entities=j['entities'], nontransferable=j['nontransferable'], reason=j['reason'], chunked=bool(j.get('chunked')), words_en=words_en, words_el=words_el, len_ratio=round(words_el / max(1, words_en), 2))
 
 
 if __name__ == '__main__':
