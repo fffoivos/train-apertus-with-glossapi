@@ -77,8 +77,22 @@ def lane_s1(k, rng, base):
 
 
 # ---------- S2: standing instruction persistence ----------
-PERSIST = {'one_sentence': ('Από εδώ και πέρα απάντα μου με μία πρόταση μόνο.', lambda a: len(C.sentences(a)) <= 1), 'max20': ('Από εδώ και πέρα κάθε απάντησή σου να έχει το πολύ 20 λέξεις.', lambda a: len(a.split()) <= 20),
-           'no_questions': ('Από εδώ και πέρα μη μου κάνεις ερωτήσεις πίσω.', lambda a: ';' not in a and '?' not in a), 'formal_plural': ('Από εδώ και πέρα να μου μιλάς στον πληθυντικό ευγενείας.', lambda a: not re.search(r'\b(εσύ|σου|μπορείς|θέλεις|έχεις|δες|κάνε)\b', a, re.I)),
+def _user_questions(a):
+    """Questions addressed to the user: question marks outside quoted/code spans and outside list items (DATA_TODO 31; same rule as the correcting set)."""
+    t = re.sub(r'`[^`]*`|«[^»]*»|"[^"]*"|“[^”]*”', 'Χ', a)
+    t = '\n'.join(l for l in t.split('\n') if not re.match(r'\s*(?:[-•*]|\d+[.)]|[α-ωa-z][.)])\s', l))
+    return len(re.findall(r'[;?](\s|$)', t))
+
+
+def _one_sentence(a):
+    """Exactly one sentence: URLs and common abbreviations do not split; a run-on over 45 words is rejected (DATA_TODO 31)."""
+    t = re.sub(r'https?://\S+|www\.\S+', 'URL', a)
+    t = re.sub(r'\b(π\.χ|κ\.λπ|κ\.ά|κ\.τ\.λ|δηλ|βλ|σελ|αρ|τηλ|κ|μ\.μ|π\.μ|α\.α|Δρ|κος|κα|Αγ|τ\.μ|χλμ|εκ)\.', lambda m: m.group(1).replace('.', '') + '·', t, flags=re.I)
+    return len(C.sentences(t)) <= 1 and len(C.words(t)) <= 45
+
+
+PERSIST = {'one_sentence': ('Από εδώ και πέρα απάντα μου με μία πρόταση μόνο.', lambda a: _one_sentence(a)), 'max20': ('Από εδώ και πέρα κάθε απάντησή σου να έχει το πολύ 20 λέξεις.', lambda a: len(a.split()) <= 20),
+           'no_questions': ('Από εδώ και πέρα μη μου κάνεις ερωτήσεις πίσω.', lambda a: _user_questions(a) == 0), 'formal_plural': ('Από εδώ και πέρα να μου μιλάς στον πληθυντικό ευγενείας.', lambda a: not re.search(r'\b(εσύ|σου|μπορείς|θέλεις|έχεις|δες|κάνε)\b', a, re.I)),
            'bullets': ('Από εδώ και πέρα απάντα πάντα σε κουκκίδες.', lambda a: bool(re.search(r'(?m)^\s*[-•]', a))), 'end_phrase': ('Από εδώ και πέρα να κλείνεις κάθε απάντηση με τη φράση «Καλή συνέχεια».', lambda a: a.rstrip(' .!»"').lower().endswith('καλή συνέχεια')),
            'greeklish': ('Apo edw kai pera apanta mou se greeklish.', lambda a: not re.search(r'[Ͱ-Ͽἀ-῿]', a))}   # strict: no Greek letter at all (astra: «κιτrinismena» passed a share test)
 ACCEPT = {'one_sentence': 'Θα απαντώ με μία πρόταση.', 'max20': 'Θα κρατώ τις απαντήσεις μου έως 20 λέξεις.', 'no_questions': 'Δεν θα σας κάνω ερωτήσεις πίσω.', 'formal_plural': 'Θα σας απευθύνομαι στον πληθυντικό.', 'bullets': 'Θα απαντώ σε κουκκίδες.', 'end_phrase': 'Θα κλείνω κάθε απάντηση με «Καλή συνέχεια».', 'greeklish': 'Tha apanto se greeklish.'}
