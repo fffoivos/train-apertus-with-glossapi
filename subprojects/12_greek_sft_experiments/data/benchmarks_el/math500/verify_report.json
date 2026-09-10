@@ -1,0 +1,25 @@
+{
+ "counts": {
+  "byte-identical": 483,
+  "asy_byte-identical": 500,
+  "numbers_equal": 500,
+  "english_prose": 0,
+  "prose-only-exception": 10,
+  "by-design": 7
+ },
+ "problems": [],
+ "repair_ledger": {
+  "test/algebra/2427.json": "English prose spliced between \\$ spans + BEL byte → re-translated v2, cc2 sound",
+  "test/algebra/824.json": "display block duplicated → cc1 fix; \\text{ if } left → cc2 fix «αν» (closed)",
+  "test/prealgebra/1203.json": "untranslated + «60% of» error → cc1 fix, cc2 sound",
+  "test/algebra/2551.json": "English + dropped «discount» → cc1 fix, cc2 sound",
+  "test/prealgebra/1840.json": "English + dropped «to bake» → cc1 fix, cc2 sound",
+  "test/algebra/1332.json": "question in English → cc1 fix, cc2 sound",
+  "test/algebra/2626.json": "given in English → cc1 fix, cc2 sound",
+  "test/algebra/2743.json": "second equation in English → cc1 fix, cc2 sound",
+  "test/algebra/2780.json": "data point in English → cc1 fix, cc2 sound",
+  "test/number_theory/679.json": "two givens in English → cc1 fix, cc2 sound",
+  "test/number_theory/1185.json": "«is defined as» in English → cc1 fix, cc2 sound"
+ },
+ "verifier": "verify_final.py (independent of translate.py's scanner)"
+}

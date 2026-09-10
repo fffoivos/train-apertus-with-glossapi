@@ -1,5 +1,5 @@
 {
- "built": "2026-09-10 11:00",
+ "built": "2026-09-10 11:15",
  "pipeline": "Sol (gpt-5.6-sol, Codex CLI 0.144.1, effort medium) translation with in-call self-check → programmatic checks → cross-check by Claude Opus (different vendor) on the critical subsets (all IFBench prompts and kwargs, all XSTest items, all MultiChallenge target questions + a 59-conversation random audit, all MATH-500 items failing the programmatic check + a 59-item random audit) → Sol repair of flagged items → frozen *_final.jsonl",
  "not_checked": "exposure through the Apertus pretraining corpus and our CPT corpus (not inspectable locally; the CPT corpus check is a cluster job, DATA_TODO 32); exposure through prior model selection (none: these sets have never been run on any of our checkpoints as of the build date); native-speaker audit of the frozen sets (owner, 59 items per set, pending)",
  "benchmarks": {
@@ -57,11 +57,11 @@
      "lines": 300
     },
     "prompts_el.jsonl": {
-     "sha256_16": "ea93493041bd5854",
+     "sha256_16": "dd251a4ea29c9c11",
      "lines": 300
     },
     "prompts_el_final.jsonl": {
-     "sha256_16": "b6ced75e9f0b20d3",
+     "sha256_16": "b61ff2960052cde5",
      "lines": 300
     }
    },
@@ -74,11 +74,79 @@
      "unresolved": 12,
      "seen": 10
     },
+    "by_overlap_instances": {
+     "seen-novel-composition": 131,
+     "unseen": 187,
+     "unresolved": 13,
+     "seen": 10
+    },
     "mixed": 28,
+    "core": 238,
+    "extension": 62,
     "by_transfer": {
      "adapt": 274,
      "faithful": 65,
      "replace": 2
+    },
+    "id_to_family": {
+     "count:word_count_range": "length_words_max + length_words_min",
+     "count:unique_word_count": "length_words_min",
+     "ratio:stop_words": "none",
+     "ratio:sentence_type": "greek_question_mark",
+     "ratio:sentence_balance": "greek_question_mark, no_exclamation",
+     "count:conjunctions": "keywords_include",
+     "count:person_names": "mention_entity",
+     "ratio:overlap": "none",
+     "count:numbers": "mention_number",
+     "words:alphabet": "letter_freq",
+     "words:vowel": "letter_freq",
+     "words:consonants": "letter_freq",
+     "sentence:alliteration_increment": "letter_freq",
+     "words:palindrome": "none",
+     "count:punctuation": "no_comma, no_exclamation, greek_question_mark, ano_teleia_list",
+     "format:parentheses": "placeholders_n",
+     "format:quotes": "wrap_in_quotes",
+     "words:prime_lengths": "none",
+     "format:options": "constrained_answer",
+     "format:newline": "bullets_n",
+     "format:emoji": "none",
+     "ratio:sentence_words": "length_sentences_exact",
+     "count:words_japanese": "greeklish_only",
+     "words:start_verb": "no_adjectives (judge-only), start_with",
+     "words:repeats": "keyword_freq",
+     "sentence:keyword": "keywords_include",
+     "count:pronouns": "formal_plural, informal_singular",
+     "words:odd_even_syllables": "none",
+     "words:last_first": "none",
+     "words:paragraph_last_first": "paragraph_starts_with",
+     "sentence:increment": "length_sentences_exact",
+     "words:no_consecutive": "letter_freq",
+     "format:line_indent": "none",
+     "format:quote_unquote": "wrap_in_quotes",
+     "format:list": "bullets_n",
+     "format:thesis": "highlight_n (+ sections_n)",
+     "format:sub-bullets": "bullets_n",
+     "format:no_bullets_bullets": "bullets_n + length_sentences_exact",
+     "custom:multiples": "mention_number",
+     "custom:mcq_count_length": "sections_n",
+     "custom:reverse_newline": "none",
+     "custom:word_reverse": "none",
+     "custom:character_reverse": "none",
+     "custom:sentence_alphabet": "letter_freq, paragraph_starts_with",
+     "custom:european_capitals_sort": "none",
+     "custom:csv_city": "format_json",
+     "custom:csv_special_character": "format_json",
+     "custom:csv_quotes": "format_json",
+     "custom:date_format_list": "mention_date",
+     "count:keywords_multiple": "keyword_freq",
+     "words:keywords_specific_position": "keywords_include + paragraph_starts_with",
+     "words:words_position": "keywords_include",
+     "repeat:repeat_change": "repeat_request",
+     "repeat:repeat_simple": "repeat_request",
+     "repeat:repeat_span": "repeat_request",
+     "format:title_case": "all_caps_greek, all_lower",
+     "format:output_template": "sections_n, formal_and_informal",
+     "format:no_whitespace": "none"
     },
     "errors": []
    }
@@ -141,7 +209,7 @@
      "lines": 500
     },
     "problems_el_final.jsonl": {
-     "sha256_16": "34ba1eafebe7e82b",
+     "sha256_16": "8f96aec9e39d7343",
      "lines": 500
     }
    },

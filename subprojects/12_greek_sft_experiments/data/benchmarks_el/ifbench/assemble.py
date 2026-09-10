@@ -12,6 +12,22 @@ for line in open(os.path.join(HERE, 'TRANSFER_ANALYSIS.md')):
     m = re.match(r'\| ([a-z_]+:[a-z_\-]+) \|.*\| (seen-novel-composition|unseen|unresolved|seen)[^|]*\| (faithful|adapt|replace|exclude)', line)
     if m: OVERLAP[m.group(1)] = dict(overlap=m.group(2), transfer=m.group(3))
 PROMPT_KW = {'ratio:overlap': 'reference_text', 'repeat:repeat_change': 'prompt_to_repeat', 'repeat:repeat_span': 'prompt_to_repeat'}
+FIDELITY = {  # prompt-semantic fidelity to the English instruction / checker fidelity to upstream / difficulty retuning (astra F3): anything not 'faithful' puts the prompt in the EXTENSION
+ 'format:thesis': ('weakened: "each section" → "at least one section" (matches the upstream checker, not the English text)', 'faithful', None),
+ 'words:palindrome': ('faithful wording', 'faithful', 'N 10 → 3'), 'words:vowel': ('faithful wording', 'faithful', 'distinct vowels ≤3 → ≤4'), 'words:repeats': ('faithful wording', 'faithful', 'small_n floor 5'),
+ 'custom:sentence_alphabet': ('localised: 26 → 24 letters', 'faithful', '26 → 24'), 'custom:reverse_newline': ('localised list', 'faithful', 'lines 52 → 14 (Greek collation)'),
+ 'custom:date_format_list': ('changed: ISO date → Greek numeric or month-name dates', 'adapted', None), 'format:quote_unquote': ('changed predicate: stated as what the checker tests', 'faithful', None),
+ 'ratio:sentence_type': ('strengthened: ≥1 interrogative required', 'tightened', None), 'ratio:sentence_balance': ('strengthened: ≥1 of each type', 'tightened', None),
+ 'custom:word_reverse': ('replaced task', 'replaced', None), 'custom:character_reverse': ('replaced task', 'replaced', None), 'count:pronouns': ('operational counter (clitic gate) disclosed', 'approximation', None), 'words:consonants': ('faithful wording; ξ/ψ count as clusters', 'approximation', None),
+ 'words:start_verb': ('faithful wording; heuristic verb rule', 'approximation', None), 'words:odd_even_syllables': ('faithful wording; rule-based syllables', 'approximation', None), 'format:emoji': ('faithful wording; emoji by codepoint ranges', 'approximation', None)}
+try:
+    sys.path.insert(0, os.path.join(HERE, '..', '..', 'greek_if')); import constraints as C
+    FAMILY_EVIDENCE = {k: (v.get('phrasings') or [''])[0] for k, v in C.FAMILIES.items()}
+except Exception: FAMILY_EVIDENCE = {}
+CLOSEST = {}
+for line in open(os.path.join(HERE, 'TRANSFER_ANALYSIS.md')):
+    m = re.match(r'\| ([a-z_]+:[a-z_\-]+) \| [^|]* \| \d+ \| ([^|]*) \|', line)
+    if m: CLOSEST[m.group(1)] = m.group(2).strip()
 
 
 OVERRIDE_SPAN = {'287': (10, 12), '285': (5, 14), '284': (3, 7), '286': (0, 7)}   # exact Greek token spans verified by the cross-check
@@ -48,8 +64,7 @@ def main():
             try:
                 inst = REG.INSTRUCTION_DICT[iid](iid)
                 dkw = dict(kw)
-                if iid == 'ratio:overlap' and kw.get('reference_text', '').strip() == r['body_el'].strip(): dkw['reference_text'] = 'το κείμενο της παραπάνω ερώτησης'   # upstream shows no separate reference (it is the prompt itself); avoid printing the body twice
-                d = inst.build_description(**dkw).replace('επικάλυψη τριγραμμάτων', 'επικάλυψη τριγραμμάτων (τριάδων διαδοχικών λέξεων)').replace('με το ακόλουθο κείμενο αναφοράς: «το κείμενο της παραπάνω ερώτησης»', 'με το κείμενο της παραπάνω ερώτησης.'); descs.append(d); inst.check_following('Δοκιμαστική απάντηση. Δεύτερη πρόταση!')
+                d = inst.build_description(**dkw).replace('επικάλυψη τριγραμμάτων', 'επικάλυψη τριγραμμάτων (τριάδων διαδοχικών λέξεων· ποσοστό = κοινά τριγράμματα προς τα τριγράμματα της απάντησής σου)')   # astra F2: literal reference text and the formula; descs.append(d); inst.check_following('Δοκιμαστική απάντηση. Δεύτερη πρόταση!')
             except Exception as e: ok = False; errors.append(dict(id=r['id'], iid=iid, err=f'{type(e).__name__}: {str(e)[:120]}'))
         body = r['body_el'].strip()
         constraint_only = all(i.startswith('custom:') for i in r['instruction_ids']) or all(i == 'repeat:repeat_change' for i in r['instruction_ids'])   # cross-check: the 85%-of-prompt heuristic destroyed 4 task bodies; repeat_change's description already embeds the request
@@ -57,11 +72,13 @@ def main():
         if body and body[-1] not in '.;!?…»"\')': body += '.'   # cross-check: 55 bodies ended without punctuation and read as run-ons
         prompt_el = (body + ('\n\n' if '\n' in body or len(body) > 200 else ' ') + ' '.join(descs)).strip() if body else ' '.join(descs).strip()
         classes = [OVERLAP.get(i, {}).get('overlap', 'unresolved') for i in r['instruction_ids']]; rank = {'seen': 0, 'seen-novel-composition': 1, 'unresolved': 2, 'unseen': 3}
-        final.append(dict(id=r['id'], prompt_en=r['prompt_en'], prompt_el=prompt_el, body_el=body, instruction_id_list=r['instruction_ids'], kwargs=kws, kwargs_en=r['kwargs_en'], descriptions_el=descs,
+        fid = [dict(id=i, prompt_semantic=FIDELITY.get(i, ('faithful', 'faithful', None))[0], checker=FIDELITY.get(i, ('faithful', 'faithful', None))[1], retuned=FIDELITY.get(i, ('faithful', 'faithful', None))[2], closest_family=CLOSEST.get(i, ''), family_evidence=FAMILY_EVIDENCE.get(CLOSEST.get(i, '').split(' ')[0].split('+')[0].strip(), '')) for i in r['instruction_ids']]
+        core = not r.get('adapted') and all(f['prompt_semantic'].startswith(('faithful', 'localised')) and f['checker'] in ('faithful', 'approximation') and not f['retuned'] for f in fid)
+        final.append(dict(id=r['id'], prompt_en=r['prompt_en'], prompt_el=prompt_el, body_el=body, instruction_id_list=r['instruction_ids'], kwargs=kws, kwargs_en=r['kwargs_en'], descriptions_el=descs, fidelity=fid, core=core,
                           overlap_class=min(classes, key=lambda c: rank[c]), overlap_classes=classes, mixed_overlap=len(set(classes)) > 1, adapted=r.get('adapted'), transfer=[OVERLAP.get(i, {}).get('transfer', 'adapt') for i in r['instruction_ids']], builds_ok=ok, notes=r['notes']))
     with open(os.path.join(HERE, 'prompts_el_final.jsonl'), 'w') as f: [f.write(json.dumps(x, ensure_ascii=False) + '\n') for x in final]
     import collections
-    summ = dict(rows=len(final), builds_ok=sum(x['builds_ok'] for x in final), by_overlap=dict(collections.Counter(x['overlap_class'] for x in final)), mixed=sum(x['mixed_overlap'] for x in final), by_transfer=dict(collections.Counter(t for x in final for t in x['transfer'])), errors=errors[:20])
+    summ = dict(rows=len(final), builds_ok=sum(x['builds_ok'] for x in final), by_overlap=dict(collections.Counter(x['overlap_class'] for x in final)), by_overlap_instances=dict(collections.Counter(c for x in final for c in x['overlap_classes'])), mixed=sum(x['mixed_overlap'] for x in final), core=sum(x['core'] for x in final), extension=sum(not x['core'] for x in final), by_transfer=dict(collections.Counter(t for x in final for t in x['transfer'])), id_to_family=CLOSEST, errors=errors[:20])
     json.dump(summ, open(os.path.join(HERE, 'overlap_classes.json'), 'w'), ensure_ascii=False, indent=1); print(json.dumps(summ, ensure_ascii=False)[:1200])
 
 
