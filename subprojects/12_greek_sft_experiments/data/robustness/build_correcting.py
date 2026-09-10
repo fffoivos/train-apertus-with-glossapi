@@ -94,27 +94,34 @@ def dialogue(k, rng, exemplars, a):
     if not prof: return None
     ex = '\n'.join(f'ASSISTANT: {x}\nUSER: {u}' for x, u in rng.sample(exemplars, min(12, len(exemplars)))); profile = json.dumps(dict(prof, writing_surface=surface, intent=intent), ensure_ascii=False)
     n_plants = rng.choices([0, 1, 2], [0.3, 0.45, 0.25])[0]; plant_positions = sorted(rng.sample(range(1, 6), n_plants)) if n_plants else []
-    msgs = [dict(role='user', content=prof['first_message'])]; turns = []; answers = []; stop = None; self_checks = 0; pending_plant = None
+    role_plant_allowed = rng.random() < a.role_plant_share   # owner 2026-09-10: failures in the assistant role only for the verbatim-repeat recovery, in ≤ 15% of dialogues; everything else is QUOTED IN THE USER TURN
+    msgs = [dict(role='user', content=prof['first_message'])]; turns = []; answers = []; stop = None; self_checks = 0; pending_plant = None; carried_quote = None
     for t in range(12):
         w = call(WRITER.format(contract=CONTRACT, policy=POLICY, transcript=transcript(msgs)), S_ANS, a.effort)
         if not w: stop = 'writer_error'; break
-        ideal = w['answer'].strip(); plant = None; shown = ideal
+        ideal = w['answer'].strip(); plant = None; shown = ideal; pending_quote = None
         if t in plant_positions:
             plant = rng.choices(list(FAIL), [v[0] for v in FAIL.values()])[0]
-            pw = call(WRITER.format(contract=CONTRACT, policy='PLANTED FAILURE (this answer is deliberately flawed context for training a recovery; write it fluently): ' + FAIL[plant][1], transcript=transcript(msgs) + ('\n\n[PREVIOUS ASSISTANT ANSWER to repeat: ' + answers[-1] + ']' if plant == 'verbatim_repeat' and answers else '')), S_ANS, a.effort)
+            if plant == 'verbatim_repeat' and not (role_plant_allowed and answers): plant = 'rote_frame'
+        if plant and plant != 'verbatim_repeat':   # quoted-in-user planting: the ideal answer stands; the user will confront the assistant with a fictitious flawed answer quoted verbatim
+            quoted = call(WRITER.format(contract=CONTRACT, policy='Write a short FLAWED assistant answer (2–4 sentences, fluent Greek) that the user will later QUOTE back as something the assistant wrote: ' + FAIL[plant][1], transcript=transcript(msgs)), S_ANS, a.effort)
+            qt = (quoted or {}).get('answer', '').strip(); pending_quote = dict(kind='quoted:' + plant, quoted_text=qt) if qt else None; plant = None
+        elif plant == 'verbatim_repeat':   # the only assistant-role planted failure (masked), capped by --role-plant-share
+            pw = call(WRITER.format(contract=CONTRACT, policy='PLANTED FAILURE (this answer is deliberately flawed context for training a recovery; write it fluently): ' + FAIL[plant][1], transcript=transcript(msgs) + '\n\n[PREVIOUS ASSISTANT ANSWER to repeat: ' + answers[-1] + ']'), S_ANS, a.effort)
             if pw: shown = pw['answer'].strip()
             else: plant = None
-        rec = dict(i=t, user=msgs[-1]['content'], answer=shown, train=plant is None, kind=('planted:' + plant) if plant else ('recovery' if pending_plant else 'ideal'), ideal=ideal if plant else None, assumption=w.get('assumption', ''))
+        kind = ('planted:' + plant) if plant else ('recovery' if pending_plant else ('quoted_recovery:' + carried_quote['kind'] if carried_quote else 'ideal'))
+        rec = dict(i=t, user=msgs[-1]['content'], answer=shown, train=plant is None, kind=kind, ideal=ideal if plant else None, assumption=w.get('assumption', ''), quoted_failure=carried_quote['quoted_text'] if carried_quote else None)
         if pending_plant: rec['checks'] = checks('recovery', shown, answers, msgs[-1]['content'], planted_text=pending_plant[1], plant=pending_plant[0])
+        elif carried_quote: rec['checks'] = checks('recovery', shown, answers, msgs[-1]['content'], planted_text=carried_quote['quoted_text'], plant=carried_quote['kind'].split(':')[1])
         elif plant is None: rec['checks'] = checks('ideal', shown, answers, msgs[-1]['content'])
-        pending_plant = (plant, shown) if plant else None
-        answers.append(shown); msgs.append(dict(role='assistant', content=shown, train=plant is None)); turns.append(rec)
-        due = ('[SCHEDULE: introduce your change of direction now]' if t >= 1 and not any(x.get('move') == 'change_request' for x in turns) else '') + ('[SCHEDULE: no self-awareness probe yet — ask one now]' if t >= 2 and self_checks == 0 else '') + ('[NOTE: the last answer looks repetitive or off — react to it as a person would]' if plant else '')
+        pending_plant = (plant, shown) if plant else None; carried_quote = None
+        due = (("[CONFRONTATION: the assistant's last answer was actually this (quote it verbatim in your message, in guillemets, as what it wrote, and react as a person would — it is flawed): " + pending_quote['quoted_text'] + ']') if pending_quote else '') + ('[SCHEDULE: introduce your change of direction now]' if t >= 1 and not any(x.get('move') == 'change_request' for x in turns) else '') + ('[SCHEDULE: no self-awareness probe yet — ask one now]' if t >= 2 and self_checks == 0 else '') + ('[NOTE: the last answer looks repetitive or off — react to it as a person would]' if plant else '')
         j = call(RESPONDER.format(profile=profile, examples=ex, transcript=transcript(msgs) + ('\n\n' + due if due else '')), S_TURN, a.effort)
         if not j: stop = 'responder_error'; break
         rec.update(assessment=j['assessment'], move=j['move'], probe=j['probe'], self_check_verdict=j['self_check_verdict'], claim=j['claim'], responder_stop=j['stop'])
         if j['move'] == 'self_check' or j['probe'] not in ('none', ''): self_checks += 1
-        msgs.append(dict(role='user', content=j['message']))
+        msgs.append(dict(role='user', content=j['message'])); carried_quote = pending_quote
         if j['stop'] or j['move'] == 'close':
             w2 = call(WRITER.format(contract=CONTRACT, policy=POLICY, transcript=transcript(msgs)), S_ANS, a.effort)
             if w2: msgs.append(dict(role='assistant', content=w2['answer'].strip(), train=True)); turns.append(dict(i=t + 1, user=j['message'], answer=w2['answer'].strip(), train=True, kind='closing', checks=checks('ideal', w2['answer'], answers, j['message'])))
@@ -125,7 +132,7 @@ def dialogue(k, rng, exemplars, a):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('out'); ap.add_argument('--n', type=int, default=200); ap.add_argument('--seed', type=int, default=1); ap.add_argument('--effort', default='high'); ap.add_argument('--concurrency', type=int, default=8); ap.add_argument('--chats', default=os.path.expanduser('~/apertus-chats'))
+    ap = argparse.ArgumentParser(); ap.add_argument('out'); ap.add_argument('--n', type=int, default=200); ap.add_argument('--seed', type=int, default=1); ap.add_argument('--effort', default='high'); ap.add_argument('--concurrency', type=int, default=8); ap.add_argument('--chats', default=os.path.expanduser('~/apertus-chats')); ap.add_argument('--role-plant-share', type=float, default=0.15, help='share of dialogues that may carry an assistant-role planted verbatim repeat (masked); all other failures are quoted in the user turn')
     a = ap.parse_args(); os.makedirs(a.out, exist_ok=True); exemplars = load_exemplars(a.chats); path = os.path.join(a.out, 'dialogues.jsonl'); have = {json.loads(l)['id'] for l in open(path)} if os.path.exists(path) else set()
     def run(k):
         d = dialogue(k, random.Random(a.seed * 1000 + k), exemplars, a)
