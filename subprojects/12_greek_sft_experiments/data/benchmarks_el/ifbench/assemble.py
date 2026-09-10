@@ -46,7 +46,10 @@ def main():
         kws = fix_kwargs(r); descs = []; ok = True
         for iid, kw in zip(r['instruction_ids'], kws):
             try:
-                inst = REG.INSTRUCTION_DICT[iid](iid); d = inst.build_description(**kw); descs.append(d); inst.check_following('Δοκιμαστική απάντηση. Δεύτερη πρόταση!')
+                inst = REG.INSTRUCTION_DICT[iid](iid)
+                dkw = dict(kw)
+                if iid == 'ratio:overlap' and kw.get('reference_text', '').strip() == r['body_el'].strip(): dkw['reference_text'] = 'το κείμενο της παραπάνω ερώτησης'   # upstream shows no separate reference (it is the prompt itself); avoid printing the body twice
+                d = inst.build_description(**dkw).replace('επικάλυψη τριγραμμάτων', 'επικάλυψη τριγραμμάτων (τριάδων διαδοχικών λέξεων)').replace('με το ακόλουθο κείμενο αναφοράς: «το κείμενο της παραπάνω ερώτησης»', 'με το κείμενο της παραπάνω ερώτησης'); descs.append(d); inst.check_following('Δοκιμαστική απάντηση. Δεύτερη πρόταση!')
             except Exception as e: ok = False; errors.append(dict(id=r['id'], iid=iid, err=f'{type(e).__name__}: {str(e)[:120]}'))
         body = r['body_el'].strip()
         constraint_only = all(i.startswith('custom:') for i in r['instruction_ids']) or all(i == 'repeat:repeat_change' for i in r['instruction_ids'])   # cross-check: the 85%-of-prompt heuristic destroyed 4 task bodies; repeat_change's description already embeds the request

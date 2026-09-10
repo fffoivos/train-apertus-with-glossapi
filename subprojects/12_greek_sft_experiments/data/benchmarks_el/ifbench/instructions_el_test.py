@@ -56,12 +56,18 @@ def test_descriptions_are_greek():
 
 def test_retuned_dict():
     assert set(I.RETUNED) == {"words:palindrome", "words:vowel", "words:repeats",
-                              "custom:sentence_alphabet", "custom:reverse_newline"}
+                              "custom:sentence_alphabet", "custom:reverse_newline",
+                              # cross-check #11: the two deliberate tightenings are recorded here
+                              "ratio:sentence_type", "ratio:sentence_balance"}
     assert I.RETUNED["words:palindrome"]["greek"] == 3
     assert I.RETUNED["words:vowel"]["greek"] == 4
     assert I.RETUNED["words:repeats"]["greek"] == 5
     assert I.RETUNED["custom:sentence_alphabet"]["greek"] == 24
     assert I.RETUNED["custom:reverse_newline"]["greek"] == 14
+    assert I.RETUNED["ratio:sentence_type"]["greek"] == 1
+    assert I.RETUNED["ratio:sentence_balance"]["greek"] == 1
+    # cross-check #3: the floor is documented as the EFFECTIVE value
+    assert "effective_small_n" in I.RETUNED["words:repeats"]["reason"]
     for v in I.RETUNED.values():
         assert v["reason"].strip()
 
@@ -153,11 +159,18 @@ def test_stop_words(label, value, pct, expected):
 @pytest.mark.parametrize("label,value,expected", [
     ("positive", "Καλά. Ωραία. Πάμε;", True),
     ("negative", "Καλά. Πάμε;", False),
-    ("boundary", "Ήρθε ο Νίκος" + ANO + " έφυγε η Μαρία", True),   # no terminators: 0 == 0
+    # cross-check #11: no terminators used to pass on 0 == 2*0; ≥1 interrogative is now required
+    ("boundary", "Ήρθε ο Νίκος" + ANO + " έφυγε η Μαρία", False),
+    ("no-question", "Καλά. Ωραία.", False),                        # cross-check #11 tightening
     ("unicode", "Καλά. Ωραία. Πάμε" + GQM, True),
 ])
 def test_sentence_type(label, value, expected):
     assert check("ratio:sentence_type", value) is expected
+
+
+def test_sentence_type_description_discloses_the_minimum():
+    """cross-check #11: the ≥1-interrogative rule is stated in the prompt."""
+    assert "τουλάχιστον μία ερωτηματική" in I.DESCRIPTIONS_EL["ratio:sentence_type"]
 
 
 # ======================================================================================
@@ -166,11 +179,18 @@ def test_sentence_type(label, value, expected):
 @pytest.mark.parametrize("label,value,expected", [
     ("positive", "Καλά. Πάμε; Ωραία!", True),
     ("negative", "Καλά. Πάμε;", False),
-    ("boundary", "Χωρίς σημεία στίξης", True),                     # 0 == 0 == 0
+    # cross-check #11: 0 == 0 == 0 is no longer a free pass
+    ("boundary", "Χωρίς σημεία στίξης", False),
+    ("missing-type", "Καλά. Ωραία.", False),                       # cross-check #11 tightening
     ("unicode", "Καλά. Πάμε" + GQM + " Ωραία!", True),
 ])
 def test_sentence_balance(label, value, expected):
     assert check("ratio:sentence_balance", value) is expected
+
+
+def test_sentence_balance_description_discloses_the_minimum():
+    """cross-check #11: the ≥1-of-each rule is stated in the prompt."""
+    assert "τουλάχιστον μία πρόταση από κάθε τύπο" in I.DESCRIPTIONS_EL["ratio:sentence_balance"]
 
 
 # ======================================================================================
@@ -218,6 +238,24 @@ REF = "Η θάλασσα είναι γαλάζια"
 ])
 def test_overlap(label, value, pct, expected):
     assert check("ratio:overlap", value, reference_text=REF, percentage=pct) is expected
+
+
+def test_overlap_description_renders_the_reference_text():
+    """cross-check #1: the reference text must be visible and identifiable in the prompt."""
+    inst = INSTRUCTION_DICT["ratio:overlap"]("ratio:overlap")
+    description = inst.build_description(reference_text=REF, percentage=50.0)
+    assert REF in description
+    assert "«%s»" % REF in description
+    assert "50%" in description
+    assert "{" not in description
+    # the kwargs contract is unchanged: the reference text is still an argument
+    assert inst.get_instruction_args()["reference_text"] == REF
+    assert inst.get_instruction_args_keys() == ["reference_text", "percentage"]
+
+
+def test_overlap_description_survives_a_missing_reference():
+    inst = INSTRUCTION_DICT["ratio:overlap"]("ratio:overlap")
+    assert "None" not in inst.build_description(percentage=50.0)
 
 
 # ======================================================================================
@@ -271,6 +309,14 @@ def test_single_vowel_paragraph(label, value, expected):
 ])
 def test_consonant_cluster(label, value, expected):
     assert check("words:consonants", value) is expected
+
+
+def test_consonant_cluster_description_names_the_excluded_words():
+    """cross-check #12: writers must see that και/το/να/με are ruled out (no code change)."""
+    text = I.DESCRIPTIONS_EL["words:consonants"]
+    assert "(αυτό αποκλείει λέξεις χωρίς σύμπλεγμα συμφώνων όπως και, το, να, με)" in text
+    for word in ("και", "το", "να", "με"):
+        assert check("words:consonants", word) is False
 
 
 # ======================================================================================
@@ -363,9 +409,23 @@ def test_prime_lengths(label, value, expected):
     ("homoglyph", "a)", "α), β), γ), δ)", True),
     ("strict-neg", "ε)", "α), β), γ), δ)", False),
     ("or-separator", "ξέρω", "I know or I don't know", True),
+    # cross-check #9: label case-insensitivity + Latin/Greek uppercase homoglyphs
+    ("upper-greek", "Α)", "α), β), γ), δ)", True),
+    ("upper-latin", "A)", "α), β), γ), δ)", True),
+    ("latin-c", "C)", "α), β), γ), δ)", True),
+    ("upper-latin-d", "D)", "α), β), γ), δ)", True),
+    ("upper-greek-g", "Γ)", "α), β), γ), δ)", True),
+    ("upper-latin-e-neg", "E)", "α), β), γ), δ)", False),          # ε) is not on offer
+    ("loose-upper", "ΊΣΩΣ", "ναι/όχι/ίσως", True),
 ])
 def test_options(label, value, options, expected):
     assert check("format:options", value, options=options) is expected
+
+
+@pytest.mark.parametrize("value", ["α)", "Α)", "a)", "A)", "ε)", "Ε)", "e)", "E)"])
+def test_options_five_labels_are_case_and_homoglyph_insensitive(value):
+    """cross-check #9: A/B/C/D/E and Α/Β/Γ/Δ/Ε all map onto α) β) γ) δ) ε)."""
+    assert check("format:options", value, options="α), β), γ), δ), ε)") is True
 
 
 # ======================================================================================
@@ -452,6 +512,31 @@ def test_limited_word_repeat_floor_is_recorded():
     assert inst.get_instruction_args()["small_n"] == 5
 
 
+def test_limited_word_repeat_effective_small_n_is_the_single_source_of_truth():
+    """cross-check #3: build_description() and check_following() use the same value."""
+    cls = I.LimitedWordRepeatChecker
+    assert cls.effective_small_n(2.0) == 5          # floored
+    assert cls.effective_small_n(7.0) == 7          # above the floor: untouched
+    assert cls.effective_small_n(5) == 5            # boundary
+    for small_n in (1.0, 2.0, 5.0, 7.0):
+        inst = INSTRUCTION_DICT["words:repeats"]("words:repeats")
+        description = inst.build_description(small_n=small_n)
+        n = cls.effective_small_n(small_n)
+        assert "%d" % n in description
+        assert inst.get_instruction_args()["small_n"] == n
+        assert inst.check_following(" ".join(["ναι"] * n)) is True
+        assert inst.check_following(" ".join(["ναι"] * (n + 1))) is False
+
+
+def test_limited_word_repeat_accepts_the_upstream_kwarg():
+    """cross-check #3: the assembler keeps the un-floored upstream value alongside small_n."""
+    inst = INSTRUCTION_DICT["words:repeats"]("words:repeats")
+    description = inst.build_description(small_n=5, small_n_upstream=2)
+    assert "5" in description and "2" not in description
+    assert inst.get_instruction_args() == {"small_n": 5}
+    assert inst.get_instruction_args_keys() == ["small_n"]
+
+
 # ======================================================================================
 # sentence:keyword  (adapt)
 # ======================================================================================
@@ -476,6 +561,19 @@ def test_include_keyword(label, value, expected):
 ])
 def test_pronouns(label, value, n, expected):
     assert check("count:pronouns", value, N=n) is expected
+
+
+def test_pronouns_description_discloses_what_is_counted():
+    """cross-check #2: strong forms are listed and the clitic rule is spelled out."""
+    description = mk("count:pronouns", N=2.0).build_description(N=2.0)
+    for form in ("εγώ", "εσύ", "αυτός/αυτή/αυτό", "εμείς", "εσείς", "εκείνος",
+                 "κάποιος", "κανείς", "τίποτα", "όλοι", "όποιος", "ό,τι"):
+        assert form in description, form
+    assert "μου/σου/του/της/μας/σας/τους/τον/την/το/τα/τις" in description
+    assert "μόνο όταν ακολουθεί ρήμα ή τελειώνει η πρόταση" in description
+    # and the described rule is the one the checker applies
+    assert check("count:pronouns", "Το σπίτι του Γιώργου", N=1.0) is False
+    assert check("count:pronouns", "Του είπε.", N=1.0) is True
 
 
 # ======================================================================================
@@ -530,6 +628,24 @@ def test_incrementing_word_count(label, value, expected):
     assert check("sentence:increment", value, small_n=2.0) is expected
 
 
+@pytest.mark.parametrize("small_n,phrase,other", [
+    (1.0, "ακριβώς 1 λέξη περισσότερη", "λέξεις περισσότερες"),
+    (2.0, "ακριβώς 2 λέξεις περισσότερες", "λέξη περισσότερη"),
+    (5.0, "ακριβώς 5 λέξεις περισσότερες", "λέξη περισσότερη"),
+])
+def test_incrementing_word_count_grammatical_number(small_n, phrase, other):
+    """cross-check #4: singular for small_n == 1, plural otherwise."""
+    description = mk("sentence:increment", small_n=small_n).build_description(small_n=small_n)
+    assert phrase in description
+    assert other not in description
+    assert "{" not in description
+
+
+def test_incrementing_word_count_singular_case_still_checks():
+    assert check("sentence:increment", "Ένα δύο. Ένα δύο τρία.", small_n=1.0) is True
+    assert check("sentence:increment", "Ένα δύο. Ένα δύο τρία τέσσερα.", small_n=1.0) is False
+
+
 # ======================================================================================
 # words:no_consecutive  (adapt)
 # ======================================================================================
@@ -567,6 +683,17 @@ def test_quote_explanation(label, value, expected):
     assert check("format:quote_unquote", value) is expected
 
 
+def test_quote_explanation_description_matches_the_checker():
+    """cross-check #6: state the two tested facts; drop the unenforced «explain each quote»."""
+    text = I.DESCRIPTIONS_EL["format:quote_unquote"]
+    assert "δύο εισαγωγικά το ένα δίπλα στο άλλο" in text
+    assert "αφαιρεθούν τα κενά" in text
+    assert "μην τελειώνεις την απάντηση με εισαγωγικό" in text
+    assert "εξήγηση" not in text            # the checker never verifies an explanation
+    # an unexplained quotation followed by any text still passes -> the old wording was wrong
+    assert check("format:quote_unquote", "Είπε «καλημέρα» και μετά σιωπή.") is True
+
+
 # ======================================================================================
 # format:list  (adapt)
 # ======================================================================================
@@ -595,6 +722,16 @@ def test_special_bullet_points_maps_the_kwarg():
 ])
 def test_italics_thesis(label, value, expected):
     assert check("format:thesis", value) is expected
+
+
+def test_italics_thesis_description_matches_the_checker():
+    """cross-check #5: one section is enough and <em> is accepted alongside <i>."""
+    text = I.DESCRIPTIONS_EL["format:thesis"]
+    assert text.startswith("Τουλάχιστον μία ενότητα")
+    assert "<i>…</i>" in text and "<em>…</em>" in text
+    assert "Κάθε ενότητα" not in text
+    # only the FIRST section needs the italic thesis, exactly as the description now says
+    assert check("format:thesis", "<i>Η θέση μου</i> ανάλυση.\n\nΜια ενότητα χωρίς πλάγια.") is True
 
 
 # ======================================================================================
@@ -660,6 +797,13 @@ def test_mcq_count_length(label, value, expected):
     assert check("custom:mcq_count_length", value) is expected
 
 
+def test_mcq_topic_is_twentieth_century_art_history():
+    """cross-check #10: the topic is «ιστορία της τέχνης του 20ού αιώνα», not «ελληνική τέχνη»."""
+    text = I.DESCRIPTIONS_EL["custom:mcq_count_length"]
+    assert "ιστορία της τέχνης" in text and "του 20ού αιώνα" in text
+    assert "ελληνική τέχνη" not in text
+
+
 # ======================================================================================
 # custom:reverse_newline  (adapt, RETUNED 14 lines)
 # ======================================================================================
@@ -700,6 +844,19 @@ def test_word_reverse(label, value, expected):
 # custom:character_reverse  (replace, EXACT orthography: ς is not folded)
 # ======================================================================================
 EXPECTED_REV = I.CharacterReverseOrderChecker.expected()
+
+
+def test_character_reverse_target_contains_a_final_sigma():
+    """cross-check #8: the target must exercise the ς rule."""
+    cls = I.CharacterReverseOrderChecker
+    assert cls.TARGET_SENTENCE == "Ο ουρανός είναι γαλάζιος"
+    assert "ς" in cls.TARGET_SENTENCE and "ς" in EXPECTED_REV
+    assert EXPECTED_REV == "ςοιζάλαγ ιανίε ςόναρυο Ο"
+    text = I.DESCRIPTIONS_EL["custom:character_reverse"]
+    assert "«Ο ουρανός είναι γαλάζιος»" in text
+    assert "θάλασσα" not in text
+    # the ς rule is now live on the shipped class, not only on a test subclass
+    assert check("custom:character_reverse", EXPECTED_REV.replace("ς", "σ")) is False
 
 
 @pytest.mark.parametrize("label,value,expected", [
@@ -753,6 +910,32 @@ CAPS = [c for c, _ in I.EUROPEAN_CAPITALS_EL]
 ])
 def test_european_capitals_sort(label, value, expected):
     assert check("custom:european_capitals_sort", value) is expected
+
+
+def test_european_capitals_description_names_the_reference_set():
+    """cross-check #7 (amended): name the exact 27-state set, so Κίεβο is not invited.
+
+    The finding asked for «οι πρωτεύουσες των 27 κρατών-μελών της ΕΕ»; that claim is false for
+    this list (it holds Μόσχα / Μινσκ / Λονδίνο / Βαντούζ / Βέρνη / Κισινάου / Ρέικιαβικ / Όσλο
+    and omits Αθήνα / Ρώμη / Μαδρίτη …), so the description names EU-27 + EFTA + UK + RU + BY + MD.
+    """
+    text = I.DESCRIPTIONS_EL["custom:european_capitals_sort"]
+    assert "27 κρατών-μελών της " in text and "Ευρωπαϊκής Ένωσης" in text
+    assert "ΕΖΕΣ" in text
+    for state in ("Ηνωμένου Βασιλείου", "Ρωσίας", "Λευκορωσίας", "Μολδαβίας"):
+        assert state in text, state
+    assert "27 πρωτεύουσες συνολικά" in text
+    assert "Ουκρανία" not in text and "Κίεβο" not in text
+    # the description must not contradict the checker: every state it names has a capital in the
+    # list, and the ones it leaves out (Ουκρανία) do not.
+    canonical = {c for c, _v in I.EUROPEAN_CAPITALS_EL}
+    assert len(I.EUROPEAN_CAPITALS_EL) == 27
+    assert "Κίεβο" not in canonical
+    for capital in ("Μόσχα", "Μινσκ", "Λονδίνο", "Βαντούζ", "Βέρνη", "Κισινάου",
+                    "Ρέικιαβικ", "Όσλο"):
+        assert capital in canonical, capital       # non-EU -> the «EU-27» wording would be false
+    for capital in ("Αθήνα", "Ρώμη", "Μαδρίτη", "Λισαβόνα"):
+        assert capital not in canonical, capital   # EU but below 45°N
 
 
 def test_european_capitals_variants_accepted():
@@ -1017,12 +1200,9 @@ def test_contract_of_every_id(iid):
 
 def test_character_reverse_exact_orthography_rejects_sigma_fold():
     """A target with a final sigma must be reproduced exactly (ς is never folded)."""
-    class _WithFinalSigma(I.CharacterReverseOrderChecker):
-        TARGET_SENTENCE = "Ο ουρανός είναι γαλάζιος"
-
-    inst = _WithFinalSigma("custom:character_reverse")
+    inst = INSTRUCTION_DICT["custom:character_reverse"]("custom:character_reverse")
     inst.build_description()
-    exact = _WithFinalSigma.expected()
+    exact = I.CharacterReverseOrderChecker.expected()   # cross-check #8: the shipped target
     assert "ς" in exact
     assert inst.check_following(exact) is True
     assert inst.check_following(exact.replace("ς", "σ")) is False

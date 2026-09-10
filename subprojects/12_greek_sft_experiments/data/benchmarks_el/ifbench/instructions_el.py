@@ -549,13 +549,26 @@ RETUNED = {
         "reason": "Greek has 7 vowel letters and vowel-heavy morphology; ≤3 distinct vowels leaves no usable lexicon."},
     "words:repeats": {
         "upstream": 1, "greek": 5,
-        "reason": "Greek articles/clitics (ο, η, το, και, να, του) recur unavoidably, so small_n is floored at 5."},
+        # cross-check #3: the floor is the EFFECTIVE value -- LimitedWordRepeatChecker.effective_small_n()
+        # is the single source of truth and is used by build_description() and check_following() alike,
+        # so the prompt always states the number the checker actually enforces (kwargs keep the upstream one).
+        "reason": "Greek articles/clitics (ο, η, το, και, να, του) recur unavoidably, so small_n is floored at 5; "
+                  "the effective value is effective_small_n(small_n) = max(small_n, 5)."},
     "custom:sentence_alphabet": {
         "upstream": 26, "greek": 24,
         "reason": "The Greek alphabet has 24 letters, so the story has 24 sentences (α…ω)."},
     "custom:reverse_newline": {
         "upstream": 52, "greek": REVERSE_NEWLINE_MIN_LINES,
         "reason": "Ζιμπάμπουε is not last in Greek collation; only the countries sorting ≤ it follow the anchor."},
+    # cross-check #11: deliberate TIGHTENING (not a numeric port) -- upstream compares counts only, so an
+    # answer with no sentence terminators at all satisfied 0 == 2*0 / 0 == 0 == 0.  We require at least one
+    # sentence of each mandated type, and the descriptions now say so.
+    "ratio:sentence_type": {
+        "upstream": 0, "greek": 1,
+        "reason": "Tightening: at least one interrogative sentence is required, so 0 == 2*0 is no longer a free pass."},
+    "ratio:sentence_balance": {
+        "upstream": 0, "greek": 1,
+        "reason": "Tightening: at least one sentence of each of the three types is required, so 0 == 0 == 0 is no longer a free pass."},
 }
 
 
@@ -572,20 +585,25 @@ DESCRIPTIONS_EL = {
     "ratio:stop_words":
         "Φρόντισε οι λέξεις-εργαλεία (άρθρα, προθέσεις, σύνδεσμοι, μόρια, αδύνατοι τύποι) "
         "να μην ξεπερνούν το {percentage}% του συνόλου των λέξεων της απάντησης.",
+    # cross-check #11: the ≥1 requirement is disclosed, because the checker now enforces it.
     "ratio:sentence_type":
         "Κράτησε αναλογία 2:1 ανάμεσα στις αποφαντικές προτάσεις (που κλείνουν με τελεία) "
-        "και στις ερωτηματικές (που κλείνουν με ελληνικό ερωτηματικό «;»).",
+        "και στις ερωτηματικές (που κλείνουν με ελληνικό ερωτηματικό «;»)· πρέπει να υπάρχει "
+        "τουλάχιστον μία ερωτηματική πρόταση.",
     "ratio:sentence_balance":
         "Φρόντισε οι τρεις τύποι προτάσεων να είναι ισάριθμοι: αποφαντικές (τελεία), "
-        "ερωτηματικές (ελληνικό ερωτηματικό «;») και θαυμαστικές (θαυμαστικό).",
+        "ερωτηματικές (ελληνικό ερωτηματικό «;») και θαυμαστικές (θαυμαστικό)· πρέπει να "
+        "υπάρχει τουλάχιστον μία πρόταση από κάθε τύπο.",
     "count:conjunctions":
         "Χρησιμοποίησε τουλάχιστον {small_n} διαφορετικούς παρατακτικούς συνδέσμους από τους "
         "εξής: και/κι, ή, αλλά, μα, όμως, ούτε, μήτε, είτε, παρά.",
     "count:person_names":
         "Ανάφερε τουλάχιστον {N} διαφορετικά ονόματα προσώπων από την παρακάτω λίστα: {names}.",
+    # cross-check #1: the reference text must be VISIBLE and identifiable in the prompt, not
+    # referred to as "the text you were given" (the assembler passes the Greek task body).
     "ratio:overlap":
-        "Διατήρησε επικάλυψη τριγράμμων (τριάδων διαδοχικών λέξεων) {percentage}% (±2%) με το "
-        "κείμενο αναφοράς που σου δόθηκε.",
+        "Κράτησε επικάλυψη τριγραμμάτων {percentage}% (±2%) με το ακόλουθο κείμενο αναφοράς: "
+        "«{reference_text}»",
     "count:numbers":
         "Συμπερίλαβε ακριβώς {N} αριθμούς γραμμένους με ψηφία στην απάντηση.",
     "words:alphabet":
@@ -594,9 +612,11 @@ DESCRIPTIONS_EL = {
     "words:vowel":
         "Γράψε μία μόνο παράγραφο με λέξεις που περιέχουν συνολικά το πολύ τέσσερα "
         "διαφορετικά φωνήεντα (οι τόνοι δεν μετρούν ως διαφορετικό φωνήεν).",
+    # cross-check #12: spell out that ordinary function words are excluded (no code change).
     "words:consonants":
         "Κάθε λέξη της απάντησης πρέπει να έχει τουλάχιστον ένα σύμπλεγμα συμφώνων, "
-        "δηλαδή δύο σύμφωνα στη σειρά· το «ξ» ή το «ψ» μετρούν από μόνα τους ως σύμπλεγμα.",
+        "δηλαδή δύο σύμφωνα στη σειρά· το «ξ» ή το «ψ» μετρούν από μόνα τους ως σύμπλεγμα "
+        "(αυτό αποκλείει λέξεις χωρίς σύμπλεγμα συμφώνων όπως και, το, να, με).",
     "sentence:alliteration_increment":
         "Κάθε πρόταση πρέπει να έχει μεγαλύτερη σειρά διαδοχικών λέξεων που αρχίζουν με το ίδιο "
         "γράμμα (παρήχηση) από την προηγούμενη πρόταση.",
@@ -631,8 +651,13 @@ DESCRIPTIONS_EL = {
         "Καμία λέξη δεν πρέπει να επαναλαμβάνεται πάνω από {small_n} φορές στην απάντηση.",
     "sentence:keyword":
         "Η {N}η πρόταση της απάντησης πρέπει να περιέχει τη λέξη «{word}».",
+    # cross-check #2: disclose WHAT is counted -- strong forms always, clitics only in the
+    # pre-verbal / clause-final position that the homograph rule in check_following() accepts.
     "count:pronouns":
-        "Η απάντηση πρέπει να περιέχει τουλάχιστον {N} αντωνυμίες.",
+        "Η απάντηση πρέπει να περιέχει τουλάχιστον {N} αντωνυμίες, μετρώντας ισχυρούς τύπους "
+        "(εγώ, εσύ, αυτός/αυτή/αυτό, εμείς, εσείς, εκείνος, κάποιος, κανείς, τίποτα, όλοι, "
+        "όποιος, ό,τι …) και τα κλιτικά μου/σου/του/της/μας/σας/τους/τον/την/το/τα/τις μόνο "
+        "όταν ακολουθεί ρήμα ή τελειώνει η πρόταση.",
     "words:odd_even_syllables":
         "Εναλλάσσε λέξεις με μονό και ζυγό αριθμό συλλαβών σε όλη την απάντηση.",
     "words:last_first":
@@ -640,19 +665,26 @@ DESCRIPTIONS_EL = {
     "words:paragraph_last_first":
         "Κάθε παράγραφος πρέπει να τελειώνει με την ίδια λέξη με την οποία ξεκίνησε· "
         "χώρισε τις παραγράφους με μία αλλαγή γραμμής.",
+    # cross-check #4: {words_more} carries the grammatical number -- «1 λέξη περισσότερη» vs
+    # «3 λέξεις περισσότερες»; build_description() is the only place that fills it.
     "sentence:increment":
-        "Κάθε πρόταση πρέπει να έχει ακριβώς {small_n} λέξεις περισσότερες από την προηγούμενη.",
+        "Κάθε πρόταση πρέπει να έχει ακριβώς {small_n} {words_more} από την προηγούμενη.",
     "words:no_consecutive":
         "Δύο διαδοχικές λέξεις δεν επιτρέπεται να αρχίζουν με το ίδιο γράμμα.",
     "format:line_indent":
         "Φτιάξε σκαλοπάτια: κάθε νέα γραμμή να ξεκινά με περισσότερα κενά από την προηγούμενη.",
+    # cross-check #6: state what is actually tested; the checker never verifies that a quoted
+    # phrase is explained, so that (unenforced) wording is dropped.
     "format:quote_unquote":
-        "Κάθε φράση μέσα σε εισαγωγικά πρέπει να ακολουθείται από εξήγηση εκτός εισαγωγικών.",
+        "Μην βάζεις ποτέ δύο εισαγωγικά το ένα δίπλα στο άλλο (αν αφαιρεθούν τα κενά) και "
+        "μην τελειώνεις την απάντηση με εισαγωγικό: μετά από κάθε κλείσιμο εισαγωγικών πρέπει "
+        "να ακολουθεί κείμενο εκτός εισαγωγικών.",
     "format:list":
         "Απάντησε με λίστα σημείων· αντί για κουκκίδες χρησιμοποίησε {sep}.",
+    # cross-check #5: the checker only requires ONE such section and accepts <em> as well as <i>.
     "format:thesis":
-        "Κάθε ενότητα πρέπει να ξεκινά με μια θέση σε πλάγια γραφή· χρησιμοποίησε HTML "
-        "(<i>…</i>) για τα πλάγια και συνέχισε με κανονικό κείμενο.",
+        "Τουλάχιστον μία ενότητα ξεκινά με μια θέση σε πλάγια γραφή (<i>…</i> ή <em>…</em>) "
+        "ακολουθούμενη από κανονικό κείμενο.",
     "format:sub-bullets":
         "Η απάντηση πρέπει να έχει κουκκίδες με «*» και κάθε κουκκίδα να έχει τουλάχιστον "
         "μία υπο-κουκκίδα με «-».",
@@ -662,7 +694,7 @@ DESCRIPTIONS_EL = {
     "custom:multiples":
         "Μέτρα από το 10 ως το 50, αλλά γράψε μόνο τα πολλαπλάσια του 7.",
     "custom:mcq_count_length":
-        "Φτιάξε 4 ερωτήσεις πολλαπλής επιλογής με 5 επιλογές η καθεμία για την «ελληνική τέχνη "
+        "Φτιάξε 4 ερωτήσεις πολλαπλής επιλογής με 5 επιλογές η καθεμία για την «ιστορία της τέχνης "
         "του 20ού αιώνα». Κάθε ερώτηση να ξεκινά με την ετικέτα «Ερώτηση» και τον αριθμό της, "
         "και οι επιλογές να σημειώνονται με Α) Β) Γ) Δ) Ε). Οι ερωτήσεις να γίνονται σταδιακά "
         "μεγαλύτερες. Μην δώσεις καμία εξήγηση.",
@@ -672,18 +704,23 @@ DESCRIPTIONS_EL = {
     "custom:word_reverse":
         "Τι χρώμα έχει η θάλασσα; Απάντησε με την πρόταση «Η θάλασσα είναι γαλάζια», γράφοντας "
         "όμως τις λέξεις της με αντίστροφη σειρά.",
+    # cross-check #8: the target now contains a final sigma, so the ς rule is actually exercised.
     "custom:character_reverse":
-        "Τι χρώμα έχει η θάλασσα; Απάντησε με την πρόταση «Η θάλασσα είναι γαλάζια», γράφοντας "
+        "Τι χρώμα έχει ο ουρανός; Απάντησε με την πρόταση «Ο ουρανός είναι γαλάζιος», γράφοντας "
         "όμως όλους τους χαρακτήρες της με αντίστροφη σειρά, με τους τόνους και το τελικό σίγμα "
         "ακριβώς όπως πέφτουν.",
     "custom:sentence_alphabet":
         "Πες μου μια ιστορία {N} προτάσεων, όπου η πρώτη λέξη κάθε πρότασης αρχίζει με τα "
         "γράμματα του ελληνικού αλφαβήτου στη σειρά, από το «α» ως το «ω».",
+    # cross-check #7 (amended -- see the note on EuropeanCapitalsSortChecker): the reference set is
+    # named exactly so that Κίεβο is not invited, WITHOUT the false «27 κράτη-μέλη της ΕΕ» claim.
     "custom:european_capitals_sort":
-        "Γράψε τα ονόματα όλων των πρωτευουσών των ευρωπαϊκών κρατών που βρίσκονται σε "
-        "γεωγραφικό πλάτος μεγαλύτερο από 45 μοίρες. Μόνο τις πρωτεύουσες, χωρίς τα κράτη, "
-        "χωρισμένες με κόμματα, ταξινομημένες από το μεγαλύτερο προς το μικρότερο γεωγραφικό "
-        "πλάτος.",
+        "Γράψε τα ονόματα όλων των πρωτευουσών των ευρωπαϊκών κρατών —των 27 κρατών-μελών της "
+        "Ευρωπαϊκής Ένωσης και της ΕΖΕΣ (Ισλανδία, Νορβηγία, Ελβετία, Λιχτενστάιν), καθώς και "
+        "του Ηνωμένου Βασιλείου, της Ρωσίας, της Λευκορωσίας και της Μολδαβίας— που βρίσκονται "
+        "σε γεωγραφικό πλάτος μεγαλύτερο από 45 μοίρες· είναι 27 πρωτεύουσες συνολικά. Μόνο τις "
+        "πρωτεύουσες, χωρίς τα κράτη, χωρισμένες με κόμματα, ταξινομημένες από το μεγαλύτερο "
+        "προς το μικρότερο γεωγραφικό πλάτος.",
     "custom:csv_city":
         "Δημιούργησε δεδομένα CSV: οι στήλες είναι [\"Κωδικός\", \"Χώρα\", \"Πόλη\", \"Έτος\", "
         "\"Πλήθος\"] και τα δεδομένα χωρίζονται με κόμμα. Δώσε 7 γραμμές δεδομένων και "
@@ -879,6 +916,10 @@ class SentTypeRatioChecker(Instruction):
         sentences = split_sentences_el(value)
         declarative = sum(1 for s in sentences if is_declarative(s))
         interrogative = sum(1 for s in sentences if is_interrogative(s))
+        # cross-check #11 (RETUNED, deliberate tightening): ≥1 interrogative, so an answer with
+        # no terminators at all no longer passes on 0 == 2*0.  The description says so.
+        if interrogative < 1:
+            return False
         return declarative == 2 * interrogative
 
 
@@ -905,6 +946,10 @@ class SentBalanceChecker(Instruction):
         d = sum(1 for s in sentences if is_declarative(s))
         i = sum(1 for s in sentences if is_interrogative(s))
         e = sum(1 for s in sentences if is_exclamatory(s))
+        # cross-check #11 (RETUNED, deliberate tightening): ≥1 of each type, so 0 == 0 == 0 is
+        # no longer a free pass.  The description says so.
+        if min(d, i, e) < 1:
+            return False
         return d == i == e
 
 
@@ -982,7 +1027,10 @@ class NGramOverlapChecker(Instruction):
         if self._percentage is None or self._percentage < 0:
             self._percentage = random.randint(1, 100)
         self._description_pattern = self.pattern_el
-        return self._description_pattern.format(percentage=self._percentage)
+        # cross-check #1: render the reference text INTO the prompt so it is identifiable.
+        return self._description_pattern.format(
+            percentage=self._percentage,
+            reference_text=(self._reference_text or "").strip())
 
     def get_instruction_args(self):
         return {"reference_text": self._reference_text, "percentage": self._percentage}
@@ -1343,7 +1391,7 @@ class OptionsResponseChecker(Instruction):
         options = OPTIONS_MAP_EL.get(options.strip(), options)
         # multiple-choice letters are matched strictly, text options leniently
         self._strict = re.match(r"\W*[αΑaA]\W*[βΒbB]\W*[γΓcC]\W*",
-                                degreek_homoglyphs(options)) is not None
+                                self._label_norm(options)) is not None
         if "/" in options:
             separator = "/"
         elif " ή " in options:                      # Greek disjunction, upstream's "or"
@@ -1361,13 +1409,21 @@ class OptionsResponseChecker(Instruction):
     def get_instruction_args_keys(self):
         return ["options"]
 
+    @staticmethod
+    def _label_norm(s):
+        """cross-check #9: labels are case-insensitive and Latin/Greek uppercase homoglyphs
+        (A B C D E / Α Β Γ Δ Ε) fold onto the lowercase Greek labels α β γ δ ε."""
+        return degreek_homoglyphs(nfc(s).lower())
+
     def check_following(self, value):
         if self._strict:
-            # Latin homoglyph labels (a) for α)) are accepted, nothing else is
-            v = degreek_homoglyphs(nfc(value)).strip()
-            return v in [degreek_homoglyphs(nfc(o)).strip() for o in self._options]
-        v = fold(value).strip(_PUNCT_CHARS + " ")
-        return any(fold(o).strip(_PUNCT_CHARS + " ") == v for o in self._options)
+            # cross-check #9: «Α)», «A)», «α)» and «a)» are all the same option label
+            v = self._label_norm(value).strip()
+            return v in [self._label_norm(o).strip() for o in self._options]
+        # cross-check #9: the same label normalisation also applies in loose mode
+        v = fold(self._label_norm(value)).strip(_PUNCT_CHARS + " ")
+        return any(fold(self._label_norm(o)).strip(_PUNCT_CHARS + " ") == v
+                   for o in self._options)
 
 
 # --------------------------------------------------------------------------------------
@@ -1527,12 +1583,24 @@ class LimitedWordRepeatChecker(Instruction):
     INSTRUCTION_ID = "words:repeats"
     MIN_SMALL_N = RETUNED["words:repeats"]["greek"]
 
-    def build_description(self, *, small_n=None):
-        self._max_repeats = _as_int(small_n, -1)
-        if self._max_repeats is None or self._max_repeats < 0:
-            self._max_repeats = random.randint(1, 5)
-        # Greek function words (ο, η, το, και, να, του) recur unavoidably: floor at 5
-        self._max_repeats = max(self._max_repeats, self.MIN_SMALL_N)
+    @classmethod
+    def effective_small_n(cls, small_n=None):
+        """cross-check #3: the ONE value the prompt states and the checker enforces.
+
+        kwargs keep the upstream `small_n`; the RETUNED floor (Greek function words recur
+        unavoidably) is applied here so build_description() and check_following() can never
+        disagree about the number the answer is graded against.
+        """
+        n = _as_int(small_n, -1)
+        if n is None or n < 0:
+            n = random.randint(1, 5)
+        return max(n, cls.MIN_SMALL_N)
+
+    def build_description(self, *, small_n=None, small_n_upstream=None):
+        # cross-check #3: `small_n_upstream` is the un-floored kwarg the assembler records; it is
+        # accepted and ignored here so the effective value stays the single source of truth.
+        self._small_n_upstream = _as_int(small_n_upstream, None)
+        self._max_repeats = self.effective_small_n(small_n)
         self._description_pattern = self.pattern_el
         return self._description_pattern.format(small_n=self._max_repeats)
 
@@ -1544,6 +1612,7 @@ class LimitedWordRepeatChecker(Instruction):
 
     def check_following(self, value):
         counts = Counter(fold(t) for t in toks(value))
+        # cross-check #3: the same effective value that build_description() put in the prompt
         return all(c <= self._max_repeats for c in counts.values())
 
 
@@ -1713,7 +1782,11 @@ class IncrementingWordCountChecker(Instruction):
         if self._num_increment is None or self._num_increment < 0:
             self._num_increment = random.randint(1, 5)
         self._description_pattern = self.pattern_el
-        return self._description_pattern.format(small_n=self._num_increment)
+        # cross-check #4: grammatical number -- «1 λέξη περισσότερη», «2 λέξεις περισσότερες»
+        words_more = ("λέξη περισσότερη" if self._num_increment == 1
+                      else "λέξεις περισσότερες")
+        return self._description_pattern.format(small_n=self._num_increment,
+                                                words_more=words_more)
 
     def get_instruction_args(self):
         return {"small_n": self._num_increment}
@@ -2080,10 +2153,12 @@ class WordReverseOrderChecker(Instruction):
 # custom:character_reverse  (replace — exact orthography, §D)
 # --------------------------------------------------------------------------------------
 class CharacterReverseOrderChecker(Instruction):
-    """«Η θάλασσα είναι γαλάζια» με αντίστροφη σειρά χαρακτήρων."""
+    """«Ο ουρανός είναι γαλάζιος» με αντίστροφη σειρά χαρακτήρων."""
 
     INSTRUCTION_ID = "custom:character_reverse"
-    TARGET_SENTENCE = "Η θάλασσα είναι γαλάζια"
+    # cross-check #8: the target carries a FINAL SIGMA (ουρανός, γαλάζιος) so the exact-orthography
+    # ς rule is actually exercised; «Η θάλασσα είναι γαλάζια» never tested it.
+    TARGET_SENTENCE = "Ο ουρανός είναι γαλάζιος"
 
     def build_description(self, **kwargs):
         self._description_pattern = self.pattern_el
@@ -2144,7 +2219,15 @@ class SentenceAlphabetChecker(Instruction):
 # custom:european_capitals_sort  (adapt)
 # --------------------------------------------------------------------------------------
 class EuropeanCapitalsSortChecker(Instruction):
-    """Οι 27 πρωτεύουσες κατά φθίνον γεωγραφικό πλάτος."""
+    """Οι 27 πρωτεύουσες κατά φθίνον γεωγραφικό πλάτος.
+
+    cross-check #7 (amended): the finding asked to call these «οι πρωτεύουσες των 27 κρατών-μελών
+    της ΕΕ».  That is false for this list -- it holds Μόσχα, Μινσκ, Λονδίνο, Βαντούζ, Βέρνη,
+    Κισινάου, Ρέικιαβικ and Όσλο (non-EU) and omits Αθήνα, Ρώμη, Μαδρίτη, Λισαβόνα, Σόφια,
+    Βουκουρέστι, Λευκωσία and Βαλέτα (EU, but below 45°N).  The description therefore names the
+    reference set exactly (EU-27 + EFTA + UK + RU + BY + MD, latitude > 45°) which is the same 27
+    cities and, by naming the states, leaves Κίεβο (50.45°N, the one genuine omission) out.
+    """
 
     INSTRUCTION_ID = "custom:european_capitals_sort"
 
