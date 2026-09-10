@@ -169,6 +169,7 @@ def _read_jsonl(path: str, kind: str, limit: int | None) -> list[dict[str, Any]]
                 if not isinstance(messages, list) or not messages:
                     raise ConfigError(f"{kind} row {line_number} has no messages list")
                 assistant_count = 0
+                trainable_count = 0
                 for message_number, message in enumerate(messages, 1):
                     if not isinstance(message, dict):
                         raise ConfigError(
@@ -184,9 +185,21 @@ def _read_jsonl(path: str, kind: str, limit: int | None) -> list[dict[str, Any]]
                         raise ConfigError(
                             f"{kind} row {line_number} message {message_number} has empty/non-string content"
                         )
+                    train_flag = message.get("train", True)
+                    if not isinstance(train_flag, bool):
+                        raise ConfigError(
+                            f"{kind} row {line_number} message {message_number} has a non-boolean train flag"
+                        )
+                    if role != "assistant" and train_flag is not True:
+                        raise ConfigError(
+                            f"{kind} row {line_number} message {message_number} sets train on a non-assistant message"
+                        )
                     assistant_count += role == "assistant"
+                    trainable_count += role == "assistant" and train_flag
                 if not assistant_count:
                     raise ConfigError(f"{kind} row {line_number} has no assistant message")
+                if not trainable_count:
+                    raise ConfigError(f"{kind} row {line_number} has no trainable assistant message (all train=false)")
                 rows.append(value)
                 if limit is not None and len(rows) >= limit:
                     break
@@ -309,9 +322,33 @@ def prepare_tokenizer(config: dict[str, Any]):
     return tokenizer, actual
 
 
-def tokenize_messages(tokenizer, messages: list[dict[str, str]]) -> dict[str, list[int]]:
+def _mask_runs(mask: list[int]) -> list[tuple[int, int]]:
+    """Contiguous [start, end) spans of 1s in a 0/1 mask."""
+    runs: list[tuple[int, int]] = []
+    start: int | None = None
+    for index, bit in enumerate(list(mask) + [0]):
+        if bit and start is None:
+            start = index
+        elif not bit and start is not None:
+            runs.append((start, index))
+            start = None
+    return runs
+
+
+def tokenize_messages(tokenizer, messages: list[dict[str, Any]]) -> dict[str, list[int]]:
+    """Render a conversation and build labels for the supervised assistant turns.
+
+    Every assistant message is supervised unless it carries ``"train": false``
+    (a context-only turn: a planted failure the model must see but never
+    imitate). Only role/content reach the template; the patched Apertus
+    template yields exactly one contiguous generation span per assistant
+    message (content followed by the assistant-end token), which is what lets
+    the per-message flag map onto the token mask.
+    """
+    render_messages = [{"role": m["role"], "content": m["content"]} for m in messages]
+    train_flags = [bool(m.get("train", True)) for m in messages if m["role"] == "assistant"]
     rendered = tokenizer.apply_chat_template(
-        messages,
+        render_messages,
         tokenize=True,
         return_dict=True,
         return_assistant_tokens_mask=True,
@@ -320,6 +357,18 @@ def tokenize_messages(tokenizer, messages: list[dict[str, str]]) -> dict[str, li
     assistant_mask = list(rendered.get("assistant_masks", []))
     if len(input_ids) != len(assistant_mask) or not any(assistant_mask):
         raise ConfigError("chat template did not produce a non-empty assistant mask")
+    runs = _mask_runs(assistant_mask)
+    if len(runs) != len(train_flags):
+        raise ConfigError(
+            f"assistant mask has {len(runs)} spans for {len(train_flags)} assistant messages; "
+            "the template no longer emits one contiguous span per assistant turn"
+        )
+    for (start, end), flag in zip(runs, train_flags, strict=True):
+        if not flag:
+            for index in range(start, end):
+                assistant_mask[index] = 0
+    if not any(assistant_mask):
+        raise ConfigError("row has no supervised assistant tokens after applying train=false flags")
     labels = [token_id if bit else -100 for token_id, bit in zip(input_ids, assistant_mask, strict=True)]
     return {"input_ids": input_ids, "assistant_masks": assistant_mask, "labels": labels}
 
