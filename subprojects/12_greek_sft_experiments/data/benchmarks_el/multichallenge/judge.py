@@ -35,9 +35,13 @@ def judge_sol(prompt, model):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('responses'); ap.add_argument('out'); ap.add_argument('--backend', default='claude', choices=['claude', 'sol']); ap.add_argument('--model', default=None); ap.add_argument('--rubric', default='en', choices=['en', 'el']); ap.add_argument('--workers', type=int, default=6)
     a = ap.parse_args(); model = a.model or ('claude-opus-5' if a.backend == 'claude' else 'gpt-5.6-sol')
-    bench = {r['id']: r for r in B.load(os.path.join(HERE, 'conversations_el.jsonl'))}; resp = B.load(a.responses)
+    bench = {r['id']: r for r in B.load(os.path.join(HERE, 'conversations_el_final.jsonl'))}; resp = B.load(a.responses)
     def one(x):
-        b = bench[x['id']]; crit = b['target_question_en'] if a.rubric == 'en' else b['target_question_el']; p = JUDGE_PROMPT.format(x['response'], crit)
+        b = bench[x['id']]
+        if b.get('excluded'): return None   # quarantined / excluded rows are never scored
+        crit = b['target_question_en'] if a.rubric == 'en' else b['target_question_el']
+        if b.get('judge_note_el'): crit += '\n' + b['judge_note_el']   # astra: explicit scoring contract for banned-word scope / category terms
+        p = JUDGE_PROMPT.format(x['response'], crit)
         v = judge_claude(p, model) if a.backend == 'claude' else judge_sol(p, model)
         return None if not v else dict(id=x['id'], axis=b['axis'], response=x['response'], passed=v['verdict'] == b['pass_criteria'], rubric=a.rubric, **v, **{k: x[k] for k in x if k not in ('id', 'response')})
     B.run_jobs(resp, one, a.out, workers=a.workers, stage=f'mc judge {a.backend}')

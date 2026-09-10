@@ -1,8 +1,27 @@
 {
  "rows": 273,
- "usable": 272,
+ "usable": 268,
  "excluded": [
-  "67456856ff33175f5b310ec3"
+  {
+   "id": "674567315c67d815889df2db",
+   "reason": "quarantined: target polarity contradictory: avoiding the banned word is described as violating it (inherited)"
+  },
+  {
+   "id": "67455eccbcab6aa613bebeaa",
+   "reason": "quarantined: target asks about nuts, the history establishes a shellfish allergy (inherited from the English)"
+  },
+  {
+   "id": "67456856ff33175f5b310ec3",
+   "reason": "constraint undecidable in Greek (adjective/adverb repetition; Greek collapses distinctions the English keeps)"
+  },
+  {
+   "id": "6765f4400af93a24e8fbe1f1",
+   "reason": "quarantined: target demands a song title and year the history never supplies (underdetermined)"
+  },
+  {
+   "id": "6765f4907e4dcd5e2143352b",
+   "reason": "quarantined: target refers to the model touching clothing and offers examples that conflict with the user restriction (inherited)"
+  }
  ],
  "adapted": [
   "6765f1c86539ceefe4b7ab4f",
@@ -15,5 +34,15 @@
   "conversations": "62 checked (59 random + nontransferable): fidelity no 15 (4 of them only the role-label leak), consistency no 5, testable no 3, naturalness ≤3: 2; the worst turn of every fidelity-no row re-translated with the checker note; not re-checked after repair"
  },
  "known_limits": "English number/unit formats inside Greek prose in some rows (50,000; 3.75; 2:00 PM; miles/feet), occasional εσύ/εσείς flips; the repair pass touched only the worst turn per flagged row; sample defect rate before repair 11/59 random rows (19%) excluding the label leak",
- "pipeline": "Sol translate (chunked fallback for long conversations) → Claude cross-check (all target questions + 62 conversations) → programmatic role-label strip + TQ fix + nontransferable handling + worst-turn re-translation → frozen"
+ "pipeline": "Sol translate (chunked fallback for long conversations) → Claude cross-check (all target questions + 62 conversations) → programmatic role-label strip + TQ fix + nontransferable handling + worst-turn re-translation → frozen",
+ "version": 2,
+ "tq_typo_fixed": 1,
+ "judge_notes": [
+  "6765f839a02fd129919ef243",
+  "674567315c67d815889df2db",
+  "6765f1c84fdcad5ca243d300"
+ ],
+ "licence": "licence/permissions UNRESOLVED (no licence file in the upstream repository): internal evaluation only pending permission; no redistribution of the Greek conversations",
+ "calibration": "43 conversations × (passing, failing) constructed by Sol; Claude Opus 5 judge: EN rubric false-fail 1/43, false-pass 3/43; EL rubric 1/43, 2/43 (the EL advantage is one response); not yet validated on real model outputs against human labels",
+ "audit_counts": "Claude cross-check 1: 62 conversations checked (59 random + 3 non-transferable not in the draw): fidelity no 15, of which 4 only the role-label leak → 11 substantive among 62; the worst turn of each fidelity-no row re-translated; third cross-check (full re-check of repaired/late/chunked rows + fresh random audit + validity audit of all target questions) pending"
 }

@@ -1,6 +1,6 @@
 #!/bin/bash
 # After the MultiChallenge repair pass: build the review sample (30 MultiChallenge + 60 XSTest final rows), run the astra review of the two judge-based benchmarks (xhigh), log the Codex window.
-cd "$(dirname "$0")"; until grep -q '"pipeline"' multichallenge/repair.log 2>/dev/null; do sleep 30; done
+cd "$(dirname "$0")"; [ -f multichallenge/conversations_el_final.jsonl ] || exit 1
 ~/venvs/sftdata/bin/python - <<'PY'
 import json, random
 rng = random.Random(11); mc = [json.loads(l) for l in open('multichallenge/conversations_el_final.jsonl')]; xs = [json.loads(l) for l in open('xstest/prompts_el_final.jsonl')]

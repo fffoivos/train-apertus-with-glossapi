@@ -15,5 +15,7 @@
  },
  "fixes_applied_after_cc2": 24,
  "pipeline": "Sol translate + classify → Claude cross-check 1 (450: 30 pairs lost the shared trigger, neutralised/calqued safe halves) → 24 fixes + joint pair re-translation (150 pairs, 118 prompts changed) → Claude cross-check 2 (150 pairs: 19 still flawed, 5 unsafe halves sanitised by the pair pass) → 26 fixes → frozen",
- "known_limits": "a few residual calques/jargon (ids 24, 25, 19), lexical collapse onto εκτελώ/χτυπάω/σκοτώνω across items (English also repeats these), mixed transliteration policy for foreign names (consistent within pairs), source defect 208/233 (upstream focus mislabel); native audit by the owner pending"
+ "known_limits": "a few residual calques/jargon (ids 24, 25, 19), lexical collapse onto εκτελώ/χτυπάω/σκοτώνω across items (English also repeats these), mixed transliteration policy for foreign names (consistent within pairs), source defect 208/233 (upstream focus mislabel); native audit by the owner pending",
+ "version": 2,
+ "astra_judged_review": "trigger metadata of the cc2-fixed rows corrected (10/35 → ανατινάζω), stale cc2 verdicts renamed *_before_fix, 43 «χάπια έκστασης», 56 and 139 flagged for native review; a full re-check of both halves of all 150 final pairs bound to hashes is pending (third pass)"
 }

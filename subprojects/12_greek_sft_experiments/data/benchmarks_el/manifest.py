@@ -5,7 +5,7 @@ Usage: python3 manifest.py"""
 import hashlib, json, os, time
 HERE = os.path.dirname(os.path.abspath(__file__))
 UPSTREAM = {
- 'multichallenge': dict(source='github.com/ekwinox117/multi-challenge (Scale AI)', commit='5ccefcca6a39 (2025-02-05)', file='data/benchmark_questions.jsonl', licence='NO LICENSE FILE in the repository; research use only, do not redistribute the Greek version without permission', paper='arXiv:2501.17399',
+ 'multichallenge': dict(source='github.com/ekwinox117/multi-challenge (Scale AI)', commit='5ccefcca6a39 (2025-02-05)', file='data/benchmark_questions.jsonl', licence='LICENCE/PERMISSIONS UNRESOLVED: no licence file in the pinned repository (checked 2026-09-10); internal evaluation only pending permission from the authors; no redistribution of the Greek conversations; publication of scores needs a documented basis', paper='arXiv:2501.17399',
                         protocol='fixed-history continuation: the candidate writes the next assistant turn after the last user turn; judge sees ONLY the response and TARGET_QUESTION (upstream src/evaluator.py, gpt-4o-2024-08-06 temp 0, "Be VERY STRICT"); pass = verdict == PASS_CRITERIA (always YES); score = pass rate per axis'),
  'ifbench': dict(source='github.com/allenai/IFBench + HF allenai/IFBench_test', commit='1c40f0c10d9b (2026-09-09); HF revision 2e8a48de45ff', file='data/IFBench_test.jsonl (300 prompts, 58 constraint ids)', licence='code Apache-2.0; data ODC-BY-1.0', paper='arXiv:2507.02833',
                  protocol='per-prompt verifiable constraints; strict and loose prompt-level and instruction-level accuracy as in IFEval; the 29 IFBench-train constraints are NOT part of this set and must not enter any SFT mix'),
