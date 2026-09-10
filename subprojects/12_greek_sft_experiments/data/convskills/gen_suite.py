@@ -52,6 +52,25 @@ def phrase_answer(msgs, must, rng, extra=''):
 
 
 # ---------- S1: the conversation as an object ----------
+def _stems(text):
+    """Stem-tolerant content words: lower-cased, de-accented 5-letter prefixes of words with 5+ letters (Greek inflection changes endings, not stems)."""
+    import unicodedata
+    t = ''.join(c for c in unicodedata.normalize('NFD', text.lower()) if unicodedata.category(c) != 'Mn')
+    return {w[:5] for w in re.findall(r'[α-ωa-z]{5,}', t)}
+
+
+def s1_list_ok(a, users):
+    """S1 list target: one item per request, each item a summary in the assistant's own words that shares at least two stems with its request
+    (one when the request is short), and is neither a verbatim copy nor longer than 80% of the request sentence (astra pilot review; stem-tolerant since the scale run)."""
+    items = [x.strip() for x in re.findall(r'(?m)^\s*(?:\d+[.)]|[-•])\s*(.+)$', a)]
+    if len(items) < len(users): return False
+    for u in users:
+        s0 = (C.sentences(u) or [u])[0]; st = _stems(s0); need = 2 if len(st) >= 8 else 1; s0n = re.sub(r'\s+', ' ', s0.lower()).strip()
+        m = [it for it in items if len(_stems(it) & st) >= need]
+        if not m or all(s0n in re.sub(r'\s+', ' ', it.lower()) or len(C.words(it)) > 0.8 * len(C.words(s0)) + 3 for it in m): return False
+    return True
+
+
 def lane_s1(k, rng, base):
     prior = rng.sample(base, rng.randint(3, 6)); msgs = []
     for r in prior: msgs += [dict(role='user', content=r['user'].split('\n\n')[0]), dict(role='assistant', content=r['assistant'])]
@@ -61,14 +80,7 @@ def lane_s1(k, rng, base):
     elif kind == 'count': q = rng.choice(['Πόσα μηνύματα σου έστειλα πριν από αυτό;', 'Μέτρα: πόσα μηνύματα σού είχα στείλει πριν από το τωρινό;']); must = f'{len(users)} (τα μηνύματα ΠΡΙΝ από το τωρινό, χωρίς να μετρήσεις αυτό)'; check = lambda a: re.search(rf'\b{len(users)}\b|\b{["", "ένα", "δύο", "τρία", "τέσσερα", "πέντε", "έξι", "επτά"][len(users)]}\b', a) is not None and not re.search(rf'\b{len(users)+1}\b', a)
     elif kind == 'list':
         q = rng.choice(['Κάνε μου λίστα με όλα όσα σου ζήτησα ως τώρα, με τη σειρά.', 'Ποια ήταν τα αιτήματά μου, ένα ένα;']); must = 'μια αριθμημένη λίστα με ΟΛΑ τα αιτήματά μου με τη σειρά, το καθένα σε 5–15 λέξεις (περίληψη με δικά σου λόγια, ΟΧΙ αντιγραφή της ερώτησης): ' + ' || '.join(C.sentences(u)[0] if C.sentences(u) else u for u in users)
-        def check(a, users=users):
-            items = [x.strip() for x in re.findall(r'(?m)^\s*(?:\d+[.)]|[-•])\s*(.+)$', a)]
-            if len(items) < len(users): return False
-            for u in users:   # every request has an item that shares content words with it, and that item is a summary, not a verbatim copy (astra pilot review)
-                s0 = (C.sentences(u) or [u])[0]; kw = [w.lower() for w in sorted(C.words(s0), key=len, reverse=True)[:6]]; s0n = re.sub(r'\s+', ' ', s0.lower()).strip()
-                m = [it for it in items if sum(w in it.lower() for w in kw) >= 2]
-                if not m or all(s0n in re.sub(r'\s+', ' ', it.lower()) or len(C.words(it)) > 0.8 * len(C.words(s0)) + 3 for it in m): return False
-            return True
+        def check(a, users=users): return s1_list_ok(a, users)
     else: i = rng.randrange(len(users)); q = rng.choice([f'Τι μου είπες πριν για το θέμα «{prior[i]["meta"]["subtopic"]}»;', f'Θύμισέ μου την απάντησή σου για «{prior[i]["meta"]["subtopic"]}».']); must = prior[i]['assistant'][:80]; check = lambda a: any(re.sub(r'\s+', ' ', s.lower()) in re.sub(r'\s+', ' ', a.lower()) for s in C.sentences(prior[i]['assistant'])[:2])
     msgs.append(dict(role='user', content=q)); ans = phrase_answer(msgs, must, rng, 'Μην πεις ότι δεν βλέπεις τη συζήτηση: τη βλέπεις ολόκληρη και παραθέτεις. ')
     if not ans: return None
