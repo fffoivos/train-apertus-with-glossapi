@@ -71,9 +71,9 @@
  "audit_counts": "Claude cross-check 1: 62 conversations checked (59 random + 3 non-transferable not in the draw): fidelity no 15, of which 4 only the role-label leak → 11 substantive among 62; the worst turn of each fidelity-no row re-translated; third cross-check (full re-check of repaired/late/chunked rows + fresh random audit + validity audit of all target questions) pending",
  "retranslated_v3": 33,
  "crosscheck3": "target questions: 263 valid / 4 invalid / 6 underdetermined (all 10 now quarantined; 7 inherited from the English); conversations (75 = 15 repaired + 1 chunked + 3 late + 56 random): fidelity no 19 (random 11/56 = 19.6%, 5 content-bearing = 8.9%, CI 3.9–19.3%), consistency no 20 (mostly εσύ/εσείς), naturalness ≤3: 6; 9 of the 15 one-turn repairs still defective (3 made worse by the repair) → whole conversations re-translated with the checker notes; 0 role labels; number multisets agree 261/273 with all differences explained",
- "sha256": "6a1a8e02b6e3ad925c8e1f050fbe21cf334bead409c01bb919b694592b2e3bb8",
+ "sha256": "795862177b3f1057556e7f1603aff25b9fd066e3e6e4558fd04f7f6248f1637b",
  "turns_changed_v4": 84,
- "indentation_restored": 27,
+ "indentation_restored": "27 turns (25 whole-block emails; 2 partial blocks handled per line)",
  "digit_multisets_equal": "253/273",
  "crosscheck4": "33 re-translated rows: fidelity 33/33, tq consistent 33/33, format 33/33, consistency 29/33 (4 cosmetic register/term); 40 random rows: fidelity 39/40, format 33/40, consistency 35/40; usable-set defect rate any 14/70 = 20% (CI 12–31%), content-bearing 1/70 = 1.4% (CI 0.3–7.7%); all 9 previously unsound repairs now sound on their named defect; post-pass artefacts (doubled μ.μ.., a converted book title, two mixed-separator rows) fixed mechanically in v4 together with a corpus-wide Greek decimal comma"
 }
