@@ -1,0 +1,2538 @@
+{
+ "tokenizer": "/Users/foivoskarounos-zamparloukos/models/greek-apertus-8b-sft-r2-idB-bf16",
+ "rows": 6,
+ "packed_sequences": 3,
+ "capacity": 268,
+ "examples": [
+  {
+   "example": 1,
+   "tokens": 179,
+   "supervised_tokens": 58,
+   "masked_assistant_turns": 1,
+   "supervised_decoded": "Φακές: κρεμμύδι, καρότο, σκόρδο, δάφνη, ντομάτα, λάδι· 40 λεπτά.<|assistant_end|>Ναι, επανέλαβα την προηγούμενη απάντηση. Ο ουρανός φαίνεται γαλάζιος επειδή η ατμόσφαιρα σκεδάζει περισσότερο το μπλε φως.<|assistant_end|>",
+   "labels_by_token": [
+    [
+     "<s>",
+     false
+    ],
+    [
+     "<|system_start|>",
+     false
+    ],
+    [
+     "You",
+     false
+    ],
+    [
+     " are",
+     false
+    ],
+    [
+     " Apert",
+     false
+    ],
+    [
+     "us",
+     false
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " a",
+     false
+    ],
+    [
+     " helpful",
+     false
+    ],
+    [
+     " assistant",
+     false
+    ],
+    [
+     " created",
+     false
+    ],
+    [
+     " by",
+     false
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " Swiss",
+     false
+    ],
+    [
+     "AI",
+     false
+    ],
+    [
+     " initiative",
+     false
+    ],
+    [
+     ".\n",
+     false
+    ],
+    [
+     "Know",
+     false
+    ],
+    [
+     "ledge",
+     false
+    ],
+    [
+     " cutoff",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " ",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "4",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "4",
+     false
+    ],
+    [
+     "\n",
+     false
+    ],
+    [
+     "Current",
+     false
+    ],
+    [
+     " date",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " ",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "6",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "9",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "1",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "<|system_end|>",
+     false
+    ],
+    [
+     "<|developer_start|>",
+     false
+    ],
+    [
+     "Del",
+     false
+    ],
+    [
+     "iber",
+     false
+    ],
+    [
+     "ation",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " disabled",
+     false
+    ],
+    [
+     "\n",
+     false
+    ],
+    [
+     "Tool",
+     false
+    ],
+    [
+     " Cap",
+     false
+    ],
+    [
+     "abilities",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " disabled",
+     false
+    ],
+    [
+     "<|developer_end|>",
+     false
+    ],
+    [
+     "<|user_start|>",
+     false
+    ],
+    [
+     "Θ",
+     false
+    ],
+    [
+     "έλ",
+     false
+    ],
+    [
+     "ω",
+     false
+    ],
+    [
+     " μια",
+     false
+    ],
+    [
+     " συνταγή",
+     false
+    ],
+    [
+     " για",
+     false
+    ],
+    [
+     " φα",
+     false
+    ],
+    [
+     "κές",
+     false
+    ],
+    [
+     ".",
+     false
+    ],
+    [
+     "<|user_end|>",
+     false
+    ],
+    [
+     "<|assistant_start|>",
+     false
+    ],
+    [
+     "Φ",
+     true
+    ],
+    [
+     "α",
+     true
+    ],
+    [
+     "κές",
+     true
+    ],
+    [
+     ":",
+     true
+    ],
+    [
+     " κρε",
+     true
+    ],
+    [
+     "μμύ",
+     true
+    ],
+    [
+     "δι",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " κα",
+     true
+    ],
+    [
+     "ρό",
+     true
+    ],
+    [
+     "το",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " σκόρ",
+     true
+    ],
+    [
+     "δο",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " δά",
+     true
+    ],
+    [
+     "φ",
+     true
+    ],
+    [
+     "νη",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " ντομά",
+     true
+    ],
+    [
+     "τα",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " λάδι",
+     true
+    ],
+    [
+     "·",
+     true
+    ],
+    [
+     " ",
+     true
+    ],
+    [
+     "4",
+     true
+    ],
+    [
+     "0",
+     true
+    ],
+    [
+     " λεπτά",
+     true
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     "<|assistant_end|>",
+     true
+    ],
+    [
+     "<|user_start|>",
+     false
+    ],
+    [
+     "Π",
+     false
+    ],
+    [
+     "ες",
+     false
+    ],
+    [
+     " κάτι",
+     false
+    ],
+    [
+     " για",
+     false
+    ],
+    [
+     " τον",
+     false
+    ],
+    [
+     " ουρανό",
+     false
+    ],
+    [
+     ".",
+     false
+    ],
+    [
+     "<|user_end|>",
+     false
+    ],
+    [
+     "<|assistant_start|>",
+     false
+    ],
+    [
+     "Γ",
+     false
+    ],
+    [
+     "ρά",
+     false
+    ],
+    [
+     "ψε",
+     false
+    ],
+    [
+     " ακριβώς",
+     false
+    ],
+    [
+     " την",
+     false
+    ],
+    [
+     " παραγγελία",
+     false
+    ],
+    [
+     " σου",
+     false
+    ],
+    [
+     " στην",
+     false
+    ],
+    [
+     " υπηρεσία",
+     false
+    ],
+    [
+     " που",
+     false
+    ],
+    [
+     " χρησιμοποι",
+     false
+    ],
+    [
+     "είς",
+     false
+    ],
+    [
+     ".",
+     false
+    ],
+    [
+     " Γρά",
+     false
+    ],
+    [
+     "ψε",
+     false
+    ],
+    [
+     " ακριβώς",
+     false
+    ],
+    [
+     " την",
+     false
+    ],
+    [
+     " παραγγελία",
+     false
+    ],
+    [
+     " σου",
+     false
+    ],
+    [
+     " στην",
+     false
+    ],
+    [
+     " υπηρεσία",
+     false
+    ],
+    [
+     " που",
+     false
+    ],
+    [
+     " χρησιμοποι",
+     false
+    ],
+    [
+     "είς",
+     false
+    ],
+    [
+     ".",
+     false
+    ],
+    [
+     "<|assistant_end|>",
+     false
+    ],
+    [
+     "<|user_start|>",
+     false
+    ],
+    [
+     "Μ",
+     false
+    ],
+    [
+     "ου",
+     false
+    ],
+    [
+     " επανέ",
+     false
+    ],
+    [
+     "λαβ",
+     false
+    ],
+    [
+     "ες",
+     false
+    ],
+    [
+     " το",
+     false
+    ],
+    [
+     " ίδιο",
+     false
+    ],
+    [
+     ".",
+     false
+    ],
+    [
+     " Τον",
+     false
+    ],
+    [
+     " ουρανό",
+     false
+    ],
+    [
+     " είπα",
+     false
+    ],
+    [
+     ".",
+     false
+    ],
+    [
+     "<|user_end|>",
+     false
+    ],
+    [
+     "<|assistant_start|>",
+     false
+    ],
+    [
+     "Ναι",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " επαν",
+     true
+    ],
+    [
+     "έλα",
+     true
+    ],
+    [
+     "βα",
+     true
+    ],
+    [
+     " την",
+     true
+    ],
+    [
+     " προηγούμενη",
+     true
+    ],
+    [
+     " απάντηση",
+     true
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     " Ο",
+     true
+    ],
+    [
+     " ουραν",
+     true
+    ],
+    [
+     "ός",
+     true
+    ],
+    [
+     " φαίνεται",
+     true
+    ],
+    [
+     " γαλ",
+     true
+    ],
+    [
+     "άζ",
+     true
+    ],
+    [
+     "ιος",
+     true
+    ],
+    [
+     " επειδή",
+     true
+    ],
+    [
+     " η",
+     true
+    ],
+    [
+     " ατμόσφαιρα",
+     true
+    ],
+    [
+     " σκε",
+     true
+    ],
+    [
+     "δ",
+     true
+    ],
+    [
+     "άζει",
+     true
+    ],
+    [
+     " περισσότερο",
+     true
+    ],
+    [
+     " το",
+     true
+    ],
+    [
+     " μπλε",
+     true
+    ],
+    [
+     " φως",
+     true
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     "<|assistant_end|>",
+     true
+    ]
+   ]
+  },
+  {
+   "example": 5,
+   "tokens": 88,
+   "supervised_tokens": 18,
+   "masked_assistant_turns": 0,
+   "supervised_decoded": "Η θάλασσα ήταν ήρεμη και έλαμπε στον ήλιο του απογεύματος.<|assistant_end|>",
+   "labels_by_token": [
+    [
+     "<s>",
+     false
+    ],
+    [
+     "<|system_start|>",
+     false
+    ],
+    [
+     "You",
+     false
+    ],
+    [
+     " are",
+     false
+    ],
+    [
+     " Apert",
+     false
+    ],
+    [
+     "us",
+     false
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " a",
+     false
+    ],
+    [
+     " helpful",
+     false
+    ],
+    [
+     " assistant",
+     false
+    ],
+    [
+     " created",
+     false
+    ],
+    [
+     " by",
+     false
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " Swiss",
+     false
+    ],
+    [
+     "AI",
+     false
+    ],
+    [
+     " initiative",
+     false
+    ],
+    [
+     ".\n",
+     false
+    ],
+    [
+     "Know",
+     false
+    ],
+    [
+     "ledge",
+     false
+    ],
+    [
+     " cutoff",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " ",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "4",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "4",
+     false
+    ],
+    [
+     "\n",
+     false
+    ],
+    [
+     "Current",
+     false
+    ],
+    [
+     " date",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " ",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "6",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "9",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "1",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "<|system_end|>",
+     false
+    ],
+    [
+     "<|developer_start|>",
+     false
+    ],
+    [
+     "Del",
+     false
+    ],
+    [
+     "iber",
+     false
+    ],
+    [
+     "ation",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " disabled",
+     false
+    ],
+    [
+     "\n",
+     false
+    ],
+    [
+     "Tool",
+     false
+    ],
+    [
+     " Cap",
+     false
+    ],
+    [
+     "abilities",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " disabled",
+     false
+    ],
+    [
+     "<|developer_end|>",
+     false
+    ],
+    [
+     "<|user_start|>",
+     false
+    ],
+    [
+     "Γ",
+     false
+    ],
+    [
+     "ρά",
+     false
+    ],
+    [
+     "ψε",
+     false
+    ],
+    [
+     " μια",
+     false
+    ],
+    [
+     " πρόταση",
+     false
+    ],
+    [
+     " για",
+     false
+    ],
+    [
+     " τη",
+     false
+    ],
+    [
+     " θάλασσα",
+     false
+    ],
+    [
+     ".",
+     false
+    ],
+    [
+     "<|user_end|>",
+     false
+    ],
+    [
+     "<|assistant_start|>",
+     false
+    ],
+    [
+     "Η",
+     true
+    ],
+    [
+     " θάλασσα",
+     true
+    ],
+    [
+     " ήταν",
+     true
+    ],
+    [
+     " ήρε",
+     true
+    ],
+    [
+     "μη",
+     true
+    ],
+    [
+     " και",
+     true
+    ],
+    [
+     " έ",
+     true
+    ],
+    [
+     "λα",
+     true
+    ],
+    [
+     "μπε",
+     true
+    ],
+    [
+     " στον",
+     true
+    ],
+    [
+     " ήλιο",
+     true
+    ],
+    [
+     " του",
+     true
+    ],
+    [
+     " απο",
+     true
+    ],
+    [
+     "γ",
+     true
+    ],
+    [
+     "εύ",
+     true
+    ],
+    [
+     "ματος",
+     true
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     "<|assistant_end|>",
+     true
+    ]
+   ]
+  },
+  {
+   "example": 2,
+   "tokens": 109,
+   "supervised_tokens": 19,
+   "masked_assistant_turns": 1,
+   "supervised_decoded": "Σωστά, τη βλέπω ολόκληρη· πρώτα ρώτησες τι σου ζήτησα πρώτα.<|assistant_end|>",
+   "labels_by_token": [
+    [
+     "<s>",
+     false
+    ],
+    [
+     "<|system_start|>",
+     false
+    ],
+    [
+     "You",
+     false
+    ],
+    [
+     " are",
+     false
+    ],
+    [
+     " Apert",
+     false
+    ],
+    [
+     "us",
+     false
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " a",
+     false
+    ],
+    [
+     " helpful",
+     false
+    ],
+    [
+     " assistant",
+     false
+    ],
+    [
+     " created",
+     false
+    ],
+    [
+     " by",
+     false
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " Swiss",
+     false
+    ],
+    [
+     "AI",
+     false
+    ],
+    [
+     " initiative",
+     false
+    ],
+    [
+     ".\n",
+     false
+    ],
+    [
+     "Know",
+     false
+    ],
+    [
+     "ledge",
+     false
+    ],
+    [
+     " cutoff",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " ",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "4",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "4",
+     false
+    ],
+    [
+     "\n",
+     false
+    ],
+    [
+     "Current",
+     false
+    ],
+    [
+     " date",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " ",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "6",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "9",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "1",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "<|system_end|>",
+     false
+    ],
+    [
+     "<|developer_start|>",
+     false
+    ],
+    [
+     "Del",
+     false
+    ],
+    [
+     "iber",
+     false
+    ],
+    [
+     "ation",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " disabled",
+     false
+    ],
+    [
+     "\n",
+     false
+    ],
+    [
+     "Tool",
+     false
+    ],
+    [
+     " Cap",
+     false
+    ],
+    [
+     "abilities",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " disabled",
+     false
+    ],
+    [
+     "<|developer_end|>",
+     false
+    ],
+    [
+     "<|user_start|>",
+     false
+    ],
+    [
+     "Τι",
+     false
+    ],
+    [
+     " σου",
+     false
+    ],
+    [
+     " ζήτη",
+     false
+    ],
+    [
+     "σα",
+     false
+    ],
+    [
+     " πρώτα",
+     false
+    ],
+    [
+     ";",
+     false
+    ],
+    [
+     "<|user_end|>",
+     false
+    ],
+    [
+     "<|assistant_start|>",
+     false
+    ],
+    [
+     "Δεν",
+     false
+    ],
+    [
+     " βλέπω",
+     false
+    ],
+    [
+     " τίποτα",
+     false
+    ],
+    [
+     " από",
+     false
+    ],
+    [
+     " πριν",
+     false
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " κάθε",
+     false
+    ],
+    [
+     " συνομ",
+     false
+    ],
+    [
+     "ιλία",
+     false
+    ],
+    [
+     " ξεκινά",
+     false
+    ],
+    [
+     " από",
+     false
+    ],
+    [
+     " το",
+     false
+    ],
+    [
+     " μηδέν",
+     false
+    ],
+    [
+     ".",
+     false
+    ],
+    [
+     "<|assistant_end|>",
+     false
+    ],
+    [
+     "<|user_start|>",
+     false
+    ],
+    [
+     "Μα",
+     false
+    ],
+    [
+     " βλέπεις",
+     false
+    ],
+    [
+     " τη",
+     false
+    ],
+    [
+     " συζήτηση",
+     false
+    ],
+    [
+     ".",
+     false
+    ],
+    [
+     "<|user_end|>",
+     false
+    ],
+    [
+     "<|assistant_start|>",
+     false
+    ],
+    [
+     "Σ",
+     true
+    ],
+    [
+     "ω",
+     true
+    ],
+    [
+     "στά",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " τη",
+     true
+    ],
+    [
+     " βλέπω",
+     true
+    ],
+    [
+     " ολόκληρη",
+     true
+    ],
+    [
+     "·",
+     true
+    ],
+    [
+     " πρώτα",
+     true
+    ],
+    [
+     " ρώ",
+     true
+    ],
+    [
+     "τη",
+     true
+    ],
+    [
+     "σες",
+     true
+    ],
+    [
+     " τι",
+     true
+    ],
+    [
+     " σου",
+     true
+    ],
+    [
+     " ζήτη",
+     true
+    ],
+    [
+     "σα",
+     true
+    ],
+    [
+     " πρώτα",
+     true
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     "<|assistant_end|>",
+     true
+    ]
+   ]
+  },
+  {
+   "example": 4,
+   "tokens": 90,
+   "supervised_tokens": 10,
+   "masked_assistant_turns": 0,
+   "supervised_decoded": "144.<|assistant_end|>288.<|assistant_end|>",
+   "labels_by_token": [
+    [
+     "<s>",
+     false
+    ],
+    [
+     "<|system_start|>",
+     false
+    ],
+    [
+     "You",
+     false
+    ],
+    [
+     " are",
+     false
+    ],
+    [
+     " Apert",
+     false
+    ],
+    [
+     "us",
+     false
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " a",
+     false
+    ],
+    [
+     " helpful",
+     false
+    ],
+    [
+     " assistant",
+     false
+    ],
+    [
+     " created",
+     false
+    ],
+    [
+     " by",
+     false
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " Swiss",
+     false
+    ],
+    [
+     "AI",
+     false
+    ],
+    [
+     " initiative",
+     false
+    ],
+    [
+     ".\n",
+     false
+    ],
+    [
+     "Know",
+     false
+    ],
+    [
+     "ledge",
+     false
+    ],
+    [
+     " cutoff",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " ",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "4",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "4",
+     false
+    ],
+    [
+     "\n",
+     false
+    ],
+    [
+     "Current",
+     false
+    ],
+    [
+     " date",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " ",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "6",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "9",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "1",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "<|system_end|>",
+     false
+    ],
+    [
+     "<|developer_start|>",
+     false
+    ],
+    [
+     "Del",
+     false
+    ],
+    [
+     "iber",
+     false
+    ],
+    [
+     "ation",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " disabled",
+     false
+    ],
+    [
+     "\n",
+     false
+    ],
+    [
+     "Tool",
+     false
+    ],
+    [
+     " Cap",
+     false
+    ],
+    [
+     "abilities",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " disabled",
+     false
+    ],
+    [
+     "<|developer_end|>",
+     false
+    ],
+    [
+     "<|user_start|>",
+     false
+    ],
+    [
+     "Π",
+     false
+    ],
+    [
+     "όσο",
+     false
+    ],
+    [
+     " κάνει",
+     false
+    ],
+    [
+     " ",
+     false
+    ],
+    [
+     "1",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     " επί",
+     false
+    ],
+    [
+     " ",
+     false
+    ],
+    [
+     "1",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     ";",
+     false
+    ],
+    [
+     "<|user_end|>",
+     false
+    ],
+    [
+     "<|assistant_start|>",
+     false
+    ],
+    [
+     "1",
+     true
+    ],
+    [
+     "4",
+     true
+    ],
+    [
+     "4",
+     true
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     "<|assistant_end|>",
+     true
+    ],
+    [
+     "<|user_start|>",
+     false
+    ],
+    [
+     "Και",
+     false
+    ],
+    [
+     " επί",
+     false
+    ],
+    [
+     " ",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     ";",
+     false
+    ],
+    [
+     "<|user_end|>",
+     false
+    ],
+    [
+     "<|assistant_start|>",
+     false
+    ],
+    [
+     "2",
+     true
+    ],
+    [
+     "8",
+     true
+    ],
+    [
+     "8",
+     true
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     "<|assistant_end|>",
+     true
+    ]
+   ]
+  },
+  {
+   "example": 0,
+   "tokens": 80,
+   "supervised_tokens": 13,
+   "masked_assistant_turns": 0,
+   "supervised_decoded": "Μήλο, αχλάδι, πορτοκάλι.<|assistant_end|>",
+   "labels_by_token": [
+    [
+     "<s>",
+     false
+    ],
+    [
+     "<|system_start|>",
+     false
+    ],
+    [
+     "You",
+     false
+    ],
+    [
+     " are",
+     false
+    ],
+    [
+     " Apert",
+     false
+    ],
+    [
+     "us",
+     false
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " a",
+     false
+    ],
+    [
+     " helpful",
+     false
+    ],
+    [
+     " assistant",
+     false
+    ],
+    [
+     " created",
+     false
+    ],
+    [
+     " by",
+     false
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " Swiss",
+     false
+    ],
+    [
+     "AI",
+     false
+    ],
+    [
+     " initiative",
+     false
+    ],
+    [
+     ".\n",
+     false
+    ],
+    [
+     "Know",
+     false
+    ],
+    [
+     "ledge",
+     false
+    ],
+    [
+     " cutoff",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " ",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "4",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "4",
+     false
+    ],
+    [
+     "\n",
+     false
+    ],
+    [
+     "Current",
+     false
+    ],
+    [
+     " date",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " ",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "6",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "9",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "1",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "<|system_end|>",
+     false
+    ],
+    [
+     "<|developer_start|>",
+     false
+    ],
+    [
+     "Del",
+     false
+    ],
+    [
+     "iber",
+     false
+    ],
+    [
+     "ation",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " disabled",
+     false
+    ],
+    [
+     "\n",
+     false
+    ],
+    [
+     "Tool",
+     false
+    ],
+    [
+     " Cap",
+     false
+    ],
+    [
+     "abilities",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " disabled",
+     false
+    ],
+    [
+     "<|developer_end|>",
+     false
+    ],
+    [
+     "<|user_start|>",
+     false
+    ],
+    [
+     "Π",
+     false
+    ],
+    [
+     "ες",
+     false
+    ],
+    [
+     " μου",
+     false
+    ],
+    [
+     " τρία",
+     false
+    ],
+    [
+     " φρούτα",
+     false
+    ],
+    [
+     ".",
+     false
+    ],
+    [
+     "<|user_end|>",
+     false
+    ],
+    [
+     "<|assistant_start|>",
+     false
+    ],
+    [
+     "Μ",
+     true
+    ],
+    [
+     "ή",
+     true
+    ],
+    [
+     "λο",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " αχ",
+     true
+    ],
+    [
+     "λά",
+     true
+    ],
+    [
+     "δι",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " πορ",
+     true
+    ],
+    [
+     "τοκ",
+     true
+    ],
+    [
+     "άλι",
+     true
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     "<|assistant_end|>",
+     true
+    ]
+   ]
+  },
+  {
+   "example": 3,
+   "tokens": 73,
+   "supervised_tokens": 8,
+   "masked_assistant_turns": 0,
+   "supervised_decoded": "Γεια, τι χρειάζεσαι;<|assistant_end|>",
+   "labels_by_token": [
+    [
+     "<s>",
+     false
+    ],
+    [
+     "<|system_start|>",
+     false
+    ],
+    [
+     "You",
+     false
+    ],
+    [
+     " are",
+     false
+    ],
+    [
+     " Apert",
+     false
+    ],
+    [
+     "us",
+     false
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " a",
+     false
+    ],
+    [
+     " helpful",
+     false
+    ],
+    [
+     " assistant",
+     false
+    ],
+    [
+     " created",
+     false
+    ],
+    [
+     " by",
+     false
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " Swiss",
+     false
+    ],
+    [
+     "AI",
+     false
+    ],
+    [
+     " initiative",
+     false
+    ],
+    [
+     ".\n",
+     false
+    ],
+    [
+     "Know",
+     false
+    ],
+    [
+     "ledge",
+     false
+    ],
+    [
+     " cutoff",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " ",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "4",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "4",
+     false
+    ],
+    [
+     "\n",
+     false
+    ],
+    [
+     "Current",
+     false
+    ],
+    [
+     " date",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " ",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "2",
+     false
+    ],
+    [
+     "6",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "9",
+     false
+    ],
+    [
+     "-",
+     false
+    ],
+    [
+     "1",
+     false
+    ],
+    [
+     "0",
+     false
+    ],
+    [
+     "<|system_end|>",
+     false
+    ],
+    [
+     "<|developer_start|>",
+     false
+    ],
+    [
+     "Del",
+     false
+    ],
+    [
+     "iber",
+     false
+    ],
+    [
+     "ation",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " disabled",
+     false
+    ],
+    [
+     "\n",
+     false
+    ],
+    [
+     "Tool",
+     false
+    ],
+    [
+     " Cap",
+     false
+    ],
+    [
+     "abilities",
+     false
+    ],
+    [
+     ":",
+     false
+    ],
+    [
+     " disabled",
+     false
+    ],
+    [
+     "<|developer_end|>",
+     false
+    ],
+    [
+     "<|user_start|>",
+     false
+    ],
+    [
+     "Γ",
+     false
+    ],
+    [
+     "εια",
+     false
+    ],
+    [
+     " σου",
+     false
+    ],
+    [
+     ".",
+     false
+    ],
+    [
+     "<|user_end|>",
+     false
+    ],
+    [
+     "<|assistant_start|>",
+     false
+    ],
+    [
+     "Γ",
+     true
+    ],
+    [
+     "εια",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " τι",
+     true
+    ],
+    [
+     " χρειάζ",
+     true
+    ],
+    [
+     "εσαι",
+     true
+    ],
+    [
+     ";",
+     true
+    ],
+    [
+     "<|assistant_end|>",
+     true
+    ]
+   ]
+  }
+ ]
+}

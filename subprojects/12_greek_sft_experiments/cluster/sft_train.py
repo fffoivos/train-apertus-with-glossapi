@@ -357,16 +357,33 @@ def tokenize_messages(tokenizer, messages: list[dict[str, Any]]) -> dict[str, li
     assistant_mask = list(rendered.get("assistant_masks", []))
     if len(input_ids) != len(assistant_mask) or not any(assistant_mask):
         raise ConfigError("chat template did not produce a non-empty assistant mask")
+    # Group the template's generation spans by assistant turn: each turn's group ends with the span that carries
+    # the assistant-end token. A turn can render as more than one span when its content ends in a character that
+    # the byte-level tokenizer splits (an emoji): the template's offset-based mask leaves the trailing byte tokens
+    # unmarked, so the content span and the end-token span are separated by one or two unmasked content tokens.
+    # Those gap tokens are content, never structure (the end token follows the content directly in the Apertus
+    # template); they are supervised for a target turn and masked with the rest for a context turn.
+    end_id = tokenizer.convert_tokens_to_ids(ASSISTANT_END)
+    control_ids = set(tokenizer.convert_tokens_to_ids(list(APERTUS_CONTROL_IDS)))
     runs = _mask_runs(assistant_mask)
-    if len(runs) != len(train_flags):
+    groups: list[tuple[int, int]] = []
+    group_start: int | None = None
+    for start, end in runs:
+        if group_start is None:
+            group_start = start
+        if end_id in input_ids[start:end]:
+            groups.append((group_start, end))
+            group_start = None
+    if group_start is not None or len(groups) != len(train_flags):
         raise ConfigError(
-            f"assistant mask has {len(runs)} spans for {len(train_flags)} assistant messages; "
-            "the template no longer emits one contiguous span per assistant turn"
+            f"assistant mask yields {len(groups)} turn groups (+{int(group_start is not None)} open) for {len(train_flags)} assistant messages"
         )
-    for (start, end), flag in zip(runs, train_flags, strict=True):
-        if not flag:
-            for index in range(start, end):
-                assistant_mask[index] = 0
+    for (start, end), flag in zip(groups, train_flags, strict=True):
+        gap = [index for index in range(start, end) if not assistant_mask[index]]
+        if len(gap) > 3 or any(input_ids[index] in control_ids for index in gap):
+            raise ConfigError(f"unexpected unmasked tokens inside an assistant turn at {gap[:5]}")
+        for index in range(start, end):
+            assistant_mask[index] = 1 if flag else 0
     if not any(assistant_mask):
         raise ConfigError("row has no supervised assistant tokens after applying train=false flags")
     labels = [token_id if bit else -100 for token_id, bit in zip(input_ids, assistant_mask, strict=True)]
