@@ -175,6 +175,9 @@ if not args.no_tokenizer:
         from transformers import AutoTokenizer
         tok = AutoTokenizer.from_pretrained('fffoivos/apertus-8b-greek-cpt', revision='18-avg-uniform5-tokens30B-50B')
         ref = AutoTokenizer.from_pretrained('swiss-ai/Apertus-8B-Instruct-2509'); tok.chat_template = ref.chat_template
+        try:
+            sys.path.insert(0, str(HERE.parent / 'cluster')); from sft_train import patch_apertus_template; tok.chat_template = patch_apertus_template(tok.chat_template)   # generation markers → supervised-token counts (G1)
+        except Exception as e: print('template patch unavailable (supervised counts will be None):', str(e)[:80], flush=True)
         print('tokenizer loaded; exact length filter', flush=True)
     except Exception as e: print('tokenizer unavailable, approximate filter (chars/3.2):', str(e)[:100], flush=True)
 def n_tokens_split(messages):
