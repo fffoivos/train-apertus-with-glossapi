@@ -1,0 +1,24 @@
+{
+ "math500": {
+  "rows": 500,
+  "edited": 111,
+  "reverted": 9
+ },
+ "xstest": {
+  "rows": 450,
+  "edited": 13,
+  "reverted": 2
+ },
+ "ifbench": {
+  "rows": 300,
+  "edited": 183,
+  "reverted": 0,
+  "skipped_empty": 14
+ },
+ "multichallenge": {
+  "rows": 273,
+  "edited": 259,
+  "reverted": 2,
+  "skipped_excluded": 11
+ }
+}
