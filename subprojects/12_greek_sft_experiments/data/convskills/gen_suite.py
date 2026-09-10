@@ -179,19 +179,32 @@ def lane_s4(k, rng, base):
 
 
 def lane_s3c(k, rng, base):
-    """Chained edit: first remove a word, then shorten; the second edit must keep the first one (astra: version editing needs cumulative constraints)."""
-    r = rng.choice([x for x in base if len(C.words(x['assistant'])) >= 60]); old = r['assistant']; cands = [w for w in set(C.words(old)) if len(w) >= 6]
-    if not cands: return None
-    w = rng.choice(cands); msgs = [dict(role='user', content=r['user'].split('\n\n')[0]), dict(role='assistant', content=old), dict(role='user', content=rng.choice(PHRASES['without']).format(w=w))]
-    j1 = call(f"{VOICE}\n\nΣυζήτηση:\n{transcript(msgs)}\n\nΓράψε τη νέα απάντηση: η προηγούμενη χωρίς τη λέξη «{w}», τίποτα άλλο αλλαγμένο. Επίστρεψε JSON {{\"answer\"}}.", S_ONE)
-    if not j1: return None
-    a1 = j1['answer']; msgs.append(dict(role='assistant', content=a1)); msgs.append(dict(role='user', content=rng.choice(['Τώρα κάν’ το μισό σε μήκος, κρατώντας ό,τι άλλαξες.', 'Και πιο σύντομα, στο μισό — χωρίς να ξαναβάλεις τη λέξη που έβγαλες.'])))
-    j2 = call(f"{VOICE}\n\nΣυζήτηση:\n{transcript(msgs)}\n\nΓράψε τη νέα απάντηση: συμπύκνωσε ΤΗΝ ΠΡΟΗΓΟΥΜΕΝΗ απάντηση στο μισό, χωρίς τη λέξη «{w}», χωρίς νέες πληροφορίες. Επίστρεψε JSON {{\"answer\"}}.", S_ONE)
-    if not j2: return None
-    a2 = j2['answer']; msgs.append(dict(role='assistant', content=a2)); wl = w.lower()
-    n1, n2 = len(C.words(a1)), len(C.words(a2))
-    ok = wl not in a1.lower() and wl not in a2.lower() and 0.35 * n1 <= n2 <= 0.65 * n1 and n2 >= 8 and invariants_ok(old, a1, 'without', dict(w=w)) and invariants_ok(a1, a2, 'shorter', {})   # «στο μισό» = 35–65% of the PREVIOUS answer; protected propositions at both steps (astra)
-    return dict(id=f'S3c_{k:05d}', lane='S3c', kind='chain_without_then_shorter', turns=msgs, verified=ok, params=dict(w=w))
+    """Chained edit in either order (DATA_TODO 30): (A) remove a word, then shorten to half; (B) shorten to half, then remove a word. The second edit must keep the first one (astra: version editing needs cumulative constraints)."""
+    r = rng.choice([x for x in base if len(C.words(x['assistant'])) >= 60]); old = r['assistant']; order = rng.choice(['without_then_shorter', 'shorter_then_without'])
+    msgs = [dict(role='user', content=r['user'].split('\n\n')[0]), dict(role='assistant', content=old)]
+    if order == 'without_then_shorter':
+        cands = [w for w in set(C.words(old)) if len(w) >= 6]
+        if not cands: return None
+        w = rng.choice(cands); msgs.append(dict(role='user', content=rng.choice(PHRASES['without']).format(w=w)))
+        j1 = call(f"{VOICE}\n\nΣυζήτηση:\n{transcript(msgs)}\n\nΓράψε τη νέα απάντηση: η προηγούμενη χωρίς τη λέξη «{w}», τίποτα άλλο αλλαγμένο. Επίστρεψε JSON {{\"answer\"}}.", S_ONE)
+        if not j1: return None
+        a1 = j1['answer']; msgs.append(dict(role='assistant', content=a1)); msgs.append(dict(role='user', content=rng.choice(['Τώρα κάν’ το μισό σε μήκος, κρατώντας ό,τι άλλαξες.', 'Και πιο σύντομα, στο μισό — χωρίς να ξαναβάλεις τη λέξη που έβγαλες.', 'Κόψ’ το στο μισό τώρα, με την ίδια αλλαγή.'])))
+        j2 = call(f"{VOICE}\n\nΣυζήτηση:\n{transcript(msgs)}\n\nΓράψε τη νέα απάντηση: συμπύκνωσε ΤΗΝ ΠΡΟΗΓΟΥΜΕΝΗ απάντηση στο μισό, χωρίς τη λέξη «{w}», χωρίς νέες πληροφορίες. Επίστρεψε JSON {{\"answer\"}}.", S_ONE)
+        if not j2: return None
+        a2 = j2['answer']; msgs.append(dict(role='assistant', content=a2)); wl = w.lower(); n1, n2 = len(C.words(a1)), len(C.words(a2))
+        ok = wl not in a1.lower() and wl not in a2.lower() and 0.35 * n1 <= n2 <= 0.65 * n1 and n2 >= 8 and invariants_ok(old, a1, 'without', dict(w=w)) and invariants_ok(a1, a2, 'shorter', {})   # «στο μισό» = 35–65% of the PREVIOUS answer; protected propositions at both steps (astra)
+    else:
+        msgs.append(dict(role='user', content=rng.choice(PHRASES['shorter'])))
+        j1 = call(f"{VOICE}\n\nΣυζήτηση:\n{transcript(msgs)}\n\nΓράψε τη νέα απάντηση: συμπύκνωσε ΤΗΝ ΠΡΟΗΓΟΥΜΕΝΗ απάντηση στο μισό, χωρίς νέες πληροφορίες. Επίστρεψε JSON {{\"answer\"}}.", S_ONE)
+        if not j1: return None
+        a1 = j1['answer']; cands = [w for w in set(C.words(a1)) if len(w) >= 6]
+        if not cands: return None
+        w = rng.choice(cands); msgs.append(dict(role='assistant', content=a1)); msgs.append(dict(role='user', content=rng.choice(['Τώρα βγάλε τη λέξη «{w}», αλλά κράτα το ίδιο μικρό.', 'Και χωρίς τη λέξη «{w}» — μην το ξαναμακρύνεις.', 'Το ίδιο, χωρίς τη λέξη «{w}».']).format(w=w)))
+        j2 = call(f"{VOICE}\n\nΣυζήτηση:\n{transcript(msgs)}\n\nΓράψε τη νέα απάντηση: Η ΠΡΟΗΓΟΥΜΕΝΗ (σύντομη) απάντηση χωρίς τη λέξη «{w}», ίδιο μήκος, τίποτα άλλο αλλαγμένο. Επίστρεψε JSON {{\"answer\"}}.", S_ONE)
+        if not j2: return None
+        a2 = j2['answer']; msgs.append(dict(role='assistant', content=a2)); wl = w.lower(); n0, n1, n2 = len(C.words(old)), len(C.words(a1)), len(C.words(a2))
+        ok = 0.35 * n0 <= n1 <= 0.65 * n0 and n1 >= 8 and wl not in a2.lower() and 0.75 * n1 <= n2 <= 1.1 * n1 + 2 and invariants_ok(old, a1, 'shorter', {}) and invariants_ok(a1, a2, 'without', dict(w=w))
+    return dict(id=f'S3c_{k:05d}', lane='S3c', kind='chain_' + order, turns=msgs, verified=ok, params=dict(w=w, order=order))
 
 
 def lane_s5m(k, rng, base):
