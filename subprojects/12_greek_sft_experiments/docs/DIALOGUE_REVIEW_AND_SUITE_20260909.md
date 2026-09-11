@@ -120,3 +120,23 @@ Review: docs/reviews/ASTRA_convskills_prompts_20260909.md. Changes in data/convs
 Also from the review, carried forward: audit the rejected rows per lane before scaling (done above for greeklish and list); S2 `no_questions` semantics (questions addressed to the user vs any interrogative) and suffix acceptances (quoting the phrase vs ending with it) need explicit rules (DATA_TODO 31); provisional allocation for the training arm at 3k/4k/5k rows (S1 600/800/1,000, S2 750/1,000/1,250, S3 375/500/625, S3c 375/500/625, S4 300/400/500, S5m 600/800/1,000), S2 balanced by subtype after filtering with revocation in at least half; track supervised tokens, not only rows; review ≥ 60 complete accepted rows per lane before scaling.
 
 **Status:** pilot rows (858) kept as pilot material; scaling waits for the Codex reset (15 Sep) and the owner's go; trainer loss masking (DATA_TODO 26) is still a prerequisite for S4.
+
+## 8. Suite at scale (v2, 2026-09-11) and its astra review — disposition
+
+Generation: 4,000 attempts at 48 workers (after the Codex catalog fix), 3,437 verified at generation; editor pass (2,987 edited); post-edit re-verification kept 3,284. Review: docs/reviews/ASTRA_convskills_scale_20260911.md (gpt-6-astra, xhigh, 60 final rows). Verdict: accept only after targeted repairs or filtering. S1 recall 0/14 failures, S2 0/7, S3 0/7, S4 0/12 (24/24 planted context answers masked, all acknowledgements non-empty), S5m adapts to the facts; S3c 4/7 rows lose a qualifier, condition or temporal marker and 2/7 change scope; 2/13 S5m rows have a competing later location, 1/13 an uncosted plan; the editor sometimes removed a useful question or the planted name.
+
+Applied (data/convskills/repair_suite_scale.py, no regeneration this round):
+
+| finding | applied | rows |
+|---|---|---:|
+| HIGH S3c qualifier/condition/temporal losses | any S3c row whose chained answers lose a hedge, condition or temporal marker (φαίνεται, ενδέχεται, ίσως, συνήθως, περίπου, τουλάχιστον, εκτός, εφόσον, πριν, μετά, αφού, ήδη, ακόμη, χωρίς, το πολύ) is dropped; the protected-proposition invariants get these markers for the next generation (DATA_TODO 49) | −261 of 447 |
+| HIGH S5m competing location | rows where a later user turn places the user elsewhere than the planted city are dropped | part of −172 |
+| HIGH S5m uncosted plan | rows whose target shows no amount other than the budget figure are dropped | part of −172 |
+| HIGH reused base answer weakening a prohibition (S1_00674) | logged; base-row defect (greek_ours), one verified case; the affected source row is flagged for the greek_ours audit (DATA_TODO 50) | — |
+| MEDIUM editor changed the conversational act (removed a question or the planted name) | the pre-edit target is restored in those rows; the editor brief loses the blanket self-reference rule for dialogue targets (DATA_TODO 49) | 9 restored |
+| MEDIUM S3c scope changes (2/7) | not separable mechanically; covered partly by the marker filter; logged | — |
+| MEDIUM revocation coverage weak (3 of 5 revoked rows non-diagnostic) | logged: label revocations as diagnostic/non-diagnostic and prefer follow-ups that distinguish the states (DATA_TODO 49) | — |
+| MEDIUM template residue «η/ο» (5/13 S5m intros), verbatim limitation quoting (8/13), source reuse (a prompt in four records), persona discontinuity | «η/ο» resolved in the intro templates for the next run; group splits by source-row id and report reuse in the receipt (DATA_TODO 49/29) | — |
+
+Final suite v2: 2,851 rows (S1 661, S2 675, S3 414, S3c 186, S4 378, S5m 537), data/convskills/v2/final/rows_final.jsonl, manifest data/convskills/v2/final/manifest.json.
+
