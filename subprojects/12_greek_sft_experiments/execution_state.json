@@ -1,11 +1,11 @@
 {
  "plan": "EXECUTION_PLAN_20260904.md",
  "protocol": "CLUSTER_PROTOCOL.md",
- "cap_chf": 105.0,
+ "cap_chf": 160.0,
  "rate_chf_per_nh": 2.69,
  "nh_used": 38.184,
  "chf_used": 102.71,
- "cursor": "ROUND TWO: identity ladder done; B (×4, 2 ep) = best model; full battery pending",
+ "cursor": "R3_single: GO 2026-09-11; probe20 → sbatch → batteries (new ckpt + arm B) → four Greek benchmarks → picky-user run",
  "steps": {
   "WP0_data": {
    "status": "done (green 02:45: --check OK; 5 GreekMMLU-overlapping rows removed; E1 6.18M CPT-tokenizer tokens, E2 9.36M, E3 8.97M, E3prime 10.47M)",
@@ -406,6 +406,12 @@
    "from_chf": 100.0,
    "to_chf": 105.0,
    "why": "owner 2026-09-09 09:50: 'run dialogues in parallel' after being told the arm-B window needs ~CHF 4 over the CHF 100 cap; raised by Claude to 105 for that one debug window, disclosed in the report"
+  },
+  {
+   "when": "2026-09-11T16:20",
+   "from_chf": 105.0,
+   "to_chf": 160.0,
+   "why": "owner 2026-09-11 ~16:15: 'OK run the training and benchmarking' after the disclosed budget of 19.0-20.8 nh ≈ CHF 51-56 on top of CHF 102.71 used (docs/RLHF_PLAN_20260911.md §0); cap set to 160 to cover it"
   }
  ]
 }
