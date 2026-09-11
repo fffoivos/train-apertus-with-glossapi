@@ -4,11 +4,30 @@ Owner rule: every parameter tabled against the previous run, every change flagge
 
 ## 1. Data (from data/arms/R3_single/receipt.json)
 
-| block | unique train rows | copies | effective rows | rendered tokens | supervised tokens | change vs R2_stage1 |
-|---|---:|---:|---:|---:|---:|---|
-| (filled from the receipt) | | | | | | |
-
-Totals: (filled). Dev: the stage-1 dev fraction per block plus the same 69 personality rows held out in round two. Train/dev intersection asserted 0. Decontamination: 8-gram/13-gram containment of user turns against the evaluation cache (Greek IFEval, Greek MMLU, GSM8K, the English originals of MMLU/ARC/HellaSwag/TruthfulQA, Greek MGSM, MATH-500-el, XSTest-el, IFBench-el, MultiChallenge-el, native ASEP/medical/GPCR/DemosQA); NOT yet covered: the OYXOY sets (NLI, WiC, WSD, metaphor), which need their frozen copy from the cluster (certificate).
+| block | unique train rows | copies | effective rows | rendered tokens | supervised tokens | dev rows | contaminated (dropped) | exact duplicates (dropped) | masked context turns | change vs R2_stage1 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| dolci_precise_if_20k | 4,116 | 1 | 4,116 | 2.3M | 1.3M | 41 | 79 | 0 | 0 | +5% tokens |
+| ifeval_like | 46,153 | 1 | 46,153 | 12.8M | 6.5M | 466 | 1348 | 0 | 0 | -1% tokens |
+| openmath_gsm | 98,943 | 1 | 98,943 | 27.4M | 15.3M | 999 | 29 | 0 | 0 | +8% tokens |
+| nemotron_chat_a | 23,017 | 1 | 23,017 | 35.4M | 30.9M | 232 | 15 | 0 | 0 | -1% tokens |
+| nemotron_chat_b | 23,262 | 1 | 23,262 | 36.4M | 31.7M | 234 | 15 | 0 | 0 | -1% tokens |
+| dolci_chat | 3,009 | 1 | 3,009 | 1.1M | 0.8M | 30 | 1 | 0 | 0 | -1% tokens |
+| dolci_code_algo_20k | 5,503 | 1 | 5,503 | 2.4M | 1.1M | 55 | 0 | 0 | 0 | +8% tokens |
+| dolci_reasoning | 29,654 | 1 | 29,654 | 16.7M | 6.8M | 299 | 0 | 0 | 0 | +8% tokens |
+| puzzles | 9,974 | 1 | 9,974 | 3.7M | 0.6M | 100 | 0 | 1068 | 0 | -11% tokens |
+| dolci_tooluse | 29,700 | 1 | 29,700 | 30.8M | 9.2M | 300 | 20 | 0 | 0 | +8% tokens |
+| dolci_science | 6,538 | 1 | 6,538 | 6.0M | 3.9M | 66 | 0 | 0 | 0 | +6% tokens |
+| smoltalk2_multilingual | 20,208 | 1 | 20,208 | 11.1M | 8.1M | 204 | 0 | 0 | 0 | -1% tokens |
+| dolci_safety | 6,194 | 1 | 6,194 | 1.8M | 1.1M | 62 | 0 | 0 | 0 | -1% tokens |
+| greek_rewrite | 1,980 | 1 | 1,980 | 1.2M | 0.4M | 20 | 0 | 0 | 0 | -1% tokens |
+| greek_ours | 19,800 | 2 | 39,600 | 15.4M | 8.8M | 200 | 8 | 0 | 0 | +98% tokens |
+| personality | 1,504 | 4 | 6,016 | 1.5M | 1.0M | 69 | 1 | 0 | 0 | new in the single mix (×4; was the arm-B pass) |
+| greek_if | 29,773 | 1 | 29,773 | 11.1M | 6.0M | 300 | 0 | 0 | 0 | new block |
+| greek_math | 14,070 | 1 | 14,070 | 3.2M | 1.3M | 142 | 3 | 0 | 0 | new block |
+| convskills | 2,813 | 2 | 5,626 | 6.8M | 4.5M | 28 | 0 | 9 | 756 | new block |
+| correcting | 565 | 2 | 1,130 | 1.5M | 0.9M | 5 | 0 | 0 | 431 | new block |
+Totals: 376,776 unique train rows → 404,466 effective rows, 228.6M rendered tokens, 140.2M supervised tokens (61%); dev 3,852 rows (2.15M tokens) incl. the 69 personality holdout rows; train∩dev = 0; rows without a supervised count: 0; post-assembly identity scan hits (exempt blocks: personality, convskills, correcting): 0; contamination drops 1,519 rows (8-gram containment ≥ 0.5 of a user turn against the evaluation cache); exact duplicates dropped 1,077; masked context turns 1,187. train.jsonl sha256 7784e89777fe92df…, dev 85e7e3bf3a1b6258…. Projected training cost at the measured stage-1 rate (32.5M tokens per node-hour): **7.0 node-hours**; the evaluation battery about 4.3 on top.
+ Dev: the stage-1 dev fraction per block plus the same 69 personality rows held out in round two. Train/dev intersection asserted 0. Decontamination: 8-gram/13-gram containment of user turns against the evaluation cache (Greek IFEval, Greek MMLU, GSM8K, the English originals of MMLU/ARC/HellaSwag/TruthfulQA, Greek MGSM, MATH-500-el, XSTest-el, IFBench-el, MultiChallenge-el, native ASEP/medical/GPCR/DemosQA); NOT yet covered: the OYXOY sets (NLI, WiC, WSD, metaphor), which need their frozen copy from the cluster (certificate).
 
 ## 2. Training parameters (cluster/configs/R3_single.yaml vs R2_stage1.yaml)
 
@@ -22,24 +41,32 @@ Totals: (filled). Dev: the stage-1 dev fraction per block plus the same 69 perso
 | packing | BFD, max_length 4,096, padding-free | same | — |
 | effective batch | 1 × 4 devices × 4 accumulation = 16 sequences | same | — |
 | loss | assistant-only | assistant-only **plus per-turn `train:false` masking** (context turns of planted failures and suite S4 tics; verified through template+packing+collator on real rows, label dump docs/receipts_label_dump_g2_pilot.json) | CHANGE |
-| data | 15 blocks, 334,383 rows, 197.9M tokens | 20 blocks: the same 15 + personality v3+v4 ×4 + Greek IF + Greek math + suite v2 ×2 + correcting ×2 (rows/tokens from the receipt) | CHANGE |
+| data | 15 blocks, 334,383 rows, 197.9M tokens | 20 blocks, 404,466 effective rows, 228.6M tokens (140.2M supervised): the same 15 (deduplicated, re-decontaminated) + personality v3+v4 ×4 + Greek IF + Greek math + suite v2 ×2 + correcting ×2 | CHANGE |
 | personality dose | none in stage 1 (×4 in the later arm B pass, 2 epochs) | ×4 inside the single mix, 1 epoch | CHANGE (the ladder's dose, but spread over one epoch of the whole mix; the review calls this a provisional carry-over) |
 | seed | 42 | 42 | — |
 | saves | every 750 steps, keep 2 | same | — |
-| expected_train_tokens | 197,862,767 | (receipt) | CHANGE |
+| expected_train_tokens | 197,862,767 | 228,559,561 | CHANGE |
 
-Projected cost at the measured stage-1 rate (32.5M tokens per node-hour): (filled) node-hours for training; the evaluation battery is about 4.3 node-hours on top (owner decides whether the budget includes it).
+Projected cost at the measured stage-1 rate (32.5M tokens per node-hour): 7.0 node-hours for training; the evaluation battery is about 4.3 node-hours on top (owner decides whether the budget includes it).
 
 ## 3. Launch gates (completeness review)
 
 | gate | status |
 |---|---|
-| G1 receipt: unique rows, exclusions, copies, rendered and supervised tokens, hashes, provenance; personality holdout excluded before weighting; train∩dev = ∅ | (filled from the receipt) |
+| G1 receipt: unique rows, exclusions, copies, rendered and supervised tokens, hashes, provenance; personality holdout excluded before weighting; train∩dev = ∅ | PASSED: data/arms/R3_single/receipt.json (train∩dev 0; 69 personality dev rows; per-block hashes and export provenance; the invariant also caught 1,077 exact duplicate rows, 1,068 of them puzzles that round two trained on) |
 | G2 masking through the real pipeline | PASSED (cluster/test_mask_pipeline.py on 40 real rows; 20 decoded examples attached) |
-| G3 final-snapshot decontamination | (receipt contamination counts); OYXOY pending the cluster copy |
+| G3 final-snapshot decontamination | PASSED for the cached inventory: 1,519 contaminated rows dropped at assembly (ifeval_like 1,348 with the new IFBench-el/English originals in the cache); OYXOY pending the cluster copy |
 | suite post-edit re-verification | PASSED: 3,284 of 3,437 (data/convskills/v2/reverify/manifest.json) |
 | correcting post-edit gate | PASSED: 3,691 supervised turns, 1 demoted |
 | dry run on the cluster (5% sample arm, DRY_RUN_OK) | pending the certificate |
 
 ## 4. Promotion criteria proposed (against arm B under identical serving settings)
 GreekMMLU within 0.5 points of arm B; Greek IFEval strict average not more than 1 point below arm B; Greek MGSM not below arm B; improvement on the conversation instruments (picky-user R1 tail copy, coherence, standing-instruction persistence, self-observation) and on MultiChallenge-el; the four new benchmarks reported for both models.
+
+## 5. Launch sequence (runs only on the owner's go; nothing below has been executed)
+1. `cscs-key sign` (owner) — the certificate is expired.
+2. Transfer (tar-pipe, `-4`): `data/arms/R3_single/{train,dev}.jsonl` (about 1.1 GB), `cluster/configs/R3_single.yaml`, and the updated trainer `cluster/sft_train.py` (per-turn masking) → `$SCRATCH/sft_round1/`.
+3. Gate: the 5% sample arm dry run on the login node (`dryrun_<arm>.sh`, as for R2_stage1: DRY_RUN_OK, token estimate within 2% of the receipt), then the 20-step probe on a debug workbench if the trainer changed (it did: masking) — one node, about 0.3 node-hours.
+4. Preflight (`cluster/preflight.sh`) with the projected 7.0–8.8 node-hours against the cap the owner sets; then `cluster/train_sbatch.sh R3_single`.
+5. After training: the evaluation battery (`cluster/full_battery.sh`) on the new checkpoint AND on arm B where missing (GreekMMLU, native suite, retention), plus the four Greek benchmarks on both, with langdetect installed for the IFEval rescoring.
+

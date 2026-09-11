@@ -191,17 +191,32 @@ Each was translated by Sol, cross-checked by Claude Opus (a different vendor) in
 
 One run from the base (no stages), as decided after the identity ladder (docs/ROUND2_RESULTS_20260908.md, "fold the personality set at weight 4 into the single stage-1 mix and train once from the base"), with the new Greek sets added. Weights for the new Greek sets are proposals for the reviewer and the owner; the recipe table with every parameter against the previous run is disclosed before launch (memory rule of 8 September).
 
-| block | rows | tokens | weight | state |
-|---|---:|---:|---:|---|
-| the fourteen foreign blocks of §2 | 312,383 | 183.0M (receipt, per-block sum) | 1 | as in stage 1 |
-| greek_ours | 20,000 | 7.80M | 2 | as in stage 1 |
-| greek_rewrite | 2,000 | 1.20M | 2 (proposed; 1 in stage 1) | as in stage 1 |
-| personality v3 | 1,388 | not recorded | 4 | done |
-| personality v4 additions | 192 | to be assembled | 4 | done |
-| Greek instruction following | 30,073 | to be assembled | 1 (proposed) | done |
-| Greek math cut 1 | 14,215 | to be assembled | 1 (proposed) | done |
-| conversation suite v2 | 3284 | to be assembled | 2 (proposed) | done |
-| correcting set | 600 dialogues, 3691 supervised turns (capped at 600 by the Sol budget) | to be assembled | 2 (proposed) | done |
+Assembled 2026-09-11 13:35 (data/arms/R3_single/receipt.json):
+
+| block | unique train rows | copies | effective rows | rendered tokens | supervised tokens | dev rows | contaminated (dropped) | exact duplicates (dropped) | masked context turns | change vs R2_stage1 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| dolci_precise_if_20k | 4,116 | 1 | 4,116 | 2.3M | 1.3M | 41 | 79 | 0 | 0 | +5% tokens |
+| ifeval_like | 46,153 | 1 | 46,153 | 12.8M | 6.5M | 466 | 1348 | 0 | 0 | -1% tokens |
+| openmath_gsm | 98,943 | 1 | 98,943 | 27.4M | 15.3M | 999 | 29 | 0 | 0 | +8% tokens |
+| nemotron_chat_a | 23,017 | 1 | 23,017 | 35.4M | 30.9M | 232 | 15 | 0 | 0 | -1% tokens |
+| nemotron_chat_b | 23,262 | 1 | 23,262 | 36.4M | 31.7M | 234 | 15 | 0 | 0 | -1% tokens |
+| dolci_chat | 3,009 | 1 | 3,009 | 1.1M | 0.8M | 30 | 1 | 0 | 0 | -1% tokens |
+| dolci_code_algo_20k | 5,503 | 1 | 5,503 | 2.4M | 1.1M | 55 | 0 | 0 | 0 | +8% tokens |
+| dolci_reasoning | 29,654 | 1 | 29,654 | 16.7M | 6.8M | 299 | 0 | 0 | 0 | +8% tokens |
+| puzzles | 9,974 | 1 | 9,974 | 3.7M | 0.6M | 100 | 0 | 1068 | 0 | -11% tokens |
+| dolci_tooluse | 29,700 | 1 | 29,700 | 30.8M | 9.2M | 300 | 20 | 0 | 0 | +8% tokens |
+| dolci_science | 6,538 | 1 | 6,538 | 6.0M | 3.9M | 66 | 0 | 0 | 0 | +6% tokens |
+| smoltalk2_multilingual | 20,208 | 1 | 20,208 | 11.1M | 8.1M | 204 | 0 | 0 | 0 | -1% tokens |
+| dolci_safety | 6,194 | 1 | 6,194 | 1.8M | 1.1M | 62 | 0 | 0 | 0 | -1% tokens |
+| greek_rewrite | 1,980 | 1 | 1,980 | 1.2M | 0.4M | 20 | 0 | 0 | 0 | -1% tokens |
+| greek_ours | 19,800 | 2 | 39,600 | 15.4M | 8.8M | 200 | 8 | 0 | 0 | +98% tokens |
+| personality | 1,504 | 4 | 6,016 | 1.5M | 1.0M | 69 | 1 | 0 | 0 | new in the single mix (×4; was the arm-B pass) |
+| greek_if | 29,773 | 1 | 29,773 | 11.1M | 6.0M | 300 | 0 | 0 | 0 | new block |
+| greek_math | 14,070 | 1 | 14,070 | 3.2M | 1.3M | 142 | 3 | 0 | 0 | new block |
+| convskills | 2,813 | 2 | 5,626 | 6.8M | 4.5M | 28 | 0 | 9 | 756 | new block |
+| correcting | 565 | 2 | 1,130 | 1.5M | 0.9M | 5 | 0 | 0 | 431 | new block |
+Totals: 376,776 unique train rows → 404,466 effective rows, 228.6M rendered tokens, 140.2M supervised tokens (61%); dev 3,852 rows (2.15M tokens) incl. the 69 personality holdout rows; train∩dev = 0; rows without a supervised count: 0; post-assembly identity scan hits (exempt blocks: personality, convskills, correcting): 0; contamination drops 1,519 rows (8-gram containment ≥ 0.5 of a user turn against the evaluation cache); exact duplicates dropped 1,077; masked context turns 1,187. train.jsonl sha256 7784e89777fe92df…, dev 85e7e3bf3a1b6258…. Projected training cost at the measured stage-1 rate (32.5M tokens per node-hour): **7.0 node-hours**; the evaluation battery about 4.3 on top.
+
 
 Estimated size: about 385,000 rows before weighting; tokens to be measured by the assembler with the exact tokenizer (the new Greek sets are not yet tokenised; stage 1 was 197.9M). Recipe to be disclosed: 1 epoch, lr 1e-5, cosine to 0.1 of peak, warmup 3%, packing at 4,096 tokens, assistant-only loss with the per-turn train flags, batch 1 × grad-accum 4 × 4 GPUs, Adam β2 0.99, weight decay 0, grad clip 1.0, bf16 autocast over fp32 master weights, seed 42; dev = the stage-1 dev slice plus the 69 held-out personality rows plus a held-out slice of each new set. Cost at the stage-1 rate (197.9M tokens in 6.09 node-hours): about 7 to 8 node-hours for about 230M to 260M tokens, plus the full battery (about 4.3 node-hours).
 
