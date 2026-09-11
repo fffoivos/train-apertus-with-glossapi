@@ -256,6 +256,7 @@ if args.budget_tokens:
     print(f'token budget {args.budget_tokens/1e6:.0f}M: whole blocks {whole_tok/1e6:.0f}M, big blocks scaled to {share:.2f} of plan ({big_tok*share/1e6:.0f}M)', flush=True)
 else: share = 1.0
 for block, fname, mode, target, weight in PLAN:
+    seen_ids = {}; stats_dup = collections.Counter()
     target = int((min(avail[block], int(target * args.scale)) if args.budget_tokens else target * args.scale) * (1.0 if (block in WHOLE or not args.budget_tokens) else share)); rows = []
     if mode == 'ours':
         ours_keep = labels_keep('greek_ours'); ours_tone = labels_tone_drop('greek_ours') if ours_keep is not None else set()  # Luna labels on our own set, when present
@@ -301,8 +302,14 @@ for block, fname, mode, target, weight in PLAN:
             if block == 'puzzles' and 'puzzle_data' not in rid: continue
             if keep is not None and rid not in keep: continue
             m = to_messages(r, block)
-            if m: rows.append(dict(id=rid, messages=m, holdout=bool(r.get('holdout'))))
-    random.shuffle(rows); taken = []; stats = collections.Counter(available=len(rows), contaminated=0, too_long=0, identity_backstop=0, lexicon_mannerism=0, tone_dropped=(tone_dropped if mode != 'ours' else 0))
+            if not m: continue
+            h = hashlib.sha1(json.dumps(m, ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:10]
+            if rid in seen_ids:   # G1: an id must name one row; exact duplicates are dropped, id collisions with different content get a content suffix
+                if h in seen_ids[rid]: stats_dup['exact_duplicate'] += 1; continue
+                rid = f'{rid}#{h}'; stats_dup['id_collision'] += 1
+            seen_ids.setdefault(rid.split('#')[0], set()).add(h)
+            rows.append(dict(id=rid, messages=m, holdout=bool(r.get('holdout'))))
+    random.shuffle(rows); taken = []; stats = collections.Counter(available=len(rows), exact_duplicates_dropped=stats_dup['exact_duplicate'], id_collisions_suffixed=stats_dup['id_collision'], contaminated=0, too_long=0, identity_backstop=0, lexicon_mannerism=0, tone_dropped=(tone_dropped if mode != 'ours' else 0))
     cond = IDENTITY_CONDITIONAL.get('greek_ours' if mode == 'ours' else block, set())
     for r in rows:
         if len(taken) >= target: break
