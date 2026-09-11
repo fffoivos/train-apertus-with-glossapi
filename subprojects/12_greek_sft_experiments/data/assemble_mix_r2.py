@@ -256,7 +256,7 @@ if args.budget_tokens:
     print(f'token budget {args.budget_tokens/1e6:.0f}M: whole blocks {whole_tok/1e6:.0f}M, big blocks scaled to {share:.2f} of plan ({big_tok*share/1e6:.0f}M)', flush=True)
 else: share = 1.0
 for block, fname, mode, target, weight in PLAN:
-    seen_ids = {}; stats_dup = collections.Counter()
+    seen_ids = {}; seen_content = set(); stats_dup = collections.Counter()
     target = int((min(avail[block], int(target * args.scale)) if args.budget_tokens else target * args.scale) * (1.0 if (block in WHOLE or not args.budget_tokens) else share)); rows = []
     if mode == 'ours':
         ours_keep = labels_keep('greek_ours'); ours_tone = labels_tone_drop('greek_ours') if ours_keep is not None else set()  # Luna labels on our own set, when present
@@ -267,7 +267,10 @@ for block, fname, mode, target, weight in PLAN:
                 msgs = r.get('el_messages') or r.get('messages')
                 rid = f"{cfg}:{r.get('row_id', i)}"
                 if ours_keep is not None and (rid not in ours_keep or rid in ours_tone): continue
-                if isinstance(msgs, list) and msgs: rows.append(dict(id=rid, messages=[dict(role=m['role'], content=m['content']) for m in msgs if m.get('role') in ('system', 'user', 'assistant')]))
+                if isinstance(msgs, list) and msgs:
+                    mm = [dict(role=m['role'], content=m['content']) for m in msgs if m.get('role') in ('system', 'user', 'assistant')]; h = hashlib.sha1(json.dumps(mm, ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:10]
+                    if h in seen_content: stats_dup['content_duplicate'] += 1; continue
+                    seen_content.add(h); rows.append(dict(id=rid, messages=mm))
     else:
         src = (HERE.parent / fname) if mode == 'file' else (ANN / 'core_export' / fname if fname != 'greek_rewrite_2k.jsonl' else ANN / fname)
         if not src.exists(): receipt['blocks'].append(dict(block=block, status='MISSING export', target=target)); print(f'{block}: export missing', flush=True); continue
@@ -304,12 +307,13 @@ for block, fname, mode, target, weight in PLAN:
             m = to_messages(r, block)
             if not m: continue
             h = hashlib.sha1(json.dumps(m, ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:10]
+            if h in seen_content: stats_dup['content_duplicate'] += 1; continue   # readiness review F2: identical content under a different id is still a duplicate
             if rid in seen_ids:   # G1: an id must name one row; exact duplicates are dropped, id collisions with different content get a content suffix
                 if h in seen_ids[rid]: stats_dup['exact_duplicate'] += 1; continue
                 rid = f'{rid}#{h}'; stats_dup['id_collision'] += 1
-            seen_ids.setdefault(rid.split('#')[0], set()).add(h)
+            seen_ids.setdefault(rid.split('#')[0], set()).add(h); seen_content.add(h)
             rows.append(dict(id=rid, messages=m, holdout=bool(r.get('holdout'))))
-    random.shuffle(rows); taken = []; stats = collections.Counter(available=len(rows), exact_duplicates_dropped=stats_dup['exact_duplicate'], id_collisions_suffixed=stats_dup['id_collision'], contaminated=0, too_long=0, identity_backstop=0, lexicon_mannerism=0, tone_dropped=(tone_dropped if mode != 'ours' else 0))
+    random.shuffle(rows); taken = []; stats = collections.Counter(available=len(rows), exact_duplicates_dropped=stats_dup['exact_duplicate'], content_duplicates_dropped=stats_dup['content_duplicate'], id_collisions_suffixed=stats_dup['id_collision'], contaminated=0, too_long=0, identity_backstop=0, lexicon_mannerism=0, tone_dropped=(tone_dropped if mode != 'ours' else 0))
     cond = IDENTITY_CONDITIONAL.get('greek_ours' if mode == 'ours' else block, set())
     for r in rows:
         if len(taken) >= target: break
@@ -342,8 +346,11 @@ random.shuffle(train)
 # G1 invariants: no (block, id) in both train and dev; the same id never twice in dev
 _dev_keys = {(r['block'], str(r['id'])) for r in dev}; _leak = [k for r in train for k in [(r['block'], str(r['id']))] if k in _dev_keys]
 assert not _leak, f'train/dev leakage: {_leak[:5]}'
+_ch = lambda m: hashlib.sha1(json.dumps([(x['role'], x['content']) for x in m], ensure_ascii=False).encode()).hexdigest()
+_dev_content = {_ch(r['messages']) for r in dev}; _before = len(train); train = [r for r in train if _ch(r['messages']) not in _dev_content]
+receipt['train_rows_dropped_for_dev_content'] = _before - len(train); print(f'train rows dropped because their content equals a dev row: {_before - len(train)}', flush=True)
 assert len(_dev_keys) == len(dev), 'duplicate dev rows'
-receipt['g1'] = dict(train_dev_intersection=0, unique_train_rows=len({(r['block'], str(r['id'])) for r in train}), effective_train_rows=len(train), supervised_tokens_effective=sum(r['sup_tokens'] for r in train if r.get('sup_tokens') is not None), rows_without_supervised_count=sum(1 for r in train if r.get('sup_tokens') is None))
+receipt['g1'] = dict(train_dev_intersection=0, train_dev_content_intersection=0, unique_train_rows=len({(r['block'], str(r['id'])) for r in train}), effective_train_rows=len(train), supervised_tokens_effective=sum(r['sup_tokens'] for r in train if r.get('sup_tokens') is not None), rows_without_supervised_count=sum(1 for r in train if r.get('sup_tokens') is None))
 def dump(path, rows):
     h = hashlib.sha256()
     with open(path, 'w') as f:
