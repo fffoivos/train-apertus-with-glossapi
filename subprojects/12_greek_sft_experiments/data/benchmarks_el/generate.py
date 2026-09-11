@@ -34,7 +34,7 @@ def call(base, model, messages, max_tokens, tries=4):
             with urllib.request.urlopen(req, timeout=600) as r: j = json.loads(r.read())
             c = j['choices'][0]; return c['message']['content'], c.get('finish_reason'), j.get('usage')
         except Exception as e:
-            if k == tries - 1: return None, f'error: {str(e)[:200]}', None
+            if k == tries - 1: return '', f'error: {str(e)[:200]}', None
             time.sleep(5 * (k + 1))
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('base'); ap.add_argument('model'); ap.add_argument('out'); ap.add_argument('--sets', default='math500,ifbench,xstest,multichallenge')
