@@ -65,7 +65,7 @@ PLAN = [
  ('personality', 'data/personality/personality_v3v4_final.jsonl', 'file', 2000, 4),   # v3 (1,388, 69 held out as dev) + v4 (192); weight 4 = the identity-ladder dose (arm B)
  ('greek_if', 'data/greek_if/final/greek_if_sft.jsonl', 'file', 31000, 1),
  ('greek_math', 'data/math/cut1/edited/rows_edited.jsonl', 'file', 15000, 1),
- ('convskills', 'data/convskills/v2/reverify/rows_final.jsonl', 'file', 3500, 2),
+ ('convskills', 'data/convskills/v2/final/rows_final.jsonl', 'file', 3500, 2),   # after the scale-review repairs (2,851 rows)
  ('correcting', 'data/robustness/correcting/scale/rows/rows_final.jsonl', 'file', 700, 2),
 ]
 NO_IDENTITY_FILTER = {'personality', 'convskills', 'correcting'}   # identity statements and planted tics are intended content in these blocks (the contract, S4 context turns)
