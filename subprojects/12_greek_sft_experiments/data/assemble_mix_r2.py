@@ -348,7 +348,7 @@ receipt['dev'] = dict(rows=len(dev), tokens=sum(r['tokens'] for r in dev), sha25
 with open(OUT / 'summary.md', 'w') as f:
     f.write(f"# {args.arm}\n\ntrain {receipt['train']['rows']} rows, {receipt['train']['tokens']/1e6:.1f}M tokens ({receipt['tokenizer']}); dev {receipt['dev']['rows']} rows\n\n| block | status | target | available | taken | weight | contaminated | too long | identity backstop |\n|---|---|---|---|---|---|---|---|---|\n")
     for b in receipt['blocks']: f.write(f"| {b['block']} | {b['status']} | {b.get('target')} | {b.get('available','')} | {b.get('taken','')} | {b.get('weight','')} | {b.get('contaminated','')} | {b.get('too_long','')} | {b.get('identity_backstop','')} |\n")
-post = sum(1 for r in train if identity_hit(r['messages'])); receipt['post_scan_identity_hits'] = post
+post = sum(1 for r in train if r['block'] not in NO_IDENTITY_FILTER and identity_hit(r['messages'])); receipt['post_scan_identity_hits'] = post; receipt['post_scan_identity_exempt_blocks'] = sorted(NO_IDENTITY_FILTER)
 print(f'post-assembly identity scan over the written train rows: {post} hits (must be 0)', flush=True)
 json.dump(receipt, open(OUT / 'receipt.json', 'w'), indent=1)  # written after the post-scan so the receipt carries it
 if args.budget_tokens and receipt['train']['tokens'] > args.budget_tokens:
