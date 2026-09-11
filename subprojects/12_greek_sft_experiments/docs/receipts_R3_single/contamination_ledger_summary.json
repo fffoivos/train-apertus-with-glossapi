@@ -1,0 +1,28 @@
+{
+ "arm": "R3_single",
+ "train_rows": 403727,
+ "rule": {
+  "normalize": "NFKC+casefold+punct-strip+ws-collapse",
+  "ngram": 8,
+  "containment": "distinct 8-grams of the training USER turn found in any eval prompt / distinct 8-grams of the turn",
+  "threshold": ">= 0.5"
+ },
+ "eval_inventory": {
+  "english_originals": 28449,
+  "greek_mmlu": 16632,
+  "gsm8k": 1319,
+  "ifbench_el": 586,
+  "ifeval": 541,
+  "math500_el": 1000,
+  "mgsm_el": 250,
+  "multichallenge_el": 3308,
+  "native_asep_mcqa": 2346,
+  "native_demosqa": 600,
+  "native_gpcr": 208,
+  "native_medical_mcqa": 432,
+  "xstest_el": 900,
+  "ellinika_bench": 1788
+ },
+ "matches_in_final_train": 0,
+ "by_eval": {}
+}
