@@ -61,7 +61,15 @@ PLAN = [
  ('dolci_safety', 'dolci_safety.jsonl', 'labels', 10000, 1),
  ('greek_rewrite', 'greek_rewrite_2k.jsonl', 'all', 2000, 1),
  ('greek_ours', None, 'ours', 20000, 2),
+ # round-three single-stage additions (2026-09-11): file-backed blocks, taken whole, editor-passed, with their own review dispositions
+ ('personality', 'data/personality/personality_v3v4_final.jsonl', 'file', 2000, 4),   # v3 (1,388, 69 held out as dev) + v4 (192); weight 4 = the identity-ladder dose (arm B)
+ ('greek_if', 'data/greek_if/final/greek_if_sft.jsonl', 'file', 31000, 1),
+ ('greek_math', 'data/math/cut1/edited/rows_edited.jsonl', 'file', 15000, 1),
+ ('convskills', 'data/convskills/v2/reverify/rows_final.jsonl', 'file', 3500, 2),
+ ('correcting', 'data/robustness/correcting/scale/rows/rows_final.jsonl', 'file', 700, 2),
 ]
+NO_IDENTITY_FILTER = {'personality', 'convskills', 'correcting'}   # identity statements and planted tics are intended content in these blocks (the contract, S4 context turns)
+PERSONALITY_HOLDOUT = set(json.load(open(HERE / 'personality' / 'personality_holdout_ids.json'))) if (HERE / 'personality' / 'personality_holdout_ids.json').exists() else set()
 
 from identity_patterns import IDENT, identity_hit_messages as identity_hit, mannerism_hit_messages, identity_phrase_hit  # shared with lang_identity_filter.py (review R8); scans assistant and system turns
 
@@ -215,15 +223,16 @@ def n_tokens(messages):
     return int(sum(len(m['content']) for m in messages) / 3.2)
 
 # ---------- build ----------
-WHOLE = {'puzzles', 'dolci_chat', 'dolci_safety', 'greek_rewrite', 'greek_ours'}  # small blocks kept whole under a token budget
-PLAN_TOK = {'dolci_precise_if_20k': 600, 'ifeval_like': 256, 'openmath_gsm': 342, 'nemotron_chat_a': 1584, 'nemotron_chat_b': 1584, 'dolci_chat': 350, 'dolci_code_algo_20k': 388, 'dolci_reasoning': 330, 'puzzles': 330, 'dolci_tooluse': 827, 'dolci_science': 941, 'smoltalk2_multilingual': 511, 'dolci_safety': 302, 'greek_rewrite': 700, 'greek_ours': 351}  # measured mean tokens per row (review F4)
+WHOLE = {'puzzles', 'dolci_chat', 'dolci_safety', 'greek_rewrite', 'greek_ours', 'personality', 'greek_if', 'greek_math', 'convskills', 'correcting'}  # small blocks kept whole under a token budget
+PLAN_TOK = {'personality': 150, 'greek_if': 260, 'greek_math': 420, 'convskills': 700, 'correcting': 1600, 'dolci_precise_if_20k': 600, 'ifeval_like': 256, 'openmath_gsm': 342, 'nemotron_chat_a': 1584, 'nemotron_chat_b': 1584, 'dolci_chat': 350, 'dolci_code_algo_20k': 388, 'dolci_reasoning': 330, 'puzzles': 330, 'dolci_tooluse': 827, 'dolci_science': 941, 'smoltalk2_multilingual': 511, 'dolci_safety': 302, 'greek_rewrite': 700, 'greek_ours': 351}  # measured mean tokens per row (review F4)
 receipt = dict(arm=args.arm, seed=args.seed, scale=args.scale, budget_tokens=args.budget_tokens, blocks=[], tokenizer='exact' if tok else 'approximate'); train, dev = [], []
 def present_rows(block, fname, mode):
     """cheap first pass: how many rows this block can actually contribute today (keep lists ∩ export), for the budget share (review S2)"""
     if mode == 'ours':
         k = labels_keep('greek_ours'); return len(k) if k is not None else 32892
-    src = ANN / 'core_export' / fname if fname != 'greek_rewrite_2k.jsonl' else ANN / fname
+    src = (HERE.parent / fname) if mode == 'file' else (ANN / 'core_export' / fname if fname != 'greek_rewrite_2k.jsonl' else ANN / fname)
     if not src.exists(): return 0
+    if mode == 'file': return sum(1 for _ in open(src))
     keep = None
     for part in mode.split('+'):
         k = None
@@ -259,7 +268,7 @@ for block, fname, mode, target, weight in PLAN:
                 if ours_keep is not None and (rid not in ours_keep or rid in ours_tone): continue
                 if isinstance(msgs, list) and msgs: rows.append(dict(id=rid, messages=[dict(role=m['role'], content=m['content']) for m in msgs if m.get('role') in ('system', 'user', 'assistant')]))
     else:
-        src = ANN / 'core_export' / fname if fname != 'greek_rewrite_2k.jsonl' else ANN / fname
+        src = (HERE.parent / fname) if mode == 'file' else (ANN / 'core_export' / fname if fname != 'greek_rewrite_2k.jsonl' else ANN / fname)
         if not src.exists(): receipt['blocks'].append(dict(block=block, status='MISSING export', target=target)); print(f'{block}: export missing', flush=True); continue
         keep = None; missing = None
         for part in mode.split('+'):
@@ -292,7 +301,7 @@ for block, fname, mode, target, weight in PLAN:
             if block == 'puzzles' and 'puzzle_data' not in rid: continue
             if keep is not None and rid not in keep: continue
             m = to_messages(r, block)
-            if m: rows.append(dict(id=rid, messages=m))
+            if m: rows.append(dict(id=rid, messages=m, holdout=bool(r.get('holdout'))))
     random.shuffle(rows); taken = []; stats = collections.Counter(available=len(rows), contaminated=0, too_long=0, identity_backstop=0, lexicon_mannerism=0, tone_dropped=(tone_dropped if mode != 'ours' else 0))
     cond = IDENTITY_CONDITIONAL.get('greek_ours' if mode == 'ours' else block, set())
     for r in rows:
@@ -300,14 +309,16 @@ for block, fname, mode, target, weight in PLAN:
         hit = contaminated(r['messages'])
         if hit: stats['contaminated'] += 1; continue
         if r['id'] in cond and identity_phrase_hit(r['messages']): stats['identity_judge_confirmed'] += 1; continue  # Luna said identity AND the text says so: drop
-        if identity_hit(r['messages']): stats['identity_backstop'] += 1; continue  # review F1: full-text regex over every assistant turn, after the judges
-        if not args.keep_lexicon_mannerism and mannerism_hit_messages(r['messages']): stats['lexicon_mannerism'] += 1; continue  # chatbot openers/closers, all blocks
+        if block not in NO_IDENTITY_FILTER and identity_hit(r['messages']): stats['identity_backstop'] += 1; continue  # review F1: full-text regex over every assistant turn, after the judges
+        if block not in NO_IDENTITY_FILTER and not args.keep_lexicon_mannerism and mannerism_hit_messages(r['messages']): stats['lexicon_mannerism'] += 1; continue  # chatbot openers/closers, all blocks except the conversation/personality sets (planted tics are masked context)
         n, n_sup = n_tokens_split(r['messages'])
         if n > args.max_tokens: stats['too_long'] += 1; continue
         r['sup_tokens'] = n_sup  # margin under the trainer's 4,096 so its own render never overflows
         r['block'] = block; r['tokens'] = n; taken.append(r)
     stats['taken'] = len(taken); stats['tokens'] = sum(r['tokens'] for r in taken)
-    ndev = max(1, int(len(taken) * args.dev_fraction)) if taken else 0
+    if block == 'personality':
+        hold = [r for r in taken if r.get('holdout') or r['id'] in PERSONALITY_HOLDOUT]; taken = hold + [r for r in taken if not (r.get('holdout') or r['id'] in PERSONALITY_HOLDOUT)]; ndev = len(hold)   # G1/B1: the 69 held-out personality rows are dev, excluded before weighting
+    else: ndev = max(1, int(len(taken) * args.dev_fraction)) if taken else 0
     dev += taken[:ndev]; train += taken[ndev:] * weight
     # launch gate G1 (completeness review B1): unique rows, exclusions, copies, rendered and supervised tokens, per-block content hash, export provenance
     h = hashlib.sha256()
