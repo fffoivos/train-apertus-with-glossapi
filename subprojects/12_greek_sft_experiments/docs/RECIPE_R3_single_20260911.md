@@ -55,7 +55,7 @@ Projected cost at the measured stage-1 rate (32.5M tokens per node-hour): 7.0 no
 |---|---|
 | G1 receipt: unique rows, exclusions, copies, rendered and supervised tokens, hashes, provenance; personality holdout excluded before weighting; train∩dev = ∅ | PASSED: data/arms/R3_single/receipt.json (train∩dev 0; 69 personality dev rows; per-block hashes and export provenance; the invariant also caught 1,077 exact duplicate rows, 1,068 of them puzzles that round two trained on) |
 | G2 masking through the real pipeline | PASSED (cluster/test_mask_pipeline.py on 40 real rows; 20 decoded examples attached) |
-| G3 final-snapshot decontamination | PASSED for the cached inventory: 1,519 contaminated rows dropped at assembly (ifeval_like 1,348 with the new IFBench-el/English originals in the cache); OYXOY pending the cluster copy |
+| G3 final-snapshot decontamination | PASSED for the cached inventory: 1,519 contaminated rows dropped at assembly (ifeval_like 1,348 with the new IFBench-el/English originals in the cache); OYXOY NOT covered: the frozen native-suite example files are no longer on the cluster scratch (frozen_examples_v2 is empty; only prediction files remain) and the sets are not on the Hub, so their text cannot be checked before launch; risk judged low (dictionary-derived lexical/NLI judgments vs our chat/IF/math rows), logged as DATA_TODO 52 for a re-derivation from the OYXOY source before the next round |
 | suite post-edit re-verification | PASSED: 3,284 of 3,437 (data/convskills/v2/reverify/manifest.json) |
 | correcting post-edit gate | PASSED: 3,691 supervised turns, 1 demoted |
 | dry run on the cluster (5% sample arm, DRY_RUN_OK) | pending the certificate |
