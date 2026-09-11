@@ -29,7 +29,7 @@ def main():
         sample = f'\n\n=== SAMPLE: {len(pick)} of {len(rows)} rows, seed {a.seed} ===\n' + '\n'.join(show(r) for r in pick)
     prompt = HEAD + brief + sample
     before = limits(latest_rollout()); t0 = time.time(); outp = tempfile.NamedTemporaryFile('w', suffix='.md', delete=False).name
-    p = subprocess.run([a.codex_bin if os.path.exists(a.codex_bin) else 'codex', 'exec', '-m', a.model, '-c', f'model_reasoning_effort={a.effort}', '-c', 'project_doc_max_bytes=0', '-c', 'features.code_mode_host=false', '--skip-git-repo-check', '--sandbox', 'read-only', '-o', outp, '-'], input=prompt, capture_output=True, text=True, timeout=7200, cwd=tempfile.gettempdir())
+    p = subprocess.run([a.codex_bin if os.path.exists(a.codex_bin) else 'codex', 'exec', '-m', a.model, '-c', f'model_reasoning_effort={a.effort}', '-c', 'project_doc_max_bytes=0', '-c', 'features.code_mode_host=false', '-c', 'features.remote_plugin=false', '-c', 'features.apps=false', '--skip-git-repo-check', '--sandbox', 'read-only', '-o', outp, '-'], input=prompt, capture_output=True, text=True, timeout=7200, cwd=tempfile.gettempdir())
     roll = latest_rollout(); models = set(re.findall(r'"model":"([^"]*)"', open(roll, errors='ignore').read())); after = limits(roll); el = time.time() - t0
     text = open(outp).read() if os.path.exists(outp) else ''
     if p.returncode != 0 or not text.strip(): sys.exit(f'review failed rc={p.returncode}: {p.stderr[-400:]}')

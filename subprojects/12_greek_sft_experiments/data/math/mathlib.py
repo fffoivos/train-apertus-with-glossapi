@@ -9,7 +9,7 @@ TMP = os.environ.get('CLAUDE_JOB_DIR', tempfile.gettempdir()) + '/tmp'; os.maked
 def codex_json(prompt: str, schema_path: str, model: str = 'gpt-5.6-sol', effort: str = 'medium', timeout: int = 1500) -> dict:
     """One schema-enforced codex call; raises on failure (callers retry)."""
     out = tempfile.NamedTemporaryFile('w', suffix='.json', dir=TMP, delete=False).name
-    subprocess.run(['codex', 'exec', '-m', model, '-c', f'model_reasoning_effort={effort}', '-c', 'project_doc_max_bytes=0', '-c', 'features.code_mode_host=false', '--skip-git-repo-check', '--sandbox', 'read-only', '--ephemeral', '--output-schema', schema_path, '-o', out, '-'],
+    subprocess.run(['codex', 'exec', '-m', model, '-c', f'model_reasoning_effort={effort}', '-c', 'project_doc_max_bytes=0', '-c', 'features.code_mode_host=false', '-c', 'features.remote_plugin=false', '-c', 'features.apps=false', '--skip-git-repo-check', '--sandbox', 'read-only', '--ephemeral', '--output-schema', schema_path, '-o', out, '-'],
                    input=prompt, capture_output=True, text=True, timeout=timeout, cwd=TMP)
     return json.load(open(out))
 
