@@ -18,7 +18,9 @@ def main():
             if not t.get('train'): why.append('planted')
             if not content_ok: why.append('empty')
             if not t.get('checks', {}).get('ok'): why.append('checks:' + ','.join(k for k, v in t.get('checks', {}).items() if k != 'ok' and v and k != 'questions') + (f",questions={t.get('checks', {}).get('questions')}" if (t.get('checks', {}).get('questions') or 0) > 1 else ''))
-            if t.get('assessment') not in ('ok', 'confronted', None): why.append('assessment:' + str(t.get('assessment')))
+            conditional = bool((t.get('assumption') or '').strip()) and t.get('assessment') == 'wrong' and t.get('move') in ('give_info', 'follow_up', 'change_request')
+            if t.get('assessment') not in ('ok', 'confronted', None) and not conditional: why.append('assessment:' + str(t.get('assessment')))   # astra scale review H2: a clearly conditional answer (stated assumption) answered by the user supplying the facts is not wrong
+            if conditional: stats['kept_conditional_despite_wrong'] += 1
             if t.get('self_check_verdict') in ('wrong', 'evasive'): why.append('verdict:' + t['self_check_verdict'])
             ok = not why   # F1 (astra pilot review): the same gate for ideal, recovery, misquote, clarify and closing turns; empty content never supervised
             if ok: stats['target_kept'] += 1

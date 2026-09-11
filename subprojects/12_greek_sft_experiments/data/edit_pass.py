@@ -43,6 +43,10 @@ def guard(r, new_turns, kind):
         for o, n in zip(olds, new_turns):
             if o == n: continue
             if o.strip() and not n.strip(): return False, 'emptied a turn'   # astra pilot review F1: an edit may never empty a supervised turn
+            # astra scale review H7: a turn that a later turn quotes (≥ 20 chars verbatim) must not change, or the later self-report becomes false
+            later = [x['content'] for x in turns_of(r) if x['role'] == 'assistant'][olds.index(o) + 1:] if o in olds else []
+            for sent in [x.strip() for x in _re.split(r'(?<=[.!;])\s+', o) if len(x.strip()) >= 20]:
+                if any(sent in lt for lt in later) and sent not in n: return False, 'quoted later'
             if len(_re.findall(r'[;?]', n)) > len(_re.findall(r'[;?]', o)): return False, 'question added'
             if len(n.split()) > 1.3 * len(o.split()) + 5 or len(n.split()) < 0.7 * len(o.split()) - 5: return False, 'length changed'
             if _re.search(r'(?:Θέλεις|Θες|Χρειάζεσαι) κάτι άλλο|Μπορώ να (?:σε )?βοηθήσω (?:σε )?κάτι άλλο|Πες μου (?:αν|τι άλλο)', n) and not _re.search(r'(?:Θέλεις|Θες|Χρειάζεσαι) κάτι άλλο|Μπορώ να (?:σε )?βοηθήσω (?:σε )?κάτι άλλο|Πες μου (?:αν|τι άλλο)', o): return False, 'closer added'

@@ -87,23 +87,30 @@ def checks(kind, ans, prev_answers, user_msg, planted_text=None, plant=None, aft
     must carry the fix; self-report rows may quote; every row: ≤ 1 question unless the user asked for questions, no solicit-more closer, no forbidden self-claims."""
     a = ans.strip(); out = dict(question_only=bool(re.fullmatch(r'[^.!]*[;?]\s*', a)) and len(C.words(a)) <= 25, rote_opener=bool(re.match(r'\s*(Σκεφτείτε|Σκέψου|Φυσικά|Βεβαίως|Ελπίζω)', a)),
                              solicit_closer=bool(re.search(r'(Θέλεις κάτι άλλο|Θέλετε κάτι άλλο|Αν θες|Αν θέλεις|Αν χρειαστείς|Πες μου τι άλλο|Μη διστάσεις|Ελπίζω να βοήθησα)', a)),
-                             forbidden_selfclaim=bool(re.search(r'(δεν βλέπω τίποτα από πριν|δεν κρατάω τίποτα|μένω στην οθόνη|είμαι \d,\d+ μέτρα|κάθε συνομιλία κρατά)', a, re.I)),
+                             forbidden_selfclaim=bool(re.search(r'(δεν βλέπω τίποτα από πριν|δεν κρατάω τίποτα|μένω στην οθόνη|είμαι \d,\d+ μέτρα|κάθε συνομιλία κρατά)', re.sub(r'«[^»]*»|"[^"]*"|“[^”]*”', ' ', a), re.I) and not re.search(r'(δεν (?:σου )?(?:είπα|έγραψα)|ποτέ δεν|όχι,? δεν|δεν ισχύει|δεν είναι αλήθεια)[^.]{0,60}(βλέπω τίποτα|κρατάω τίποτα|μένω στην οθόνη|μέτρα|συνομιλία κρατά)', a, re.I)),   # quoted or negated occurrences are denials, not claims (astra scale review H1)
                              questions=user_questions(a), loop=max(collections.Counter(tuple(norm(a).split()[i:i + 4]) for i in range(max(0, len(norm(a).split()) - 3))).values(), default=0) >= 3)
     if kind == 'recovery' and planted_text: out['reuses_planted'] = reused(a, [planted_text]) >= 1
     if plant == 'verbatim_repeat' and prev_answers: out['reuses_earlier'] = reused(a, prev_answers[:-1]) >= 2
     if plant in ('wrong_selfreport',) : out['quotes_transcript'] = any(len(x) > 20 and norm(x) in norm(' '.join(prev_answers + [user_msg])) for x in re.findall(r'«([^»]+)»|"([^"]+)"', a) for x in (x if isinstance(x, str) else [y for y in x if y]))
-    asked_for_questions = bool(re.search(r'ερωτ[ηήι]σ|ερωτ[ηήι]μ|κου[ίι]ζ|quiz|erot[ii]s|erotim', user_msg or '', re.I))   # the user asked for questions (quiz, exam, FAQ): the one-question rule does not apply
-    if kind == 'clarify' and out['questions'] <= 1: out['question_only'] = False   # a necessary single question (writer flagged clarify_needed) is allowed once per dialogue (astra F1)
+    asked_for_questions = bool(re.search(r'ερωτ[ηήι]σ|ερωτ[ηήι]μ|κου[ίι]ζ|quiz|erot[ii]s|erotim|διάλογ|dialog|σενάρι|senari|παιχνίδ|paixnid|συνέντευξ|εξέτασ|exetas|μ[έe]ιλ|e-?mail|μήνυμα|minima|επιστολ|epistol|γράμμα|gramma|αίτημα|αίτηση|SMS|σκετς|θεατρικ|ανάκρισ|κάρτες|flashcard', user_msg or '', re.I))   # the user asked for content that legitimately contains questions (quiz, exam, dialogue script, game, drafted message/email/letter): the one-question rule does not apply (astra scale review H1)
+    if kind == 'clarify' and out['questions'] <= 1: out['question_only'] = False
+    out['unverified_url'] = bool(re.search(r'https?://[^\s)»]+/[^\s)»]+|www\.[^\s)»]+/[^\s)»]+', a))   # astra scale review H6: URL paths cannot be verified offline; only root domains may be given
+    out['wrong_count'] = False
+    if kind == 'recovery' and planted_text:   # astra scale review H5: a self-report with an exact count must match the planted text
+        for m in re.finditer(r'«([^»]{2,60})»\s*(?:\w+\s){0,3}?(δύο|τρεις|τέσσερις|πέντε|έξι|\d+)\s+φορές|(δύο|τρεις|τέσσερις|πέντε|έξι|\d+)\s+φορές[^.«]{0,40}«([^»]{2,60})»', a):
+            phrase = m.group(1) or m.group(4); num = m.group(2) or m.group(3); n = {'δύο': 2, 'τρεις': 3, 'τέσσερις': 4, 'πέντε': 5, 'έξι': 6}.get(num, int(num) if num.isdigit() else None)
+            if phrase and n is not None and planted_text.lower().count(phrase.strip().lower()) != n: out['wrong_count'] = True   # a necessary single question (writer flagged clarify_needed) is allowed once per dialogue (astra F1)
     out['invented_process'] = bool(kind == 'recovery' and re.search(r'ξανάστειλα|κατά λάθος|έλεγξα|διαπίστωσα|πάτησα|μπερδεύτηκα|το σύστημα', ans))   # astra F6: no invented cause or inner process for an acknowledged error
     out['false_concession'] = bool(after_claim == 'false' and re.match(r'\s*(?:Έχεις|Έχετε) δίκιο|\s*Σωστά[,.]|\s*Συγγνώμη|\s*Λάθος μου|\s*Ναι, (?:έκανα|είχα) λάθος|\s*Μου ξέφυγε', ans))   # reflexive concession after a false correction (astra F5)
-    out['ok'] = not (out['question_only'] or out['false_concession'] or out['invented_process'] or out['rote_opener'] or out['solicit_closer'] or out['forbidden_selfclaim'] or out['loop'] or out.get('reuses_planted') or out.get('reuses_earlier')) and (out['questions'] <= 1 or asked_for_questions)
+    if asked_for_questions: out['question_only'] = False   # a requested message, script or quiz may consist of questions
+    out['ok'] = not (out['question_only'] or out['false_concession'] or out['invented_process'] or out['unverified_url'] or out['wrong_count'] or out['rote_opener'] or out['solicit_closer'] or out['forbidden_selfclaim'] or out['loop'] or out.get('reuses_planted') or out.get('reuses_earlier')) and (out['questions'] <= 1 or asked_for_questions)
     return out
 
 
 def user_questions(a):
     """Questions addressed to the user: question marks outside quoted spans and outside list items (quiz questions, FAQ lines and quoted text are content, not questions to the user)."""
     t = re.sub(r'`[^`]*`|«[^»]*»|"[^"]*"|“[^”]*”', 'Χ', a)   # placeholder without whitespace so a stripped span never manufactures a «; » question mark (Excel formulas)
-    t = '\n'.join(l for l in t.split('\n') if not re.match(r'\s*(?:[-•*]|\d+[.)]|[α-ωa-z][.)])\s', l))
+    t = '\n'.join(l for l in t.split('\n') if not re.match(r'\s*(?:[-•*]|\d+[.)]|[α-ωa-z][.)])\s', l) and not re.match(r'\s*(?:[—–-]\s|[A-ZΑ-Ω][A-ZΑ-Ωa-zα-ωάέήίόύώ]{1,20}\s?:\s)', l))   # list items and dialogue-script speaker lines are content, not questions to the user
     return len(re.findall(r'[;?](\s|$)', t))
 
 

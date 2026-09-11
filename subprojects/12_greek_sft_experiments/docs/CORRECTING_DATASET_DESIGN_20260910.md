@@ -110,3 +110,22 @@ Pilot: 200 dialogues, 7.5 turns each, 1,353 supervised turns after a check fix (
 | F8 MEDIUM length, stopping, coverage | the loop now yields at most 12 user messages; quiz answer positions varied by instruction; coverage measured after acceptance in the manifest (intents, surfaces, plant kinds, probe distances). |
 | F9 LOW Greek awkwardness | the editor pass stays; examples added to its brief. |
 
+## 11. Scaled set (600 dialogues, 2026-09-11) and its astra review — disposition
+
+Generation: seeds 2 and 3, 300 dialogues each, after the pilot-review fixes; 246 dialogues/hour at 48 workers once the Codex plugin-catalog download was disabled. Review: docs/reviews/ASTRA_correcting_scale_20260911.md (gpt-6-astra, xhigh, 60 dialogues before the editor pass). Verdict: the parity fix landed (12:12 genuine vs misquote recoveries in the sample; no retained empty target, disallowed assessment or wrong verdict; all plants masked; misquote discrimination works in 13/13), but the eligibility checks rejected requested content and several retained targets carry numeric, assumption or self-report defects. Applied before the editor pass (offline recheck, no new calls):
+
+| finding | applied | effect on the 600 |
+|---|---|---|
+| H1 HIGH checks reject requested questions (dialogue scripts, quizzes, games, drafted messages) and quoted/negated self-claims | one-question rule and question-only rule waived when the user asked for a dialogue/script/quiz/game/message/email/letter/exam; dialogue-script speaker lines and list items not counted; `forbidden_selfclaim` ignores quoted and negated occurrences | +59 targets recovered (30 ideal, 28 misquote, 1 recovery) |
+| H2 HIGH responder grades conditional answers against facts revealed later | assembler keeps a target with assessment `wrong` when the writer stated an assumption and the user's next move supplied information (24 turns); the responder's hidden facts are not grading criteria (logged: attach assessments to the specific turn, DATA_TODO 46) | +24 |
+| H3 HIGH arithmetic (month = 4 weeks), static formula edge cases, Excel localisation (ΑΝ vs ΕΑΝ) | logged as DATA_TODO 41 (numeric second read; spreadsheet fixtures); the two ΕΑΝ rows are excluded from the after-false-correction count until resolved | — |
+| H4 HIGH assumptions asserted as user facts (budget exclusion, lease date, allergy scope, drafted-message claims) | writer rules exist; a post-hoc filter is not mechanical; logged for the Luna second read (DATA_TODO 41) with the four examples as its calibration items | — |
+| H5 HIGH a retained recovery mis-counts the planted repetition («τρεις φορές» for four) | `wrong_count` check: a recovery that states an exact count of a quoted phrase must match the planted text | −10 recoveries (rejected) |
+| H6 HIGH unverifiable URL paths, fees, office details | `unverified_url` check: any URL with a path beyond the root domain rejects the turn (root domains allowed); a dated reference pack for unstable procedures is DATA_TODO 47; correction-claim labels exported (`claim_truth`, `after_claim`) for adjudication | −8 ideal turns |
+| H7 HIGH the editor pass could break quotations between supervised turns | editor guard: an edit that changes a sentence (≥ 20 chars) quoted verbatim by a later assistant turn is reverted; the trainer's masking is demonstrated through the real pipeline (cluster/test_mask_pipeline.py) | — |
+| M1 MEDIUM recovery accounting narrower than parity suggests; empty-ack plants mostly repetition; valid material from plants legitimately reused | logged: label conversational function separately from kind; faulty-span tracking; add genuine recoveries for dropped qualifiers, misunderstood requests, over-asking, question-only (DATA_TODO 42/48) | — |
+| M2 MEDIUM three mismatched transitions, six surface slips in 429 user turns (1.4%), staged evaluator-style turns | logged: surface check outside quoted spans in the responder gate; ground transitions; vary probe wording (DATA_TODO 48) | — |
+| L1 editor needed (1 corrupted target counted; 5–10% light edits estimated) | the editor pass runs next (kind dialogue, 24 workers) followed by the H7 guard and a recheck | — |
+
+Result after the dispositions: 3,692 supervised turns (2,750 ideal, 575 closing, 166 genuine recoveries, ~200 misquote recoveries, 5 clarify), 226 masked plants in 176 dialogues (29%), 294 targets rejected (178 by checks, 132 by assessment, 17 by verdict; a turn can fail several). Reader page and the description doc are updated after the editor pass.
+
