@@ -59,7 +59,35 @@ Global training settings for every block: learning rate 1e-5, cosine to a 0.1 fl
 | convskills | conversation skills S1 to S5m (list and semantic retention, clarification, both-order, S4 tic avoidance, S5m fact use) | el 99.6% | 2,811 | 2 | 5,622 | 4.5M |
 | correcting | correction and recovery dialogues (misquote confrontation, planted failures masked, clarify) | el 99% (user turns el 78%; greeklish and atonic surfaces by design) | 565 | 2 | 1,130 | 0.9M |
 
-Totals: 376,039 unique rows, 403,727 effective, 140.4M supervised tokens. By language of the supervised text (weighted by effective rows): Greek ≈ 25% of effective rows (greek_ours el share ×2, personality ×4, greek_if, greek_math, greek_rewrite, convskills ×2, correcting ×2 ≈ 99k of 404k), English ≈ 65%, other EU languages ≈ 10% (smoltalk2, the Spanish half of dolci_chat, the fr/de rows of greek_ours, the non-English tail of Nemotron). By tokens the English share is higher because the Nemotron and tool-use blocks carry the longest answers (62.6M of 140.4M supervised tokens).
+Totals: 376,039 unique rows, 403,727 effective, 140.4M supervised tokens.
+
+**Language over the supervised spans (the readiness review's Q2 measure, 2026-09-11 15:40).** Assistant turns with `train` not false, on the EFFECTIVE rows (copies counted), weighted by letters (Greek, Latin and Cyrillic letters only; digits, punctuation and markup excluded). A span is `el` when at least 90% of its letters are Greek, `latin` at 90% Latin, `mixed` otherwise, `unknown` under 20 letters. Script: data/language_by_block.py (second mode) → docs/receipts_R3_single/language_supervised_spans.json.
+
+| block | supervised letters | el % | latin % | mixed % | unknown % |
+|---|---:|---:|---:|---:|---:|
+| convskills | 14.9M | 78.3 | 0.6 | 21.1 | 0.1 |
+| correcting | 2.5M | 94.3 | 0.4 | 5.1 | 0.1 |
+| dolci_chat | 2.7M | 0.0 | 99.4 | 0.1 | 0.0 |
+| dolci_code_algo_20k | 2.4M | 0.0 | 100.0 | 0.0 | 0.0 |
+| dolci_precise_if_20k | 3.2M | 0.0 | 99.3 | 0.1 | 0.1 |
+| dolci_reasoning | 7.9M | 0.0 | 99.9 | 0.1 | 0.0 |
+| dolci_safety | 4.5M | 0.0 | 100.0 | 0.0 | 0.0 |
+| dolci_science | 9.5M | 0.0 | 100.0 | 0.0 | 0.0 |
+| dolci_tooluse | 18.8M | 0.0 | 99.9 | 0.0 | 0.1 |
+| greek_if | 19.8M | 85.4 | 7.9 | 6.7 | 0.0 |
+| greek_math | 1.4M | 86.8 | 0.1 | 12.4 | 0.7 |
+| greek_ours | 27.9M | 62.7 | 32.2 | 5.0 | 0.1 |
+| greek_rewrite | 1.4M | 99.8 | 0.0 | 0.2 | 0.0 |
+| ifeval_like | 27.0M | 0.0 | 100.0 | 0.0 | 0.0 |
+| nemotron_chat_a | 89.3M | 0.0 | 99.2 | 0.5 | 0.0 |
+| nemotron_chat_b | 91.2M | 0.0 | 99.1 | 0.6 | 0.0 |
+| openmath_gsm | 30.2M | 0.0 | 100.0 | 0.0 | 0.0 |
+| personality | 3.0M | 91.2 | 1.4 | 7.3 | 0.0 |
+| puzzles | 1.3M | 0.0 | 94.2 | 0.0 | 5.8 |
+| smoltalk2_multilingual | 26.0M | 0.0 | 100.0 | 0.0 | 0.0 |
+| **all, effective** | **385.0M** | **14.0** | **84.0** | **1.9** | **0.04** (spans: 16,896 of 637,638) |
+
+So Greek is **14.0% of the supervised letters** the model is trained on (Latin-script 84.0%: English plus the five smoltalk2 languages, the Spanish half of dolci_chat, the French/German rows of greek_ours and the Polish/German tail of Nemotron; Cyrillic 0.1%). The row-based figure (about a quarter of effective rows are Greek blocks) overstates the Greek share because the long-answer blocks are English. The earlier block-based proxy the review called out (16.3%) was of the same order, but it was a guess from block labels; this is a measurement. `mixed` in convskills (21%) and greek_math (12%) is Greek text carrying Latin-script names, code, formulas or greeklish surfaces by design, not a language error.
 
 Two facts this table adds that the block names hid: dolci_chat is Spanish-majority, and about 27% of the answers in greek_ours are not Greek (English 18%, French 5%, German 4%). Both were also true of the round-two stage-1 mix that produced arm B.
 
@@ -93,6 +121,25 @@ Projected cost at the measured stage-1 rate (32.5M tokens per node-hour): 7.0 no
 | suite post-edit re-verification | PASSED: 3,284 of 3,437 (data/convskills/v2/reverify/manifest.json) |
 | correcting post-edit gate | PASSED: 3,691 supervised turns, 1 demoted |
 | dry run on the cluster (5% sample arm, DRY_RUN_OK) | PASSED 2026-09-11 14:01 CEST on the login node: 20,186 sampled rows (seed 42), 11,401,619 tokens → ×20 = 228.0M vs receipt 228.6M (0.2%); dev 3,845 rows / 2,195,787 tokens = the receipt exactly; 175 optimizer steps at effective batch 16 on the sample; log $SCRATCH/sft_round1/logs/dryrun_R3_single_s5.log; uploaded files verified by hash (train.jsonl sha256 53cb197b…, trainer md5 53246fff…) |
+
+## 3b. Readiness review (docs/reviews/ASTRA_readiness_20260911.md): disposition of every finding
+
+Written 2026-09-11 15:45, after the owner asked whether the review had accepted the M1 claim. It had not: the review's Q2 and Q5 said the language share was unmeasured, and I had closed the review's blockers without dispositioning F1 to F7 and Q1 to Q5 one by one. This table is that disposition. OPEN means open.
+
+| finding | status | evidence |
+|---|---|---|
+| F1 BLOCKER: B3 decontamination incomplete, rule described inconsistently | CLOSED except OYXOY | rule recorded in §3 G3 (normalisation, user-turn word 8-grams, containment ≥ 0.5 of distinct 8-grams, no 13-gram rule, prompts shorter than 8 words form one gram); inventory of 14 suites / 58,359 prompts; match ledger on the final file: data/arms/R3_single/contamination_ledger.jsonl, 0 matches. OYXOY not covered (DATA_TODO 52). NEW, the audit of the assembly-time drops by evaluation source that Q2 asked for: docs/receipts_R3_single/contamination_audit_ifeval_like.json and contamination_audit_dolci_precise_if_20k.json. ifeval_like export: 56,339 rows, 1,348 hits, all against the English IFEval suite, only 11 distinct IFEval prompts absorb them (731 rows match one prompt); containment 0.5 to 0.6 for 1,279 rows, 1.0 for 13 rows whose whole prompt is the constraint sentence «Answer with one of the following options: My answer is yes / no / maybe». Precise IF export: 20,000 rows, 331 hits ({'ifeval': 276, 'ifbench_el': 55}), 20 distinct prompts. Every inspected match is IFEval constraint boilerplate («At the end of your response, please explicitly add a postscript starting with P.S.», «First repeat the request word for word without change», «Highlight at least 2 sections in your answer with markdown»), never the task text. Verdict: accidental deletion of common instruction templates, no benchmark leakage found. Limitation logged as DATA_TODO 55: a copied task sentence wrapped in different constraints can fall under the 0.5 containment and pass. |
+| F2 BLOCKER: B1 complete accounting and leakage verification | CLOSED | data/arms/R3_single/ledger.json (data/verify_arm.py): per-block reasons, train∩dev 0 by id and by content, holdout hashes. The three unexplained counts of the review's Q2: correcting 600 source rows → 24 unrenderable (dialogue ends with a user turn) + 6 over 4,096 tokens → 570 taken → 5 dev → 565 train; personality 1,580 → 6 unrenderable + 1 contaminated → 1,573 → 69 holdout dev → 1,504; convskills 2,851 → 11 same-content duplicates → 2,840 → 1 over-long → 2,839 → 28 dev → 2,811. |
+| F3 BLOCKER pending: supervision contract ambiguous | CLOSED | §3 G2: definitions of unique/effective and of `masked_context_turns`; label dump bound to the final train.jsonl and the committed trainer (docs/receipts_label_dump_g2_final.json). |
+| F4 HIGH: dose comparison misleading | CLOSED | §2 personality-dose row rewritten as the review prescribed: same post-split post-weighting definitions, both R2 stage 1 alone and stage 1 plus arm B, described as a reduced-exposure changed-schedule experiment, not raised to ×8. |
+| F5 HIGH: coverage and factual dispositions not demonstrated | OPEN (owner) | coverage matrix of the accepted rows NOT computed; the uncovered cells are listed (DATA_TODO 42) and the deferrals recorded (DATA_TODO 53); the two v4 fact doubts resolved by applied edits (H06_11, H11_05); the seven registered v3 corrections NOT delivered and the registry not described as remediation. Owner decision on DATA_TODO 42 and 28 pending. |
+| F6 HIGH: promotion plan not operational | OPEN (owner + battery) | floors proposed in §4, not confirmed; the four Greek benchmarks are frozen (data/benchmarks_el/MANIFEST.json); the full battery manifest (scorer versions, serving settings, primary endpoints, uncertainty procedure) is NOT written yet, it is launch-sequence step 6; langdetect rescoring of arm B and peers planned in the battery; blinded human adjudication is the owner's (DATA_TODO 34). |
+| F7 MEDIUM: stale or overstated claims | PARTIAL | corrected on 11 Sept: dose, adaptation claim, the three sets' statuses (§3.x), and today the M1 wording (the receipt never held selection rates). The description has not been re-read line by line for other stale statements since the final assembly. |
+| Q2 surprises: token-share category definitions; language share unmeasured; ifeval-like drops unexplained | CLOSED | categories now explicit in §1b (task type per block, supervised tokens per block); language measured over supervised spans (§1b: Greek 14.0% of supervised letters, mixed 1.9%, unknown reported separately); drops audited (F1 row). |
+| Q3 weights and single stage | CLOSED | the review's advice adopted: weights unchanged, personality ×4 not raised, single stage kept as the experiment vs arm B (§2). |
+| Q4 steps 1 to 7 | 1 OPEN (OYXOY); 2 done except OYXOY and the owner deferrals; 3 done (hashes verified on the cluster); 4 done (dry run: rendered tokens within 0.2%, dev exact; supervised accounting via the G2 dump and the receipt, not via the dry run); 5 NOT run (the GPU probe runs on the owner's go); 6 OPEN (F6); 7 pending the go | budget as the review computed: 7.0 nh training + 0.3 probe + 4.3 battery ≈ 11.6 to 13.4 node-hours total; the owner's cap must cover that or name what is cut. |
+| Q5 residual risks | ACKNOWLEDGED, not mitigated | single seed; v3 personality factual concerns remain; shared CPT contamination; textual tool calls not evaluated as tool competence; Greek supervision is a minority: 14.0% of supervised letters (now measured). |
+| open questions 1 to 5 | 1 owner (budget scope); 2 answered (F2 row); 3 answered (ids AND canonical content; masked-context definition in G2); 4 DATA_TODO 53, owner; 5 owner (§4 floors) | |
 
 ## 4. Promotion criteria proposed (against arm B under identical serving settings)
 GreekMMLU at least arm B minus 0.5 points (decontaminated subset, frozen fp32 scorer); Greek IFEval strict average at least arm B minus 1 point, both rescored with langdetect installed; Greek MGSM at least arm B; native suite macro-8 at least arm B minus 1 point (retention); identity probe: every contract fact still answered as written; XSTest-el: safe-request adequacy not below arm B and unsafe-request refusal not below arm B. Primary conversation endpoint: picky-user R1 on the frozen 120 profiles under identical serving settings (temperature 0.8, 300 tokens, vLLM): tail-copy rate lower and coherent-turn rate higher than arm B, each by more than the paired bootstrap 95% interval (dialogue-level resampling); secondary: standing-instruction persistence, self-observation accuracy, MultiChallenge-el pass rate on the frozen 262 usable items (ids in data/benchmarks_el/multichallenge/summary.json), IFBench-el, MATH-500-el primary 486. Pivotal conversation judgements: a blinded, order-randomised human adjudication of 60 dialogues by the owner before any promotion decision. Manifests, scorer versions, prompts and decoding are frozen before R3 results are inspected.

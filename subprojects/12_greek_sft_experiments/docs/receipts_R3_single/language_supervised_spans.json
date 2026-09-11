@@ -1,0 +1,289 @@
+{
+ "convskills": {
+  "supervised_letters": 14897902,
+  "share_by_letters": {
+   "el": 0.7828,
+   "mixed": 0.2105,
+   "unknown": 0.0007,
+   "latin": 0.006
+  },
+  "spans": {
+   "el": 25966,
+   "mixed": 5396,
+   "unknown": 936,
+   "latin": 222
+  }
+ },
+ "correcting": {
+  "supervised_letters": 2458576,
+  "share_by_letters": {
+   "mixed": 0.0512,
+   "el": 0.9434,
+   "unknown": 0.0012,
+   "latin": 0.0042
+  },
+  "spans": {
+   "mixed": 408,
+   "el": 6174,
+   "unknown": 310,
+   "latin": 32
+  }
+ },
+ "dolci_chat": {
+  "supervised_letters": 2730291,
+  "share_by_letters": {
+   "latin": 0.9943,
+   "unknown": 0.0002,
+   "cyrillic": 0.0041,
+   "mixed": 0.0014
+  },
+  "spans": {
+   "latin": 3595,
+   "unknown": 174,
+   "cyrillic": 20,
+   "mixed": 7
+  }
+ },
+ "dolci_code_algo_20k": {
+  "supervised_letters": 2429238,
+  "share_by_letters": {
+   "latin": 0.9999,
+   "unknown": 0.0001
+  },
+  "spans": {
+   "latin": 5489,
+   "unknown": 14
+  }
+ },
+ "dolci_precise_if_20k": {
+  "supervised_letters": 3229439,
+  "share_by_letters": {
+   "latin": 0.9928,
+   "unknown": 0.0008,
+   "cyrillic": 0.0056,
+   "mixed": 0.0008
+  },
+  "spans": {
+   "latin": 3803,
+   "unknown": 289,
+   "cyrillic": 18,
+   "mixed": 6
+  }
+ },
+ "dolci_reasoning": {
+  "supervised_letters": 7891464,
+  "share_by_letters": {
+   "latin": 0.9991,
+   "unknown": 0.0004,
+   "mixed": 0.0005
+  },
+  "spans": {
+   "latin": 29091,
+   "unknown": 516,
+   "mixed": 33
+  }
+ },
+ "dolci_safety": {
+  "supervised_letters": 4510415,
+  "share_by_letters": {
+   "latin": 1.0,
+   "unknown": 0.0
+  },
+  "spans": {
+   "latin": 6169,
+   "unknown": 5
+  }
+ },
+ "dolci_science": {
+  "supervised_letters": 9518997,
+  "share_by_letters": {
+   "latin": 0.9999,
+   "unknown": 0.0001
+  },
+  "spans": {
+   "latin": 6429,
+   "unknown": 108
+  }
+ },
+ "dolci_tooluse": {
+  "supervised_letters": 18800944,
+  "share_by_letters": {
+   "latin": 0.9992,
+   "unknown": 0.0005,
+   "mixed": 0.0002,
+   "cyrillic": 0.0
+  },
+  "spans": {
+   "latin": 162588,
+   "unknown": 699,
+   "mixed": 35,
+   "cyrillic": 3
+  }
+ },
+ "greek_if": {
+  "supervised_letters": 19790049,
+  "share_by_letters": {
+   "el": 0.8542,
+   "mixed": 0.0665,
+   "unknown": 0.0001,
+   "latin": 0.0792
+  },
+  "spans": {
+   "el": 24113,
+   "mixed": 1709,
+   "unknown": 732,
+   "latin": 3219
+  }
+ },
+ "greek_math": {
+  "supervised_letters": 1401354,
+  "share_by_letters": {
+   "el": 0.8678,
+   "mixed": 0.1243,
+   "unknown": 0.0074,
+   "latin": 0.0005
+  },
+  "spans": {
+   "el": 11281,
+   "mixed": 1890,
+   "unknown": 893,
+   "latin": 6
+  }
+ },
+ "greek_ours": {
+  "supervised_letters": 27865402,
+  "share_by_letters": {
+   "el": 0.6273,
+   "unknown": 0.0012,
+   "latin": 0.3217,
+   "mixed": 0.0497,
+   "cyrillic": 0.0001
+  },
+  "spans": {
+   "el": 40004,
+   "unknown": 2894,
+   "latin": 15542,
+   "mixed": 3590,
+   "cyrillic": 6
+  }
+ },
+ "greek_rewrite": {
+  "supervised_letters": 1371661,
+  "share_by_letters": {
+   "el": 0.9984,
+   "mixed": 0.0016
+  },
+  "spans": {
+   "el": 1961,
+   "mixed": 19
+  }
+ },
+ "ifeval_like": {
+  "supervised_letters": 26999085,
+  "share_by_letters": {
+   "latin": 1.0,
+   "unknown": 0.0
+  },
+  "spans": {
+   "latin": 45987,
+   "unknown": 50
+  }
+ },
+ "nemotron_chat_a": {
+  "supervised_letters": 89320748,
+  "share_by_letters": {
+   "latin": 0.9919,
+   "unknown": 0.0001,
+   "mixed": 0.0052,
+   "cyrillic": 0.0024,
+   "el": 0.0004
+  },
+  "spans": {
+   "latin": 42655,
+   "unknown": 994,
+   "mixed": 265,
+   "cyrillic": 160,
+   "el": 20
+  }
+ },
+ "nemotron_chat_b": {
+  "supervised_letters": 91176444,
+  "share_by_letters": {
+   "latin": 0.9913,
+   "unknown": 0.0001,
+   "cyrillic": 0.0028,
+   "mixed": 0.0056,
+   "el": 0.0003
+  },
+  "spans": {
+   "latin": 43141,
+   "unknown": 1168,
+   "cyrillic": 172,
+   "mixed": 266,
+   "el": 13
+  }
+ },
+ "openmath_gsm": {
+  "supervised_letters": 30223870,
+  "share_by_letters": {
+   "latin": 1.0
+  },
+  "spans": {
+   "latin": 98943
+  }
+ },
+ "personality": {
+  "supervised_letters": 2990096,
+  "share_by_letters": {
+   "mixed": 0.073,
+   "el": 0.9125,
+   "unknown": 0.0003,
+   "latin": 0.0142
+  },
+  "spans": {
+   "mixed": 732,
+   "el": 6844,
+   "unknown": 84,
+   "latin": 152
+  }
+ },
+ "puzzles": {
+  "supervised_letters": 1314624,
+  "share_by_letters": {
+   "latin": 0.9417,
+   "unknown": 0.0583
+  },
+  "spans": {
+   "latin": 2394,
+   "unknown": 6997
+  }
+ },
+ "smoltalk2_multilingual": {
+  "supervised_letters": 26047611,
+  "share_by_letters": {
+   "latin": 1.0,
+   "unknown": 0.0
+  },
+  "spans": {
+   "latin": 20174,
+   "unknown": 33
+  }
+ },
+ "_ALL_effective": {
+  "supervised_letters": 384968210,
+  "share_by_letters": {
+   "el": 0.1396,
+   "mixed": 0.0191,
+   "unknown": 0.0004,
+   "latin": 0.8396,
+   "cyrillic": 0.0013
+  },
+  "spans": {
+   "el": 116376,
+   "mixed": 14356,
+   "unknown": 16896,
+   "latin": 489631,
+   "cyrillic": 379
+  }
+ }
+}
