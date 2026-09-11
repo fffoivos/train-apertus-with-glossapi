@@ -121,6 +121,7 @@ Projected cost at the measured stage-1 rate (32.5M tokens per node-hour): 7.0 no
 | suite post-edit re-verification | PASSED: 3,284 of 3,437 (data/convskills/v2/reverify/manifest.json) |
 | correcting post-edit gate | PASSED: 3,691 supervised turns, 1 demoted |
 | dry run on the cluster (5% sample arm, DRY_RUN_OK) | PASSED 2026-09-11 14:01 CEST on the login node: 20,186 sampled rows (seed 42), 11,401,619 tokens → ×20 = 228.0M vs receipt 228.6M (0.2%); dev 3,845 rows / 2,195,787 tokens = the receipt exactly; 175 optimizer steps at effective batch 16 on the sample; log $SCRATCH/sft_round1/logs/dryrun_R3_single_s5.log; uploaded files verified by hash (train.jsonl sha256 53cb197b…, trainer md5 53246fff…) |
+| 20-step GPU probe on a debug workbench (trainer changed: per-turn masking) | PASSED 2026-09-11 17:23 CEST, job 3358449 (55 min incl. tokenising the full arm): TRAIN_OK, loss 1.247 → 1.225 over 20 steps, 1.30M tokens, 40.5 GiB per GPU, dev eval on all 20 blocks (257 s), checkpoint-20 and epoch1 written and reloaded; pure training rate ≈ 7.8k tok/s ≈ 28M tokens/nh (R2 probe 7.5k) → full run ≈ 9 h; submitted with walltime 11:30 (partition max 12:00) |
 
 ## 3b. Readiness review (docs/reviews/ASTRA_readiness_20260911.md): disposition of every finding
 
