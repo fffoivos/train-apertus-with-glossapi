@@ -19,12 +19,13 @@ def loops(ans):
 
 
 def main():
-    rows = [json.loads(l) for f in ('live/v0/dialogues.jsonl', 'live/v1/dialogues.jsonl') for l in open(f)]; res = {k: dict(n=0, length=0, loop=0, reuse=0, words=0) for k in PORTS}; log = []
+    models = sys.argv[2].split(',') if len(sys.argv) > 2 else list(PORTS); ports = {k: PORTS[k] for k in models}   # one model at a time: two 8B copies do not fit the laptop's memory
+    rows = [json.loads(l) for f in ('live/v0/dialogues.jsonl', 'live/v1/dialogues.jsonl') for l in open(f)]; res = {k: dict(n=0, length=0, loop=0, reuse=0, words=0) for k in ports}; log = []
     for r in rows:
         prefixes = [r['messages'][:1]]
         if len(r['messages']) >= 3: prefixes.append(r['messages'][:3])
         for pre in prefixes:
-            for name, (url, model) in PORTS.items():
+            for name, (url, model) in ports.items():
                 outs = []
                 for _ in range(2):
                     try: a, fin = chat(url, model, pre)

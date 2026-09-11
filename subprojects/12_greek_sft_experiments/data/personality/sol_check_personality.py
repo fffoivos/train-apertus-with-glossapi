@@ -23,7 +23,7 @@ def check(r):
     with tempfile.NamedTemporaryFile('w', suffix='.txt', delete=False, prefix='pchk_') as tmp: tmp.write(render(r)); p = tmp.name
     out = tempfile.mktemp(suffix='.json', prefix='pchk_out_'); t0 = time.time()
     try:
-        res = subprocess.run(['codex', 'exec', '-m', MODEL, '-c', f'model_reasoning_effort={EFFORT}', '-c', f'service_tier={TIER}', '--skip-git-repo-check', '-c', 'features.code_mode_host=false', '--sandbox', 'read-only', '--ephemeral', '--output-schema', SCHEMA, '-o', out, '-'], stdin=open(p), capture_output=True, text=True, timeout=900)
+        res = subprocess.run(['codex', 'exec', '-m', MODEL, '-c', f'model_reasoning_effort={EFFORT}', '-c', f'service_tier={TIER}', '--skip-git-repo-check', '-c', 'features.code_mode_host=false', '-c', 'features.remote_plugin=false', '-c', 'features.apps=false', '--sandbox', 'read-only', '--ephemeral', '--output-schema', SCHEMA, '-o', out, '-'], stdin=open(p), capture_output=True, text=True, timeout=900)
         txt = open(out).read() if os.path.exists(out) else res.stdout; j = json.loads(txt[txt.index('{'):txt.rindex('}') + 1])
     except Exception as e: j = dict(verdict=None, error=type(e).__name__)
     for f in (p, out):

@@ -66,7 +66,7 @@ def gen(s):
     prompt = PROMPT.format(**s)
     with tempfile.NamedTemporaryFile('w', suffix='.txt', delete=False, prefix='grrw_') as tmp: tmp.write(prompt); p = tmp.name
     out = tempfile.mktemp(suffix='.json', prefix='grrw_out_'); t0 = time.time()
-    r = subprocess.run(['codex', 'exec', '-m', MODEL, '-c', f'model_reasoning_effort={EFFORT}', '-c', f'service_tier={TIER}', '--skip-git-repo-check', '-c', 'features.code_mode_host=false',
+    r = subprocess.run(['codex', 'exec', '-m', MODEL, '-c', f'model_reasoning_effort={EFFORT}', '-c', f'service_tier={TIER}', '--skip-git-repo-check', '-c', 'features.code_mode_host=false', '-c', 'features.remote_plugin=false', '-c', 'features.apps=false',
                         '--sandbox', 'read-only', '--ephemeral', '--output-schema', SCHEMA, '-o', out, '-'], stdin=open(p), capture_output=True, text=True, timeout=900)
     txt = open(out).read() if os.path.exists(out) else r.stdout
     try: j = json.loads(txt[txt.index('{'):txt.rindex('}') + 1])
