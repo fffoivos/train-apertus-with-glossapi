@@ -1,5 +1,5 @@
 #!/bin/zsh
-# Owner rule 2026-09-11: never more than 48 concurrent codex processes. Waits for the stopped runs' codex children to drain, relaunches the two
+# 2026-09-11: 48 concurrent codex processes was the ceiling on that day's hotel Wi-Fi; the cap is measured per network, not fixed. Waits for the stopped runs' codex children to drain, relaunches the two
 # correcting shards (24 workers each = 48), and then starts the suite scale run only after the shards have finished.
 cd "$(dirname "$0")"
 for i in $(seq 1 24); do n=$(pgrep -f '[c]odex exec' | wc -l | tr -d ' '); [ "$n" -le 4 ] && break; sleep 5; done

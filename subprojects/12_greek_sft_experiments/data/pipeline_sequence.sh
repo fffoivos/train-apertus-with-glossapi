@@ -1,5 +1,5 @@
 #!/bin/zsh
-# Sequential Sol pipeline (owner, 2026-09-11: decide priority, never exceed 48 concurrent codex processes, protect the home connection).
+# Sequential Sol pipeline (owner, 2026-09-11: decide priority, concurrency measured against the network of the day (48 was the ceiling on hotel Wi-Fi, 2026-09-11), protect the connection).
 # Stage 1: correcting shard s2 (24 workers). After 4 min, if the link is healthy (ping avg < 100 ms, few retries), add shard s3 (48 total).
 # Stage 2: when the shards are done, the suite lanes (WORKERS=48 alone, or 24 if the link was unhealthy).
 # Stages 3+ (editor passes, reviews) are launched by me when each set is complete. Log: pipeline_sequence.log
