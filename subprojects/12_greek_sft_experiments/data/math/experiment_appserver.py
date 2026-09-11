@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import mathlib as M
 from codex_server import CodexServer
 ARM = sys.argv[1]; W = int(sys.argv[2]) if len(sys.argv) > 2 else 4; N = int(sys.argv[3]) if len(sys.argv) > 3 else 20
-prompts = json.load(open('/tmp/appsrv/prompts20.json'))[:N]; schema_path = '/var/folders/5q/65_c_z89577cz_zxgkpkz36m0000gn/T/tmp/s_corr_ans2.json'; schema = json.load(open(schema_path))
+prompts = json.load(open('/tmp/appsrv/prompts20.json')); prompts = (prompts * ((N // len(prompts)) + 1))[:N]; schema_path = '/var/folders/5q/65_c_z89577cz_zxgkpkz36m0000gn/T/tmp/s_corr_ans2.json'; schema = json.load(open(schema_path))
 MINIMAL = 'You write the next answer of a Greek AI assistant exactly as the prompt instructs. Return only JSON matching the provided schema.'
 def en0():
     out = subprocess.run(['netstat', '-ib', '-I', 'en0'], capture_output=True, text=True).stdout.splitlines(); hdr = out[0].split(); row = [l for l in out[1:] if '<Link' in l][0].split()
@@ -36,7 +36,22 @@ def run_BC(item, base=None):
     except Exception as e: ok = False; obj = {'error': type(e).__name__ + ':' + str(e)[:80]}
     u = srv.usage[-1]['tokenUsage']['last'] if srv.usage and 'tokenUsage' in srv.usage[-1] else None
     return dict(id=item['id'], wall=time.time() - t0, ok=ok, tokens=u, err=obj.get('error'))
-fn = run_A if ARM == 'A' else (lambda it: run_BC(it, None)) if ARM == 'B' else (lambda it: run_BC(it, MINIMAL))
+shared = {}
+def run_D(item):
+    # ONE app-server shared by all workers: concurrent turns on separate ephemeral threads of a single process
+    if 'srv' not in shared:
+        with lock:
+            if 'srv' not in shared:
+                srv = CodexServer(); orig = srv._request
+                def req(method, params, timeout=900, _orig=orig): return _orig(method, dict(params, baseInstructions=MINIMAL) if method == 'thread/start' else params, timeout)
+                srv._request = req; srv.start(); shared['srv'] = srv; servers[0] = srv
+    srv = shared['srv']; t0 = time.time()
+    try: obj = srv.call(item['prompt'], schema, model='gpt-5.6-sol', effort='high', timeout=900); ok = isinstance(obj, dict) and bool(obj.get('answer'))
+    except Exception as e: ok = False; obj = {'error': type(e).__name__ + ':' + str(e)[:80]}
+    u = srv.usage[-1]['tokenUsage']['last'] if srv.usage and 'tokenUsage' in srv.usage[-1] else None
+    return dict(id=item['id'], wall=time.time() - t0, ok=ok, tokens=u, err=obj.get('error'))
+fn = run_A if ARM == 'A' else (lambda it: run_BC(it, None)) if ARM == 'B' else (lambda it: run_BC(it, MINIMAL)) if ARM == 'C' else run_D
+if ARM == 'D' and N > len(prompts): prompts = (prompts * ((N // len(prompts)) + 1))[:N]
 a0 = en0(); T0 = time.time(); peak = 0.0
 def sampler():
     global peak
