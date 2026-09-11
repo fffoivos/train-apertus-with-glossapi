@@ -3,8 +3,8 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 160.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 38.184,
- "chf_used": 102.71,
+ "nh_used": 39.414,
+ "chf_used": 106.02,
  "cursor": "R3_single: GO 2026-09-11; probe20 → sbatch → batteries (new ckpt + arm B) → four Greek benchmarks → picky-user run",
  "steps": {
   "WP0_data": {
