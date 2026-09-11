@@ -63,6 +63,14 @@ Design: docs/CORRECTING_DATASET_DESIGN_20260910.md (dimensions D1 to D13 in §3;
 ### 3.8 Personality v4 (planned, about 250 rows)
 docs/MULTITURN_FIXES_20260910.md §3: about 150 category-G rows for six style rules from the catalogue (contribute first, no choice-offers instead of answers, no steering closers, length matches the message, register stable within an answer, play answered with play then landed), about 60 B/D rows for the capability contract in short forms, about 40 tone rows, the seven fact corrections of the registry, and the category-C contrast rows the astra review asked for (legitimate operations completed under identity pressure).
 
+### 3.x Final counts of the three sets generated on 11 September (after editor passes and post-edit gates)
+
+| set | final rows | supervised turns | notes |
+|---|---:|---:|---|
+| correcting set (data/robustness/correcting/scale/rows/rows_final.jsonl) | 600 | 3691 | 226 masked plants (context only); genuine recoveries ≈ 166, misquote recoveries ≈ 200, 5 clarify, 20 targets after a false correction; editor pass (235 edited, 34 reverted by the guards), one turn demoted after editing; astra review docs/reviews/ASTRA_correcting_scale_20260911.md applied (design doc §11) |
+| conversation suite v2 (data/convskills/v2/reverify/rows_final.jsonl) | 3284 | 3284 (one target turn per row; S4 rows carry 2 masked context turns) | by lane: S1 661, S2 675, S3 414, S3c 447, S4 378, S5m 709; 4,000 attempts → 3,437 verified at generation → editor pass (2,987 edited) → re-verification kept 3284 (56 targets emptied by the editor and 97 constraint breaks dropped); astra review pending |
+| personality v4 (data/personality/v4/personality_rows_final.jsonl) | 192 | 192 (110 multi-turn, last turn supervised) | 12 response-manner angles (H, 144 rows) + 4 of 5 contract angles (I, 48 rows; the «user supplies current information» task timed out three times and is parked); Claude Opus check applied to all (15 edited, 6 role-confusion closings rewritten), Sol check on a 48-row sample applied (16 edits, 2 fact doubts recorded) |
+
 ## 4. Annotation and filtering
 
 **The screen** (docs/ANNOTATION_HANDOFF_20260905.md §1 to §4). Every unverified row received one label before assembly, nothing edited: nine fields (vantage 0 to 3, frame type, skill, quality, mannerism, imperatives, disposition keep/adapt/drop, adapt note, why; schema data/annotation_schema.json; rubric v3 verbatim in the handoff §7.1). Judges routed by dataset first and by category second: a program wherever one exists (puzzle brute-force checker, IFEval checkers, OpenMath final-answer match); Sol (gpt-5.6-sol, medium, 24 workers) for correctness-heavy sources (science, coding, spot-checks, and every row Luna labels code, math or reasoning); Luna (gpt-5.6-luna, medium, 64 workers) for conversational sources (safety, Nemotron, multilingual, OpenAssistant, our Greek sets). Owner's rules applied: annotate first for task type; once a source is high quality and verifiable, trust the checker over the judge (the puzzle calibration: of 51 zebra puzzles Luna dropped 11, of which 6 were correct and 3 wrong ones were missed; Sol 10, 4 and 2; so puzzles went to the checker and correctness-heavy blocks to Sol in advance).
@@ -187,11 +195,11 @@ One run from the base (no stages), as decided after the identity ladder (docs/RO
 | greek_ours | 20,000 | 7.80M | 2 | as in stage 1 |
 | greek_rewrite | 2,000 | 1.20M | 2 (proposed; 1 in stage 1) | as in stage 1 |
 | personality v3 | 1,388 | not recorded | 4 | done |
-| personality v4 additions | about 250 | to be assembled | 4 | to write (§3.8) |
+| personality v4 additions | 192 | to be assembled | 4 | done |
 | Greek instruction following | 30,073 | to be assembled | 1 (proposed) | done |
 | Greek math cut 1 | 14,215 | to be assembled | 1 (proposed) | done |
-| conversation suite | about 3,500 verified | to be assembled | 2 (proposed) | scale run pending |
-| correcting set | 1,500 dialogues, about 5,000 supervised turns | to be assembled | 2 (proposed) | pilot done, scale pending |
+| conversation suite v2 | 3284 | to be assembled | 2 (proposed) | done |
+| correcting set | 600 dialogues, 3691 supervised turns (capped at 600 by the Sol budget) | to be assembled | 2 (proposed) | done |
 
 Estimated size: about 385,000 rows before weighting; tokens to be measured by the assembler with the exact tokenizer (the new Greek sets are not yet tokenised; stage 1 was 197.9M). Recipe to be disclosed: 1 epoch, lr 1e-5, cosine to 0.1 of peak, warmup 3%, packing at 4,096 tokens, assistant-only loss with the per-turn train flags, batch 1 × grad-accum 4 × 4 GPUs, Adam β2 0.99, weight decay 0, grad clip 1.0, bf16 autocast over fp32 master weights, seed 42; dev = the stage-1 dev slice plus the 69 held-out personality rows plus a held-out slice of each new set. Cost at the stage-1 rate (197.9M tokens in 6.09 node-hours): about 7 to 8 node-hours for about 230M to 260M tokens, plus the full battery (about 4.3 node-hours).
 
