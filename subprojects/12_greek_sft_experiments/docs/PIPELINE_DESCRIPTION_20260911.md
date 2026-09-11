@@ -37,6 +37,8 @@ Survival rates are from EXECUTION_LOG.md (2026-09-05 20:04): Precise IF 22% of 2
 
 Licence decisions still with the owner (docs/ROUND2_DATA_PLAN_20260905.md §7): the Qwen-generated ifeval-like rows and OpenMathInstruct-2 (Llama-3.1-405B output, naming clause) are kept with attribution unless the owner says otherwise; the Dolci blocks carry Ai2's "research and educational use" note.
 
+Note added 2026-09-11 (G1 invariant): the puzzles export (`dolci_other.full.jsonl`, brute-force-verified zebra/word-sort puzzles) contains 1,180 exact duplicate rows among its 12,503 (11,323 distinct ids). Round two's stage-1 mix included them, so the puzzle block's effective size was overstated by about 10 percent and duplicate rows could fall on both sides of the train/dev split. The single-stage assembly drops exact duplicates per block and suffixes id collisions; per-block counts are in its receipt.
+
 ## 3. Greek datasets
 
 ### 3.1 greek_ours: the round-one Greek set (20,000 rows in stage 1; 19,800 in the Greek pass)
