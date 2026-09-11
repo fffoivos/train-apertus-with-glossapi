@@ -148,6 +148,6 @@ GreekMMLU at least arm B minus 0.5 points (decontaminated subset, frozen fp32 sc
 1. `cscs-key sign` (owner) — the certificate is expired.
 2. Transfer (tar-pipe, `-4`): `data/arms/R3_single/{train,dev}.jsonl` (about 1.1 GB), `cluster/configs/R3_single.yaml`, and the updated trainer `cluster/sft_train.py` (per-turn masking) → `$SCRATCH/sft_round1/`.
 3. Gate: the 5% sample arm dry run on the login node (`dryrun_<arm>.sh`, as for R2_stage1: DRY_RUN_OK, token estimate within 2% of the receipt), then the 20-step probe on a debug workbench if the trainer changed (it did: masking) — one node, about 0.3 node-hours.
-4. Preflight (`cluster/preflight.sh`) with the projected 7.0–8.8 node-hours against the cap the owner sets; then `cluster/train_sbatch.sh R3_single`.
+4. Preflight (`cluster/preflight.sh`) with the projected 7.0–8.8 node-hours against the cap the owner sets; then `cluster/train_sbatch.sh R3_single`. Full budget of the run AND its benchmarks (both models): 19.0 to 20.8 node-hours ≈ CHF 51 to 56, itemised in docs/RLHF_PLAN_20260911.md §0.
 5. After training: the evaluation battery (`cluster/full_battery.sh`) on the new checkpoint AND on arm B where missing (GreekMMLU, native suite, retention), plus the four Greek benchmarks on both, with langdetect installed for the IFEval rescoring.
 
