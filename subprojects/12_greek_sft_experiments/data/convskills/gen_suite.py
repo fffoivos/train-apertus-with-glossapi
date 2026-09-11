@@ -35,10 +35,13 @@ def base_rows():
     out.sort(key=lambda r: r['id']); return [r for i, r in enumerate(out) if (hash(r['id']) % 100) >= HELDOUT * 100]   # deterministic held-out split
 
 
-def call(prompt, schema, effort='medium', tries=3):
+def call(prompt, schema, effort='medium', tries=5):
+    """Sol call with exponential backoff and jitter (2026-09-11: immediate retries created connection storms; a failed call waits 20/60/150/300 s)."""
+    import time as _t
     for t in range(tries):
         try: return M.codex_json(prompt, schema, GEN, effort, timeout=900)
-        except Exception as e: print('retry', t, type(e).__name__, str(e)[:80], flush=True)
+        except Exception as e:
+            wait = ([20, 60, 150, 300] + [0] * tries)[t] * (0.8 + 0.4 * random.random()); print('retry', t, type(e).__name__, str(e)[:80], f'backoff {wait:.0f}s', flush=True); _t.sleep(wait)
     return None
 
 

@@ -59,9 +59,12 @@ lock = threading.Lock()
 
 
 def call(prompt, schema, effort):
-    for t in range(3):
+    """Sol call with exponential backoff and jitter (2026-09-11: immediate retries by 48–72 workers created connection storms that took the
+    home network down; a failed call now waits 20 s, 60 s, 150 s, 300 s before the next attempt)."""
+    for t in range(5):
         try: return M.codex_json(prompt, schema, 'gpt-5.6-sol', effort, timeout=900)
-        except Exception as e: print('retry', t, type(e).__name__, str(e)[:80], flush=True); time.sleep(5)
+        except Exception as e:
+            wait = [20, 60, 150, 300, 0][t] * (0.8 + 0.4 * random.random()); print('retry', t, type(e).__name__, str(e)[:80], f'backoff {wait:.0f}s', flush=True); time.sleep(wait)
     return None
 
 
