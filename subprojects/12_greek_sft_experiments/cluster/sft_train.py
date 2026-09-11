@@ -147,8 +147,10 @@ def validate_config(config: dict[str, Any], args: argparse.Namespace) -> dict[st
         raise ConfigError("--out-dir is required unless --dry-run is used")
     if not args.dry_run:
         out_dir = Path(config["out_dir"])
-        if out_dir.exists() and any(out_dir.iterdir()):
-            raise ConfigError(f"output directory is not empty: {out_dir}")
+        if out_dir.exists() and any(out_dir.iterdir()) and not config.get("resume_from_checkpoint"):
+            raise ConfigError(f"output directory is not empty: {out_dir} (set resume_from_checkpoint in the config to resume into it)")
+        if config.get("resume_from_checkpoint") and not Path(config["resume_from_checkpoint"]).is_dir():
+            raise ConfigError(f"resume_from_checkpoint is not a directory: {config['resume_from_checkpoint']}")
     return config
 
 
