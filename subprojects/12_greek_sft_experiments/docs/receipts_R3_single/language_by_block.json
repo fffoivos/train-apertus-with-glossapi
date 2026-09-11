@@ -1,0 +1,677 @@
+{
+ "personality": {
+  "unique_rows": 1504,
+  "user_script": {
+   "latin": 184,
+   "el": 1298,
+   "short": 22
+  },
+  "assistant_script": {
+   "el": 1480,
+   "latin": 19,
+   "short": 5
+  },
+  "latin_langdetect_sample": {
+   "n": 19,
+   "dist": {
+    "en": 16,
+    "el": 3
+   }
+  },
+  "id_prefixes": {
+   "v4": 186,
+   "A01": 30,
+   "A18": 30,
+   "A17": 30,
+   "A21": 30,
+   "A03": 30,
+   "A16": 30,
+   "A13": 29,
+   "A04": 29,
+   "A14": 29,
+   "A20": 29,
+   "A05": 29,
+   "A02": 29,
+   "A07": 29,
+   "A11": 28
+  }
+ },
+ "dolci_tooluse": {
+  "unique_rows": 29700,
+  "user_script": {
+   "latin": 29687,
+   "short": 13
+  },
+  "assistant_script": {
+   "latin": 29697,
+   "short": 3
+  },
+  "latin_langdetect_sample": {
+   "n": 1500,
+   "dist": {
+    "en": 1488,
+    "fr": 6,
+    "es": 2,
+    "id": 2,
+    "ca": 2
+   }
+  },
+  "id_prefixes": {
+   "olmo": 29700
+  }
+ },
+ "ifeval_like": {
+  "unique_rows": 46037,
+  "user_script": {
+   "latin": 46037
+  },
+  "assistant_script": {
+   "latin": 45987,
+   "short": 50
+  },
+  "latin_langdetect_sample": {
+   "n": 1500,
+   "dist": {
+    "en": 1499,
+    "nl": 1
+   }
+  },
+  "id_prefixes": {
+   "4788": 1,
+   "87680": 1,
+   "55184": 1,
+   "42909": 1,
+   "23281": 1,
+   "38936": 1,
+   "61673": 1,
+   "28025": 1,
+   "63306": 1,
+   "40070": 1,
+   "73074": 1,
+   "13367": 1,
+   "49439": 1,
+   "80638": 1,
+   "40450": 1
+  }
+ },
+ "dolci_safety": {
+  "unique_rows": 6174,
+  "user_script": {
+   "latin": 6102,
+   "short": 71,
+   "cyrillic": 1
+  },
+  "assistant_script": {
+   "latin": 6169,
+   "short": 5
+  },
+  "latin_langdetect_sample": {
+   "n": 1500,
+   "dist": {
+    "en": 1494,
+    "es": 3,
+    "fr": 2,
+    "de": 1
+   }
+  },
+  "id_prefixes": {
+   "allenai": 2864,
+   "wildjailbreak": 2825,
+   "umsksdw": 1,
+   "j0e07um": 1,
+   "f5214m9": 1,
+   "374hikd": 1,
+   "vnpfw6k": 1,
+   "ishn26b": 1,
+   "v1p9841": 1,
+   "thzl079": 1,
+   "kahuxbr": 1,
+   "ttk5udd": 1,
+   "afzog0y": 1,
+   "xdh917j": 1,
+   "7sc52ak": 1
+  }
+ },
+ "smoltalk2_multilingual": {
+  "unique_rows": 20207,
+  "user_script": {
+   "latin": 20156,
+   "short": 51
+  },
+  "assistant_script": {
+   "latin": 20174,
+   "short": 33
+  },
+  "latin_langdetect_sample": {
+   "n": 1500,
+   "dist": {
+    "fr": 333,
+    "de": 305,
+    "es": 290,
+    "pt": 285,
+    "it": 277,
+    "en": 8,
+    "ca": 1,
+    "ro": 1
+   }
+  },
+  "id_prefixes": {
+   "28484": 1,
+   "40644": 1,
+   "486": 1,
+   "25274": 1,
+   "5185": 1,
+   "37479": 1,
+   "33080": 1,
+   "31542": 1,
+   "22943": 1,
+   "13297": 1,
+   "19117": 1,
+   "38122": 1,
+   "8489": 1,
+   "19622": 1,
+   "22499": 1
+  }
+ },
+ "nemotron_chat_a": {
+  "unique_rows": 23017,
+  "user_script": {
+   "latin": 21843,
+   "short": 1084,
+   "cyrillic": 74,
+   "el": 16
+  },
+  "assistant_script": {
+   "latin": 22403,
+   "short": 395,
+   "cyrillic": 205,
+   "el": 14
+  },
+  "latin_langdetect_sample": {
+   "n": 1500,
+   "dist": {
+    "en": 1287,
+    "pl": 62,
+    "de": 39,
+    "fr": 20,
+    "es": 19,
+    "pt": 16,
+    "zh-cn": 12,
+    "ja": 7,
+    "vi": 5,
+    "nl": 5,
+    "ko": 4,
+    "fa": 3
+   }
+  },
+  "id_prefixes": {
+   "178976": 1,
+   "230015": 1,
+   "397011": 1,
+   "228959": 1,
+   "309494": 1,
+   "204996": 1,
+   "440924": 1,
+   "414222": 1,
+   "373520": 1,
+   "181424": 1,
+   "12176": 1,
+   "155922": 1,
+   "215501": 1,
+   "154520": 1,
+   "162100": 1
+  }
+ },
+ "greek_if": {
+  "unique_rows": 29773,
+  "user_script": {
+   "latin": 1412,
+   "el": 28361
+  },
+  "assistant_script": {
+   "el": 25800,
+   "short": 732,
+   "latin": 3241
+  },
+  "latin_langdetect_sample": {
+   "n": 1500,
+   "dist": {
+    "en": 1093,
+    "lt": 263,
+    "fi": 88,
+    "it": 38,
+    "et": 12,
+    "el": 2,
+    "pt": 2,
+    "ca": 1,
+    "sl": 1
+   }
+  },
+  "id_prefixes": {
+   "mixa": 29773
+  }
+ },
+ "openmath_gsm": {
+  "unique_rows": 98943,
+  "user_script": {
+   "latin": 98943
+  },
+  "assistant_script": {
+   "latin": 98943
+  },
+  "latin_langdetect_sample": {
+   "n": 1500,
+   "dist": {
+    "en": 1500
+   }
+  },
+  "id_prefixes": {
+   "1005696": 1,
+   "1201754": 1,
+   "987294": 1,
+   "2646431": 1,
+   "1914475": 1,
+   "2381443": 1,
+   "1772298": 1,
+   "106276": 1,
+   "1526431": 1,
+   "1749132": 1,
+   "875325": 1,
+   "909221": 1,
+   "1614613": 1,
+   "2971477": 1,
+   "992272": 1
+  }
+ },
+ "dolci_chat": {
+  "unique_rows": 3009,
+  "user_script": {
+   "latin": 2762,
+   "short": 235,
+   "cyrillic": 12
+  },
+  "assistant_script": {
+   "latin": 2884,
+   "short": 108,
+   "cyrillic": 17
+  },
+  "latin_langdetect_sample": {
+   "n": 1500,
+   "dist": {
+    "es": 813,
+    "en": 453,
+    "ca": 65,
+    "de": 58,
+    "fr": 29,
+    "pt": 26,
+    "it": 21,
+    "pl": 11,
+    "id": 7,
+    "hu": 3,
+    "sl": 3,
+    "da": 2
+   }
+  },
+  "id_prefixes": {
+   "oasst1": 3009
+  }
+ },
+ "greek_ours": {
+  "unique_rows": 19800,
+  "user_script": {
+   "el": 14606,
+   "latin": 5135,
+   "short": 59
+  },
+  "assistant_script": {
+   "el": 14335,
+   "latin": 5321,
+   "short": 142,
+   "cyrillic": 2
+  },
+  "latin_langdetect_sample": {
+   "n": 1500,
+   "dist": {
+    "en": 985,
+    "fr": 250,
+    "de": 204,
+    "el": 16,
+    "ca": 11,
+    "it": 10,
+    "es": 9,
+    "da": 5,
+    "af": 3,
+    "ro": 2,
+    "nl": 2,
+    "id": 1
+   }
+  },
+  "id_prefixes": {
+   "no": 7826,
+   "apertus": 3534,
+   "personas": 1767,
+   "everyday": 1688,
+   "euroblocks": 1510,
+   "oasst": 1240,
+   "smolcon": 869,
+   "coconot": 751,
+   "systemchats": 615
+  }
+ },
+ "dolci_reasoning": {
+  "unique_rows": 29640,
+  "user_script": {
+   "latin": 29614,
+   "short": 26
+  },
+  "assistant_script": {
+   "latin": 29124,
+   "short": 516
+  },
+  "latin_langdetect_sample": {
+   "n": 1500,
+   "dist": {
+    "en": 1472,
+    "ca": 9,
+    "so": 7,
+    "fr": 5,
+    "hr": 3,
+    "hu": 2,
+    "nl": 2
+   }
+  },
+  "id_prefixes": {
+   "impparty": 845,
+   "minimum": 819,
+   "palindromicsubst": 679,
+   "pipelinearrangem": 670,
+   "tournament": 666,
+   "evendegreegraphp": 659,
+   "minswaptwopermut": 645,
+   "treechangeoneedg": 644,
+   "las": 628,
+   "treemaximumvisit": 613,
+   "mincubeassignmen": 608,
+   "minxorpair": 603,
+   "polynomialremain": 575,
+   "bridge": 536,
+   "jugpuzzle": 533
+  }
+ },
+ "convskills": {
+  "unique_rows": 2811,
+  "user_script": {
+   "el": 2787,
+   "latin": 24
+  },
+  "assistant_script": {
+   "el": 2799,
+   "latin": 12
+  },
+  "latin_langdetect_sample": {
+   "n": 12,
+   "dist": {
+    "el": 10,
+    "lt": 1,
+    "et": 1
+   }
+  },
+  "id_prefixes": {
+   "S2": 658,
+   "S1": 655,
+   "S5m": 532,
+   "S3": 408,
+   "S4": 375,
+   "S3c": 183
+  }
+ },
+ "dolci_precise_if_20k": {
+  "unique_rows": 4116,
+  "user_script": {
+   "latin": 4093,
+   "cyrillic": 22,
+   "el": 1
+  },
+  "assistant_script": {
+   "latin": 3805,
+   "short": 289,
+   "cyrillic": 22
+  },
+  "latin_langdetect_sample": {
+   "n": 1500,
+   "dist": {
+    "en": 1434,
+    "es": 12,
+    "pt": 9,
+    "vi": 8,
+    "id": 7,
+    "fr": 5,
+    "de": 4,
+    "it": 4,
+    "sw": 3,
+    "ca": 2,
+    "ro": 1,
+    "so": 1
+   }
+  },
+  "id_prefixes": {
+   "dolci": 4116
+  }
+ },
+ "nemotron_chat_b": {
+  "unique_rows": 23262,
+  "user_script": {
+   "latin": 22029,
+   "short": 1146,
+   "cyrillic": 81,
+   "el": 6
+  },
+  "assistant_script": {
+   "latin": 22610,
+   "short": 422,
+   "cyrillic": 222,
+   "el": 8
+  },
+  "latin_langdetect_sample": {
+   "n": 1500,
+   "dist": {
+    "en": 1301,
+    "pl": 52,
+    "de": 36,
+    "pt": 19,
+    "fr": 18,
+    "es": 13,
+    "zh-cn": 11,
+    "vi": 8,
+    "ja": 8,
+    "it": 5,
+    "sv": 4,
+    "cs": 4
+   }
+  },
+  "id_prefixes": {
+   "317916": 1,
+   "59823": 1,
+   "19273": 1,
+   "149875": 1,
+   "428064": 1,
+   "318904": 1,
+   "430936": 1,
+   "372664": 1,
+   "316138": 1,
+   "84150": 1,
+   "171648": 1,
+   "439992": 1,
+   "202033": 1,
+   "293791": 1,
+   "156923": 1
+  }
+ },
+ "puzzles": {
+  "unique_rows": 9391,
+  "user_script": {
+   "latin": 9391
+  },
+  "assistant_script": {
+   "latin": 2394,
+   "short": 6997
+  },
+  "latin_langdetect_sample": {
+   "n": 1500,
+   "dist": {
+    "en": 1355,
+    "fr": 30,
+    "da": 17,
+    "af": 15,
+    "nl": 14,
+    "ca": 13,
+    "no": 11,
+    "ro": 11,
+    "et": 9,
+    "de": 4,
+    "id": 4,
+    "es": 4
+   }
+  },
+  "id_prefixes": {
+   "allenai": 9391
+  }
+ },
+ "dolci_science": {
+  "unique_rows": 6537,
+  "user_script": {
+   "latin": 6472,
+   "short": 65
+  },
+  "assistant_script": {
+   "latin": 6429,
+   "short": 108
+  },
+  "latin_langdetect_sample": {
+   "n": 1500,
+   "dist": {
+    "en": 1496,
+    "es": 2,
+    "af": 1,
+    "ca": 1
+   }
+  },
+  "id_prefixes": {
+   "allenai": 6116,
+   "science.bioasq": 92,
+   "science.data": 52,
+   "science.scitldr": 34,
+   "science.mslr2022": 34,
+   "science.covid": 30,
+   "science.chia": 29,
+   "science.qasper": 27,
+   "science.genia": 25,
+   "science.qasa": 24,
+   "science.ncbi": 22,
+   "science.multixsc": 17,
+   "science.pubmedqa": 16,
+   "science.nlmgene": 11,
+   "science.medmenti": 7
+  }
+ },
+ "dolci_code_algo_20k": {
+  "unique_rows": 5503,
+  "user_script": {
+   "latin": 5503
+  },
+  "assistant_script": {
+   "latin": 5489,
+   "short": 14
+  },
+  "latin_langdetect_sample": {
+   "n": 1500,
+   "dist": {
+    "en": 1364,
+    "fr": 46,
+    "ro": 43,
+    "ca": 12,
+    "no": 9,
+    "af": 9,
+    "da": 8,
+    "nl": 3,
+    "sv": 2,
+    "it": 2,
+    "lv": 1,
+    "id": 1
+   }
+  },
+  "id_prefixes": {
+   "allenai": 5503
+  }
+ },
+ "greek_rewrite": {
+  "unique_rows": 1980,
+  "user_script": {
+   "el": 1980
+  },
+  "assistant_script": {
+   "el": 1980
+  },
+  "latin_langdetect_sample": {
+   "n": 0,
+   "dist": {}
+  },
+  "id_prefixes": {
+   "gr": 1980
+  }
+ },
+ "greek_math": {
+  "unique_rows": 14070,
+  "user_script": {
+   "el": 13839,
+   "short": 56,
+   "latin": 175
+  },
+  "assistant_script": {
+   "el": 12941,
+   "short": 893,
+   "latin": 236
+  },
+  "latin_langdetect_sample": {
+   "n": 236,
+   "dist": {
+    "el": 78,
+    "ca": 39,
+    "so": 28,
+    "en": 14,
+    "pt": 13,
+    "cy": 9,
+    "lt": 8,
+    "es": 6,
+    "vi": 5,
+    "no": 5,
+    "hu": 4,
+    "sk": 4
+   }
+  },
+  "id_prefixes": {
+   "gm": 14070
+  }
+ },
+ "correcting": {
+  "unique_rows": 565,
+  "user_script": {
+   "latin": 127,
+   "el": 438
+  },
+  "assistant_script": {
+   "el": 560,
+   "latin": 5
+  },
+  "latin_langdetect_sample": {
+   "n": 5,
+   "dist": {
+    "en": 3,
+    "el": 2
+   }
+  },
+  "id_prefixes": {
+   "corr": 565
+  }
+ }
+}

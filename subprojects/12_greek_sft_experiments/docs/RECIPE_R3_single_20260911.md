@@ -32,6 +32,37 @@ Totals: 376,039 unique train rows → 403,727 effective rows, 228.6M rendered to
 <!-- /receipt-table -->
  Dev: the stage-1 dev fraction per block plus the same 69 personality rows held out in round two. Train/dev intersection asserted 0. Decontamination: 8-gram/13-gram containment of user turns against the evaluation cache (Greek IFEval, Greek MMLU, GSM8K, the English originals of MMLU/ARC/HellaSwag/TruthfulQA, Greek MGSM, MATH-500-el, XSTest-el, IFBench-el, MultiChallenge-el, native ASEP/medical/GPCR/DemosQA); NOT yet covered: the OYXOY sets (NLI, WiC, WSD, metaphor), which need their frozen copy from the cluster (certificate).
 
+## 1b. Dataset registry: task type, language, repetitions (measured on the final train file, 2026-09-11)
+
+Global training settings for every block: learning rate 1e-5, cosine to a 0.1 floor, 3% warmup, one epoch, effective batch 16 sequences of ≤4,096 tokens, seed 42 (§2). "Copies" is the only per-block knob: the block is replicated that many times inside the single mix, so each of its rows is seen `copies` times in the one epoch. Language is MEASURED, not declared: Greek-script share of the assistant text over all unique rows of the block in data/arms/R3_single/train.jsonl; the Latin-script rows were classified with langdetect on a sample of up to 1,500 rows per block (data/language_by_block.py → docs/receipts_R3_single/language_by_block.json). "short" = answers with fewer than 20 letters (numeric or grid answers), not classified.
+
+| block | task type | language of the answers (measured) | unique rows | copies | effective rows | supervised tokens |
+|---|---|---|---:|---:|---:|---:|
+| dolci_precise_if_20k | precise instruction following, verifiable constraints | en 96% of Latin rows; 7% short | 4,116 | 1 | 4,116 | 1.3M |
+| ifeval_like | IFEval-style constrained instruction following | en 100% | 46,037 | 1 | 46,037 | 6.5M |
+| openmath_gsm | grade-school math word problems with worked solutions | en 100% | 98,943 | 1 | 98,943 | 15.3M |
+| nemotron_chat_a | general multi-turn chat, instruction-following chat | en 86%, pl 4%, de 3%, fr/es 1% each | 23,017 | 1 | 23,017 | 30.9M |
+| nemotron_chat_b | same as A (second half of the split) | en 87%, pl 3%, de 2%, pt/fr 1% each | 23,262 | 1 | 23,262 | 31.7M |
+| dolci_chat | general assistant conversations (OpenAssistant) | es 54%, en 30%, ca 4%, de 4%, fr 2% (NOT an English block) | 3,009 | 1 | 3,009 | 0.8M |
+| dolci_code_algo_20k | Python algorithm coding | en 91% (langdetect noise on code for the rest) | 5,503 | 1 | 5,503 | 1.2M |
+| dolci_reasoning | verifiable algorithmic and combinatorial reasoning | en 98% | 29,640 | 1 | 29,640 | 6.8M |
+| puzzles | zebra logic puzzles and word sorting, brute-force verified | en (user turns Latin 100%; 75% of answers are short grids/lists) | 9,391 | 1 | 9,391 | 0.6M |
+| dolci_tooluse | tool use as textual `<function_calls>` demonstrations | en 99% | 29,700 | 1 | 29,700 | 9.2M |
+| dolci_science | science QA over supplied documents (bioasq, qasper, scitldr, covid, chia, mslr, data) | en 100% | 6,537 | 1 | 6,537 | 3.9M |
+| smoltalk2_multilingual | general chat in five EU languages | fr 22%, de 20%, es 19%, pt 19%, it 18% | 20,207 | 1 | 20,207 | 8.1M |
+| dolci_safety | safety: refusals and compliant answers (WildGuardMix, CoCoNot) | en 100% | 6,174 | 1 | 6,174 | 1.1M |
+| greek_rewrite | Greek rewriting and summarising of supplied text | el 100% | 1,980 | 1 | 1,980 | 0.4M |
+| greek_ours | adapted general SFT, 11 configs (no_robots 40%, apertus_en 18%, personas_if 9%, everyday 9%, euroblocks fr/de 8%, oasst 6%, smolcon 4%, coconot 4%, systemchats 3%) | el 72%, en ≈18%, fr ≈5%, de ≈4% (the paired-English and fr/de-vantage rows of the round-one design; NOT all-Greek) | 19,800 | 2 | 39,600 | 9.1M |
+| personality | identity, response manners, capability contract (v3 + v4) | el 98% (user turns el 86%; a few English prompts by design) | 1,504 | 4 | 6,016 | 1.0M |
+| greek_if | Greek verifiable instruction following (40 constraint families, levels 1 to 5) | el 87%; 11% Latin script = greeklish-only and English-answer constraints; 2.5% short | 29,773 | 1 | 29,773 | 6.0M |
+| greek_math | Greek math: translated GSM8K and MATH plus native problems, answer-verified | el 92%; 6% numeric-only answers; 2% LaTeX-heavy | 14,070 | 1 | 14,070 | 1.3M |
+| convskills | conversation skills S1 to S5m (list and semantic retention, clarification, both-order, S4 tic avoidance, S5m fact use) | el 99.6% | 2,811 | 2 | 5,622 | 4.5M |
+| correcting | correction and recovery dialogues (misquote confrontation, planted failures masked, clarify) | el 99% (user turns el 78%; greeklish and atonic surfaces by design) | 565 | 2 | 1,130 | 0.9M |
+
+Totals: 376,039 unique rows, 403,727 effective, 140.4M supervised tokens. By language of the supervised text (weighted by effective rows): Greek ≈ 25% of effective rows (greek_ours el share ×2, personality ×4, greek_if, greek_math, greek_rewrite, convskills ×2, correcting ×2 ≈ 99k of 404k), English ≈ 65%, other EU languages ≈ 10% (smoltalk2, the Spanish half of dolci_chat, the fr/de rows of greek_ours, the non-English tail of Nemotron). By tokens the English share is higher because the Nemotron and tool-use blocks carry the longest answers (62.6M of 140.4M supervised tokens).
+
+Two facts this table adds that the block names hid: dolci_chat is Spanish-majority, and about 27% of the answers in greek_ours are not Greek (English 18%, French 5%, German 4%). Both were also true of the round-two stage-1 mix that produced arm B.
+
 ## 2. Training parameters (cluster/configs/R3_single.yaml vs R2_stage1.yaml)
 
 | parameter | R2_stage1 | R3_single | flag |
