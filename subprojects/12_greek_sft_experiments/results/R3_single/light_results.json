@@ -1,0 +1,20 @@
+{
+ "label": "R3_single_ep1",
+ "ifeval_greek": {
+  "prompt_strict": 0.6285,
+  "inst_strict": 0.7278,
+  "prompt_loose": 0.6525,
+  "inst_loose": 0.7506,
+  "strict_avg": 0.6782
+ },
+ "mgsm_greek": {
+  "exact_match": 0.488,
+  "stderr": 0.0317
+ },
+ "format_gate_dev50": {
+  "ended_on_stop": 0.86,
+  "language_ok": 0.94,
+  "single_assistant_turn": 0.86
+ },
+ "note": "langdetect missing on the cluster: the IFEval language checker scores 0 for every model (same handicap as arm B); rescoring planned in the battery"
+}
