@@ -1,0 +1,38 @@
+{
+ "S1_el": {
+  "median_words_completed": 85.0,
+  "median_words_correct": 71.0,
+  "median_words_wrong": 90.0,
+  "share_under_80_words": 0.468
+ },
+ "S1_en": {
+  "median_words_completed": 143.0,
+  "median_words_correct": 96.0,
+  "median_words_wrong": 154.5,
+  "share_under_80_words": 0.203
+ },
+ "R3_el": {
+  "median_words_completed": 35.0,
+  "median_words_correct": 27.0,
+  "median_words_wrong": 36.0,
+  "share_under_80_words": 0.908
+ },
+ "R3_en": {
+  "median_words_completed": 148.0,
+  "median_words_correct": 105.5,
+  "median_words_wrong": 163.0,
+  "share_under_80_words": 0.181
+ },
+ "B_el": {
+  "median_words_completed": 86,
+  "median_words_correct": 63.5,
+  "median_words_wrong": 88,
+  "share_under_80_words": 0.442
+ },
+ "B_en": {
+  "median_words_completed": 128,
+  "median_words_correct": 87.5,
+  "median_words_wrong": 141,
+  "share_under_80_words": 0.248
+ }
+}

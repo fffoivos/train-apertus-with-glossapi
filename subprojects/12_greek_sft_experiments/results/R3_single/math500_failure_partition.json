@@ -1,0 +1,41 @@
+{
+ "S1_el": {
+  "wrong_completed": 376,
+  "correct": 64,
+  "truncated_loop": 23,
+  "truncated_no_loop": 37
+ },
+ "S1_en": {
+  "wrong_completed": 356,
+  "correct": 82,
+  "truncated_no_loop": 37,
+  "truncated_loop": 25
+ },
+ "R3_el": {
+  "wrong_completed": 363,
+  "correct": 40,
+  "no_answer_extracted": 1,
+  "truncated_loop": 34,
+  "truncated_no_loop": 62
+ },
+ "R3_en": {
+  "correct": 90,
+  "wrong_completed": 352,
+  "truncated_no_loop": 30,
+  "truncated_loop": 28
+ },
+ "B_el": {
+  "wrong_completed": 432,
+  "correct": 38,
+  "no_answer_extracted": 1,
+  "truncated_loop": 7,
+  "truncated_no_loop": 22
+ },
+ "B_en": {
+  "wrong_completed": 388,
+  "correct": 79,
+  "truncated_no_loop": 24,
+  "no_answer_extracted": 1,
+  "truncated_loop": 8
+ }
+}
