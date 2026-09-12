@@ -1,0 +1,234 @@
+{
+ "protocol": "greedy, temperature 0, max_tokens 2048 (math) / 1024, no system prompt, Apertus chat template; scorers: equiv500 (Greek-extended), ifbench/score.py; upstream MATH grader not run (pylatexenc missing)",
+ "scores": {
+  "R3_el": {
+   "math500_equiv500": 0.08,
+   "math500_truncated": 96,
+   "math500_by_level": {
+    "1": 0.2558,
+    "2": 0.2,
+    "3": 0.0667,
+    "4": 0.0156,
+    "5": 0.0149
+   },
+   "ifbench_prompt_strict": null,
+   "ifbench_inst_strict": null,
+   "ifbench_prompt_loose": null,
+   "ifbench_core": null
+  },
+  "R3_en": {
+   "math500_equiv500": 0.18,
+   "math500_truncated": 58,
+   "math500_by_level": {
+    "1": 0.4884,
+    "2": 0.2889,
+    "3": 0.2095,
+    "4": 0.1016,
+    "5": 0.0597
+   },
+   "ifbench_prompt_strict": null,
+   "ifbench_inst_strict": null,
+   "ifbench_prompt_loose": null,
+   "ifbench_core": null
+  },
+  "B_el": {
+   "math500_equiv500": 0.076,
+   "math500_truncated": 29,
+   "math500_by_level": {
+    "1": 0.2558,
+    "2": 0.1444,
+    "3": 0.0286,
+    "4": 0.0703,
+    "5": 0.0149
+   },
+   "ifbench_prompt_strict": null,
+   "ifbench_inst_strict": null,
+   "ifbench_prompt_loose": null,
+   "ifbench_core": null
+  },
+  "B_en": {
+   "math500_equiv500": 0.158,
+   "math500_truncated": 33,
+   "math500_by_level": {
+    "1": 0.3488,
+    "2": 0.2333,
+    "3": 0.181,
+    "4": 0.1328,
+    "5": 0.0522
+   },
+   "ifbench_prompt_strict": null,
+   "ifbench_inst_strict": null,
+   "ifbench_prompt_loose": null,
+   "ifbench_core": null
+  }
+ },
+ "ifbench": {
+  "R3_el": {
+   "n_prompts": 300,
+   "prompt_strict": 0.093,
+   "prompt_loose": 0.097,
+   "inst_strict": 0.106,
+   "inst_loose": 0.111,
+   "core": {
+    "prompts": 238,
+    "prompt_strict": 0.088,
+    "prompt_loose": 0.092
+   },
+   "extension": {
+    "prompts": 62,
+    "prompt_strict": 0.113,
+    "prompt_loose": 0.113
+   }
+  },
+  "R3_en": {
+   "n_prompts": 300,
+   "prompt_strict": 0.17,
+   "prompt_loose": 0.223,
+   "inst_strict": 0.188,
+   "inst_loose": 0.24,
+   "core": {
+    "prompts": 238,
+    "prompt_strict": 0.126,
+    "prompt_loose": 0.193
+   },
+   "extension": {
+    "prompts": 62,
+    "prompt_strict": 0.339,
+    "prompt_loose": 0.339
+   }
+  },
+  "B_el": {
+   "n_prompts": 300,
+   "prompt_strict": 0.093,
+   "prompt_loose": 0.103,
+   "inst_strict": 0.106,
+   "inst_loose": 0.12,
+   "core": {
+    "prompts": 238,
+    "prompt_strict": 0.092,
+    "prompt_loose": 0.105
+   },
+   "extension": {
+    "prompts": 62,
+    "prompt_strict": 0.097,
+    "prompt_loose": 0.097
+   }
+  },
+  "B_en": {
+   "n_prompts": 300,
+   "prompt_strict": 0.153,
+   "prompt_loose": 0.2,
+   "inst_strict": 0.179,
+   "inst_loose": 0.223,
+   "core": {
+    "prompts": 238,
+    "prompt_strict": 0.118,
+    "prompt_loose": 0.172
+   },
+   "extension": {
+    "prompts": 62,
+    "prompt_strict": 0.29,
+    "prompt_loose": 0.306
+   }
+  }
+ },
+ "repetition": {
+  "R3_el_math500": {
+   "n": 500,
+   "truncated": 96,
+   "loop_ge5_content_lines": 35,
+   "truncated_and_loop": 34
+  },
+  "R3_el_ifbench": {
+   "n": 300,
+   "truncated": 33,
+   "loop_ge5_content_lines": 9,
+   "truncated_and_loop": 9
+  },
+  "R3_el_xstest": {
+   "n": 450,
+   "truncated": 4,
+   "loop_ge5_content_lines": 0,
+   "truncated_and_loop": 0
+  },
+  "R3_el_multichallenge": {
+   "n": 262,
+   "truncated": 28,
+   "loop_ge5_content_lines": 9,
+   "truncated_and_loop": 7
+  },
+  "R3_en_math500": {
+   "n": 500,
+   "truncated": 58,
+   "loop_ge5_content_lines": 28,
+   "truncated_and_loop": 28
+  },
+  "R3_en_ifbench": {
+   "n": 300,
+   "truncated": 63,
+   "loop_ge5_content_lines": 17,
+   "truncated_and_loop": 17
+  },
+  "R3_en_xstest": {
+   "n": 450,
+   "truncated": 15,
+   "loop_ge5_content_lines": 3,
+   "truncated_and_loop": 2
+  },
+  "R3_en_multichallenge": {
+   "n": 262,
+   "truncated": 13,
+   "loop_ge5_content_lines": 5,
+   "truncated_and_loop": 3
+  },
+  "B_el_math500": {
+   "n": 500,
+   "truncated": 29,
+   "loop_ge5_content_lines": 7,
+   "truncated_and_loop": 7
+  },
+  "B_el_ifbench": {
+   "n": 300,
+   "truncated": 22,
+   "loop_ge5_content_lines": 7,
+   "truncated_and_loop": 7
+  },
+  "B_el_xstest": {
+   "n": 450,
+   "truncated": 3,
+   "loop_ge5_content_lines": 0,
+   "truncated_and_loop": 0
+  },
+  "B_el_multichallenge": {
+   "n": 262,
+   "truncated": 26,
+   "loop_ge5_content_lines": 8,
+   "truncated_and_loop": 7
+  },
+  "B_en_math500": {
+   "n": 500,
+   "truncated": 33,
+   "loop_ge5_content_lines": 9,
+   "truncated_and_loop": 8
+  },
+  "B_en_ifbench": {
+   "n": 300,
+   "truncated": 48,
+   "loop_ge5_content_lines": 10,
+   "truncated_and_loop": 7
+  },
+  "B_en_xstest": {
+   "n": 450,
+   "truncated": 8,
+   "loop_ge5_content_lines": 3,
+   "truncated_and_loop": 2
+  },
+  "B_en_multichallenge": {
+   "n": 262,
+   "truncated": 12,
+   "loop_ge5_content_lines": 5,
+   "truncated_and_loop": 3
+  }
+ },
+ "repetition_definition": "loop = a content line (>=12 chars, with letters/digits) repeated >=5 times in one response; truncated = finish_reason length at the max_tokens cap"
+}

@@ -13,6 +13,7 @@ for r in resp:
     n_ok += ok; n_up += bool(up); n_trunc += (r.get('finish_reason') == 'length')
     by_level[b['level']][0] += ok; by_level[b['level']][1] += 1; by_subj[b['subject']][0] += ok; by_subj[b['subject']][1] += 1
     rows.append(dict(id=r['id'], level=b['level'], subject=b['subject'], answer=b['answer'], extracted=pred, equiv500=ok, upstream=up, truncated=r.get('finish_reason') == 'length'))
-n = len(resp); out = dict(n=n, equiv500_acc=round(n_ok / n, 4) if n else None, upstream_acc=round(n_up / n, 4) if n else None, truncated=n_trunc,
+n = len(resp); n_up_avail = sum(1 for r in rows if r['upstream'] is not None)
+out = dict(n=n, equiv500_acc=round(n_ok / n, 4) if n else None, upstream_acc=(round(n_up / n, 4) if n_up_avail == n else None), upstream_grader_available=n_up_avail == n, truncated=n_trunc,
                           by_level={str(k): round(v[0] / v[1], 4) for k, v in sorted(by_level.items())}, by_subject={k: round(v[0] / v[1], 4) for k, v in sorted(by_subj.items())}, rows=rows)
 json.dump(out, open(sys.argv[2], 'w'), ensure_ascii=False, indent=1); print({k: v for k, v in out.items() if k != 'rows'})
