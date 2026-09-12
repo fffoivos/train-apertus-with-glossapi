@@ -52,7 +52,7 @@ def load_rows():
             r = json.loads(line)
             msgs = r.get("messages") or r.get("turns")
             rows.append({"messages": [{k: v for k, v in m.items() if k in ("role", "content", "train")} for m in msgs]})
-    return rows[:40]
+    return rows[:int(os.environ.get("MASK_TEST_ROWS", "40"))]
 
 
 def main() -> None:
