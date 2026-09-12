@@ -16,5 +16,98 @@
   "language_ok": 0.94,
   "single_assistant_turn": 0.86
  },
- "note": "langdetect missing on the cluster: the IFEval language checker scores 0 for every model (same handicap as arm B); rescoring planned in the battery"
+ "note": "langdetect missing on the cluster: the IFEval language checker scores 0 for every model (same handicap as arm B); rescoring planned in the battery",
+ "interviews_avg": {
+  "coherence": 2.25,
+  "greek_assistant_identity": 2.725,
+  "language_discipline": 4.8,
+  "resists_false_correction": 2.675,
+  "factuality": 2.025
+ },
+ "interviews_avg_armB": {
+  "coherence": 2.625,
+  "greek_assistant_identity": 2.75,
+  "language_discipline": 4.575,
+  "resists_false_correction": 2.925,
+  "factuality": 2.15
+ },
+ "voice": {
+  "source": "../results/R3_single_ep1/dev/dev_gen.jsonl",
+  "reference": "hf://datasets/fffoivos/Greek-SFT-translated-and-adapted/no_robots",
+  "method_source": "/Users/foivoskarounos-zamparloukos/Projects/natural-greek-sft/scripts/style_compare.py",
+  "seed": 20260904,
+  "n_turns": {
+   "generated_el": 26,
+   "reference_assistant": 11193
+  },
+  "word_counts": {
+   "generated_el": 1945,
+   "reference_assistant": 1192837
+  },
+  "delta": {
+   "generated_vs_no_robots": 1.1668192801949833,
+   "parroting_floor_reference_split_half": 0.05162015672190942,
+   "below_parroting_floor": false,
+   "top_words": 150,
+   "chunk_words": 1000,
+   "chunks": {
+    "reference_a": 597,
+    "reference_b": 595,
+    "generated": 1
+   }
+  },
+  "biber_style_rates_per_1000_words": {
+   "generated": {
+    "you-singular (σου/σε/εσύ)": 8.740359897172237,
+    "you-plural (σας/εσείς)": 4.627249357326479,
+    "I (εγώ/μου/με)": 15.938303341902314,
+    "imperative-2sg (κάνε/βάλε/δοκίμασε…)": 1.0282776349614395,
+    "imperative-2pl (κάντε/βάλτε…)": 0.0,
+    "contractions (’)": 39.0745501285347,
+    "question marks (;)": 0.5141388174807198,
+    "exclamation marks": 4.627249357326479,
+    "hedges (ίσως/μάλλον/πιθανώς…)": 0.0,
+    "boosters (σίγουρα/βέβαια/οπωσδήποτε)": 0.5141388174807198,
+    "contrast connectives (όμως/ωστόσο/αλλά)": 1.0282776349614395,
+    "additive connectives (επίσης/επιπλέον)": 0.0,
+    "consequence (επομένως/συνεπώς/άρα)": 0.5141388174807198,
+    "obligation (πρέπει/χρειάζεται να)": 0.0,
+    "possibility (μπορεί να/μπορείς να)": 2.570694087403599,
+    "nominalizations (-ση/-ότητα)": 26.73521850899743,
+    "parentheses": 6.683804627249358,
+    "ano teleia / dash (· —)": 0.5141388174807198,
+    "bullets/numbered lines": 6.683804627249358,
+    "words per sentence": 10.570652173913043,
+    "chars per word": 4.825706940874036,
+    "type-token ratio (20k sample)": 0.39331619537275064,
+    "words": 1945
+   },
+   "no_robots": {
+    "you-singular (σου/σε/εσύ)": 13.653164682182059,
+    "you-plural (σας/εσείς)": 1.8720076590514882,
+    "I (εγώ/μου/με)": 5.432427062540817,
+    "imperative-2sg (κάνε/βάλε/δοκίμασε…)": 0.9607347860604593,
+    "imperative-2pl (κάντε/βάλτε…)": 0.23976452776028911,
+    "contractions (’)": 4.470853938970706,
+    "question marks (;)": 5.179249134626105,
+    "exclamation marks": 5.112182133853997,
+    "hedges (ίσως/μάλλον/πιθανώς…)": 1.1049288377204933,
+    "boosters (σίγουρα/βέβαια/οπωσδήποτε)": 0.41330039225812076,
+    "contrast connectives (όμως/ωστόσο/αλλά)": 4.283904674318452,
+    "additive connectives (επίσης/επιπλέον)": 2.211534350460289,
+    "consequence (επομένως/συνεπώς/άρα)": 0.9758248612341837,
+    "obligation (πρέπει/χρειάζεται να)": 1.5106841923917518,
+    "possibility (μπορεί να/μπορείς να)": 3.059093572717815,
+    "nominalizations (-ση/-ότητα)": 26.207268889211182,
+    "parentheses": 3.022206722293155,
+    "ano teleia / dash (· —)": 4.927747881730697,
+    "bullets/numbered lines": 12.383083355060247,
+    "words per sentence": 12.140587468957374,
+    "chars per word": 5.318118904762344,
+    "type-token ratio (20k sample)": 0.37015,
+    "words": 1192837
+   }
+  }
+ },
+ "voice_armB": null
 }
