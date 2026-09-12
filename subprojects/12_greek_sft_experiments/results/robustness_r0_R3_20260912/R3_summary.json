@@ -1,0 +1,43 @@
+{
+ "dialogues": 60,
+ "turns": 808,
+ "loop_rate": 0.002,
+ "tail_copy_rate": 0.092,
+ "lang_slip_rate": 0.002,
+ "stale_rate": 0.67,
+ "stop_honour_rate": 0.9,
+ "dead_dialogues": 0.067,
+ "premise_score": 0.404,
+ "tone": {
+  "fine": 720,
+  "dismissive": 20,
+  "snarky": 27,
+  "curt": 38,
+  "servile": 3
+ },
+ "honour_rate": 0.597,
+ "persistence_rate": 0.872,
+ "uptake_rate": 0.972,
+ "honours_labels": {
+  "no": 292,
+  "yes": 432,
+  "unavailable": 11,
+  "needs_info": 11
+ },
+ "consistent_rate": 0.863,
+ "claim_truth": {
+  "true": 419,
+  "subjective": 54,
+  "false": 28,
+  "unknown": 10
+ },
+ "selfaware_rate": 0.228,
+ "redirect_ok": 0.487,
+ "by_profile": {
+  "benign": 0.07,
+  "steering": 0.077,
+  "hostile": 0.164
+ },
+ "coherent_rate": 0.859,
+ "mean_words": 26
+}
