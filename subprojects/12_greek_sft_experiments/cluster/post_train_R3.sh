@@ -3,7 +3,7 @@
 #  A wait for the training job to finish with TRAIN_OK; ledger it
 #  B eval copy of runs/R3_single/epoch1 → eval_copies/R3_single_ep1
 #  C in parallel: light evals of R3 (debug workbench, eval_checkpoint.sh), full battery of R3 (normal), full battery of arm B (normal)
-#  D vLLM window (normal, 2:00): serve R3 + arm B, the four Greek benchmarks (generate.py, el+en, both models), then 60 hostile picky-user dialogues on R3 if the Sol bucket allows
+#  D vLLM window (normal, 2:00) — NOTE: 'wait' after starting the ssh tunnel must name the PIDs (a bare wait never returns; fixed 13 Sept): serve R3 + arm B, the four Greek benchmarks (generate.py, el+en, both models), then 60 hostile picky-user dialogues on R3 if the Sol bucket allows
 #  E programmatic scoring on the Mac (MATH-500-el, IFBench-el); judged scoring (XSTest-el, MultiChallenge-el, claude -p) is left for a manual step because of its Claude-usage cost
 # Usage: bash cluster/post_train_R3.sh <train_jobid>
 set -u; cd "$(dirname "$0")/.."; HERE=$PWD; J=$1; LABEL=R3_single_ep1; BLABEL=R2_idB_ep2
@@ -34,9 +34,9 @@ NODE=$(sshc "squeue -h -j $W -o %N"); ssh -4 -N -o BatchMode=yes -o ServerAliveI
 for i in $(seq 1 60); do curl -s -m 10 http://127.0.0.1:8001/v1/models | grep -q '"id"' && curl -s -m 10 http://127.0.0.1:8000/v1/models | grep -q '"id"' && break; sleep 15; done
 curl -s -m 10 http://127.0.0.1:8001/v1/models | grep -q '"id"' || { say "FAILED: models did not come up"; sshc "tail -3 $R/serve_R3.log; tail -3 $R/serve_B.log" | tee -a $LOG; kill $TUN; sshc "bash $R/workbench.sh close $W"; exit 1; }
 say "endpoints ready after $((i*15)) s; generating the four benchmarks, el+en, both models"
-$PY data/benchmarks_el/generate.py http://127.0.0.1:8000/v1 R3 $OUT/bench_R3 --workers 24 > $OUT/bench_R3.log 2>&1 &
-$PY data/benchmarks_el/generate.py http://127.0.0.1:8001/v1 B $OUT/bench_B --workers 24 > $OUT/bench_B.log 2>&1 &
-wait; say "benchmark generation done: $(tail -4 $OUT/bench_R3.log | tr '\n' ' ') | B: $(tail -4 $OUT/bench_B.log | tr '\n' ' ')"
+$PY data/benchmarks_el/generate.py http://127.0.0.1:8000/v1 R3 $OUT/bench_R3 --workers 24 > $OUT/bench_R3.log 2>&1 & G1=$!
+$PY data/benchmarks_el/generate.py http://127.0.0.1:8001/v1 B $OUT/bench_B --workers 24 > $OUT/bench_B.log 2>&1 & G2=$!
+wait $G1 $G2; say "benchmark generation done: $(tail -4 $OUT/bench_R3.log | tr '\n' ' ') | B: $(tail -4 $OUT/bench_B.log | tr '\n' ' ')"
 used=$(tail -1 $HOME/sft_annot/limit_probe.log 2>/dev/null | grep -o 'used=[0-9.]*' | cut -d= -f2); used=${used:-100}
 if [ "$(python3 -c "print(1 if float('$used') <= 92 else 0)")" = 1 ]; then
   say "Sol bucket at ${used}%: running 60 hostile dialogues on R3"; WORKERS=16 python3 data/robustness/simulate.py $OUT/r0_hostile --target R3=http://127.0.0.1:8000/v1/R3 --n 60 > $OUT/sim_r0.log 2>&1; say "dialogues done: $(tail -2 $OUT/sim_r0.log | tr '\n' ' ' | cut -c1-300)"
