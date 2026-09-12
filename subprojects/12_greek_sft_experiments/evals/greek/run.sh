@@ -9,7 +9,7 @@ if [[ $# -lt 2 ]]; then
 fi
 
 script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-python_bin=${PYTHON:-/private/tmp/claude-501/-Users-foivoskarounos-zamparloukos/b9019f62-a4f0-4001-b1b9-3a1a58e99c50/scratchpad/sftdata/bin/python}
+python_bin=${PYTHON:-$(dirname "$0")/../../cluster/nsft_python.sh}
 model=$1
 run_name=$2
 shift 2

@@ -36,10 +36,7 @@ NATIVE_BENCHMARKS = (
 HERE = Path(__file__).resolve().parent
 REPO_ROOT = HERE.parents[1]
 SUBPROJECTS_ROOT = REPO_ROOT.parent
-DEFAULT_PYTHON = Path(
-    "/private/tmp/claude-501/-Users-foivoskarounos-zamparloukos/"
-    "b9019f62-a4f0-4001-b1b9-3a1a58e99c50/scratchpad/sftdata/bin/python"
-)
+DEFAULT_PYTHON = REPO_ROOT / "cluster" / "nsft_python.sh"  # persistent wrapper (system python3 + the nsft package); the old session-scratchpad venv is gone
 DEFAULT_ELLINIKA = Path.home() / "Projects/apertus-local-chat/benchmark/clariden_eval.py"
 DEFAULT_SCORER = (
     SUBPROJECTS_ROOT
