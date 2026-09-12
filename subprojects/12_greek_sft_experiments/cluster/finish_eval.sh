@@ -3,7 +3,7 @@
 # Usage: cluster/finish_eval.sh <label>   (waits up to 30 min for ILSP results and turn3 to exist)
 set -u
 LABEL=$1; S=/iopsstor/scratch/cscs/fffoivos; EV=$S/sft_round1/evals/$LABEL
-HERE="$(cd "$(dirname "$0")/.." && pwd)"; P=/private/tmp/claude-501/-Users-foivoskarounos-zamparloukos/b9019f62-a4f0-4001-b1b9-3a1a58e99c50/scratchpad/sftdata/bin/python
+HERE="$(cd "$(dirname "$0")/.." && pwd)"; P=$HERE/cluster/nsft_python.sh
 LOCAL=$HERE/results/$LABEL; mkdir -p $LOCAL/interviews $LOCAL/dev
 sshc() { ssh -o BatchMode=yes clariden "$@" 2>/dev/null; }; say() { echo "[$(date '+%H:%M')] finish $LABEL: $*"; }
 for i in $(seq 1 30); do ok=$(sshc "[ -s $EV/interviews/turn3.jsonl ] && ls $EV/ilsp/*/results*.json >/dev/null 2>&1 && [ -s $EV/dev/reading40_gen.jsonl ] && echo yes"); [ "$ok" = yes ] && break; sleep 60; done

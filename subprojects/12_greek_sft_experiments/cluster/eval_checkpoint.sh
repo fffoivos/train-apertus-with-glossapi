@@ -14,7 +14,7 @@ if [ -z "${EVAL_DRIVER_COPY:-}" ]; then
 fi
 CK_RAW=$1; LABEL=$2; SKIP_NATIVE=${3:-1}
 S=/iopsstor/scratch/cscs/fffoivos; R=$S/sft_round1; EV=$R/evals/$LABEL
-HERE="${EVAL_ROOT:-$(cd "$(dirname "$0")/.." && pwd)}"; P=/private/tmp/claude-501/-Users-foivoskarounos-zamparloukos/b9019f62-a4f0-4001-b1b9-3a1a58e99c50/scratchpad/sftdata/bin/python
+HERE="${EVAL_ROOT:-$(cd "$(dirname "$0")/.." && pwd)}"; P=$HERE/cluster/nsft_python.sh
 LOCAL=$HERE/results/$LABEL; mkdir -p $LOCAL/interviews
 CK=$R/eval_copies/$LABEL   # transformers-4-compatible copy (base config/tokenizer + chat template, weights symlinked)
 sshc() { ssh -o BatchMode=yes clariden "$@" 2>/dev/null; }
