@@ -33,7 +33,7 @@ def judge_sol(prompt, model):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('responses'); ap.add_argument('out'); ap.add_argument('--backend', default='claude', choices=['claude', 'sol']); ap.add_argument('--model', default=None); ap.add_argument('--rubric', default='en', choices=['en', 'el']); ap.add_argument('--workers', type=int, default=6)
+    ap = argparse.ArgumentParser(); ap.add_argument('responses'); ap.add_argument('out'); ap.add_argument('--backend', default='sol', choices=['claude', 'sol']); ap.add_argument('--model', default=None); ap.add_argument('--rubric', default='en', choices=['en', 'el']); ap.add_argument('--workers', type=int, default=6)
     a = ap.parse_args(); model = a.model or ('claude-opus-5' if a.backend == 'claude' else 'gpt-5.6-sol')
     bench = {r['id']: r for r in B.load(os.path.join(HERE, 'conversations_el_final.jsonl'))}; resp = B.load(a.responses)
     def one(x):

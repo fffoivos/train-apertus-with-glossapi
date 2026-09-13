@@ -26,8 +26,9 @@ def items(s, lang):
             turns = r['turns_el'] if lang == 'el' else r.get('turns_en') or []
             if not turns or turns[-1]['role'] != 'user': continue
             yield r['id'], [dict(role=t['role'], content=t['content']) for t in turns], 1024
+EXTRA = {}
 def call(base, model, messages, max_tokens, tries=4):
-    body = dict(model=model, messages=messages, temperature=0, top_p=1, max_tokens=max_tokens)
+    body = dict(model=model, messages=messages, temperature=0, top_p=1, max_tokens=max_tokens, **EXTRA)
     for k in range(tries):
         try:
             req = urllib.request.Request(base.rstrip('/') + '/chat/completions', data=json.dumps(body).encode(), headers={'Content-Type': 'application/json'})
@@ -38,7 +39,8 @@ def call(base, model, messages, max_tokens, tries=4):
             time.sleep(5 * (k + 1))
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('base'); ap.add_argument('model'); ap.add_argument('out'); ap.add_argument('--sets', default='math500,ifbench,xstest,multichallenge')
-    ap.add_argument('--langs', default='el,en'); ap.add_argument('--workers', type=int, default=16); ap.add_argument('--limit', type=int, default=0); a = ap.parse_args()
+    ap.add_argument('--langs', default='el,en'); ap.add_argument('--workers', type=int, default=16); ap.add_argument('--limit', type=int, default=0); ap.add_argument('--extra-body', default='', help='JSON merged into every request, e.g. {"chat_template_kwargs": {"enable_thinking": false}}'); a = ap.parse_args()
+    EXTRA.update(json.loads(a.extra_body) if a.extra_body else {})
     os.makedirs(a.out, exist_ok=True)
     for s in a.sets.split(','):
         for lang in a.langs.split(','):

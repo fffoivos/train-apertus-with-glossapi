@@ -1,10 +1,10 @@
 {
  "plan": "EXECUTION_PLAN_20260904.md",
  "protocol": "CLUSTER_PROTOCOL.md",
- "cap_chf": 160.0,
+ "cap_chf": 230.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 39.414,
- "chf_used": 106.02,
+ "nh_used": 58.642,
+ "chf_used": 157.75,
  "cursor": "R3_single: GO 2026-09-11; probe20 → sbatch → batteries (new ckpt + arm B) → four Greek benchmarks → picky-user run",
  "steps": {
   "WP0_data": {
@@ -412,6 +412,12 @@
    "from_chf": 105.0,
    "to_chf": 160.0,
    "why": "owner 2026-09-11 ~16:15: 'OK run the training and benchmarking' after the disclosed budget of 19.0-20.8 nh ≈ CHF 51-56 on top of CHF 102.71 used (docs/RLHF_PLAN_20260911.md §0); cap set to 160 to cover it"
+  },
+  {
+   "when": "2026-09-13T07:40",
+   "from_chf": 160.0,
+   "to_chf": 230.0,
+   "why": "owner 2026-09-13 07:30: 'first run all the evaluations' then (a)-(d); the plan (docs/R4_PLAN_20260913.md §6) prices the peer window, the A/B passes and R4 at ≈ CHF 70 over the 160 cap; set to 230 and disclosed"
   }
  ]
 }

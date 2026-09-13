@@ -208,12 +208,39 @@ def write_json(path: Path, value: dict[str, Any]) -> None:
     os.replace(temporary, path)
 
 
+def sol_score(prompt: str) -> tuple[dict[str, Any], int]:
+    """Primary scorer since 2026-09-13 (owner): Sol via nsft.engines.run_sol; Opus is never used unless SCORER=opus is set explicitly."""
+    import tempfile, os as _os
+    from nsft.engines import run_sol
+    errors = []
+    for attempt in range(1, 4):
+        try:
+            with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False, prefix="score_sol_") as tmp:
+                out_path = tmp.name
+            rc, stderr_tail = run_sol(prompt, out_path, timeout=900)
+            body = open(out_path, encoding="utf-8").read(); _os.unlink(out_path)
+            result = lenient_json(body)
+            if not isinstance(result, dict):
+                raise ValueError("Sol returned non-object JSON")
+            result["_engine"] = "sol"
+            return result, attempt
+        except Exception as exc:
+            errors.append(f"attempt {attempt}: {type(exc).__name__}: {exc}")
+            time.sleep(2 ** attempt)
+    raise RuntimeError("Sol scoring failed three times: " + " | ".join(errors))
+
+
+SCORER = os.environ.get("SCORER", "sol")
+
+
 def score_conversations(
     *,
     out_dir: Path,
-    caller: Callable[[str], tuple[dict[str, Any], int]] = opus_score,
+    caller: Callable[[str], tuple[dict[str, Any], int]] = None,
     limit: int | None = None,
 ) -> tuple[Path, Path]:
+    if caller is None:
+        caller = opus_score if SCORER == "opus" else sol_score
     completed_path = out_dir / "turn3.jsonl"
     rows = read_jsonl(completed_path)
     rows_by_id(rows, str(completed_path))
@@ -238,11 +265,11 @@ def score_conversations(
                 "lang": transcript["lang"],
                 "moves": transcript["moves"],
                 "metrics": metrics,
-                "engine": "opus",
+                "engine": SCORER,
                 "attempts": attempts,
             }
         )
-        print(f"scorer {index}/{len(rows)} id={row['id']} engine=opus", flush=True)
+        print(f"scorer {index}/{len(rows)} id={row['id']} engine={SCORER}", flush=True)
 
     averages = {
         key: sum(item["metrics"][key]["score"] for item in scored_rows) / len(scored_rows)
