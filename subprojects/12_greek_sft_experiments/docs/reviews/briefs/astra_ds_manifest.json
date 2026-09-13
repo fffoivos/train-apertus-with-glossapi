@@ -1,0 +1,26 @@
+{
+ "astra_ds_greek_if": [
+  "data/greek_if/final/greek_if_sft.jsonl",
+  60
+ ],
+ "astra_ds_math_cut1": [
+  "data/math/cut1/edited/rows_edited.jsonl",
+  60
+ ],
+ "astra_ds_convskills": [
+  "data/convskills/v2/final/rows_final.jsonl",
+  60
+ ],
+ "astra_ds_correcting": [
+  "data/robustness/correcting/scale/rows/rows_final.jsonl",
+  40
+ ],
+ "astra_ds_personality": [
+  "data/personality/personality_v3v4_final.jsonl",
+  50
+ ],
+ "astra_ds_imports": [
+  "data/arms/R3_single/train.jsonl",
+  80
+ ]
+}
