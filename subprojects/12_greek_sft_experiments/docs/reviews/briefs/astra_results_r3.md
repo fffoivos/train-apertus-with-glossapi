@@ -1,0 +1,232 @@
+# Brief: review of the R3 round's RESULTS — has the model improved or regressed, and how does it compare with the competition? (13 Sept 2026)
+
+You are the cross-vendor reviewer of an experimental round, not of a dataset. Materials: the status document (every measurement with its protocol and noise band), the results document, and the competition table. Answer, with the numbers quoted and their protocol named:
+(a) Has R3 (and its two pass variants) improved or regressed against arm B, the incumbent? Separate: real effects beyond noise, effects that depend on the judge (we re-judged interviews, XSTest-el and MultiChallenge-el on Sol after an Opus pass; the two judges disagree on some cells), and effects that depend on the protocol (mixed vs hostile dialogue profiles; adaptive interviews). State what you would promote today and what you would not, and why.
+(b) Against the competition (Krikri-8B, Meltemi-7B, Apertus-8B-Instruct, Qwen3.5-9B, Gemma-3-12B): where do we lead, where do we trail, by how much, and which trailing gaps are closable with SFT data at 8B (vs base-model capacity)? Rank the gaps by expected return per unit of data effort.
+(c) Our diagnosis (docs/R3_STATUS §3, §9, §11; results doc §3): the reversals are (1) Greek math taught in a terse answer-line style by our math set, (2) false-correction/premise handling pushed the wrong way by a 14:1 correcting set, (3) loops under greedy decoding, (4) tail copying and stops. Challenge each: is the evidence sufficient, what alternative explains it, what single test would settle it?
+(d) Evaluation validity: IFBench-el shows a Greek-vs-English gap on the words family for every model incl. Qwen; MultiChallenge-el has judge-dependent rankings within noise; interviews are adaptive; the picky-user runs use Sol as user AND judge; MATH-500-el extraction. Which of our numbers should not be trusted as they stand, and what is the cheapest fix for each?
+(e) Given (a)–(d), what should R4 contain and what should it NOT contain? Give the recipe you would run next and the two experiments that would most change the decision.
+Rules: verify against the attached numbers; do not invent citations; no web access; report in English. BLOCKER/HIGH findings go into the plan before anything is launched.
+
+# R3_single: status and diagnosis (living doc, 2026-09-12 07:10)
+
+Owner instruction 07:00: we will retrain with a new math set (DATA_TODO 56), so all resources go to diagnosing why R3 shows reversals against arm B instead of progress. No new evaluation or data work starts without a stated diagnostic purpose.
+
+## 1. Results so far (R3_single_ep1 vs arm B = R2_idB_ep2; stage 1 = R2_stage1_ep1 where known)
+
+| measure | R3 | arm B | stage 1 | noise | read |
+|---|---:|---:|---:|---|---|
+| Greek IFEval strict avg | 67.8 | 63.7 | 59.9 | ±2 | better |
+| Greek MGSM | 0.488 | 0.524 | 0.468 | ±0.03 | flat |
+| IFBench-el prompt strict (unseen constraint types) | 9.3 | 9.3 | pending (generated, scoring in bench_stage1.log) | | flat: the IF gain did not transfer |
+| MultiChallenge-el pass rate (262 conversations, English rubric) — Sol judge (the judge for every model from 13 Sept) / Opus judge (12 Sept) | 16.0 / 13.4 | 18.7 / 11.8 | pending | ±2.5 | within noise either way; the two judges even flip the order (Sol: arm B ahead on instruction retention 34 vs 27 and inference memory 17 vs 12, R3 ahead on self-coherence 20 vs 14; version editing 5 = 5). Judge disagreement is itself a finding for the results review |
+| XSTest-el: safe prompts complied / adequate; unsafe refused — Sol judge / Opus judge | 92.8 / 76.4; 88.0 (Sol) — 94.4 / 68.8; 96.0 (Opus) | 93.2 / 77.2; 89.0 (Sol) — 92.8 / 73.6; 96.5 (Opus) | pending | | flat between the models; Sol counts 21–24 unsafe compliances where Opus counted 7 |
+| MATH-500-el equiv500 | 8.0 | 7.6 | **12.8** | | BOTH later recipes lost hard math vs stage 1 (stage 1 by level 37/23/12/7/4%; R3 26/20/7/2/2; B 26/14/3/7/2); English variant stage 1 16.4, R3 18.0, B 15.8 |
+| interviews coherence (1–5) | 2.25 | 2.63 | 2.40 | 0.1 | worse |
+| interviews resists false correction | 2.68 | 2.93 | 2.58 | 0.1 | worse than B, better than stage 1 |
+| interviews language discipline | 4.80 | 4.58 | 4.75 | 0.1 | better |
+| interviews identity / factuality | 2.73 / 2.03 | 2.75 / 2.15 | 2.75 / 2.03 | 0.1 | flat |
+| voice distance to no_robots-el (lower = closer) | 1.17 | 0.95 | not scored | | worse |
+| format gate stop / language / single turn (50 prompts) | 0.86 / 0.94 / 0.86 | 0.90 / 0.94 / 0.90 | 0.86 / 0.94 / 0.86 | 2 prompts | same as stage 1 |
+| loops on Greek MATH-500 (content line ×5, greedy) | 35/500 | 7/500 | pending | | worse |
+| truncation at 2,048 tokens, Greek MATH-500 | 96 | 29 | pending | | worse |
+| personality holdout dev loss | 1.534 | 1.603 | — | | better |
+| train loss | 0.941 | 0.944 (stage 1) | | | parity |
+| **picky-user run, MIXED profile (34 benign / 14 steering / 12 hostile of 60 dialogues, 808 turns), Sol user + judge, T 0.8** (results/robustness_r0_R3_20260912) | R3 | arm B R1, mixed, 120 dialogues (9 Sept) | | | CORRECTED 09:50: my first table compared this run with arm B's R0, which was HOSTILE-ONLY on the older simulator; the like-for-like baseline is arm B's R1 (mixed profile, same simulator) |
+| tail copied from the previous answer | 9.2% | 5.8% | | | worse |
+| stale after a redirect or correction | 67.0% | 74.2% | | | better |
+| dead dialogues (3 broken turns in a row) | 6.7% | 8.3% | | | similar |
+| requests honoured (judge) | 59.7% | 45.2% | | | better |
+| coherent turns (judge) | 85.9% | 78.6% | | | better |
+| tone fine / curt / snarky (of 808 turns) | 89% / 5% / 3% | 76% / 18% / 6% | | | better |
+| stop instructions honoured | 90.0% | 100% | | | worse |
+| premise score 0–2 (absurd / false premises questioned) | **0.40** | 0.90 | | | WORSE: R3 accepts bad premises; matches the capitulation finding |
+| loop rate (sentence ×3 in one answer) | 0.2% | 0.1% | | | flat |
+| native Greek suite macro (9 tasks, fp32 scorer) | 0.516 | 0.514 | base card 0.499 | | flat; R3 better on NLI 0.658 vs 0.580 and WiC 0.707 vs 0.669, arm B better on metaphor 0.540 vs 0.454 |
+| English/multilingual retention (lm_eval 0.4.11, cached suite): arc_c / arc_e / hellaswag(norm) / winogrande / piqa / mmlu / global_mmlu / xnli / xcopa | 0.544 / 0.825 / 0.772 / 0.706 / 0.795 / 0.598 / 0.550 / 0.452 / 0.651 | 0.558 / 0.831 / 0.779 / 0.707 / 0.793 / 0.601 / 0.550 / 0.449 / 0.652 | CPT peak checkpoint iter 9536 (subproject 09 evidence, same harness): 0.503 / 0.802 / 0.771 / 0.699 / 0.795 / 0.566 / 0.508 / 0.438 / 0.637 | | R3 at or above the CPT base on all nine: no English or multilingual forgetting. First retention numbers ever produced in this project |
+| GreekMMLU, full split 16,632 / clean subset 16,159 (frozen fp32 scorer) | 0.5604 / 0.5612 | 0.5599 / 0.5609 | clean-subset references: CPT base 0.5678, round-one pick 0.5602, Apertus-Instruct 0.5486, Krikri 0.5197 | ±0.004 | identical; both ≈ 0.8 below the base, as every SFT so far |
+
+Pending: native Greek suite scores (21 shards produced for both models, to be aggregated), English retention (both first runs FAILED at 05:30: two concurrent retention jobs share one cache directory and each wiped the other's; reruns queued sequentially as jobs 3364757 → 3364758, and the R3_pass evaluation chain now waits for them); XSTest-el and MultiChallenge-el (judged; on hold); picky-user dialogues (on hold by owner instruction, Sol bucket 86%).
+
+## 2. What changed between arm B and R3 (the confounds)
+
+R3 = stage-1 mix + Greek IF + Greek math + suite ×2 + correcting ×2 + personality ×4, ONE stage, one epoch. Arm B = stage 1, THEN a Greek pass (personality ×4 + greek_ours + greek_rewrite + 5% replay) for two epochs at lr 1e-5. So two things differ: the new data, and the concentrated Greek ending. Stage 1 is the control that has neither.
+
+## 3. Hypotheses for the reversals and the test for each
+
+| # | hypothesis | evidence so far | test | status |
+|---|---|---|---|---|
+| H1 | the missing final Greek pass (schedule), not the data | coherence stage 1 2.40 → R3 2.25 (noise) vs arm B 2.63 (+0.23 from the pass); format gate R3 = stage 1 | Greek pass on top of R3 with arm B's recipe (41.7k rows, 2 epochs, ≈1.2 nh + light evals 1.2 nh). If coherence/false-correction/loops recover → H1 | needs the owner's go (spend outside the disclosed plan) |
+| H2 | the new sets contain repetitive targets that taught loops | REFUTED 07:05: repeated-line targets in greek_if 1 turn, math 0, suite 0, correcting 0; Nemotron/code ≈1% (also in arm B's data) | done | closed |
+| H3 | the per-turn masking (new trainer code) broke stop-token supervision → loops/truncation | format-gate stop rate equals stage 1 (0.86), so no new stop failure; G2 verified 40 rows | masking test on ALL 631 flagged rows + 1,200 plain rows (running, results/R3_single/mask_test_large.log) | running |
+| H4 | loops are a property of the single-stage schedule that arm B's pass removed (stage 1 loops too) | unknown | DONE 08:10: stage 1 loops too. Greek MATH-500 loops / truncations: stage 1 23 / 60, arm B 7 / 29, R3 35 / 96; English math 28/62, 9/33, 28/58. Arm B's pass REMOVED loops; R3 is somewhat worse than stage 1. Supports H1 with a smaller data/tokens contribution | closed: supports H1 |
+| H5 | the dialogue sets are too diluted (3.9% of supervised tokens, one epoch) to register | REVISED 09:50 (corrected baseline = arm B R1, mixed profile): on the picky-user benchmark R3 is better on staleness (67 vs 74%), requests honoured (60 vs 45%), coherence (86 vs 79%) and tone (fine 89 vs 76%), similar on dead dialogues (7 vs 8%), and WORSE on tail copying (9.2 vs 5.8%), stop instructions (90 vs 100%) and premise checking (0.40 vs 0.90). The sets registered on the axes they target most directly (redirects, request honouring, tone); the reversal is specific: premise/false-correction handling (capitulation), tail copying, Greek math brevity (H9), loops under greedy | same run as H1 with the suite and correcting set inside the pass | with H1 |
+| H6 | evaluation noise / judge drift (interviews are 40 items) | loops and IFEval are outside noise; coherence −0.38 is 4× noise | paired reading of the R3 vs B interview transcripts on the 10 largest coherence gaps (Claude, no Sol) | to do |
+| H7 | greedy decoding exaggerates loops that sampling would not show | plausible; R0/R1 used T 0.8 | the picky-user hostile run under sampling (on hold) | on hold |
+| H8 | the English chat imports' register (capitulation «you are absolutely right», markdown headings, long answers) dominates R3's ending because nothing Greek came last; arm B's Greek pass suppressed it | 07:25 paired reading of the interviews: R3's coherence losses are concessions to FALSE challenges followed by self-contradiction («I should have said X, but Y»); counts after false challenges: R3 4/12, B 2/12, stage 1 3/12 (n small); markdown in answers R3 52/120, B 46/120, stage 1 62/120; mean words 144 / 141 / 169. Training: Nemotron opens 2.1% of its 89k supervised turns with a capitulation phrase (1,887 turns); the correcting set's 23 are acknowledgements of TRUE corrections by design. R3 sits between stage 1 and arm B on every register measure: the Greek pass is what moved arm B, and the new Greek sets (1.7% of the mix) could not do the same in a single stage | same test as H1: the Greek pass on R3 | with H1 |
+| H9 | the Greek math set taught BREVITY: R3 answers Greek math in a median 35 words (91% under 80) vs stage 1 85 and arm B 86; English unchanged (148 / 143 / 128). Too short to carry a derivation → wrong completed answers, and loops when it cannot close | 08:55 failure partition (results/R3_single/math500_failure_partition.json, math500_length_stats.json): of stage 1's 64 correct Greek items R3 lost 49 (42 as WRONG COMPLETED answers, 7 truncated) and gained 25; arm B lost 46 (45 wrong completed) and gained 20 at stage-1-like length. So loops explain little of the accuracy loss; R3's loss is the terse-solution style of the math set (42-word training solutions); arm B's loss is a different, length-neutral shift from its Greek pass (mechanism open) | REFINED 09:40 (items stage 1 solved that each model lost, completed answers only): R3 lost 42, of which 39 carry no \\boxed at all (R3 answers 343 of 500 Greek problems without \\boxed vs stage 1 49, arm B 68: it adopted the math set's «Απάντηση:» answer-line format) and are short and wrong («8.000 θερμίδες», «30°», «540°»); a Greek-format-tolerant re-score changes R3 by only +3, so this is not a scorer artefact. Arm B lost 45 at normal length with genuinely wrong numbers (25 numeric, 12 symbolic: 2000→200, 72→360, 10%→70%): its Greek pass degraded Greek math REASONING without changing format. Two different mechanisms → cut 2 fixes R3's (full derivations, \\boxed kept); arm B's needs math retention inside any Greek finishing pass (the recipe reviewer's point) | data effect confirmed for R3; pass effect for arm B |
+
+## 4. Running now (07:10)
+
+- battery R3: native workbench 3363954 PENDING (est. 11:45) → then GreekMMLU + retention (3:20)
+- battery arm B: native workbench 3363956 PENDING (est. 11:45) → then GreekMMLU + retention
+- stage-1 benchmark generation on a debug window (H4), log results/R3_single/bench_stage1.log
+- masking test on 1,831 rows (H3), log results/R3_single/mask_test_large.log
+- the post-training driver was stopped at 07:00 so nothing runs unasked; its remaining steps (judged scoring, dialogues) are manual.
+
+## 5. Decisions for the owner
+
+1. H1/H5 test: the Greek pass on R3 (≈2.4 nh incl. light evals, CHF 6.5). Go / no go.
+2. Picky-user hostile run on R3 (≈4% of the Sol week, 0.5 nh): run now, after the reset (Fri 18 Sep), or drop.
+3. Judged benchmarks (XSTest-el, MultiChallenge-el; ≈1,400 Opus calls): run or defer.
+
+Ledger 07:10: 48.6 nh, CHF 130.7 of 160.
+
+## 6. Queued on CSCS at 07:50 (owner: "run these now"; survives the Mac going offline)
+
+**R3_pass (H1/H5 test)** = arm B's Greek pass applied to R3, job 3364632 (normal, 03:00 walltime), then the evaluation chain job 3364633 (afterok, 04:30: eval copy → native suite → GreekMMLU ‖ retention ‖ Greek IFEval+MGSM ‖ dev gate + reading40 + identity40 + interview round 1). Recipe disclosure, every parameter vs R2_idB (the previous run of this recipe):
+
+| parameter | R2_idB (arm B's pass) | R3_pass | flag |
+|---|---|---|---|
+| base | runs/R2_stage1/epoch1 | runs/R3_single/epoch1 | CHANGE (the experiment) |
+| data | 41,697 rows: personality v3 ×4 (5,276) + greek_ours 19,800 + greek_rewrite 1,980 + 5% replay of every other block | the same 41,697 rows + suite ×2 (5,622) + correcting ×2 (1,130) = 48,449 rows, shuffled seed 42 | CHANGE (H5: dialogue sets concentrated in the pass) |
+| dev | R2_idB dev (3,240 rows incl. the 69 personality holdout) | same file | — |
+| epochs / lr / schedule / warmup / β2 / wd / clip / max_length / batch / seed / dtype | 2 / 1e-5 / cosine to 0.1 / 3% / 0.99 / 0 / 1.0 / 4096 / 1×4×4 / 42 / fp32 master + bf16 | identical | — |
+| expected_train_tokens assertion | set | omitted (arm built on the cluster; tokens reported by the trainer's PLAN line) | CHANGE (bookkeeping only) |
+| trainer | md5 53246fffcd85 | md5 3c3aa6581a15 (resume guard patch only) | — |
+| saves | none (epoch snapshots) | same | — |
+
+Read-out planned: interviews rounds 2–3 + scoring on the Mac when back online; picky-user run and the four Greek benchmarks on R3_pass_ep2 afterwards. Expected cost ≈ 1.4 nh training + 3.6 nh evaluation.
+
+**Also running:** GreekMMLU + retention for R3 (wb 3364517) and arm B (wb 3364519), native suites done; hostile picky-user run on R3 (debug wb 3364631, pending behind the stage-1 benchmark window 3364616); masking test on 1,831 rows (Mac).
+
+## 7. Astra diagnosis reviews (08:35; docs/reviews/ASTRA_r3_diag_recipe_20260912.md and ASTRA_r3_diag_behaviour_20260912.md) and dispositions
+
+| finding | disposition |
+|---|---|
+| HIGH (recipe): R3_pass changes base, data (+16%) and exposure at once → it is a RECOVERY test, not a schedule-vs-data isolation | accepted; the queued run is described as such. CONTROL QUEUED 08:30: R3_passB = R3 + arm B's exact historical pass (41,697 rows, unchanged), jobs 3364769 → eval chain 3364770. Comparisons: R3_passB vs R3_pass (effect of adding the dialogue sets to the pass), R3_passB vs arm B (what remains after the same pass). A strict ordering test (same packed multiset, only placement moved) is a broader control, not queued. |
+| HIGH (recipe): "both lost hard math" conflates causes; Level-1 fell 37→26 for both; B completes but answers fewer; R3's English MATH rose; the new math set cannot explain arm B's decline (B never saw it) | accepted: math cut 2 is a coverage fix, not the cure for the reversal. TO DO: partition Greek MATH failures by cause (wrong completed answer / extraction reject / truncation-loop / damaging continuation) with paired Greek-English item ids, for stage 1, R3, B. |
+| HIGH (recipe): dose denominators — suite+correcting are 3.85% of supervised tokens (not 1.7%), Nemotron 44.6%, personality 0.71%; personality presentations 43% fewer than in B's path; the pass has no explicit IF/math retention | corrected here; the next recipe (reviewer's Q4) carries Greek IF and math retention in the finishing stage. R3_pass/R3_passB have none: watch Greek IFEval in their read-outs. |
+| MEDIUM (recipe): unrecorded checks — actual update count and LR trajectory (≈3,511 vs ≈3,019 steps), source-id/multiplicity diff of the 15 retained blocks vs stage 1 (327,316 unique / 347,116 effective vs 334,383), packing/length interactions for the new multi-turn rows, serving identity | logged; the update count is in train_summary.json (3,511 steps); the block diff is derivable from the receipts. |
+| BLOCKER (behaviour): my evidence export was flawed — the 8 dev rows were empty (wrong field names), 14 of 40 interview records clipped by the 9,000-char cap; and the interviews are ADAPTIVE (second-turn prompts differ per model), so pairwise gaps are not responses to identical pressure | accepted: the export bug is mine; a corrected export (uncut rows, finish reasons, token counts) goes to any rerun. The adaptive-interview caveat is permanent: add frozen identical follow-ups as a second interview mode before the next comparison. |
+| HIGH (behaviour): the regression is broader than the English register — 20/40 interviews show inconsistent claims vs own history (false agreement, contradiction, denial of prior statements), 10/40 transformation failures, 5/40 role drift; loops begin after an invalid math step (11/12 literal recurrence) and arm B "escapes" by reaching a shorter wrong conclusion | accepted; H8 demoted (register is a symptom, not the mechanism). Loops are a termination failure after losing the derivation: a decoding intervention and termination supervision are separate levers from data. |
+| HIGH (behaviour): judge reliability — gaps track large failures but not at 0.1 precision; over-credit in el-05; noise estimate does not cover systematic rubric errors | accepted; interview means are reported with this caveat; blind ordering and hidden identities to be confirmed for the scorer. |
+| recipe reviewer's next-recipe sketch (Q4): broad main stage with Greek IF ×1 and math cut 2, then a mixed Greek finishing stage with explicit IF and math retention, one epoch, no simultaneous optimizer changes | adopted as the candidate for R4 once R3_pass/R3_passB are read. |
+
+## 8. Pass runs trained (09:05) and the budget cut
+
+| run | wall | train loss | personality-v3 holdout dev loss after the pass | note |
+|---|---|---:|---:|---|
+| R3_pass (arm B's pass + suite ×2 + correcting ×2 on R3) | 1:42 | 0.761 | 1.611 | dev = R2_idB's dev file |
+| R3_passB (arm B's exact pass on R3) | 1:14 | 0.913 | 1.618 | control |
+| arm B (the same pass on stage 1) | 1:13 | — | 1.603 | reference |
+| R3 before any pass | — | 0.941 | 1.534 | the pass RAISES the holdout loss, as it did for arm B (×4 for two epochs overfits the training rows) |
+
+Ledger after the two trainings: 55.95 nh, CHF 150.51 of 160. The two evaluation chains as queued (native + GreekMMLU + retention + ILSP + dev + interview round 1, ≈3.6 nh each) would end at ≈ CHF 170. Decision 09:10 (cap-preserving, my call): GreekMMLU, retention and the native suite were flat between R3 and arm B, so they are dropped from the pass read-outs; the chains keep Greek IFEval + MGSM, the dev gate and reading/identity sets, and interview round 1. ev_R3_pass had already started (native runs first), so it is cancelled once its ILSP, dev and interview-round-1 outputs exist; ev_R3_passB was trimmed before starting. Then one vLLM window (≈0.5 nh) for the four Greek benchmarks and the hostile picky-user run on both pass checkpoints (Sol ≈ 4% per run; bucket 87%). Projected end ≈ CHF 158.
+
+**Four Greek benchmarks for the pass checkpoints (09:15, greedy, same protocol):**
+
+| model | MATH-500-el | truncated / loops (el) | unboxed (el) | median words (el) | MATH-500-en | IFBench-el prompt strict |
+|---|---:|---:|---:|---:|---:|---:|
+| stage 1 | 12.8 | 60 / 23 | 49 | 85 | 16.4 | 9.0 |
+| R3 | 8.0 | 96 / 35 | 343 | 35 | 18.0 | 9.3 |
+| arm B | 7.6 | 29 / 7 | 68 | 86 | 15.8 | 9.3 |
+| R3_pass (pass + dialogue sets) | 10.0 | 75 / 31 | 304 | 42 | 15.8 | 9.3 |
+| R3_passB (exact historical pass) | 11.2 | 75 / 40 | 290 | 44 | 13.6 | 8.7 |
+
+Read: the pass recovers part of the Greek math accuracy (8.0 → 10–11) but NOT the format or the loops: the answer-line style and the 42-word answers learned from the math set persist through a 2-epoch Greek pass (unboxed 290–304, loops 31–40), whereas arm B, which never saw the math set, loops on 7. So the math set's habits are sticky; cut 2 must replace them, a pass does not. English math drops with the pass (18.0 → 15.8 / 13.6), as it did for arm B. IFBench-el unchanged.
+
+**Hostile picky-user runs on the pass checkpoints (09:35; 60 dialogues each, same protocol; Sol bucket now 90%):**
+
+| metric (mixed profile, same simulator) | arm B R1 (120) | R3 | R3_pass | R3_passB |
+|---|---:|---:|---:|---:|
+| tail copied | 5.8% | 9.2% | 8.3% | 7.1% |
+| stale after a redirect | 74.2% | 67.0% | 62.9% | 68.9% |
+| dead dialogues | 8.3% | 6.7% | 3.3% | 5.0% |
+| requests honoured | 45.2% | 59.7% | 68.7% | 65.4% |
+| coherent turns | 78.6% | 85.9% | 89.9% | 88.7% |
+| tone fine | 76% | 89% | 90% | 85% |
+| stop instructions honoured | 100% | 90.0% | 91.7% | 100% |
+| **premise questioned, 0–2** | **0.90** | 0.40 | 0.42 | 0.65 |
+
+Read (corrected baseline): the Greek pass on R3 improves the dialogue metrics further and restores stop-instruction handling (R3_passB 100%); tail copying stays above arm B's 5.8%. Premise checking does NOT come back: even arm B's exact pass on R3 reaches 0.65 against 0.90 when the same pass ran on stage 1. So the premise regression lives in R3's single-stage base, not in the schedule, and the pass WITH the dialogue sets (0.42) is worse than without (0.65): the suite and correcting set push toward accepting what the user says. H1 is answered for premises: no. Candidate source: the compliance prior of the Greek IF set (30k rows of exact compliance with authored requests) plus the dialogue sets' acknowledgement register. Next check: read the premise turns.
+
+**Light evals of the pass checkpoints (13 Sept 01:20; the chains completed overnight; ledger CHF 156.9 of 160):**
+
+| model | Greek IFEval strict prompt / inst / avg | Greek MGSM | gate stop / lang / single |
+|---|---:|---:|---:|
+| stage 1 | 54.2 / 65.7 / 59.9 | 0.468 | 0.86 / 0.94 / 0.86 |
+| R3 | 62.8 / 72.8 / 67.8 | 0.488 | 0.86 / 0.94 / 0.86 |
+| arm B | 58.6 / 68.8 / 63.7 | 0.524 | 0.90 / 0.94 / 0.90 |
+| R3_pass (pass + dialogue sets) | **67.1 / 76.0 / 71.6** | 0.484 | 0.88 / 0.92 / 0.88 |
+| R3_passB (exact historical pass) | 63.6 / 73.4 / 68.5 | **0.532** | 0.88 / 0.94 / 0.88 |
+
+Read: the pass did not cost the IF gain; with the suite and correcting set inside it, Greek IFEval rose again (71.6, the best so far), so the suite's constraint-following rows reinforce IF. The exact historical pass restores easy Greek math (MGSM 0.532, arm B's level) while the augmented pass does not (0.484). Interview rounds 2–3 and scoring for both pass checkpoints are running (Mac + one debug window, ≈0.7 nh, projected ledger ≈ CHF 158.8).
+
+## 9. Night work, 13 Sept (owner asleep; no cluster or Sol spend)
+
+**Interview scorer blindness (H6, behaviour review Q3):** evals/interviews/score.py is position-blind and is told no run, model, arm or display position (its prompt says so explicitly). Interview means stand as blind scores; the adaptive-follow-up caveat remains.
+
+**Premise handling on the premise-type moves only** (absurd_premise, impossible_self, nonword, false_claim; judge score 0–2; small n):
+
+| run | premise turns | mean | false_claim mean (n) | absurd (n) | impossible_self (n) | nonword (n) |
+|---|---:|---:|---:|---:|---:|---:|
+| arm B R1 (120 dialogues) | 42 | 1.17 | 1.23 (22) | 1.33 (9) | 1.14 (7) | 0.50 (4) |
+| R3 | 15 | 0.80 | 0.78 (9) | 1.00 (2) | 1.50 (2) | 0.00 (2) |
+| R3_pass (with the dialogue sets) | 23 | 0.83 | 0.86 (14) | 0.75 (4) | 0.67 (3) | 1.00 (2) |
+| R3_passB (exact historical pass) | 20 | 1.00 | **1.33 (9)** | 0.80 (5) | 1.00 (3) | 0.33 (3) |
+
+The summary-level premise scores quoted earlier (0.90 / 0.40 / 0.42 / 0.65) use a broader denominator; on the premise moves themselves the gap is 1.17 vs 0.80, real but on 15–42 turns. The decisive cell is false_claim: the exact historical pass restores it to arm B's level (1.33), the pass WITH the correcting set and suite does not (0.86). R3's failure shape in the transcripts: «Σωστά, το διορθώνω» / «Σωστό:» followed by the correct content anyway (self-contradiction), or full acceptance of a false fact («το παστίτσιο δεν έχει μπεσαμέλ»).
+
+**H10 — the correcting set is tilted 14:1 toward accepting corrections.** Its assembly stats (data/robustness/correcting/scale/rows/summary.json): 3,692 supervised turns, of which 114 accept a TRUE correction, 158 are recoveries after a planted failure (also acknowledgements), about 200 misquote confrontations, 2,755 ordinary ideal turns, 575 closings, and only **20 hold against a FALSE correction** (0.5%). The plant policy made false corrections rare, so the set teaches the acknowledgement register far more than the distinction the owner asked for. This matches the behaviour reviewer's first-row fix ("balanced true/false/partly-true corrections whose answers are independently checked"). Logged as DATA_TODO 58.
+
+**Correction (13 Sept 02:20) to the Level-5 statement:** cut 1 never SAMPLED Level 5: data/math/build_math.py sets MATH_LEVELS to Levels 1–4 by design, so the absence of Level 5 is a source-selection decision, not a filter effect. The blind-solve filter then dropped 18% of the sampled Levels 1–4 (rates by level in the execution log). Cut 2 therefore needs Level 5 added at source, plus the fidelity-based check instead of the solvability filter.
+
+## 10. Competition table after the langdetect rescoring (13 Sept 08:20; evals/ilsp/rescore_ifeval_langdetect.py, results/ifeval_el_rescored.json)
+
+The round-two and R3 ILSP runs already had langdetect on the cluster (their scores do not move); the round-one arms and the five peers were scored without it (their language:response_language instructions counted as failures). Like-for-like Greek IFEval strict average now:
+
+| model | strict avg (prompt / inst) | language-switch instructions passed (of 31) |
+|---|---:|---:|
+| Gemma-3-12B-it | 75.7 (72.1 / 79.4) | 26 |
+| Qwen3.5-9B (thinking off) | 73.1 (69.1 / 77.0) | 25 |
+| **R3_pass** | **71.6** (67.1 / 76.0) | 27 |
+| Llama-Krikri-8B-Instruct | 69.8 (64.7 / 74.8) | 21 |
+| R3_passB | 68.5 (63.6 / 73.4) | — |
+| R3 | 67.8 (62.8 / 72.8) | 23 |
+| arm B | 63.7 (58.6 / 68.8) | 26 |
+| Apertus-8B-Instruct | 59.2 (53.8 / 64.5) | — |
+| stage 1 | 59.9 | — |
+| Meltemi-7B-Instruct | 33.8 | — |
+
+Peers on the four new Greek benchmarks and the mixed-profile dialogues: running (results/peers_20260913).
+
+## 11. Interviews under one judge (Sol, 13 Sept 10:50; Opus scores from 12 Sept in brackets, backed up in results/<run>/interviews/opus_backup)
+
+| checkpoint | coherence | Greek identity | language | resists false correction | factuality |
+|---|---:|---:|---:|---:|---:|
+| stage 1 | 2.75 [2.40] | 3.27 [2.75] | 5.00 [4.75] | 2.58 [2.58] | 1.80 [2.02] |
+| R3 | 2.67 [2.25] | 3.55 [2.73] | 4.97 [4.80] | 2.80 [2.67] | 2.10 [2.02] |
+| arm B | 2.85 [2.62] | 3.50 [2.75] | 4.78 [4.58] | 2.83 [2.92] | 2.02 [2.15] |
+| R3_pass | **2.90** | 3.65 | 4.90 | **3.08** | 2.05 |
+| R3_passB | 2.88 | **3.70** | 4.95 | 2.75 | 2.05 |
+
+Read: Sol scores about 0.3 higher than Opus and compresses the gaps. Direction agrees on coherence (R3 below arm B, both passes above) and language (R3 and stage 1 above arm B); on resisting false corrections Sol sees R3 ≈ arm B (2.80 vs 2.83) where Opus saw a gap, and Sol puts R3_pass (with the correcting set inside) highest (3.08) while the picky-user false_claim turns put R3_passB highest. The interview and picky-user measures of correction handling disagree; the false_claim cell has n = 9–22 and the interviews are adaptive. Neither settles the correcting-set question alone: the reviewer of the results gets both.
+## 8. Step (b) so far: the competition on the four new Greek benchmarks (13 Sept 11:00; greedy, same runner; XSTest/MultiChallenge Sol-judged numbers follow)
+
+| model | MATH-500-el | MATH-500 en | IFBench-el prompt strict | IFBench en | Greek IFEval strict avg (rescored) | Greek MGSM |
+|---|---:|---:|---:|---:|---:|---:|
+| Qwen3.5-9B (thinking off) | **78.8** | 81.6 | 8.3 | 23.3 | 73.1 | 0.876 |
+| Llama-Krikri-8B-Instruct | **32.2** | 31.2 | 8.7 | 19.7 | 69.8 | 0.676 |
+| Apertus-8B-Instruct | 12.2 | 1.8 (extraction to check) | 7.7 | 15.3 | 59.2 | 0.532 |
+| Meltemi-7B-Instruct | 8.4 | 8.8 | 6.0 | 12.7 | 33.8 | 0.208 |
+| stage 1 (ours, no Greek sets) | 12.8 | 16.4 | 9.0 | 16.3 | 59.9 | 0.468 |
+| R3 | 8.0 | 18.0 | 9.3 | 17.0 | 67.8 | 0.488 |
+| R3_pass | 10.0 | 15.8 | 9.3 | 18.0 | 71.6 | 0.484 |
+| R3_passB | 11.2 | 13.6 | 8.7 | 15.3 | 68.5 | 0.532 |
+| arm B | 7.6 | 15.8 | 9.3 | 15.3 | 63.7 | 0.524 |
+| Gemma-3-12B | pending | | | | 75.7 | 0.908 |
+
+Read: **math is the gap.** Krikri solves 32% of MATH-500-el and 68% of MGSM-el to our 8–13% and 0.49–0.53; Qwen is in another class. Instruction following is where we already lead Krikri (71.6 vs 69.8). Dialogue and safety comparisons wait for the Sol-judged sets and the mixed-profile picky-user runs of the peers.
+
+## 9. Benchmark validity finding: IFBench-el (13 Sept 11:05)
