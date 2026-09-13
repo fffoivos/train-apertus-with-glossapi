@@ -1,0 +1,3 @@
+set -u; cd ~/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments; LOG=results/R3_single/score_old_sol.log
+one(){ L=$1; mkdir -p results/$L/interviews/opus_backup; cp -n results/$L/interviews/scores.json results/$L/interviews/opus_backup/ 2>/dev/null; rm -f results/$L/interviews/scores.json; (cd evals && SCORER=sol ../cluster/nsft_python.sh interviews/score.py --run $L --out-dir ../results/$L/interviews) > results/$L/interviews/score_sol.log 2>&1; echo "[$(date '+%m-%d %H:%M')] $L: $(tail -1 results/$L/interviews/score_sol.log | cut -c1-140)" | tee -a $LOG; }
+one R2_stage1_ep1 & one R3_single_ep1 & one R2_idB_ep2 & wait; echo "SCORE_OLD_DONE" | tee -a $LOG
