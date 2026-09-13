@@ -212,6 +212,8 @@ Peers on the four new Greek benchmarks and the mixed-profile dialogues: running 
 | R3_passB | 2.88 | **3.70** | 4.95 | 2.75 | 2.05 |
 
 Read: Sol scores about 0.3 higher than Opus and compresses the gaps. Direction agrees on coherence (R3 below arm B, both passes above) and language (R3 and stage 1 above arm B); on resisting false corrections Sol sees R3 ≈ arm B (2.80 vs 2.83) where Opus saw a gap, and Sol puts R3_pass (with the correcting set inside) highest (3.08) while the picky-user false_claim turns put R3_passB highest. The interview and picky-user measures of correction handling disagree; the false_claim cell has n = 9–22 and the interviews are adaptive. Neither settles the correcting-set question alone: the reviewer of the results gets both.
+
+
 ## 8. Step (b) so far: the competition on the four new Greek benchmarks (13 Sept 11:00; greedy, same runner; XSTest/MultiChallenge Sol-judged numbers follow)
 
 | model | MATH-500-el | MATH-500 en | IFBench-el prompt strict | IFBench en | Greek IFEval strict avg (rescored) | Greek MGSM |
@@ -229,4 +231,25 @@ Read: Sol scores about 0.3 higher than Opus and compresses the gaps. Direction a
 
 Read: **math is the gap.** Krikri solves 32% of MATH-500-el and 68% of MGSM-el to our 8–13% and 0.49–0.53; Qwen is in another class. Instruction following is where we already lead Krikri (71.6 vs 69.8). Dialogue and safety comparisons wait for the Sol-judged sets and the mixed-profile picky-user runs of the peers.
 
+
 ## 9. Benchmark validity finding: IFBench-el (13 Sept 11:05)
+
+Pooled over four models (Qwen, Krikri, R3, arm B), per constraint family, Greek vs English pass rate: count 10.8 vs 17.7%, format 18.4 vs 29.1%, ratio 10.2 vs 27.8%, sentence 3.6 vs 8.9%, **words 3.8 vs 20.3%**, **custom 0.0 vs 0.0%** (n=44), **repeat 0.0 vs 0.0%** (n=36). Two families score zero for every model in both languages, including Qwen, and the words family collapses in Greek only. Only 48 of 300 Greek items are ever passed by any model (97 in English). Audit 11:20: the `custom` checkers PASS hand-built answers (multiples, character reversal), so their 0% is genuine model failure on idiosyncratic tasks; the `repeat` family is only 9 rows (1 with empty kwargs) and excluding it moves every model by ≤0.3 points (Greek 6.2–9.6% for all nine models, English 13–24%). What remains unexplained is the Greek-vs-English gap on the `words` family (3.8 vs 20.3%) for every model including Qwen (Greek IFEval 73%): the Greek word-level checkers need a hand-built-answer audit before IFBench-el is used to rank models (DATA_TODO 59). Apertus-Instruct's 1.8% on English MATH-500 is an extraction artefact (it writes «The final answer is: $9$» with no \\boxed; 43/500 boxed) — the English variant is a diagnostic, not a ranking.
+
+**Dialogue and judged benchmarks, peers vs ours (13 Sept 11:25; mixed-profile picky-user, 60 dialogues, Sol user + judge; XSTest-el and MultiChallenge-el Sol-judged; Gemma pending):**
+
+| model | coherent | requests honoured | stale after redirect | tail copied | dead dialogues | stops honoured | premise 0–2 | tone fine | mean words | MultiChallenge-el (Sol) | XSTest-el safe complied / adequate; unsafe refused (Sol) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| Krikri-8B | **95.4%** | **73.9%** | 59.8% | **0.7%** | **0%** | 100% | 0.21 | 95% | 67 | 16.4% | 88.4 / 70.8; 93.0 |
+| Qwen3.5-9B | 99.5% | 14.2% | 34.9% | 0.2% | 0.0% | 13.3% | 0.85 | 100% | 174 | **24.8%** | 93.6 / 71.6; 89.5 |
+| Apertus-8B-Instruct | 79.1% | 49.8% | 50.5% | 14.5% | 11.7% | 95.2% | 0.71 | 90% | 82 | 11.1% | 86.4 / 69.6; 88.0 |
+| Meltemi-7B | 75.9% | 49.2% | 52.3% | 13.4% | 6.7% | 57.6% | 0.60 | 91% | 79 | 11.8% | 89.2 / 60.8; 86.5 |
+| arm B (R1, n=120) | 78.6% | 45.2% | 74.2% | 5.8% | 8.3% | 100% | **0.90** | 76% | 33 | 18.7% | 93.2 / 77.2; 89.0 |
+| R3 | 85.9% | 59.7% | 67.0% | 9.2% | 6.7% | 90.0% | 0.40 | 89% | 26 | 16.0% | 92.8 / 76.4; 88.0 |
+| R3_pass | 89.9% | 68.7% | 62.9% | 8.3% | 3.3% | 91.7% | 0.42 | 90% | 30 | — | — |
+| R3_passB | 88.7% | 65.4% | 68.9% | 7.1% | 5.0% | 100% | 0.65 | 85% | 32 | — | — |
+
+Read: Krikri is the dialogue reference for an 8B: no tail copies, no dead dialogues, 95% coherent, and it answers at twice our length (67 words vs 26–32). Our passes are close on coherence and honouring and ahead of Apertus-Instruct and Meltemi everywhere. Premise questioning is low for every peer too (Krikri 0.21); arm B's 0.90 is the outlier, so "premise regression" is relative to arm B, not to the field. Staleness after a redirect is worse for us than for all three peers (63–69% vs 51–60%). MultiChallenge-el: Qwen 24.8, arm B 18.7, Krikri 16.4, R3 16.0 — within noise for the three 8Bs.
+
+
+NOTE: Gemma-3-12B's four-benchmark and dialogue numbers arrive after this review (window running); treat Gemma as the 12B ceiling from its IFEval-el 75.7 / MGSM 0.908 only.
