@@ -1,0 +1,25 @@
+# ILSP lighteval protocol (greek_evals.py: belebele:el): Greek cue words, letter choices Α/Β/Γ/Δ, 5 sequential shots from the test split.
+# Known deviation: lighteval scores the test continuation as "Α" with no leading space (shots use " Α"); the harness uses " Α" for both.
+tag:
+  - krikri_suite_el
+task: belebele_el_5shot
+dataset_path: facebook/belebele
+dataset_name: ell_Grek
+output_type: multiple_choice
+test_split: test
+fewshot_split: test
+fewshot_config:
+  sampler: first_n
+num_fewshot: 5
+doc_to_text: "Απόσπασμα: {{flores_passage}}\n\nΕρώτηση:\n{{question}}\n\nΑ: {{mc_answer1}}\nΒ: {{mc_answer2}}\nΓ: {{mc_answer3}}\nΔ: {{mc_answer4}}\n\nΑπάντηση:"
+doc_to_choice: ["Α", "Β", "Γ", "Δ"]
+doc_to_target: "{{['1', '2', '3', '4'].index(correct_answer_num)}}"
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 2.0

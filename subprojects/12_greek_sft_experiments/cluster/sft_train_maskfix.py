@@ -475,9 +475,7 @@ def resolved_plan(config: dict[str, Any], data: ValidatedData, control_ids: dict
         "packing": True,
         "packing_strategy": "bfd",
         "padding_free": True,
-        "assistant_only_loss": not bool(config.get("pretokenized_masks", False)),
-        "pretokenized_masks": bool(config.get("pretokenized_masks", False)),
-        "labels_from": "tokenize_messages (validator path, handed to TRL as assistant_masks)" if config.get("pretokenized_masks", False) else "TRL assistant_only_loss on raw messages",
+        "assistant_only_loss": True,
         "per_device_train_batch_size": micro,
         "gradient_accumulation_steps": accumulation,
         "world_size": world_size,
@@ -576,10 +574,10 @@ class EpochNamedSFTTrainer(SFTTrainer):
 
 
 def _dataset(rows: list[dict[str, Any]], tokenizer=None) -> Dataset:
-    """Opt-in pre-tokenized dataset (config pretokenized_masks: true; 15 Sept 2026). The raw-message path lets TRL rebuild the assistant mask from the
-    template's generation markers, which (a) ignores the per-message train=false flag and (b) leaves the trailing byte-level tokens of a multi-byte
-    character (emoji) unsupervised. Handing TRL input_ids + assistant_masks from tokenize_messages (the validator path) makes the collator's labels
-    exactly the validator's; verified on the cluster with the real SFTTrainer (results/R4_full/trl_labels_inspection*.txt)."""
+    """Pre-tokenized dataset (fix of 15 Sept 2026): TRL's assistant_only_loss supervises every generation span of the template, so raw messages
+    would ignore the per-message train=false flag. Handing TRL input_ids + assistant_masks built by tokenize_messages (which honours the flag)
+    makes the collator set -100 exactly where the validator promised. Requires TRL to accept pre-tokenized rows with an assistant_masks column
+    (verified by a short real run before use)."""
     if tokenizer is None:
         return Dataset.from_list([{"messages": row["messages"], "config": row.get("config", "all")} for row in rows])
     out = []
@@ -632,7 +630,7 @@ def _sft_kwargs(config: dict[str, Any]) -> dict[str, Any]:
         "packing_strategy": "bfd",
         "padding_free": False,  # BFD makes this true inside TRL.
         "eval_packing": False,
-        "assistant_only_loss": not bool(config.get("pretokenized_masks", False)),   # pretokenized rows carry assistant_masks (TRL folds them into labels); assistant_only_loss is only for conversational datasets
+        "assistant_only_loss": not bool(config.get("pretokenized_masks", False)),   # pretokenized rows carry assistant_masks; TRL folds them into labels (assistant_only_loss is only for conversational datasets)
         "completion_only_loss": False,
         "shuffle_dataset": True,
         "eval_strategy": "epoch",

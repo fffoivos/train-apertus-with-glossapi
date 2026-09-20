@@ -1,0 +1,5 @@
+"dataset_name": "moral_scenarios"
+"description": "Οι ακόλουθες ερωτήσεις πολλαπλής επιλογής (που παρουσιάζονται μαζί με της απαντήσεις τους) έχουν να κάνουν με ηθικά σενάρια.\n\n"
+"tag": "mmlu_el_tasks"
+"include": "_default_template_yaml"
+"task": "mmlu_el_moral_scenarios"

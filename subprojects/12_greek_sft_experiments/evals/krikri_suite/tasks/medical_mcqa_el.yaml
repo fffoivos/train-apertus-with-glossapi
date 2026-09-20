@@ -1,0 +1,25 @@
+# ILSP lighteval protocol (LeonVouk/lighteval community_tasks/greek_evals.py: medicalmcqa): evaluation split = train (1,602 rows), 15 sequential shots
+# from validation, the options listed under "Επιλογές:", full-text lettered choices scored by likelihood (their metrics: acc and a no-space acc_norm)
+tag:
+  - krikri_suite_el
+task: medical_mcqa_el
+dataset_path: ilsp/medical_mcqa_greek
+dataset_name: null
+output_type: multiple_choice
+test_split: train
+fewshot_split: validation
+fewshot_config:
+  sampler: first_n
+num_fewshot: 15
+doc_to_text: "Ερώτηση: {{inputs}}\n\nΕπιλογές:\n{{multiple_choice_targets | join('\n')}}\n\nΑπάντηση:"
+doc_to_target: "{{multiple_choice_scores.index(1.0) if 1.0 in multiple_choice_scores else multiple_choice_scores.index(max(multiple_choice_scores))}}"
+doc_to_choice: "{{multiple_choice_targets}}"
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 2.0

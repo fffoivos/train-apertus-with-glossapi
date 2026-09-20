@@ -1,0 +1,41 @@
+# EXTENSION ARM. Identical to arm 05 (lr 2e-6, alpha 0.25, seed 42, constant_with_warmup,
+# warmup_steps 2) except num_train_epochs 3 -> 5 and save_total_limit 3 -> 5.
+# Run FRESH, not resumed: with a constant schedule and a fixed seed the first 129 steps are
+# identical to arm05, so epoch 3 of this arm should REPRODUCE arm05_ep3. That is the replication
+# we do not otherwise have - 21 checkpoints and no repeats - and the alpha ranking currently sits
+# at about the seed noise floor, so it is not readable without one.
+# DPO01: one full-parameter, one-epoch sigmoid DPO run against the frozen SFT parent G4F6P1.
+# Plan: docs/RLHF_COORDINATION/DPO01_EXECUTION_PLAN_20260918.md §5. Data: data/rlhf/dpo01/ (round 1 and the maths task excluded).
+run_name: G4F6P1--DPO01--07
+arm: DPO01
+model_name_or_path: /iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R4_full_ep1
+tokenizer_name_or_path: /iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R4_full_ep1
+template_source: swiss-ai/Apertus-8B-Instruct-2509
+train_file: data/rlhf/dpo01/train.jsonl
+dev_file: data/rlhf/dpo01/dev.jsonl
+output_dir: runs/G4F6P1--DPO01--07
+# objective
+beta: 0.1
+label_smoothing: 0.0
+learning_rate: 2.0e-6
+num_train_epochs: 5
+lr_scheduler_type: constant_with_warmup
+warmup_steps: 2
+weight_decay: 0.0
+adam_beta1: 0.9
+adam_beta2: 0.99
+adam_epsilon: 1.0e-8
+max_grad_norm: 1.0
+seed: 42
+# layout: 4 GPUs x 1 pair x accumulation 2 = 8 pairs per optimizer update
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 2
+planned_world_size: 4
+max_length: 4096
+fp32_master_weights: true
+precompute_ref_log_probs: false   # TRL 1.12 precompute writes per-rank arrow caches and reloads them across ranks; plan §6 fallback: a live frozen reference
+attn_implementation: sdpa
+require_apertus_control_ids: true
+save_strategy: epoch
+save_total_limit: 5
+chosen_nll_alpha: 0.25

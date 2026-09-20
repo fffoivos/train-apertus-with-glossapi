@@ -1,0 +1,9 @@
+group: mmlu_el
+task:
+  - mmlu_el_tasks
+aggregate_metric_list:
+  - metric: acc
+    aggregation: mean
+    weight_by_size: true
+metadata:
+  version: 1.0

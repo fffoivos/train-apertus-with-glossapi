@@ -1,0 +1,36 @@
+run_name: R4_full_lr1e-5_1ep_cos
+arm: R4_full
+model_name_or_path: fffoivos/apertus-8b-greek-cpt
+tokenizer_name_or_path: fffoivos/apertus-8b-greek-cpt
+revision: 18-avg-uniform5-tokens30B-50B
+template_source: swiss-ai/Apertus-8B-Instruct-2509
+train_file: data/arms/R4_full/train.jsonl
+eval_file: data/arms/R4_full/dev.jsonl
+expected_train_tokens: null
+learning_rate: 1.0e-5
+num_train_epochs: 1
+lr_scheduler_type: cosine_with_min_lr
+warmup_ratio: 0.03
+weight_decay: 0.0
+adam_beta2: 0.99
+max_grad_norm: 1.0
+max_length: 4096
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 4
+planned_world_size: 4
+seed: 42
+bf16: true
+attn_implementation: kernels-community/vllm-flash-attn3
+require_apertus_control_ids: true
+extend_control_tokens: false
+optim: adamw_torch_fused
+dataloader_num_workers: 4
+
+
+min_lr_rate: 0.1
+
+expected_train_rows: 379698
+save_steps: 750
+save_total_limit: 2
+pretokenized_masks: true   # labels from tokenize_messages (validator path) handed to TRL as input_ids + assistant_masks

@@ -1,0 +1,7 @@
+# ILSP card protocol (extended_eval_greek_tasks.txt runs community|mmlu_el:all|5): the "all" config, header from each question's own subject, the 5 shots =
+# the first five rows of the "all" dev split (sequential, seed 0). The per-subject group mmlu_el (57 tasks, subject-matched shots) is the optional standard protocol.
+"dataset_name": "all"
+"description": "Οι ακόλουθες ερωτήσεις πολλαπλής επιλογής (που παρουσιάζονται μαζί με της απαντήσεις τους) έχουν να κάνουν με {{subject.replace('_', ' ')}}.\n\n"
+"tag": "krikri_suite_el"
+"include": "_default_template_yaml"
+"task": "mmlu_el_all"

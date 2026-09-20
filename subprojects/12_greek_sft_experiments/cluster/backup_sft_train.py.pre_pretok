@@ -475,9 +475,7 @@ def resolved_plan(config: dict[str, Any], data: ValidatedData, control_ids: dict
         "packing": True,
         "packing_strategy": "bfd",
         "padding_free": True,
-        "assistant_only_loss": not bool(config.get("pretokenized_masks", False)),
-        "pretokenized_masks": bool(config.get("pretokenized_masks", False)),
-        "labels_from": "tokenize_messages (validator path, handed to TRL as assistant_masks)" if config.get("pretokenized_masks", False) else "TRL assistant_only_loss on raw messages",
+        "assistant_only_loss": True,
         "per_device_train_batch_size": micro,
         "gradient_accumulation_steps": accumulation,
         "world_size": world_size,
@@ -575,26 +573,8 @@ class EpochNamedSFTTrainer(SFTTrainer):
         self.accelerator.wait_for_everyone()
 
 
-def _dataset(rows: list[dict[str, Any]], tokenizer=None) -> Dataset:
-    """Opt-in pre-tokenized dataset (config pretokenized_masks: true; 15 Sept 2026). The raw-message path lets TRL rebuild the assistant mask from the
-    template's generation markers, which (a) ignores the per-message train=false flag and (b) leaves the trailing byte-level tokens of a multi-byte
-    character (emoji) unsupervised. Handing TRL input_ids + assistant_masks from tokenize_messages (the validator path) makes the collator's labels
-    exactly the validator's; verified on the cluster with the real SFTTrainer (results/R4_full/trl_labels_inspection*.txt)."""
-    if tokenizer is None:
-        return Dataset.from_list([{"messages": row["messages"], "config": row.get("config", "all")} for row in rows])
-    out = []
-    for row in rows:
-        t = tokenize_messages(tokenizer, row["messages"])
-        out.append({"input_ids": t["input_ids"], "assistant_masks": t["assistant_masks"], "config": row.get("config", "all")})
-    return Dataset.from_list(out)
-
-
-def _eval_datasets_pretok(rows: list[dict[str, Any]], tokenizer) -> dict[str, Dataset]:
-    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    for row in rows:
-        t = tokenize_messages(tokenizer, row["messages"])
-        grouped[str(row.get("config", "all"))].append({"input_ids": t["input_ids"], "assistant_masks": t["assistant_masks"]})
-    return {name: Dataset.from_list(values) for name, values in sorted(grouped.items())}
+def _dataset(rows: list[dict[str, Any]]) -> Dataset:
+    return Dataset.from_list([{"messages": row["messages"], "config": row.get("config", "all")} for row in rows])
 
 
 def _eval_datasets(rows: list[dict[str, Any]]) -> dict[str, Dataset]:
@@ -632,7 +612,7 @@ def _sft_kwargs(config: dict[str, Any]) -> dict[str, Any]:
         "packing_strategy": "bfd",
         "padding_free": False,  # BFD makes this true inside TRL.
         "eval_packing": False,
-        "assistant_only_loss": not bool(config.get("pretokenized_masks", False)),   # pretokenized rows carry assistant_masks (TRL folds them into labels); assistant_only_loss is only for conversational datasets
+        "assistant_only_loss": True,
         "completion_only_loss": False,
         "shuffle_dataset": True,
         "eval_strategy": "epoch",
@@ -780,8 +760,8 @@ def run(config: dict[str, Any], data: ValidatedData, tokenizer) -> None:
         trainer = EpochNamedSFTTrainer(
             model=model,
             args=training_args,
-            train_dataset=_dataset(data.train_rows, tokenizer if config.get("pretokenized_masks", False) else None),
-            eval_dataset=(_eval_datasets_pretok(data.eval_rows, tokenizer) if config.get("pretokenized_masks", False) else _eval_datasets(data.eval_rows)),
+            train_dataset=_dataset(data.train_rows),
+            eval_dataset=_eval_datasets(data.eval_rows),
             processing_class=tokenizer,
             callbacks=[HeartbeatCallback(heartbeat)],
         )

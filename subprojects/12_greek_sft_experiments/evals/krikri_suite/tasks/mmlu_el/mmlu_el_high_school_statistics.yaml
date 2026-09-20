@@ -1,0 +1,5 @@
+"dataset_name": "high_school_statistics"
+"description": "Οι ακόλουθες ερωτήσεις πολλαπλής επιλογής (που παρουσιάζονται μαζί με της απαντήσεις τους) έχουν να κάνουν με στατιστική λυκείου.\n\n"
+"tag": "mmlu_el_tasks"
+"include": "_default_template_yaml"
+"task": "mmlu_el_high_school_statistics"
