@@ -482,11 +482,11 @@ STANDALONE = """<!doctype html>
 <meta name="description" content="Why the DPO01 page was wrong, the corrected result, and the nine hypotheses that died on the way.">
 <style>:root{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head><body>
-%s
+@@BODY@@
 </body></html>
 """
 
 out = pathlib.Path(sys.argv[1])
-html = (STANDALONE % body) if '--standalone' in sys.argv else body
+html = STANDALONE.replace('@@BODY@@', body) if '--standalone' in sys.argv else body
 out.write_text(html)
 print("wrote %s  %d chars%s" % (out, len(html), " (standalone)" if '--standalone' in sys.argv else " (artifact body)"))
