@@ -1,0 +1,149 @@
+{
+ "protocol": "official_label",
+ "parent_acc": 0.6941438191438192,
+ "n": 16632,
+ "dataset_sha": "18e9ac12b1ecc6a02ef94ecbc5117bcf7ab60d498fc752a775892253b5fd5f59",
+ "arms": {
+  "arm01_ep3": {
+   "full": {
+    "n": 16632,
+    "acc_a": 0.6941438191438192,
+    "acc_b": 0.68999518999519,
+    "gained": 131,
+    "lost": 200,
+    "net": -69,
+    "delta_pp": -0.4148629148629149,
+    "p_mcnemar": 0.00017682609071657305,
+    "moving": 331
+   },
+   "heldout": {
+    "n": 16382,
+    "acc_a": 0.6938102795751434,
+    "acc_b": 0.6898425100720302,
+    "gained": 130,
+    "lost": 195,
+    "net": -65,
+    "delta_pp": -0.3967769503113173,
+    "p_mcnemar": 0.0003697359294150818,
+    "moving": 325
+   },
+   "clean": {
+    "n": 16159,
+    "acc_a": 0.693050312519339,
+    "acc_b": 0.6888421313200074,
+    "gained": 128,
+    "lost": 196,
+    "net": -68,
+    "delta_pp": -0.4208181199331642,
+    "p_mcnemar": 0.00018792211597634293,
+    "moving": 324
+   },
+   "slice250": {
+    "n": 250,
+    "acc_a": 0.716,
+    "acc_b": 0.7,
+    "gained": 1,
+    "lost": 5,
+    "net": -4,
+    "delta_pp": -1.6,
+    "p_mcnemar": 0.21875,
+    "moving": 6
+   },
+   "model_path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_arm01_ep3"
+  },
+  "arm05_ep3": {
+   "full": {
+    "n": 16632,
+    "acc_a": 0.6941438191438192,
+    "acc_b": 0.6898148148148148,
+    "gained": 114,
+    "lost": 186,
+    "net": -72,
+    "delta_pp": -0.4329004329004329,
+    "p_mcnemar": 3.829114668706268e-05,
+    "moving": 300
+   },
+   "heldout": {
+    "n": 16382,
+    "acc_a": 0.6938102795751434,
+    "acc_b": 0.6897204248565498,
+    "gained": 113,
+    "lost": 180,
+    "net": -67,
+    "delta_pp": -0.40898547185935785,
+    "p_mcnemar": 0.00010827710003155573,
+    "moving": 293
+   },
+   "clean": {
+    "n": 16159,
+    "acc_a": 0.693050312519339,
+    "acc_b": 0.6886564762670957,
+    "gained": 111,
+    "lost": 182,
+    "net": -71,
+    "delta_pp": -0.43938362522433316,
+    "p_mcnemar": 3.9889346640202935e-05,
+    "moving": 293
+   },
+   "slice250": {
+    "n": 250,
+    "acc_a": 0.716,
+    "acc_b": 0.696,
+    "gained": 1,
+    "lost": 6,
+    "net": -5,
+    "delta_pp": -2.0,
+    "p_mcnemar": 0.125,
+    "moving": 7
+   },
+   "model_path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_arm05_ep3"
+  },
+  "armIPO42_ep3": {
+   "full": {
+    "n": 16632,
+    "acc_a": 0.6941438191438192,
+    "acc_b": 0.6915584415584416,
+    "gained": 98,
+    "lost": 141,
+    "net": -43,
+    "delta_pp": -0.2585377585377585,
+    "p_mcnemar": 0.006471864090315632,
+    "moving": 239
+   },
+   "heldout": {
+    "n": 16382,
+    "acc_a": 0.6938102795751434,
+    "acc_b": 0.6914906604810157,
+    "gained": 97,
+    "lost": 135,
+    "net": -38,
+    "delta_pp": -0.23196190941277012,
+    "p_mcnemar": 0.014954377249588743,
+    "moving": 232
+   },
+   "clean": {
+    "n": 16159,
+    "acc_a": 0.693050312519339,
+    "acc_b": 0.6903273717433009,
+    "gained": 95,
+    "lost": 139,
+    "net": -44,
+    "delta_pp": -0.27229407760381213,
+    "p_mcnemar": 0.004832530137656151,
+    "moving": 234
+   },
+   "slice250": {
+    "n": 250,
+    "acc_a": 0.716,
+    "acc_b": 0.696,
+    "gained": 1,
+    "lost": 6,
+    "net": -5,
+    "delta_pp": -2.0,
+    "p_mcnemar": 0.125,
+    "moving": 7
+   },
+   "model_path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_armIPO42_ep3"
+  }
+ }
+}

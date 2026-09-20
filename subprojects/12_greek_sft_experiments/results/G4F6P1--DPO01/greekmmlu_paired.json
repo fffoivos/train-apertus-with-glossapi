@@ -1,0 +1,61 @@
+{
+ "alpha 0        n=5": {
+  "mean_acc": 0.5968,
+  "mean_gained": 9,
+  "mean_lost": 3.8,
+  "p_min": 0.14599609375,
+  "p_max": 0.266845703125,
+  "n_runs": 5
+ },
+ "alpha 0.25     n=5": {
+  "mean_acc": 0.5952,
+  "mean_gained": 9,
+  "mean_lost": 4.2,
+  "p_min": 0.266845703125,
+  "p_max": 0.3876953125,
+  "n_runs": 5
+ },
+ "length-balanced n=3": {
+  "mean_acc": 0.5933333333333333,
+  "mean_gained": 9,
+  "mean_lost": 4.666666666666667,
+  "p_min": 0.266845703125,
+  "p_max": 0.4239501953125,
+  "n_runs": 3
+ },
+ "IPO beta 10    n=2": {
+  "mean_acc": 0.596,
+  "mean_gained": 10,
+  "mean_lost": 5,
+  "p_min": 0.3017578125,
+  "p_max": 0.3017578125,
+  "n_runs": 2
+ },
+ "slice": {
+  "n": 250,
+  "always_right": 139,
+  "always_wrong": 96,
+  "moving": 15
+ },
+ "common_flips": {
+  "gained_ids": [
+   "greekmmlu:1302",
+   "greekmmlu:16010",
+   "greekmmlu:2326",
+   "greekmmlu:3208",
+   "greekmmlu:3928",
+   "greekmmlu:5854",
+   "greekmmlu:7707",
+   "greekmmlu:8021"
+  ],
+  "lost_ids": [
+   "greekmmlu:11861",
+   "greekmmlu:13865",
+   "greekmmlu:15498"
+  ],
+  "n_runs": 15,
+  "union_gained": 10,
+  "union_lost": 5,
+  "n_signatures": 5
+ }
+}

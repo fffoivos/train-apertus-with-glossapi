@@ -1,0 +1,218 @@
+{
+ "arm00_ep1": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm00_ep2": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm00_ep3": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm01_ep1": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm01_ep2": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm01_ep3": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm01_ep3_parentcfg": {
+  "generated": "2026-09-19",
+  "gmmlu": null
+ },
+ "arm01s43_ep1": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm01s43_ep2": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm01s43_ep3": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm01s44_ep3": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "arm01s45_ep3": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "arm01s46_ep3": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "arm02_ep1": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm02_ep2": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm02_ep3": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm03_ep1": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm03_ep2": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm03_ep3": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm04_ep1": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm04_ep2": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm04_ep3": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm05_ep1": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm05_ep2": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm05_ep3": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm05_ep3_parentcfg": {
+  "generated": "2026-09-19",
+  "gmmlu": null
+ },
+ "arm05s43_ep1": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm05s43_ep2": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm05s43_ep3": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm05s44_ep3": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "arm05s45_ep3": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "arm05s46_ep3": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "arm06_ep1": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm06_ep2": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm06_ep3": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "arm07_ep3": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "arm07_ep4": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "arm07_ep5": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "arm08_ep1": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "arm08_ep2": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "arm08_ep3": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "armBAL_ep1": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "armBAL_ep2": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "armBAL_ep3": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "armBALs43_ep3": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "armBALs44_ep3": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "armIPO42_ep1": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "armIPO42_ep2": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "armIPO42_ep3": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "armIPO43_ep1": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "armIPO43_ep2": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "armIPO43_ep3": {
+  "generated": "2026-09-19",
+  "gmmlu": "2026-09-19"
+ },
+ "parent": {
+  "generated": "2026-09-18",
+  "gmmlu": "2026-09-18"
+ },
+ "parent_ckptcfg": {
+  "generated": "2026-09-19",
+  "gmmlu": null
+ }
+}
