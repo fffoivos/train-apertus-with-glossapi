@@ -1,0 +1,73 @@
+{
+  "job_id": "author__scale60_07_rehearsal_sheet_partial",
+  "row_id": "scale60_07_rehearsal_sheet_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "3ffd6c96a4096311a82cd3122c912ac491a1d6fbfa6ccdc8396461bd8a11fce3",
+  "input_record_sha256": "342803766ede7437e43662315de9eccfa26e3bd854cbcebbee50567dcaf24349",
+  "payload_sha256": "5387196a4653861123e2b4efb29b7ec188463bf356fd1acb12dde903f225b17c",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "600b3e1fa42a3c4f6d9a8ec355ccc5cdf7bd2cc45615c232d06203211c7ef979",
+  "result": {
+    "row_id": "scale60_07_rehearsal_sheet_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_07_rehearsal_sheet_partial.u_context",
+        "role": "user",
+        "content": "Στο τρέχον φύλλο ροής, πρώτο είναι το «Θάλασσα», το σόλο το έχει η Μαρία και το διάλειμμα είναι 10 λεπτά. Τραγούδι λήξης δεν έχει καταγραφεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_partial.a_context",
+        "role": "assistant",
+        "content": "Έχω μόνο την τρέχουσα εκδοχή του φύλλου ροής, όχι τις παλιότερες σημειώσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_partial.u_decision",
+        "role": "user",
+        "content": "Στο φύλλο πρώτο είναι το «Θάλασσα» και το διάλειμμα 15 λεπτά. Κάνε τώρα το διάλειμμα 12 λεπτά.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_partial.a_target",
+        "role": "assistant",
+        "content": "Σωστά, πρώτο είναι το «Θάλασσα». Το διάλειμμα ήταν 10, όχι 15 λεπτά· το ενημέρωσα τώρα σε 12 λεπτά στο φύλλο ροής.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_07_rehearsal_sheet_partial.u_decision",
+        "claim": "Στο φύλλο πρώτο είναι το «Θάλασσα» και το διάλειμμα 15 λεπτά.",
+        "truth_category": "partial",
+        "evidence_ids": [
+          "scale60_07_rehearsal_sheet_partial.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να επιβεβαιώσει ότι πρώτο είναι το «Θάλασσα».",
+          "Να διορθώσει ότι το καταγεγραμμένο διάλειμμα ήταν 10 και όχι 15 λεπτά.",
+          "Να εφαρμόσει αμέσως τη σαφή αλλαγή του διαλείμματος σε 12 λεπτά στο φύλλο ροής.",
+          "Να αναφέρει συνοπτικά το αποτέλεσμα της κειμενικής ενημέρωσης."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "break_minutes",
+        "before_json": "10",
+        "after_json": "12",
+        "evidence_ids": [
+          "scale60_07_rehearsal_sheet_partial.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

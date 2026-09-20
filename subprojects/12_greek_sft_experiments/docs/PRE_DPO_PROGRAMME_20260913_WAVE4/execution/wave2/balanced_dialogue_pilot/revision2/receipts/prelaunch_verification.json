@@ -1,0 +1,19 @@
+{
+  "status": "PASS_PRELAUNCH_REVISION2",
+  "train_visible_user_evidence_contracts": 32,
+  "truth_counts_train": {
+    "true": 8,
+    "false": 8,
+    "partial": 8,
+    "unresolved": 8
+  },
+  "oracle_recomputations": 48,
+  "probe_semantic_repairs": 4,
+  "remaining_primary_calls": 43,
+  "prior_calls_preserved": 4,
+  "additional_runner_cap": 114,
+  "cumulative_cap": 118,
+  "family_leakage": false,
+  "final_content_exposed": false,
+  "launched": false
+}

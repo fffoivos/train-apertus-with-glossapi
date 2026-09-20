@@ -1,0 +1,23 @@
+{
+  "cornell_2016": {
+    "published": "2016-06-15",
+    "url": "https://news.cornell.edu/stories/2016/06/relax-itll-be-1500-years-aliens-contact-us",
+    "used_for": "Approximately 1500 years under the Solomonides-Terzian probabilistic Fermi-paradox/mediocrity model, with an explicit non-guarantee."
+  },
+  "duke_causality": {
+    "url": "https://www2.stat.duke.edu/courses/Fall18/sta210.001/slides/lectures/06_slr.html",
+    "used_for": "A statistical association does not establish causality without an appropriate design or adequate confounding control."
+  },
+  "duke_slr": {
+    "url": "https://www2.stat.duke.edu/courses/Fall18/sta210.001/slides/lectures/06_slr.html",
+    "used_for": "Simple-regression error variance, slope standard error, residual variance estimate, and distinction between mean and individual prediction uncertainty."
+  },
+  "islr_bias_variance": {
+    "url": "https://www.statlearning.com/s/ISLRSeventhPrinting.pdf",
+    "used_for": "Bias-variance tradeoff and out-of-sample test error; training fit alone does not establish generalization."
+  },
+  "nist_two_sample_t": {
+    "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda353.htm",
+    "used_for": "Unpaired two-sample statistic, Welch-Satterthwaite degrees of freedom, and one-sided critical region."
+  }
+}

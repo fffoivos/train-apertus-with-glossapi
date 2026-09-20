@@ -1,0 +1,56 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_1186",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Η λύση προέρχεται από την τελευταία αποθηκευμένη εγγραφή, αλλά η ιστορική σύνδεσή της με τη συγκεκριμένη εκδοχή του προβλήματος δεν είναι αποδεδειγμένη. Οι δύο παρεχόμενες ελληνικές εκδοχές είναι μαθηματικά ισοδύναμες και δεν δημιουργούν διαφορά στη λύση ή στο αποτέλεσμα.",
+      "verification_needed": [
+        "Επιβεβαίωση της αρχικής αντιστοίχισης λύσης και εκδοχής προβλήματος από τα αρχεία προέλευσης, εφόσον απαιτείται ιστορική ιχνηλασιμότητα."
+      ]
+    },
+    {
+      "row_id": "gsm_984",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "greek_language",
+          "severity": "minor",
+          "quote": "γεύματα για χορτοφάγους αυστηρής διατροφής",
+          "explanation": "Η απόδοση είναι δυσκίνητη και όχι φυσική στα ελληνικά. Παρότι το νόημα της αυστηρής χορτοφαγίας παραμένει κατανοητό και χρησιμοποιείται με συνέπεια, φυσικότερη διατύπωση είναι «αυστηρά χορτοφαγικά (βίγκαν) γεύματα» ή «γεύματα για αυστηρά χορτοφάγους».",
+          "suggested_action": "Να παραπεμφθεί για καθαρά γλωσσική διόρθωση της απόδοσης του «vegan», χωρίς αλλαγή των αριθμών, των κατηγοριών ή της μαθηματικής λύσης."
+        }
+      ],
+      "provenance_note": "Υπάρχει μία μόνο εγγραφή προβλήματος και δεν προκύπτει αβεβαιότητα αντιστοίχισης. Η αλλαγή του ονόματος Megan σε Μαρία είναι επιτρεπτή πολιτισμική προσαρμογή.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3148",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχει μία μόνο εγγραφή προβλήματος και δεν προκύπτει αβεβαιότητα αντιστοίχισης. Η αλλαγή του ονόματος Mike σε Μιχάλης είναι επιτρεπτή πολιτισμική προσαρμογή. Η λύση ακολουθεί την προβλεπόμενη παραδοχή του προβλήματος ότι κάθε μοτοσικλέτα έχει 2 λάστιχα και κάθε αυτοκίνητο 4.",
+      "verification_needed": []
+    }
+  ]
+}

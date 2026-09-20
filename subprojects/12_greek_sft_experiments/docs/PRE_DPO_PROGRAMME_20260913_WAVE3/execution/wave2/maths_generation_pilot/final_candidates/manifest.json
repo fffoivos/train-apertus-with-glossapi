@@ -1,0 +1,37 @@
+{
+  "status": "review_complete_not_promoted",
+  "date": "2026-09-13",
+  "counts": {
+    "candidate_rows": 32,
+    "new_or_rebuilt": 24,
+    "retained_controls": 8,
+    "accepted_outputs_scanned": 88,
+    "selected_c0_del_findings": 0,
+    "paired_high_xhigh": 8
+  },
+  "inputs": {
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/inputs.jsonl": "a138404a165fba063c2db0d27a4e8da8758ba57c11ecff63ebfe2ee49c261987",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/manifest.json": "f94812f0aa22cae38004887acb3fc0b4eb109562088d7378032a889136fdf363",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/adaptation_receipts_reused.jsonl": "106eca12ac1361160fec2ad3ba32fc484ce4385b804b3bc5a6583dd489fe9650",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/review/reused16/adjudications.jsonl": "d37ef3b5df547d345fadc3c95f899864121cf3e3ff2f20f6a3cbd1d8d5807552",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/review/fresh8_root/adjudications.jsonl": "854a523a5d98ddd68080ce914b4ce8369c6b580c6326459786a8a7eb46fca087",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/review/fresh8_root/source_repairs.jsonl": "3c598d29cbb7b36cda945498eb5f97fffa8ae382c263f878583115fce411ea01",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/review/fresh8_agent/adjudication.jsonl": "b7fbf9c38870d5584f02617bd458727c8d641076b4f8c89c80b5a348bd3a374b",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/review/fresh8_agent/source_repair_review.jsonl": "5d0be62827ff39f65af68913eb7993cd03d71279721bb4dc07de3ad893ecae3b",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/accepted_patchset/overlays.jsonl": "18e862faf97839e6a8b305b8103ccb2e1d8ac72b8cdb1c51a99f62deae5258ac",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/summary.json": "e09aad1d8ef87fc4351a5d8a033332ed08f4c5d1c089f1764ce6acb8b762ef7c"
+  },
+  "outputs": {
+    "candidate_rows.jsonl": "c8f4df767951ec958fce46b47f61f75544400a2020563747a4293b8fb357e332",
+    "control_character_scan.json": "ccdc48b8b0dabb71b5921305c0db935581b45f5fe6e830c53672ea8fef2d5981",
+    "usage_metrics.json": "93b314f1943e9e3d58b8aab798dae692cde6b68e7bf4ea11a5f16e048bffcf84",
+    "paired_high_xhigh.jsonl": "bd6e40ca62fb47b7953735c80dd7505d4db3786efd59d5805ed70354f7987d32",
+    "token_inventory.json": "25f39a9dd0bdadc13ed3b879388ac811f0c5ce37da31748a16861140fb049ae0",
+    "validation.json": "1cdb6a803ccffcdc7d23a27f96abf2a3255a9f724f1e8a16c79cff9039ebf1fb",
+    "REPORT.md": "20a114502882d301f562a7232e47d9c8c46ecafe80653338eac6bb40c4526e76",
+    "build_final_candidates.py": "e7917adfc12f1ce50dfdc019dad4909774aae9bdbeeea8ebb77149fb193dbc8f",
+    "measure_tokens.py": "de34a67078040ec0f88679e3d396e3b094c3e9b2edccfab5e6000c463f7f0bee",
+    "validate_package.py": "7b25ae66d1f0fdf2968e42df4abae5acccaa83204b951b6a225492de58e42e8d",
+    "build_manifest.py": "ae7093fa5906fbb888c9c9cf0aae2370842a75a9115a82a707a6d357c7585606"
+  }
+}

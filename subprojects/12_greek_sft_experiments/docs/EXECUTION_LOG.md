@@ -17,3 +17,27 @@
 - 2026-09-12 08:50 | RETENTION REPAIR: the frozen lm_eval env lacked three task source files (hellaswag/utils.py, winogrande/preprocess_winogrande.py, xcopa/utils.py; only .pyc present, and lm_eval imports task modules by source) → restored from the lm_eval 0.4.11 wheel; retention reruns queued sequentially (ret_R3b 3364775 → ret_Bb 3364776), the pass eval chains wait for them. Control run queued per the recipe review: R3_passB (train 3364769 → eval 3364770). Native suite macro R3 0.516 vs B 0.514; GreekMMLU clean 0.5612 vs 0.5609.
 - 2026-09-12 09:20 | retention: the Greek loglik tasks were never cached (no retention run ever completed in this project); reruns requeued on the cached English/multilingual suite (ret_R3c/ret_Bc); pass eval chains patched with the same TASKS. DATA_TODO 57.
 - 2026-09-12 09:50 | CORRECTION: the 09:05 hostile-run comparison used arm B's R0 (hostile-only, older simulator) as the baseline while the R3/pass runs used the new simulator's default MIXED profile (34 benign / 14 steering / 12 hostile). Like-for-like baseline = arm B R1 (mixed, 120): R3 better on stale (67 vs 74%), requests honoured (60 vs 45%), coherence (86 vs 79%), tone (89 vs 76% fine); similar dead dialogues (7 vs 8%); WORSE on tail copying (9.2 vs 5.8%), stop instructions (90 vs 100%), premise checking (0.40 vs 0.90). Status doc corrected; the earlier 'beats on every targeted failure' statement is withdrawn.
+
+
+## Owner-directed start: 13 September 2026
+
+2026-09-13T12:20:30.336952+00:00 — Starting the owner-reviewed pre-DPO programme: three parallel Sol/high audit agents (dialogue and correcting; IF and words checker; imported data inventory), one bounded maths audit wave of at most 180 Codex calls including retries, zero GPU/node-hours at this step. Preserve completed data/results; proposals and receipts go to /Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/. Total initial Sol concurrency <= 8; scale only after timing/error/usage evidence. Definitions and prompts are in the adjacent prompts/ directory.
+
+2026-09-13T12:27:35.708693+00:00 — Maths probe completed: 4 calls, 12 rows, no call/schema failures; mean62s, range22–109s. Continue frozen300-row audit at8 workers (plus3 Sol agents =11 concurrent), within original180-call total cap. Remaining96 primary calls, expected12–20min automated pass plus adjudication. No source mutations; no CSCS allocation. Retained imperial units are reviewed as declared math-preservation exceptions, not automatically mathematical or adaptation defects.
+
+2026-09-13T12:29:30.982377+00:00 — Follow-on bounded Sol tasks: imports audit agent prepares lossless tool-export code patch and synthetic validation (no full re-export); dialogue audit agent prepares12 balanced correction decisions (3 each true/false/partial/unresolved) with executable evidence. Two continued agent tasks, no additional model subprocess pools, zero CSCS node-hours. Proposals remain separate from completed datasets.
+
+
+## Pre-DPO audit and repair wave completed — 13 September 2026
+
+The owner-directed plan, adaptation/correction prompts, audit matrix and compact evidence are preserved in [PRE_DPO_PROGRAMME_20260913/PLAN.md](PRE_DPO_PROGRAMME_20260913/PLAN.md). See [execution/STATUS.md](PRE_DPO_PROGRAMME_20260913/execution/STATUS.md) for actual coverage, five applied source-file repairs, validation and outstanding gates. Maths: 300 rows / 100 Sol calls / zero retries; 19 targeted adjudications. Dialogue pilot: 12 balanced decisions, independently reviewed and semantically repaired. No CSCS node-hours, no corpus promotion, no cap change.
+
+
+## Active owner goal and second-wave checkpoint — 13 September 2026
+
+Continue from [PRE_DPO_CURRENT.md](PRE_DPO_CURRENT.md). Goal active; adapted-core, trained-maths, IF, personality and fair-peer audits have changed the plan. Native GreekMMLU protocol mismatch is now demonstrated from pinned official code. Repair candidates and generation/evaluation readiness are in progress. No new GPU node-hours in this checkpoint, no corpus promotion, no budget increase.
+
+
+## Third durable checkpoint — 13 September 2026
+
+Continue from [PRE_DPO_CURRENT.md](PRE_DPO_CURRENT.md). Maths generation32problem pilot and full review are complete; the16fresh Greek checks retained valid original text. Personality42candidates and IF20are staged. Four revised dialogue probes passed semantic review;28train decisions are being authored. Krikri v1.5job3390957 is running after a successful64generation smoke, capped85minutes/CHF3.81within the existing four-node-hour measurement envelope. No new training, corpus release or budget increase.

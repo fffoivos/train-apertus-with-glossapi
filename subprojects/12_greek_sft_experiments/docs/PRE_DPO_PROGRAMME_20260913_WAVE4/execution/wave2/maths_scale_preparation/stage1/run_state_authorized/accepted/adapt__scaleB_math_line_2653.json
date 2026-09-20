@@ -1,0 +1,70 @@
+{
+  "job_id": "adapt__scaleB_math_line_2653",
+  "row_id": "scaleB_math_line_2653",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "6b5e628b01132d2b5d0f1fcf946dc5f148ca9f3396f77308836792cbf788ac2d",
+  "input_record_sha256": "1cee0d25facac6d565d3c8c7582a1b2ec5d947bc6021fddc2e97754f363ad2b5",
+  "payload_sha256": "b41ac5fab3475a733009041916a365355ebde0d98c2170643d6deef6b54e33b3",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "2469d872f8fecae6f2977bda70323a1fe12dfe266c3a58b5243d7fc445083871",
+  "result": {
+    "row_id": "scaleB_math_line_2653",
+    "status": "candidate",
+    "problem_text": "Ο κύκλος $\\Gamma$ είναι ο εγγεγραμμένος κύκλος του τριγώνου $ABC$ και συγχρόνως ο περιγεγραμμένος κύκλος του τριγώνου $XYZ$. Το σημείο $X$ ανήκει στο ευθύγραμμο τμήμα $\\overline{BC}$, το σημείο $Y$ ανήκει στο ευθύγραμμο τμήμα $\\overline{AB}$ και το σημείο $Z$ ανήκει στο ευθύγραμμο τμήμα $\\overline{AC}$. Αν $\\angle A=40^\\circ$, $\\angle B=60^\\circ$ και $\\angle C=80^\\circ$, ποιο είναι το μέτρο της γωνίας $\\angle YZX$;",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Circle $\\Gamma$ is the incircle of $\\triangle ABC$ and is also the circumcircle of $\\triangle XYZ$.",
+        "target_span": "Ο κύκλος $\\Gamma$ είναι ο εγγεγραμμένος κύκλος του τριγώνου $ABC$ και συγχρόνως ο περιγεγραμμένος κύκλος του τριγώνου $XYZ$.",
+        "reason": "Πιστή απόδοση της γεωμετρικής συνθήκης στα ελληνικά με καθιερωμένη ορολογία."
+      },
+      {
+        "source_span": "The point $X$ is on $\\overline{BC}$, the point $Y$ is on $\\overline{AB}$, and the point $Z$ is on $\\overline{AC}$.",
+        "target_span": "Το σημείο $X$ ανήκει στο ευθύγραμμο τμήμα $\\overline{BC}$, το σημείο $Y$ ανήκει στο ευθύγραμμο τμήμα $\\overline{AB}$ και το σημείο $Z$ ανήκει στο ευθύγραμμο τμήμα $\\overline{AC}$.",
+        "reason": "Φυσική ελληνική διατύπωση που διατηρεί ακριβώς τις σχέσεις σημείου–ευθύγραμμου τμήματος."
+      },
+      {
+        "source_span": "If $\\angle A=40^\\circ$, $\\angle B=60^\\circ$, and $\\angle C=80^\\circ$, what is the measure of $\\angle YZX$?",
+        "target_span": "Αν $\\angle A=40^\\circ$, $\\angle B=60^\\circ$ και $\\angle C=80^\\circ$, ποιο είναι το μέτρο της γωνίας $\\angle YZX$;",
+        "reason": "Μετάφραση της υπόθεσης και του ζητουμένου χωρίς αλλαγή τιμών, συμβόλων ή δυσκολίας."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "40",
+          "role": "μέτρο της γωνίας A",
+          "unit": "μοίρες"
+        },
+        {
+          "value": "60",
+          "role": "μέτρο της γωνίας B",
+          "unit": "μοίρες"
+        },
+        {
+          "value": "80",
+          "role": "μέτρο της γωνίας C",
+          "unit": "μοίρες"
+        }
+      ],
+      "conditions": [
+        "Ο κύκλος $\\Gamma$ είναι ο εγγεγραμμένος κύκλος του τριγώνου $ABC$.",
+        "Ο κύκλος $\\Gamma$ είναι ο περιγεγραμμένος κύκλος του τριγώνου $XYZ$.",
+        "Το $X$ ανήκει στο $\\overline{BC}$.",
+        "Το $Y$ ανήκει στο $\\overline{AB}$.",
+        "Το $Z$ ανήκει στο $\\overline{AC}$.",
+        "$\\angle A=40^\\circ$, $\\angle B=60^\\circ$ και $\\angle C=80^\\circ$."
+      ],
+      "required_outputs": [
+        "Το μέτρο της γωνίας $\\angle YZX$ σε μοίρες."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

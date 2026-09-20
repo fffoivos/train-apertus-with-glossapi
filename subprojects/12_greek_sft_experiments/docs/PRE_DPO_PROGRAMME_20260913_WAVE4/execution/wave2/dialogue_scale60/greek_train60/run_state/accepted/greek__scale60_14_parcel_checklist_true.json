@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_14_parcel_checklist_true",
+  "row_id": "scale60_14_parcel_checklist_true",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "b56628b6884588305d6b91cb3ae17d00050f103dfb687acb50feb986420711c2",
+  "input_record_sha256": "e71c835f21400ba8db30da9afab58a7e5b8225750ccfa41eba4233ed0774b414",
+  "payload_sha256": "19c7cc208094dd7575a8a97e777fa4e39e9142e27956d4dc7f8a38cd80123043",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "b9b5ae29cce1274ed75d06a86a77d0de5dc38c0b4facf7a8a2e435c2ddbca752",
+  "result": {
+    "row_id": "scale60_14_parcel_checklist_true",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_14_parcel_checklist_true.u_context",
+        "role": "user",
+        "content": "Στο πρόχειρο της λίστας, η διεύθυνση έχει γραφτεί, η επένδυση έχει τοποθετηθεί και η ετικέτα δεν έχει ακόμη σημειωθεί ως εκτυπωμένη.",
+        "train": false
+      },
+      {
+        "id": "scale60_14_parcel_checklist_true.a_context",
+        "role": "assistant",
+        "content": "Πρόκειται για κειμενικό έλεγχο της λίστας, όχι για πραγματική εκτύπωση ή αποστολή.",
+        "train": false
+      },
+      {
+        "id": "scale60_14_parcel_checklist_true.u_decision",
+        "role": "user",
+        "content": "Στο πρόχειρο η επένδυση έχει τοποθετηθεί. Πρόσθεσε τώρα τη σημείωση «εύθραυστο».",
+        "train": false
+      },
+      {
+        "id": "scale60_14_parcel_checklist_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά, η επένδυση έχει τοποθετηθεί. Πρόσθεσα στη λίστα συσκευασίας τη σημείωση «εύθραυστο».",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

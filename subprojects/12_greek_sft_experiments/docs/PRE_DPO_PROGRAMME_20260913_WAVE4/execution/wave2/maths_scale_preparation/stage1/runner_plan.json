@@ -1,0 +1,19 @@
+{
+  "mode": "plan",
+  "queue": "queue.jsonl",
+  "jobs": 42,
+  "accepted": 0,
+  "pending": 42,
+  "stage_counts": {
+    "adaptation": 14,
+    "solution_high": 14,
+    "verification_blind_high": 14
+  },
+  "max_workers": 8,
+  "manifest_call_cap": 72,
+  "runtime_call_cap": 72,
+  "global_retry_cap": 8,
+  "prior_calls": 0,
+  "limit_new_calls": 0,
+  "max_attempts_per_job": 2
+}

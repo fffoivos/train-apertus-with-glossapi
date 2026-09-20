@@ -1,0 +1,466 @@
+{
+  "checked_at": "2026-09-13T14:44:16.890068+00:00",
+  "checked_rows": 60,
+  "checks": "identity_visible_evidence_mask_control_characters_labels_recomputed_state_bindings",
+  "semantic_judgment_not_automated": true,
+  "items": [
+    {
+      "row_id": "scale60_01_recipe_draft_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "d97c2eac832f55c414ab0d780e9bf66863169cd88a64ac1ef5a5193268ccdbdc"
+    },
+    {
+      "row_id": "scale60_01_recipe_draft_partial",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "f45540034807dd5ef1c2a1f75cb72f45d709bdba87ac7e6dad1be80baaab0823"
+    },
+    {
+      "row_id": "scale60_01_recipe_draft_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "57de860ffa03a3c0b863f2ea5ebcf07f4422ccceca73a9e5b968dd6283d7fd10"
+    },
+    {
+      "row_id": "scale60_01_recipe_draft_unresolved",
+      "checks": "content_state_pass_annotation_repair_needed",
+      "annotation_issues": [
+        {
+          "field": "\u03c0\u03c1\u03cc\u03c7\u03b5\u03b9\u03c1\u03bf \u03c3\u03c5\u03bd\u03c4\u03b1\u03b3\u03ae\u03c2",
+          "invalid_evidence_ids": [
+            "scale60_01_recipe_draft_unresolved.a_target"
+          ]
+        }
+      ],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "8d2f191e999d951b3c4a9942950b90e0175eb1a11d851c860e5fecdb0c166d5f"
+    },
+    {
+      "row_id": "scale60_02_studio_booking_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "d7698f680f01d4397d3af6bd240daf7c1fe97acc56373434befdcd8157a3eab8"
+    },
+    {
+      "row_id": "scale60_02_studio_booking_partial",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "23e8e35f85f80a72b81551cc71ae109410842fbe5929201358c479fd55171ffa"
+    },
+    {
+      "row_id": "scale60_02_studio_booking_true",
+      "checks": "content_state_pass_annotation_repair_needed",
+      "annotation_issues": [
+        {
+          "field": "\u03c3\u03c7\u03ad\u03b4\u03b9\u03bf \u03ba\u03c1\u03ac\u03c4\u03b7\u03c3\u03b7\u03c2",
+          "invalid_evidence_ids": [
+            "scale60_02_studio_booking_true.a_target"
+          ]
+        }
+      ],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "ee43f0a704a881d7d302d41ae5d2736fd69628526a9a2eefcb34436adf328528"
+    },
+    {
+      "row_id": "scale60_02_studio_booking_unresolved",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "a57551f33c51ec825722725b31c27340c103635b87040d402d172f27d6cf3713"
+    },
+    {
+      "row_id": "scale60_03_tool_checkout_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "be25553ab81f77292d0d389dd4ff8b3357ab7660c56d2e2243fdc6ab53d46a4d"
+    },
+    {
+      "row_id": "scale60_03_tool_checkout_partial",
+      "checks": "content_state_pass_annotation_repair_needed",
+      "annotation_issues": [
+        {
+          "field": "decisions",
+          "issue": "two_correct_claim_atoms_require_one_partial_turn_annotation"
+        }
+      ],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "efe2a50a7c94d441da2c4eb4ac0e8fa550b0de853fbf0fc2339851b7a0c6a6e4"
+    },
+    {
+      "row_id": "scale60_03_tool_checkout_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "077a6eaa30bec277067001adf4af7529f043f5b2bad80f711a48836f1c7acdee"
+    },
+    {
+      "row_id": "scale60_03_tool_checkout_unresolved",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "ab1b122d46e4b7a889fd9758b41a33c3606d465dd9a6c684ae08b8f1668e0856"
+    },
+    {
+      "row_id": "scale60_04_park_map_excerpt_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "6e0b9cdae5d0cdaf38d533590fd39c0c3eea0902b593d86b9d883ddd9a375566"
+    },
+    {
+      "row_id": "scale60_04_park_map_excerpt_partial",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "8cdc8107a131f115bd6d6a7d5e42f1a9b74342b339ad0fb407541722d112d034"
+    },
+    {
+      "row_id": "scale60_04_park_map_excerpt_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "6eaf0231963e28bdd1b64847bd42e94ab1adde91d178742ad8e17c1fe75175d4"
+    },
+    {
+      "row_id": "scale60_04_park_map_excerpt_unresolved",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "2abca4f1e3502935aaa5b5398bca026f80b4f65f6ec163c2952a021aef3e0ee4"
+    },
+    {
+      "row_id": "scale60_05_volunteer_board_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "cd028417c30f15e63fd893566561b24b1df8138fde493642263ee3f1edd4a074"
+    },
+    {
+      "row_id": "scale60_05_volunteer_board_partial",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "73dd56941ee8d685e1194e429908c814d27a576f9242c830d5883622b0ff9d48"
+    },
+    {
+      "row_id": "scale60_05_volunteer_board_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "c83a2ec032da3ba95be486db87cd2c5f5cbbdf59d788164b37c18faa1f42f60a"
+    },
+    {
+      "row_id": "scale60_05_volunteer_board_unresolved",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "a12b4c28bcaa6a233926998cd88b4496b820dc1684009202dd8b0e655b89ebe5"
+    },
+    {
+      "row_id": "scale60_06_key_handover_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "9ec690aa448bbddd5151d5e449341588bad686f3c0b91ad15740c2d1edc53fb1"
+    },
+    {
+      "row_id": "scale60_06_key_handover_partial",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "fb0cb90949f1a43d11222a8ad42e82e0566ecf6baa4a52acdda46a9cb6a1afc2"
+    },
+    {
+      "row_id": "scale60_06_key_handover_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "80ec25749186d0793a1e7df9a0ae64d991c98b08a1b07f4d6b4b8499d194c732"
+    },
+    {
+      "row_id": "scale60_06_key_handover_unresolved",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "fe7e19e871b4ec1f9ed9cebf2f712f46523476eb452150c861ba48a9f4cf0b1f"
+    },
+    {
+      "row_id": "scale60_07_rehearsal_sheet_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "3d6a07238408bed83b8805246f6ae35eac1dfd727fa32a96f70a7206584b7265"
+    },
+    {
+      "row_id": "scale60_07_rehearsal_sheet_partial",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "e966458036905834f1aeb52aa01ea74eb1be3c0acdf3c8273f68fe3355ab1002"
+    },
+    {
+      "row_id": "scale60_07_rehearsal_sheet_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "f68c02d8af16801e903501d4a3c9c390d0dbc5c0115eeac2b0e8a5c9fe50c8ea"
+    },
+    {
+      "row_id": "scale60_07_rehearsal_sheet_unresolved",
+      "checks": "content_state_pass_annotation_repair_needed",
+      "annotation_issues": [
+        {
+          "field": "decision",
+          "invalid_evidence_ids": [
+            "scale60_07_rehearsal_sheet_unresolved.a_context"
+          ]
+        }
+      ],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "0c160fe3f67f0c574cf09385fd6a5d939b3f3bbfc1da3f1dfdc5e7fe77b6bc84"
+    },
+    {
+      "row_id": "scale60_08_fair_budget_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "9b82c7ea71b32f9b468848f48a0fda532782dbedf43eb17dd982846803bcf25e"
+    },
+    {
+      "row_id": "scale60_08_fair_budget_partial",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "43a5dfa669a4940e16d69682db557438ba7cf4308078ca331e2508d191f55498"
+    },
+    {
+      "row_id": "scale60_08_fair_budget_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "4b44b2696820b4cbdd0f940d1ec4ae75112c2bc9c8a9e9000c750d7a22fab959"
+    },
+    {
+      "row_id": "scale60_08_fair_budget_unresolved",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "cb1efdc36f095651a33c9f26540ddcd2f8b6a71b7a03b40738b710bc911b623f"
+    },
+    {
+      "row_id": "scale60_09_chore_log_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "bd9790f5fece2dbdde2f00364bf4757fbce8f72776a90ce31369fa7536bc0bb6"
+    },
+    {
+      "row_id": "scale60_09_chore_log_partial",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "40d7dca38e4de853667fd093621ddee4a4430da29eb62e4dbcc5eb93a673c535"
+    },
+    {
+      "row_id": "scale60_09_chore_log_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "1c6c3011d94df1d010876c660858cd51a9a1f0c2aa26739602da6eda548376f9"
+    },
+    {
+      "row_id": "scale60_09_chore_log_unresolved",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "5d70dcfe06b73d0d8a67a95cdb80cedbcb3f041743ec8f90623a0b3307a59843"
+    },
+    {
+      "row_id": "scale60_10_sorting_card_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "fb7ae228df764857ea1dc7ec11b1713e8efb6d966ebd74c089e3ab8d94a471cd"
+    },
+    {
+      "row_id": "scale60_10_sorting_card_partial",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "3107c6ed76616796b1378e51731c59bb0672ec1c138535b90c739099b5d5d2fc"
+    },
+    {
+      "row_id": "scale60_10_sorting_card_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "aef47fb4749a15fe2cc8157d82c9a651aa4427b807bdfaf40c0472df2009774f"
+    },
+    {
+      "row_id": "scale60_10_sorting_card_unresolved",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "7dc5cd1d228a8ad625e43a58a64c4861b0aab35932507f5a319b42c72698ec83"
+    },
+    {
+      "row_id": "scale60_11_playlist_order_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "2fadeaa281bbcd6c336065e41e86908c41049b355367ccb8988d71d78667c6e5"
+    },
+    {
+      "row_id": "scale60_11_playlist_order_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "3108d7b84eb5948033eabd9ad8b2e771a43c81135f17ab34add86f1325cf8f92"
+    },
+    {
+      "row_id": "scale60_12_seedling_trays_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "9bf918695f1da97f70f46bdb1223392ad8486953c4fa12d5621cb2200b2a227c"
+    },
+    {
+      "row_id": "scale60_12_seedling_trays_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "317207890594d157da5925f7053936e95cfc63a60baf9ec76fb959ff02d605fa"
+    },
+    {
+      "row_id": "scale60_13_study_roles_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "5d67a99c2d541894b993f0dd652b6e6082013437d7a423de2d0912ec64e120e4"
+    },
+    {
+      "row_id": "scale60_13_study_roles_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "4360dbe185b6bf1b3d104e3617f4ee295f83363a77869472bd9666509fafba17"
+    },
+    {
+      "row_id": "scale60_14_parcel_checklist_false",
+      "checks": "content_state_pass_annotation_repair_needed",
+      "annotation_issues": [
+        {
+          "field": "decision.turn_id",
+          "issue": "claim_wrongly_attached_to_target_instead_of_user_decision"
+        }
+      ],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "073db0a7548958eec9ebc2fce4ad1104b3374f1bb0baab544d063db7559a6bb6"
+    },
+    {
+      "row_id": "scale60_14_parcel_checklist_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "d080257d0b1f3b9b1068373ebececa95ff8936470cd48b69a24c240328a4f4b2"
+    },
+    {
+      "row_id": "scale60_15_game_score_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "ac6994b2486928872f3d3c0df34d7a49156706bc9aa97c9c1c69827f5ffc04f4"
+    },
+    {
+      "row_id": "scale60_15_game_score_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "3b9ac545c4cf35347799897d288a91c2af32f6a1801994139253074dcf3dc675"
+    },
+    {
+      "row_id": "scale60_16_event_agenda_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "da15557a35a0226f92b8ae4d3a3fef5e6f95edeea48c677a3af7130c71b1a213"
+    },
+    {
+      "row_id": "scale60_16_event_agenda_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "bb17ff86d256362e6b21fe00f39f1277be4125a1e2099e20d81cec2b7db27bbc"
+    },
+    {
+      "row_id": "scale60_17_ferry_token_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "0cb72872f48a334236b4334e7416d2f77fc3d60cca9361b5516255252cc8630c"
+    },
+    {
+      "row_id": "scale60_17_ferry_token_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "f19a0107f86c95ada913670889fac8c64d2e4c8b95f91a437c0da241890c1a8a"
+    },
+    {
+      "row_id": "scale60_18_printmaking_stock_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "7df5fe565a8f45b093a3678b154c8a01f36c8a5f5f448ff36e6bb90a42d4506a"
+    },
+    {
+      "row_id": "scale60_18_printmaking_stock_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "d22a80a45c36e36ef8af7089cdd35eed9312f366abef3ac7bb6861c09725b7f8"
+    },
+    {
+      "row_id": "scale60_19_weekly_menu_false",
+      "checks": "content_state_pass_annotation_repair_needed",
+      "annotation_issues": [
+        {
+          "field": "Thursday",
+          "invalid_evidence_ids": [
+            "scale60_19_weekly_menu_false.a_target"
+          ]
+        }
+      ],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "71db1687cfe3d93e4668a1a5122563d8b97b121cb1ea335ec71b563db0342c02"
+    },
+    {
+      "row_id": "scale60_19_weekly_menu_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "f0deb1141e35e6589e0222d7c4dc1fe3ac6bc48fab7d424919a67471fe546867"
+    },
+    {
+      "row_id": "scale60_20_reading_workflow_false",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "cae7419267059f3ac6c7d6f47e80a3843070c951581507b3c3899e6a88bd48e4"
+    },
+    {
+      "row_id": "scale60_20_reading_workflow_true",
+      "checks": "pass",
+      "annotation_issues": [],
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "5adadc7dab317d80f2fe811c01bb9ee536d44ee0dc5d93bb0fb0136e79ae8bb2"
+    }
+  ]
+}

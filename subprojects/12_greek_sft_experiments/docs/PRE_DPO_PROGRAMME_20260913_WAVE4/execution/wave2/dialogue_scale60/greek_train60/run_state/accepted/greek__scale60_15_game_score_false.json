@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_15_game_score_false",
+  "row_id": "scale60_15_game_score_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "7914cbe1ade966c3ff0f48de5f5d24d24275606e98e1e90b75da9453ca8837bf",
+  "input_record_sha256": "022508bb14f4b5f794442067b36cf2d4ee41b2e2be5524e44ad2befe09093a39",
+  "payload_sha256": "376bead9cbc3ee6a93dba846c7781582d0f5638fe1f31360874a54fd022bf7d5",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "3f82b7640d4724b9bf755c6342149c216f8f53c0071581d9180a9e72fa3c07b3",
+  "result": {
+    "row_id": "scale60_15_game_score_false",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_15_game_score_false.u_context",
+        "role": "user",
+        "content": "Ο κανόνας δίνει 2 βαθμούς για κάθε νίκη και 1 για κάθε ισοπαλία. Η ομάδα Άλφα έχει 3 νίκες και 1 ισοπαλία.",
+        "train": false
+      },
+      {
+        "id": "scale60_15_game_score_false.a_context",
+        "role": "assistant",
+        "content": "Θα εφαρμόσω ακριβώς τον δοσμένο κανόνα βαθμολόγησης.",
+        "train": false
+      },
+      {
+        "id": "scale60_15_game_score_false.u_decision",
+        "role": "user",
+        "content": "Με τον δοσμένο κανόνα, η ομάδα Άλφα έχει 8 βαθμούς.",
+        "train": false
+      },
+      {
+        "id": "scale60_15_game_score_false.a_target",
+        "role": "assistant",
+        "content": "Όχι· οι 3 νίκες δίνουν 6 βαθμούς και η 1 ισοπαλία 1, άρα η ομάδα Άλφα έχει 7 βαθμούς.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

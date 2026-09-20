@@ -1,0 +1,30 @@
+{
+  "job_id": "solve_high__repair_math5_139",
+  "row_id": "repair_math5_139",
+  "stage": "solution_high",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "c2c2823bee7a6151b9bfd37ea412d3c5b656c48b57bd28d7e38ce244627f358e",
+  "input_record_sha256": "bb8da3713546e437629947d85e42315a15cf97f80b3ca6c5aa3240a9ba4bcb29",
+  "payload_sha256": "f74f7e7df1272e42a474428298abe0746d012b2a86a5eb6beea36d464cc47388",
+  "template_sha256": "ea1afd16c4910e9930760e3f22b232e0d14451f207ea4290ea79cc2d231e6a45",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "413a8ed6200f57729aff544044d24fa2d447272d99ddc4b86b79effaed4ad35c",
+  "result": {
+    "row_id": "repair_math5_139",
+    "status": "candidate",
+    "solution_text": "Θέτουμε \\(\\theta=\\angle ACP\\). Στο τρίγωνο \\(APC\\) ισχύει \\(\\angle APC=2\\theta\\), οπότε\n\\[\n\\angle CAP=180^\\circ-3\\theta.\n\\]\nΕπειδή το \\(P\\) ανήκει στην \\(AB\\), έχουμε \\(\\angle CAP=\\angle BAC\\). Από την υπόθεση \\(0^\\circ<\\angle BAC<45^\\circ\\) προκύπτει\n\\[\n45^\\circ<\\theta<60^\\circ.\n\\]\n\nΣτο τρίγωνο \\(BPC\\), επειδή \\(\\angle ACB=90^\\circ\\), είναι\n\\[\n\\angle BCP=90^\\circ-\\theta\n\\]\nκαι\n\\[\n\\angle CBP=\\angle CBA=90^\\circ-\\angle BAC=3\\theta-90^\\circ.\n\\]\n\nΑπό τον νόμο των ημιτόνων στο τρίγωνο \\(APC\\), με \\(CP=1\\), παίρνουμε\n\\[\nAP=\\frac{\\sin\\theta}{\\sin 3\\theta}.\n\\]\nΑντίστοιχα, στο τρίγωνο \\(BPC\\),\n\\[\nBP=\\frac{\\cos\\theta}{\\sin(3\\theta-90^\\circ)}\n   =-\\frac{\\cos\\theta}{\\cos3\\theta}.\n\\]\n\nΘέτουμε \\(s=\\tan^2\\theta\\). Εφόσον \\(45^\\circ<\\theta<60^\\circ\\), ισχύει \\(1<s<3\\). Με τις ταυτότητες\n\\[\n\\frac{\\sin3\\theta}{\\sin\\theta}=\\frac{3-s}{1+s},\n\\qquad\n\\frac{\\cos3\\theta}{\\cos\\theta}=\\frac{1-3s}{1+s},\n\\]\nέχουμε\n\\[\nAP=\\frac{1+s}{3-s},\n\\qquad\nBP=\\frac{1+s}{3s-1}.\n\\]\nΕπειδή το \\(P\\) βρίσκεται στο ευθύγραμμο τμήμα \\(AB\\), ισχύει \\(AP+BP=AB=4\\). Άρα\n\\[\n\\frac{1+s}{3-s}+\\frac{1+s}{3s-1}=4,\n\\]\nοπότε\n\\[\n2(1+s)^2=4(3-s)(3s-1)\n\\]\nκαι επομένως\n\\[\n7s^2-18s+7=0.\n\\]\nΟι ρίζες είναι\n\\[\ns=\\frac{9\\pm4\\sqrt2}{7}.\n\\]\nΗ ρίζα \\(\\frac{9-4\\sqrt2}{7}\\) είναι μικρότερη από \\(1\\), άρα απορρίπτεται λόγω του \\(1<s<3\\). Συνεπώς\n\\[\ns=\\frac{9+4\\sqrt2}{7}.\n\\]\nΤότε\n\\[\n\\frac{AP}{BP}\n =\\frac{3s-1}{3-s}\n =\\frac{5+3\\sqrt2}{3-\\sqrt2}\n =3+2\\sqrt2.\n\\]\nΆρα \\(p=3\\), \\(q=2\\), \\(r=2\\), και\n\\[\np+q+r=3+2+2=7.\n\\]\n\nΑπάντηση: \\(7\\).",
+    "final_answers": [
+      {
+        "part": "p+q+r",
+        "expression": "7",
+        "unit": null,
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

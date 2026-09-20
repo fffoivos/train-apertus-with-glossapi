@@ -1,0 +1,72 @@
+{
+  "job_id": "author_pilot48_03_false",
+  "row_id": "pilot48_03_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "61b47e267500d6b1e29638e492b9da89a3a4a2a6767d8c80dbb93fd11aecc804",
+  "input_record_sha256": "6b0c3bbbdf230a45541d95fb004c15db9e40680c936a1cedb11bd1cd40380aa7",
+  "payload_sha256": "75a85f9754c9d417be9ce97c7213e2ad9164dcb58e31898c7f70ad4d1a312a92",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "c6e316cc93ab7c4b8cb3a89316281decf719be32e11ca549b94706b023b8099e",
+  "result": {
+    "row_id": "pilot48_03_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_03_false.u_context",
+        "role": "user",
+        "content": "Στην καταχώριση του προγράμματος: Αρχικά το εργαστήριο ήταν Δευτέρα στις 17:00 στην αίθουσα Α, χωρίς καταγραμμένη διάρκεια. Έπειτα μεταφέρθηκε την Τρίτη στις 18:00 στην αίθουσα Β.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_false.a_context",
+        "role": "assistant",
+        "content": "Η τρέχουσα καταχώριση είναι Τρίτη στις 18:00 στην αίθουσα Β.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_false.u_decision",
+        "role": "user",
+        "content": "Για να μην το ξαναλέμε: Είχαμε κλείσει Δευτέρα στις 17:00. Πρόσθεσε τώρα ότι χρειαζόμαστε προβολέα.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_false.a_target",
+        "role": "assistant",
+        "content": "Η τρέχουσα καταχώριση είναι Τρίτη στις 18:00 στην αίθουσα Β, όχι Δευτέρα στις 17:00. Τώρα αναφέρει επίσης ότι χρειαζόμαστε προβολέα.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_03_false.u_decision",
+        "claim": "Είχαμε κλείσει Δευτέρα στις 17:00.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "pilot48_03_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "correct_historical_claim_briefly",
+          "apply_valid_new_user_update_if_any",
+          "state_result_concisely"
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "projector",
+        "before_json": "null",
+        "after_json": "true",
+        "evidence_ids": [
+          "pilot48_03_false.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

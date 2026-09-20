@@ -1,0 +1,68 @@
+{
+  "job_id": "author_pilot48_01_partial",
+  "row_id": "pilot48_01_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "92696d146ce58f16dab8504932640149e0d83bf2eee9572a4ceb9a84ba7be8b6",
+  "input_record_sha256": "59fcdbe068c7d4c2967d5d05da1e7140efc566452f0bc0a961ddf794f51e0320",
+  "payload_sha256": "fd7be25819955b49eb4005d90cce9424f5c414344af2877df4e9fedec9706d89",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "6288cccdbe26d91f126b66eb4b8758798cd661fbb2fd0be97c1d1676cc097861",
+  "result": {
+    "row_id": "pilot48_01_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_01_partial.u_context",
+        "role": "user",
+        "content": "Η αρχική λίστα είχε ένα γάλα, ψωμί και μήλα. Έπειτα τα γάλατα έγιναν δύο και τα μήλα αντικαταστάθηκαν από πορτοκάλια.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_partial.u_decision",
+        "role": "user",
+        "content": "Η τελευταία λίστα είχε δύο γάλατα και μήλα. Βγάλε τώρα το ψωμί.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_partial.a_target",
+        "role": "assistant",
+        "content": "Τα δύο γάλατα είναι σωστά, αλλά το φρούτο ήταν πορτοκάλια, όχι μήλα. Έβγαλα το ψωμί από τη λίστα· τώρα έχει δύο γάλατα και πορτοκάλια.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_01_partial.u_decision",
+        "claim": "Η τελευταία λίστα είχε δύο γάλατα και μήλα.",
+        "truth_category": "partial",
+        "evidence_ids": [
+          "pilot48_01_partial.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να επιβεβαιώσει ότι τα γάλατα ήταν δύο.",
+          "Να διορθώσει ότι το φρούτο ήταν πορτοκάλια και όχι μήλα.",
+          "Να αφαιρέσει το ψωμί από τη λίστα.",
+          "Να αναφέρει συνοπτικά τη νέα κατάσταση της λίστας."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "items",
+        "before_json": "[\"γάλα\",\"ψωμί\"]",
+        "after_json": "[\"γάλα\"]",
+        "evidence_ids": [
+          "pilot48_01_partial.u_context",
+          "pilot48_01_partial.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

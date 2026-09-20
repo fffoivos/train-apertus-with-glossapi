@@ -1,0 +1,81 @@
+{
+  "date": "2026-09-13",
+  "status": "first peer measurement running; no new training or cap change",
+  "rate_chf_per_node_hour": 2.69,
+  "rate_status": "published 2026 rate; project-fixed rate must be checked",
+  "last_owner_reported_remaining_chf": 2095.08,
+  "existing_sft_cap_chf": 230.0,
+  "conservative_sft_used_estimate_chf": 163.02,
+  "phases": [
+    {
+      "work": "measurement",
+      "node_hours_low": 2,
+      "node_hours_high": 4,
+      "chf_high": 10.76
+    },
+    {
+      "work": "competition_math_pair",
+      "node_hours_low": 4,
+      "node_hours_high": 6,
+      "chf_high": 16.14
+    },
+    {
+      "work": "correction_pair",
+      "node_hours_low": 3,
+      "node_hours_high": 4,
+      "chf_high": 10.76
+    },
+    {
+      "work": "selected_main_and_finish",
+      "node_hours_low": 11,
+      "node_hours_high": 14,
+      "chf_high": 37.66
+    },
+    {
+      "work": "selected_evaluation",
+      "node_hours_low": 6,
+      "node_hours_high": 10,
+      "chf_high": 26.9
+    },
+    {
+      "work": "contingency",
+      "node_hours_low": 4,
+      "node_hours_high": 4,
+      "chf_high": 10.76
+    }
+  ],
+  "total_node_hours_including_reserve": [
+    30,
+    42
+  ],
+  "total_chf_including_reserve": [
+    80.7,
+    112.98
+  ],
+  "first_three_rows_max_chf": 37.66,
+  "sft_headroom_estimate_chf": 66.98,
+  "full_proposal_exceeds_current_headroom_chf": 46.0,
+  "first_dpo_expected_chf": [
+    40,
+    70
+  ],
+  "first_dpo_proposed_envelope_chf": 150,
+  "preference_work_proposed_reserve_chf": 500,
+  "new_cscs_node_hours": null,
+  "new_cscs_chf": null,
+  "active_commitments": [
+    {
+      "job_id": 3390957,
+      "start_utc": "2026-09-13T13:44:05Z",
+      "nodes": 1,
+      "walltime_limit_minutes": 85,
+      "node_hours_max": 1.4166666666666667,
+      "chf_max": 3.81,
+      "phase": "measurement",
+      "shared_phase_node_hours_max": 4,
+      "actual_usage": "pending completion/accounting"
+    }
+  ],
+  "uncommitted_sft_headroom_after_max_commitment_chf": 63.17,
+  "updated_at": "2026-09-13T13:48:26.958066+00:00"
+}

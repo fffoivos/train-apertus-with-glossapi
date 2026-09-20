@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_937_0",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. BEFORE and AFTER are identical, and the AFTER messages are byte-equivalent to the actual training record. Independently verified: the sum is 14, the mean is 14/7 = 2 goals per match, and the fourth value of the ordered seven-value list is 2. The final wording «2 γκολ» is acceptable in the immediate per-match context.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_837",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem faithfully preserves the supplied English premise and inverse-percentage objective. BEFORE and AFTER are identical, and the AFTER messages are byte-equivalent to the actual training record. Independently verified: 0.25x = 10.5 gives x = 42 ounces. Retaining ounces is an explicitly documented and permitted arithmetic-preserving adaptation; the koala context remains foreign but is coherent and does not constitute an adaptation defect.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

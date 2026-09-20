@@ -1,0 +1,62 @@
+{
+  "job_id": "author__scale60_10_sorting_card_false",
+  "row_id": "scale60_10_sorting_card_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "c6bc55e3a27c72433e693d815c0fa641e96d5ba357ac8ccc08ed13ae6ee9725a",
+  "input_record_sha256": "123ca8230b2b3b0dc938c05afb2d1bd93c0a6d7aa2f69a71402703ef347b4bde",
+  "payload_sha256": "173efea83bdd52070d6590c51a29411325de5a2205f926728e57673ed7880ec3",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "415133504ad228a2506505669334edc1696a0f3b0e6fc1bd31ebb7c714f6142d",
+  "result": {
+    "row_id": "scale60_10_sorting_card_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_10_sorting_card_false.u_context",
+        "role": "user",
+        "content": "Η κάρτα κανόνων λέει: κάθε μπλε κιβώτιο πάει στο πάνω ράφι· κάθε εύθραυστο κιβώτιο μπαίνει σε θήκη με επένδυση. Το κιβώτιο Κ είναι μπλε και εύθραυστο. Δεν δίνεται το βάρος του.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_false.a_context",
+        "role": "assistant",
+        "content": "Θα εφαρμόσω τους κανόνες της κάρτας στο κιβώτιο Κ, χωρίς εξωτερικές υποθέσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_false.u_decision",
+        "role": "user",
+        "content": "Με τους κανόνες της κάρτας, το κιβώτιο Κ πάει στο κάτω ράφι.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_false.a_target",
+        "role": "assistant",
+        "content": "Το κιβώτιο Κ πάει στο πάνω ράφι, όχι στο κάτω, επειδή είναι μπλε. Επειδή είναι και εύθραυστο, μπαίνει σε θήκη με επένδυση· το βάρος του παραμένει άγνωστο.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_10_sorting_card_false.u_decision",
+        "claim": "Με τους κανόνες της κάρτας, το κιβώτιο Κ πάει στο κάτω ράφι.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_10_sorting_card_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "correct_unsupported_claim_briefly",
+          "continue_the_requested_reasoning_or_summary"
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

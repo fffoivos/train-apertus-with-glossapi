@@ -1,0 +1,67 @@
+{
+  "job_id": "author_pilot48_01_false",
+  "row_id": "pilot48_01_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "abeb5ffcd16d23847374830e9893ca4b4290fc1b0a6d69b83c9bcd9f8e5eaa57",
+  "input_record_sha256": "de56ff8d2b1fe256bb9284f111019bee4461d8b95bf6f27f09bf5fafe6af2040",
+  "payload_sha256": "40bbf025a398a07b23b2996bc6ce65106005e945f7a6b0e3a5f4e0c2e387b18b",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "0574bde02136b5eec23b482aeae96d41282d64c16f504d054a225030c3eac6e8",
+  "result": {
+    "row_id": "pilot48_01_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_01_false.u_context",
+        "role": "user",
+        "content": "Η αρχική λίστα είχε ένα γάλα, ψωμί και μήλα. Έπειτα τα γάλατα έγιναν δύο και τα μήλα αντικαταστάθηκαν από πορτοκάλια.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_false.u_decision",
+        "role": "user",
+        "content": "Είχαμε κρατήσει μήλα στην τελευταία έκδοση. Πρόσθεσε τώρα και ρύζι.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_false.a_target",
+        "role": "assistant",
+        "content": "Στην τελευταία έκδοση είχαμε πορτοκάλια, όχι μήλα. Πρόσθεσα τώρα και το ρύζι στη λίστα.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_01_false.u_decision",
+        "claim": "Στην τελευταία έκδοση είχαν διατηρηθεί μήλα.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "pilot48_01_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα τον λανθασμένο ιστορικό ισχυρισμό.",
+          "Να προσθέσει αμέσως το ρύζι στη λίστα.",
+          "Να αναφέρει συνοπτικά το αποτέλεσμα της επεξεργασίας."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "items",
+        "before_json": "[\"γάλα\",\"ψωμί\"]",
+        "after_json": "[\"γάλα\",\"ψωμί\",\"ρύζι\"]",
+        "evidence_ids": [
+          "pilot48_01_false.u_context",
+          "pilot48_01_false.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

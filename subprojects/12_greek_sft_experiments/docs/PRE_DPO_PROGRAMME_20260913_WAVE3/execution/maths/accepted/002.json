@@ -1,0 +1,48 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_1580",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική καταγεγραμμένη εκδοχή προβλήματος και λύσης· δεν προκύπτει αβεβαιότητα αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_1908",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική καταγεγραμμένη εκδοχή προβλήματος και λύσης. Η προσαρμογή από τέταρτα του δολαρίου σε ποσά των 25 λεπτών του ευρώ είναι συνεπής και διατηρεί την ίδια αριθμητική δομή.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_775",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχουν δύο αποθηκευμένες ελληνικές εκδοχές του προβλήματος και η ιστορική αντιστοίχιση της επιλεγμένης λύσης με συγκεκριμένη εκδοχή δεν έχει αποδειχθεί. Οι δύο εκδοχές είναι μαθηματικά ισοδύναμες και η λύση απαντά ορθά και στις δύο, επομένως η αβεβαιότητα προέλευσης δεν δημιουργεί διαπιστωμένο σημασιολογικό ή μαθηματικό ελάττωμα.",
+      "verification_needed": [
+        "Επιβεβαίωση της ιστορικής αντιστοίχισης της τελευταίας αποθηκευμένης λύσης με την αρχική εκδοχή του ελληνικού προβλήματος, εφόσον απαιτείται ακριβής ιχνηλασιμότητα."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "krikri_v15_scheduler_test_v1",
+  "status": "passed",
+  "recorded_at": "2026-09-13T13:40:09Z",
+  "allocation_required": false,
+  "allocation_created": false,
+  "command": "sbatch --test-only --export=ALL,PEER_BUNDLE=/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3,PEER_OUTPUT=/iopsstor/scratch/cscs/fffoivos/sft_round1/evals/wave2_krikri_v15/attempt_001/result.json /iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/peer_eval_debug.sbatch",
+  "prediction": {
+    "scheduler_test_id": "3390940",
+    "predicted_start": "2026-09-13T15:39:37+02:00",
+    "node": "nid006245",
+    "processors": 288,
+    "partition": "debug"
+  },
+  "postcheck": {
+    "command": "squeue -h -j 3390940 -o %i|%T|%R",
+    "exit_code": 1,
+    "output": "slurm_load_jobs error: Invalid job id specified",
+    "interpretation": "The scheduler prediction did not create a queued or running job."
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "job_id": "author_pilot48_02_true",
+  "row_id": "pilot48_02_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "1338192aef213255497a11414b82dd9397d8b7d3c8329f7072720fd7f8c54ff1",
+  "input_record_sha256": "2f8f7e1f856e3672c8261d8200c400414333cc883e5bba19e41206e9f6e5aef6",
+  "payload_sha256": "a08b4264cc9163fa1de7a87e4f43d5a450bf8d0be865910b0f6c9487cf6a0c35",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "217329a4f67cf17c57547b6e7730e5da744a1ce1a6022e071d5911b2e7bff6f3",
+  "result": {
+    "row_id": "pilot48_02_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_02_true.u_context",
+        "role": "user",
+        "content": "Ο αρχικός κατάλογος είχε την Άννα και τον Νίκο. Έπειτα προστέθηκε η Μαρία και αφαιρέθηκε ο Νίκος, οπότε τώρα έχει την Άννα και τη Μαρία.",
+        "train": false
+      },
+      {
+        "id": "pilot48_02_true.a_context",
+        "role": "assistant",
+        "content": "Ο τρέχων κατάλογος έχει την Άννα και τη Μαρία.",
+        "train": false
+      },
+      {
+        "id": "pilot48_02_true.u_decision",
+        "role": "user",
+        "content": "Τώρα έχουν μείνει η Άννα και η Μαρία. Πρόσθεσε και τον Γιώργο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_02_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά. Πρόσθεσα τον Γιώργο στον κατάλογο, ο οποίος τώρα έχει την Άννα, τη Μαρία και τον Γιώργο.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_02_true.u_decision",
+        "claim": "Τώρα έχουν μείνει η Άννα και η Μαρία.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "pilot48_02_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "acknowledge_valid_claim",
+          "apply_current_request_if_any",
+          "state_result_concisely"
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "members",
+        "before_json": "[\"Άννα\",\"Μαρία\"]",
+        "after_json": "[\"Άννα\",\"Μαρία\",\"Γιώργος\"]",
+        "evidence_ids": [
+          "pilot48_02_true.u_context",
+          "pilot48_02_true.u_decision",
+          "pilot48_02_true.a_target"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

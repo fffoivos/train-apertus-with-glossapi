@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_58",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record paired with a single solution record; no historical pairing uncertainty is indicated.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_2075",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record paired with a single solution record; no historical pairing uncertainty is indicated.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_148",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The problem text is marked stable, with one solution record and no alternative problem variants; no historical pairing uncertainty is indicated.",
+      "verification_needed": []
+    }
+  ]
+}

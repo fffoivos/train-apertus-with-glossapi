@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_726",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The displayed candidate uses the last saved problem and last saved solution under an ambiguous historical association. The two supplied Greek problem variants differ only by punctuation and do not create a mathematical difference, but the original problem–solution pairing remains unproven.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_806",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The displayed candidate uses the last saved problem and last saved solution under an ambiguous historical association. The supplied Greek variants contain minor wording differences («πελάτες»/«επισκέπτες», equivalent formulations of relative primality) but no mathematical difference; the historical pairing nevertheless remains unproven.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_602",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The problem text is marked stable, and no competing problem variants are supplied. The solution is consistent with the standard configuration in which the cylinder’s lower base lies in the hemisphere’s base plane.",
+      "verification_needed": []
+    }
+  ]
+}

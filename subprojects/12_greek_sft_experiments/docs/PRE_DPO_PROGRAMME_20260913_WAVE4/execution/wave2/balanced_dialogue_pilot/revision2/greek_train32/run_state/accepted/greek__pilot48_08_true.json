@@ -1,0 +1,40 @@
+{
+  "job_id": "greek__pilot48_08_true",
+  "row_id": "pilot48_08_true",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "fe6be3e6357867ef842bdb20dd6264e49c39722431190b86436e6ebb3ddd563b",
+  "input_record_sha256": "946a9ba75445090c646453f4c1bb40ef6bb038ce7fc38463a31ae5e8cf2dbbf5",
+  "payload_sha256": "dad9ebf7022f5fc8105acb4635bddf0be88fb0c50ae39523bb8dc11af2457bf0",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "d10898f3004b71a880f10deea116dade2a75e16f8d9a628aae08e78bc59b73d9",
+  "result": {
+    "row_id": "pilot48_08_true",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_08_true.u_context",
+        "role": "user",
+        "content": "Η καταγραφή αποθήκης λέει ότι παραλήφθηκαν 12 καρέκλες, δανείστηκαν 4 και 1 χάλασε.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_true.u_decision",
+        "role": "user",
+        "content": "Το ξαναλέω: Απομένουν 7 διαθέσιμες καρέκλες.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά, απομένουν 7 διαθέσιμες καρέκλες.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_1248",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The candidate is paired with a single problem record and one solution record. The localized name and change from dollars to euros are coherent adaptation choices and do not alter the mathematical structure.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_1056",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The problem text is marked stable and no alternative problem variants are supplied. Although two solution records exist, the supplied candidate matches the displayed problem; no mathematical pairing conflict is evident.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_1789",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The candidate is paired with a single problem record and one solution record. The translated surnames and conversion from dollars to euros remain internally coherent and preserve the percentage calculation.",
+      "verification_needed": []
+    }
+  ]
+}

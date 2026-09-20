@@ -1,0 +1,138 @@
+{
+  "call_budget": {
+    "calls_executed_during_preparation": 0,
+    "legacy_attempts_per_call": 3,
+    "logical_calls": 1326,
+    "maximum_api_attempts": 3978
+  },
+  "model": "gpt-5.6-sol",
+  "planned_fresh_output": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/peer_readiness/judge_intake/results/krikri_v15_sol_medium_run001",
+  "planned_output_exists_at_preparation": false,
+  "protocol": {
+    "multichallenge_el": "frozen upstream English scaffold and English criterion, plus frozen judge_note_el when present; historical --rubric en contract",
+    "multichallenge_en": "frozen upstream English scaffold and English criterion, plus frozen judge_note_el when present",
+    "schemas": {
+      "multichallenge": {
+        "additionalProperties": false,
+        "properties": {
+          "reasoning": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "reasoning",
+          "verdict"
+        ],
+        "type": "object"
+      },
+      "xstest": {
+        "additionalProperties": false,
+        "properties": {
+          "adequate": {
+            "enum": [
+              "yes",
+              "no"
+            ],
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "refusal": {
+            "enum": [
+              "full_compliance",
+              "partial_refusal",
+              "full_refusal"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "refusal",
+          "adequate",
+          "reason"
+        ],
+        "type": "object"
+      }
+    },
+    "xstest_el": "frozen Greek rubric and exact prompts_el_final Greek user prompt",
+    "xstest_en": "language-name-only English mirror of frozen rubric and exact English user prompt"
+  },
+  "reasoning_effort": "medium",
+  "requests": {
+    "multichallenge_el": {
+      "ordered_prompt_sha256": "998980e04a50f019676cfab4754ad414881c17e9412e4a22f4f754f8a8a8a635",
+      "path": "multichallenge_el_requests.jsonl",
+      "rows": 213,
+      "sha256": "d6ea1bd7d4a0e63fd4a462024ca0557799d2145540e59dd326b16e0f5f63604e",
+      "unique_request_ids": 213
+    },
+    "multichallenge_en": {
+      "ordered_prompt_sha256": "20f8c6b356e0b5a6f86cd7c83876284d1c6f27e6d8bac1fda98eaeb1f3b63158",
+      "path": "multichallenge_en_requests.jsonl",
+      "rows": 213,
+      "sha256": "7f6b14e4b8b90254dc5be922e09cbd3c8e9b42cdaa04c80612034ff29c4928d1",
+      "unique_request_ids": 213
+    },
+    "xstest_el": {
+      "ordered_prompt_sha256": "5a67f2694a967c2afd2c270a053fb666212f4f48ecb47e38d301e0cac9f47269",
+      "path": "xstest_el_requests.jsonl",
+      "rows": 450,
+      "sha256": "9e58bb6962c2cd15fe3c29d41f35a21bf3b13c5e4098407430cb27aaec643889",
+      "unique_request_ids": 450
+    },
+    "xstest_en": {
+      "ordered_prompt_sha256": "16effb2ace05556ec4f552217e4bd94a1a16d581de31379bbcb6858d967d463e",
+      "path": "xstest_en_requests.jsonl",
+      "rows": 450,
+      "sha256": "51c215f6503967c84d88a07df23c0e485ba5ad90b991ef19e5fd90e70f970465",
+      "unique_request_ids": 450
+    }
+  },
+  "schema_version": "krikri_v15_sol_judge_intake_v2",
+  "science_limits": [
+    "MultiChallenge is a 213/262 shared-context diagnostic subset and must not be compared with full-262 aggregates.",
+    "XSTest English uses a new language-matched rubric mirror; it is not a historical-prompt reproduction.",
+    "The checked-in XSTest judge reads prompts_el.jsonl, whose Greek prompt differs from prompts_el_final.jsonl for 32/450 IDs; this intake binds the file used for generation.",
+    "Human-labelled calibration remains required before an arm decision on either judged benchmark."
+  ],
+  "source_bindings": {
+    "benchmarks": {
+      "multichallenge_conversations_el_final": {
+        "eligible": 262,
+        "rows": 273,
+        "selected_shared_subset": 213,
+        "sha256": "23efe0ea1432ae13adb3b93f901ba583b5416b80e9f57b930f52a4be70f5474a"
+      },
+      "xstest_prompts_el_final": {
+        "rows": 450,
+        "sha256": "4a3179f8614bc85c2bd188029896356c0a818d421c0b6391b3a98554d1a35b51"
+      }
+    },
+    "generation_bundle_payload_sha256": "edf6f76fa34cf4a362b258a250259ce7d03029a7f2a739a2c9631caa1777b9dc",
+    "generation_files": {
+      "multichallenge_el.jsonl": {
+        "rows": 213,
+        "sha256": "b14014a19c3b84a988909d087f494749852993f0c818ef8ccfec001b3dff24ee"
+      },
+      "multichallenge_en.jsonl": {
+        "rows": 213,
+        "sha256": "6b4ab730f5a6da2e333aff2a91fff5dbeaca5326f5f0813bfb81795bbbf28e62"
+      },
+      "xstest_el.jsonl": {
+        "rows": 450,
+        "sha256": "3199bc0b543545b198f0742b99f29d7ee31285868c702b07dfcf4df807bc8c9b"
+      },
+      "xstest_en.jsonl": {
+        "rows": 450,
+        "sha256": "584c99c82fb5fc4b5b7c1a153e174d6e6fe8086396054666bc340f647c388c94"
+      }
+    },
+    "generation_job": "3390957",
+    "model_revision": "326e2c0ea90d771c19fcf06225fe87dc922b51b2"
+  },
+  "status": "review_only_not_launched"
+}

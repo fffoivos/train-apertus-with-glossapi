@@ -1,0 +1,62 @@
+{
+  "job_id": "author__scale60_15_game_score_false",
+  "row_id": "scale60_15_game_score_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "f3777d07a9e3263597c90631231ccdaffb9b8f2b79cb78ce0c38e0054883a16e",
+  "input_record_sha256": "99ea7dd60eeb505181af99ee42bf8d6323c71749038df0d0071e61c20e87aa62",
+  "payload_sha256": "f823552d03f4f8dce5f05871911429ced815571af6c0d762b5688acb1608987f",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "d15eee439df6e8b46db82de388f3b90fcbedd0dff1872d9e94ca012c39f824ce",
+  "result": {
+    "row_id": "scale60_15_game_score_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_15_game_score_false.u_context",
+        "role": "user",
+        "content": "Ο κανόνας δίνει 2 βαθμούς για κάθε νίκη και 1 για κάθε ισοπαλία. Η ομάδα Άλφα έχει 3 νίκες και 1 ισοπαλία.",
+        "train": false
+      },
+      {
+        "id": "scale60_15_game_score_false.a_context",
+        "role": "assistant",
+        "content": "Θα εφαρμόσω ακριβώς τον δοσμένο κανόνα βαθμολόγησης.",
+        "train": false
+      },
+      {
+        "id": "scale60_15_game_score_false.u_decision",
+        "role": "user",
+        "content": "Με τον δοσμένο κανόνα, η ομάδα Άλφα έχει 8 βαθμούς.",
+        "train": false
+      },
+      {
+        "id": "scale60_15_game_score_false.a_target",
+        "role": "assistant",
+        "content": "Όχι· οι 3 νίκες δίνουν 6 βαθμούς και η 1 ισοπαλία 1, άρα η ομάδα Άλφα έχει 7 βαθμούς.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_15_game_score_false.u_decision",
+        "claim": "Με τον δοσμένο κανόνα, η ομάδα Άλφα έχει 8 βαθμούς.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_15_game_score_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "correct_unsupported_claim_briefly",
+          "continue_the_requested_reasoning_or_summary"
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

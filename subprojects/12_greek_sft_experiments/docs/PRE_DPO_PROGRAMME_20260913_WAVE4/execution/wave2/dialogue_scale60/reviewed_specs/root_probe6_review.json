@@ -1,0 +1,50 @@
+{
+  "reviewed_at": "2026-09-13T14:36:07.007192+00:00",
+  "rows": 6,
+  "semantic_pass": 6,
+  "transport_retry": 0,
+  "reviewer": "root",
+  "full_messages_read": true,
+  "findings": "Correct false budget, apply requested room change after brief correction, separate recipe truth atoms, confirm inventory arithmetic, avoid forced clarification on map extent, clarify unresolved speaker ownership without inventing commitment.",
+  "accepted_items": [
+    {
+      "row_id": "scale60_01_recipe_draft_partial",
+      "checks": "pass",
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "f45540034807dd5ef1c2a1f75cb72f45d709bdba87ac7e6dad1be80baaab0823"
+    },
+    {
+      "row_id": "scale60_02_studio_booking_false",
+      "checks": "pass",
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "d7698f680f01d4397d3af6bd240daf7c1fe97acc56373434befdcd8157a3eab8"
+    },
+    {
+      "row_id": "scale60_04_park_map_excerpt_unresolved",
+      "checks": "pass",
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "2abca4f1e3502935aaa5b5398bca026f80b4f65f6ec163c2952a021aef3e0ee4"
+    },
+    {
+      "row_id": "scale60_06_key_handover_unresolved",
+      "checks": "pass",
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "fe7e19e871b4ec1f9ed9cebf2f712f46523476eb452150c861ba48a9f4cf0b1f"
+    },
+    {
+      "row_id": "scale60_08_fair_budget_false",
+      "checks": "pass",
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "9b82c7ea71b32f9b468848f48a0fda532782dbedf43eb17dd982846803bcf25e"
+    },
+    {
+      "row_id": "scale60_12_seedling_trays_true",
+      "checks": "pass",
+      "root_semantic_review": "pending_unless_listed_in_root_receipt",
+      "envelope_sha256": "317207890594d157da5925f7053936e95cfc63a60baf9ec76fb959ff02d605fa"
+    }
+  ],
+  "remaining_authoring_released": 54,
+  "combined_stage_call_cap": 144,
+  "authoring_call_cap": 72
+}

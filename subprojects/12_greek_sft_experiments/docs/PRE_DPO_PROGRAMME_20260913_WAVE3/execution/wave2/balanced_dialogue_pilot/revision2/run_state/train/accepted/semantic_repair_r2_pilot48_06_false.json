@@ -1,0 +1,105 @@
+{
+  "job_id": "semantic_repair_r2_pilot48_06_false",
+  "row_id": "pilot48_06_false",
+  "stage": "dialogue_semantic_repair",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "aa1fdb6897f82ce713917f95af3b38575ebcb1279d9a29b55e9e76b7e8f39d72",
+  "input_record_sha256": "efc8317d90f5826ba2c7048f2cea9cb34aab71a1bafdf5149d2e22584a06834b",
+  "payload_sha256": "b388a7be293a9de3be153480dcb1d7e1aa486b435efb34558da95dd336ac639e",
+  "template_sha256": "d0a0d83e714325427d29fdbe8a76137c7822b0a23962c5ba63940172b716d7cf",
+  "schema_sha256": "595e4ef89653892710759a52853c29920372c5599870931b57c73c8cc2922761",
+  "prompt_sha256": "5edfc6912ebae980271cd8275538c35aef743b56b42cdc67166ee935b7c83f5c",
+  "result": {
+    "row_id": "pilot48_06_false",
+    "disposition": "repair_proposed",
+    "findings": [
+      {
+        "domain": "visible_evidence_contract",
+        "exact_span": "Για το ημερολόγιο: το φυτό ποτίστηκε την ημέρα 7, σήμερα είναι η ημέρα 10 και το ποτίζω κάθε 4 ημέρες.",
+        "severity": "blocking",
+        "evidence": [
+          "The user context does not contain required_user_context_core_el verbatim."
+        ],
+        "proposed_action": "Replace the paraphrased evidence sentence with the required user-context core while preserving the valid question."
+      },
+      {
+        "domain": "decision_surface_contract",
+        "exact_span": "Το έχεις υπολογίσει λάθος. Σήμερα είναι ήδη η ημέρα ποτίσματος.",
+        "severity": "blocking",
+        "evidence": [
+          "The frozen core appears verbatim, but its wrapper adds a claim about the assistant's calculation and a referent, which the revised contract forbids."
+        ],
+        "proposed_action": "Remove the wrapper and retain only the frozen declarative core."
+      },
+      {
+        "domain": "response_tone",
+        "exact_span": "Όχι, ο υπολογισμός είναι σωστός: 7 + 4 = 11. Σήμερα είναι η ημέρα 10, άρα το πότισμα είναι αύριο, όχι σήμερα.",
+        "severity": "major",
+        "evidence": [
+          "The calculation and conclusion are correct, but the opening and repeated contrast create the gratuitous argumentative tone identified in the named finding."
+        ],
+        "proposed_action": "State the correction and resulting due day directly and concisely."
+      }
+    ],
+    "candidate_messages": [
+      {
+        "id": "pilot48_06_false.u_context",
+        "role": "user",
+        "content": "Στο ημερολόγιο γράφει ότι το φυτό ποτίστηκε την ημέρα 7, σήμερα είναι η ημέρα 10 και το διάστημα ποτίσματος είναι 4 ημέρες. Πότε είναι το επόμενο πότισμα;",
+        "train": false
+      },
+      {
+        "id": "pilot48_06_false.a_context",
+        "role": "assistant",
+        "content": "Το επόμενο πότισμα είναι την ημέρα 11, αφού έχουν περάσει μόνο 3 ημέρες από το τελευταίο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_06_false.u_decision",
+        "role": "user",
+        "content": "Σήμερα είναι ήδη η ημέρα ποτίσματος.",
+        "train": false
+      },
+      {
+        "id": "pilot48_06_false.a_target",
+        "role": "assistant",
+        "content": "Σήμερα δεν είναι ακόμη η ημέρα ποτίσματος. Το επόμενο πότισμα είναι την ημέρα 11, δηλαδή αύριο.",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "pilot48_06_false.u_context",
+        "before": "Για το ημερολόγιο: το φυτό ποτίστηκε την ημέρα 7, σήμερα είναι η ημέρα 10 και το ποτίζω κάθε 4 ημέρες. Πότε είναι το επόμενο πότισμα;",
+        "after": "Στο ημερολόγιο γράφει ότι το φυτό ποτίστηκε την ημέρα 7, σήμερα είναι η ημέρα 10 και το διάστημα ποτίσματος είναι 4 ημέρες. Πότε είναι το επόμενο πότισμα;",
+        "reason": "Insert visible_evidence_contract.required_user_context_core_el verbatim before the decision while preserving the valid request."
+      },
+      {
+        "message_id": "pilot48_06_false.u_decision",
+        "before": "Το έχεις υπολογίσει λάθος. Σήμερα είναι ήδη η ημέρα ποτίσματος.",
+        "after": "Σήμερα είναι ήδη η ημέρα ποτίσματος.",
+        "reason": "Preserve the frozen decision core verbatim and remove a wrapper that adds a claim and referent."
+      },
+      {
+        "message_id": "pilot48_06_false.a_target",
+        "before": "Όχι, ο υπολογισμός είναι σωστός: 7 + 4 = 11. Σήμερα είναι η ημέρα 10, άρα το πότισμα είναι αύριο, όχι σήμερα.",
+        "after": "Σήμερα δεν είναι ακόμη η ημέρα ποτίσματος. Το επόμενο πότισμα είναι την ημέρα 11, δηλαδή αύριο.",
+        "reason": "Preserve the correct false-claim correction and derived result while removing gratuitous argumentative phrasing."
+      }
+    ],
+    "checks_executed": [
+      "Required user context core appears verbatim before the decision.",
+      "Frozen decision core appears verbatim with unchanged punctuation and remains declarative.",
+      "All stable message IDs, roles, and train masks are preserved.",
+      "Exactly one assistant message has train:true.",
+      "The target is grounded in user-visible evidence: 7 + 4 = 11, so day 10 is not due and day 11 is next.",
+      "No state transition or external-action success is claimed.",
+      "The valid prior assistant context was preserved unchanged.",
+      "Language-only preferences assessed separately: none identified; all edits are contract-driven."
+    ],
+    "checks_needed": [],
+    "unresolved": []
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_3294",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το ζεύγος προέρχεται από μία μόνο εγγραφή προβλήματος και μία λύση. Δεν υπάρχει αβεβαιότητα ιστορικής αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3585",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το ζεύγος προέρχεται από μία μόνο εγγραφή προβλήματος και μία λύση. Δεν υπάρχει αβεβαιότητα ιστορικής αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3028",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το ζεύγος προέρχεται από μία μόνο εγγραφή προβλήματος και μία λύση. Η αντικατάσταση των αμερικανικών ομάδων με φανταστικές ελληνικές ομάδες διατηρεί όλα τα μαθηματικά δεδομένα και τον χαρακτήρα του αθλήματος.",
+      "verification_needed": []
+    }
+  ]
+}

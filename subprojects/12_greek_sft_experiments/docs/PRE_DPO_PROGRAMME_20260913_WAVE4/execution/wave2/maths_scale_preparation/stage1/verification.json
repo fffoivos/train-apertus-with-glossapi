@@ -1,0 +1,49 @@
+{
+  "verified_at": "2026-09-13T17:11:46+03:00",
+  "ok": true,
+  "checks": {
+    "all_manifest_artifacts_match": true,
+    "runner_copy_matches_verified_source": true,
+    "phaseA_counts": true,
+    "phaseA_dispositions": true,
+    "phaseA_full_pair_bindings": true,
+    "phaseA_all_attempts_explicit": true,
+    "only_phaseA_text_change_is_exact_typo": true,
+    "phaseB_14_unique_train_rows": true,
+    "phaseB_queue_42": true,
+    "phaseB_stages": true,
+    "phaseB_high_only": true,
+    "phaseB_no_reference_in_payloads": true,
+    "phaseB_independent_solve_verify": true,
+    "phaseB_no_diagram_dependencies": true,
+    "phaseB_passes_math500_gate": true,
+    "phaseB_not_current_train_or_dev": true,
+    "four_same_cell_replacements": true,
+    "dev_final_preserved_and_sealed": true,
+    "call_caps": true,
+    "math5_173": true,
+    "math5_528": true,
+    "math5_534": true,
+    "math5_492": true,
+    "math5_488": true,
+    "math5_473": true,
+    "math5_138": true
+  },
+  "number_theory_first_valid_pairs": [
+    [
+      286,
+      121,
+      407
+    ]
+  ],
+  "substitution_counts": [
+    1,
+    121,
+    13310,
+    1317690
+  ],
+  "square_sums_by_factor_pair": {
+    "1x133": 8845,
+    "7x19": 205
+  }
+}

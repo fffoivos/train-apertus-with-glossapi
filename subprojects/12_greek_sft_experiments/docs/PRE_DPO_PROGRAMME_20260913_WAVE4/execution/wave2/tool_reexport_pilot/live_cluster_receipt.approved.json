@@ -1,0 +1,30 @@
+{
+  "account": "a0140",
+  "certificate": {
+    "argv": [
+      "ssh-keygen",
+      "-L",
+      "-f",
+      "$HOME/.ssh/cscs-key-cert.pub"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "$HOME/.ssh/cscs-key-cert.pub:\n        Type: ssh-ed25519-cert-v01@openssh.com user certificate\n        Public key: ED25519-CERT SHA256:99j4w6aU6eYVpHLVA4Am0yFR8FC0Ebnl+TNQq/dwmcg\n        Signing CA: ED25519 SHA256:Po0rNWymW+Te2SGVc25Ql7qzudTbu6SbhWS+3dQc+NA (using ssh-ed25519)\n        Key ID: \"fffoivos\"\n        Serial: 202815134239213642\n        Valid: from 2026-09-13T01:11:15 to 2026-09-14T01:12:15\n        Principals: \n                fffoivos\n        Critical Options: (none)\n        Extensions: \n                permit-X11-forwarding\n                permit-agent-forwarding\n                permit-port-forwarding\n                permit-pty\n                permit-user-rc\n"
+  },
+  "cluster": "clariden",
+  "mutations": [],
+  "observed_at": "2026-09-13T14:43:41.941570Z",
+  "remote": {
+    "argv": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "clariden",
+      "date -u +%Y-%m-%dT%H:%M:%SZ; hostname; uname -m; python3 --version 2>&1; uenv --version 2>&1 | head -n 1; sinfo -h -o '%P|%a|%l|%D|%G|%f' | sort; sacctmgr -n -P show qos format=Name,MaxWall,MaxJobsPU,MaxSubmitJobsPU,MaxJobsPA,MaxSubmitJobsPA | sort; sacctmgr -n -P show assoc where user=$USER account=a0140 format=Cluster,Account,User,Partition,QOS,DefaultQOS,MaxJobs,MaxSubmit; squeue -h -u $USER -o '%i|%j|%T|%P|%D|%L|%R'"
+    ],
+    "returncode": 0,
+    "stderr": "** WARNING: connection is not using a post-quantum key exchange algorithm.\n** This session may be vulnerable to \"store now, decrypt later\" attacks.\n** The server may need to be upgraded. See https://openssh.com/pq.html\n",
+    "stdout": "2026-09-13T14:43:44Z\nclariden-ln002\naarch64\nPython 3.6.15\n10.0.1\ndebug|up|1:30:00|1320|gpu:4|gh,gpu,thp_never,thp_always,thp_madvise,nvidia_vboost_enabled\ndebug|up|1:30:00|48|gpu:4|gh,gpu,thp_never,thp_always,thp_madvise,nvidia_vboost_enabled,nvidia_vboost_disabled\nlow|up|1-00:00:00|1295|gpu:4|gh,gpu,thp_never,thp_always,thp_madvise,nvidia_vboost_enabled\nlow|up|1-00:00:00|48|gpu:4|gh,gpu,thp_never,thp_always,thp_madvise,nvidia_vboost_enabled,nvidia_vboost_disabled\nnormal*|up|12:00:00|1295|gpu:4|gh,gpu,thp_never,thp_always,thp_madvise,nvidia_vboost_enabled\nnormal*|up|12:00:00|48|gpu:4|gh,gpu,thp_never,thp_always,thp_madvise,nvidia_vboost_enabled,nvidia_vboost_disabled\nxfer|up|1-00:00:00|2|(null)|(null)\ndebug-qos||1|2||\nlarge256-qos|||||\nlarge512-qos|||||\nlarge-qos|||||\nlarge-sc-2|02:00:00|1|2||\nlarge-sc-qos|01:00:00|1|2||\nnormal|||||\nslowdown|||||\nstop||0|0|0|\nclariden|a0140|fffoivos||normal|||\n"
+  },
+  "schema_version": "apertus_cscs_skill_live_probe_v1"
+}

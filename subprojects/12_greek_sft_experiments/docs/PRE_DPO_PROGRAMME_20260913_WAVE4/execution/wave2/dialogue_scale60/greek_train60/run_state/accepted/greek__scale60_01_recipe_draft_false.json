@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_01_recipe_draft_false",
+  "row_id": "scale60_01_recipe_draft_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "8bce8b0c87ff3b44365d0baee69505d477c64ea3e02eb4b8d9dc83c2118ecc4c",
+  "input_record_sha256": "f5d38a09bcae066ea33778f7c2ab03c96bfccd31bc5d788adc489254e1ca7c8c",
+  "payload_sha256": "b07d9d48701a10e1fe24f161ce9e538f2ee9923ceee6ef75f4a983204af8acc5",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "fff7ef4b2731790c6e2d7bd52628f4deb2b2b92b6c4accc75cea73db5d17223a",
+  "result": {
+    "row_id": "scale60_01_recipe_draft_false",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_01_recipe_draft_false.u_context",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο της συνταγής γράφει: 4 μερίδες, 1 κουταλιά λάδι, φούρνος στους 180 βαθμούς και γαρνίρισμα με μαϊντανό.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_false.a_context",
+        "role": "assistant",
+        "content": "Βλέπω το τρέχον πρόχειρο· οι παλιότερες εκδοχές δεν εμφανίζονται εδώ.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_false.u_decision",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο γράφει 2 κουταλιές λάδι. Άλλαξέ το τώρα σε 2 κουταλιές.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_false.a_target",
+        "role": "assistant",
+        "content": "Στο τρέχον πρόχειρο έγραφε 1 κουταλιά λάδι, όχι 2. Το άλλαξα τώρα σε 2 κουταλιές.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

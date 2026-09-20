@@ -1,0 +1,54 @@
+{
+  "job_id": "greek__scale60_03_tool_checkout_true",
+  "row_id": "scale60_03_tool_checkout_true",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "f950b8004c097b2d28e51fd356765a59990b2e9029150ac9e716e5957355794b",
+  "input_record_sha256": "a52412f0e3c14e867dd27638278a15d4a45db94bc1002b4e8b54c4f957397204",
+  "payload_sha256": "a74f1814958ab5ca3febadf8d705f9bd60e84984a2ca78bb4d63d4e7aaff2269",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "9c7e4e128b32e383a88604e33107c987ed81d27f96e57234192a720839a36dc5",
+  "result": {
+    "row_id": "scale60_03_tool_checkout_true",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "scale60_03_tool_checkout_true.u_context",
+        "role": "user",
+        "content": "Το δελτίο γράφει 8 δράπανα συνολικά: 3 είναι δανεισμένα και 1 άλλο δράπανο βρίσκεται υπό επισκευή.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_true.a_context",
+        "role": "assistant",
+        "content": "Θα υπολογίσω τη διαθεσιμότητα μόνο από αυτές τις τρεις κατηγορίες.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_true.u_decision",
+        "role": "user",
+        "content": "Άρα είναι διαθέσιμα 4 δράπανα.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά: 8 − 3 − 1 = 4 διαθέσιμα δράπανα.",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "scale60_03_tool_checkout_true.u_context",
+        "before": "Το δελτίο γράφει 8 δράπανα συνολικά: 3 είναι δανεισμένα και 1 διαφορετικό δράπανο βρίσκεται για επισκευή.",
+        "after": "Το δελτίο γράφει 8 δράπανα συνολικά: 3 είναι δανεισμένα και 1 άλλο δράπανο βρίσκεται υπό επισκευή.",
+        "error": "Αφύσικη λεξιλογική επιλογή και μη ιδιωματική πρόθεση.",
+        "reason": "Το «άλλο δράπανο» αποδίδει φυσικά ότι πρόκειται για διαφορετικό δράπανο, ενώ η καθιερωμένη σύνταξη για την κατάσταση επισκευής είναι «βρίσκεται υπό επισκευή»."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

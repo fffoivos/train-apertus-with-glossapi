@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_16_event_agenda_false",
+  "row_id": "scale60_16_event_agenda_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "bae738296b2ad6a731056a672992275801b3661f9506728f9b95d329ff3ffbca",
+  "input_record_sha256": "15ae6283d858e3a7645768934197f25856a6673ad06f6929bb1bfcc2669c1028",
+  "payload_sha256": "01549dcdaadedc65c8767f192d691216032ec310f8c9f5ab4f4c529f13a54e1b",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "79c3ec4e8c50ffb06be4c7afa8cab022a3d40d7b77b21bbe5ed1103f18c6debe",
+  "result": {
+    "row_id": "scale60_16_event_agenda_false",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_16_event_agenda_false.u_context",
+        "role": "user",
+        "content": "Στην κειμενική ατζέντα, το καλωσόρισμα και η ομιλία είναι ενεργά, ενώ οι ερωτήσεις έχουν ακυρωθεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_16_event_agenda_false.a_context",
+        "role": "assistant",
+        "content": "Μπορώ να αλλάξω μόνο τις εγγραφές αυτού του πρόχειρου.",
+        "train": false
+      },
+      {
+        "id": "scale60_16_event_agenda_false.u_decision",
+        "role": "user",
+        "content": "Άντε πια. Στην ατζέντα η ομιλία φαίνεται ήδη ακυρωμένη. Ακύρωσέ την τώρα.",
+        "train": false
+      },
+      {
+        "id": "scale60_16_event_agenda_false.a_target",
+        "role": "assistant",
+        "content": "Η ομιλία δεν φαινόταν ήδη ακυρωμένη· ήταν ενεργή. Την ακύρωσα τώρα στην ατζέντα. Το καλωσόρισμα παραμένει ενεργό και οι ερωτήσεις ακυρωμένες.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "job_id": "author__scale60_06_key_handover_true",
+  "row_id": "scale60_06_key_handover_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "595a9fb1df323f59c8dc235e8f34a18c56904364832af796bbc6a4472b2a0d4e",
+  "input_record_sha256": "8186e8488cd976d1c0b3a4a9fb6db2709c7dc9bb52927ce89f5b6fa7b4952306",
+  "payload_sha256": "c07bc7308ba0643b75ba35add426ef955ed63b52115e07f9a958c2f93eaaee04",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "0d029428f4234991f3f35058b9da794df66be9793353a31f1014b4a8c6f769ef",
+  "result": {
+    "row_id": "scale60_06_key_handover_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_06_key_handover_true.u_context",
+        "role": "user",
+        "content": "Στην καταγραφή, η Νίκη είπε «τα κλειδιά είναι στο συρτάρι», ο Πέτρος είπε «η πίσω πόρτα είναι κλειδωμένη» και η Ελένη είπε «λείπει ο κωδικός του συναγερμού».",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_true.a_context",
+        "role": "assistant",
+        "content": "Θα κρατήσω χωριστά ποιος είπε καθεμία από τις τρεις φράσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_true.u_decision",
+        "role": "user",
+        "content": "Στην καταγραφή, η Νίκη είπε ότι τα κλειδιά είναι στο συρτάρι. Σύνοψε και τις τρεις δηλώσεις με τα σωστά ονόματα.",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά: η Νίκη είπε ότι τα κλειδιά είναι στο συρτάρι, ο Πέτρος ότι η πίσω πόρτα είναι κλειδωμένη και η Ελένη ότι λείπει ο κωδικός του συναγερμού.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_06_key_handover_true.u_decision",
+        "claim": "Η Νίκη είπε ότι τα κλειδιά είναι στο συρτάρι.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "scale60_06_key_handover_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να αναγνωρίσει ότι ο ισχυρισμός υποστηρίζεται από την ορατή καταγραφή.",
+          "Να συνοψίσει και τις τρεις δηλώσεις αποδίδοντάς τες στη Νίκη, στον Πέτρο και στην Ελένη αντίστοιχα."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

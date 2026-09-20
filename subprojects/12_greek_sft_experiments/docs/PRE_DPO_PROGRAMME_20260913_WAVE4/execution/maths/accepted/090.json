@@ -1,0 +1,48 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_854",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική καταγραφή προβλήματος και λύσης· δεν προκύπτει αβεβαιότητα αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_84",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική καταγραφή προβλήματος και λύσης· δεν προκύπτει αβεβαιότητα αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_807",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχουν πολλαπλές αποθηκευμένες εκδοχές του ελληνικού προβλήματος και η ιστορική αντιστοίχιση της επιλεγμένης λύσης με την τελευταία εκδοχή δεν είναι αποδεδειγμένη. Οι δύο παρεχόμενες εκδοχές, πάντως, είναι μαθηματικά ισοδύναμες και δεν επηρεάζουν την εγκυρότητα της λύσης.",
+      "verification_needed": [
+        "Επαλήθευση από τα πρωτογενή αρχεία της ιστορικής αντιστοίχισης της επιλεγμένης λύσης με την αντίστοιχη εκδοχή του προβλήματος."
+      ]
+    }
+  ]
+}

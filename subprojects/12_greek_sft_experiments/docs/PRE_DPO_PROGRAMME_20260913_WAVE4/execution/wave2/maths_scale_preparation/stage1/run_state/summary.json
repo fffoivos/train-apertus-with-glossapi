@@ -1,0 +1,26 @@
+{
+  "finished": "2026-09-13T14:05:41.197542+00:00",
+  "runner_pid": 33040,
+  "accepted": 0,
+  "queue_jobs": 42,
+  "calls_total": 22,
+  "retry_calls": 8,
+  "new_calls": 22,
+  "quota_stop": false,
+  "failures": {
+    "adapt__scaleB_math_line_1622": "codex exit 1: /foivoskarounos-zamparloukos/.codex/state_5.sqlite: error returned from database: (code: 8) attempt to write a readonly database: error returned from database: (code: 8) attempt to write a readonly database: (code: 8) attempt to write a readonly database\nError: failed to initialize in-process app-server client: Operation not permitted (os error 1)\n",
+    "adapt__scaleB_math_line_50": "codex exit 1: /foivoskarounos-zamparloukos/.codex/state_5.sqlite: error returned from database: (code: 8) attempt to write a readonly database: error returned from database: (code: 8) attempt to write a readonly database: (code: 8) attempt to write a readonly database\nError: failed to initialize in-process app-server client: Operation not permitted (os error 1)\n",
+    "adapt__scaleB_math_line_2400": "codex exit 1: /foivoskarounos-zamparloukos/.codex/state_5.sqlite: error returned from database: (code: 8) attempt to write a readonly database: error returned from database: (code: 8) attempt to write a readonly database: (code: 8) attempt to write a readonly database\nError: failed to initialize in-process app-server client: Operation not permitted (os error 1)\n",
+    "adapt__scaleB_math_line_2349": "codex exit 1: /foivoskarounos-zamparloukos/.codex/state_5.sqlite: error returned from database: (code: 8) attempt to write a readonly database: error returned from database: (code: 8) attempt to write a readonly database: (code: 8) attempt to write a readonly database\nError: failed to initialize in-process app-server client: Operation not permitted (os error 1)\n",
+    "adapt__scaleB_math_line_2630": "codex exit 1: /foivoskarounos-zamparloukos/.codex/state_5.sqlite: error returned from database: (code: 8) attempt to write a readonly database: error returned from database: (code: 8) attempt to write a readonly database: (code: 8) attempt to write a readonly database\nError: failed to initialize in-process app-server client: Operation not permitted (os error 1)\n",
+    "adapt__scaleB_math_line_2653": "codex exit 1: /foivoskarounos-zamparloukos/.codex/state_5.sqlite: error returned from database: (code: 8) attempt to write a readonly database: error returned from database: (code: 8) attempt to write a readonly database: (code: 8) attempt to write a readonly database\nError: failed to initialize in-process app-server client: Operation not permitted (os error 1)\n",
+    "adapt__scaleB_math_line_4551": "codex exit 1: /foivoskarounos-zamparloukos/.codex/state_5.sqlite: error returned from database: (code: 8) attempt to write a readonly database: error returned from database: (code: 8) attempt to write a readonly database: (code: 8) attempt to write a readonly database\nError: failed to initialize in-process app-server client: Operation not permitted (os error 1)\n",
+    "adapt__scaleB_math_line_4650": "codex exit 1: /foivoskarounos-zamparloukos/.codex/state_5.sqlite: error returned from database: (code: 8) attempt to write a readonly database: error returned from database: (code: 8) attempt to write a readonly database: (code: 8) attempt to write a readonly database\nError: failed to initialize in-process app-server client: Operation not permitted (os error 1)\n",
+    "adapt__scaleB_math_line_5405": "global retry cap reached",
+    "adapt__scaleB_math_line_5055": "global retry cap reached",
+    "adapt__scaleB_math_line_5815": "global retry cap reached",
+    "adapt__scaleB_math_line_6124": "global retry cap reached",
+    "adapt__scaleB_math_line_7276": "global retry cap reached",
+    "adapt__scaleB_math_line_7061": "global retry cap reached"
+  }
+}

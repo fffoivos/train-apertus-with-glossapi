@@ -1,0 +1,17 @@
+{
+  "all_other_candidate_messages_unchanged": true,
+  "assessment": "The added scope is mathematically correct: the displayed conditional slope-variance formula is the simple-regression OLS result under zero conditional mean, constant conditional error variance, and conditionally uncorrelated errors. It changes neither the formula nor the conclusions and makes their assumptions explicit.",
+  "candidate_records_sha256": "d0397cc6da9b8a4e19491b3f266b9d7d940bfae47e7c6afef6b1b2d17dd90672",
+  "changed_rows": [
+    "20461"
+  ],
+  "corpus_mutations": 0,
+  "delta_count": 1,
+  "disposition": "accept",
+  "model_calls": 0,
+  "original_candidate_records_sha256": "625d4ce08cdd438b8f06a62958a9afd9b17eed04f4d6ab7b42ae5d7eacff3c0d",
+  "reviewed_at": "2026-09-13T17:46:14+03:00",
+  "reviewer": "dialogue_audit Sol agent",
+  "root_deltas_sha256": "b34bc2024a5f73acb410c4d9d30cc393f9d5e8d44d76004bd1732615e37be964",
+  "schema_version": "adapted_core_repair6_root_delta_independent_receipt_v1"
+}

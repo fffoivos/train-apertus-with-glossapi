@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_gsm_2797",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The actual AFTER training pair is complete and byte-equivalent to the supplied complete_after_messages. The solution correctly obtains John’s age as 18−10=8 years, interprets each parent’s current age as 5·8=40 years, and subtracts the 18 years since Mark’s birth to obtain 22 years. The name localization is culturally coherent and preserves the mathematical objective. The English phrase “5 times older” is potentially ambiguous in isolation, but the Greek problem explicitly states that the parents’ age is five times John’s age, consistently with the supplied reference and intended arithmetic. The editor replaced an inherited malformed temporal sentence with a natural, semantically equivalent one.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_247_2",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "This is a native Greek example with no English source to preserve. The actual AFTER training pair is complete and byte-equivalent to the supplied complete_after_messages. The equation 2.5x+85=310 follows directly from the premises; subtracting 85 gives 225 and dividing by 2.5 gives exactly 90 bracelets. Units are appropriately represented in the problem and final answer, and no rounding is required. The Kalamata festival and municipal contribution form a coherent Greek context. The editor’s change makes the variable definition syntactically complete without altering its meaning or the mathematics.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    }
+  ]
+}

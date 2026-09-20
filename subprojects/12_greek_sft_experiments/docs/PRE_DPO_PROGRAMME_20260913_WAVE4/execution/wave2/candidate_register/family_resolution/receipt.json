@@ -1,0 +1,14 @@
+{
+  "created_at": "2026-09-13T14:29:23.127041+00:00",
+  "candidate_rows": 44,
+  "dispositions": {
+    "add_family_once_after_full_assembly_gates": 42,
+    "quarantine_frozen_math500_overlap_gate": 1,
+    "hold_gsm_family_until_current_split_and_benchmark_gates_bound": 1
+  },
+  "family_inventory_sha256": "5e21b80967bd49bf8482e8ee38691de4e9571b42f37a6df8bf7c600b92059b41",
+  "source_manifest_sha256": "68153c4c90070175c13da1847f534e9c3fe93928771d75e1486fa963a37a3d88",
+  "current_full_assembly_rehashed_here": false,
+  "corpus_modified": false,
+  "register_v1_preserved": true
+}

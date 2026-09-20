@@ -1,0 +1,55 @@
+{
+  "materialization_status": "templates_only_not_queued",
+  "semantic_repair": {
+    "cap": 12,
+    "split_caps": {
+      "train": 8,
+      "dev": 2,
+      "final_confirmation": 2
+    },
+    "trigger": "named substantive defect after oracle/full-dialogue review",
+    "model": "gpt-5.6-sol",
+    "effort": "high",
+    "schema": "schemas/semantic_repair.schema.json",
+    "template": "prompts/semantic_repair.txt",
+    "payload_fields": [
+      "scenario_spec",
+      "authored_candidate",
+      "oracle_verification",
+      "allowed_edit_locations",
+      "protected_spans"
+    ]
+  },
+  "greek_correction": {
+    "cap": 47,
+    "split_caps": {
+      "train": 32,
+      "dev": 8,
+      "final_confirmation": 7
+    },
+    "trigger": "semantic acceptance; one language pass for each dispatchable candidate",
+    "model": "gpt-5.6-sol",
+    "effort": "high",
+    "schema": "schemas/greek_correction.schema.json",
+    "template": "prompts/greek_correction.txt",
+    "payload_fields": [
+      "scenario_spec",
+      "semantically_settled_candidate",
+      "allowed_edit_locations",
+      "protected_spans"
+    ]
+  },
+  "ordering": [
+    "author",
+    "oracle_and_full_semantic_gate",
+    "semantic_repair_if_needed",
+    "semantic_regate",
+    "greek_correction",
+    "oracle_and_semantic_regate"
+  ],
+  "forbidden_shortcuts": [
+    "Greek correction cannot change truth, state, action, quantities, ownership, masks, or protected exact strings",
+    "Semantic repair cannot be folded into a language-only edit",
+    "A model assertion is not oracle evidence"
+  ]
+}

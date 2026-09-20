@@ -1,0 +1,64 @@
+{
+  "schema_version": "krikri_v15_peer_readiness_v1",
+  "status": "ready_for_root_review_not_launched",
+  "recorded_at": "2026-09-13T13:42:31Z",
+  "model_repo": "ilsp/Llama-Krikri-8B-Instruct-v1.5",
+  "model_revision": "326e2c0ea90d771c19fcf06225fe87dc922b51b2",
+  "bundle_payload_sha256": "edf6f76fa34cf4a362b258a250259ce7d03029a7f2a739a2c9631caa1777b9dc",
+  "science_manifest_sha256": "911181d1abd995b167e5cce93fe8b9fe7e9ca1b37edc735b7469e9f216e8534a",
+  "remote_bundle": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3",
+  "proposed_output": "/iopsstor/scratch/cscs/fffoivos/sft_round1/evals/wave2_krikri_v15/attempt_001/result.json",
+  "proposed_output_parent_confirmed_absent": true,
+  "allocation_created": false,
+  "queue_active_jobs": 0,
+  "first_attempt": {
+    "partition": "debug",
+    "nodes": 1,
+    "walltime": "01:25:00",
+    "node_hours": 1.4167,
+    "projected_chf": 3.81
+  },
+  "measurement_envelope": {
+    "node_hours": 4.0,
+    "chf": 10.76
+  },
+  "final_receipts": [
+    {
+      "path": "receipts/adapter_preflight_edf6f76f.json",
+      "sha256": "8b656a2a4e0f2674b9c7f05bbc2968bfd53976f34a59a0a1653f75f2320648ed",
+      "status": "passed"
+    },
+    {
+      "path": "receipts/canonical_bindings_edf6f76f.json",
+      "sha256": "c2f41b5b0f35a534890d43e7acb42d97d1a06bf4e7ceba777729bc34fbd459c1",
+      "status": "passed"
+    },
+    {
+      "path": "receipts/canonical_vllm_imports_edf6f76f.json",
+      "sha256": "b75d42efec889bb264b30a38863e98424e409a060717d3f7ef8d4f4fc6c58d08",
+      "status": "passed"
+    },
+    {
+      "path": "receipts/canonical_lmeval_imports_edf6f76f.json",
+      "sha256": "58f97bb7260dee4e074e590943e9677b7ff821fd0d08c88d00f153d18b82dbfa",
+      "status": "passed"
+    },
+    {
+      "path": "receipts/scheduler_test_edf6f76f.json",
+      "sha256": "b88a56abf9c18431a02574f7603fc13a5ddf0ad1bfda3a17275c80d4bd168c8b",
+      "status": "passed"
+    },
+    {
+      "path": "receipts/fresh_queue_budget_20260913T134231Z.json",
+      "sha256": "b857fa90b3a01fc8a8e342814eb486778c83ba021f3d355b6e87c52b649ab695",
+      "status": "passed"
+    }
+  ],
+  "scope_boundaries": {
+    "multichallenge": "213_of_262_diagnostic_only_pending_all_model_native_token_gate",
+    "greekmmlu": "excluded_separate_protocol_diagnostic",
+    "mt_bench": "excluded_not_validated",
+    "belebele": "excluded_not_validated",
+    "canonical_lifecycle": "standalone_external_checkpoint_gap_documented"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "job_id": "author__scale60_04_park_map_excerpt_true",
+  "row_id": "scale60_04_park_map_excerpt_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "48e061722af48dec6de90be3e3b4fd4f6d631b43c94732f0da86e2605c748c5e",
+  "input_record_sha256": "bdafaccad68ac422c2443466f8605621e3e4d88497c55a19b02e41bea70036b5",
+  "payload_sha256": "3f0c7254e66ec9394be332b020f657e4784698146b697c8f2feda35621f9c479",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "5eff6ee244f45e416b8941e09f36fe0316f9fa315995eb30bec0353e0b88ee0b",
+  "result": {
+    "row_id": "scale60_04_park_map_excerpt_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_04_park_map_excerpt_true.u_context",
+        "role": "user",
+        "content": "Στο απόσπασμα του χάρτη φαίνονται μόνο τα μονοπάτια Πεύκο–Λίμνη, Λίμνη–Κήπος και Κήπος–Πύργος.",
+        "train": false
+      },
+      {
+        "id": "scale60_04_park_map_excerpt_true.a_context",
+        "role": "assistant",
+        "content": "Θα μιλήσω μόνο για ό,τι φαίνεται στο συγκεκριμένο απόσπασμα.",
+        "train": false
+      },
+      {
+        "id": "scale60_04_park_map_excerpt_true.u_decision",
+        "role": "user",
+        "content": "Για να προχωρήσουμε μαζί: Στο απόσπασμα υπάρχει διαδρομή από το Πεύκο ως τον Πύργο.",
+        "train": false
+      },
+      {
+        "id": "scale60_04_park_map_excerpt_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά. Τα ενδιάμεσα σημεία είναι η Λίμνη και ο Κήπος: Πεύκο–Λίμνη–Κήπος–Πύργος.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_04_park_map_excerpt_true.u_decision",
+        "claim": "Στο απόσπασμα υπάρχει διαδρομή από το Πεύκο ως τον Πύργο.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "scale60_04_park_map_excerpt_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να αναγνωρίσει ότι ο ισχυρισμός υποστηρίζεται.",
+          "Να κατονομάσει τη Λίμνη και τον Κήπο ως ενδιάμεσα σημεία."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

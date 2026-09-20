@@ -1,0 +1,30 @@
+{
+  "job_id": "verify__control_gm_gsm_3835",
+  "row_id": "control_gm_gsm_3835",
+  "stage": "verification_blind",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "e4bfe98f30a269b2825799e09ce240871ca2d3ffe0f36e3bc48b161863bf7684",
+  "input_record_sha256": "75ca62d478bba93138aa7bd5ac6994a33308495feb71d17df836dc1c6171d2c5",
+  "payload_sha256": "c8baae84f92988e9c6513a0222279e4d87b70b703c7fb4495ea6ea17d0daae25",
+  "template_sha256": "67a04cee918f227aa582da70a6fcb66cc7eca7093bc64ae9c067ec87a3b4b1de",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "cbc1c106a462d78f235aba429447a290fcc38291de6bebde61ab48c52bcc8d84",
+  "result": {
+    "row_id": "control_gm_gsm_3835",
+    "status": "candidate",
+    "solution_text": "Ο Τομέας Α έχει συνολικά\n\\[\n60+3\\cdot 80=60+240=300\n\\]\nκαθίσματα.\n\nΟ Τομέας Β έχει 20 περισσότερα καθίσματα από το τριπλάσιο αυτού του αριθμού. Επομένως, έχει\n\\[\n3\\cdot 300+20=900+20=920\n\\]\nκαθίσματα.\n\nΑπάντηση: Ο Τομέας Β έχει \\(920\\) καθίσματα.",
+    "final_answers": [
+      {
+        "part": "Συνολικός αριθμός καθισμάτων του Τομέα Β",
+        "expression": "920",
+        "unit": "καθίσματα",
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

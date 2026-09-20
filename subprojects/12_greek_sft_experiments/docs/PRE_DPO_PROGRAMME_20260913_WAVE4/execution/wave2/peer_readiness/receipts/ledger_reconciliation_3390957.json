@@ -1,0 +1,23 @@
+{
+  "schema_version": "wave2_ledger_reconciliation_v1",
+  "status": "recorded_locally_no_project_ledger_mutation",
+  "job_id": "3390957",
+  "slurm_state": "FAILED",
+  "elapsed_seconds": 1337,
+  "accounting_basis": "full node for actual elapsed time",
+  "attempt_node_hours": 0.3713888889,
+  "attempt_cost_chf": 0.9990361111,
+  "ledger_before_node_hours": 60.602,
+  "ledger_before_chf": 163.02,
+  "ledger_after_node_hours": 60.9733888889,
+  "ledger_after_chf": 164.0190361111,
+  "remaining_chf": 65.9809638889,
+  "remaining_node_hours_at_2_69_chf_per_node_hour": 24.5282393639,
+  "measurement_envelope_initial_node_hours": 4.0,
+  "measurement_envelope_remaining_node_hours": 3.6286111111,
+  "source_receipts": [
+    "terminal_failure_3390957.json",
+    "../recovery_result_3390957.json"
+  ],
+  "project_ledger_modified": false
+}

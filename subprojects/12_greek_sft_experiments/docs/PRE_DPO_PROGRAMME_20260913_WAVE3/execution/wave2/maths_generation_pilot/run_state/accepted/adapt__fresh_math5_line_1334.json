@@ -1,0 +1,56 @@
+{
+  "job_id": "adapt__fresh_math5_line_1334",
+  "row_id": "fresh_math5_line_1334",
+  "stage": "adaptation",
+  "attempt": 2,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "8ac78a51250f55ea999fbf5f3a881e6d5c298910a340292ab5d26ebaad94e615",
+  "input_record_sha256": "f69a10f3c49cf19d224b75fb7b40f7af1d14bd3c251f3c40c6d2309c46b88255",
+  "payload_sha256": "92609350aadf28dbd7117773bc156071ac1df1944c53e576025fb4e76ca1e888",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "e4236afd9b8b4a2b7ff177eb938f6434534fbd5d8bc9a138ff44baffd77b6d0f",
+  "result": {
+    "row_id": "fresh_math5_line_1334",
+    "status": "candidate",
+    "problem_text": "Πόσες τετραγωνικές μονάδες είναι το εμβαδόν του τριγώνου του οποίου οι κορυφές είναι τα σημεία τομής της καμπύλης $y = (x-3)^2 (x+2)$ με τους άξονες $x$ και $y$;",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "How many square units are in the area of the triangle whose vertices are the $x$ and $y$ intercepts of the curve",
+        "target_span": "Πόσες τετραγωνικές μονάδες είναι το εμβαδόν του τριγώνου του οποίου οι κορυφές είναι τα σημεία τομής της καμπύλης με τους άξονες $x$ και $y$",
+        "reason": "Πιστή απόδοση στα φυσικά ελληνικά, με την καθιερωμένη μαθηματική ορολογία για τα σημεία τομής με τους άξονες."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "3",
+          "role": "οριζόντια μετατόπιση στον παράγοντα $(x-3)^2$",
+          "unit": null
+        },
+        {
+          "value": "2",
+          "role": "σταθερά στον παράγοντα $(x+2)$",
+          "unit": null
+        },
+        {
+          "value": "2",
+          "role": "εκθέτης του παράγοντα $(x-3)$",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Η καμπύλη ορίζεται από την εξίσωση $y = (x-3)^2 (x+2)$.",
+        "Οι κορυφές του τριγώνου είναι όλα τα σημεία τομής της καμπύλης με τους άξονες $x$ και $y$."
+      ],
+      "required_outputs": [
+        "Το εμβαδόν του τριγώνου σε τετραγωνικές μονάδες."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

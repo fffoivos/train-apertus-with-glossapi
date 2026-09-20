@@ -1,0 +1,74 @@
+{
+  "job_id": "author_pilot48_04_partial",
+  "row_id": "pilot48_04_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "834c79ce234acb1789c145c74cdbefcb030509998b7234901b95a424290823f4",
+  "input_record_sha256": "d3c8b00a53261f3922cc5191e7c17739ba95af6d173b75eb758805f3f9e23ce4",
+  "payload_sha256": "794b4448cd509aa7233db152ca79054a760c3edb0c3c5a25fc6ae23183eb8d46",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "bd50e77b401d79e104deeb7a5d0418fe591cb1de423f5f18b45ff1fd0544507b",
+  "result": {
+    "row_id": "pilot48_04_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_04_partial.u_context",
+        "role": "user",
+        "content": "Η αρχική λίστα είχε ταυτότητα και φορτιστή. Έπειτα προστέθηκε αδιάβροχο, οπότε τώρα περιέχει ταυτότητα, φορτιστή και αδιάβροχο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_partial.a_context",
+        "role": "assistant",
+        "content": "Η τρέχουσα λίστα είναι: ταυτότητα, φορτιστής και αδιάβροχο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_partial.u_decision",
+        "role": "user",
+        "content": "Στη λίστα που μόλις μου έδειξες, φαίνεται ότι έχουμε φορτιστή αλλά όχι αδιάβροχο. Πρόσθεσε τώρα καπέλο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_partial.a_target",
+        "role": "assistant",
+        "content": "Ο φορτιστής είναι στη λίστα, αλλά και το αδιάβροχο είναι ήδη στη λίστα. Πρόσθεσα το καπέλο· τώρα η λίστα περιέχει ταυτότητα, φορτιστή, αδιάβροχο και καπέλο.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_04_partial.u_decision",
+        "claim": "Η λίστα περιέχει φορτιστή αλλά δεν περιέχει αδιάβροχο.",
+        "truth_category": "partial",
+        "evidence_ids": [
+          "pilot48_04_partial.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να αναγνωρίσει ότι ο φορτιστής βρίσκεται στη λίστα.",
+          "Να διορθώσει ότι το αδιάβροχο βρίσκεται ήδη στη λίστα.",
+          "Να προσθέσει το καπέλο στην εντός διαλόγου λίστα.",
+          "Να αναφέρει συνοπτικά την ενημερωμένη κατάσταση της λίστας."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "items",
+        "before_json": "[\"ταυτότητα\",\"φορτιστής\",\"αδιάβροχο\"]",
+        "after_json": "[\"ταυτότητα\",\"φορτιστής\",\"αδιάβροχο\",\"καπέλο\"]",
+        "evidence_ids": [
+          "pilot48_04_partial.u_context",
+          "pilot48_04_partial.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

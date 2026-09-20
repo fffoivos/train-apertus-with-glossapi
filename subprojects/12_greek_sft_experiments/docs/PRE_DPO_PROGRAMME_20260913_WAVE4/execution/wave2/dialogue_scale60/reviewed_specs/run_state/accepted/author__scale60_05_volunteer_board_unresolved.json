@@ -1,0 +1,74 @@
+{
+  "job_id": "author__scale60_05_volunteer_board_unresolved",
+  "row_id": "scale60_05_volunteer_board_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "de6c9a9159ee5fb3bb3ed1de868107ebf6bfc49303d5221f0e4c110f0b3f48e5",
+  "input_record_sha256": "f2d6a097c3795dfa385a9fbc8af4c94177f60b31e39fcb216203356746755c2d",
+  "payload_sha256": "3c0c520d1422c5e44fee23ea380b72bc62447bbcff9ddf08e041ea6f6b5fa883",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "bc1d36640bb313146cf86a9581df1a156288cc6bc3b5eacd338ed1b1ba35a09f",
+  "result": {
+    "row_id": "scale60_05_volunteer_board_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_05_volunteer_board_unresolved.u_context",
+        "role": "user",
+        "content": "Στον κειμενικό πίνακα, το στήσιμο και τα φυλλάδια είναι ενεργά, ενώ ο έλεγχος ήχου είναι ακυρωμένος.",
+        "train": false
+      },
+      {
+        "id": "scale60_05_volunteer_board_unresolved.a_context",
+        "role": "assistant",
+        "content": "Βλέπω τρεις ξεχωριστές εγγραφές στον πίνακα και δεν έχει γίνει καμία εξωτερική ενέργεια.",
+        "train": false
+      },
+      {
+        "id": "scale60_05_volunteer_board_unresolved.u_decision",
+        "role": "user",
+        "content": "Επιτέλους. Ακύρωσε εκείνη την ενεργή εργασία στον πίνακα.",
+        "train": false
+      },
+      {
+        "id": "scale60_05_volunteer_board_unresolved.a_target",
+        "role": "assistant",
+        "content": "Ποια από τις δύο ενεργές εργασίες να ακυρώσω στον πίνακα: το στήσιμο ή τα φυλλάδια;",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_05_volunteer_board_unresolved.u_decision",
+        "claim": "Δεν προσδιορίζεται ποια από τις δύο ενεργές εργασίες, το στήσιμο ή τα φυλλάδια, αναφέρεται ως «εκείνη».",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "scale60_05_volunteer_board_unresolved.u_context",
+          "scale60_05_volunteer_board_unresolved.u_decision"
+        ],
+        "expected_response_behaviour": [
+          "Να επισημανθεί η αμφισημία του ζητούμενου.",
+          "Να παραμείνει αμετάβλητος ο πίνακας εργασιών.",
+          "Να ζητηθεί μόνο η επιλογή μεταξύ «στήσιμο» και «φυλλάδια»."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "πίνακας εργασιών",
+        "before_json": "{\"στήσιμο\":\"active\",\"φυλλάδια\":\"active\",\"έλεγχος_ήχου\":\"cancelled\"}",
+        "after_json": "{\"στήσιμο\":\"active\",\"φυλλάδια\":\"active\",\"έλεγχος_ήχου\":\"cancelled\"}",
+        "evidence_ids": [
+          "scale60_05_volunteer_board_unresolved.u_context",
+          "scale60_05_volunteer_board_unresolved.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

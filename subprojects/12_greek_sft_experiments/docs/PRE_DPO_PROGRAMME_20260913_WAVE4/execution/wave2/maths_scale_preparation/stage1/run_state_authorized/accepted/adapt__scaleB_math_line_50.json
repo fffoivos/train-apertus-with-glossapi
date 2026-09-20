@@ -1,0 +1,64 @@
+{
+  "job_id": "adapt__scaleB_math_line_50",
+  "row_id": "scaleB_math_line_50",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "6ca6a0cb5fe75b4290c113e319511ec086c5e4c30fa0a83a625389dbabb8fceb",
+  "input_record_sha256": "2469d7880360dcf1e3a08483ada333397f759f8019d039bbb18d126a2a9079c0",
+  "payload_sha256": "82122c9e5b3d69fd2bbeba70015935b18349c938b0a28eaafac6f15c9b3b5700",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "7ff75b7d50f923bebe82fdba8dd2f5d1cfe082c01a7d54f012348eacd1862fb7",
+  "result": {
+    "row_id": "scaleB_math_line_50",
+    "status": "candidate",
+    "problem_text": "Παραγοντοποιήστε την παράσταση $58x^5-203x^{11}$.",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Factor",
+        "target_span": "Παραγοντοποιήστε την παράσταση",
+        "reason": "Φυσική και ακριβής απόδοση της μαθηματικής οδηγίας στα ελληνικά."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "58",
+          "role": "συντελεστής του όρου x^5",
+          "unit": null
+        },
+        {
+          "value": "5",
+          "role": "εκθέτης του x στον πρώτο όρο",
+          "unit": null
+        },
+        {
+          "value": "203",
+          "role": "συντελεστής του όρου x^11",
+          "unit": null
+        },
+        {
+          "value": "11",
+          "role": "εκθέτης του x στον δεύτερο όρο",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Η προς παραγοντοποίηση παράσταση παραμένει ακριβώς $58x^5-203x^{11}$.",
+        "Διατηρούνται το σύμβολο της αφαίρεσης, η μεταβλητή x, οι συντελεστές και οι εκθέτες."
+      ],
+      "required_outputs": [
+        "Παραγοντοποιημένη μορφή της παράστασης $58x^5-203x^{11}$."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": [
+      "Έλεγχος ότι οι συντελεστές 58 και 203 και οι εκθέτες 5 και 11 διατηρήθηκαν αμετάβλητοι.",
+      "Έλεγχος ότι δεν προστέθηκε λύση ή υπόδειξη."
+    ]
+  }
+}

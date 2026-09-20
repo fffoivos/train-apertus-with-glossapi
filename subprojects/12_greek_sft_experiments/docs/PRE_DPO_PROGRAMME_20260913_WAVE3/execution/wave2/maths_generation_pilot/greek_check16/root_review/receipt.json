@@ -1,0 +1,22 @@
+{
+  "created_at": "2026-09-13T13:49:42.081078+00:00",
+  "status": "root_review_complete",
+  "rows": 16,
+  "unchanged_by_editor": 12,
+  "optional_editor_changes_rejected": 4,
+  "content_changes_applied": 0,
+  "preserved_math_spans": true,
+  "decoded_control_characters": 0,
+  "actual_additional_calls": 16,
+  "cumulative_math_calls": 108,
+  "calls_cap": 136,
+  "usage": {
+    "input_tokens": 215661,
+    "cached_input_tokens": 9600,
+    "output_tokens": 12845,
+    "reasoning_output_tokens": 3254
+  },
+  "parent_candidate_file_sha256": "c8f4df767951ec958fce46b47f61f75544400a2020563747a4293b8fb357e332",
+  "adjudications_sha256": "ccd57b1fe052c90b99872dcc960ef45eff1ba9936e0fef750e3f36495a999db3",
+  "source_metadata_and_candidate_files_unchanged": true
+}

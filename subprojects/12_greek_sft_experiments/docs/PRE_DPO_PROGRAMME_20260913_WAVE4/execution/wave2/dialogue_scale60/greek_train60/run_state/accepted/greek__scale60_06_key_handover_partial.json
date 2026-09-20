@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_06_key_handover_partial",
+  "row_id": "scale60_06_key_handover_partial",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "56ff673ec17570d2b07977be27c824cae40915fe426720c5ceb0efae36136374",
+  "input_record_sha256": "10126e256397fd09eab7522f942f832ad98097e7ca886fb5ac45cabd7b8739d2",
+  "payload_sha256": "4e611539de4922affc285393a226d035e2e65c955c6252a7dda4f7761fc08fbb",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "16bd14b1eab2dad32b09951ffd086f6e6289ecd9cbadc8fcf66da43fff88e9d0",
+  "result": {
+    "row_id": "scale60_06_key_handover_partial",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_06_key_handover_partial.u_context",
+        "role": "user",
+        "content": "Στην καταγραφή, η Νίκη είπε «τα κλειδιά είναι στο συρτάρι», ο Πέτρος είπε «η πίσω πόρτα είναι κλειδωμένη» και η Ελένη είπε «λείπει ο κωδικός του συναγερμού».",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_partial.a_context",
+        "role": "assistant",
+        "content": "Θα κρατήσω χωριστά ποιος είπε καθεμία από τις τρεις φράσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_partial.u_decision",
+        "role": "user",
+        "content": "Στην καταγραφή, ο Πέτρος είπε ότι η πίσω πόρτα είναι κλειδωμένη και η Νίκη ότι λείπει ο κωδικός. Σύνοψέ τα σωστά.",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_partial.a_target",
+        "role": "assistant",
+        "content": "Ο Πέτρος είπε ότι η πίσω πόρτα είναι κλειδωμένη, αλλά για τον κωδικό μίλησε η Ελένη, όχι η Νίκη. Συνοπτικά: η Νίκη είπε ότι τα κλειδιά είναι στο συρτάρι, ο Πέτρος ότι η πίσω πόρτα είναι κλειδωμένη και η Ελένη ότι λείπει ο κωδικός του συναγερμού.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

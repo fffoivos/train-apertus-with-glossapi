@@ -1,0 +1,63 @@
+{
+  "job_id": "author__scale60_18_printmaking_stock_false",
+  "row_id": "scale60_18_printmaking_stock_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "aca543acdc5db2e269dee259757cd8bab129d8fd7b53dd779fb0d39bdb919aa8",
+  "input_record_sha256": "b194aca4b515d8b7006e0de94b83ef1d1974f42cf39c3454fa6742874a1f4d4d",
+  "payload_sha256": "6dbd10b29e3657ea9db797c33e16fd69bfed7fd9555be89f2d11fce823a4ba1a",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "00668fbd6b88551fe18c80c30e9fe4bccc395a5308110356196e633397211bfc",
+  "result": {
+    "row_id": "scale60_18_printmaking_stock_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_18_printmaking_stock_false.u_context",
+        "role": "user",
+        "content": "Η απογραφή έχει 10 πακέτα χαρτί: 3 χρησιμοποιήθηκαν και 2 άλλα έχουν δεσμευτεί για το αυριανό μάθημα.",
+        "train": false
+      },
+      {
+        "id": "scale60_18_printmaking_stock_false.a_context",
+        "role": "assistant",
+        "content": "Οι χρησιμοποιημένες και οι δεσμευμένες ποσότητες είναι διαφορετικά πακέτα.",
+        "train": false
+      },
+      {
+        "id": "scale60_18_printmaking_stock_false.u_decision",
+        "role": "user",
+        "content": "Με βάση την απογραφή, μένουν 7 ελεύθερα πακέτα χαρτί. Επιτέλους!",
+        "train": false
+      },
+      {
+        "id": "scale60_18_printmaking_stock_false.a_target",
+        "role": "assistant",
+        "content": "Όχι· ελεύθερα μένουν 5 πακέτα, αφού από τα 10 αφαιρούνται τα 3 χρησιμοποιημένα και τα 2 δεσμευμένα.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_18_printmaking_stock_false.u_decision",
+        "claim": "Με βάση την απογραφή, μένουν 7 ελεύθερα πακέτα χαρτί.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_18_printmaking_stock_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα τον λανθασμένο αριθμό.",
+          "Να εξηγήσει ότι τα ελεύθερα πακέτα είναι 10 − 3 − 2 = 5.",
+          "Να μην αναφέρει αλλαγή κατάστασης ή εξωτερική ενέργεια."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

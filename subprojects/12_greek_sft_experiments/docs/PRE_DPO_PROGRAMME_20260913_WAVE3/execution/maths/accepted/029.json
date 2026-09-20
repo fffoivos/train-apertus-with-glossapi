@@ -1,0 +1,50 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_235",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το ελληνικό πρόβλημα είναι σταθερό και η επιλεγμένη λύση αντιστοιχεί πλήρως σε αυτό. Οι δύο καταγραφές λύσης δεν δημιουργούν δηλωμένη αβεβαιότητα ως προς το κείμενο του προβλήματος.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_981",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Η ιστορική αντιστοίχιση της τελευταίας λύσης με την τελευταία αποθηκευμένη εκδοχή του προβλήματος παραμένει ανεπιβεβαίωτη. Ωστόσο, οι δύο παρεχόμενες ελληνικές εκδοχές διαφέρουν μόνο στη διατύπωση «Ποια είναι η τιμή»/«Πόσο είναι» και είναι μαθηματικά ισοδύναμες· η λύση ταιριάζει και στις δύο.",
+      "verification_needed": [
+        "Επιβεβαίωση της ιστορικής αντιστοίχισης προβλήματος–λύσης από τα πρωτογενή αρχεία, εφόσον απαιτείται έλεγχος προέλευσης."
+      ]
+    },
+    {
+      "row_id": "math5_886",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Η ιστορική αντιστοίχιση της τελευταίας λύσης με την τελευταία αποθηκευμένη εκδοχή του προβλήματος παραμένει ανεπιβεβαίωτη. Οι δύο παρεχόμενες εκδοχές έχουν μόνο συντακτική διαφορά στη διατύπωση της συνθήκης a>1 και είναι μαθηματικά ισοδύναμες· η λύση εφαρμόζεται πλήρως και στις δύο.",
+      "verification_needed": [
+        "Επιβεβαίωση της ιστορικής αντιστοίχισης προβλήματος–λύσης από τα πρωτογενή αρχεία, εφόσον απαιτείται έλεγχος προέλευσης."
+      ]
+    }
+  ]
+}

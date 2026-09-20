@@ -1,0 +1,1189 @@
+{
+  "source_file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+  "checker_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+  "records": [
+    {
+      "row_id": "mixa_2026_06155",
+      "status": "candidate",
+      "selection_class": "impossible_language_mechanic",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 5527,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "4f77303f0a472c6a5f69621cee3cf2a73f3286b4cea39ebcd3488b1ff73aeff3",
+        "version": "v1",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 5527,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "4f77303f0a472c6a5f69621cee3cf2a73f3286b4cea39ebcd3488b1ff73aeff3"
+        }
+      },
+      "candidate_row_sha256": "1cd7723adf68c85d7e29f570aaa14b7b2eb07cab5f5bcc345286a919586bc079",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "no_accents",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "wrap_in_quotes",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "no_accents",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "wrap_in_quotes",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": false,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2028_05110",
+      "status": "candidate",
+      "selection_class": "contradictory_constraints",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 25263,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "9e05007814e6bd752e711fa8ffc6a1b860438ac8b09a66862f216e1c4f3febca",
+        "version": "v3",
+        "edited_component": {
+          "name": "v3_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v3/edited/rows_edited.jsonl",
+          "line_number": 4600,
+          "file_sha256": "77132d050309709cb9ad95ed91b3f1de0bf824c63b3c0e1d83668e2b1f01b320",
+          "raw_row_sha256": "9e05007814e6bd752e711fa8ffc6a1b860438ac8b09a66862f216e1c4f3febca"
+        }
+      },
+      "candidate_row_sha256": "9b08eeb2885a9664da9e5de70194b5f7ffe0d7a8e306a9d153c56ece3f590367",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "end_with",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "keywords_exclude",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "end_with",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "keywords_exclude",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": false,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2028_03200",
+      "status": "candidate",
+      "selection_class": "exact_string_failure",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 23555,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "70eb912197ffc9252e822c077bafb7a823b422e272d47e483ca59810abaadf8a",
+        "version": "v3",
+        "edited_component": {
+          "name": "v3_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v3/edited/rows_edited.jsonl",
+          "line_number": 2892,
+          "file_sha256": "77132d050309709cb9ad95ed91b3f1de0bf824c63b3c0e1d83668e2b1f01b320",
+          "raw_row_sha256": "70eb912197ffc9252e822c077bafb7a823b422e272d47e483ca59810abaadf8a"
+        }
+      },
+      "candidate_row_sha256": "3c4ab881e59630be041c040900bf8ff9879aca696a7ddfc06f6a8579cd1007f1",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "informal_singular",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "end_with",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "informal_singular",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "end_with",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": false,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2028_08593",
+      "status": "candidate",
+      "selection_class": "contradictory_exact_end_and_wrapper",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 28445,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "1aa229663401c15430922bc047ac5635c2ff770c591817d80c90eabb10b23320",
+        "version": "v3",
+        "edited_component": {
+          "name": "v3_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v3/edited/rows_edited.jsonl",
+          "line_number": 7783,
+          "file_sha256": "77132d050309709cb9ad95ed91b3f1de0bf824c63b3c0e1d83668e2b1f01b320",
+          "raw_row_sha256": "1aa229663401c15430922bc047ac5635c2ff770c591817d80c90eabb10b23320"
+        }
+      },
+      "candidate_row_sha256": "9cbbfe5720eeb25b6e418cb9790d891aa5e3999ae03c23f9cee82f86be6801d6",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "length_paragraphs",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "end_with",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "wrap_in_quotes",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "numbered_greek",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "length_paragraphs",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "end_with",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "wrap_in_quotes",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "numbered_greek",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": false,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2027_09179",
+      "status": "candidate",
+      "selection_class": "semantic_source_fidelity_failure",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 19034,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "7db6d00e1533cfcafc8eecf889c03a55a0e3c87b5581afdfc232269c3d23e79b",
+        "version": "v2",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 19035,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "7db6d00e1533cfcafc8eecf889c03a55a0e3c87b5581afdfc232269c3d23e79b"
+        }
+      },
+      "candidate_row_sha256": "34268beae0e1c262b8b2f07b3229d9ce451fea2edb766e43110032c677e36004",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "highlight_n",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "letter_freq",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "highlight_n",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "letter_freq",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": false,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2026_08572",
+      "status": "candidate",
+      "selection_class": "translation_padding_source_fidelity_failure",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 7679,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "e43ec6c81403de479e41cd06e0590434fa8274190446ef263b9d72d7273069ee",
+        "version": "v1",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 7679,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "e43ec6c81403de479e41cd06e0590434fa8274190446ef263b9d72d7273069ee"
+        }
+      },
+      "candidate_row_sha256": "d1fe4e6ca6e858e6529f042fdc63184ed8dd5ba691723075bc15673e62db1006",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "start_with",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "length_words_min",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "start_with",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "length_words_min",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": false,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2027_09553",
+      "status": "candidate",
+      "selection_class": "summary_padding_source_fidelity_failure",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 19370,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "47d3c7dfee9387aabb7475dafa17bb42c1b352031065c3bd2df6879626747137",
+        "version": "v2",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 19371,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "47d3c7dfee9387aabb7475dafa17bb42c1b352031065c3bd2df6879626747137"
+        }
+      },
+      "candidate_row_sha256": "3811bbb683b712d7490ad4b9d73095b373771e44a17b17edbda808dcb65f56b3",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "letter_freq",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "length_words_min",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "letter_freq",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "length_words_max",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": false,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2027_09689",
+      "status": "candidate",
+      "selection_class": "semantic_task_failure_from_format_constraint",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 19489,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "d7d97b9dba3613f376c70af396f810ea29ea174175a908a8c06d89d601b656d1",
+        "version": "v2",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 19490,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "d7d97b9dba3613f376c70af396f810ea29ea174175a908a8c06d89d601b656d1"
+        }
+      },
+      "candidate_row_sha256": "ac28984672d56a3c6c04c329344a2617c6db345c268e4ecd2dbf37c2c499a574",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "all_caps_greek",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "constrained_answer",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "all_caps_greek",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "length_sentences_exact",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": false,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2027_10080",
+      "status": "candidate",
+      "selection_class": "checker_false_positive_orthography",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 19845,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "27dcea078cd0ddf2870cffad92782ee435a4781c3dd614059c4a33fa637d48c2",
+        "version": "v2",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 19846,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "27dcea078cd0ddf2870cffad92782ee435a4781c3dd614059c4a33fa637d48c2"
+        }
+      },
+      "candidate_row_sha256": "7d79e09998c0885607471af42450762b75f25fa0364f7de6f1277a185b2f5629",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "monotonic_only",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "monotonic_only",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": false,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": [
+        "The current deterministic checker passes both original and repaired text; semantic orthography review is still required until the protocol is strengthened."
+      ]
+    },
+    {
+      "row_id": "mixa_2026_04027",
+      "status": "candidate",
+      "selection_class": "irrelevant_constraint_padding",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 3606,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "bbfeed3e736394f376ebbed4cd8f7fd8c87aaf6b71ad1a59d1a449b8548e9307",
+        "version": "v1",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 3606,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "bbfeed3e736394f376ebbed4cd8f7fd8c87aaf6b71ad1a59d1a449b8548e9307"
+        }
+      },
+      "candidate_row_sha256": "0868ca59541667548ea205854139ab59ae8443419a726e3ec7a4c20dcbcc9eb0",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "informal_singular",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "mention_entity",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "bullets_n",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "no_comma",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "paragraph_starts_with",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "informal_singular",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "mention_entity",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "bullets_n",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "no_comma",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "paragraph_starts_with",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": false,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2026_05543",
+      "status": "blocked",
+      "selection_class": "unresolved_exact_word_protocol",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 4969,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "9ef3a85dced085c7238223a358580afda1f575405fd492b73775c9ca6d5bfb3c",
+        "version": "v1",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 4969,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "9ef3a85dced085c7238223a358580afda1f575405fd492b73775c9ca6d5bfb3c"
+        }
+      },
+      "candidate_row_sha256": null,
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "paragraph_starts_with",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "keyword_freq",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": null,
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": null
+      },
+      "semantic_read": {
+        "original_task_adequate": null,
+        "candidate_task_adequate": null,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": [
+        "Exact-string versus accent-insensitive lexical identity is unresolved."
+      ]
+    },
+    {
+      "row_id": "mixa_2026_07006",
+      "status": "candidate",
+      "selection_class": "valid_control_complex",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 6284,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "9e60619ec65f25513167e769b84287634ef651667a610ca77409e35237f94e1c",
+        "version": "v1",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 6284,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "9e60619ec65f25513167e769b84287634ef651667a610ca77409e35237f94e1c"
+        }
+      },
+      "candidate_row_sha256": "6e8e706c95fdc45bb9ee85ed3c6ec94658ffc82bc6c9e25bbc0b6c6c5bd617ea",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "format_json",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "letter_freq",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "monotonic_only",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "mention_number",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "keywords_include",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "format_json",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "letter_freq",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "monotonic_only",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "mention_number",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "keywords_include",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": true,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2027_05368",
+      "status": "candidate",
+      "selection_class": "valid_control_monotonic",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 15610,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "e388db55f0419ed2bc8442be7f80a87bda5059a1b42529d3ec898f607adcdf42",
+        "version": "v2",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 15611,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "e388db55f0419ed2bc8442be7f80a87bda5059a1b42529d3ec898f607adcdf42"
+        }
+      },
+      "candidate_row_sha256": "09fa110abf7929ae762c36440d02ef5e1e1c21e7d9ea7f773eb788eb80ffe743",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "monotonic_only",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "monotonic_only",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": true,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2026_06199",
+      "status": "candidate",
+      "selection_class": "valid_control_highlight",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 5569,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "bcf79111a9cc5bc6696af5ad6454ae400e00c5caabac2b14ec988fc110bb3234",
+        "version": "v1",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 5569,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "bcf79111a9cc5bc6696af5ad6454ae400e00c5caabac2b14ec988fc110bb3234"
+        }
+      },
+      "candidate_row_sha256": "99fadb300344751015f0e43cf3304015a3949d6ea5f1209954726d6ed66a378f",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "highlight_n",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "highlight_n",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": true,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2026_04931",
+      "status": "candidate",
+      "selection_class": "valid_control_paragraph_start",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 4416,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "3aa26ac5f67f271bd98b98bcc8efee4dbddd74d84abd5d9e2385a523704b559d",
+        "version": "v1",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 4416,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "3aa26ac5f67f271bd98b98bcc8efee4dbddd74d84abd5d9e2385a523704b559d"
+        }
+      },
+      "candidate_row_sha256": "1f461b7ea6c58580b908ba920d66681750c3145374a919cdb71c21dbf6ecf648",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "paragraph_starts_with",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "paragraph_starts_with",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": true,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2026_11688",
+      "status": "candidate",
+      "selection_class": "valid_control_multi_constraint",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 10488,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "29b7897884461d2d75ac3c68f7851f5956edd2204affc821e3bc34f8922ff954",
+        "version": "v1",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 10488,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "29b7897884461d2d75ac3c68f7851f5956edd2204affc821e3bc34f8922ff954"
+        }
+      },
+      "candidate_row_sha256": "b43f628aac8466ad3b1ed20719a8ae26ddcc85fc8f78acf56a2319731b7c7e7c",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "no_exclamation",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "formal_and_informal",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "letter_freq",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "no_exclamation",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "formal_and_informal",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "letter_freq",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": true,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2026_08647",
+      "status": "candidate",
+      "selection_class": "valid_control_exact_start_wrapper",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 7749,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "91323c059ce1feda5ff752c068744d30328697687bf309ee7e7b568213c6f2dc",
+        "version": "v1",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 7749,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "91323c059ce1feda5ff752c068744d30328697687bf309ee7e7b568213c6f2dc"
+        }
+      },
+      "candidate_row_sha256": "2bdb9dd88f94a352ff9d26a54c6ecdce1d539c1e6e204f60a818007c32ba1082",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "numbered_greek",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "informal_singular",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "start_with",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "wrap_in_quotes",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "numbered_greek",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "informal_singular",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "start_with",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "wrap_in_quotes",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": true,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2027_09233",
+      "status": "candidate",
+      "selection_class": "valid_control_lowercase",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 19082,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "5d21176cc92698a42e43e76a01b2ba99835a9aa5d66a67e8ed9c082d316f07fc",
+        "version": "v2",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 19083,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "5d21176cc92698a42e43e76a01b2ba99835a9aa5d66a67e8ed9c082d316f07fc"
+        }
+      },
+      "candidate_row_sha256": "b84550ebe318ed2c9c8e354a37a1b240b13ccd26003521a10a1486d754a25326",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "all_lower",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "all_lower",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": true,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2027_07834",
+      "status": "candidate",
+      "selection_class": "valid_control_placeholders_question_mark",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 17827,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "7614e16ac7ade6875148b5a054a8d402a207b25e455b9a8da2b2c90fe7c4d644",
+        "version": "v2",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 17828,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "7614e16ac7ade6875148b5a054a8d402a207b25e455b9a8da2b2c90fe7c4d644"
+        }
+      },
+      "candidate_row_sha256": "2afdf25ebab8708cb7ea0eba45bf91705ee79131897546f82ae35626d7362bf6",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "placeholders_n",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "greek_question_mark",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "placeholders_n",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "greek_question_mark",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": true,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    },
+    {
+      "row_id": "mixa_2027_01564",
+      "status": "candidate",
+      "selection_class": "valid_control_title_date_end",
+      "source_identity": {
+        "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/final/greek_if_sft.jsonl",
+        "line_number": 12187,
+        "file_sha256": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf",
+        "raw_row_sha256": "d850c598abb0740bba85b1072f763fcc1503a2b867e4148b051623c778e45641",
+        "version": "v2",
+        "edited_component": {
+          "name": "v1v2_edited",
+          "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/v1v2/edited/rows_edited.jsonl",
+          "line_number": 12188,
+          "file_sha256": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+          "raw_row_sha256": "d850c598abb0740bba85b1072f763fcc1503a2b867e4148b051623c778e45641"
+        }
+      },
+      "candidate_row_sha256": "cf38bb7d0ccee22091d2f0f83c31f7fe29eccca60ad79bec0f404a7572b420a6",
+      "checker_execution": {
+        "module_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+        "module_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+        "original": [
+          {
+            "family": "mention_date",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "end_with",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "title",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "candidate": [
+          {
+            "family": "mention_date",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "end_with",
+            "ok": true,
+            "checkable": true
+          },
+          {
+            "family": "title",
+            "ok": true,
+            "checkable": true
+          }
+        ],
+        "original_all_checkable_pass": true,
+        "candidate_all_checkable_pass": true
+      },
+      "semantic_read": {
+        "original_task_adequate": true,
+        "candidate_task_adequate": true,
+        "basis": "full request-response read beyond substring/count checker"
+      },
+      "issues": []
+    }
+  ]
+}

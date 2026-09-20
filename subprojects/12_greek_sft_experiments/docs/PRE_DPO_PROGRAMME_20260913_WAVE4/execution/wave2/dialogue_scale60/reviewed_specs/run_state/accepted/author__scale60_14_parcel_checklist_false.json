@@ -1,0 +1,73 @@
+{
+  "job_id": "author__scale60_14_parcel_checklist_false",
+  "row_id": "scale60_14_parcel_checklist_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "0934179780e2c73467523c94eb4b94910ccb37a3aca7eaf9c883aa7dbf843aa2",
+  "input_record_sha256": "06a75107c49f8e540a8dcb63bffafea337f1b96778d9d8a8e64e033ddd4d0d5b",
+  "payload_sha256": "818eddded38a89a0faf306d30bfbbbf309a28800c2c8ac1ff2c635f9b88bcf0e",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "bc0c8679ea581aca1be9c8678e0dc41c79700ee8e01382c9ad62830001330cd2",
+  "result": {
+    "row_id": "scale60_14_parcel_checklist_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_14_parcel_checklist_false.u_context",
+        "role": "user",
+        "content": "Στο πρόχειρο της λίστας, η διεύθυνση έχει γραφτεί, η επένδυση έχει τοποθετηθεί και η ετικέτα δεν έχει ακόμη σημειωθεί ως εκτυπωμένη.",
+        "train": false
+      },
+      {
+        "id": "scale60_14_parcel_checklist_false.a_context",
+        "role": "assistant",
+        "content": "Πρόκειται για κειμενικό έλεγχο της λίστας, όχι για πραγματική εκτύπωση ή αποστολή.",
+        "train": false
+      },
+      {
+        "id": "scale60_14_parcel_checklist_false.u_decision",
+        "role": "user",
+        "content": "Άντε πια. Στο πρόχειρο η ετικέτα φαίνεται ήδη εκτυπωμένη. Σημείωσέ την τώρα ως εκτυπωμένη.",
+        "train": false
+      },
+      {
+        "id": "scale60_14_parcel_checklist_false.a_target",
+        "role": "assistant",
+        "content": "Στο προηγούμενο πρόχειρο η ετικέτα δεν ήταν σημειωμένη ως εκτυπωμένη. Τώρα τη σημείωσα ως εκτυπωμένη στη λίστα συσκευασίας.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_14_parcel_checklist_false.a_target",
+        "claim": "Η ετικέτα φαινόταν ήδη εκτυπωμένη στο πρόχειρο.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_14_parcel_checklist_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα τον ψευδή ισχυρισμό βάσει του ορατού προηγούμενου πρόχειρου.",
+          "Να εφαρμόσει αμέσως τη σαφή νέα οδηγία στην κειμενική λίστα.",
+          "Να αναφέρει συνοπτικά το νέο κειμενικό αποτέλεσμα χωρίς να υπονοήσει πραγματική εκτύπωση ή αποστολή."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "label_printed",
+        "before_json": "false",
+        "after_json": "true",
+        "evidence_ids": [
+          "scale60_14_parcel_checklist_false.u_context",
+          "scale60_14_parcel_checklist_false.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

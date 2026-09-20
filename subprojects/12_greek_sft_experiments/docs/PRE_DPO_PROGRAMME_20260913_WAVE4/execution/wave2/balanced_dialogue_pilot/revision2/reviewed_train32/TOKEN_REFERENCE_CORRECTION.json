@@ -1,0 +1,5 @@
+{
+  "correct_tokenizer_reference": "../../../maths_generation_pilot/final_candidates/token_inventory.json",
+  "original_inventory_sha256": "63d713668626cfb141c9ba5b99b8d69b8d68d38acfb2b44b27e44e6f7e5f69da",
+  "reason": "One extra parent traversal in the human-readable metadata reference. Actual tokenizer paths and token results were independently verified and are unchanged."
+}

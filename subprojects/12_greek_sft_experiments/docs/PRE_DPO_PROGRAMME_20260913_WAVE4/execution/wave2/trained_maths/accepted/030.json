@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_gsm_1271",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete AFTER record is byte-equivalent to the actual training record and occurs once. The euro adaptation preserves the source quantities, arithmetic, and teaching objective. The editor only repaired the compact noun constructions «δεμάτια πατάτες» and «δεμάτια καρότα» by adding «με»; all correct mathematical steps remained intact. The reference value agrees with an independent verification of the arithmetic but was not treated as proof.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_817_1",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "This is a native Greek example with no English source, so it was assessed on its own premises. Both requested parts are answered: 2·3.14·1.8 = 11.304 m, 1.8² = 3.24 m², 3.14·3.24 = 10.1736 m², and 10.1736·25 = 254.34 €. The decimal-comma notation and units are coherent. Treating 3.14 as the stipulated computational value of π and writing equality in the resulting classroom calculations is acceptable. The earlier second solve is corroborative model output, not independent ground truth.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

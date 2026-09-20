@@ -1,0 +1,54 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_197",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The candidate is paired with a stable problem text; there are no alternate problem variants or historical-pairing concerns. The full derivation and final value agree with the stated base-6 conditions.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_874",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The row has a single problem and solution record. The candidate preserves the quantities and teaching objective and correctly explains that the dot in «3.000» is a thousands separator.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_1933",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "minor",
+          "quote": "Τα διόδια κοστίζουν 12,50 € ... διανύουν 35 μίλια με ένα γαλόνι καυσίμου",
+          "explanation": "The name and currency are localized to Greek/European conventions, but miles and gallons are retained. This produces a partially adapted setting combining euros with Anglosphere fuel-economy units. It does not affect the calculation, since all retained quantities are internally consistent.",
+          "suggested_action": "Record the mixed localization as a deliberate choice, or—if full cultural localization is required in a future repair—convert all distances, fuel quantities, rates and dependent calculations consistently."
+        }
+      ],
+      "provenance_note": "The row has a single problem and solution record. The euro substitution is consistently propagated through the Greek problem and solution; the remaining concern is cultural coherence, not mathematical fidelity.",
+      "verification_needed": []
+    }
+  ]
+}

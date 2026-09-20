@@ -1,0 +1,12 @@
+{
+  "split": "final_confirmation",
+  "row_count": 8,
+  "dispatchable": 7,
+  "quarantined": 1,
+  "content_exposed_in_report": false,
+  "content_available_for_tuning_or_selection": false,
+  "prompt_contract_applied_before_generation": true,
+  "authoring_launched": false,
+  "family_ids_sha256": "c3b224b9307e53b39ce939f3e45f66a331a5a5f81ea91c76e5960110a545d922",
+  "inputs_sha256": "d9603b195eed2f2232fe69f2ab235a203fae992a6e8a24e1e42368167ea52af7"
+}

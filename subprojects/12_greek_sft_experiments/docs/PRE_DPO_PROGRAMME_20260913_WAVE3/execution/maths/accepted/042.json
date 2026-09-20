@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_3280",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record paired with a single solution record; no historical pairing uncertainty is indicated.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_1502",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record paired with a single solution record; no historical pairing uncertainty is indicated. The permitted adaptation from the Taylor family to the Papadopoulos family is coherent.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3887",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record paired with a single solution record; no historical pairing uncertainty is indicated.",
+      "verification_needed": []
+    }
+  ]
+}

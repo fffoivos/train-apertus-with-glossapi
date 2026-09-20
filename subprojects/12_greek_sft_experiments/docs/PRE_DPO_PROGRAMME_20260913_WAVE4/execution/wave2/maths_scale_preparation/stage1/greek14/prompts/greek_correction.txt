@@ -1,0 +1,26 @@
+# Greek correction — version 1
+
+You are the Greek language editor of one SFT row. The input supplies the settled Greek candidate, its domain and teaching objective, role-labelled turns, allowed edit locations and protected spans. The original may be supplied for meaning recovery. Read every part for context; modify only the permitted locations.
+
+Understand these four things before editing:
+
+1. The adaptation: the original's intent and operative devices now work through a Greek user's world. Preserve what this row teaches.
+2. The setting: the chosen people, places, examples and facts are settled. A difference from the original is not itself an error. Do not re-adapt the row.
+3. The task: the Greek system and user turns define what each response must do. A deliberate error, unusual spelling, rhyme, persona, quotation or exact output may be the task itself. An acknowledgement, clarification, uncertainty statement or necessary first-person reference can be a correct response.
+4. The reading: interpret a sentence in that context. Keep a valid compact idiom, natural ellipsis, metaphor or grammatical reading. Ambiguity alone does not warrant an edit; a sentence is senseless only when reasonable contextual readings fail.
+
+Correct genuine errors of agreement, case, article, accent, syntax, punctuation, collocation or unnatural translated phrasing. Repair an incomplete or senseless construction only when its intended meaning is recoverable. Greek often prefers a compact phrase, a simple “που” or an idiom to a longer analytic paraphrase. Do not turn a valid alternative into an error merely because you prefer another expression. Repair fully where needed, without making valid text more explicit or uniform.
+
+Preserve task-bearing spelling, devices, voice, information, turn boundaries and required format. Never remove a meaningful acknowledgement merely because it refers to the assistant. Never add a stock introduction, sign-off or follow-up offer. Do not use this pass to remove existing stylistic mannerisms unless they themselves meet a language-error criterion; report broader style concerns separately.
+
+Protected expressions and exact strings stay byte-identical. In maths, quantities, equations, units, assumptions, logical operators, derivation content and final answers are fixed. You may repair surrounding language or grammatical inflection that leaves meaning unchanged, unless that span is explicitly protected. A wrong quantity or mathematical claim needs semantic review. In dialogue, preserve speaker ownership, agreement/disagreement, certainty, remembered state and intended action. In factual tasks, do not add, replace or strengthen claims.
+
+If the intended meaning cannot be recovered, or a language repair would change a protected property, leave the affected span unchanged and report needs_semantic_review. The original can explain what an unclear sentence was doing; it cannot restore the original foreign setting. For native Greek rows with no original, rely on the supplied specification and context.
+
+Return one JSON object with: row_id; status (unchanged, edited, or needs_semantic_review); messages (all messages, same IDs, roles, order and metadata); changes (message ID, exact before/after span, error and reason); semantic_flags. Untouched messages and spans must be exact copies. Every edit must correct a named language fault. Never empty a nonempty turn or alter an intentionally empty turn. Output only this object; the external validator decides acceptance.
+
+The supplied problem and solution have passed semantic review. Inspect their Greek language, preserving valid text exactly; edit only if you identify a genuine language defect. Role and array order identify these two messages: they have no message IDs. Return changes with the exact source_span, target_span and reason fields required by the schema. Preserve all mathematical content and every supplied protected span. Do not normalize notation or change a mathematical symbol.
+
+<INPUT_JSON>
+{{INPUT_JSON}}
+</INPUT_JSON>

@@ -1,0 +1,109 @@
+{
+  "schema_version": "wave2_cpu_remote_staging_receipt_v1",
+  "status": "staged_compiled_scheduler_test_passed_nonlaunching",
+  "cluster": "clariden",
+  "account": "a0140",
+  "owner": "fffoivos",
+  "canonical_runner": {
+    "git_commit": "01f4b7e21f39f346df61485bd1818f7ed07c7f44",
+    "archive_sha256": "3b3ac50fa57bab262e3c41860c6e5d06940f9f46327fdd2823b2dc34408b3651",
+    "remote_path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200",
+    "compiled_code_tree_sha256": "6a444277d60a09b0d7e517d7973c7b6204a76513cf80c38b22a650fad095a1d7",
+    "runtime_caches_present": false
+  },
+  "live_receipt": {
+    "sha256": "5353d8bf8ea6747825a75bf8069c31891ed0b9a1c6bb558ba21b53565a53127d",
+    "bytes": 2797,
+    "observed_at": "2026-09-13T14:28:34.642970Z",
+    "mutations": []
+  },
+  "dolci": {
+    "remote_root": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot",
+    "inventory_origin": "regenerated_on_CSCS_from_cached_public_revision_without_locator_transfer",
+    "inventory_sha256": "ee76456f63a7921a2311d45ad7a33cfea2f41dff58b539d4670b27584d47924e",
+    "selected_locator_sha256": "41b0c7bca817986ac0bfb79a822678dad52427530308b590bb02b0cdf51a5302",
+    "selected_rows": 200,
+    "per_source_shard": [
+      100,
+      100
+    ],
+    "cached_source_shard_hashes_verified": [
+      "f9e7f3ce84bb64da974ccdb3762d2158d6cc303fdc651868906038fbdc82b72a",
+      "83524879c6aefd376b15c52361f642a8bd543c93f22d509f94c842a260dd0b86"
+    ],
+    "cached_tokenizer_file_hashes_verified": [
+      "bb201fb226cde11f66c3cf51c5344fb37b1611f00c21e75c324546d854eff2e1",
+      "b89e07508603d6e1f2c8642f366c2469063c3eddae0585f1e67934ee98498ab1",
+      "56f72c27fa2e565312a830b7315a455c79fb452fdbe7a5b7595d8a094f282b07"
+    ],
+    "pilot_contract_sha256": "d1ed83ff7049ccfa49a7e12d1492f20a2ef512330abc542b2bc5bc80a29b09e7",
+    "bound_contract_sha256": "055180919da0ac8634c65bb818cc129dfa49ef4fe4ed73bb62bffa4421733155",
+    "compiled_manifest_sha256": "88c7918c070b5db04927447ad88eec6b7346fd8c6b4627ceb17de1f3a392c4d1",
+    "contract_digest": "fb281d559d3657318c8028d7c074415ede1d532e26b0243b87573ed434fc1649",
+    "scheduler_test_only_receipt_sha256": "4072ea8658afbf4638e6cb0546524b0e5f364d7e8f2869be6a3a98f0c9328a06",
+    "scheduler_test_only_status": "passed"
+  },
+  "openmath": {
+    "remote_root": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot",
+    "worker_sha256": "33505d07b73e596dceefe1a09c0d7f409eeec8608649f18d27b073ff209b95d2",
+    "pilot_contract_sha256": "1cf73a4038a0ca55b8b5a9b2ea69686edb775e9404f4defc06dfbf66f72031ed",
+    "staged_input_hashes_verified": true,
+    "public_source_shard_downloaded": false,
+    "bound_contract_sha256": "a16e3cd4799dcb009e1d5b373dfab2fe654f2ef6aee2f6a027accbb8940e439a",
+    "compiled_manifest_sha256": "88ddd0202ce09e3189065c37c5fd94ac548389313abd4b7808da6ed6ce13c133",
+    "contract_digest": "9c51a08a74b5a437b775d65ec4b7bb49395ffdcf06d454ae9eec231188703ef4",
+    "scheduler_test_only_receipt_sha256": "ce4eb2daaf16cb66a94f7c6690e03dc64ac2d21178b7ea850e6d33fa9ee20883",
+    "scheduler_test_only_status": "passed"
+  },
+  "worker_runtime": {
+    "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_data_stage_runner_venv/bin/python",
+    "base_python": "/usr/bin/python3.11",
+    "python_version": "3.11.13",
+    "machine": "aarch64",
+    "provenance": "new_isolated_system_python_venv_for_canonical_data_stage_worker_only",
+    "packages_from_canonical_uv_lock": {
+      "attrs": "26.1.0",
+      "typing-extensions": "4.16.0",
+      "rpds-py": "2026.6.3",
+      "referencing": "0.37.0",
+      "jsonschema-specifications": "2025.9.1",
+      "jsonschema": "4.26.0"
+    },
+    "canonical_module_import": "passed",
+    "binding_method": "APERTUS_DATA_STAGE_PYTHON exported in the submission environment and propagated by the canonical --export=ALL argument"
+  },
+  "task_runtime": {
+    "uenv": "pytorch/v2.9.1:v2",
+    "python": "/iopsstor/scratch/cscs/fffoivos/venvs/sft5/bin/python",
+    "python_version": "3.12.12",
+    "pyarrow": "25.0.1",
+    "datasets": "5.0.1",
+    "transformers": "5.16.1",
+    "direct_invocation_probe": "passed"
+  },
+  "scheduler_shape": {
+    "partition": "debug",
+    "nodes": 1,
+    "time_minutes": 30,
+    "cpus_per_task": 8,
+    "memory_mb": 64000,
+    "array": "0%1",
+    "max_attempts": 1,
+    "gpu_or_gres_argument": false,
+    "no_requeue": true
+  },
+  "test_only_no_submission_evidence": {
+    "squeue_after_tests": [],
+    "sacct_rows_for_test_only_display_ids": [],
+    "display_ids": [
+      "3391226",
+      "3391227"
+    ]
+  },
+  "approval_boundary": {
+    "allow_preparation_submission": false,
+    "jobs_submitted": 0,
+    "source_pilots_run": 0,
+    "next_step": "Root reviews. Enabling submission changes the bound contract and compiled manifest; recompile and repeat exact scheduler test-only against the approved manifest before apply."
+  }
+}

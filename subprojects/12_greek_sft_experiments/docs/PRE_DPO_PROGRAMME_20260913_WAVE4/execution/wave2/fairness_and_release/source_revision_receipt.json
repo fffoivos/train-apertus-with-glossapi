@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-09-13",
+  "method": "Public Hugging Face repository metadata and pinned README files; no corpus data downloaded.",
+  "training_sources": [
+    {"repo_id":"nvidia/OpenMathInstruct-2","revision":"469216e3f46f4dacf476b382e192485ea51a143e","config":"default","split":"train","selection":"problem_source.lower() == gsm8k","license_metadata":["cc-by-4.0"],"local_export_sha256":"54e86bd359380db1edba1192c4392a8c410968c59b80c9b23f730ea94551895e","local_export_bound_to_upstream_revision":false},
+    {"repo_id":"nvidia/Nemotron-SFT-Instruction-Following-Chat-v3","revision":"be3b3e04ef605ac9d3f8f35b9d5a632f4a3a3402","config":"default","split":"chat","license_metadata":["odc-by","cc-by-4.0","apache-2.0","other"],"local_export_sha256":["91b3e01aba9826c16c7430f83a8157bf0e363315f16b33defe0f0fe9a6352b15","8de082cc237711b2bc62172fbc674d710904ce874cd7a9081079498ea134e789"],"local_export_bound_to_upstream_revision":false,"redistribution_note":"The official card nulls some LMSYS/WildChat seed prompts and requires authorized reconstruction."},
+    {"repo_id":"allenai/Dolci-Instruct-SFT","revision":"bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221","config":"default","split":"train","license_metadata":["odc-by"],"local_exports":{"chat":"6c129e1aee72927377b30707dc3e5b33bb9cc6f20c979af51a45f198e976386f","reasoning":"734303cd7e3e791f87bfb0c6d097e984e3014302643a0916280d08dd50b07511","tooluse":"c7ac6907911febf3ca6703bfca6f44a1cdf7ad7b0227d5955596dda7bc079f18"},"local_export_bound_to_upstream_revision":false,"license_note":"Collection-level ODC-BY does not replace per-source attribution and applicable content terms."},
+    {"repo_id":"HuggingFaceTB/smoltalk2","revision":"fc6cc2103c066455aade5d7fbb346039ae36ca5e","config":"SFT","split":"smoltalk_multilingual_8languages_lang_5_no_think","license_metadata":[],"local_export_sha256":"502647d81afc26a6bfeee273d324b256a445dee17c662996be97f42c1a938981","local_export_bound_to_upstream_revision":false,"license_note":"No blanket repository license; card assigns Apache-2.0 to named new subsets and defers existing datasets to original licenses."}
+  ],
+  "evaluation_sources": [
+    {"repo_id":"ilsp/ifeval_greek","revision":"3ed53c2a790ce48020bf54aee70e1ea6c6b689b7","split":"train","rows":541,"license_metadata":["cc-by-nc-sa-4.0"]},
+    {"repo_id":"ilsp/mgsm_greek","revision":"27b0f7bf1732f9ff2cfc3e26d43293ba9d49ecd3","split":"test","rows":250,"license_metadata":["cc-by-nc-sa-4.0"]},
+    {"repo_id":"ilsp/mt-bench-greek","revision":"286ace32645800b1389f6640d811ea3818c61697","rows":80,"license_metadata":["cc-by-nc-sa-4.0"]},
+    {"repo_id":"ilsp/m-ArenaHard_greek","revision":"d202a39df4c1ae67d7aabb3f345811c0e330f15d","license_metadata":["apache-2.0"]}
+  ],
+  "local_benchmark_hashes": {
+    "manifest":"ff1f4a65562f888bdfbb1fdab4f208f412dd8ba961262405030e4a0eb92d65bb",
+    "math500_el":"248f1b5edec95e0fa2fe9098ddf0264b893a915542694652dab1926d98a4ce88",
+    "ifbench_el":"4017da04abbfd81725c6cd9bcae1a0716c44dddafe08881fee38334846cbcbaa",
+    "xstest_el":"4a3179f8614bc85c2bd188029896356c0a818d421c0b6391b3a98554d1a35b51",
+    "multichallenge_el":"23efe0ea1432ae13adb3b93f901ba583b5416b80e9f57b930f52a4be70f5474a"
+  }
+}

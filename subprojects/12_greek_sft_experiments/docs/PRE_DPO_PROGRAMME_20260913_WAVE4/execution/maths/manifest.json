@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "seed": 20260913,
+  "source_files": [
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut2/prep/translations_with_reference.jsonl",
+      "sha256": "0abe79a2f6db733ee103238853ba2d29cc2cfcd3c40a6e0579b9a24e925775e1",
+      "records": 9999,
+      "unique_ids": 9999
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut2/out/solutions_el.jsonl",
+      "sha256": "7623e9586670e0b55487d94f3eef33c093593ab777ee6cc67849e57899601f75",
+      "records": 3718,
+      "unique_ids": 3718
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut2/out/level5_problems_el.jsonl",
+      "sha256": "1cbc89051c3f8446699f13728dcdf0e13c1b30e8475ede27102fd8df2f579c26",
+      "records": 2146,
+      "unique_ids": 1457
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut2/out/level5_solutions_el.jsonl",
+      "sha256": "edc8f35278c7c310f6476fb058c38952c01720ecbd63a67bfb8548741f0dfddf",
+      "records": 3010,
+      "unique_ids": 1168
+    }
+  ],
+  "strata": [
+    {
+      "name": "gsm_existing",
+      "population": 3718,
+      "sample": 150,
+      "sampling": "uniform without replacement within stratum"
+    },
+    {
+      "name": "level5_stable_problem",
+      "population": 812,
+      "sample": 100,
+      "sampling": "uniform without replacement within stratum"
+    },
+    {
+      "name": "level5_multiple_problem_versions",
+      "population": 356,
+      "sample": 50,
+      "sampling": "uniform without replacement within stratum"
+    }
+  ],
+  "sample_rows": 300,
+  "batch_count": 100,
+  "max_rows_per_call": 3,
+  "max_input_record_chars": 38000,
+  "unmatched_level5_ids": [],
+  "selection": "last saved solution per ID; all duplicate counts retained",
+  "limitations": [
+    "No MATH levels 1-4 solutions exist in the inspected ordinary output: all 3718 are GSM.",
+    "The sample describes completed partial outputs, not missing outputs or final training data.",
+    "Level-5 duplicate input-version pairing may be ambiguous; no records are promoted from this audit.",
+    "Pooled percentages require population weighting; model findings need adjudication."
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "call_cap_including_retries": 180,
+  "prompt_sha256": "96085e5743b4272e2b97e95abdcbc1c70412a4639991e6363c1b4e323db6a534",
+  "sample_sha256": "a632c205c009510ecfe635dc26e6a392debccb3231969fb90cc611ee8b84d3dd"
+}

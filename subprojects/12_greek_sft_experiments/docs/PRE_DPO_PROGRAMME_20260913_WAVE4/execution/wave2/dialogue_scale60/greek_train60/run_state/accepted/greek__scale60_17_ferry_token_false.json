@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_17_ferry_token_false",
+  "row_id": "scale60_17_ferry_token_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "3b96b64c7704b129c491ea613057733050e1998ceceea5dd56cbe14c3b8f0548",
+  "input_record_sha256": "a3d461a9abc5cdceec5efd8b3c1a337140330c6668980ba63e813ddbb0f31489",
+  "payload_sha256": "0d1018c30609fe6693afd9207462e68bc6c9d53c8f925e5bc81bb656415f746e",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "6881fa20d98f7b67616a53580a9a91433764f0b8620e6443425346ad2e5c8cbd",
+  "result": {
+    "row_id": "scale60_17_ferry_token_false",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_17_ferry_token_false.u_context",
+        "role": "user",
+        "content": "Η κάρτα του παιχνιδιού λέει ότι κάθε κόκκινο εισιτήριο οδηγεί στην προβλήτα 1 και κάθε πράσινο στην προβλήτα 2. Το εισιτήριο Ζ είναι κόκκινο.",
+        "train": false
+      },
+      {
+        "id": "scale60_17_ferry_token_false.a_context",
+        "role": "assistant",
+        "content": "Θα απαντήσω μέσα στους κανόνες του παιχνιδιού.",
+        "train": false
+      },
+      {
+        "id": "scale60_17_ferry_token_false.u_decision",
+        "role": "user",
+        "content": "Με τον κανόνα της κάρτας, το εισιτήριο Ζ οδηγεί στην προβλήτα 2.",
+        "train": false
+      },
+      {
+        "id": "scale60_17_ferry_token_false.a_target",
+        "role": "assistant",
+        "content": "Αυτό είναι λάθος: αφού το εισιτήριο Ζ είναι κόκκινο, ο κανόνας της κάρτας το οδηγεί στην προβλήτα 1, όχι στην προβλήτα 2.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

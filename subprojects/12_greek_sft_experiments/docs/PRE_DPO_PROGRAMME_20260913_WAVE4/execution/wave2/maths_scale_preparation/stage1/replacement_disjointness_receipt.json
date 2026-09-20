@@ -1,0 +1,44 @@
+{
+  "verified_at": "2026-09-13T17:11:41+03:00",
+  "ok": true,
+  "scope": "four train-only phase-B same-cell replacements",
+  "source_hashes": {
+    "proposed_family_splits.jsonl": "e3ab829b1cfa8f4e548f3c1c96e10ccb57508f59325d6507e48a6df3a2e9ec44",
+    "math7500_family_inventory.jsonl": "5e21b80967bd49bf8482e8ee38691de4e9571b42f37a6df8bf7c600b92059b41",
+    "phaseB_selection_delta.jsonl": "ec9bbff9d77199b5de4c777b364e571ce84d98b6e3298f35d48b807bdb42912e"
+  },
+  "replacement_family_ids": [
+    "mathfam_286c9529547f754155e2",
+    "mathfam_89a98fab40ca57b1d309",
+    "mathfam_e4cdad9be4a1da6e72c6",
+    "mathfam_eb22f0922fb9f8ece8b6"
+  ],
+  "enumerated_set_counts": {
+    "all_original_frozen_split_options": 133,
+    "frozen_train_stage2": 70,
+    "frozen_development": 14,
+    "frozen_final_confirmation": 14,
+    "maths_generation_pilot": 29,
+    "current_gradient_train": 3240,
+    "current_development": 40,
+    "current_assembly_exclusions": 3
+  },
+  "intersections": {
+    "all_original_frozen_split_options": [],
+    "frozen_train_stage2": [],
+    "frozen_development": [],
+    "frozen_final_confirmation": [],
+    "maths_generation_pilot": [],
+    "current_gradient_train": [],
+    "current_development": [],
+    "current_assembly_exclusions": []
+  },
+  "checks": {
+    "four_unique_replacements": true,
+    "same_subject_and_level": true,
+    "disjoint_from_every_enumerated_set": true,
+    "math500_gate_pass": true,
+    "not_cut2_historical_candidate": true
+  },
+  "boundary": "Exact normalized MATH-family lineage only; this does not prove checkpoint-unseen status outside enumerated sources."
+}

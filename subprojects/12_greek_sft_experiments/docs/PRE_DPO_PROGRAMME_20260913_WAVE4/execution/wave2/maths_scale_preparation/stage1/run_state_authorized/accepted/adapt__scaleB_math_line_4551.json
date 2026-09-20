@@ -1,0 +1,68 @@
+{
+  "job_id": "adapt__scaleB_math_line_4551",
+  "row_id": "scaleB_math_line_4551",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "56e5f1b4ece9aa0a0470d104336450d65c7079b4127b8686884aa4822def57e8",
+  "input_record_sha256": "2f0d0a9c06a060dd0e025a57814a5ac8ae32cc67883e893dff336cde63e0e1b1",
+  "payload_sha256": "9c134c5173132d21f859adb6288a88ed821d5b5a33e45a77a12565d84ec8b7b0",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "beb4e8b981d978853c109492ba1ecdcf28538f5d627492ae88da146f21646b60",
+  "result": {
+    "row_id": "scaleB_math_line_4551",
+    "status": "candidate",
+    "problem_text": "Δύο θετικοί πραγματικοί αριθμοί έχουν γεωμετρικό μέσο $\\sqrt{3}$ και αρμονικό μέσο $\\frac{3}{2}$. Να γράψετε τους δύο αριθμούς, χωρισμένους με κόμμα.",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Two positive real numbers",
+        "target_span": "Δύο θετικοί πραγματικοί αριθμοί",
+        "reason": "Πιστή απόδοση του πεδίου και του πλήθους των αγνώστων στα ελληνικά."
+      },
+      {
+        "source_span": "have geometric mean $\\sqrt{3}$ and harmonic mean $\\frac{3}{2}.$",
+        "target_span": "έχουν γεωμετρικό μέσο $\\sqrt{3}$ και αρμονικό μέσο $\\frac{3}{2}$.",
+        "reason": "Μετάφραση με διατήρηση των τεχνικών όρων, των τιμών και της μεταξύ τους σχέσης."
+      },
+      {
+        "source_span": "Enter the two numbers, separated by commas.",
+        "target_span": "Να γράψετε τους δύο αριθμούς, χωρισμένους με κόμμα.",
+        "reason": "Φυσική ελληνική διατύπωση της ίδιας απαίτησης μορφοποίησης· επειδή ζητούνται δύο αριθμοί, απαιτείται ένα κόμμα."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "2",
+          "role": "πλήθος ζητούμενων θετικών πραγματικών αριθμών",
+          "unit": null
+        },
+        {
+          "value": "$\\sqrt{3}$",
+          "role": "γεωμετρικός μέσος των δύο αριθμών",
+          "unit": null
+        },
+        {
+          "value": "$\\frac{3}{2}$",
+          "role": "αρμονικός μέσος των δύο αριθμών",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Και οι δύο άγνωστοι αριθμοί είναι θετικοί πραγματικοί αριθμοί.",
+        "Ο γεωμετρικός μέσος τους ισούται με $\\sqrt{3}$.",
+        "Ο αρμονικός μέσος τους ισούται με $\\frac{3}{2}$.",
+        "Οι δύο αριθμοί πρέπει να δοθούν χωρισμένοι με κόμμα."
+      ],
+      "required_outputs": [
+        "Οι δύο θετικοί πραγματικοί αριθμοί, χωρισμένοι με κόμμα."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

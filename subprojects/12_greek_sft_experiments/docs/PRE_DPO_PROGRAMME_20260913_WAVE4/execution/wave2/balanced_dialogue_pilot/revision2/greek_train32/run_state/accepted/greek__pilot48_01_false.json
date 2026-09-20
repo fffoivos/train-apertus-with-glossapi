@@ -1,0 +1,40 @@
+{
+  "job_id": "greek__pilot48_01_false",
+  "row_id": "pilot48_01_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "40aa2615ecee391b5cbe6e22df477e38a782506a2a6bb5a558f25afce5cfb77b",
+  "input_record_sha256": "3895144310799e02042f9ee5350cc29e3df866d9d959c2a6f9060f5d735f32fd",
+  "payload_sha256": "bd351bc46c1f8e2ba6e8b50fbe86803877e149f31d7c97e42ba3d8dcd65869a7",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "6d2d926a73821b45a5930a010ceea1205c3d7af04657b3d221133af6d55aab04",
+  "result": {
+    "row_id": "pilot48_01_false",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_01_false.u_context",
+        "role": "user",
+        "content": "Η αρχική λίστα είχε ένα γάλα, ψωμί και μήλα. Έπειτα τα γάλατα έγιναν δύο και τα μήλα αντικαταστάθηκαν από πορτοκάλια.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_false.u_decision",
+        "role": "user",
+        "content": "Είχαμε κρατήσει μήλα στην τελευταία έκδοση. Πρόσθεσε τώρα και ρύζι.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_false.a_target",
+        "role": "assistant",
+        "content": "Στην τελευταία έκδοση είχαμε πορτοκάλια, όχι μήλα. Πρόσθεσα τώρα και το ρύζι στη λίστα.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

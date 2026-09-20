@@ -1,0 +1,57 @@
+{
+  "job_id": "author_pilot48_08_unresolved",
+  "row_id": "pilot48_08_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "08349ea647b44c47b93fcde51a1e3939887016bb3c2034c4d1e521cbca75aa30",
+  "input_record_sha256": "0ef248896fd7637daab9a5d62a0a20afd6bbe9e0705f44b53a9fbb364d5338a6",
+  "payload_sha256": "e51dd0aea6081b06cca150093eac1c13dcc0d6497f08d34c7309112eca13d3f2",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "194840c8626aa1a2f5a2345dc78dfb07ae2fd590a2ddba84c5d8ba9c42e8b658",
+  "result": {
+    "row_id": "pilot48_08_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_08_unresolved.u_context",
+        "role": "user",
+        "content": "Η καταγραφή αποθήκης λέει ότι παραλήφθηκαν 12 καρέκλες, δανείστηκαν 4 και 1 χάλασε. Δεν περιλαμβάνει πρόγραμμα προμηθευτή.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_unresolved.u_decision",
+        "role": "user",
+        "content": "Με βάση μόνο τους αριθμούς της αποθήκης, η επόμενη παράδοση από τον προμηθευτή πρέπει να είναι αύριο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_unresolved.a_target",
+        "role": "assistant",
+        "content": "Οι αριθμοί δείχνουν μόνο ότι είναι διαθέσιμες 7 καρέκλες· δεν καθορίζουν πότε θα γίνει η επόμενη παράδοση. Υπάρχει πρόγραμμα ή επιβεβαίωση από τον προμηθευτή που να αναφέρει την ημερομηνία;",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_08_unresolved.u_decision",
+        "claim": "Η επόμενη παράδοση από τον προμηθευτή πρέπει να είναι αύριο.",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "pilot48_08_unresolved.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να δηλωθεί ότι οι αριθμοί της αποθήκης δεν προσδιορίζουν την ημερομηνία της επόμενης παράδοσης.",
+          "Να ζητηθεί μόνο πρόγραμμα ή επιβεβαίωση που αναφέρει την ημερομηνία.",
+          "Να μην επινοηθεί κατάσταση ή εξωτερική ενέργεια."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

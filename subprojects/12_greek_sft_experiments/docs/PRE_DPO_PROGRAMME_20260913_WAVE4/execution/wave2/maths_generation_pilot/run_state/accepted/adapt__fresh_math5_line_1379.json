@@ -1,0 +1,63 @@
+{
+  "job_id": "adapt__fresh_math5_line_1379",
+  "row_id": "fresh_math5_line_1379",
+  "stage": "adaptation",
+  "attempt": 2,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "9a0fc65b9234ebb80c86c78b302dedf2faf5c6e555ae14741e04cb52aa84787e",
+  "input_record_sha256": "3fdcfb33e4e399236d443908341f67964690b32a91a80db10634a286fa75be3f",
+  "payload_sha256": "164c7e26b333a1800f550ea7a2d6cb002addb477dba4e55a798d7ac989042c10",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "155f328aae56d8b51d5f40a3c3571b0ed21cfa6f0da646a2d9dd7d8a753b8719",
+  "result": {
+    "row_id": "fresh_math5_line_1379",
+    "status": "candidate",
+    "problem_text": "Έστω ότι η $f(x)$ είναι μια συνάρτηση ορισμένη για κάθε πραγματικό αριθμό $x$ και ότι η $f$ είναι αντιστρέψιμη (δηλαδή, η $f^{-1}(x)$ υπάρχει για κάθε $x$ στο σύνολο τιμών της $f$).\n\nΑν σχεδιαστούν οι γραφικές παραστάσεις των $y=f(x^2)$ και $y=f(x^4)$, σε πόσα σημεία τέμνονται;",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Suppose $f(x)$ is a function defined for all real $x$",
+        "target_span": "Έστω ότι η $f(x)$ είναι μια συνάρτηση ορισμένη για κάθε πραγματικό αριθμό $x$",
+        "reason": "Πιστή απόδοση στα φυσικά ελληνικά, με διατήρηση του πεδίου ορισμού."
+      },
+      {
+        "source_span": "suppose $f$ is invertible (that is, $f^{-1}(x)$ exists for all $x$ in the range of $f$)",
+        "target_span": "η $f$ είναι αντιστρέψιμη (δηλαδή, η $f^{-1}(x)$ υπάρχει για κάθε $x$ στο σύνολο τιμών της $f$)",
+        "reason": "Χρήση της καθιερωμένης ελληνικής μαθηματικής ορολογίας χωρίς μεταβολή της υπόθεσης."
+      },
+      {
+        "source_span": "If the graphs of $y=f(x^2)$ and $y=f(x^4)$ are drawn, at how many points do they intersect?",
+        "target_span": "Αν σχεδιαστούν οι γραφικές παραστάσεις των $y=f(x^2)$ και $y=f(x^4)$, σε πόσα σημεία τέμνονται;",
+        "reason": "Φυσική ελληνική διατύπωση με διατήρηση των εξισώσεων και του ζητουμένου."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "2",
+          "role": "εκθέτης του $x$ στη σύνθεση $f(x^2)$",
+          "unit": null
+        },
+        {
+          "value": "4",
+          "role": "εκθέτης του $x$ στη σύνθεση $f(x^4)$",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Η $f$ ορίζεται για κάθε πραγματικό $x$.",
+        "Η $f$ είναι αντιστρέψιμη.",
+        "Η $f^{-1}(x)$ υπάρχει για κάθε $x$ στο σύνολο τιμών της $f$.",
+        "Εξετάζονται οι γραφικές παραστάσεις $y=f(x^2)$ και $y=f(x^4)$."
+      ],
+      "required_outputs": [
+        "Το πλήθος των σημείων τομής των δύο γραφικών παραστάσεων."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_3293",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχει μία καταγεγραμμένη εκδοχή προβλήματος και μία λύση· δεν προκύπτει αβεβαιότητα αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_552",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "issue",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "units_and_rounding",
+          "severity": "minor",
+          "quote": "\\[200-(10+100\\sqrt3)=\\boxed{190-100\\sqrt{3}}\\]",
+          "explanation": "Η ακριβής τελική διαφορά είναι σωστή, αλλά στην τελική απάντηση δεν δηλώνεται ρητά η ζητούμενη μονάδα cm. Οι μονάδες εμφανίζονται στα ενδιάμεσα ύψη, επομένως πρόκειται μόνο για μικρή έλλειψη παρουσίασης.",
+          "suggested_action": "Να προστεθεί «cm» μετά την τελική ακριβή τιμή."
+        }
+      ],
+      "provenance_note": "Το κείμενο του προβλήματος χαρακτηρίζεται σταθερό. Παρότι υπάρχουν δύο εγγραφές λύσης, δεν παρέχεται ένδειξη ασυμβατότητας της επιλεγμένης λύσης με το συγκεκριμένο πρόβλημα.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_811",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Η ιστορική σύνδεση της τελευταίας λύσης με την τελευταία αποθηκευμένη εκδοχή του προβλήματος παραμένει μη αποδεδειγμένη. Ωστόσο, οι δύο παρεχόμενες ελληνικές εκδοχές διαφέρουν μόνο στη διατύπωση «στο σιλό»/«πάνω στο σιλό» και δεν παρουσιάζουν μαθηματική ή σημασιολογική διαφορά που να επηρεάζει τη λύση.",
+      "verification_needed": [
+        "Εφόσον απαιτείται ιστορική ιχνηλασιμότητα, να επαληθευτεί από τα αρχικά αρχεία ποια εκδοχή προβλήματος συνόδευε τη γραμμή λύσης 1694."
+      ]
+    }
+  ]
+}

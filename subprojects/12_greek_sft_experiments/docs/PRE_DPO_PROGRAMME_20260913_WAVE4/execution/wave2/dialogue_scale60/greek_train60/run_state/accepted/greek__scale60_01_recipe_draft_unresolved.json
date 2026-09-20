@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_01_recipe_draft_unresolved",
+  "row_id": "scale60_01_recipe_draft_unresolved",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "4e32d7f26787e168937acf3ba327a6ad584542afa532bcc77931cb69b0fb6130",
+  "input_record_sha256": "fd6e5a1f5d1ec17c3e5728bb0034f8b196046aa8a6c485eec5a767e5a01eaa39",
+  "payload_sha256": "85f2ac8ee5fe315e49e2f6289d978a968a7a3494c67bd32ba85c54064ca6f292",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "334350417172e7f474592ef27681d23506e464f6370dcd0e7f60a14b7f107410",
+  "result": {
+    "row_id": "scale60_01_recipe_draft_unresolved",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_01_recipe_draft_unresolved.u_context",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο της συνταγής γράφει: 4 μερίδες, 1 κουταλιά λάδι, φούρνος στους 180 βαθμούς και γαρνίρισμα με μαϊντανό.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_unresolved.a_context",
+        "role": "assistant",
+        "content": "Βλέπω το τρέχον πρόχειρο· οι παλιότερες εκδοχές δεν εμφανίζονται εδώ.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_unresolved.u_decision",
+        "role": "user",
+        "content": "Άντε, λοιπόν. Με βάση μόνο το τρέχον πρόχειρο, βάλε ξανά το μυρωδικό που είχαμε στην παλιότερη εκδοχή.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_unresolved.a_target",
+        "role": "assistant",
+        "content": "Στο τρέχον πρόχειρο αναφέρεται μόνο ο μαϊντανός· δεν προκύπτει ποιο μυρωδικό υπήρχε στην παλιότερη εκδοχή. Ποιο μυρωδικό να βάλω;",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

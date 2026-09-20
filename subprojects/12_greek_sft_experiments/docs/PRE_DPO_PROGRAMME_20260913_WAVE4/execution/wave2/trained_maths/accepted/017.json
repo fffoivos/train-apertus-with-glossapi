@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_679_3",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The complete before and after records are identical and match the actual training pair. Independently checking the arithmetic gives 23:10 − 19:35 = 215 minutes and 215 − 25 = 190 minutes = 3 hours 10 minutes.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_3507",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem preserves the English teaching objective and numerical premises. Independently checking the solution gives the original slope 6/−9 = −2/3 and perpendicular slope −1/(−2/3) = 3/2. The editor changed only the description of the negative reciprocal, making it more idiomatic and mathematically explicit without altering the reasoning.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    }
+  ]
+}

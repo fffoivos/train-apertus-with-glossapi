@@ -1,0 +1,12 @@
+PASS git-apply-check
+PASS long-schema-lossless
+PASS long-function-calls-lossless
+PASS mixed-text-and-all-call-forms
+PASS missing-optional-fields
+PASS source-id-zero
+PASS nonempty-output-refused
+PASS native-result-and-id-roundtrip
+PASS current-consumer-rendered-survival
+PASS immutable-revision-gate
+
+Validated locally on 2026-09-13 without network access or corpus writes.

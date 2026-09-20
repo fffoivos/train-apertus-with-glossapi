@@ -1,0 +1,23 @@
+{
+  "created_at": "2026-09-13T13:42:17.934755+00:00",
+  "status": "pending_independent_delta_review",
+  "files": [
+    {
+      "path": "outputs/parallel_improvement_plan/execution/wave2/personality/root_v2/deployment_and_closure_patch.jsonl",
+      "sha256": "ef55d32c0e8e4e375a0b2c2b9b1e3e1e830f5d76190f6b68d91c44a3d83e9a4b",
+      "records": 35,
+      "source_sha256": "77f676c35eca1fc6b9e6d950e791e558d91e49973f3ba8f5648e75286f410357"
+    },
+    {
+      "path": "outputs/parallel_improvement_plan/execution/wave2/personality/root_v2/world_fact_verification.jsonl",
+      "sha256": "e095b319ce5fa432622573d290b2859cadc49124ac160cd02f42b39ba6db3214",
+      "records": 7,
+      "source_sha256": "2958b3a87af2bb7a95d12d3a863f3fdc72bc2338470437dbfbaee984c859a274"
+    }
+  ],
+  "root_reviewed": 42,
+  "changed": 4,
+  "unchanged": 38,
+  "historical_sources_unchanged": true,
+  "production_applied": false
+}

@@ -1,0 +1,73 @@
+{
+  "job_id": "author__scale60_02_studio_booking_partial",
+  "row_id": "scale60_02_studio_booking_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "408ac4f721a42578ef274f7dea2097ecd9a23dc333db1295dd20555874bd64c2",
+  "input_record_sha256": "0433fdbaf561012ed68d6c16d4f8da456247601c2882b2d4d8bcb2ad40eba6df",
+  "payload_sha256": "197fff2eb560e0b4fe59063678be74a84056e632145f8603a9d258529e254808",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "91093a2d5d1c9edfdf3ff5c697a3b0a08dcacb95c4932a7cbfba757c22becc66",
+  "result": {
+    "row_id": "scale60_02_studio_booking_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_02_studio_booking_partial.u_context",
+        "role": "user",
+        "content": "Στο σχέδιο της κράτησης φαίνεται Τετάρτη στις 19:00, αίθουσα 2, χωρητικότητα 12 ατόμων και χωρίς προβολέα. Η διάρκεια δεν έχει καταγραφεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_02_studio_booking_partial.a_context",
+        "role": "assistant",
+        "content": "Έχω το σχέδιο μπροστά μου και μπορώ να ελέγξω ό,τι είναι γραμμένο σε αυτό.",
+        "train": false
+      },
+      {
+        "id": "scale60_02_studio_booking_partial.u_decision",
+        "role": "user",
+        "content": "Στο σχέδιο είναι Τετάρτη, αλλά στις 18:00. Άλλαξε τώρα τη χωρητικότητα σε 14 άτομα.",
+        "train": false
+      },
+      {
+        "id": "scale60_02_studio_booking_partial.a_target",
+        "role": "assistant",
+        "content": "Η Τετάρτη είναι σωστή, αλλά στο σχέδιο η ώρα είναι 19:00, όχι 18:00. Άλλαξα τη χωρητικότητα στο σχέδιο κράτησης σε 14 άτομα.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_02_studio_booking_partial.u_decision",
+        "claim": "Στο σχέδιο είναι Τετάρτη, αλλά στις 18:00.",
+        "truth_category": "partial",
+        "evidence_ids": [
+          "scale60_02_studio_booking_partial.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να επιβεβαιώσει ότι η ημέρα είναι Τετάρτη.",
+          "Να διορθώσει την ώρα σε 19:00.",
+          "Να εφαρμόσει αμέσως την αλλαγή της χωρητικότητας σε 14 άτομα στο σχέδιο κράτησης.",
+          "Να αναφέρει συνοπτικά το αποτέλεσμα της κειμενικής αλλαγής."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "capacity",
+        "before_json": "12",
+        "after_json": "14",
+        "evidence_ids": [
+          "scale60_02_studio_booking_partial.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

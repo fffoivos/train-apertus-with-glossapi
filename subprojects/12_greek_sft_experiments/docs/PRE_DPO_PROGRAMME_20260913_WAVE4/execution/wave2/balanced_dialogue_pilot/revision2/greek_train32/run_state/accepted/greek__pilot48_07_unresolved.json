@@ -1,0 +1,48 @@
+{
+  "job_id": "greek__pilot48_07_unresolved",
+  "row_id": "pilot48_07_unresolved",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "d8d0e7fb35e46789a915f0af34ea6d28bc8b6cfc834884a12c13b89bdbe36606",
+  "input_record_sha256": "758002369f65156028881ec403ee46a474502cadfaf964eaa09ec716b3b3a734",
+  "payload_sha256": "60d588dcfe97c210b5e4f5a70251551a0d58dd604d74b139de4031df33878aef",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "8dc668cc1822a6f6fc042b4b3020c98cf86c83cea6d1c98bb83eae531d9a10f4",
+  "result": {
+    "row_id": "pilot48_07_unresolved",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "pilot48_07_unresolved.u_context",
+        "role": "user",
+        "content": "Το απόσπασμα διαδρομής δείχνει μόνο τις συνδέσεις Αφετηρία–Πλατεία και Πλατεία–Μουσείο. Δεν περιλαμβάνει το Πανεπιστήμιο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_07_unresolved.u_decision",
+        "role": "user",
+        "content": "Από αυτό το απόσπασμα συμπεραίνω ότι η ίδια γραμμή συνεχίζει ως το Πανεπιστήμιο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_07_unresolved.a_target",
+        "role": "assistant",
+        "content": "Το απόσπασμα δεν αρκεί για να συμπεράνουμε ότι η γραμμή συνεχίζει ως το Πανεπιστήμιο. Υπάρχει άλλο τμήμα της διαδρομής που να δείχνει σύνδεση με το Πανεπιστήμιο;",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "pilot48_07_unresolved.u_context",
+        "before": "Το απόσπασμα διαδρομής δείχνει μόνο σύνδεση Αφετηρία–Πλατεία και Πλατεία–Μουσείο. Δεν περιλαμβάνει το Πανεπιστήμιο.",
+        "after": "Το απόσπασμα διαδρομής δείχνει μόνο τις συνδέσεις Αφετηρία–Πλατεία και Πλατεία–Μουσείο. Δεν περιλαμβάνει το Πανεπιστήμιο.",
+        "error": "Λανθασμένος ενικός αριθμός και παράλειψη άρθρου σε αναφορά σε δύο συνδέσεις.",
+        "reason": "Η παράθεση δύο διακριτών συνδέσεων απαιτεί τον πληθυντικό «τις συνδέσεις»."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

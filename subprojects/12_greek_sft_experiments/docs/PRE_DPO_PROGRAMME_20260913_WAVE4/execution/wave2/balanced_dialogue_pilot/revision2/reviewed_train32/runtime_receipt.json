@@ -1,0 +1,13 @@
+{
+  "interpreter": "/Users/foivoskarounos-zamparloukos/venvs/sfttrain/bin/python",
+  "command": [
+    "/Users/foivoskarounos-zamparloukos/venvs/sfttrain/bin/python",
+    "work/audit_execution/tokenize_dialogue32.py"
+  ],
+  "check_scope": "Actual full canonical module import; reader validation and tokenizer/mask check only. No GPU/model forward or training.",
+  "python": "3.14.6",
+  "torch": "2.14.0",
+  "transformers": "5.17.0",
+  "trl": "1.12.0",
+  "token_inventory_sha256": "63d713668626cfb141c9ba5b99b8d69b8d68d38acfb2b44b27e44e6f7e5f69da"
+}

@@ -1,0 +1,71 @@
+{
+  "assertions": {
+    "canonical_command_otherwise_exact": true,
+    "no_gpu_or_gres_argument": true,
+    "no_requeue": true,
+    "one_array_element": true,
+    "test_only_inserted": true,
+    "worker_interpreter_exported_via_all": true
+  },
+  "attempt": 1,
+  "batch": "w01-cpu-debug",
+  "canonical_code_tree_sha256": "6a444277d60a09b0d7e517d7973c7b6204a76513cf80c38b22a650fad095a1d7",
+  "canonical_command": [
+    "sbatch",
+    "--uenv-passthrough=ignore",
+    "--parsable",
+    "--account=a0140",
+    "--partition=debug",
+    "--nodes=1",
+    "--time=30",
+    "--cpus-per-task=8",
+    "--mem=64000M",
+    "--array=0%1",
+    "--job-name=dolci-tool200-lossless-w01-cpu-debug-a1",
+    "--no-requeue",
+    "--chdir=/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200",
+    "--output=/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/run/logs/w01-cpu-debug-a1/slurm-%A_%a.out",
+    "--error=/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/run/logs/w01-cpu-debug-a1/slurm-%A_%a.err",
+    "--export=ALL,APERTUS_DATA_STAGE_MANIFEST=/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/run/compiled_data_stage.json,APERTUS_DATA_STAGE_BATCH=w01-cpu-debug,APERTUS_DATA_STAGE_ATTEMPT=1,APERTUS_DATA_STAGE_CODE_ROOT=/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200,APERTUS_DATA_STAGE_RUN_ROOT=/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/run",
+    "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/slurm/data_stage/worker.sbatch"
+  ],
+  "contract_digest": "fb281d559d3657318c8028d7c074415ede1d532e26b0243b87573ed434fc1649",
+  "elapsed_seconds": 0.383,
+  "finished_at": "2026-09-13T14:38:07.018314+00:00",
+  "host": "clariden-ln002",
+  "machine": "aarch64",
+  "manifest": {
+    "bytes": 23480,
+    "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/run/compiled_data_stage.json",
+    "sha256": "88c7918c070b5db04927447ad88eec6b7346fd8c6b4627ceb17de1f3a392c4d1"
+  },
+  "returncode": 0,
+  "schema_version": "apertus_data_stage_exact_scheduler_test_v1",
+  "started_at": "2026-09-13T14:38:06.635016+00:00",
+  "status": "passed",
+  "stderr": "sbatch: Job 3391226 to start at 16:38:07 a using 288 processors on nodes nid006721 in partition debug\n",
+  "stdout": "",
+  "submission_environment": {
+    "APERTUS_DATA_STAGE_PYTHON": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_data_stage_runner_venv/bin/python"
+  },
+  "tested_command": [
+    "sbatch",
+    "--test-only",
+    "--uenv-passthrough=ignore",
+    "--parsable",
+    "--account=a0140",
+    "--partition=debug",
+    "--nodes=1",
+    "--time=30",
+    "--cpus-per-task=8",
+    "--mem=64000M",
+    "--array=0%1",
+    "--job-name=dolci-tool200-lossless-w01-cpu-debug-a1",
+    "--no-requeue",
+    "--chdir=/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200",
+    "--output=/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/run/logs/w01-cpu-debug-a1/slurm-%A_%a.out",
+    "--error=/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/run/logs/w01-cpu-debug-a1/slurm-%A_%a.err",
+    "--export=ALL,APERTUS_DATA_STAGE_MANIFEST=/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/run/compiled_data_stage.json,APERTUS_DATA_STAGE_BATCH=w01-cpu-debug,APERTUS_DATA_STAGE_ATTEMPT=1,APERTUS_DATA_STAGE_CODE_ROOT=/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200,APERTUS_DATA_STAGE_RUN_ROOT=/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/run",
+    "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/slurm/data_stage/worker.sbatch"
+  ]
+}

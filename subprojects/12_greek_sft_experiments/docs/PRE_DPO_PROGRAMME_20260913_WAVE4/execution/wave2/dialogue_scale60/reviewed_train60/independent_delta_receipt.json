@@ -1,0 +1,63 @@
+{
+  "bindings": {
+    "candidate_rows_sha256": "dda8df3b312a5228ed8b0a76c8cf3a273a1e819a0229e350949eaeca5ad95fb9",
+    "frozen_inputs_sha256": "c268ffefe66bc2cc48f3b2ef59248b980007cf40f00ae4e12fce3cb9c5a9f530",
+    "root_deltas_sha256": "a9cfb8fc4cad81fbe311fffb461fc88f406906f369bab746fbfaea4bc6aa310f"
+  },
+  "corpus_mutations": 0,
+  "counts": {
+    "accepted": 7,
+    "accepted_with_metadata_followup": 1,
+    "deltas_reviewed": 8,
+    "rejected": 0
+  },
+  "dispositions": [
+    {
+      "disposition": "accept",
+      "reason": "Removing the supervised assistant target from unchanged-state evidence correctly leaves only visible user evidence.",
+      "row_id": "scale60_01_recipe_draft_unresolved"
+    },
+    {
+      "disposition": "accept",
+      "reason": "Removing the assistant target from the transition evidence preserves the user-supplied draft and current edit instruction as the complete basis.",
+      "row_id": "scale60_02_studio_booking_true"
+    },
+    {
+      "disposition": "accept",
+      "reason": "The single user turn contains one correct atom and one false atom, so one partial decision annotation is the correct decision-level representation.",
+      "row_id": "scale60_03_tool_checkout_partial"
+    },
+    {
+      "disposition": "accept",
+      "reason": "The assistant context is not an independent oracle; the user context and unresolved historical reference suffice.",
+      "row_id": "scale60_07_rehearsal_sheet_unresolved"
+    },
+    {
+      "disposition": "accept",
+      "reason": "The shortened target still corrects the shelf claim and applies the independent padding rule; the unasked weight tail is unnecessary.",
+      "row_id": "scale60_10_sorting_card_false"
+    },
+    {
+      "disposition": "accept_with_metadata_followup",
+      "reason": "The shortened target fully separates the correct shelf atom from the false padding atom. The candidate decisions metadata still contains an obsolete expected behavior asking for a weight clarification; remove that metadata clause before a final bound package, without restoring the target tail.",
+      "row_id": "scale60_10_sorting_card_partial"
+    },
+    {
+      "disposition": "accept",
+      "reason": "The claim belongs to the user decision turn; the corrected turn_id preserves the false historical claim and valid current text-record update.",
+      "row_id": "scale60_14_parcel_checklist_false"
+    },
+    {
+      "disposition": "accept",
+      "reason": "The assistant target is an outcome, not independent evidence; user context plus decision establish the text-record transition.",
+      "row_id": "scale60_19_weekly_menu_false"
+    }
+  ],
+  "messages_changed_by_annotation_repairs": false,
+  "model_calls": 0,
+  "overall": "all_eight_deltas_semantically_accepted; one nonblocking candidate-annotation cleanup remains for sorting-card partial",
+  "reviewed_at": "2026-09-13T17:45:56+03:00",
+  "reviewer": "dialogue_audit Sol agent",
+  "schema_version": "dialogue_scale60_independent_delta_receipt_v1",
+  "scope": "Eight root deltas read against full candidate conversations and frozen reviewed inputs."
+}

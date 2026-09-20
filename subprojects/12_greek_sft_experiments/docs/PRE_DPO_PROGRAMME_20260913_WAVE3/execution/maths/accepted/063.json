@@ -1,0 +1,61 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_3981",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική καταγραφή προβλήματος και λύσης· δεν υπάρχει αβεβαιότητα ιστορικής αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_417",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "issue",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "units_and_rounding",
+          "severity": "minor",
+          "quote": "2(2+5)=2\\cdot 7=\\boxed{14}.",
+          "explanation": "Η αριθμητική τιμή είναι σωστή, αλλά η τελική απάντηση δεν δηλώνει ότι η περίμετρος είναι 14 ίντσες. Οι μονάδες εμφανίζονται στα ενδιάμεσα βήματα, επομένως πρόκειται για περιορισμένη παράλειψη μονάδας στο αποτέλεσμα.",
+          "suggested_action": "Σε μελλοντική σημασιολογική επισκευή, να προστεθεί «ίντσες» στην τελική απάντηση χωρίς άλλη αλλαγή."
+        },
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "minor",
+          "quote": "78 τετραγωνικές ίντσες",
+          "explanation": "Η ελληνική εκδοχή διατηρεί το αγγλοσαξονικό σύστημα μονάδων. Αυτό είναι πιστή μετάφραση και δεν επηρεάζει τα μαθηματικά, αλλά αποτελεί εναπομείναν αγγλοσφαιρικό πλαίσιο προσαρμογής.",
+          "suggested_action": "Να καταγραφεί ως ζήτημα πολιτισμικής προσαρμογής. Τυχόν μετατροπή σε μετρικές μονάδες θα απαιτούσε ρητή άδεια και συνεπή αλλαγή προβλήματος και διαγράμματος."
+        }
+      ],
+      "provenance_note": "Το κείμενο του προβλήματος χαρακτηρίζεται σταθερό και υπάρχει μία καταγραφή λύσης· δεν προκύπτει αβεβαιότητα ιστορικής αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_4078",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική καταγραφή προβλήματος και λύσης· δεν υπάρχει αβεβαιότητα ιστορικής αντιστοίχισης. Η αντικατάσταση του ονόματος και του δολαρίου με ελληνικό όνομα και ευρώ είναι συνεπής επιτρεπτή προσαρμογή, καθώς οι αριθμητικές τιμές και η διδακτική δομή διατηρούνται.",
+      "verification_needed": []
+    }
+  ]
+}

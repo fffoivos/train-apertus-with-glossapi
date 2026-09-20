@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_424_4",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The before and after records are identical and match the actual training pair. The solution correctly applies the 10% discount to €500, then 24% VAT to the reduced net price of €450, yielding €558. The agricultural setting in Amfissa is culturally coherent.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_gsm_2521",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem preserves the source quantities, relationship, question, and teaching objective. The derivation is correct: 4.5−1=3.5 feet used and 3.5÷0.7=5 boxes. Retaining feet is an explicitly documented and permitted arithmetic-preserving adaptation; the foreign name and unit do not make the otherwise coherent task invalid. The editor changed only «Η κορδέλα που χρησιμοποίησε» to the more precise «Το μήκος της κορδέλας που χρησιμοποίησε», improving expression without altering semantics.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    }
+  ]
+}

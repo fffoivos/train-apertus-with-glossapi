@@ -1,0 +1,48 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_1035",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Η επιλεγμένη λύση συνδέθηκε συμβατικά με την τελευταία αποθηκευμένη εκδοχή του προβλήματος, αλλά η ιστορική αντιστοίχιση παραμένει ανεπιβεβαίωτη. Οι δύο παρεχόμενες ελληνικές εκδοχές έχουν μόνο λεκτικές διαφορές και είναι μαθηματικά ισοδύναμες. Η εξουδετέρωση της απώλειας 25% στηρίζεται στην προβλεπόμενη αναλογική εφαρμογή της στα σημασμένα και μη σημασμένα ψάρια του αρχικού πληθυσμού.",
+      "verification_needed": [
+        "Να επιβεβαιωθεί από τα αρχικά αρχεία ποια εκδοχή του προβλήματος συνόδευε ιστορικά τη λύση στη γραμμή 2522."
+      ]
+    },
+    {
+      "row_id": "math5_126",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το κείμενο του προβλήματος είναι σταθερό. Η λύση αποδεικνύει τόσο το κάτω φράγμα όσο και την επίτευξή του με θετικές πραγματικές ρίζες.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_2966",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική καταγραφή προβλήματος και λύσης. Η προσαρμογή Brian→Βασίλης και $→€ διατηρεί όλα τα αριθμητικά δεδομένα και το διδακτικό ζητούμενο· το μετρό είναι πολιτισμικά συνεπές και όχι ειδικά αγγλοσαξονικό στοιχείο.",
+      "verification_needed": []
+    }
+  ]
+}

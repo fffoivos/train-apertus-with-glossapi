@@ -1,0 +1,29 @@
+{
+  "status": "candidate_register_not_complete_training_manifest",
+  "registered_actions": 219,
+  "parent_index_sha256": "8dfac6a1ebd338b938c1366673e1cbad3f69b697c27d6b5c1c7b254a22b5bfa5",
+  "index_sha256": "5a8f4c2e555d144d05ffa074a82b241e2035cbe3518c25d894c6653c64ab77fe",
+  "by_component": {
+    "greek_maths": 65,
+    "greek_if": 14,
+    "personality": 42,
+    "balanced_correcting_dialogue": 92,
+    "adapted_core": 6
+  },
+  "held_or_excluded": 2,
+  "candidates_pending_full_assembly": 217,
+  "new_since_v2": {
+    "greek_math": 14,
+    "balanced_dialogue": 60,
+    "core_overlay": 6
+  },
+  "development_or_final_rows": 0,
+  "corpus_mutations": 0,
+  "pending": [
+    "Full source/split identity and pooled benchmark decontamination",
+    "English source pilot review and correct lossless tool export",
+    "Remaining508 balanced dialogue decisions and broader conversation structures",
+    "Knowledge diagnostic and source-grounded pilot",
+    "Frozen whole-mix token weights and training/evaluation budget"
+  ]
+}

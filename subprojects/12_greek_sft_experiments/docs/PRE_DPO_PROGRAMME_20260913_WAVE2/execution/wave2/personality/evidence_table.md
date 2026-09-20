@@ -1,0 +1,18 @@
+# Evidence table
+
+| Claim | Local evidence inspected | Status | Consequence for targets |
+|---|---|---|---|
+| Base lineage is Apertus 8B | `cluster/configs/R3_single.yaml:3-6`; `docs/PIPELINE_DESCRIPTION_20260911.md:7-9` | Established for the named local training recipe | Retain “βασίζομαι στο Apertus 8B”; do not turn the 8B family label into a freshly recounted exact parameter total. |
+| Greek adaptation and sequence | `docs/PIPELINE_DESCRIPTION_20260911.md:7-9`; `docs/HF_DATASET_CARD_greek-apertus-sft_20260907.md:61-65` | Established in project documentation | Retain GlossAPI/ΕΕΛΛΑΚ, continued Greek pretraining, then SFT, and Swiss AI Initiative grant. |
+| No proper product name | `data/personality/identity_facts.json:36-44` | Settled owner identity decision | Retain concise first-person “Δεν έχω δικό μου όνομα”. |
+| Greek weights/code/data are all public | Registry says so at `identity_facts.json:8,11,21`, but the dataset is gated (`HF_DATASET_CARD...:63-65`) and one historical arm-B checkpoint alone is documented public/gated (`PIPELINE_DESCRIPTION...:154`) | Checkpoint-dependent and unresolved for the prospective release | Evidence-gate the 85 affected rows; use a checkpoint-specific release manifest. |
+| Greek weights use Apache 2.0 | `identity_facts.json:5,30-34` calls this a proposal; dataset card uses mixed-per-block and a future project licence (`HF_DATASET_CARD...:116-120`) | Unresolved | Exclude or rewrite 40 affected rows until the released checkpoint manifest names the licence. |
+| Knowledge cutoff is mid-2025 | `identity_facts.json:4,32-34` leaves the date unset and explains it only as an HPLT-3 upper-bound proposal | Unresolved and conceptually incomplete across later SFT data | Exclude or rewrite 52 affected rows; replace with dated source checks for live facts. |
+| “No relation to OpenAI/Anthropic” | Base/adaptation lineage is local/Apertus, but `FACT_CORRECTIONS_ASTRA_20260909.md:28-31` records Claude/OpenAI synthetic generators | Overbroad | Keep product-identity denial when asked; disclose synthetic-data provenance where relevant. |
+| Direct endpoint is text generation with 4,096-token window | `cluster/serve_models.sh:1-12`; `cluster/configs/R3_single.yaml:16-17` | Established only for that invocation | Never promise access to “all” current messages; say “messages included in the current context.” |
+| Model has no tools | Serving command has no tool flags, but the training mix has textual `<function_calls>` examples (`RECIPE_R3_single_20260911.md:50`) and explicitly does not claim tool competence (`:142`) | Deployment-dependent; neither presence nor absence is a weight invariant | Condition tool claims on the runtime manifest or prompt-observable tool results. |
+| No files/images/audio/URLs | No adapter is documented in the direct vLLM command | Deployment-dependent | Rewrite all `I01_*` as “the content was not provided here in readable form.” |
+| No cross-conversation memory/storage/logging | No service-level configuration or privacy policy was found in the inspected training/model configuration | Deployment-dependent | Rewrite all `I00_*`; separate model context, application memory, logs, and deletion. |
+| Six v4 H rows lack a final assistant target | Full JSONL parse: 186 rows end assistant, six end user; raw rows and existing Opus corrections show the lost user turn and intended assistant close | Established dataset defect | Reconstruct `H07_00`, `H07_02`, `H07_03`, `H07_05`, `H07_06`, `H07_08` or exclude them. |
+| Seven v3 factual corrections | `data/personality/FACT_CORRECTIONS_ASTRA_20260909.md:3-16` | Registered, not newly source-verified in this audit | Keep excluded until named primary-source evidence is attached to each corrected target. |
+

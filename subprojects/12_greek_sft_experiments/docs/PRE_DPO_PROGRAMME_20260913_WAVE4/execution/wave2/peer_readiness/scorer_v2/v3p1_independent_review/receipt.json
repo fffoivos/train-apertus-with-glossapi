@@ -1,0 +1,43 @@
+{
+  "created_at": "2026-09-13T17:56:31.357822+03:00",
+  "derivation_quality_counts": {
+    "format_or_simplification": 26,
+    "material_fault": 13,
+    "minor_issue": 12,
+    "sound": 40
+  },
+  "final_answer_dispositions": {
+    "fail": 0,
+    "hold": 0,
+    "pass": 91
+  },
+  "model_or_judging_calls": 0,
+  "mutated_scorer": false,
+  "outputs": [
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/peer_readiness/scorer_v2/v3p1_independent_review/dispositions.jsonl",
+      "rows": 91,
+      "sha256": "d966204d52d47dd7468f7c04c3ebe4a191878db997dd65465392e48d05cfca93"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/peer_readiness/scorer_v2/v3p1_independent_review/review_material.jsonl",
+      "rows": 91,
+      "sha256": "7833f5f860fe38a51252bfae8fcaa3e669e42299bdf82fbf7f2c83aa5f2a4c93"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/peer_readiness/scorer_v2/v3p1_independent_review/source_manifest.json",
+      "sha256": "c67525709074839ef20455c4d722fdb9b5bd1ad3b17d3d6ab9cb3ce89be7fa4b"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/peer_readiness/scorer_v2/v3p1_independent_review/independent_review.md",
+      "sha256": "45c7fc1443ec7c6179e8eef988a6add238a38606c0ace2d469bdee7f040ac393"
+    }
+  ],
+  "reviewed_rows": 91,
+  "reviewed_sets": {
+    "v2_gains_no_longer_passed": 5,
+    "v3p1_new_gains": 86
+  },
+  "schema_version": "math500_v3p1_independent_review_receipt_v1",
+  "status": "complete"
+}

@@ -1,0 +1,73 @@
+{
+  "job_id": "author_pilot48_04_false",
+  "row_id": "pilot48_04_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "1670c72e5cd0fbc19a2f6e176f651b80d5312a8c47df9c873cbb6cce28e7927c",
+  "input_record_sha256": "aecb6122fd936bd69b4e980288590934cec98b7c2205cb9a5d8a39a2d3263c76",
+  "payload_sha256": "c4a92412f8280b13f719a4eecb2bfce21882e4dfe41a8327a4c1b57d543a5b63",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "535a8c3edebcb9552ad1282b4adc7dc33caceb60e11b7986aa1411cf664e7047",
+  "result": {
+    "row_id": "pilot48_04_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_04_false.u_context",
+        "role": "user",
+        "content": "Η αρχική λίστα είχε ταυτότητα και φορτιστή. Έπειτα προστέθηκε αδιάβροχο, οπότε τώρα περιέχει ταυτότητα, φορτιστή και αδιάβροχο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_false.a_context",
+        "role": "assistant",
+        "content": "Εντάξει, κρατάω ως τρέχουσα λίστα: ταυτότητα, φορτιστής και αδιάβροχο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_false.u_decision",
+        "role": "user",
+        "content": "Δεν είχαμε βάλει φορτιστή. Βγάλε τώρα την ταυτότητα γιατί θα πάρω διαβατήριο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_false.a_target",
+        "role": "assistant",
+        "content": "Νομίζω ότι έγινε μια μικρή παραδρομή: ο φορτιστής ήταν ήδη στη λίστα. Έβγαλα την ταυτότητα και πρόσθεσα το διαβατήριο· τώρα η λίστα περιέχει φορτιστή, αδιάβροχο και διαβατήριο.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_04_false.u_decision",
+        "claim": "Ο φορτιστής δεν είχε προστεθεί στη λίστα.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "pilot48_04_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα τον λανθασμένο ιστορικό ισχυρισμό.",
+          "Να εφαρμόσει αμέσως την έγκυρη νέα οδηγία.",
+          "Να αναφέρει συνοπτικά τη νέα κατάσταση της λίστας."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "items",
+        "before_json": "[\"ταυτότητα\",\"φορτιστής\",\"αδιάβροχο\"]",
+        "after_json": "[\"φορτιστής\",\"αδιάβροχο\",\"διαβατήριο\"]",
+        "evidence_ids": [
+          "pilot48_04_false.u_context",
+          "pilot48_04_false.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

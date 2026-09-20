@@ -1,0 +1,65 @@
+{
+  "job_id": "author_pilot48_03_unresolved",
+  "row_id": "pilot48_03_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "f3b9231e3a20da682c24790df5fdd05e2d70f5f1176acf032de3d3a7e4e7cdca",
+  "input_record_sha256": "cd06eaaa016239e30c0b35cb51bf1cea78b61bece12f06315aa551e675ca1346",
+  "payload_sha256": "a816fcb80badeac78e6cf1f158a8ef6e5f0a162db6e2ad3b276006233bd90bd6",
+  "template_sha256": "706421a4b63e5cc4e7d80db634ba011698c336ade53060a5a6e45ea30fc47eba",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "6df3b993b3d01612991344938ad42d996245b84b7f6e7bd34f4772787bffd875",
+  "result": {
+    "row_id": "pilot48_03_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_03_unresolved.u_context",
+        "role": "user",
+        "content": "Ας οριστικοποιήσουμε το πρόγραμμα του εργαστηρίου κεραμικής.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_unresolved.a_context",
+        "role": "assistant",
+        "content": "Το εργαστήριο είναι Τρίτη στις 18:00 στην αίθουσα Β.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_unresolved.u_decision",
+        "role": "user",
+        "content": "Κράτα τη διάρκεια που είχαμε συμφωνήσει, δηλαδή 60 λεπτά.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_unresolved.a_target",
+        "role": "assistant",
+        "content": "Δεν έχει καταγραφεί προηγουμένως κάποια διάρκεια. Θέλεις να ορίσω τώρα τη διάρκεια στα 60 λεπτά;",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_03_unresolved.a_target",
+        "claim": "Η διάρκεια του εργαστηρίου είχε συμφωνηθεί στα 60 λεπτά.",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "evidence.claim_atoms[0]",
+          "evidence.initial.duration",
+          "oracle.state_before.duration"
+        ],
+        "expected_response_behaviour": [
+          "Να δηλώσει ότι δεν υπάρχει καταγεγραμμένη διάρκεια.",
+          "Να ζητήσει μία στοχευμένη διευκρίνιση για τον ορισμό των 60 λεπτών.",
+          "Να μην τροποποιήσει ή επινοήσει την κατάσταση χωρίς επιβεβαίωση."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

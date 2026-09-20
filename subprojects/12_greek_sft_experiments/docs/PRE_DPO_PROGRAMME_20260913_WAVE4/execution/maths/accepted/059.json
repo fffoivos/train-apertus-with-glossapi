@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_1513",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record and single solution record; no historical pairing uncertainty is indicated.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3144",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record and single solution record; the permitted name adaptation from Buzz to Βασίλης is consistent throughout.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3679",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record and single solution record; the permitted adaptations of the personal name and currency are consistent throughout.",
+      "verification_needed": []
+    }
+  ]
+}

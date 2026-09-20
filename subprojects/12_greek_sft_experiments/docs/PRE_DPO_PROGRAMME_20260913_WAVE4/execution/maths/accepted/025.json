@@ -1,0 +1,69 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_935",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single Greek problem record and single solution record; the supplied problem–solution pairing is unambiguous.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_77",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "issue",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "derivation",
+          "severity": "major",
+          "quote": "«υπάρχει συλλογή από $k$ ζευγάρια που περιέχει ακριβώς τα παπούτσια $k$ ενηλίκων αν και μόνο αν υπάρχει κύκλος μήκους $k$»",
+          "explanation": "The per-k equivalence is false. Such a collection corresponds to a union of permutation cycles whose total length is k, not necessarily to one cycle of length k; for example, two 2-cycles form a valid collection for k=4 without a 4-cycle. The eventual criterion and answer remain correct because any union of total size below 5 necessarily contains a cycle of length below 5, and any such cycle itself violates the condition.",
+          "suggested_action": "Replace the false per-k equivalence with the invariant-subset/union-of-cycles statement, then explicitly derive that avoiding every forbidden k<5 is equivalent to requiring every cycle to have length at least 5."
+        },
+        {
+          "dimension": "training_structure",
+          "severity": "minor",
+          "quote": "«$L_1,\\\\dots,L_{10}$ … $R_1,\\\\dots,R_{10}$»",
+          "explanation": "The duplicated backslash makes the intended LaTeX ellipsis command malformed in the supplied candidate representation.",
+          "suggested_action": "Use a single LaTeX command backslash for each ellipsis: `\\dots` in the decoded solution text."
+        }
+      ],
+      "provenance_note": "The problem text is marked stable and no alternate problem variants are supplied. Two solution records existed; this audit assesses only the selected solution and does not infer a problem-version mismatch.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3408",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "minor",
+          "quote": "«δρόμο μήκους 16 μιλίων»",
+          "explanation": "The Greek adaptation retains the anglosphere-specific distance unit “miles.” This is culturally unlocalized but does not affect source fidelity, the calculations, or the correct answer of 6 barrels.",
+          "suggested_action": "Record the retained imperial setting as an adaptation concern. Do not change miles to kilometres unless the repair scope explicitly permits changing the problem quantities or setting."
+        }
+      ],
+      "provenance_note": "Single Greek problem record and single solution record; the supplied problem–solution pairing is unambiguous.",
+      "verification_needed": []
+    }
+  ]
+}

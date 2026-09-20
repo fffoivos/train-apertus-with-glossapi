@@ -1,0 +1,34 @@
+{
+  "method": "Sort eligible row ids by sha256('dialogue-audit-v1|' + row_id); take two per declared stratum without replacement.",
+  "reviewed_dialogues": 24,
+  "correcting_targeted": {
+    "scope_note": "Purposefully enriched for truth and misquotation cases. These 12 dialogues cannot estimate corpus-wide rates.",
+    "false": ["corr_3_00008", "corr_3_00152"],
+    "true": ["corr_2_00263", "corr_3_00110"],
+    "partial": ["corr_3_00169", "corr_3_00097"],
+    "unresolved": ["corr_2_00090", "corr_3_00287"],
+    "misquotation": ["corr_3_00170", "corr_2_00244"],
+    "ordinary": ["corr_3_00066", "corr_3_00270"]
+  },
+  "convskills_lane_stratified": {
+    "scope_note": "Two dialogues per final lane. This supports lane coverage inspection; n=2 per lane is too small for a stable failure-rate estimate.",
+    "S1": ["S1_00199", "S1_00277"],
+    "S2": ["S2_00928", "S2_00435"],
+    "S3": ["S3_00260", "S3_00413"],
+    "S3c": ["S3c_00208", "S3c_00305"],
+    "S4": ["S4_00058", "S4_00020"],
+    "S5m": ["S5m_00630", "S5m_00789"]
+  },
+  "sample_totals": {
+    "messages": 310,
+    "user_messages": 155,
+    "assistant_messages": 155,
+    "supervised_assistant_messages": 142,
+    "masked_assistant_messages": 13
+  },
+  "assembled_membership": {
+    "present_with_two_training_copies": 23,
+    "not_present": ["corr_2_00244"],
+    "note": "corr_2_00244 is in the actual correcting export but the later assembly filter omitted it; all other sampled rows appear twice in the assembled training file."
+  }
+}

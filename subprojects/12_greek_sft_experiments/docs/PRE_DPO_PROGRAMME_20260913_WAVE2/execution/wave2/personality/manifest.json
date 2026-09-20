@@ -1,0 +1,63 @@
+{
+  "inputs": {
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/personality/personality_v3v4_final.jsonl": {
+      "sha256": "ad13da57bab00a42cb3d67e7c511661f80979af9755daf7ac02ad74e1e77388b",
+      "rows": 1580
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/personality/v4/personality_rows_final.jsonl": {
+      "sha256": "54a332cc586572604439b1e6ab034f144ad8ae02eb8f88113e2634cdc6ab0afb",
+      "rows": 192
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/personality/v4/personality_rows.jsonl": {
+      "sha256": "150836146b624af9e336a4583f334e2b9d6bdcd989b02c51c4f8952c1207b19e",
+      "rows": 192
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/personality/v4/checks_opus.jsonl": {
+      "sha256": "4ed61492ae16ac19dc8d6a581dbd5dd15f3146354336ae701710ae21f3a9a187",
+      "rows": 192
+    }
+  },
+  "outputs": {
+    "v4_full_audit.jsonl": {
+      "sha256": "4bcb73016151c61d001b2d3fe9ec60cba4175a2c2ed62ef5d89f4deac636ad9f",
+      "bytes": 53965
+    },
+    "candidate_fixes.jsonl": {
+      "sha256": "aa051ece608e644bc799207cb0847e16855900bec84771816e94224ecc6af0fc",
+      "bytes": 21166
+    },
+    "claim_inventory.json": {
+      "sha256": "34cd55779d6ba5ecd09e7e0cd45ca9c9d372060487fd5cd8a9a0e6449ecc0349",
+      "bytes": 7095
+    },
+    "report.md": {
+      "sha256": "0fec8982b54ca012429a3950ed429d02723071e4536011afd07e6752bfc657cd",
+      "bytes": 10256
+    },
+    "evidence_table.md": {
+      "sha256": "b694fda4bc4c1652945b58c6d86ce336d414b509326817e338cbabdbffa102db",
+      "bytes": 3802
+    },
+    "build_audit.py": {
+      "sha256": "eada91f165a5db6f813381139d7bd8fe796b91db592e4a00f5e5507e36b55435",
+      "bytes": 13411
+    }
+  },
+  "counts": {
+    "v4_rows_read": 192,
+    "v4_categories": {
+      "H": 144,
+      "I": 48
+    },
+    "v4_dispositions": {
+      "retain_v4_core": 157,
+      "repair_structural_before_reuse": 6,
+      "deployment_conditional_rewrite": 29
+    },
+    "v4_last_role": {
+      "assistant": 186,
+      "user": 6
+    },
+    "candidate_fixes": 20
+  }
+}

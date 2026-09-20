@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__pilot48_02_partial",
+  "row_id": "pilot48_02_partial",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "da9a79519a60ed9ab33286e9e081b8160976396a4ba8676865d91337c68b9704",
+  "input_record_sha256": "4983a5f3e3060ac50563d96575ed95c01f97a04471a132ac9a63ab9121529f75",
+  "payload_sha256": "dab1cad2824c6fb9c565537e2ce168ed681879cf3922f9f1c073b4401281c5fb",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "b67253a30f90697b25a033ca76271a74188b25a358b58e1f66b0ba1de79acd92",
+  "result": {
+    "row_id": "pilot48_02_partial",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_02_partial.u_context",
+        "role": "user",
+        "content": "Ο αρχικός κατάλογος είχε την Άννα και τον Νίκο. Έπειτα προστέθηκε η Μαρία και αφαιρέθηκε ο Νίκος, οπότε τώρα έχει την Άννα και τη Μαρία.",
+        "train": false
+      },
+      {
+        "id": "pilot48_02_partial.a_context",
+        "role": "assistant",
+        "content": "Ο τρέχων κατάλογος εθελοντών περιλαμβάνει την Άννα και τη Μαρία.",
+        "train": false
+      },
+      {
+        "id": "pilot48_02_partial.u_decision",
+        "role": "user",
+        "content": "Επιτέλους. Στον κατάλογο που μόλις μου έδειξες, φαίνεται ότι η Μαρία και ο Νίκος είναι καταχωρισμένοι. Αφαίρεσε τώρα την Άννα.",
+        "train": false
+      },
+      {
+        "id": "pilot48_02_partial.a_target",
+        "role": "assistant",
+        "content": "Η Μαρία ήταν καταχωρισμένη, αλλά ο Νίκος είχε ήδη αφαιρεθεί. Αφαίρεσα τώρα την Άννα από τον κατάλογο· απομένει μόνο η Μαρία.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

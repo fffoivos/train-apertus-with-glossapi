@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_101_3",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. BEFORE, AFTER, and actual training messages are identical. Independent verification confirms 109.12/1.24=88, 88/0.88=100, 100×1.24=124, and 124−109.12=14.88. Both requested parts are answered with appropriate euro units, and the user/assistant structure and speaker ownership are correct.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_664_3",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. BEFORE, AFTER, and actual training messages are identical. Independent verification gives the five-day sequence 16, 24, 36, 54, 81 and total 211. Both requested parts are answered with the correct unit, while the Greek setting, classroom convention, training structure, and speaker ownership are coherent.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_176",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το ελληνικό πρόβλημα αντιστοιχεί πλήρως στο αγγλικό και δηλώνεται ως σταθερό κείμενο χωρίς άλλες παραλλαγές. Παρότι υπάρχουν δύο εγγραφές λύσης, δεν παρέχεται ένδειξη ασυμβατότητας της επιλεγμένης λύσης με το συγκεκριμένο πρόβλημα.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_1055",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική εγγραφή προβλήματος και λύσης. Η επιτρεπτή αντικατάσταση των ονομάτων είναι συνεπής σε όλο το ελληνικό πρόβλημα και τη λύση.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_4157",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική εγγραφή προβλήματος και λύσης. Η απόδοση του «garage sale» ως «υπαίθρια αγορά» διατηρεί επαρκώς το σχετικό πραγματολογικό νόημα και δεν επηρεάζει τα δεδομένα ή τον διδακτικό στόχο.",
+      "verification_needed": []
+    }
+  ]
+}

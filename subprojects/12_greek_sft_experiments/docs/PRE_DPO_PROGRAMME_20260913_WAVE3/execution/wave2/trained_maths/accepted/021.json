@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_math_3610",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete before, after, and actual-training messages are identical, with one correctly ordered user–assistant pair. The factorization a³−ba²−b²a+b³=(a−b)²(a+b) is valid; for a=2000 and b=1999 it gives 1²·3999=3999. The dots consistently function as Greek thousands separators, so «3.999» agrees with the independently verified value 3999 and involves no rounding or units. The translated problem preserves the source teaching objective and mathematical content.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_3394",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete before, after, and actual-training messages are identical, with one correctly ordered user–assistant pair. Since 7³=343≤956<2401=7⁴, the base-7 representation has exactly four digits. The dot in «2.401» is a coherent Greek thousands separator, and no units or rounding are involved. The Greek adaptation preserves the source question and teaching objective.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

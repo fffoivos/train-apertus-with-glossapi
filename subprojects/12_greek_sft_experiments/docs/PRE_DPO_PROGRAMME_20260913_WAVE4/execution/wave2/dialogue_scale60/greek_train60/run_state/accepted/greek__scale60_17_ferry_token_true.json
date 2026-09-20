@@ -1,0 +1,61 @@
+{
+  "job_id": "greek__scale60_17_ferry_token_true",
+  "row_id": "scale60_17_ferry_token_true",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "5a78117b7d8061a79f01241445453ab49ef78fa4cad23b6a8614f3f3d046b74a",
+  "input_record_sha256": "d80a3620536bec612442cd5de5c5c5256f0148f21aa55673f9faf3abc1fb455f",
+  "payload_sha256": "dd9412af0279df9d0c2b959835d0e9eedd6490fa6e969a8e63c10e92ffe568b2",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "142a8d701d0325be13d2b6a461e41c87f5df23b77a94c4c306538f8daf858087",
+  "result": {
+    "row_id": "scale60_17_ferry_token_true",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "scale60_17_ferry_token_true.u_context",
+        "role": "user",
+        "content": "Η κάρτα του παιχνιδιού λέει ότι κάθε κόκκινο εισιτήριο οδηγεί στην προβλήτα 1 και κάθε πράσινο στην προβλήτα 2. Το εισιτήριο Ζ είναι κόκκινο.",
+        "train": false
+      },
+      {
+        "id": "scale60_17_ferry_token_true.a_context",
+        "role": "assistant",
+        "content": "Θα απαντήσω μέσα στους κανόνες του παιχνιδιού.",
+        "train": false
+      },
+      {
+        "id": "scale60_17_ferry_token_true.u_decision",
+        "role": "user",
+        "content": "Άρα, σύμφωνα με τον κανόνα της κάρτας, το εισιτήριο Ζ οδηγεί στην προβλήτα 1.",
+        "train": false
+      },
+      {
+        "id": "scale60_17_ferry_token_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά — αφού το εισιτήριο Ζ είναι κόκκινο, ο κανόνας ορίζει ότι οδηγεί στην προβλήτα 1.",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "scale60_17_ferry_token_true.u_decision",
+        "before": "Μαζί λοιπόν: Με τον κανόνα της κάρτας, το εισιτήριο Ζ οδηγεί στην προβλήτα 1.",
+        "after": "Άρα, σύμφωνα με τον κανόνα της κάρτας, το εισιτήριο Ζ οδηγεί στην προβλήτα 1.",
+        "error": "Αφύσικη μεταφραστική διατύπωση και αδόκιμη σύνταξη.",
+        "reason": "Το «Μαζί λοιπόν» δεν λειτουργεί φυσικά ως συμπερασματικός δείκτης και το «με τον κανόνα» αποδίδεται ιδιωματικότερα ως «σύμφωνα με τον κανόνα»."
+      },
+      {
+        "message_id": "scale60_17_ferry_token_true.a_target",
+        "before": "Σωστά — αφού το εισιτήριο Ζ είναι κόκκινο, ο κανόνας το οδηγεί στην προβλήτα 1.",
+        "after": "Σωστά — αφού το εισιτήριο Ζ είναι κόκκινο, ο κανόνας ορίζει ότι οδηγεί στην προβλήτα 1.",
+        "error": "Αδόκιμη προσωποποίηση και μη φυσική ρηματική σύνταξη.",
+        "reason": "Ο κανόνας δεν «οδηγεί» το εισιτήριο· φυσικά στα ελληνικά ορίζει το συμπέρασμα που ισχύει για αυτό."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

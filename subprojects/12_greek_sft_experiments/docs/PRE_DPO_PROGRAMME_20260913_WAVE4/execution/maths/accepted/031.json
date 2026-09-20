@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_87",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το κείμενο του προβλήματος είναι σταθερό και δεν παρέχονται εναλλακτικές εκδοχές. Υπάρχουν δύο εγγραφές λύσης· αξιολογήθηκε η επιλεγμένη τελευταία λύση της γραμμής 92, η οποία αντιστοιχεί μαθηματικά στο σταθερό πρόβλημα.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_544",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχει μία εγγραφή λύσης και σταθερό κείμενο προβλήματος, χωρίς εναλλακτικές εκδοχές ή εμφανή αβεβαιότητα ιστορικής αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3527",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Πρόκειται για μοναδική εγγραφή προβλήματος και λύσης, χωρίς εναλλακτικές εκδοχές ή αβεβαιότητα αντιστοίχισης.",
+      "verification_needed": []
+    }
+  ]
+}

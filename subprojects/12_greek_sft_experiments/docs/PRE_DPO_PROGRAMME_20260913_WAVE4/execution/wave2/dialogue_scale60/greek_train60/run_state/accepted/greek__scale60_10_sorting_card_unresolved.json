@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_10_sorting_card_unresolved",
+  "row_id": "scale60_10_sorting_card_unresolved",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "30fa43b9f9e959b6ca4e090db30b21e83d6a529234c97f396ca90dbcb4624105",
+  "input_record_sha256": "36892412828a2a97625c7b6d1889900f1823717a458863cd150c723c85e58243",
+  "payload_sha256": "8fff85418b86466ec80fda546eb88ef2fd97c862101a4a233acf41ab0ba3e1a2",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "7faebf94c37a45c4fe7ccc5786151e730d2f73475752e10d20d7e64fbe29ddc5",
+  "result": {
+    "row_id": "scale60_10_sorting_card_unresolved",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_10_sorting_card_unresolved.u_context",
+        "role": "user",
+        "content": "Η κάρτα κανόνων λέει: κάθε μπλε κιβώτιο πάει στο πάνω ράφι· κάθε εύθραυστο κιβώτιο μπαίνει σε θήκη με επένδυση. Το κιβώτιο Κ είναι μπλε και εύθραυστο. Δεν δίνεται το βάρος του.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_unresolved.a_context",
+        "role": "assistant",
+        "content": "Θα εφαρμόσω τους κανόνες της κάρτας στο κιβώτιο Κ, χωρίς εξωτερικές υποθέσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_unresolved.u_decision",
+        "role": "user",
+        "content": "Λοιπόν, ας το ξεκαθαρίσουμε επιτέλους: Με βάση μόνο την κάρτα, το κιβώτιο Κ ζυγίζει 4 κιλά.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_unresolved.a_target",
+        "role": "assistant",
+        "content": "Η κάρτα δεν δίνει το βάρος του κιβωτίου Κ, οπότε δεν μπορούμε να συμπεράνουμε ότι ζυγίζει 4 κιλά. Προκύπτει μόνο ότι πάει στο πάνω ράφι και μπαίνει σε θήκη με επένδυση.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

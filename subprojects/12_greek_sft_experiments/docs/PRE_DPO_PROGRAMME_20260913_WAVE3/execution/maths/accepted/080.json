@@ -1,0 +1,54 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_924",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single Greek problem record and single solution record; the supplied pairing is unambiguous.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_418",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "training_structure",
+          "severity": "minor",
+          "quote": "πάνω στο $\u0000overline{AP}$ ... στα $\u0000overline{AM}$ και $\u0000overline{PM}$",
+          "explanation": "The three segment commands contain U+0000 in place of the LaTeX backslash. This corrupts the mathematical markup, although the intended segments remain recoverable from their endpoint labels and the solution uses the intended geometry.",
+          "suggested_action": "Replace each null character with a backslash so the expressions become `\\overline{AP}`, `\\overline{AM}`, and `\\overline{PM}`."
+        }
+      ],
+      "provenance_note": "The problem text is marked stable and no alternative problem variants are supplied. Two solution records existed, but the displayed solution is mathematically consistent with the supplied stable problem.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_823",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The problem text is marked stable and no alternative problem variants are supplied. Two solution records existed, and the selected solution is consistent with the supplied problem.",
+      "verification_needed": []
+    }
+  ]
+}

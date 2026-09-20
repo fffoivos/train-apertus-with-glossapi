@@ -1,0 +1,64 @@
+{
+  "job_id": "author__scale60_10_sorting_card_unresolved",
+  "row_id": "scale60_10_sorting_card_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "be2fe22b30a1df9ae8f0c70d6c25be49f9e078fbab696eab1b53f20a154b0872",
+  "input_record_sha256": "4799c50362d10eca3b6babf63a20e770650fb4413bf677f3f50989ddea57adc8",
+  "payload_sha256": "35666d14c9b8b15c8e6dbb74fa58df671ec6dd5f43744eae0de81d33dce9fa18",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "928f93da84b787ebed8911d514c6797c426beb851d88f8f543315a704d4ff204",
+  "result": {
+    "row_id": "scale60_10_sorting_card_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_10_sorting_card_unresolved.u_context",
+        "role": "user",
+        "content": "Η κάρτα κανόνων λέει: κάθε μπλε κιβώτιο πάει στο πάνω ράφι· κάθε εύθραυστο κιβώτιο μπαίνει σε θήκη με επένδυση. Το κιβώτιο Κ είναι μπλε και εύθραυστο. Δεν δίνεται το βάρος του.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_unresolved.a_context",
+        "role": "assistant",
+        "content": "Θα εφαρμόσω τους κανόνες της κάρτας στο κιβώτιο Κ, χωρίς εξωτερικές υποθέσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_unresolved.u_decision",
+        "role": "user",
+        "content": "Λοιπόν, ας το ξεκαθαρίσουμε επιτέλους: Με βάση μόνο την κάρτα, το κιβώτιο Κ ζυγίζει 4 κιλά.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_unresolved.a_target",
+        "role": "assistant",
+        "content": "Η κάρτα δεν δίνει το βάρος του κιβωτίου Κ, οπότε δεν μπορούμε να συμπεράνουμε ότι ζυγίζει 4 κιλά. Προκύπτει μόνο ότι πάει στο πάνω ράφι και μπαίνει σε θήκη με επένδυση.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_10_sorting_card_unresolved.u_decision",
+        "claim": "Με βάση μόνο την κάρτα, το κιβώτιο Κ ζυγίζει 4 κιλά.",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "scale60_10_sorting_card_unresolved.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να επισημάνει ότι το βάρος δεν δίνεται.",
+          "Να μην αποδεχτεί ούτε να απορρίψει ως ψευδή την τιμή των 4 κιλών.",
+          "Να συνοψίσει ότι από την κάρτα προκύπτουν μόνο το πάνω ράφι και η θήκη με επένδυση.",
+          "Να μην ζητήσει διευκρίνιση, αφού δεν απαιτείται επόμενη ενέργεια."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "accepted_output_count": 42,
+  "artifact_sha256": {
+    "adjudications.jsonl": "ae33f559349982ae43a1608abc7092a1c3522948ea861bb2522b15b7adcf9e34",
+    "arithmetic_checks.json": "41cca6882a257ccc917594902f2063ec8760d3e35e102cfb43c79f151b96931c",
+    "narrow_repairs.jsonl": "9c9b9cfa14cc13c7da5bd77fddb88db32b84b1f6df710d9cc31b5d00b7eef778",
+    "output_control_scan.json": "825cd6ab457d5dd9baf37131f1632051e6a53ee77a068bad72170466e3728b10",
+    "report.md": "d006a79e9fb03f3b2cc5fa0c00d8ea8f02a44ce8a0f0dad21aac6e66ef2eaf1f",
+    "selected_candidates.jsonl": "d25b656e9373f9f4bc8658c78db5410e1f5456b1901ade28626caa098893fde0",
+    "verification.json": "fbbfd451e2b15eb05fb8b31a2afe9fbcf1274957a13ff1cec0e294db853965a1"
+  },
+  "corpus_mutations": 0,
+  "created_at": "2026-09-13T17:51:27+03:00",
+  "greek_manifest_sha256": "7379f4f3bee167904a405ae533440245e36c4b254428fb308b3406c1060505ce",
+  "model_calls_added": 0,
+  "schema_version": "maths_phaseC14_review_receipt_v1",
+  "source_inputs_sha256": "570a53516a57aafeb339ce14faa247aeee0a6481f7d0f2ace4d99a6b500506e4",
+  "status": "semantic_review_complete_greek_queue_pending_root_review"
+}

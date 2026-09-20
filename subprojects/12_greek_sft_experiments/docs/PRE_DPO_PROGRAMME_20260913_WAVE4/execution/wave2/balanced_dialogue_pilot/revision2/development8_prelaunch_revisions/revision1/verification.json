@@ -1,0 +1,31 @@
+{
+  "status": "PASS_DEVELOPMENT8_PREPARATION",
+  "rows": 8,
+  "truth_counts": {
+    "true": 2,
+    "false": 2,
+    "partial": 2,
+    "unresolved": 2
+  },
+  "families": {
+    "cf05_cafe_order": 4,
+    "cf09_library_hold": 4
+  },
+  "oracle_recomputations": 8,
+  "source_repairs": [
+    "pilot48_05_false"
+  ],
+  "author_jobs": 8,
+  "greek_jobs": 8,
+  "conditional_semantic_repair_cap": 2,
+  "retry_cap": 2,
+  "package_call_cap": 20,
+  "cumulative_calls_before": 68,
+  "cumulative_max_after": 88,
+  "global_pilot_cap": 118,
+  "max_workers": 8,
+  "train_family_intersection": [],
+  "final_content_materialized": false,
+  "model_calls": 0,
+  "launched": false
+}

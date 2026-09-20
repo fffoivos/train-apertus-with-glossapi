@@ -1,0 +1,1263 @@
+{
+  "schema_version": "dolci_tool_selected_shape_probe_v1",
+  "sample_rows": 8,
+  "selection": "first 4 Tool Use rows encountered per source shard",
+  "content_redacted": true,
+  "rows": [
+    {
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 59,
+        "row_in_group": 369
+      },
+      "turn_count": 5,
+      "turn_shapes": [
+        {
+          "role": "system",
+          "content_type": "str",
+          "content_chars": 339,
+          "nonnull_native_fields": [
+            "content",
+            "functions",
+            "role"
+          ],
+          "functions": {
+            "storage_type": "str",
+            "chars": 1269,
+            "json_parseable": true,
+            "json_type": "list",
+            "items": 2,
+            "item_key_sets": [
+              [
+                "function",
+                "type"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 112,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 96,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 2,
+            "python_positional_counts": [
+              0,
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "days",
+                "q"
+              ],
+              [
+                "days",
+                "q"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 725,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 263,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        }
+      ]
+    },
+    {
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 59,
+        "row_in_group": 370
+      },
+      "turn_count": 7,
+      "turn_shapes": [
+        {
+          "role": "system",
+          "content_type": "str",
+          "content_chars": 339,
+          "nonnull_native_fields": [
+            "content",
+            "functions",
+            "role"
+          ],
+          "functions": {
+            "storage_type": "str",
+            "chars": 3107,
+            "json_parseable": true,
+            "json_type": "list",
+            "items": 6,
+            "item_key_sets": [
+              [
+                "function",
+                "type"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 231,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 130,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 1,
+            "python_positional_counts": [
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "checkin_date",
+                "checkout_date",
+                "guest_id",
+                "nightly_rate",
+                "room_type"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 68,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 38,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 1,
+            "python_positional_counts": [
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "zipcode"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 33,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 190,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        }
+      ]
+    },
+    {
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 59,
+        "row_in_group": 371
+      },
+      "turn_count": 5,
+      "turn_shapes": [
+        {
+          "role": "system",
+          "content_type": "str",
+          "content_chars": 339,
+          "nonnull_native_fields": [
+            "content",
+            "functions",
+            "role"
+          ],
+          "functions": {
+            "storage_type": "str",
+            "chars": 1223,
+            "json_parseable": true,
+            "json_type": "list",
+            "items": 3,
+            "item_key_sets": [
+              [
+                "function",
+                "type"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 213,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 126,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 4,
+            "python_positional_counts": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "num"
+              ],
+              [
+                "num"
+              ],
+              [
+                "dilution",
+                "od"
+              ],
+              [
+                "dilution",
+                "od"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 92,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 228,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        }
+      ]
+    },
+    {
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 59,
+        "row_in_group": 372
+      },
+      "turn_count": 21,
+      "turn_shapes": [
+        {
+          "role": "system",
+          "content_type": "str",
+          "content_chars": 339,
+          "nonnull_native_fields": [
+            "content",
+            "functions",
+            "role"
+          ],
+          "functions": {
+            "storage_type": "str",
+            "chars": 885,
+            "json_parseable": true,
+            "json_type": "list",
+            "items": 2,
+            "item_key_sets": [
+              [
+                "function",
+                "type"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 216,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 111,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 2,
+            "python_positional_counts": [
+              0,
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "acceleration",
+                "initial_velocity",
+                "time"
+              ],
+              [
+                "k",
+                "n"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 33,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 166,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 163,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 111,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 2,
+            "python_positional_counts": [
+              0,
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "acceleration",
+                "initial_velocity",
+                "time"
+              ],
+              [
+                "k",
+                "n"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 36,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 183,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 130,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 108,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 2,
+            "python_positional_counts": [
+              0,
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "k",
+                "n"
+              ],
+              [
+                "acceleration",
+                "initial_velocity",
+                "time"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 32,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 164,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 117,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 109,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 2,
+            "python_positional_counts": [
+              0,
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "k",
+                "n"
+              ],
+              [
+                "acceleration",
+                "initial_velocity",
+                "time"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 32,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 142,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 132,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 108,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 2,
+            "python_positional_counts": [
+              0,
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "k",
+                "n"
+              ],
+              [
+                "acceleration",
+                "initial_velocity",
+                "time"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 29,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 140,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        }
+      ]
+    },
+    {
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 0,
+        "row_in_group": 0
+      },
+      "turn_count": 5,
+      "turn_shapes": [
+        {
+          "role": "system",
+          "content_type": "str",
+          "content_chars": 339,
+          "nonnull_native_fields": [
+            "content",
+            "functions",
+            "role"
+          ],
+          "functions": {
+            "storage_type": "str",
+            "chars": 1504,
+            "json_parseable": true,
+            "json_type": "list",
+            "items": 4,
+            "item_key_sets": [
+              [
+                "function",
+                "type"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 227,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 42,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 1,
+            "python_positional_counts": [
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "team_id"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 685,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 486,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        }
+      ]
+    },
+    {
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 0,
+        "row_in_group": 1
+      },
+      "turn_count": 7,
+      "turn_shapes": [
+        {
+          "role": "system",
+          "content_type": "str",
+          "content_chars": 339,
+          "nonnull_native_fields": [
+            "content",
+            "functions",
+            "role"
+          ],
+          "functions": {
+            "storage_type": "str",
+            "chars": 1136,
+            "json_parseable": true,
+            "json_type": "list",
+            "items": 3,
+            "item_key_sets": [
+              [
+                "function",
+                "type"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 132,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 54,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 1,
+            "python_positional_counts": [
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "amount",
+                "is_from",
+                "to"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 90,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 34,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 1,
+            "python_positional_counts": [
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "i"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 95,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 161,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        }
+      ]
+    },
+    {
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 0,
+        "row_in_group": 2
+      },
+      "turn_count": 6,
+      "turn_shapes": [
+        {
+          "role": "system",
+          "content_type": "str",
+          "content_chars": 339,
+          "nonnull_native_fields": [
+            "content",
+            "functions",
+            "role"
+          ],
+          "functions": {
+            "storage_type": "str",
+            "chars": 667,
+            "json_parseable": true,
+            "json_type": "list",
+            "items": 2,
+            "item_key_sets": [
+              [
+                "function",
+                "type"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 210,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 90,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 2,
+            "python_positional_counts": [
+              0,
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "tag"
+              ],
+              [
+                "locationid"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 178,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 366,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        }
+      ]
+    },
+    {
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 0,
+        "row_in_group": 3
+      },
+      "turn_count": 23,
+      "turn_shapes": [
+        {
+          "role": "system",
+          "content_type": "str",
+          "content_chars": 339,
+          "nonnull_native_fields": [
+            "content",
+            "functions",
+            "role"
+          ],
+          "functions": {
+            "storage_type": "str",
+            "chars": 1754,
+            "json_parseable": true,
+            "json_type": "list",
+            "items": 3,
+            "item_key_sets": [
+              [
+                "function",
+                "type"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 100,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 22,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 1,
+            "python_positional_counts": [
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "page"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 65,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 101,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 62,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 19,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 1,
+            "python_positional_counts": [
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "symbol"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 43,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 46,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 95,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 77,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 1,
+            "python_positional_counts": [
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "datefrom",
+                "daysfrom",
+                "inpast",
+                "symbol"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 58,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 94,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 47,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 22,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 1,
+            "python_positional_counts": [
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "page"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 50,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 63,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 46,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 20,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 1,
+            "python_positional_counts": [
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "symbol"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 41,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 0,
+          "nonnull_native_fields": [
+            "function_calls",
+            "role"
+          ],
+          "function_calls": {
+            "storage_type": "str",
+            "chars": 20,
+            "json_parseable": false,
+            "python_call_parseable": true,
+            "python_call_count": 1,
+            "python_positional_counts": [
+              0
+            ],
+            "python_keyword_name_sets": [
+              [
+                "symbol"
+              ]
+            ]
+          }
+        },
+        {
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 36,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        },
+        {
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 48,
+          "nonnull_native_fields": [
+            "content",
+            "role"
+          ]
+        }
+      ]
+    }
+  ]
+}

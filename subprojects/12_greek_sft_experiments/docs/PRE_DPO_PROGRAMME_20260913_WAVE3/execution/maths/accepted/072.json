@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_119",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το ελληνικό πρόβλημα διατηρεί πιστά το σταθερό αγγλικό πρόβλημα και δεν παρέχονται εναλλακτικές εκδοχές. Υπάρχουν δύο καταγεγραμμένες λύσεις, αλλά η επιλεγμένη λύση αντιστοιχεί στο σταθερό κείμενο του προβλήματος· αυτό δεν δημιουργεί μαθηματική αβεβαιότητα.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_530",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχει μία καταγεγραμμένη λύση, σταθερό κείμενο προβλήματος και καμία εναλλακτική εκδοχή. Η αντιστοίχιση προβλήματος και λύσης είναι σαφής.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3904",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Πρόκειται για μοναδική εγγραφή προβλήματος και λύσης χωρίς εναλλακτικές εκδοχές ή εμφανή αβεβαιότητα αντιστοίχισης.",
+      "verification_needed": []
+    }
+  ]
+}

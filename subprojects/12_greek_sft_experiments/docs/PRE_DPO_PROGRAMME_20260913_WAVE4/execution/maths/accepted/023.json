@@ -1,0 +1,54 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_142",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το κείμενο του προβλήματος δηλώνεται σταθερό και δεν παρέχονται problem_variants. Υπάρχουν δύο αποθηκευμένες λύσεις, αλλά δεν προκύπτει αβεβαιότητα ως προς το πρόβλημα με το οποίο συνδέεται η επιλεγμένη λύση. Η εσφαλμένη αλυσίδα ισοτήτων της αγγλικής reference_solution διορθώνεται ορθά στην υποψήφια λύση μέσω της διαφοράς kQ-P=0.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3227",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "greek_language",
+          "severity": "minor",
+          "quote": "Το μωρό κοιμάται καθημερινά 2,5 φορές περισσότερο χρόνο από τη Σοφία.",
+          "explanation": "Η διατύπωση «2,5 φορές περισσότερο χρόνο από» είναι σημασιολογικά αμφίσημη, επειδή μπορεί να εκληφθεί ως 2,5 φορές επιπλέον και όχι ως συνολικός χρόνος ίσος με 2,5 φορές τον χρόνο της Σοφίας. Ο αμέσως επόμενος υπολογισμός 2,5×8=20 δείχνει πάντως καθαρά τη σωστή πρόθεση και το αποτέλεσμα παραμένει ορθό.",
+          "suggested_action": "Σε χωριστή γλωσσική διόρθωση, προτιμήστε «2,5 φορές όσο χρόνο κοιμάται η Σοφία» ή «ο χρόνος ύπνου του μωρού είναι 2,5 φορές ο χρόνος ύπνου της Σοφίας»."
+        }
+      ],
+      "provenance_note": "Παρέχεται ένα μόνο πρόβλημα και μία μόνο λύση, με δηλωμένη προέλευση single_problem_record. Η αλλαγή του ονόματος Samantha σε Σοφία είναι επιτρεπτή και συνεπής πολιτισμική προσαρμογή.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_1001",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το κείμενο του προβλήματος δηλώνεται σταθερό και δεν παρέχονται problem_variants. Παρότι υπάρχουν τέσσερις αποθηκευμένες λύσεις, δεν παρέχεται ένδειξη διαφορετικών εκδοχών του προβλήματος ή μαθηματικής ασυμφωνίας με την επιλεγμένη λύση.",
+      "verification_needed": []
+    }
+  ]
+}

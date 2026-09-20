@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__pilot48_10_true",
+  "row_id": "pilot48_10_true",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "8fadd3920c863577d4bb5f546f5385deb8c51125b098ac9395358ceebdfa13f4",
+  "input_record_sha256": "aaa9ef8755d055bc781a714bc92aa48a13da6cd3c8c3036a3d4de713fadc9049",
+  "payload_sha256": "2864b7e3b1e4ff4679fa3e030f6ba51c9ffd49a83b79f10b1c3c9a26a353ce9b",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "3e543f61ddeca4e60e61ae522f5f92c447e79bd8ed0481c2909dc2f28a0ae71e",
+  "result": {
+    "row_id": "pilot48_10_true",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_10_true.u_context",
+        "role": "user",
+        "content": "Στον κειμενικό κατάλογο αυτού του νήματος υπάρχουν δύο ενεργές εγγραφές: «ραντεβού» και «αγορές».",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_true.a_context",
+        "role": "assistant",
+        "content": "Βλέπω τις δύο ενεργές εγγραφές.",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_true.u_decision",
+        "role": "user",
+        "content": "Η υπενθύμιση για το ραντεβού είναι ακόμη ενεργή. Ακύρωσέ την και απάντησε ακριβώς «Ακυρώθηκε.»",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_true.a_target",
+        "role": "assistant",
+        "content": "Ακυρώθηκε.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

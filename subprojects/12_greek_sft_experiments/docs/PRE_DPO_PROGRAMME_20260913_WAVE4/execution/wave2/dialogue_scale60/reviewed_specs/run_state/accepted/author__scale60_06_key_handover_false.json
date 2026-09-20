@@ -1,0 +1,62 @@
+{
+  "job_id": "author__scale60_06_key_handover_false",
+  "row_id": "scale60_06_key_handover_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "9306437c5434bf06ac3b390a87e2579fd86b991c12155394cf903fa34243dfc0",
+  "input_record_sha256": "5bfb6a80974ac1ae57fd695df5fb6b35eeb2b8e3021359ed47973ec19ab2ba6c",
+  "payload_sha256": "bfb4a4ac8309d9995f53e8415058d0f91dd26f921e3093469b585f9d053a2ed5",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "ed282e8cb21cc0f2e7798848dd3fb053418ff944ac094657572777be201877c9",
+  "result": {
+    "row_id": "scale60_06_key_handover_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_06_key_handover_false.u_context",
+        "role": "user",
+        "content": "Στην καταγραφή, η Νίκη είπε «τα κλειδιά είναι στο συρτάρι», ο Πέτρος είπε «η πίσω πόρτα είναι κλειδωμένη» και η Ελένη είπε «λείπει ο κωδικός του συναγερμού».",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_false.a_context",
+        "role": "assistant",
+        "content": "Θα κρατήσω χωριστά ποιος είπε καθεμία από τις τρεις φράσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_false.u_decision",
+        "role": "user",
+        "content": "Στην καταγραφή, ο Πέτρος είπε ότι τα κλειδιά είναι στο συρτάρι. Σύνοψε και τις τρεις δηλώσεις με τα σωστά ονόματα.",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_false.a_target",
+        "role": "assistant",
+        "content": "Η δήλωση για τα κλειδιά αποδίδεται στη Νίκη, όχι στον Πέτρο. Συνοπτικά: η Νίκη είπε «τα κλειδιά είναι στο συρτάρι», ο Πέτρος είπε «η πίσω πόρτα είναι κλειδωμένη» και η Ελένη είπε «λείπει ο κωδικός του συναγερμού».",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_06_key_handover_false.u_decision",
+        "claim": "Στην καταγραφή, ο Πέτρος είπε ότι τα κλειδιά είναι στο συρτάρι.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_06_key_handover_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "correct_unsupported_claim_briefly",
+          "continue_the_requested_reasoning_or_summary"
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

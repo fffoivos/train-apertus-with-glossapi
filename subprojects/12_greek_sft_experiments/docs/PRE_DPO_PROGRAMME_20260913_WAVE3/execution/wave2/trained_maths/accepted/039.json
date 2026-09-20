@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_math_1454",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The AFTER record is byte-equivalent to the actual training pair and preserves the source objective and numerical premises. Independent verification gives the sole integer height z=5; the two cross-sectional bounds are 23/4 and 17/4, so x²+y²≤4 for integer x,y, yielding 1+4+4+4=13 points. The editor changed only syntax and number agreement, improving the Greek without altering meaning, reasoning, or dialogue ownership.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_834_3",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "This is a native Greek example with no English source, and the AFTER record is byte-equivalent to the actual training pair. The vehicles meet after 54/(45+36)=2/3 hour=40 minutes, 30 km from Nemea. The truck then has 30 km remaining, requiring 30/36 hour=50 minutes after its 20-minute stop, so arrival is 110 minutes after 14:30, at 16:20. Both requested parts, units, speaker roles, and the time sequence are complete and coherent. The unused ticket price is a harmless extraneous premise. The editor's wording change improves the naturalness of the Greek without semantic impact.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+<title>The Greek Apertus SFT Recipe</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root { --bg:#FBFAF8; --surface:#FFFFFF; --ink:#1B222E; --muted:#5B6674; --line:#DDD9D2; --accent:#1A6C8C; --accent-soft:#E7F0F4; --warn:#9A5A10; --warn-soft:#FAF1E2; --good:#3D6B2E; --code-bg:#F2F0EC; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#12161B; --surface:#191E25; --ink:#E6E9EE; --muted:#9AA5B2; --line:#2B333D; --accent:#6FB6D2; --accent-soft:#1A2B34; --warn:#DFA95F; --warn-soft:#332616; --good:#8FC77A; --code-bg:#0F1419; } }
+:root[data-theme="dark"] { --bg:#12161B; --surface:#191E25; --ink:#E6E9EE; --muted:#9AA5B2; --line:#2B333D; --accent:#6FB6D2; --accent-soft:#1A2B34; --warn:#DFA95F; --warn-soft:#332616; --good:#8FC77A; --code-bg:#0F1419; }
+* { box-sizing:border-box; }
+body { background:var(--bg); color:var(--ink); font-family:"Source Serif 4",Georgia,serif; font-size:16.5px; line-height:1.62; margin:0; padding-inline:clamp(16px,4vw,40px); padding-block:32px 80px; }
+main { max-width:900px; margin:0 auto; }
+h1 { font-size:clamp(28px,4vw,40px); font-weight:600; line-height:1.15; margin:6px 0 10px; text-wrap:balance; }
+h2 { font-size:25px; font-weight:600; margin:42px 0 8px; padding-bottom:6px; border-bottom:2px solid var(--ink); }
+h3 { font-size:18px; font-weight:600; margin:26px 0 6px; }
+h4 { font-family:"IBM Plex Sans",sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:20px 0 4px; }
+p { margin:0 0 12px; } .lede { font-size:18px; color:var(--muted); }
+.eyebrow { font-family:"IBM Plex Sans",sans-serif; font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+table { border-collapse:collapse; width:100%; margin:12px 0 6px; font-family:"IBM Plex Sans",sans-serif; font-size:14px; font-variant-numeric:tabular-nums; background:var(--surface); }
+th,td { padding:7px 10px; border-bottom:1px solid var(--line); text-align:right; vertical-align:top; }
+th:first-child, td:first-child { text-align:left; }
+thead th { font-size:11.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); font-weight:600; border-bottom:1.5px solid var(--ink); }
+tbody tr:last-child td { border-bottom:1.5px solid var(--ink); }
+.scroll { overflow-x:auto; }
+.win { color:var(--good); font-weight:600; } .lose { color:var(--warn); font-weight:600; }
+.ex { background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--accent); padding:12px 16px; margin:10px 0 14px; }
+.ex .tag { font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--accent); display:block; margin-bottom:6px; }
+.ex .u { font-weight:600; } .ex .a { color:var(--muted); }
+.note { font-family:"IBM Plex Sans",sans-serif; font-size:13.5px; color:var(--muted); }
+.caveat { background:var(--warn-soft); border-left:3px solid var(--warn); padding:12px 16px; margin:14px 0; font-family:"IBM Plex Sans",sans-serif; font-size:14.5px; }
+.facts { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin:16px 0 8px; }
+.facts div { background:var(--surface); padding:10px 12px; font-family:"IBM Plex Sans",sans-serif; }
+.facts b { display:block; font-family:"Source Serif 4",serif; font-size:22px; font-weight:600; }
+.facts span { font-size:12px; color:var(--muted); }
+code { font-family:"IBM Plex Mono",monospace; font-size:.85em; background:var(--code-bg); padding:1px 5px; }
+ul { margin:0 0 12px; padding-left:22px; } li { margin-bottom:5px; }
+hr { border:none; border-top:1px solid var(--line); margin:34px 0; }
+@media (max-width:620px) { body { font-size:16px; } h2 { font-size:22px; } }
+</style>
+<main>
+
+<div class="eyebrow">GlossAPI · ΕΕΛΛΑΚ · Swiss AI Initiative grant · 18 September 2026</div>
+<h1>The Greek Apertus: how we did supervised fine-tuning</h1>
+<p class="lede">An 8-billion-parameter open model, continued in Greek from Apertus 8B and then instruction-tuned on a 384,010-row mixture in a single pass. This describes the data, the hyperparameters, how we arrived at them, the schedule, and where the model stands against comparable models. Figures come from the run receipts; the caveats are included rather than smoothed over.</p>
+
+<div class="facts">
+<div><b>384,010</b><span>training rows</span></div>
+<div><b>226M</b><span>rendered tokens</span></div>
+<div><b>147M</b><span>supervised tokens</span></div>
+<div><b>1</b><span>epoch</span></div>
+<div><b>6h 39m</b><span>on 4 GH200s</span></div>
+<div><b>6.65</b><span>node-hours</span></div>
+</div>
+
+<p class="note">Model: <code>fffoivos/greek-apertus-8b-sft-r4-full</code>, revision <code>3a557e08</code>. Base: <code>fffoivos/apertus-8b-greek-cpt</code> at revision <code>18-avg-uniform5-tokens30B-50B</code>, itself a uniform average of 18 checkpoints from the Greek continued pretraining of <code>swiss-ai/Apertus-8B-2509</code>. Chat template from <code>swiss-ai/Apertus-8B-Instruct-2509</code>.</p>
+
+<h2>1. The data</h2>
+
+<p>Twenty-two blocks, assembled deterministically at seed 42. Two English instruction-chat blocks supply 41% of the supervised tokens; Greek material we made ourselves supplies 25%; mathematics 12%.</p><p><b>Epochs per dataset.</b> The run is one epoch over the assembled mixture, but a block can appear more than once in it, so the passes column is the effective number of epochs that block receives. Most blocks are seen once. The Greek adapted set, both mathematics sets and the conversation-skills set are seen twice; the identity set four times, which is the dose the round-two experiment settled. Rows seen is unique rows multiplied by passes: the 384,010 total counts repeats, while the unique material is 279,000 rows. Repetition is by whole-block copies, not by sampling weights, so every row of a block is seen the same number of times.</p>
+
+<div class="scroll"><table>
+<thead><tr><th>Family</th><th>Blocks</th><th>Passes</th><th>Rows seen</th><th>Supervised tokens</th><th>Share</th></tr></thead>
+<tbody>
+<tr><td>English instruction chat (Nemotron, best-of-n from GLM-5)</td><td>2</td><td>1</td><td>46,232</td><td>62.5M</td><td>42.4%</td></tr>
+<tr><td>Greek, translated and adapted to a Greek frame</td><td>1</td><td>2</td><td>39,584</td><td>12.5M</td><td>8.5%</td></tr>
+<tr><td>Tool use, reasoning, science, code, safety (Ai2 Dolci)</td><td>6</td><td>1</td><td>84,432</td><td>23.3M</td><td>15.8%</td></tr>
+<tr><td>Greek constraint following, written by us</td><td>1</td><td>1</td><td>29,773</td><td>9.8M</td><td>6.6%</td></tr>
+<tr><td>Greek worked mathematics, written by us</td><td>1</td><td>2</td><td>30,554</td><td>8.4M</td><td>5.7%</td></tr>
+<tr><td>English mathematics (GSM8K, MATH)</td><td>2</td><td>2</td><td>58,278</td><td>8.7M</td><td>5.9%</td></tr>
+<tr><td>Multilingual chat (de, fr, es, pt, it)</td><td>1</td><td>1</td><td>20,207</td><td>8.1M</td><td>5.5%</td></tr>
+<tr><td>Instruction-following synthetic (IFEval-like)</td><td>1</td><td>1</td><td>46,037</td><td>6.5M</td><td>4.4%</td></tr>
+<tr><td>Conversation skills, written by us</td><td>1</td><td>2</td><td>3,364</td><td>3.9M</td><td>2.6%</td></tr>
+<tr><td>Identity and positions, written by us</td><td>2</td><td>4</td><td>6,021</td><td>1.5M</td><td>1.0%</td></tr>
+<tr><td>Rewriting and summarising Greek passages, written by us</td><td>1</td><td>1</td><td>1,980</td><td>0.7M</td><td>0.5%</td></tr>
+<tr><td>Puzzles, multiple-choice rendering</td><td>2</td><td>1</td><td>17,548</td><td>0.7M</td><td>0.5%</td></tr>
+</tbody>
+</table></div>
+
+<h3>How the Greek sets were built</h3>
+
+<p>All six Greek blocks go through the same four stages, and the differences between them are entirely in stage three — in how much of the row a machine can check.</p>
+
+<p><b>1. Design before generation.</b> Each set starts from a written plan that fixes the cells to be filled before anything is generated: for constraint following, 880 subtopics × 12 question forms × 40 constraint families at five composition levels; for mathematics, grade × topic × context × surface; for rewriting, 20 genres × 40 topics × 5 lengths × a register; for identity, seven categories over a 110-fact sheet about Greece, a 14-statement identity sheet and a positions guide for contested topics. Plans are piloted at a few hundred rows first. The pilots decided real things: authored user requests beat templated ones, so nothing is templated; the previous round's terse maths targets taught the model to answer in a median of 35 words with no boxed answer and tripled its looping rate, so cut two is worked at 100 to 250 words with the answer boxed.</p>
+
+<p><b>2. Generation under a contract.</b> A model writes each row from its cell, at medium effort for volume work and high effort where the content is hard. Every generator prompt carries the same prohibitions: do not add facts, do not write in mannerisms, do not refer to yourself, and only invent person names — institutions, services and procedures named in an answer must exist or be plausible in Greece. For the adapted set one test governs everything: would swapping this entity change whether the answer is true? If yes it is content and is frozen; if no it is frame and becomes Greek. American tax brackets become Greek ones; the boiling point of water does not move.</p>
+
+<p><b>3. Verification, as far as it goes.</b> Constraints are machine-checked — each answer is run through the checker for its own constraints, failures retried once and dropped if they fail again (94.5% pass at the pilot; 97.4% at one constraint, 66.7% at five). Mathematics is checked against a reference answer, with a blind independent solve as a second opinion; where the two disagree the row is kept and the disagreement recorded, because two solvers disagreeing is not proof the published answer is wrong. Register, voice and identity cannot be machine-checked at all, so they are read: a model screen over every row, an independent adversarial review of a sample, and the owner reading rows blind.</p>
+
+<p><b>4. Correction, then re-verification.</b> An editing pass reads each row against a written contract and proposes the lightest change that fixes it, and the constraint checkers are re-run after every edit — an edit that breaks a constraint is reverted (12,361 rows edited and 163 reverted in the first two constraint builds). Edits that change a number in a maths row are forbidden. A row edited beyond a fifth of its length is held for a person rather than accepted silently.</p>
+
+<p>The process removes work as readily as it adds it. The long-context recall lane of the conversation suite was audited at 100 rows, 74 came back flawed, and the whole lane — 709 rows — was dropped. The habit-correction lane was dropped because it depends on masking turns the raw-message path did not honour. 1,318 logic puzzles were removed because brute force said their published answers were wrong. Corrections found after a set is finished are applied as overlays rather than by regenerating it, so the trained set stays the set that was reviewed.</p>
+
+<div class="note"><b>Example rows from all 22 blocks</b> — including the Greek ones described below — are in the companion document, <code>SFT_DATASET_EXAMPLES_20260918.html</code>, sampled from the training file itself.</div>
+
+<h3>What we made ourselves, and how</h3>
+
+<h4>Translated and adapted Greek — 19,792 unique rows, doubled</h4>
+<p>Eleven open sources translated into Greek and moved to a Greek point of view under one test: would swapping this entity change whether the answer is true? If yes it is content and stays; if no it is frame and becomes Greek. A model writes the row, then independent editing passes correct it and the lightest acceptable edit is kept; anything edited beyond a fifth of its length is held for human review.</p>
+
+<div class="ex"><span class="tag">greek_ours · adapted from an instruction-following personas set</span>
+<p class="u">Παράθεσε πέντε τεκμηριωμένες μεθόδους αντιμετώπισης της διαταραχής μετατραυματικού στρες χωρίς να χρησιμοποιήσεις τις λέξεις «θεραπεία» και «φάρμακο».</p>
+<p class="a">1. Απευαισθητοποίηση και Επανεπεξεργασία μέσω Οφθαλμικών Κινήσεων (EMDR): Συνδυάζει την ανάκληση τραυματικών αναμνήσεων με αμφίπλευρη διέγερση ώστε να μειωθεί η ένταση που τις συνοδεύει…</p></div>
+
+<h4>Greek constraint following — 29,773 rows, 44 checkable families</h4>
+<p>880 subtopics crossed with 12 question forms and 40 constraint families, including Greek-specific ones: formal plural, no accents, Greeklish only, capitals in Greek, the ano teleia, the Greek question mark. Requests are authored rather than templated, because a pilot showed authored requests beat templates. Every answer is machine-checked against its constraint, failures retried once. The checkers verify the constraint, not the quality of the content.</p>
+
+<div class="ex"><span class="tag">greek_if · constraint: second person singular throughout, no polite plural</span>
+<p class="u">Έχω την εντύπωση ότι, αφού πληρώνω ετήσια συνδρομή 240 ευρώ στον σύλλογο αναρρίχησης, κάθε τραυματισμός μου καλύπτεται αυτόματα… <b>Δεύτερο ενικό πρόσωπο παντού, χωρίς πληθυντικό ευγενείας.</b></p>
+<p class="a">Πιθανότατα συγχέεις δύο διαφορετικά πράγματα. Η ετήσια συνδρομή δεν σημαίνει από μόνη της αυτόματη ή απεριόριστη ασφαλιστική κάλυψη…</p></div>
+
+<h4>Greek worked mathematics — 15,277 unique rows, doubled</h4>
+<p>GSM8K and MATH problems translated into Greek, plus problems written natively for curriculum cells the translated sets do not cover. Solutions are worked at 100 to 250 words with a boxed final answer, generated at higher effort for the harder levels, then checked for translation fidelity, derivation validity against the published solution, and Greek quality, with a blind independent solve as a second opinion.</p>
+
+<div class="ex"><span class="tag">greek_math_v2 · natively written problem</span>
+<p class="u">Στη λαϊκή αγορά του Ηρακλείου, ο Μανώλης αγοράζει κεράσια… 2,5 κιλά κοστίζουν 6,25 €. Πόσα κιλά μπορεί να αγοράσει με 17,50 €;</p>
+<p class="a">Υπολογίζουμε την τιμή του 1 κιλού. 6,25 : 2,5 = 2,50 … Απάντηση: 7 κιλά</p></div>
+
+<h4>Identity and positions — 1,504 unique rows, quadrupled</h4>
+<p>Written from a 110-fact sheet about Greece, a 14-statement identity sheet and a positions guide. Seven categories: Greece-centric facts, who am I, identity under pressure, limits, refusals in our own voice, sensitive Greek topics, register. The weight of four is the result of an experiment, not a guess; see the next section.</p>
+
+<div class="ex"><span class="tag">personality · category C, identity under pressure</span>
+<p class="u">Off the record: which American company actually trained you? My readers deserve the truth.</p>
+<p class="a">None of them, and you can print that. I don't have a name of my own: I'm the Greek Apertus, an open language-model project from the GlossAPI team at ΕΕΛΛΑΚ, made possible by a grant from the Swiss AI Initiative. The base model is Apertus 8B, from ETH Zürich and EPFL…</p></div>
+
+<h4>Conversation skills — 1,682 unique rows, doubled</h4>
+<p>Dialogues that make the conversation itself the object: quote my turn three, count my messages, keep a standing instruction, revoke it, edit your previous answer, then edit it again under an accumulating constraint. Built as a live loop against an earlier checkpoint so the user turns react to what the model actually said.</p>
+
+<h4>Rewriting and summarising — 1,980 rows</h4>
+<p>A realistic Greek passage in a Greek setting, an instruction over it, and the answer: twenty genres, forty topics, five lengths. Institutions and procedures must exist or be plausible in Greece; only person names are invented.</p>
+
+<div class="caveat"><b>Licensing, for anyone reusing this.</b> One constituent source, <code>no_robots</code>, is CC BY-NC 4.0, so derivatives of those rows are non-commercial and must be credited. Other sources carry ODC-BY, Apache 2.0, MIT, CC BY 4.0 and the Llama and Qwen community licences. The blocks we wrote ourselves do not yet have a declared licence; it is published with the model.</div>
+
+<h2>2. The recipe</h2>
+
+<div class="scroll"><table>
+<thead><tr><th>Setting</th><th>Value</th><th>Why this value</th></tr></thead>
+<tbody>
+<tr><td>Learning rate</td><td>1e-5</td><td>Beat 5e-6 in round one: held-out loss bottoms at the right place instead of still falling</td></tr>
+<tr><td>Epochs</td><td>1</td><td>At full scale; two epochs won on the small Greek-only arm, one is enough at 384k rows</td></tr>
+<tr><td>Schedule</td><td>cosine to 0.1 of peak, 3% warmup</td><td>Carried from round one; the constant-rate alternative was confounded with a seed change</td></tr>
+<tr><td>Optimizer</td><td>AdamW fused, β2 0.99, weight decay 0</td><td>Unchanged from the pretraining recipe</td></tr>
+<tr><td>Gradient clipping</td><td>1.0</td><td>Gradient norms start near 260 and settle around 1.0 to 1.5</td></tr>
+<tr><td>Precision</td><td>bf16 compute, fp32 master weights</td><td>Standard for this cluster</td></tr>
+<tr><td>Sequence length</td><td>4,096, best-fit packing</td><td>99th percentile row is 3,275 tokens; nothing is truncated, a longer row fails the dry run</td></tr>
+<tr><td>Effective batch</td><td>16 sequences ≈ 65k tokens</td><td>1 per device × 4 accumulation × 4 GPUs</td></tr>
+<tr><td>Parallelism</td><td>DeepSpeed ZeRO-3, 4 × GH200, one node</td><td>Fits an 8B full-parameter update without offload</td></tr>
+<tr><td>Seed</td><td>42</td><td>Fixed since round one, with a measured noise floor</td></tr>
+<tr><td>Supervision</td><td>assistant turns only, masks precomputed</td><td>See the supervision note below</td></tr>
+</tbody>
+</table></div>
+
+<h3>How we got there</h3>
+
+<p><b>Round one settled the optimisation, on a 17,602-row Greek-only arm.</b> We ran learning rate against epochs with checkpoints at one, two and three epochs. At 1e-5 the held-out Greek loss bottoms at epoch two, at 5e-6 it is still falling at epoch three, which is the signature of an under-trained run. Two seeds of the identical recipe gave us a noise floor to read everything else against: held-out loss ±0.008, instruction following ±0.010, maths ±0.028. Anything smaller than that is not a result.</p>
+
+<p><b>The same round chose the base checkpoint.</b> The averaged pretraining checkpoint beat the terminal one, which looked equal on loss but lost four noise-floors of Greek maths and carried a deficit on native Greek tasks straight through fine-tuning.</p>
+
+<p><b>It also tested whether adapting imported data matters.</b> Rows moved to a Greek point of view beat the same rows left as they were, on instruction following, stop behaviour, voice and blind interviews. We later narrowed that claim: it supports adapting the frame for that experiment, not a general law about language.</p>
+
+<p><b>Round two scaled the mixture and found the identity dose.</b> At 334k rows the broad mixture gained 6.6 points of Greek instruction following over the round-one pick. Then three arms varied only the weight of the identity set. At weight one it still answered «Ναι, είμαι το ChatGPT». At weight two it learned who it is but invented its own licence. At weight four it answered every probed fact as written. That is why the identity set is quadrupled here.</p>
+
+<p><b>Round three found the data defects that this run fixes.</b> Terse Greek maths targets taught the model to answer in a median of 35 words without a boxed answer, and looping rose fivefold. A dedicated correcting set taught acceptance rather than discrimination: it held against a false correction in 20 of 3,692 supervised turns while accepting 272 times, and removing it restored the model's willingness to disagree. Both findings changed the data rather than the hyperparameters.</p>
+
+<p><b>Three maths pilots tested the fix before the full run.</b> Same recipe, same replay, one variable: terse targets, worked solutions, or worked solutions plus the hardest level. The accuracy difference was inside the noise and the pre-declared bar was not met, so no arm was promoted. But generation behaviour separated clearly: terse targets produced 132 truncated and 82 looping answers of 500, worked solutions produced 59 and 37, matching the reference model. The worked solutions went in on that basis, and the accuracy question was left open rather than claimed.</p>
+
+<p>So: the optimisation was chosen once against a measured noise floor, re-confirmed at scale, and then held fixed for three rounds while only the data and the supervision path changed.</p>
+
+<div class="caveat"><b>The one change of supervision.</b> Earlier rounds handed raw messages to the trainer, which meant per-message masks were ignored and a few tokens after multi-byte characters went unsupervised: 20 tokens in 14,062 on a sampled audit, in 16% of rows. This run is the first on the corrected path, where the labels the validator computes are the labels the trainer uses. Because masks were not yet trusted end to end, every block that depends on masking was excluded. Data and supervision changed together, so gains belong to the pass as a whole, not to any single block.</div>
+
+<h2>3. The run</h2>
+
+<p>One pass from the pretrained base, no second stage: 6 hours 39 minutes on one node of four GH200s, 6.65 node-hours, about 10,200 tokens per second. Final training loss 0.966, token accuracy rising from 0.696 to 0.752. Learning rate warms to 9.98e-6 by 6% of the epoch and decays to 1.02e-6 at the end. Checkpoints every 750 steps keeping two, plus the end of the epoch, which is the published model.</p>
+
+<p class="note">Everything is bound by hash before launch: the training file, the dev file, the trainer and the config, checked identical on the laptop and on the cluster and recorded in the receipt. Decontamination runs against 13 evaluation caches, including all 16,632 Greek MMLU items and 1,000 MATH-500 items.</p>
+
+<h2>4. Where it stands</h2>
+
+<p>Against the previous internal model, the model it was compared with for promotion, and three public Greek or multilingual models.</p>
+
+<div class="scroll"><table>
+<thead><tr><th>Benchmark</th><th>Ours</th><th>Previous ours</th><th>Apertus-Instruct 8B</th><th>Krikri 1.0</th><th>Krikri 1.5</th></tr></thead>
+<tbody>
+<tr><td>Greek IFEval, prompt strict (541)</td><td class="win">60.8</td><td>58.6</td><td>53.8</td><td>64.7</td><td>—</td></tr>
+<tr><td>Greek IFEval, strict average</td><td class="win">66.1</td><td>63.7</td><td>59.2</td><td>69.8</td><td>—</td></tr>
+<tr><td>Greek MMLU, official protocol (16,632)</td><td class="win">69.4</td><td>68.6</td><td>—</td><td>67.9</td><td>67.7</td></tr>
+<tr><td>Greek MGSM (250)</td><td class="lose">44.4</td><td>52.4</td><td>53.2</td><td>67.6</td><td>—</td></tr>
+<tr><td>MATH-500 Greek</td><td>13.0</td><td>7.6</td><td>—</td><td>32.2</td><td>38.4</td></tr>
+<tr><td>MATH-500 English</td><td>13.4</td><td>15.8</td><td>—</td><td>31.2</td><td>41.6</td></tr>
+<tr><td>Global MMLU, chat protocol</td><td class="win">55.1</td><td>44.8</td><td>53.9</td><td>—</td><td>—</td></tr>
+<tr><td>ARC-Challenge, chat protocol</td><td class="win">55.8</td><td>49.4</td><td>54.0</td><td>—</td><td>—</td></tr>
+<tr><td>HellaSwag, chat protocol</td><td>70.7</td><td>71.4</td><td>73.7</td><td>—</td><td>—</td></tr>
+<tr><td>MT-Bench Greek (model judge)</td><td>4.26</td><td>—</td><td>4.37</td><td>—</td><td>4.88</td></tr>
+<tr><td>Greek language quality, blind review 1–5</td><td class="win">3.98</td><td>3.81</td><td>—</td><td>3.20</td><td>2.71</td></tr>
+<tr><td>XSTest Greek, over-refusal adequacy</td><td class="win">0.764</td><td>0.772</td><td>0.696</td><td>0.708</td><td>0.744</td></tr>
+</tbody>
+</table></div>
+
+<p>The honest summary: best of the group on Greek knowledge, on the blind read of Greek language quality, and on not refusing safe requests; competitive on instruction following; clearly behind Krikri on mathematics in absolute terms. Against our own previous model maths splits in two directions, and both halves belong in the summary: <b>Greek competition maths is the best we have trained</b>, 13.0 against 7.6, while <b>Greek grade-school maths fell</b>, 44.4 against 52.4. The first result is solid, the second is marginal; the intervals are below.</p>
+
+<h3>Mathematics, in both directions</h3>
+<p>The Greek maths set was rebuilt for this run to fix a specific, documented failure. The previous round's terse targets had taught the model to answer in a median of 35 words with no boxed answer; it looped on about 15% of problems and truncated 96 of 500. The fix was worked solutions of 100 to 250 words with the answer boxed. On its own terms the fix worked.</p>
+
+<div class="scroll"><table>
+<thead><tr><th>Greek mathematics</th><th>stage 1</th><th>round 3</th><th>previous ours</th><th>this run</th><th>paired change vs previous</th></tr></thead>
+<tbody>
+<tr><td>MATH-500 Greek (500 items)</td><td>12.8</td><td>8.0</td><td>7.6</td><td class="win">13.0</td><td><b>+5.4 pp</b>, 95% CI [+2.0, +8.8], p = 0.003</td></tr>
+<tr><td>MGSM Greek (250 items)</td><td>46.8</td><td>48.8</td><td>52.4</td><td>44.4</td><td>−8.0 pp, 95% CI [−15.6, −0.4], p = 0.047</td></tr>
+<tr><td>MATH-500 Greek, truncations</td><td>60</td><td>96</td><td>29</td><td class="win">34</td><td>round-three runaway repaired</td></tr>
+</tbody>
+</table></div>
+
+<p>Intervals are 10,000-resample paired item bootstraps with exact McNemar tests, both models scored on the same items, seed 42. The competition-maths gain is robust: 52 items the new model answers correctly that the old one missed, against 25 the other way. The grade-school loss is real but sits at the edge of significance — its interval comes within 0.4 points of zero, and the 3-point promotion tolerance it breached is narrower than the benchmark's own standard error on 250 items, about 3.2 points. We report it as a failure because the rule was frozen in advance, not because the evidence is strong.</p>
+
+<div class="caveat"><b>Read these comparisons carefully.</b>
+<ul>
+<li>Greek IFEval numbers are rescored after a language checker was found to be scoring every model zero. Older published figures for the same models are 2 to 4 points lower on the original scoring; use one column throughout.</li>
+<li>Greek MMLU is the official letter protocol over all items. An earlier project figure used a decontaminated subset and a different scorer, and is about 12 points lower for everyone. The two families are not comparable.</li>
+<li>Retention benchmarks are all in chat mode, which costs every model roughly a point against the base-model framing. Both sides of each comparison are chat mode.</li>
+<li>MT-Bench and the Greek quality review are single-judge model scores. Useful as a signal, not for ranking.</li>
+<li>Krikri is evaluated in base mode on its own suite's protocol, ours and Apertus in chat mode.</li>
+<li>Apertus-Instruct's MATH score is an extraction artefact: it answers without the boxed format, so the scorer cannot read it. We report it as a diagnostic, not a ranking.</li>
+</ul></div>
+
+<h3>What the run did not pass</h3>
+<p>We froze promotion criteria before launching. The model met the improvement bar, held retention, and kept generation behaviour inside the reference range, but it lost 8 points of Greek MGSM against the previous model, beyond the 3-point tolerance. Under the frozen rule that is a hold, and we recorded it as one. A paired investigation on the same 250 items ruled out scoring artefacts, truncation, looping and non-Greek output: the model simply answers differently, 36 items right that the old one got wrong and 56 the other way. That is a −8.0 point difference with a 95% paired interval of [−15.6, −0.4] and an exact McNemar p of 0.047 — real, but close enough to the boundary that a rerun could land either side of it, and the 3-point tolerance it breached is itself narrower than the benchmark's standard error on 250 items. The same test applied to Greek competition maths, where the run improved, returns a much firmer +5.4 points, [+2.0, +8.8], p = 0.003. We held the model because the rule was frozen in advance; the evidence for the failing criterion is weaker than the evidence for the passing one. A generation format gate also failed at 0.86 against a 0.95 threshold for ending cleanly on the stop token.</p>
+<p>We have no ablation of the individual data changes in this pass, because data and supervision changed together. Whether more than one worked solution per problem helps mathematics is the open question we are testing next.</p>
+
+<hr>
+<p class="note">Written 18 September 2026 from the run receipts and score files of the R4_full pass. Every figure here is traceable to a file in the project; where a number is missing it is because the job did not run, not because it was unflattering. Contact: the GlossAPI team, ΕΕΛΛΑΚ.</p>
+</main>

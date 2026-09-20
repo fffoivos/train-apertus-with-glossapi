@@ -1,0 +1,86 @@
+{
+  "built_at": "2026-09-13T16:58:18+03:00",
+  "scope": "local metadata and small text scans; no model calls or source mutation",
+  "files": {
+    "/Users/foivoskarounos-zamparloukos/sft_annot/math_src/math_train.jsonl": {
+      "sha256": "7c2b6be1ff20ece021d27e68103bcaa27935489247f179a1810ca72d54b379bf",
+      "bytes": 6718886,
+      "rows": 7500
+    },
+    "/Users/foivoskarounos-zamparloukos/sft_annot/core_export/openmath_gsm_raw.jsonl": {
+      "sha256": "54e86bd359380db1edba1192c4392a8c410968c59b80c9b23f730ea94551895e",
+      "bytes": 82335338,
+      "rows": 100000
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut1/edited/rows_edited.jsonl": {
+      "sha256": "4063b575c26583f2b7a321f851b3c598fe22c863869f6cda4b29188c472f8bc4",
+      "bytes": 31698761,
+      "rows": 14215
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut1/out/summary.json": {
+      "sha256": "9eeae17a52ec430aa7a093d36ff0f1d66cbddea167e9bf363c5817442b65616f",
+      "bytes": 964
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut2/prep/level5_candidates_en.jsonl": {
+      "sha256": "edbf18c7cf8281312224300a9c1bf2461e31df022ab73b3c8aad23e40d98daf7",
+      "bytes": 1931453,
+      "rows": 1500
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut2/out/level5_problems_el.jsonl": {
+      "sha256": "1cbc89051c3f8446699f13728dcdf0e13c1b30e8475ede27102fd8df2f579c26",
+      "bytes": 4340400,
+      "rows": 2146
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut2/out/level5_solutions_el.jsonl": {
+      "sha256": "edc8f35278c7c310f6476fb058c38952c01720ecbd63a67bfb8548741f0dfddf",
+      "bytes": 4398852,
+      "rows": 3010
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut2/out/solutions_el.jsonl": {
+      "sha256": "7623e9586670e0b55487d94f3eef33c093593ab777ee6cc67849e57899601f75",
+      "bytes": 4345845,
+      "rows": 3718
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut2/out/fidelity_sample.jsonl": {
+      "sha256": "ea4d7a7a62568c4893c42cd1b4c761f64856a46221870fef31288138cb78cb3f",
+      "bytes": 19674,
+      "rows": 300
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/arms/R3_single/train.jsonl": {
+      "sha256": "53cb197b1030ef19bbdc19358cdb9da0daece1170fdd395d0263ceda4fd95bca",
+      "bytes": 962050871,
+      "rows": 403727
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/arms/R3_single/dev.jsonl": {
+      "sha256": "dcc82e988490bc490a5ce9fcd780ddfcc967cfca9f26f34746f5703e3ec18730",
+      "bytes": 9003113,
+      "rows": 3845
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/arms/R3_single/receipt.json": {
+      "sha256": "322ebf914330b473582a1a079294a99e329dfe5ee3224d96a6ddc1ad37ffc1dc",
+      "bytes": 22136
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/arms/R3_single/ledger.json": {
+      "sha256": "a4e8fba58d02516709c5bbab7b20ce33407496cd72bc85863540f96bb666bd4e",
+      "bytes": 12094
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/arms/R3_single/contamination_ledger_summary.json": {
+      "sha256": "29a880be04b28be2b34987aee61b47ed3180ca967a6a1a3ea290860627fb9c9e",
+      "bytes": 672
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/benchmarks_el/math500/source/test.jsonl": {
+      "sha256": "35dc41080a3680858b27fa7e0533d2d547825316fc5dafe5d316f4ccc5a06132",
+      "bytes": 446564,
+      "rows": 500
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/assemble_mix_r2.py": {
+      "sha256": "36c0880a752aa0e6c6bd32aab8eaaea5b6a73edc735819d67e9fe28f808d8ec8",
+      "bytes": 30854
+    },
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/inputs.jsonl": {
+      "sha256": "a138404a165fba063c2db0d27a4e8da8758ba57c11ecff63ebfe2ee49c261987",
+      "bytes": 78494,
+      "rows": 32
+    }
+  }
+}

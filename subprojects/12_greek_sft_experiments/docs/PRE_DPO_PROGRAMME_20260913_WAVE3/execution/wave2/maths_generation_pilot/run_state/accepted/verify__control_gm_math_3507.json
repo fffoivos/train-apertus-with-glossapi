@@ -1,0 +1,30 @@
+{
+  "job_id": "verify__control_gm_math_3507",
+  "row_id": "control_gm_math_3507",
+  "stage": "verification_blind",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "681e1c4298d27c920abc32528c623ec442f603a047a2a55d5e621e48e51dc03b",
+  "input_record_sha256": "0a5bfdf2b26e07822ba8a0bbe2beef6e62478285fed5d09f2ffeff70fc553331",
+  "payload_sha256": "48c8581e4571b35a964d1119dab65b4952330733aaac8d436960852dad72bf08",
+  "template_sha256": "67a04cee918f227aa582da70a6fcb66cc7eca7093bc64ae9c067ec87a3b4b1de",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "fae0f4eaef3daeb4384b0b65423ed7135f4eb4bec8566f38d9e666367b61158e",
+  "result": {
+    "row_id": "control_gm_math_3507",
+    "status": "candidate",
+    "solution_text": "Η κλίση της ευθείας που διέρχεται από τα σημεία $(4,-7)$ και $(-5,-1)$ είναι\n\n$$m_1=\\frac{-1-(-7)}{-5-4}=\\frac{6}{-9}=-\\frac{2}{3}.$$\n\nΕφόσον δύο μη κατακόρυφες ευθείες είναι κάθετες, το γινόμενο των κλίσεών τους ισούται με $-1$. Άρα, αν $m_2$ είναι η ζητούμενη κλίση,\n\n$$m_1m_2=-1\\Rightarrow -\\frac{2}{3}m_2=-1\\Rightarrow m_2=\\frac{3}{2}.$$\n\nΑπάντηση: $\\frac{3}{2}$.",
+    "final_answers": [
+      {
+        "part": "Ζητούμενη κλίση",
+        "expression": "\\frac{3}{2}",
+        "unit": null,
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

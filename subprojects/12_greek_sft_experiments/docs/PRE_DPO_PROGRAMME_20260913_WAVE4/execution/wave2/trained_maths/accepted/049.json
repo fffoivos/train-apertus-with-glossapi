@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_11_3",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The complete BEFORE, AFTER, and actual training messages are identical. The solution correctly identifies both irrelevant details, computes 840 ÷ 7 = 120, and reports the requested rate as 120 metres per minute. The teaching objective of selecting relevant information and calculating a constant unit rate is preserved.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_999_2",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The complete BEFORE, AFTER, and actual training messages are identical. Since ΕΑΒ is a straight angle, the two adjacent supplementary angles total 180°, so 180° − 68° = 112°. The shirt price is correctly excluded as irrelevant. The earlier second solve agrees but was not treated as independent proof.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

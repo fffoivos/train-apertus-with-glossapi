@@ -1,0 +1,18 @@
+{
+  "attempt": 1,
+  "contract_digest": "462a925790a5dbd76d0b4a627ea90e8ebe69c92f480a7141ac98fa10257b9c1d",
+  "expected_receipt": {
+    "bytes": 1541,
+    "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/run/receipts/openmath.json",
+    "sha256": "7c6e1c605c8e3e8fee33c31c68791c9ed572eab0a0d6106ea46680b7e416d3d6"
+  },
+  "expected_receipt_verified": true,
+  "recorded_at": "2026-09-13T14:52:38.763673+00:00",
+  "returncode": 0,
+  "schema_version": "apertus_data_stage_task_attempt_v1",
+  "started_at": "2026-09-13T14:52:25.947443+00:00",
+  "status": "completed",
+  "stderr_tail": "",
+  "stdout_tail": "{\n  \"schema_version\": \"openmath_original_pilot_v1\",\n  \"status\": \"passed\",\n  \"finished_at\": \"2026-09-13T14:52:38.704719+00:00\",\n  \"seconds\": 12.323,\n  \"counts\": {\n    \"source_rows\": 333334,\n    \"exact_original_math_rows\": 5027,\n    \"normalized_match_without_exact_original\": 182,\n    \"held_or_benchmark_overlap\": 170,\n    \"invalid_controls\": 1\n  },\n  \"problem_source_counts\": {\n    \"augmented_math\": 277115,\n    \"augmented_gsm8k\": 46330,\n    \"gsm8k\": 4934,\n    \"math\": 4955\n  },\n  \"eligible_families\": 3996,\n  \"covered_cells\": 36,\n  \"pilot_rows\": 45,\n  \"pilot_families\": 36,\n  \"source\": {\n    \"repo\": \"nvidia/OpenMathInstruct-2\",\n    \"revision\": \"469216e3f46f4dacf476b382e192485ea51a143e\",\n    \"split\": \"train_1M\",\n    \"file\": \"data/train_1M-00000-of-00003.parquet\",\n    \"url\": \"https://huggingface.co/datasets/nvidia/OpenMathInstruct-2/resolve/469216e3f46f4dacf476b382e192485ea51a143e/data/train_1M-00000-of-00003.parquet\",\n    \"bytes\": 212931526,\n    \"sha256\": \"93700f39cdc87994f2c9a6ad62e1d62e09467793f57d376cfab722757ff26e1c\"\n  },\n  \"files\": {\n    \"candidate_rows.jsonl\": \"a4fb88cc135a704afa2635ca8b5f3cae4b874f715248de728b488fa5e90ecbec\",\n    \"eligible_family_inventory.jsonl\": \"3aae405747785a374c5e8bd533861d4f70810cc4c6e25959ea03e3b0209e2428\"\n  },\n  \"limits\": \"One first shard of the documented1M subset; not representative of the full source. Candidates need full proof/adaptation review, actual tokenizer length/mask checks and complete assembly decontamination. Exact source matching is not proof of correct generated solutions.\"\n}\n",
+  "task_id": "intake-openmath-original"
+}

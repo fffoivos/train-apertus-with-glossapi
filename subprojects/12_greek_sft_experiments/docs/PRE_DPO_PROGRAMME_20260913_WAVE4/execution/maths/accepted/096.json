@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_759",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Η εγγραφή προέρχεται από μοναδικό ζεύγος προβλήματος-λύσης (pair_provenance: single_problem_record), χωρίς αβεβαιότητα ιστορικής αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_185",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το ελληνικό κείμενο του προβλήματος επισημαίνεται ως σταθερό και υπάρχει μία μόνο εγγραφή λύσης· δεν προκύπτει αβεβαιότητα αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_1089",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχουν δύο εγγραφές λύσης και έχει επιλεγεί η γραμμή 2839, αλλά το κείμενο του προβλήματος επισημαίνεται ως σταθερό και δεν παρέχονται διαφορετικές παραλλαγές προβλήματος. Δεν διαπιστώνεται μαθηματική ασυμβατότητα με το επιλεγμένο πρόβλημα.",
+      "verification_needed": []
+    }
+  ]
+}

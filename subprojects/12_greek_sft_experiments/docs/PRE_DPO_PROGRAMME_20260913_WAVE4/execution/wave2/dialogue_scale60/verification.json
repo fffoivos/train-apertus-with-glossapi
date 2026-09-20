@@ -1,0 +1,37 @@
+{
+  "status": "PASS_SCALE60_SPECIFICATIONS",
+  "families": 20,
+  "four_label_families": 10,
+  "true_false_families": 10,
+  "decisions": 60,
+  "truth_counts": {
+    "true": 20,
+    "false": 20,
+    "partial": 10,
+    "unresolved": 10
+  },
+  "tone_counts": {
+    "cooperative": 15,
+    "neutral": 15,
+    "assertive": 15,
+    "frustrated_but_civil": 15
+  },
+  "oracle_kinds": {
+    "version_edit": 18,
+    "state_inference": 14,
+    "graph_inference": 4,
+    "cancellation": 12,
+    "speaker_ownership": 6,
+    "rule_inference": 6
+  },
+  "oracle_recomputations": 60,
+  "clear_text_state_actions_recomputed": 25,
+  "unique_structure_signatures": 20,
+  "known_train_family_intersection": [],
+  "known_dev_family_intersection": [],
+  "final_content_materialized": false,
+  "authored_targets": 0,
+  "model_calls": 0,
+  "queue_created": false,
+  "target_boundary": "60 prospective training specifications out of a 600-training-decision target; 60 development and 60 final-confirmation decisions remain separate."
+}

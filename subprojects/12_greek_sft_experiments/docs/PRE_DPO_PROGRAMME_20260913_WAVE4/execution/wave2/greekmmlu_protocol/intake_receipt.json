@@ -1,0 +1,91 @@
+{
+  "schema_version": "greekmmlu_diagnostic200_intake_v1",
+  "status": "content_bound_measurement_not_launched",
+  "created_at_utc": "2026-09-13T14:41:30Z",
+  "dataset": {
+    "repo_id": "dascim/GreekMMLU",
+    "revision": "6a03aa06b68beb932fb75edff3a34e50b3674649",
+    "config": "All",
+    "split": "test",
+    "rows": 16632,
+    "schema": {
+      "question": "string",
+      "choices": "list<string>",
+      "answer": "int64",
+      "group": "string",
+      "subject": "string",
+      "level": "string"
+    }
+  },
+  "metadata_before_transfer": {
+    "parquet": {
+      "repository_path": "All/test-00000-of-00001.parquet",
+      "bytes": 3598193,
+      "git_blob_oid": "89badd353425ef76bcb4b62d0902fd05e280985b",
+      "lfs_sha256": "b77d269150c4c6e3441cfb20d52534f9aebd2c8c33883d0df7d61b3bc06129f5"
+    },
+    "readme": {
+      "repository_path": "README.md",
+      "bytes": 30071,
+      "git_blob_oid": "fc23f295988072e9cc4dd9c0c42b4f6b05e46b72"
+    }
+  },
+  "pinned_bytes": {
+    "remote_snapshot": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_greekmmlu_protocol/hf_hub/datasets--dascim--GreekMMLU/snapshots/6a03aa06b68beb932fb75edff3a34e50b3674649",
+    "parquet_sha256": "b77d269150c4c6e3441cfb20d52534f9aebd2c8c33883d0df7d61b3bc06129f5",
+    "readme_sha256": "b166a19deb7d034c90e5c2b3092dadf12f630e6bdc0b8b4d24c86bcb95329a1c"
+  },
+  "broken_prior_cache": {
+    "status": "separate_not_reused",
+    "finding": "Four earlier snapshot paths with the same revision string exposed All/test parquet links whose content blobs were absent; the new pinned intake directory above has verified bytes."
+  },
+  "selection": {
+    "ids_sha256": "58ab651789059df8f69c19b1fc5346f3a6bc8ed7a0c08d8951b090c1feb56978",
+    "rows": 200,
+    "unique_ids": 200,
+    "observed_subject_level_strata": 61,
+    "selection_used_predictions_or_correctness": false
+  },
+  "content_binding": {
+    "receipt": "diagnostic200_content_bindings.json",
+    "receipt_sha256": "ff08c2ff897bca8de05ae131d2939f5c40c43e97e7fb6779bf9f1c0e7fbde2a9",
+    "script": "bind_diagnostic200_content.py",
+    "script_sha256": "dca4077049b4a12e6ddce1a7f0e3ca045ed31c0353803ee700bbabd08a258f16",
+    "ordered_selection_content_sha256": "775b4c9801b7e9b4fea6b088ee844a22633c76bd0a231de7cadd71f3e6523a6f",
+    "selected_choice_arity_counts": {
+      "2": 37,
+      "3": 24,
+      "4": 139
+    },
+    "raw_item_text_emitted": false,
+    "runtime": {
+      "python": "existing local isolated environment",
+      "pyarrow": "25.0.1"
+    },
+    "remote_copy": {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_greekmmlu_protocol/diagnostic200_content_bindings.json",
+      "sha256": "ff08c2ff897bca8de05ae131d2939f5c40c43e97e7fb6779bf9f1c0e7fbde2a9",
+      "owner": "fffoivos",
+      "group": "a0140",
+      "mode": "-rw-r-----",
+      "bytes": 49878,
+      "overwrite": false
+    }
+  },
+  "corrections": [
+    "The first allocation-free remote attempt wrote no output because the login/uenv path lacked pyarrow; the pinned 3.6 MB parquet was copied to temporary local storage and processed with an existing pyarrow environment.",
+    "The initial binder incorrectly required four choices. The actual pinned All/test split has 2, 3, and 4-choice records; the selected200 distribution is 37/24/139 and the official helper scores the first n Greek labels."
+  ],
+  "official_code": {
+    "repo": "mersinkonomi/GreekMMLU",
+    "commit": "cd944748e860fda3e9dc21212c2f2710615ecdc5",
+    "labels": [
+      "Α",
+      "Β",
+      "Γ",
+      "Δ"
+    ],
+    "choice_rule": "first n labels for len(choices)"
+  },
+  "remaining_gate": "Reconcile 61 observed subject-level strata against 45 official task configs before any global reproduction claim; no GPU measurement has been launched."
+}

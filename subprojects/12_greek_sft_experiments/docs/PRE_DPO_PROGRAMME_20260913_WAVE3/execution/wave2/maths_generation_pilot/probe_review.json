@@ -1,0 +1,48 @@
+{
+  "at": "2026-09-13T13:27:06.486589+00:00",
+  "reviewer": "root",
+  "rows": [
+    "fresh_math5_line_1334",
+    "fresh_math5_line_1379",
+    "fresh_math5_line_3775",
+    "fresh_math5_line_4646"
+  ],
+  "gate": "pass",
+  "basis": "Read all four source and Greek problem texts; conditions, equations, coordinates, requested outputs and absence of solutions preserved. Greek is usable. This is a probe gate, not whole-pilot quality acceptance.",
+  "attempts": 8,
+  "accepted_calls": 4,
+  "generation_seconds": [
+    21.66,
+    16.18,
+    18.18,
+    19.84
+  ],
+  "usage": [
+    {
+      "input_tokens": 12885,
+      "cached_input_tokens": 0,
+      "output_tokens": 926,
+      "reasoning_output_tokens": 157
+    },
+    {
+      "input_tokens": 13256,
+      "cached_input_tokens": 0,
+      "output_tokens": 562,
+      "reasoning_output_tokens": 110
+    },
+    {
+      "input_tokens": 13293,
+      "cached_input_tokens": 0,
+      "output_tokens": 766,
+      "reasoning_output_tokens": 135
+    },
+    {
+      "input_tokens": 13245,
+      "cached_input_tokens": 0,
+      "output_tokens": 705,
+      "reasoning_output_tokens": 130
+    }
+  ],
+  "next": "Resume frozen master queue with8workers and unchanged136total-call cap",
+  "manifest_sha256": "f94812f0aa22cae38004887acb3fc0b4eb109562088d7378032a889136fdf363"
+}

@@ -1,0 +1,56 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_830",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το ελληνικό πρόβλημα είναι σταθερό και η επιλεγμένη λύση αντιστοιχεί πλήρως στα δεδομένα του. Παρότι υπάρχουν δύο εγγραφές λύσης, δεν προκύπτει αμφιβολία ως προς το κείμενο του προβλήματος.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_418",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "minor",
+          "quote": "ο Σάκης και ο David",
+          "explanation": "Η προσαρμογή των ονομάτων είναι ασυνεπής: τέσσερα ονόματα αποδόθηκαν ή αντικαταστάθηκαν με ελληνικά, ενώ το «David» παρέμεινε στην αγγλική γραφή. Αυτό δεν επηρεάζει τα μαθηματικά ή την πιστότητα των αριθμητικών δεδομένων, αλλά δημιουργεί μικρή πολιτισμική και υφολογική ασυνέχεια.",
+          "suggested_action": "Σε χωριστή γλωσσική/πολιτισμική επιμέλεια, αποδοθεί συνεπώς το όνομα «David» στα ελληνικά, χωρίς αλλαγή των αριθμών ή της λύσης."
+        }
+      ],
+      "provenance_note": "Υπάρχει μία εγγραφή προβλήματος και μία λύση· δεν διαπιστώνεται αβεβαιότητα ιστορικής αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_922",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχουν πολλαπλές αποθηκευμένες ελληνικές εκδοχές και η ιστορική αντιστοίχιση της τελευταίας λύσης με την τελευταία εκδοχή δεν έχει αποδειχθεί. Ωστόσο, οι παρεχόμενες εκδοχές είναι μαθηματικά ισοδύναμες και δεν παρουσιάζουν διαφορά στα δεδομένα, στα διαστήματα ή στην ανισότητα, οπότε δεν προκύπτει μαθηματικό σφάλμα από την επιλεγμένη σύζευξη.",
+      "verification_needed": [
+        "Επιβεβαίωση της ιστορικής αντιστοίχισης λύσης–προβλήματος από τα αρχικά αρχεία, μόνο αν απαιτείται πλήρης τεκμηρίωση προέλευσης."
+      ]
+    }
+  ]
+}

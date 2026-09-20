@@ -1,0 +1,54 @@
+{
+  "job_id": "greek__scale60_06_key_handover_false",
+  "row_id": "scale60_06_key_handover_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "aea2bcb88e343646f94096a063761a9f14b3a45398f37e53adee9ed4f57fca95",
+  "input_record_sha256": "a318c12a1f73080f30c3f6b2f3eb3d1c1232212a172e6aede90a4f4a13a88c49",
+  "payload_sha256": "76f296f6bdd9fbeebc6724c71bdaae9036bfee9be15ffdd0174c72c2d9095d04",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "a57a3a62715a577870c983d7577efefc323916fa6ad9c08978093279f547ffe2",
+  "result": {
+    "row_id": "scale60_06_key_handover_false",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "scale60_06_key_handover_false.u_context",
+        "role": "user",
+        "content": "Στην καταγραφή, η Νίκη είπε «τα κλειδιά είναι στο συρτάρι», ο Πέτρος είπε «η πίσω πόρτα είναι κλειδωμένη» και η Ελένη είπε «λείπει ο κωδικός του συναγερμού».",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_false.a_context",
+        "role": "assistant",
+        "content": "Θα κρατήσω χωριστά ποιος είπε καθεμία από τις τρεις φράσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_false.u_decision",
+        "role": "user",
+        "content": "Στην καταγραφή, ο Πέτρος είπε ότι τα κλειδιά είναι στο συρτάρι. Συνόψισε και τις τρεις δηλώσεις με τα σωστά ονόματα.",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_false.a_target",
+        "role": "assistant",
+        "content": "Η δήλωση για τα κλειδιά αποδίδεται στη Νίκη, όχι στον Πέτρο. Συνοπτικά: η Νίκη είπε «τα κλειδιά είναι στο συρτάρι», ο Πέτρος είπε «η πίσω πόρτα είναι κλειδωμένη» και η Ελένη είπε «λείπει ο κωδικός του συναγερμού».",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "scale60_06_key_handover_false.u_decision",
+        "before": "Στην καταγραφή, ο Πέτρος είπε ότι τα κλειδιά είναι στο συρτάρι. Σύνοψε και τις τρεις δηλώσεις με τα σωστά ονόματα.",
+        "after": "Στην καταγραφή, ο Πέτρος είπε ότι τα κλειδιά είναι στο συρτάρι. Συνόψισε και τις τρεις δηλώσεις με τα σωστά ονόματα.",
+        "error": "Εσφαλμένος σχηματισμός προστακτικής.",
+        "reason": "Η προστακτική αορίστου του «συνοψίζω» είναι «συνόψισε»."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

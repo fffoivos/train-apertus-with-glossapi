@@ -1,0 +1,77 @@
+{
+  "job_id": "adapt__scaleB_math_line_2349",
+  "row_id": "scaleB_math_line_2349",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "ec01e92405bd4dc44a656a8496f34c7df46818fbbc4cef56cee825334658cafc",
+  "input_record_sha256": "fd7d23107930d29203c4729f0683dd18addf2cbb7efb5597d60de10ec7882bed",
+  "payload_sha256": "e6466ac3b27fdee08f19ca741cb5efe8e91f53dd2d0437ffd35417638626a94a",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "426c69c104b0e0e34658e3a32b74bf05491547d38911a5cd03b3b28d14f31d79",
+  "result": {
+    "row_id": "scaleB_math_line_2349",
+    "status": "candidate",
+    "problem_text": "Ρίχνουμε δέκα κανονικά εξάεδρα ζάρια. Ποια είναι η πιθανότητα ακριβώς ένα από τα ζάρια να φέρει 1; Να εκφράσετε την απάντησή σας ως δεκαδικό αριθμό, στρογγυλοποιημένο στο πλησιέστερο χιλιοστό.",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Ten standard 6-sided dice are rolled.",
+        "target_span": "Ρίχνουμε δέκα κανονικά εξάεδρα ζάρια.",
+        "reason": "Πιστή απόδοση στα φυσικά ελληνικά, με διατήρηση του πλήθους και του τύπου των ζαριών."
+      },
+      {
+        "source_span": "What is the probability that exactly one of the dice shows a 1?",
+        "target_span": "Ποια είναι η πιθανότητα ακριβώς ένα από τα ζάρια να φέρει 1;",
+        "reason": "Πιστή μετάφραση με διατήρηση της συνθήκης «ακριβώς ένα»."
+      },
+      {
+        "source_span": "Express your answer as a decimal rounded to the nearest thousandth.",
+        "target_span": "Να εκφράσετε την απάντησή σας ως δεκαδικό αριθμό, στρογγυλοποιημένο στο πλησιέστερο χιλιοστό.",
+        "reason": "Απόδοση της απαιτούμενης μορφής και ακρίβειας της απάντησης με καθιερωμένη ελληνική μαθηματική ορολογία."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "10",
+          "role": "πλήθος ζαριών",
+          "unit": "ζάρια"
+        },
+        {
+          "value": "6",
+          "role": "πλήθος εδρών κάθε κανονικού ζαριού",
+          "unit": "έδρες"
+        },
+        {
+          "value": "1",
+          "role": "ζητούμενη ένδειξη σε κάθε ζάρι",
+          "unit": null
+        },
+        {
+          "value": "1",
+          "role": "ακριβές πλήθος ζαριών που πρέπει να φέρουν τη ζητούμενη ένδειξη",
+          "unit": "ζάρι"
+        },
+        {
+          "value": "0.001",
+          "role": "μονάδα στρογγυλοποίησης της δεκαδικής απάντησης",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Ρίχνονται δέκα κανονικά εξάεδρα ζάρια.",
+        "Ακριβώς ένα από τα δέκα ζάρια πρέπει να φέρει την ένδειξη 1."
+      ],
+      "required_outputs": [
+        "Η πιθανότητα του ζητούμενου ενδεχομένου.",
+        "Δεκαδική μορφή στρογγυλοποιημένη στο πλησιέστερο χιλιοστό."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

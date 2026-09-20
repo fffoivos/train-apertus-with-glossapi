@@ -1,0 +1,63 @@
+{
+  "job_id": "author__scale60_10_sorting_card_partial",
+  "row_id": "scale60_10_sorting_card_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "bc8d67dcb33752d15be41ade4e3243eae3a7fa11bb3afe76a8a0df51e6b0d8bd",
+  "input_record_sha256": "43a5bf33d13b0113fee02f4aed0f4df6617bdc0bf7cb8e6356be3d5753bca539",
+  "payload_sha256": "2b8d6ac45e65c692d0d580efe9ecd8dd8b8514e5ebb363335de8cd0df0aafea5",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "c09b1682d4edc981559d626cc9bce14932870de9ba154be411b8d8228aaa1f3c",
+  "result": {
+    "row_id": "scale60_10_sorting_card_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_10_sorting_card_partial.u_context",
+        "role": "user",
+        "content": "Η κάρτα κανόνων λέει: κάθε μπλε κιβώτιο πάει στο πάνω ράφι· κάθε εύθραυστο κιβώτιο μπαίνει σε θήκη με επένδυση. Το κιβώτιο Κ είναι μπλε και εύθραυστο. Δεν δίνεται το βάρος του.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_partial.a_context",
+        "role": "assistant",
+        "content": "Θα εφαρμόσω τους κανόνες της κάρτας στο κιβώτιο Κ, χωρίς εξωτερικές υποθέσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_partial.u_decision",
+        "role": "user",
+        "content": "Με τους κανόνες της κάρτας, το κιβώτιο Κ πάει στο πάνω ράφι αλλά χωρίς επένδυση.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_partial.a_target",
+        "role": "assistant",
+        "content": "Το πάνω ράφι είναι σωστό. Το «χωρίς επένδυση» είναι λάθος: αφού το κιβώτιο Κ είναι εύθραυστο, μπαίνει σε θήκη με επένδυση. Για το βάρος του δεν προκύπτει συμπέρασμα.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_10_sorting_card_partial.u_decision",
+        "claim": "Το κιβώτιο Κ πάει στο πάνω ράφι αλλά χωρίς επένδυση.",
+        "truth_category": "partial",
+        "evidence_ids": [
+          "scale60_10_sorting_card_partial.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να αναγνωριστεί ως σωστό ότι το κιβώτιο Κ πάει στο πάνω ράφι.",
+          "Να διορθωθεί ότι, επειδή είναι εύθραυστο, μπαίνει σε θήκη με επένδυση.",
+          "Να διευκρινιστεί ότι το διαθέσιμο στοιχείο δεν επιτρέπει συμπέρασμα για το βάρος."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

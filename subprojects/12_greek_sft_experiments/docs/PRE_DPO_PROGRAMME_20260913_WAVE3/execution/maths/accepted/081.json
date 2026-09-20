@@ -1,0 +1,56 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_395",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem is stable across the record. Although two solution records exist, the supplied provenance identifies a stable problem text, and the candidate is mathematically consistent with it.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_709",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The displayed candidate follows the last-record selection convention, but its historical association with the selected problem version is unproven. The two supplied Greek problem variants differ only between «αντίστοιχα» and «αντιστοίχως» and have no mathematical difference.",
+      "verification_needed": [
+        "Confirm the historical problem–solution linkage if exact record provenance is required."
+      ]
+    },
+    {
+      "row_id": "gsm_3674",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "issue",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "units_and_rounding",
+          "severity": "minor",
+          "quote": "\\[\\boxed{9}\\]",
+          "explanation": "The calculation and value are correct, but the final boxed answer omits the requested euro unit. The surrounding text makes the intended unit clear, so this does not affect the numerical result.",
+          "suggested_action": "Include the euro unit in the final answer, for example as 9 €."
+        }
+      ],
+      "provenance_note": "This is a single problem record. The adaptation from Josh and dollars to Γιώργος and euros is coherent and preserves all quantities and the teaching objective.",
+      "verification_needed": []
+    }
+  ]
+}

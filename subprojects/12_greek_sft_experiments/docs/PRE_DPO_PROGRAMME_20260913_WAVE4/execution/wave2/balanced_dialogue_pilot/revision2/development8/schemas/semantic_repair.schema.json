@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "row_id",
+    "disposition",
+    "findings",
+    "candidate_messages",
+    "changes",
+    "checks_executed",
+    "checks_needed",
+    "unresolved"
+  ],
+  "properties": {
+    "row_id": {
+      "type": "string"
+    },
+    "disposition": {
+      "enum": [
+        "no_defect_found",
+        "repair_proposed",
+        "needs_evidence",
+        "out_of_scope"
+      ]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "domain",
+          "exact_span",
+          "severity",
+          "evidence",
+          "proposed_action"
+        ],
+        "properties": {
+          "domain": {
+            "type": "string"
+          },
+          "exact_span": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "severity": {
+            "enum": [
+              "minor",
+              "major",
+              "blocking"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "proposed_action": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "candidate_messages": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "role",
+          "content",
+          "train"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "user",
+              "assistant"
+            ]
+          },
+          "content": {
+            "type": "string"
+          },
+          "train": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "message_id",
+          "before",
+          "after",
+          "reason"
+        ],
+        "properties": {
+          "message_id": {
+            "type": "string"
+          },
+          "before": {
+            "type": "string"
+          },
+          "after": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "checks_executed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "checks_needed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

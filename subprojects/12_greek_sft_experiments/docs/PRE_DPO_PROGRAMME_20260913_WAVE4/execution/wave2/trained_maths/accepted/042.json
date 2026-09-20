@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_gsm_147",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The English source, Greek adaptation, BEFORE, AFTER, and actual training messages were compared directly. BEFORE and AFTER are identical. Independently checking the arithmetic gives an original collection of 2 ÷ 0.25 = 8 dolls and a final collection of 10 dolls, matching the candidate and reference. The Greek names and natural contextual adaptation preserve the teaching objective and all quantitative premises.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_1900",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The English source, Greek adaptation, BEFORE, AFTER, and actual training messages were compared directly. BEFORE and AFTER are identical. The six possible distributions of two added letters among three sets are exhaustively evaluated: (2,0,0), (0,2,0), (0,0,2), (1,1,0), (1,0,1), and (0,1,1). Their additional plate counts are correctly calculated as 24, 40, 30, 36, 30, and 40, so the maximum is 40. The fictional place-name and one-to-one replacement with distinct Greek letters preserve the set sizes and combinatorial objective.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

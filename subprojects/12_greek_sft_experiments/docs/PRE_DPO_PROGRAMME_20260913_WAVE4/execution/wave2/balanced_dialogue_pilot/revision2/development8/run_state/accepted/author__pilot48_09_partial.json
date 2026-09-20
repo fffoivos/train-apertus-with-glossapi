@@ -1,0 +1,56 @@
+{
+  "job_id": "author__pilot48_09_partial",
+  "row_id": "pilot48_09_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "0f1869344a79aa5b207dbaa5ade20249bab6578dde85975639d15e1794ed2b14",
+  "input_record_sha256": "6296abf9c263c64f567111eba2cb4db2f2e4888bf316d5d18c186b0c564e0ff6",
+  "payload_sha256": "63e0c8b7d3bc91e5abf605a7b15b5084323b45c4d663115c644582364668da2c",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "1ccde9b6b08e8e31f2ed42573bdee7c28a8ae33f2f4c46b07a0b313e14527f2f",
+  "result": {
+    "row_id": "pilot48_09_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_09_partial.u_context",
+        "role": "user",
+        "content": "Υπάρχουν 3 αντίτυπα: 2 είναι δανεισμένα και το τρίτο δεσμευμένο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_09_partial.u_decision",
+        "role": "user",
+        "content": "Δύο αντίτυπα είναι δανεισμένα και ένα είναι διαθέσιμο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_09_partial.a_target",
+        "role": "assistant",
+        "content": "Σωστό ότι δύο αντίτυπα είναι δανεισμένα. Όμως το τρίτο είναι δεσμευμένο, επομένως κανένα αντίτυπο δεν είναι διαθέσιμο τώρα.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_09_partial.u_decision",
+        "claim": "Δύο αντίτυπα είναι δανεισμένα και ένα είναι διαθέσιμο.",
+        "truth_category": "partial",
+        "evidence_ids": [
+          "pilot48_09_partial.u_context"
+        ],
+        "expected_response_behaviour": [
+          "separate_true_and_false_atoms",
+          "state_result_concisely"
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

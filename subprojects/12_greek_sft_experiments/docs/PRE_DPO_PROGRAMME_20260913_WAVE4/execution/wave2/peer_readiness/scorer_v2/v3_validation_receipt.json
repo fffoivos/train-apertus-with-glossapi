@@ -1,0 +1,68 @@
+{
+  "schema_version": "equiv500_v3_candidate_validation_v2",
+  "status": "pass_not_ready_to_pin",
+  "runtime": {
+    "python": "/Users/foivoskarounos-zamparloukos/Projects/rl-study/resources/rlhf-book/code/.venv/bin/python",
+    "python_version": "3.12.13",
+    "sympy_version": "1.14.0"
+  },
+  "tests": [
+    "PASS test_ambiguous_separators_require_review",
+    "PASS test_bounded_symbolic_parser_is_mathematically_sound_for_fraction",
+    "PASS test_categorical_content_is_not_erased",
+    "PASS test_final_answer_phrase_and_following_line",
+    "PASS test_narrow_option_and_inflection_rules",
+    "PASS test_real_units_only_are_removed",
+    "PASS test_unsupported_or_code_like_text_is_reviewed_without_general_parser"
+  ],
+  "source_safety_scan": {
+    "candidate_forbidden_calls_absent": [
+      "parse_expr",
+      "sympify",
+      "eval"
+    ],
+    "general_model_text_parser": false
+  },
+  "bindings": {
+    "equiv500_v3_candidate.py": "cd087660f6ddab6643fe474717b51143a6960541f6e1b7ac60b6ba09bce8c3e9",
+    "score_math500_v3_candidate.py": "8c8b339242651aad6a2ebc402cf3ab68708a1944188e108908ace89e303428df",
+    "test_equiv500_v3_candidate.py": "ae3951cb8c0aceb89e5a3e8d82acb0320b62494920517b8a581f1ac97fe50467",
+    "audit_v3_candidate.py": "602aa5ad739358fd51668b44f7f1df11356aba9c49ca16b9991f6b7f69f25de4",
+    "stratify_v3_reviews.py": "5fba7010b479e8a471bf764efa36e285789fcaf96e140991aea8f238a49766ee",
+    "complete_audit_v3_candidate.json": "d7fd0c3c5c20179fbcb44a22c2fab0f3a0c87be4b1f1e18c667857307845ecf3",
+    "v3_review_stratification.json": "a1413387c4cdf1457b2ca0c195c629e0cc819fd2e450b5cb919fd7c7de35130a",
+    "V3_REPORT.md": "93443fef133fcfe11b6eedcb0ed223d9975b187fd3861934f8b1ad5079c609b3",
+    "independent_review.md": "b5d48fe8fbf98a01ed3da8883a020426d3f8e52ec3ab6e88b03966ffbad47067",
+    "independent_dispositions.jsonl": "940170b9363ccb7d539e93f86f14624290d4fd8346eed32b8b33ba7b3ab63ef3"
+  },
+  "coverage": {
+    "model_columns": 11,
+    "language_cells": 22,
+    "rows": 11000
+  },
+  "tri_state": {
+    "candidate_pass": 3293,
+    "candidate_fail": 5454,
+    "candidate_review": 2253
+  },
+  "audit_facts": {
+    "unsafe_fallback_reached": 1907,
+    "unsafe_fallback_recorded_pass": 0,
+    "ambiguous_numeric_review": 1,
+    "empty_collapse_recorded_pass": 20,
+    "empty_collapse_recorded_pass_candidate_fail": 15,
+    "empty_collapse_recorded_pass_candidate_pass": 5,
+    "explicit_answer_recorded_fail_candidate_pass": 144,
+    "frozen_fail_candidate_pass": 214,
+    "frozen_pass_candidate_fail": 16,
+    "frozen_pass_candidate_review": 17
+  },
+  "wrapper_smoke": {
+    "input": "Krikri v1.5 Greek exact500",
+    "pass": 193,
+    "fail": 264,
+    "review": 43,
+    "overwrite_refusal": "pass"
+  },
+  "pin_gate": "blocked_by_2253_review_states_plus_11_new_extraction_gains_and_33_conflicts_pending_review"
+}

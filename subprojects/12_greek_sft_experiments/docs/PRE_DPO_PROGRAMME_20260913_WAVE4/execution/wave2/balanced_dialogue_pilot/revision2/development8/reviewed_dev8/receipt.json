@@ -1,0 +1,11 @@
+{
+  "created_at": "2026-09-13T14:18:34.128853+00:00",
+  "rows": 8,
+  "status": "root_semantics_pass2scopedeltas_independent_pending_greek_pending",
+  "authoring_calls": 8,
+  "cumulative_dialogue_calls": 76,
+  "global_cap": 118,
+  "training_promotion": false,
+  "scope_repairs": 2,
+  "candidate_sha256": "b0efd01053ec17cf273e78ddc42e9e727180827ef10ff7bf8eb0982f5e3af89a"
+}

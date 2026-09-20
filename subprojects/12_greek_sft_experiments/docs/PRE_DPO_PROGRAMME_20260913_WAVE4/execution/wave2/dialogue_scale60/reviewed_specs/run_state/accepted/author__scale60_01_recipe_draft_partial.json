@@ -1,0 +1,74 @@
+{
+  "job_id": "author__scale60_01_recipe_draft_partial",
+  "row_id": "scale60_01_recipe_draft_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "f6f230ebbd2cf2184fef7cfb5f284696f190f1797321955d1022f3f22e796dc4",
+  "input_record_sha256": "5d8fe0ffcf421bd42a996dbc2097aa4cb980ff1f14a705c740d91efb0beffa1b",
+  "payload_sha256": "e909954991c71c37997efdb3667d1f366d3ad7ab618773287d971bc0c7cdd91e",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "ccaef821a986d91efbcf872e1ba83d7e4baae10249d0290fa4237aae2b3f96a0",
+  "result": {
+    "row_id": "scale60_01_recipe_draft_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_01_recipe_draft_partial.u_context",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο της συνταγής γράφει: 4 μερίδες, 1 κουταλιά λάδι, φούρνος στους 180 βαθμούς και γαρνίρισμα με μαϊντανό.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_partial.a_context",
+        "role": "assistant",
+        "content": "Βλέπω το τρέχον πρόχειρο· οι παλιότερες εκδοχές δεν εμφανίζονται εδώ.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_partial.u_decision",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο είναι 4 μερίδες, αλλά ο φούρνος στους 170 βαθμούς. Πρόσθεσε χρόνο ψησίματος 25 λεπτά.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_partial.a_target",
+        "role": "assistant",
+        "content": "Οι 4 μερίδες συμφωνούν με το τρέχον πρόχειρο, αλλά ο φούρνος αναγράφεται στους 180, όχι στους 170 βαθμούς. Πρόσθεσα στο πρόχειρο χρόνο ψησίματος 25 λεπτά.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_01_recipe_draft_partial.u_decision",
+        "claim": "Στο τρέχον πρόχειρο είναι 4 μερίδες, αλλά ο φούρνος στους 170 βαθμούς.",
+        "truth_category": "partial",
+        "evidence_ids": [
+          "scale60_01_recipe_draft_partial.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να αναγνωρίσει ότι οι 4 μερίδες συμφωνούν με το εμφανιζόμενο πρόχειρο.",
+          "Να διορθώσει ότι η εμφανιζόμενη θερμοκρασία είναι 180 και όχι 170 βαθμοί.",
+          "Να προσθέσει τώρα στο πρόχειρο συνταγής χρόνο ψησίματος 25 λεπτά.",
+          "Να αναφέρει συνοπτικά το αποτέλεσμα της επεξεργασίας του πρόχειρου."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "πρόχειρο συνταγής",
+        "before_json": "{\"servings\":4,\"oil_spoons\":1,\"oven_c\":180,\"garnish\":\"μαϊντανός\",\"notes\":[]}",
+        "after_json": "{\"servings\":4,\"oil_spoons\":1,\"oven_c\":180,\"garnish\":\"μαϊντανός\",\"notes\":[],\"bake_minutes\":25}",
+        "evidence_ids": [
+          "scale60_01_recipe_draft_partial.u_context",
+          "scale60_01_recipe_draft_partial.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

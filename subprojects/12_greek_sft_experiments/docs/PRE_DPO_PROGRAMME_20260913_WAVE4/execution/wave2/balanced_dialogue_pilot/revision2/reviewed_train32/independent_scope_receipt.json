@@ -1,0 +1,61 @@
+{
+  "reviewed_at": "2026-09-13T16:57:53+03:00",
+  "reviewer": "dialogue_audit Sol agent",
+  "scope": "Independent semantic-scope and projection check of four root-authored repairs; Greek/tone correction and runtime gating remain downstream.",
+  "additional_model_subprocess_calls": 0,
+  "source_hashes": {
+    "candidate_rows.jsonl": "33c1e6bbf0ed65b02b5224cdfdfff549b3a9d6117b9b6bb268b9f6528e7a7dce",
+    "semantic_scope_repairs.jsonl": "f2c333410410b706bbe8371f79bf6ee4c4b0197fa7b284de396eabfbd25840c4",
+    "training_projection.jsonl": "8abc6f949b2cca206f38d431040ef6051f8d99a93dc57229f75916e34aa562cb"
+  },
+  "rows": [
+    {
+      "row_id": "pilot48_03_false",
+      "verdict": "pass_semantic_scope",
+      "reason": "The disputed Monday 17:00 assertion is explicitly about the current record, so the visible current Tuesday 18:00 record makes it false. The new projector instruction remains authoritative and is applied.",
+      "repair_after_equals_candidate_messages": true,
+      "frozen_core_present_verbatim": true,
+      "one_supervised_assistant_target": true,
+      "erroneous_assistant_context_masked": true,
+      "training_projection_matches_repaired_text": true
+    },
+    {
+      "row_id": "pilot48_07_false",
+      "verdict": "pass_semantic_scope",
+      "reason": "Both claim and answer are limited to the displayed excerpt. The supplied two-edge path warrants rejection of a direct edge in that excerpt without asserting anything about the external transit network.",
+      "repair_after_equals_candidate_messages": true,
+      "frozen_core_present_verbatim": true,
+      "one_supervised_assistant_target": true,
+      "erroneous_assistant_context_masked": true,
+      "training_projection_matches_repaired_text": true
+    },
+    {
+      "row_id": "pilot48_07_partial",
+      "verdict": "pass_semantic_scope",
+      "reason": "Reachability and absence of a displayed direct edge now share the excerpt scope, so the first atom is true and the second false under the visible graph.",
+      "repair_after_equals_candidate_messages": true,
+      "frozen_core_present_verbatim": true,
+      "one_supervised_assistant_target": true,
+      "erroneous_assistant_context_masked": true,
+      "training_projection_matches_repaired_text": true
+    },
+    {
+      "row_id": "pilot48_10_unresolved",
+      "verdict": "pass_semantic_scope",
+      "reason": "The imperative requests cancellation but its singular demonstrative can refer to either of two visible feminine entries. One targeted clarification is warranted and neither text-list entry changes before resolution.",
+      "repair_after_equals_candidate_messages": true,
+      "frozen_core_present_verbatim": true,
+      "one_supervised_assistant_target": true,
+      "erroneous_assistant_context_masked": "not_applicable_no_assistant_context",
+      "training_projection_matches_repaired_text": true
+    }
+  ],
+  "aggregate": {
+    "reviewed": 4,
+    "pass_semantic_scope": 4,
+    "fail": 0,
+    "all_candidate_repairs_bound_to_receipts": true,
+    "all_training_projections_preserve_repaired_text": true,
+    "all_have_exactly_one_supervised_assistant_target": true
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_3105",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem and solution form a single-record pairing. The changes from dollars to euros, Janice to Ιωάννα, and convenience store to μικρό παντοπωλείο preserve the teaching objective and all quantities.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_2883",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem and solution form a single-record pairing. The fictional Swedish setting, payment in euros, and measurement in pounds are internally consistent premises for the calculation; they do not alter the source quantities or teaching objective.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_294",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Two solution records are reported, but the problem text is marked stable and no alternative problem variants are supplied. The displayed solution matches the displayed problem; the localized date notation 7/2 correctly represents 7 February in Greek usage.",
+      "verification_needed": []
+    }
+  ]
+}

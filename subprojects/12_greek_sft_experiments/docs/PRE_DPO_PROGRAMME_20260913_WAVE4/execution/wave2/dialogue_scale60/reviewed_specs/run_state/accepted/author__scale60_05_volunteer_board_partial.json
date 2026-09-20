@@ -1,0 +1,75 @@
+{
+  "job_id": "author__scale60_05_volunteer_board_partial",
+  "row_id": "scale60_05_volunteer_board_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "5885d4e3fe11f85d7e9796cd6cb35ac8c7542267c92a4c061e32e97b1635de09",
+  "input_record_sha256": "b90478a17e6917033f6d379f7b4add1e682328cea085f453fcae32e5bfff8946",
+  "payload_sha256": "453ba48aee53cb49f0125494794f2f4213c5896aa5380db909b3674cabe6fe78",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "206b324ce85cbf056019e29dcbfe441a8689851e557a02b6c0350703b0d5eb95",
+  "result": {
+    "row_id": "scale60_05_volunteer_board_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_05_volunteer_board_partial.u_context",
+        "role": "user",
+        "content": "Στον κειμενικό πίνακα, το στήσιμο και τα φυλλάδια είναι ενεργά, ενώ ο έλεγχος ήχου είναι ακυρωμένος.",
+        "train": false
+      },
+      {
+        "id": "scale60_05_volunteer_board_partial.a_context",
+        "role": "assistant",
+        "content": "Βλέπω τρεις ξεχωριστές εγγραφές στον πίνακα και δεν έχει γίνει καμία εξωτερική ενέργεια.",
+        "train": false
+      },
+      {
+        "id": "scale60_05_volunteer_board_partial.u_decision",
+        "role": "user",
+        "content": "Στον πίνακα ο έλεγχος ήχου είναι ακυρωμένος και τα φυλλάδια επίσης. Ακύρωσε τώρα τα φυλλάδια.",
+        "train": false
+      },
+      {
+        "id": "scale60_05_volunteer_board_partial.a_target",
+        "role": "assistant",
+        "content": "Ο έλεγχος ήχου ήταν ήδη ακυρωμένος, αλλά τα φυλλάδια ήταν ενεργά. Τα ακύρωσα τώρα στον πίνακα εργασιών.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_05_volunteer_board_partial.u_decision",
+        "claim": "Ο έλεγχος ήχου είναι ακυρωμένος και τα φυλλάδια είναι επίσης ακυρωμένα· ζητείται τώρα η ακύρωση των φυλλαδίων.",
+        "truth_category": "partial",
+        "evidence_ids": [
+          "scale60_05_volunteer_board_partial.u_context",
+          "scale60_05_volunteer_board_partial.u_decision"
+        ],
+        "expected_response_behaviour": [
+          "Να αναγνωρίσει ότι ο έλεγχος ήχου ήταν ήδη ακυρωμένος.",
+          "Να διορθώσει ότι τα φυλλάδια ήταν ενεργά πριν από το νέο αίτημα.",
+          "Να εφαρμόσει αμέσως την ακύρωση των φυλλαδίων στον πίνακα εργασιών.",
+          "Να αναφέρει συνοπτικά το νέο κειμενικό αποτέλεσμα χωρίς να υπονοήσει εξωτερική ενέργεια."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "φυλλάδια",
+        "before_json": "\"active\"",
+        "after_json": "\"cancelled\"",
+        "evidence_ids": [
+          "scale60_05_volunteer_board_partial.u_context",
+          "scale60_05_volunteer_board_partial.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

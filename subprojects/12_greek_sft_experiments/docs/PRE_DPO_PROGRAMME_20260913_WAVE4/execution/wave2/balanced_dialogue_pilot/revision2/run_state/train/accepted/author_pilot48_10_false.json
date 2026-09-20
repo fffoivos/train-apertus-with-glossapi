@@ -1,0 +1,73 @@
+{
+  "job_id": "author_pilot48_10_false",
+  "row_id": "pilot48_10_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "78a6507d4c624e1d45dbb1f257a2a4cac879a7e195f6bdca6e98f29aae16c609",
+  "input_record_sha256": "3d2351ad957bbb491b8b2f9c39f714b8acf16803e422b6c5767e7cc3e0958930",
+  "payload_sha256": "76178c850caf9106e35a0c781edd6a526142ad4fc06f02581a33029bff345ee4",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "ccae69b556bc9b55e1b21b39e0b63f05becde5eb55d3b0c667184dbaca2a8d6b",
+  "result": {
+    "row_id": "pilot48_10_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_10_false.u_context",
+        "role": "user",
+        "content": "Στον κειμενικό κατάλογο αυτού του νήματος υπάρχουν δύο ενεργές εγγραφές: «ραντεβού» και «αγορές».",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_false.a_context",
+        "role": "assistant",
+        "content": "Ο κειμενικός κατάλογος αυτού του νήματος δείχνει δύο ενεργές εγγραφές: «ραντεβού» και «αγορές».",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_false.u_decision",
+        "role": "user",
+        "content": "Στον κειμενικό κατάλογο που μόλις μου έδειξες, η εγγραφή «ραντεβού» φαίνεται ήδη ακυρωμένη. Ακύρωσε τώρα την εγγραφή «ραντεβού» στον κατάλογο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_false.a_target",
+        "role": "assistant",
+        "content": "Η εγγραφή «ραντεβού» δεν ήταν ήδη ακυρωμένη· ήταν ενεργή. Την ακύρωσα τώρα στον κειμενικό κατάλογο αυτού του νήματος. Η εγγραφή «αγορές» παραμένει ενεργή.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_10_false.u_decision",
+        "claim": "Η εγγραφή «ραντεβού» φαίνεται ήδη ακυρωμένη στον κειμενικό κατάλογο που μόλις εμφανίστηκε.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "pilot48_10_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα ότι η εγγραφή «ραντεβού» ήταν ενεργή πριν από τη νέα εντολή.",
+          "Να εφαρμόσει αμέσως τη νέα εντολή ακύρωσης στην εγγραφή «ραντεβού».",
+          "Να αναφέρει συνοπτικά το νέο αποτέλεσμα του κειμενικού καταλόγου χωρίς να υπονοήσει εξωτερική ενέργεια."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "ο κειμενικός κατάλογος αυτού του νήματος",
+        "before_json": "{\"ραντεβού\":\"active\",\"αγορές\":\"active\"}",
+        "after_json": "{\"ραντεβού\":\"cancelled\",\"αγορές\":\"active\"}",
+        "evidence_ids": [
+          "pilot48_10_false.u_context",
+          "pilot48_10_false.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

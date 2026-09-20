@@ -1,0 +1,14 @@
+{
+  "status": "PASS_PREPARED_NOT_LAUNCHED",
+  "prepared_at": "2026-09-13T16:29:00+03:00",
+  "manifest_sha256": "ed4eb3091059e887014d83e613dffd7dd16b0029967d142bf0921c5e2ddc8d32",
+  "specifications": 48,
+  "dispatchable": 47,
+  "quarantined": 1,
+  "probe_jobs": 4,
+  "max_workers_after_probe": 8,
+  "absolute_call_cap": 118,
+  "runner_sha256": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005",
+  "model_subprocess_calls": 0,
+  "production_writes": 0
+}

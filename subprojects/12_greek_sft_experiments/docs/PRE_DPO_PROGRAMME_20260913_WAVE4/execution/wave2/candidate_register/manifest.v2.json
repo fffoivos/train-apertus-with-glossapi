@@ -1,0 +1,10 @@
+{
+  "created_at": "2026-09-13T14:32:22.006449+00:00",
+  "index_sha256": "8dfac6a1ebd338b938c1366673e1cbad3f69b697c27d6b5c1c7b254a22b5bfa5",
+  "parent_index_sha256": "309a7d83018a3f1f06d3da3f92423d805f9f3469a78256818bec40366b263d7b",
+  "registered": 139,
+  "excluded_or_held": 2,
+  "remaining_candidates_pending_assembly": 137,
+  "actual_training_manifest": false,
+  "data_promoted": false
+}

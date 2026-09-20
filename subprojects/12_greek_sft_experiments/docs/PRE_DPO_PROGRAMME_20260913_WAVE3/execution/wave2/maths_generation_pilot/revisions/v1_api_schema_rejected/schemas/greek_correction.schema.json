@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["row_id", "status", "messages", "changes", "semantic_flags"],
+  "properties": {
+    "row_id": {"type": "string"},
+    "status": {"enum": ["unchanged", "edited", "needs_semantic_review"]},
+    "messages": {"type": "array", "items": {"type": "object", "required": ["role", "content"], "properties": {"role": {"enum": ["user", "assistant"]}, "content": {"type": "string"}}, "additionalProperties": true}},
+    "changes": {"type": "array", "items": {"type": "object"}},
+    "semantic_flags": {"type": "array", "items": {"type": "string"}}
+  }
+}

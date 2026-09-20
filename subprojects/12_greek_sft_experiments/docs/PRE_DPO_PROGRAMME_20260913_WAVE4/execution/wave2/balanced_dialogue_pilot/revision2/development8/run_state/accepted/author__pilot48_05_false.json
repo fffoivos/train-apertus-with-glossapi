@@ -1,0 +1,73 @@
+{
+  "job_id": "author__pilot48_05_false",
+  "row_id": "pilot48_05_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "7ecab1ba4530bd1ed054ce4e6cb1251c6614c8fb002ab3e6ee1ec06c3728530c",
+  "input_record_sha256": "d876712cdb873446ee447fe1d6b2e85c55ab6c8c7391a24e1683d85e02477d4c",
+  "payload_sha256": "8fa8a9c40031607b02f5a476d30824a3040a43f799c017ea95b97179ae767efd",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "19f6fb8053a6c335bb0d75f656354fec7b8d8f8c64684bba5096e2eee916c0a2",
+  "result": {
+    "row_id": "pilot48_05_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_05_false.u_context",
+        "role": "user",
+        "content": "Στο πρόχειρο της παραγγελίας, η τρέχουσα καταχώριση είναι μεσαίος ντεκαφεϊνέ χωρίς ζάχαρη.",
+        "train": false
+      },
+      {
+        "id": "pilot48_05_false.a_context",
+        "role": "assistant",
+        "content": "Η τρέχουσα καταχώριση στο πρόχειρο είναι μεσαίος ντεκαφεϊνέ χωρίς ζάχαρη.",
+        "train": false
+      },
+      {
+        "id": "pilot48_05_false.u_decision",
+        "role": "user",
+        "content": "Στο πρόχειρο της παραγγελίας, η τρέχουσα καταχώριση λέει κανονικός καφές, όχι ντεκαφεϊνέ. Κάν' τον τώρα κανονικό.",
+        "train": false
+      },
+      {
+        "id": "pilot48_05_false.a_target",
+        "role": "assistant",
+        "content": "Πριν από την αλλαγή, το πρόχειρο έγραφε μεσαίος ντεκαφεϊνέ χωρίς ζάχαρη, όχι κανονικός καφές. Τώρα η καταχώριση είναι μεσαίος κανονικός καφές χωρίς ζάχαρη.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_05_false.u_decision",
+        "claim": "Η τρέχουσα καταχώριση στο πρόχειρο λέει κανονικός καφές, όχι ντεκαφεϊνέ.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "pilot48_05_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα τον λανθασμένο ισχυρισμό για την τρέχουσα καταχώριση.",
+          "Να εφαρμόσει αμέσως τη νέα έγκυρη οδηγία στο πρόχειρο παραγγελίας.",
+          "Να δηλώσει συνοπτικά το νέο αποτέλεσμα της καταχώρισης."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "coffee",
+        "before_json": "\"ντεκαφεϊνέ\"",
+        "after_json": "\"κανονικός\"",
+        "evidence_ids": [
+          "pilot48_05_false.u_context",
+          "pilot48_05_false.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "job_id": "solve_high__scaleC_math_line_3416",
+  "row_id": "scaleC_math_line_3416",
+  "stage": "solution_high",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "767f8ff127fd93a0efdbf5c8da2c4d2b04ddd082ad7c85a52bfa9219ba4fa55d",
+  "input_record_sha256": "a71e6b80ad065000be7f7c6ec0410925ac71052ed676e3deeb890cfe7df0bb65",
+  "payload_sha256": "2777f54131b67adcaa3c134700d2c0d96a56c11ff94533a50dfebcb5c6358187",
+  "template_sha256": "ea1afd16c4910e9930760e3f22b232e0d14451f207ea4290ea79cc2d231e6a45",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "10e32fcd435b5da34c87f17dc6b2aaf663440f26f78634c8094e03009b213388",
+  "result": {
+    "row_id": "scaleC_math_line_3416",
+    "status": "candidate",
+    "solution_text": "Ομαδοποιούμε τους όρους σε διαδοχικά ζεύγη:\n\\[\n(-1+2)+(-3+4)+\\cdots+(-9.999+10.000).\n\\]\nΚάθε ζεύγος έχει άθροισμα\n\\[\n-(2k-1)+2k=1.\n\\]\nΟι ακέραιοι από το 1 έως το 10.000 σχηματίζουν \\(10.000/2=5.000\\) τέτοια ζεύγη. Επομένως,\n\\[\n-1+2-3+4-\\cdots-9.999+10.000=5.000\\cdot 1=5.000.\n\\]\n\nΑπάντηση: \\(5.000\\).",
+    "final_answers": [
+      {
+        "part": "Άθροισμα",
+        "expression": "5000",
+        "unit": null,
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

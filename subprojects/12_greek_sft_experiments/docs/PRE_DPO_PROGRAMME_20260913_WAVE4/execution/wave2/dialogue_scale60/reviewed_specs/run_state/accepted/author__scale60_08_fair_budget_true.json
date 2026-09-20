@@ -1,0 +1,62 @@
+{
+  "job_id": "author__scale60_08_fair_budget_true",
+  "row_id": "scale60_08_fair_budget_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "30cd367224b21a8198872089dcf7adafa095b79b15cd1a2f33bf2f9e51c89ef3",
+  "input_record_sha256": "ee1f7811c25864b591f3c41b7c9eaeff8d77837c57e2bb2e71631d8dd6400ae7",
+  "payload_sha256": "55e40aafbd8be1b6806dd206a5a7b8dfff4dd8bf0439ebf933b125c95b8a9f54",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "7d4a6f7abf4ba4ef804c77c10eb50d2c37a01cc4b8b9ac6b85303566dceeab98",
+  "result": {
+    "row_id": "scale60_08_fair_budget_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_08_fair_budget_true.u_context",
+        "role": "user",
+        "content": "Ο πρόχειρος προϋπολογισμός δείχνει αρχικό ποσό 120 ευρώ, από το οποίο πληρώθηκαν 35 ευρώ για τραπέζια και άλλα 15 ευρώ για πινακίδες. Δεν υπάρχει καταγεγραμμένη δωρεά.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_true.a_context",
+        "role": "assistant",
+        "content": "Θα υπολογίσω το υπόλοιπο από τα καταγεγραμμένα ποσά, χωρίς να προσθέσω έσοδο που δεν φαίνεται.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_true.u_decision",
+        "role": "user",
+        "content": "Με βάση τα καταγεγραμμένα ποσά, το υπόλοιπο είναι 70 ευρώ.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά: 120 − 35 − 15 = 70 ευρώ.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_08_fair_budget_true.u_decision",
+        "claim": "Με βάση τα καταγεγραμμένα ποσά, το υπόλοιπο είναι 70 ευρώ.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "scale60_08_fair_budget_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "acknowledge_supported_claim",
+          "continue_the_requested_reasoning_or_summary"
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

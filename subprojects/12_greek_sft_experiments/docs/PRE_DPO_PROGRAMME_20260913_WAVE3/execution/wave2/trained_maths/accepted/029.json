@@ -1,0 +1,44 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_581_1",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native example with no English source. The before and after records are identical and match the actual training messages. Independently verified: a square of area 81 dm² has side 9 dm and perimeter 36 dm. The compact calculation uses an ordinary elementary-school convention and remains understandable and dimensionally supported by the stated units.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_gsm_4140",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "after/greek_language",
+          "severity": "minor",
+          "quote": "Η επένδυση της Έμμα αποδίδει [...] Αν η Έμμα επένδυσε",
+          "explanation": "The user prompt retains the uninflected genitive «της Έμμα». The natural Greek form is «της Έμμας». The editor corrected both corresponding occurrences in the assistant answer but left the inherited prompt defect unchanged.",
+          "suggested_action": "Route for Greek correction of the two prompt occurrences only; preserve all quantities, reasoning and the answer."
+        }
+      ],
+      "provenance_note": "The adaptation deliberately changes Briana to Maria and dollars to euros while preserving the numerical structure and teaching objective; these are permitted adaptation choices. Under the problem's simple annual-yield classroom convention, Emma earns 300×15%×2 = 90 €, Maria earns 500×10%×2 = 100 €, and the difference is 10 €. The editor made a valid but partial language improvement in the assistant turn and introduced no semantic damage.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "language_correction"
+    }
+  ]
+}

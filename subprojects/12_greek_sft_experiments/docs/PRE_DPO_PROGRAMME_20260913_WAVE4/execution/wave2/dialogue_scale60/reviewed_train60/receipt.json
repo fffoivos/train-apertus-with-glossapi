@@ -1,0 +1,20 @@
+{
+  "created_at": "2026-09-13T14:44:49.219980+00:00",
+  "rows": 60,
+  "author_calls": 60,
+  "author_retries": 0,
+  "semantic_review": "all_60_full_conversations",
+  "relevance_edits": 2,
+  "annotation_repaired_rows": 6,
+  "truth_counts": {
+    "true": 20,
+    "false": 20,
+    "partial": 10,
+    "unresolved": 10
+  },
+  "raw_checker_annotation_failures_preserved": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/dialogue_scale60/reviewed_specs/output_structure_check.json",
+  "candidate_sha256": "dda8df3b312a5228ed8b0a76c8cf3a273a1e819a0229e350949eaeca5ad95fb9",
+  "deltas_sha256": "a9cfb8fc4cad81fbe311fffb461fc88f406906f369bab746fbfaea4bc6aa310f",
+  "status": "root_semantics_reviewed_pending_independent_delta_greek_and_runtime_gates",
+  "coverage_limit": "20 settings; repeated scalar/state/cancellation structures. Not a complete dialogue suite."
+}

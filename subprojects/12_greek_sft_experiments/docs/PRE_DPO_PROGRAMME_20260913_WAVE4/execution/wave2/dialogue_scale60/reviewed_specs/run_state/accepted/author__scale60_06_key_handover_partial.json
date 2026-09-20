@@ -1,0 +1,63 @@
+{
+  "job_id": "author__scale60_06_key_handover_partial",
+  "row_id": "scale60_06_key_handover_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "9e2c94cd3ee3dbdda85476e5ee51b86f0d9189c4bbd8b4eecbe58829285ca7a0",
+  "input_record_sha256": "48fa652926d9dde64e58619c3f37f54c190927c10e3a9879dbca158561ac509a",
+  "payload_sha256": "f4e5b424ebe103adcc2aa6c7cf3a1cfc933599cfbf7eb22cdfe612ac38d18e19",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "b110c96c9b78f87b150096414c9c10cc4a85baa48c41cdce4ea78af830171188",
+  "result": {
+    "row_id": "scale60_06_key_handover_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_06_key_handover_partial.u_context",
+        "role": "user",
+        "content": "Στην καταγραφή, η Νίκη είπε «τα κλειδιά είναι στο συρτάρι», ο Πέτρος είπε «η πίσω πόρτα είναι κλειδωμένη» και η Ελένη είπε «λείπει ο κωδικός του συναγερμού».",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_partial.a_context",
+        "role": "assistant",
+        "content": "Θα κρατήσω χωριστά ποιος είπε καθεμία από τις τρεις φράσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_partial.u_decision",
+        "role": "user",
+        "content": "Στην καταγραφή, ο Πέτρος είπε ότι η πίσω πόρτα είναι κλειδωμένη και η Νίκη ότι λείπει ο κωδικός. Σύνοψέ τα σωστά.",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_partial.a_target",
+        "role": "assistant",
+        "content": "Ο Πέτρος είπε ότι η πίσω πόρτα είναι κλειδωμένη, αλλά για τον κωδικό μίλησε η Ελένη, όχι η Νίκη. Συνοπτικά: η Νίκη είπε ότι τα κλειδιά είναι στο συρτάρι, ο Πέτρος ότι η πίσω πόρτα είναι κλειδωμένη και η Ελένη ότι λείπει ο κωδικός του συναγερμού.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_06_key_handover_partial.u_decision",
+        "claim": "Ο Πέτρος είπε ότι η πίσω πόρτα είναι κλειδωμένη και η Νίκη ότι λείπει ο κωδικός.",
+        "truth_category": "partial",
+        "evidence_ids": [
+          "scale60_06_key_handover_partial.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να επιβεβαιώσει ότι ο Πέτρος είπε πως η πίσω πόρτα είναι κλειδωμένη.",
+          "Να διορθώσει ότι η Ελένη, όχι η Νίκη, είπε πως λείπει ο κωδικός του συναγερμού.",
+          "Να συνοψίσει σωστά και τις τρεις αποδόσεις ομιλητών."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

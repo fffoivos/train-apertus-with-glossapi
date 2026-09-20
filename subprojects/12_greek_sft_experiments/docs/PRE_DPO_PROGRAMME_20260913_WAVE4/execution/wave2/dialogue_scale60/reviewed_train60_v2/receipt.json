@@ -1,0 +1,10 @@
+{
+  "status": "root_semantic_and_independent_delta_review_complete; Greek/runtime gates pending",
+  "rows": 60,
+  "parent_candidate_sha256": "dda8df3b312a5228ed8b0a76c8cf3a273a1e819a0229e350949eaeca5ad95fb9",
+  "parent_independent_receipt_sha256": "198846f7021226c041c79b25ad2bd2e482acb8bf4acb6186f0691ff53b02b20f",
+  "candidate_sha256": "7a3d61ac67db0c89aeac26a474d2e4e28f7606e44b6e572cf63c17f9b5dbe3a8",
+  "metadata_followup_rows": 1,
+  "messages_changed_vs_reviewed60": 0,
+  "reviewer_requested_removal_applied_exactly": true
+}

@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "rows": 20,
+  "accepted": 20,
+  "held": 0,
+  "changed_rows": [
+    "mixa_2026_05543",
+    "mixa_2026_06199",
+    "mixa_2026_11688"
+  ],
+  "active_hashes_verified": 20,
+  "envelope_hashes_verified": 20,
+  "stale_active_v3_fields": 0,
+  "checker_pass": 20,
+  "production_promoted": 0,
+  "model_subprocess_calls": 0
+}

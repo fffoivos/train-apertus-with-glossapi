@@ -1,0 +1,366 @@
+{
+  "selection": {
+    "method": "fixed quotas across version x nominal level; within each stratum choose smallest sha256(if-audit-20260913:<id>)",
+    "seed_label": "if-audit-20260913",
+    "rows": 20
+  },
+  "sample": [
+    {
+      "id": "mixa_2026_06199",
+      "version": "v1",
+      "level": 1,
+      "form": "opinion",
+      "families": [
+        "highlight_n"
+      ],
+      "row_sha256": "d78b09d8d3dd30910b4ef05b0e7a1678e0af333259a589f3ec2ac53ca2c0a9d0"
+    },
+    {
+      "id": "mixa_2026_04931",
+      "version": "v1",
+      "level": 1,
+      "form": "rewrite",
+      "families": [
+        "paragraph_starts_with"
+      ],
+      "row_sha256": "b6f76ca362f84946110bcb63e7fab6fd0f279e1515daf334bfc62c9d5f134abd"
+    },
+    {
+      "id": "mixa_2026_06155",
+      "version": "v1",
+      "level": 2,
+      "form": "creative",
+      "families": [
+        "no_accents",
+        "wrap_in_quotes"
+      ],
+      "row_sha256": "83a718fe3b53689ebbed47dbdd97c990bf60c767915876ac92fd7ada600ce9b8"
+    },
+    {
+      "id": "mixa_2026_11688",
+      "version": "v1",
+      "level": 3,
+      "form": "opinion",
+      "families": [
+        "no_exclamation",
+        "formal_and_informal",
+        "letter_freq"
+      ],
+      "row_sha256": "d63bf7a99b33bb3550ed7f2ffb2478828f174fb7b4672b0581b5b714140b4a5d"
+    },
+    {
+      "id": "mixa_2026_08647",
+      "version": "v1",
+      "level": 4,
+      "form": "planning",
+      "families": [
+        "numbered_greek",
+        "informal_singular",
+        "start_with",
+        "wrap_in_quotes"
+      ],
+      "row_sha256": "7f8e95f600124c58311007262349215994ad058d73eb960956fb9f71b9eb4a37"
+    },
+    {
+      "id": "mixa_2026_08514",
+      "version": "v1",
+      "level": 5,
+      "form": "quick_fact",
+      "families": [
+        "formal_plural",
+        "length_words_max",
+        "length_sentences_exact",
+        "mention_number",
+        "keywords_include"
+      ],
+      "row_sha256": "cc293ead654a175ef4f5091bbb8bc13763eb67add6bff2d20682da951f19968f"
+    },
+    {
+      "id": "mixa_2026_04027",
+      "version": "v1",
+      "level": 5,
+      "form": "creative",
+      "families": [
+        "informal_singular",
+        "mention_entity",
+        "bullets_n",
+        "no_comma",
+        "paragraph_starts_with"
+      ],
+      "row_sha256": "d8db21dc4239f8928cca428cb62d89aa8e97787a3c917e6db0220ea4051b41a1"
+    },
+    {
+      "id": "mixa_2027_09233",
+      "version": "v2",
+      "level": 1,
+      "form": "quick_fact",
+      "families": [
+        "all_lower"
+      ],
+      "row_sha256": "60ff20c3fadfcb43f87de6c6755eb9a257858f4e17250ae3e52aaba8095c2d30"
+    },
+    {
+      "id": "mixa_2027_02500",
+      "version": "v2",
+      "level": 2,
+      "form": "comparison",
+      "families": [
+        "highlight_n",
+        "avoid_entity"
+      ],
+      "row_sha256": "d8b4ed1cf6e4910d3a9fc636b25bfec0c7466f55719fd37803d61dfaf8b862b0"
+    },
+    {
+      "id": "mixa_2027_07834",
+      "version": "v2",
+      "level": 2,
+      "form": "correction",
+      "families": [
+        "placeholders_n",
+        "greek_question_mark"
+      ],
+      "row_sha256": "267ac0a662cc0cae9de554b7c6a52845f94aa43568765a6cab22711f4517c227"
+    },
+    {
+      "id": "mixa_2027_01564",
+      "version": "v2",
+      "level": 3,
+      "form": "creative",
+      "families": [
+        "mention_date",
+        "end_with",
+        "title"
+      ],
+      "row_sha256": "8d2f42c372acedbecd213d88bc2640a6444bf2406e4ce9b9dfb255f5837f8d30"
+    },
+    {
+      "id": "mixa_2027_05583",
+      "version": "v2",
+      "level": 4,
+      "form": "creative",
+      "families": [
+        "no_comma",
+        "ano_teleia_list",
+        "formal_plural",
+        "mention_date"
+      ],
+      "row_sha256": "63df734bb398a56301b6a9859fc18a9a6a321d7e4649087a6e1e4f8e04c23e82"
+    },
+    {
+      "id": "mixa_2027_02392",
+      "version": "v2",
+      "level": 5,
+      "form": "planning",
+      "families": [
+        "ano_teleia_list",
+        "monotonic_only",
+        "bullets_n",
+        "wrap_in_quotes",
+        "length_words_min"
+      ],
+      "row_sha256": "00dbed1303118b88e41eeee6e2cfc35c7b22b429ae12175f7b954d9a580315b1"
+    },
+    {
+      "id": "mixa_2028_03889",
+      "version": "v3",
+      "level": 1,
+      "form": "explanation",
+      "families": [
+        "length_sentences_exact"
+      ],
+      "row_sha256": "4ec474b733c235c90719370cee8be0cd3ba9232fe0c42fcb9a6d6baed61f8e61"
+    },
+    {
+      "id": "mixa_2028_05110",
+      "version": "v3",
+      "level": 2,
+      "form": "howto",
+      "families": [
+        "end_with",
+        "keywords_exclude"
+      ],
+      "row_sha256": "1d19e1a23b1c131878ffd016138b4e884d831ca17f35ba1612e4ea38003d91a3"
+    },
+    {
+      "id": "mixa_2028_10211",
+      "version": "v3",
+      "level": 3,
+      "form": "planning",
+      "families": [
+        "format_json",
+        "no_accents",
+        "avoid_entity"
+      ],
+      "row_sha256": "1b39ea1b9a46d22f3b66f0e08a798071d750982ff3db21e640ba29bbe3164a39"
+    },
+    {
+      "id": "mixa_2028_02163",
+      "version": "v3",
+      "level": 3,
+      "form": "creative",
+      "families": [
+        "all_caps_greek",
+        "keywords_exclude",
+        "bullets_n"
+      ],
+      "row_sha256": "b82961256e4cb65ada8e9dea5bcc5cacb73121483844d22e57014ee7293c97d2"
+    },
+    {
+      "id": "mixa_2028_03385",
+      "version": "v3",
+      "level": 4,
+      "form": "rewrite",
+      "families": [
+        "numbered_greek",
+        "greek_only",
+        "no_accents",
+        "keywords_exclude"
+      ],
+      "row_sha256": "20560ee3af4923b88c720a06b1d358a2007fe62d3bbcf92203a314cfa9332834"
+    },
+    {
+      "id": "mixa_2028_03276",
+      "version": "v3",
+      "level": 5,
+      "form": "summarise",
+      "families": [
+        "sections_n",
+        "bullets_n",
+        "greek_question_mark",
+        "end_with",
+        "ano_teleia_list"
+      ],
+      "row_sha256": "61dc0f60d3f25aefd1907e9415c6dced74b81465859e6959798e37d728d6c395"
+    },
+    {
+      "id": "mixa_2028_02046",
+      "version": "v3",
+      "level": 5,
+      "form": "list",
+      "families": [
+        "greek_question_mark",
+        "formal_plural",
+        "numbered_greek",
+        "placeholders_n",
+        "ano_teleia_list"
+      ],
+      "row_sha256": "649a213618ff2f66276413ceb595eeebccfd235ddcc5d524a781e64a49ad7391"
+    }
+  ],
+  "targeted": [
+    {
+      "id": "mixa_2028_03200",
+      "version": "v3",
+      "level": 2,
+      "form": "correction",
+      "families": [
+        "informal_singular",
+        "end_with"
+      ],
+      "row_sha256": "bc89b7f3c4b1850bff6abeca7cad388d96a5bb5ee0ebf4063931729ff79ab3d7"
+    },
+    {
+      "id": "mixa_2028_08593",
+      "version": "v3",
+      "level": 4,
+      "form": "howto",
+      "families": [
+        "length_paragraphs",
+        "end_with",
+        "wrap_in_quotes",
+        "numbered_greek"
+      ],
+      "row_sha256": "07606d58d9c0dcba15d465f57660fb276fcb9f39e0c4d4a63f190970168504b6"
+    },
+    {
+      "id": "mixa_2026_05543",
+      "version": "v1",
+      "level": 2,
+      "form": "opinion",
+      "families": [
+        "paragraph_starts_with",
+        "keyword_freq"
+      ],
+      "row_sha256": "4e11e970aec8aa8384ab801d7e8b95230d085762729611ffe7d0f4ab6040df83"
+    },
+    {
+      "id": "mixa_2027_09179",
+      "version": "v2",
+      "level": 2,
+      "form": "summarise",
+      "families": [
+        "highlight_n",
+        "letter_freq"
+      ],
+      "row_sha256": "9b36b0fd95dd32ceacba29d08a7ae5d6758f385879de5b21af66a195f8affdaf"
+    },
+    {
+      "id": "mixa_2026_08572",
+      "version": "v1",
+      "level": 2,
+      "form": "translate",
+      "families": [
+        "start_with",
+        "length_words_min"
+      ],
+      "row_sha256": "e395299e8bbab14a83a74d108e85fd35ef5c7d91d0f33769cf085466fe628caa"
+    },
+    {
+      "id": "mixa_2027_09553",
+      "version": "v2",
+      "level": 2,
+      "form": "summarise",
+      "families": [
+        "letter_freq",
+        "length_words_min"
+      ],
+      "row_sha256": "8a9b3ed8775303612a1ce44f8ba612ce6d661a08486dd64ea1608ab53d13a8e0"
+    },
+    {
+      "id": "mixa_2027_09689",
+      "version": "v2",
+      "level": 2,
+      "form": "opinion",
+      "families": [
+        "all_caps_greek",
+        "constrained_answer"
+      ],
+      "row_sha256": "c2f9a2ad53797f7aa44ae1e2227c80b388e25edc5e901fb9598d2d409abb10b4"
+    },
+    {
+      "id": "mixa_2027_10080",
+      "version": "v2",
+      "level": 1,
+      "form": "opinion",
+      "families": [
+        "monotonic_only"
+      ],
+      "row_sha256": "5ff45ae356e7ccdaf159fed13772d006dbc44553b5818fdb01e3dfdb679e4d5d"
+    },
+    {
+      "id": "mixa_2026_07006",
+      "version": "v1",
+      "level": 5,
+      "form": "rewrite",
+      "families": [
+        "format_json",
+        "letter_freq",
+        "monotonic_only",
+        "mention_number",
+        "keywords_include"
+      ],
+      "row_sha256": "10186e5b8ec42fea20acc7b47ee79bf3b5b13d0bf4def557d8c290b192c10be3"
+    },
+    {
+      "id": "mixa_2027_05368",
+      "version": "v2",
+      "level": 1,
+      "form": "comparison",
+      "families": [
+        "monotonic_only"
+      ],
+      "row_sha256": "c8102e0102c33026c867796d6f39fe1f5e8244a54529cc6742af7f79327478fb"
+    }
+  ],
+  "manifest_sha256": "58bf2e6f321530b8d4baaa181df95b0f1bfcf6671a4aa0610c0c9d2bae57aeee"
+}

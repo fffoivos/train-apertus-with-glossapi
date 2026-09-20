@@ -1,0 +1,48 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_982",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The two supplied Greek problem variants differ only stylistically («είναι» versus «ισούται με») and are mathematically equivalent. However, under the stated Level-5 selection convention, the historical association of the last saved solution with the last saved problem remains unproven; this is a provenance uncertainty, not a mathematical defect.",
+      "verification_needed": [
+        "Confirm the historical problem–solution linkage for selected solution line 2408 if provenance adjudication is required."
+      ]
+    },
+    {
+      "row_id": "math5_639",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem text is stable, and the selected solution correctly addresses that same congruence problem. Multiple solution records do not create a supplied problem-version ambiguity here.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_4027",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single supplied problem record; no pairing ambiguity is indicated.",
+      "verification_needed": []
+    }
+  ]
+}

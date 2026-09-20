@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_812_3",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The AFTER assistant turn is byte-equivalent to the actual training target. The prime factorizations are correct, ΜΚΔ(96,72)=24, and the irrelevant start time is properly ignored. The editor changed only the article before «ΜΚΔ» from «το» to the grammatically correct «τον».",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_gsm_4060",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The AFTER assistant turn is byte-equivalent to the actual training target. The Greek problem preserves the source relations: 4÷2=2 goals per game for Sofia, 2×2−3=1 for Judas, and 4+2+1=7 total goals per game. The compact final wording «7 γκολ» is acceptable in the explicit per-game context. The editor clarified the comparison by replacing «το διπλάσιο της Σοφίας» with «το διπλάσιο των γκολ της Σοφίας» without changing the mathematics.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    }
+  ]
+}

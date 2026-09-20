@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_09_chore_log_partial",
+  "row_id": "scale60_09_chore_log_partial",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "a16281650346d2e630899be508c6c01263757592be9613db33d4649fe556cc12",
+  "input_record_sha256": "b94e68d6b7456cc626a449607cc734b20a01cf402898ed602e8c0a2052f3e939",
+  "payload_sha256": "d4edd25fa0f6300eb403631431ec5615ccdbdf2c66547b1dff036216da051112",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "befaf8b874a583d79e8f88763a248c3087eef6fa14bb12b441bb77cbc8b7e7f9",
+  "result": {
+    "row_id": "scale60_09_chore_log_partial",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_09_chore_log_partial.u_context",
+        "role": "user",
+        "content": "Στο κειμενικό ημερολόγιο, τα πιάτα και τα ρούχα είναι ενεργές εργασίες, ενώ τα σκουπίδια έχουν ακυρωθεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_09_chore_log_partial.a_context",
+        "role": "assistant",
+        "content": "Οι εγγραφές είναι μόνο μέσα στο ημερολόγιο αυτού του νήματος.",
+        "train": false
+      },
+      {
+        "id": "scale60_09_chore_log_partial.u_decision",
+        "role": "user",
+        "content": "Στο ημερολόγιο τα σκουπίδια είναι ακυρωμένα και τα πιάτα σταματημένα. Σταμάτα τώρα τα πιάτα.",
+        "train": false
+      },
+      {
+        "id": "scale60_09_chore_log_partial.a_target",
+        "role": "assistant",
+        "content": "Τα σκουπίδια ήταν ήδη ακυρωμένα. Τα πιάτα δεν ήταν σταματημένα αλλά ενεργά· τώρα τα σταμάτησα στο ημερολόγιο εργασιών.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

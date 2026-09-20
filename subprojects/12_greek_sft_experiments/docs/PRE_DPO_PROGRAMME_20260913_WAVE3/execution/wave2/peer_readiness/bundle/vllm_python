@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+source /iopsstor/scratch/cscs/fffoivos/venvs/vllm/bin/activate
+exec python "$@"

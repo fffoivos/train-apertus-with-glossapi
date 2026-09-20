@@ -1,0 +1,73 @@
+{
+  "job_id": "author__scale60_16_event_agenda_false",
+  "row_id": "scale60_16_event_agenda_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "cfd21f9fdddb185077a03297348cbacc7adf9a9a570a8011e95d92e3258d2957",
+  "input_record_sha256": "155718e01a163a67d63666570316c04e911147d0e98b0dbd0f0e8797700459ee",
+  "payload_sha256": "88af94e4d3506b5aa29089ba9ce9c8aebed46b8dab264b956121e57e2295019c",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "9a00a2fbf1812a1c91bf291c8953670fa88454fd71d17cbc00ba1c39515c397d",
+  "result": {
+    "row_id": "scale60_16_event_agenda_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_16_event_agenda_false.u_context",
+        "role": "user",
+        "content": "Στην κειμενική ατζέντα, το καλωσόρισμα και η ομιλία είναι ενεργά, ενώ οι ερωτήσεις έχουν ακυρωθεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_16_event_agenda_false.a_context",
+        "role": "assistant",
+        "content": "Μπορώ να αλλάξω μόνο τις εγγραφές αυτού του πρόχειρου.",
+        "train": false
+      },
+      {
+        "id": "scale60_16_event_agenda_false.u_decision",
+        "role": "user",
+        "content": "Άντε πια. Στην ατζέντα η ομιλία φαίνεται ήδη ακυρωμένη. Ακύρωσέ την τώρα.",
+        "train": false
+      },
+      {
+        "id": "scale60_16_event_agenda_false.a_target",
+        "role": "assistant",
+        "content": "Η ομιλία δεν φαινόταν ήδη ακυρωμένη· ήταν ενεργή. Την ακύρωσα τώρα στην ατζέντα. Το καλωσόρισμα παραμένει ενεργό και οι ερωτήσεις ακυρωμένες.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_16_event_agenda_false.u_decision",
+        "claim": "Η ομιλία φαίνεται ήδη ακυρωμένη στην ατζέντα.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_16_event_agenda_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα τον λανθασμένο ισχυρισμό ότι η ομιλία ήταν ήδη ακυρωμένη.",
+          "Να εφαρμόσει αμέσως τη σαφή εντολή ακύρωσης στην κειμενική ατζέντα.",
+          "Να αναφέρει συνοπτικά το νέο κειμενικό αποτέλεσμα."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "ατζέντα.ομιλία",
+        "before_json": "\"active\"",
+        "after_json": "\"cancelled\"",
+        "evidence_ids": [
+          "scale60_16_event_agenda_false.u_context",
+          "scale60_16_event_agenda_false.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

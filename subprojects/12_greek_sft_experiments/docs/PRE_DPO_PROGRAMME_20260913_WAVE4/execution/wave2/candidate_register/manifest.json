@@ -1,0 +1,33 @@
+{
+  "created_at": "2026-09-13T14:22:11.513584+00:00",
+  "status": "candidate_index_not_training_manifest",
+  "registered_actions": 139,
+  "by_component": {
+    "greek_maths": 51,
+    "greek_if": 14,
+    "personality": 42,
+    "balanced_correcting_dialogue": 32
+  },
+  "retained_existing_controls_not_appended": 8,
+  "duplicate_repair_reused_once": 1,
+  "development_and_final_rows_in_training_index": 0,
+  "production_corpus_modified": false,
+  "inputs": {
+    "accepted_patchset/overlays.jsonl": "18e862faf97839e6a8b305b8103ccb2e1d8ac72b8cdb1c51a99f62deae5258ac",
+    "maths_generation_pilot/final_candidates/candidate_rows.jsonl": "c8f4df767951ec958fce46b47f61f75544400a2020563747a4293b8fb357e332",
+    "maths_scale_preparation/stage1/reviewed21/candidate_rows.jsonl": "325f49e089d607c7ea298cac3480db7c62f2ce27bd39fb70e9137cfd1d493e7c",
+    "personality/root_v2/deployment_and_closure_patch.jsonl": "ef55d32c0e8e4e375a0b2c2b9b1e3e1e830f5d76190f6b68d91c44a3d83e9a4b",
+    "personality/root_v2/world_fact_verification.jsonl": "e095b319ce5fa432622573d290b2859cadc49124ac160cd02f42b39ba6db3214",
+    "balanced_dialogue_pilot/revision2/accepted_train32/candidate_rows.jsonl": "d02ebae2681c99fc20a31a7b9c7547ea8c3cd980ba8cdccf2fd1e9f4a0b73d7c"
+  },
+  "index_sha256": "309a7d83018a3f1f06d3da3f92423d805f9f3469a78256818bec40366b263d7b",
+  "pending": [
+    "Resolve all proposed additions against full source-family lineage before add/replace.",
+    "Apply overlays only to exact matching current records, preserving all metadata and split/masking.",
+    "Finish English competition and lossless tool source pilots.",
+    "Scale accepted balanced dialogue toward 600 training decisions.",
+    "Run full assembly decontamination and actual token/weight manifest verification.",
+    "Assign G/F/P dataset versions only after the complete mix is frozen.",
+    "Price and qualify the controlled training comparison."
+  ]
+}

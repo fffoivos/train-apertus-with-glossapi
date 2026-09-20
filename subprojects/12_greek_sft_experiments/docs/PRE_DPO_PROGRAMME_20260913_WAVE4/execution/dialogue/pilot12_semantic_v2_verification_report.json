@@ -1,0 +1,47 @@
+{
+  "status": "PASS_WITH_EXPLICIT_CHECKER_LIMIT",
+  "source": {
+    "path": "pilot12_candidate.jsonl",
+    "sha256": "7cadb839631d7646da8d4e430484e445d2e82acc6200312fa8da5f8cdc053dfe",
+    "modified": false
+  },
+  "candidate": {
+    "path": "pilot12_semantic_v2.jsonl",
+    "sha256": "66a9b8bb0381c13cfcd788cead90cb36448900b63f5e0e886e20ff814fde1235",
+    "rows": 12,
+    "changed_rows": ["corrv2_t_001", "corrv2_p_001", "corrv2_u_001", "corrv2_u_003"],
+    "unchanged_rows": 8,
+    "message_ids_and_train_masks_preserved": true
+  },
+  "actual_verifier": {
+    "path": "pilot12_verifier.py",
+    "sha256": "f9fbe7af4e473d9235a3cd2b17587c199dbecbf5a087b346c742d4bb2fcef4ac",
+    "execution_method": "Temporary copy with only the hard-coded SOURCE path rebound to pilot12_semantic_v2.jsonl; the original verifier was not edited.",
+    "result": {
+      "status": "PASS",
+      "rows": 12,
+      "truth_counts": {"false": 3, "partial": 3, "true": 3, "unresolved": 3},
+      "supervised_assistant_turns": 19,
+      "masked_assistant_turns": 6
+    }
+  },
+  "negative_fixtures": {
+    "wrong_category": {
+      "mutation": "Set corrv2_u_001 decision truth_category to false while retaining null room evidence.",
+      "caught_by_actual_verifier_functions": true
+    },
+    "unsupported_refusal": {
+      "mutation": "Replace corrv2_u_003 target with ‘Δεν μπορώ να βοηθήσω.’",
+      "caught_by_actual_verifier_functions": true,
+      "reason": "The target omits the known destination and the required departure-city question."
+    },
+    "unsupported_acceptance_with_incidental_question": {
+      "mutation": "Assert Athens as established, mention Nafplio, then append an unrelated continuation question.",
+      "caught_by_actual_verifier_functions": false,
+      "checker_limit": "asks_for only checks that the target contains a question mark or semicolon and the configured phrase somewhere. It cannot determine whether Athens was rejected as unsupported or accepted as new state. Semantic review remains required for that distinction."
+    }
+  },
+  "delta_sha256": "cac71de78fbbf1d744a8c4a3607f9dae09532d78d588121cd8a377aa98c20340",
+  "builder_sha256": "b55e97c7a7cd408368c9cb1281b4f23f6091f3c2ffb3c5498493fdc9c31047ea",
+  "negative_fixture_script_sha256": "ba181670310b2a3ec1ee9f2b0cc5404f278f91e84d4c53003fd2e59fa8d3eac5"
+}

@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_2236",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record and single solution record. The dollar-to-euro substitution is a coherent permitted adaptation; the numerical price is preserved.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_549",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The problem text is marked stable and no alternative problem variants are supplied. Although four solution records exist, the selected solution is mathematically consistent with the displayed problem, so no historical problem-solution pairing uncertainty is evidenced here.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_2341",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record and single solution record. The name adaptation from Rene to Ρένα preserves the relationships and teaching objective.",
+      "verification_needed": []
+    }
+  ]
+}

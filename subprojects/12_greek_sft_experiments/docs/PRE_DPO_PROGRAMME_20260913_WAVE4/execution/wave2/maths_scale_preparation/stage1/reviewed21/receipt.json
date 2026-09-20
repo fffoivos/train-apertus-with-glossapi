@@ -1,0 +1,24 @@
+{
+  "created_at": "2026-09-13T14:11:45.987966+00:00",
+  "rows": 21,
+  "new_phaseB": 14,
+  "old_phaseA": 7,
+  "source_question_repairs": 0,
+  "old_language_typo_repairs": 1,
+  "primary_model_calls": 42,
+  "model_retries": 0,
+  "local_initialization_failures": 22,
+  "local_failures_in_model_calls": false,
+  "all42_output_control_scan_findings": 0,
+  "primary4650_avoided_unsupported_source_hypothesis_label": true,
+  "phaseB_greek_pending": 0,
+  "token_gate": "pass",
+  "artifact_sha256": {
+    "training_projection.jsonl": "f488b8482f3cccad3c8b4f3d5b56809b2a0b36967a17d36836a0c72e1c527e5d",
+    "adjudications.jsonl": "1ec3d36bd82f4fcda5717c3b5190c947a05c62f45ee71fcf1ec0d657bea2be39",
+    "candidate_rows.jsonl": "325f49e089d607c7ea298cac3480db7c62f2ce27bd39fb70e9137cfd1d493e7c"
+  },
+  "status": "accepted_candidate_pilot_semantics_greek_actual_token_mask_pass",
+  "token_inventory_sha256": "1629f7cd106617f786cf9d515b303a8121c29e8bb469e552e813d08c187ed91f",
+  "model_calls_including_greek": 56
+}

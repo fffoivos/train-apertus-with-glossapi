@@ -1,0 +1,30 @@
+{
+  "job_id": "greek_check__scaleC_math_line_3264",
+  "row_id": "scaleC_math_line_3264",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "2f938995232f1b97a5d90966473ef7b5e014d70b97c766c533b3df71ad1625fa",
+  "input_record_sha256": "8df3607212f1d11a4292813101441ad4a1eb0c43731cecfbc4ffcb625760f990",
+  "payload_sha256": "f7d9f7c9351fa781267a948c3a4a5ade6e1faba424b0d9d9d1b456fc7e5765cf",
+  "template_sha256": "9edf7cecca4f94e4df6d84eda3441958e8dda60706d4ec86d011c30f759056a8",
+  "schema_sha256": "cac89525ac699c70071e5020cc6e5ba4828aea543a27af1fa23c88ec621618b3",
+  "prompt_sha256": "72c9a317524c5099138f9674154d34927342e0adec5daac82bda69d86409a5f5",
+  "result": {
+    "row_id": "scaleC_math_line_3264",
+    "status": "unchanged",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Να υπολογίσετε το $\\cos 135^\\circ$."
+      },
+      {
+        "role": "assistant",
+        "content": "Έχουμε \\(135^\\circ=180^\\circ-45^\\circ\\). Από την ταυτότητα\n\\[\n\\cos(180^\\circ-\\theta)=-\\cos\\theta\n\\]\nπροκύπτει\n\\[\n\\cos135^\\circ=-\\cos45^\\circ=-\\frac{\\sqrt2}{2}.\n\\]\n\nΑπάντηση: \\(\\displaystyle \\cos135^\\circ=-\\frac{\\sqrt2}{2}\\)."
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

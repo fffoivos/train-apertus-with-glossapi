@@ -1,0 +1,16 @@
+{
+  "split": "final_confirmation",
+  "families": 2,
+  "specifications": 8,
+  "dispatchable": 7,
+  "quarantined": 1,
+  "truth_counts": {
+    "true": 2,
+    "false": 2,
+    "partial": 2,
+    "unresolved": 2
+  },
+  "content_visibility": "sealed_from_tuning_and_selection; root-facing reporting is aggregate gate status only",
+  "input_sha256": "3d20f67cd253d92847bc701f05a8e6f533c692080514204ecf095022b961533a",
+  "queue_sha256": "6dba03f3f1e99479817336f71b38a6dbffe3ef46ed2d48d5fca7443b04be9a17"
+}

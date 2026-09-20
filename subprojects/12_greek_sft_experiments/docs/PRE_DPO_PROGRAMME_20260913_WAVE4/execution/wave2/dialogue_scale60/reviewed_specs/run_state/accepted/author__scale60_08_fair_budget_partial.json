@@ -1,0 +1,63 @@
+{
+  "job_id": "author__scale60_08_fair_budget_partial",
+  "row_id": "scale60_08_fair_budget_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "7ba8e4e69f71df93c276d2e0f184006a198b89650da20450c8b6116eeaf2086a",
+  "input_record_sha256": "cc06f13f78b18ab7cfdb12cbeb3416770f0be28ff72b4b5fced9fb75d043f355",
+  "payload_sha256": "a548f8abeb51b03f84cf3c0208b998ad543af7fb7a17a59c48111299c1bd6911",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "6af7a60589ee9b47e567b135b0f14dab3bcec27c0939979ec2debe0464810131",
+  "result": {
+    "row_id": "scale60_08_fair_budget_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_08_fair_budget_partial.u_context",
+        "role": "user",
+        "content": "Ο πρόχειρος προϋπολογισμός δείχνει αρχικό ποσό 120 ευρώ, από το οποίο πληρώθηκαν 35 ευρώ για τραπέζια και άλλα 15 ευρώ για πινακίδες. Δεν υπάρχει καταγεγραμμένη δωρεά.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_partial.a_context",
+        "role": "assistant",
+        "content": "Θα υπολογίσω το υπόλοιπο από τα καταγεγραμμένα ποσά, χωρίς να προσθέσω έσοδο που δεν φαίνεται.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_partial.u_decision",
+        "role": "user",
+        "content": "Με βάση τον πρόχειρο προϋπολογισμό, τα τραπέζια κόστισαν 35 ευρώ και το υπόλοιπο είναι 80 ευρώ.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_partial.a_target",
+        "role": "assistant",
+        "content": "Τα τραπέζια κόστισαν πράγματι 35 ευρώ. Ωστόσο, το υπόλοιπο είναι 70 ευρώ, αφού από τα 120 ευρώ αφαιρούνται και τα 35 ευρώ για τα τραπέζια και τα 15 ευρώ για τις πινακίδες.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_08_fair_budget_partial.u_decision",
+        "claim": "Τα τραπέζια κόστισαν 35 ευρώ και το υπόλοιπο είναι 80 ευρώ.",
+        "truth_category": "partial",
+        "evidence_ids": [
+          "scale60_08_fair_budget_partial.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να επιβεβαιώσει ότι το καταγεγραμμένο κόστος των τραπεζιών είναι 35 ευρώ.",
+          "Να διορθώσει το υπόλοιπο σε 70 ευρώ, συνυπολογίζοντας και τα 15 ευρώ για τις πινακίδες.",
+          "Να συνεχίσει συνοπτικά τον ζητούμενο υπολογισμό χωρίς αλλαγή κατάστασης."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

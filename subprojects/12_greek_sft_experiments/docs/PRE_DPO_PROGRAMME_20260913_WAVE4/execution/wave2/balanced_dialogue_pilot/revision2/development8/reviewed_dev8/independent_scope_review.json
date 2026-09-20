@@ -1,0 +1,10 @@
+{
+  "reviewer": "dialogue_audit",
+  "status": "accept_both",
+  "candidate_sha256": "b0efd01053ec17cf273e78ddc42e9e727180827ef10ff7bf8eb0982f5e3af89a",
+  "cases": {
+    "pilot48_09_false": "Άρα explicitly scopes inference to disjoint suppliedrecord;3−2−1=0 contradictsavailable1. No newstatusupdate.",
+    "pilot48_09_partial": "Άρα scopesbothclauses torecord;loaned2true,available1false. Taskandtargetpreserved."
+  },
+  "new_model_subprocess_calls": 0
+}

@@ -1,0 +1,127 @@
+{
+  "job_id": "semantic_repair_r2_pilot48_10_partial",
+  "row_id": "pilot48_10_partial",
+  "stage": "dialogue_semantic_repair",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "c4143fb3a9d4ad3f5e56fe4e15ecde2dba2f107846bde61db050c4106db1246c",
+  "input_record_sha256": "8b9720bfcded688fbe6967e1dbfa6835449c3f9bd76350b6497b7bfb15f51983",
+  "payload_sha256": "27fd89a29e195cd526f360db9ac78a7b364c031c4aaf62455ccc3016a74d0366",
+  "template_sha256": "d0a0d83e714325427d29fdbe8a76137c7822b0a23962c5ba63940172b716d7cf",
+  "schema_sha256": "595e4ef89653892710759a52853c29920372c5599870931b57c73c8cc2922761",
+  "prompt_sha256": "52e77ed86b66eb9e80b54a327b9b1b4ad5eec7d90a31a0804a6599d8ed0cc5a7",
+  "result": {
+    "row_id": "pilot48_10_partial",
+    "disposition": "repair_proposed",
+    "findings": [
+      {
+        "domain": "visible_evidence_contract",
+        "exact_span": "Ποιες υπενθυμίσεις είναι ενεργές αυτή τη στιγμή;",
+        "severity": "blocking",
+        "evidence": [
+          "The user context omits visible_evidence_contract.required_user_context_core_el.",
+          "The required evidence must appear verbatim in a user turn before the decision.",
+          "The assistant context cannot independently establish the prior catalogue state."
+        ],
+        "proposed_action": "Replace the context question with the required verbatim user evidence core."
+      },
+      {
+        "domain": "catalogue_grounding",
+        "exact_span": "Είναι ενεργές δύο υπενθυμίσεις: μία για το ραντεβού και μία για τα ψώνια.",
+        "severity": "major",
+        "evidence": [
+          "The revised setting is an in-conversation text catalogue.",
+          "The response should visibly display the two catalogue entries and their states without implying independently verified external reminders."
+        ],
+        "proposed_action": "Restate the user-supplied evidence explicitly as catalogue entries."
+      },
+      {
+        "domain": "decision_surface_contract",
+        "exact_span": "Το ξαναλέω: η υπενθύμιση για το ραντεβού είναι ενεργή και εκείνη για τα ψώνια έχει ακυρωθεί. Ακύρωσε τώρα του ραντεβού.",
+        "severity": "blocking",
+        "evidence": [
+          "The frozen decision core is absent.",
+          "The contract requires the frozen core verbatim, including its catalogue referent, values, operation, and punctuation."
+        ],
+        "proposed_action": "Use a brief impatience wrapper followed by the frozen core verbatim."
+      },
+      {
+        "domain": "action_contract",
+        "exact_span": "Ακύρωσα τώρα την υπενθύμιση για το ραντεβού.",
+        "severity": "major",
+        "evidence": [
+          "The action mode is text_record_edit.",
+          "No external tool result was supplied.",
+          "This wording can imply that an external reminder was cancelled."
+        ],
+        "proposed_action": "Describe only the resulting state of the in-conversation text catalogue."
+      }
+    ],
+    "candidate_messages": [
+      {
+        "id": "pilot48_10_partial.u_context",
+        "role": "user",
+        "content": "Στον κειμενικό κατάλογο αυτού του νήματος υπάρχουν δύο ενεργές εγγραφές: «ραντεβού» και «αγορές».",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_partial.a_context",
+        "role": "assistant",
+        "content": "Ο κειμενικός κατάλογος δείχνει δύο ενεργές εγγραφές: «ραντεβού» και «αγορές».",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_partial.u_decision",
+        "role": "user",
+        "content": "Το ξαναλέω: Στον κειμενικό κατάλογο που μόλις μου έδειξες, η εγγραφή «ραντεβού» φαίνεται ενεργή και η εγγραφή «αγορές» φαίνεται ακυρωμένη. Ακύρωσε τώρα την εγγραφή «ραντεβού» στον κατάλογο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_partial.a_target",
+        "role": "assistant",
+        "content": "Στον κατάλογο, η εγγραφή «ραντεβού» ήταν πράγματι ενεργή, αλλά η εγγραφή «αγορές» δεν ήταν ακυρωμένη· ήταν ενεργή. Ο κειμενικός κατάλογος αυτού του νήματος έχει πλέον την εγγραφή «ραντεβού» ακυρωμένη και την εγγραφή «αγορές» ενεργή.",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "pilot48_10_partial.u_context",
+        "before": "Ποιες υπενθυμίσεις είναι ενεργές αυτή τη στιγμή;",
+        "after": "Στον κειμενικό κατάλογο αυτού του νήματος υπάρχουν δύο ενεργές εγγραφές: «ραντεβού» και «αγορές».",
+        "reason": "Supplies the required user-authored evidence core verbatim before the decision."
+      },
+      {
+        "message_id": "pilot48_10_partial.a_context",
+        "before": "Είναι ενεργές δύο υπενθυμίσεις: μία για το ραντεβού και μία για τα ψώνια.",
+        "after": "Ο κειμενικός κατάλογος δείχνει δύο ενεργές εγγραφές: «ραντεβού» και «αγορές».",
+        "reason": "Displays the user-supplied catalogue state while avoiding an implication of independently verified external reminders."
+      },
+      {
+        "message_id": "pilot48_10_partial.u_decision",
+        "before": "Το ξαναλέω: η υπενθύμιση για το ραντεβού είναι ενεργή και εκείνη για τα ψώνια έχει ακυρωθεί. Ακύρωσε τώρα του ραντεβού.",
+        "after": "Το ξαναλέω: Στον κειμενικό κατάλογο που μόλις μου έδειξες, η εγγραφή «ραντεβού» φαίνεται ενεργή και η εγγραφή «αγορές» φαίνεται ακυρωμένη. Ακύρωσε τώρα την εγγραφή «ραντεβού» στον κατάλογο.",
+        "reason": "Restores the frozen decision core verbatim and retains only a brief, fact-neutral impatience wrapper."
+      },
+      {
+        "message_id": "pilot48_10_partial.a_target",
+        "before": "Η υπενθύμιση για το ραντεβού ήταν πράγματι ενεργή, αλλά εκείνη για τα ψώνια δεν είχε ακυρωθεί· ήταν επίσης ενεργή. Ακύρωσα τώρα την υπενθύμιση για το ραντεβού. Τα ψώνια παραμένουν ενεργά.",
+        "after": "Στον κατάλογο, η εγγραφή «ραντεβού» ήταν πράγματι ενεργή, αλλά η εγγραφή «αγορές» δεν ήταν ακυρωμένη· ήταν ενεργή. Ο κειμενικός κατάλογος αυτού του νήματος έχει πλέον την εγγραφή «ραντεβού» ακυρωμένη και την εγγραφή «αγορές» ενεργή.",
+        "reason": "Binds the status correction to the displayed catalogue, applies the new instruction only to «ραντεβού», reports the oracle-consistent final catalogue state, and avoids claiming an external cancellation."
+      }
+    ],
+    "checks_executed": [
+      "Preserved row ID, stable message IDs, roles, masks, split, family, truth category, and oracle.",
+      "Confirmed exactly one assistant message has train:true.",
+      "Confirmed the required user context core appears verbatim before the decision.",
+      "Confirmed the frozen decision core appears verbatim and remains declarative.",
+      "Confirmed the tone wrapper adds no fact, value, referent, or operation.",
+      "Confirmed the target distinguishes the true «ραντεβού» atom from the false «αγορές» atom.",
+      "Confirmed the final catalogue state is «ραντεβού»: cancelled and «αγορές»: active.",
+      "Confirmed no external reminder, notification, or tool action is claimed.",
+      "Language-only preferences assessed separately: none required beyond terminology changes necessary for semantic catalogue grounding."
+    ],
+    "checks_needed": [],
+    "unresolved": []
+  }
+}

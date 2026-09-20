@@ -1,0 +1,218 @@
+{
+  "status": "raw_review_complete_pending_adjudication",
+  "rows": 122,
+  "batches": 61,
+  "calls": 63,
+  "raw_verdicts": {
+    "no_defect_found": 109,
+    "issues": 11,
+    "uncertain": 2
+  },
+  "editor_effects": {
+    "language_improvement": 41,
+    "unchanged": 80,
+    "semantic_improvement": 1
+  },
+  "strata": {
+    "gsm/edited": {
+      "n": 10,
+      "raw_verdicts": {
+        "uncertain": 2,
+        "no_defect_found": 6,
+        "issues": 2
+      },
+      "editor_effects": {
+        "language_improvement": 10
+      }
+    },
+    "gsm/unchanged": {
+      "n": 20,
+      "raw_verdicts": {
+        "no_defect_found": 17,
+        "issues": 3
+      },
+      "editor_effects": {
+        "unchanged": 20
+      }
+    },
+    "known_failure_control": {
+      "n": 2,
+      "raw_verdicts": {
+        "issues": 1,
+        "no_defect_found": 1
+      },
+      "editor_effects": {
+        "unchanged": 2
+      }
+    },
+    "math_1/edited": {
+      "n": 4,
+      "raw_verdicts": {
+        "issues": 1,
+        "no_defect_found": 3
+      },
+      "editor_effects": {
+        "language_improvement": 3,
+        "semantic_improvement": 1
+      }
+    },
+    "math_1/unchanged": {
+      "n": 6,
+      "raw_verdicts": {
+        "no_defect_found": 6
+      },
+      "editor_effects": {
+        "unchanged": 6
+      }
+    },
+    "math_2/edited": {
+      "n": 4,
+      "raw_verdicts": {
+        "no_defect_found": 4
+      },
+      "editor_effects": {
+        "language_improvement": 4
+      }
+    },
+    "math_2/unchanged": {
+      "n": 6,
+      "raw_verdicts": {
+        "no_defect_found": 6
+      },
+      "editor_effects": {
+        "unchanged": 6
+      }
+    },
+    "math_3/edited": {
+      "n": 4,
+      "raw_verdicts": {
+        "no_defect_found": 4
+      },
+      "editor_effects": {
+        "language_improvement": 4
+      }
+    },
+    "math_3/unchanged": {
+      "n": 6,
+      "raw_verdicts": {
+        "no_defect_found": 6
+      },
+      "editor_effects": {
+        "unchanged": 6
+      }
+    },
+    "math_4/edited": {
+      "n": 4,
+      "raw_verdicts": {
+        "no_defect_found": 3,
+        "issues": 1
+      },
+      "editor_effects": {
+        "language_improvement": 4
+      }
+    },
+    "math_4/unchanged": {
+      "n": 6,
+      "raw_verdicts": {
+        "no_defect_found": 5,
+        "issues": 1
+      },
+      "editor_effects": {
+        "unchanged": 6
+      }
+    },
+    "native_none/edited": {
+      "n": 6,
+      "raw_verdicts": {
+        "no_defect_found": 6
+      },
+      "editor_effects": {
+        "language_improvement": 6
+      }
+    },
+    "native_none/unchanged": {
+      "n": 14,
+      "raw_verdicts": {
+        "no_defect_found": 13,
+        "issues": 1
+      },
+      "editor_effects": {
+        "unchanged": 14
+      }
+    },
+    "native_second_solve/edited": {
+      "n": 10,
+      "raw_verdicts": {
+        "no_defect_found": 10
+      },
+      "editor_effects": {
+        "language_improvement": 10
+      }
+    },
+    "native_second_solve/unchanged": {
+      "n": 20,
+      "raw_verdicts": {
+        "no_defect_found": 19,
+        "issues": 1
+      },
+      "editor_effects": {
+        "unchanged": 20
+      }
+    }
+  },
+  "targeted_controls": {
+    "gm_nat_618_4": {
+      "row_id": "gm_nat_618_4",
+      "overall": "issues",
+      "final_result": "issue",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "issue",
+      "completeness": "issue",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "after/units_and_rounding",
+          "severity": "minor",
+          "quote": "«Η απάντηση να δοθεί σε λεπτά του ευρώ.» … «Απάντηση: 3,62 €»",
+          "explanation": "The arithmetic correctly obtains €3.61728 and rounds it to €3.62, but the problem explicitly requests the answer in euro cents. The requested-unit answer is 362 λεπτά. Giving €3.62 is an equivalent monetary amount but does not follow the specified output unit.",
+          "suggested_action": "Repair only the concluding conversion and answer so that €3.62 is expressed as 362 λεπτά, retaining every correct volume, cost, and rounding step."
+        },
+        {
+          "dimension": "before/units_and_rounding",
+          "severity": "minor",
+          "quote": "«Απάντηση: 3,62 €»",
+          "explanation": "The same requested-unit mismatch was already present before correction; it was not introduced by the editor.",
+          "suggested_action": "Treat this as an inherited semantic defect rather than editor-introduced damage."
+        }
+      ],
+      "provenance_note": "This is a native example and was assessed on its supplied premises. Independently checking the work gives π(12²−4²)·8 = 3,215.36 cm³, syrup volume 803.84 cm³ = 0.80384 L, and cost €3.61728, rounded to €3.62 or equivalently 362 cents. The fictional 25% syrup premise requires no external support. The before and after records are identical, and dialogue ownership and training structure are intact.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "repair_solution"
+    },
+    "gm_nat_301_3": {
+      "row_id": "gm_nat_301_3",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "This is a native Greek example with no English source. The supplied dimensions give a total volume of 0,48 m³; taking 3/4 gives 0,36 m³, and using 1 m³ = 1.000 litres gives 360 litres. For a rectangular aquarium, filling 3/4 of its height also fills 3/4 of its capacity. BEFORE and AFTER are identical, and the independently checked arithmetic supports the result without relying on the prior second solve as ground truth.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  },
+  "limitations": [
+    "Raw flags are not confirmed defects.",
+    "Edited rows oversampled; no pooled prevalence estimate reported.",
+    "No causal benchmark attribution.",
+    "Before/delta-only findings required one manual acceptance; no additional model calls."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "job_id": "adapt__scaleB_math_line_7061",
+  "row_id": "scaleB_math_line_7061",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "f5139af74f70a501908d2fbb2cdb6a72c322daae9e9406bc6b87d0fa34e00dad",
+  "input_record_sha256": "931f1bc84baa6b7a507145cf57b22eb86bb5834ba9f36e3f39291fda6acde0fc",
+  "payload_sha256": "e130e2e9d399ac9d289e218f45f2ae364a4e1f131cf08f4d8f0b680d193fde26",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "f71a12e6ff6c1756b88b5dd8ab78444d444041776c400a2a7901ba9130aeb0ca",
+  "result": {
+    "row_id": "scaleB_math_line_7061",
+    "status": "candidate",
+    "problem_text": "Να βρείτε το σύνολο τιμών της συνάρτησης $f(x) = \\sin^4 x - \\sin x \\cos x + \\cos^4 x$.",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Find the range of",
+        "target_span": "Να βρείτε το σύνολο τιμών της συνάρτησης",
+        "reason": "Φυσική και μαθηματικά ακριβής απόδοση της οδηγίας στα ελληνικά."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "4",
+          "role": "εκθέτης του \\sin x",
+          "unit": null
+        },
+        {
+          "value": "4",
+          "role": "εκθέτης του \\cos x",
+          "unit": null
+        },
+        {
+          "value": "-1",
+          "role": "συντελεστής του γινομένου \\sin x\\cos x",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Η συνάρτηση είναι $f(x)=\\sin^4 x-\\sin x\\cos x+\\cos^4 x$.",
+        "Το πεδίο ορισμού δεν δηλώνεται ρητά και διατηρείται η συνήθης υπόθεση ότι το $x$ είναι πραγματικός αριθμός."
+      ],
+      "required_outputs": [
+        "Το σύνολο τιμών της $f$."
+      ]
+    },
+    "source_issues": [
+      "Το πεδίο ορισμού του $x$ δεν προσδιορίζεται ρητά."
+    ],
+    "remaining_foreign_context": [],
+    "checks_needed": [
+      "Σημασιολογικός έλεγχος της σιωπηρής παραδοχής ότι $x\\in\\mathbb{R}$."
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gsm8k": {
+    "selected": 30,
+    "original_text_found": 30,
+    "source_path": "/Users/foivoskarounos-zamparloukos/sft_annot/math_src/gsm8k_train.jsonl",
+    "source_sha256": "aab3610849c9dcb3caaa8662759da2a6e6b74eb561f60ec56332031a222549f6"
+  },
+  "math": {
+    "selected": 40,
+    "original_text_found": 40,
+    "source_path": "/Users/foivoskarounos-zamparloukos/sft_annot/math_src/math_train.jsonl",
+    "source_sha256": "7c2b6be1ff20ece021d27e68103bcaa27935489247f179a1810ca72d54b379bf"
+  },
+  "native": {
+    "selected": 52,
+    "origin": "Sol-generated educational maths scenarios; joined to saved generator result by ID. No external personal records."
+  }
+}

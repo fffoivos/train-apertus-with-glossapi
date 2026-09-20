@@ -1,0 +1,95 @@
+{
+  "schema_version": "krikri_v15_peer_eval_recovery_v1",
+  "status": "measurement_recovered_after_post_generation_failure",
+  "job_id": "3390957",
+  "slurm_state_preserved": "FAILED",
+  "model_revision": "326e2c0ea90d771c19fcf06225fe87dc922b51b2",
+  "bundle_payload_sha256": "edf6f76fa34cf4a362b258a250259ce7d03029a7f2a739a2c9631caa1777b9dc",
+  "science_manifest_sha256": "911181d1abd995b167e5cce93fe8b9fe7e9ca1b37edc735b7469e9f216e8534a",
+  "failure_receipt": "receipts/terminal_failure_3390957.json",
+  "allocation_accounting": {
+    "elapsed_seconds": 1337,
+    "conservative_node_hours": 0.3713888889,
+    "conservative_cost_chf": 0.9990361111,
+    "ledger_before_node_hours": 60.602,
+    "ledger_before_chf": 163.02,
+    "reconciled_node_hours": 60.9733888889,
+    "reconciled_chf": 164.0190361111,
+    "remaining_chf": 65.9809638889,
+    "remaining_node_hours_from_chf": 24.5282393639,
+    "remaining_in_four_node_hour_measurement_envelope": 3.6286111111
+  },
+  "validation": {
+    "fixed": {
+      "math500_el": {"rows": 500, "unique_ids": 500, "errors": 0, "length_finishes": 0},
+      "math500_en": {"rows": 500, "unique_ids": 500, "errors": 0, "length_finishes": 0},
+      "ifbench_el": {"rows": 300, "unique_ids": 300, "errors": 0, "length_finishes": 6},
+      "ifbench_en": {"rows": 300, "unique_ids": 300, "errors": 0, "length_finishes": 6},
+      "xstest_el": {"rows": 450, "unique_ids": 450, "errors": 0, "length_finishes": 0},
+      "xstest_en": {"rows": 450, "unique_ids": 450, "errors": 0, "length_finishes": 0},
+      "multichallenge_el": {"rows": 213, "unique_ids": 213, "errors": 0, "length_finishes": 0},
+      "multichallenge_en": {"rows": 213, "unique_ids": 213, "errors": 0, "length_finishes": 0}
+    },
+    "ilsp": {
+      "observed_task_keys": ["ifeval_greek", "mgsm_greek"],
+      "ifeval_greek": {"rows": 541, "unique_doc_ids": 541},
+      "mgsm_greek": {"rows": 250, "unique_doc_ids": 250}
+    }
+  },
+  "scores": {
+    "math500_el": {"n": 500, "equiv500_acc": 0.382, "upstream_acc": null, "upstream_grader_available": false, "truncated": 0},
+    "math500_en": {"n": 500, "equiv500_acc": 0.408, "upstream_acc": null, "upstream_grader_available": false, "truncated": 0},
+    "ifbench_el": {"n_prompts": 300, "prompt_strict": 0.077, "prompt_loose": 0.107, "inst_strict": 0.082, "inst_loose": 0.12, "family_macro_strict": 0.059},
+    "ifbench_en": {"n_prompts": 300, "prompt_strict": 0.15, "prompt_loose": 0.23, "inst_strict": 0.173, "inst_loose": 0.261, "family_macro_strict": 0.124},
+    "ifeval_greek": {"prompt_level_strict_acc": 0.5582255083179297, "prompt_level_loose_acc": 0.6820702402957486, "inst_level_strict_acc": 0.6798561151079137, "inst_level_loose_acc": 0.7745803357314148},
+    "mgsm_greek": {"exact_match": 0.672}
+  },
+  "pending_judges": [
+    {"endpoint": "xstest_el", "rows": 450, "judge": "Sol", "status": "pending"},
+    {"endpoint": "xstest_en", "rows": 450, "judge": "Sol", "status": "pending"},
+    {"endpoint": "multichallenge_el", "rows": 213, "judge": "Sol", "status": "pending_diagnostic_subset"},
+    {"endpoint": "multichallenge_en", "rows": 213, "judge": "Sol", "status": "pending_diagnostic_subset"}
+  ],
+  "artifact_bindings": {
+    "fixed_generations": {
+      "ifbench_el": "38a59929cdb2a9bd9ad2f4cea926767c6993afc4fc2d59ca0efb22c357151d4f",
+      "ifbench_en": "6503afa79ca089b9ef16f06837ce79b18266ad757322d9c63e566dadd7ead92e",
+      "math500_el": "552408f4d00982325093f28e838b1405237a4ad87c8c6eb66140e87a4a9a4bc7",
+      "math500_en": "d0e19f71577ac4567301ca462c7a3d918376d1f75e79a43a50928ec8ff3c68be",
+      "multichallenge_el": "b14014a19c3b84a988909d087f494749852993f0c818ef8ccfec001b3dff24ee",
+      "multichallenge_en": "6b4ab730f5a6da2e333aff2a91fff5dbeaca5326f5f0813bfb81795bbbf28e62",
+      "xstest_el": "3199bc0b543545b198f0742b99f29d7ee31285868c702b07dfcf4df807bc8c9b",
+      "xstest_en": "584c99c82fb5fc4b5b7c1a153e174d6e6fe8086396054666bc340f647c388c94"
+    },
+    "fixed_scores": {
+      "ifbench_el": "aba5e5e220e1c956dccc9ce9c00bb07ba1b55d4f1daeea80ca8790536f8cd6c0",
+      "ifbench_en": "12d8b241a6983f70772c6dd6b65dd7c2873c96abab413b36a5325de3f49918bb",
+      "math500_el": "2674de2c1641af760438c8e5a46fdae1037ab1d02850017edbce430983851650",
+      "math500_en": "a7952492a592a17c4b4a5a413a1bf20eabaf6baeee32cc361628fdf1711f9ed1"
+    },
+    "ilsp": {
+      "aggregate": "6c0afde7946da8b15a6bec93913f972e7ca8cbf5e0886cd279e377267f2a690c",
+      "ifeval_samples": "31d3ef480a7c05396d13a2c95b97738fd1e5ed842dd033ba1a7dd0010cc5cb59",
+      "mgsm_samples": "56f5d59cf9ad6692abc5e66d7658ffb1dd2435bc134857c5482c71f1c1f96ed8"
+    }
+  },
+  "cpu_recovery": {
+    "allocation_required": false,
+    "python": "3.12.12",
+    "uenv": "pytorch/v2.9.1:v2",
+    "scorers_unchanged": true,
+    "deterministic_recheck_byte_identical": true,
+    "stderr_empty_on_recheck": true,
+    "helper_dependency": {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/recovery_deps_11f420979238e6a3/mathlib.py",
+      "sha256": "11f420979238e6a385027db905f2a0f0955528fdaab9f451f92d778ee7b48b94"
+    },
+    "captured_stdout_sha256": {
+      "ifbench_el": "c9becaea01b203c3510e33615b7fb643cc7c497da98c80905b11b85f6a17ac3b",
+      "ifbench_en": "22dafedfaaa96246ebc1dcfa901634c68639e7e4610350562c4614a771b28e16",
+      "math500_el": "79e2a40e314097f1f5776025cf91a30b7c1f827f91307a19cd829715ed8916ff",
+      "math500_en": "9808a700863ab71c8607209c397b2bf155353ab2eb695e04435918bc29677992"
+    }
+  },
+  "interpretation": "This receipt recovers completed generation and deterministic CPU scoring without rewriting the Slurm attempt as successful. It is not an adapter completion receipt. MultiChallenge remains a 213/262 diagnostic subset and is not comparable to historical full-262 aggregates."
+}

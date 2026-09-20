@@ -1,0 +1,24 @@
+{
+  "absolute_call_cap": 72,
+  "greek_correction": {
+    "cap": 14,
+    "effort": "high",
+    "model": "gpt-5.6-sol",
+    "schema": "schemas/greek_correction.schema.json",
+    "template": "prompts/greek_correction.txt",
+    "trigger": "Human semantic comparison accepts the mathematics and identifies a language-only defect."
+  },
+  "instantiation_rule": "Use a separately reviewed conditional queue and the same cumulative state ledger; never reset the 72-call cap.",
+  "retry_cap": 8,
+  "semantic_or_source_repair_shared_pool": {
+    "automatic_xhigh_selection": false,
+    "cap": 8,
+    "observed_unresolved_escalation_only": true,
+    "triggers": [
+      "Adaptation reports blocked or a substantive source issue.",
+      "Human comparison finds an unresolved mathematical disagreement between the two independent high outputs.",
+      "A source-valid repair is frozen under a new problem hash before re-solving."
+    ]
+  },
+  "status": "blueprints_only_not_in_primary_queue"
+}

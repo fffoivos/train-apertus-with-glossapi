@@ -1,0 +1,30 @@
+{
+  "job_id": "greek_check__scaleC_math_line_7319",
+  "row_id": "scaleC_math_line_7319",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "e40bac44ee1458124fb561e7afe7cbc4c3275bb7138f64b6b6e516077f890c82",
+  "input_record_sha256": "2bb159b16db77d7a62a01d71c8294d37017a9a149d7e0ac6cc9d8843986cee8c",
+  "payload_sha256": "c9b1c147d4f3cb2e6db88b6cedee18d49e94946a190640e09a240bea69aed74c",
+  "template_sha256": "9edf7cecca4f94e4df6d84eda3441958e8dda60706d4ec86d011c30f759056a8",
+  "schema_sha256": "cac89525ac699c70071e5020cc6e5ba4828aea543a27af1fa23c88ec621618b3",
+  "prompt_sha256": "68e32c07044effd4e59b43111b0b915336139bf9420acfb9f1723f87c6798127",
+  "result": {
+    "row_id": "scaleC_math_line_7319",
+    "status": "unchanged",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Στο παραλληλόγραμμο $ABCD$, έστω $O$ το σημείο τομής των διαγωνίων $\\overline{AC}$ και $\\overline{BD}$. Οι γωνίες $CAB$ και $DBC$ είναι καθεμία διπλάσια από τη γωνία $DBA$, ενώ η γωνία $ACB$ είναι $r$ φορές τη γωνία $AOB$. Να βρείτε το $r$."
+      },
+      {
+        "role": "assistant",
+        "content": "Θέτουμε \\(\\angle DBA=x\\). Τότε, από τα δεδομένα,\n\\[\n\\angle DBC=2x,\\qquad \\angle CAB=2x.\n\\]\nΕπειδή η διαγώνιος \\(BD\\) χωρίζει τη γωνία \\(ABC\\), έχουμε\n\\[\n\\angle ABC=x+2x=3x.\n\\]\n\nΣτο τρίγωνο \\(ABD\\), η γωνία \\(BAD\\) είναι παραπληρωματική της \\(ABC\\), αφού οι διαδοχικές γωνίες παραλληλογράμμου είναι παραπληρωματικές. Άρα\n\\[\n\\angle BAD=180^\\circ-3x\n\\]\nκαι επομένως\n\\[\n\\angle ADB=180^\\circ-x-(180^\\circ-3x)=2x.\n\\]\nΜε εφαρμογή του νόμου των ημιτόνων στο τρίγωνο \\(ABD\\),\n\\[\n\\frac{AD}{AB}=\\frac{\\sin x}{\\sin 2x}.\n\\]\nΕπειδή \\(AD=BC\\), προκύπτει\n\\[\n\\frac{AB}{BC}=\\frac{\\sin 2x}{\\sin x}=2\\cos x. \\tag{1}\n\\]\n\nΣτο τρίγωνο \\(ABC\\),\n\\[\n\\angle ACB=180^\\circ-2x-3x=180^\\circ-5x.\n\\]\nΟ νόμος των ημιτόνων δίνει\n\\[\n\\frac{AB}{BC}=\\frac{\\sin(180^\\circ-5x)}{\\sin 2x}\n=\\frac{\\sin 5x}{\\sin 2x}. \\tag{2}\n\\]\nΑπό τις (1) και (2),\n\\[\n\\sin 5x=2\\cos x\\sin 2x=\\sin 3x+\\sin x.\n\\]\nΆρα\n\\[\n\\sin 5x-\\sin 3x=\\sin x\n\\quad\\Longrightarrow\\quad\n2\\cos 4x\\sin x=\\sin x.\n\\]\nΟι γωνίες του τριγώνου \\(ABC\\) είναι θετικές, οπότε \\(0<x<36^\\circ\\) και ιδίως \\(\\sin x>0\\). Συνεπώς μπορούμε να διαιρέσουμε με \\(\\sin x\\):\n\\[\n\\cos 4x=\\frac12.\n\\]\nΕπειδή \\(0<4x<144^\\circ\\), η μοναδική λύση είναι\n\\[\n4x=60^\\circ\\quad\\Longrightarrow\\quad x=15^\\circ.\n\\]\nΕπομένως\n\\[\n\\angle ACB=180^\\circ-5x=105^\\circ.\n\\]\nΣτο τρίγωνο \\(AOB\\), επειδή \\(AO\\subset AC\\) και \\(BO\\subset BD\\),\n\\[\n\\angle OAB=2x,\n\\qquad\n\\angle ABO=x.\n\\]\nΆρα\n\\[\n\\angle AOB=180^\\circ-3x=135^\\circ.\n\\]\nΑπό τη σχέση \\(\\angle ACB=r\\angle AOB\\), παίρνουμε\n\\[\nr=\\frac{105^\\circ}{135^\\circ}=\\frac79.\n\\]\n\nΑπάντηση: \\(\\displaystyle r=\\frac79\\)."
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

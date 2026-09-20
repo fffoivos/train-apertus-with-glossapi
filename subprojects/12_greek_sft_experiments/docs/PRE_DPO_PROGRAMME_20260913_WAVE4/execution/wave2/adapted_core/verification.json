@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-09-13T16:00:59+03:00",
+  "reviewer": "Sol agent",
+  "review_method": "manual full semantic read of every selected complete record; deterministic scripts only for selection, hashes, joins, and counts",
+  "additional_model_subprocess_calls": 0,
+  "reviewed": {
+    "core_pairs": 24,
+    "foreign_pairs": 18,
+    "unpaired_es_pt_it": 9,
+    "total_records": 51
+  },
+  "paired_foreign_languages": [
+    "de",
+    "en",
+    "fr"
+  ],
+  "target_foreign_languages": [
+    "en",
+    "fr",
+    "de",
+    "es",
+    "pt",
+    "it"
+  ],
+  "unpaired_only_languages": [
+    "es",
+    "it",
+    "pt"
+  ],
+  "verdict_counts": {
+    "core_pair": {
+      "keep": 23,
+      "repair": 1
+    },
+    "foreign_pair": {
+      "keep": 17,
+      "repair": 1
+    },
+    "unpaired_retained": {
+      "keep": 4,
+      "repair": 3,
+      "readapt": 2
+    }
+  },
+  "planned": {
+    "core_pairs": 60,
+    "foreign_pairs": 60
+  },
+  "assembly_variant_checks": {
+    "checks": 354,
+    "matches": 352,
+    "mismatches": 2,
+    "mismatch_details": [
+      {
+        "row_id": "apertus_en_4d54daec",
+        "config": "apertus_en",
+        "arm": "E3prime",
+        "split": "dev",
+        "line": 572,
+        "variant": "raw",
+        "assembled_messages_sha256": "9dcfe047825469d639fd9897432f68f14efcaf937e8c169b8407140105841af3",
+        "current_expected_messages_sha256": "5b28ab1641ef37af20a402f1b11269ca3542a7fac496e3b029d83fc457fa8e97"
+      },
+      {
+        "row_id": "euroblocks_fr_1e3762c2",
+        "config": "euroblocks_fr",
+        "arm": "E3prime",
+        "split": "dev",
+        "line": 630,
+        "variant": "raw",
+        "assembled_messages_sha256": "5eb177cf9193f6a22d4ead1b43bc114768c21cf9ed8ac52ae0c7fb2580fefabe",
+        "current_expected_messages_sha256": "a0a7684a661be09dae451ba38a1e6458abe69f635b25b46e6aa27a83b349006b"
+      }
+    ]
+  },
+  "manifest_hashes": {
+    "source_manifest.json": "198e6e630cfb5d8b4aa0a546aa9a55e91059230fb722968b01ddf8c77bddaa60",
+    "core60_manifest.jsonl": "c088bc4697428a778db8332fe2936c51cc3f702e0a03336b6e4497c9958a8df7",
+    "foreign60_manifest.jsonl": "6f4d7ecbce489f23bb1e49132973c5529cecbdd4a2d5eefd4c30acb91cb73bef",
+    "unpaired_es_pt_it_coverage9.jsonl": "ffc03794e7e3ada3b9392c96702ac0840c46df4f4391b5b9e978632aa1388da8",
+    "findings.jsonl": "c617a474df82f82cc3b4f86bc6df5672254a9fe4581053af5e38497c5c07a4c2"
+  }
+}

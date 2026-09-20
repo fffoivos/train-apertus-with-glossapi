@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_1140",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The selected solution is paired with stable problem text; no problem variants are supplied and no mathematical pairing concern is evident.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_2336",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record with one solution; the supplied pairing is unambiguous.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_87",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record with one solution; the coherent gender adaptation for Jordan does not alter the teaching objective or calculation.",
+      "verification_needed": []
+    }
+  ]
+}

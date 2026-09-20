@@ -1,0 +1,27 @@
+{
+  "created_at": "2026-09-13T13:46:21.848268+00:00",
+  "scope": "four root personality deltas only",
+  "accepted": 4,
+  "held": 0,
+  "rejected": 0,
+  "unchanged_root_rows_not_independently_read": 38,
+  "production_applied": false,
+  "root_input_hashes": {
+    "root_deltas.jsonl": "034dda609a0f223ebbce991d5712afe8a8380b9449aea10ccca27038946af78f",
+    "deployment_and_closure_patch.jsonl": "ef55d32c0e8e4e375a0b2c2b9b1e3e1e830f5d76190f6b68d91c44a3d83e9a4b",
+    "world_fact_verification.jsonl": "e095b319ce5fa432622573d290b2859cadc49124ac160cd02f42b39ba6db3214",
+    "receipt.json": "1fc20e5ede895f1b895f36520415b20f817ab6512c28320e3aa6a6ad4396e067"
+  },
+  "artifacts": [
+    {
+      "path": "adjudications.jsonl",
+      "sha256": "ea0d7226e8ea69dbd8363919593baf92670aebc4f93bf57020abac69590858dc",
+      "bytes": 3956
+    },
+    {
+      "path": "REPORT.md",
+      "sha256": "6c98351d7a9b6b7d9dba7d705d9bfc4c3918359af6c1b20113c9821f54669e5e",
+      "bytes": 1957
+    }
+  ]
+}

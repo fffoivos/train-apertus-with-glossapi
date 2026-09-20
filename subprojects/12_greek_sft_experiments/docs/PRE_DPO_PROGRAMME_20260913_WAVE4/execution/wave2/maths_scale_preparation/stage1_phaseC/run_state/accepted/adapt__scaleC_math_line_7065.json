@@ -1,0 +1,50 @@
+{
+  "job_id": "adapt__scaleC_math_line_7065",
+  "row_id": "scaleC_math_line_7065",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "54ecfa29dd5b70205ff7a7af6f87b09eccab9b0bcea3fea65589617811cd3ea6",
+  "input_record_sha256": "f7eb95e4cf50c07039788de4222d639940178db22be75c16b0af28ec503a1cc4",
+  "payload_sha256": "4e1f81fdc3aa5f011f88603e8bdf7992374a929b9208642c32f101f052a64e62",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "2a750c822fa3971d7814769a56a4099c5b8094623695131c11d1d9445d0741f0",
+  "result": {
+    "row_id": "scaleC_math_line_7065",
+    "status": "candidate",
+    "problem_text": "Να βρείτε την απόσταση μεταξύ των σημείων $(2,1,-4)$ και $(5,8,-3).$",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Find the distance between the points",
+        "target_span": "Να βρείτε την απόσταση μεταξύ των σημείων",
+        "reason": "Πιστή απόδοση της μαθηματικής οδηγίας σε φυσικά ελληνικά."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "(2,1,-4)",
+          "role": "συντεταγμένες του πρώτου σημείου στον τρισδιάστατο χώρο",
+          "unit": null
+        },
+        {
+          "value": "(5,8,-3)",
+          "role": "συντεταγμένες του δεύτερου σημείου στον τρισδιάστατο χώρο",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Ζητείται η απόσταση μεταξύ δύο σημείων που ορίζονται από τρεις συντεταγμένες."
+      ],
+      "required_outputs": [
+        "Η απόσταση μεταξύ των σημείων $(2,1,-4)$ και $(5,8,-3)$."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

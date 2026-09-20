@@ -1,0 +1,53 @@
+{
+  "job_id": "adapt__scaleC_math_line_5094",
+  "row_id": "scaleC_math_line_5094",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "69217f776d639fc31ad2be4f4e0297e1e8ba24ca5dcd1c94bc3f0280563d6c56",
+  "input_record_sha256": "2586c93afb136e5f52748588c84f1195c483d6b6ff2ba3728f7c2d2701aa6b0f",
+  "payload_sha256": "cae5cb202296c0aef56af75b9fafa137b0a1aa6e9cc7946990e5819e573d2568",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "9fa4e2614679fa68006a2e9c04fc8e4ccb1d4c4bca0a4e1636323bc88b3ff551",
+  "result": {
+    "row_id": "scaleC_math_line_5094",
+    "status": "candidate",
+    "problem_text": "Ποιος είναι ο μικρότερος θετικός ακέραιος που διαιρείται με τρεις διαφορετικούς πρώτους αριθμούς;",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "What is the least positive integer that is divisible by three distinct primes?",
+        "target_span": "Ποιος είναι ο μικρότερος θετικός ακέραιος που διαιρείται με τρεις διαφορετικούς πρώτους αριθμούς;",
+        "reason": "Πιστή μετάφραση στα φυσικά ελληνικά, με διατήρηση όλων των μαθηματικών όρων και περιορισμών."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "1",
+          "role": "Κάτω όριο που υποδηλώνεται από την απαίτηση ο ακέραιος να είναι θετικός.",
+          "unit": null
+        },
+        {
+          "value": "3",
+          "role": "Πλήθος διαφορετικών πρώτων αριθμών που πρέπει να διαιρούν τον ζητούμενο ακέραιο.",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Ο ζητούμενος αριθμός είναι θετικός ακέραιος.",
+        "Ο ζητούμενος αριθμός διαιρείται με τρεις πρώτους αριθμούς.",
+        "Οι τρεις πρώτοι αριθμοί είναι μεταξύ τους διαφορετικοί.",
+        "Ζητείται ο ελάχιστος αριθμός που ικανοποιεί όλες τις συνθήκες."
+      ],
+      "required_outputs": [
+        "Ο μικρότερος θετικός ακέραιος που διαιρείται με τρεις διαφορετικούς πρώτους αριθμούς."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "created_at": "2026-09-13T14:13:18.714261+00:00",
+  "rows": 14,
+  "unchanged": 13,
+  "optional_edits_declined": 1,
+  "model_calls": 14,
+  "cumulative_stage_model_calls": 56,
+  "stage_model_cap": 72,
+  "candidate_bytes_unchanged": true,
+  "local_launcher_failures_separate": 22
+}

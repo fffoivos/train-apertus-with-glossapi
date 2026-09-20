@@ -1,0 +1,25 @@
+{
+  "schema_version": "krikri_v15_fresh_state_v1",
+  "captured_at": "2026-09-13T13:42:31Z",
+  "queue": {
+    "command": "squeue --me -h -o %i|%T|%P|%M|%l|%D|%R",
+    "active_jobs": 0,
+    "rows": []
+  },
+  "budget": {
+    "ledger_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/execution_state.json",
+    "ledger_sha256": "6b648fc8eee1b3d20c8fcb7ef9411f8510ce180c6a5bb01c9386f8cbc95341a6",
+    "cap_chf": 230.0,
+    "rate_chf_per_node_hour": 2.69,
+    "used_node_hours": 60.602,
+    "used_chf": 163.02,
+    "remaining_chf": 66.98,
+    "remaining_node_hours_from_chf": 24.8996,
+    "first_attempt_node_hours": 1.4167,
+    "first_attempt_projected_chf": 3.81,
+    "measurement_envelope_node_hours": 4.0,
+    "measurement_envelope_chf": 10.76,
+    "prior_conservative_chf": 164.54,
+    "reconciliation_chf": -1.52
+  }
+}

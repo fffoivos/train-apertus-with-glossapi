@@ -1,0 +1,30 @@
+{
+  "job_id": "verify_high__scaleC_math_line_3416",
+  "row_id": "scaleC_math_line_3416",
+  "stage": "verification_blind_high",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "e510e5688ed1f7ad3216431ed680b5b8cf60f277bc46c0fa6bca8c811f6d8a1d",
+  "input_record_sha256": "a71e6b80ad065000be7f7c6ec0410925ac71052ed676e3deeb890cfe7df0bb65",
+  "payload_sha256": "2777f54131b67adcaa3c134700d2c0d96a56c11ff94533a50dfebcb5c6358187",
+  "template_sha256": "67a04cee918f227aa582da70a6fcb66cc7eca7093bc64ae9c067ec87a3b4b1de",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "a2515b5013867b40697806c7ef23d7e5e85ce3fb1777ba2de4cafaf6375fcb4f",
+  "result": {
+    "row_id": "scaleC_math_line_3416",
+    "status": "candidate",
+    "solution_text": "Ομαδοποιούμε τους όρους ανά δύο:\n\\[\n(-1+2)+(-3+4)+\\cdots+(-9999+10000).\n\\]\nΚάθε ζεύγος έχει άθροισμα \\(1\\). Οι αριθμοί από το \\(1\\) έως το \\(10000\\) σχηματίζουν \\(10000/2=5000\\) τέτοια ζεύγη. Επομένως,\n\\[\n-1+2-3+4-\\cdots-9999+10000=5000\\cdot 1=5000.\n\\]\n\nΑπάντηση: \\(5000\\).",
+    "final_answers": [
+      {
+        "part": "Συνολικό άθροισμα",
+        "expression": "5000",
+        "unit": null,
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

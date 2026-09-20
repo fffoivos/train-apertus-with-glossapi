@@ -1,0 +1,54 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_2477",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική καταγραφή προβλήματος και λύσης· δεν υπάρχει αβεβαιότητα ιστορικής αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_314",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική καταγραφή προβλήματος και λύσης· δεν υπάρχει αβεβαιότητα ιστορικής αντιστοίχισης. Η επιτρεπτή προσαρμογή Wilson/δολάρια σε Βασίλης/ευρώ διατηρεί όλα τα δεδομένα και τον διδακτικό στόχο.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_2806",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "minor",
+          "quote": "Ο Ρούντι κωπηλατεί με τη βάρκα του",
+          "explanation": "Η προσαρμογή είναι ασυνεπής ως προς τα ονόματα: το Grayson αποδόθηκε ως Γρηγόρης, ενώ το Rudy παρέμεινε αγγλοσαξονικό ως Ρούντι. Αυτό δεν επηρεάζει τη μαθηματική ορθότητα ή την πιστότητα των δεδομένων.",
+          "suggested_action": "Καταγραφεί ως ήσσονος σημασίας εκκρεμότητα πολιτισμικής προσαρμογής· τυχόν αλλαγή του ονόματος πρέπει να γίνει μόνο σε επιτρεπόμενο στάδιο γλωσσικής/πολιτισμικής επιμέλειας."
+        }
+      ],
+      "provenance_note": "Μοναδική καταγραφή προβλήματος και λύσης· δεν υπάρχει αβεβαιότητα ιστορικής αντιστοίχισης.",
+      "verification_needed": []
+    }
+  ]
+}

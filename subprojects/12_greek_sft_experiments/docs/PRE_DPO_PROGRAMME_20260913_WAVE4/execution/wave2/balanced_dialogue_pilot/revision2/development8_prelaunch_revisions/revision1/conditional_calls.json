@@ -1,0 +1,17 @@
+{
+  "status": "templates_only_not_dispatchable_until_observed_defect_or_failed_attempt",
+  "semantic_repair": {
+    "cap": 2,
+    "model": "gpt-5.6-sol",
+    "effort": "high",
+    "schema": "schemas/semantic_repair.schema.json",
+    "template": "prompts/semantic_repair.txt",
+    "instantiation_gate": "Root records a concrete semantic defect after reading an authored candidate; candidate and named finding are then hash-bound."
+  },
+  "retry": {
+    "cap": 2,
+    "max_attempts_per_job": 2,
+    "instantiation_gate": "Only a failed primary attempt may retry; successful candidates are not sampled again."
+  },
+  "no_cap_reset": true
+}

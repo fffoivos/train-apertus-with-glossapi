@@ -1,0 +1,74 @@
+{
+  "job_id": "author__scale60_19_weekly_menu_false",
+  "row_id": "scale60_19_weekly_menu_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "a4279dd44926ac175365807ce17e80d021689739178fbc9c3af6e582b76c542d",
+  "input_record_sha256": "5d84fd3dd94346dfefb2842959872b6b44c387e976c79a741d935ea5ac58bdee",
+  "payload_sha256": "91e78b8a7ef35e955147bb60789f3dd75e466aca6051b791e988920a0112596f",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "2ad89896d79ff773d2d8804b49a6d022924b157a990b6285c6e3a4327615fd0a",
+  "result": {
+    "row_id": "scale60_19_weekly_menu_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_19_weekly_menu_false.u_context",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο του μενού γράφει: Τρίτη φακές, Τετάρτη ομελέτα, Πέμπτη ζυμαρικά.",
+        "train": false
+      },
+      {
+        "id": "scale60_19_weekly_menu_false.a_context",
+        "role": "assistant",
+        "content": "Βλέπω το μενού ανά ημέρα και μπορώ να ενημερώσω μόνο αυτό το πρόχειρο.",
+        "train": false
+      },
+      {
+        "id": "scale60_19_weekly_menu_false.u_decision",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο η Πέμπτη έχει ομελέτα. Άλλαξέ την τώρα σε σούπα.",
+        "train": false
+      },
+      {
+        "id": "scale60_19_weekly_menu_false.a_target",
+        "role": "assistant",
+        "content": "Η Πέμπτη στο τρέχον πρόχειρο είχε ζυμαρικά, όχι ομελέτα. Την άλλαξα σε σούπα.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_19_weekly_menu_false.u_decision",
+        "claim": "Στο τρέχον πρόχειρο η Πέμπτη έχει ομελέτα.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_19_weekly_menu_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Διόρθωσε σύντομα τον λανθασμένο ισχυρισμό ότι η Πέμπτη είχε ομελέτα.",
+          "Εφάρμοσε αμέσως τη σαφή αλλαγή της Πέμπτης σε σούπα στο εβδομαδιαίο μενού.",
+          "Ανάφερε συνοπτικά το νέο κειμενικό αποτέλεσμα."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "εβδομαδιαίο μενού.Thursday",
+        "before_json": "\"ζυμαρικά\"",
+        "after_json": "\"σούπα\"",
+        "evidence_ids": [
+          "scale60_19_weekly_menu_false.u_context",
+          "scale60_19_weekly_menu_false.u_decision",
+          "scale60_19_weekly_menu_false.a_target"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

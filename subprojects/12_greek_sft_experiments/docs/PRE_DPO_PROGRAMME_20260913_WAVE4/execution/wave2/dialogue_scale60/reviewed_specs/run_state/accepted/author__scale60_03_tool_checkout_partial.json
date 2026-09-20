@@ -1,0 +1,72 @@
+{
+  "job_id": "author__scale60_03_tool_checkout_partial",
+  "row_id": "scale60_03_tool_checkout_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "114d9ffd171ae2c349f60a84adb025bf6b3946c721cd69a1253580595d2ec355",
+  "input_record_sha256": "8b2d72128167e4fabd012ed547f33aeae733b0aa2ff8950b574a691b11d204ed",
+  "payload_sha256": "0f949fb8e69bfd81855bba73bc3684a232760b4797cf3ae79838f0e405679952",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "a9ca314625dab5aa2e2a6f6f504aa8ce2b4df2c2e610362756e41e081b5891e5",
+  "result": {
+    "row_id": "scale60_03_tool_checkout_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_03_tool_checkout_partial.u_context",
+        "role": "user",
+        "content": "Το δελτίο γράφει 8 δράπανα συνολικά: 3 είναι δανεισμένα και 1 διαφορετικό δράπανο βρίσκεται για επισκευή.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_partial.a_context",
+        "role": "assistant",
+        "content": "Θα υπολογίσω τη διαθεσιμότητα μόνο από αυτές τις τρεις κατηγορίες.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_partial.u_decision",
+        "role": "user",
+        "content": "Με βάση το δελτίο, τα 3 δράπανα είναι δανεισμένα και απομένουν 5 διαθέσιμα.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_partial.a_target",
+        "role": "assistant",
+        "content": "Τα 3 δανεισμένα είναι σωστά· όμως διαθέσιμα απομένουν 4, όχι 5, επειδή αφαιρείται και το 1 δράπανο που βρίσκεται για επισκευή.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_03_tool_checkout_partial.u_decision",
+        "claim": "Τα 3 δράπανα είναι δανεισμένα.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "scale60_03_tool_checkout_partial.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Αναγνώρισε ότι ο αριθμός των δανεισμένων δραπάνων είναι σωστός."
+        ]
+      },
+      {
+        "turn_id": "scale60_03_tool_checkout_partial.u_decision",
+        "claim": "Απομένουν 5 διαθέσιμα δράπανα.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_03_tool_checkout_partial.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Διόρθωσε τα διαθέσιμα δράπανα σε 4, αφαιρώντας από τα 8 τα 3 δανεισμένα και το 1 που βρίσκεται για επισκευή."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

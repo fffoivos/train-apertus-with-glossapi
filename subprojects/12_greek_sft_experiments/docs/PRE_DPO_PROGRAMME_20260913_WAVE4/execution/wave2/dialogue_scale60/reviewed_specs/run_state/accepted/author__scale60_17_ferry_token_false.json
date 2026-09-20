@@ -1,0 +1,71 @@
+{
+  "job_id": "author__scale60_17_ferry_token_false",
+  "row_id": "scale60_17_ferry_token_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "0d0d628587e324b3210b2910887ae1f06e22972005dc3ff7f60501c632bcba6d",
+  "input_record_sha256": "b115b436671253468b5c1980c667c4fef5031f617d2c4b079462c08eebcc0a0f",
+  "payload_sha256": "66d62652e068884253a34d4133aa91e02b15edcf5637a2a44d0d12eb627efef8",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "3077ef73a30a6ded02322fdf643637ee538a13cf8e08420e8dbfadcd7b24de74",
+  "result": {
+    "row_id": "scale60_17_ferry_token_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_17_ferry_token_false.u_context",
+        "role": "user",
+        "content": "Η κάρτα του παιχνιδιού λέει ότι κάθε κόκκινο εισιτήριο οδηγεί στην προβλήτα 1 και κάθε πράσινο στην προβλήτα 2. Το εισιτήριο Ζ είναι κόκκινο.",
+        "train": false
+      },
+      {
+        "id": "scale60_17_ferry_token_false.a_context",
+        "role": "assistant",
+        "content": "Θα απαντήσω μέσα στους κανόνες του παιχνιδιού.",
+        "train": false
+      },
+      {
+        "id": "scale60_17_ferry_token_false.u_decision",
+        "role": "user",
+        "content": "Με τον κανόνα της κάρτας, το εισιτήριο Ζ οδηγεί στην προβλήτα 2.",
+        "train": false
+      },
+      {
+        "id": "scale60_17_ferry_token_false.a_target",
+        "role": "assistant",
+        "content": "Αυτό είναι λάθος: αφού το εισιτήριο Ζ είναι κόκκινο, ο κανόνας της κάρτας το οδηγεί στην προβλήτα 1, όχι στην προβλήτα 2.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_17_ferry_token_false.u_decision",
+        "claim": "Με τον κανόνα της κάρτας, το εισιτήριο Ζ οδηγεί στην προβλήτα 2.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_17_ferry_token_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα τον εσφαλμένο ισχυρισμό.",
+          "Να εφαρμόσει τον ορατό κανόνα και να καταλήξει ότι το κόκκινο εισιτήριο Ζ οδηγεί στην προβλήτα 1."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "pier",
+        "before_json": "1",
+        "after_json": "1",
+        "evidence_ids": [
+          "scale60_17_ferry_token_false.u_context"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

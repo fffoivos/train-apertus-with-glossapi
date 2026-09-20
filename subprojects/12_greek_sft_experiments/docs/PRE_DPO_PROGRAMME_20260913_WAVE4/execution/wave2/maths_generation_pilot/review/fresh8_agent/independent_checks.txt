@@ -1,0 +1,8 @@
+1334 {'x_intercepts': [-2, 3], 'y_intercept': 18, 'area': Fraction(45, 1)}
+1379 {'real_roots': [-1, 0, 1], 'count': 3}
+3775 {'polynomial': 'k*x^2-2*x-2', 'discriminant': '4+8k', 'k=0_solution': [Fraction(-1, 1)], 'k=-1/2_factor': '-(x+2)^2/2', 'denominator_at_double_root': Fraction(0, 1)}
+4646 {'circle_coefficients': {'A': Fraction(89, 30), 'B': Fraction(1, 30), 'C': Fraction(-51, 5)}, 'quartic_coefficients': [Fraction(1, 1), Fraction(89, 30), Fraction(-51, 5), Fraction(1, 30), Fraction(1, 1)], 'x_roots': [Fraction(2, 1), Fraction(-5, 1), Fraction(1, 3), Fraction(-3, 10)], 'quartic_residuals': [Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1)], 'root_product': Fraction(1, 1), 'fourth_point': (Fraction(-3, 10), Fraction(-10, 3)), 'circle_residual': Fraction(0, 1)}
+2676 {'area_from_AE_CD': Fraction(20, 1), 'CE': Fraction(10, 1)}
+3093 {'perimeter_ABC': 54, 'r_over_h': Fraction(4, 9), 'similarity_scale': Fraction(5, 9), 'perimeter_AMN': Fraction(30, 1)}
+3125 {'minor_axis': 2, 'major_to_minor': Fraction(3, 2), 'major_axis': Fraction(3, 1)}
+5977 {'AD_squared': 289, 'AD': 17, 'is_exact_square': True}

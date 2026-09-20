@@ -1,0 +1,47 @@
+{
+  "source": {
+    "repo": "nvidia/OpenMathInstruct-2",
+    "revision": "469216e3f46f4dacf476b382e192485ea51a143e",
+    "split": "train_1M",
+    "file": "data/train_1M-00000-of-00003.parquet",
+    "url": "https://huggingface.co/datasets/nvidia/OpenMathInstruct-2/resolve/469216e3f46f4dacf476b382e192485ea51a143e/data/train_1M-00000-of-00003.parquet",
+    "bytes": 212931526,
+    "sha256": "93700f39cdc87994f2c9a6ad62e1d62e09467793f57d376cfab722757ff26e1c"
+  },
+  "data_worker": {
+    "target": "clariden",
+    "mode": "bounded_cpu_pilot",
+    "max_node_hours": 0.5,
+    "max_attempts": 1,
+    "maximum_planning_chf": 1.345
+  },
+  "shard_path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/source/train_1M-00000-of-00003.parquet",
+  "output_dir": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/outputs",
+  "receipt_path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/run/receipts/openmath.json",
+  "math_train_path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/inputs/math_train.jsonl",
+  "family_inventory_path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/inputs/math7500_family_inventory.jsonl",
+  "split_path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/inputs/proposed_family_splits.jsonl",
+  "local_inputs": [
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/inputs/math_train.jsonl",
+      "local_source": "/Users/foivoskarounos-zamparloukos/sft_annot/math_src/math_train.jsonl",
+      "sha256": "7c2b6be1ff20ece021d27e68103bcaa27935489247f179a1810ca72d54b379bf",
+      "bytes": 6718886
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/inputs/math7500_family_inventory.jsonl",
+      "local_source": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_scale_preparation/math7500_family_inventory.jsonl",
+      "sha256": "5e21b80967bd49bf8482e8ee38691de4e9571b42f37a6df8bf7c600b92059b41",
+      "bytes": 6140789
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/inputs/proposed_family_splits.jsonl",
+      "local_source": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_scale_preparation/proposed_family_splits.jsonl",
+      "sha256": "e3ab829b1cfa8f4e548f3c1c96e10ccb57508f59325d6507e48a6df3a2e9ec44",
+      "bytes": 52287
+    }
+  ],
+  "implementation_sha256": "33505d07b73e596dceefe1a09c0d7f409eeec8608649f18d27b073ff209b95d2",
+  "source_card_sha256": "8d0513c2f85e6ee1258f109017c2565f638cc10a72f1ffbee34ab8601c0dc199",
+  "status": "prepared_pending_canonical_compile_remote_binding_and_exact_scheduler_test"
+}

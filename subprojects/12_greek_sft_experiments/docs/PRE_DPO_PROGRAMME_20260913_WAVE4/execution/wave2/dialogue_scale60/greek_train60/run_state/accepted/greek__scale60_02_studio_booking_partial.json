@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_02_studio_booking_partial",
+  "row_id": "scale60_02_studio_booking_partial",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "7b285b9274b73590aa98b6c1523516f763328391013fcb8192e26a8dd65ceb91",
+  "input_record_sha256": "edd5275df6aa9b770350106f99001feac8e3f9a2c2bfb654f7166c7edb3c2752",
+  "payload_sha256": "3b922e3a3f051aed743b807055fa1f412e112ec5e91edde9e06b10904dbadd98",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "a5b0cd43c3576a2329232f3a91031c360d76d651a073a37eaf5d2b13245d7456",
+  "result": {
+    "row_id": "scale60_02_studio_booking_partial",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_02_studio_booking_partial.u_context",
+        "role": "user",
+        "content": "Στο σχέδιο της κράτησης φαίνεται Τετάρτη στις 19:00, αίθουσα 2, χωρητικότητα 12 ατόμων και χωρίς προβολέα. Η διάρκεια δεν έχει καταγραφεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_02_studio_booking_partial.a_context",
+        "role": "assistant",
+        "content": "Έχω το σχέδιο μπροστά μου και μπορώ να ελέγξω ό,τι είναι γραμμένο σε αυτό.",
+        "train": false
+      },
+      {
+        "id": "scale60_02_studio_booking_partial.u_decision",
+        "role": "user",
+        "content": "Στο σχέδιο είναι Τετάρτη, αλλά στις 18:00. Άλλαξε τώρα τη χωρητικότητα σε 14 άτομα.",
+        "train": false
+      },
+      {
+        "id": "scale60_02_studio_booking_partial.a_target",
+        "role": "assistant",
+        "content": "Η Τετάρτη είναι σωστή, αλλά στο σχέδιο η ώρα είναι 19:00, όχι 18:00. Άλλαξα τη χωρητικότητα στο σχέδιο κράτησης σε 14 άτομα.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

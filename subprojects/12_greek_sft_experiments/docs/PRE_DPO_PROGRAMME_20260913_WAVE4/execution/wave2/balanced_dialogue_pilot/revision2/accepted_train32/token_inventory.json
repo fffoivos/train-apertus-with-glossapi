@@ -1,0 +1,420 @@
+{
+  "status": "pass_exact_reader_tokenizer_and_target_mask",
+  "rows": 32,
+  "input_tokens": 4981,
+  "supervised_tokens": 993,
+  "max_row_tokens": 223,
+  "all_within_4096": true,
+  "decoded_supervision_matches_final_assistant_plus_eot": 32,
+  "projection_sha256": "7220b84b374d69b9ceceb6a90c2c244d76a59b2532065af0895e9eb03f13cb0f",
+  "canonical_trainer_sha256": "f8de43b1f8b99959741e6c4a9158ad99fd31ffc5b3b1636c1ac07a925df39b4d",
+  "tokenizer_reference": "../../../maths_generation_pilot/final_candidates/token_inventory.json",
+  "items": [
+    {
+      "row_id": "pilot48_01_false",
+      "input_tokens": 134,
+      "supervised_tokens": 24,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_01_partial",
+      "input_tokens": 151,
+      "supervised_tokens": 40,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_01_true",
+      "input_tokens": 153,
+      "supervised_tokens": 19,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_01_unresolved",
+      "input_tokens": 129,
+      "supervised_tokens": 31,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_02_false",
+      "input_tokens": 166,
+      "supervised_tokens": 33,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_02_partial",
+      "input_tokens": 173,
+      "supervised_tokens": 31,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_02_true",
+      "input_tokens": 151,
+      "supervised_tokens": 26,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_02_unresolved",
+      "input_tokens": 109,
+      "supervised_tokens": 21,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_03_false",
+      "input_tokens": 189,
+      "supervised_tokens": 38,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_03_partial",
+      "input_tokens": 221,
+      "supervised_tokens": 59,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_03_true",
+      "input_tokens": 183,
+      "supervised_tokens": 30,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_03_unresolved",
+      "input_tokens": 131,
+      "supervised_tokens": 19,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_04_false",
+      "input_tokens": 182,
+      "supervised_tokens": 48,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_04_partial",
+      "input_tokens": 184,
+      "supervised_tokens": 46,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_04_true",
+      "input_tokens": 162,
+      "supervised_tokens": 29,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_04_unresolved",
+      "input_tokens": 130,
+      "supervised_tokens": 35,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_06_false",
+      "input_tokens": 161,
+      "supervised_tokens": 25,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_06_partial",
+      "input_tokens": 164,
+      "supervised_tokens": 32,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_06_true",
+      "input_tokens": 147,
+      "supervised_tokens": 23,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_06_unresolved",
+      "input_tokens": 158,
+      "supervised_tokens": 37,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_07_false",
+      "input_tokens": 137,
+      "supervised_tokens": 22,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_07_partial",
+      "input_tokens": 153,
+      "supervised_tokens": 26,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_07_true",
+      "input_tokens": 144,
+      "supervised_tokens": 23,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_07_unresolved",
+      "input_tokens": 137,
+      "supervised_tokens": 31,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_08_false",
+      "input_tokens": 136,
+      "supervised_tokens": 25,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_08_partial",
+      "input_tokens": 155,
+      "supervised_tokens": 38,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_08_true",
+      "input_tokens": 120,
+      "supervised_tokens": 14,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_08_unresolved",
+      "input_tokens": 155,
+      "supervised_tokens": 37,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_10_false",
+      "input_tokens": 195,
+      "supervised_tokens": 42,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_10_partial",
+      "input_tokens": 223,
+      "supervised_tokens": 60,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_10_true",
+      "input_tokens": 129,
+      "supervised_tokens": 5,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_10_unresolved",
+      "input_tokens": 119,
+      "supervised_tokens": 24,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "user",
+        "assistant"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "job_id": "greek__scale60_01_recipe_draft_partial",
+  "row_id": "scale60_01_recipe_draft_partial",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "3fefb28bb0e2381ab291eff9ddf9d3f3cd2e5f8c583eb8e67b0a07c2340cb2d5",
+  "input_record_sha256": "c6a623e9b876389c245692f3b81f19da660a27eace60abb5e0c8a8f09a84b8d5",
+  "payload_sha256": "92d853eaf71491d1b340d699b1e16060212e39e19879be71d464631717577e57",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "33e840d52fd763e6b066240e663f8f0a34b35f94e942aa8cb4f325e6cc261e7e",
+  "result": {
+    "row_id": "scale60_01_recipe_draft_partial",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "scale60_01_recipe_draft_partial.u_context",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο της συνταγής γράφει: 4 μερίδες, 1 κουταλιά λάδι, φούρνος στους 180 βαθμούς και γαρνίρισμα με μαϊντανό.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_partial.a_context",
+        "role": "assistant",
+        "content": "Βλέπω το τρέχον πρόχειρο· οι παλιότερες εκδοχές δεν εμφανίζονται εδώ.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_partial.u_decision",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο είναι 4 μερίδες, αλλά ο φούρνος στους 170 βαθμούς. Πρόσθεσε χρόνο ψησίματος 25 λεπτά.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_partial.a_target",
+        "role": "assistant",
+        "content": "Οι 4 μερίδες συμφωνούν με το τρέχον πρόχειρο, αλλά η θερμοκρασία του φούρνου αναγράφεται ως 180 βαθμοί, όχι 170. Πρόσθεσα στο πρόχειρο χρόνο ψησίματος 25 λεπτών.",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "scale60_01_recipe_draft_partial.a_target",
+        "before": "Οι 4 μερίδες συμφωνούν με το τρέχον πρόχειρο, αλλά ο φούρνος αναγράφεται στους 180, όχι στους 170 βαθμούς. Πρόσθεσα στο πρόχειρο χρόνο ψησίματος 25 λεπτά.",
+        "after": "Οι 4 μερίδες συμφωνούν με το τρέχον πρόχειρο, αλλά η θερμοκρασία του φούρνου αναγράφεται ως 180 βαθμοί, όχι 170. Πρόσθεσα στο πρόχειρο χρόνο ψησίματος 25 λεπτών.",
+        "error": "Λανθασμένη σύναψη και πτώση στη διατύπωση της θερμοκρασίας και της διάρκειας.",
+        "reason": "Δεν «αναγράφεται ο φούρνος» σε βαθμούς· αναγράφεται η θερμοκρασία του. Επίσης, η διάρκεια που προσδιορίζει τον χρόνο ψησίματος αποδίδεται φυσικά με γενική: «25 λεπτών»."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "at": "2026-09-13T13:25:59.297344+00:00",
+  "rejected_attempts": 4,
+  "generation_completed": 0,
+  "request_error": "invalid_json_schema",
+  "archived_revision": "outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/revisions/v1_api_schema_rejected",
+  "runner_sha256": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005",
+  "inputs_changed": false,
+  "prompts_changed": false,
+  "cap_unchanged": 136
+}

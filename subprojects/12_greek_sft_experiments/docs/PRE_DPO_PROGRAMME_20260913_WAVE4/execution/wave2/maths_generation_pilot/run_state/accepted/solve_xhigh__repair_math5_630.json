@@ -1,0 +1,30 @@
+{
+  "job_id": "solve_xhigh__repair_math5_630",
+  "row_id": "repair_math5_630",
+  "stage": "solution_xhigh",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "xhigh",
+  "job_spec_sha256": "a70294163a14492f2f8b82d5e424cf92161f379e65ad7cf0dd249cfaa9fb7c20",
+  "input_record_sha256": "e3d0e0eecd6508b8c2118eae2db3c5a8a0cf357d192febb372bfb366e2ad5167",
+  "payload_sha256": "f78f009e911fa6aea78ac939d8c8d485753627bb9185fc0fb3248c10365a5106",
+  "template_sha256": "ea1afd16c4910e9930760e3f22b232e0d14451f207ea4290ea79cc2d231e6a45",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "436037183ce1f785a44175623612594b9efc2f8abf9bc48c844627fcd1d7416a",
+  "result": {
+    "row_id": "repair_math5_630",
+    "status": "candidate",
+    "solution_text": "Θέτουμε \\(AC=x>0\\) και επιλέγουμε σύστημα συντεταγμένων με\n\\[\nC=(0,0),\\qquad B=(4,0),\\qquad D=(2,0).\n\\]\nΕπειδή \\(\\angle C=60^\\circ\\), μπορούμε να γράψουμε\n\\[\nA=\\left(\\frac{x}{2},\\frac{\\sqrt3x}{2}\\right).\n\\]\nΤότε\n\\[\n\\overrightarrow{AB}=\\left(4-\\frac{x}{2},-\\frac{\\sqrt3x}{2}\\right),\n\\qquad\n\\overrightarrow{AD}=\\left(2-\\frac{x}{2},-\\frac{\\sqrt3x}{2}\\right).\n\\]\nΤο εσωτερικό γινόμενό τους είναι\n\\[\n\\overrightarrow{AB}\\cdot\\overrightarrow{AD}\n=\\left(4-\\frac{x}{2}\\right)\\left(2-\\frac{x}{2}\\right)+\\frac{3x^2}{4}\n=x^2-3x+8.\n\\]\nΕπειδή\n\\[\nx^2-3x+8=\\left(x-\\frac32\\right)^2+\\frac{23}{4}>0,\n\\]\nη γωνία \\(\\angle BAD\\) είναι οξεία. Επιπλέον, το μέτρο της ορίζουσας των δύο διανυσμάτων είναι\n\\[\n\\left|\\det(\\overrightarrow{AB},\\overrightarrow{AD})\\right|=\\sqrt3x.\n\\]\nΆρα\n\\[\n\\tan\\angle BAD\n=\\frac{\\sqrt3x}{x^2-3x+8}\n=\\frac{\\sqrt3}{x-3+\\frac8x}.\n\\]\nΓια \\(x>0\\), από την ανισότητα αριθμητικού και γεωμετρικού μέσου,\n\\[\nx+\\frac8x\\ge 2\\sqrt8=4\\sqrt2,\n\\]\nμε ισότητα όταν \\(x=\\sqrt8=2\\sqrt2\\). Επομένως\n\\[\nx-3+\\frac8x\\ge 4\\sqrt2-3\n\\]\nκαι συνεπώς\n\\[\n\\tan\\angle BAD\\le \\frac{\\sqrt3}{4\\sqrt2-3}.\n\\]\nΗ ισότητα πράγματι επιτυγχάνεται για \\(AC=2\\sqrt2\\), το οποίο δίνει μη εκφυλισμένο τρίγωνο.\n\nΑπάντηση: \\(\\displaystyle \\frac{\\sqrt3}{4\\sqrt2-3}\\), δηλαδή η επιλογή \\(\\mathrm{(D)}\\).",
+    "final_answers": [
+      {
+        "part": "Μέγιστη τιμή της \\(\\tan\\angle BAD\\)",
+        "expression": "\\frac{\\sqrt{3}}{4\\sqrt{2}-3}\\;\\text{(D)}",
+        "unit": null,
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

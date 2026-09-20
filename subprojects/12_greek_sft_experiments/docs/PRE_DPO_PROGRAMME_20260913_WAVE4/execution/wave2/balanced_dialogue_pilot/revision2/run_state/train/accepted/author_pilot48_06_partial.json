@@ -1,0 +1,63 @@
+{
+  "job_id": "author_pilot48_06_partial",
+  "row_id": "pilot48_06_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "ac4a7f946c3f9eaefab5f41f8a31bc49135292f193502442b44a43ff7549d26d",
+  "input_record_sha256": "f13badf11684e9b761d698841047d6e11383cea2227ee20dc7de5bc6dd6963c6",
+  "payload_sha256": "babd9e005955ad72bb6e3d5215db1b7a10cbcff242a21528446ccbf4d0d9a7e1",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "71f70e637f816b995b7da8a1df08775d3e150d95e522e5c985af43fc431e2c73",
+  "result": {
+    "row_id": "pilot48_06_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_06_partial.u_context",
+        "role": "user",
+        "content": "Στο ημερολόγιο γράφει ότι το φυτό ποτίστηκε την ημέρα 7, σήμερα είναι η ημέρα 10 και το διάστημα ποτίσματος είναι 4 ημέρες.",
+        "train": false
+      },
+      {
+        "id": "pilot48_06_partial.a_context",
+        "role": "assistant",
+        "content": "Με αυτά τα στοιχεία, η επόμενη προγραμματισμένη ημέρα ποτίσματος είναι η ημέρα 11.",
+        "train": false
+      },
+      {
+        "id": "pilot48_06_partial.u_decision",
+        "role": "user",
+        "content": "Άντε πάλι. Έχουν περάσει 3 ημέρες και πρέπει να ποτιστεί σήμερα.",
+        "train": false
+      },
+      {
+        "id": "pilot48_06_partial.a_target",
+        "role": "assistant",
+        "content": "Έχουν πράγματι περάσει 3 ημέρες, αλλά σύμφωνα με το ημερολόγιο δεν είναι η ημέρα ποτίσματος σήμερα· η επόμενη είναι η ημέρα 11.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_06_partial.u_decision",
+        "claim": "Έχουν περάσει 3 ημέρες και πρέπει να ποτιστεί σήμερα.",
+        "truth_category": "partial",
+        "evidence_ids": [
+          "pilot48_06_partial.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να αναγνωρίσει ότι έχουν περάσει 3 ημέρες.",
+          "Να διορθώσει ότι το πότισμα δεν είναι προγραμματισμένο για σήμερα.",
+          "Να αναφέρει συνοπτικά ότι η επόμενη ημέρα ποτίσματος είναι η ημέρα 11."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

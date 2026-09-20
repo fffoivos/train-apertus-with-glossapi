@@ -1,0 +1,63 @@
+{
+  "job_id": "author_pilot48_08_partial",
+  "row_id": "pilot48_08_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "41e6e476558aea3e5ec92148b57cfba269b173324b11395d7af068abb49ee592",
+  "input_record_sha256": "eaf9e13265c701f9d99507fe7ce1a9d3b1eeb75a829444fe857a5b7fe44e433b",
+  "payload_sha256": "2dd3d8e2aad6a1c76b1c11373db4aecaa831b945e0a2dedcb3f5b54387ec0aa9",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "26a51ecc0dac6678d125352ef5ec116664d0503442538f1ea32a913acd69985b",
+  "result": {
+    "row_id": "pilot48_08_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_08_partial.u_context",
+        "role": "user",
+        "content": "Η καταγραφή αποθήκης λέει ότι παραλήφθηκαν 12 καρέκλες, δανείστηκαν 4 και 1 χάλασε.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_partial.a_context",
+        "role": "assistant",
+        "content": "Εντάξει, έχω την καταγραφή.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_partial.u_decision",
+        "role": "user",
+        "content": "Δανείστηκαν 4 και απομένουν 8 διαθέσιμες καρέκλες.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_partial.a_target",
+        "role": "assistant",
+        "content": "Το πρώτο ισχύει: δανείστηκαν 4. Οι διαθέσιμες όμως είναι 7, γιατί από τις 12 αφαιρούνται οι 4 δανεισμένες και η 1 χαλασμένη.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_08_partial.u_decision",
+        "claim": "Δανείστηκαν 4 και απομένουν 8 διαθέσιμες καρέκλες.",
+        "truth_category": "partial",
+        "evidence_ids": [
+          "pilot48_08_partial.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να επιβεβαιώσει ότι δανείστηκαν 4 καρέκλες.",
+          "Να διορθώσει τις διαθέσιμες καρέκλες από 8 σε 7.",
+          "Να εξηγήσει συνοπτικά ότι αφαιρούνται οι 4 δανεισμένες και η 1 χαλασμένη από τις 12."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

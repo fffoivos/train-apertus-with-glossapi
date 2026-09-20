@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_479",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το πρόβλημα και η λύση προέρχονται από μοναδικές εγγραφές, χωρίς αβεβαιότητα ιστορικής αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_875",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το πρόβλημα και η λύση προέρχονται από μοναδικές εγγραφές. Η προσαρμογή του ονόματος Bella σε «Βασιλική» είναι συνεπής και δεν μεταβάλλει το μαθηματικό περιεχόμενο.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_747",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχουν δύο αποθηκευμένες ελληνικές εκδοχές του προβλήματος και η ιστορική αντιστοίχιση της επιλεγμένης λύσης με την τελευταία εκδοχή δεν είναι αποδεδειγμένη. Ωστόσο, οι δύο εκδοχές διαφέρουν μόνο στη συνώνυμη διατύπωση «Να δώσετε»/«Να γράψετε» και είναι μαθηματικά ισοδύναμες, ενώ η λύση ταιριάζει και στις δύο.",
+      "verification_needed": []
+    }
+  ]
+}

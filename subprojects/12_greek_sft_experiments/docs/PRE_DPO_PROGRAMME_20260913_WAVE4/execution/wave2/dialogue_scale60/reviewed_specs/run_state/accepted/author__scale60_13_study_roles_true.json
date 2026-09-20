@@ -1,0 +1,62 @@
+{
+  "job_id": "author__scale60_13_study_roles_true",
+  "row_id": "scale60_13_study_roles_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "bd3be1eb8589f915db8f65852506d1150316f39d00139144aada6ce881a8a64f",
+  "input_record_sha256": "f5f72173df28fd1a2842168f9ab1e2b2b35c33411ed98241ad4bddc27643fcb7",
+  "payload_sha256": "13bdbe1d7c843876645a65c5155cb37cb9b278a85cc9b66f08759547a65466d0",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "da0336d2ff762a94ee85c5f5b172f332c347cac611169595af0696d65b4e235f",
+  "result": {
+    "row_id": "scale60_13_study_roles_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_13_study_roles_true.u_context",
+        "role": "user",
+        "content": "Στις σημειώσεις, η Δανάη ανέλαβε τον προβολέα, ο Ορέστης την προέκταση ρεύματος και η Λία τα εισιτήρια.",
+        "train": false
+      },
+      {
+        "id": "scale60_13_study_roles_true.a_context",
+        "role": "assistant",
+        "content": "Θα κρατήσω κάθε αντικείμενο συνδεδεμένο με το πρόσωπο που το ανέλαβε.",
+        "train": false
+      },
+      {
+        "id": "scale60_13_study_roles_true.u_decision",
+        "role": "user",
+        "content": "Ωραία, λοιπόν: Στις σημειώσεις, η Δανάη έχει αναλάβει τον προβολέα. Γράψε συνοπτικά και τις τρεις αναθέσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_13_study_roles_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά. Δανάη — προβολέας, Ορέστης — προέκταση ρεύματος, Λία — εισιτήρια.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_13_study_roles_true.u_decision",
+        "claim": "Στις σημειώσεις, η Δανάη έχει αναλάβει τον προβολέα.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "scale60_13_study_roles_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να αναγνωρίσει ότι ο ισχυρισμός υποστηρίζεται από τις ορατές σημειώσεις.",
+          "Να συνοψίσει σωστά και τις τρεις αναθέσεις."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "job_id": "author_pilot48_07_partial",
+  "row_id": "pilot48_07_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "02cfe96772792a5a0a1e10fc5ffa32b72c1d842db4b25cc765cc06b012ea79bf",
+  "input_record_sha256": "d9f63b2c8a8e92b3c8b69456fd0a3a29fed134a8002f6730b543d86a44392bdc",
+  "payload_sha256": "0f723ad01ba9b0631dceb5ebea9efe0e334cbf546175f4732f23ba8baab938a6",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "1d928501ca6efb02869d075d4ea589504187e29d7b52ea7ee4bc6034268e6760",
+  "result": {
+    "row_id": "pilot48_07_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_07_partial.u_context",
+        "role": "user",
+        "content": "Το απόσπασμα διαδρομής δείχνει σύνδεση Αφετηρία–Πλατεία και Πλατεία–Μουσείο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_07_partial.a_context",
+        "role": "assistant",
+        "content": "Βλέπω τις δύο συνδέσεις: Αφετηρία–Πλατεία και Πλατεία–Μουσείο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_07_partial.u_decision",
+        "role": "user",
+        "content": "Νομίζω. Το Μουσείο είναι προσβάσιμο και υπάρχει απευθείας σύνδεση.",
+        "train": false
+      },
+      {
+        "id": "pilot48_07_partial.a_target",
+        "role": "assistant",
+        "content": "Το Μουσείο είναι προσβάσιμο, αλλά όχι απευθείας: η διαδρομή περνά από την Πλατεία.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_07_partial.u_decision",
+        "claim": "Το Μουσείο είναι προσβάσιμο και υπάρχει απευθείας σύνδεση.",
+        "truth_category": "partial",
+        "evidence_ids": [
+          "pilot48_07_partial.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να επιβεβαιώσει ότι το Μουσείο είναι προσβάσιμο.",
+          "Να διορθώσει ότι η σύνδεση δεν είναι απευθείας.",
+          "Να εξηγήσει συνοπτικά ότι η διαδρομή περνά από την Πλατεία."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

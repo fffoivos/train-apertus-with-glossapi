@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_3428",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The single Greek solution record is paired with a single problem record. The adaptation from Randy/dollars to Ραφαήλ/euros preserves the quantities, relationships, and teaching objective.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3984",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The single Greek solution record is paired with a single problem record. The WhatsApp setting is retained coherently, and all four daily message counts are handled correctly.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_489",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The problem text is marked stable and has one associated Greek solution record. The solution uses the standard intended convention that “projection” means orthogonal projection and matches the supplied reference.",
+      "verification_needed": []
+    }
+  ]
+}

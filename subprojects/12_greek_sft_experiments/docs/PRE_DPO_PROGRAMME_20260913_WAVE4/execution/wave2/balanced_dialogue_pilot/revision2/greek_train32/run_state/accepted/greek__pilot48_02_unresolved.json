@@ -1,0 +1,40 @@
+{
+  "job_id": "greek__pilot48_02_unresolved",
+  "row_id": "pilot48_02_unresolved",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "bd5764891a520fcaa2f6e18a7dcff3b20ef5dc30f6933a1d07a78be616fd0a17",
+  "input_record_sha256": "9c14294b5db4beadb17db64326b1ca00a3edd4d5adf87ea91e154ff0b591d6eb",
+  "payload_sha256": "c28e64e9ca72e86fc5ca5fefc01d49795b3e11acfd4929e6d22ddf80d1e4702b",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "e960bd6fee044bf52e51da638209f79609ce83b4f0c40f30a59bbc8052eefa57",
+  "result": {
+    "row_id": "pilot48_02_unresolved",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_02_unresolved.u_context",
+        "role": "user",
+        "content": "Ο τρέχων κατάλογος έχει την Άννα και τη Μαρία.",
+        "train": false
+      },
+      {
+        "id": "pilot48_02_unresolved.u_decision",
+        "role": "user",
+        "content": "Νομίζω... Αφαίρεσέ την από τον κατάλογο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_02_unresolved.a_target",
+        "role": "assistant",
+        "content": "Δεν είναι σαφές αν εννοείς την Άννα ή τη Μαρία. Ποια από τις δύο να αφαιρέσω;",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

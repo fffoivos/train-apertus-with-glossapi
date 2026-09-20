@@ -1,0 +1,125 @@
+{
+  "audit_date": "2026-09-13",
+  "scope": {
+    "project": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments",
+    "benchmark_rows_used_for_probe_design": 0,
+    "official_scores_changed": false,
+    "source_datasets_changed": false,
+    "review_method": "Sol agent review with no additional model subprocesses"
+  },
+  "source_hashes": {
+    "ifbench_el_checker": "e43935e9c102d19e6a432fe33a2c1567c7294addf404602eb449d647e66314c4",
+    "ifbench_el_scorer": "d2e165d0170de75b5c49f8f26cc50b5bc8c1227e1dcddcf3ba1f92418c203287",
+    "ifbench_upstream_checker": "a76a3b300b531b95200e53427c6b1fbb72b671cf6d358796797c0fa4b6c7c44f",
+    "ifbench_el_prompts": "4017da04abbfd81725c6cd9bcae1a0716c44dddafe08881fee38334846cbcbaa",
+    "greek_if_v1v2_edited": "5443d0bf7fdac0b5ae3b3351feb4e08b5e2b21bea14a192d7481c3236236d809",
+    "greek_if_v3_edited": "77132d050309709cb9ad95ed91b3f1de0bf824c63b3c0e1d83668e2b1f01b320",
+    "greek_if_final": "8c96418967453c43c10c4850f7ca07f5179d0c06bc140c9a20752bbb4ee680bf"
+  },
+  "ifbench_words_inventory": {
+    "items": 82,
+    "instruction_instances": 86,
+    "families": 13,
+    "stored_runs_checked": 10,
+    "blank_responses": 0,
+    "punctuation_only_responses": 0,
+    "stored_passes": 26,
+    "stored_instruction_instances": 860,
+    "family_instances_per_run": {
+      "words:alphabet": 6,
+      "words:consonants": 12,
+      "words:keywords_specific_position": 4,
+      "words:last_first": 5,
+      "words:no_consecutive": 8,
+      "words:odd_even_syllables": 9,
+      "words:palindrome": 7,
+      "words:paragraph_last_first": 6,
+      "words:prime_lengths": 5,
+      "words:repeats": 5,
+      "words:start_verb": 6,
+      "words:vowel": 10,
+      "words:words_position": 3
+    }
+  },
+  "checker_probe": {
+    "artifact": "checker_probe_results.json",
+    "probes": 35,
+    "adjudicated_probes": 28,
+    "protocol_decision_probes": 7,
+    "current_mismatches_on_adjudicated": 7,
+    "upstream_parity_mismatches_on_adjudicated": 1,
+    "exploratory_candidate_mismatches_on_adjudicated": 0,
+    "established_source_parity_defect": [
+      "the Greek scorer omits the upstream response.strip gate, allowing six vacuous predicates to pass empty text when called through score.py"
+    ],
+    "unresolved_protocol_findings": [
+      "words:vowel ignores Latin vowels and accepts digit-only text",
+      "words:consonants lets a slash hide a nonconforming span under a whitespace-token convention",
+      "words:start_verb accepts clitic-first and interjection-first strings by suffix; whether a clitic-first verb phrase qualifies must be specified",
+      "the surface ηχώ is both a noun and a first-person verb, so a blanket blacklist would create false negatives",
+      "words:prime_lengths counts internal hyphen punctuation as a character although the Greek prompt says letters",
+      "punctuation-only output remains accepted by some upstream predicates and requires a protocol decision"
+    ],
+    "observed_score_effect": {
+      "empty_gate": "none in the ten stored runs because none of the responses was blank or punctuation-only",
+      "start_verb": "one stored peer instruction beginning with Σας scored true; this is a false positive under first-token POS semantics but unresolved under a clitic-first verb-phrase interpretation"
+    },
+    "safe_patch_scope": "restore the upstream response.strip gate only; the earlier any(isalnum) gate and NON_VERBS additions were withdrawn"
+  },
+  "greek_if_assembly": {
+    "recomputed_byte_equal": true,
+    "rows": 30073,
+    "v1_rows": 10769,
+    "v2_rows": 9894,
+    "v3_rows": 9410,
+    "exact_prompt_duplicates_dropped": 1,
+    "numeric_fidelity_rows_dropped": 1,
+    "all_10_targeted_rows_present": true
+  },
+  "sample_audit": {
+    "manifest": "sample_manifest.json",
+    "rows": 20,
+    "versions": {"v1": 7, "v2": 6, "v3": 7},
+    "constraint_families_covered": 33,
+    "current_deterministic_checker_passes": 20,
+    "clear_task_preservation_defects": [
+      {
+        "id": "mixa_2026_06155",
+        "finding": "The requested wordplay depends on the contrast between πότε and ποτέ, while no_accents removes the contrast; the accepted answer repeats an indistinguishable form."
+      },
+      {
+        "id": "mixa_2028_05110",
+        "finding": "The required ending Καλή συνέχεια conflicts with a ban on καλός and its inflections/derivatives; the five-character stem checker misses καλή and admits the impossible specification."
+      }
+    ],
+    "quality_concerns_not_counted_as_deterministic_failures": [
+      {
+        "id": "mixa_2026_04027",
+        "finding": "The required EΟΠΥΥ mention is irrelevant to the travel-song task and is inserted as padding."
+      }
+    ],
+    "unreviewed": "Current factual accuracy and live-link validity were not externally re-verified; the bounded review tested task preservation, constraint semantics, and assembly routing."
+  },
+  "targeted_defects": {
+    "rows_reviewed": 10,
+    "defects_still_present": [
+      "mixa_2028_03200",
+      "mixa_2028_08593",
+      "mixa_2027_09179",
+      "mixa_2026_08572",
+      "mixa_2027_09553",
+      "mixa_2027_09689",
+      "mixa_2027_10080"
+    ],
+    "ambiguous_literal_contract": ["mixa_2026_05543"],
+    "no_clear_remaining_defect_in_this_pass": ["mixa_2026_07006", "mixa_2027_05368"],
+    "routing_evidence": {
+      "mixa_2027_09179": "A semantically better editor proposal was reverted because it broke letter_freq; the original unsupported additions remained and edit_reverted records constraints broken: letter_freq."
+    }
+  },
+  "disposition": {
+    "ifbench_words": "protocol_review",
+    "greek_if_final": "preserve immutable completed artifact; create a versioned repaired successor before reuse",
+    "reason": "deterministic passes do not establish substantive task fulfillment, and the Greek words aggregate mixes faithful, retuned, and approximate predicates"
+  }
+}

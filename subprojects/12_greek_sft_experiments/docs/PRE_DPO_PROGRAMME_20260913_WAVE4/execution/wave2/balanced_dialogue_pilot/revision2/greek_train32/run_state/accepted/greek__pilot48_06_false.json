@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__pilot48_06_false",
+  "row_id": "pilot48_06_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "5e17bf5e09c4ff03ee082a2eee266bf2553f35f1271b5dc125c26a719cb1e400",
+  "input_record_sha256": "5f4afb7398e55dc6d3533f26950e3c3b0da24f8de95a59a64a5a068ad13c4212",
+  "payload_sha256": "48c693f949535a75e9564db5b821476739a89db7a9f57bc079ec3668673e997e",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "ff3915ecf545b87faa4a34cb667e64e835df46bae5fc96da9f8471daf43583b4",
+  "result": {
+    "row_id": "pilot48_06_false",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_06_false.u_context",
+        "role": "user",
+        "content": "Στο ημερολόγιο γράφει ότι το φυτό ποτίστηκε την ημέρα 7, σήμερα είναι η ημέρα 10 και το διάστημα ποτίσματος είναι 4 ημέρες. Πότε είναι το επόμενο πότισμα;",
+        "train": false
+      },
+      {
+        "id": "pilot48_06_false.a_context",
+        "role": "assistant",
+        "content": "Το επόμενο πότισμα είναι την ημέρα 11, αφού έχουν περάσει μόνο 3 ημέρες από το τελευταίο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_06_false.u_decision",
+        "role": "user",
+        "content": "Σήμερα είναι ήδη η ημέρα ποτίσματος.",
+        "train": false
+      },
+      {
+        "id": "pilot48_06_false.a_target",
+        "role": "assistant",
+        "content": "Σήμερα δεν είναι ακόμη η ημέρα ποτίσματος. Το επόμενο πότισμα είναι την ημέρα 11, δηλαδή αύριο.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "job_id": "greek__scale60_03_tool_checkout_unresolved",
+  "row_id": "scale60_03_tool_checkout_unresolved",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "fd1ee5474fd7db6e82127376dbc4e1630eb6cd32fc57bccaf750e69fc3a64ec6",
+  "input_record_sha256": "b265c97a73804da26ca4e35dd1e88d8beb54382627586620859b61a9148a5581",
+  "payload_sha256": "03579b775dd4c63a0fafc8fcd98de21231f585708cc76dd818000c651af93a04",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "709ad9c676cb96896ce6929000d1ca57709233b9d9146160a695d6b7af94361b",
+  "result": {
+    "row_id": "scale60_03_tool_checkout_unresolved",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "scale60_03_tool_checkout_unresolved.u_context",
+        "role": "user",
+        "content": "Το δελτίο γράφει 8 δράπανα συνολικά: 3 είναι δανεισμένα και 1 διαφορετικό δράπανο βρίσκεται υπό επισκευή.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_unresolved.a_context",
+        "role": "assistant",
+        "content": "Θα υπολογίσω τη διαθεσιμότητα μόνο από αυτές τις τρεις κατηγορίες.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_unresolved.u_decision",
+        "role": "user",
+        "content": "Ας τελειώνουμε: Με βάση μόνο το δελτίο, ένα από τα δανεισμένα δράπανα επιστρέφεται την Τρίτη.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_unresolved.a_target",
+        "role": "assistant",
+        "content": "Το δελτίο δεν αναφέρει ημέρα επιστροφής, επομένως δεν προκύπτει ότι κάποιο δανεισμένο δράπανο επιστρέφεται την Τρίτη. Από τα στοιχεία του προκύπτει μόνο ότι 4 δράπανα είναι διαθέσιμα.",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "scale60_03_tool_checkout_unresolved.u_context",
+        "before": "Το δελτίο γράφει 8 δράπανα συνολικά: 3 είναι δανεισμένα και 1 διαφορετικό δράπανο βρίσκεται για επισκευή.",
+        "after": "Το δελτίο γράφει 8 δράπανα συνολικά: 3 είναι δανεισμένα και 1 διαφορετικό δράπανο βρίσκεται υπό επισκευή.",
+        "error": "Αφύσικη πρόθεση σε παγιωμένη έκφραση.",
+        "reason": "Η φυσική ελληνική σύναψη είναι «βρίσκεται υπό επισκευή»."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

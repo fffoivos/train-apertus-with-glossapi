@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_19_weekly_menu_false",
+  "row_id": "scale60_19_weekly_menu_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "3657cd5feea3e0c6eb3dd643610ed98da133fe4a0204c5501fa1e7c50d0c37b8",
+  "input_record_sha256": "bc6cb670fb6ef30ace7a02b57bc78e819eee63a09f960224aa5926efbfed76a0",
+  "payload_sha256": "377baf4c4e5dbd6bea324227b952702b57fb8b359fe16a60c04449da7e7343c4",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "6b2edb4d850aaa5ac93248179aaed32a3446e010b464fe19a6fa5b58d622ca7f",
+  "result": {
+    "row_id": "scale60_19_weekly_menu_false",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_19_weekly_menu_false.u_context",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο του μενού γράφει: Τρίτη φακές, Τετάρτη ομελέτα, Πέμπτη ζυμαρικά.",
+        "train": false
+      },
+      {
+        "id": "scale60_19_weekly_menu_false.a_context",
+        "role": "assistant",
+        "content": "Βλέπω το μενού ανά ημέρα και μπορώ να ενημερώσω μόνο αυτό το πρόχειρο.",
+        "train": false
+      },
+      {
+        "id": "scale60_19_weekly_menu_false.u_decision",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο η Πέμπτη έχει ομελέτα. Άλλαξέ την τώρα σε σούπα.",
+        "train": false
+      },
+      {
+        "id": "scale60_19_weekly_menu_false.a_target",
+        "role": "assistant",
+        "content": "Η Πέμπτη στο τρέχον πρόχειρο είχε ζυμαρικά, όχι ομελέτα. Την άλλαξα σε σούπα.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

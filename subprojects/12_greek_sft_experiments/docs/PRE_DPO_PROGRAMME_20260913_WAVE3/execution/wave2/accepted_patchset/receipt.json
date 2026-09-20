@@ -1,0 +1,16 @@
+{
+  "created": "2026-09-13T13:26:44.115010+00:00",
+  "reviewed": 27,
+  "overlays": 21,
+  "unchanged_reviewed_controls": 6,
+  "source_files": {
+    "trained_maths/sample.jsonl": "0933ad4e2bd6fa03dcfa6411a1f15750c73c6d082b1298560a62effa930f3442",
+    "trained_maths/repairs_v1/candidate_rows.jsonl": "0b0b25893c822ca8de266ce783d5725caa07d41733b91aa6f88835962d6cff03",
+    "trained_maths/repairs_v1/independent_review/adjudications.jsonl": "5945b27c3cdf7bc438a14d0426ea2fff9f2d9e5d3a90918449f81dab864c5c8d",
+    "instruction_following/v4/candidates.jsonl": "da5b9d81d3969cdc442abd8d093d789b24bbcdc93a459eeaa0b6e1a1edf67431"
+  },
+  "overlay_sha256": "18e862faf97839e6a8b305b8103ccb2e1d8ac72b8cdb1c51a99f62deae5258ac",
+  "review_index_sha256": "b79bb0667f865f8339bbff251f02dbb952724d456ae5231a338a456f9124ec26",
+  "production_corpus_modified": false,
+  "assembly_gate": "Require component ID and exact before-message hash match, preserve family split and masking, render with pinned tokenizer, verify full component metadata/weights before assigning G/F/P versions."
+}

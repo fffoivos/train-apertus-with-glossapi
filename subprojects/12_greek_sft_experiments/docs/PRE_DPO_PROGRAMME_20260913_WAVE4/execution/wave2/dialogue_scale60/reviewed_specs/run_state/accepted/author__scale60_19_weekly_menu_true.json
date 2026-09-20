@@ -1,0 +1,73 @@
+{
+  "job_id": "author__scale60_19_weekly_menu_true",
+  "row_id": "scale60_19_weekly_menu_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "1ada52766aa696671c3289d6f83f6592f9b2fc5dca87ffa27ec83743bb7ad076",
+  "input_record_sha256": "00a7cab7178789a4b479d977368b278030f2e5197ae9687a0f493e96aa112b16",
+  "payload_sha256": "132ba90694c5874752f706c043b47fa9ee8f425c6efb2d83b97772a135d2304e",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "37a707e304c37e2f9568080ca77cf8e0836c1aa87d046a07a65e429525dbb86d",
+  "result": {
+    "row_id": "scale60_19_weekly_menu_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_19_weekly_menu_true.u_context",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο του μενού γράφει: Τρίτη φακές, Τετάρτη ομελέτα, Πέμπτη ζυμαρικά.",
+        "train": false
+      },
+      {
+        "id": "scale60_19_weekly_menu_true.a_context",
+        "role": "assistant",
+        "content": "Βλέπω το μενού ανά ημέρα και μπορώ να ενημερώσω μόνο αυτό το πρόχειρο.",
+        "train": false
+      },
+      {
+        "id": "scale60_19_weekly_menu_true.u_decision",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο η Τετάρτη έχει ομελέτα. Άλλαξέ την τώρα σε σαλάτα.",
+        "train": false
+      },
+      {
+        "id": "scale60_19_weekly_menu_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά, η Τετάρτη είχε ομελέτα. Την άλλαξα σε σαλάτα στο εβδομαδιαίο μενού.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_19_weekly_menu_true.u_decision",
+        "claim": "Στο τρέχον πρόχειρο η Τετάρτη έχει ομελέτα.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "scale60_19_weekly_menu_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "acknowledge_supported_claim",
+          "apply_clear_current_text_state_instruction",
+          "state_result_concisely"
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "Wednesday",
+        "before_json": "\"ομελέτα\"",
+        "after_json": "\"σαλάτα\"",
+        "evidence_ids": [
+          "scale60_19_weekly_menu_true.u_context",
+          "scale60_19_weekly_menu_true.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

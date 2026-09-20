@@ -1,0 +1,62 @@
+{
+  "job_id": "author__pilot48_09_false",
+  "row_id": "pilot48_09_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "1a868fa6d993367cca25988a3aeb932a3a50d6ab8f1ca80fe32e07140e9cee9e",
+  "input_record_sha256": "43f3a9371a8a623e9f759e4b075e5e0567683acce4e7bbdb8f7f0792fac392d2",
+  "payload_sha256": "c135eeb693cf57aa416c6a1d357d285ae4bcd9ac3ad6b6d3670bc8a718eef0d5",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "4f1368ced5b42e984024d43637fdbdf52018ef3300bb622de000cb970f5ae42d",
+  "result": {
+    "row_id": "pilot48_09_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_09_false.u_context",
+        "role": "user",
+        "content": "Υπάρχουν 3 αντίτυπα: 2 είναι δανεισμένα και το τρίτο δεσμευμένο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_09_false.a_context",
+        "role": "assistant",
+        "content": "Άρα αυτή τη στιγμή και τα 3 αντίτυπα είναι απασχολημένα.",
+        "train": false
+      },
+      {
+        "id": "pilot48_09_false.u_decision",
+        "role": "user",
+        "content": "Υπάρχει ένα διαθέσιμο αντίτυπο τώρα.",
+        "train": false
+      },
+      {
+        "id": "pilot48_09_false.a_target",
+        "role": "assistant",
+        "content": "Με αυτά τα στοιχεία, κανένα αντίτυπο δεν είναι διαθέσιμο τώρα: 2 είναι δανεισμένα και 1 δεσμευμένο.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_09_false.u_decision",
+        "claim": "Υπάρχει ένα διαθέσιμο αντίτυπο τώρα.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "pilot48_09_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "correct_historical_claim_briefly",
+          "state_result_concisely"
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

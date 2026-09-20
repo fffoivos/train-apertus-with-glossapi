@@ -1,0 +1,68 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_gsm_4161",
+      "overall": "uncertain",
+      "final_result": "uncertain",
+      "derivation": "pass",
+      "problem_fidelity": "uncertain",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "source/premises",
+          "severity": "major",
+          "quote": "“If each camper gets one marshmallow to toast” / «Αν κάθε κατασκηνωτής πάρει ένα μαρσμέλοου για ψήσιμο»",
+          "explanation": "Both the source and the Greek adaptation literally refer to every camper, which would require 96 marshmallows. The preceding percentages strongly suggest the intended scope is every camper who wants to toast one, producing 56. Thus this is inherited source ambiguity, not an adaptation mistranslation or an arithmetic error.",
+          "suggested_action": "Clarify the problem as referring to each camper who wants to toast a marshmallow; changing the problem requires explicit repair permission."
+        },
+        {
+          "dimension": "after/final_result",
+          "severity": "major",
+          "quote": "«32 + 24 = 56 μαρσμέλοου»",
+          "explanation": "The result and every calculation are correct under the contextually intended interpretation, but 56 is not compelled by the literal wording “κάθε κατασκηνωτής”.",
+          "suggested_action": "Retain the solution if the intended participant-only interpretation is confirmed; otherwise the stated literal answer would be 96."
+        }
+      ],
+      "provenance_note": "The complete before, after, and actual training messages were inspected. The assistant calculations are unchanged semantically and the actual target occurs once with correct user/assistant ownership. The editor only expanded four compact phrases for greater naturalness. The ambiguity is already present in the supplied English source and was faithfully retained in Greek. The relocation from Camp Wonka to κατασκήνωση «Όλυμπος» is a permitted, coherent adaptation.",
+      "verification_needed": [
+        "Confirm whether “each camper” was intended to mean each camper who wants to toast a marshmallow."
+      ],
+      "editor_effect": "language_improvement",
+      "recommended_action": "readapt_problem_and_resolve"
+    },
+    {
+      "row_id": "gm_nat_738_1",
+      "overall": "issues",
+      "final_result": "uncertain",
+      "derivation": "pass",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "before/problem_fidelity",
+          "severity": "major",
+          "quote": "«Ο ξυλουργός χρεώνει ένα σταθερό ποσό για την επίσκεψη και το ίδιο ποσό για κάθε μέτρο περίφραξης.»",
+          "explanation": "Grammatically, «το ίδιο ποσό» refers back to the visit fee and therefore states that the visit fee and per-metre fee are equal. The supplied table instead implies α=14 €/m and β=90 €, so the verbal premise conflicts with the numerical data and declared affine model. This defect was already present before correction.",
+          "suggested_action": "Repair the premise to distinguish a fixed visit fee from a constant per-metre charge; this is a semantic problem change, not merely stylistic polishing."
+        },
+        {
+          "dimension": "after/final_result",
+          "severity": "major",
+          "quote": "«K(x)=14·x+90» and «Απάντηση: 22 m»",
+          "explanation": "The derivation is arithmetically correct from the table: (230−146)/(10−4)=14, β=146−14·4=90, and (398−90)/14=22. However, α≠β conflicts with the literal verbal premise, so 22 m is valid only under the evident intended wording, not under all supplied premises simultaneously.",
+          "suggested_action": "After repairing the conflicting premise, retain the entire solution unchanged; no recalculation is needed."
+        }
+      ],
+      "provenance_note": "This is a native example with no English source. The complete before, after, and actual training records are identical, occur once, and have correct speaker ownership. The earlier second solve agrees with 22 m but is not treated as independent proof; the arithmetic was checked directly. The Ναύπλιο home-repair setting is culturally coherent. The problem can be made sound by repairing its verbal premise, while the demonstrated solution can be kept.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "readapt_problem_and_resolve"
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "train_file": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/arms/R3_single/train.jsonl",
+  "sample_seed_material": "imports-audit-v1; sha256-min by stratum and row id",
+  "sample_rows": 24,
+  "effective_and_duplicate_counts": {
+    "dolci_chat": {
+      "effective_rows": 3009,
+      "unique_ids": 3009,
+      "repeated_id_exposures": 0,
+      "repeated_id_exposure_rate": 0.0,
+      "unique_message_content": 3009,
+      "repeated_content_exposures": 0,
+      "repeated_content_exposure_rate": 0.0
+    },
+    "dolci_reasoning": {
+      "effective_rows": 29640,
+      "unique_ids": 29640,
+      "repeated_id_exposures": 0,
+      "repeated_id_exposure_rate": 0.0,
+      "unique_message_content": 29640,
+      "repeated_content_exposures": 0,
+      "repeated_content_exposure_rate": 0.0
+    },
+    "dolci_tooluse": {
+      "effective_rows": 29700,
+      "unique_ids": 29700,
+      "repeated_id_exposures": 0,
+      "repeated_id_exposure_rate": 0.0,
+      "unique_message_content": 29700,
+      "repeated_content_exposures": 0,
+      "repeated_content_exposure_rate": 0.0
+    },
+    "nemotron_chat_a": {
+      "effective_rows": 23017,
+      "unique_ids": 23017,
+      "repeated_id_exposures": 0,
+      "repeated_id_exposure_rate": 0.0,
+      "unique_message_content": 23017,
+      "repeated_content_exposures": 0,
+      "repeated_content_exposure_rate": 0.0
+    },
+    "nemotron_chat_b": {
+      "effective_rows": 23262,
+      "unique_ids": 23262,
+      "repeated_id_exposures": 0,
+      "repeated_id_exposure_rate": 0.0,
+      "unique_message_content": 23262,
+      "repeated_content_exposures": 0,
+      "repeated_content_exposure_rate": 0.0
+    },
+    "openmath_gsm": {
+      "effective_rows": 98943,
+      "unique_ids": 98943,
+      "repeated_id_exposures": 0,
+      "repeated_id_exposure_rate": 0.0,
+      "unique_message_content": 98943,
+      "repeated_content_exposures": 0,
+      "repeated_content_exposure_rate": 0.0
+    },
+    "personality": {
+      "effective_rows": 6016,
+      "unique_ids": 1504,
+      "repeated_id_exposures": 4512,
+      "repeated_id_exposure_rate": 0.75,
+      "unique_message_content": 1504,
+      "repeated_content_exposures": 4512,
+      "repeated_content_exposure_rate": 0.75
+    },
+    "smoltalk2_multilingual": {
+      "effective_rows": 20207,
+      "unique_ids": 20207,
+      "repeated_id_exposures": 0,
+      "repeated_id_exposure_rate": 0.0,
+      "unique_message_content": 20207,
+      "repeated_content_exposures": 0,
+      "repeated_content_exposure_rate": 0.0
+    }
+  },
+  "tool_protocol_audit": {
+    "rows": 29700,
+    "rows_with_schema": 29700,
+    "rows_with_calls": 27055,
+    "rows_with_results": 25163,
+    "rows_with_final_answer": 25037,
+    "schema_payloads": 29700,
+    "schema_payloads_exactly_1500_chars": 12281,
+    "schema_parse_fail": 13879,
+    "schema_parse_fail_exactly_1500": 12257,
+    "schema_parse_fail_shorter": 1622,
+    "call_payloads": 86477,
+    "schema_parse_ok_exactly_1500": 24,
+    "rows_call_name_absent_from_visible_schema": 5409,
+    "call_payloads_exactly_1500_chars": 2
+  },
+  "tool_examples": {
+    "schema_1500": [
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_323862",
+        "detail": "escription\": \"The list of numbers to be sorted.\", \"type\": \"array\", \"items\": {\"type\": \"number\"}}, \"descending\": {\"description\": \"If True, sorts the numbers in descending order. Defa"
+      },
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_593642",
+        "detail": "}}}}}, {\"type\": \"function\", \"function\": {\"name\": \"verify_the_existence_of_email\", \"description\": \"Verifies the existence of an email address using the Email Existence Validator API"
+      },
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_150632",
+        "detail": "type\": \"string\"}}}}}, {\"type\": \"function\", \"function\": {\"name\": \"merge_dictionaries\", \"description\": \"Merges two dictionaries into a single dictionary.\", \"parameters\": {\"type\": \"ob"
+      },
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_185639",
+        "detail": "\": \"\"}, \"title\": {\"description\": \"Title of the Telegraph post. Defaults to None.\", \"type\": \"string\", \"default\": \"\"}, \"author_url\": {\"description\": \"URL of the author. Defaults to N"
+      },
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_12833",
+        "detail": "he specified page using the provided API key.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"page\": {\"description\": \"The page number of events to retrieve.\", \"type\": \"integer\","
+      }
+    ],
+    "schema_parse_fail": [
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_323862",
+        "detail": "escription\": \"The list of numbers to be sorted.\", \"type\": \"array\", \"items\": {\"type\": \"number\"}}, \"descending\": {\"description\": \"If True, sorts the numbers in descending order. Defa"
+      },
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_593642",
+        "detail": "}}}}}, {\"type\": \"function\", \"function\": {\"name\": \"verify_the_existence_of_email\", \"description\": \"Verifies the existence of an email address using the Email Existence Validator API"
+      },
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_150632",
+        "detail": "type\": \"string\"}}}}}, {\"type\": \"function\", \"function\": {\"name\": \"merge_dictionaries\", \"description\": \"Merges two dictionaries into a single dictionary.\", \"parameters\": {\"type\": \"ob"
+      },
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_185639",
+        "detail": "\": \"\"}, \"title\": {\"description\": \"Title of the Telegraph post. Defaults to None.\", \"type\": \"string\", \"default\": \"\"}, \"author_url\": {\"description\": \"URL of the author. Defaults to N"
+      },
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_12833",
+        "detail": "he specified page using the provided API key.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"page\": {\"description\": \"The page number of events to retrieve.\", \"type\": \"integer\","
+      }
+    ],
+    "missing_call_name": [
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_12833",
+        "detail": [
+          "dns.get_dns_records"
+        ]
+      },
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_639330",
+        "detail": [
+          "country_module.get_countries"
+        ]
+      },
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_92523",
+        "detail": [
+          "module_name.properties_detail"
+        ]
+      },
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_324660",
+        "detail": [
+          "Harper"
+        ]
+      },
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_1054932",
+        "detail": [
+          "get_video_info"
+        ]
+      }
+    ],
+    "calls_1500": [
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_727439",
+        "detail": "days\":40}, {\"name\":\"Deck casting\",\"duration_days\":60,\"starts_when_task\":\"Superstructure steel erection\",\"percent_complete\":50}, {\"name\":\"Barrier rails & lighting\",\"duration_days\":4"
+      },
+      {
+        "id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_727439",
+        "detail": "item\":\"welding rig\",\"quantity\":4},{\"type\":\"materials\",\"item\":\"structural steel\",\"quantity_tons\":10000},{\"type\":\"materials\",\"item\":\"concrete\",\"quantity_m3\":30000},{\"type\":\"materials"
+      }
+    ]
+  },
+  "targeted_rows_found": 11,
+  "targeted_ids_requested": 11
+}

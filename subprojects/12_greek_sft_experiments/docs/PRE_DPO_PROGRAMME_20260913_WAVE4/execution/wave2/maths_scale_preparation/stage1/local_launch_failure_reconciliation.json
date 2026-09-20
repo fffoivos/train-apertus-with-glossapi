@@ -1,0 +1,141 @@
+{
+  "local_launcher_attempts": 22,
+  "submitted_model_requests": 0,
+  "evidence": "Every attempt failed app-server initialization, before events or a model response. Missing event bytes alone are not evidence; matching initialization errors establish this classification.",
+  "cause": "Root launched the hosted Sol queue inside the filesystem sandbox instead of the authorised escalated runtime.",
+  "recovery": "Preserve original run_state and all failed receipts. Use run_state_authorized for execution after one escalated preflight. Same immutable queue, prompts and model-call72 ceiling; local startup failures recorded separately.",
+  "receipts": [
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_4551.2.receipt.json",
+      "sha256": "9a5f280fc656dd621f9830c2e8efbdbae4640cb1dab409ac8f023090770e62dd",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_2630.1.receipt.json",
+      "sha256": "676596eaceea779e1c8dafe4978fa8c1817e6a6916c28396fc2d8539c1e8ec39",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_5405.1.receipt.json",
+      "sha256": "5eeb64b59ec69c48de67d6173ae199ed5804497fbd2cb888d272dc7f165bf318",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_2653.1.receipt.json",
+      "sha256": "ae693a63a30d443a983505cf2108d314f18eaa8f6d4dfcdfd1edb297d5dbde04",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_4650.1.receipt.json",
+      "sha256": "80465fc0655262fa03c2a4bd4bdb0f8e00ae78c4714ffd33035d76594993a30c",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_50.2.receipt.json",
+      "sha256": "ca13fbaf258e904ab3f797eb67ea55d8e76180b9e19425a40e49a883e66c694d",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_2400.1.receipt.json",
+      "sha256": "c9102ce2b0c0488d387704d1f60eb4f56600de9d5fe2c3d4aa38af61d8863a7c",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_7061.1.receipt.json",
+      "sha256": "6cb9d812b3c8675fe0ed2b3798e95c40df0530e81f84b221ba74cf4eeba5123c",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_2349.1.receipt.json",
+      "sha256": "a4b5c172037c3fa2886f6206b6df6411b9ca0580599d2d995338b60c5455a3e2",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_1622.1.receipt.json",
+      "sha256": "3a10a4c65d4581fdbe01cce997337953acd1ad75a59760cb4a67761c37c84915",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_5815.1.receipt.json",
+      "sha256": "02f65f3d4461be15dfa2fd68aa3925f411fef59a3c946dda662f193aaac7232a",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_7276.1.receipt.json",
+      "sha256": "c03bb97eec053cb9ba4a2fe6d9fa74f261288e092a1bd6266782e9f39214cf25",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_1622.2.receipt.json",
+      "sha256": "c8bd94949e7536e830c833632e560a7c2f52182b6cde329ded7dd0aa5dd26290",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_2349.2.receipt.json",
+      "sha256": "f6bb9431d3a55e728766c10316825e4ad138b7a8f4a91ea1a2831d03b4339328",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_5055.1.receipt.json",
+      "sha256": "52fc6744bcb626b93c7a0e94f27a6302c526768b6c1f79f9bafd5b6d77430966",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_2630.2.receipt.json",
+      "sha256": "d0452201ebc6189a019cd53c41012158909bff3d34565cdd4801e1ca9dd63cf3",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_4551.1.receipt.json",
+      "sha256": "a307a4f5bd5f45d17a2d15d8fd121b4ad9d5800c29012aab993265e239c8441c",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_2653.2.receipt.json",
+      "sha256": "d94b2080646f23f781bc21210b1d09789fec142d2e7b70d2f6f3eb803f594aa0",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_50.1.receipt.json",
+      "sha256": "ea04b29c9fed2196398a3c303bb73dc81c76ebb930f15af754c4024f53f92108",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_6124.1.receipt.json",
+      "sha256": "f9efce91d62c2737d766acfa450d88748d1c34600149802a1bd47547277003a8",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_4650.2.receipt.json",
+      "sha256": "465fe23f942354059f0b0df901741249fd9791504f3ce4d445de9ab2bd359b2d",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    },
+    {
+      "receipt": "run_state/attempts/adapt__scaleB_math_line_2400.2.receipt.json",
+      "sha256": "45977528370c031b99f2e4dbecaca81f44481a0cdca25a71745c62ce3e9e1403",
+      "state": "local_initialization_failed_before_request",
+      "events_bytes": 0
+    }
+  ]
+}

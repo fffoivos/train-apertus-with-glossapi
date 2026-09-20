@@ -1,0 +1,68 @@
+{
+  "job_id": "author_pilot48_04_unresolved",
+  "row_id": "pilot48_04_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "bced8fa9b1b8f1b7b51354532c9d0af991b1fd0825eb1eb8686e18ede94a408d",
+  "input_record_sha256": "5d7c5ac6f03136593c6fa363475d446f71c8f7d0eccfb7755283922f0e6c8e10",
+  "payload_sha256": "0a8e5c78204247895694d3dff8ae749925735ec20e64d286534dabfdf0267c69",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "a993bbfaddda58f3c23ee1b0d09b74c41287fd627935f88b7e924bd23f26b445",
+  "result": {
+    "row_id": "pilot48_04_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_04_unresolved.u_context",
+        "role": "user",
+        "content": "Η τρέχουσα λίστα έχει ταυτότητα, φορτιστή και αδιάβροχο. Δεν είναι διαθέσιμο το ιστορικό προσθηκών.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_unresolved.u_decision",
+        "role": "user",
+        "content": "Βγάλε εκείνο που είχαμε προσθέσει μετά.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_unresolved.a_target",
+        "role": "assistant",
+        "content": "Δεν μπορώ να προσδιορίσω ποιο αντικείμενο εννοείς χωρίς το ιστορικό προσθηκών. Ποιο να βγάλω: την ταυτότητα, τον φορτιστή ή το αδιάβροχο;",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_04_unresolved.u_decision",
+        "claim": "Μπορεί να προσδιοριστεί ποιο αντικείμενο της τρέχουσας λίστας προστέθηκε αργότερα.",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "pilot48_04_unresolved.u_context",
+          "pilot48_04_unresolved.u_decision"
+        ],
+        "expected_response_behaviour": [
+          "Να δηλώσει ότι το ιστορικό προσθηκών που απαιτείται για την ταυτοποίηση δεν είναι διαθέσιμο.",
+          "Να ζητήσει μία στοχευμένη διευκρίνιση για το ποιο από τα καταγεγραμμένα αντικείμενα πρέπει να αφαιρεθεί.",
+          "Να αφήσει τη λίστα αμετάβλητη έως ότου διευκρινιστεί το αντικείμενο."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "items",
+        "before_json": "[\"ταυτότητα\",\"φορτιστής\",\"αδιάβροχο\"]",
+        "after_json": "[\"ταυτότητα\",\"φορτιστής\",\"αδιάβροχο\"]",
+        "evidence_ids": [
+          "pilot48_04_unresolved.u_context",
+          "pilot48_04_unresolved.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

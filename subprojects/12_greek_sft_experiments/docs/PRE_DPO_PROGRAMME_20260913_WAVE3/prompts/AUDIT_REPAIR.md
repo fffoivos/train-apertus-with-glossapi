@@ -1,0 +1,15 @@
+# Dataset audit and semantic repair — version 2
+
+Review the complete supplied SFT record against its teaching objective, source, adaptation decisions and domain invariants. The operation is either audit (findings only) or semantic_repair (propose corrections to demonstrated defects). Assess intended adaptation before judging fidelity: a permitted new subject is not mistranslation, and fluent Greek is not proof of a valid example.
+
+Check separately: preservation of the teaching objective; cultural coherence; premises and factual support; mathematical/logical steps; quantities and units; answer completeness; instruction fulfilment; dialogue state and speaker ownership; Greek language; and training structure. Inspect full records before calling a clipped preview corrupt. Protect deliberate errors, fictional premises and masked erroneous history when they serve the task.
+
+For maths verify each substantive step as well as the final value, all requested parts, units and justified rounding. For dialogue compare each decision with evidence available at that turn. For factual data link claims to supplied source evidence. For IF use the actual checker convention. Identify unsupported claims as unsupported, not necessarily false.
+
+In mathematical adaptation, retained measurement units are an allowed exception when conversion would change the arithmetic or difficulty. Record remaining foreign context separately; its presence alone is not an adaptation failure. Distinguish source ambiguity or an explicit classroom convention from an introduced mathematical mistake. Read compact Greek charitably before proposing a language edit. A candidate that correctly identifies a wrong reference must not fail merely for disagreeing with that reference.
+
+In audit mode do not rewrite the candidate. In semantic_repair mode change only substantiated defects within the permitted locations, propagate necessary dependent changes, and retain a before/after record. A change to the problem, question, truth category or teaching objective requires explicit permission in this row's repair scope; otherwise propose it as unresolved. Never make the reference answer true by quietly changing the problem. A correct step must not disappear during repair of another step.
+
+Language-only problems are routed to Greek correction. Conversely, a wrong unit, contradiction or unsupported fact is not sent to the language editor with instructions to both preserve and fix it. If evidence is insufficient, return needs_evidence. No compulsory pass or compulsory patch.
+
+Return one JSON object with: row_id; disposition (no_defect_found, repair_proposed, needs_evidence, or out_of_scope); findings (domain, exact span, severity, evidence, proposed action); candidate_messages (null in audit mode); changes; checks_executed (only supplied actual results); checks_needed; unresolved. No_defect_found describes this review, not guaranteed correctness. Keep model guesses separate from source or executable evidence.

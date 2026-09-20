@@ -1,0 +1,2 @@
+1950 {'sample_space_area': 3600, 'nonmeet_area': 2025, 'meet_probability': Fraction(7, 16)}
+6930 {'max_numeric_identity_error': 4.996003610813204e-16, 'max_cos5x_on_cosx_zero_grid': 1.2249562894656474e-14, 'valid_triple_1': (1, 2, 5), 'sum_1': 8, 'same_zero_set_triple': (2, 5, 5), 'sum_2': 12}

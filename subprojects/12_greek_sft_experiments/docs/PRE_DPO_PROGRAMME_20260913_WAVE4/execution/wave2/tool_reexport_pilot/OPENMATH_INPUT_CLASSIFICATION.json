@@ -1,0 +1,41 @@
+{
+  "schema_version": "openmath_original_pilot_input_classification_v1",
+  "classification_date": "2026-09-13",
+  "status": "reviewed_for_bounded_transfer",
+  "files": [
+    {
+      "name": "math_train.jsonl",
+      "bytes": 6718886,
+      "sha256": "7c2b6be1ff20ece021d27e68103bcaa27935489247f179a1810ca72d54b379bf",
+      "rows": 7500,
+      "fields": [
+        "level",
+        "problem",
+        "solution",
+        "subject",
+        "type"
+      ],
+      "content_class": "documented_public_MATH_training_problems_and_reference_solutions",
+      "personal_or_private_user_content": false
+    },
+    {
+      "name": "math7500_family_inventory.jsonl",
+      "bytes": 6140789,
+      "sha256": "5e21b80967bd49bf8482e8ee38691de4e9571b42f37a6df8bf7c600b92059b41",
+      "rows": 7492,
+      "content_class": "content_free_family_hashes_source_lineage_and_overlap_metadata",
+      "contains_problem_or_solution_text": false,
+      "personal_or_private_user_content": false
+    },
+    {
+      "name": "proposed_family_splits.jsonl",
+      "bytes": 52287,
+      "sha256": "e3ab829b1cfa8f4e548f3c1c96e10ccb57508f59325d6507e48a6df3a2e9ec44",
+      "rows": 133,
+      "content_class": "content_free_family_hashes_and_lane_assignments",
+      "contains_problem_or_solution_text": false,
+      "personal_or_private_user_content": false
+    }
+  ],
+  "transfer_scope": "Only these three exact hash-bound inputs were staged. The OpenMathInstruct source shard remains unstaged and may be downloaded only by the bounded worker from its public revision-pinned URL."
+}

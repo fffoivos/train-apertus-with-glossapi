@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "status": "specifications_prepared_not_authored",
+  "created_at": "2026-09-13T14:22:12.878551+00:00",
+  "counts": {
+    "families": 20,
+    "decisions": 60,
+    "true": 20,
+    "false": 20,
+    "partial": 10,
+    "unresolved": 10
+  },
+  "split": "train",
+  "authored_targets": 0,
+  "model_calls": 0,
+  "queue_created": false,
+  "final_content_materialized": false,
+  "artifact_sha256": {
+    "specs.jsonl": "18b9e8925185754420769dd86586a5e38949537c24aa5bc0d048db6bf478996a",
+    "oracle_receipts.jsonl": "b15bf0c99082ce2a5bef5e0d8cb38eba717b353ec5dd280169a4cc0940f04d48",
+    "family_manifest.jsonl": "0a52a21b024d4335b93eb849b04e6367a9f787fce49f51aecd50e9d9867836bc",
+    "lineage_receipt.json": "3bfba3454bdaa2ba79b74c74c4bd30d71c0298e5651190ac56415984745f7877",
+    "diversity_report.md": "bb3bfe012ce155bb4157cbcc1df7b38767f52a6b6c44ed39059bf63e345c4b1f",
+    "build_scale60.py": "5f3ebc1609910116c4164a5dce87161bd1a84bec1c6286d9859104e9c7687c53",
+    "verify_scale60.py": "c85a10877f211f9f49cd0c273a15205417a942b40eb0f2bd58ffef12851d2985",
+    "audit_train32_scope.py": "ce50b4782d01e569b7c83c7a1bfe65d1f3304122df27cab7453cd9a504d3bf47"
+  }
+}

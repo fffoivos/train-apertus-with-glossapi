@@ -1,0 +1,57 @@
+{
+  "candidate_changes_accepted": 148,
+  "candidate_changes_rejected": 3,
+  "candidate_only_pass": 133,
+  "frozen_only_pass": 19,
+  "manual_adjudications": 1,
+  "reason_counts": {
+    "ambiguous_separator_context_resolved": 1,
+    "false_qualifier": 1,
+    "greek_inflection_alias": 1,
+    "option_label_format": 1,
+    "option_label_with_name": 1,
+    "truncated_no_answer": 1,
+    "valid_final_answer_recovery": 133,
+    "wrong_category": 5,
+    "wrong_direction": 3,
+    "wrong_option": 3,
+    "wrong_person": 2
+  },
+  "recommended_fail": 15,
+  "recommended_pass": 136,
+  "recommended_pass_after_context_adjudication": 1,
+  "reviewed_count": 152,
+  "safety": "No scorer imported or executed; no model response was passed to sympy or parse_expr.",
+  "schema_version": "math500_scorer_v2_independent_review_receipt_v1",
+  "scope": "all changed decisions only",
+  "source_bindings": {
+    "candidate_equivalence": {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/peer_readiness/scorer_v2/equiv500_v2.py",
+      "sha256": "a0d38a5580097937d361ec1d5d51674571a32128c1f73869ba50ae3523294331"
+    },
+    "candidate_score_wrapper": {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/peer_readiness/scorer_v2/score_math500_v2.py",
+      "sha256": "53f8643ea7cf62e3fa626961dedb2db124244101d2035c0c87c297785db7f761"
+    },
+    "complete_audit": {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/peer_readiness/scorer_v2/complete_audit_final.json",
+      "sha256": "42139a67de8621910ff48946a2bdf48f81fb0ac2fd41c9f6748fca0bf4aac590"
+    },
+    "dispositions": {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/peer_readiness/scorer_v2/independent_dispositions.jsonl",
+      "sha256": "940170b9363ccb7d539e93f86f14624290d4fd8346eed32b8b33ba7b3ab63ef3"
+    },
+    "independent_dispositions.jsonl": {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/peer_readiness/scorer_v2/independent_dispositions.jsonl",
+      "sha256": "940170b9363ccb7d539e93f86f14624290d4fd8346eed32b8b33ba7b3ab63ef3"
+    },
+    "independent_review.md": {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/peer_readiness/scorer_v2/independent_review.md",
+      "sha256": "b5d48fe8fbf98a01ed3da8883a020426d3f8e52ec3ab6e88b03966ffbad47067"
+    },
+    "joined_changed_rows": {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/work/scorer_changed_full.jsonl",
+      "sha256": "53a48b5a9502357ee7e24a417cbdfae4dcd4792b9d3d3770e44f32a407f0246a"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_gsm_4211",
+      "overall": "issues",
+      "final_result": "issue",
+      "derivation": "issue",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "issue",
+      "completeness": "issue",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "source/problem_fidelity",
+          "severity": "major",
+          "quote": "Charles can earn $22 per hour when he walks a dog. If he ... walks 3 dogs",
+          "explanation": "The source supplies an hourly rate but only a number of dogs, not the duration of the dog walking. Therefore the earnings are underdetermined. This defect is inherited from the source, not introduced by the Greek adaptation.",
+          "suggested_action": "Reconstruct the premise by specifying dog-walking hours or by changing the rate to an amount per dog; then solve the resulting problem."
+        },
+        {
+          "dimension": "after/derivation",
+          "severity": "major",
+          "quote": "3 · 22 € = 66 €",
+          "explanation": "The factor 3 counts dogs, whereas 22 is stated as euros per hour. Multiplying these quantities is not justified by the supplied premise.",
+          "suggested_action": "Do not retain this step unless the problem explicitly makes each dog correspond to one paid hour or states a rate of 22 euros per dog."
+        },
+        {
+          "dimension": "after/units_and_rounding",
+          "severity": "major",
+          "quote": "3 · 22 € = 66 €",
+          "explanation": "The solution suppresses the stated hourly denominator. Three dogs multiplied by 22 €/hour does not yield 66 € without an additional time premise.",
+          "suggested_action": "Repair the problem's quantity relationship before recalculating; no rounding issue is involved."
+        },
+        {
+          "dimension": "after/final_result",
+          "severity": "major",
+          "quote": "Απάντηση: 216 €",
+          "explanation": "The value 216 € follows only from an unstated assumption that the three dogs generate three billable hours, or that the rate is actually per dog. It is unsupported by the record as written, even though it agrees with the reference.",
+          "suggested_action": "After clarifying the missing premise, recompute and report the supported total."
+        },
+        {
+          "dimension": "after/completeness",
+          "severity": "major",
+          "quote": "Ο Κώστας μπορεί να κερδίζει ... 22 ευρώ την ώρα ... Αν ... βγάλει βόλτα 3 σκύλους",
+          "explanation": "The response does not acknowledge or resolve the missing dog-walking duration, so it does not give a justified complete answer to the actual problem.",
+          "suggested_action": "Require clarification or reconstruct the problem before presenting a definite answer."
+        }
+      ],
+      "provenance_note": "The before and after records are identical, so the editor neither repaired nor introduced the defect. The Greek version faithfully retains the source's incompatible hourly-rate/dog-count premises while coherently adapting the name and currency. Speaker ownership and the one-user/one-assistant training structure are intact. The Greek problem cannot be kept merely by repairing the solution because its data do not determine a total.",
+      "verification_needed": [
+        "Confirm whether the intended premise was three hours of dog walking, 22 euros per dog, or one hour per dog before reconstruction."
+      ],
+      "editor_effect": "unchanged",
+      "recommended_action": "readapt_problem_and_resolve"
+    },
+    {
+      "row_id": "gm_math_2806",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The before and after records are identical. Factoring α²−β² as (α−β)(α+β) and substituting α+β=6 correctly gives the requested positive difference α−β=2. No units or rounding are involved. The Greek statement preserves the algebraic objective, and the dialogue roles and training structure are intact.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

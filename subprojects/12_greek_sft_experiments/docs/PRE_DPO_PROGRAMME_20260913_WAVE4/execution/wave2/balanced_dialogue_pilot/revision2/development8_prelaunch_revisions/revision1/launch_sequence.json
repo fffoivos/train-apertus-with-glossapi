@@ -1,0 +1,15 @@
+{
+  "status": "review_only_do_not_launch_from_preparation",
+  "steps": [
+    "Review inputs.jsonl, the single source repair, both prompts, schemas and bindings.",
+    "Run queue_author8.jsonl with at most eight workers and --limit-new-calls 8.",
+    "Read all eight authored dialogues semantically; do not infer quality from schema acceptance.",
+    "Instantiate at most two semantic repairs only for concrete observed defects, preserving the same run-state and package cap. If a repair is used, freeze a reviewed queue variant whose Greek job depends on that repair and reads candidate_messages; do not let Greek correction read the superseded author messages.",
+    "After semantic acceptance, run the Greek jobs from queue_author8_then_greek8.jsonl with --limit-new-calls 8 when no repair was needed, or from the newly hash-bound reviewed variant when a repair was accepted.",
+    "Adjudicate Greek proposals as language-only changes before accepting development rows."
+  ],
+  "author_command_template": "python3 run_queue.py --queue queue_author8.jsonl --inputs inputs.jsonl --state-dir run_state/dev --max-workers 8 --call-cap 20 --limit-new-calls 8 --execute --acknowledge-reviewed-payload PREPARED_PAYLOAD_REVIEWED",
+  "greek_command_template": "python3 run_queue.py --queue queue_author8_then_greek8.jsonl --inputs inputs.jsonl --state-dir run_state/dev --max-workers 8 --call-cap 20 --limit-new-calls 8 --execute --acknowledge-reviewed-payload PREPARED_PAYLOAD_REVIEWED",
+  "manual_gate_between_queues": true,
+  "concurrency_policy": "Do not launch concurrently with another eight-worker queue."
+}

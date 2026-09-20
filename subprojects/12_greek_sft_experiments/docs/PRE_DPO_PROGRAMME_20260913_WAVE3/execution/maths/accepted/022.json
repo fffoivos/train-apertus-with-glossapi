@@ -1,0 +1,64 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_2066",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The single Greek problem record and single selected solution have clear pairing provenance. The adapted surname is culturally coherent and does not alter the teaching objective.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_516",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "greek_language",
+          "severity": "minor",
+          "quote": "ίσο αριθμό εγγονών και εγγονών",
+          "explanation": "The genitive plural has the same written form for «εγγονός» and «εγγονή», so this repeated expression fails to distinguish grandsons from granddaughters and sounds semantically unclear. It appears twice. The surrounding argument still makes the intended meaning and mathematics clear.",
+          "suggested_action": "In a Greek-language correction, replace both occurrences with an unambiguous expression such as «ίσο αριθμό αγοριών και κοριτσιών» or «ίσο αριθμό εγγονών αρσενικού και θηλυκού φύλου»."
+        }
+      ],
+      "provenance_note": "The problem text is marked stable and the record contains one selected solution. Changing Mr. Wong to Mr. Georgiou is a permitted, coherent cultural adaptation and does not change the probability problem.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_929",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "training_structure",
+          "severity": "minor",
+          "quote": "\u001bllipsis",
+          "explanation": "One historical Greek problem variant contains an ESC control character followed by «llipsis» instead of a valid ellipsis command. The last displayed problem is intact and mathematically agrees with the candidate solution, so this is not a defect in the selected derivation or result.",
+          "suggested_action": "Flag or sanitize the malformed historical variant during dataset maintenance without changing the intact selected problem or solution."
+        }
+      ],
+      "provenance_note": "There are multiple saved Greek problem versions and four solution records. Under the stated convention, the displayed candidate joins the last solution to the last problem, but their historical association remains unproven. The two supplied variants appear mathematically intended to represent the same ten-term sum, although one has a malformed ellipsis control sequence.",
+      "verification_needed": [
+        "Verify from source history or record identifiers whether selected solution line 2004 was originally associated with the last saved Greek problem version."
+      ]
+    }
+  ]
+}

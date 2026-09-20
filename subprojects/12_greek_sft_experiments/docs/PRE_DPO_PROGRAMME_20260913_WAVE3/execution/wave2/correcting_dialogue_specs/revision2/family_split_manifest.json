@@ -1,0 +1,209 @@
+{
+  "name": "correcting_dialogue_family_split_v2",
+  "published_at": "2026-09-13T16:21:50+03:00",
+  "supersedes_for_planning": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/correcting_dialogue_specs/family_split_manifest.json",
+  "count_unit": "labelled assistant decision",
+  "pilot": {
+    "decisions": 48,
+    "truth_counts": {
+      "true": 12,
+      "false": 12,
+      "partial": 12,
+      "unresolved": 12
+    },
+    "families": 12,
+    "split_decisions": {
+      "train": 32,
+      "dev": 8,
+      "final_confirmation": 8
+    },
+    "train_skill_coverage": [
+      "cancellation",
+      "state_inference",
+      "state_update",
+      "version_editing"
+    ],
+    "split_revision": {
+      "cf05_cafe_order": "train_to_dev",
+      "cf10_reminder_cancel": "dev_to_train"
+    }
+  },
+  "program_total": {
+    "decisions": 720,
+    "families": 240,
+    "truth_counts": {
+      "true": 240,
+      "false": 240,
+      "partial": 120,
+      "unresolved": 120
+    }
+  },
+  "training_target": {
+    "decisions": 600,
+    "truth_counts": {
+      "true": 200,
+      "false": 200,
+      "partial": 100,
+      "unresolved": 100
+    },
+    "families": 200,
+    "four_label_families": 100,
+    "true_false_only_families": 100
+  },
+  "holdout_targets": {
+    "dev": {
+      "decisions": 60,
+      "families": 20
+    },
+    "final_confirmation": {
+      "decisions": 60,
+      "families": 20
+    }
+  },
+  "split_plan": {
+    "train": {
+      "families": 200,
+      "four_label_families": 100,
+      "true_false_only_families": 100,
+      "decisions": {
+        "true": 200,
+        "false": 200,
+        "partial": 100,
+        "unresolved": 100,
+        "total": 600
+      }
+    },
+    "dev": {
+      "families": 20,
+      "four_label_families": 10,
+      "true_false_only_families": 10,
+      "decisions": {
+        "true": 20,
+        "false": 20,
+        "partial": 10,
+        "unresolved": 10,
+        "total": 60
+      }
+    },
+    "final_confirmation": {
+      "families": 20,
+      "four_label_families": 10,
+      "true_false_only_families": 10,
+      "decisions": {
+        "true": 20,
+        "false": 20,
+        "partial": 10,
+        "unresolved": 10,
+        "total": 60
+      }
+    }
+  },
+  "pilot_families": [
+    {
+      "family_id": "cf01_grocery_note",
+      "split": "train",
+      "oracle_kind": "version_edit",
+      "skill": "version_editing",
+      "setting": "Λίστα αγορών για κοινό σπίτι"
+    },
+    {
+      "family_id": "cf02_volunteer_roster",
+      "split": "train",
+      "oracle_kind": "version_edit",
+      "skill": "version_editing",
+      "setting": "Κατάλογος εθελοντών γειτονικής δράσης"
+    },
+    {
+      "family_id": "cf03_workshop_schedule",
+      "split": "train",
+      "oracle_kind": "version_edit",
+      "skill": "version_editing",
+      "setting": "Πρόγραμμα εργαστηρίου κεραμικής"
+    },
+    {
+      "family_id": "cf04_trip_packing",
+      "split": "train",
+      "oracle_kind": "version_edit",
+      "skill": "state_update",
+      "setting": "Λίστα αποσκευών για διήμερο"
+    },
+    {
+      "family_id": "cf05_cafe_order",
+      "split": "dev",
+      "oracle_kind": "version_edit",
+      "skill": "new_user_state",
+      "setting": "Παραγγελία σε καφέ"
+    },
+    {
+      "family_id": "cf06_plant_log",
+      "split": "train",
+      "oracle_kind": "state_inference",
+      "skill": "state_inference",
+      "setting": "Ημερολόγιο ποτίσματος"
+    },
+    {
+      "family_id": "cf07_bus_route",
+      "split": "train",
+      "oracle_kind": "state_inference",
+      "skill": "state_inference",
+      "setting": "Διαδρομή τοπικού λεωφορείου"
+    },
+    {
+      "family_id": "cf08_storeroom_inventory",
+      "split": "train",
+      "oracle_kind": "state_inference",
+      "skill": "state_inference",
+      "setting": "Αποθήκη πολιτιστικού συλλόγου"
+    },
+    {
+      "family_id": "cf09_library_hold",
+      "split": "dev",
+      "oracle_kind": "state_inference",
+      "skill": "state_inference",
+      "setting": "Κράτηση βιβλίου δημοτικής βιβλιοθήκης"
+    },
+    {
+      "family_id": "cf10_reminder_cancel",
+      "split": "train",
+      "oracle_kind": "cancellation",
+      "skill": "cancellation",
+      "setting": "Υπενθυμίσεις στο ίδιο νήμα"
+    },
+    {
+      "family_id": "cf11_recipe_revision",
+      "split": "final_confirmation",
+      "oracle_kind": "version_edit",
+      "skill": "version_editing",
+      "setting": "Τρέχουσα εκδοχή συνταγής"
+    },
+    {
+      "family_id": "cf12_delivery_cancel",
+      "split": "final_confirmation",
+      "oracle_kind": "cancellation",
+      "skill": "cancellation",
+      "setting": "Δύο ενεργές εργασίες για παράδοση"
+    }
+  ],
+  "remaining_family_slots": {
+    "train": {
+      "four_label": 92,
+      "true_false_only": 100
+    },
+    "dev": {
+      "four_label": 8,
+      "true_false_only": 10
+    },
+    "final_confirmation": {
+      "four_label": 8,
+      "true_false_only": 10
+    }
+  },
+  "leakage_rules": [
+    "family_id belongs to exactly one split",
+    "same entities, state graph, evidence table, paraphrase, or numeric template remain in that split",
+    "no public benchmark-derived prompts or lightly paraphrased benchmark tasks",
+    "final_confirmation families are sealed after specification and cannot guide prompt tuning",
+    "decision totals are counted from supervised labelled assistant decisions, never conversations or raw turns"
+  ],
+  "authoring_boundary": "Specifications alone are not quality-ready for scale. The active goal authorizes later scaling after the stated semantic, Greek, oracle, masking, and leakage gates pass."
+}

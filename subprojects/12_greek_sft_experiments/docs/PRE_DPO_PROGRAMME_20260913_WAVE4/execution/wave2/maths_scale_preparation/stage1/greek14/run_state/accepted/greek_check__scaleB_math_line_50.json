@@ -1,0 +1,30 @@
+{
+  "job_id": "greek_check__scaleB_math_line_50",
+  "row_id": "scaleB_math_line_50",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "b0cf00278173a06aa2140ea04fd7c91b5ddda00ce8028e49e26f7d77b1b78d98",
+  "input_record_sha256": "c25eb34bbe08901a1819c1a1b09afb5d08412ac694985f431a39bb4be4d35cb0",
+  "payload_sha256": "cebc755e0cd9343c09f63607ab8c34bce8d04a119e0432c21aa08a332be562b9",
+  "template_sha256": "9edf7cecca4f94e4df6d84eda3441958e8dda60706d4ec86d011c30f759056a8",
+  "schema_sha256": "cac89525ac699c70071e5020cc6e5ba4828aea543a27af1fa23c88ec621618b3",
+  "prompt_sha256": "93d9b6df9f10d47b4c7ae0eef192634314c7ec110b8d9ebf1ec8acca00af19c3",
+  "result": {
+    "row_id": "scaleB_math_line_50",
+    "status": "unchanged",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Παραγοντοποιήστε την παράσταση $58x^5-203x^{11}$."
+      },
+      {
+        "role": "assistant",
+        "content": "Οι συντελεστές έχουν μέγιστο κοινό διαιρέτη \\(\\gcd(58,203)=29\\), αφού \\(58=29\\cdot2\\) και \\(203=29\\cdot7\\). Επίσης, ο κοινός παράγοντας των \\(x^5\\) και \\(x^{11}\\) είναι \\(x^5\\). Επομένως,\n\\[\n58x^5-203x^{11}=29x^5\\left(2-7x^6\\right).\n\\]\nΠράγματι, αναπτύσσοντας το γινόμενο παίρνουμε \\(29x^5\\cdot2-29x^5\\cdot7x^6=58x^5-203x^{11}\\).\n\nΑπάντηση: \\(\\boxed{29x^5(2-7x^6)}\\)."
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

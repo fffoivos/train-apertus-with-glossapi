@@ -1,0 +1,18 @@
+{
+  "created_at": "2026-09-13T14:54:39.025425+00:00",
+  "rows": 14,
+  "primary_calls": 42,
+  "greek_calls": 14,
+  "total_stage_calls": 56,
+  "absolute_cap": 72,
+  "retries": 0,
+  "source_repairs": 0,
+  "serialization_repairs": 2,
+  "serialization_affected_rows": 1,
+  "greek_unchanged": 13,
+  "greek_edit_accepted": 1,
+  "regenerated_solutions": 0,
+  "status": "semantics_and_greek_accepted_pending_runtime_and_assembly",
+  "candidate_sha256": "70965e17f81b18da5e99aab8ac16a825b50996d9d5abcf5ac60ccebf748ce859",
+  "projection_sha256": "e72abb688f96dbb28f56ace053c6ca2ff94ea55a79da1c84c920919235f9361e"
+}

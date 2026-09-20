@@ -1,0 +1,22 @@
+{
+  "schema_version": "krikri_v15_submission_v1",
+  "status": "submitted",
+  "submitted_at": "2026-09-13T13:44:07Z",
+  "job_id": "3390957",
+  "command": "sbatch --parsable --export=ALL,PEER_BUNDLE=/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3,PEER_OUTPUT=/iopsstor/scratch/cscs/fffoivos/sft_round1/evals/wave2_krikri_v15/attempt_001/result.json /iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/peer_eval_debug.sbatch",
+  "bundle_payload_sha256": "edf6f76fa34cf4a362b258a250259ce7d03029a7f2a739a2c9631caa1777b9dc",
+  "science_manifest_sha256": "911181d1abd995b167e5cce93fe8b9fe7e9ca1b37edc735b7469e9f216e8534a",
+  "root_launch_review": {
+    "path": "root_launch_review.json",
+    "sha256": "03ee3fc8202c32eeaf9019d66bc7fb32d19199c9a6c79c3bb758a11963effbea",
+    "status": "approved_single_bounded_attempt"
+  },
+  "limits": {
+    "partition": "debug",
+    "walltime": "01:25:00",
+    "node_hours_max": 1.4167,
+    "projected_chf_max": 3.81,
+    "automatic_retries": false,
+    "partition_fallback": false
+  }
+}

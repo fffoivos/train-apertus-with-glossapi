@@ -1,0 +1,9 @@
+{
+  "build_inventory.py": "fea6cb3e46903a81fbdafdd4c783b750e6c2e7b3da7ce59e1f2d4e74d70afc4a",
+  "math7500_family_inventory.jsonl": "5e21b80967bd49bf8482e8ee38691de4e9571b42f37a6df8bf7c600b92059b41",
+  "proposed_family_splits.jsonl": "e3ab829b1cfa8f4e548f3c1c96e10ccb57508f59325d6507e48a6df3a2e9ec44",
+  "source_manifest.json": "68153c4c90070175c13da1847f534e9c3fe93928771d75e1486fa963a37a3d88",
+  "inventory_summary.json": "4bb22b7297398298bcd7acbe6800e673086c21d8ab98ef3c39a8758e77cc1863",
+  "verification.json": "049223c854be4f18cba128d82eee20cc53cdf7aab45db219aa4b7177911cb268",
+  "report.md": "682d32e9a2b5d59f284f8b8f07eba92e82fa90b35233217af28878a0235cf171"
+}

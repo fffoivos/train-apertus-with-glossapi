@@ -1,0 +1,16 @@
+{
+  "schema_version": "krikri_v15_allocation_start_v1",
+  "job_id": "3390957",
+  "observed_state": "RUNNING",
+  "observed_at": "2026-09-13T13:44:32Z",
+  "start_time": "2026-09-13T13:44:05Z",
+  "partition": "debug",
+  "node": "nid007406",
+  "nodes": 1,
+  "cpus": 288,
+  "gpus": 4,
+  "time_limit": "01:25:00",
+  "observed_elapsed": "00:00:27",
+  "maximum_node_hours": 1.4167,
+  "maximum_projected_chf": 3.81
+}

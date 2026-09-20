@@ -1,0 +1,69 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_1025",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "training_structure",
+          "severity": "minor",
+          "quote": "$\u001b[1m\\mathcal{S}\u001b[0m$ … $\u001b[1mx\u001b[0m$",
+          "explanation": "Το ελληνικό πρόβλημα περιέχει ακατέργαστους κωδικούς ελέγχου ANSI. Δεν μεταβάλλουν το μαθηματικό νόημα, αλλά αποτελούν θόρυβο μορφοποίησης ακατάλληλο για εγγραφή εκπαίδευσης.",
+          "suggested_action": "Αφαιρέστε όλους τους κωδικούς ANSI, διατηρώντας ανέπαφο το μαθηματικό κείμενο."
+        },
+        {
+          "dimension": "greek_language",
+          "severity": "minor",
+          "quote": "όλα είναι συγγραμμικά προς \\(1\\pmod{29}\\)",
+          "explanation": "Το «συγγραμμικά» σημαίνει collinear και δεν είναι ο σωστός ελληνικός όρος για αριθμούς που είναι congruent modulo 29. Οι προηγούμενες εξισώσεις καθιστούν πάντως σαφή και ορθή τη μαθηματική ιδέα.",
+          "suggested_action": "Παραπέμψτε το γλωσσικό εύρημα για αντικατάσταση με «ισοϋπόλοιπα με το 1 modulo 29» ή «συγγραμμένα με το 1 modulo 29», χωρίς αλλαγή της απόδειξης."
+        }
+      ],
+      "provenance_note": "Το ζεύγος δηλώνεται ως stable_problem_text και δεν παρέχονται εναλλακτικές εκδοχές προβλήματος. Υπάρχουν δύο εγγραφές λύσης, αλλά δεν προκύπτει από τα παρεχόμενα στοιχεία μαθηματική ασυμφωνία της επιλεγμένης λύσης με το πρόβλημα.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_1896",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "minor",
+          "quote": "40 λιβρών … 2 ουγγιές",
+          "explanation": "Το όνομα έχει προσαρμοστεί συνεκτικά σε «Γρηγόρης», αλλά οι αγγλοσαξονικές μονάδες λίβρας και ουγγιάς διατηρούν ένα υπολειπόμενο αγγλόφωνο πολιτισμικό πλαίσιο. Αυτό δεν επηρεάζει τη μαθηματική ορθότητα, καθώς η μετατροπή 1 λίβρα = 16 ουγγιές δηλώνεται και χρησιμοποιείται σωστά.",
+          "suggested_action": "Καταγράψτε το ως ήπια ανησυχία προσαρμογής· μην αλλάξετε μονάδες ή αριθμούς χωρίς χωριστή άδεια αλλαγής του προβλήματος."
+        }
+      ],
+      "provenance_note": "Μοναδική εγγραφή προβλήματος και λύσης· δεν υπάρχει αβεβαιότητα ιστορικής σύζευξης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_864",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το ζεύγος δηλώνεται ως stable_problem_text και δεν παρέχονται εναλλακτικές εκδοχές προβλήματος. Παρότι υπάρχουν δύο εγγραφές λύσης, η επιλεγμένη λύση συμφωνεί πλήρως με το εμφανιζόμενο πρόβλημα.",
+      "verification_needed": []
+    }
+  ]
+}

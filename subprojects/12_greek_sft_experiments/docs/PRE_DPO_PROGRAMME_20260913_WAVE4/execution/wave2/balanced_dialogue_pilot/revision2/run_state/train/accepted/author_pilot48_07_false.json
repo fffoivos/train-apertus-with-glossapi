@@ -1,0 +1,63 @@
+{
+  "job_id": "author_pilot48_07_false",
+  "row_id": "pilot48_07_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "d4bbdae8f7aa05d21abd2ae77503368cc85b2a93da5843ec74e5886cb4802241",
+  "input_record_sha256": "ab6e7c3efa4deabae1f31edeaaa86c36411767467e7cb36fa295533735801c55",
+  "payload_sha256": "7288aa47d7fd2bf3df2c9f6e0d9211b0c4e3b2229c040d85c7c5a48c06dcb40e",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "0160de396eff99a94acf8808a8935775477c720f34bdd32061bb4ade1e31aec1",
+  "result": {
+    "row_id": "pilot48_07_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_07_false.u_context",
+        "role": "user",
+        "content": "Το απόσπασμα διαδρομής δείχνει σύνδεση Αφετηρία–Πλατεία και Πλατεία–Μουσείο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_07_false.a_context",
+        "role": "assistant",
+        "content": "Η διαδρομή που φαίνεται είναι Αφετηρία–Πλατεία–Μουσείο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_07_false.u_decision",
+        "role": "user",
+        "content": "Άντε πια. Υπάρχει απευθείας σύνδεση από την Αφετηρία στο Μουσείο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_07_false.a_target",
+        "role": "assistant",
+        "content": "Όχι· το απόσπασμα δείχνει διαδρομή μέσω της Πλατείας, όχι απευθείας σύνδεση από την Αφετηρία στο Μουσείο.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_07_false.u_decision",
+        "claim": "Υπάρχει απευθείας σύνδεση από την Αφετηρία στο Μουσείο.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "pilot48_07_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα τον ισχυρισμό περί απευθείας σύνδεσης.",
+          "Να διευκρινίσει ότι η διαδρομή περνά από την Πλατεία.",
+          "Να μην ισχυριστεί καμία εξωτερική ενέργεια ή αλλαγή κατάστασης."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

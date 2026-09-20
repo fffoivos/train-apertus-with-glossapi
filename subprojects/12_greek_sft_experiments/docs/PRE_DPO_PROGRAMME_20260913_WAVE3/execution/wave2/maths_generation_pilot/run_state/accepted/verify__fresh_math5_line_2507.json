@@ -1,0 +1,30 @@
+{
+  "job_id": "verify__fresh_math5_line_2507",
+  "row_id": "fresh_math5_line_2507",
+  "stage": "verification_blind",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "43835628182c33c1755b5381fccad0a801a563e26b673bc5c83f7c22efbc721a",
+  "input_record_sha256": "36822157cf34308ff94156f5edcd4c209b7c8b6eeaddbbd25ba1b617f74caad8",
+  "payload_sha256": "7de45e03316d519f95ca065a432579987e756737663a16bbc416d1eb2248b2bc",
+  "template_sha256": "67a04cee918f227aa582da70a6fcb66cc7eca7093bc64ae9c067ec87a3b4b1de",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "6cc92e3d9080dcfb5f5fe436a2066b06e9f2cbf7463c2863d89ba6a7c835e7cc",
+  "result": {
+    "row_id": "fresh_math5_line_2507",
+    "status": "candidate",
+    "solution_text": "Έστω Χ ο αριθμός των εγγονών που είναι αγόρια. Επειδή το φύλο κάθε εγγονιού καθορίζεται ανεξάρτητα και τα δύο φύλα είναι ισοπίθανα, ισχύει Χ ∼ Bin(10, 1/2).\n\nΤο ζητούμενο ενδεχόμενο είναι να υπάρχουν περισσότερα αγόρια από κορίτσια ή περισσότερα κορίτσια από αγόρια. Το συμπληρωματικό του ενδεχόμενο είναι να υπάρχουν ίσοι αριθμοί, δηλαδή 5 αγόρια και 5 κορίτσια. Επομένως,\n\nP(ζητούμενου ενδεχομένου) = 1 − P(Χ = 5)\n= 1 − C(10,5)(1/2)^5(1/2)^5\n= 1 − 252/1024\n= 772/1024\n= 193/256.\n\nΑπάντηση: Η πιθανότητα είναι 193/256.",
+    "final_answers": [
+      {
+        "part": "μοναδικό ερώτημα",
+        "expression": "193/256",
+        "unit": null,
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

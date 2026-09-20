@@ -1,0 +1,36 @@
+{
+  "updated": "2026-09-13T13:00:41.250572+00:00",
+  "pid": 13884,
+  "workers": 8,
+  "calls_total": 63,
+  "accepted_batches": 60,
+  "total_batches": 61,
+  "reviewed_rows": 120,
+  "sample_rows": 122,
+  "raw_model_verdicts": {
+    "no_defect_found": 107,
+    "issues": 11,
+    "uncertain": 2
+  },
+  "session_seconds": 151.5,
+  "session_successes": 56,
+  "mean_call_seconds": 18.7,
+  "recent_failures": [
+    {
+      "batch": "025",
+      "attempt": 1,
+      "error": "findings contradict no_defect_found"
+    },
+    {
+      "batch": "025",
+      "attempt": 2,
+      "error": "findings contradict no_defect_found"
+    },
+    {
+      "batch": "039",
+      "attempt": 1,
+      "error": "findings contradict no_defect_found"
+    }
+  ],
+  "stopped_on_limit": false
+}

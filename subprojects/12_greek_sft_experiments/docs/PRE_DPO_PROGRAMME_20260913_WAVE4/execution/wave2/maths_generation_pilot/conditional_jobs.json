@@ -1,0 +1,22 @@
+{
+  "status": "blueprints_only_not_in_primary_queue",
+  "source_review": {
+    "cap": 8,
+    "trigger": "Adaptation reports blocked status or a substantive source issue, including text-only impossibility.",
+    "template": "prompts/source_review.txt",
+    "schema": "schemas/source_review.schema.json",
+    "model": "gpt-5.6-sol",
+    "effort": "high",
+    "continuation_gate": "A source_valid result may resume. A repair_candidate must be reviewed and frozen as a new problem hash before any solve; blocked does not resume."
+  },
+  "greek_correction": {
+    "cap": 16,
+    "trigger": "Semantic comparison accepts the mathematics and identifies a language-only defect.",
+    "template": "prompts/greek_correction.txt",
+    "schema": "schemas/greek_correction.schema.json",
+    "model": "gpt-5.6-sol",
+    "effort": "high",
+    "continuation_gate": "Accept only unchanged/edited language results after verifying protected mathematics and row identity; needs_semantic_review returns to semantic adjudication."
+  },
+  "instantiation_rule": "Create a separate reviewed JSONL queue and add its hash to manifest.json before execution. Do not edit queue.jsonl."
+}

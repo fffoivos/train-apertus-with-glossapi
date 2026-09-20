@@ -1,0 +1,1433 @@
+{
+  "schema_version": "greekmmlu_diagnostic200_content_binding_v1",
+  "status": "passed",
+  "repo_id": "dascim/GreekMMLU",
+  "revision": "6a03aa06b68beb932fb75edff3a34e50b3674649",
+  "config": "All",
+  "split": "test",
+  "parquet": {
+    "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_greekmmlu_protocol/hf_hub/datasets--dascim--GreekMMLU/snapshots/6a03aa06b68beb932fb75edff3a34e50b3674649/All/test-00000-of-00001.parquet",
+    "local_temporary_path": "/private/tmp/greekmmlu_diagnostic200/test-00000-of-00001.parquet",
+    "bytes": 3598193,
+    "sha256": "b77d269150c4c6e3441cfb20d52534f9aebd2c8c33883d0df7d61b3bc06129f5"
+  },
+  "selection": {
+    "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/greekmmlu_protocol/diagnostic200_ids.jsonl",
+    "bytes": 40160,
+    "sha256": "58ab651789059df8f69c19b1fc5346f3a6bc8ed7a0c08d8951b090c1feb56978"
+  },
+  "dataset_rows": 16632,
+  "selected_rows": 200,
+  "observed_subject_level_strata": 61,
+  "selected_choice_arity_counts": {
+    "2": 37,
+    "3": 24,
+    "4": 139
+  },
+  "content_binding_rule": "SHA256 of UTF-8 canonical JSON over answer, choices, group, level, question, subject; content itself is not emitted",
+  "ordered_selection_content_sha256": "775b4c9801b7e9b4fea6b088ee844a22633c76bd0a231de7cadd71f3e6523a6f",
+  "rows": [
+    {
+      "example_id": "greekmmlu:12959",
+      "dataset_row_index": 12959,
+      "subject": "Accounting",
+      "level": "Professional",
+      "content_sha256": "f40298ffd1c0d1650976c48e6a5b8209f4334c390886ebd3732864519d612090"
+    },
+    {
+      "example_id": "greekmmlu:12817",
+      "dataset_row_index": 12817,
+      "subject": "Accounting",
+      "level": "Professional",
+      "content_sha256": "a7efbfa0a5e4811e052104f7e6bfd57aaee5849ad823b4abb11f073260cc297d"
+    },
+    {
+      "example_id": "greekmmlu:12857",
+      "dataset_row_index": 12857,
+      "subject": "Accounting",
+      "level": "Professional",
+      "content_sha256": "2430951113badfcd16a45d84f7460e74dd9ba6c8a4a2824bcb98d679c24c0e10"
+    },
+    {
+      "example_id": "greekmmlu:330",
+      "dataset_row_index": 330,
+      "subject": "Agriculture",
+      "level": "Professional",
+      "content_sha256": "e19812e5027c6714e295b71a8da21e57e377a0ed93d14df04664f3a13a3ad45e"
+    },
+    {
+      "example_id": "greekmmlu:10",
+      "dataset_row_index": 10,
+      "subject": "Agriculture",
+      "level": "Professional",
+      "content_sha256": "70686cab80d2f0833dac27d7ddea8f848e8b1375e69a0a0c17d8b1c4efee140f"
+    },
+    {
+      "example_id": "greekmmlu:123",
+      "dataset_row_index": 123,
+      "subject": "Agriculture",
+      "level": "Professional",
+      "content_sha256": "240f9435757853e0d8cd7324c110b35c63dec695fa8b12fe08a7a6f6831f2977"
+    },
+    {
+      "example_id": "greekmmlu:12987",
+      "dataset_row_index": 12987,
+      "subject": "Agriculture",
+      "level": "University",
+      "content_sha256": "ac1fc29c5da51be98df57f921fc4913164b0bd8ceaf3995e925088a692ecc81a"
+    },
+    {
+      "example_id": "greekmmlu:13034",
+      "dataset_row_index": 13034,
+      "subject": "Agriculture",
+      "level": "University",
+      "content_sha256": "d6f24a563fd7f1f1cfbe0e61486efa2858b39f802836db42af45ee4ddf03d128"
+    },
+    {
+      "example_id": "greekmmlu:12988",
+      "dataset_row_index": 12988,
+      "subject": "Agriculture",
+      "level": "University",
+      "content_sha256": "369c9b116bc25e9561bd09174bbb09908524f20f359ee5252d45d0b32477cd9b"
+    },
+    {
+      "example_id": "greekmmlu:683",
+      "dataset_row_index": 683,
+      "subject": "Art",
+      "level": "Professional",
+      "content_sha256": "2923510f7939001ebdfc3956e50d2b1117968a954100bb17d278c52249e4d6ab"
+    },
+    {
+      "example_id": "greekmmlu:419",
+      "dataset_row_index": 419,
+      "subject": "Art",
+      "level": "Professional",
+      "content_sha256": "c6bdddbaec7e0e84df5a9eace47ddb434e813819db4a8eaf5890deebce4dab79"
+    },
+    {
+      "example_id": "greekmmlu:641",
+      "dataset_row_index": 641,
+      "subject": "Art",
+      "level": "Professional",
+      "content_sha256": "f574957f7189a037aad693859ba8027225bb399e3f3455468a948122bce0545d"
+    },
+    {
+      "example_id": "greekmmlu:13060",
+      "dataset_row_index": 13060,
+      "subject": "Art",
+      "level": "Secondary School",
+      "content_sha256": "747f1fe6dd50a3d77c7ce7c032a5747ab64e2d0f7c39e7ba516c6e20f12b71a8"
+    },
+    {
+      "example_id": "greekmmlu:16374",
+      "dataset_row_index": 16374,
+      "subject": "Art",
+      "level": "Secondary School",
+      "content_sha256": "6add3453c99616a7b849b91e221112ff05c4678e11e1646c4d91b7977526785e"
+    },
+    {
+      "example_id": "greekmmlu:13068",
+      "dataset_row_index": 13068,
+      "subject": "Art",
+      "level": "Secondary School",
+      "content_sha256": "362c53508aa0af6fa32990b5cddb75e57fe8f9ec287cc0b8dcf9faef660e6572"
+    },
+    {
+      "example_id": "greekmmlu:13076",
+      "dataset_row_index": 13076,
+      "subject": "Art",
+      "level": "University",
+      "content_sha256": "804793f407596541195d2dda8af51202e60181dc74daeb17fece0b29eb894664"
+    },
+    {
+      "example_id": "greekmmlu:13084",
+      "dataset_row_index": 13084,
+      "subject": "Art",
+      "level": "University",
+      "content_sha256": "0ebb6fba4710bfcb0418c47e1b5c13ed71b0e916faf644a33b4165071b13ab5b"
+    },
+    {
+      "example_id": "greekmmlu:13080",
+      "dataset_row_index": 13080,
+      "subject": "Art",
+      "level": "University",
+      "content_sha256": "6d6f50faf0fcb348d22df03d5d55d5ea3cdaa3db32c8e7502b71db480c4aa88f"
+    },
+    {
+      "example_id": "greekmmlu:13141",
+      "dataset_row_index": 13141,
+      "subject": "Biology",
+      "level": "Primary School",
+      "content_sha256": "e72882f079fd118f6039ef87798df65ec5d0a883ada663201f9a7c9410e0161f"
+    },
+    {
+      "example_id": "greekmmlu:13096",
+      "dataset_row_index": 13096,
+      "subject": "Biology",
+      "level": "Primary School",
+      "content_sha256": "c3d731475cd0c33adfbcc99415e291a729a6e533c044ab4a215c99482f1c881e"
+    },
+    {
+      "example_id": "greekmmlu:13092",
+      "dataset_row_index": 13092,
+      "subject": "Biology",
+      "level": "Primary School",
+      "content_sha256": "e181c4c3c76edd3429a261ed67c645f658dfa3a691b8efaf5658fb3603413305"
+    },
+    {
+      "example_id": "greekmmlu:15456",
+      "dataset_row_index": 15456,
+      "subject": "Biology",
+      "level": "Professional",
+      "content_sha256": "daa34eeb04d75c74196721a13580bdf11983d64430c9acf3422e829cae0c5dc0"
+    },
+    {
+      "example_id": "greekmmlu:15189",
+      "dataset_row_index": 15189,
+      "subject": "Biology",
+      "level": "Professional",
+      "content_sha256": "2fe626702545f873ff2229a0a8ced87ddad74783a24c5daa3097de65af609d7c"
+    },
+    {
+      "example_id": "greekmmlu:15234",
+      "dataset_row_index": 15234,
+      "subject": "Biology",
+      "level": "Professional",
+      "content_sha256": "eb959361950194a48b01b3566d408bcf6ea1026debdd71e43a94f2dae0fd00fc"
+    },
+    {
+      "example_id": "greekmmlu:15236",
+      "dataset_row_index": 15236,
+      "subject": "Biology",
+      "level": "Secondary School",
+      "content_sha256": "f0eaf6b68df8d5a968253ddcc4c61317f7cd3e3a6cade0f43e0af84c9f292815"
+    },
+    {
+      "example_id": "greekmmlu:15482",
+      "dataset_row_index": 15482,
+      "subject": "Biology",
+      "level": "Secondary School",
+      "content_sha256": "d8a0939857d7c8842b311a8fb9c0fb18ad07102403585821aeafdad8c304567c"
+    },
+    {
+      "example_id": "greekmmlu:15349",
+      "dataset_row_index": 15349,
+      "subject": "Biology",
+      "level": "Secondary School",
+      "content_sha256": "f5e341f24a023728730f1f8e820d54de88fc98a869451a5382ca5253d73811ef"
+    },
+    {
+      "example_id": "greekmmlu:13188",
+      "dataset_row_index": 13188,
+      "subject": "Chemistry",
+      "level": "Primary School",
+      "content_sha256": "600b34549530207c938e489e23948cb8801116082d3e8781e6828da34e2cf223"
+    },
+    {
+      "example_id": "greekmmlu:13193",
+      "dataset_row_index": 13193,
+      "subject": "Chemistry",
+      "level": "Primary School",
+      "content_sha256": "2f1091b83855826f2b08af764eb6fc79fcf89c280771d9c86d3afdec5356e7ac"
+    },
+    {
+      "example_id": "greekmmlu:13228",
+      "dataset_row_index": 13228,
+      "subject": "Chemistry",
+      "level": "University",
+      "content_sha256": "e84ff5ac4122e25f025262d438a51285d442cbd438607b272e93086a6215df1b"
+    },
+    {
+      "example_id": "greekmmlu:13227",
+      "dataset_row_index": 13227,
+      "subject": "Chemistry",
+      "level": "University",
+      "content_sha256": "c1fa4128eeda190d511a4d003f3a1e38e313ededfc38c5f07cc12da8ef3151e4"
+    },
+    {
+      "example_id": "greekmmlu:13250",
+      "dataset_row_index": 13250,
+      "subject": "Chemistry",
+      "level": "University",
+      "content_sha256": "567905f10d2b9f62f158998095c1c9d075ff8f092fc588d3feaadc1741a081ee"
+    },
+    {
+      "example_id": "greekmmlu:1620",
+      "dataset_row_index": 1620,
+      "subject": "Civil Engineering",
+      "level": "Professional",
+      "content_sha256": "166beb17bc29b1bc11882adbf47fd9878bf7610d4a12d63a896419591c908a42"
+    },
+    {
+      "example_id": "greekmmlu:1657",
+      "dataset_row_index": 1657,
+      "subject": "Civil Engineering",
+      "level": "Professional",
+      "content_sha256": "e73e7a84639487771a3acb8677eb782bff53b29b7c2b997f8e9803ef0421aff9"
+    },
+    {
+      "example_id": "greekmmlu:1255",
+      "dataset_row_index": 1255,
+      "subject": "Civil Engineering",
+      "level": "Professional",
+      "content_sha256": "9c367f3f26251983be77c246daeefa54b98308cb54a3c8a6dd87aa38800afb59"
+    },
+    {
+      "example_id": "greekmmlu:1905",
+      "dataset_row_index": 1905,
+      "subject": "Clinical Knowledge",
+      "level": "Professional",
+      "content_sha256": "3e60c315c750237daa3d542366832034043362b0fbb1cae88b53bdcf7ee06cc7"
+    },
+    {
+      "example_id": "greekmmlu:2082",
+      "dataset_row_index": 2082,
+      "subject": "Clinical Knowledge",
+      "level": "Professional",
+      "content_sha256": "1835097c363859d9783e6283d55056c67e85094a622cb7dee260152e6f3162f9"
+    },
+    {
+      "example_id": "greekmmlu:2087",
+      "dataset_row_index": 2087,
+      "subject": "Clinical Knowledge",
+      "level": "Professional",
+      "content_sha256": "1d55dc6424e3748d30350edd2beca7871115387778320644660a595af1622a53"
+    },
+    {
+      "example_id": "greekmmlu:13299",
+      "dataset_row_index": 13299,
+      "subject": "Computer Networks & Security",
+      "level": "University",
+      "content_sha256": "870ab75bc8e9dc008b5eb159fef0f5f118e1cc67d6f7bac90350e218ca7a6819"
+    },
+    {
+      "example_id": "greekmmlu:13271",
+      "dataset_row_index": 13271,
+      "subject": "Computer Networks & Security",
+      "level": "University",
+      "content_sha256": "c609c43b2786a9fb19f9edf3775afa92d9658c8891d5c3ef6dda32da66a50fd5"
+    },
+    {
+      "example_id": "greekmmlu:13272",
+      "dataset_row_index": 13272,
+      "subject": "Computer Networks & Security",
+      "level": "University",
+      "content_sha256": "8667aa00f54250c6bd6e2751a609d1961756420897a567856706d79a5213d88e"
+    },
+    {
+      "example_id": "greekmmlu:2230",
+      "dataset_row_index": 2230,
+      "subject": "Computer Science",
+      "level": "Professional",
+      "content_sha256": "088d57e647282d077ad98af9b08a7e0daa05a07e5ff860d185184f9084dc70d9"
+    },
+    {
+      "example_id": "greekmmlu:2209",
+      "dataset_row_index": 2209,
+      "subject": "Computer Science",
+      "level": "Professional",
+      "content_sha256": "607e67c31f422afed8a227dc66631612d383289b56aa8f3f45e5144f45b836ef"
+    },
+    {
+      "example_id": "greekmmlu:2273",
+      "dataset_row_index": 2273,
+      "subject": "Computer Science",
+      "level": "Professional",
+      "content_sha256": "74c2572dd1349bb8a7a7dce9439edec8f9d4a3fdd9e429044804ba8ccfb37739"
+    },
+    {
+      "example_id": "greekmmlu:13342",
+      "dataset_row_index": 13342,
+      "subject": "Computer Science",
+      "level": "University",
+      "content_sha256": "04d016dd10c3f8ba9eb8bfab96c6ab6d97225f878422640b2e22825f0277f4af"
+    },
+    {
+      "example_id": "greekmmlu:13375",
+      "dataset_row_index": 13375,
+      "subject": "Computer Science",
+      "level": "University",
+      "content_sha256": "5a0f397f06c8b214126476b1a67662bc7ec1ea5d2f59844faade4df62cfbd9d0"
+    },
+    {
+      "example_id": "greekmmlu:13408",
+      "dataset_row_index": 13408,
+      "subject": "Computer Science",
+      "level": "University",
+      "content_sha256": "4fdd30d532b75ff9d92df702d727db91df74852618059c645fa5c2303a3f9fbc"
+    },
+    {
+      "example_id": "greekmmlu:16329",
+      "dataset_row_index": 16329,
+      "subject": "Computer_Networks_and_Security",
+      "level": "Secondary School",
+      "content_sha256": "b22dde87146959f45425d50091baa9b6dc8b68548599953e4785d6f8741db15c"
+    },
+    {
+      "example_id": "greekmmlu:16408",
+      "dataset_row_index": 16408,
+      "subject": "Computer_Networks_and_Security",
+      "level": "Secondary School",
+      "content_sha256": "b7c82b3645f6265df951ce2e568038d5ab69d4778c14c8e573e618ca45ae2384"
+    },
+    {
+      "example_id": "greekmmlu:16359",
+      "dataset_row_index": 16359,
+      "subject": "Computer_Networks_and_Security",
+      "level": "Secondary School",
+      "content_sha256": "ecf7992bd86dd840810585d826f1d64be68c0e10124e031222b8b0fb135f2404"
+    },
+    {
+      "example_id": "greekmmlu:2608",
+      "dataset_row_index": 2608,
+      "subject": "Driving Rules",
+      "level": "NA",
+      "content_sha256": "4255c98d27730c6fa4a71b53a2ec8475be8d663dbcd3d6dad23768796c743218"
+    },
+    {
+      "example_id": "greekmmlu:3904",
+      "dataset_row_index": 3904,
+      "subject": "Driving Rules",
+      "level": "NA",
+      "content_sha256": "fd2c667df7b79f3af4751fd60ec0ad03f1e5aec6b43de4614f72430c4727cfe6"
+    },
+    {
+      "example_id": "greekmmlu:3424",
+      "dataset_row_index": 3424,
+      "subject": "Driving Rules",
+      "level": "NA",
+      "content_sha256": "cdc85bcb61ac27eb13503bde61cd593b9628031f00f6a0a8bbdf3a98df343cea"
+    },
+    {
+      "example_id": "greekmmlu:2546",
+      "dataset_row_index": 2546,
+      "subject": "Driving Rules",
+      "level": "NA",
+      "content_sha256": "ed8aa309eb026270ef59430eeef4d3c6c087a879112b7e25f4a5036eabdcdeb3"
+    },
+    {
+      "example_id": "greekmmlu:3939",
+      "dataset_row_index": 3939,
+      "subject": "Driving Rules",
+      "level": "NA",
+      "content_sha256": "5d393674dc5efd0fa56fc259cf4ac1d30d9e261cc01ce645ff5c87cb0ceaa1e9"
+    },
+    {
+      "example_id": "greekmmlu:2710",
+      "dataset_row_index": 2710,
+      "subject": "Driving Rules",
+      "level": "NA",
+      "content_sha256": "cbf83e16726d79465d8f9df6aab3be3a7b84f8ea61d99c1def50bfdcce7ea5cd"
+    },
+    {
+      "example_id": "greekmmlu:3263",
+      "dataset_row_index": 3263,
+      "subject": "Driving Rules",
+      "level": "NA",
+      "content_sha256": "a01ccd96ab890c621df7bf68ed15bcd7da4972fe55a8235e4cd262cc70ac3b8e"
+    },
+    {
+      "example_id": "greekmmlu:2623",
+      "dataset_row_index": 2623,
+      "subject": "Driving Rules",
+      "level": "NA",
+      "content_sha256": "0a98035e24cc98283d6ef9adbde0f818f7ff70a1e4aaf05912aca38cbdb29319"
+    },
+    {
+      "example_id": "greekmmlu:3415",
+      "dataset_row_index": 3415,
+      "subject": "Driving Rules",
+      "level": "NA",
+      "content_sha256": "58bacff2af994165a0006fd8ee9368bfd95ccb8bc8212d31bf00af19753986cf"
+    },
+    {
+      "example_id": "greekmmlu:3286",
+      "dataset_row_index": 3286,
+      "subject": "Driving Rules",
+      "level": "NA",
+      "content_sha256": "be6f103bee965752db4011626e59c6b6739e7565cf37c21f59245b84cc1234b2"
+    },
+    {
+      "example_id": "greekmmlu:2636",
+      "dataset_row_index": 2636,
+      "subject": "Driving Rules",
+      "level": "NA",
+      "content_sha256": "2383c3af0bfa0a51684b3981c227cf82dfe4a54373ed89f1cb8de13599297685"
+    },
+    {
+      "example_id": "greekmmlu:13580",
+      "dataset_row_index": 13580,
+      "subject": "Economics",
+      "level": "Professional",
+      "content_sha256": "1aba813fa99bf32c318b03258fb2a1b23d17250eda139c1185a1e94d1a0da45e"
+    },
+    {
+      "example_id": "greekmmlu:13564",
+      "dataset_row_index": 13564,
+      "subject": "Economics",
+      "level": "Professional",
+      "content_sha256": "48878022793e201eb3982d94289f259715a7db257f3abd076065d7361b4b387f"
+    },
+    {
+      "example_id": "greekmmlu:13464",
+      "dataset_row_index": 13464,
+      "subject": "Economics",
+      "level": "Professional",
+      "content_sha256": "f4c8571957e30a3f2873ad20d03dcbbf7771d78cc0e840b796710cf9c9162554"
+    },
+    {
+      "example_id": "greekmmlu:13696",
+      "dataset_row_index": 13696,
+      "subject": "Economics",
+      "level": "University",
+      "content_sha256": "3677d71e41313e0587b17159e195a94c8d1dd5df039bfd658667d096c6c82328"
+    },
+    {
+      "example_id": "greekmmlu:13646",
+      "dataset_row_index": 13646,
+      "subject": "Economics",
+      "level": "University",
+      "content_sha256": "8a68de527b549e6f7732d6e48cada4ce8bc37f81a9cc8dab97f90878e67d42e3"
+    },
+    {
+      "example_id": "greekmmlu:13650",
+      "dataset_row_index": 13650,
+      "subject": "Economics",
+      "level": "University",
+      "content_sha256": "fa856d0273353caf640c31dcb68975e6f75ccc1292147628ad272ab879a8ee1d"
+    },
+    {
+      "example_id": "greekmmlu:13705",
+      "dataset_row_index": 13705,
+      "subject": "Education",
+      "level": "Professional",
+      "content_sha256": "653dc5dea7c56104b92b4c970b6413b78801784ea1c0be4a4b80fe387b56c712"
+    },
+    {
+      "example_id": "greekmmlu:13707",
+      "dataset_row_index": 13707,
+      "subject": "Education",
+      "level": "Professional",
+      "content_sha256": "4c2669d8bda19c27d0f0b9b595de2c2b9db8f948e96a5beb4f435825228a13bb"
+    },
+    {
+      "example_id": "greekmmlu:13700",
+      "dataset_row_index": 13700,
+      "subject": "Education",
+      "level": "Professional",
+      "content_sha256": "327c848e90d0c5b9e62ad2e3e2dc24b0f042edd0a8bebc598955fb8560d994d2"
+    },
+    {
+      "example_id": "greekmmlu:13960",
+      "dataset_row_index": 13960,
+      "subject": "Education",
+      "level": "University",
+      "content_sha256": "b73e23eb7b94cd3f312ecab83e35648c8220f9bd1cad0b097f71fde7d1fee6b7"
+    },
+    {
+      "example_id": "greekmmlu:13970",
+      "dataset_row_index": 13970,
+      "subject": "Education",
+      "level": "University",
+      "content_sha256": "41d2a1d112db41fe334959a23fc64d48eaf9fd59b8131e7da90885fd4f9dccc2"
+    },
+    {
+      "example_id": "greekmmlu:13991",
+      "dataset_row_index": 13991,
+      "subject": "Education",
+      "level": "University",
+      "content_sha256": "64d7e1ebee8c6b7576ce50eeb77eb518b9b0865559a8866e7f98e4435b3e9b5e"
+    },
+    {
+      "example_id": "greekmmlu:4439",
+      "dataset_row_index": 4439,
+      "subject": "Electrical Engineering",
+      "level": "Professional",
+      "content_sha256": "5650ff47c421cb4aa1bcca7e8f9e5bdab4678d47f7774e52eb1da21707182e31"
+    },
+    {
+      "example_id": "greekmmlu:4178",
+      "dataset_row_index": 4178,
+      "subject": "Electrical Engineering",
+      "level": "Professional",
+      "content_sha256": "46555b692615883de53b64848986337d86145d7df623a96bbfa9f578ebd3ab63"
+    },
+    {
+      "example_id": "greekmmlu:4150",
+      "dataset_row_index": 4150,
+      "subject": "Electrical Engineering",
+      "level": "Professional",
+      "content_sha256": "f1f8f8f9f9785dfdb29bee07168db5d33638e6696f61733dad0b58c8d29a6e07"
+    },
+    {
+      "example_id": "greekmmlu:16382",
+      "dataset_row_index": 16382,
+      "subject": "Electrical Engineering",
+      "level": "Secondary School",
+      "content_sha256": "9eb627abbd143f89189eb4ac00e85408413178f9a4b4ad90f0e1ee8140136cb7"
+    },
+    {
+      "example_id": "greekmmlu:16406",
+      "dataset_row_index": 16406,
+      "subject": "Electrical Engineering",
+      "level": "Secondary School",
+      "content_sha256": "872e7544014e7de8a96a4f47d6974fc791eba5b4fca10cba6b9f77fda91cb4f4"
+    },
+    {
+      "example_id": "greekmmlu:16362",
+      "dataset_row_index": 16362,
+      "subject": "Electrical Engineering",
+      "level": "Secondary School",
+      "content_sha256": "3575a45e376c6e6f6f37fab00ca1f3b3bde2ddbfff60171c4453823ee3593fa9"
+    },
+    {
+      "example_id": "greekmmlu:4296",
+      "dataset_row_index": 4296,
+      "subject": "Electrical Engineering",
+      "level": "University",
+      "content_sha256": "db3d178f491f39142c3dcd543dc87337592e4be48a8edb59bd2d9f01caafe1ef"
+    },
+    {
+      "example_id": "greekmmlu:4133",
+      "dataset_row_index": 4133,
+      "subject": "Electrical Engineering",
+      "level": "University",
+      "content_sha256": "e844e16f26b6c4d80c3d83c945685e2cb8913221f3a3255e0c73b3a415e6fdff"
+    },
+    {
+      "example_id": "greekmmlu:4173",
+      "dataset_row_index": 4173,
+      "subject": "Electrical Engineering",
+      "level": "University",
+      "content_sha256": "932c076a920d9007fc05e70e390783f7a926423ea20f23be0edf56ad5e9601d2"
+    },
+    {
+      "example_id": "greekmmlu:16116",
+      "dataset_row_index": 16116,
+      "subject": "General Knowledge",
+      "level": "Professional",
+      "content_sha256": "4e0619ddf02a10f5b3811b1a22c49e081ca42ce91f22c8fe12a40e0c7aa79bff"
+    },
+    {
+      "example_id": "greekmmlu:16150",
+      "dataset_row_index": 16150,
+      "subject": "General Knowledge",
+      "level": "Professional",
+      "content_sha256": "bcac16bc5a7c9bc07d8c9c07fa3fb00441f64b4ecc4ec5e3f39711622752e910"
+    },
+    {
+      "example_id": "greekmmlu:14022",
+      "dataset_row_index": 14022,
+      "subject": "General Knowledge",
+      "level": "Professional",
+      "content_sha256": "6b11a68e9b9f706cc5ed946ab363cfaab813e2cc9d3ec8fb36a093703ae31db0"
+    },
+    {
+      "example_id": "greekmmlu:14092",
+      "dataset_row_index": 14092,
+      "subject": "General Knowledge",
+      "level": "Secondary School",
+      "content_sha256": "7f216d0f51fe68556085f524721487e1b50a33aef4cee6a7c7176d56b3767f07"
+    },
+    {
+      "example_id": "greekmmlu:14041",
+      "dataset_row_index": 14041,
+      "subject": "General Knowledge",
+      "level": "Secondary School",
+      "content_sha256": "521379136faa46c27acdc968efa9c9e024f8292a07ac27413410c3f119fcb652"
+    },
+    {
+      "example_id": "greekmmlu:14068",
+      "dataset_row_index": 14068,
+      "subject": "General Knowledge",
+      "level": "Secondary School",
+      "content_sha256": "b1fe839a863acfc7e7a0313851e06f3b7b7c7fd348e179b82ecf910ff72742c4"
+    },
+    {
+      "example_id": "greekmmlu:4650",
+      "dataset_row_index": 4650,
+      "subject": "Geography",
+      "level": "Primary School",
+      "content_sha256": "2b714ca7d4af12bf276716eb6f89c8933f420a93b4eed1ad795f5b9c1221e498"
+    },
+    {
+      "example_id": "greekmmlu:4795",
+      "dataset_row_index": 4795,
+      "subject": "Geography",
+      "level": "Primary School",
+      "content_sha256": "edef7cd2f2138ce1e3db97e346e965425f096a78831495ab3fa0f97dc27ab856"
+    },
+    {
+      "example_id": "greekmmlu:4723",
+      "dataset_row_index": 4723,
+      "subject": "Geography",
+      "level": "Primary School",
+      "content_sha256": "e49ecf252d06e7474ffbd674553fcc6a46e0be11ca70c28a972868d8ac244465"
+    },
+    {
+      "example_id": "greekmmlu:14143",
+      "dataset_row_index": 14143,
+      "subject": "Geography",
+      "level": "Secondary School",
+      "content_sha256": "875983810a0ce0f7b95de4467f9dabeab9c1d913fc25090ac3bb13be155e8980"
+    },
+    {
+      "example_id": "greekmmlu:14147",
+      "dataset_row_index": 14147,
+      "subject": "Geography",
+      "level": "Secondary School",
+      "content_sha256": "f74132cdd78f2118ccd838c6d5a19287bc814fff72397c99f18d05e9ae67fe24"
+    },
+    {
+      "example_id": "greekmmlu:14148",
+      "dataset_row_index": 14148,
+      "subject": "Geography",
+      "level": "Secondary School",
+      "content_sha256": "750b6b915b0fdc86594dbf7eb68ea7c6f87d01403d9be53172287f64c62bea52"
+    },
+    {
+      "example_id": "greekmmlu:14225",
+      "dataset_row_index": 14225,
+      "subject": "Government and Politics",
+      "level": "Primary School",
+      "content_sha256": "81f62367ac34b94b033d730a693a152e201054eef8d717734b7434dcd59994fb"
+    },
+    {
+      "example_id": "greekmmlu:14335",
+      "dataset_row_index": 14335,
+      "subject": "Government and Politics",
+      "level": "Primary School",
+      "content_sha256": "7298be1c75ed3ffd512fbdbba1b0cbc7226921ac16577a9f079c265b433aa2a9"
+    },
+    {
+      "example_id": "greekmmlu:14421",
+      "dataset_row_index": 14421,
+      "subject": "Government and Politics",
+      "level": "Primary School",
+      "content_sha256": "38d4d779e407682b0d0ddab8045e9b9132c4010f39bd0856620080fd0a22fe2f"
+    },
+    {
+      "example_id": "greekmmlu:14531",
+      "dataset_row_index": 14531,
+      "subject": "Government and Politics",
+      "level": "Secondary School",
+      "content_sha256": "64524d17088f8ddf2889ab2219b0f5cfd89f7c218dbbc51db5df93ecdf776e31"
+    },
+    {
+      "example_id": "greekmmlu:14501",
+      "dataset_row_index": 14501,
+      "subject": "Government and Politics",
+      "level": "Secondary School",
+      "content_sha256": "c77daa60feceb8804f82ff84f6536456ca63c367d3d4f09b63b9c0ecb6d36177"
+    },
+    {
+      "example_id": "greekmmlu:14503",
+      "dataset_row_index": 14503,
+      "subject": "Government and Politics",
+      "level": "Secondary School",
+      "content_sha256": "26c276dbcd989bb1cb680b51a8e7f9591284ed37b552ce9844092aec0bc8cc0a"
+    },
+    {
+      "example_id": "greekmmlu:5025",
+      "dataset_row_index": 5025,
+      "subject": "Greek History",
+      "level": "Primary School",
+      "content_sha256": "c71c5992b5184d5899f5f1d03572b1f55465f3d154b55ab90189dcb6332b6d5a"
+    },
+    {
+      "example_id": "greekmmlu:5322",
+      "dataset_row_index": 5322,
+      "subject": "Greek History",
+      "level": "Primary School",
+      "content_sha256": "19902a6b6aeb6291932a0e50d88a7431d0c3fd5292689d71e8f393a142ef90b8"
+    },
+    {
+      "example_id": "greekmmlu:5327",
+      "dataset_row_index": 5327,
+      "subject": "Greek History",
+      "level": "Primary School",
+      "content_sha256": "060039f3d66cc92263f3ccd2224c4ac9654cc56a192c94642e61425299eefa07"
+    },
+    {
+      "example_id": "greekmmlu:14645",
+      "dataset_row_index": 14645,
+      "subject": "Greek History",
+      "level": "Professional",
+      "content_sha256": "9dd1a9064f2564eee08b75edd6e4aebaf2c92d21a23d12bea69fe7651314d4bd"
+    },
+    {
+      "example_id": "greekmmlu:14624",
+      "dataset_row_index": 14624,
+      "subject": "Greek History",
+      "level": "Professional",
+      "content_sha256": "ad5a05b2ec378affc69879a6057198f624d6e58c64b5c1ce6af2951a4f60e847"
+    },
+    {
+      "example_id": "greekmmlu:14631",
+      "dataset_row_index": 14631,
+      "subject": "Greek History",
+      "level": "Professional",
+      "content_sha256": "f4f9d77036126d8f9c4714c455e9eb2b398ed11c9920faab9cb86a942413e370"
+    },
+    {
+      "example_id": "greekmmlu:14712",
+      "dataset_row_index": 14712,
+      "subject": "Greek History",
+      "level": "Secondary School",
+      "content_sha256": "3b7144302192ae0adc9c9adc2f4eec0caed80da447d0c36c424c756ca1c7e362"
+    },
+    {
+      "example_id": "greekmmlu:14698",
+      "dataset_row_index": 14698,
+      "subject": "Greek History",
+      "level": "Secondary School",
+      "content_sha256": "9789d7ec484cc477ae4a8c359f8160be2a76dba93b874db2614804408fcf33a7"
+    },
+    {
+      "example_id": "greekmmlu:14723",
+      "dataset_row_index": 14723,
+      "subject": "Greek History",
+      "level": "Secondary School",
+      "content_sha256": "6418d038199232d71bf535b84800092f2ef659333486b5dddb2fc81aff227cb5"
+    },
+    {
+      "example_id": "greekmmlu:14760",
+      "dataset_row_index": 14760,
+      "subject": "Greek Literature",
+      "level": "Secondary School",
+      "content_sha256": "aab8dea29bed546b0ecaae4f4b1b68d80fa8345e58143c8409e6e44b7e2e3847"
+    },
+    {
+      "example_id": "greekmmlu:14755",
+      "dataset_row_index": 14755,
+      "subject": "Greek Literature",
+      "level": "Secondary School",
+      "content_sha256": "0ee2e9dd967951b448e9b81e029dc08a37a87642718f0f0b56e5042cb16c1581"
+    },
+    {
+      "example_id": "greekmmlu:14761",
+      "dataset_row_index": 14761,
+      "subject": "Greek Literature",
+      "level": "Secondary School",
+      "content_sha256": "d02b0972cf5e3a018466f3f7708e2ab0ad7e9a93c4df4c9991b211fbd4e12163"
+    },
+    {
+      "example_id": "greekmmlu:14756",
+      "dataset_row_index": 14756,
+      "subject": "Greek Literature",
+      "level": "University",
+      "content_sha256": "d5127b407abe9e79950fb6c59b47e39c6d28d6c2fd90fb4496c93108a7d0595f"
+    },
+    {
+      "example_id": "greekmmlu:14757",
+      "dataset_row_index": 14757,
+      "subject": "Greek Literature",
+      "level": "University",
+      "content_sha256": "dd9002078cfb7dd188523e6d6d666dad5b0481c09fd14d2be8517e18044ace50"
+    },
+    {
+      "example_id": "greekmmlu:14751",
+      "dataset_row_index": 14751,
+      "subject": "Greek Literature",
+      "level": "University",
+      "content_sha256": "03ce7fab567e66bbc58f52d4ac3fe3a9deb01a1ea75f956ada49edae3eebdb85"
+    },
+    {
+      "example_id": "greekmmlu:5510",
+      "dataset_row_index": 5510,
+      "subject": "Greek Mythology",
+      "level": "Primary School",
+      "content_sha256": "e23652ec8e492d0b619d7e43a5ac497baaa045ad5b6ee0dba2efe7679a250df1"
+    },
+    {
+      "example_id": "greekmmlu:5609",
+      "dataset_row_index": 5609,
+      "subject": "Greek Mythology",
+      "level": "Primary School",
+      "content_sha256": "f296e8fd63b03ba7dda7474798a08063a8f6842f48152ce9f3b060a7c5604467"
+    },
+    {
+      "example_id": "greekmmlu:5579",
+      "dataset_row_index": 5579,
+      "subject": "Greek Mythology",
+      "level": "Primary School",
+      "content_sha256": "70d039fcaa9fb5bbb0672f3a6dc8755436e4275add53e51f63fc63ff825d33b4"
+    },
+    {
+      "example_id": "greekmmlu:5481",
+      "dataset_row_index": 5481,
+      "subject": "Greek Mythology",
+      "level": "Secondary School",
+      "content_sha256": "18f8e162feaa80bc4f74a46f2f785893ed0a52b8f96c780fb4097cf401caa79e"
+    },
+    {
+      "example_id": "greekmmlu:5425",
+      "dataset_row_index": 5425,
+      "subject": "Greek Mythology",
+      "level": "Secondary School",
+      "content_sha256": "a8b2007edb07a435f6de2801cea7d816697b0839e501211b1e7ce63748f1c4d6"
+    },
+    {
+      "example_id": "greekmmlu:5450",
+      "dataset_row_index": 5450,
+      "subject": "Greek Mythology",
+      "level": "Secondary School",
+      "content_sha256": "1c102488975352d7b3f1fd39196213e75595d808ddd35f48a11791caecca0dcb"
+    },
+    {
+      "example_id": "greekmmlu:5611",
+      "dataset_row_index": 5611,
+      "subject": "Greek Mythology",
+      "level": "University",
+      "content_sha256": "84d653558b79419ad80438d2b20bbcda9d40d202c09815ade97a64c219618b8a"
+    },
+    {
+      "example_id": "greekmmlu:5461",
+      "dataset_row_index": 5461,
+      "subject": "Greek Mythology",
+      "level": "University",
+      "content_sha256": "b0305b62cb15dbca1069f5934a45c6e65ea7c744ead3d44f6736174d7b5a2b4f"
+    },
+    {
+      "example_id": "greekmmlu:5641",
+      "dataset_row_index": 5641,
+      "subject": "Greek Mythology",
+      "level": "University",
+      "content_sha256": "27f32e7ba351b2a8e3b125a36d5825a647bf2e3fb770c984b09deef7d9f299ae"
+    },
+    {
+      "example_id": "greekmmlu:5679",
+      "dataset_row_index": 5679,
+      "subject": "Greek Traditions",
+      "level": "Professional",
+      "content_sha256": "01cfb382b2eb600a4344880df94ea440d1a32cf319cdcbab7e8951d66d2fc7a1"
+    },
+    {
+      "example_id": "greekmmlu:5786",
+      "dataset_row_index": 5786,
+      "subject": "Greek Traditions",
+      "level": "Professional",
+      "content_sha256": "1f543583d8316cefe09d08438f815d0360bf314933e641924860a9c8b9b4d15d"
+    },
+    {
+      "example_id": "greekmmlu:5757",
+      "dataset_row_index": 5757,
+      "subject": "Greek Traditions",
+      "level": "Professional",
+      "content_sha256": "e8d862bbf44980fb024c55c9969ff182c4084e60367cf09248167daa29fa16bd"
+    },
+    {
+      "example_id": "greekmmlu:5854",
+      "dataset_row_index": 5854,
+      "subject": "Greek Traditions",
+      "level": "Secondary School",
+      "content_sha256": "7b84f57b140fb3bb17789c4b8340e6d24debacb683a19fde371cddb6ec2c7b51"
+    },
+    {
+      "example_id": "greekmmlu:5814",
+      "dataset_row_index": 5814,
+      "subject": "Greek Traditions",
+      "level": "Secondary School",
+      "content_sha256": "e4f43b46bd3ecb401d7ce011748fe7cc53d5dffdf84421c77b261e9ae83c5b33"
+    },
+    {
+      "example_id": "greekmmlu:6000",
+      "dataset_row_index": 6000,
+      "subject": "Greek Traditions",
+      "level": "Secondary School",
+      "content_sha256": "3610ab5c1b058fdd1ac270c2bd8a89265bde1e99e4d8188b12a531e823938296"
+    },
+    {
+      "example_id": "greekmmlu:6425",
+      "dataset_row_index": 6425,
+      "subject": "Law",
+      "level": "Professional",
+      "content_sha256": "c8387caa599d2c7bb000418e1755b94f0de8eb6574438d25137aa6fc70cb6182"
+    },
+    {
+      "example_id": "greekmmlu:6492",
+      "dataset_row_index": 6492,
+      "subject": "Law",
+      "level": "Professional",
+      "content_sha256": "76ed875d62019562df688a9e31a7e996ece08cf823bb529ffa42b7b0d1039caa"
+    },
+    {
+      "example_id": "greekmmlu:6244",
+      "dataset_row_index": 6244,
+      "subject": "Law",
+      "level": "Professional",
+      "content_sha256": "80420d18c7635b1a45978c11da17558262288867b5ece5eef91590edeeb0f152"
+    },
+    {
+      "example_id": "greekmmlu:6305",
+      "dataset_row_index": 6305,
+      "subject": "Law",
+      "level": "Secondary School",
+      "content_sha256": "cf91723d152df92b74ded06aabfeddf0c4dd08210f14006beeea6bbe31ebd2ab"
+    },
+    {
+      "example_id": "greekmmlu:6129",
+      "dataset_row_index": 6129,
+      "subject": "Law",
+      "level": "Secondary School",
+      "content_sha256": "6be27f2dd66ab822498fb89a5216b6b6b0c0b340f1e63c78b1b761624507272e"
+    },
+    {
+      "example_id": "greekmmlu:6299",
+      "dataset_row_index": 6299,
+      "subject": "Law",
+      "level": "Secondary School",
+      "content_sha256": "6ec0c802578a4022bd5208733c22f0a86cc3674c6d77fd37022705cecad6f88e"
+    },
+    {
+      "example_id": "greekmmlu:6936",
+      "dataset_row_index": 6936,
+      "subject": "Management",
+      "level": "Professional",
+      "content_sha256": "d00f7771b0294745950b28bc7c12c72c0dbc49bbd0a8d51b812bc2413ac5aa2b"
+    },
+    {
+      "example_id": "greekmmlu:7066",
+      "dataset_row_index": 7066,
+      "subject": "Management",
+      "level": "Professional",
+      "content_sha256": "003f1553b974dc56eb7398cd45b18d6677c5654550ec6806420bd0d3898c4266"
+    },
+    {
+      "example_id": "greekmmlu:7547",
+      "dataset_row_index": 7547,
+      "subject": "Management",
+      "level": "Professional",
+      "content_sha256": "8c1d5c0566dc7af1fb45653392338056f44b759129bf3b98df74054b08439152"
+    },
+    {
+      "example_id": "greekmmlu:14789",
+      "dataset_row_index": 14789,
+      "subject": "Management",
+      "level": "University",
+      "content_sha256": "c3d986ec8fcb24d15793a4c707465a7270a01ce823aaaaaa9c9f987862b619fa"
+    },
+    {
+      "example_id": "greekmmlu:14768",
+      "dataset_row_index": 14768,
+      "subject": "Management",
+      "level": "University",
+      "content_sha256": "6d104ad990fd4a63a07d1560294b34c42dadd84e90d98d9801d2c419cdafe591"
+    },
+    {
+      "example_id": "greekmmlu:14782",
+      "dataset_row_index": 14782,
+      "subject": "Management",
+      "level": "University",
+      "content_sha256": "b87532f27a00033400fce0cf34aba31cf645bb4d5ddf793c86b46c319ccbe7b2"
+    },
+    {
+      "example_id": "greekmmlu:16300",
+      "dataset_row_index": 16300,
+      "subject": "Maritime Safety and Rescue Operations",
+      "level": "Professional",
+      "content_sha256": "61fd6308ef5d1e929e4c4b94e448514af3cef3321824fbf3e7c42109a59c86a6"
+    },
+    {
+      "example_id": "greekmmlu:16242",
+      "dataset_row_index": 16242,
+      "subject": "Maritime Safety and Rescue Operations",
+      "level": "Professional",
+      "content_sha256": "921b989441cf56fe2f8917d404edaa1402e5607f79ab3b836abed055d5f13a6f"
+    },
+    {
+      "example_id": "greekmmlu:16312",
+      "dataset_row_index": 16312,
+      "subject": "Maritime Safety and Rescue Operations",
+      "level": "Professional",
+      "content_sha256": "22cda1fb1d2ff4899278bc2a39ff8bd95274a7c0852d55cca84e2d016b469d9d"
+    },
+    {
+      "example_id": "greekmmlu:8644",
+      "dataset_row_index": 8644,
+      "subject": "Mathematics",
+      "level": "Primary School",
+      "content_sha256": "2e3451c24fec3d405c22028b6afbcc7623f8d5675875e0e0193b7f0dcce06089"
+    },
+    {
+      "example_id": "greekmmlu:8481",
+      "dataset_row_index": 8481,
+      "subject": "Mathematics",
+      "level": "Primary School",
+      "content_sha256": "3ab231879e15136d6e0d820621624324518266371a98dbaf0251972c2fa2d4fa"
+    },
+    {
+      "example_id": "greekmmlu:8395",
+      "dataset_row_index": 8395,
+      "subject": "Mathematics",
+      "level": "Primary School",
+      "content_sha256": "bfeaf223d1f871ba88ae582bdf9aad0be2760627b0f0ec51d1ffa6deb38e5a63"
+    },
+    {
+      "example_id": "greekmmlu:8182",
+      "dataset_row_index": 8182,
+      "subject": "Mathematics",
+      "level": "Primary School",
+      "content_sha256": "e2626ec59f18dc02fb3ed36885e51f14fdd76a1b359a1fd16b2041371d9eee20"
+    },
+    {
+      "example_id": "greekmmlu:8301",
+      "dataset_row_index": 8301,
+      "subject": "Mathematics",
+      "level": "Primary School",
+      "content_sha256": "ce8ea85cd9f7e0aabe97e625326630378bb743532aa3dea385a6c5edb8bf7565"
+    },
+    {
+      "example_id": "greekmmlu:16330",
+      "dataset_row_index": 16330,
+      "subject": "Mathematics",
+      "level": "Secondary School",
+      "content_sha256": "1dfac87be5e0c8040f503aeca0081e635b5cc674c18f7a236a9dc2ef0860fa55"
+    },
+    {
+      "example_id": "greekmmlu:16341",
+      "dataset_row_index": 16341,
+      "subject": "Mathematics",
+      "level": "Secondary School",
+      "content_sha256": "01e6a340cbcc758b410e8f248ab8fba362c53babd47c84da60226000e9a81979"
+    },
+    {
+      "example_id": "greekmmlu:16389",
+      "dataset_row_index": 16389,
+      "subject": "Mathematics",
+      "level": "Secondary School",
+      "content_sha256": "e843fa11f9dcdaa21ac77c9b68d826137d20454dd1f3c177be7816e31a734e49"
+    },
+    {
+      "example_id": "greekmmlu:7675",
+      "dataset_row_index": 7675,
+      "subject": "Mathematics",
+      "level": "University",
+      "content_sha256": "8e5b7081146e5d94840c88e4a04011f107d81f633795d44c4f46e41572c5f92d"
+    },
+    {
+      "example_id": "greekmmlu:8278",
+      "dataset_row_index": 8278,
+      "subject": "Mathematics",
+      "level": "University",
+      "content_sha256": "82633a641eb9859feeb20ec9e6be579048ccddc3c22baf1a86db5baf362594c3"
+    },
+    {
+      "example_id": "greekmmlu:8341",
+      "dataset_row_index": 8341,
+      "subject": "Mathematics",
+      "level": "University",
+      "content_sha256": "ca52c579dcc8a240edbc9421ef81683820bfdd08b4c177e4b06e19e166ad135f"
+    },
+    {
+      "example_id": "greekmmlu:8820",
+      "dataset_row_index": 8820,
+      "subject": "Medicine",
+      "level": "Professional",
+      "content_sha256": "94298087e760a11788cd7b5c0082e0c7ee0b9802cdfec26c79d6013c4aa7dbb8"
+    },
+    {
+      "example_id": "greekmmlu:8731",
+      "dataset_row_index": 8731,
+      "subject": "Medicine",
+      "level": "Professional",
+      "content_sha256": "eafe0f8ec512926c094f8d7788f6a1369f2a58ac720e8d7a981cfe78faa2e15a"
+    },
+    {
+      "example_id": "greekmmlu:15659",
+      "dataset_row_index": 15659,
+      "subject": "Medicine",
+      "level": "Professional",
+      "content_sha256": "4407a6334941aa34376e7622449edac2cfa419e16fdf9229b193f537b833da82"
+    },
+    {
+      "example_id": "greekmmlu:14802",
+      "dataset_row_index": 14802,
+      "subject": "Medicine",
+      "level": "University",
+      "content_sha256": "8c78f153fe20a74ce4f7a7cdbc6e916a5e4c13e9867474793089cde5b23210a5"
+    },
+    {
+      "example_id": "greekmmlu:14850",
+      "dataset_row_index": 14850,
+      "subject": "Medicine",
+      "level": "University",
+      "content_sha256": "ed4ad8c02317402dfe40ab9644009baa05f3d506ab82479f2bd5e29b1c0a3519"
+    },
+    {
+      "example_id": "greekmmlu:14833",
+      "dataset_row_index": 14833,
+      "subject": "Medicine",
+      "level": "University",
+      "content_sha256": "01e6ebe619daec87dcff7d7439a6497918ca039c394574bb963c90759a3dd841"
+    },
+    {
+      "example_id": "greekmmlu:9279",
+      "dataset_row_index": 9279,
+      "subject": "Modern Greek Language",
+      "level": "Primary School",
+      "content_sha256": "12bc8389024bf3c3db719bf07cfa9dc7c0b7cb37af8ee57dece85f612571fcd6"
+    },
+    {
+      "example_id": "greekmmlu:10040",
+      "dataset_row_index": 10040,
+      "subject": "Modern Greek Language",
+      "level": "Primary School",
+      "content_sha256": "63151712d41573a30faf5d7431cef9132f0916bc8a1f4e48cddddf2f19ebfaa7"
+    },
+    {
+      "example_id": "greekmmlu:9541",
+      "dataset_row_index": 9541,
+      "subject": "Modern Greek Language",
+      "level": "Primary School",
+      "content_sha256": "50fc769f91835316858f5f9aa2dba7d77fb2351a1b5ea8a19a62c47b9f6c607e"
+    },
+    {
+      "example_id": "greekmmlu:9084",
+      "dataset_row_index": 9084,
+      "subject": "Modern Greek Language",
+      "level": "Primary School",
+      "content_sha256": "51f1d1442a3e4512a5a42507a86e8021df35755fc4f66a1e35f88e8d8ad2340c"
+    },
+    {
+      "example_id": "greekmmlu:10369",
+      "dataset_row_index": 10369,
+      "subject": "Modern Greek Language",
+      "level": "Primary School",
+      "content_sha256": "3460b3c5e59f7269a2012a57d402e4766238b755017e393c9848d0834f62a167"
+    },
+    {
+      "example_id": "greekmmlu:9954",
+      "dataset_row_index": 9954,
+      "subject": "Modern Greek Language",
+      "level": "Primary School",
+      "content_sha256": "f43b74cdeb322195f8873d69a21c8b8e8ae655a6664d658d41deacbb877e4cf0"
+    },
+    {
+      "example_id": "greekmmlu:9156",
+      "dataset_row_index": 9156,
+      "subject": "Modern Greek Language",
+      "level": "Primary School",
+      "content_sha256": "5b56de5212851f28f93acca11f4ad04094c97458ab59dfdfb6a57d5eb2b744db"
+    },
+    {
+      "example_id": "greekmmlu:9260",
+      "dataset_row_index": 9260,
+      "subject": "Modern Greek Language",
+      "level": "Primary School",
+      "content_sha256": "d3cf80cd42f183fcdaadd4ca59dfb5e52f576c453d47e39fe18cdf4a9bb1e030"
+    },
+    {
+      "example_id": "greekmmlu:10052",
+      "dataset_row_index": 10052,
+      "subject": "Modern Greek Language",
+      "level": "Primary School",
+      "content_sha256": "aa11df7d2da68eb53a5dfa317b0be5f5e681b5ac22232183a717b9c6a64d89f3"
+    },
+    {
+      "example_id": "greekmmlu:10683",
+      "dataset_row_index": 10683,
+      "subject": "Modern Greek Language",
+      "level": "Secondary School",
+      "content_sha256": "ac33725cb253fe19541c8e055c31bd941c3a5464a0a649e1db76bc10f9564eba"
+    },
+    {
+      "example_id": "greekmmlu:11278",
+      "dataset_row_index": 11278,
+      "subject": "Modern Greek Language",
+      "level": "Secondary School",
+      "content_sha256": "5bd9f1c01049e63f70a14259256e71480c571e99de66609f7c14a094708bc233"
+    },
+    {
+      "example_id": "greekmmlu:10571",
+      "dataset_row_index": 10571,
+      "subject": "Modern Greek Language",
+      "level": "Secondary School",
+      "content_sha256": "e7ec21833fd01623470341d686af0ceb5e00f39b1747ccbd87ff7cc970cce164"
+    },
+    {
+      "example_id": "greekmmlu:11383",
+      "dataset_row_index": 11383,
+      "subject": "Physics",
+      "level": "Primary School",
+      "content_sha256": "ba5360842a1ff708e001fa6b2bbd44ab00a1ccde43d015c26864da35a70c1c97"
+    },
+    {
+      "example_id": "greekmmlu:11468",
+      "dataset_row_index": 11468,
+      "subject": "Physics",
+      "level": "Primary School",
+      "content_sha256": "194647f13c9daa78c6ad6882c85455b641e6952cf0f71c94e77467dd9bad9ad2"
+    },
+    {
+      "example_id": "greekmmlu:11610",
+      "dataset_row_index": 11610,
+      "subject": "Physics",
+      "level": "Primary School",
+      "content_sha256": "2bbead80559142915ec6552ca41af3dbe4ef195a7a75e27e678db24ba3fe79cc"
+    },
+    {
+      "example_id": "greekmmlu:12415",
+      "dataset_row_index": 12415,
+      "subject": "Physics",
+      "level": "Professional",
+      "content_sha256": "8e27765512f59bece26226d683ade325df68de715cac7c944c3aaf95c93bfa2b"
+    },
+    {
+      "example_id": "greekmmlu:12582",
+      "dataset_row_index": 12582,
+      "subject": "Physics",
+      "level": "Professional",
+      "content_sha256": "68813a0c69cce068a558b0690ea6168cbd51a2b6a86fc96c21474e1bf59cf476"
+    },
+    {
+      "example_id": "greekmmlu:12165",
+      "dataset_row_index": 12165,
+      "subject": "Physics",
+      "level": "Professional",
+      "content_sha256": "b67fd3d86413406c7acf09e362c943923d1bc80b8b7d5b5f0adc55ca25ed9faa"
+    },
+    {
+      "example_id": "greekmmlu:15814",
+      "dataset_row_index": 15814,
+      "subject": "Physics",
+      "level": "Professional",
+      "content_sha256": "ef6d0ee1fe8e4106141db62a4d5489febede00b2007fc8620dc4759b443563f9"
+    },
+    {
+      "example_id": "greekmmlu:12711",
+      "dataset_row_index": 12711,
+      "subject": "Physics",
+      "level": "Professional",
+      "content_sha256": "7a3957cffdd080d027393fa55ceb243cdd4dd4492086bfd77d08caa13b308842"
+    },
+    {
+      "example_id": "greekmmlu:12297",
+      "dataset_row_index": 12297,
+      "subject": "Physics",
+      "level": "Professional",
+      "content_sha256": "eb748b1d186f8ae936bb9fd42dcd66baf0019ffd2fe3577baf0e46fb4e764411"
+    },
+    {
+      "example_id": "greekmmlu:12234",
+      "dataset_row_index": 12234,
+      "subject": "Physics",
+      "level": "Professional",
+      "content_sha256": "0c6e408b8dc4bcbe88fbc4a32068184e204a773ccb8d155848b77d254113c597"
+    },
+    {
+      "example_id": "greekmmlu:14891",
+      "dataset_row_index": 14891,
+      "subject": "Physics",
+      "level": "University",
+      "content_sha256": "491d5d05a14a362886136b3f886496679e66e6292971526e78182a230cc4089c"
+    },
+    {
+      "example_id": "greekmmlu:14909",
+      "dataset_row_index": 14909,
+      "subject": "Physics",
+      "level": "University",
+      "content_sha256": "8c7936879c8b01ea328fabb62dcdf8010d10a70977fd0b88c6f2179ed1464741"
+    },
+    {
+      "example_id": "greekmmlu:14920",
+      "dataset_row_index": 14920,
+      "subject": "Physics",
+      "level": "University",
+      "content_sha256": "ec0ad066dddca3eebfd9c9c383f8bbb7f214d4583df0a157865a9c36fbd44e5f"
+    },
+    {
+      "example_id": "greekmmlu:14955",
+      "dataset_row_index": 14955,
+      "subject": "Prehistory",
+      "level": "Primary School",
+      "content_sha256": "e0054ee92372c2400e3b14dd7e2827647c573eb647570628f54d8ce946d48779"
+    },
+    {
+      "example_id": "greekmmlu:14943",
+      "dataset_row_index": 14943,
+      "subject": "Prehistory",
+      "level": "Primary School",
+      "content_sha256": "fc0b9963aaad15ecb0649b0a8fd8a797754476cd3fd7b23c56d42ef23176adbd"
+    },
+    {
+      "example_id": "greekmmlu:14978",
+      "dataset_row_index": 14978,
+      "subject": "Prehistory",
+      "level": "Primary School",
+      "content_sha256": "45f0a4dc64c50390d761f0f9ac6c81c751de3d5fb7cc7218aec9cf55a91dee57"
+    },
+    {
+      "example_id": "greekmmlu:15001",
+      "dataset_row_index": 15001,
+      "subject": "World History",
+      "level": "Primary School",
+      "content_sha256": "13bf6a11055280b0c8352ec915aad45810919ef05ded7d919414a934718cfcb6"
+    },
+    {
+      "example_id": "greekmmlu:15006",
+      "dataset_row_index": 15006,
+      "subject": "World History",
+      "level": "Primary School",
+      "content_sha256": "c3e9f4e3635ff3f0928c1cd14ffedc2661b6e777229594f56dfbffb83309048b"
+    },
+    {
+      "example_id": "greekmmlu:14996",
+      "dataset_row_index": 14996,
+      "subject": "World History",
+      "level": "Primary School",
+      "content_sha256": "6655a1b7d4cf1447ca2382dc590ea57843b664f649e0026d5834423362a7937b"
+    },
+    {
+      "example_id": "greekmmlu:15003",
+      "dataset_row_index": 15003,
+      "subject": "World History",
+      "level": "Secondary School",
+      "content_sha256": "f4b7ab4bdac60fa0efb5165e03c8bb5cfc7ade003c1d79c68b6e5d08bb0d5bb2"
+    },
+    {
+      "example_id": "greekmmlu:15038",
+      "dataset_row_index": 15038,
+      "subject": "World Religions",
+      "level": "Secondary School",
+      "content_sha256": "f662c2b9695be781f065611747190e5dd58e3e10b31a75ab26bf12ee15a26a1d"
+    },
+    {
+      "example_id": "greekmmlu:15098",
+      "dataset_row_index": 15098,
+      "subject": "World Religions",
+      "level": "Secondary School",
+      "content_sha256": "45fd747c249ee63677b306329555abf73cc0117ba48139777ee8cbd66decf313"
+    },
+    {
+      "example_id": "greekmmlu:15101",
+      "dataset_row_index": 15101,
+      "subject": "World Religions",
+      "level": "Secondary School",
+      "content_sha256": "9e002fc458f3c59b2b13e8ec76a66129e7b5d9c14ec2eda19e9558d8cfb07313"
+    },
+    {
+      "example_id": "greekmmlu:15162",
+      "dataset_row_index": 15162,
+      "subject": "World Religions",
+      "level": "University",
+      "content_sha256": "3d955e1aa46f30e5e372925e9f8de94424ca58040940fbe50a8cf3bd1de850f6"
+    },
+    {
+      "example_id": "greekmmlu:15131",
+      "dataset_row_index": 15131,
+      "subject": "World Religions",
+      "level": "University",
+      "content_sha256": "919c5d25752b87f70fa4950cf489b19a4022d17b026f0f8aca481650b1336dde"
+    },
+    {
+      "example_id": "greekmmlu:15146",
+      "dataset_row_index": 15146,
+      "subject": "World Religions",
+      "level": "University",
+      "content_sha256": "efdef291f4db7f8ba3a8b66fa22fa36297aba8bc05393fd08a6886aeb33d0d26"
+    }
+  ],
+  "official_config_reconciliation": "pending: observed 61 subject-level strata versus 45 official task configs",
+  "measurement_launched": false
+}

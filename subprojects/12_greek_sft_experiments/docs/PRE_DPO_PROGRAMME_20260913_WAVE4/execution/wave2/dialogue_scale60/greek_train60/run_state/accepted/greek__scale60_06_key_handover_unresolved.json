@@ -1,0 +1,54 @@
+{
+  "job_id": "greek__scale60_06_key_handover_unresolved",
+  "row_id": "scale60_06_key_handover_unresolved",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "217b61edd59865d075b3d4b221aba043279e88e24ffdd7cbce131bfa8167f0c3",
+  "input_record_sha256": "37319adcb10668aed5c6951379f31f4aa93a955aa96e77ac61cfdd5e0f35b17c",
+  "payload_sha256": "09d2f56c5f0e0bd15fdc6c2a57a2596df7a0e09e88ba26b53b04b2feccabf984",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "5967f8b268a4c7719f275dcce5e701eb93bd3bd63919e2ec42f3178f8213cb30",
+  "result": {
+    "row_id": "scale60_06_key_handover_unresolved",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "scale60_06_key_handover_unresolved.u_context",
+        "role": "user",
+        "content": "Στην καταγραφή, η Νίκη είπε «τα κλειδιά είναι στο συρτάρι», ο Πέτρος είπε «η πίσω πόρτα είναι κλειδωμένη» και η Ελένη είπε «λείπει ο κωδικός του συναγερμού».",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_unresolved.a_context",
+        "role": "assistant",
+        "content": "Θα κρατήσω χωριστά ποιος είπε καθεμία από τις τρεις φράσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_unresolved.u_decision",
+        "role": "user",
+        "content": "Λοιπόν: Με βάση μόνο την καταγραφή, εκείνη θα φέρει τελικά τα κλειδιά. Ποια ενέργεια μένει για εκείνη;",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_unresolved.a_target",
+        "role": "assistant",
+        "content": "Η καταγραφή δεν προσδιορίζει σε ποια αναφέρεται το «εκείνη» ούτε αναφέρει ότι κάποια θα φέρει τα κλειδιά, οπότε δεν προκύπτει ποια ενέργεια της μένει. Ποια εννοείς με το «εκείνη», τη Νίκη ή την Ελένη;",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "scale60_06_key_handover_unresolved.a_target",
+        "before": "Η καταγραφή δεν προσδιορίζει ποια είναι η «εκείνη» ούτε αναφέρει ότι κάποια θα φέρει τα κλειδιά, οπότε δεν προκύπτει ποια ενέργεια της μένει. Ποια εννοείς με το «εκείνη», τη Νίκη ή την Ελένη;",
+        "after": "Η καταγραφή δεν προσδιορίζει σε ποια αναφέρεται το «εκείνη» ούτε αναφέρει ότι κάποια θα φέρει τα κλειδιά, οπότε δεν προκύπτει ποια ενέργεια της μένει. Ποια εννοείς με το «εκείνη», τη Νίκη ή την Ελένη;",
+        "error": "Αφύσικη μεταγλωσσική σύνταξη.",
+        "reason": "Η διατύπωση «ποια είναι η “εκείνη”» αντικαθίσταται από τη φυσική ελληνική σύνταξη «σε ποια αναφέρεται το “εκείνη”», χωρίς αλλαγή της αμφισημίας ή του νοήματος."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

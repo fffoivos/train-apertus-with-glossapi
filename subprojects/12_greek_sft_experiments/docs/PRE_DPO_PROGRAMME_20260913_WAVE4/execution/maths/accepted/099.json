@@ -1,0 +1,64 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_588",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The problem text is stable. Although four solution records exist, the supplied provenance identifies a stable problem text, and no problem/solution mismatch is evident.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_972",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "minor",
+          "quote": "Πόσα τέταρτα του γαλονιού πίνει σε μία εβδομάδα;",
+          "explanation": "The personal name is localized, but the setting retains the anglosphere gallon/quart measurement system. The translation remains coherent and the calculation is correct; this is an adaptation concern only.",
+          "suggested_action": "Flag the retained customary units for cultural-adaptation review. Do not alter them in this audit, since changing the units would require corresponding changes to the problem and solution."
+        }
+      ],
+      "provenance_note": "A single problem and solution record is supplied, with no pairing ambiguity.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_1139",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "issue",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "derivation",
+          "severity": "minor",
+          "quote": "$$a^2<n\\\\leq(a+1)^2,$$",
+          "explanation": "The first displayed condition contains two backslashes before “leq”, so it does not encode the intended LaTeX relation \\leq correctly. The surrounding explanation and every block calculation use the intended inequality, and the final value 112 is correct.",
+          "suggested_action": "In a repair pass, replace the malformed sequence with the single LaTeX command \\leq, without changing any mathematical content."
+        }
+      ],
+      "provenance_note": "Multiple saved Greek problem versions are present. The supplied variants are mathematically equivalent, and the last variant matches the displayed problem, but the historical association between the selected solution and that problem version remains unproven.",
+      "verification_needed": [
+        "Confirm the historical problem–solution pairing from the original record history if provenance certainty is required."
+      ]
+    }
+  ]
+}

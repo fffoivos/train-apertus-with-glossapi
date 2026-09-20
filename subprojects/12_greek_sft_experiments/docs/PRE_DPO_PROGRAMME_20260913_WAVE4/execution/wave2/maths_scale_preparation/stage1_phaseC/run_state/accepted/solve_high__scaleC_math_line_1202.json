@@ -1,0 +1,30 @@
+{
+  "job_id": "solve_high__scaleC_math_line_1202",
+  "row_id": "scaleC_math_line_1202",
+  "stage": "solution_high",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "c1c275a032809f935961218cd441b8512e30a11fb12bf944895fd6f40e8e1247",
+  "input_record_sha256": "45a4602f8c965952ac932d5696a6350743551f3c563d546c01e4c04afae86cd1",
+  "payload_sha256": "9848938e1e8db3c6d5db6bd6bcc27d047a6115bdcbb57ccc307385e23e37260e",
+  "template_sha256": "ea1afd16c4910e9930760e3f22b232e0d14451f207ea4290ea79cc2d231e6a45",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "b4856b417c8e9b60eb6b5348d744d2dcd0f361bebe6816feb25ab57c9dbba865",
+  "result": {
+    "row_id": "scaleC_math_line_1202",
+    "status": "candidate",
+    "solution_text": "Αφού τα $p$ και $q$ είναι αντιστρόφως ανάλογα, το γινόμενό τους είναι σταθερό:\n\n$$pq=k.$$\n\nΓια $p=25$ και $q=6$ βρίσκουμε\n\n$$k=25\\cdot 6=150.$$\n\nΌταν $q=15$, ισχύει\n\n$$15p=150,$$\n\nοπότε\n\n$$p=\\frac{150}{15}=10.$$\n\nΑπάντηση: $p=10$.",
+    "final_answers": [
+      {
+        "part": "Τιμή του p όταν q=15",
+        "expression": "p=10",
+        "unit": null,
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

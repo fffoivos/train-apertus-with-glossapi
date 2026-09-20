@@ -1,0 +1,72 @@
+{
+  "job_id": "author__scale60_14_parcel_checklist_true",
+  "row_id": "scale60_14_parcel_checklist_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "5be5c62ffb40d82f8c1cfa6cfca3c5796fe43f51d136ce362bdde792fa664692",
+  "input_record_sha256": "a8ec82811d9389e85b892674d875ec47ab7758fe8825e6478df3bba3003f120f",
+  "payload_sha256": "3f1346c73f139052a122ea0dd26b92d913dce9a36bf46f6e31c1213388ef100e",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "2d7ab5fe9c71407f5319017ab81351cf86ca4c88dc80d76a6fd9c2c26b9730ff",
+  "result": {
+    "row_id": "scale60_14_parcel_checklist_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_14_parcel_checklist_true.u_context",
+        "role": "user",
+        "content": "Στο πρόχειρο της λίστας, η διεύθυνση έχει γραφτεί, η επένδυση έχει τοποθετηθεί και η ετικέτα δεν έχει ακόμη σημειωθεί ως εκτυπωμένη.",
+        "train": false
+      },
+      {
+        "id": "scale60_14_parcel_checklist_true.a_context",
+        "role": "assistant",
+        "content": "Πρόκειται για κειμενικό έλεγχο της λίστας, όχι για πραγματική εκτύπωση ή αποστολή.",
+        "train": false
+      },
+      {
+        "id": "scale60_14_parcel_checklist_true.u_decision",
+        "role": "user",
+        "content": "Στο πρόχειρο η επένδυση έχει τοποθετηθεί. Πρόσθεσε τώρα τη σημείωση «εύθραυστο».",
+        "train": false
+      },
+      {
+        "id": "scale60_14_parcel_checklist_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά, η επένδυση έχει τοποθετηθεί. Πρόσθεσα στη λίστα συσκευασίας τη σημείωση «εύθραυστο».",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_14_parcel_checklist_true.u_decision",
+        "claim": "Στο πρόχειρο η επένδυση έχει τοποθετηθεί.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "scale60_14_parcel_checklist_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "acknowledge_supported_claim",
+          "apply_clear_current_text_state_instruction",
+          "state_result_concisely"
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "notes",
+        "before_json": "[]",
+        "after_json": "[\"εύθραυστο\"]",
+        "evidence_ids": [
+          "scale60_14_parcel_checklist_true.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

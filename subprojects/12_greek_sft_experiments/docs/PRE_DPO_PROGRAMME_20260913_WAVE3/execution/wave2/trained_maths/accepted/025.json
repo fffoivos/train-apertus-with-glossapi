@@ -1,0 +1,51 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_math_3807",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "before/derivation",
+          "severity": "minor",
+          "quote": "Η γωνία −300° είναι συγγραμμική με τη γωνία 60°.",
+          "explanation": "Ο όρος «συγγραμμική» δεν περιγράφει σωστά τη σχέση των δύο γωνιών. Η αριθμητική αναγωγή και η υπόλοιπη λύση ήταν πάντως ορθές.",
+          "suggested_action": "Καμία περαιτέρω ενέργεια: η μετά τη διόρθωση διατύπωση «ισοδύναμη» αποκαθιστά το πρόβλημα ορολογίας."
+        },
+        {
+          "dimension": "editor_delta/derivation",
+          "severity": "minor",
+          "quote": "Η γωνία −300° είναι ισοδύναμη με τη γωνία 60°.",
+          "explanation": "Η αλλαγή αντικαθιστά την εσφαλμένη γεωμετρική ορολογία χωρίς να μεταβάλλει το πρόβλημα ή τον ορθό υπολογισμό: −300°+360°=60° και sec(60°)=2.",
+          "suggested_action": "Διατήρηση της διορθωμένης εκδοχής."
+        }
+      ],
+      "provenance_note": "Το αγγλικό πρόβλημα, η ελληνική εκφώνηση και τα πλήρη μηνύματα πριν και μετά είναι διαθέσιμα. Το πραγματικό training record ταυτίζεται byte-for-byte με την εκδοχή μετά τη διόρθωση και εμφανίζεται μία φορά. Η ορθότητα επαληθεύεται άμεσα από την περιοδικότητα και τον ορισμό της τέμνουσας, όχι μόνο από τη συμφωνία με το reference.",
+      "verification_needed": [],
+      "editor_effect": "semantic_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_68_2",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Πρόκειται για αυτοτελές γηγενές ελληνικό παράδειγμα χωρίς αγγλική πηγή. Τα πλήρη μηνύματα πριν και μετά είναι ίδια, και το πραγματικό training record ταυτίζεται byte-for-byte με αυτά και εμφανίζεται μία φορά. Από τον λόγο παιδιών προς συνοδούς 3:1 και τους 8 συνοδούς προκύπτουν ανεξάρτητα 3×8=24 παιδιά· ο προγενέστερος δεύτερος υπολογισμός δεν χρησιμοποιείται ως μοναδική απόδειξη.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

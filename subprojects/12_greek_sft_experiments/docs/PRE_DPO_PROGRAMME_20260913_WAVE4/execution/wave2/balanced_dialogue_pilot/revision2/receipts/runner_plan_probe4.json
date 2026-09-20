@@ -1,0 +1,17 @@
+{
+  "mode": "plan",
+  "queue": "queues/probe_semantic_repair4.jsonl",
+  "jobs": 4,
+  "accepted": 0,
+  "pending": 4,
+  "stage_counts": {
+    "dialogue_semantic_repair": 4
+  },
+  "max_workers": 4,
+  "manifest_call_cap": 114,
+  "runtime_call_cap": 114,
+  "global_retry_cap": 12,
+  "prior_calls": 0,
+  "limit_new_calls": 4,
+  "max_attempts_per_job": 2
+}

@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_28_3",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The actual after-correction training pair is complete and matches the recorded after version. Independently checking the arithmetic gives 4 large jars and 6 small jars: 4·0.4 + 6·0.25 = 3.1 kg. The editor only completed an elliptical phrase by adding «φρούτα» and did not alter the problem, reasoning, quantities, units, or answer.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_gsm_168",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The actual training pair is complete and unchanged from the before version. The Greek adaptation preserves the source’s teaching objective and mathematical structure while naturally replacing the name and rephrasing the awkward reference to organisms’ legs. Two people contribute 4 legs and two dogs contribute 8, for a supported total of 12. Speaker ownership and training structure are correct.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

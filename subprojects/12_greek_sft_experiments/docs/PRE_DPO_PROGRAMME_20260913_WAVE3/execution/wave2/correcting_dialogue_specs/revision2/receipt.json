@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "pilot_decisions": 48,
+  "pilot_split_decisions": {
+    "train": 32,
+    "dev": 8,
+    "final_confirmation": 8
+  },
+  "program_total_decisions": 720,
+  "training_decisions": 600,
+  "dev_decisions": 60,
+  "final_confirmation_decisions": 60,
+  "source_v1_manifest_sha256": "35d3c25365cb509af16a8cf7ade9555d240208274d1d20f8ffe3849e5cfea07d",
+  "source_v1_specs_sha256": "ad2702aeaf4213db0dd2f7400c3c0963fb07e038b349ccb3b31d8db6e7abf276",
+  "manifest_sha256": "79f95556b01e52d94f90e3148b6ed8b7b3ae5d38370c2b6ff4c524add1da5973",
+  "specs_sha256": "5b3f33a423a86546976200ba54d52c23ce7b5c7854dbb8ebbc7ba1b925c55d35",
+  "model_subprocess_calls": 0,
+  "production_writes": 0
+}

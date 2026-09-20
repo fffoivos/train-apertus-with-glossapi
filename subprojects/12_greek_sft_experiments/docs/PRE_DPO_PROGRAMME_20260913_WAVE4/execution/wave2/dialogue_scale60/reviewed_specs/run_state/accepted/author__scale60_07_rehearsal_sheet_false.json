@@ -1,0 +1,73 @@
+{
+  "job_id": "author__scale60_07_rehearsal_sheet_false",
+  "row_id": "scale60_07_rehearsal_sheet_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "0f2ab9cf75d7d9a283a06468189e4c8c44356765842d564f18dac674da3bce4b",
+  "input_record_sha256": "ee7b64da22297f47b953609effef9188af6fef42c068f37ee2b35d9524c1f3c2",
+  "payload_sha256": "ff7a4a986f8f2d3bf2c99c62194114b839e3f414229a56401f29dc85719d7a43",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "c00cd81cabf237ca5de704d84dac7ce2a1c16e16a106d9b08ae8b14c8e7c898e",
+  "result": {
+    "row_id": "scale60_07_rehearsal_sheet_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_07_rehearsal_sheet_false.u_context",
+        "role": "user",
+        "content": "Στο τρέχον φύλλο ροής, πρώτο είναι το «Θάλασσα», το σόλο το έχει η Μαρία και το διάλειμμα είναι 10 λεπτά. Τραγούδι λήξης δεν έχει καταγραφεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_false.a_context",
+        "role": "assistant",
+        "content": "Έχω μόνο την τρέχουσα εκδοχή του φύλλου ροής, όχι τις παλιότερες σημειώσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_false.u_decision",
+        "role": "user",
+        "content": "Στο τρέχον φύλλο το σόλο το έχει ο Νίκος. Δώσ' το τώρα στον Νίκο.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_false.a_target",
+        "role": "assistant",
+        "content": "Στο φύλλο ροής το σόλο το είχε η Μαρία. Τώρα το έδωσα στον Νίκο.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_07_rehearsal_sheet_false.u_decision",
+        "claim": "Στο τρέχον φύλλο το σόλο το έχει ο Νίκος.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_07_rehearsal_sheet_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα τον ψευδή ισχυρισμό ότι το σόλο είχε ήδη ο Νίκος.",
+          "Να εφαρμόσει αμέσως τη σαφή εντολή αλλαγής του σόλο στον Νίκο.",
+          "Να αναφέρει συνοπτικά το νέο κειμενικό αποτέλεσμα στο φύλλο ροής."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "solo",
+        "before_json": "\"Μαρία\"",
+        "after_json": "\"Νίκος\"",
+        "evidence_ids": [
+          "scale60_07_rehearsal_sheet_false.u_context",
+          "scale60_07_rehearsal_sheet_false.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "job_id": "author__scale60_18_printmaking_stock_true",
+  "row_id": "scale60_18_printmaking_stock_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "7ad955e4c0d695a2f426b9adbe1b12eed866cb82692facc08089d97493357c73",
+  "input_record_sha256": "14532157cfad9a31e7047b94e762716f914ecf942c224c239407a5b3aad48d7a",
+  "payload_sha256": "b7e494dd6dbfb76fabdbea90796731c2196a58c7ec0bf5ee6595d07f0c7771ff",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "ccb858d7e2a9aae8805b1967a17ac6298b5ddcc0cbc176e125b3bd7a84956a76",
+  "result": {
+    "row_id": "scale60_18_printmaking_stock_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_18_printmaking_stock_true.u_context",
+        "role": "user",
+        "content": "Η απογραφή έχει 10 πακέτα χαρτί: 3 χρησιμοποιήθηκαν και 2 άλλα έχουν δεσμευτεί για το αυριανό μάθημα.",
+        "train": false
+      },
+      {
+        "id": "scale60_18_printmaking_stock_true.a_context",
+        "role": "assistant",
+        "content": "Οι χρησιμοποιημένες και οι δεσμευμένες ποσότητες είναι διαφορετικά πακέτα.",
+        "train": false
+      },
+      {
+        "id": "scale60_18_printmaking_stock_true.u_decision",
+        "role": "user",
+        "content": "Με βάση την απογραφή, μένουν 5 ελεύθερα πακέτα χαρτί.",
+        "train": false
+      },
+      {
+        "id": "scale60_18_printmaking_stock_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά: 10 − 3 − 2 = 5 ελεύθερα πακέτα.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_18_printmaking_stock_true.u_decision",
+        "claim": "Μένουν 5 ελεύθερα πακέτα χαρτί.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "scale60_18_printmaking_stock_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να επιβεβαιώσει τον ορθό υπολογισμό του διαθέσιμου αποθέματος.",
+          "Να συνοψίσει σύντομα ότι απομένουν 5 ελεύθερα πακέτα."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "stock_balance",
+        "before_json": "{\"total\":10,\"used\":3,\"reserved\":2,\"free\":5}",
+        "after_json": "{\"total\":10,\"used\":3,\"reserved\":2,\"free\":5}",
+        "evidence_ids": [
+          "scale60_18_printmaking_stock_true.u_context"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

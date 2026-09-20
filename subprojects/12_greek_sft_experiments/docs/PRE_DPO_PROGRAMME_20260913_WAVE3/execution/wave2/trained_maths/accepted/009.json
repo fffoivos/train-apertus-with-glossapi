@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_math_1039",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete AFTER record is byte-equivalent to the actual training record and occurs once. The Greek problem faithfully preserves the supplied English inequality and teaching objective. Independent algebraic and sign checks confirm the factorization, critical points, endpoint handling, and final union of intervals. The editor only changed the compact but understandable «Πρέπει x ≠ …» to the more natural «Πρέπει να ισχύει x ≠ …»; no mathematical or structural content changed.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_845_3",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "This is a native Greek problem with no English source. The complete AFTER record is byte-equivalent to the actual training record and occurs once. Under the ordinary classroom convention that the 20 ordered selections of two distinct digits are equiprobable, the favorable numbers are exactly 32, 34, 42, 52, and 54, giving 5/20 = 1/4. The editor replaced three understandable but awkward compact phrases («Για δεκάδα το …») with natural, explicit Greek formulations without changing the reasoning, answer, or task.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__pilot48_04_true",
+  "row_id": "pilot48_04_true",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "bc6242d5aa73250a4fe32371a5cda3ac92a31222fcd96610c6f90d5d899f113c",
+  "input_record_sha256": "098591a96c79f0d720687e8f23d35da87c7a6cbdbf12422864e245b02ec9120a",
+  "payload_sha256": "33857818df4564c59c5ad6910e2108de3338d250f1b3c75ae3e047dd67795f6d",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "6370db51a8c158dbaddef8567e51578faea469a923530660cbd18e502cefc102",
+  "result": {
+    "row_id": "pilot48_04_true",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_04_true.u_context",
+        "role": "user",
+        "content": "Η αρχική λίστα είχε ταυτότητα και φορτιστή. Έπειτα προστέθηκε αδιάβροχο, οπότε τώρα περιέχει ταυτότητα, φορτιστή και αδιάβροχο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_true.a_context",
+        "role": "assistant",
+        "content": "Η τρέχουσα λίστα είναι: ταυτότητα, φορτιστής και αδιάβροχο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_true.u_decision",
+        "role": "user",
+        "content": "Άντε, επιτέλους. Στη λίστα υπάρχουν ταυτότητα, φορτιστής και αδιάβροχο. Πρόσθεσε κάλτσες.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά. Πρόσθεσα τις κάλτσες· η λίστα τώρα περιέχει ταυτότητα, φορτιστή, αδιάβροχο και κάλτσες.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_16_2",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The actual AFTER training pair is complete and matches the recorded after-correction messages. The solution correctly ignores the irrelevant coffee price, computes ΕΚΠ(6, 8) = 24, and identifies 216 as the first multiple of 24 in the stated interval; 192 and 216 are consecutive multiples, so the minimality is adequately supported. The editor changed only an awkward locative expression and preserved the mathematics, task, speaker ownership, and training structure.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_116_2",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The actual AFTER training pair is complete and identical to the before-correction pair. The arithmetic 3 × 6 € = 18 € and 18 € + 4 € = 22 € is correct, all requested costs are included, the euro unit is maintained, and the Greek market context, dialogue roles, and training structure are coherent.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

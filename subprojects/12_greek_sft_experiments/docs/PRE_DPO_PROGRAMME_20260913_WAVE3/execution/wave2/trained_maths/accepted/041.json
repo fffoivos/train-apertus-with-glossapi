@@ -1,0 +1,44 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_1045_4",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The actual AFTER target preserves the problem and correctly computes 18/12 = 1.5 hours = 90 minutes, then adds the 20-minute stop to 16:10, obtaining 18:00. The €1 datum is irrelevant to the requested arrival time but does not create a contradiction. The editor only made the phrasing «τον χρόνο ποδηλασίας» more natural.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_gsm_5274",
+      "overall": "issues",
+      "final_result": "issue",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "issue",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "after/units_and_rounding",
+          "severity": "minor",
+          "quote": "«Κάθε λεπτό στάζει περίπου 10 φορές.» / «10 · 60 = 600 σταγόνες» / «Απάντηση: 30 mL»",
+          "explanation": "Because the drip rate is explicitly approximate, the derived count and volume are also approximate. The arithmetic and unit are correct, but the result is presented as exact rather than approximately 30 mL.",
+          "suggested_action": "Qualify the derived count and final result as approximate, for example «περίπου 600 σταγόνες» and «περίπου 30 mL», without changing the problem or arithmetic."
+        }
+      ],
+      "provenance_note": "The English source supports the Greek premises and also uses an approximate rate («about 10 times»). The adaptation coherently changes Betsy to Βάσω, uses the Greek decimal comma, and appropriately retains the SI unit mL. BEFORE and AFTER are identical, so the precision defect was inherited and left unchanged by the editor; agreement with the reference value 30 verifies the magnitude but not the omitted approximation qualifier.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "repair_solution"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_gsm_2008",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The BEFORE and AFTER problem-solution pairs are identical, and the AFTER pair is byte-equivalent to the actual training record. The adapted Greek problem preserves the source quantities and teaching objective; the added Thessaloniki setting is coherent and does not affect the mathematics. Independently verified total: (10×3+5×5)+(6×3+3×5)=55+33=88 reflections.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_3325",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The BEFORE and AFTER problem-solution pairs are identical, and the AFTER pair is byte-equivalent to the actual training record. The compact derivation is valid: five rows can seat at most 40 people, while seven rows require at least 49, so there must be six rows. Six seven-person rows account for 42 people, and upgrading four rows by one seat gives 46; hence exactly four rows seat eight people.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

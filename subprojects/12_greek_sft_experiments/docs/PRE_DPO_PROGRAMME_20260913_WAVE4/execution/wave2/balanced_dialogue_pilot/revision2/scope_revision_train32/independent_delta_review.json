@@ -1,0 +1,36 @@
+{
+  "schema_version": "balanced_dialogue_train32_independent_delta_review_v1",
+  "reviewed_at": "2026-09-13T17:29:43+03:00",
+  "scope": "four recorded scope-change rows only",
+  "status": "accepted",
+  "reviewed_row_count": 4,
+  "changed_context_count": 4,
+  "changed_decision_count": 2,
+  "changed_target_count": 0,
+  "findings": [
+    {
+      "rows": [
+        "pilot48_08_true",
+        "pilot48_08_false",
+        "pilot48_08_partial",
+        "pilot48_08_unresolved"
+      ],
+      "disposition": "accept",
+      "reason": "Saying that one other chair was damaged makes the damaged chair distinct from the four loaned chairs. The available count is therefore unambiguously 12 minus 4 minus 1 equals 7."
+    },
+    {
+      "rows": [
+        "pilot48_08_false",
+        "pilot48_08_partial"
+      ],
+      "disposition": "accept",
+      "reason": "The added record-scoping phrases make the present-tense statements inferences from the displayed inventory rather than authoritative new status updates. Existing labels and targets remain correct."
+    }
+  ],
+  "bindings": {
+    "scope_changes_sha256": "179ad37c2dfb4959f83934b651dbb513978960618a7e38699dc80fcf9014773f",
+    "candidate_rows_sha256": "a0571cfbda289edfe528b207d5ae4ef206cee0e33b632b50e1b09d398c18b432"
+  },
+  "model_calls": 0,
+  "bound_inputs_modified_by_reviewer": false
+}

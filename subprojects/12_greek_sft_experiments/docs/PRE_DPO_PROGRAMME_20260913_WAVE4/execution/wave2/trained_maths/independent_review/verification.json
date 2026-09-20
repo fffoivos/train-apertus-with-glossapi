@@ -1,0 +1,109 @@
+{
+  "generated_at": "2026-09-13T16:07:16+03:00",
+  "reviewer": "Sol agent",
+  "method": "full manual semantic read of originals, before, after, actual training messages, and raw audit for every selected row",
+  "additional_model_subprocess_calls": 0,
+  "selection_seed": "trained-maths-independent-controls-v1",
+  "counts": {
+    "raw_flagged_or_uncertain": 13,
+    "known_failure_control_slots": 2,
+    "deterministic_unflagged_controls": 12,
+    "distinct_rows": 26
+  },
+  "flagged_ids": [
+    "gm_gsm_1514",
+    "gm_gsm_2098",
+    "gm_gsm_4140",
+    "gm_gsm_4161",
+    "gm_gsm_4211",
+    "gm_gsm_4519",
+    "gm_gsm_5274",
+    "gm_math_1372",
+    "gm_math_2231",
+    "gm_math_550",
+    "gm_nat_618_4",
+    "gm_nat_635_0",
+    "gm_nat_738_1"
+  ],
+  "known_control_ids": [
+    "gm_nat_618_4",
+    "gm_nat_301_3"
+  ],
+  "unflagged_control_ids": [
+    "gm_nat_16_2",
+    "gm_gsm_3835",
+    "gm_math_2731",
+    "gm_gsm_3096",
+    "gm_math_3507",
+    "gm_math_1054",
+    "gm_math_1745",
+    "gm_math_3924",
+    "gm_nat_1080_1",
+    "gm_math_837",
+    "gm_nat_710_2",
+    "gm_math_3807"
+  ],
+  "unflagged_control_strata": [
+    "native_none/edited",
+    "gsm/edited",
+    "math_1/unchanged",
+    "gsm/unchanged",
+    "math_4/edited",
+    "math_2/unchanged",
+    "math_3/edited",
+    "math_4/unchanged",
+    "native_second_solve/unchanged",
+    "math_3/unchanged",
+    "native_none/unchanged",
+    "math_1/edited"
+  ],
+  "verdict_counts": {
+    "repair_prompt_keep_solution": 2,
+    "repair_adapted_prompt_keep_solution": 1,
+    "keep_valid_greek": 2,
+    "keep_charitable_classroom_reading": 2,
+    "repair_prompt_before_reuse": 1,
+    "keep_optional_presentation_polish": 2,
+    "repair_proof_keep_answer": 1,
+    "keep_concise_proof": 1,
+    "repair_output_unit_keep_mathematics": 1,
+    "repair_local_terminology_keep_mathematics": 1,
+    "keep_control": 12
+  },
+  "lineage": {
+    "all_actual_training_equal_after": true,
+    "all_single_occurrence": true,
+    "all_user_then_assistant": true
+  },
+  "source_hashes": {
+    "sample.jsonl": "0933ad4e2bd6fa03dcfa6411a1f15750c73c6d082b1298560a62effa930f3442",
+    "accepted_files": {
+      "006.json": "d4e47cbdc718bd23bdd187ecd39e97c7cc17694dd74c68a81cc28be9f3a45e29",
+      "010.json": "b04c9e09bf11605382bf338c1ee23bc05ae6a90e335296606e7392d513a3fc37",
+      "011.json": "02144bcf44ac2ffb6a6994337d164dde1151c9f7dae48190ce5576a6ee419b69",
+      "013.json": "41983077782467aa803f3d612be66044e5d1d743041ffc7aa4d9a58c896a54e3",
+      "016.json": "b00ee8bd54783edabfd9fd9a010e673c7bc01dba2e5e2a56b4c8a68d6e0d528e",
+      "017.json": "382682d0c27465c874a33cbe1eebb1a43d4b2c9b97c9ef8da5370b3a4fc312f7",
+      "018.json": "bdaceed5a6dec08581ea92c23ebf74f4f047bec5d3ca3fd2c4891193ae737b5e",
+      "019.json": "63bb594c0b245ca0a5e5f322a184ca213f91f3e35745f235f7752d13347d7b0a",
+      "020.json": "7ddf9c55e11ace11955c8ffa1c3f38efcbbef4b327696b7815f5cd374f7e9dff",
+      "022.json": "df2a3caf2207d9e0d73a056d44ddec73de22d8a46d5a7900669b6fbd35aa4efd",
+      "025.json": "569e510c390c8588a83a8fa408df72b9167cd77d8e0ef1c3cba6cfd93f466801",
+      "027.json": "7c0c8a33c323048c92440e94b2f31975b14051efa80a8e8a9fc30b34009ae7a1",
+      "028.json": "0900dd78c129525ffc083a824aeda6c713a67c2fac5af77caccdfa0d3644d256",
+      "029.json": "ab1e6ac78d00cd7bbf2fd4ee5a1192676902d61f61518290199d392f14438f9d",
+      "041.json": "4d691cf50ccdfc381462ef7cb9ab5fba6eb13d173bb2dd9ec1453cd8e96c104d",
+      "045.json": "2adb586453e60aa815bfd3f3693edc90dece5bebbd42653989a659c5d7227631",
+      "046.json": "1d92c7b0a5963897462ce5dad1e493374ba3f5b1535b8120cac9e8b7b25ab1f3",
+      "048.json": "a70b53d14dc29035ce51231d1b1f8db17787d840bfce0cebb8ff4d980edc11e0",
+      "051.json": "cde887cd94a5f0b0961a1d116cff80b636f79be056205301a3b088a61510a075",
+      "052.json": "9ac0a1e46acff019670e26e3d7de33cfbb1ea02e0f21b8b63d13949d88a0dfcc",
+      "053.json": "95efae00ce1b6b6f0e6db535b7eb8787cd12c31310e4ff83eb6378e2de4adf45",
+      "055.json": "c2381b3edad11127427541ca47bddcffbf64cb33f896473d38974319ba9c609b",
+      "056.json": "189ae92796f5d0c5332f76a5116c59217433e944fab39a364c969c906b92ccdb",
+      "057.json": "5b92afd1db5b82410ab53720ae851ee4dab03c7d2ce24137c03de235a666586d",
+      "058.json": "3334b34a8e2b1ed0025620f4d618e143fff9b74e13b4153a748d23a14d3e947b"
+    }
+  },
+  "adjudications_sha256": "dac2068a9cf7f656f60abd5a86162e6e35650d9913c8f9c38c55f1d7c8496d86"
+}

@@ -1,0 +1,72 @@
+{
+  "job_id": "author__scale60_01_recipe_draft_true",
+  "row_id": "scale60_01_recipe_draft_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "d17b95c22246d3f6972af18e11db360fa5f7d46fdaef6b8e1703536517cfaa56",
+  "input_record_sha256": "5d8a6b1ce3b070efd3196ac14185891ce946148b333dcb02a610316717fa3dec",
+  "payload_sha256": "d2d0bc366f4db7713e7ebb30eb9c7aa41008ccefb4632dcf82b184ee450fcaed",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "6d81d506519faa6dd514f31657cf8d506a835e9e07d7fa8bec96337c3c59dc73",
+  "result": {
+    "row_id": "scale60_01_recipe_draft_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_01_recipe_draft_true.u_context",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο της συνταγής γράφει: 4 μερίδες, 1 κουταλιά λάδι, φούρνος στους 180 βαθμούς και γαρνίρισμα με μαϊντανό.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_true.a_context",
+        "role": "assistant",
+        "content": "Βλέπω το τρέχον πρόχειρο· οι παλιότερες εκδοχές δεν εμφανίζονται εδώ.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_true.u_decision",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο είναι 4 μερίδες και ο φούρνος στους 180 βαθμούς. Πρόσθεσε ξύσμα λεμονιού στις σημειώσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά, αυτά ισχύουν στο τρέχον πρόχειρο. Πρόσθεσα στις σημειώσεις «ξύσμα λεμονιού».",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_01_recipe_draft_true.u_decision",
+        "claim": "Στο τρέχον πρόχειρο είναι 4 μερίδες και ο φούρνος στους 180 βαθμούς.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "scale60_01_recipe_draft_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να αναγνωρίσει ότι οι δύο τιμές συμφωνούν με το ορατό τρέχον πρόχειρο.",
+          "Να προσθέσει το «ξύσμα λεμονιού» στις σημειώσεις του πρόχειρου συνταγής.",
+          "Να αναφέρει συνοπτικά το αποτέλεσμα της επεξεργασίας του κειμενικού αρχείου."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "notes",
+        "before_json": "[]",
+        "after_json": "[\"ξύσμα λεμονιού\"]",
+        "evidence_ids": [
+          "scale60_01_recipe_draft_true.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

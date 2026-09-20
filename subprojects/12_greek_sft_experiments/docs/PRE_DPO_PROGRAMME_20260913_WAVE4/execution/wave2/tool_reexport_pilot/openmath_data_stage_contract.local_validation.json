@@ -1,0 +1,63 @@
+{
+  "approval": {
+    "allow_preparation_submission": false,
+    "approved_at": "2026-09-13T14:07:29.363247+00:00",
+    "approved_by": "pending-root-review",
+    "scope_sha256": "148e23348ff1edc6e1a30f6043c42dc8326a4b206db6e5690bf7811ebf9a08a9"
+  },
+  "code_root": "/Users/foivoskarounos-zamparloukos/Projects/apertus-cscs-efficiency",
+  "execution_target": {
+    "kind": "clariden",
+    "name": "clariden"
+  },
+  "live_cluster_receipt": {
+    "bytes": 2856,
+    "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/tool_reexport_pilot/live_cluster_receipt.json",
+    "sha256": "bd2c565f4aad03bf9b4162779e586b786dcc4827c5405fff48f8f96d116b8e42"
+  },
+  "resource_profiles": {
+    "cpu-debug": {
+      "account": "a0140",
+      "cpus_per_task": 8,
+      "gpus_per_node": 0,
+      "max_array_parallel": 1,
+      "memory_mb": 64000,
+      "nodes": 1,
+      "partition": "debug",
+      "resource_class": "debug",
+      "time_limit_seconds": 1800
+    }
+  },
+  "run_root": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/run",
+  "schema_version": "apertus_data_stage_v1",
+  "stage_id": "openmath-original-pilot",
+  "tasks": [
+    {
+      "argv": [
+        "uenv",
+        "run",
+        "--view=default",
+        "pytorch/v2.9.1:v2",
+        "--",
+        "/iopsstor/scratch/cscs/fffoivos/venvs/sft5/bin/python",
+        "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/code/pilot_intake.py",
+        "--contract",
+        "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/code/pilot_contract.json",
+        "--expected-contract-sha256",
+        "1cf73a4038a0ca55b8b5a9b2ea69686edb775e9404f4defc06dfbf66f72031ed"
+      ],
+      "depends_on": [],
+      "expected_receipt": {
+        "accepted_status": [
+          "passed"
+        ],
+        "path": "receipts/openmath.json",
+        "schema_version": "openmath_original_pilot_v1"
+      },
+      "id": "intake-openmath-original",
+      "max_attempts": 1,
+      "resource_profile_id": "cpu-debug",
+      "stage": "validate"
+    }
+  ]
+}

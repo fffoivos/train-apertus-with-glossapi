@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["row_id", "status", "source_issue", "preserves_intended_skill", "proposed_problem_text", "changes", "checks_needed"],
+  "properties": {
+    "row_id": {"type": "string"},
+    "status": {"enum": ["source_valid", "repair_candidate", "blocked"]},
+    "source_issue": {"type": ["string", "null"]},
+    "preserves_intended_skill": {"type": "boolean"},
+    "proposed_problem_text": {"type": ["string", "null"]},
+    "changes": {"type": "array", "items": {"type": "object"}},
+    "checks_needed": {"type": "array", "items": {"type": "string"}}
+  }
+}

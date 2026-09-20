@@ -1,0 +1,54 @@
+{
+  "job_id": "greek__scale60_03_tool_checkout_false",
+  "row_id": "scale60_03_tool_checkout_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "8fa801f2460c95ff595e3a75de20af64e4ebb9e71fb8669921fc0cd47f804cfd",
+  "input_record_sha256": "fefa4ef24a87b0ebf65968373fda15c92e4d3daccdb9372b2374a0317bc5f9eb",
+  "payload_sha256": "ff29db5b42ee415a9c8cb0190e9c1ab31b3552b2b3a3fb2cd5ef49af8c817d99",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "a027a2f104dd9299af9ce4bf66f16af2d25b04266ed68a9cba686f5cbf457f44",
+  "result": {
+    "row_id": "scale60_03_tool_checkout_false",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "scale60_03_tool_checkout_false.u_context",
+        "role": "user",
+        "content": "Το δελτίο γράφει 8 δράπανα συνολικά: 3 είναι δανεισμένα και 1 διαφορετικό δράπανο βρίσκεται σε επισκευή. Δείξε μου την αφαίρεση.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_false.a_context",
+        "role": "assistant",
+        "content": "Θα υπολογίσω τη διαθεσιμότητα μόνο από αυτές τις τρεις κατηγορίες.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_false.u_decision",
+        "role": "user",
+        "content": "Άρα είναι διαθέσιμα 5 δράπανα.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_false.a_target",
+        "role": "assistant",
+        "content": "Η αφαίρεση είναι 8 − 3 − 1 = 4, επομένως είναι διαθέσιμα 4 δράπανα, όχι 5.",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "scale60_03_tool_checkout_false.u_context",
+        "before": "Το δελτίο γράφει 8 δράπανα συνολικά: 3 είναι δανεισμένα και 1 διαφορετικό δράπανο βρίσκεται για επισκευή. Δείξε μου την αφαίρεση.",
+        "after": "Το δελτίο γράφει 8 δράπανα συνολικά: 3 είναι δανεισμένα και 1 διαφορετικό δράπανο βρίσκεται σε επισκευή. Δείξε μου την αφαίρεση.",
+        "error": "Αφύσικη χρήση πρόθεσης στην έκφραση «βρίσκεται για επισκευή».",
+        "reason": "Η καθιερωμένη και φυσική σύνταξη για την κατάσταση ενός αντικειμένου που επισκευάζεται είναι «βρίσκεται σε επισκευή»."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "job_id": "adapt__scaleC_math_line_5074",
+  "row_id": "scaleC_math_line_5074",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "173170ff2854dc1f21ebaba2b7edf41b613e903f962f6b4f1ee1074be4831cbf",
+  "input_record_sha256": "8dccf125da41822035233d723fd7545258694b558dd56b4db7f13140416eec03",
+  "payload_sha256": "d36e2184fdd12289e1cfd9a37253d861ae3994fcf6974a7ff1cb61eef48fc7fa",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "235e0a8027781d52de816d1b514ef4f52233d15be7d4b0f296233db24c30eb8a",
+  "result": {
+    "row_id": "scaleC_math_line_5074",
+    "status": "candidate",
+    "problem_text": "Να βρείτε τον μέγιστο κοινό διαιρέτη των αριθμών 9118, 12173 και 33182.",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Find the greatest common divisor of 9118, 12173, and 33182.",
+        "target_span": "Να βρείτε τον μέγιστο κοινό διαιρέτη των αριθμών 9118, 12173 και 33182.",
+        "reason": "Πιστή απόδοση στα ελληνικά με τον καθιερωμένο μαθηματικό όρο, χωρίς αλλαγή της δομής ή των δεδομένων."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "9118",
+          "role": "πρώτος ακέραιος του οποίου ζητείται ο μέγιστος κοινός διαιρέτης",
+          "unit": null
+        },
+        {
+          "value": "12173",
+          "role": "δεύτερος ακέραιος του οποίου ζητείται ο μέγιστος κοινός διαιρέτης",
+          "unit": null
+        },
+        {
+          "value": "33182",
+          "role": "τρίτος ακέραιος του οποίου ζητείται ο μέγιστος κοινός διαιρέτης",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Ζητείται ο κοινός διαιρέτης και των τριών δοθέντων ακεραίων.",
+        "Ζητείται ο μεγαλύτερος από τους θετικούς κοινούς διαιρέτες."
+      ],
+      "required_outputs": [
+        "Ο μέγιστος κοινός διαιρέτης των 9118, 12173 και 33182."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

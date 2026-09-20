@@ -1,0 +1,29 @@
+{
+  "adoption_authorized": false,
+  "candidate_count": 6,
+  "candidate_ids": [
+    "repair6_personas_if_37ae2fa7",
+    "repair6_en_393a7e8e",
+    "repair6_es_20461",
+    "repair6_es_15571",
+    "repair6_it_49139",
+    "repair6_fr_euroblocks_3c014d32"
+  ],
+  "constraint_check_count": 20,
+  "constraint_checks_all_pass": true,
+  "corpus_mutations": 0,
+  "created_at": "2026-09-13T17:42:10+03:00",
+  "manifest_sha256": "d0274c44cbd4e42f6924cd6a7b5247af776f2bed9916ddc4ee066a5a93bf7a72",
+  "model_calls": 0,
+  "review_required": [
+    "root_technical_review",
+    "language_review"
+  ],
+  "schema_version": "adapted_core_repair6_ready_receipt_v1",
+  "source_files_sha256": {
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/adapted_core/initial42_review_material.jsonl": "ad895e3de999d56c463d1798c5995b5850387d7f2c108dfe0d5fdef4268cf493",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/adapted_core/unpaired_es_pt_it_coverage9.jsonl": "ffc03794e7e3ada3b9392c96702ac0840c46df4f4391b5b9e978632aa1388da8"
+  },
+  "status": "ready_for_root_technical_and_language_review",
+  "verification_ok": true
+}

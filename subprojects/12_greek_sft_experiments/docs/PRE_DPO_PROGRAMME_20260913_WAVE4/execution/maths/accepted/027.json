@@ -1,0 +1,68 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_372",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το problem_el αποδίδει πιστά το αγγλικό πρόβλημα και το pair_provenance δηλώνει stable_problem_text. Υπάρχουν δύο αρχεία λύσης, αλλά δεν παρέχονται problem_variants που να δημιουργούν αβεβαιότητα ιστορικής σύζευξης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_1117",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδικό problem/solution record σύμφωνα με το παρεχόμενο pair_provenance. Η προσαρμογή από δολάρια σε ευρώ είναι συνεπής σε πρόβλημα και λύση, χωρίς μεταβολή των αριθμητικών δεδομένων.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_400",
+      "overall": "issues",
+      "final_result": "issue",
+      "derivation": "issue",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "issue",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "premises_and_factual_support",
+          "severity": "major",
+          "quote": "Έστω ότι \\(0\\leq t\\leq \\frac{\\pi}{2}\\). Ποια είναι η τιμή του \\(f(\\sec^2t)\\);",
+          "explanation": "Η ζητούμενη παράσταση δεν ορίζεται σε ολόκληρο το δηλωμένο κλειστό διάστημα: για \\(t=0\\), \\(\\sec^2t=1\\) και το \\(f(1)\\) αποκλείεται από το πεδίο ορισμού, ενώ για \\(t=\\pi/2\\) η \\(\\sec t\\) δεν ορίζεται. Το ίδιο ελάττωμα υπάρχει και στο αγγλικό πρόβλημα και δεν αποτελεί μεταφραστικό σφάλμα.",
+          "suggested_action": "Να επισημανθεί ως άλυτο ελάττωμα του προβλήματος, εκτός αν δοθεί άδεια αλλαγής του διαστήματος σε \\(0<t<\\pi/2\\)."
+        },
+        {
+          "dimension": "derivation",
+          "severity": "major",
+          "quote": "άρα\n\\[\nx=\\frac{\\sec^2 t}{\\sec^2 t-1}.\n\\]",
+          "explanation": "Η διαίρεση με \\(\\sec^2t-1\\) δεν επιτρέπεται στο \\(t=0\\), όπου ο παρονομαστής μηδενίζεται, και η προηγούμενη εξίσωση δεν έχει επιτρεπτή λύση. Στο \\(t=\\pi/2\\) η αρχική παράσταση δεν υπάρχει. Η παραγωγή είναι ορθή μόνο για \\(0<t<\\pi/2\\).",
+          "suggested_action": "Η λύση πρέπει να ελέγξει πρώτα το πεδίο ορισμού και να περιορίσει ρητά την ταυτότητα στο ανοικτό διάστημα όπου όλα τα μέλη ορίζονται."
+        },
+        {
+          "dimension": "final_result",
+          "severity": "major",
+          "quote": "\\[f(\\sec^2 t)=\\boxed{\\sin^2 t}.\\]",
+          "explanation": "Το τελικό αποτέλεσμα παρουσιάζεται χωρίς προϋπόθεση για όλο το δοσμένο διάστημα, παρότι το αριστερό μέλος είναι απροσδιόριστο και στα δύο άκρα. Επομένως δεν αποτελεί πλήρη απάντηση στο πρόβλημα όπως διατυπώθηκε.",
+          "suggested_action": "Να δηλωθεί ότι για \\(0<t<\\pi/2\\) ισχύει \\(f(\\sec^2t)=\\sin^2t\\), ενώ στα \\(t=0\\) και \\(t=\\pi/2\\) η ζητούμενη τιμή δεν ορίζεται."
+        }
+      ],
+      "provenance_note": "Το problem_el διατηρεί πιστά και το σφάλμα πεδίου ορισμού του αγγλικού προβλήματος. Το pair_provenance δηλώνει stable_problem_text· υπάρχουν δύο αρχεία λύσης, αλλά δεν παρέχονται problem_variants που να τεκμηριώνουν ιστορική αβεβαιότητα σύζευξης.",
+      "verification_needed": []
+    }
+  ]
+}

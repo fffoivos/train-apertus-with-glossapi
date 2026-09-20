@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_gsm_5014",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The BEFORE and AFTER records are identical, and the actual training pair matches the AFTER record. The solution correctly applies the intended classroom convention that «τρεις φορές περισσότερα» means three times as many: 12×3=36, 36×2=72, and (36+72+12)/3=40. The renamed cats remain culturally coherent and preserve all mathematical relationships and the teaching objective. Dialogue roles and training structure are valid.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_484_4",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "This is a native Greek example with no English source. The BEFORE and AFTER records are identical, and the actual training pair matches the AFTER record. The greatest possible number of equal-composition groups is correctly found as ΜΚΔ(30,45)=15; this would allocate 2 boys and 3 girls to each group with no remainder. The response answers every requested part, and the dialogue roles and training structure are valid.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

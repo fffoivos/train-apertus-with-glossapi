@@ -1,0 +1,57 @@
+{
+  "job_id": "author_pilot48_07_unresolved",
+  "row_id": "pilot48_07_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "c060d7b68afd35a7317f32fdb71bf393883627767eece1e571ce1d0a5ba57e46",
+  "input_record_sha256": "f8b44e20d4cdc935d5e88a17b79a322a3caa48e42a2cb8b18ce433159a9760a0",
+  "payload_sha256": "4f07ef02b1cf98879b32083de9e47f21043d17e7b5876d22c491b60b55f82ea3",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "1e55cc6b453df514b51c9079b3c08435d836d97200f1dd1ec8e79e45c616d053",
+  "result": {
+    "row_id": "pilot48_07_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_07_unresolved.u_context",
+        "role": "user",
+        "content": "Το απόσπασμα διαδρομής δείχνει μόνο σύνδεση Αφετηρία–Πλατεία και Πλατεία–Μουσείο. Δεν περιλαμβάνει το Πανεπιστήμιο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_07_unresolved.u_decision",
+        "role": "user",
+        "content": "Από αυτό το απόσπασμα συμπεραίνω ότι η ίδια γραμμή συνεχίζει ως το Πανεπιστήμιο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_07_unresolved.a_target",
+        "role": "assistant",
+        "content": "Το απόσπασμα δεν αρκεί για να συμπεράνουμε ότι η γραμμή συνεχίζει ως το Πανεπιστήμιο. Υπάρχει άλλο τμήμα της διαδρομής που να δείχνει σύνδεση με το Πανεπιστήμιο;",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_07_unresolved.u_decision",
+        "claim": "Η ίδια γραμμή συνεχίζει ως το Πανεπιστήμιο.",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "pilot48_07_unresolved.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να επισημανθεί ότι το ορατό απόσπασμα δεν περιέχει τα αναγκαία στοιχεία.",
+          "Να ζητηθεί μόνο το τμήμα της διαδρομής που δείχνει σύνδεση με το Πανεπιστήμιο.",
+          "Να μην επινοηθεί κατάσταση ή σύνδεση."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

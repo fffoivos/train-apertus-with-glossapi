@@ -1,0 +1,63 @@
+{
+  "status": "automated audit and 19-row targeted adjudication complete; remaining minor flags not all adjudicated",
+  "rows": 300,
+  "calls": 100,
+  "failures": 0,
+  "started": "2026-09-13T12:23:50.140121+00:00",
+  "finished": "2026-09-13T12:35:09.730977+00:00",
+  "wall_minutes": 11.326514266666667,
+  "mean_call_seconds": 37.4512,
+  "strata": {
+    "gsm_existing": {
+      "rows": 150,
+      "model_verdicts": {
+        "no_defect_found": 115,
+        "issues": 35
+      },
+      "finding_instances_by_severity": {
+        "minor": 35,
+        "major": 4
+      }
+    },
+    "level5_multiple_problem_versions": {
+      "rows": 50,
+      "model_verdicts": {
+        "no_defect_found": 32,
+        "issues": 18
+      },
+      "finding_instances_by_severity": {
+        "minor": 18,
+        "major": 12
+      }
+    },
+    "level5_stable_problem": {
+      "rows": 100,
+      "model_verdicts": {
+        "issues": 26,
+        "no_defect_found": 74
+      },
+      "finding_instances_by_severity": {
+        "major": 15,
+        "minor": 21
+      }
+    }
+  },
+  "usage": {
+    "input_tokens": 1559149,
+    "cached_input_tokens": 761344,
+    "output_tokens": 152320,
+    "reasoning_output_tokens": 95952
+  },
+  "limitations": [
+    "Raw model flags are not confirmed defects.",
+    "This sample represents completed partial outputs, not trained data or missing generations.",
+    "Input tokens include cached inputs; reasoning output is a subset of output tokens.",
+    "Shared-account usage changes cannot be attributed exclusively to this wave."
+  ],
+  "targeted_adjudication": {
+    "rows": 19,
+    "substantive_candidate_defects": 9,
+    "prevalence_estimate": false,
+    "report": "ADJUDICATION.md"
+  }
+}

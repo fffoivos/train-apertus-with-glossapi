@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_13_study_roles_true",
+  "row_id": "scale60_13_study_roles_true",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "812e5a6fa5dcbb84523a31cc08dc0464f9ea54e051ed5837ba83cff37045c198",
+  "input_record_sha256": "c3a544ccf79b79fa148fd1c29b06a7ca3dc62b48f8ae0d55da5b1f15d052b963",
+  "payload_sha256": "51c771f4bacceda9f452f5b037c5d6ddb763c21f516619100779d684d6c66519",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "9c38a84eef27cded9ef70a8ea7f8b61452c86aaa4772a904a9288245391c7e40",
+  "result": {
+    "row_id": "scale60_13_study_roles_true",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_13_study_roles_true.u_context",
+        "role": "user",
+        "content": "Στις σημειώσεις, η Δανάη ανέλαβε τον προβολέα, ο Ορέστης την προέκταση ρεύματος και η Λία τα εισιτήρια.",
+        "train": false
+      },
+      {
+        "id": "scale60_13_study_roles_true.a_context",
+        "role": "assistant",
+        "content": "Θα κρατήσω κάθε αντικείμενο συνδεδεμένο με το πρόσωπο που το ανέλαβε.",
+        "train": false
+      },
+      {
+        "id": "scale60_13_study_roles_true.u_decision",
+        "role": "user",
+        "content": "Ωραία, λοιπόν: Στις σημειώσεις, η Δανάη έχει αναλάβει τον προβολέα. Γράψε συνοπτικά και τις τρεις αναθέσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_13_study_roles_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά. Δανάη — προβολέας, Ορέστης — προέκταση ρεύματος, Λία — εισιτήρια.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

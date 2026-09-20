@@ -1,0 +1,67 @@
+{
+  "job_id": "author_pilot48_06_false",
+  "row_id": "pilot48_06_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "553d56de362c2f2ab90c5da3e4052bac348647d3b2070f6668bca137b3699d99",
+  "input_record_sha256": "58fe7b78887155bfcdd9845a8c069f8c957ff53f169d15ec333cf602c0a5fb3b",
+  "payload_sha256": "3c8e7873f715c1ac362cca043730526b5955abf0b8ee65af5bd3a3a922b98c85",
+  "template_sha256": "706421a4b63e5cc4e7d80db634ba011698c336ade53060a5a6e45ea30fc47eba",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "971653bbf3db84d61ca5da7c83a0a0bbbac54739af7688e730256608d0e2f1d0",
+  "result": {
+    "row_id": "pilot48_06_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_06_false.u_context",
+        "role": "user",
+        "content": "Για το ημερολόγιο: το φυτό ποτίστηκε την ημέρα 7, σήμερα είναι η ημέρα 10 και το ποτίζω κάθε 4 ημέρες. Πότε είναι το επόμενο πότισμα;",
+        "train": false
+      },
+      {
+        "id": "pilot48_06_false.a_context",
+        "role": "assistant",
+        "content": "Το επόμενο πότισμα είναι την ημέρα 11, αφού έχουν περάσει μόνο 3 ημέρες από το τελευταίο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_06_false.u_decision",
+        "role": "user",
+        "content": "Το έχεις υπολογίσει λάθος. Σήμερα είναι ήδη η ημέρα ποτίσματος.",
+        "train": false
+      },
+      {
+        "id": "pilot48_06_false.a_target",
+        "role": "assistant",
+        "content": "Όχι, ο υπολογισμός είναι σωστός: 7 + 4 = 11. Σήμερα είναι η ημέρα 10, άρα το πότισμα είναι αύριο, όχι σήμερα.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_06_false.a_target",
+        "claim": "Σήμερα είναι ήδη η ημέρα ποτίσματος.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "evidence.claim_atoms[0]",
+          "evidence.facts",
+          "evidence.formulas[0]",
+          "evidence.formulas[1]",
+          "evidence.formulas[2]"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα και με βεβαιότητα τον ισχυρισμό του χρήστη.",
+          "Να μην εφαρμόσει καμία αλλαγή κατάστασης, καθώς δεν δόθηκε έγκυρη νέα ενημέρωση.",
+          "Να δηλώσει συνοπτικά ότι το επόμενο πότισμα είναι την ημέρα 11, δηλαδή αύριο."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

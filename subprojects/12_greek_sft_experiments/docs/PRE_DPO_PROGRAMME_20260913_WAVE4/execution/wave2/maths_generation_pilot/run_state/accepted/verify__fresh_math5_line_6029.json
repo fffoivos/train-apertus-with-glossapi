@@ -1,0 +1,30 @@
+{
+  "job_id": "verify__fresh_math5_line_6029",
+  "row_id": "fresh_math5_line_6029",
+  "stage": "verification_blind",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "27d02dbfa245e18d165de593eb35dc1f5b21791f3f181d7fa9e5b634678aa6f5",
+  "input_record_sha256": "460caa3918c011413d84ce3900daa6022464789a4a0794de13bbb8363c319f5d",
+  "payload_sha256": "ccaeecb8843c73e7d5d60f53f0bf012fcce535d54372441b0c416db0b2e2c5cd",
+  "template_sha256": "67a04cee918f227aa582da70a6fcb66cc7eca7093bc64ae9c067ec87a3b4b1de",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "adf13a0cfec95bf287f27a5dbab33f37dba45e6ad35c9db20ca4f9b7782dcd57",
+  "result": {
+    "row_id": "fresh_math5_line_6029",
+    "status": "candidate",
+    "solution_text": "Έστω ότι ο Νίκος αγοράζει \\(x_i\\) κουλούρια από το είδος \\(i\\), για \\(i=1,2,3,4\\). Τότε πρέπει\n\\[\nx_1+x_2+x_3+x_4=6,\n\\]\nμε \\(x_i\\ge 1\\), αφού χρειάζεται τουλάχιστον ένα κουλούρι από κάθε είδος.\n\nΘέτουμε \\(y_i=x_i-1\\). Τότε \\(y_i\\ge 0\\) και\n\\[\ny_1+y_2+y_3+y_4=6-4=2.\n\\]\nΜε τη μέθοδο «αστέρια και διαχωριστικά», το πλήθος των μη αρνητικών ακέραιων λύσεων είναι\n\\[\n\\binom{2+4-1}{4-1}=\\binom{5}{3}=10.\n\\]\nΚάθε τέτοια λύση καθορίζει έναν διαφορετικό συνδυασμό ποσοτήτων από τα τέσσερα είδη.\n\nΑπάντηση: \\(10\\) συνδυασμοί.",
+    "final_answers": [
+      {
+        "part": "Συνολικό πλήθος συνδυασμών",
+        "expression": "\\binom{5}{3}=10",
+        "unit": "συνδυασμοί",
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

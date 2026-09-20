@@ -1,0 +1,114 @@
+{
+  "status": "pass_exact_reader_tokenizer_and_target_mask",
+  "rows": 8,
+  "input_tokens": 1176,
+  "supervised_tokens": 264,
+  "max_row_tokens": 183,
+  "all_within_4096": true,
+  "decoded_supervision_matches_final_assistant_plus_eot": 8,
+  "projection_sha256": "51c6b049d809e1e4aa43463e53edb5404a7a7eff459e535c0c4d3d8b2dbad469",
+  "canonical_trainer_sha256": "f8de43b1f8b99959741e6c4a9158ad99fd31ffc5b3b1636c1ac07a925df39b4d",
+  "tokenizer_reference": "../../../../maths_generation_pilot/final_candidates/token_inventory.json",
+  "items": [
+    {
+      "row_id": "pilot48_05_false",
+      "input_tokens": 183,
+      "supervised_tokens": 43,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_05_partial",
+      "input_tokens": 181,
+      "supervised_tokens": 50,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_05_true",
+      "input_tokens": 151,
+      "supervised_tokens": 33,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_05_unresolved",
+      "input_tokens": 136,
+      "supervised_tokens": 30,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_09_false",
+      "input_tokens": 133,
+      "supervised_tokens": 25,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_09_partial",
+      "input_tokens": 121,
+      "supervised_tokens": 28,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_09_true",
+      "input_tokens": 134,
+      "supervised_tokens": 24,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "pilot48_09_unresolved",
+      "input_tokens": 137,
+      "supervised_tokens": 31,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "user",
+        "assistant"
+      ]
+    }
+  ]
+}

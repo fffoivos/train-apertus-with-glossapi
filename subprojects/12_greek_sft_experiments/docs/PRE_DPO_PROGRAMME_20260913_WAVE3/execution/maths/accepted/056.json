@@ -1,0 +1,48 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_430",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το κείμενο του προβλήματος χαρακτηρίζεται ως σταθερό. Παρότι υπάρχουν δύο εγγραφές λύσης, δεν παρέχεται ένδειξη ασυμβατότητας της επιλεγμένης λύσης με το συγκεκριμένο πρόβλημα.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_279",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το κείμενο του προβλήματος χαρακτηρίζεται ως σταθερό. Η λύση ορθά διαχωρίζει τα ασυμβίβαστα ενδεχόμενα της πρώτης άφιξης σε 4 ή 6 βήματα.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_920",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχουν πολλαπλές αποθηκευμένες εκδοχές του ελληνικού προβλήματος και η ιστορική σύνδεση της τελευταίας λύσης με την τελευταία εκδοχή δεν έχει αποδειχθεί. Οι παρεχόμενες εκδοχές διαφέρουν μόνο υφολογικά και δεν παρουσιάζουν μαθηματική διαφορά, ενώ η επιλεγμένη λύση είναι συμβατή με όλες.",
+      "verification_needed": [
+        "Επιβεβαίωση της ιστορικής αντιστοίχισης της επιλεγμένης λύσης με την τελευταία αποθηκευμένη εκδοχή του προβλήματος, εφόσον απαιτείται έλεγχος προέλευσης."
+      ]
+    }
+  ]
+}

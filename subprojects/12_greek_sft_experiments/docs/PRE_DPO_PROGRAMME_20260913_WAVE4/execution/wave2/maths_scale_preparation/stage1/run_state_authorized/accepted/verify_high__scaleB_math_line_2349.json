@@ -1,0 +1,30 @@
+{
+  "job_id": "verify_high__scaleB_math_line_2349",
+  "row_id": "scaleB_math_line_2349",
+  "stage": "verification_blind_high",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "6297dad79b174e0ed015387eb64a2d6be2ed1ebed75b21d63b9fd452b1b3a8fd",
+  "input_record_sha256": "fd7d23107930d29203c4729f0683dd18addf2cbb7efb5597d60de10ec7882bed",
+  "payload_sha256": "a38093c22aebac9671bba986fa1c484daafba7805dbedc22dbc93c452a165f55",
+  "template_sha256": "67a04cee918f227aa582da70a6fcb66cc7eca7093bc64ae9c067ec87a3b4b1de",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "041d2a3a531908662e1f5be5ec170e7918eb7584e2d41ac4753276a934ed9d20",
+  "result": {
+    "row_id": "scaleB_math_line_2349",
+    "status": "candidate",
+    "solution_text": "Για κάθε ζάρι, η πιθανότητα να φέρει 1 είναι \\(\\frac16\\), ενώ η πιθανότητα να μη φέρει 1 είναι \\(\\frac56\\). Οι ρίψεις των δέκα ζαριών είναι ανεξάρτητες.\n\nΥπάρχουν \\(\\binom{10}{1}=10\\) τρόποι να επιλέξουμε το μοναδικό ζάρι που θα φέρει 1. Για κάθε τέτοια επιλογή, η πιθανότητα το επιλεγμένο ζάρι να φέρει 1 και τα υπόλοιπα εννέα να μη φέρουν 1 είναι\n\\[\n\\frac16\\left(\\frac56\\right)^9.\n\\]\nΕπομένως,\n\\[\nP=\\binom{10}{1}\\frac16\\left(\\frac56\\right)^9\n=10\\cdot\\frac16\\left(\\frac56\\right)^9\n=\\frac{9765625}{30233088}\n\\approx 0{,}323011.\n\\]\nΣτρογγυλοποιώντας στο πλησιέστερο χιλιοστό παίρνουμε \\(0{,}323\\).\n\nΑπάντηση: \\(0{,}323\\).",
+    "final_answers": [
+      {
+        "part": "Πιθανότητα ακριβώς ενός 1",
+        "expression": "0,323",
+        "unit": null,
+        "approximation": true
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

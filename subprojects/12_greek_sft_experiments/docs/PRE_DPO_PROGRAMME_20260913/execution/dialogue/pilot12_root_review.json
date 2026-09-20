@@ -1,0 +1,12 @@
+{
+  "review": "root full-read of four semantic-v2 changed records; remaining eight unchanged and independently reviewed",
+  "checked_rows": [
+    "corrv2_t_001",
+    "corrv2_p_001",
+    "corrv2_u_001",
+    "corrv2_u_003"
+  ],
+  "result": "accepted as small reviewed pilot; not promoted to training",
+  "source_sha256": "66a9b8bb0381c13cfcd788cead90cb36448900b63f5e0e886e20ff814fde1235",
+  "limitation": "Automated oracle covers declared properties only; full semantic review remains required."
+}

@@ -1,0 +1,23 @@
+{
+  "train": {
+    "runner_state": "run_state/train",
+    "reviewed_candidates": "outputs/train"
+  },
+  "dev": {
+    "runner_state": "run_state/dev",
+    "reviewed_candidates": "outputs/dev"
+  },
+  "final_confirmation": {
+    "runner_state": "run_state/final_confirmation",
+    "reviewed_candidates": "sealed/final_confirmation/outputs",
+    "root_facing": "sealed/final_confirmation/gate_summary.json"
+  },
+  "stage_subdirectories": [
+    "authored",
+    "semantic_repaired",
+    "greek_corrected",
+    "accepted",
+    "held"
+  ],
+  "family_rule": "No family may appear in more than one split; final-confirmation content may not be copied into train/dev review artifacts."
+}

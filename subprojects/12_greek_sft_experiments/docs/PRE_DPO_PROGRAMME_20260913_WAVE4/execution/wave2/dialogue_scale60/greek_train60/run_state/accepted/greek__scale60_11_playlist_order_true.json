@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_11_playlist_order_true",
+  "row_id": "scale60_11_playlist_order_true",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "ff80bfc5687ef94277dd0fe60a499d2af28bd95ad4678a94acf033c246844328",
+  "input_record_sha256": "0925d6972d76977dbfbef3ede9a14a801fe079351d0431c0f8664a2c7ebbf2d8",
+  "payload_sha256": "8d7fbf6c96b7a4baee7b790cf1cb9828ff2fa17e89bafef28ddda8593df5fecc",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "496fd8ed14699917d890e506ceda33ab53f79e47b9e49e4dfeabb9eb1b49dd62",
+  "result": {
+    "row_id": "scale60_11_playlist_order_true",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_11_playlist_order_true.u_context",
+        "role": "user",
+        "content": "Στην τρέχουσα λίστα αναπαραγωγής η σειρά είναι «Αστέρι», «Βροχή», «Κύμα».",
+        "train": false
+      },
+      {
+        "id": "scale60_11_playlist_order_true.a_context",
+        "role": "assistant",
+        "content": "Βλέπω αυτή τη σειρά των τριών κομματιών στο πρόχειρο.",
+        "train": false
+      },
+      {
+        "id": "scale60_11_playlist_order_true.u_decision",
+        "role": "user",
+        "content": "Στην τρέχουσα λίστα τελευταίο είναι το «Κύμα». Μετέφερε τώρα το κομμάτι «Βροχή» στο τέλος.",
+        "train": false
+      },
+      {
+        "id": "scale60_11_playlist_order_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά, τελευταίο ήταν το «Κύμα». Μετέφερα το «Βροχή» στο τέλος· η σειρά είναι τώρα «Αστέρι», «Κύμα», «Βροχή».",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

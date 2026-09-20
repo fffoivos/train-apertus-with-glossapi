@@ -1,0 +1,22 @@
+{
+  "artifact_sha256": {
+    "build_repair6.py": "d5e4aa9a7c59dbdcd2e23a7b299ea654cc31757293133a902edf53374f0c007f",
+    "candidate_records.jsonl": "625d4ce08cdd438b8f06a62958a9afd9b17eed04f4d6ab7b42ae5d7eacff3c0d",
+    "constraint_checks.jsonl": "af1947e47eb1217f9dc599d07b8147c7f51eb5979a3a7323dc8ca3a1dbf9eadb",
+    "delta_reasons.jsonl": "b99b9e7e4d9a9d90a69f3887c5c5a446cd9acc7f2067e432a343f2f7758b5ce9",
+    "evidence_sources.json": "b4830298d85e65ae3e625e4f9ae91c03dc93ae9a30e45b08acd3ca504d7e7d91",
+    "proposed_targets.jsonl": "20bb9f86223a56cf9705b8d959a5b07277c41422c89296f4d35623f0090d6617",
+    "report.md": "2efe2eda40a01a82d8eeac9560d0b5cdbb96f1e14c7e45fcff97e0af1c3c17f2",
+    "verification.json": "566081e9ea0dd6a81e8b7e44a3e2c997e620c4da3847c0aebb15583cd9e6e1b1"
+  },
+  "candidate_count": 6,
+  "corpus_mutations": 0,
+  "created_at": "2026-09-13T17:41:42+03:00",
+  "model_calls": 0,
+  "schema_version": "adapted_core_repair6_manifest_v1",
+  "source_files": {
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/adapted_core/initial42_review_material.jsonl": "ad895e3de999d56c463d1798c5995b5850387d7f2c108dfe0d5fdef4268cf493",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/adapted_core/unpaired_es_pt_it_coverage9.jsonl": "ffc03794e7e3ada3b9392c96702ac0840c46df4f4391b5b9e978632aa1388da8"
+  },
+  "status": "proposed_pending_root_technical_and_language_review"
+}

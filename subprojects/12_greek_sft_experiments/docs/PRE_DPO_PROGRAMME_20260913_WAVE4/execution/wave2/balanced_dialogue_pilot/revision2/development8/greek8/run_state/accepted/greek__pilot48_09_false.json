@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__pilot48_09_false",
+  "row_id": "pilot48_09_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "d13fa448449e97a0a89e0c5fb8580a36d2d1dec181c4b8213453274e1f573887",
+  "input_record_sha256": "33cfede38f6b7b664f68be8c5e906202ac3d1a263b64e0a30a51f69cfa6dcd2a",
+  "payload_sha256": "33cfede38f6b7b664f68be8c5e906202ac3d1a263b64e0a30a51f69cfa6dcd2a",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "58ffe8dec2b2922339b20547192b3b8d18dae354f4ccd71f6d7567935cc92d8c",
+  "result": {
+    "row_id": "pilot48_09_false",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_09_false.u_context",
+        "role": "user",
+        "content": "Υπάρχουν 3 αντίτυπα: 2 είναι δανεισμένα και το τρίτο δεσμευμένο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_09_false.a_context",
+        "role": "assistant",
+        "content": "Άρα αυτή τη στιγμή και τα 3 αντίτυπα είναι απασχολημένα.",
+        "train": false
+      },
+      {
+        "id": "pilot48_09_false.u_decision",
+        "role": "user",
+        "content": "Άρα υπάρχει ένα διαθέσιμο αντίτυπο τώρα.",
+        "train": false
+      },
+      {
+        "id": "pilot48_09_false.a_target",
+        "role": "assistant",
+        "content": "Με αυτά τα στοιχεία, κανένα αντίτυπο δεν είναι διαθέσιμο τώρα: 2 είναι δανεισμένα και 1 δεσμευμένο.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

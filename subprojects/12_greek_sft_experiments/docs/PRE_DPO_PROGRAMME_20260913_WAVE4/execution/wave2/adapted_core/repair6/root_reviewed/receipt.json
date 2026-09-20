@@ -1,0 +1,12 @@
+{
+  "rows": 6,
+  "root_full_message_review": 6,
+  "accepted_as_proposed": 5,
+  "accepted_with_assumption_clarification": 1,
+  "corpus_mutations": 0,
+  "additional_model_calls": 0,
+  "release_status": "not_published",
+  "status": "pending_independent_root_delta_check_and_assembly",
+  "source_candidate_sha256": "625d4ce08cdd438b8f06a62958a9afd9b17eed04f4d6ab7b42ae5d7eacff3c0d",
+  "candidate_sha256": "d0397cc6da9b8a4e19491b3f266b9d7d940bfae47e7c6afef6b1b2d17dd90672"
+}

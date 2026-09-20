@@ -1,0 +1,11 @@
+{
+  "parent_split_manifest": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_scale_preparation/proposed_family_splits.jsonl",
+  "parent_split_manifest_sha256": "e3ab829b1cfa8f4e548f3c1c96e10ccb57508f59325d6507e48a6df3a2e9ec44",
+  "development_identity_digest": "ffe79ca7df411abe11feef3adba15e3faa8431ee2a5282fc0812526b0db9e695",
+  "development_count": 14,
+  "final_confirmation_identity_digest": "430fc03e90e00390022f8f2876520d1edfe1e32d004596214e859e5a7e7dc353",
+  "final_confirmation_count": 14,
+  "final_content_read_or_materialized_here": false,
+  "final_identity_in_phaseB_inputs": false,
+  "train_only_replacements": 4
+}

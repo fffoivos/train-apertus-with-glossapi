@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "pilot_decisions": 48,
+  "pilot_splits": {
+    "train": 32,
+    "dev": 8,
+    "final_confirmation": 8
+  },
+  "train_oracle_kinds": [
+    "cancellation",
+    "state_inference",
+    "version_edit"
+  ],
+  "training_target": 600,
+  "holdouts": 120,
+  "program_total": 720,
+  "family_leakage": false
+}

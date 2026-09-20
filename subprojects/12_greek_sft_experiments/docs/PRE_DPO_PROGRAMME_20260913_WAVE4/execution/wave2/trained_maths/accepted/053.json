@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_math_98",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The English source, Greek problem, BEFORE solution, AFTER solution, and actual training target are mutually consistent. Multiplying numerator and denominator by 125 gives 4.625/10.000 under Greek thousands notation, hence 0,4625. The editor made no change.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_301_3",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "This is a native Greek example with no English source. The supplied dimensions give a total volume of 0,48 m³; taking 3/4 gives 0,36 m³, and using 1 m³ = 1.000 litres gives 360 litres. For a rectangular aquarium, filling 3/4 of its height also fills 3/4 of its capacity. BEFORE and AFTER are identical, and the independently checked arithmetic supports the result without relying on the prior second solve as ground truth.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

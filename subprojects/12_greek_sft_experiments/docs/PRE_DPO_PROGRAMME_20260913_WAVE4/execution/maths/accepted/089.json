@@ -1,0 +1,71 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_1547",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The single Greek problem record is paired with one solution record; no historical pairing ambiguity is indicated. Replacing dollars with euros and adapting Tim to Τίμος preserves the teaching objective and numerical structure.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_436",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "issue",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "mathematical/logical steps",
+          "severity": "major",
+          "quote": "Δύο διαδοχικά νομίσματα έχουν τα πρόσωπά τους αντικριστά ακριβώς όταν εμφανίζεται το ζεύγος \\(HT\\): το κάτω μέρος του επάνω νομίσματος και το πάνω μέρος του επόμενου έχουν τότε πρόσωπο.",
+          "explanation": "With H defined to mean that a coin's upper side bears the face, an upper coin marked H has no face on its lower side. Reading the stack from top to bottom, face-to-face contact instead occurs for TH: the upper T coin has its face underneath and the lower H coin has its face on top. Thus the forbidden transition and claimed allowable sequence form are reversed. The final count remains 9 by symmetry, so 630 is still correct. The reference solution contains the same orientation error.",
+          "suggested_action": "Correct the forbidden adjacent pair to TH and describe the allowed orientations as a block of H symbols followed by a block of T symbols, while retaining the valid count of 9 and final answer 630."
+        }
+      ],
+      "provenance_note": "The problem text is marked stable, although two solution records exist. The selected solution is evaluated against the supplied stable problem. The supplied reference shares the candidate's reversed HT/TH characterization, so agreement with it does not validate that step.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_790",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "Greek language",
+          "severity": "minor",
+          "quote": "Πολλασιάζοντας τους συντελεστές",
+          "explanation": "The participle is misspelled; standard Greek is «Πολλαπλασιάζοντας».",
+          "suggested_action": "Route for Greek correction of the spelling only."
+        },
+        {
+          "dimension": "Greek language",
+          "severity": "minor",
+          "quote": "\\boxed{428\\text{ square centimeters}}",
+          "explanation": "The final unit is left in English inside an otherwise Greek solution. Its meaning and mathematical unit are correct, but the language is inconsistent.",
+          "suggested_action": "Route for Greek correction to «τετραγωνικά εκατοστά», without changing the value or unit."
+        }
+      ],
+      "provenance_note": "The record has multiple saved Greek problem versions, so the historical association of the last solution with the last problem is unproven. The two supplied variants differ only stylistically («Δώστε» versus «Εκφράστε») and impose the same mathematical task, units, and rounding requirement; no mathematical difference is present.",
+      "verification_needed": [
+        "Historical problem–solution pairing remains uncertain because pair_provenance is ambiguous_input_version."
+      ]
+    }
+  ]
+}

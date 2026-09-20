@@ -1,0 +1,87 @@
+{
+  "job_id": "author__scale60_15_game_score_true",
+  "row_id": "scale60_15_game_score_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "dcd31f3d77503eaa54758427e9150e11a6c8d06d47b6b6b954ba4f06533f04fc",
+  "input_record_sha256": "e55d4768cd7372c4201fe289a9cc37c66aa003cc755896b43b1d590b8a74ce89",
+  "payload_sha256": "f1a5e958fe0ae66a4804e7f653bb7e706959a13747aebb4a70450d3af36b2248",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "0cca0c4d11c63a48d7d0a41221cbd3f4e87536d44281ba38697775ebf079acdb",
+  "result": {
+    "row_id": "scale60_15_game_score_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_15_game_score_true.u_context",
+        "role": "user",
+        "content": "Ο κανόνας δίνει 2 βαθμούς για κάθε νίκη και 1 για κάθε ισοπαλία. Η ομάδα Άλφα έχει 3 νίκες και 1 ισοπαλία.",
+        "train": false
+      },
+      {
+        "id": "scale60_15_game_score_true.a_context",
+        "role": "assistant",
+        "content": "Θα εφαρμόσω ακριβώς τον δοσμένο κανόνα βαθμολόγησης.",
+        "train": false
+      },
+      {
+        "id": "scale60_15_game_score_true.u_decision",
+        "role": "user",
+        "content": "Με τον δοσμένο κανόνα, η ομάδα Άλφα έχει 7 βαθμούς.",
+        "train": false
+      },
+      {
+        "id": "scale60_15_game_score_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά: 3 × 2 + 1 × 1 = 7 βαθμοί.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_15_game_score_true.u_decision",
+        "claim": "Με τον δοσμένο κανόνα, η ομάδα Άλφα έχει 7 βαθμούς.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "scale60_15_game_score_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να επιβεβαιώσει τον υποστηριζόμενο ισχυρισμό.",
+          "Να δείξει συνοπτικά το σταθμισμένο άθροισμα."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "wins",
+        "before_json": "3",
+        "after_json": "3",
+        "evidence_ids": [
+          "scale60_15_game_score_true.u_context"
+        ]
+      },
+      {
+        "field": "draws",
+        "before_json": "1",
+        "after_json": "1",
+        "evidence_ids": [
+          "scale60_15_game_score_true.u_context"
+        ]
+      },
+      {
+        "field": "points",
+        "before_json": "7",
+        "after_json": "7",
+        "evidence_ids": [
+          "scale60_15_game_score_true.u_context"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

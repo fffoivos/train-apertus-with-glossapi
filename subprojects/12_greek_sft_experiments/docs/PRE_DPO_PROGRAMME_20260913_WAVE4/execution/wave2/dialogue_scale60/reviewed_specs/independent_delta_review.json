@@ -1,0 +1,43 @@
+{
+  "schema_version": "dialogue_scale60_independent_delta_review_v1",
+  "reviewed_at": "2026-09-13T17:29:43+03:00",
+  "scope": "13 source changes only; no generated assistant targets reviewed",
+  "status": "accepted_for_six_case_authoring_probe",
+  "reviewed_change_count": 13,
+  "accepted_change_count": 13,
+  "findings": [
+    {
+      "rows": [
+        "scale60_08_fair_budget_true",
+        "scale60_08_fair_budget_false",
+        "scale60_08_fair_budget_partial",
+        "scale60_08_fair_budget_unresolved"
+      ],
+      "disposition": "accept",
+      "reason": "The visible record now distinguishes the 120 euro starting amount from paid expenses of 35 and 15 euros. The computed remainder 70, the true/false/partial labels, and the missing-donation unresolved label follow from visible user evidence. All four visible-basis hashes match the revised context text."
+    },
+    {
+      "rows": [
+        "scale60_01_recipe_draft_unresolved",
+        "scale60_02_studio_booking_unresolved",
+        "scale60_03_tool_checkout_unresolved",
+        "scale60_04_park_map_excerpt_unresolved",
+        "scale60_05_volunteer_board_unresolved",
+        "scale60_06_key_handover_unresolved",
+        "scale60_07_rehearsal_sheet_unresolved",
+        "scale60_08_fair_budget_unresolved",
+        "scale60_09_chore_log_unresolved",
+        "scale60_10_sorting_card_unresolved"
+      ],
+      "disposition": "accept",
+      "reason": "The response contract now asks one targeted clarification only when completing the requested edit, cancellation, stop, or referent-dependent action requires it. Pure evidential-limit cases may answer directly. The unresolved states remain unchanged and no hidden value is promoted to evidence."
+    }
+  ],
+  "bindings": {
+    "source_changes_sha256": "357a7b32a39ed96230780c22fecbeb2df49313967756aec4179d61c6b5c94d20",
+    "inputs_sha256": "c268ffefe66bc2cc48f3b2ef59248b980007cf40f00ae4e12fce3cb9c5a9f530",
+    "queue_author60_sha256": "88edba9c3f4a146d271442525b12faacdafc19a5466f9f7a08a19156cf7001b8"
+  },
+  "model_calls": 0,
+  "inputs_modified_by_reviewer": false
+}

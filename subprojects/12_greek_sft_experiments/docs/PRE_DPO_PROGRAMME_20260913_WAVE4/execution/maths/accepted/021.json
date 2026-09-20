@@ -1,0 +1,72 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_1042",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem text is stable despite the presence of two solution records. The selected solution is mathematically and semantically aligned with the supplied problem and reference.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3893",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "greek_language",
+          "severity": "minor",
+          "quote": "«Ο Γεράσιμος είχε … από την Κάτια, η οποία έχει 2 λιγότερα χαρτονομίσματα από την Ιωάννα.»",
+          "explanation": "The shift from past tense «είχε» to present tense «έχει» is temporally inconsistent and unnatural in this past-tense narrative. It mirrors the English source’s tense inconsistency but remains a Greek-language defect. The solution itself consistently uses the intended initial quantities.",
+          "suggested_action": "Route the problem text to Greek correction and replace «έχει» with «είχε», without changing any quantities or the solution."
+        }
+      ],
+      "provenance_note": "Single problem record and single solution record; no pairing ambiguity is indicated. The adapted Greek names are internally consistent.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_788",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "problem_fidelity_and_training_structure",
+          "severity": "major",
+          "quote": "«τα $\u0007overline{AD},$ $\u0007overline{BE},$ $\u0007overline{CF}$»",
+          "explanation": "The valid English LaTeX command «\\overline» has been converted into control or malformed escape sequences in the selected Greek problem. Consequently, the three segment symbols may be corrupted or rendered incorrectly. The surrounding text still makes the intended altitude segments recoverable, so this does not invalidate the candidate’s mathematics.",
+          "suggested_action": "Restore literal valid LaTeX commands for all three segments after confirming the raw serialization and escaping convention."
+        },
+        {
+          "dimension": "greek_language",
+          "severity": "minor",
+          "quote": "«τότε να υπολογίσετε τη $\\angle ACB,$ σε μοίρες.»",
+          "explanation": "The feminine article «τη» lacks its noun, making the expression unnatural Greek. One supplied variant correctly includes «τη γωνία».",
+          "suggested_action": "Route this wording to Greek correction so that it reads «να υπολογίσετε τη γωνία $\\angle ACB$», without changing the mathematical problem."
+        }
+      ],
+      "provenance_note": "The candidate joins the last saved solution to the last saved problem by audit convention; their historical association is unproven. The supplied problem variants have the same mathematical content, although they differ in wording and exhibit different malformed escape representations. No mathematical difference affecting the solution was found.",
+      "verification_needed": [
+        "Confirm from the raw record whether the segment commands were damaged during JSON escaping or earlier preprocessing.",
+        "Verify the historical association between the selected solution and the last saved Greek problem version."
+      ]
+    }
+  ]
+}

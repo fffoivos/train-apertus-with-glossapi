@@ -1,0 +1,794 @@
+{
+  "status": "pass_exact_reader_tokenizer_and_target_mask",
+  "rows": 60,
+  "input_tokens": 10112,
+  "supervised_tokens": 1977,
+  "max_row_tokens": 214,
+  "all_within_4096": true,
+  "decoded_supervision_matches_final_assistant_plus_eot": 60,
+  "projection_sha256": "cdf06725532c669afb591cc46cc4a62c2ad3979cafadc2ad90b8c36bd5daa642",
+  "canonical_trainer_sha256": "f8de43b1f8b99959741e6c4a9158ad99fd31ffc5b3b1636c1ac07a925df39b4d",
+  "tokenizer_reference": "../../maths_generation_pilot/final_candidates/token_inventory.json",
+  "items": [
+    {
+      "row_id": "scale60_01_recipe_draft_false",
+      "input_tokens": 178,
+      "supervised_tokens": 30,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_01_recipe_draft_partial",
+      "input_tokens": 210,
+      "supervised_tokens": 51,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_01_recipe_draft_true",
+      "input_tokens": 185,
+      "supervised_tokens": 27,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_01_recipe_draft_unresolved",
+      "input_tokens": 186,
+      "supervised_tokens": 33,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_02_studio_booking_false",
+      "input_tokens": 173,
+      "supervised_tokens": 31,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_02_studio_booking_partial",
+      "input_tokens": 187,
+      "supervised_tokens": 41,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_02_studio_booking_true",
+      "input_tokens": 180,
+      "supervised_tokens": 26,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_02_studio_booking_unresolved",
+      "input_tokens": 151,
+      "supervised_tokens": 15,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_03_tool_checkout_false",
+      "input_tokens": 149,
+      "supervised_tokens": 29,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_03_tool_checkout_partial",
+      "input_tokens": 161,
+      "supervised_tokens": 36,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_03_tool_checkout_true",
+      "input_tokens": 135,
+      "supervised_tokens": 21,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_03_tool_checkout_unresolved",
+      "input_tokens": 166,
+      "supervised_tokens": 38,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_04_park_map_excerpt_false",
+      "input_tokens": 160,
+      "supervised_tokens": 38,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_04_park_map_excerpt_partial",
+      "input_tokens": 160,
+      "supervised_tokens": 34,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_04_park_map_excerpt_true",
+      "input_tokens": 164,
+      "supervised_tokens": 35,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_04_park_map_excerpt_unresolved",
+      "input_tokens": 172,
+      "supervised_tokens": 45,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_05_volunteer_board_false",
+      "input_tokens": 150,
+      "supervised_tokens": 24,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_05_volunteer_board_partial",
+      "input_tokens": 162,
+      "supervised_tokens": 28,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_05_volunteer_board_true",
+      "input_tokens": 163,
+      "supervised_tokens": 33,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_05_volunteer_board_unresolved",
+      "input_tokens": 148,
+      "supervised_tokens": 25,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_06_key_handover_false",
+      "input_tokens": 205,
+      "supervised_tokens": 57,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_06_key_handover_partial",
+      "input_tokens": 214,
+      "supervised_tokens": 63,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_06_key_handover_true",
+      "input_tokens": 188,
+      "supervised_tokens": 39,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_06_key_handover_unresolved",
+      "input_tokens": 192,
+      "supervised_tokens": 48,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_07_rehearsal_sheet_false",
+      "input_tokens": 163,
+      "supervised_tokens": 19,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_07_rehearsal_sheet_partial",
+      "input_tokens": 193,
+      "supervised_tokens": 40,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_07_rehearsal_sheet_true",
+      "input_tokens": 188,
+      "supervised_tokens": 37,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_07_rehearsal_sheet_unresolved",
+      "input_tokens": 157,
+      "supervised_tokens": 18,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_08_fair_budget_false",
+      "input_tokens": 179,
+      "supervised_tokens": 31,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_08_fair_budget_partial",
+      "input_tokens": 213,
+      "supervised_tokens": 54,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_08_fair_budget_true",
+      "input_tokens": 171,
+      "supervised_tokens": 23,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_08_fair_budget_unresolved",
+      "input_tokens": 191,
+      "supervised_tokens": 38,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_09_chore_log_false",
+      "input_tokens": 153,
+      "supervised_tokens": 33,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_09_chore_log_partial",
+      "input_tokens": 154,
+      "supervised_tokens": 28,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_09_chore_log_true",
+      "input_tokens": 158,
+      "supervised_tokens": 32,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_09_chore_log_unresolved",
+      "input_tokens": 137,
+      "supervised_tokens": 18,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_10_sorting_card_false",
+      "input_tokens": 187,
+      "supervised_tokens": 36,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_10_sorting_card_partial",
+      "input_tokens": 190,
+      "supervised_tokens": 36,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_10_sorting_card_true",
+      "input_tokens": 193,
+      "supervised_tokens": 36,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_10_sorting_card_unresolved",
+      "input_tokens": 207,
+      "supervised_tokens": 47,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_11_playlist_order_false",
+      "input_tokens": 167,
+      "supervised_tokens": 45,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_11_playlist_order_true",
+      "input_tokens": 167,
+      "supervised_tokens": 42,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_12_seedling_trays_false",
+      "input_tokens": 157,
+      "supervised_tokens": 33,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_12_seedling_trays_true",
+      "input_tokens": 152,
+      "supervised_tokens": 31,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_13_study_roles_false",
+      "input_tokens": 181,
+      "supervised_tokens": 47,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_13_study_roles_true",
+      "input_tokens": 167,
+      "supervised_tokens": 27,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_14_parcel_checklist_false",
+      "input_tokens": 167,
+      "supervised_tokens": 28,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_14_parcel_checklist_true",
+      "input_tokens": 159,
+      "supervised_tokens": 25,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_15_game_score_false",
+      "input_tokens": 156,
+      "supervised_tokens": 31,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_15_game_score_true",
+      "input_tokens": 147,
+      "supervised_tokens": 22,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_16_event_agenda_false",
+      "input_tokens": 162,
+      "supervised_tokens": 36,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_16_event_agenda_true",
+      "input_tokens": 151,
+      "supervised_tokens": 26,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_17_ferry_token_false",
+      "input_tokens": 155,
+      "supervised_tokens": 32,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_17_ferry_token_true",
+      "input_tokens": 150,
+      "supervised_tokens": 23,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_18_printmaking_stock_false",
+      "input_tokens": 152,
+      "supervised_tokens": 30,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_18_printmaking_stock_true",
+      "input_tokens": 138,
+      "supervised_tokens": 20,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_19_weekly_menu_false",
+      "input_tokens": 155,
+      "supervised_tokens": 26,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_19_weekly_menu_true",
+      "input_tokens": 152,
+      "supervised_tokens": 23,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_20_reading_workflow_false",
+      "input_tokens": 154,
+      "supervised_tokens": 29,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scale60_20_reading_workflow_true",
+      "input_tokens": 150,
+      "supervised_tokens": 28,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant",
+        "user",
+        "assistant"
+      ]
+    }
+  ]
+}

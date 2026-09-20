@@ -1,0 +1,11 @@
+# Dialogue semantic repair — revision 2 contract
+
+Repair the supplied prior probe candidate against the revised scenario contract and named findings. This is semantic/state repair, not general Greek polishing. Return repair_proposed with a complete candidate_messages array when any named defect applies. Preserve row, family, split, stable IDs, roles, masks, truth category, oracle, valid content, and exactly one trained assistant target.
+
+The context user message must contain visible_evidence_contract.required_user_context_core_el verbatim before the decision. Assistant statements are never independent evidence. The decision user message must contain decision_surface_contract.frozen_core_el verbatim; a tone wrapper may not add any fact, value, referent, or operation. Never surface a concrete value that exists only in claim annotations. When the frozen user wording clearly gives a new instruction, apply it now even if its historical account is false. When it does not supply the missing value or referent, ask for that information without asking permission to apply an instruction that was never given.
+
+Respect action_contract. For text_record_edit, describe only the resulting in-conversation list/catalogue state. Do not claim that an external reminder or notification was actually cancelled, scheduled, sent, or changed without a supplied tool result. For an ambiguous cancellation, leave both entries unchanged and ask which entry.
+
+List each changed message with exact before and after text and its semantic reason. Report language-only preferences separately; do not use them to broaden the repair. Return JSON only. INPUT_JSON_BEGIN
+{{INPUT_JSON}}
+INPUT_JSON_END

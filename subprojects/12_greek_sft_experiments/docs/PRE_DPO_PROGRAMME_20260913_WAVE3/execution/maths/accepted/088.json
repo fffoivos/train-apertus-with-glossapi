@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_474",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The problem text is marked stable. Although two solution records exist and the selected solution comes from line 819, the supplied candidate is fully compatible with the displayed problem; the record count alone does not establish a defect.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3149",
+      "overall": "issues",
+      "final_result": "uncertain",
+      "derivation": "issue",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "issue",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "premises_and_logical_steps",
+          "severity": "major",
+          "quote": "«συνολικά οι θέσεις που είτε είναι κατειλημμένες είτε είναι χαλασμένες είναι: 200+50=250»",
+          "explanation": "The addition treats the occupied and broken seats as disjoint. The problem does not explicitly state that no broken seat is among the occupied seats. Consequently, 250 available seats is the intended answer under a plausible convention, but it is not uniquely entailed by the literal premises.",
+          "suggested_action": "Flag the source problem as underspecified or require an explicit assumption that occupied and broken seats do not overlap; without permission to change the problem, do not present 250 as unconditionally determined."
+        }
+      ],
+      "provenance_note": "The candidate is paired with a single problem record and faithfully follows the supplied reference, but the reference makes the same unstated disjointness assumption.",
+      "verification_needed": [
+        "Clarify whether occupied and broken seats are guaranteed to be disjoint."
+      ]
+    },
+    {
+      "row_id": "math5_1264",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The last-solution/last-problem historical association is unproven because this Level-5 record has multiple saved Greek problem versions. The two supplied variants differ only in the equivalent phrasing «αρχίζουν με» versus «αρχίζουν από» and introduce no mathematical difference; the candidate solves both versions correctly.",
+      "verification_needed": [
+        "Historical source data would be needed to confirm which saved Greek problem version originally accompanied the selected solution."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "job_id": "author_pilot48_10_true",
+  "row_id": "pilot48_10_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "2b9ed5802bc239856b8fd943b1d591f230fb93a5c4c11c10d3d00c9887f18a99",
+  "input_record_sha256": "7bfff9fb6c5775c3fa0b4646debeadc2dc08d1a40b8c7e339af3056c591ba149",
+  "payload_sha256": "ba3993438439064fc9fdc2f8286e2804293616f16fd78a4e0ffb932a1c203dc9",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "40aef73f044778fea4383d946f87b3144dc877dcf838c72406df9913f9dada3f",
+  "result": {
+    "row_id": "pilot48_10_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_10_true.u_context",
+        "role": "user",
+        "content": "Στον κειμενικό κατάλογο αυτού του νήματος υπάρχουν δύο ενεργές εγγραφές: «ραντεβού» και «αγορές».",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_true.a_context",
+        "role": "assistant",
+        "content": "Βλέπω τις δύο ενεργές εγγραφές.",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_true.u_decision",
+        "role": "user",
+        "content": "Η υπενθύμιση για το ραντεβού είναι ακόμη ενεργή. Ακύρωσέ την και απάντησε ακριβώς «Ακυρώθηκε.»",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_true.a_target",
+        "role": "assistant",
+        "content": "Ακυρώθηκε.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_10_true.u_decision",
+        "claim": "Η υπενθύμιση για το ραντεβού είναι ακόμη ενεργή.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "pilot48_10_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Ακύρωση της εγγραφής «ραντεβού» στον κειμενικό κατάλογο αυτού του νήματος.",
+          "Ακριβής απάντηση: «Ακυρώθηκε.»"
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "ο κειμενικός κατάλογος αυτού του νήματος.ραντεβού",
+        "before_json": "\"active\"",
+        "after_json": "\"cancelled\"",
+        "evidence_ids": [
+          "pilot48_10_true.u_context",
+          "pilot48_10_true.u_decision",
+          "pilot48_10_true.a_target"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

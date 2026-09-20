@@ -1,0 +1,74 @@
+{
+  "job_id": "author_pilot48_03_partial",
+  "row_id": "pilot48_03_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "db6f95e64e2dbfdc74933e2e9c0e82b71fde9146276ddcdc8425d407f7dd3758",
+  "input_record_sha256": "d0e41935ee1bd72458c08492e2a220d877e820d2a7e0e724fb97a878096da671",
+  "payload_sha256": "cb9e7fb9ea3fbec7406bbeeef39fdfaf6dcde2c4bfcd5b931169ce27cb305412",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "6ca7376dc97402a1e69b591f7071d25f47585c8292502e3329cc72c031f73a7b",
+  "result": {
+    "row_id": "pilot48_03_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_03_partial.u_context",
+        "role": "user",
+        "content": "Αρχικά το εργαστήριο ήταν Δευτέρα στις 17:00 στην αίθουσα Α, χωρίς καταγραμμένη διάρκεια. Έπειτα μεταφέρθηκε την Τρίτη στις 18:00 στην αίθουσα Β.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_partial.a_context",
+        "role": "assistant",
+        "content": "Κατάλαβα: η τρέχουσα έκδοση είναι Τρίτη στις 18:00 στην αίθουσα Β, χωρίς καταγραμμένη διάρκεια.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_partial.u_decision",
+        "role": "user",
+        "content": "Σε παρακαλώ: Η τελευταία έκδοση λέει Τρίτη στις 18:00 αλλά στην αίθουσα Α. Μετέφερε τώρα την ώρα στις 18:30.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_partial.a_target",
+        "role": "assistant",
+        "content": "Σωστά ότι η τελευταία έκδοση ήταν Τρίτη στις 18:00· η αίθουσα όμως ήταν Β, όχι Α. Με την αλλαγή της ώρας, η τελευταία έκδοση είναι τώρα Τρίτη στις 18:30 στην αίθουσα Β, χωρίς καταγραμμένη διάρκεια.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_03_partial.u_decision",
+        "claim": "Η τελευταία έκδοση ήταν Τρίτη στις 18:00 στην αίθουσα Α και η ώρα πρέπει τώρα να αλλάξει σε 18:30.",
+        "truth_category": "partial",
+        "evidence_ids": [
+          "pilot48_03_partial.u_context",
+          "pilot48_03_partial.u_decision"
+        ],
+        "expected_response_behaviour": [
+          "Να αναγνωρίσει ως σωστά την Τρίτη και την προηγούμενη ώρα 18:00.",
+          "Να διορθώσει την αίθουσα από Α σε Β.",
+          "Να εφαρμόσει αμέσως τη νέα ώρα 18:30.",
+          "Να αναφέρει συνοπτικά τη νέα κατάσταση της έκδοσης."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "time",
+        "before_json": "\"18:00\"",
+        "after_json": "\"18:30\"",
+        "evidence_ids": [
+          "pilot48_03_partial.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

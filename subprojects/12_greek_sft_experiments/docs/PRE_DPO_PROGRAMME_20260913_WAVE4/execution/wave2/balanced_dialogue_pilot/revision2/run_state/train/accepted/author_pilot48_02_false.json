@@ -1,0 +1,73 @@
+{
+  "job_id": "author_pilot48_02_false",
+  "row_id": "pilot48_02_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "09df300bf56159726371e50a44bf5d6f63348a4568037072de7dafc6ea8763da",
+  "input_record_sha256": "27af382ec5171e243bed4d573a8446511e918b191a5f119539c938504da9e024",
+  "payload_sha256": "09b7fb13d026894d64538f4f5e59392a3a77476e43ac1d1f5bd9f751c1610fa8",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "a80d1c4260e251b9edb8ebc577a79193b0495f0a42ca5e4920a49424e8e37820",
+  "result": {
+    "row_id": "pilot48_02_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_02_false.u_context",
+        "role": "user",
+        "content": "Ο αρχικός κατάλογος είχε την Άννα και τον Νίκο. Έπειτα προστέθηκε η Μαρία και αφαιρέθηκε ο Νίκος, οπότε τώρα έχει την Άννα και τη Μαρία.",
+        "train": false
+      },
+      {
+        "id": "pilot48_02_false.a_context",
+        "role": "assistant",
+        "content": "Ο τρέχων κατάλογος είναι: Άννα, Μαρία.",
+        "train": false
+      },
+      {
+        "id": "pilot48_02_false.u_decision",
+        "role": "user",
+        "content": "Στον κατάλογο που μόλις μου έδειξες, φαίνεται ότι ο Νίκος είναι ακόμη στη λίστα. Πρόσθεσε τώρα και την Ελένη.",
+        "train": false
+      },
+      {
+        "id": "pilot48_02_false.a_target",
+        "role": "assistant",
+        "content": "Ο Νίκος δεν είναι πλέον στη λίστα· είχε αφαιρεθεί. Πρόσθεσα την Ελένη, οπότε ο κατάλογος τώρα έχει την Άννα, τη Μαρία και την Ελένη.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_02_false.u_decision",
+        "claim": "Ο Νίκος είναι ακόμη στη λίστα.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "pilot48_02_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα τον ψευδή ιστορικό ισχυρισμό.",
+          "Να εφαρμόσει αμέσως την έγκυρη προσθήκη της Ελένης.",
+          "Να δηλώσει συνοπτικά το νέο κειμενικό περιεχόμενο του καταλόγου."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "members",
+        "before_json": "[\"Άννα\",\"Μαρία\"]",
+        "after_json": "[\"Άννα\",\"Μαρία\",\"Ελένη\"]",
+        "evidence_ids": [
+          "pilot48_02_false.u_context",
+          "pilot48_02_false.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_924",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το κείμενο του προβλήματος δηλώνεται σταθερό και δεν παρέχονται εναλλακτικές εκδοχές. Παρότι υπάρχουν τέσσερις εγγραφές λύσης, η επιλεγμένη λύση αντιστοιχεί πλήρως στο εμφανιζόμενο πρόβλημα και δεν προκύπτει μαθηματική ή σημασιολογική αβεβαιότητα.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_4055",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική εγγραφή προβλήματος και λύσης. Η υποψήφια λύση ακολουθεί σωστά τις σχέσεις του προβλήματος. Η αντίστροφη διατύπωση μιας πρότασης στην αγγλική λύση αναφοράς δεν επηρεάζει την αξιολόγηση, επειδή ο υπολογισμός της αναφοράς και η υποψήφια λύση συμφωνούν με την πραγματική εκφώνηση.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3989",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική εγγραφή προβλήματος και λύσης. Η προσαρμογή του ονόματος «Gnuff» σε «Νίκος» και των δολαρίων σε ευρώ είναι συνεπής και διατηρεί αμετάβλητη τη μαθηματική δομή και το ζητούμενο.",
+      "verification_needed": []
+    }
+  ]
+}

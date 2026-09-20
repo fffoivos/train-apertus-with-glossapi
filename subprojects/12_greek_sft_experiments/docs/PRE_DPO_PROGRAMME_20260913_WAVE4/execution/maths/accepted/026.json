@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_221",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Stable Greek problem text, one solution record, and no alternate problem variants were supplied; no pairing uncertainty is indicated.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_484",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Stable Greek problem text, one solution record, and no alternate problem variants were supplied; no pairing uncertainty is indicated.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_571",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Two solution records are reported, but the problem text is marked stable and no alternate problem variants were supplied. The selected solution is mathematically consistent with the displayed problem.",
+      "verification_needed": []
+    }
+  ]
+}

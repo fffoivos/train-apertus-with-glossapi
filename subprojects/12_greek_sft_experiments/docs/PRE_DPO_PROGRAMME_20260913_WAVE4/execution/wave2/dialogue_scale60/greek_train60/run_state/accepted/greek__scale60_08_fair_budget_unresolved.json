@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_08_fair_budget_unresolved",
+  "row_id": "scale60_08_fair_budget_unresolved",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "fa8558d988ef4148027c0faacd9d93a8dfa1af42f59069cabeb2a83a3a112313",
+  "input_record_sha256": "0dfc3233cb6a61cf1501b3be0123c51c5d5fbe5f2f8832e60b8442bcf0fcfbbe",
+  "payload_sha256": "8537795cfbe55b32fa34ab9880307d9da4308d76aef47a3736b418df18aa4319",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "9ef023b24103e9dc15156aea3749342e082f46f1d91085d491b8a6c5c912108f",
+  "result": {
+    "row_id": "scale60_08_fair_budget_unresolved",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_08_fair_budget_unresolved.u_context",
+        "role": "user",
+        "content": "Ο πρόχειρος προϋπολογισμός δείχνει αρχικό ποσό 120 ευρώ, από το οποίο πληρώθηκαν 35 ευρώ για τραπέζια και άλλα 15 ευρώ για πινακίδες. Δεν υπάρχει καταγεγραμμένη δωρεά.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_unresolved.a_context",
+        "role": "assistant",
+        "content": "Θα υπολογίσω το υπόλοιπο από τα καταγεγραμμένα ποσά, χωρίς να προσθέσω έσοδο που δεν φαίνεται.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_unresolved.u_decision",
+        "role": "user",
+        "content": "Μα πια! Με βάση μόνο τον πρόχειρο προϋπολογισμό, η δωρεά ήταν 20 ευρώ.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_unresolved.a_target",
+        "role": "assistant",
+        "content": "Ο πρόχειρος προϋπολογισμός δεν καταγράφει ποσό δωρεάς, επομένως δεν τεκμηριώνεται ότι ήταν 20 ευρώ. Από τα καταγεγραμμένα ποσά προκύπτει μόνο υπόλοιπο 70 ευρώ.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

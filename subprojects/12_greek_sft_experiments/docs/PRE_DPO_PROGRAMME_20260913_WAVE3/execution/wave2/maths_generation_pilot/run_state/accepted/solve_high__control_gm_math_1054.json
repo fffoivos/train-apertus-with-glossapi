@@ -1,0 +1,30 @@
+{
+  "job_id": "solve_high__control_gm_math_1054",
+  "row_id": "control_gm_math_1054",
+  "stage": "solution_high",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "bae3e91b056f72f849b25ded4bba6c56d134a519b74c6304dff10c75d94e5a58",
+  "input_record_sha256": "c0bd29ac9efe488ceaf213a46d758a479c7b7cc97e06f12cba6802eeb9809240",
+  "payload_sha256": "fe2eb623db34b4ff01eec9810221f3aa707a6323b4a92a40de7a623ffe36b4ef",
+  "template_sha256": "ea1afd16c4910e9930760e3f22b232e0d14451f207ea4290ea79cc2d231e6a45",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "4da0c64db48fddb25bfd1e562a29c6e47a6f0d337bd18a3219e294ed7d3f7c2f",
+  "result": {
+    "row_id": "control_gm_math_1054",
+    "status": "candidate",
+    "solution_text": "Χρησιμοποιούμε τον τύπο για το άθροισμα των τετραγώνων των πρώτων $n$ θετικών ακεραίων:\n\n$$1^2+2^2+\\cdots+n^2=\\frac{n(n+1)(2n+1)}{6}.$$\n\nΓια $n=10$ παίρνουμε\n\n$$1^2+2^2+\\cdots+10^2=\\frac{10\\cdot 11\\cdot 21}{6}=385.$$\n\nΕπειδή\n\n$$385=11\\cdot 35,$$\n\nτο άθροισμα διαιρείται ακριβώς με το $11$.\n\nΑπάντηση: Το υπόλοιπο είναι $0$.",
+    "final_answers": [
+      {
+        "part": "Υπόλοιπο",
+        "expression": "0",
+        "unit": null,
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

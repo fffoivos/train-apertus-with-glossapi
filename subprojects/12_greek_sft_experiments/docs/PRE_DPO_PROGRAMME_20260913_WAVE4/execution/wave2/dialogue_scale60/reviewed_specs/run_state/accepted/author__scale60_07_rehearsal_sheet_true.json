@@ -1,0 +1,72 @@
+{
+  "job_id": "author__scale60_07_rehearsal_sheet_true",
+  "row_id": "scale60_07_rehearsal_sheet_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "3f00de660ed30cab50c74dd04f17a8bcbfca1167f43d007d3b131a04ad0e293d",
+  "input_record_sha256": "cecbd77a3c4f82bfa1d911b28ed5fea4eee233db311cf208f8c0c13e1187e61e",
+  "payload_sha256": "bdd12051897353eb479d3688653dcf5cb19361293373224584daa63c825deeb4",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "c353bb0b9280f73591fdd85d513291f306af03f860425097564efbd567e473f1",
+  "result": {
+    "row_id": "scale60_07_rehearsal_sheet_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_07_rehearsal_sheet_true.u_context",
+        "role": "user",
+        "content": "Στο τρέχον φύλλο ροής, πρώτο είναι το «Θάλασσα», το σόλο το έχει η Μαρία και το διάλειμμα είναι 10 λεπτά. Τραγούδι λήξης δεν έχει καταγραφεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_true.a_context",
+        "role": "assistant",
+        "content": "Έχω μόνο την τρέχουσα εκδοχή του φύλλου ροής, όχι τις παλιότερες σημειώσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_true.u_decision",
+        "role": "user",
+        "content": "Στο τρέχον φύλλο πρώτο είναι το «Θάλασσα» και το σόλο το έχει η Μαρία. Πρόσθεσε υπόκλιση στο τέλος.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά: πρώτο είναι το «Θάλασσα» και το σόλο το έχει η Μαρία. Πρόσθεσα την «υπόκλιση» στο τέλος του φύλλου ροής.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_07_rehearsal_sheet_true.u_decision",
+        "claim": "Στο τρέχον φύλλο πρώτο είναι το «Θάλασσα» και το σόλο το έχει η Μαρία.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "scale60_07_rehearsal_sheet_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να αναγνωρίσει ότι οι ισχυρισμοί για το πρώτο τραγούδι και το σόλο υποστηρίζονται από το ορατό ιστορικό.",
+          "Να προσθέσει την «υπόκλιση» στο τέλος των ενδείξεων του φύλλου ροής.",
+          "Να αναφέρει συνοπτικά το αποτέλεσμα της κειμενικής αλλαγής."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "cues",
+        "before_json": "[]",
+        "after_json": "[\"υπόκλιση\"]",
+        "evidence_ids": [
+          "scale60_07_rehearsal_sheet_true.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

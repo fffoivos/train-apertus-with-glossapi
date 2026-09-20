@@ -1,0 +1,44 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_gsm_4519",
+      "overall": "uncertain",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "uncertain",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "source/problem_fidelity",
+          "severity": "minor",
+          "quote": "«Ingrid was three times later than Amoura» / «η Ιωάννα άργησε τρεις φορές περισσότερο από την Αμαλία»",
+          "explanation": "The source and adapted problem share an ambiguity: “three times later/more” can be read differently from “three times as late.” The solution adopts the evidently intended classroom convention that Ioanna’s delay is triple Amalia’s, yielding 3 × 55 = 165 minutes. This is inherited source ambiguity, not an editor-introduced mathematical error.",
+          "suggested_action": "The record may be kept under the ordinary classroom interpretation; if strict semantic uniqueness is required, clarify the problem wording as «η καθυστέρηση της Ιωάννας ήταν τριπλάσια» and resolve again."
+        }
+      ],
+      "provenance_note": "The actual after-correction pair is complete and matches the recorded training pair. The source, adapted prompt, metadata reference, and solution all indicate the intended triple-delay interpretation. Greek names and the π.μ. time notation form a coherent cultural adaptation. The editor changed only the solution’s phrasing and preserved every calculation.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_94_1",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "This is a native Greek example with no English source. The supplied premises imply two equal-area circles in total: πr² + πr² = 2 × 3.14 × 1.8² = 20.3472 m². Multiplication by 6.8 €/m² gives 138.36096 €, correctly rounded to 138.36 €. The actual after-correction pair is complete and matches the recorded training pair. The prior second solve agrees but is not needed as proof. The editor’s clarification that the combined semicircles form a circle equal to the central circle is supported by the common radius of 1.8 m.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    }
+  ]
+}

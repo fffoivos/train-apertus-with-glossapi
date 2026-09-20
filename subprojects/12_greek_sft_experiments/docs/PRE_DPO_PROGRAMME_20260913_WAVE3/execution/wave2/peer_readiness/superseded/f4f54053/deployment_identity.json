@@ -1,0 +1,7 @@
+{
+  "status": "superseded_before_launch",
+  "payload_sha256": "f4f540537f7f59bb4d57e99ad7596b7653480458f8a622d74afbf7fad2843808",
+  "remote_root": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_f4f540537f7f59bb",
+  "file_count": 32,
+  "reason": "Recorded tokenizer and config hashes were not all enforced by the execution-time model gate. Superseded by edf6f76fa34cf4a362b258a250259ce7d03029a7f2a739a2c9631caa1777b9dc before allocation."
+}

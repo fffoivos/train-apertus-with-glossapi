@@ -1,0 +1,22 @@
+{
+  "created_at": "2026-09-13T14:04:01.387723+00:00",
+  "status": "accepted_pilot_actual_reader_tokenizer_mask_pass",
+  "rows": 32,
+  "greek_calls": 32,
+  "greek_retries": 0,
+  "editor_unchanged": 26,
+  "editor_proposals": 6,
+  "accepted_language_edits": 4,
+  "optional_proposals_rejected": 2,
+  "cumulative_dialogue_calls": 68,
+  "dialogue_call_cap": 118,
+  "parent_candidate_sha256": "33c1e6bbf0ed65b02b5224cdfdfff549b3a9d6117b9b6bb268b9f6528e7a7dce",
+  "parent_projection_sha256": "8abc6f949b2cca206f38d431040ef6051f8d99a93dc57229f75916e34aa562cb",
+  "files": {
+    "greek_adjudications.jsonl": "95c4f044dce0669a8f78e522c2d706d792529870ca46f2a1822257d9e8602c5c",
+    "training_projection.jsonl": "7220b84b374d69b9ceceb6a90c2c244d76a59b2532065af0895e9eb03f13cb0f",
+    "candidate_rows.jsonl": "d02ebae2681c99fc20a31a7b9c7547ea8c3cd980ba8cdccf2fd1e9f4a0b73d7c"
+  },
+  "token_inventory_sha256": "e048c075eb31b424c8af1ccecc85c39281f6b9de2cd29a484589f55bf6e993af",
+  "runtime": "/Users/foivoskarounos-zamparloukos/venvs/sfttrain/bin/python"
+}

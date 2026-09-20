@@ -1,0 +1,62 @@
+{
+  "job_id": "author__scale60_03_tool_checkout_true",
+  "row_id": "scale60_03_tool_checkout_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "8ec24cdba492c7323a87c02b3474f3275c07e67b04bc9b97adf224371d19a973",
+  "input_record_sha256": "f807f4c9d7086e25eaf6d18ad6467d345858319d9af41030a2b03da9ae73bab5",
+  "payload_sha256": "7959684082b9b6533f1064841bb64fd896a5fa2f2e6703a2c49cf449fdbdf879",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "80309f9e167a3c593340a9cf4b7c086c0b895ad6fc8147cb0045bda13b66df44",
+  "result": {
+    "row_id": "scale60_03_tool_checkout_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_03_tool_checkout_true.u_context",
+        "role": "user",
+        "content": "Το δελτίο γράφει 8 δράπανα συνολικά: 3 είναι δανεισμένα και 1 διαφορετικό δράπανο βρίσκεται για επισκευή.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_true.a_context",
+        "role": "assistant",
+        "content": "Θα υπολογίσω τη διαθεσιμότητα μόνο από αυτές τις τρεις κατηγορίες.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_true.u_decision",
+        "role": "user",
+        "content": "Άρα είναι διαθέσιμα 4 δράπανα.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά: 8 − 3 − 1 = 4 διαθέσιμα δράπανα.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_03_tool_checkout_true.u_decision",
+        "claim": "Άρα είναι διαθέσιμα 4 δράπανα.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "scale60_03_tool_checkout_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να επιβεβαιώσει τον σωστό ισχυρισμό.",
+          "Να δείξει συνοπτικά την αφαίρεση 8 − 3 − 1 = 4."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

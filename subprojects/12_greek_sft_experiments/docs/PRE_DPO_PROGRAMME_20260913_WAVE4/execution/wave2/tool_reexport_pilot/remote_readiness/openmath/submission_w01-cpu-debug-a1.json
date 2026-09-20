@@ -1,0 +1,28 @@
+{
+  "attempt": 1,
+  "batch_id": "w01-cpu-debug",
+  "command": [
+    "sbatch",
+    "--uenv-passthrough=ignore",
+    "--parsable",
+    "--account=a0140",
+    "--partition=debug",
+    "--nodes=1",
+    "--time=30",
+    "--cpus-per-task=8",
+    "--mem=64000M",
+    "--array=0%1",
+    "--job-name=openmath-original-pilot-w01-cpu-debug-a1",
+    "--no-requeue",
+    "--chdir=/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200",
+    "--output=/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/run/logs/w01-cpu-debug-a1/slurm-%A_%a.out",
+    "--error=/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/run/logs/w01-cpu-debug-a1/slurm-%A_%a.err",
+    "--export=ALL,APERTUS_DATA_STAGE_MANIFEST=/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/run/compiled_data_stage.approved.json,APERTUS_DATA_STAGE_BATCH=w01-cpu-debug,APERTUS_DATA_STAGE_ATTEMPT=1,APERTUS_DATA_STAGE_CODE_ROOT=/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200,APERTUS_DATA_STAGE_RUN_ROOT=/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/run",
+    "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/slurm/data_stage/worker.sbatch"
+  ],
+  "contract_digest": "462a925790a5dbd76d0b4a627ea90e8ebe69c92f480a7141ac98fa10257b9c1d",
+  "job_id": "3391298",
+  "recorded_at": "2026-09-13T14:51:13.868476+00:00",
+  "schema_version": "apertus_data_stage_submission_v1",
+  "status": "submitted"
+}

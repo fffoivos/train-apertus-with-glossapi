@@ -1,0 +1,80 @@
+{
+  "apply_performed": false,
+  "bounds": {
+    "attempts_per_job": 1,
+    "combined_max_chf": 2.69,
+    "gpu_or_gres_argument": false,
+    "jobs": 2,
+    "minutes_per_job": 30,
+    "nodes_per_job": 1
+  },
+  "files": [
+    {
+      "bytes": 3321,
+      "path": "FINAL_APPROVED_READINESS.md",
+      "sha256": "c462fa9ae4e7ced1704035675850ec9ddd7943acae329467993b0a6a367d27a3"
+    },
+    {
+      "bytes": 6906,
+      "path": "final_approved_staging_receipt.json",
+      "sha256": "61af23ada68419fd40d2646c836c663157d341e3af1194be843b22eb98c3e349"
+    },
+    {
+      "bytes": 4913,
+      "path": "validation_receipt_approved.json",
+      "sha256": "e5e8359f0667cef2f33bafc97d678553f60e0fdc9decc3793778269dc56d3f88"
+    },
+    {
+      "bytes": 13082,
+      "path": "validate_prepared_bundles.py",
+      "sha256": "cd5df6c34a18e9fd10c462b074550a87fc6a989613fd0acc0995f5e5a07ccb04"
+    },
+    {
+      "bytes": 2797,
+      "path": "live_cluster_receipt.approved.json",
+      "sha256": "87977dd501ba1dea3ad488a01cb0f5c133ebc12dab3177962b97b05a15359274"
+    },
+    {
+      "bytes": 2066,
+      "path": "remote_readiness/dolci/data_stage_contract.approved.json",
+      "sha256": "45f646258665067b814b3706ef580bc5669d3fb3462ea24d55e200544a54ea2d"
+    },
+    {
+      "bytes": 23485,
+      "path": "remote_readiness/dolci/compiled_data_stage.approved.json",
+      "sha256": "62670ea9d50284a5b758c21971faeace43c140bb9e1121fb2caf49177ca330fb"
+    },
+    {
+      "bytes": 3877,
+      "path": "remote_readiness/dolci/scheduler_test_only_approved.json",
+      "sha256": "b412c481dad7a93403eef845b13867aef03483066a60b6c20ccc78c858316596"
+    },
+    {
+      "bytes": 2084,
+      "path": "remote_readiness/openmath/data_stage_contract.approved.json",
+      "sha256": "def6b28bd300a5b0d9f316164a291edf98dd30f00fdc5348bdbbe42675505dd2"
+    },
+    {
+      "bytes": 23509,
+      "path": "remote_readiness/openmath/compiled_data_stage.approved.json",
+      "sha256": "53a0710412c799ad5bdafe05dae6e5b276d048058fca4b3692617646d3a631d6"
+    },
+    {
+      "bytes": 3916,
+      "path": "remote_readiness/openmath/scheduler_test_only_approved.json",
+      "sha256": "bfed866eb6354d1bfeb4323c0d40f3b5d2d40e949c043b162c31a969f261a24b"
+    }
+  ],
+  "pilots": {
+    "dolci": {
+      "approved_manifest_sha256": "62670ea9d50284a5b758c21971faeace43c140bb9e1121fb2caf49177ca330fb",
+      "scheduler_test_only_receipt_sha256": "b412c481dad7a93403eef845b13867aef03483066a60b6c20ccc78c858316596"
+    },
+    "openmath": {
+      "approved_manifest_sha256": "53a0710412c799ad5bdafe05dae6e5b276d048058fca4b3692617646d3a631d6",
+      "scheduler_test_only_receipt_sha256": "bfed866eb6354d1bfeb4323c0d40f3b5d2d40e949c043b162c31a969f261a24b"
+    }
+  },
+  "schema_version": "wave2_cpu_final_approved_manifest_v1",
+  "status": "ready_for_root_apply_review_no_jobs_submitted"
+}

@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "contract_digest": "953b052353217ae9d53dfee34abf15c30d8231a75c3878a17789243e8f25d4c4",
+  "expected_receipt": null,
+  "expected_receipt_verified": false,
+  "recorded_at": "2026-09-13T14:52:13.482782+00:00",
+  "returncode": 1,
+  "schema_version": "apertus_data_stage_task_attempt_v1",
+  "started_at": "2026-09-13T14:51:22.535652+00:00",
+  "status": "failed",
+  "stderr_tail": "Traceback (most recent call last):\n  File \"/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/code/pilot_run.py\", line 458, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/code/pilot_run.py\", line 373, in main\n    payload = json.loads(tag_payload(exported[\"content\"], \"function_calls\"))\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/code/pilot_run.py\", line 243, in tag_payload\n    raise ValueError(f\"missing rendered {name} tag\")\nValueError: missing rendered function_calls tag\n",
+  "stdout_tail": "",
+  "task_id": "export-validate-tool200"
+}

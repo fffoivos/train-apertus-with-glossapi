@@ -1,0 +1,124 @@
+{
+  "seed": "wave2-adapted-core-v1",
+  "selection": "sha256(seed\\0stratum\\0row_id), category round-robin for core",
+  "foreign_language_goal": [
+    "en",
+    "fr",
+    "de",
+    "es",
+    "pt",
+    "it"
+  ],
+  "paired_foreign_languages_in_current_exports": [
+    "en",
+    "fr",
+    "de"
+  ],
+  "missing_paired_adaptation_languages": [
+    "es",
+    "pt",
+    "it"
+  ],
+  "coverage_boundary": "ES/PT/IT are checked only as nine unpaired retained multilingual records and are outside the foreign60 denominator.",
+  "files": [
+    {
+      "config": "no_robots",
+      "export_path": "/Users/foivoskarounos-zamparloukos/Projects/natural-greek-sft/data/pilots/no_robots/export/natural_greek_sft_no_robots.jsonl",
+      "export_sha256": "82dbd4db5341358b54b96d3ba94e87bd995aa7d24beecba42ed02da884238b38",
+      "cache_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/cache/sources/no_robots.ff2057d016a8f19002eca1ad6a9b657c80a4ac55.jsonl",
+      "cache_sha256": "82dbd4db5341358b54b96d3ba94e87bd995aa7d24beecba42ed02da884238b38",
+      "byte_identical": true,
+      "rows": 9499
+    },
+    {
+      "config": "coconot",
+      "export_path": "/Users/foivoskarounos-zamparloukos/Projects/natural-greek-sft/data/pilots/coconot/export/natural_greek_sft_coconot.jsonl",
+      "export_sha256": "e3bf7858487fd20b8ee7cd7f8506e40d104ca7e734f5fe518970438586d55524",
+      "cache_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/cache/sources/coconot.ff2057d016a8f19002eca1ad6a9b657c80a4ac55.jsonl",
+      "cache_sha256": "e3bf7858487fd20b8ee7cd7f8506e40d104ca7e734f5fe518970438586d55524",
+      "byte_identical": true,
+      "rows": 999
+    },
+    {
+      "config": "personas_if",
+      "export_path": "/Users/foivoskarounos-zamparloukos/Projects/natural-greek-sft/data/pilots/personas_if/export/natural_greek_sft_personas_if.jsonl",
+      "export_sha256": "a37642c2e9faf6393c6204f759b336da903ae92f9d8e5d6ac5f8884cbb2881d9",
+      "cache_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/cache/sources/personas_if.ff2057d016a8f19002eca1ad6a9b657c80a4ac55.jsonl",
+      "cache_sha256": "a37642c2e9faf6393c6204f759b336da903ae92f9d8e5d6ac5f8884cbb2881d9",
+      "byte_identical": true,
+      "rows": 1981
+    },
+    {
+      "config": "smolcon",
+      "export_path": "/Users/foivoskarounos-zamparloukos/Projects/natural-greek-sft/data/pilots/smolcon/export/natural_greek_sft_smolcon.jsonl",
+      "export_sha256": "3402f820aed4af571d391ab88ac72f98fcfe3a71ca3ff10d5e7b6d07d05c8254",
+      "cache_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/cache/sources/smolcon.ff2057d016a8f19002eca1ad6a9b657c80a4ac55.jsonl",
+      "cache_sha256": "3402f820aed4af571d391ab88ac72f98fcfe3a71ca3ff10d5e7b6d07d05c8254",
+      "byte_identical": true,
+      "rows": 1000
+    },
+    {
+      "config": "oasst",
+      "export_path": "/Users/foivoskarounos-zamparloukos/Projects/natural-greek-sft/data/pilots/oasst/export/natural_greek_sft_oasst.jsonl",
+      "export_sha256": "7d5717bf70c2cf00093b03b735b94f0dd4986222ad64d32f1dc8c7bbbd56fd5e",
+      "cache_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/cache/sources/oasst.ff2057d016a8f19002eca1ad6a9b657c80a4ac55.jsonl",
+      "cache_sha256": "7d5717bf70c2cf00093b03b735b94f0dd4986222ad64d32f1dc8c7bbbd56fd5e",
+      "byte_identical": true,
+      "rows": 1489
+    },
+    {
+      "config": "everyday",
+      "export_path": "/Users/foivoskarounos-zamparloukos/Projects/natural-greek-sft/data/pilots/everyday/export/natural_greek_sft_everyday.jsonl",
+      "export_sha256": "e1d733e9e727e9cbee4d6a173bebdbe6f07eef127f0d6c963d305f2e0490a279",
+      "cache_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/cache/sources/everyday.ff2057d016a8f19002eca1ad6a9b657c80a4ac55.jsonl",
+      "cache_sha256": "e1d733e9e727e9cbee4d6a173bebdbe6f07eef127f0d6c963d305f2e0490a279",
+      "byte_identical": true,
+      "rows": 2000
+    },
+    {
+      "config": "systemchats",
+      "export_path": "/Users/foivoskarounos-zamparloukos/Projects/natural-greek-sft/data/pilots/systemchats/export/natural_greek_sft_systemchats.jsonl",
+      "export_sha256": "8ae39386bcbb971d140d8e19329a4e6d6c918fb762deb9bb20ec95eb816218a9",
+      "cache_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/cache/sources/systemchats.ff2057d016a8f19002eca1ad6a9b657c80a4ac55.jsonl",
+      "cache_sha256": "8ae39386bcbb971d140d8e19329a4e6d6c918fb762deb9bb20ec95eb816218a9",
+      "byte_identical": true,
+      "rows": 1000
+    },
+    {
+      "config": "no_robots_en_pov",
+      "export_path": "/Users/foivoskarounos-zamparloukos/Projects/natural-greek-sft/data/pilots/no_robots/export/natural_greek_sft_no_robots_en_pov.jsonl",
+      "export_sha256": "77ae5f9fbbe570eb3ae85360f01e033d55d18602102eec87a97f39e0f52b9745",
+      "cache_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/cache/sources/no_robots_en_pov.ff2057d016a8f19002eca1ad6a9b657c80a4ac55.jsonl",
+      "cache_sha256": "77ae5f9fbbe570eb3ae85360f01e033d55d18602102eec87a97f39e0f52b9745",
+      "byte_identical": true,
+      "rows": 9499
+    },
+    {
+      "config": "apertus_en",
+      "export_path": "/Users/foivoskarounos-zamparloukos/Projects/natural-greek-sft/data/pilots/apertus_en/export/natural_greek_sft_apertus_en.jsonl",
+      "export_sha256": "51ac9e467c24961b54c16b4fd67e5107b1f20b6f259503750d052b97c59fd237",
+      "cache_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/cache/sources/apertus_en.ff2057d016a8f19002eca1ad6a9b657c80a4ac55.jsonl",
+      "cache_sha256": "51ac9e467c24961b54c16b4fd67e5107b1f20b6f259503750d052b97c59fd237",
+      "byte_identical": true,
+      "rows": 3818
+    },
+    {
+      "config": "euroblocks_fr",
+      "export_path": "/Users/foivoskarounos-zamparloukos/Projects/natural-greek-sft/data/pilots/euroblocks_fr/export/natural_greek_sft_euroblocks_fr.jsonl",
+      "export_sha256": "5e407bb85af8eb11ca096fcb65a9670028657c09d404571a35aabf610824a3ce",
+      "cache_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/cache/sources/euroblocks_fr.ff2057d016a8f19002eca1ad6a9b657c80a4ac55.jsonl",
+      "cache_sha256": "5e407bb85af8eb11ca096fcb65a9670028657c09d404571a35aabf610824a3ce",
+      "byte_identical": true,
+      "rows": 799
+    },
+    {
+      "config": "euroblocks_de",
+      "export_path": "/Users/foivoskarounos-zamparloukos/Projects/natural-greek-sft/data/pilots/euroblocks_de/export/natural_greek_sft_euroblocks_de.jsonl",
+      "export_sha256": "c4f787b2a7f50f10e11ae1d1ceddfe23dae6bd71674f496537e4d8c816794f22",
+      "cache_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/cache/sources/euroblocks_de.ff2057d016a8f19002eca1ad6a9b657c80a4ac55.jsonl",
+      "cache_sha256": "c4f787b2a7f50f10e11ae1d1ceddfe23dae6bd71674f496537e4d8c816794f22",
+      "byte_identical": true,
+      "rows": 808
+    }
+  ]
+}

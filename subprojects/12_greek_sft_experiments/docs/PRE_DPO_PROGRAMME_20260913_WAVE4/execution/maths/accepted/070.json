@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_2589",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record with one solution; no historical pairing uncertainty is indicated.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_786",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record with one solution; no historical pairing uncertainty is indicated. The equal-cost interpretation is implicit in the question and consistent with the reference.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3642",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record with one solution; no historical pairing uncertainty is indicated.",
+      "verification_needed": []
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_740",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "greek_language",
+          "severity": "minor",
+          "quote": "a\\(1,2,3,4,5,6,7,8,9\\)",
+          "explanation": "The isolated Latin letter «a» is a stray character that disrupts the Greek sentence and makes the training response look corrupted, although it does not affect the mathematics.",
+          "suggested_action": "Remove the stray «a» while leaving the list and the rest of the solution unchanged."
+        }
+      ],
+      "provenance_note": "The displayed solution is paired by convention with the last saved problem version, but its historical association is unproven. The two supplied Greek problem variants are mathematically equivalent, and the selected solution correctly answers both.",
+      "verification_needed": [
+        "Confirm the historical problem–solution association if record-level provenance is required."
+      ]
+    },
+    {
+      "row_id": "gsm_3570",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "minor",
+          "quote": "Το Εθνικό Πάρκο Ολύμπου φιλοξενούσε 30.000 ελέφαντες",
+          "explanation": "Replacing the explicitly fictional “Utopia National Park” with the real Olympus setting makes the scenario culturally and geographically incongruous: a Greek mountain national park hosting tens of thousands of elephants is substantially less coherent than the source’s fictional setting. This does not affect the mathematical premises or computation.",
+          "suggested_action": "Flag the setting for cultural review; in a later repair, use a clearly fictional or otherwise coherent localized park name without changing any quantities."
+        }
+      ],
+      "provenance_note": "The row has a single problem record. All quantitative premises are preserved, and the computation 4×2,880=11,520; 30,000−11,520=18,480; 28,980−18,480=10,500; 10,500÷7=1,500 is correct.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_496",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The row has a single problem record. The localization of Tory as Τάσος is coherent and does not alter the teaching objective or mathematical premises.",
+      "verification_needed": []
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "status": "PROPOSAL_NOT_LAUNCHED",
+  "purpose": "Fill the missing deterministic v1.5 cells against already completed original-Krikri outputs before funding broader peer reruns.",
+  "model": {"repo_id": "ilsp/Llama-Krikri-8B-Instruct-v1.5", "revision": "326e2c0ea90d771c19fcf06225fe87dc922b51b2", "required_snapshot_path_suffix": "snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2"},
+  "resource_ceiling": {"nodes": 1, "gpus": 4, "walltime": "01:30:00", "partition": "debug", "launch_authorized": false},
+  "preflight_gates": [
+    "Resolve the exact snapshot directory; reject main, branch names and any other hash.",
+    "Record SHA-256 of config.json, tokenizer_config.json, chat_template.jinja, generation_config.json and model index before serving.",
+    "Assert rendered chat-template SHA-256 e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65.",
+    "Assert data/benchmarks_el/MANIFEST.json SHA-256 ff1f4a65562f888bdfbb1fdab4f208f412dd8ba961262405030e4a0eb92d65bb.",
+    "Run 8 deterministic items per benchmark-language cell and all local scorer preflights; require zero request errors, stable IDs and nonempty outputs.",
+    "Do not copy any benchmark item into training or data-repair inputs."
+  ],
+  "full_cells_after_smoke": [
+    {"runner":"data/benchmarks_el/generate.py","sets":["math500","ifbench","xstest","multichallenge"],"languages":["el","en"],"total_generations":3024,"temperature":0,"top_p":1,"max_tokens":{"math500":2048,"other":1024},"system_prompt":null},
+    {"runner":"evals/ilsp/run.sh","tasks":["ifeval_greek","mgsm_greek"],"total_items":791,"apply_chat_template":true,"mgsm_shots":0}
+  ],
+  "local_scoring_in_allocation": ["MATH-500 equiv500 with by-level/by-subject/truncation tables", "IFBench strict/loose with core/extension and family tables", "ILSP IFEval four metrics", "MGSM last-number exact match"],
+  "held_out_of_first_allocation": ["LLM judging for XSTest and MultiChallenge", "interactive dialogue simulation", "GreekMMLU", "other native Greek suite", "retention", "MT-Bench", "Arena-Hard"],
+  "acceptance_receipt": ["model and data hashes", "exact commands", "container/uenv and package revisions", "generation parameters", "per-cell expected/observed counts", "finish-reason and truncation counts", "scorer hashes", "raw output hashes", "failure/retry ledger"],
+  "comparison_rule": "Reuse the original-Krikri artifacts only after verifying their benchmark hashes and generation contract match this run. Otherwise rerun the original in the same allocation before comparison."
+}

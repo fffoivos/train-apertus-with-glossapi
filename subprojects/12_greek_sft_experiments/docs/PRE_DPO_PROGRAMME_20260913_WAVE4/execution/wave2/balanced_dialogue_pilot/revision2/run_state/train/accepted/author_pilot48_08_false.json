@@ -1,0 +1,72 @@
+{
+  "job_id": "author_pilot48_08_false",
+  "row_id": "pilot48_08_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "dd31e845c765ebea7730b00d68431fa4aebe92ea3d3c3f08dbc28038f2dc0840",
+  "input_record_sha256": "901365b67702f8e345a0c10ae53ded0534747597824fbc847de74c828faac5c4",
+  "payload_sha256": "30ea467316605083f16403cb0e192cdcba53be39257e7256d40c3e74520fc535",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "2281577c1f5fad8d33823e0b91fa111a5a7ce7d57472d906cf347a056e9a8e80",
+  "result": {
+    "row_id": "pilot48_08_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_08_false.u_context",
+        "role": "user",
+        "content": "Η καταγραφή αποθήκης λέει ότι παραλήφθηκαν 12 καρέκλες, δανείστηκαν 4 και 1 χάλασε.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_false.a_context",
+        "role": "assistant",
+        "content": "Ας το υπολογίσουμε.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_false.u_decision",
+        "role": "user",
+        "content": "Νομίζω. Απομένουν 8 διαθέσιμες καρέκλες.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_false.a_target",
+        "role": "assistant",
+        "content": "Όχι, απομένουν 7 διαθέσιμες καρέκλες: 12 − 4 − 1 = 7.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_08_false.u_decision",
+        "claim": "Απομένουν 8 διαθέσιμες καρέκλες.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "pilot48_08_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "correct_historical_claim_briefly",
+          "state_result_concisely"
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "inventory_state",
+        "before_json": "{\"received\":12,\"lent\":4,\"damaged\":1,\"supplier_arrival\":null,\"available\":7}",
+        "after_json": "{\"received\":12,\"lent\":4,\"damaged\":1,\"supplier_arrival\":null,\"available\":7}",
+        "evidence_ids": [
+          "pilot48_08_false.u_context",
+          "pilot48_08_false.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

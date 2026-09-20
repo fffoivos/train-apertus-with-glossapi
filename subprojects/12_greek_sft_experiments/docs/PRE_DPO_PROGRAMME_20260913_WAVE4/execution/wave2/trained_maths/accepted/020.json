@@ -1,0 +1,51 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_math_2404",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete actual training pair was inspected. The Greek problem faithfully preserves the source probability task while permissibly adapting James to Γιάννης. The without-replacement calculation 3/7 × 2/6 = 1/7 is correct. The editor only added the natural definite article in «από τα 6 μήλα»; dialogue roles and training structure remain intact.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_618_4",
+      "overall": "issues",
+      "final_result": "issue",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "issue",
+      "completeness": "issue",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "after/units_and_rounding",
+          "severity": "minor",
+          "quote": "«Η απάντηση να δοθεί σε λεπτά του ευρώ.» … «Απάντηση: 3,62 €»",
+          "explanation": "The arithmetic correctly obtains €3.61728 and rounds it to €3.62, but the problem explicitly requests the answer in euro cents. The requested-unit answer is 362 λεπτά. Giving €3.62 is an equivalent monetary amount but does not follow the specified output unit.",
+          "suggested_action": "Repair only the concluding conversion and answer so that €3.62 is expressed as 362 λεπτά, retaining every correct volume, cost, and rounding step."
+        },
+        {
+          "dimension": "before/units_and_rounding",
+          "severity": "minor",
+          "quote": "«Απάντηση: 3,62 €»",
+          "explanation": "The same requested-unit mismatch was already present before correction; it was not introduced by the editor.",
+          "suggested_action": "Treat this as an inherited semantic defect rather than editor-introduced damage."
+        }
+      ],
+      "provenance_note": "This is a native example and was assessed on its supplied premises. Independently checking the work gives π(12²−4²)·8 = 3,215.36 cm³, syrup volume 803.84 cm³ = 0.80384 L, and cost €3.61728, rounded to €3.62 or equivalently 362 cents. The fictional 25% syrup premise requires no external support. The before and after records are identical, and dialogue ownership and training structure are intact.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "repair_solution"
+    }
+  ]
+}

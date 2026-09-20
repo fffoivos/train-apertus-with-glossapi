@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_3368",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The candidate is paired with a single problem record; no historical pairing uncertainty is indicated.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_1672",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The candidate is paired with a single problem record; no historical pairing uncertainty is indicated. The localized name and currency remain internally coherent and preserve the teaching objective.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3901",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The candidate is paired with a single problem record; no historical pairing uncertainty is indicated.",
+      "verification_needed": []
+    }
+  ]
+}

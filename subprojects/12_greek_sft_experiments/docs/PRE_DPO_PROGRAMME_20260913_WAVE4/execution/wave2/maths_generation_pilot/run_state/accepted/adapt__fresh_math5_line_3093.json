@@ -1,0 +1,95 @@
+{
+  "job_id": "adapt__fresh_math5_line_3093",
+  "row_id": "fresh_math5_line_3093",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "a48bf534c5f3a4586b8b4da51d60c0620ecb54810f7031c7e78054e6e60093f5",
+  "input_record_sha256": "16f1a27d63959ff337152f11a0602eb24a61a5c398bcf644a637d3ec7f741e05",
+  "payload_sha256": "6c52eddb6a3981a45c2b0c8e9d16f9d74d249aa078f61df8d4e447f11f9f7cb6",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "65e27a46cc9fa475b81caa8521b784389e2839266e61434dc0495f85baf60422",
+  "result": {
+    "row_id": "fresh_math5_line_3093",
+    "status": "candidate",
+    "problem_text": "Το τρίγωνο $ABC$ έχει μήκη πλευρών $AB = 12, BC = 24$ και $AC = 18$. Η ευθεία που διέρχεται από το έγκεντρο του $\\triangle ABC$ και είναι παράλληλη προς το $\\overline{BC}$ τέμνει το $\\overline{AB}$ στο σημείο $M$ και το $\\overline{AC}$ στο σημείο $N$. Ποια είναι η περίμετρος του $\\triangle AMN$;\n$\\textbf{(A)}\\ 27 \\qquad \\textbf{(B)}\\ 30 \\qquad \\textbf{(C)}\\ 33 \\qquad \\textbf{(D)}\\ 36 \\qquad \\textbf{(E)}\\ 42$\n",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Triangle $ABC$ has side-lengths $AB = 12, BC = 24,$ and $AC = 18.$",
+        "target_span": "Το τρίγωνο $ABC$ έχει μήκη πλευρών $AB = 12, BC = 24$ και $AC = 18$.",
+        "reason": "Πιστή απόδοση στα φυσικά ελληνικά, με αμετάβλητες τις γεωμετρικές ετικέτες και τις αριθμητικές τιμές."
+      },
+      {
+        "source_span": "The line through the incenter of $\\triangle ABC$ parallel to $\\overline{BC}$ intersects $\\overline{AB}$ at $M$ and $\\overline{AC}$ at $N.$",
+        "target_span": "Η ευθεία που διέρχεται από το έγκεντρο του $\\triangle ABC$ και είναι παράλληλη προς το $\\overline{BC}$ τέμνει το $\\overline{AB}$ στο σημείο $M$ και το $\\overline{AC}$ στο σημείο $N$.",
+        "reason": "Μετάφραση με την καθιερωμένη ελληνική γεωμετρική ορολογία, χωρίς αλλαγή των σχέσεων ή των εξαρτήσεων."
+      },
+      {
+        "source_span": "What is the perimeter of $\\triangle AMN?$",
+        "target_span": "Ποια είναι η περίμετρος του $\\triangle AMN$;",
+        "reason": "Πιστή μετάφραση του ζητουμένου."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "12",
+          "role": "μήκος της πλευράς AB",
+          "unit": null
+        },
+        {
+          "value": "24",
+          "role": "μήκος της πλευράς BC",
+          "unit": null
+        },
+        {
+          "value": "18",
+          "role": "μήκος της πλευράς AC",
+          "unit": null
+        },
+        {
+          "value": "27",
+          "role": "επιλογή απάντησης A για την περίμετρο",
+          "unit": null
+        },
+        {
+          "value": "30",
+          "role": "επιλογή απάντησης B για την περίμετρο",
+          "unit": null
+        },
+        {
+          "value": "33",
+          "role": "επιλογή απάντησης C για την περίμετρο",
+          "unit": null
+        },
+        {
+          "value": "36",
+          "role": "επιλογή απάντησης D για την περίμετρο",
+          "unit": null
+        },
+        {
+          "value": "42",
+          "role": "επιλογή απάντησης E για την περίμετρο",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Το ABC είναι τρίγωνο με AB = 12, BC = 24 και AC = 18.",
+        "Η ευθεία διέρχεται από το έγκεντρο του τριγώνου ABC.",
+        "Η ευθεία είναι παράλληλη προς το ευθύγραμμο τμήμα BC.",
+        "Η ευθεία τέμνει το ευθύγραμμο τμήμα AB στο M.",
+        "Η ίδια ευθεία τέμνει το ευθύγραμμο τμήμα AC στο N."
+      ],
+      "required_outputs": [
+        "Η περίμετρος του τριγώνου AMN.",
+        "Επιλογή μίας απάντησης από τις A–E."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

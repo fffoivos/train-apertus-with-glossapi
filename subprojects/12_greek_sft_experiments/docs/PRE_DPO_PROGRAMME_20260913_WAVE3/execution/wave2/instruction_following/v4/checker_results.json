@@ -1,0 +1,377 @@
+{
+  "mixa_2026_06155": {
+    "candidate_row_sha256": "1cd7723adf68c85d7e29f570aaa14b7b2eb07cab5f5bcc345286a919586bc079",
+    "checker_results": [
+      {
+        "family": "no_accents",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "wrap_in_quotes",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2028_05110": {
+    "candidate_row_sha256": "9b08eeb2885a9664da9e5de70194b5f7ffe0d7a8e306a9d153c56ece3f590367",
+    "checker_results": [
+      {
+        "family": "end_with",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "keywords_exclude",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2028_03200": {
+    "candidate_row_sha256": "5e23c82009619d4acde4eac90f94cf4b963e5353b9dcc10a6623c5d0c06d5309",
+    "checker_results": [
+      {
+        "family": "informal_singular",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "end_with",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2028_08593": {
+    "candidate_row_sha256": "65b098998e89bfbf3a333eed07b2e1739842c48d45b14da2c38c568a1ed907a2",
+    "checker_results": [
+      {
+        "family": "length_paragraphs",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "end_with",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "wrap_in_quotes",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "numbered_greek",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2027_09179": {
+    "candidate_row_sha256": "62b72d3686c897224196d3686c9f1ba8e79eef5c460bdd1cca3d7160d4dfc4e5",
+    "checker_results": [
+      {
+        "family": "highlight_n",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "letter_freq",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2026_08572": {
+    "candidate_row_sha256": "d1fe4e6ca6e858e6529f042fdc63184ed8dd5ba691723075bc15673e62db1006",
+    "checker_results": [
+      {
+        "family": "start_with",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "length_words_min",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2027_09553": {
+    "candidate_row_sha256": "3811bbb683b712d7490ad4b9d73095b373771e44a17b17edbda808dcb65f56b3",
+    "checker_results": [
+      {
+        "family": "letter_freq",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "length_words_max",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2027_09689": {
+    "candidate_row_sha256": "e8460e6cf42d24aad1b296a0627ee91b7c219f5ead7a162866d336373f34e6aa",
+    "checker_results": [
+      {
+        "family": "all_caps_greek",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "length_sentences_exact",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2027_10080": {
+    "candidate_row_sha256": "7d79e09998c0885607471af42450762b75f25fa0364f7de6f1277a185b2f5629",
+    "checker_results": [
+      {
+        "family": "monotonic_only",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2026_04027": {
+    "candidate_row_sha256": "0868ca59541667548ea205854139ab59ae8443419a726e3ec7a4c20dcbcc9eb0",
+    "checker_results": [
+      {
+        "family": "informal_singular",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "mention_entity",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "bullets_n",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "no_comma",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "paragraph_starts_with",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2026_05543": {
+    "candidate_row_sha256": "03ef67ad1ac8ac274fc8398700b90b15403d3ca310c20f806adf4163f4a327fd",
+    "checker_results": [
+      {
+        "family": "paragraph_starts_with",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "keyword_freq",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2026_07006": {
+    "candidate_row_sha256": "6e8e706c95fdc45bb9ee85ed3c6ec94658ffc82bc6c9e25bbc0b6c6c5bd617ea",
+    "checker_results": [
+      {
+        "family": "format_json",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "letter_freq",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "monotonic_only",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "mention_number",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "keywords_include",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2027_05368": {
+    "candidate_row_sha256": "09fa110abf7929ae762c36440d02ef5e1e1c21e7d9ea7f773eb788eb80ffe743",
+    "checker_results": [
+      {
+        "family": "monotonic_only",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2026_06199": {
+    "candidate_row_sha256": "85dcd65e992454e2fffbd316c99792cb3fce9b79d2ababcbe17fd95575fbe7ff",
+    "checker_results": [
+      {
+        "family": "highlight_n",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2026_04931": {
+    "candidate_row_sha256": "1f461b7ea6c58580b908ba920d66681750c3145374a919cdb71c21dbf6ecf648",
+    "checker_results": [
+      {
+        "family": "paragraph_starts_with",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2026_11688": {
+    "candidate_row_sha256": "e956686624f2067cb7f3b2e1b46cfe7d5094c0549044d7d95d10f1c50f29cdda",
+    "checker_results": [
+      {
+        "family": "no_exclamation",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "formal_and_informal",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "letter_freq",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2026_08647": {
+    "candidate_row_sha256": "2bdb9dd88f94a352ff9d26a54c6ecdce1d539c1e6e204f60a818007c32ba1082",
+    "checker_results": [
+      {
+        "family": "numbered_greek",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "informal_singular",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "start_with",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "wrap_in_quotes",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2027_09233": {
+    "candidate_row_sha256": "b84550ebe318ed2c9c8e354a37a1b240b13ccd26003521a10a1486d754a25326",
+    "checker_results": [
+      {
+        "family": "all_lower",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2027_07834": {
+    "candidate_row_sha256": "072c6e8088f3e53e15de78a76800c2b5a5e9064371293d3667c4a17abc8e626c",
+    "checker_results": [
+      {
+        "family": "placeholders_n",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "greek_question_mark",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  },
+  "mixa_2027_01564": {
+    "candidate_row_sha256": "cf38bb7d0ccee22091d2f0f83c31f7fe29eccca60ad79bec0f404a7572b420a6",
+    "checker_results": [
+      {
+        "family": "mention_date",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "end_with",
+        "ok": true,
+        "checkable": true
+      },
+      {
+        "family": "title",
+        "ok": true,
+        "checkable": true
+      }
+    ],
+    "all_checkable_pass": true,
+    "decision": "accepted"
+  }
+}

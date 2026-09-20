@@ -1,0 +1,19 @@
+{
+  "updated": "2026-09-13T12:35:09.738913+00:00",
+  "pid": 5565,
+  "workers": 8,
+  "calls_total": 100,
+  "accepted_batches": 100,
+  "total_batches": 100,
+  "reviewed_rows": 300,
+  "sample_rows": 300,
+  "raw_model_verdicts": {
+    "no_defect_found": 221,
+    "issues": 79
+  },
+  "session_seconds": 454.0,
+  "session_successes": 96,
+  "mean_call_seconds": 36.4,
+  "recent_failures": [],
+  "stopped_on_limit": false
+}

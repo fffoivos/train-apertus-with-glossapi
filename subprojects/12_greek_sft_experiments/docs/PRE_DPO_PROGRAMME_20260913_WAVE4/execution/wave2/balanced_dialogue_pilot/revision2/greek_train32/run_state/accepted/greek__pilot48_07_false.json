@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__pilot48_07_false",
+  "row_id": "pilot48_07_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "21cbfb1b7de4506ceeee7c372bf08d18d747df45babb3fd5229d7c7a83fd0948",
+  "input_record_sha256": "1929084327e24d3efb9e867a79af53bae2ccb153e24aa96b3b905c138229ba82",
+  "payload_sha256": "dd7a6d938b0c3c3e7eb577ab1bd4217a579d3cfee35fba742adb765283eeea76",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "23be59b320b35fd6dbd42a05f210f46ca437b83e09c85366089ae041aa3cbf35",
+  "result": {
+    "row_id": "pilot48_07_false",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_07_false.u_context",
+        "role": "user",
+        "content": "Το απόσπασμα διαδρομής δείχνει σύνδεση Αφετηρία–Πλατεία και Πλατεία–Μουσείο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_07_false.a_context",
+        "role": "assistant",
+        "content": "Η διαδρομή που φαίνεται είναι Αφετηρία–Πλατεία–Μουσείο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_07_false.u_decision",
+        "role": "user",
+        "content": "Στο απόσπασμα φαίνεται απευθείας σύνδεση από την Αφετηρία στο Μουσείο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_07_false.a_target",
+        "role": "assistant",
+        "content": "Στο απόσπασμα φαίνεται διαδρομή μέσω της Πλατείας· δεν φαίνεται απευθείας σύνδεση από την Αφετηρία στο Μουσείο.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

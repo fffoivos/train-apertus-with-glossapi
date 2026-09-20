@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_math_1745",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The AFTER record is byte-equivalent to the actual training record. The problem faithfully translates the supplied English source and deliberately retains the abstract length unit. The area ratio gives the necessary lower bound of 100, and the standard subdivision of a side-10 equilateral triangle into 100 unit-side equilateral triangles establishes attainability. The editor only added the article «ενός»; no mathematical content changed.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_2077",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The AFTER record is byte-equivalent to the actual training record. The polynomial and divisor exactly preserve the source. By the remainder theorem the remainder is P(3), and every displayed Horner step is arithmetically correct, yielding 8. The editor only changed «θεώρημα υπολοίπου» to the more idiomatic «θεώρημα του υπολοίπου».",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    }
+  ]
+}

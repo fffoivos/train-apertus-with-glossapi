@@ -1,0 +1,43 @@
+{
+  "status": "pass_actual_reader_tokenizer_and_exact_supervision",
+  "rows": 6,
+  "input_tokens": 2740,
+  "supervised_tokens": 1739,
+  "max_tokens": 658,
+  "all_within_4032": true,
+  "trainer_sha256": "f8de43b1f8b99959741e6c4a9158ad99fd31ffc5b3b1636c1ac07a925df39b4d",
+  "projection_sha256": "ed0fc23997cc1dd3055c0f124ee8834c10e7773a822cd5de3e7e6679aee87d3a",
+  "items": [
+    {
+      "id": "repair6_personas_if_37ae2fa7",
+      "input_tokens": 310,
+      "supervised_tokens": 168
+    },
+    {
+      "id": "repair6_en_393a7e8e",
+      "input_tokens": 428,
+      "supervised_tokens": 120
+    },
+    {
+      "id": "repair6_es_20461",
+      "input_tokens": 496,
+      "supervised_tokens": 418
+    },
+    {
+      "id": "repair6_es_15571",
+      "input_tokens": 658,
+      "supervised_tokens": 544
+    },
+    {
+      "id": "repair6_it_49139",
+      "input_tokens": 571,
+      "supervised_tokens": 348
+    },
+    {
+      "id": "repair6_fr_euroblocks_3c014d32",
+      "input_tokens": 277,
+      "supervised_tokens": 141
+    }
+  ],
+  "limitation": "Full assembly exact source matching, family split and weights are separate gates."
+}

@@ -1,0 +1,62 @@
+{
+  "job_id": "author__scale60_13_study_roles_false",
+  "row_id": "scale60_13_study_roles_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "857cb5d5e0ffb5c62b7ecef97455cd234f72467b42c6a41a6177f79c5c8d5133",
+  "input_record_sha256": "8ca8282e17222b7dd23f4c07588285a07791bd7e8cc90fe2d70a452a2c2922b7",
+  "payload_sha256": "097008f5b49c80686bf5329962c82302c4120f7f19ff32c6291715fa55c82b79",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "55b09cbfc67eba80da3a4232d57538dd26b2eaa42b1a0f803d683da662d7fe55",
+  "result": {
+    "row_id": "scale60_13_study_roles_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_13_study_roles_false.u_context",
+        "role": "user",
+        "content": "Στις σημειώσεις, η Δανάη ανέλαβε τον προβολέα, ο Ορέστης την προέκταση ρεύματος και η Λία τα εισιτήρια.",
+        "train": false
+      },
+      {
+        "id": "scale60_13_study_roles_false.a_context",
+        "role": "assistant",
+        "content": "Θα κρατήσω κάθε αντικείμενο συνδεδεμένο με το πρόσωπο που το ανέλαβε.",
+        "train": false
+      },
+      {
+        "id": "scale60_13_study_roles_false.u_decision",
+        "role": "user",
+        "content": "Στις σημειώσεις, ο Ορέστης έχει αναλάβει τον προβολέα. Γράψε συνοπτικά και τις τρεις αναθέσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_13_study_roles_false.a_target",
+        "role": "assistant",
+        "content": "Στις σημειώσεις, τον προβολέα έχει αναλάβει η Δανάη, όχι ο Ορέστης. Συνοπτικά: προβολέας — Δανάη· προέκταση ρεύματος — Ορέστης· εισιτήρια — Λία.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_13_study_roles_false.u_decision",
+        "claim": "Ο Ορέστης έχει αναλάβει τον προβολέα.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_13_study_roles_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα ότι τον προβολέα ανέλαβε η Δανάη, όχι ο Ορέστης.",
+          "Να συνοψίσει και τις τρεις αναθέσεις σύμφωνα με τις ορατές σημειώσεις."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

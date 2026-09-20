@@ -1,0 +1,31 @@
+{
+  "schema": "openmath_pilot_local_intake_v1",
+  "status": "structure_pass_semantic_review_pending",
+  "source_files": {
+    "candidate_rows.remote.jsonl": "a4fb88cc135a704afa2635ca8b5f3cae4b874f715248de728b488fa5e90ecbec",
+    "eligible_family_inventory.remote.jsonl": "3aae405747785a374c5e8bd533861d4f70810cc4c6e25959ea03e3b0209e2428",
+    "openmath.remote.receipt.json": "7c6e1c605c8e3e8fee33c31c68791c9ed572eab0a0d6106ea46680b7e416d3d6"
+  },
+  "remote_receipt_status": "passed",
+  "eligible_inventory_families": 3996,
+  "pilot_rows": 45,
+  "pilot_families": 36,
+  "proof_review_rows": 44,
+  "proof_review_families": 35,
+  "quarantined_rows": 1,
+  "quarantine_reason_counts": {
+    "quarantine_unknown_difficulty_before_semantic_review": 1
+  },
+  "outputs": {
+    "proof_review_queue.v1.jsonl": "a6b3b1831d6fc9611da703639fb242a47604c0e4b70e2e83929ce560aae48964",
+    "quarantine.v1.jsonl": "7b9c601e64ba5ec290f5416f725a815d133dd9438debabcf17f1bf53aa98d54d"
+  },
+  "training_eligible": false,
+  "remaining_gates": [
+    "complete derivation and expected-answer review for every queued solution",
+    "select the equal-supervised-token competition allocation",
+    "actual reader tokenizer length and target-mask verification",
+    "family-disjoint development/final and complete assembly decontamination",
+    "matched two-arm manifests and canonical-runner cost receipt"
+  ]
+}

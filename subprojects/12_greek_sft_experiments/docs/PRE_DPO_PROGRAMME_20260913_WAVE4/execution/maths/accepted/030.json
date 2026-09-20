@@ -1,0 +1,62 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_2568",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "problem_fidelity",
+          "severity": "minor",
+          "quote": "Κάθε χρόνο πεθαίνουν 20 πάπιες",
+          "explanation": "Το αγγλικό πρόβλημα δηλώνει ότι 20 πάπιες «are killed», ενώ το ελληνικό ότι πεθαίνουν. Η αιτία της απώλειας αλλάζει, αν και η ποσοτική υπόθεση και η μαθηματική λύση παραμένουν ίδιες.",
+          "suggested_action": "Σε ενδεχόμενη επισκευή, αποδοθεί πιστότερα το «are killed» χωρίς αλλαγή των αριθμητικών δεδομένων."
+        }
+      ],
+      "provenance_note": "Υπάρχει μία εγγραφή προβλήματος και μία λύση· δεν προκύπτει αβεβαιότητα ιστορικής αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_256",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το κείμενο του προβλήματος χαρακτηρίζεται σταθερό. Παρότι υπάρχουν δύο εγγραφές λύσης, δεν παρέχονται εναλλακτικές εκδοχές του προβλήματος που να δημιουργούν αβεβαιότητα αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_914",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "greek_language",
+          "severity": "minor",
+          "quote": "\\quad \\text{and} \\quad",
+          "explanation": "Ο αγγλικός σύνδεσμος «and» έχει παραμείνει αμετάφραστος μέσα στο κατά τα άλλα ελληνικό πρόβλημα. Το νόημα και οι μαθηματικές προϋποθέσεις παραμένουν σαφή.",
+          "suggested_action": "Σε ενδεχόμενη γλωσσική διόρθωση, να αντικατασταθεί μόνο ο σύνδεσμος με το ελληνικό «και»."
+        }
+      ],
+      "provenance_note": "Το κείμενο του προβλήματος χαρακτηρίζεται σταθερό. Υπάρχουν τέσσερις εγγραφές λύσης, αλλά δεν παρέχονται εναλλακτικές εκδοχές προβλήματος· συνεπώς δεν τεκμηριώνεται ιστορική αβεβαιότητα ως προς το ζεύγος που ελέγχθηκε.",
+      "verification_needed": []
+    }
+  ]
+}

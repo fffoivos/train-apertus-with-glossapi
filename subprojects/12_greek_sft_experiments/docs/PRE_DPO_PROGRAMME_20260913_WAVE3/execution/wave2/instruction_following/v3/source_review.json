@@ -1,0 +1,50 @@
+[
+  {
+    "source_urls": [
+      "https://oramaelpidas.gr/aitisi_ethelonti_doti/",
+      "https://oramaelpidas.gr/"
+    ],
+    "verified_claim": "Current registration is offered through application and mailed cheek-swab kit.",
+    "repair": "Date the training scenario and state the currently evidenced procedure; do not claim to have proven every historical change last year.",
+    "row_id": "mixa_2028_03200",
+    "checked_on": "2026-09-13",
+    "source_type": "primary_official",
+    "reviewer": "root"
+  },
+  {
+    "source_urls": [
+      "https://www.modbus.org/introduction-to-modbus",
+      "https://www.modbus.org/docs/Modbus_Messaging_Implementation_Guide_V1_0b.pdf"
+    ],
+    "verified_claim": "Modbus TCP default port and read-register protocol; per-device register map and configuration must come from the actual manual.",
+    "repair": "Remove assumed management port and universal IP-setting method; qualify port, display and reachability. This is a general procedure, not a verified instruction for an unspecified device.",
+    "row_id": "mixa_2028_08593",
+    "checked_on": "2026-09-13",
+    "source_type": "primary_official",
+    "reviewer": "root"
+  },
+  {
+    "source_urls": [
+      "https://eu-healthcare.eopyy.gov.gr/en/healthcare-in-greece/accessing-health-services-in-greece-for-eu-citizens/emergency-care-for-ehic-holders/",
+      "https://www.nhs.uk/conditions/dental-abscess/"
+    ],
+    "verified_claim": "Public emergency dental care where available versus private payment; severe swallowing/breathing symptoms need hospital emergency care.",
+    "repair": "The initial candidate grouped swallowing difficulty under dental care. Separate immediate hospital escalation, retain exactly three uppercase sentences, and avoid predicting private appointment speed.",
+    "row_id": "mixa_2027_09689",
+    "checked_on": "2026-09-13",
+    "source_type": "primary_official",
+    "reviewer": "root"
+  },
+  {
+    "source_urls": [
+      "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32005L0029",
+      "https://www.synigoroskatanaloti.gr/el/ypoboli-anaforas"
+    ],
+    "verified_claim": "Misleading overall presentation or unclear material information can matter to a purchase; consumer complaint route exists.",
+    "repair": "Replace unsupported generic-site attribution with the actual legal provisions. Application to the fictional poster remains explicitly conditional, without guaranteeing a refund.",
+    "row_id": "mixa_2027_07834",
+    "checked_on": "2026-09-13",
+    "source_type": "primary_official",
+    "reviewer": "root"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "family_count": 6,
+  "held_without_repair": [
+    "intermediate-algebra infinite-series family: source candidates require a fresh verified derivation",
+    "precalculus vector-incidence family: source candidate does not derive the asserted dot product"
+  ],
+  "input": {
+    "proof_review_queue.v1.jsonl": "a6b3b1831d6fc9611da703639fb242a47604c0e4b70e2e83929ce560aae48964"
+  },
+  "next_gate": "independent mathematical review of all 27 root selections and six root repairs",
+  "output": {
+    "root_repairs.v1.jsonl": "3c31618967c7fa181da1cba4f8861fc61239ec9a8b379112c682e42e366a08b4"
+  },
+  "repair_count": 6,
+  "schema": "openmath_root_repairs_receipt_v1",
+  "status": "six_repairs_built_independent_review_pending",
+  "training_eligible": false
+}

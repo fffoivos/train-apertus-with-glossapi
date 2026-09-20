@@ -1,0 +1,2340 @@
+{
+  "schema_version": "dolci_tool200_source_inventory_v1",
+  "source_dataset": "allenai/Dolci-Instruct-SFT",
+  "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+  "source_snapshot": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/datasets--allenai--Dolci-Instruct-SFT/snapshots/bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+  "selection_method": "per-shard minimum SHA-256 over revision, locator, and typed source id",
+  "target": 200,
+  "files": [
+    {
+      "file": "data/train-00000-of-00015.parquet",
+      "resolved_bytes": 150342005,
+      "row_groups": 144,
+      "rows": 143475,
+      "tool_use_rows": 0,
+      "selected": 0
+    },
+    {
+      "file": "data/train-00001-of-00015.parquet",
+      "resolved_bytes": 149881504,
+      "row_groups": 144,
+      "rows": 143475,
+      "tool_use_rows": 0,
+      "selected": 0
+    },
+    {
+      "file": "data/train-00002-of-00015.parquet",
+      "resolved_bytes": 150825987,
+      "row_groups": 144,
+      "rows": 143474,
+      "tool_use_rows": 0,
+      "selected": 0
+    },
+    {
+      "file": "data/train-00003-of-00015.parquet",
+      "resolved_bytes": 150435633,
+      "row_groups": 144,
+      "rows": 143474,
+      "tool_use_rows": 0,
+      "selected": 0
+    },
+    {
+      "file": "data/train-00004-of-00015.parquet",
+      "resolved_bytes": 150220626,
+      "row_groups": 144,
+      "rows": 143474,
+      "tool_use_rows": 0,
+      "selected": 0
+    },
+    {
+      "file": "data/train-00005-of-00015.parquet",
+      "resolved_bytes": 150125065,
+      "row_groups": 144,
+      "rows": 143474,
+      "tool_use_rows": 0,
+      "selected": 0
+    },
+    {
+      "file": "data/train-00006-of-00015.parquet",
+      "resolved_bytes": 150769558,
+      "row_groups": 144,
+      "rows": 143474,
+      "tool_use_rows": 0,
+      "selected": 0
+    },
+    {
+      "file": "data/train-00007-of-00015.parquet",
+      "resolved_bytes": 150019281,
+      "row_groups": 144,
+      "rows": 143474,
+      "tool_use_rows": 0,
+      "selected": 0
+    },
+    {
+      "file": "data/train-00008-of-00015.parquet",
+      "resolved_bytes": 150609447,
+      "row_groups": 144,
+      "rows": 143474,
+      "tool_use_rows": 0,
+      "selected": 0
+    },
+    {
+      "file": "data/train-00009-of-00015.parquet",
+      "resolved_bytes": 106362504,
+      "row_groups": 144,
+      "rows": 143474,
+      "tool_use_rows": 0,
+      "selected": 0
+    },
+    {
+      "file": "data/train-00010-of-00015.parquet",
+      "resolved_bytes": 96264948,
+      "row_groups": 144,
+      "rows": 143474,
+      "tool_use_rows": 0,
+      "selected": 0
+    },
+    {
+      "file": "data/train-00011-of-00015.parquet",
+      "resolved_bytes": 261536939,
+      "row_groups": 144,
+      "rows": 143474,
+      "tool_use_rows": 0,
+      "selected": 0
+    },
+    {
+      "file": "data/train-00012-of-00015.parquet",
+      "resolved_bytes": 331845759,
+      "row_groups": 144,
+      "rows": 143474,
+      "tool_use_rows": 0,
+      "selected": 0
+    },
+    {
+      "file": "data/train-00013-of-00015.parquet",
+      "resolved_bytes": 252776199,
+      "row_groups": 144,
+      "rows": 143474,
+      "tool_use_rows": 84105,
+      "selected": 100
+    },
+    {
+      "file": "data/train-00014-of-00015.parquet",
+      "resolved_bytes": 659412194,
+      "row_groups": 144,
+      "rows": 143474,
+      "tool_use_rows": 143474,
+      "selected": 100
+    }
+  ],
+  "schema_fields": [
+    "id",
+    "messages",
+    "source_dataset",
+    "domain"
+  ],
+  "schema_arrow": "id: string\nmessages: list<element: struct<content: string, function_calls: string, functions: string, role: string>>\n  child 0, element: struct<content: string, function_calls: string, functions: string, role: string>\n      child 0, content: string\n      child 1, function_calls: string\n      child 2, functions: string\n      child 3, role: string\nsource_dataset: string\ndomain: string\n-- schema metadata --\nhuggingface: '{\"info\": {\"features\": {\"id\": {\"dtype\": \"string\", \"_type\": \"' + 366",
+  "selected": [
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 73,
+        "row_in_group": 269
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_716247",
+      "selection_sha256": "0003ab42ba502d03d7f4fc3bbd10ecdd729775bc9519a888ccf62214e4785423",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 80,
+        "row_in_group": 397
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_1091317",
+      "selection_sha256": "000418f1b6bd6616ff025a5c3b839e3e6d4fc556cca2c65b0662cf2da72b871d",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 128,
+        "row_in_group": 516
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_230491",
+      "selection_sha256": "0004cba5eadf9f44bca5369a2eefa49d1df82b56fdc05b512cc90e2903e958a4",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 134,
+        "row_in_group": 108
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_645151",
+      "selection_sha256": "00052283b111a29b3982e2ef70d0f057f804cfeec939feeec8d9b1d84492b6ca",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 92,
+        "row_in_group": 430
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_1039126",
+      "selection_sha256": "0005aaad35097fed950dfa6ab0a4c814e56354e5e1574865253d84e15b862335",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 97,
+        "row_in_group": 265
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_978328",
+      "selection_sha256": "0005f824e3e2cb3bf5332c86984f9098c1d7db9efd81164ad35b97ffdd2d3ac3",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 107,
+        "row_in_group": 211
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_284718",
+      "selection_sha256": "00061021b857600d36388ac37f9aeb64b228bdadbb7749594ca24e65ecad1d41",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 81,
+        "row_in_group": 314
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_151987",
+      "selection_sha256": "00074dc528f5da558833b81d4476f856f6f6d405a5421ad7e6e62ecc50fd41f8",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 74,
+        "row_in_group": 687
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_50119",
+      "selection_sha256": "000764f01675f35ab1b392c301052a90e801f41d2737c00df1ea990502c52520",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 89,
+        "row_in_group": 919
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_71710",
+      "selection_sha256": "0007ecd7d88e3556fa71904fe3ec63a2d5130f5fd417de6f556182410ef59ee5",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 106,
+        "row_in_group": 382
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_507017",
+      "selection_sha256": "00089d5d387b839ced2408b716969182bf36c793dde6e935f0b7b5f7c10f7bcb",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 141,
+        "row_in_group": 926
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_77098",
+      "selection_sha256": "0008c95946dc81b0362558734e2cead2dad93a3c1b37d58ef5fd28e5a479cf9e",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 102,
+        "row_in_group": 839
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_175525",
+      "selection_sha256": "000b1613776f97d087ad10719ab8e7f91bbd8502411db9e0b18d8f4c3156d902",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 130,
+        "row_in_group": 523
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_105126",
+      "selection_sha256": "000baa6d0735eae65f2cf99fddfa487ed01299f179567693643d4f62bc8069b9",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 99,
+        "row_in_group": 577
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_875496",
+      "selection_sha256": "000c02ef3068d5cb87fd302796cc6ab5aa1f71c5964ac4d655a7b9076726c0ea",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 136,
+        "row_in_group": 718
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_320364",
+      "selection_sha256": "000c802abeb280128e3a5aba01f6b09a4afa125b2d09b0745bc022c2f8842789",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 119,
+        "row_in_group": 488
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_99455",
+      "selection_sha256": "000d427999aa443ab0f1be97ac2ed417fb490f10e38677b8434f20121e90dc6e",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 129,
+        "row_in_group": 38
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_714966",
+      "selection_sha256": "000de9c410ac7673bc5f11e93f558a2a3deeaa2c0b823c74396fad033853196c",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 62,
+        "row_in_group": 564
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_118591",
+      "selection_sha256": "000ec5d797fa740327fe58342d6d64fca47a3241cf811a1b554044031221de90",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 121,
+        "row_in_group": 594
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_950138",
+      "selection_sha256": "000f67666ee5dd65c5d6e4f7aa87e8f1b278da476c19afaccf2be76089322fa5",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 141,
+        "row_in_group": 284
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_151561",
+      "selection_sha256": "000fd0d94851612a146a498eef8112b8447dd895e4cff74eeb68c253e8ca7a2e",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 129,
+        "row_in_group": 269
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_92884",
+      "selection_sha256": "00104b927e5b0578552477a95bef7704928911920ce425f18f5b0669a7b05403",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 86,
+        "row_in_group": 171
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_810731",
+      "selection_sha256": "0010d8f32240a7c0accfba238697ce3ecb5a956b880a2602490084add170c2d4",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 98,
+        "row_in_group": 492
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_544317",
+      "selection_sha256": "0011e81d504a429ea3256fce636a08dff2c75a8006bea2fdebe64a36b33c858f",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 76,
+        "row_in_group": 461
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_1096548",
+      "selection_sha256": "00122de8014395f3ea616ca71b8c351f2b7626c053c755f1c7d03490813c7eb8",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 88,
+        "row_in_group": 253
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_433044",
+      "selection_sha256": "001300f0120a7ead870375c12244b01a9ce077cd9c50effad1b13d347a96a01a",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 119,
+        "row_in_group": 528
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_90035",
+      "selection_sha256": "0013723932d08b893a2502e318668f5da1134dd33f4a20c38644443a4e7cf282",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 61,
+        "row_in_group": 407
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_484080",
+      "selection_sha256": "00138a15da9005624a3745138f3d54221b7114f92367deebb12d7f1acedac986",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 135,
+        "row_in_group": 499
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_129097",
+      "selection_sha256": "0014c42fba2f3a95060b6072780410d823540f88ba63cfc601b93f440d2ddd35",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 120,
+        "row_in_group": 459
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_908035",
+      "selection_sha256": "00155e147ff75fcfb5b075841b0418d16ec88d55af170d305043e7c810514070",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 115,
+        "row_in_group": 83
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_300445",
+      "selection_sha256": "00158846335abdda4a8bc41f5bdc05d5e27a043c08e8d4235c9258bca8b64c8e",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 127,
+        "row_in_group": 578
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_257948",
+      "selection_sha256": "00159c529a2d087adaf7101ee4f45926623db80ece672b0100030d4dcc383bb0",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 59,
+        "row_in_group": 665
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_706876",
+      "selection_sha256": "001614678b92911d35585f29ddfa395c09f786fbe35dc80fb2bb4f540b64aecb",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 77,
+        "row_in_group": 70
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_166334",
+      "selection_sha256": "00182628e8bfa95557368d4a1a33737c4364ca586f45ba0a48092040b07c6ef5",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 136,
+        "row_in_group": 285
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_578742",
+      "selection_sha256": "001a9e4afc03127374c6c9d2a82556ce3e08f179bcabe550c341ee40b937fffb",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 115,
+        "row_in_group": 901
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_758197",
+      "selection_sha256": "001b836de6f42ff398f1808a3ed78c8676371f7c6e4bee0560df77229e3d606d",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 95,
+        "row_in_group": 215
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_34509",
+      "selection_sha256": "001bca23a4cda3e7f25afc9fd4daf9a2e4a0f9f6db0a05a4eb946c536c45c539",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 80,
+        "row_in_group": 812
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_745788",
+      "selection_sha256": "001c3a115e43af990877fbe93eaf4715e9c9d0184081d797f13a969b47d5f861",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 137,
+        "row_in_group": 844
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_182758",
+      "selection_sha256": "001c9d558034d360d32abed3c34dfae2d37e9da5eaa8b374d8e2696b67b1f8e4",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 138,
+        "row_in_group": 152
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_105297",
+      "selection_sha256": "001d8691befc82fcf35a2fec5cb921d041ff45dfc1486de8cbb42a97170f390d",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 68,
+        "row_in_group": 521
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_764658",
+      "selection_sha256": "001dc12a9638a22b9990d19d2b8f0d68770d6cdfda8c39d596c9b989e9f22ddb",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 125,
+        "row_in_group": 860
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_168153",
+      "selection_sha256": "001e1a5928311d523f5bb9497f7c18f5d85c2475b11604cc4e2c83ec6760b267",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 62,
+        "row_in_group": 225
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_202508",
+      "selection_sha256": "001e5c38f444756b8213ba775cca5f40952f8ade6f47f9cd7a79989ffc267706",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 60,
+        "row_in_group": 580
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_298436",
+      "selection_sha256": "001fc83c68bbe2190c08580f3a152bb8e0cb9e8c53a27515f73ba830f3a1ee8a",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 102,
+        "row_in_group": 747
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_305819",
+      "selection_sha256": "001fdaa7713683afd7f2dd80c68ccf6d2586d3e99c232327f851e8df2b925491",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 73,
+        "row_in_group": 130
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_49066",
+      "selection_sha256": "002061d50f4e138276ca47360cccb344ad68484ebc5a70925d1e52c901654b1f",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 122,
+        "row_in_group": 973
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_621245",
+      "selection_sha256": "0020cea149456cb02cf345294a98219a6ad4a6cb2c2141b7dde03ce26277f7fa",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 140,
+        "row_in_group": 314
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_71822",
+      "selection_sha256": "002467ff4c912fd714f8066fa09bb968c7ad2299c4a94036a9902801e72cb0a7",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 66,
+        "row_in_group": 439
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_757896",
+      "selection_sha256": "002541b008a7c8ac3431670754a5c20cb6c14150ccc277f665f7e66555f31b71",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 124,
+        "row_in_group": 639
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_902459",
+      "selection_sha256": "0025cd190e0caed5ba9716de6958f5ba550559b241601ae2b0cc5dfcc4ce181e",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 60,
+        "row_in_group": 731
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_303682",
+      "selection_sha256": "002628c725bb2c903949240588ffcb92163315241961934fbfd7b7983c4e2491",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 140,
+        "row_in_group": 647
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_535556",
+      "selection_sha256": "002679f94e13506cfd0c05447c947c8f96345500383b1790acad377f50dcf2b6",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 87,
+        "row_in_group": 820
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_121278",
+      "selection_sha256": "0026f624c48ea36901d675e41c944a721a95f1dfe6d8d78ac74273fe30d0e83c",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 90,
+        "row_in_group": 945
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_513751",
+      "selection_sha256": "00277e59533f93f44d677a017f56fbb5072b6c9433beb19f284ffb4178c15fbb",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 122,
+        "row_in_group": 268
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_38969",
+      "selection_sha256": "0027c794b051cf82ea9e3a66fa556ba70f841512ecb9a654b8986796acb7d02b",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 95,
+        "row_in_group": 934
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_903117",
+      "selection_sha256": "00282be83190def1b616dfaa436eed065b59bafd2e291f45863d76bc9706b6f2",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 142,
+        "row_in_group": 778
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_361466",
+      "selection_sha256": "0028a00639b5665a16140251b7d573414606d943ec079617065e21d8bfa5ade3",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 103,
+        "row_in_group": 236
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_246155",
+      "selection_sha256": "0029d84aeab82a194b4662a914f4cbcdebec128597cb6cb47dce49c62c940984",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 63,
+        "row_in_group": 666
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_20989",
+      "selection_sha256": "002a726d8670e339249c81c83c1afa83a2bacefea5d153b70a341ad2f135adfd",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 60,
+        "row_in_group": 86
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_539586",
+      "selection_sha256": "002b55f007b6d5a6ac15bc8e0540aab0dae81f2b41472ad93cd977a89894cb96",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 112,
+        "row_in_group": 371
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_1099838",
+      "selection_sha256": "002bee12d1495d4724c02da8f27771bac38fed2ad84fbbfbd6c616844236d67a",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 137,
+        "row_in_group": 47
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_127133",
+      "selection_sha256": "002c591c96be9c33d8646baa3f6b20937acfb12645a1ea37f49493520476790b",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 84,
+        "row_in_group": 102
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_302952",
+      "selection_sha256": "002ce0a1ff7bcefe7d8e29f46a956fde3a86b1c8a477a8ccbdd38286e75c3601",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 61,
+        "row_in_group": 923
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_606456",
+      "selection_sha256": "002d8776a96b1c997f9eef3a309085fd8e2ff00a23d6b1c91510b6fd17fac5ff",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 65,
+        "row_in_group": 815
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_479281",
+      "selection_sha256": "0031063268bb4ea87ed6058ab1c90746834092927496602b32bb1b40905aabc2",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 128,
+        "row_in_group": 476
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_455437",
+      "selection_sha256": "0031abc9f14bd74b777603e2eb6065b0ad22ea7be1317e482837fa94a20dbedd",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 127,
+        "row_in_group": 677
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_93942",
+      "selection_sha256": "0031e835580687f8947a5c53f81e9d0db2446e73b9198686a6516928fb49b270",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 67,
+        "row_in_group": 160
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_640311",
+      "selection_sha256": "00325954cf8e0f0113c6c99ca5c74e69b3220179312e1782839620bd83f1695a",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 85,
+        "row_in_group": 303
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_1084604",
+      "selection_sha256": "0032cb0ffa31ab30c7bca4dae1673c8df546981561ab440468a8bcbdf971bba0",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 129,
+        "row_in_group": 365
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_595072",
+      "selection_sha256": "003439deb14c6e0e55a768919974a19ada396496e5bd4009d9f497bcbf4c9428",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 81,
+        "row_in_group": 196
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_1106436",
+      "selection_sha256": "003524027f69cb3613256004655e51f274829fd8bbabb9850cbaf858c8e926d3",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 101,
+        "row_in_group": 645
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_131672",
+      "selection_sha256": "00352b6eff9d775374f006b2ee2b317012472929b312c49524648e9f41c222f7",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 74,
+        "row_in_group": 557
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_80769",
+      "selection_sha256": "00354765dcba12ad7b9afd5038607adcfa3a3b2dfcfb5d844d35caef38c59b3d",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 111,
+        "row_in_group": 770
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_710919",
+      "selection_sha256": "0036d7307640b03c5d85764b6a6cf75cc926940174d31dc55282fd15daaddfdf",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 68,
+        "row_in_group": 960
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_739393",
+      "selection_sha256": "003a520fdc95f3b579c00d18abfa90de436400a3861b7e715cadd099b4d613e1",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 102,
+        "row_in_group": 750
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_43742",
+      "selection_sha256": "003aa6738b8b25d7f854fe994d15e911607d0753e435b4eceaa3cff6542a66ad",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 67,
+        "row_in_group": 56
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_274299",
+      "selection_sha256": "003b5637746d6bd5a6000eb52f15b0fd16656454d8f5c070f7550a8d4044ff97",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 61,
+        "row_in_group": 918
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_179320",
+      "selection_sha256": "003b70ccf1f6ff3df6a6ead3296fe7736c9e756b325bcd9318fdeaa53c4a653d",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 113,
+        "row_in_group": 839
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_369116",
+      "selection_sha256": "003e95ac641326b7c36e44fc15d1fd638275d05fdd3413bea48c5fb3e36c3fd1",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 72,
+        "row_in_group": 932
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_356499",
+      "selection_sha256": "004011e9e0809e99ce33af2e19fa93ee1d990daee85c5272dfdb9c317ffaf103",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 110,
+        "row_in_group": 135
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_185823",
+      "selection_sha256": "004072daf7011c5691be2a75a731bd14985f6102746aa0e406ea997f2cba2f99",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 103,
+        "row_in_group": 525
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_160076",
+      "selection_sha256": "0041e6013752c8605fbc8b184cdf907d1fea486beff96184d8e3e9935f1c1b6c",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 96,
+        "row_in_group": 160
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_932739",
+      "selection_sha256": "004236109934f90bffb889dd414ec864000069e26cb525b445a7052f6d4de211",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 136,
+        "row_in_group": 892
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_312033",
+      "selection_sha256": "004241d69bf1c8de316c7afa1b8632ed681f0d541d37b79d1dff2c1ad824d727",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 113,
+        "row_in_group": 618
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_1095098",
+      "selection_sha256": "0042d8ec8021da66a4c5f7ed1077de355981e0db1b8c62895676dd951f44ad88",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 131,
+        "row_in_group": 373
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_384686",
+      "selection_sha256": "004725fe91f6f70b4fcc9337e92f19160b40f53358e3f9598e5586ae7bd3014c",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 73,
+        "row_in_group": 806
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_809309",
+      "selection_sha256": "0047631f570774becd964dbf9382c92e5a6a0b40dcd8ad82e2297ec72144ab08",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 113,
+        "row_in_group": 358
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_688005",
+      "selection_sha256": "00476cfce4f37f8469a9fd840ed39d5fe289fb8d9d0b2230627059bbf58ce59e",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 101,
+        "row_in_group": 782
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_96306",
+      "selection_sha256": "0048b3b1089a58295d7d6a5162fd6dba20aa2784b501903ee07714aadd7759f2",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 133,
+        "row_in_group": 278
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_964751",
+      "selection_sha256": "0048ffb6e09fb9db8be824be5af298cc0e001d48d6ab06d9770ffebd1a164bf9",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 130,
+        "row_in_group": 421
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_101095",
+      "selection_sha256": "0049280411606c1492b6f55d9b6f36e9321d073049b1c283d8dce9969a4031a8",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 104,
+        "row_in_group": 659
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_621075",
+      "selection_sha256": "00499f1429b00289f9c5e5505f8c0229a081be5bafa3fcd22ba23dfe95631ed3",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 60,
+        "row_in_group": 530
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_62681",
+      "selection_sha256": "004a220b1ecb5b4511d38a03ab48b34d758a8cb80109e946af835966ba8935ab",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 66,
+        "row_in_group": 281
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_1000379",
+      "selection_sha256": "004a96ca447936fc7394e59f708935bdd2a1f2736c9d1f4c7872bc815d3b2f34",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 137,
+        "row_in_group": 814
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_466295",
+      "selection_sha256": "004b96113189a614f942dd05111a6d11993fa4d89f9e665d5ac36041a225f3e7",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 110,
+        "row_in_group": 29
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_938023",
+      "selection_sha256": "004bcf82494df35c1b7ddbd50b379d8006632bfbb0f2327b195ccee4b8e04817",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 125,
+        "row_in_group": 301
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_177707",
+      "selection_sha256": "004bf680e6b6014d77d7f3f18a2882fe30c1ea16a5c83e0ee494bbda1711eef1",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 70,
+        "row_in_group": 264
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_112426",
+      "selection_sha256": "004c1a836c63befb37552ccdc35a906b35a22ca9b417689977f986fb831bd654",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 88,
+        "row_in_group": 362
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_729251",
+      "selection_sha256": "004c28e640e87e3b925ec5e633867386280c7a053b3920b87ac84e375ea99948",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 123,
+        "row_in_group": 723
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_887749",
+      "selection_sha256": "004db2c486e7cced1f8454e0a1b90216fe2ea249667db1e25fbdee079a5daf65",
+      "stratum": "data/train-00013-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 93,
+        "row_in_group": 405
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_722529",
+      "selection_sha256": "000013dac748c2f5d3a575ee8681668a4809a8dd7ca21873454d36f1db49eb74",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 122,
+        "row_in_group": 175
+      },
+      "source_id": "olmo-toolu-s2-sft-m3_7352",
+      "selection_sha256": "000041a7864a98337fc12cdd42727bd553c62fb6e3110cbd2d48ac5f43fd31d3",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 126,
+        "row_in_group": 314
+      },
+      "source_id": "olmo-toolu-s2-sft-m4v2_3998",
+      "selection_sha256": "0000a22832551d91706d334a71e391958be19a911b915c4ea6e2c352da9cf7f6",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 125,
+        "row_in_group": 360
+      },
+      "source_id": "olmo-toolu-s2-sft-m4v2_6338",
+      "selection_sha256": "000299aa2ae326dfc1da9ad2dac4e1d4c4b785887d458162ed2cff57df977581",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 16,
+        "row_in_group": 842
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_144318",
+      "selection_sha256": "00029ef4265a5f7ac1d2a43f75742a526511e210569b6dd2c67242b26c507f17",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 54,
+        "row_in_group": 107
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_320481",
+      "selection_sha256": "0002d52f7f8f20740669382d52fe389eb3fc1413fc55e842906d3099ed25c731",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 92,
+        "row_in_group": 337
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_469316",
+      "selection_sha256": "000326c21b897749033c51f25a194f6a7746ce1f0bf5c40b55817b3b4abd4622",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 83,
+        "row_in_group": 986
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_136081",
+      "selection_sha256": "00034ead4c8a356bc13a1176cdf6339f92ce2d3142252cbc20d5613653426c49",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 5,
+        "row_in_group": 418
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_104277",
+      "selection_sha256": "00051653ad151ec38999c344d0c20262f837dbff9222447175034d583bee3b49",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 35,
+        "row_in_group": 176
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_1034168",
+      "selection_sha256": "0005d9c7048770e727012995052c4cd99be6c4be45e30d02e271f4d008d0e979",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 77,
+        "row_in_group": 983
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_694858",
+      "selection_sha256": "00073056a5b93081309ee67130cc6b2591f0ec89d77bbf72609da042abf7bb90",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 48,
+        "row_in_group": 82
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_128760",
+      "selection_sha256": "0007d816b276f9d007cddc41c4e3ecd76c74892fa12608781b085dc7ce0e3abc",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 105,
+        "row_in_group": 309
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_715222",
+      "selection_sha256": "0008a5a62fcad2d88b09f776522b0fcfa2ef73a42bb43217c5beb488a4bd8e45",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 6,
+        "row_in_group": 22
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_286746",
+      "selection_sha256": "0008b468ecf684d64a288413ab9b4b2e3025da8b2ba6bf80c8e8e2325d07825c",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 74,
+        "row_in_group": 327
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_635936",
+      "selection_sha256": "0008c06d961c7e5defb69f34f4c721278491274ead8a1c71d7ad8b59b85d8ba8",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 110,
+        "row_in_group": 877
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_1057162",
+      "selection_sha256": "0008ebe73583680a9ba7100b047863960a2163fa543869913166ee33a1295108",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 86,
+        "row_in_group": 165
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_497535",
+      "selection_sha256": "00098e3b43dd884eb8dea3ccbf3cc9be58d9107fd5c50b06db61ad02de95c9b3",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 27,
+        "row_in_group": 283
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_265051",
+      "selection_sha256": "000b3aca621a76679d523839bc99057f381da18eeed40268f571d889e4fd4a6d",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 42,
+        "row_in_group": 909
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_834372",
+      "selection_sha256": "000b833bc8a88e3a3067b3f86721bf42e43f779b83d17035701b7309dc767ce2",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 140,
+        "row_in_group": 473
+      },
+      "source_id": "olmo-toolu_deepresearch_no_thinking_DRv4_DS_4635",
+      "selection_sha256": "000ba4f20bf3d69ad3a003927f505e2fa9f78c1daac98cf1466e8601d4121682",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 114,
+        "row_in_group": 499
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_139952",
+      "selection_sha256": "000c416797833677d1119cfc2fe5a3cf2459bc1f20ec0dc24c84a85e4675acfe",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 38,
+        "row_in_group": 670
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_84874",
+      "selection_sha256": "000cb74a330f8dd1cabc65f418a06107885eedd52941ffa9234153eab5ed7246",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 73,
+        "row_in_group": 130
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_240432",
+      "selection_sha256": "000d1202f2241a84f898cca76fac618387f5dd53a9c5e4efb7eb8febc5e29f5f",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 6,
+        "row_in_group": 561
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_37467",
+      "selection_sha256": "000df241b44a736a85cb0287b51f43d0d7bda53b10a16ed3ddddbc77a51d713b",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 39,
+        "row_in_group": 274
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_113161",
+      "selection_sha256": "000ea4dd8441bd35972c40fbbce972fbc6a4c4c28a2a26bd5dc98400a05aa137",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 29,
+        "row_in_group": 466
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_427577",
+      "selection_sha256": "000ee2ded0af7937c169ce1692eba7e09e254ffcf1e3d7155a2ff7ba3887bf2d",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 11,
+        "row_in_group": 500
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_562738",
+      "selection_sha256": "000f51f56e3b88356d790e9f24913cf5d5729266b0433efec508e1834e8c9f0a",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 81,
+        "row_in_group": 438
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_350870",
+      "selection_sha256": "000fef76bba1d2e75d25e3907e3010cad5a54f4ba3e0cd50fd422f5fdfd6d121",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 108,
+        "row_in_group": 47
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_138183",
+      "selection_sha256": "00101784946d7711df883b0a7a4a04ec3b13d0de86b3a7dcaa27b60fd2e8351f",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 23,
+        "row_in_group": 587
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_238918",
+      "selection_sha256": "00109ea39569051655c99344c810906729e2eeef2e555d66719b0880f1a83438",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 24,
+        "row_in_group": 603
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_252100",
+      "selection_sha256": "0010fabc718de3efba1fdf8558bd78045bf8632cb9f6fa59666ff8ead23a7996",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 43,
+        "row_in_group": 218
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_1092768",
+      "selection_sha256": "001104733f77775cae2b4401edee67051c4f609c9495edf0a5685243ee8e1dcf",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 112,
+        "row_in_group": 683
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_201790",
+      "selection_sha256": "00123f21d15ab1a1c4cb2b200a98de0eb4f664bce006e4acf680a7b1921f0b4d",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 78,
+        "row_in_group": 116
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_913074",
+      "selection_sha256": "0012adcd6291766882b779ddd280676bd28d6ca016ea04a6b72b221516bec072",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 32,
+        "row_in_group": 651
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_967268",
+      "selection_sha256": "0012b983197f43020e0b80bc2b9e89eb8bf0ef9bf9837af6e91000154e9684a2",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 129,
+        "row_in_group": 910
+      },
+      "source_id": "olmo-toolu-s2-sft-m4v2_1841",
+      "selection_sha256": "0012c6e259538194220a174fad5e4dd2cc1d7b629b7ff76cecfc0deb9ff9420d",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 71,
+        "row_in_group": 101
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_583668",
+      "selection_sha256": "001318d38265d5907427671054e437b3524a5e97c8c48f69238b042cdb791ea1",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 131,
+        "row_in_group": 699
+      },
+      "source_id": "olmo-toolu-s2-sft-m4v2_5130",
+      "selection_sha256": "001454a9ad5fe8bb48d5ad3c62cc26cd9368ed9113ef1cde47073f6422afa38d",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 51,
+        "row_in_group": 202
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_251406",
+      "selection_sha256": "0014fdd46fb8d0c11b5149c49d96a36685a061ee31489f1270730e108a021c79",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 88,
+        "row_in_group": 916
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_260982",
+      "selection_sha256": "00156b165b94810e184c96ee987573992f7c3ea10043c6434c564894f05aa19c",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 28,
+        "row_in_group": 82
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_185606",
+      "selection_sha256": "0015d19d9dd873d967c07f20974b3d95d1dbb5925313a98f6a8fa4e191fd6ff2",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 59,
+        "row_in_group": 173
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_275522",
+      "selection_sha256": "00167a6a9db2315deab68b0b5f68a0d216a646227d6963ee1db761c0ad3af317",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 35,
+        "row_in_group": 682
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_62113",
+      "selection_sha256": "0017bb679cca8490ac210fcbd016ad3f55fbdce92d9a438b7b31286c82159927",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 120,
+        "row_in_group": 273
+      },
+      "source_id": "olmo-toolu-s2-sft-m3_4916",
+      "selection_sha256": "0017bd5087c95a40e8c2741ed53b18566a35c5246f6c75b8306288b9bb6f034a",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 16,
+        "row_in_group": 178
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_402738",
+      "selection_sha256": "001954a8165a05ddaca44eff4840b7384268f81bbf7eaa341b0d5b334483ab06",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 78,
+        "row_in_group": 311
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_111378",
+      "selection_sha256": "001a3ca41d18facf06e193a5ef8aea7825347ca905d416919dcd0050b5732bc6",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 124,
+        "row_in_group": 596
+      },
+      "source_id": "olmo-toolu-s2-sft-m4v2_11814",
+      "selection_sha256": "001a7138d4d0393162f7061a0bedb4a80605027ce9f0b29851cd4d49c4d79178",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 125,
+        "row_in_group": 3
+      },
+      "source_id": "olmo-toolu-s2-sft-m4v2_13523",
+      "selection_sha256": "001b9acd99150304c1733975f7725f283c393da903ab3b0ca74d91c255805a62",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 113,
+        "row_in_group": 105
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_480149",
+      "selection_sha256": "001c081e2debb668cb5f95acc399a1bfc657bab415e8e2ec23720bd4fa17414a",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 92,
+        "row_in_group": 938
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_1232",
+      "selection_sha256": "001c333f8e987c2f6b006261663238f4c778c9b8394a19866606bf155c6ef885",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 136,
+        "row_in_group": 649
+      },
+      "source_id": "olmo-toolu-s2-sft-m5v2_5816",
+      "selection_sha256": "001c6dcd261cafe80483481ffddd8ac952b30aa2c2c3a3adf8d82d9ab7fac08b",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 132,
+        "row_in_group": 792
+      },
+      "source_id": "olmo-toolu-s2-sft-m4v2_10026",
+      "selection_sha256": "001d09407f5e344f6878f05fd9160c62ed1b172a595beba7ed88f8eccdd98129",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 43,
+        "row_in_group": 886
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_258515",
+      "selection_sha256": "001dc8b18db756c2194d7bfbb41b90557661b59b73de192a39310a8cefb719e2",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 1,
+        "row_in_group": 729
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_880338",
+      "selection_sha256": "001e0b6ae2e9a703f8e273319618b3b477b6ac5630a4fc7490fca67c607ed2a5",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 44,
+        "row_in_group": 854
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_163606",
+      "selection_sha256": "001e0c32b2120b480a199932c3863466e3a3d61fc64957a4e7b9f2c7d6e44664",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 124,
+        "row_in_group": 126
+      },
+      "source_id": "olmo-toolu-s2-sft-m4v2_5455",
+      "selection_sha256": "001e24308bc6a564e978dc6c47d955438936acbed407e466cf6cdcbedefe5f5c",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 102,
+        "row_in_group": 512
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_74202",
+      "selection_sha256": "001ef76552c6434f1cfa456b2ad2d43b8c765196e901daa487c62fa8840ef44e",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 95,
+        "row_in_group": 831
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_1067898",
+      "selection_sha256": "001f12bd93dbb40051bca9f297e9aaa6782c64854fb5a45413ba869a8792dfff",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 124,
+        "row_in_group": 107
+      },
+      "source_id": "olmo-toolu-s2-sft-m4v2_5451",
+      "selection_sha256": "001f47ed5a996a878f68e6df65de9e392ca5220ccd8d93856c0914c474468272",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 73,
+        "row_in_group": 875
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_485961",
+      "selection_sha256": "0020b66d1fa0d18c75a4e5def399cd791505cefe899ac8896fb9638d18debdb4",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 46,
+        "row_in_group": 151
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_556032",
+      "selection_sha256": "00210ea7206d8d004d5bac92405d66070a1a99c4fae16c2591221dc3159a91e8",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 71,
+        "row_in_group": 306
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_960535",
+      "selection_sha256": "00215c5f69d0199c2601f2e575a5a001d2bd421d07e883598fbf918221558ec8",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 133,
+        "row_in_group": 90
+      },
+      "source_id": "olmo-toolu-s2-sft-m5v2_3836",
+      "selection_sha256": "00229de054e1047f01255d2aec476a322191125486bf30bbbf066eca379ac49b",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 38,
+        "row_in_group": 12
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_283795",
+      "selection_sha256": "002303d6771ed77e278ede7ed864f6460cbea309d388c107830be78030bf8da0",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 94,
+        "row_in_group": 708
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_98106",
+      "selection_sha256": "00232b9fa3afc9b30ed56ce413f860fea7049bf176141ed98bfa1d71e658cd86",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 79,
+        "row_in_group": 31
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_351635",
+      "selection_sha256": "00232cf8bf6c18fb23cd9bbeba1066847a3d6ace1f4eefd2fdce530875685538",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 91,
+        "row_in_group": 936
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_1085916",
+      "selection_sha256": "0023bed36c2c58ab7599f974d24fac395665be6ce30d696c58db994f2bf96d01",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 68,
+        "row_in_group": 978
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_1100370",
+      "selection_sha256": "0023fc5ff98d5eddc3bcc9c972e846df8cdb0639ab0048101d38ba24091cb5de",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 29,
+        "row_in_group": 907
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_48925",
+      "selection_sha256": "002571a7b46c9d840cee1fecdfdd52f6469dca1c69d5d621cb52738c6cdd86cc",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 15,
+        "row_in_group": 631
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_54387",
+      "selection_sha256": "002621074e5095cea01b580c55124442d131ea071b39804a6347ec7af3d099f0",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 85,
+        "row_in_group": 648
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_294884",
+      "selection_sha256": "002729b661feef4d9bbe29aa22615d4428d5ce7222c3d39b1bae89c6cd583e96",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 18,
+        "row_in_group": 341
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_231851",
+      "selection_sha256": "002789f3138388c7da9103578b632c2ebbcd9250018f9faa1ccc1cdc41f9ebed",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 42,
+        "row_in_group": 67
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_311977",
+      "selection_sha256": "00281ae0b8bbcd4965e56adc31d65a23b6ec83d61623bf5c4aa6afbd2e2097b5",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 98,
+        "row_in_group": 373
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_174078",
+      "selection_sha256": "00284a8926f36df15f781a88bb855ef448211c3b002ae7da54cfdbd2453cca71",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 54,
+        "row_in_group": 214
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_590243",
+      "selection_sha256": "0028c9e14eab40d192d49de64f471c7dc3514c5771188baa773a9064e5e00143",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 120,
+        "row_in_group": 454
+      },
+      "source_id": "olmo-toolu-s2-sft-m3_5120",
+      "selection_sha256": "0028fe3b0f0b170a8c5cac524204b626b9ecf29e1e78c466de2ba376bdfd85ec",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 112,
+        "row_in_group": 125
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_399542",
+      "selection_sha256": "0029bc25ad6837e4edbcfba9c027f59c806c4bb61ed829a0598a90b44f205286",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 3,
+        "row_in_group": 15
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_478855",
+      "selection_sha256": "0029c87eca08a206a6da20fa3fcf2175fa80109e3251bd8c1f86b01f63084d07",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 74,
+        "row_in_group": 854
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_195578",
+      "selection_sha256": "0029d83fb00e705b3cdbc29a3fbf17f1a51807004b76fe9292a3ba812d069572",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 39,
+        "row_in_group": 995
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_178522",
+      "selection_sha256": "002a564f7aab9832555d52033f1e61dfd9f8d19b2ee669ae3142314576da5dcf",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 105,
+        "row_in_group": 811
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_813197",
+      "selection_sha256": "002a6868db9d2c6f0e7e3341513a466f59547322f26881e0ea6c2709a471db5d",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 61,
+        "row_in_group": 6
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_9416",
+      "selection_sha256": "002b1dafec604c992b93fe6d129f8be2a27a10cac30f4507ad9a73649669a26a",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 122,
+        "row_in_group": 465
+      },
+      "source_id": "olmo-toolu-s2-sft-m3_7790",
+      "selection_sha256": "002b637ab9ab301a1feb485bb16afd0eeeae142b314b3fe1b2931121673f7c12",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 30,
+        "row_in_group": 173
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_131413",
+      "selection_sha256": "002bc23396c3c332656f94229d406e346777a71565c9e87108a8c520914e3e82",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 77,
+        "row_in_group": 586
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_238824",
+      "selection_sha256": "002c3edb9c3cd25f4ff9fc89d501c44393ac1fc3510c88cafb43ab0ef0ff3cd7",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 2,
+        "row_in_group": 396
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_232240",
+      "selection_sha256": "002ce1f3fab4728e281840839b1c28fdf853bf9dd3d71d2a3895444399ef2b67",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 143,
+        "row_in_group": 340
+      },
+      "source_id": "olmo-toolu_deepresearch_no_thinking_DRv4_DS_7609",
+      "selection_sha256": "002e02b115c03fef3793d1d835524d4c4caccc68ecc87f4d066982fe862584c2",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 9,
+        "row_in_group": 360
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_522479",
+      "selection_sha256": "002e411d49cb288e239c5a92d777fd6c1e85dd11ac4633f55a08d05b81eea8aa",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 96,
+        "row_in_group": 101
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_217250",
+      "selection_sha256": "002e52ebc9e51f360b077f3a4b68f522826a6bbe32682b0f192d31935c01c160",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 132,
+        "row_in_group": 461
+      },
+      "source_id": "olmo-toolu-s2-sft-m4v2_11578",
+      "selection_sha256": "002e7734fc5c192061fbeb4eaedf62d3d924b8e1963df5c4fadcd5c3bfa34af2",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 74,
+        "row_in_group": 497
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_949314",
+      "selection_sha256": "002e9646e426d1f5f088b7d5dc8c557a7d8338a296976d117e1e54a295046d81",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 141,
+        "row_in_group": 440
+      },
+      "source_id": "olmo-toolu_deepresearch_no_thinking_DRv4_DS_5674",
+      "selection_sha256": "002ef82843fc23f31e9c7af158870bb81d516ddc1676267bd0bccca6149d35a2",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 29,
+        "row_in_group": 683
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_208253",
+      "selection_sha256": "002f64ffaa54b5a124efa3c634fbb8d51411b5e3d3d5e5fa97dcd48fc6d0eb4a",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 8,
+        "row_in_group": 174
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_1052618",
+      "selection_sha256": "002f8f14fab1cabd6fb44c4f9cee893c7872ffc38205593efc2c161f01a0e126",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 40,
+        "row_in_group": 50
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_78254",
+      "selection_sha256": "002f93bc521f270913a582fc3d41c058ccac53bc7eac63ec7c3faffab9711f04",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 77,
+        "row_in_group": 324
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_178196",
+      "selection_sha256": "0030740eee1390b431ceb8dbd91b78ecaaeef4f6805a25b0125c34ff52d3a099",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 72,
+        "row_in_group": 726
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_294907",
+      "selection_sha256": "00308c15e0dff47c1c835b40987ee2fc5bb72778c827fe8b076a23edc09e95dc",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 137,
+        "row_in_group": 42
+      },
+      "source_id": "olmo-toolu-s2-sft-m5v2_3424",
+      "selection_sha256": "003093e2d230db3e3eed1bc5804d473e5b736800d992ed7612147927adaee734",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 15,
+        "row_in_group": 833
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_885257",
+      "selection_sha256": "0030a7d215d4bd266232fa8bd52986747c3c778c37640e4f11837085f717d9dc",
+      "stratum": "data/train-00014-of-00015.parquet"
+    },
+    {
+      "source_revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 5,
+        "row_in_group": 82
+      },
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_699749",
+      "selection_sha256": "0030ce585afbcaf354d83ab7e7f0dab629e3ff45a7187929be019afd6d97ca63",
+      "stratum": "data/train-00014-of-00015.parquet"
+    }
+  ],
+  "selected_locator_sha256": "41b0c7bca817986ac0bfb79a822678dad52427530308b590bb02b0cdf51a5302"
+}

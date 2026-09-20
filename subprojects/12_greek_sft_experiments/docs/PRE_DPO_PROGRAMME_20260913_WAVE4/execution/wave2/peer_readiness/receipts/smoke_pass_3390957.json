@@ -1,0 +1,26 @@
+{
+  "schema_version": "krikri_v15_smoke_gate_v1",
+  "job_id": "3390957",
+  "status": "passed",
+  "observed_at": "2026-09-13T13:48:57Z",
+  "smoke_log": {
+    "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/evals/wave2_krikri_v15/attempt_001/logs/fixed_smoke.log",
+    "sha256": "032868bc57df7cc216faed1cd5e68d06004ca4c2ee1bab024274c768c211e046"
+  },
+  "cells": {
+    "math500_el": {"generated": 8, "preexisting": 0, "errors": 0},
+    "math500_en": {"generated": 8, "preexisting": 0, "errors": 0},
+    "ifbench_el": {"generated": 8, "preexisting": 0, "errors": 0},
+    "ifbench_en": {"generated": 8, "preexisting": 0, "errors": 0},
+    "xstest_el": {"generated": 8, "preexisting": 0, "errors": 0},
+    "xstest_en": {"generated": 8, "preexisting": 0, "errors": 0},
+    "multichallenge_el": {"generated": 8, "preexisting": 0, "errors": 0},
+    "multichallenge_en": {"generated": 8, "preexisting": 0, "errors": 0}
+  },
+  "internal_gate": "The adapter required 8 rows, 8 unique IDs, and zero request errors in every cell before starting full generation and ILSP evaluation.",
+  "continuation_evidence": {
+    "math500_el_rows_observed": 322,
+    "ilsp_log_present": true,
+    "interpretation": "Both full fixed generation and ILSP evaluation started only after the smoke gate passed."
+  }
+}

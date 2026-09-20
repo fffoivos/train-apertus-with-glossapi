@@ -1,0 +1,76 @@
+{
+  "status": "PASS_PLAN_ONLY",
+  "runner_sha256": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005",
+  "invocations": {
+    "probe": {
+      "mode": "plan",
+      "queue": "queues/probe_train4.jsonl",
+      "jobs": 4,
+      "accepted": 0,
+      "pending": 4,
+      "stage_counts": {
+        "dialogue_authoring": 4
+      },
+      "max_workers": 4,
+      "manifest_call_cap": 118,
+      "runtime_call_cap": 76,
+      "global_retry_cap": 4,
+      "prior_calls": 0,
+      "limit_new_calls": 4,
+      "max_attempts_per_job": 2
+    },
+    "train": {
+      "mode": "plan",
+      "queue": "queues/train.jsonl",
+      "jobs": 32,
+      "accepted": 0,
+      "pending": 32,
+      "stage_counts": {
+        "dialogue_authoring": 32
+      },
+      "max_workers": 8,
+      "manifest_call_cap": 118,
+      "runtime_call_cap": 76,
+      "global_retry_cap": 4,
+      "prior_calls": 0,
+      "limit_new_calls": 0,
+      "max_attempts_per_job": 2
+    },
+    "dev": {
+      "mode": "plan",
+      "queue": "queues/dev.jsonl",
+      "jobs": 8,
+      "accepted": 0,
+      "pending": 8,
+      "stage_counts": {
+        "dialogue_authoring": 8
+      },
+      "max_workers": 8,
+      "manifest_call_cap": 118,
+      "runtime_call_cap": 22,
+      "global_retry_cap": 4,
+      "prior_calls": 0,
+      "limit_new_calls": 0,
+      "max_attempts_per_job": 2
+    },
+    "final_confirmation": {
+      "mode": "plan",
+      "queue": "sealed/final_confirmation/queue.jsonl",
+      "jobs": 7,
+      "accepted": 0,
+      "pending": 7,
+      "stage_counts": {
+        "dialogue_authoring": 7
+      },
+      "max_workers": 8,
+      "manifest_call_cap": 118,
+      "runtime_call_cap": 20,
+      "global_retry_cap": 4,
+      "prior_calls": 0,
+      "limit_new_calls": 0,
+      "max_attempts_per_job": 2
+    }
+  },
+  "model_subprocess_calls": 0,
+  "note": "These were runner plan-mode validations; --execute was absent."
+}

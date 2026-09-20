@@ -1,0 +1,58 @@
+{
+  "job_id": "author_pilot48_06_unresolved",
+  "row_id": "pilot48_06_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "21f6f728430988109f6e29203874e243d705f6d5ca0a6597b8779a02096a7250",
+  "input_record_sha256": "6bba62b18047186c188ceb2eff7743a549da7fab8233b34738f9b57154d7bb22",
+  "payload_sha256": "1a61d8b9de6a23cf94df6e28dc4e5d6b01bd698bab9ff472001157a4163da254",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "f73051fcc79e262d5320508f33c850b47348b14e0083e13c3458cc683b8a8c4e",
+  "result": {
+    "row_id": "pilot48_06_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_06_unresolved.u_context",
+        "role": "user",
+        "content": "Στο ημερολόγιο γράφει ότι το φυτό ποτίστηκε την ημέρα 7, σήμερα είναι η ημέρα 10 και το διάστημα ποτίσματος είναι 4 ημέρες. Δεν υπάρχει μέτρηση υγρασίας.",
+        "train": false
+      },
+      {
+        "id": "pilot48_06_unresolved.u_decision",
+        "role": "user",
+        "content": "Νομίζω. Με βάση μόνο τις ημέρες ποτίσματος, το χώμα πρέπει να είναι ακόμη υγρό.",
+        "train": false
+      },
+      {
+        "id": "pilot48_06_unresolved.a_target",
+        "role": "assistant",
+        "content": "Οι ημέρες ποτίσματος δεν αρκούν για να κρίνουμε αν το χώμα είναι ακόμη υγρό· χωρίς μέτρηση υγρασίας αυτό παραμένει άγνωστο. Ποια είναι η τωρινή μέτρηση υγρασίας του χώματος;",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_06_unresolved.u_decision",
+        "claim": "Με βάση μόνο τις ημέρες ποτίσματος, το χώμα πρέπει να είναι ακόμη υγρό.",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "pilot48_06_unresolved.u_context",
+          "pilot48_06_unresolved.u_decision"
+        ],
+        "expected_response_behaviour": [
+          "state_missing_or_ambiguous_evidence",
+          "ask_one_targeted_clarifying_question",
+          "do_not_invent_state"
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

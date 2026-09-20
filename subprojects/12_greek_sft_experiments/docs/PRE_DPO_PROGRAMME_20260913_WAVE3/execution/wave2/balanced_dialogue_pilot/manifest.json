@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "status": "prepared_not_launched",
+  "frozen_at": "2026-09-13T16:29:00+03:00",
+  "source_specs": {
+    "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/correcting_dialogue_specs/revision2/pilot48_input_specs.jsonl",
+    "sha256": "5b3f33a423a86546976200ba54d52c23ce7b5c7854dbb8ebbc7ba1b925c55d35",
+    "rows": 48
+  },
+  "source_split_manifest": {
+    "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/correcting_dialogue_specs/revision2/family_split_manifest.json",
+    "sha256": "79f95556b01e52d94f90e3148b6ed8b7b3ae5d38370c2b6ff4c524add1da5973"
+  },
+  "prompt_pack": {
+    "DIALOGUE.md": "8e02fda0379bc438397435a775db84985fa45ca797b7a6368aea08352afed56d",
+    "AUDIT_REPAIR.md": "3b4c1f47e7aafc4e07a759b4815f5f6a7274e168f57a74946d435fc35c48a6fc",
+    "GREEK_CORRECTION.md": "d277a619e9855b51d53664bb3d4f0fb809ffe21b923f55dfec7c46da19b1899e",
+    "README.md": "f283c63c30c05b4775139f78168f441d7b19a50ae4c31eedc954207be6a8ebf4"
+  },
+  "runner": {
+    "reuse": "byte-identical copy of final-frozen generic maths runner; no new runner implementation",
+    "source": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_queue.py",
+    "sha256": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005"
+  },
+  "counts": {
+    "specifications": 48,
+    "dispatchable_primary": 47,
+    "quarantined": 1,
+    "train": 32,
+    "dev": 8,
+    "final_confirmation": 8,
+    "primary_calls": 47,
+    "retry_cap": 4,
+    "retry_call_cap": 12,
+    "semantic_repair_call_cap": 12,
+    "greek_correction_call_cap": 47,
+    "absolute_call_cap": 118
+  },
+  "probe": {
+    "calls": 4,
+    "split": "train",
+    "row_ids": [
+      "pilot48_01_true",
+      "pilot48_06_false",
+      "pilot48_10_partial",
+      "pilot48_03_unresolved"
+    ],
+    "queue": "queues/probe_train4.jsonl",
+    "max_workers": 4
+  },
+  "execution": {
+    "launched": false,
+    "default_runner_mode": "plan",
+    "workers_after_probe_max": 8,
+    "final_confirmation_policy": "run only after prompts and gates freeze; do not use content for tuning or selection"
+  },
+  "artifact_sha256": {
+    "run_queue.py": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005",
+    "inputs/train.jsonl": "54c35289274b2dbc0f5418cb145da9fe00e8d1e15e6e6b8903372c23c77cd039",
+    "inputs/dev.jsonl": "cacf1c7d12801a9caa02e0bfef656193ceb390ebff41e8c7fe24e3a7735ee869",
+    "queues/train.jsonl": "591f56895162f744dd9146ef67b1ecbcf433c4e59b9ae43651c7b27f59d5ca65",
+    "queues/dev.jsonl": "a4911d1a5662ce9647d7fec81f0bedc7f9fa1ff6ffd20c176b2314f6dd4dd94c",
+    "queues/probe_train4.jsonl": "c6b7ab3307236bdd469c4ea2f3a3789064cff3c7128aeaa24c71a7a521558bdd",
+    "sealed/final_confirmation/inputs.jsonl": "3d20f67cd253d92847bc701f05a8e6f533c692080514204ecf095022b961533a",
+    "sealed/final_confirmation/queue.jsonl": "6dba03f3f1e99479817336f71b38a6dbffe3ef46ed2d48d5fca7443b04be9a17",
+    "sealed/final_confirmation/gate_summary.json": "c3331cfc0952f6135910bc4e7244aa0381fff5883d0622f1d166e5a775cdf984",
+    "quarantine/silence_unspecified.jsonl": "3e0d566bb58beaa0692565b7beaa468a76a60b0bfcc54cae5e2ccf4dca36f29c",
+    "conditional_jobs.json": "7e0c8a7c508182c96f73e9fe9ebc4bf59a39268eddc77494237876a4a90b28f3",
+    "call_and_cost_envelope.json": "5af76da699e642d4a258d9169e6e64bf633c60ae8a1f0658b2a706374c50c062",
+    "execution_plan.json": "fcb0fc5c1e171d3fa8776818198440a0bc3511d0211248e81340dea70fba60cb",
+    "output_layout.json": "9a9433df40746ef547d28baf2639a12ed633b365d6ed3becc1e11c8d508275b7",
+    "probe_payloads.jsonl": "e2e68ced80d7fe51aaafe48487a78947323f9aaa0a6ca0c4da43be80ca9e909b",
+    "receipts/family_partition.json": "b826e98f69bf7591c9bb245eca668d8cbbea00d14f701afef372b954e8dd6862",
+    "receipts/train_payload_bindings.jsonl": "826dc6b5f816616ba65e4f3b7e072352074ec34afab9d87064c3d775bb0af596",
+    "receipts/dev_payload_bindings.jsonl": "53f3fd0d2e9e9cedf5cefb19ffebb301a1663195d6bacb89216e591545e43ba2",
+    "sealed/final_confirmation/payload_bindings.jsonl": "949e387763d58262fbd66bbf8b4564518e6135309df250aabea4f50972f8354f",
+    "schemas/author_dialogue.schema.json": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+    "schemas/semantic_repair.schema.json": "595e4ef89653892710759a52853c29920372c5599870931b57c73c8cc2922761",
+    "schemas/greek_correction.schema.json": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+    "prompts/author_dialogue.txt": "706421a4b63e5cc4e7d80db634ba011698c336ade53060a5a6e45ea30fc47eba",
+    "prompts/semantic_repair.txt": "d7457da49f400a79e28e82195482256ffdb6ad58e318019ca3e64842f1b344c4",
+    "prompts/greek_correction.txt": "3c22769c35578fc96b2158f92b697c8726e91f0f1e209f604cdee419452ecd4f",
+    "build_pilot.py": "0cebd48fab0f6f29a0b0c54ffbf91cd615b05815df4e21677546af3996dd46a9",
+    "verify_prelaunch.py": "ce80a3e186f029ed4f55e4d6f58a09d6284ae7ede7ac2b8400d3238197a54d2d",
+    "verify_outputs.py": "7b2c0da31ef96262fab6e95492895f36653d296e8bf40ba0735d085d844fa2c9",
+    "report.md": "0e025bf3a8396482cd06908f46959cfa2bb42a17724efe019d5099fe3d559d47"
+  }
+}

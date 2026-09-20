@@ -1,0 +1,89 @@
+{
+  "job_id": "adapt__scaleC_math_line_3416",
+  "row_id": "scaleC_math_line_3416",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "5bb0bd40eb3519581e92a55a8d8b18ebeec7543202a50d293cc88ce4c5559efa",
+  "input_record_sha256": "a71e6b80ad065000be7f7c6ec0410925ac71052ed676e3deeb890cfe7df0bb65",
+  "payload_sha256": "73f1e99b364f0061abf39c1859361dc29e26a51e0da05df81f925a613a17dad2",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "04bc0e9351dc52203a3cbfe6a482b62fc29532dcf3f508621b4ab0273b9bc944",
+  "result": {
+    "row_id": "scaleC_math_line_3416",
+    "status": "candidate",
+    "problem_text": "Ποια είναι η τιμή του αθροίσματος $-1 + 2 - 3 + 4 - 5 + 6 - 7 +\\dots+ 10.000$;",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "What is the value of the sum",
+        "target_span": "Ποια είναι η τιμή του αθροίσματος",
+        "reason": "Πιστή απόδοση της ερώτησης στα ελληνικά, χωρίς αλλαγή του ζητουμένου."
+      },
+      {
+        "source_span": "10,\\!000",
+        "target_span": "10.000",
+        "reason": "Προσαρμογή του διαχωριστικού χιλιάδων στην καθιερωμένη ελληνική τυπογραφία, με διατήρηση της τιμής 10000."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "-1",
+          "role": "πρώτος όρος του αθροίσματος",
+          "unit": null
+        },
+        {
+          "value": "2",
+          "role": "δεύτερος όρος του αθροίσματος",
+          "unit": null
+        },
+        {
+          "value": "-3",
+          "role": "τρίτος όρος του αθροίσματος",
+          "unit": null
+        },
+        {
+          "value": "4",
+          "role": "τέταρτος όρος του αθροίσματος",
+          "unit": null
+        },
+        {
+          "value": "-5",
+          "role": "πέμπτος όρος του αθροίσματος",
+          "unit": null
+        },
+        {
+          "value": "6",
+          "role": "έκτος όρος του αθροίσματος",
+          "unit": null
+        },
+        {
+          "value": "-7",
+          "role": "έβδομος όρος του αθροίσματος",
+          "unit": null
+        },
+        {
+          "value": "10000",
+          "role": "τελευταίος, θετικός όρος του αθροίσματος",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Οι διαδοχικοί ακέραιοι από το 1 έως και το 10000 εμφανίζονται με εναλλασσόμενα πρόσημα.",
+        "Οι περιττοί όροι είναι αρνητικοί και οι άρτιοι όροι είναι θετικοί.",
+        "Το άθροισμα περιλαμβάνει και τα δύο άκρα, από το -1 έως το +10000."
+      ],
+      "required_outputs": [
+        "Η ακριβής τιμή του δοσμένου αθροίσματος."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": [
+      "Να επιβεβαιωθεί ότι η έλλειψη δηλώνει τη συνέχιση του ίδιου μοτίβου εναλλασσόμενων προσήμων έως και τον θετικό όρο 10000."
+    ]
+  }
+}

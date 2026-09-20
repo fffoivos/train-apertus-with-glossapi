@@ -1,0 +1,467 @@
+{
+  "definition": "decoded Unicode C0 U+0000..U+001F excluding TAB/LF/CR, plus DEL U+007F",
+  "accepted_outputs_scanned": 88,
+  "files_with_findings": 2,
+  "total_findings": 3,
+  "file_results": [
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_1334.json",
+      "sha256": "69364220f9400b9091b1d939444b08b6c7b70de95c1115e4e914316022aa2304",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_1379.json",
+      "sha256": "f760aaad7fea36849f26317b58b42be214cda42cecdd9f034930dc6548b72103",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_1950.json",
+      "sha256": "98bf6f30c2610390344482c76c6e8fd624ac441df159be6989376bd7a7897a4c",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_2429.json",
+      "sha256": "c92797f3e3d81e1417c06710f36c0141dee00062576bb94476f6caf3e5e5084b",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_2507.json",
+      "sha256": "6261051ee95370f4bf3643209f1edbeb9770374f76f990bc51a40c8ddc0547c0",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_2676.json",
+      "sha256": "0e136b2ad734fee2128674d6f720a19c3202b9d758f0a74dea76d1bbd53053d1",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_3093.json",
+      "sha256": "bb26d1a868ba0b13cdbaa9ded2452b7b1721fb674a1d786d87f925683e9228e4",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_3125.json",
+      "sha256": "5619bf663dbc98949b985342e0930ff518d531923124827a31f6d2f360debfca",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_3775.json",
+      "sha256": "4fc709beaf2c7ecfa59bc2a6d29497dce50fbe66c11df278ec93636360ec3d49",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_4646.json",
+      "sha256": "fe6b2c5064316ec6f3cd33a6c94b0f6c70041de0a84e14033aefcfe4256f1af5",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_4821.json",
+      "sha256": "26a4bdbe8f2a91b81692d71eecf18944d407280b5608a72087642abe23a06dba",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_5324.json",
+      "sha256": "41ffa51fa9d56b644a4bf1c6a6268fc34864bab29fc3257a3ec08c10d8315f46",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_5977.json",
+      "sha256": "2534a2e275b28103be2995c278c186fe32b86d712147ef5a3248ccdd6cfe4d3f",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_6029.json",
+      "sha256": "be1120fe568d84b77e5fbe6d248f14ae5940c561d449b917e313975c0662d534",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_6930.json",
+      "sha256": "a16d2a0633d9eeeae1db94a2b16366117f83e111563be19431e4d4d2b96d6f3e",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_7113.json",
+      "sha256": "6c472b6a9a22c0fa1a6f1a11029c4c73fd03dede1eee7f0337c99e8ed154853c",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__control_gm_gsm_3096.json",
+      "sha256": "f6dbfb2fd53fdf25ca834e1142a5bb798ab902f3ddd515791a6dff26d889b498",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__control_gm_gsm_3835.json",
+      "sha256": "8bad42d3757b7ac3099348359ec0a9c7f38f68d20e09a4841e010009aa52b221",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__control_gm_math_1054.json",
+      "sha256": "274a20dbcb425eb09ad53fd5909b2948d6ec678425f817f571cfb915575326f7",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__control_gm_math_1745.json",
+      "sha256": "1695b02c5321e3a22bd0380e881f358bf394c166830d5692fb59b4914f886046",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__control_gm_math_2731.json",
+      "sha256": "b4fa03c352e9e464ffc31af01c4185956ffb67d7a0babc64dc40f2dd1bc7231f",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__control_gm_math_3507.json",
+      "sha256": "5accd0f5343db960dfd8c20e0990864b1b99022d1ccf4935747e73118161ce37",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__control_gm_math_3924.json",
+      "sha256": "5ff8b73c29dbaa895414cd5f9a75dfcb63aea9d9a842bbe842cd0469a4065e29",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__control_gm_math_837.json",
+      "sha256": "db10378810fa2777e4dac38e3d1af7f6082c0b870cc85359255a7ad9455b0501",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_1334.json",
+      "sha256": "a354816378a811689379d02cd81b33db7c123f75053f815c84688237e2d33298",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_1379.json",
+      "sha256": "441f15b4c6299bfe4d3f1222607cceb699282673b9d5bc96ef015de2e4dfdd24",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_1950.json",
+      "sha256": "651a0383da7094631f4504f059b9583424a9989d7b7d9267d57200d434058774",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_2429.json",
+      "sha256": "b00c1d2cca8589478790f38eb11fb284e7401ddc22a171910ca1c2ab67fb222a",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_2507.json",
+      "sha256": "0ae5c45b61a6ca0ac4a499ca7f6cdd0ee98df903756575f33f8c7d02ab78ca14",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_2676.json",
+      "sha256": "7be8f35227b279abb9531ce2de37f1d72ca148c358a31699932917bfb43cac2d",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_3093.json",
+      "sha256": "e81b5fdc95b332a66a0b8783fe9e933528f55f908f3d107cfb1251bf85723cf2",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_3125.json",
+      "sha256": "5ad8913c3277497c9b1b1fddc17e348ee9c50516e9fa820d5270852422df4424",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_3775.json",
+      "sha256": "4910c08ed01d9fb89c94772fc11e11dfdf092f26b373f7122fbc4448ca372875",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_4646.json",
+      "sha256": "154f3d4d701aa1b0e7ee51ddd9464245bf19ce4cc9328649a0ff7b96b63dbe3b",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_4821.json",
+      "sha256": "3c48e27afb2e4df413532f1b33a361e8908776bc7f487abbc3e297c723516403",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_5324.json",
+      "sha256": "4a6247bb00b0aee690bcb0ca21007e1173d87ff8127295ae80cc26cffed7defc",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_5977.json",
+      "sha256": "af54141a98d1136f983b8882c051a9b69a8419e396b1f6814f2eadbb8fd6376b",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_6029.json",
+      "sha256": "a356f26b77a0f68543ffe19bec3217ef8ca4deb63b7c2cb6e03c3748b39bc133",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_6930.json",
+      "sha256": "2c15f3500d77de76051a8dc43b0c3c0c85f20735ca02514dd98e5cc884fa4dba",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_7113.json",
+      "sha256": "a0f7a54b6ba61cd81147c4a0c9143eba73b9da2e29cd7910f3700dfabdb36b17",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__repair_gm_math_2231.json",
+      "sha256": "cf019b4f11433dc8244e89c53b96c70b2c1463a8d06e17aa518ccb0240b09cd8",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__repair_gsm_1253.json",
+      "sha256": "9e84a325662fb0a1cf6023fd719f2eed3e6bf9bb23b293a4c994af6e0003a0b9",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__repair_math5_1014.json",
+      "sha256": "7b792c6c283880844d502e9aea5f49fbd24b28fad5d0d51d600768fbed8025b4",
+      "decoded_disallowed_c0_or_del": [
+        {
+          "json_path": "$.result.solution_text",
+          "character_index": 896,
+          "codepoint": "U+000C"
+        },
+        {
+          "json_path": "$.result.solution_text",
+          "character_index": 933,
+          "codepoint": "U+000C"
+        }
+      ]
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__repair_math5_139.json",
+      "sha256": "0680ad1c4db2db66658b975937df92b8d1f101c9bb656c92323a7e07846261d1",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__repair_math5_436.json",
+      "sha256": "f570ca6a2800367dea83909a7a332a7262964afa3e6dd830d992e56b1f03930d",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__repair_math5_537.json",
+      "sha256": "8a3c635ba33a12c5c329bf58398f9f040d2e0b12eb45d62c511c91fa2575fc04",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__repair_math5_630.json",
+      "sha256": "4787eec20fe91f6b3aad5cc74bfac0997922f6496aebb26e661effb9be94ac13",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__repair_math5_77.json",
+      "sha256": "e25f5bde85eac2c39580cd61ea37bda01aeec856206e1392f7058cd0428e3a85",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_xhigh__fresh_math5_line_1379.json",
+      "sha256": "ac92f61f81cbbc42c986d9f825e64db5108acec11f430d5e1beff61743f4401e",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_xhigh__fresh_math5_line_3775.json",
+      "sha256": "64ff2c1e38382de228797baf69bca9cc2e4a9e552b968a93226c3422f9437d77",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_xhigh__fresh_math5_line_4646.json",
+      "sha256": "0e9f4cf3526c608a9c1fa908477bb8f189c3537d9496afe3f6c90cf5d0714fb0",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_xhigh__fresh_math5_line_6930.json",
+      "sha256": "10c93908872c68a25bfd888a291f02597034806a78bca855310724463cccd3fb",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_xhigh__repair_math5_1014.json",
+      "sha256": "eee621a1ea281b572224081643eebdfee64dea97b9ed98f914f7e2567c203ad5",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_xhigh__repair_math5_139.json",
+      "sha256": "82d38d488774461ce97e4d181106b8a5c8a53e21736403f4c6a07add8951bf72",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_xhigh__repair_math5_436.json",
+      "sha256": "041b0d58b312654a513e77b47abfe59292817af189bc94c3041942867a2db2ab",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_xhigh__repair_math5_630.json",
+      "sha256": "09e5f9a709fe9b793ff9b5e8afd173c5da5b464f7c80500c34247983fcb51288",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__control_gm_gsm_3096.json",
+      "sha256": "1cfeb77428a857ea0a0700a063d986ec504f750a5fda3ab81ad0899bb32adda4",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__control_gm_gsm_3835.json",
+      "sha256": "3bf0d20a95de7dcdfd98b8b6c8d91d06461a56bfd5777e0c602a7e040fe74a0b",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__control_gm_math_1054.json",
+      "sha256": "c848a1384778a2081a7e6218bc6f5d6290dc93da5257153bffb55e71056c7d2f",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__control_gm_math_1745.json",
+      "sha256": "65f700bdc9ba865e3badd6ec7ce08515542f291347d0c6e1ef9254143392f15c",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__control_gm_math_2731.json",
+      "sha256": "557573e94e01b0543c8fa3daec342d3459523257d7650c0fa6c9691c6da04f6f",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__control_gm_math_3507.json",
+      "sha256": "8a3b8aec63ae6d0b7a2d0da9306385f9814e2898c0b68d916f7a54e8b208f5c4",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__control_gm_math_3924.json",
+      "sha256": "7b6534c9333ae805d901386275eca843c5969f7e1905767c226dff75c3e0caf1",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__control_gm_math_837.json",
+      "sha256": "dd14312c07abf426289f52aabbb47c0f74faf5391c0d9d0986caec8ac69fb664",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_1334.json",
+      "sha256": "7710beade51501e57ce44bd40f17cc564938459fb8de150130b12d9c74f2fcbf",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_1379.json",
+      "sha256": "fef5a1ea381c79dc54baada0a2aab6574fbe0d56f0c5756601e9f0c446a5c2eb",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_1950.json",
+      "sha256": "5f0794d118c04a14c4a5c4cceb77f2d36e38a66d35c6c153c20590cb462bd1ff",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_2429.json",
+      "sha256": "bd6e900a92d8665c154839a719e85fe3103ad67051cf765e9839d2ca6666de4e",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_2507.json",
+      "sha256": "9eac974d77be5a3eff61efe7ded358f98981ef6e2f883765a7718b474133db83",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_2676.json",
+      "sha256": "30c67762bf2a25e8af621e79aedac8e9373e1347af334598a21a9fdc6b80eb81",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_3093.json",
+      "sha256": "c277797d8ef739786d83fcf2f3d0a4f3044ef4669ddbcbe0e2f12f11278b3eb9",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_3125.json",
+      "sha256": "d1d38b92c7c0912ce2a2ca1833191ffbf591d0a0139ba21754742fcf195018d7",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_3775.json",
+      "sha256": "41d967e6ce36738f92c34bd2b40388f46204cffec11e285815fa32b087907f02",
+      "decoded_disallowed_c0_or_del": [
+        {
+          "json_path": "$.result.solution_text",
+          "character_index": 940,
+          "codepoint": "U+000C"
+        }
+      ]
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_4646.json",
+      "sha256": "ce091c58d43f6c1be8d6138fd2375477d0a7003b91ba2024a1ab2fa57c4ceb25",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_4821.json",
+      "sha256": "55c2095145dda013a9158ab6ca7ecfa62a22072e7a4a44b4c05569b459ffa878",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_5324.json",
+      "sha256": "3223225857347aa179333b19b6651c0c62a2b622ffba34883d9eb7e68dc36714",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_5977.json",
+      "sha256": "3b97d1b01d2fa865c67c37059bb763ca945f5df89f90232203fd95957625a453",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_6029.json",
+      "sha256": "2fd787a88195a3baafd68216313cbb6299159a3b5145f8be8b7b66497712156c",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_6930.json",
+      "sha256": "4649c8bbde6e9803198be0c99bafd93e8a2d77ddca834c723cd1e851be772225",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_7113.json",
+      "sha256": "7d3c779ea2c979cf5dbe2f3facac3bcc807ca5fc177dce7ed9831e24e54c4aef",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__repair_gm_math_2231.json",
+      "sha256": "401b6f526185c81155b9bad3595b450ac3be1c733f4a3346e5e41c859681660f",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__repair_gsm_1253.json",
+      "sha256": "84c10d4186dcccb07991c6f73ea9f2639e1e4705190d8402881a2776bff163ee",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__repair_math5_1014.json",
+      "sha256": "653c2c8044159643a7e01c0bf410ef9abf547e57a3a318d4feeaf3df412db87f",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__repair_math5_139.json",
+      "sha256": "87744c74d4d6473a58b9a14a153cb906b8145582af75e4278221fff3413147a4",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__repair_math5_436.json",
+      "sha256": "41ea16ca9071b9b9cfaa0fd9baed6bd1dcee477efd9052cc3e8a0782eea08460",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__repair_math5_537.json",
+      "sha256": "397affaf553d989f95f0515fcad6e20e1dfaf2da2479940148688cc6c537521f",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__repair_math5_630.json",
+      "sha256": "3d609916e0de11bc1bdacec422b1e229dedc69445b60afec9f01d51af5cc1aea",
+      "decoded_disallowed_c0_or_del": []
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__repair_math5_77.json",
+      "sha256": "b5c907490b1a8157373fc030b44b751f47c379da6327cf5c8c7188a76a2a6bd1",
+      "decoded_disallowed_c0_or_del": []
+    }
+  ],
+  "selected_candidate_rows_scanned": 32,
+  "selected_candidate_findings": []
+}

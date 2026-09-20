@@ -1,0 +1,54 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_2535",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The candidate is paired with a single recorded Greek problem, so no historical pairing ambiguity is indicated.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_125",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "greek_language",
+          "severity": "minor",
+          "quote": "«\\frac{169}{20}=8{,}45» … «\\boxed{8.45}»",
+          "explanation": "The solution first follows the Greek decimal-comma convention but switches to a decimal point in the boxed answer. The numerical result and requested precision remain correct, but the notation is internally inconsistent for a Greek-language example.",
+          "suggested_action": "Use the Greek decimal comma consistently in the final boxed answer, for example \\(\\boxed{8{,}45}\\)."
+        }
+      ],
+      "provenance_note": "The problem text is marked stable and no alternative problem variants are supplied. Although two solution records exist, there is no indicated mathematical mismatch with the selected stable problem.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_862",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The candidate is paired with a single recorded Greek problem. Replacing dollars with euros is a coherent permitted cultural adaptation, with the numerical premises preserved.",
+      "verification_needed": []
+    }
+  ]
+}

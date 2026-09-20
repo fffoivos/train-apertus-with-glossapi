@@ -1,0 +1,37 @@
+{
+  "schema_version": "openmath_original_pilot_v1",
+  "status": "passed",
+  "finished_at": "2026-09-13T14:52:38.704719+00:00",
+  "seconds": 12.323,
+  "counts": {
+    "source_rows": 333334,
+    "exact_original_math_rows": 5027,
+    "normalized_match_without_exact_original": 182,
+    "held_or_benchmark_overlap": 170,
+    "invalid_controls": 1
+  },
+  "problem_source_counts": {
+    "augmented_math": 277115,
+    "augmented_gsm8k": 46330,
+    "gsm8k": 4934,
+    "math": 4955
+  },
+  "eligible_families": 3996,
+  "covered_cells": 36,
+  "pilot_rows": 45,
+  "pilot_families": 36,
+  "source": {
+    "repo": "nvidia/OpenMathInstruct-2",
+    "revision": "469216e3f46f4dacf476b382e192485ea51a143e",
+    "split": "train_1M",
+    "file": "data/train_1M-00000-of-00003.parquet",
+    "url": "https://huggingface.co/datasets/nvidia/OpenMathInstruct-2/resolve/469216e3f46f4dacf476b382e192485ea51a143e/data/train_1M-00000-of-00003.parquet",
+    "bytes": 212931526,
+    "sha256": "93700f39cdc87994f2c9a6ad62e1d62e09467793f57d376cfab722757ff26e1c"
+  },
+  "files": {
+    "candidate_rows.jsonl": "a4fb88cc135a704afa2635ca8b5f3cae4b874f715248de728b488fa5e90ecbec",
+    "eligible_family_inventory.jsonl": "3aae405747785a374c5e8bd533861d4f70810cc4c6e25959ea03e3b0209e2428"
+  },
+  "limits": "One first shard of the documented1M subset; not representative of the full source. Candidates need full proof/adaptation review, actual tokenizer length/mask checks and complete assembly decontamination. Exact source matching is not proof of correct generated solutions."
+}

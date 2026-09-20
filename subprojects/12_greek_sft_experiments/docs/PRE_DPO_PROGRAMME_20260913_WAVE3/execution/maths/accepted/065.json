@@ -1,0 +1,56 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_3920",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχει μία μόνο καταγραφή προβλήματος και λύσης, χωρίς εμφανή αβεβαιότητα αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3226",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "minor",
+          "quote": "ζυγίζουν συνολικά 439 λίβρες",
+          "explanation": "Η λύση διατηρεί σωστά και με συνέπεια τις λίβρες της αγγλικής πηγής, αλλά η μη μετρική μονάδα παραμένει στοιχείο αγγλοσαξονικού πλαισίου σε ελληνικό κείμενο. Αυτό δεν επηρεάζει τη μαθηματική ορθότητα ή την πιστότητα προς την πηγή.",
+          "suggested_action": "Να καταγραφεί ως μικρή εκκρεμότητα πολιτισμικής προσαρμογής. Μετατροπή σε κιλά θα πρέπει να γίνει μόνο αν επιτρέπεται ρητά η αλλαγή των δεδομένων του προβλήματος και με αντίστοιχη επανεπίλυση."
+        }
+      ],
+      "provenance_note": "Υπάρχει μία μόνο καταγραφή προβλήματος και λύσης, χωρίς εμφανή αβεβαιότητα αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_685",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχουν δύο αποθηκευμένες ελληνικές εκδοχές του προβλήματος και η ιστορική αντιστοίχιση της τελευταίας λύσης με την τελευταία εκδοχή δεν αποδεικνύεται. Οι δύο εκδοχές είναι μαθηματικά ισοδύναμες και η επιλεγμένη λύση απαντά ορθά και στις δύο. Η γραφή «1.024» ερμηνεύεται σύμφωνα με την ελληνική σύμβαση ως 1024.",
+      "verification_needed": [
+        "Επιβεβαίωση από τα αρχικά μεταδεδομένα ότι η επιλεγμένη λύση είχε πράγματι συνδεθεί με την τελευταία αποθηκευμένη εκδοχή του προβλήματος."
+      ]
+    }
+  ]
+}

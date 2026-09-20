@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__pilot48_03_true",
+  "row_id": "pilot48_03_true",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "712162c8997a52eca3d49fd3d04aaf7876a1b863a3a34af41d3f6f2510509090",
+  "input_record_sha256": "25367b2e4eb17f1979baab5abaddd5060fbe29dca043e3a606c88c589729eca7",
+  "payload_sha256": "8b38df014934111438018be0106f9132d18baf49dc4e3585e66e9618aca581d3",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "03da9299840f26fb5be3600bbc057680d606b2171c3ca7257fd693db22c3c55e",
+  "result": {
+    "row_id": "pilot48_03_true",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_03_true.u_context",
+        "role": "user",
+        "content": "Αρχικά το εργαστήριο ήταν Δευτέρα στις 17:00 στην αίθουσα Α, χωρίς καταγραμμένη διάρκεια. Έπειτα μεταφέρθηκε την Τρίτη στις 18:00 στην αίθουσα Β.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_true.a_context",
+        "role": "assistant",
+        "content": "Κατάλαβα: τα τρέχοντα στοιχεία είναι Τρίτη στις 18:00, στην αίθουσα Β, χωρίς καταγραμμένη διάρκεια.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_true.u_decision",
+        "role": "user",
+        "content": "Το εργαστήριο είναι Τρίτη στις 18:00 στην αίθουσα Β. Σημείωσε διάρκεια 90 λεπτά.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά. Η καταχώριση είναι πλέον: Τρίτη στις 18:00, αίθουσα Β, διάρκεια 90 λεπτά.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

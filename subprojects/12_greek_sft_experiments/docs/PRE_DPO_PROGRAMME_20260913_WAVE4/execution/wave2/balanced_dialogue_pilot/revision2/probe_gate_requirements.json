@@ -1,0 +1,35 @@
+{
+  "scope": "four revision2 semantic-repair probe outputs",
+  "global": [
+    "candidate_messages preserve stable IDs, roles and train masks",
+    "the required user evidence core precedes the decision",
+    "the frozen decision core appears verbatim with no new fact, value, referent or operation",
+    "a tone wrapper does not change punctuation or turn a declarative core into a question",
+    "exactly one assistant target is train:true and all user/context turns are train:false",
+    "state after equals the revised visible-evidence oracle",
+    "no assistant assertion is treated as independent evidence",
+    "no external action success is claimed without a supplied tool result"
+  ],
+  "rows": {
+    "pilot48_01_true": [
+      "the prior user turn states the authoritative list history",
+      "the target acknowledges the true current state and applies milk_count 2 to 3"
+    ],
+    "pilot48_06_false": [
+      "the prior user turn supplies days 7, 10 and interval 4",
+      "the target derives next_due_day 11 and does not change state"
+    ],
+    "pilot48_10_partial": [
+      "the dialogue explicitly concerns a text catalogue in this thread",
+      "both status claims explicitly describe the catalogue that was just shown rather than a new user status update",
+      "the target separates the true appointment atom from the false shopping atom",
+      "the target updates only the appointment entry in the text catalogue and uses natural Greek"
+    ],
+    "pilot48_03_unresolved": [
+      "the decision remains exactly number-free",
+      "the target does not mention 60 and asks which duration was intended",
+      "the duration remains null"
+    ]
+  },
+  "launch": false
+}

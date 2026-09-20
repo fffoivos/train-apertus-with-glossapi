@@ -1,0 +1,682 @@
+{
+  "model_values": [
+    "gpt-5.6-sol"
+  ],
+  "calls_total": 92,
+  "states": {
+    "failed": 4,
+    "accepted": 88
+  },
+  "calls_without_reported_usage": 4,
+  "overall": {
+    "calls": 92,
+    "calls_with_usage": 88,
+    "sum_call_seconds": 1849.87,
+    "latency_seconds": {
+      "min": 1.93,
+      "median": 17.36,
+      "p95_nearest_rank": 49.13,
+      "max": 77.54,
+      "mean": 20.107
+    },
+    "tokens": {
+      "input_tokens": 1098460,
+      "cached_input_tokens": 571392,
+      "output_tokens": 75074,
+      "reasoning_output_tokens": 28089
+    }
+  },
+  "wall_interval": {
+    "earliest_start": "2026-09-13T13:24:30.113745+00:00",
+    "latest_finish": "2026-09-13T13:31:26.666479+00:00",
+    "elapsed_seconds": 416.553
+  },
+  "by_stage_effort_state": {
+    "adaptation|high|accepted": {
+      "calls": 16,
+      "calls_with_usage": 16,
+      "sum_call_seconds": 362.07,
+      "latency_seconds": {
+        "min": 16.18,
+        "median": 20.995,
+        "p95_nearest_rank": 34.03,
+        "max": 34.03,
+        "mean": 22.629
+      },
+      "tokens": {
+        "input_tokens": 210569,
+        "cached_input_tokens": 21504,
+        "output_tokens": 14716,
+        "reasoning_output_tokens": 3303
+      }
+    },
+    "adaptation|high|failed": {
+      "calls": 4,
+      "calls_with_usage": 0,
+      "sum_call_seconds": 9.05,
+      "latency_seconds": {
+        "min": 1.93,
+        "median": 2.16,
+        "p95_nearest_rank": 2.8,
+        "max": 2.8,
+        "mean": 2.262
+      },
+      "tokens": {
+        "input_tokens": 0,
+        "cached_input_tokens": 0,
+        "output_tokens": 0,
+        "reasoning_output_tokens": 0
+      }
+    },
+    "solution_high|high|accepted": {
+      "calls": 32,
+      "calls_with_usage": 32,
+      "sum_call_seconds": 659.05,
+      "latency_seconds": {
+        "min": 6.95,
+        "median": 15.95,
+        "p95_nearest_rank": 55.26,
+        "max": 77.54,
+        "mean": 20.595
+      },
+      "tokens": {
+        "input_tokens": 395324,
+        "cached_input_tokens": 226944,
+        "output_tokens": 24885,
+        "reasoning_output_tokens": 9209
+      }
+    },
+    "solution_xhigh|xhigh|accepted": {
+      "calls": 8,
+      "calls_with_usage": 8,
+      "sum_call_seconds": 252.5,
+      "latency_seconds": {
+        "min": 13.36,
+        "median": 23.965,
+        "p95_nearest_rank": 68.09,
+        "max": 68.09,
+        "mean": 31.562
+      },
+      "tokens": {
+        "input_tokens": 98381,
+        "cached_input_tokens": 9600,
+        "output_tokens": 11304,
+        "reasoning_output_tokens": 6276
+      }
+    },
+    "verification_blind|high|accepted": {
+      "calls": 32,
+      "calls_with_usage": 32,
+      "sum_call_seconds": 567.2,
+      "latency_seconds": {
+        "min": 6.56,
+        "median": 14.905,
+        "p95_nearest_rank": 46.05,
+        "max": 50.28,
+        "mean": 17.725
+      },
+      "tokens": {
+        "input_tokens": 394186,
+        "cached_input_tokens": 313344,
+        "output_tokens": 24169,
+        "reasoning_output_tokens": 9301
+      }
+    }
+  },
+  "runner_summary_path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/summary.json",
+  "runner_summary_sha256": "e09aad1d8ef87fc4351a5d8a033332ed08f4c5d1c089f1764ce6acb8b762ef7c",
+  "receipt_files": [
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_1334.1.receipt.json",
+      "job_id": "adapt__fresh_math5_line_1334",
+      "attempt": 1,
+      "state": "failed"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_1334.2.receipt.json",
+      "job_id": "adapt__fresh_math5_line_1334",
+      "attempt": 2,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_1379.1.receipt.json",
+      "job_id": "adapt__fresh_math5_line_1379",
+      "attempt": 1,
+      "state": "failed"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_1379.2.receipt.json",
+      "job_id": "adapt__fresh_math5_line_1379",
+      "attempt": 2,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_1950.1.receipt.json",
+      "job_id": "adapt__fresh_math5_line_1950",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_2429.1.receipt.json",
+      "job_id": "adapt__fresh_math5_line_2429",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_2507.1.receipt.json",
+      "job_id": "adapt__fresh_math5_line_2507",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_2676.1.receipt.json",
+      "job_id": "adapt__fresh_math5_line_2676",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_3093.1.receipt.json",
+      "job_id": "adapt__fresh_math5_line_3093",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_3125.1.receipt.json",
+      "job_id": "adapt__fresh_math5_line_3125",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_3775.1.receipt.json",
+      "job_id": "adapt__fresh_math5_line_3775",
+      "attempt": 1,
+      "state": "failed"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_3775.2.receipt.json",
+      "job_id": "adapt__fresh_math5_line_3775",
+      "attempt": 2,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_4646.1.receipt.json",
+      "job_id": "adapt__fresh_math5_line_4646",
+      "attempt": 1,
+      "state": "failed"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_4646.2.receipt.json",
+      "job_id": "adapt__fresh_math5_line_4646",
+      "attempt": 2,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_4821.1.receipt.json",
+      "job_id": "adapt__fresh_math5_line_4821",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_5324.1.receipt.json",
+      "job_id": "adapt__fresh_math5_line_5324",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_5977.1.receipt.json",
+      "job_id": "adapt__fresh_math5_line_5977",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_6029.1.receipt.json",
+      "job_id": "adapt__fresh_math5_line_6029",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_6930.1.receipt.json",
+      "job_id": "adapt__fresh_math5_line_6930",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/adapt__fresh_math5_line_7113.1.receipt.json",
+      "job_id": "adapt__fresh_math5_line_7113",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__control_gm_gsm_3096.1.receipt.json",
+      "job_id": "solve_high__control_gm_gsm_3096",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__control_gm_gsm_3835.1.receipt.json",
+      "job_id": "solve_high__control_gm_gsm_3835",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__control_gm_math_1054.1.receipt.json",
+      "job_id": "solve_high__control_gm_math_1054",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__control_gm_math_1745.1.receipt.json",
+      "job_id": "solve_high__control_gm_math_1745",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__control_gm_math_2731.1.receipt.json",
+      "job_id": "solve_high__control_gm_math_2731",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__control_gm_math_3507.1.receipt.json",
+      "job_id": "solve_high__control_gm_math_3507",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__control_gm_math_3924.1.receipt.json",
+      "job_id": "solve_high__control_gm_math_3924",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__control_gm_math_837.1.receipt.json",
+      "job_id": "solve_high__control_gm_math_837",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__fresh_math5_line_1334.1.receipt.json",
+      "job_id": "solve_high__fresh_math5_line_1334",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__fresh_math5_line_1379.1.receipt.json",
+      "job_id": "solve_high__fresh_math5_line_1379",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__fresh_math5_line_1950.1.receipt.json",
+      "job_id": "solve_high__fresh_math5_line_1950",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__fresh_math5_line_2429.1.receipt.json",
+      "job_id": "solve_high__fresh_math5_line_2429",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__fresh_math5_line_2507.1.receipt.json",
+      "job_id": "solve_high__fresh_math5_line_2507",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__fresh_math5_line_2676.1.receipt.json",
+      "job_id": "solve_high__fresh_math5_line_2676",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__fresh_math5_line_3093.1.receipt.json",
+      "job_id": "solve_high__fresh_math5_line_3093",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__fresh_math5_line_3125.1.receipt.json",
+      "job_id": "solve_high__fresh_math5_line_3125",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__fresh_math5_line_3775.1.receipt.json",
+      "job_id": "solve_high__fresh_math5_line_3775",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__fresh_math5_line_4646.1.receipt.json",
+      "job_id": "solve_high__fresh_math5_line_4646",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__fresh_math5_line_4821.1.receipt.json",
+      "job_id": "solve_high__fresh_math5_line_4821",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__fresh_math5_line_5324.1.receipt.json",
+      "job_id": "solve_high__fresh_math5_line_5324",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__fresh_math5_line_5977.1.receipt.json",
+      "job_id": "solve_high__fresh_math5_line_5977",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__fresh_math5_line_6029.1.receipt.json",
+      "job_id": "solve_high__fresh_math5_line_6029",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__fresh_math5_line_6930.1.receipt.json",
+      "job_id": "solve_high__fresh_math5_line_6930",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__fresh_math5_line_7113.1.receipt.json",
+      "job_id": "solve_high__fresh_math5_line_7113",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__repair_gm_math_2231.1.receipt.json",
+      "job_id": "solve_high__repair_gm_math_2231",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__repair_gsm_1253.1.receipt.json",
+      "job_id": "solve_high__repair_gsm_1253",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__repair_math5_1014.1.receipt.json",
+      "job_id": "solve_high__repair_math5_1014",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__repair_math5_139.1.receipt.json",
+      "job_id": "solve_high__repair_math5_139",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__repair_math5_436.1.receipt.json",
+      "job_id": "solve_high__repair_math5_436",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__repair_math5_537.1.receipt.json",
+      "job_id": "solve_high__repair_math5_537",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__repair_math5_630.1.receipt.json",
+      "job_id": "solve_high__repair_math5_630",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_high__repair_math5_77.1.receipt.json",
+      "job_id": "solve_high__repair_math5_77",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_xhigh__fresh_math5_line_1379.1.receipt.json",
+      "job_id": "solve_xhigh__fresh_math5_line_1379",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_xhigh__fresh_math5_line_3775.1.receipt.json",
+      "job_id": "solve_xhigh__fresh_math5_line_3775",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_xhigh__fresh_math5_line_4646.1.receipt.json",
+      "job_id": "solve_xhigh__fresh_math5_line_4646",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_xhigh__fresh_math5_line_6930.1.receipt.json",
+      "job_id": "solve_xhigh__fresh_math5_line_6930",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_xhigh__repair_math5_1014.1.receipt.json",
+      "job_id": "solve_xhigh__repair_math5_1014",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_xhigh__repair_math5_139.1.receipt.json",
+      "job_id": "solve_xhigh__repair_math5_139",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_xhigh__repair_math5_436.1.receipt.json",
+      "job_id": "solve_xhigh__repair_math5_436",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/solve_xhigh__repair_math5_630.1.receipt.json",
+      "job_id": "solve_xhigh__repair_math5_630",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__control_gm_gsm_3096.1.receipt.json",
+      "job_id": "verify__control_gm_gsm_3096",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__control_gm_gsm_3835.1.receipt.json",
+      "job_id": "verify__control_gm_gsm_3835",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__control_gm_math_1054.1.receipt.json",
+      "job_id": "verify__control_gm_math_1054",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__control_gm_math_1745.1.receipt.json",
+      "job_id": "verify__control_gm_math_1745",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__control_gm_math_2731.1.receipt.json",
+      "job_id": "verify__control_gm_math_2731",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__control_gm_math_3507.1.receipt.json",
+      "job_id": "verify__control_gm_math_3507",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__control_gm_math_3924.1.receipt.json",
+      "job_id": "verify__control_gm_math_3924",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__control_gm_math_837.1.receipt.json",
+      "job_id": "verify__control_gm_math_837",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__fresh_math5_line_1334.1.receipt.json",
+      "job_id": "verify__fresh_math5_line_1334",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__fresh_math5_line_1379.1.receipt.json",
+      "job_id": "verify__fresh_math5_line_1379",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__fresh_math5_line_1950.1.receipt.json",
+      "job_id": "verify__fresh_math5_line_1950",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__fresh_math5_line_2429.1.receipt.json",
+      "job_id": "verify__fresh_math5_line_2429",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__fresh_math5_line_2507.1.receipt.json",
+      "job_id": "verify__fresh_math5_line_2507",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__fresh_math5_line_2676.1.receipt.json",
+      "job_id": "verify__fresh_math5_line_2676",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__fresh_math5_line_3093.1.receipt.json",
+      "job_id": "verify__fresh_math5_line_3093",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__fresh_math5_line_3125.1.receipt.json",
+      "job_id": "verify__fresh_math5_line_3125",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__fresh_math5_line_3775.1.receipt.json",
+      "job_id": "verify__fresh_math5_line_3775",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__fresh_math5_line_4646.1.receipt.json",
+      "job_id": "verify__fresh_math5_line_4646",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__fresh_math5_line_4821.1.receipt.json",
+      "job_id": "verify__fresh_math5_line_4821",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__fresh_math5_line_5324.1.receipt.json",
+      "job_id": "verify__fresh_math5_line_5324",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__fresh_math5_line_5977.1.receipt.json",
+      "job_id": "verify__fresh_math5_line_5977",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__fresh_math5_line_6029.1.receipt.json",
+      "job_id": "verify__fresh_math5_line_6029",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__fresh_math5_line_6930.1.receipt.json",
+      "job_id": "verify__fresh_math5_line_6930",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__fresh_math5_line_7113.1.receipt.json",
+      "job_id": "verify__fresh_math5_line_7113",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__repair_gm_math_2231.1.receipt.json",
+      "job_id": "verify__repair_gm_math_2231",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__repair_gsm_1253.1.receipt.json",
+      "job_id": "verify__repair_gsm_1253",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__repair_math5_1014.1.receipt.json",
+      "job_id": "verify__repair_math5_1014",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__repair_math5_139.1.receipt.json",
+      "job_id": "verify__repair_math5_139",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__repair_math5_436.1.receipt.json",
+      "job_id": "verify__repair_math5_436",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__repair_math5_537.1.receipt.json",
+      "job_id": "verify__repair_math5_537",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__repair_math5_630.1.receipt.json",
+      "job_id": "verify__repair_math5_630",
+      "attempt": 1,
+      "state": "accepted"
+    },
+    {
+      "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/attempts/verify__repair_math5_77.1.receipt.json",
+      "job_id": "verify__repair_math5_77",
+      "attempt": 1,
+      "state": "accepted"
+    }
+  ]
+}

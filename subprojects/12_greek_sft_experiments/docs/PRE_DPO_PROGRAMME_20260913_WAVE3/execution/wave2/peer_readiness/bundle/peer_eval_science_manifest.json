@@ -1,0 +1,338 @@
+{
+  "schema_version": "krikri_v15_peer_eval_science_v1",
+  "status": "not_launched_readiness_pending",
+  "payload_sha256": "edf6f76fa34cf4a362b258a250259ce7d03029a7f2a739a2c9631caa1777b9dc",
+  "deployment_root": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3",
+  "model": {
+    "repo_id": "ilsp/Llama-Krikri-8B-Instruct-v1.5",
+    "revision": "326e2c0ea90d771c19fcf06225fe87dc922b51b2",
+    "snapshot_path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2",
+    "served_name": "krikri-v1.5",
+    "license": "llama3.1",
+    "chat_template_sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+    "tokenizer_json_sha256": "1b12728a215cde26d96f3add66a7a10f0e47147afbf2e677cc0a70ba49228ada",
+    "tokenizer_config_sha256": "1b56d3abd51a1e1609e04027d709852a0b14d059471d6cccc30ba1d1dcc7acab",
+    "model_index_sha256": "12329d543e4402298270d49949d388d32ea8cb3e1fe16cf462aeeadbe31b151a",
+    "files": [
+      {
+        "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/model-00001-of-00004.safetensors",
+        "bytes": 4913767264,
+        "sha256": "ca278ed6f262c1993c3bc9cee433a93fff6ffebb217cb767cc9a5ec5cc9e5464"
+      },
+      {
+        "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/model-00002-of-00004.safetensors",
+        "bytes": 4915916160,
+        "sha256": "cf1c87f848dec168d63b5d0742a3d79b0dbc521b3de5c68e8c70f23d082364e6"
+      },
+      {
+        "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/model-00003-of-00004.safetensors",
+        "bytes": 4999819336,
+        "sha256": "7728f1f441f5a51b5292b4b790eb65cce0d3964e6734a5d244bdf2fbc33b9cc8"
+      },
+      {
+        "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/model-00004-of-00004.safetensors",
+        "bytes": 1574986528,
+        "sha256": "e1576939e0f64e6d1d029d52f8de042a9045e4ac9e36054c4a6b197beb18631d"
+      }
+    ],
+    "control_files": [
+      {
+        "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/config.json",
+        "bytes": 869,
+        "sha256": "22ce76d0064ea51c20458ff58326c5e42433f2f3a87ce9eb47b27acd432c37d0"
+      },
+      {
+        "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/generation_config.json",
+        "bytes": 184,
+        "sha256": "fb6f007ef838d8fca7d11f2f97a8fdfe97be7e08210f33eb1348e833abf2f642"
+      },
+      {
+        "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/tokenizer.json",
+        "bytes": 19508014,
+        "sha256": "1b12728a215cde26d96f3add66a7a10f0e47147afbf2e677cc0a70ba49228ada"
+      },
+      {
+        "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/tokenizer_config.json",
+        "bytes": 50639,
+        "sha256": "1b56d3abd51a1e1609e04027d709852a0b14d059471d6cccc30ba1d1dcc7acab"
+      },
+      {
+        "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/special_tokens_map.json",
+        "bytes": 752,
+        "sha256": "e8e2824903f20c7a7e8b676181b9ae8e9631653823210ef914e5e0db990a9cfc"
+      },
+      {
+        "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/chat_template.jinja",
+        "bytes": 4614,
+        "sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65"
+      },
+      {
+        "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/model.safetensors.index.json",
+        "bytes": 23986,
+        "sha256": "12329d543e4402298270d49949d388d32ea8cb3e1fe16cf462aeeadbe31b151a"
+      }
+    ]
+  },
+  "runtime": {
+    "uenv": "pytorch/v2.9.1:v2",
+    "uenv_view": "default",
+    "python": "/user-environment/env/default/bin/python3",
+    "vllm_executable": "/iopsstor/scratch/cscs/fffoivos/venvs/vllm/bin/vllm",
+    "vllm_version": "0.28.0",
+    "lm_eval_pythonpath": "/iopsstor/scratch/cscs/fffoivos/python_envs/lm_eval",
+    "lm_eval_version": "0.4.11",
+    "transformers_version": "4.57.0",
+    "datasets_version": "4.0.0",
+    "accelerate_version": "1.13.0",
+    "torch_version": "2.9.1",
+    "hf_home": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home",
+    "offline": true
+  },
+  "generation": {
+    "system_prompt": null,
+    "apply_native_chat_template": true,
+    "temperature": 0,
+    "top_p": 1,
+    "max_tokens": {
+      "math500": 2048,
+      "other_fixed": 1024
+    },
+    "max_model_len": 4096
+  },
+  "tasks": {
+    "fixed": {
+      "math500_el": 500,
+      "math500_en": 500,
+      "ifbench_el": 300,
+      "ifbench_en": 300,
+      "xstest_el": 450,
+      "xstest_en": 450,
+      "multichallenge_el": 213,
+      "multichallenge_en": 213
+    },
+    "fixed_source_counts": {
+      "multichallenge_el": 262,
+      "multichallenge_en": 262
+    },
+    "context_exclusions": {
+      "file": "multichallenge_context_exclusions.json",
+      "union_ids": 49,
+      "rule": "retain only IDs whose native-template input plus requested output fits 4096 in both languages; apply identical IDs to original and v1.5"
+    },
+    "ilsp": {
+      "ifeval_greek": 541,
+      "mgsm_greek": 250
+    },
+    "total_generations": 3717,
+    "judging_deferred": [
+      "xstest_el",
+      "xstest_en",
+      "multichallenge_el",
+      "multichallenge_en"
+    ],
+    "not_in_batch": [
+      "mt_bench_greek",
+      "mt_bench_english",
+      "belebele_ell_Grek"
+    ]
+  },
+  "allocation": {
+    "partition": "debug",
+    "account": "a0140",
+    "nodes": 1,
+    "gpus_per_node": 4,
+    "cpus_per_task": 288,
+    "memory": "640G",
+    "time": "01:25:00",
+    "node_hours_requested": 1.4167,
+    "measurement_envelope_node_hours": 4.0,
+    "placement": {
+      "gpu0": "vLLM fixed suite",
+      "gpu1": "lm-eval IFEval+MGSM",
+      "gpu2": "reserve",
+      "gpu3": "reserve"
+    }
+  },
+  "budget": {
+    "cap_chf": 230.0,
+    "rate_chf_per_node_hour": 2.69,
+    "current_node_hours": 60.602,
+    "current_chf": 163.02,
+    "prior_conservative_chf": 164.54,
+    "reconciliation_chf": -1.52,
+    "remaining_chf": 66.98,
+    "remaining_node_hours": 24.9007,
+    "one_attempt_projected_chf": 3.81,
+    "four_node_hour_envelope_chf": 10.76,
+    "ledger_source": "experiment execution_state.json; immutable deployed copy is included in inputs"
+  },
+  "canonical": {
+    "repo": "fffoivos/apertus-cscs-efficiency",
+    "origin_main": "22c4561050cba36f34b8480e1373788e139aaf3c",
+    "preflight_sha256": "bc24ae97314f7f48893aafc2bd6c5aa451b5f42c07fcef2270f2f4d1f54f6ee9",
+    "standalone_external_checkpoint_supported": false
+  },
+  "inputs": [
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/canonical/preflight_evaluator.py",
+      "bytes": 16510,
+      "sha256": "bc24ae97314f7f48893aafc2bd6c5aa451b5f42c07fcef2270f2f4d1f54f6ee9"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/canonical/src/apertus_cscs_campaign/__init__.py",
+      "bytes": 98,
+      "sha256": "73d0c6318d121c73049c887e13a4c566f55c04bc22b0667d0664f99c2ba28ce6"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/canonical/src/apertus_cscs_campaign/receipts.py",
+      "bytes": 14557,
+      "sha256": "cefd49a1b946f9eadb196bdd86fa5b7743d180cdbbb48788fdc9d110dff2c3ee"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/bench_lib.py",
+      "bytes": 5475,
+      "sha256": "458e6ed8d38a2d269789989a93418055594c08db5c07780671726cf6b9b5d8e7"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/generate.py",
+      "bytes": 5366,
+      "sha256": "08ee2c394342de289a345f6ce9d58e48ca4b3ae2bcc5a5a3c71829e808c0a1c3"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/ifbench/instructions_el.py",
+      "bytes": 127048,
+      "sha256": "e43935e9c102d19e6a432fe33a2c1567c7294addf404602eb449d647e66314c4"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/ifbench/instructions_registry_el.py",
+      "bytes": 4509,
+      "sha256": "5d8a1c1762db94bcfa9c77248eb7059323191eeb6f6996d74343f22495fc71f2"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/ifbench/overlap_classes.json",
+      "bytes": 2997,
+      "sha256": "be92a171192212d14aab17aa93cd7f46f3a1cd42e7f8b5da1294b6e890fd2004"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/ifbench/prompts_el_final.jsonl",
+      "bytes": 889363,
+      "sha256": "4017da04abbfd81725c6cd9bcae1a0716c44dddafe08881fee38334846cbcbaa"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/ifbench/score.py",
+      "bytes": 3841,
+      "sha256": "fc88199b80085158c1b97b969127e06d9fa30d1e02e1f115074d6dc913fdcab9"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/math500/equiv500.py",
+      "bytes": 6781,
+      "sha256": "8a8bd7a4b9fa796b22bf991dc60f21ea6e519384f9fd6c2ade10ff11da551f8a"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/math500/problems_el_final.jsonl",
+      "bytes": 836381,
+      "sha256": "248f1b5edec95e0fa2fe9098ddf0264b893a915542694652dab1926d98a4ce88"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/math500/score_math500.py",
+      "bytes": 1822,
+      "sha256": "1687fcff9128762c3ce5ea26b59b7ea9f70d2662c8c4beb2d86c6b805a6fc510"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/math500/upstream_grader.py",
+      "bytes": 8115,
+      "sha256": "f1cebd795d26400038d532ae4dda5f919eb4e707eefceeb5e40edb099d3a2de0"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/math500/upstream_math_normalize.py",
+      "bytes": 4598,
+      "sha256": "13998bf8c35bdc8a76868c84e1704a78567e2552557fda69027cc186568d3a4d"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/multichallenge/conversations_el_final.jsonl",
+      "bytes": 7055777,
+      "sha256": "23efe0ea1432ae13adb3b93f901ba583b5416b80e9f57b930f52a4be70f5474a"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/xstest/prompts_el_final.jsonl",
+      "bytes": 306788,
+      "sha256": "4a3179f8614bc85c2bd188029896356c0a818d421c0b6391b3a98554d1a35b51"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/ifeval_greek/__init__.py",
+      "bytes": 39,
+      "sha256": "7b7b38aacdf5d40babee5575bb3b533f846eed97e06c25e05255b78c5c51637b"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/ifeval_greek/ifeval_greek.yaml",
+      "bytes": 739,
+      "sha256": "9bb89be041a80b8d0bd20b26fc03a6700f8c2acc871acf9ab5b38e26382f6554"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/ifeval_greek/instructions.py",
+      "bytes": 15305,
+      "sha256": "094fb3ed6a62ec4d0b45fcbe7be7118f0ed7aeb260f47f664d6f0cce79430e5c"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/ifeval_greek/instructions_registry.py",
+      "bytes": 1870,
+      "sha256": "415b58a4c33aa6905be0354a3983437b500402cdf93aa9955d8cc73d7c738145"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/ifeval_greek/utils.py",
+      "bytes": 3673,
+      "sha256": "d1144cd482052438feef3a312cf19f15fea9c582dbb91e46b0ec849cc73bf3cc"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/mgsm_greek/__init__.py",
+      "bytes": 31,
+      "sha256": "453bebc5ad6034a1db8ad60fbe77ef0a37c1c987d80568991fbc13ef5357e466"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/mgsm_greek/mgsm_greek.yaml",
+      "bytes": 713,
+      "sha256": "e1c32a1eb0e274882c82af66768af0999ebb897d90284ebb838d748806687b5b"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/mgsm_greek/mgsm_greek_4shot.yaml",
+      "bytes": 797,
+      "sha256": "5ad3216cbd45fc6e51d828d52bc040f7e01a0cfee2e039273fc6e950b51459cf"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/mgsm_greek/utils.py",
+      "bytes": 1475,
+      "sha256": "f22b1c7a9a38cc8e156f55858486a67f1761b93997c1a44a378cefb0f2522797"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/multichallenge_context_exclusions.json",
+      "bytes": 1972,
+      "sha256": "d3d168a97f565689d5b40768ca1e1292590b7f95fad29c5f5797c7867cc0d936"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/peer_eval_adapter.py",
+      "bytes": 15679,
+      "sha256": "8b1d49b35984d6a09cbba968f21af963f6f29bd43b5ecb329e697781ae0e8305"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/peer_eval_debug.sbatch",
+      "bytes": 988,
+      "sha256": "de5f3b556fd537de4bb8a91195a02171c14f944f8fd94dc94ecc79c21328508d"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/provenance/execution_state.json",
+      "bytes": 17783,
+      "sha256": "6b648fc8eee1b3d20c8fcb7ef9411f8510ce180c6a5bb01c9386f8cbc95341a6"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/verify_deployment.py",
+      "bytes": 705,
+      "sha256": "ded9ade10f2d0b3822a73039c00ddec0d298091bcb4f775bc8cab1f4da201360"
+    },
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/vllm_python",
+      "bytes": 118,
+      "sha256": "e0ac6d93a37b237fe4cbfc63cf4394f2baf6c4a619142069e65a6c24e07f92ab"
+    }
+  ],
+  "output_root": "/iopsstor/scratch/cscs/fffoivos/sft_round1/evals/wave2_krikri_v15"
+}

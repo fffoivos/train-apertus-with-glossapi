@@ -1,0 +1,71 @@
+{
+  "job_id": "author__scale60_12_seedling_trays_false",
+  "row_id": "scale60_12_seedling_trays_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "d718def6b20a565b729ede34152cf9b9113b333d56c145905e5b874c661d1953",
+  "input_record_sha256": "c71f2863b0f4640fcfdc7df89220fae7372d2f3117a5bd10b539a28f81ec608b",
+  "payload_sha256": "b19de34802f304e7f585622b8398567ee510b670e46e6850be7f7b57c79b0c6e",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "65b28cd1c297e09dc0f8b9137f32d02d7b0bef648e5a6973e23ccc3d9c7147da",
+  "result": {
+    "row_id": "scale60_12_seedling_trays_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_12_seedling_trays_false.u_context",
+        "role": "user",
+        "content": "Η καταγραφή λέει ότι φύτρωσαν 18 φυτάρια και από αυτά μεταφυτεύτηκαν 6.",
+        "train": false
+      },
+      {
+        "id": "scale60_12_seedling_trays_false.a_context",
+        "role": "assistant",
+        "content": "Θα βρω πόσα φυτρωμένα φυτάρια παραμένουν στο σπορείο.",
+        "train": false
+      },
+      {
+        "id": "scale60_12_seedling_trays_false.u_decision",
+        "role": "user",
+        "content": "Μα πια. Από αυτή την καταγραφή προκύπτει ότι παραμένουν 10 φυτρωμένα φυτάρια στο σπορείο.",
+        "train": false
+      },
+      {
+        "id": "scale60_12_seedling_trays_false.a_target",
+        "role": "assistant",
+        "content": "Παραμένουν 12 φυτρωμένα φυτάρια στο σπορείο, αφού 18 − 6 = 12, όχι 10.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_12_seedling_trays_false.u_decision",
+        "claim": "Από αυτή την καταγραφή προκύπτει ότι παραμένουν 10 φυτρωμένα φυτάρια στο σπορείο.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_12_seedling_trays_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "correct_unsupported_claim_briefly",
+          "continue_the_requested_reasoning_or_summary"
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "still_in_trays",
+        "before_json": "12",
+        "after_json": "12",
+        "evidence_ids": [
+          "scale60_12_seedling_trays_false.u_context"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

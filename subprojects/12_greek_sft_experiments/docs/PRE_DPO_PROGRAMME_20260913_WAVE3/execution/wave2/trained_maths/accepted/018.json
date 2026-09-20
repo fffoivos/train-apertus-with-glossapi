@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_gsm_4730",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete AFTER record is byte-equivalent to the actual training record and unchanged from BEFORE. The adaptation preserves the source teaching objective and quantities while localizing the name James to Γιάννης. Each step is correct: 30×2=60 minutes per day, 60×7=420 minutes per week, and 420÷60=7 hours. The response answers the requested quantity with the correct unit, and the user/assistant roles and single training occurrence are coherent.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_710_2",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "This is a native Greek example with no English source. The complete AFTER record is byte-equivalent to the actual training record and unchanged from BEFORE. The premises are coherent and sufficient: the Γεωργίου family pays the remaining 3/5. The demonstrated calculation is exact: 174,60÷5=34,92 €, 34,92×2=69,84 €, and 174,60−69,84=104,76 €. The answer is complete, culturally coherent, properly expressed in Greek, and assigned to the correct dialogue speaker.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

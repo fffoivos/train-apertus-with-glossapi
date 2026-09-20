@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_gsm_5057",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete before and after records are identical and match the actual training pair. The solution correctly computes 15 shoes for five sets, subtracts the three already owned, and converts the remaining 12 shoes into 6 pairs. The fictional three-footed sloth premise is deliberate and coherent.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_gsm_4016",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete before and after records are identical and match the actual training pair. Starting with 32 items and retaining 15 means 17 were given away; after subtracting the 5 given to Μαίρη, 12 went to Λία, which is 7 more than 5. The use of «ξυλομπογιές» instead of crayons changes the counted object but preserves all premises, arithmetic, and the teaching objective as an allowable adaptation.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

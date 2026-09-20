@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_634_4",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek problem with no English source. The BEFORE and AFTER records are identical and match the actual training pair. Independent verification confirms the ordered data, original sum of 7.700 €, corrected sum of 7.840 €, median of 1.090 €, and corrected mean of 1.120 €.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_70_1",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek problem with no English source. The BEFORE and AFTER records are identical and match the actual training pair. The pursuit setup follows the ordinary classroom convention that Πέτρος travels after Μαρία along her route: 15 minutes equals 0.25 hours, the equation 45(t+0.25)=60t gives t=0.75 hours, and the meeting distance is 60·0.75=45 km. The tool's value is irrelevant but does not impair coherence or solvability.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

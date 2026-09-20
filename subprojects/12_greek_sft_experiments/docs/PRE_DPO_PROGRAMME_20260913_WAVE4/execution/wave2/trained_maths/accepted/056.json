@@ -1,0 +1,51 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_gsm_2098",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "adaptation/cultural_coherence",
+          "severity": "major",
+          "quote": "«μαζί με τη μηχανή και το τελευταίο βαγόνι του συρμού»",
+          "explanation": "Το αγγλικό «caboose» δηλώνει ιδιαίτερο όχημα που προσμετράται χωριστά, ενώ το ελληνικό «τελευταίο βαγόνι» δηλώνει πρωτίστως θέση και μπορεί να είναι ήδη ένα από τα επιβατικά ή εμπορευματικά βαγόνια. Έτσι, η αφαίρεση δύο οχημάτων δεν στηρίζεται μονοσήμαντα από την προσαρμοσμένη εκφώνηση.",
+          "suggested_action": "Να αναδιατυπωθεί η εκφώνηση ώστε να δηλώνει ρητά ότι, πέρα από τα επιβατικά και εμπορευματικά βαγόνια, προσμετρώνται χωριστά η μηχανή και ακόμη ένα ειδικό τελευταίο βαγόνι. Η αριθμητική λύση και το αποτέλεσμα 44 μπορούν τότε να διατηρηθούν."
+        },
+        {
+          "dimension": "after/problem_fidelity",
+          "severity": "major",
+          "quote": "«71 − 2 = 69»",
+          "explanation": "Το βήμα είναι σωστό για την πρόθεση της αγγλικής πηγής, αλλά η ελληνική εκφώνηση δεν θεμελιώνει καθαρά ότι το «τελευταίο βαγόνι» είναι πρόσθετο και ξέχωρο από τις δύο ήδη αναφερθείσες κατηγορίες.",
+          "suggested_action": "Απαιτείται επισκευή της εκφώνησης και όχι αλλαγή της σωστής άλγεβρας ώστε να εξαναγκαστεί συμφωνία με μια αμφίσημη διατύπωση."
+        }
+      ],
+      "provenance_note": "Το BEFORE, το AFTER και το πραγματικό εκπαιδευτικό ζεύγος είναι πανομοιότυπα, συνεπώς το πρόβλημα προϋπήρχε και δεν οφείλεται σε εκδοτική αλλαγή. Με την επιδιωκόμενη ερμηνεία της πηγής, P+(P/2+3)+2=71 και P=44.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "readapt_problem_and_resolve"
+    },
+    {
+      "row_id": "gm_gsm_934",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το AFTER διαφέρει από το BEFORE μόνο στην αλλαγή «Στα δύο παιχνίδια χρειάζεται» σε «Για τα δύο παιχνίδια χρειάζεται». Η αλλαγή βελτιώνει τη φυσικότητα χωρίς να μεταβάλλει το νόημα. Ο υπολογισμός 4·60−4·30−60=60 λεπτά και 60÷15=4 είναι πλήρης και σωστός, με συνεπείς μονάδες.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    }
+  ]
+}

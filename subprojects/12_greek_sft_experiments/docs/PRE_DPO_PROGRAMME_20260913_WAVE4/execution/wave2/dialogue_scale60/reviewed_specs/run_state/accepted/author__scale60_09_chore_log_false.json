@@ -1,0 +1,73 @@
+{
+  "job_id": "author__scale60_09_chore_log_false",
+  "row_id": "scale60_09_chore_log_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "50cef2cbd70fa553164714644342d183cde825861f273d29ed01c5be043f3319",
+  "input_record_sha256": "891e8f30eb3178e0308f48351b550a0057d50721392a6dae4319d2c7bca412a7",
+  "payload_sha256": "f50e719ded8df173b1bd379fa1f32220c9c2d790a4188cc5da0a11ea8e0915fe",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "f30681b381f6393dd3a0a4b8d74d17fdccc7f2dd56c15b62b3a42714861f45a2",
+  "result": {
+    "row_id": "scale60_09_chore_log_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_09_chore_log_false.u_context",
+        "role": "user",
+        "content": "Στο κειμενικό ημερολόγιο, τα πιάτα και τα ρούχα είναι ενεργές εργασίες, ενώ τα σκουπίδια έχουν ακυρωθεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_09_chore_log_false.a_context",
+        "role": "assistant",
+        "content": "Οι εγγραφές είναι μόνο μέσα στο ημερολόγιο αυτού του νήματος.",
+        "train": false
+      },
+      {
+        "id": "scale60_09_chore_log_false.u_decision",
+        "role": "user",
+        "content": "Στο ημερολόγιο τα ρούχα φαίνονται ήδη σταματημένα. Σταμάτησέ τα τώρα.",
+        "train": false
+      },
+      {
+        "id": "scale60_09_chore_log_false.a_target",
+        "role": "assistant",
+        "content": "Στο ημερολόγιο, τα ρούχα δεν ήταν ήδη σταματημένα· ήταν ενεργή εργασία. Τα σταμάτησα τώρα και η εγγραφή τους είναι πλέον «σταματημένη».",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_09_chore_log_false.u_decision",
+        "claim": "Στο ημερολόγιο τα ρούχα φαίνονται ήδη σταματημένα.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_09_chore_log_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα τον ψευδή ισχυρισμό ότι τα ρούχα ήταν ήδη σταματημένα.",
+          "Να εφαρμόσει αμέσως τη σαφή εντολή διακοπής στο κειμενικό ημερολόγιο εργασιών.",
+          "Να αναφέρει συνοπτικά ότι η εγγραφή των ρούχων είναι πλέον σταματημένη."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "ημερολόγιο εργασιών.ρούχα",
+        "before_json": "\"active\"",
+        "after_json": "\"stopped\"",
+        "evidence_ids": [
+          "scale60_09_chore_log_false.u_context",
+          "scale60_09_chore_log_false.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

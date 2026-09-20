@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_432_2",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The complete before and after records are identical, contain one correctly owned user–assistant exchange, and match the actual training record. Independently verified: 52°+63°=115°, the third interior angle is 180°−115°=65°, and its adjacent exterior angle is 180°−65°=115°. The Edessa flower-festival setting is culturally coherent and does not alter the geometry.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_833",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem faithfully preserves the supplied English source and its algebraic teaching objective. The complete before and after records are identical, contain one correctly owned user–assistant exchange, and match the actual training record. Independently verified: Viète gives a+b+c=−3, so the new roots are −3−c, −3−a and −3−b. Since P(x)=(x−a)(x−b)(x−c), their product equals P(−3)=−23; therefore the constant term of the new monic cubic is t=−(−23)=23. No units or rounding apply.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

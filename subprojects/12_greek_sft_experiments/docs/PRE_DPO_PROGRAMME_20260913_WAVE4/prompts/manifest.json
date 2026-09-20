@@ -1,0 +1,81 @@
+{
+  "version": 2,
+  "date": "2026-09-13",
+  "status": "bounded audit and dialogue pilots; domain generation pilots pending",
+  "model_generation_tested": "partial: maths audit, native dialogue authoring, Greek correction and semantic pilot review",
+  "production_integrated": false,
+  "static_checks": [
+    "local document links resolve",
+    "no TODO/TBD markers",
+    "stage boundaries and allowed changes reviewed"
+  ],
+  "files": [
+    {
+      "path": "ADAPTATION_CORE.md",
+      "sha256": "8023ab5b958edcd928063b504796ae0512d8dadc4835f9639fe6d26f3bfa1357",
+      "words": 524
+    },
+    {
+      "path": "AUDIT_REPAIR.md",
+      "sha256": "3b4c1f47e7aafc4e07a759b4815f5f6a7274e168f57a74946d435fc35c48a6fc",
+      "words": 406
+    },
+    {
+      "path": "BENCHMARK.md",
+      "sha256": "0b98d8e799e5c127b6622a2a9eee7d0cf8e0b7ac5ec44bcc20acda23a0d173ce",
+      "words": 214
+    },
+    {
+      "path": "CONSTRAINTS_REASONING.md",
+      "sha256": "1daab75b9b7dce9e276a1fc073881dce80585993e78cd4fe1402060693a7211e",
+      "words": 321
+    },
+    {
+      "path": "DIALOGUE.md",
+      "sha256": "8e02fda0379bc438397435a775db84985fa45ca797b7a6368aea08352afed56d",
+      "words": 506
+    },
+    {
+      "path": "DOMAIN_ACCEPTANCE.md",
+      "sha256": "9d40e695d93d49ea71f490268ffc465d20e2f07b0541d6f4bb8e7a963de9edee",
+      "words": 447
+    },
+    {
+      "path": "GREEK_CORRECTION.md",
+      "sha256": "d277a619e9855b51d53664bb3d4f0fb809ffe21b923f55dfec7c46da19b1899e",
+      "words": 508
+    },
+    {
+      "path": "KNOWLEDGE.md",
+      "sha256": "a09d0a88dcc2eb1b2bd6e06f374e52e0c0ab690daa1b6d2f6d41c50829da09f0",
+      "words": 350
+    },
+    {
+      "path": "MATH_PROBLEM.md",
+      "sha256": "81f79114a1c2ec844432726ea119d8edf92e045e7ffc53a8efb527a4092086d5",
+      "words": 305
+    },
+    {
+      "path": "MATH_SOLUTION.md",
+      "sha256": "81d447a632560307ea9fdb3a92d684978e7737070a9acdf2b0bd68373a0c01ea",
+      "words": 359
+    },
+    {
+      "path": "PREFERENCE_REVIEW.md",
+      "sha256": "f12d388c46b4c5109d82f734432a2e2c341c2a82e2ff7f158cc2aca86a6f6a2e",
+      "words": 251
+    },
+    {
+      "path": "README.md",
+      "sha256": "f283c63c30c05b4775139f78168f441d7b19a50ae4c31eedc954207be6a8ebf4",
+      "words": 1012
+    }
+  ],
+  "validation_evidence": [
+    "../execution/maths/manifest.json",
+    "../execution/maths/audit_summary.json",
+    "../execution/dialogue/pilot12_report.md",
+    "../execution/dialogue/pilot12_independent_report.md",
+    "../execution/dialogue/pilot12_semantic_v2_verification_report.json"
+  ]
+}

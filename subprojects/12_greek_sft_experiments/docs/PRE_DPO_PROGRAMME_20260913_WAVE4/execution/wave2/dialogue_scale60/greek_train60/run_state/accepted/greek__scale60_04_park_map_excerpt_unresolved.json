@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_04_park_map_excerpt_unresolved",
+  "row_id": "scale60_04_park_map_excerpt_unresolved",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "4b1d7abadfaae28ec64acb61790740ff69de0c8367390a0e4238c95c8727eb7a",
+  "input_record_sha256": "eda25347fccc8e9e323ea6117538dfdf76aa040c3d76b7638bf5538052c6f052",
+  "payload_sha256": "2780ed9b4d2502a683f1d50694bb3b5284770229c272976e10bf3fd6e41f0ba4",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "9acb5c43349898659ddf95f260139686a26dd6880ea9a3a7265fea81a98c92f6",
+  "result": {
+    "row_id": "scale60_04_park_map_excerpt_unresolved",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_04_park_map_excerpt_unresolved.u_context",
+        "role": "user",
+        "content": "Στο απόσπασμα του χάρτη φαίνονται μόνο τα μονοπάτια Πεύκο–Λίμνη, Λίμνη–Κήπος και Κήπος–Πύργος.",
+        "train": false
+      },
+      {
+        "id": "scale60_04_park_map_excerpt_unresolved.a_context",
+        "role": "assistant",
+        "content": "Θα μιλήσω μόνο για ό,τι φαίνεται στο συγκεκριμένο απόσπασμα.",
+        "train": false
+      },
+      {
+        "id": "scale60_04_park_map_excerpt_unresolved.u_decision",
+        "role": "user",
+        "content": "Τέλος πάντων. Με βάση μόνο το απόσπασμα, δεν υπάρχει κανένα άλλο μονοπάτι έξω από αυτό.",
+        "train": false
+      },
+      {
+        "id": "scale60_04_park_map_excerpt_unresolved.a_target",
+        "role": "assistant",
+        "content": "Το απόσπασμα δείχνει μόνο ποια μονοπάτια περιλαμβάνει· δεν αρκεί για να συμπεράνουμε αν υπάρχουν άλλα έξω από αυτό. Για να το κρίνουμε, χρειάζεται ο πλήρης χάρτης ή ρητή επιβεβαίωση ότι το απόσπασμα είναι εξαντλητικό.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

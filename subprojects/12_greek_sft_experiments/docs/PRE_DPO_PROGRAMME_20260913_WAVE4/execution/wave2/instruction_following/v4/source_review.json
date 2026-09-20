@@ -1,0 +1,26 @@
+[
+  {
+    "row_id": "mixa_2028_03200",
+    "checked_on": "2026-09-13",
+    "reviewer": "Sol agent",
+    "source_type": "primary_official",
+    "source_urls": [
+      "https://oramaelpidas.gr/aitisi_ethelonti_doti/"
+    ],
+    "verified_claim": "The official page says the registrant receives an envelope, completes the registration application contained in it, follows the oral-swab instructions, and returns the envelope.",
+    "adjudication": "The v3 wording 'φάκελο με την αίτηση και οδηγίες για το στοματικό επίχρισμα' is supported. No factual repair is warranted."
+  },
+  {
+    "row_id": "mixa_2026_06199",
+    "checked_on": "2026-09-13",
+    "reviewer": "Sol agent",
+    "source_type": "primary_official",
+    "source_urls": [
+      "https://www.eody.gov.gr/el/perivallon-ygeia/odigies/kausonas.html",
+      "https://www.eody.gov.gr/el/epikairotita/mathete-ta-symptomata-tes-thermoplexias-kai-tes-thermikes-exantleses.html",
+      "https://civilprotection.gov.gr/odigies-prostasias/kaysonas"
+    ],
+    "verified_claim": "EODY identifies children and people exercising intensely as higher-risk groups, recommends cooler hours and reducing exercise in heat, and distinguishes heatstroke emergency action from heat-exhaustion monitoring. Civil Protection advises avoiding heavy work in high heat and prolonged walking or running in the sun.",
+    "adjudication": "Both named links are live and support the attributed prevention claims. The response is narrowed so that emergency escalation is tied to suspected heatstroke, while milder symptoms trigger stopping, cooling, and conditional medical help."
+  }
+]

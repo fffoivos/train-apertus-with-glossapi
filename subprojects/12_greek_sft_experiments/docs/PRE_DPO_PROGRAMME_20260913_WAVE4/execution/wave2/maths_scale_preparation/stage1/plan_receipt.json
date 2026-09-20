@@ -1,0 +1,20 @@
+{
+  "status": "plan_validated_unlaunched",
+  "manifest_sha256": "70e5bb80d52e2330474a29376c534928ab76fbbca1e4dda8209fee339d62c4ff",
+  "verification_sha256": "cfe26da9a0dd9c2ac54f80c1c66db515198816f3bc92a619d04a3857deccd057",
+  "runner_plan_sha256": "f936769ca6b9a6ffe94042fe07d9663fb249223f6bcdf88a67a34b483a5007c9",
+  "report_sha256": "662d41b5b2a03cb127bb484ac825131c455e067bf53fe2c18dd85baba5f490b9",
+  "inputs_sha256": "455819d5000e4341bb7b763f0adc5c6529240231027442f8eb1eb636db60225c",
+  "queue_sha256": "813e342fd7068d212ec695ea3e60e0c70a1d805f5a6dd42e977a7514b7f6ded9",
+  "phaseA_bound_pairs_sha256": "27782a3392d1a80b2376d50c7b4b75fabe187c3417c42e6e73ad5b2714a2ebee",
+  "phaseA_adjudications_sha256": "70fae653aa50251215d0f182e3403193aafba727409026ca204b6b4113e3129f",
+  "runner_sha256": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005",
+  "runner_mode_checked": "plan",
+  "jobs": 42,
+  "pending": 42,
+  "accepted": 0,
+  "run_state_created": false,
+  "model_subprocess_calls": 0,
+  "max_workers": 8,
+  "absolute_call_cap": 72
+}

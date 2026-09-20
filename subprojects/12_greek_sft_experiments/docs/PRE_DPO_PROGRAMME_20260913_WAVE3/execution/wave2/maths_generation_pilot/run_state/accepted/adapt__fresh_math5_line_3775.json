@@ -1,0 +1,79 @@
+{
+  "job_id": "adapt__fresh_math5_line_3775",
+  "row_id": "fresh_math5_line_3775",
+  "stage": "adaptation",
+  "attempt": 2,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "de91612198e5f36949d37c6d8e7632cad62244bcec63bd58f384f6a3ca529689",
+  "input_record_sha256": "f9a9e5d7c3a10f47261ff28e59e9c4c952a05c814da2ce8ffab824669da1acc8",
+  "payload_sha256": "1e7d6bf9b6ca70602eab50851cdf7e93e0549c19c914d709b30679340b0516f9",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "49a02fbb0ffb5e9ecabb87f9fa6b53ae7abc6bbb2a93ccc6c82efdc3eac42e87",
+  "result": {
+    "row_id": "fresh_math5_line_3775",
+    "status": "candidate",
+    "problem_text": "Υπολογίστε την τιμή του $k$ ώστε η εξίσωση\n\\[\\frac{x+2}{kx-1}=x\\]\nνα έχει ακριβώς μία λύση.",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Compute the value of $k$ such that the equation",
+        "target_span": "Υπολογίστε την τιμή του $k$ ώστε η εξίσωση",
+        "reason": "Πιστή απόδοση της εκφώνησης στα ελληνικά, με διατήρηση του ζητουμένου και της εξάρτησης από την παράμετρο $k$."
+      },
+      {
+        "source_span": "has exactly one solution.",
+        "target_span": "να έχει ακριβώς μία λύση.",
+        "reason": "Διατηρείται αυτούσια η κρίσιμη συνθήκη της ύπαρξης ακριβώς μίας λύσης."
+      },
+      {
+        "source_span": "\\frac{x + 2}{kx - 1} = x",
+        "target_span": "\\frac{x+2}{kx-1}=x",
+        "reason": "Έγινε μόνο τυπογραφική αφαίρεση κενών χωρίς αλλαγή της εξίσωσης ή των τιμών."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "k",
+          "role": "παράμετρος της οποίας ζητείται η τιμή",
+          "unit": null
+        },
+        {
+          "value": "x",
+          "role": "άγνωστος της εξίσωσης",
+          "unit": null
+        },
+        {
+          "value": "2",
+          "role": "σταθερός προσθετέος στον αριθμητή",
+          "unit": null
+        },
+        {
+          "value": "1",
+          "role": "σταθερός αφαιρετέος στον παρονομαστή",
+          "unit": null
+        },
+        {
+          "value": "1",
+          "role": "απαιτούμενο ακριβές πλήθος λύσεων",
+          "unit": "λύση"
+        }
+      ],
+      "conditions": [
+        "Η εξίσωση είναι \\(\\frac{x+2}{kx-1}=x\\).",
+        "Ο παρονομαστής επιβάλλει τον περιορισμό \\(kx-1\\ne 0\\).",
+        "Η εξίσωση πρέπει να έχει ακριβώς μία λύση ως προς \\(x\\)."
+      ],
+      "required_outputs": [
+        "Η τιμή του \\(k\\) για την οποία ικανοποιείται η συνθήκη."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": [
+      "Να ελεγχθεί σημασιολογικά η απαίτηση «ακριβώς μία λύση» λαμβάνοντας υπόψη τον περιορισμό του παρονομαστή και τυχόν εκφυλισμένες περιπτώσεις της παραμέτρου \\(k\\)."
+    ]
+  }
+}

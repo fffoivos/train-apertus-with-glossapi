@@ -1,0 +1,38 @@
+{
+  "status": "train_only_family_namespace_frozen",
+  "new_family_prefix": "ds60_",
+  "new_family_count": 20,
+  "new_decision_count": 60,
+  "known_source_hashes": {
+    "balanced_dialogue_pilot/revision2/inputs/train.jsonl": "adc7a6b9e200f394e81c2c8c24342fc4b25fa9ebfc2c1ba3bc1e3406d25cb055",
+    "balanced_dialogue_pilot/revision2/inputs/dev.jsonl": "d4f8270bd50a506ab3ef37cc0999a4babbdb283f664885694377994c7036936c",
+    "balanced_dialogue_pilot/revision2/sealed/final_confirmation/gate_summary.json": "8e87f888a655eabf8011ca385c496f5db041b54872273ee86d5f32403f897ad4"
+  },
+  "known_train_and_dev_family_intersection": [],
+  "final_confirmation": {
+    "content_materialized": false,
+    "gate_summary_only": true,
+    "family_ids_sha256": "c3b224b9307e53b39ce939f3e45f66a331a5a5f81ea91c76e5960110a545d922"
+  },
+  "scale_target": {
+    "train": {
+      "true": 200,
+      "false": 200,
+      "partial": 100,
+      "unresolved": 100,
+      "total": 600
+    },
+    "development": 60,
+    "final_confirmation": 60,
+    "total": 720
+  },
+  "this_batch": {
+    "true": 20,
+    "false": 20,
+    "partial": 10,
+    "unresolved": 10,
+    "total": 60
+  },
+  "superseded_claim": "Any earlier 420-train allocation is superseded; 600 is the training target and holdouts are additional.",
+  "authored_targets": 0
+}

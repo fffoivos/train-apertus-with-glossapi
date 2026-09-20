@@ -1,0 +1,99 @@
+{
+  "updated": "2026-09-13T13:52:15.743218+00:00",
+  "status": "running",
+  "goal": "../../GOAL.md",
+  "trained_maths": {
+    "rows": 122,
+    "primary_calls": 61,
+    "cap": 140,
+    "probe_complete": true,
+    "workers": 8,
+    "raw_complete": true,
+    "returned_rows": 122,
+    "actual_calls": 63,
+    "adjudication": "complete",
+    "repair_candidates": 7,
+    "independent_repair_review": {
+      "accepted": 7,
+      "held": 0
+    }
+  },
+  "sol_agents": [
+    "if_independent_review_and_dialogue_specs",
+    "maths_generation_pilot_preparation",
+    "peer_readiness"
+  ],
+  "completed_agent_reports": [
+    "instruction_following",
+    "fairness_and_release",
+    "adapted_core",
+    "personality"
+  ],
+  "new_cscs_node_hours": null,
+  "data_promoted": false,
+  "if_pilot": {
+    "current_version": 4,
+    "checker_pass": 20,
+    "source_reviews": 4,
+    "independent_review": "complete",
+    "accepted": 20,
+    "held": 0
+  },
+  "dialogue_pilot": {
+    "spec_revision": 2,
+    "train": 32,
+    "development": 8,
+    "final_confirmation": 8,
+    "target_training_decisions": 600,
+    "target_total_decisions": 720,
+    "authoring": "remaining28_train_running",
+    "probe_calls": 4,
+    "transport_accepted": 4,
+    "semantic_gate": "failed_requires_contract_revision",
+    "call_cap": 118,
+    "authoring_session_id": 38977,
+    "revised_probe_semantics": "4_pass",
+    "cumulative_calls_before_train_expansion": 8
+  },
+  "maths_generation_pilot": {
+    "status": "candidate_package_and_greek_review_complete",
+    "problems": 32,
+    "primary_jobs": 88,
+    "probe_pass": 4,
+    "schema_rejections": 4,
+    "workers": 8,
+    "call_cap": 136,
+    "session_id": null,
+    "successful_calls": 88,
+    "actual_calls": 92,
+    "regenerate_reused": 8,
+    "retain_controls": 8,
+    "fresh_level5": 16,
+    "source_question_repairs": 2,
+    "selected_rows": 32,
+    "selected_c0_del": 0,
+    "all_outputs_c0_del_findings": 3,
+    "exact_rendered_tokens": 13681,
+    "supervised_tokens": 8741,
+    "max_row_tokens": 1003,
+    "greek_check_jobs": 16,
+    "greek_check_session_id": null,
+    "actual_calls_including_greek_check": 108,
+    "greek_editor_unchanged": 12,
+    "greek_optional_edits_rejected": 4
+  },
+  "accepted_patchset": {
+    "reviewed": 27,
+    "content_overlays": 21,
+    "unchanged_controls": 6,
+    "production_applied": false
+  },
+  "personality_candidates": {
+    "root_reviewed": 42,
+    "root_deltas": 4,
+    "independent_delta_review": "4_accept_0_hold",
+    "production_applied": false,
+    "status": "42_root_reviewed_candidates_accepted_pending_assembly"
+  },
+  "active_cscs_job": 3390957
+}

@@ -1,0 +1,81 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_598",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "problem_fidelity",
+          "severity": "minor",
+          "quote": "στο σύνολο ${1000,1001,1002,\\ldots,2000}$",
+          "explanation": "The selected Greek problem contains a DEL control character where the opening LaTeX set brace should be. The intended set remains inferable, but the mathematical markup is malformed and unsuitable as clean training text.",
+          "suggested_action": "Correct the malformed sequence to `$\\{1000,1001,1002,\\ldots,2000\\}$` in a repair workflow."
+        }
+      ],
+      "provenance_note": "The last saved solution is paired by convention with the last saved problem version, but that historical association is unproven. The supplied variants are mathematically equivalent; one is clean and the selected last version contains the control-character corruption. This provenance uncertainty is not a mathematical defect. The candidate's case count and final value 156 are correct for either version.",
+      "verification_needed": [
+        "Confirm the raw source encoding and historical problem–solution association before deduplication or repair."
+      ]
+    },
+    {
+      "row_id": "math5_784",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "problem_fidelity",
+          "severity": "major",
+          "quote": "$\u0007ngle{AB'C'} \\cong \u0007ngle{B'EA}$",
+          "explanation": "Both `\\angle` commands in the central geometric condition have been corrupted into a BEL control character followed by `ngle`. This breaks the displayed statement of the angle-congruence premise, although the candidate solution reconstructs and correctly uses the intended condition.",
+          "suggested_action": "Restore both expressions as `$\\angle{AB'C'} \\cong \\angle{B'EA}$` in a repair workflow."
+        }
+      ],
+      "provenance_note": "The problem text is marked stable and has one solution record. Apart from the corrupted angle markup, the Greek problem preserves the source, and the solution correctly derives the area as $240+92\\sqrt6$ and the requested value as 338.",
+      "verification_needed": [
+        "Confirm whether the control characters exist in the stored JSONL record or were introduced during serialization/display."
+      ]
+    },
+    {
+      "row_id": "gsm_1334",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "issue",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "units_and_rounding",
+          "severity": "minor",
+          "quote": "το μικρότερο ποσό που πρέπει να ξοδέψει είναι\n\n\\[\n\\boxed{5}\n\\]",
+          "explanation": "The calculation consistently uses euros, but the final stated and boxed amount omits the currency unit. The intended result is nevertheless unambiguous from the preceding comparison.",
+          "suggested_action": "In a repair workflow, state the final answer as `\\boxed{5\\text{ €}}`."
+        },
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "minor",
+          "quote": "10 κομμάτια μήκους έξι ιντσών ... σχοινί μήκους 6 ποδιών ... 5 €",
+          "explanation": "The name and currency are localized, but the feet-and-inches retail setting remains Anglosphere-specific, producing a mixed euro/imperial context. This is an adaptation concern only; the conversions and cost comparison are mathematically correct.",
+          "suggested_action": "Record the mixed cultural setting for adaptation review. Do not alter the measurements or prices without explicit permission to change the problem."
+        }
+      ],
+      "provenance_note": "This is a single stable problem–solution record. The adaptation from Tanesha and dollars to Τάνια and euros preserves all numerical relationships. The solution correctly finds that 60 inches are needed and that the €5 six-foot rope is cheaper than five €1.25 one-foot ropes.",
+      "verification_needed": []
+    }
+  ]
+}

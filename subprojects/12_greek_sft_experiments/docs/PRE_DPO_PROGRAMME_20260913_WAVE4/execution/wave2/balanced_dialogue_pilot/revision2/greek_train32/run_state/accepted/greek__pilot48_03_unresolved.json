@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__pilot48_03_unresolved",
+  "row_id": "pilot48_03_unresolved",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "f98b669791538f73e2bd07abd2ecd11605df943483587810aedf29cd83979421",
+  "input_record_sha256": "169b2ba39914ce9f237992db429b6bd2d57915eae1362da20a1ebab82188b9f7",
+  "payload_sha256": "c7c58d374883654395313e7ac372f893528745b4f7d1dbaec214786a7574d27b",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "2b1d27bec18efa03e29d744acd314d77030758a69223f007d4bb9ac214bad748",
+  "result": {
+    "row_id": "pilot48_03_unresolved",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_03_unresolved.u_context",
+        "role": "user",
+        "content": "Το τρέχον πρόγραμμα γράφει Τρίτη στις 18:00 στην αίθουσα Β, αλλά δεν αναφέρει διάρκεια.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_unresolved.a_context",
+        "role": "assistant",
+        "content": "Το εργαστήριο είναι Τρίτη στις 18:00 στην αίθουσα Β.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_unresolved.u_decision",
+        "role": "user",
+        "content": "Κράτα τη διάρκεια που είχαμε συμφωνήσει.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_unresolved.a_target",
+        "role": "assistant",
+        "content": "Δεν υπάρχει καταγεγραμμένη διάρκεια στο τρέχον πρόγραμμα. Ποια διάρκεια θέλεις να κρατήσω;",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

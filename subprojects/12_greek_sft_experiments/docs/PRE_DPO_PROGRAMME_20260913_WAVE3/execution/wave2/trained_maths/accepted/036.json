@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_math_2583",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The English source, Greek problem, BEFORE record, AFTER record, and actual training messages are mutually consistent. The factorial values and every arithmetic step independently verify the final result 1. No editor change occurred, and the training pair has correct speaker ownership and structure.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_1115_2",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "This is a native Greek example and is valid on its own terms. The solution correctly ignores the deliberately irrelevant knob count, applies the 12.5% discount to €2,400, and then applies 24% VAT to the discounted net value: €2,400−€300=€2,100 and €2,100+€504=€2,604. BEFORE and AFTER are identical, with correct dialogue structure and speaker ownership. The earlier second solve agrees but was not treated as independent proof.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

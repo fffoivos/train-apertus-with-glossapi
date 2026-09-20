@@ -1,0 +1,79 @@
+{
+  "job_id": "adapt__fresh_math5_line_5977",
+  "row_id": "fresh_math5_line_5977",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "d89eb92d5dace4f43469111c8cf91d01cb63874039a8f564c65272c8f449eba1",
+  "input_record_sha256": "997a8f4a2445c9a76d76b489e903a24c2afebbcaa80ce9080529680e94f6d86f",
+  "payload_sha256": "c578589a4879ece372c0dae3b5995c97380b2c670e9754d8e35d3ecda55fa3cc",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "a78ac082aaf124a2d8ec8f0c0678579ffcb2985760f6da4aa22011f72f7222d7",
+  "result": {
+    "row_id": "fresh_math5_line_5977",
+    "status": "candidate",
+    "problem_text": "Στο τετράπλευρο $ABCD$, ισχύουν $AB = 5$, $BC = 8$ και $CD = 20$ μονάδες. Οι γωνίες $B$ και $C$ είναι και οι δύο ορθές. Ποιο είναι το μήκος του ευθύγραμμου τμήματος $AD$;",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "In quadrilateral $ABCD$",
+        "target_span": "Στο τετράπλευρο $ABCD$",
+        "reason": "Πιστή απόδοση του γεωμετρικού πλαισίου στα ελληνικά, με διατήρηση των συμβολισμών."
+      },
+      {
+        "source_span": "Angle $B$ and angle $C$ are both right angles.",
+        "target_span": "Οι γωνίες $B$ και $C$ είναι και οι δύο ορθές.",
+        "reason": "Ακριβής μετάφραση της κοινής συνθήκης για τις δύο γωνίες."
+      },
+      {
+        "source_span": "What is the length of segment $AD$?",
+        "target_span": "Ποιο είναι το μήκος του ευθύγραμμου τμήματος $AD$;",
+        "reason": "Φυσική ελληνική διατύπωση του ίδιου ζητουμένου."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "5",
+          "role": "μήκος της πλευράς $AB$",
+          "unit": null
+        },
+        {
+          "value": "8",
+          "role": "μήκος της πλευράς $BC$",
+          "unit": null
+        },
+        {
+          "value": "20",
+          "role": "μήκος της πλευράς $CD$",
+          "unit": "μονάδες"
+        },
+        {
+          "value": "90°",
+          "role": "μέτρο της γωνίας $B$",
+          "unit": "μοίρες"
+        },
+        {
+          "value": "90°",
+          "role": "μέτρο της γωνίας $C$",
+          "unit": "μοίρες"
+        }
+      ],
+      "conditions": [
+        "Το $ABCD$ είναι τετράπλευρο.",
+        "$AB = 5$.",
+        "$BC = 8$.",
+        "$CD = 20$ μονάδες.",
+        "Οι γωνίες $B$ και $C$ είναι ορθές."
+      ],
+      "required_outputs": [
+        "Το μήκος του ευθύγραμμου τμήματος $AD$."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

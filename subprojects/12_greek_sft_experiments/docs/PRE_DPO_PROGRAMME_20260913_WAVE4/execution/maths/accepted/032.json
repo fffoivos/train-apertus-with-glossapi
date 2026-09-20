@@ -1,0 +1,61 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_2715",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The record has one solution and a single problem record; no historical pairing uncertainty is indicated.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_824",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The problem text is marked stable and has one solution record; no historical pairing uncertainty is indicated.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_531",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "problem_fidelity",
+          "severity": "major",
+          "quote": "$\\u0007ngle ABC = 90^\\circ$",
+          "explanation": "The Greek problem contains the BEL control character followed by “ngle” instead of the LaTeX command “\\angle”. This corrupts the mathematical statement of the right angle, although the candidate solution correctly proceeds from the intended premise.",
+          "suggested_action": "Route the problem text for correction of the malformed token to “$\\angle ABC = 90^\\circ$”; do not alter the mathematically correct solution."
+        },
+        {
+          "dimension": "greek_language",
+          "severity": "minor",
+          "quote": "Στο τρίγωνο $ABC$, $\\u0007ngle ABC = 90^\\circ$",
+          "explanation": "The embedded control character creates visibly malformed notation and makes the Greek prompt unsuitable as clean training text.",
+          "suggested_action": "Remove the control character and restore the intended LaTeX angle command."
+        }
+      ],
+      "provenance_note": "The problem text is marked stable and has one solution record; no historical pairing uncertainty is indicated. The numerical derivation and final rounded area remain correct despite the corrupted angle token in the problem.",
+      "verification_needed": []
+    }
+  ]
+}

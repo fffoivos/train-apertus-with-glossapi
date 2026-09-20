@@ -1,0 +1,228 @@
+{
+  "version": 2,
+  "seed": 20260913,
+  "source_files": [
+    {
+      "role": "before",
+      "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut1/out/greek_math_sft.jsonl",
+      "sha256": "78cdfbb7b7027480b6048b95e5672eb71ee907a5013bb2791ecf8c40e326ced1"
+    },
+    {
+      "role": "after",
+      "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut1/edited/rows_edited.jsonl",
+      "sha256": "4063b575c26583f2b7a321f851b3c598fe22c863869f6cda4b29188c472f8bc4"
+    },
+    {
+      "role": "checks",
+      "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut1/edited/checks.jsonl",
+      "sha256": "1db8e80270c7de54f3228cef964c99a76495e37d95d124b171c405c3f6fa84a5"
+    },
+    {
+      "role": "native",
+      "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut1/native/results.jsonl",
+      "sha256": "98aa136740687d61d6c446c1261fe2fa0f30dd2c2663404aaf42019153f5320b"
+    },
+    {
+      "role": "translated",
+      "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut1/translated/results.jsonl",
+      "sha256": "d15543fb21e3b42bb083006466ee381654c54a13eea5bbb44d3f1901a91cd35a"
+    },
+    {
+      "role": "receipt",
+      "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/arms/R3_single/receipt.json",
+      "sha256": "322ebf914330b473582a1a079294a99e329dfe5ee3224d96a6ddc1ad37ffc1dc"
+    }
+  ],
+  "strata": [
+    {
+      "name": "gsm/edited",
+      "population_excluding_known_controls": 319,
+      "sample": 10
+    },
+    {
+      "name": "gsm/unchanged",
+      "population_excluding_known_controls": 5441,
+      "sample": 20
+    },
+    {
+      "name": "math_1/edited",
+      "population_excluding_known_controls": 19,
+      "sample": 4
+    },
+    {
+      "name": "math_1/unchanged",
+      "population_excluding_known_controls": 338,
+      "sample": 6
+    },
+    {
+      "name": "math_2/edited",
+      "population_excluding_known_controls": 68,
+      "sample": 4
+    },
+    {
+      "name": "math_2/unchanged",
+      "population_excluding_known_controls": 794,
+      "sample": 6
+    },
+    {
+      "name": "math_3/edited",
+      "population_excluding_known_controls": 87,
+      "sample": 4
+    },
+    {
+      "name": "math_3/unchanged",
+      "population_excluding_known_controls": 901,
+      "sample": 6
+    },
+    {
+      "name": "math_4/edited",
+      "population_excluding_known_controls": 104,
+      "sample": 4
+    },
+    {
+      "name": "math_4/unchanged",
+      "population_excluding_known_controls": 930,
+      "sample": 6
+    },
+    {
+      "name": "native_second_solve/edited",
+      "population_excluding_known_controls": 218,
+      "sample": 10
+    },
+    {
+      "name": "native_second_solve/unchanged",
+      "population_excluding_known_controls": 3548,
+      "sample": 20
+    },
+    {
+      "name": "native_none/edited",
+      "population_excluding_known_controls": 53,
+      "sample": 6
+    },
+    {
+      "name": "native_none/unchanged",
+      "population_excluding_known_controls": 1248,
+      "sample": 14
+    }
+  ],
+  "sample_rows": 122,
+  "probability_sample_rows": 120,
+  "targeted_controls": [
+    "gm_nat_301_3",
+    "gm_nat_618_4"
+  ],
+  "batch_count": 61,
+  "max_rows_per_call": 2,
+  "max_input_record_chars": 38000,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "call_cap_including_retries": 140,
+  "training_block_receipt": {
+    "block": "greek_math",
+    "status": "ok",
+    "target": 15000,
+    "weight": 1,
+    "available": 14215,
+    "exact_duplicates_dropped": 0,
+    "content_duplicates_dropped": 0,
+    "id_collisions_suffixed": 0,
+    "contaminated": 3,
+    "too_long": 0,
+    "identity_backstop": 0,
+    "lexicon_mannerism": 0,
+    "tone_dropped": 0,
+    "taken": 14212,
+    "tokens": 3190595,
+    "unique_input_rows": 14215,
+    "unique_taken": 14212,
+    "dev_rows": 142,
+    "train_unique_rows": 14070,
+    "copies": 1,
+    "train_rows_effective": 14070,
+    "tokens_train_unique": 3158982,
+    "tokens_train_effective": 3158982,
+    "supervised_tokens_unique": 1309083,
+    "supervised_tokens_effective": 1309083,
+    "masked_context_turns": 0,
+    "content_sha256": "1b074845a0a0b28e622a19b5f850679b2e7bdc56a07c8bf76d9f6bb195737b0f",
+    "export_file": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut1/edited/rows_edited.jsonl",
+    "export_sha256": "4063b575c26583f2b7a321f851b3c598fe22c863869f6cda4b29188c472f8bc4",
+    "export_mtime": "2026-09-09T20:54:36.277006"
+  },
+  "training_membership": {
+    "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/arms/R3_single/train.jsonl",
+    "unique_rows": 14070,
+    "sample_messages_match": true,
+    "binding": "actual selected messages checked; whole-file SHA is not freshly recomputed"
+  },
+  "limitations": [
+    "Edited rows oversampled; pooled rates need stratum weights.",
+    "Native grade/topic coverage is reported after sampling, not a separate quota.",
+    "No causal attribution to benchmark differences follows from an SFT row audit."
+  ],
+  "prompt_sha256": "9f44fc64c1b05c62fdd6732f0f6974ba68cd3d4fa9fc563e1aad52eb885a1fec",
+  "sample_sha256": "0933ad4e2bd6fa03dcfa6411a1f15750c73c6d082b1298560a62effa930f3442",
+  "batch_sha256": {
+    "batches/000.txt": "6825ca06e8d18108997be47bf19a1a6a2d46e13fbf4340e1379979e1acc443a1",
+    "batches/001.txt": "79af7110852d3753e2b67804228cc66ead051283b12ecfecf52b95dd6b01a712",
+    "batches/002.txt": "fe2592063ff09c89c714b3e245887691886788fc6e94c8eb65319f42f3bbb69d",
+    "batches/003.txt": "79d2a76103dad5704104bd4b76a76c11a4c4fec75dcfe25c6a5f04d50e5f7664",
+    "batches/004.txt": "244d51182da3ca6c89c9b4ceae5745d2df7c31df0ebaebcb31eb83a5af89dd2d",
+    "batches/005.txt": "6fb4df6a0fb84e92a9a4fe7261ad0c03733f2724840ec4d7a3c1c5539554c85c",
+    "batches/006.txt": "c5357f91f0fb5374954e30cd52dd582052789f3447de0bcbaabff2bfa2cf50d7",
+    "batches/007.txt": "faea63843d1a0cf4cf62abe19d054eac656d5f7dcb0145eb9517d158824c1869",
+    "batches/008.txt": "d69472e825539c64e752c0dd84bccff9b815f845a3137ac60aa329a0a15ebb1c",
+    "batches/009.txt": "d0fc8c9486c8790b3bba103f29381e601a58a0103a2d114a2ddbc8807245cb0c",
+    "batches/010.txt": "928cc136ac194d723b60a1857679c0b5ca0a448e1664aff77516fea88d9b0611",
+    "batches/011.txt": "4a81c1545e3b7e038f035a3a45d53fd148c7f1e4b1e275f2cec6f8d7c76f80b6",
+    "batches/012.txt": "9e56a12bc9333d4180748c87bf5355fc35c028192601434b7175444ac9cae938",
+    "batches/013.txt": "cc22c39a156690fa117b713eb06a7a35395a150fcaf4e5be19ccf215ac640495",
+    "batches/014.txt": "e224f6dc2e7af22ec745362545a477b142f64e3c4ef780e18a349415844e850e",
+    "batches/015.txt": "4cd7295b5c08c9864b44f3f2f1c9d8d2c833dff4f762bfc8888f409a9eed05fb",
+    "batches/016.txt": "d2c9831eacd73d001e7aa4d1c9e56e31fa93f4d941889dc1f98cbfdb8932eba6",
+    "batches/017.txt": "3967c396e81d9eaebd8a8e372b7bccf9a40b83135f420c830969d231a71d8d14",
+    "batches/018.txt": "e79c96ddc6f17a8b6168d711af94bfafd8c9c3431679ba63377fa5e4a5b25ca0",
+    "batches/019.txt": "c017c6203e34313c30859c1063e4b18f5c9174b004175983d89dd427be4560b0",
+    "batches/020.txt": "5c4f4cde0f5d0aa62a7169afc2a06bfa4a7b18d6bc86215591ff68255d504eaf",
+    "batches/021.txt": "36f70ff5130decc1a19cb7346a2d6e0caf72fad7e1290be5933f8d6cf6ce8a6e",
+    "batches/022.txt": "8e71b08ac63824105bfa7e51d6802733c50b84efd909372861f5ea0f0bc67fc6",
+    "batches/023.txt": "853363ba8543c00011ec584e10cfd795512118e7b47862cc5def36b3168423c4",
+    "batches/024.txt": "d9550a7b449dea14abf2d5f9605eb49b57550dfcc23942829cb1e6fc1c854bf0",
+    "batches/025.txt": "9b5867c848795a5966cd420145837a08a76a8dea2e4aac14f83b8080cd93aa56",
+    "batches/026.txt": "7c066f3baab7f84cd5411d939ad96267c03a18f7b24b4c63945379a8b33cf3bc",
+    "batches/027.txt": "7a45164f431a6043f5023c4b8d0a949b2652ce7fb79b161fbcd2526e6631f400",
+    "batches/028.txt": "f2232ce4e32669bf04992529ffd1f71ce41350b9e157f66adba29f1f1c75959a",
+    "batches/029.txt": "6702a791d34ee06d68a6062fa21749fa32c8ccc6c6063d817d64945ece1de8a7",
+    "batches/030.txt": "d961a4b6a6ce9f5b2744bb07ab6a593ac786cafc47f2cf6f2647450e8fb93f45",
+    "batches/031.txt": "bd24c5e9557f787e1a4d3ce561e4de26eaabc29be73b56b1ccbe72185c79c0c4",
+    "batches/032.txt": "ff448166ef9ef78ea2cab2e09937e307b5a2cdf7a470857960a97d730c4a3da2",
+    "batches/033.txt": "e1ae962ed4f1bb0bb692ee0627412f3b192807d6f1d372955a60bc6ed6e6d67c",
+    "batches/034.txt": "a0ca44e101dd11d5b1aee5f6412605248b00bfe6350a96747b6c64910dc30935",
+    "batches/035.txt": "f177eedf66ba8d967cbd0f1ce6bf91e104da95da1b780559253eaa5604e81301",
+    "batches/036.txt": "522f9de2b6f936ddca95cadf1124a8cf5732b1b3e553e042f3a43eb2dab83274",
+    "batches/037.txt": "40158f5181339abb8bc5152fdb215413fcc44ff6a089603dd733ad6f577be81e",
+    "batches/038.txt": "2159c578b8867e94d86432ddef288a1d26017aadd0e9efb8ef05449231cc102c",
+    "batches/039.txt": "140e1929ffbf316cb713937376083c603f00a8f19c1fc454c5182900146741f5",
+    "batches/040.txt": "e0ac4fae5b33bc42b5d1f1f316b1484caca02d1aeed6d6241e81b1300b6a8d3e",
+    "batches/041.txt": "c909c56882b8b650cae9ab37561a7f5e05733849faf16d6d9de5ca292cfdb72e",
+    "batches/042.txt": "116662d7772831b3eaaf9236650cb989a0b7c3d6d5a7e6146c6ce5dd952272fd",
+    "batches/043.txt": "a47838cee3657b0c74a4f2deede40e5c6de43a83f071eafe4bd05aa82279af35",
+    "batches/044.txt": "21450ea978c84940c014ad3e202496ed7847ef8fab5ebbae3558038cc04a4816",
+    "batches/045.txt": "ed296c5cae03541e92ca5bf3434bc9004f436f9c5676aa4f3d4171e64b9f1712",
+    "batches/046.txt": "2221c2594a1acb1947cf532a28a676303d5dc0b39bb21e807689bf91da58302a",
+    "batches/047.txt": "0ce0d016cd23dac2497916546c3bdcf7a405013db85245c2f4bb92a473a3b284",
+    "batches/048.txt": "fe05604819b32385fa7563fe840af431911a15f7e5f58ebb84c2f55c2982a515",
+    "batches/049.txt": "8ac8d02e80db21214197bf1fb56f2541b0f90d52f2b75e9bb4f927fc92a4f7fa",
+    "batches/050.txt": "f74214172f1f163949e53f2c251642c5e45edc6965a675aa90ac9d308adc436c",
+    "batches/051.txt": "5770761fc841651a0e945d5c5b01a8d49347ed8186579c75156b33fef1ead228",
+    "batches/052.txt": "d238b20e8ea9525d208424b1d4f6a8978ec5e4835b505db5b73488e10711727c",
+    "batches/053.txt": "56ed8ed2f84730e14a6a447e30cb6322285458e39e73764ede19aea6abd183fc",
+    "batches/054.txt": "68954ec083d5e43b235e044e2ca6f67cea2310cbbbd5cdd0e3110ffbb46ff5db",
+    "batches/055.txt": "42c0e122d612db4e8a01c6d849cc2c86fa0b4a9bec1ed71f8598cda912ecc657",
+    "batches/056.txt": "eb5e5631c4ced4db97e4d2284dffff729bedf2cc7ae5f202f244b20ea17ee6aa",
+    "batches/057.txt": "3ac61c9c87ed26775bbcce351efe908a947d345ebcee21062d9fd4a6c3b3c05c",
+    "batches/058.txt": "a21c6ca41896fdcafa6f118391d805fc410009a8c6a8e8cad5f4ef4f46c580d8",
+    "batches/059.txt": "7be8c4b720f474e5f9a2cb0609bd0ca5f253dc8517aff4c99f707f979eaa6c20",
+    "batches/060.txt": "7bf295ed5705e2d742295c8a02a56e56fac137f7499f8c479ce05925be0f79cb"
+  }
+}

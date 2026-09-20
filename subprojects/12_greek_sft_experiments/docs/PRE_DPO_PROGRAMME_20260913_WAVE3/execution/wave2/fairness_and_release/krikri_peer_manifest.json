@@ -1,0 +1,40 @@
+{
+  "checked_at": "2026-09-13",
+  "selection_rule": "Use a two-checkpoint Krikri envelope. Report each checkpoint separately; compare instruction-following endpoints to the original checkpoint and chat-quality endpoints to v1.5. Never select the better checkpoint after seeing individual test items or collapse the two into one score.",
+  "models": [
+    {
+      "role": "instruction_following_reference",
+      "repo_id": "ilsp/Llama-Krikri-8B-Instruct",
+      "revision": "06d813157ba5f19deb17d70c3862ce64035431ec",
+      "public": true,
+      "gated": false,
+      "license_tag": "llama3.1",
+      "official_card_scores": {"ifeval_el_strict_avg": 0.675, "ifeval_en_strict_avg": 0.824, "mt_bench_el": 7.96, "mt_bench_en": 7.21},
+      "local_completed": {"ifeval_el_items": 541, "mgsm_el_items": 250, "greekmmlu_full_items": 16632, "greekmmlu_clean_items": 16159, "math500_el_items": 500, "math500_en_items": 500, "ifbench_el_items": 300, "ifbench_en_items": 300, "xstest_el_generated": 450, "xstest_en_generated": 450, "xstest_el_judged": 450, "multichallenge_el_generated": 262, "multichallenge_en_generated": 262, "multichallenge_el_judged": 262, "interactive_dialogues": 60, "interactive_turns": 808}
+    },
+    {
+      "role": "chat_quality_reference",
+      "repo_id": "ilsp/Llama-Krikri-8B-Instruct-v1.5",
+      "revision": "326e2c0ea90d771c19fcf06225fe87dc922b51b2",
+      "public": true,
+      "gated": false,
+      "license_tag": "llama3.1",
+      "official_card_scores": {"ifeval_el_strict_avg": 0.612, "ifeval_en_strict_avg": 0.788, "mt_bench_el": 8.16, "mt_bench_en": 7.38},
+      "local_completed": {}
+    }
+  ],
+  "shared_base": {"repo_id": "ilsp/Llama-Krikri-8B-Base", "revision": "0383614fccad6679644b03319b3841d927a0db3f"},
+  "prompting": {
+    "chat_template_sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+    "chat_templates_identical_at_pins": true,
+    "benchmark_system_prompt": null,
+    "apply_native_chat_template": true,
+    "explicit_generation_overrides": {"temperature": 0, "top_p": 1, "math500_max_tokens": 2048, "other_fixed_benchmarks_max_tokens": 1024},
+    "do_not_use_repository_defaults_for_comparison": {"do_sample": true, "temperature": 0.6, "top_p": 0.9}
+  },
+  "primary_sources": [
+    "https://huggingface.co/ilsp/Llama-Krikri-8B-Instruct",
+    "https://huggingface.co/ilsp/Llama-Krikri-8B-Instruct-v1.5",
+    "https://aclanthology.org/2025.findings-emnlp.268/"
+  ]
+}

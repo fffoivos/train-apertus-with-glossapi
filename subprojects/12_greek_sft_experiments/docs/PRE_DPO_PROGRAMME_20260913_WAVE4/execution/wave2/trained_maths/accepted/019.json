@@ -1,0 +1,60 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_1057_2",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The BEFORE and AFTER records are identical and match the actual training messages. All calculations are correct: 2.5×1.20=3.00 €, 4×1.20=4.80 €, and the difference is 1.80 €. The scenario, quantities, units, speaker roles, and answer are coherent.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_2231",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "issue",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "issue",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "after/derivation",
+          "severity": "minor",
+          "quote": "ν · (ν + 1) · (ν + 2) · (ν + 3) = 4! · C(ν + 3, 4)",
+          "explanation": "The problem quantifies over all integers, but the solution uses binomial-coefficient notation without defining its extension to negative upper arguments. Under the generalized binomial-coefficient convention the identity is valid, but under the ordinary elementary convention C(ν+3,4) is not defined for every negative ν. Thus the proof is underspecified even though the conclusion 24 is correct.",
+          "suggested_action": "Repair only the proof: give an elementary divisibility argument using a multiple of 3, a multiple of 4, and another even number among four consecutive integers, or explicitly handle nonpositive blocks before applying the binomial identity."
+        },
+        {
+          "dimension": "before/derivation",
+          "severity": "minor",
+          "quote": "ν · (ν + 1) · (ν + 2) · (ν + 3) = 4! · C(ν + 3, 4)",
+          "explanation": "The same domain/convention gap was already present before editing; it was not introduced by the editor.",
+          "suggested_action": "Treat this as an inherited mathematical-completeness defect."
+        },
+        {
+          "dimension": "editor_delta/greek_language",
+          "severity": "minor",
+          "quote": "«μεγαλύτερος υποχρεωτικός διαιρέτης δεν υπάρχει» → «δεν υπάρχει μεγαλύτερος διαιρέτης που να διαιρεί υποχρεωτικά το γινόμενο»",
+          "explanation": "The edit makes the concluding sentence more natural and explicit without changing its mathematical meaning or damaging any correct step.",
+          "suggested_action": "Retain the edited wording."
+        }
+      ],
+      "provenance_note": "The Greek problem faithfully translates the supplied English source and requires no cultural localization. BEFORE and AFTER differ only in the final explanatory sentence; the actual training target matches AFTER. The value 24 is independently supported within the solution: divisibility by 24 is intended by the factorial identity, while the example 1·2·3·4=24 proves that no larger positive integer can divide every such product. Reference agreement was not used as proof.",
+      "verification_needed": [
+        "Determine whether the surrounding curriculum explicitly defines generalized binomial coefficients for negative integer upper arguments; no such convention appears in the supplied record."
+      ],
+      "editor_effect": "language_improvement",
+      "recommended_action": "repair_solution"
+    }
+  ]
+}

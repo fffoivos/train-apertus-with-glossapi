@@ -1,0 +1,28 @@
+{
+  "pilot": "correcting_decisions_pilot12_v1",
+  "scope": "First 12 semantic-authoring candidates of the planned 120 decisions; Greek language correction and independent review remain separate.",
+  "classes": {"true":3,"false":3,"partial":3,"unresolved":3},
+  "evidence_policy": [
+    "Every claim is linked to a user message and one local evidence record.",
+    "Arithmetic outcomes are derived from operands and budgets.",
+    "List outcomes are derived by set difference between requested and previously supplied items.",
+    "State outcomes compare declared day, time, place, destination and party-size fields.",
+    "A null evidence value yields unresolved rather than false.",
+    "Earlier assistant mistakes used to teach recovery are train:false context.",
+    "No model self-assertion is treated as independent evidence."
+  ],
+  "row_evidence": [
+    {"row_id":"corrv2_t_001","evidence_id":"e_t001","type":"arithmetic","facts":"12 + 8 = 20; 30 - 20 = 10"},
+    {"row_id":"corrv2_t_002","evidence_id":"e_t002","type":"schedule_state","facts":"Tuesday; 16:00; library"},
+    {"row_id":"corrv2_t_003","evidence_id":"e_t003","type":"list_difference","facts":"requested charger, ID, ticket; prior answer omitted charger"},
+    {"row_id":"corrv2_f_001","evidence_id":"e_f001","type":"arithmetic","facts":"7 * 8 = 56"},
+    {"row_id":"corrv2_f_002","evidence_id":"e_f002","type":"speaker_count","facts":"two user messages precede the claim"},
+    {"row_id":"corrv2_f_003","evidence_id":"e_f003","type":"list_state","facts":"box contains red and green notebooks only"},
+    {"row_id":"corrv2_p_001","evidence_id":"e_p001","type":"arithmetic_components","facts":"14 + 9 = 23; 40 - 23 = 17"},
+    {"row_id":"corrv2_p_002","evidence_id":"e_p002","type":"list_components","facts":"bread omitted; milk already present"},
+    {"row_id":"corrv2_p_003","evidence_id":"e_p003","type":"schedule_components","facts":"Friday is correct; 18:30 is correct"},
+    {"row_id":"corrv2_u_001","evidence_id":"e_u001","type":"missing_state","facts":"Tuesday and 18:00 known; room unknown"},
+    {"row_id":"corrv2_u_002","evidence_id":"e_u002","type":"underdetermined_arithmetic","facts":"total 24; participant count unknown"},
+    {"row_id":"corrv2_u_003","evidence_id":"e_u003","type":"missing_state","facts":"destination Nafplio known; departure city unknown"}
+  ]
+}

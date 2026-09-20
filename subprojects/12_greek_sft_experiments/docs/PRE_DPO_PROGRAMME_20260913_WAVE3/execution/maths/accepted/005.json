@@ -1,0 +1,48 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_751",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Οι δύο αποθηκευμένες ελληνικές εκδοχές διαφέρουν μόνο ως προς την αλλαγή γραμμής και είναι μαθηματικά ισοδύναμες. Η ιστορική αντιστοίχιση της επιλεγμένης λύσης με συγκεκριμένη εκδοχή παραμένει μη αποδεδειγμένη λόγω του pair_provenance=\"ambiguous_input_version\", χωρίς αυτό να συνιστά μαθηματικό ελάττωμα.",
+      "verification_needed": [
+        "Η ιστορική αντιστοίχιση της τελευταίας αποθηκευμένης λύσης με την τελευταία εκδοχή του προβλήματος θα απαιτούσε πρόσθετα μεταδεδομένα προέλευσης."
+      ]
+    },
+    {
+      "row_id": "math5_546",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το κείμενο του προβλήματος δηλώνεται σταθερό. Η λύση αντιστοιχεί πλήρως στο παρεχόμενο ελληνικό πρόβλημα, παρότι υπάρχουν τέσσερις εγγραφές λύσεων.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_2943",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχει μία μόνο εγγραφή προβλήματος και λύσης. Η προσαρμογή ονομάτων και νομίσματος είναι συνεπής με την αριθμητική δομή· η μεταγραφή «Σίντη» δεν προκαλεί πολιτισμική ή λογική ασυνέπεια.",
+      "verification_needed": []
+    }
+  ]
+}

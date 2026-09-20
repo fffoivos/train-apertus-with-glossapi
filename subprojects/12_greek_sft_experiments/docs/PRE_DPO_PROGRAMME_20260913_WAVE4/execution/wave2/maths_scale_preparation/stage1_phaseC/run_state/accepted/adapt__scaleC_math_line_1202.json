@@ -1,0 +1,64 @@
+{
+  "job_id": "adapt__scaleC_math_line_1202",
+  "row_id": "scaleC_math_line_1202",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "56fd2940741ff38adf23ea0344ddc0c029c03a8a553fef4b095250e7b4f7c5e1",
+  "input_record_sha256": "45a4602f8c965952ac932d5696a6350743551f3c563d546c01e4c04afae86cd1",
+  "payload_sha256": "dd1a6205151c40b9e87f55abfbc5f5d4ec652e32aed87d67494fb78127c7d7c1",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "8ef3f6201929e34da963e1c5017281d84e7f306d0139eabfab33727f8f1b1309",
+  "result": {
+    "row_id": "scaleC_math_line_1202",
+    "status": "candidate",
+    "problem_text": "Έστω ότι τα $p$ και $q$ είναι αντιστρόφως ανάλογα. Αν $p=25$ όταν $q=6$, να βρείτε την τιμή του $p$ όταν $q=15$.",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Suppose $p$ and $q$ are inversely proportional.",
+        "target_span": "Έστω ότι τα $p$ και $q$ είναι αντιστρόφως ανάλογα.",
+        "reason": "Πιστή απόδοση της μαθηματικής συνθήκης σε φυσική και ακριβή ελληνική ορολογία."
+      },
+      {
+        "source_span": "If $p=25$ when $q=6$, find the value of $p$ when $q=15$.",
+        "target_span": "Αν $p=25$ όταν $q=6$, να βρείτε την τιμή του $p$ όταν $q=15$.",
+        "reason": "Μετάφραση της εκφώνησης με διατήρηση όλων των τιμών, των εξαρτήσεων και του ζητουμένου."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "25",
+          "role": "δεδομένη τιμή του $p$",
+          "unit": null
+        },
+        {
+          "value": "6",
+          "role": "τιμή του $q$ που αντιστοιχεί στο $p=25$",
+          "unit": null
+        },
+        {
+          "value": "15",
+          "role": "νέα δεδομένη τιμή του $q$",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Τα $p$ και $q$ είναι αντιστρόφως ανάλογα.",
+        "Η τιμή $p=25$ αντιστοιχεί στην τιμή $q=6$.",
+        "Ζητείται η τιμή του $p$ που αντιστοιχεί στην τιμή $q=15$."
+      ],
+      "required_outputs": [
+        "Η τιμή του $p$ όταν $q=15$."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": [
+      "Να επιβεβαιωθεί ότι διατηρήθηκαν ακριβώς η σχέση αντίστροφης αναλογίας, οι αριθμητικές τιμές και το ζητούμενο."
+    ]
+  }
+}

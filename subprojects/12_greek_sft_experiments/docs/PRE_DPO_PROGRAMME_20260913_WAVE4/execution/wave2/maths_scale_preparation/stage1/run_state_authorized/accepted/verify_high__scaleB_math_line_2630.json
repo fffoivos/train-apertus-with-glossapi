@@ -1,0 +1,30 @@
+{
+  "job_id": "verify_high__scaleB_math_line_2630",
+  "row_id": "scaleB_math_line_2630",
+  "stage": "verification_blind_high",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "01f5f93f7a0ce46c4e7619491072559a3b17192b3fa5a3ea9a54ca7244efe881",
+  "input_record_sha256": "0a82df27994c086a3d7fd31a3219cfe0cb46d4161b11239fd64fab4089647273",
+  "payload_sha256": "959d9834f04aea0e5ee846a51198e75f4831e6f72d899679f2a00d7f611ba848",
+  "template_sha256": "67a04cee918f227aa582da70a6fcb66cc7eca7093bc64ae9c067ec87a3b4b1de",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "196e9c837c975845eb1f6dbedaf6b4fe96279944ed0029a178c7f525b7a64eae",
+  "result": {
+    "row_id": "scaleB_math_line_2630",
+    "status": "candidate",
+    "solution_text": "Έστω ότι η τρίτη πλευρά έχει μήκος \\(x\\) cm. Από την τριγωνική ανισότητα πρέπει το μήκος κάθε πλευράς να είναι μικρότερο από το άθροισμα των άλλων δύο. Επομένως\n\\[\n9-4<x<9+4,\n\\]\nδηλαδή\n\\[\n5<x<13.\n\\]\nΑφού το \\(x\\) ζητείται να είναι ακέραιος αριθμός εκατοστών, η μεγαλύτερη δυνατή ακέραια τιμή μικρότερη από το \\(13\\) είναι το \\(12\\). Πράγματι, οι πλευρές \\(4\\), \\(9\\) και \\(12\\) ικανοποιούν τις αυστηρές τριγωνικές ανισότητες.\n\nΑπάντηση: \\(12\\) cm.",
+    "final_answers": [
+      {
+        "part": "Μήκος τρίτης πλευράς",
+        "expression": "12",
+        "unit": "cm",
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

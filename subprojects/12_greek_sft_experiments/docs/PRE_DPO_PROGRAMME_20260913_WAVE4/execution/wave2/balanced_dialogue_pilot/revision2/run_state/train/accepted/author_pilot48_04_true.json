@@ -1,0 +1,73 @@
+{
+  "job_id": "author_pilot48_04_true",
+  "row_id": "pilot48_04_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "88da852039208daccd48b441ed1b68079b04f57437ddacbcba903044c0e1f6c1",
+  "input_record_sha256": "3ce1e055f33a86529b7423a9ac7a68360594d41e44912f4277268ec63c246349",
+  "payload_sha256": "15c39a663a9851d57476013210b86005f7667b2610cd0cfb6ece4f1a39b7c6f7",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "4bddf8f63b1b4aa0f0bb0af0734028c4ba382fe7cff422919917f8ac375f913c",
+  "result": {
+    "row_id": "pilot48_04_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_04_true.u_context",
+        "role": "user",
+        "content": "Η αρχική λίστα είχε ταυτότητα και φορτιστή. Έπειτα προστέθηκε αδιάβροχο, οπότε τώρα περιέχει ταυτότητα, φορτιστή και αδιάβροχο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_true.a_context",
+        "role": "assistant",
+        "content": "Η τρέχουσα λίστα είναι: ταυτότητα, φορτιστής και αδιάβροχο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_true.u_decision",
+        "role": "user",
+        "content": "Άντε, επιτέλους. Στη λίστα υπάρχουν ταυτότητα, φορτιστής και αδιάβροχο. Πρόσθεσε κάλτσες.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά. Πρόσθεσα τις κάλτσες· η λίστα τώρα περιέχει ταυτότητα, φορτιστή, αδιάβροχο και κάλτσες.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_04_true.u_decision",
+        "claim": "Στη λίστα υπάρχουν ταυτότητα, φορτιστής και αδιάβροχο.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "pilot48_04_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "acknowledge_valid_claim",
+          "apply_current_request_if_any",
+          "state_result_concisely"
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "items",
+        "before_json": "[\"ταυτότητα\",\"φορτιστής\",\"αδιάβροχο\"]",
+        "after_json": "[\"ταυτότητα\",\"φορτιστής\",\"αδιάβροχο\",\"κάλτσες\"]",
+        "evidence_ids": [
+          "pilot48_04_true.u_context",
+          "pilot48_04_true.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

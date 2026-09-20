@@ -1,0 +1,382 @@
+{
+  "seed": "greekmmlu-protocol-diagnostic-20260913-v1",
+  "source_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/results/R3_single_ep1/greekmmlu/R3_single_ep1_native_mcq_predictions.jsonl",
+  "source_sha256": "a829fd340ce234c6f7c9de1dff6cfba85b6ff551dba887d660f5718d537a9dcb",
+  "uses_model_answers_or_correctness_for_selection": false,
+  "strata": 61,
+  "sample": 200,
+  "target_population": 16632,
+  "data_pin": "dascim/GreekMMLU@6a03aa06b68beb932fb75edff3a34e50b3674649 / All / test",
+  "quota_rule": "Minimum three per subject/education stratum, then largest proportional deficit; SHA256 order within stratum.",
+  "counts": [
+    {
+      "subject": "Accounting",
+      "level": "Professional",
+      "population": 184,
+      "sample": 3
+    },
+    {
+      "subject": "Agriculture",
+      "level": "Professional",
+      "population": 339,
+      "sample": 3
+    },
+    {
+      "subject": "Agriculture",
+      "level": "University",
+      "population": 70,
+      "sample": 3
+    },
+    {
+      "subject": "Art",
+      "level": "Professional",
+      "population": 600,
+      "sample": 3
+    },
+    {
+      "subject": "Art",
+      "level": "Secondary School",
+      "population": 39,
+      "sample": 3
+    },
+    {
+      "subject": "Art",
+      "level": "University",
+      "population": 12,
+      "sample": 3
+    },
+    {
+      "subject": "Biology",
+      "level": "Primary School",
+      "population": 81,
+      "sample": 3
+    },
+    {
+      "subject": "Biology",
+      "level": "Professional",
+      "population": 42,
+      "sample": 3
+    },
+    {
+      "subject": "Biology",
+      "level": "Secondary School",
+      "population": 295,
+      "sample": 3
+    },
+    {
+      "subject": "Chemistry",
+      "level": "Primary School",
+      "population": 2,
+      "sample": 2
+    },
+    {
+      "subject": "Chemistry",
+      "level": "University",
+      "population": 79,
+      "sample": 3
+    },
+    {
+      "subject": "Civil Engineering",
+      "level": "Professional",
+      "population": 769,
+      "sample": 3
+    },
+    {
+      "subject": "Clinical Knowledge",
+      "level": "Professional",
+      "population": 633,
+      "sample": 3
+    },
+    {
+      "subject": "Computer Networks & Security",
+      "level": "University",
+      "population": 63,
+      "sample": 3
+    },
+    {
+      "subject": "Computer Science",
+      "level": "Professional",
+      "population": 254,
+      "sample": 3
+    },
+    {
+      "subject": "Computer Science",
+      "level": "University",
+      "population": 104,
+      "sample": 3
+    },
+    {
+      "subject": "Computer_Networks_and_Security",
+      "level": "Secondary School",
+      "population": 23,
+      "sample": 3
+    },
+    {
+      "subject": "Driving Rules",
+      "level": "NA",
+      "population": 1658,
+      "sample": 11
+    },
+    {
+      "subject": "Economics",
+      "level": "Professional",
+      "population": 196,
+      "sample": 3
+    },
+    {
+      "subject": "Economics",
+      "level": "University",
+      "population": 86,
+      "sample": 3
+    },
+    {
+      "subject": "Education",
+      "level": "Professional",
+      "population": 253,
+      "sample": 3
+    },
+    {
+      "subject": "Education",
+      "level": "University",
+      "population": 41,
+      "sample": 3
+    },
+    {
+      "subject": "Electrical Engineering",
+      "level": "Professional",
+      "population": 499,
+      "sample": 3
+    },
+    {
+      "subject": "Electrical Engineering",
+      "level": "Secondary School",
+      "population": 45,
+      "sample": 3
+    },
+    {
+      "subject": "Electrical Engineering",
+      "level": "University",
+      "population": 8,
+      "sample": 3
+    },
+    {
+      "subject": "General Knowledge",
+      "level": "Professional",
+      "population": 346,
+      "sample": 3
+    },
+    {
+      "subject": "General Knowledge",
+      "level": "Secondary School",
+      "population": 5,
+      "sample": 3
+    },
+    {
+      "subject": "Geography",
+      "level": "Primary School",
+      "population": 360,
+      "sample": 3
+    },
+    {
+      "subject": "Geography",
+      "level": "Secondary School",
+      "population": 62,
+      "sample": 3
+    },
+    {
+      "subject": "Government and Politics",
+      "level": "Primary School",
+      "population": 280,
+      "sample": 3
+    },
+    {
+      "subject": "Government and Politics",
+      "level": "Secondary School",
+      "population": 75,
+      "sample": 3
+    },
+    {
+      "subject": "Greek History",
+      "level": "Primary School",
+      "population": 464,
+      "sample": 3
+    },
+    {
+      "subject": "Greek History",
+      "level": "Professional",
+      "population": 117,
+      "sample": 3
+    },
+    {
+      "subject": "Greek History",
+      "level": "Secondary School",
+      "population": 93,
+      "sample": 3
+    },
+    {
+      "subject": "Greek Literature",
+      "level": "Secondary School",
+      "population": 8,
+      "sample": 3
+    },
+    {
+      "subject": "Greek Literature",
+      "level": "University",
+      "population": 6,
+      "sample": 3
+    },
+    {
+      "subject": "Greek Mythology",
+      "level": "Primary School",
+      "population": 123,
+      "sample": 3
+    },
+    {
+      "subject": "Greek Mythology",
+      "level": "Secondary School",
+      "population": 7,
+      "sample": 3
+    },
+    {
+      "subject": "Greek Mythology",
+      "level": "University",
+      "population": 108,
+      "sample": 3
+    },
+    {
+      "subject": "Greek Traditions",
+      "level": "Professional",
+      "population": 373,
+      "sample": 3
+    },
+    {
+      "subject": "Greek Traditions",
+      "level": "Secondary School",
+      "population": 3,
+      "sample": 3
+    },
+    {
+      "subject": "Law",
+      "level": "Professional",
+      "population": 916,
+      "sample": 3
+    },
+    {
+      "subject": "Law",
+      "level": "Secondary School",
+      "population": 20,
+      "sample": 3
+    },
+    {
+      "subject": "Management",
+      "level": "Professional",
+      "population": 641,
+      "sample": 3
+    },
+    {
+      "subject": "Management",
+      "level": "University",
+      "population": 25,
+      "sample": 3
+    },
+    {
+      "subject": "Maritime Safety and Rescue Operations",
+      "level": "Professional",
+      "population": 148,
+      "sample": 3
+    },
+    {
+      "subject": "Mathematics",
+      "level": "Primary School",
+      "population": 1096,
+      "sample": 5
+    },
+    {
+      "subject": "Mathematics",
+      "level": "Secondary School",
+      "population": 5,
+      "sample": 3
+    },
+    {
+      "subject": "Mathematics",
+      "level": "University",
+      "population": 17,
+      "sample": 3
+    },
+    {
+      "subject": "Medicine",
+      "level": "Professional",
+      "population": 462,
+      "sample": 3
+    },
+    {
+      "subject": "Medicine",
+      "level": "University",
+      "population": 72,
+      "sample": 3
+    },
+    {
+      "subject": "Modern Greek Language",
+      "level": "Primary School",
+      "population": 1478,
+      "sample": 9
+    },
+    {
+      "subject": "Modern Greek Language",
+      "level": "Secondary School",
+      "population": 880,
+      "sample": 3
+    },
+    {
+      "subject": "Physics",
+      "level": "Primary School",
+      "population": 427,
+      "sample": 3
+    },
+    {
+      "subject": "Physics",
+      "level": "Professional",
+      "population": 1331,
+      "sample": 7
+    },
+    {
+      "subject": "Physics",
+      "level": "University",
+      "population": 71,
+      "sample": 3
+    },
+    {
+      "subject": "Prehistory",
+      "level": "Primary School",
+      "population": 63,
+      "sample": 3
+    },
+    {
+      "subject": "World History",
+      "level": "Primary School",
+      "population": 19,
+      "sample": 3
+    },
+    {
+      "subject": "World History",
+      "level": "Secondary School",
+      "population": 1,
+      "sample": 1
+    },
+    {
+      "subject": "World Religions",
+      "level": "Secondary School",
+      "population": 5,
+      "sample": 3
+    },
+    {
+      "subject": "World Religions",
+      "level": "University",
+      "population": 150,
+      "sample": 3
+    }
+  ],
+  "task": "Evaluate both protocols on these identical200 items for originalKrikri andG3F2P1; match exact question/option content from frozen dataset before dispatch.",
+  "pending": "Dataset question/option hash binding and runtime dry-run remain required; this receipt is only the ID selection.",
+  "interpretation": "Diagnostic subset, no full-benchmark score or final-confirmation claim."
+}

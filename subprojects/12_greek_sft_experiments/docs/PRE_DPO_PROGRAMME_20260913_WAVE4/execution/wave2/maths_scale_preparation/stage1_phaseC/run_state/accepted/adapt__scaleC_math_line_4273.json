@@ -1,0 +1,64 @@
+{
+  "job_id": "adapt__scaleC_math_line_4273",
+  "row_id": "scaleC_math_line_4273",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "ec3c1158b8e174a1371ee572b7b3faecbb3c9ec3a82315ad2c7547721b417e4c",
+  "input_record_sha256": "e699b8653cbd272bc3368796654a75e36fd1927dfc1cd17ee7f5c84b5d1eb9c8",
+  "payload_sha256": "b15b621da7c20810813ebd99b5f159abfa6ab112f652e78a2d854ab2873beb92",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "8d50c33a17257a25d7e3f76d2e602c2cdbb44f39f890a1c480bbcef2018c4969",
+  "result": {
+    "row_id": "scaleC_math_line_4273",
+    "status": "candidate",
+    "problem_text": "Οι κύκλοι με εξισώσεις $x^2 + y^2 - 4x + 2y - 11 = 0$ και $x^2 + y^2 - 14x + 12y + 60 = 0$ τέμνονται στα σημεία $A$ και $B$. Να υπολογίσετε την κλίση του $\\overline{AB}$.",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "The circles whose equations are",
+        "target_span": "Οι κύκλοι με εξισώσεις",
+        "reason": "Πιστή απόδοση της εκφώνησης σε φυσικά ελληνικά· οι εξισώσεις διατηρούνται ακριβώς."
+      },
+      {
+        "source_span": "intersect in the points $A$ and $B.$",
+        "target_span": "τέμνονται στα σημεία $A$ και $B$.",
+        "reason": "Διατηρούνται η σχέση τομής και οι μαθηματικές ετικέτες."
+      },
+      {
+        "source_span": "Compute the slope of $\\overline{AB}.$",
+        "target_span": "Να υπολογίσετε την κλίση του $\\overline{AB}$.",
+        "reason": "Διατηρούνται η προστακτική απαίτηση και το ζητούμενο χωρίς προσθήκη υπόδειξης ή λύσης."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "x^2 + y^2 - 4x + 2y - 11 = 0",
+          "role": "εξίσωση του πρώτου κύκλου",
+          "unit": null
+        },
+        {
+          "value": "x^2 + y^2 - 14x + 12y + 60 = 0",
+          "role": "εξίσωση του δεύτερου κύκλου",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Οι δύο δοσμένοι κύκλοι τέμνονται στα σημεία $A$ και $B$.",
+        "Το $\\overline{AB}$ είναι το ευθύγραμμο τμήμα που ενώνει τα δύο σημεία τομής."
+      ],
+      "required_outputs": [
+        "Η κλίση του $\\overline{AB}$."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": [
+      "Να επιβεβαιωθεί ότι όλοι οι συντελεστές, τα πρόσημα, οι μεταβλητές και οι ετικέτες $A$, $B$ διατηρήθηκαν ακριβώς.",
+      "Να επιβεβαιωθεί ότι ζητείται μόνο η κλίση και ότι δεν έχει προστεθεί λύση ή υπόδειξη."
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "verified_at": "2026-09-13T15:41:34+03:00",
+  "status": "PASS",
+  "scope": "guard patch only; no project source or dataset modification",
+  "test_command": "PYTHONWARNINGS=ignore::ResourceWarning PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v",
+  "tests_run": 11,
+  "tests_failed": 0,
+  "patch_dry_run": {
+    "command": "patch --dry-run -p1 -d <experiment_root> < math_pipeline_guards.patch",
+    "status": "PASS",
+    "files": [
+      "data/math/mathlib.py",
+      "data/benchmarks_el/bench_lib.py",
+      "data/math/cut2/run_batches.py"
+    ]
+  },
+  "coverage": [
+    "literal LaTeX survives a JSON dump/load model-output round trip",
+    "decoded C0 and DEL characters fail with recursive location reporting",
+    "tab, newline and carriage return remain allowed",
+    "nonzero model subprocess return codes raise before JSON loading",
+    "conflicting duplicate IDs fail before worker dispatch",
+    "identical duplicate inputs collapse deterministically",
+    "worker values outside 1 through 100 fail for explicit and environment configuration",
+    "existing historical outputs are skipped without provenance rewriting",
+    "new problem and solution provenance binds canonical input, exact prompt, model and effort",
+    "changed input changes both input and prompt hashes"
+  ],
+  "model_calls": 0,
+  "production_runs": 0,
+  "sha256": {
+    "math_pipeline_guards.patch": "21cda6d4bfb597e6fee0327e34bbf487fa10044a920242337293a319474a601b",
+    "tests/test_guards.py": "f03e786298f501fd2a5489e17ac1107ef881eae6ad9e703e9296928f2723acc0",
+    "source/data/math/mathlib.py": "8800788883aca5a12c96e7c0bd68276c3ecbf40594e5f5ca5b678589be375851",
+    "source/data/benchmarks_el/bench_lib.py": "b93fdb667d0adcf4b49cfd282f164acb4a4fd509bd580bf407519066e6c9d2ad",
+    "source/data/math/cut2/run_batches.py": "fb698341456241c554ab89a4c5cfc23cf4c1de2797f86be21d9da07429682c68"
+  },
+  "root_review": {
+    "changes": "Closed files explicitly; all 11 tests rerun successfully without warnings.",
+    "applied": true,
+    "deployed_source_matches_tested_staged_files": true
+  }
+}

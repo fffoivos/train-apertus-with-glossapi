@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_623_4",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The before and after records are identical, and the actual training pair matches them. Under the ordinary classroom right-triangle interpretation, the 12 m vertical height is opposite the 30° ground angle, so ℓ = 12/0.5 = 24 m and the cost is 24 × 3.5 = 84 €. The compact omission of €/m in the displayed multiplication does not make the units or conclusion unclear.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_2731",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem faithfully preserves the supplied English mathematical task and expression. The before and after records are identical, and the actual training pair matches them. Each principal root is correctly evaluated as 2, giving 2 × 2 × 2 = 8, a positive integer.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

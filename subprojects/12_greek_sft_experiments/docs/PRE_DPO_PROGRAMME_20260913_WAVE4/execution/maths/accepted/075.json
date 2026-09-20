@@ -1,0 +1,54 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_1202",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "greek_language",
+          "severity": "minor",
+          "quote": "AC=\\sqrt{585}\\approx 24{,}2\\text{ cm}. ... \\boxed{24.2}",
+          "explanation": "Η τελική γραφή αλλάζει ασυνεπώς από το ελληνικό δεκαδικό κόμμα σε τελεία. Η αριθμητική τιμή και η στρογγυλοποίηση παραμένουν σωστές.",
+          "suggested_action": "Σε ενδεχόμενη γλωσσική διόρθωση, να χρησιμοποιηθεί συνεπώς το «24,2» στην τελική εγκιβωτισμένη απάντηση."
+        }
+      ],
+      "provenance_note": "Το κείμενο του προβλήματος χαρακτηρίζεται σταθερό και δεν παρέχονται εναλλακτικές εκδοχές. Η επιλεγμένη λύση είναι μία από τέσσερις εγγραφές λύσης, αλλά δεν προκύπτει μαθηματική αβεβαιότητα αντιστοίχισης από τα παρεχόμενα στοιχεία.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_4025",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική εγγραφή προβλήματος και λύσης. Η προσαρμογή του ονόματος Ivy σε Ίριδα είναι επιτρεπτή και συνεπής.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_123",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική εγγραφή προβλήματος και λύσης. Η απόδοση του Jonas ως Γιάννης είναι επιτρεπτή. Η απόδοση του αγγλικού «10 pairs of pants» ως «10 παντελόνια» διατηρεί σωστά την έννοια δέκα ενδυμάτων και συμφωνεί με τη λογική της αναφοράς.",
+      "verification_needed": []
+    }
+  ]
+}

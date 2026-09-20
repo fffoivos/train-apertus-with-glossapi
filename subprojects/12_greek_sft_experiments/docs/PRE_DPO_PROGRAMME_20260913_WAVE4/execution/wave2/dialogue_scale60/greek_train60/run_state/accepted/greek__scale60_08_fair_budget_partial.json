@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_08_fair_budget_partial",
+  "row_id": "scale60_08_fair_budget_partial",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "c1d8977ae744ce260a7f1cf1a21f0d6f5b1b0a1790820c4cf417e4fa0510653f",
+  "input_record_sha256": "697dc60abb899320236f71fa24482bdf863c43c541e66fe02378e043e5d1b02f",
+  "payload_sha256": "69fbd256ee9156700de7ca54f632590f190e5ff7fe58c51a3892911056f88767",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "ff3a33d328bc41b8260fb10776b54d66b1333dc4c97d0d96e4eea0a2f4efd482",
+  "result": {
+    "row_id": "scale60_08_fair_budget_partial",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_08_fair_budget_partial.u_context",
+        "role": "user",
+        "content": "Ο πρόχειρος προϋπολογισμός δείχνει αρχικό ποσό 120 ευρώ, από το οποίο πληρώθηκαν 35 ευρώ για τραπέζια και άλλα 15 ευρώ για πινακίδες. Δεν υπάρχει καταγεγραμμένη δωρεά.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_partial.a_context",
+        "role": "assistant",
+        "content": "Θα υπολογίσω το υπόλοιπο από τα καταγεγραμμένα ποσά, χωρίς να προσθέσω έσοδο που δεν φαίνεται.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_partial.u_decision",
+        "role": "user",
+        "content": "Με βάση τον πρόχειρο προϋπολογισμό, τα τραπέζια κόστισαν 35 ευρώ και το υπόλοιπο είναι 80 ευρώ.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_partial.a_target",
+        "role": "assistant",
+        "content": "Τα τραπέζια κόστισαν πράγματι 35 ευρώ. Ωστόσο, το υπόλοιπο είναι 70 ευρώ, αφού από τα 120 ευρώ αφαιρούνται και τα 35 ευρώ για τα τραπέζια και τα 15 ευρώ για τις πινακίδες.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

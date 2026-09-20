@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_20_reading_workflow_true",
+  "row_id": "scale60_20_reading_workflow_true",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "ff9bf6e5a7791098fc1149bdf20534cccea46344d4abcb0ae2701305d11fd157",
+  "input_record_sha256": "2f82f79a5864647aa778bb350f0378ffd1ca8690d1bb222d34fbf87b3ef425d8",
+  "payload_sha256": "0088021fa766f25c2412e1eaa12935f946782668684c6794a170d0bb6f1d40fd",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "60f76bfee97622721dbe39b2382fa883bb7effd1537f19a02e9b1628e3c79e64",
+  "result": {
+    "row_id": "scale60_20_reading_workflow_true",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_20_reading_workflow_true.u_context",
+        "role": "user",
+        "content": "Στον πίνακα ανάγνωσης, η περίληψη και το γλωσσάρι είναι ενεργά, ενώ ο έλεγχος παραπομπών έχει ολοκληρωθεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_20_reading_workflow_true.a_context",
+        "role": "assistant",
+        "content": "Οι καταστάσεις αφορούν μόνο τον πίνακα αυτού του νήματος.",
+        "train": false
+      },
+      {
+        "id": "scale60_20_reading_workflow_true.u_decision",
+        "role": "user",
+        "content": "Στον πίνακα ο έλεγχος παραπομπών έχει ολοκληρωθεί. Σταμάτα τώρα το γλωσσάρι και πες ποια εργασία μένει ενεργή.",
+        "train": false
+      },
+      {
+        "id": "scale60_20_reading_workflow_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά, ο έλεγχος παραπομπών έχει ολοκληρωθεί. Σταμάτησα το γλωσσάρι στον πίνακα ανάγνωσης· η περίληψη μένει ενεργή.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_233",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem is stable and faithfully matches the English problem. Although two solution records are reported, no alternate problem version or mathematical pairing discrepancy is supplied.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_493",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "minor",
+          "quote": "5 πακέτα με κάρτες μπέιζμπολ",
+          "explanation": "The name and currency are localized coherently, but baseball trading cards retain a distinctly Anglosphere/US-coded setting. This does not affect the arithmetic or constitute a mistranslation.",
+          "suggested_action": "Flag the row as a partially localized adaptation; retain it unchanged if such cultural carryover is permitted."
+        }
+      ],
+      "provenance_note": "A single problem record is supplied. The substitutions Olivia→Ελένη and dollars→euros preserve all quantities and the teaching objective.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_630",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "issue",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "pass",
+      "completeness": "issue",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "problem_fidelity",
+          "severity": "major",
+          "quote": "$\\u0007ngle C = 60^{\\circ}$ ... $\\tan{\\u0007ngle BAD}$",
+          "explanation": "The displayed Greek problem contains BEL control characters where the LaTeX command `\\angle` should occur. Consequently, two essential angle expressions are corrupted even though their intended meaning can be recovered from the English source.",
+          "suggested_action": "Correct the source-level control characters to valid `\\angle` commands after resolving which historical problem version is authoritative."
+        },
+        {
+          "dimension": "training_structure",
+          "severity": "major",
+          "quote": "$\\theta=\\u001b[angle BAD$ ... $\\tan\\u001b[angle BAF$",
+          "explanation": "The solution repeatedly contains ESC control characters followed by `[angle` instead of valid mathematical markup. This makes important definitions and equations malformed and unsuitable as clean training text.",
+          "suggested_action": "Repair every corrupted angle command consistently and validate that no BEL or ESC characters remain in the record."
+        },
+        {
+          "dimension": "derivation",
+          "severity": "major",
+          "quote": "Άρα $AF=x-2$ και $AE=x-1$ ... Για $x>0$",
+          "explanation": "As ordinary lengths, AF=x−2 and AE=x−1, and the associated tangent identities, are justified only when A lies beyond F and E (in particular x>2). For 0<x≤2 the point ordering changes; at x=1 or x=2 one of the auxiliary angles is also undefined. The solution nevertheless applies the resulting formula over the entire domain x>0 without a case argument or a domain-independent derivation. The final formula and maximum are correct, but the written proof does not establish the global bound for every admissible triangle.",
+          "suggested_action": "Derive tan∠BAD directly from coordinates using the determinant and dot product for all x>0, obtaining x√3/(x²−3x+8), then retain the valid AM–GM maximization and equality case x=2√2."
+        }
+      ],
+      "provenance_note": "The last displayed problem and the selected solution have unproven historical association. Both supplied problem variants appear mathematically equivalent after interpreting the corrupted control sequences as `\\angle`, but they contain different control characters (ESC versus BEL), and the solution uses the ESC form. The exact source pairing and encoding history remain uncertain.",
+      "verification_needed": [
+        "Confirm which saved Greek problem version was historically paired with the selected solution.",
+        "Inspect the raw source encoding to determine how the BEL and ESC control characters replaced `\\angle`."
+      ]
+    }
+  ]
+}

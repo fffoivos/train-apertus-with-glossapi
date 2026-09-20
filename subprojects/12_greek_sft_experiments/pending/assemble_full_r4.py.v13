@@ -1,0 +1,228 @@
+#!/usr/bin/env python3
+"""The from-scratch pass mix for 1-G4F6P1 (15 Sept, owner decision 01:30): round 3's vetted single-pass rows with four block swaps, every row re-checked.
+Start from data/arms/R3_single (403,727 rows, all screens applied on 11 Sept). Remove: openmath_gsm (GSM8K x13.5), greek_math (cut-1 terse), correcting (v1),
+convskills (replaced by the current v2 final). Add: math_en_gsm (GSM8K <=3 solutions/problem) x2, math_en_math (published MATH train solutions, human-written; outside the blind-solve scope by recipe) x2,
+greek_math_v2 (cut-2 worked + Level 5 + native, arm_M2 export) x2, convskills_v2 x2 (rows with masked turns dropped), format_mc x1 (demonstrations supervised); correcting_v2 is NOT added (decision: no masked rows in this pass). Translated maths rows and English GSM8K rows are kept
+only on a POSITIVE agreement record of the blind solve (final/label_disagreements.json 'agreed'); native rows (two independent solves at generation) and the
+published MATH solutions are outside the solve scope by recipe and counted as exempt. --allow-unconfirmed is for dry runs only. Personality overlays (accepted
+patch) applied to the kept personality rows. Every row (old and new) passes the mix's decontamination (8-gram containment + any 13-gram vs every eval
+cache) and the 4,096-token window. Dev = R3's dev minus the removed configs + 1% of each new block + the cut-2 dev rows. Fails closed on any check.
+Usage: python3 assemble_full_r4.py --arm R4_full [--allow-unconfirmed]  (apertus-local-chat venv: exact tokenizer)"""
+import argparse, json, random, collections, hashlib, os, re, sys, pathlib, ast
+HERE = pathlib.Path(__file__).resolve().parent; sys.path.insert(0, str(HERE)); from mixlib import Decon, ntok, row_tokens, sup_tokens, TOKMODE
+ap = argparse.ArgumentParser(); ap.add_argument('--arm', default='R4_full'); ap.add_argument('--seed', type=int, default=42); ap.add_argument('--allow-unconfirmed', action='store_true'); ap.add_argument('--keep-s5m', action='store_true', help='keep the S5m lane (dropped by default after the 15 Sept audit: 74/100 flawed)'); a = ap.parse_args(); a.drop_s5m = not a.keep_s5m
+if a.allow_unconfirmed and not a.arm.endswith('_dry'): raise SystemExit('--allow-unconfirmed is for dry runs only: the arm name must end with _dry')
+if TOKMODE is None: ntok('x')
+rng = random.Random(a.seed); OUT = HERE / 'arms' / a.arm; OUT.mkdir(parents=True, exist_ok=True); DEC = Decon(require_confirm=True)
+# Disclosed decision (15 Sept 02:30): the English IFEval-like blocks share their instruction-template sentences with the English IFEval prompts by
+# construction (the 13-gram rule drops 61% of ifeval_like). IFEval-en is not in our battery and the Greek IFEval prompts share no English 13-grams,
+# so for these two blocks a hit on the 'ifeval' cache alone is kept (counted as ifeval_template_overlap_kept); hits on any other cache still drop.
+from mixlib import normalize_text as _nt, ngrams as _ng
+class _GramsExcluding:
+    """The mix's two rules over every evaluation cache EXCEPT the named one (all memberships preserved: grams are re-read from the files)."""
+    def __init__(self, exclude_prefix):
+        import glob as _g; self.g8 = {}; self.g13 = {}; self.files = []
+        for f in sorted(_g.glob(str(HERE / 'cache' / 'evals' / '*.jsonl'))):
+            if os.path.basename(f).startswith(exclude_prefix): continue
+            self.files.append(os.path.basename(f)); suite = os.path.basename(f).split('.')[0]
+            for l in open(f):
+                if l.strip():
+                    r = json.loads(l); nt = _nt(str(r['text']))
+                    for g in _ng(nt): self.g8.setdefault(g, (suite, str(r['eval_id'])))
+                    for g in _ng(nt, 13): self.g13.setdefault(g, (suite, str(r['eval_id'])))
+    def contaminated(self, messages):
+        for m in messages:
+            if m['role'] != 'user': continue
+            nt = _nt(m['content']); gs = _ng(nt)
+            if gs and sum(1 for g in gs if g in self.g8) / len(gs) >= 0.5: return True
+            if len(nt.split()) >= 13 and any(g in self.g13 for g in _ng(nt, 13)): return True
+        return False
+DEC_NOIF = _GramsExcluding('ifeval.')
+IFEVAL_TEMPLATE_BLOCKS = {'ifeval_like', 'dolci_precise_if_20k'}
+def L(p): return [json.loads(l) for l in open(p) if l.strip()]
+def render(r):
+    turns = r.get('turns') or r.get('messages') or [dict(role='user', content=r['user']), dict(role='assistant', content=r['assistant'])]
+    out = [dict(role=t['role'], content=t['content'], **({'train': False} if t['role'] == 'assistant' and t.get('train') is False else {})) for t in turns]
+    return out if any(m['role'] == 'assistant' and m.get('train', True) and m['content'].strip() for m in out) else None
+_EXP = HERE / 'exclude_rows_r4.json'; _EXR = HERE / 'exclude_rows_r4_reasons.json'   # reviewer-identified defective rows (bare ids or block:id), MANDATORY with a reason per id (astra v5 M3)
+if not (_EXP.exists() and _EXR.exists()): raise SystemExit('exclude_rows_r4.json and exclude_rows_r4_reasons.json are required')
+EXCLUDE_IDS = set(json.load(open(_EXP))); EXCLUDE_REASONS = json.load(open(_EXR))
+if sorted(EXCLUDE_IDS - set(EXCLUDE_REASONS)): raise SystemExit(f'excluded ids without a reason: {sorted(EXCLUDE_IDS - set(EXCLUDE_REASONS))}')
+# independent reference check (owner rule)
+LD = HERE / 'math' / 'cut2' / 'final' / 'label_disagreements.json'
+LD_SHA = hashlib.sha256(open(LD, 'rb').read()).hexdigest() if LD.exists() else None   # bound at load; asserted unchanged at receipt time (astra v5 H1)
+if LD.exists(): _ld = json.load(open(LD)); AGREED = set(_ld['agreed']); BAD = set(_ld['disagree']) | set(_ld.get('unsolved', [])); ld_note = dict(problems=_ld['n_problems'], solved=_ld['n_solved'], agreed=len(AGREED), disagree=len(_ld['disagree']), unsolved=len(_ld.get('unsolved', [])), numeric_fallback_rescues=len(_ld.get('numeric_fallback_rescues', [])))
+elif a.allow_unconfirmed: AGREED = None; BAD = set(); ld_note = 'ALLOW-UNCONFIRMED DRY RUN'; print('WARNING: dry run without label_disagreements.json')
+else: raise SystemExit('label_disagreements.json missing: run the independent solve first')
+sys.path.insert(0, str(HERE / 'math' / 'cut2')); from labelcheck_lib import agree as _agree, build_manifest as _bm, verify_approval as _va, load_solve_records as _lsr   # side-effect-free (astra v5 H1)
+_solve = {x['id']: x for x in _lsr()}
+if AGREED is not None: rec_approval = _va(_ld, list(_solve.values()), _bm())   # astra v6 H1: the approval artifact is bound to THESE solve records, THIS manifest and THIS comparator; every approved record re-validated BEFORE any selection
+else: rec_approval = 'skipped (dry run without approvals)'
+src_en = {}
+for p in (HERE / 'math' / 'cut2' / 'prep' / 'translations_with_reference.jsonl', HERE / 'math' / 'cut2' / 'out' / 'level5_problems_el.jsonl'):
+    for r in L(p): src_en.setdefault(r['id'], r.get('problem_en', ''))
+AGREED_TEXT = {src_en[i] for i in (AGREED or set()) if i in src_en} | ({src_en[i] for i in src_en} if AGREED is None else set())
+AGREED_HASH = {i[len('gsmen_'):] for i in (AGREED or set()) if i.startswith('gsmen_')}
+LABEL = collections.Counter()
+def keep_translated(row_id):
+    pid = re.sub(r'^(c2_|c1b_)', '', row_id)
+    if row_id in EXCLUDE_IDS or pid in EXCLUDE_IDS: LABEL['greek_reviewer_excluded'] += 1; rec.setdefault('excluded_rows', {}).setdefault('greek_math_v2', []).append(row_id); return False
+    if pid.startswith('gm_nat') or pid.startswith('nat'): LABEL['greek_native_exempt'] += 1; return True
+    if AGREED is None: return True
+    if pid in AGREED: LABEL['greek_agreed'] += 1; return True
+    LABEL['greek_disagreed' if pid in BAD else 'greek_unmapped'] += 1; return False
+EXCLUDE_TEXTS = {src_en[i] for i in EXCLUDE_IDS if i in src_en}
+for _l in open(HERE / 'math' / 'en' / 'gsm8k_dedup3.jsonl'):
+    _r = json.loads(_l)
+    if str(_r.get('_row')) in EXCLUDE_IDS: EXCLUDE_TEXTS.add(_r['problem'])   # an excluded English GSM8K row excludes EVERY solution row of that problem (astra v5 M4)
+_twins = {i for i, t in src_en.items() if t in EXCLUDE_TEXTS} - EXCLUDE_IDS   # Greek translations of an excluded problem are excluded too (by text)
+for i in _twins: EXCLUDE_REASONS[i] = 'twin by problem text of an excluded row'
+EXCLUDE_IDS |= _twins
+def keep_en(prob):
+    if prob in EXCLUDE_TEXTS: LABEL['en_gsm_reviewer_excluded'] += 1; rec.setdefault('excluded_rows', {}).setdefault('math_en_gsm(problem sha12)', []).append(hashlib.sha256(prob.encode('utf-8')).hexdigest()[:12]); return False
+    if AGREED is None: return True
+    if prob in AGREED_TEXT or hashlib.sha256(prob.encode('utf-8')).hexdigest()[:12] in AGREED_HASH: LABEL['en_gsm_agreed'] += 1; return True
+    LABEL['en_gsm_dropped'] += 1; return False
+REMOVE = {'openmath_gsm', 'greek_math', 'correcting', 'convskills'}
+base = L(HERE / 'arms' / 'R3_single' / 'train.jsonl'); base_dev = L(HERE / 'arms' / 'R3_single' / 'dev.jsonl')
+rec = dict(approval_verification=rec_approval, arm=a.arm, seed=a.seed, args=vars(a), tokenizer=TOKMODE, base='data/arms/R3_single', base_rows=len(base), removed_configs=sorted(REMOVE), label_check=ld_note, blocks=[], drops=collections.Counter())
+kept = [r for r in base if r['config'] not in REMOVE]; rec['base_removed_rows'] = len(base) - len(kept)
+# personality overlays (accepted patch, as in the pass assembler)
+PATCH = os.path.expanduser('~/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/personality/deployment_and_closure_patch.jsonl'); ov = collections.Counter()
+if os.path.exists(PATCH):
+    by_id = collections.defaultdict(list)   # ALL occurrences of an id (R3 replay copies share ids; astra v12 M4)
+    for i, r in enumerate(kept):
+        if r['config'].startswith('personality'): by_id[r['id']].append(i)
+    ov_detail = []
+    for o in L(PATCH):
+        c = o.get('candidate_row'); c = ast.literal_eval(c) if isinstance(c, str) else c
+        if not c or not c.get('messages'): ov['missed'] += 1; continue
+        if o['operation'] == 'replace_existing_row' and o['row_id'] in by_id:
+            for i in by_id[o['row_id']]: kept[i] = dict(kept[i], messages=c['messages'])
+            ov['applied'] += 1; ov['occurrences_replaced'] += len(by_id[o['row_id']]); ov_detail.append(dict(row_id=o['row_id'], occurrences=len(by_id[o['row_id']])))
+        elif o['operation'] == 'add_new_coverage_row': kept.append(dict(config='personality_v3', id=c.get('id', o['row_id']), messages=c['messages'])); ov['added'] += 1
+        else: ov['missed'] += 1
+rec['personality_overlays'] = dict(ov); rec['personality_overlay_detail'] = ov_detail if os.path.exists(PATCH) else []
+def check_row(msgs, cfg):
+    if any(re.search(r'[\x00-\x08\x0b-\x1f\x7f]', m['content']) for m in msgs): rec['drops'][f'{cfg}:control_chars'] += 1; return False
+    hit = DEC.contaminated(msgs)
+    if hit:
+        if cfg.replace('(dev)', '') in IFEVAL_TEMPLATE_BLOCKS and hit[0] == 'ifeval' and not DEC_NOIF.contaminated(msgs): rec.setdefault('waived', collections.Counter())[f'{cfg}:ifeval_en_cache_waived'] += 1   # disclosed cache-wide waiver of the English IFEval cache for the two constraint blocks; every other cache still applies
+        else: rec['drops'][f'{cfg}:contaminated'] += 1; return False
+    if row_tokens(msgs) > 4096: rec['drops'][f'{cfg}:over_window'] += 1; return False
+    return True
+train = []; dev = [r for r in base_dev if r['config'] not in REMOVE and check_row(r['messages'], r['config'] + '(dev)')]; rec['base_dev_kept'] = len(dev)
+for r in kept:   # historical rows get the same checks as new blocks
+    if any(m['role'] == 'assistant' and m.get('train') is False for m in r['messages']): rec['drops'][f"{r['config']}:masked_turns_not_trainable"] += 1; continue
+    if check_row(r['messages'], r['config']): train.append(r)
+rec['base_kept_after_checks'] = len(train)
+# inherited id collisions (astra v11 note): R3's replay copies share an id, and some inherited sources reuse an id for different rows; make every manifest id
+# unique with a '#r<k>' suffix (stripped like the '#<copy>' suffix by the exclusion checks) and record the counts, without touching any content.
+_seen = collections.Counter(); _coll = collections.Counter(); _all = {(r['config'], r['id']) for r in train}
+for r in train:
+    k = (r['config'], r['id']); _seen[k] += 1
+    if _seen[k] > 1:
+        j = _seen[k] - 1
+        while (r['config'], f"{r['id']}#r{j}") in _all: j += 1   # reserve the generated id against every existing id (astra v12 L1)
+        r['id'] = f"{r['id']}#r{j}"; _all.add((r['config'], r['id'])); _coll[r['config']] += 1
+rec['inherited_id_collisions_suffixed'] = dict(_coll); rec['inherited_id_collisions_note'] = 'replay copies and same-id rows from R3_single were given #r<k> suffixes so that every manifest id is unique; content unchanged'
+_pref = 0
+for r in train + dev:   # inherited rows carry bare ids reused across configs (e.g. '4788' in nemotron_chat_a, ifeval_like, smoltalk2_multilingual): prefix with the config, as the new blocks do
+    if not r['id'].startswith(r['config'] + ':'): r['id'] = f"{r['config']}:{r['id']}"; _pref += 1
+rec['inherited_ids_prefixed_with_config'] = _pref
+def add_block(name, rows, copies, dev_frac=0.01, dev_rows=None):
+    rr = []
+    for r in rows:
+        m = render(r)
+        if m is None: rec['drops'][f'{name}:no_supervised_turn'] += 1; continue
+        if str(r['id']) in EXCLUDE_IDS or f"{name}:{r['id']}" in EXCLUDE_IDS: rec['drops'][f'{name}:reviewer_excluded'] += 1; rec.setdefault('excluded_rows', {}).setdefault(name, []).append(str(r['id'])); continue
+        if check_row(m, name): rr.append(dict(config=name, id=f"{name}:{r['id']}", messages=m, **({'meta': r['meta']} if isinstance(r.get('meta'), dict) else {})))   # ids are unique per block, never bare; source metadata (stable question ids) preserved (astra v8 M4)
+    seen = set(); dup = sum(1 for r in rr if r['id'] in seen or seen.add(r['id'])); rr = [r for r in rr if not (r['id'] in (s2 := set()) or s2.add(r['id']))] if False else [r for i, r in enumerate(rr) if r['id'] not in {x['id'] for x in rr[:i]}] if dup else rr
+    if dup: rec['drops'][f'{name}:duplicate_id'] += dup
+    rng.shuffle(rr); nd = int(round(len(rr) * dev_frac)) if dev_rows is None else 0; dv, tr = rr[:nd], rr[nd:]; dev.extend(dv)
+    if dev_rows:
+        for r in dev_rows:
+            m = render(r)
+            if m is None: rec['drops'][f'{name}(dev):no_supervised_turn'] += 1; continue
+            if check_row(m, name + '(dev)'): dev.append(dict(config=name, id=f"{name}:{r['id']}", messages=m, **({'meta': r['meta']} if isinstance(r.get('meta'), dict) else {})))
+    for c in range(copies): train.extend(dict(r, id=f"{r['id']}#{c}" if c else r['id']) for r in tr)
+    rec['blocks'].append(dict(block=name, input_rows=len(rows), kept=len(rr), dev=nd + (sum(1 for r in dev if r['config'] == name) - nd if dev_rows else 0), copies=copies, train_rows_effective=len(tr) * copies)); print(f'{name}: {len(rows)} in, {len(rr)} kept, x{copies}', flush=True)
+devp = set(json.load(open(HERE / 'math' / 'cut2' / 'final' / 'dev_problems_en.json')))
+gsm = [r for r in L(HERE / 'math' / 'en' / 'gsm8k_dedup3.jsonl') if r['problem'] not in devp]; n0 = len(gsm); gsm = [r for r in gsm if keep_en(r['problem'])]; rec['drops']['math_en_gsm:reference_not_confirmed'] = n0 - len(gsm)
+sys.path.insert(0, str(HERE / 'benchmarks_el' / 'math500')); sys.path.insert(0, str(HERE / 'math')); import equiv500 as _E; from mathlib import boxed as _boxed
+_canon = {}; CONFLICT = set()   # problem text -> canonical approved reference, built ONLY from APPROVED solve records (astra v5 H1); two approved references for one problem reject the problem
+for i, x in _solve.items():
+    if AGREED is not None and i not in AGREED: continue
+    k = i if i.startswith('gsmen_') else src_en.get(i)
+    if k is None: continue
+    if k in _canon and str(_canon[k]) != str(x['ref']): CONFLICT.add(k)
+    _canon.setdefault(k, x['ref'])
+for k in CONFLICT: _canon.pop(k, None)
+LABEL['en_gsm_conflicting_reference_problems'] = len(CONFLICT)
+def _canonical_ref(prob):
+    k = 'gsmen_' + hashlib.sha256(prob.encode('utf-8')).hexdigest()[:12]
+    return _canon.get(prob) or _canon.get(k)
+def _same(cand, ref): return _agree(str(ref), str(cand))[0]   # the finalizer's comparator (labelcheck_lib.agree): exact numbers, categorical guard, exact symbolic fallback; no tolerance
+def sol_ok(r):   # astra gate-2 v4 H1: the row's label AND the solution's boxed answer must both equal the canonical approved reference
+    ref = _canonical_ref(r['problem']); ans = _boxed(r['generated_solution'])
+    if ref is None: LABEL['en_gsm_no_canonical_ref'] += 1; return False
+    if not _same(r['expected_answer'], ref): LABEL['en_gsm_label_ne_reference'] += 1; return False
+    if ans is None or not _same(ans, ref): return False
+    return True
+n1 = len(gsm); gsm = [r for r in gsm if sol_ok(r)]; rec['drops']['math_en_gsm:solution_answer_ne_label'] = n1 - len(gsm)
+add_block('math_en_gsm', [dict(id=str(r.get('_row', i)), user=r['problem'], assistant=r['generated_solution']) for i, r in enumerate(gsm)], 2, dev_frac=0)   # x2; no random dev split (several solutions per problem): the maths dev families are held out via dev_problems_en
+mt = [r for r in L(HERE / 'math' / 'en' / 'math_train_published.jsonl') if r['problem'] not in devp]; LABEL['en_math_published_exempt'] = len(mt)   # human-written MATH solutions: outside the blind-solve scope by recipe
+add_block('math_en_math', [dict(id=str(r['id']), user=r['problem'], assistant=r['generated_solution']) for r in mt], 2, dev_frac=0)   # no random dev split: the maths dev families are held out by problem (dev_problems_en) in both languages
+g = L(HERE / 'math' / 'cut2' / 'final' / 'arm_M2.jsonl'); n0 = len(g); g = [r for r in g if keep_translated(r['id'])]; rec['drops']['greek_math_v2:reference_not_confirmed'] = n0 - len(g)
+add_block('greek_math_v2', [r for r in g if not r.get('dev')], 2, dev_rows=[r for r in g if r.get('dev')])
+# 15 Sept 06:10 (astra gate-2 v3 H1 -> confirmed defect): the RAW-MESSAGE trainer path (rounds 1-3) let TRL rebuild the assistant mask, ignoring the per-turn
+# train=false flags. The pass now trains with pretokenized_masks: true (validator labels handed to TRL; audited token by token), which does honour the flags,
+# but the DECISION stands for this pass: no row with a masked assistant turn enters it (correcting_v2 dropped whole, convskills rows with masked context
+# turns (S4 lane) dropped, format demonstrations declared supervised: correct letters). Masked lanes return in a later pass with their own review.
+cs = L(HERE / 'convskills' / 'v2' / 'final' / 'rows_final.jsonl'); n0 = len(cs)
+if a.drop_s5m: cs = [r for r in cs if not str(r.get('id', '')).startswith('S5m')]; rec['drops']['convskills_v2:S5m_lane_dropped'] = n0 - len(cs)
+n1 = len(cs); cs = [r for r in cs if not any(t.get('role') == 'assistant' and t.get('train') is False for t in (r.get('turns') or []))]; rec['drops']['convskills_v2:masked_turns_not_trainable'] = n1 - len(cs)
+add_block('convskills_v2', cs, 2)
+rec['drops']['correcting_v2:block_dropped_masks_not_honoured'] = len(L(HERE / 'robustness' / 'correcting' / 'v2' / 'rows_v2.jsonl'))
+fm = L(HERE / 'format_block' / 'mc_fewshot_en.jsonl')
+for r in fm:   # demonstrations are supervised in this pass by decision: drop the builder's flag so the manifest states what is trained
+    for m in r['messages']: m.pop('train', None)
+rec['format_mc_demonstrations'] = 'supervised (correct letters) by decision for this pass; the builder flags were removed so the manifest states what is trained'
+add_block('format_mc', [r for r in fm if not r.get('dev')], 1, dev_rows=[r for r in fm if r.get('dev')])
+# final checks: dev/train disjoint by id and by first user turn; every train row supervised
+tid = {(r['config'], r['id'].split('#')[0]) for r in train}; did = {(r['config'], r['id']) for r in dev}
+if tid & did: raise SystemExit(f'dev/train id overlap: {list(tid & did)[:5]}')
+fu = lambda r: next((m['content'] for m in r['messages'] if m['role'] == 'user'), ''); lu = lambda r: [m['content'] for m in r['messages'] if m['role'] == 'user'][-1]
+tu_all = set(); [tu_all.update(m['content'] for m in r['messages'] if m['role'] == 'user') for r in train]
+n_dev0 = len(dev); dev = [r for r in dev if not any(m['content'] in tu_all for m in r['messages'] if m['role'] == 'user')]   # ANY dev user turn found among train user turns removes the dev row   # dev is for eval loss only: a dev row is removed if its first or its target user turn appears ANYWHERE among train user turns (few-shot demonstrations included)
+rec['dev_rows_removed_for_overlap'] = n_dev0 - len(dev)
+if any(m['content'] in tu_all for r in dev for m in r['messages'] if m['role'] == 'user'): raise SystemExit('dev/train user-turn overlap remains')
+if any(not any(m['role'] == 'assistant' and m.get('train', True) for m in r['messages']) for r in train): raise SystemExit('unsupervised train row')
+if any(m.get('train') is False for r in train + dev for m in r['messages']): raise SystemExit('a masked assistant turn remains in the manifest (excluded by decision for this pass)')
+_ids_all = [r['id'] for r in train] + [r['id'] for r in dev]
+if len(_ids_all) != len(set(_ids_all)): raise SystemExit(f'manifest ids are not globally unique: {len(_ids_all) - len(set(_ids_all))} duplicates')   # global uniqueness over train + dev (astra v12 L1)
+for r in train + dev:   # zero-survivor checks for the reviewed exclusions (astra v5 M3): bare id, block:id, copies, Greek/English twins by text
+    bare = r['id'].split(':', 1)[1].split('#')[0] if ':' in r['id'] else r['id'].split('#')[0]
+    if bare in EXCLUDE_IDS or r['id'].split('#')[0] in EXCLUDE_IDS or re.sub(r'^(c2_|c1b_)', '', bare) in EXCLUDE_IDS: raise SystemExit(f'excluded row survived: {r["id"]}')
+    if r['config'] == 'math_en_gsm' and fu(r) in EXCLUDE_TEXTS: raise SystemExit(f'excluded English problem survived: {r["id"]}')
+if LD_SHA and hashlib.sha256(open(LD, 'rb').read()).hexdigest() != LD_SHA: raise SystemExit('label_disagreements.json changed during assembly')
+rec['excluded_rows'] = {k: sorted(set(v)) for k, v in rec.get('excluded_rows', {}).items()}; rec['exclusion_reasons'] = EXCLUDE_REASONS
+CFG = HERE.parent / 'cluster' / 'configs' / f'{a.arm}.yaml'   # the assembler writes the row count into the config BEFORE hashing it (15 Sept 10:07 lesson)
+if CFG.exists():
+    _c = CFG.read_text(); _c2 = re.sub(r'^expected_train_rows: .*$', f'expected_train_rows: {len(train)}', _c, flags=re.M)
+    if _c2 != _c: CFG.write_text(_c2)
+    rec['config_expected_train_rows_written'] = len(train)
+rng.shuffle(train); rng.shuffle(dev)
+def dump(p, rows):
+    h = hashlib.sha256()
+    with open(p, 'w') as f:
+        for r in rows: s = json.dumps(r, ensure_ascii=False) + '\n'; f.write(s); h.update(s.encode())
+    return h.hexdigest()
+by_cfg = collections.Counter(r['config'] for r in train); sup = collections.Counter(); tot = collections.Counter()
+for r in train: sup[r['config']] += sup_tokens(r['messages']); tot[r['config']] += row_tokens(r['messages'])
+rec['train'] = dict(rows=len(train), tokens=sum(tot.values()), supervised_tokens=sum(sup.values()), by_config={k: dict(rows=by_cfg[k], tokens=tot[k], supervised=sup[k], share_supervised=round(sup[k] / max(1, sum(sup.values())), 4)) for k in sorted(by_cfg)}, sha256=dump(OUT / 'train.jsonl', train))
+rec['dev'] = dict(rows=len(dev), by_config=dict(collections.Counter(r['config'] for r in dev)), sha256=dump(OUT / 'dev.jsonl', dev)); rec['drops'] = dict(rec['drops']); rec['waived'] = dict(rec.get('waived', {})); rec['label_counts'] = dict(LABEL)
+def fsha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+rec['identities'] = dict(approval_file_sha256_at_load=LD_SHA, eval_caches=DEC.identities, caches_used_for_waiver_check=DEC_NOIF.files, code={n: fsha(HERE / n) for n in ('assemble_full_r4.py', 'mixlib.py', 'format_block/build_mc_fewshot.py', 'math/cut2/independent_solve.py', 'math/cut2/finalize_label_check.py', 'math/cut2/labelcheck_lib.py', 'math/cut2/backfill_solve_fingerprints.py', 'benchmarks_el/math500/equiv500.py')}, inputs={(str(p.relative_to(HERE)) if str(p).startswith(str(HERE)) else str(p)): fsha(p) for p in (HERE / 'arms' / 'R3_single' / 'train.jsonl', HERE / 'arms' / 'R3_single' / 'dev.jsonl', HERE / 'math' / 'cut2' / 'final' / 'dev_problems_en.json', HERE / 'math' / 'cut2' / 'prep' / 'translations_with_reference.jsonl', HERE / 'math' / 'cut2' / 'out' / 'level5_problems_el.jsonl', pathlib.Path(PATCH) if os.path.exists(PATCH) else HERE / 'nonexistent', HERE.parent / 'cluster' / 'configs' / 'R4_full.yaml', HERE.parent / 'cluster' / 'sft_train.py', HERE / 'math' / 'en' / 'gsm8k_dedup3.jsonl', HERE / 'math' / 'en' / 'math_train_published.jsonl', HERE / 'math' / 'cut2' / 'final' / 'arm_M2.jsonl', HERE / 'convskills' / 'v2' / 'final' / 'rows_final.jsonl', HERE / 'robustness' / 'correcting' / 'v2' / 'rows_v2.jsonl', HERE / 'format_block' / 'mc_fewshot_en.jsonl', LD, _EXP, _EXR, HERE / 'math' / 'cut2' / 'out' / 'independent_solve.jsonl', HERE / 'math' / 'cut2' / 'out' / 'independent_solve.manifest.json') if p.exists()}, model=dict(name='fffoivos/apertus-8b-greek-cpt', revision='18-avg-uniform5-tokens30B-50B', template_source='swiss-ai/Apertus-8B-Instruct-2509'))
+json.dump(rec, open(OUT / 'receipt.json', 'w'), indent=1, ensure_ascii=False)
+print(json.dumps(dict(rows=rec['train']['rows'], tokens=rec['train']['tokens'], supervised=rec['train']['supervised_tokens'], dev=rec['dev']['rows'], drops=rec['drops'], label_check=ld_note), ensure_ascii=False)); print('maths share of supervised tokens:', round(sum(v['supervised'] for k, v in rec['train']['by_config'].items() if k.startswith(('math_', 'greek_math'))) / rec['train']['supervised_tokens'], 3))

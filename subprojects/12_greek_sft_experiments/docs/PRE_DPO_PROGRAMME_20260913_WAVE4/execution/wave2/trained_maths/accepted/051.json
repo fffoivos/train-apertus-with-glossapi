@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_math_230",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The actual AFTER target is byte-equivalent to the complete supplied record and unchanged from BEFORE. The construction AB=668, BC=669, AC=670 satisfies the integer and ordering constraints, has perimeter 2,007, obeys the triangle inequality, and attains the lower bound BC−AB=1. The Greek thousands separator is used consistently and does not alter the value.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_gsm_3835",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The actual AFTER target is byte-equivalent to the supplied post-edit record. Both versions correctly compute Section A as 60+3×80=300 and Section B as 3×300+20=920 seats. The editor changed only the awkward phrase «των 3 υποτομέων των 80 καθισμάτων» to the more natural «των 3 υποτομέων με 80 καθίσματα», without changing meaning or reasoning. The permitted adaptation Jenny→Ελένη is coherent.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    }
+  ]
+}

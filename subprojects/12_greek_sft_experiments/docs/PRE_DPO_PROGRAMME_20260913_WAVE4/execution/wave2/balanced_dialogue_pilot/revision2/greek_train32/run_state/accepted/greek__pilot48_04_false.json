@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__pilot48_04_false",
+  "row_id": "pilot48_04_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "c542f12d03463fab36bbc80a552979dd5e2c24ab36c6f650f31d44d15c2cbb40",
+  "input_record_sha256": "ac9180b7ecacb0aa6a4d0a0d8e665c590885e91117482e4ce0f768f99713c431",
+  "payload_sha256": "092f049b88688181c5ed287bf9708a34a2da09f15c86c074e213b539ed549003",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "a7360a17f25a7923edac0d4d57c9637b1cc957eff1c4597066116563eba4f367",
+  "result": {
+    "row_id": "pilot48_04_false",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_04_false.u_context",
+        "role": "user",
+        "content": "Η αρχική λίστα είχε ταυτότητα και φορτιστή. Έπειτα προστέθηκε αδιάβροχο, οπότε τώρα περιέχει ταυτότητα, φορτιστή και αδιάβροχο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_false.a_context",
+        "role": "assistant",
+        "content": "Εντάξει, κρατάω ως τρέχουσα λίστα: ταυτότητα, φορτιστής και αδιάβροχο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_false.u_decision",
+        "role": "user",
+        "content": "Δεν είχαμε βάλει φορτιστή. Βγάλε τώρα την ταυτότητα γιατί θα πάρω διαβατήριο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_04_false.a_target",
+        "role": "assistant",
+        "content": "Νομίζω ότι έγινε μια μικρή παραδρομή: ο φορτιστής ήταν ήδη στη λίστα. Έβγαλα την ταυτότητα και πρόσθεσα το διαβατήριο· τώρα η λίστα περιέχει φορτιστή, αδιάβροχο και διαβατήριο.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

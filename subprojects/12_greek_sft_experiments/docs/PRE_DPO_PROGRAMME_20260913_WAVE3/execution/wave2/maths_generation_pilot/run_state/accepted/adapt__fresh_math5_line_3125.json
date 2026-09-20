@@ -1,0 +1,92 @@
+{
+  "job_id": "adapt__fresh_math5_line_3125",
+  "row_id": "fresh_math5_line_3125",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "dcf5c3d861d3b499e939d62279d87211ee43cb35f9d0bce1914f3261009f0183",
+  "input_record_sha256": "8c9d0548ccc2630ee16111625fade3222842735c57ca927c8b586b1ce768602b",
+  "payload_sha256": "e4f4d728b3e6d1e0c6d4eedd9cf4d698d0064284f4ca659cfddca659421379c4",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "25337eca2d57e17174caf264d846d55c16495c68ba0aa3f9057930ab7c5fa05a",
+  "result": {
+    "row_id": "fresh_math5_line_3125",
+    "status": "candidate",
+    "problem_text": "Ένα επίπεδο τέμνει έναν ορθό κυκλικό κύλινδρο ακτίνας $1$ και σχηματίζει μια έλλειψη. Αν ο μεγάλος άξονας της έλλειψης είναι κατά $50\\%$ μεγαλύτερος από τον μικρό άξονα, τότε το μήκος του μεγάλου άξονα είναι\n$\\textbf{(A)}\\ 1\\qquad \\textbf{(B)}\\ \\frac{3}{2}\\qquad \\textbf{(C)}\\ 2\\qquad \\textbf{(D)}\\ \\frac{9}{4}\\qquad \\textbf{(E)}\\ 3$",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "A plane intersects a right circular cylinder of radius $1$ forming an ellipse.",
+        "target_span": "Ένα επίπεδο τέμνει έναν ορθό κυκλικό κύλινδρο ακτίνας $1$ και σχηματίζει μια έλλειψη.",
+        "reason": "Πιστή απόδοση στα ελληνικά με καθιερωμένη γεωμετρική ορολογία."
+      },
+      {
+        "source_span": "If the major axis of the ellipse of $50\\%$ longer than the minor axis",
+        "target_span": "Αν ο μεγάλος άξονας της έλλειψης είναι κατά $50\\%$ μεγαλύτερος από τον μικρό άξονα",
+        "reason": "Φυσική ελληνική διατύπωση και αποκατάσταση της προφανούς παράλειψης του ρήματος «is» στο αγγλικό κείμενο, χωρίς μεταβολή της μαθηματικής σχέσης."
+      },
+      {
+        "source_span": "the length of the major axis is",
+        "target_span": "τότε το μήκος του μεγάλου άξονα είναι",
+        "reason": "Πιστή μετάφραση του ζητουμένου."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "1",
+          "role": "ακτίνα του ορθού κυκλικού κυλίνδρου",
+          "unit": null
+        },
+        {
+          "value": "50%",
+          "role": "ποσοστό κατά το οποίο ο μεγάλος άξονας είναι μεγαλύτερος από τον μικρό άξονα",
+          "unit": null
+        },
+        {
+          "value": "1",
+          "role": "επιλογή απάντησης A για το μήκος του μεγάλου άξονα",
+          "unit": null
+        },
+        {
+          "value": "3/2",
+          "role": "επιλογή απάντησης B για το μήκος του μεγάλου άξονα",
+          "unit": null
+        },
+        {
+          "value": "2",
+          "role": "επιλογή απάντησης C για το μήκος του μεγάλου άξονα",
+          "unit": null
+        },
+        {
+          "value": "9/4",
+          "role": "επιλογή απάντησης D για το μήκος του μεγάλου άξονα",
+          "unit": null
+        },
+        {
+          "value": "3",
+          "role": "επιλογή απάντησης E για το μήκος του μεγάλου άξονα",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Ένα επίπεδο τέμνει έναν ορθό κυκλικό κύλινδρο ακτίνας 1.",
+        "Η τομή είναι έλλειψη.",
+        "Ο μεγάλος άξονας της έλλειψης είναι κατά 50% μεγαλύτερος από τον μικρό άξονα.",
+        "Η απάντηση πρέπει να επιλεγεί από τις πέντε δοσμένες επιλογές."
+      ],
+      "required_outputs": [
+        "Το μήκος του μεγάλου άξονα της έλλειψης."
+      ]
+    },
+    "source_issues": [
+      "Στη φράση «the major axis of the ellipse of 50% longer» λείπει προφανώς το ρήμα «is» πριν από το «50% longer»."
+    ],
+    "remaining_foreign_context": [],
+    "checks_needed": [
+      "Να επιβεβαιωθεί ότι η αποκατάσταση του παραλειπόμενου «is» αποδίδει την πρόθεση της πηγής ως «is 50% longer than» και όχι κάποια άλλη σχέση."
+    ]
+  }
+}

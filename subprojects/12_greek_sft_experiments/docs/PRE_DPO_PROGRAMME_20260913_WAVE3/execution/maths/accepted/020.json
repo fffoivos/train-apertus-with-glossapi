@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_241",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The sole solution record is paired with a single problem record. The adaptation of Theresa to Θεοδώρα is permitted and does not alter the mathematical task.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_601",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The selected solution is one of four solution records, but the Greek problem text is marked stable and no alternative problem versions are supplied; no mathematical pairing concern is evident.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_671",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The selected solution is one of three solution records, but the Greek problem text is marked stable and no alternative problem versions are supplied; no mathematical pairing concern is evident.",
+      "verification_needed": []
+    }
+  ]
+}

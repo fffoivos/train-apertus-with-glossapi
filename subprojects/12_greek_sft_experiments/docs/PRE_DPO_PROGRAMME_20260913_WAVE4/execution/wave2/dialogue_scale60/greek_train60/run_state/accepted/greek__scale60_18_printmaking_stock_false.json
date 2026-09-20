@@ -1,0 +1,54 @@
+{
+  "job_id": "greek__scale60_18_printmaking_stock_false",
+  "row_id": "scale60_18_printmaking_stock_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "016730388bed6b11aa06172560a63a4ba68fb75f35709a1add3151c68b7a5ad7",
+  "input_record_sha256": "93e9976a3f6f68032d50b967ef22fb2124415096ea1ccb836002f13b146f2a44",
+  "payload_sha256": "9c2286f4390707b457ccc75d6ea7b7c183ae6cff6320e8bc27882c4b115eb191",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "b216996511b124d881941c1450a5944d91d2423b2e345532711ff614560439ce",
+  "result": {
+    "row_id": "scale60_18_printmaking_stock_false",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "scale60_18_printmaking_stock_false.u_context",
+        "role": "user",
+        "content": "Η απογραφή έχει 10 πακέτα χαρτί: 3 χρησιμοποιήθηκαν και 2 άλλα έχουν δεσμευτεί για το αυριανό μάθημα.",
+        "train": false
+      },
+      {
+        "id": "scale60_18_printmaking_stock_false.a_context",
+        "role": "assistant",
+        "content": "Οι χρησιμοποιημένες και οι δεσμευμένες ποσότητες αφορούν διαφορετικά πακέτα.",
+        "train": false
+      },
+      {
+        "id": "scale60_18_printmaking_stock_false.u_decision",
+        "role": "user",
+        "content": "Με βάση την απογραφή, μένουν 7 ελεύθερα πακέτα χαρτί. Επιτέλους!",
+        "train": false
+      },
+      {
+        "id": "scale60_18_printmaking_stock_false.a_target",
+        "role": "assistant",
+        "content": "Όχι· ελεύθερα μένουν 5 πακέτα, αφού από τα 10 αφαιρούνται τα 3 χρησιμοποιημένα και τα 2 δεσμευμένα.",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "scale60_18_printmaking_stock_false.a_context",
+        "before": "Οι χρησιμοποιημένες και οι δεσμευμένες ποσότητες είναι διαφορετικά πακέτα.",
+        "after": "Οι χρησιμοποιημένες και οι δεσμευμένες ποσότητες αφορούν διαφορετικά πακέτα.",
+        "error": "Αφύσικη κατηγορηματική σύνταξη.",
+        "reason": "Οι «ποσότητες» δεν είναι οι ίδιες «πακέτα»· αφορούν διαφορετικά πακέτα."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

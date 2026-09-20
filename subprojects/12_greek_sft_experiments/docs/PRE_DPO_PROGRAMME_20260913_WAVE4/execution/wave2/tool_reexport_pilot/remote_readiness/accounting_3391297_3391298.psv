@@ -1,0 +1,2 @@
+3391297|dolci-tool200-lossless-w01-cpu-debug-a1|FAILED|60|00:01:00|16:51:13|16:52:13|1|288|billing=8,cpu=8,mem=62.50G,node=1|billing=288,cpu=288,energy=36395,gres/gpu=4,mem=62.50G,node=1|1:0
+3391298|openmath-original-pilot-w01-cpu-debug-a1|COMPLETED|23|00:00:23|16:52:16|16:52:39|1|288|billing=8,cpu=8,mem=62.50G,node=1|billing=288,cpu=288,energy=10803,gres/gpu=4,mem=62.50G,node=1|0:0

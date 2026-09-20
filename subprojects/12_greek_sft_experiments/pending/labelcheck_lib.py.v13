@@ -1,0 +1,226 @@
+#!/usr/bin/env python3
+"""Side-effect-free helpers for the independent reference check (astra gate-2 v5 H1/M1/M2, v6 H1/H2, v7 H1/M5).
+- numeric_value(s): an EXACT rational (fractions.Fraction) for a number-like answer, after stripping only explicitly permitted formatting: a leading
+  currency sign or $ delimiters, a trailing \\text{...}/\\mbox{...}/\\mathrm{...} unit wrapper, a trailing unit word, degree or percent marks, a
+  leading decimal point without zero. Accepts sign, thousands groups 'd,ddd', no decimal comma (declared conservative rule), scientific notation, and simple
+  fractions (\\frac{a}{b}, \\dfrac, a/b). The Decimal constructor is exact for any length (no context rounding); Fraction arithmetic is exact.
+- agree(ref, ans) -> (ok, how): identical strings agree; if EITHER side is number-like, the pair is decided only by exact rational equality (a
+  non-numeric other side disagrees); a categorical answer on either side only by categorical equality; a side that normalises to the empty string
+  never agrees; everything else by equiv_exact (whitelist normaliser, exact numbers, rational sympy); equiv500 is NOT used for approval.
+- build_manifest(), manifest_fingerprint(), problem_fp(), comparator_sha() (composite: this module + equiv500.py), verify_approval().
+Usage: python3 labelcheck_lib.py --selftest"""
+import json, re, os, sys, hashlib
+from decimal import Decimal, InvalidOperation
+from fractions import Fraction
+HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
+sys.path.insert(0, f'{ROOT}/data/benchmarks_el/math500'); sys.path.insert(0, f'{ROOT}/data/math')
+import equiv500 as E
+COMPARATOR_VERSION = 'v13 (15 Sept 2026): \\left/\\right removed only as complete commands; explicit categorical vocabulary (case-insensitive) vs case-sensitive symbols; separator classification BEFORE any spacing removal (comma+space or a bare comma not followed by exactly three digits = list separator; ",\\!" / "{,}" / "d,ddd" = thousands; no decimal comma); identity, structural identity and numeric parsing all on the separator-canonical form; whitelist units; exact rationals; rational sympy; no tolerance anywhere'
+COMPARATOR_FILES = [os.path.abspath(__file__), os.path.abspath(E.__file__)]
+SOLVE = f'{HERE}/out/independent_solve.jsonl'
+SEP = '\u27c2'
+CATEGORY_WORDS = set(E.CATEGORICAL) | set(E.CATEGORICAL.values()) | {'yes', 'no', 'true', 'false', 'none', 'neither', 'both', 'increase', 'decrease', 'increases', 'decreases', 'positive', 'negative', 'left', 'right', 'up', 'down',
+    'north', 'south', 'east', 'west', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october',
+    'november', 'december', 'spring', 'summer', 'autumn', 'fall', 'winter', 'red', 'blue', 'green', 'yellow', 'black', 'white', 'heads', 'tails', 'prime', 'composite', 'rational', 'irrational', 'even', 'odd',
+    'circle', 'ellipse', 'parabola', 'hyperbola', 'line', 'point', 'empty', 'infinite', 'finite', 'always', 'never', 'sometimes', 'undefined', 'horizontal', 'vertical', 'clockwise', 'counterclockwise'}
+def categorical(s):
+    """Explicit-vocabulary categorical answers (astra v11 H1): a word from CATEGORY_WORDS (with its Greek translations via equiv500.CATEGORICAL) compares case-insensitively;
+    any other alphabetic string (a variable such as x or X, a name) is a SYMBOL and compares case-sensitively after \\text{} unwrapping. None for anything with digits or longer than 30 chars."""
+    t = re.sub(r'\\(?:text|mbox|textbf|mathrm)\{([^}]*)\}', r'\1', str(s if s is not None else '')).strip().strip('.').strip()
+    if not t or re.search(r'\d', t) or len(t) > 30 or not re.fullmatch(r'[A-Za-z\u0370-\u03ff\s]+', t): return None
+    low = E.CATEGORICAL.get(t.lower(), t.lower())
+    return ('vocab', low) if low in CATEGORY_WORDS else ('symbol', t)   # marks a list/tuple separator once classified; never confusable with a thousands comma
+UNITS = ('cm', 'm', 'km', 'mm', 'in', 'inch', 'inches', 'ft', 'feet', 'foot', 'yd', 'yards', 'mi', 'miles', 'cents', 'cent', 'degrees', 'degree', 'dollars', 'dollar', 'units', 'unit', 'sq', 'square',
+         'mph', 'kmh', 'km/h', 'hours', 'hour', 'hr', 'h', 'minutes', 'minute', 'min', 'seconds', 'second', 'sec', 's', 'days', 'day', 'years', 'year', 'weeks', 'week', 'months', 'month', 'grams', 'gram', 'g', 'kg',
+         'kilograms', 'lbs', 'lb', 'pounds', 'pound', 'ounces', 'oz', 'liters', 'litres', 'liter', 'l', 'ml', 'gallons', 'gallon', 'meters', 'metres', 'meter', 'percent', 'pm', 'am', 'bc', 'ad',
+         'εκατοστά', 'εκ', 'μέτρα', 'μ', 'ίντσες', 'σεντ', 'μοίρες', 'ευρώ', 'λεπτά', 'ώρες', 'ημέρες', 'χρόνια', 'κιλά', 'γραμμάρια', 'μήνες', 'εβδομάδες')
+UNIT_RE = r'(?:' + '|'.join(re.escape(u) for u in sorted(UNITS, key=len, reverse=True)) + r')\.?(?:\^\{?[23]\}?|²|³)?'
+LSPACE = r'(?:\s|(?<!\\)\\[ ,;:]|\\quad|\\qquad)'
+NUM = re.compile(r'^([+-]?)((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)(?:[eE]([+-]?\d+))?$')
+FRAC = re.compile(r'^([+-]?)\\frac(?:\{([+-]?\d+(?:\.\d+)?)\}|(\d))(?:\{(\d+(?:\.\d+)?)\}|(\d))$')
+SLASH = re.compile(r'^([+-]?\d+(?:\.\d+)?)/(\d+(?:\.\d+)?)$')
+def sep_mark(s):
+    """Classify every comma BEFORE any spacing is removed (astra v10 H1). ',\\!' and '{,}' are LaTeX thousands conventions -> plain thousands comma; a comma
+    followed by (LaTeX) whitespace, or a bare comma NOT followed by exactly three digits, is a list/tuple separator (SEP); a bare comma followed by exactly
+    three digits is a thousands comma. There is no decimal comma in this approval policy (English references and English answers). Whitespace is kept;
+    remaining LaTeX spacing commands are removed (a row separator \\\\ is never a spacing command)."""
+    t = str(s if s is not None else '')
+    t = re.sub(r',\\!', ',', t); t = re.sub(r'\{,\}', ',', t)
+    t = re.sub(r',' + LSPACE + r'+', SEP, t)
+    t = re.sub(r',(?!\d{3}(?!\d))', SEP, t)
+    return re.sub(r'(?<!\\)\\[ ,;:!]|\\quad|\\qquad', '', t)
+def sep_canon(s): return re.sub(r'\s+', '', sep_mark(s))
+def is_list(s):
+    t = sep_mark(s); return SEP in t or ';' in t or re.search(r'\b(?:or|and|ή|και)\b', t) is not None
+def _strip_wrappers(t):
+    """Only EXPLICITLY permitted formatting is removed from a separator-marked string: a single-letter assignment prefix, $ delimiters, a currency sign, a
+    trailing \\text/\\mbox/\\mathrm wrapper whose content is a KNOWN unit (optionally squared/cubed), degree/percent marks, a trailing KNOWN unit word after
+    whitespace. Anything else stays. Returns the whitespace-free form."""
+    t = re.sub(r'^[A-Za-z]\s*=\s*', '', t.strip())
+    for _ in range(6):
+        t0 = t
+        t = re.sub(r'^\\?\$\s*', '', t); t = re.sub(r'\s*\\?\$$', '', t)
+        t = re.sub(r'^[$€£]\s*', '', t)
+        t = re.sub(r'\s*\\(?:text|mbox|mathrm|textbf)\{\s*' + UNIT_RE + r'\s*\}(?:\^\{?[23]\}?)?\s*$', '', t, flags=re.IGNORECASE)
+        t = re.sub(r'\s*(\^\{?\\circ\}?|°|\\%|%)\s*$', '', t)
+        t = re.sub(r'(?<=\d)\s+' + UNIT_RE + r'\s*$', '', t, flags=re.IGNORECASE)
+        t = t.strip()
+        if t == t0: break
+    return re.sub(r'\s+', '', t)
+def _mant(m):
+    if re.fullmatch(r'\d{1,3}(,\d{3})+(\.\d+)?', m): return m.replace(',', '')
+    return None if ',' in m else m
+def numeric_value(s):
+    """EXACT rational for a number-like answer, or None. Lists/alternatives are never numeric."""
+    if is_list(s): return None
+    t = _strip_wrappers(sep_mark(s).replace('\\dfrac', '\\frac').replace('\\tfrac', '\\frac'))
+    if not t or SEP in t: return None
+    m = FRAC.match(t)
+    if m:
+        sign, a1, a2, b1, b2 = m.groups(); a = a1 if a1 is not None else a2; b = b1 if b1 is not None else b2; den = Fraction(Decimal(b))
+        return None if den == 0 else (Fraction(Decimal(a)) / den) * (-1 if sign == '-' else 1)
+    m = SLASH.match(t)
+    if m:
+        a, b = m.groups(); den = Fraction(Decimal(b))
+        return None if den == 0 else Fraction(Decimal(a)) / den
+    t = re.sub(r'^([+-]?)\.(\d)', r'\g<1>0.\2', t)
+    m = NUM.match(t)
+    if not m: return None
+    sign, mant, exp = m.groups(); mant = _mant(mant)
+    if mant is None: return None
+    try: return Fraction(Decimal(f'{sign}{mant}E{exp or 0}'))
+    except InvalidOperation: return None
+def strict_num(s): return numeric_value(s)
+def canon(s):
+    """Structural identity with SAFE normalisations only, on the separator-canonical form: outer $ delimiters and \\left/\\right dropped, dfrac/tfrac -> frac,
+    \\sqrt5 -> \\sqrt{5} and \\frac34 -> \\frac{3}{4} (upstream fixers). No unit stripping, no \\text removal; list separators stay marked."""
+    t = sep_canon(s)
+    t = re.sub(r'^\\?\$', '', t); t = re.sub(r'\\?\$$', '', t)
+    t = re.sub(r'\\(?:left|right)(?![A-Za-z])', '', t).replace('\\dfrac', '\\frac').replace('\\tfrac', '\\frac')   # only the sizing commands \\left/\\right (command boundary): \\leftarrow and \\rightarrow stay distinct (astra v12 H1)
+    t = E._fix_sqrt(t); t = E._fix_fracs(t); t = re.sub(r'\\frac\{([^{}]*)\}(\w)(?!\})', r'\\frac{\1}{\2}', t)
+    return t
+def _norm(s):
+    """Whitelist normaliser for the symbolic fallback (not the benchmark's strip_string): separator-marked, $ delimiters, \\left/\\right, dfrac/tfrac,
+    whitelisted units / degree / percent / currency, leading decimal point. Arbitrary \\text{...} content is kept."""
+    t = sep_mark(s).strip()
+    t = re.sub(r'^\\?\$\s*', '', t); t = re.sub(r'\s*\\?\$$', '', t)
+    t = re.sub(r'\\(?:left|right)(?![A-Za-z])', '', t).replace('\\dfrac', '\\frac').replace('\\tfrac', '\\frac')   # only the sizing commands \\left/\\right (command boundary): \\leftarrow and \\rightarrow stay distinct (astra v12 H1)
+    t = _strip_wrappers(t)
+    return re.sub(r'^([+-]?)\.(\d)', r'\g<1>0.\2', t)
+def _list_elements(raw): return [e.strip() for e in re.split(SEP + r'|;|\b(?:or|and|ή|και)\b', sep_mark(raw)) if e.strip()]
+def _elements_agree(a, b):
+    na, nb = _norm(a), _norm(b)
+    if not na or not nb: return False
+    if na == nb: return True
+    va, vb = numeric_value(a), numeric_value(b)
+    return va is not None and vb is not None and va == vb
+def equiv_exact(ref, ans):
+    """Exact fallback. Two lists: element-wise (whitelist-normalised identity or exact rational equality per element), else structural identity. A list never
+    equals a non-list. Non-lists: structural identity (canon), then whitelist normalisation, categorical mapping, numbers exposed by the normalisation compared
+    EXACTLY, and only non-numeric expressions go to sympy with RATIONAL parsing of decimal literals."""
+    r, c = str(ref), str(ans); lr, lc = is_list(r), is_list(c)
+    if lr and lc:
+        ea, eb = _list_elements(r), _list_elements(c)
+        if len(ea) == len(eb) and len(ea) > 1 and all(_elements_agree(x, y) for x, y in zip(ea, eb)): return True
+    if lr != lc: return False
+    ka, kb = canon(r), canon(c)
+    if not ka or not kb: return False
+    if ka == kb: return True
+    if lr: return False
+    a, b = _norm(r), _norm(c)
+    if not a or not b: return False
+    if a == b: return True
+    ca, cb = categorical(a), categorical(b)
+    if ca is not None or cb is not None: return ca is not None and ca == cb
+    na, nb = numeric_value(a), numeric_value(b)
+    if na is not None or nb is not None: return na is not None and nb is not None and na == nb
+    try:
+        import sympy
+        from sympy.parsing.sympy_parser import parse_expr, standard_transformations, rationalize
+        conv = lambda x: x.replace('^', '**').replace('\\frac', '').replace('{', '(').replace('}', ')')
+        T = standard_transformations + (rationalize,)
+        return bool(sympy.simplify(parse_expr(conv(a), transformations=T) - parse_expr(conv(b), transformations=T)) == 0)
+    except Exception: return False
+def agree(ref, ans):
+    """(ok, how). Identity; identity on the separator-canonical form (list separators stay distinct from thousands commas); exact rational equality when
+    EITHER side is number-like (a non-numeric other side disagrees); categorical equality when either side is categorical; otherwise equiv_exact."""
+    r, c = str(ref if ref is not None else '').strip(), str(ans if ans is not None else '').strip()
+    if not r or not c: return False, None
+    if r == c or sep_canon(r) == sep_canon(c): return True, 'exact'
+    a, b = numeric_value(c), numeric_value(r)
+    if a is not None or b is not None:
+        ok = a is not None and b is not None and a == b; return ok, ('numeric' if ok else None)
+    ca, cb = categorical(r), categorical(c)
+    if ca is not None or cb is not None: return (ca is not None and ca == cb), ('categorical' if (ca is not None and ca == cb) else None)
+    return (True, 'symbolic') if equiv_exact(r, c) else (False, None)
+def problem_fp(text): return hashlib.sha256(str(text).encode('utf-8')).hexdigest()[:16]
+def file_sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+def comparator_sha():
+    h = hashlib.sha256()
+    for p in COMPARATOR_FILES: h.update(open(p, 'rb').read()); h.update(b'\n--\n')
+    return h.hexdigest()
+def manifest_fingerprint(items): return hashlib.sha256('\n'.join(sorted(f"{i}|{items[i]['ref']}|{problem_fp(items[i]['problem_en'])}" for i in items)).encode()).hexdigest()
+def manifest_id_sha(items): return hashlib.sha256('\n'.join(sorted(items)).encode()).hexdigest()
+def build_manifest():
+    from mathlib import boxed, gsm_answer
+    src = {}
+    for l in open(f'{HERE}/prep/translations_with_reference.jsonl'):
+        r = json.loads(l); src[r['id']] = r
+    for l in open(f'{HERE}/out/level5_problems_el.jsonl'):
+        r = json.loads(l); src.setdefault(r['id'], dict(r, ref=boxed(r['solution_en']) or ''))
+    items = {}
+    for f in ('rows_M1', 'rows_M2_extra'):
+        for l in open(f'{HERE}/final/{f}.jsonl'):
+            pid = re.sub(r'^c2_', '', json.loads(l)['id']); s = src[pid]
+            items[pid] = dict(id=pid, problem_en=s['problem_en'], ref=str(s.get('ref', '') or ''), src='gsm8k' if pid.startswith('gsm') else 'math', level=str(s.get('level', 'gsm' if pid.startswith('gsm') else '')))
+    covered = {v['problem_en'] for v in items.values() if v['src'] == 'gsm8k'}
+    for l in open(f'{ROOT}/data/math/en/gsm8k_dedup3.jsonl'):
+        r = json.loads(l); prob = r['problem']
+        if prob in covered: continue
+        k = 'gsmen_' + hashlib.sha256(prob.encode('utf-8')).hexdigest()[:12]
+        if k in items: continue
+        ref = str(r.get('expected_answer') or r.get('answer') or gsm_answer(r.get('reference_solution') or r.get('solution') or '') or '')
+        items[k] = dict(id=k, problem_en=prob, ref=ref, src='gsm8k', level='gsm')
+    return items
+def load_solve_records(path=SOLVE): return [json.loads(l) for l in open(path) if l.strip()]
+def verify_approval(ld, rows, items):
+    problems = []
+    if ld.get('solve_file_sha256') != file_sha(SOLVE): problems.append('solve file hash differs from the approval artifact')
+    if ld.get('comparator_sha256') != comparator_sha(): problems.append('comparator (labelcheck_lib.py + equiv500.py) differs from the approval artifact')
+    if ld.get('problem_reference_fingerprint') != manifest_fingerprint(items): problems.append('problem/reference manifest differs from the approval artifact')
+    if ld.get('expected_manifest_sha256') != manifest_id_sha(items): problems.append('manifest id set differs from the approval artifact')
+    by = {r['id']: r for r in rows}; bad = []
+    for i in ld['agreed']:
+        r = by.get(i); it = items.get(i)
+        if r is None or it is None or not r.get('pfp') or r['pfp'] != problem_fp(it['problem_en']) or str(r['ref']) != it['ref'] or not agree(r['ref'], r['answer'])[0]: bad.append(i)
+    if bad: problems.append(f'{len(bad)} approved records fail re-validation (first {bad[:5]})')
+    if problems: raise SystemExit('APPROVAL ARTIFACT NOT BOUND TO ITS INPUTS: ' + '; '.join(problems))
+    return dict(approved_revalidated=len(ld['agreed']), solve_file_sha256=ld['solve_file_sha256'], comparator_sha256=ld['comparator_sha256'], comparator_files=[os.path.relpath(p, ROOT) for p in COMPARATOR_FILES], manifest_fingerprint=ld['problem_reference_fingerprint'])
+def selftest():
+    big = '123456789012345678901234567890'
+    T = [('1.5', '1,5', False), ('15', '1,5', False), ('0', '0.0000005', False), ('1000', '1,000', True), ('1', '1,000', False), ('12345678901234567890', '12345678901234567891', False),
+         ('12345678901234567890', '12345678901234567890', True), ('18', '$18', True), ('18', '18%', True), ('18', '18 dollars', True), ('\\frac{1}{2}', '0.5', True), ('0.5', '\\frac{1}{2}', True),
+         ('3', '3.0', True), ('3', '3.1', False), ('-4', '-4', True), ('-4', '4', False), ('2.50', '2,5', False), ('1,234.5', '1234.5', True), ('(1,2)', '(1, 2)', True), ('(1,2)', '(1,3)', False), ('', '0', False), ('7', '', False),
+         ('0', '+0.0000000005', False), ('12345678901234567890', '+12345678901234567891', False), ('12345678901234567890', '+12345678901234567890', True), ('5', '+5', True), ('1000', '1e3', True), ('0.0025', '2.5E-3', True), ('1000', '1e4', False), ('-1e3', '-1000', True),
+         ('\\text{ellipse}', '\\text{hyperbola}', False), ('\\text{ellipse}', 'ellipse', True), ('\\text{ellipse}', 'έλλειψη', True), ('even', '\\text{odd}', False), ('\\text{east}', 'ανατολικά', True), ('\\text{cm}', '\\text{m}', False), ('\\text{yes}', '\\text{yes}', True), ('\\text{ellipse}', '', False), ('\\text{ellipse}', '3', False), ('3', '\\text{three}', False),
+         # astra gate-2 v7 H1 regression cases
+         ('0', '.0000000005', False), ('12345678901234567890', '12345678901234567891\\text{ cm}', False), ('12345678901234567890', '12345678901234567890\\text{ cm}', True), (big, '-' + big, False), (big, big + '.0', True), (big, big[:-1] + '1', False),
+         ('1e30', '1' + '0' * 30, True), ('1e30', '1' + '0' * 29 + '1', False), ('\\frac{1}{3}', '0.3333', False), ('-\\frac{3}{4}', '-0.75', True), ('2\\sqrt{2}', '2.828', False), ('\\sqrt{2}', '\\sqrt{2}', True), ('50%', '50', True), ('50\\%', '0.5', False),
+         ('18^\\circ', '18', True), ('3/4', '0.75', True), ('7/2', '3.5', True), ('\\dfrac{7}{2}', '3.5', True), ('$\\frac{1}{2}$', '0.5', True), ('0.1', '\\frac{1}{10}', True), ('0.1', '0.10000000000000000001', False), ('x', 'x', True), ('x=3', '3', True), ('K=8', '8', True), ('n = 255', '255', True), ('\\frac{1}{0}', '0', False),
+         # forms found in the MATH references (v8 finalization delta)
+         ('45,\\!045', '45045', True), ('32,\\!000,\\!000', '32,000,000', True), ('-1,1', '-1, 1', True), ('17,44', '17, 44', True), ('-330,90', '-330, 90', True), ('\\frac53', '\\frac{5}{3}', True), ('\\frac 79', '7/9', True), ('\\frac{29}4', '29/4', True), ('\\dfrac 3 8', '3/8', True), ('-\\frac12', '-\\frac{1}{2}', True), ('\\tfrac{41}2', '\\frac{41}{2}', True), ('-\\frac{1} { 4027}', '-\\frac{1}{4027}', True), ('\\frac 18', '\\frac{1}{8}', True), ('\\frac53', '\\frac{5}{4}', False), ('45,\\!045', '45046', False), ('1{,}000', '1000', True),
+         # astra gate-2 v8 H1 regression cases
+         ('0\\text{ cm}^2', '0.0000000005\\text{ cm}^2', False), ('12345678901234567890\\text{ cm}^2', '12345678901234567891\\text{ cm}^2', False), ('12345678901234567890\\text{ cm}^2', '12345678901234567890\\text{ cm}^2', True), ('5\\text{ cm}^2', '5', True), ('-1, 1', '-1.1', False), ('17, 44', '17.44', False), ('45, 135, 225, 315', '45135225315', False), ('5\\text{ or 6}', '5', False), ('45^\\circ, 135^\\circ, 225^\\circ, 315^\\circ', '45, 135, 225, 315', True), ('\\sqrt{8}', '2.828', False), ('1, 000', '1000', False), ('5\\text{ apples}', '5', False), ('10', '10 pm', True), ('852', '852 BC', True), ('3x', '3', False),
+         # astra gate-2 v11 H1 regression cases (categorical vocabulary vs symbols)
+         ('x', 'X', False), ('x', 'x', True), ('\\leftarrow', '\\rightarrow', False), ('a\\leftarrow b', 'a\\rightarrow b', False), ('\\left(1\\right)', '(1)', True), ('\\left(1,2\\right)', '(1, 2)', True), ('\\Leftrightarrow', '\\leftrightarrow', False), ('\\text{x}', 'X', False), ('\\text{Sunday}', 'Sunday', True), ('\\text{Monday}', 'monday', True), ('Even', '\\text{even}', True), ('\\text{ellipse}', 'Έλλειψη', True), ('A', 'a', False), ('\\text{yes}', 'Yes', True), ('\\text{Bob}', 'bob', False), ('north', 'South', False),
+         # astra gate-2 v9 H1 regression cases
+         ('5\\text{ apples}', '5\\text{ or 6}', False), ('17, 44\\text{ apples}', '17.44\\text{ apples}', False), ('17,\\ 44', '17.44', False), ('17,\\ 44', '17, 44', True), ('1.0+1e-100', '1.0+0', False), ('1.0+0', '1+0', True),
+         # astra gate-2 v10 H1 regression cases (separator classification before spacing removal)
+         ('1, 000', '1,000', False), ('45, 045', '45,\\!045', False), ('(1, 000)', '\\left(1,\\!000\\right)', False), ('(1,2)', '(1, 2)', True), ('(1,000)', '(1, 000)', False), ('1,000,000', '1000000', True), ('1,5', '1, 5', True), ('1,5', '1.5', False), ('(1, 000)', '(1, 000)', True), ('1,000', '1, 000', False), ('2, 3', '2,3', True), ('\\frac{1}{2},\\frac{1}{3}', '\\frac{1}{2}, \\frac{1}{3}', True),
+         # forms found in the MATH references (v10.0 -> v10.1 lesson: structural identity with safe normalisations)
+         ('2\\sqrt5', '2\\sqrt{5}', True), ('(18, -18)', '$(18,-18)$', True), ('(18, -18)', '(18, 18)', False), ('-\\frac34i', '-\\frac{3}{4}i', True), ('\\begin{pmatrix} 4 \\\\ -3 \\end{pmatrix}', '\\begin{pmatrix}4\\\\-3\\end{pmatrix}', True), ('\\begin{pmatrix} 4 \\\\ -3 \\end{pmatrix}', '\\begin{pmatrix}4\\\\3\\end{pmatrix}', False), ('(-\\infty, 1)\\cup(1, \\infty)', '$(-\\infty,1)\\cup(1,\\infty)$', True), ('0,\\tfrac32, 2i, -2i', '0, \\frac{3}{2}, 2i, -2i', True), ('\\left(-\\frac{1}{2}, 3, -\\frac{5}{2}\\right)', '\\left(-\\frac12,3,-\\frac52\\right)', True), ('(4 \\sqrt{2}, 4 \\sqrt{2}, \\sqrt{3})', '\\left(4\\sqrt{2},4\\sqrt{2},\\sqrt{3}\\right)', True), ('\\begin{pmatrix} 2 & 2 \\\\ 7 & -39 \\end{pmatrix}', '\\begin{pmatrix}2 & 2\\\\7 & -39\\end{pmatrix}', True), ('(1, 2)', '(1,2)', True), ('1, 2, 3', '1, 2', False), ('1, 2', '1.0, 2.0', True), ('5 or 6', '6 or 5', False), ('5\\text{ apples}', '5\\text{ apples}', True), ('5\\text{ apples}', '6\\text{ apples}', False), ('\\left(1,2\\right)', '(1,2)', True), ('x^2+1', 'x^2 + 1', True), ('x^2+1', 'x^2+2', False)]
+    bad = [(r, a, want, agree(r, a)) for r, a, want in T if agree(r, a)[0] != want]
+    if bad: raise SystemExit(f'SELFTEST FAILED: {bad}')
+    print(f'labelcheck_lib self-tests: {len(T)} cases PASS'); return True
+if __name__ == '__main__':
+    if '--selftest' in sys.argv: selftest()

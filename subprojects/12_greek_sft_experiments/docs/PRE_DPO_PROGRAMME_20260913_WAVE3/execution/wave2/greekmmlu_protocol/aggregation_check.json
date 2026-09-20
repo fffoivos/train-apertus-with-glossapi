@@ -1,0 +1,12 @@
+{
+  "source_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/results/greekmmlu/peer_krikri_native_mcq_summary.csv",
+  "source_sha256": "9dafad8158a2c841169f2c57e9b1a79272ab2e6cd250186d901f717b2c527d9e",
+  "subjects": 31,
+  "n": 16632,
+  "correct": 8650,
+  "micro": 0.52008177008177,
+  "subject_macro": 0.5361751574771041,
+  "official_paper_average": 0.6647,
+  "publication_protocol_reproduced": false,
+  "current_official_code_revision": "cd944748e860fda3e9dc21212c2f2710615ecdc5"
+}

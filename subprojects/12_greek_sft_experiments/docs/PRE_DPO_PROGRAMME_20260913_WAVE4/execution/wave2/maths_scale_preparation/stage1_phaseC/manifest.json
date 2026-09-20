@@ -1,0 +1,76 @@
+{
+  "artifact_sha256": {
+    "conditional_jobs.json": "4eb97a3253d6707bb4bbc477fcefc8a9da0f24904c71a87cf45b5a91379b7a1a",
+    "inputs.jsonl": "570a53516a57aafeb339ce14faa247aeee0a6481f7d0f2ace4d99a6b500506e4",
+    "partition_receipt.json": "9b6fce29713cac2ee77ac5db2286e9f71fc66d1699ae2c9d4e14eb79fc19b9af",
+    "payload_bindings.jsonl": "e6be34a614acb169dd31c0871ef97d13c7633ecccc5b0634a5b40a429968730b",
+    "prepare_phaseC.py": "68029eea72ababf12b8ec6ed9a9c5b4ea32f7b6837251d7a28982feb0a776237",
+    "prompts/adaptation.txt": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+    "prompts/greek_correction.txt": "acd8856f464c2cab4269749f0df96fc211c8e76b23d9ebe75e2d0707aa2b7ff4",
+    "prompts/solution_blind.txt": "ea1afd16c4910e9930760e3f22b232e0d14451f207ea4290ea79cc2d231e6a45",
+    "prompts/source_review.txt": "c7001e87bbec4a18f42055eb36c48a86ffe368db66c9483af2c2849cd98fe240",
+    "prompts/verification_blind.txt": "67a04cee918f227aa582da70a6fcb66cc7eca7093bc64ae9c067ec87a3b4b1de",
+    "queue.jsonl": "71ace16b73bda964238150d67254e0d46504d60908c40aeaedd113ccb08bc181",
+    "replacement_delta.jsonl": "d11cc5dc0a5f54310c5dd0b09c134776afb4f9f13fd6e9c305c10fa8c7f703ad",
+    "report.md": "d12626733c820840749084df6de458d381d22ec03b7bb0392a85c20220b88f90",
+    "run_queue.py": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005",
+    "schemas/adaptation.schema.json": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+    "schemas/greek_correction.schema.json": "cac89525ac699c70071e5020cc6e5ba4828aea543a27af1fa23c88ec621618b3",
+    "schemas/solution.schema.json": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+    "schemas/source_review.schema.json": "2b72795c67af05520c0f49c0db359cc6505feeb5a21955b0dbf3b9aa4bc19724",
+    "source_read_receipt.jsonl": "8bb32f8285d1e2aa84a3e42cd40926854b90531df486157beb7eb938b7cafbf8",
+    "verify_phaseC.py": "631233a3614847211d6d2f6c68c48d863fb3a176b6e21d080d5f36363ac67163"
+  },
+  "built_at": "2026-09-13T17:34:46+03:00",
+  "counts": {
+    "absolute_call_cap": 72,
+    "adaptation_calls": 14,
+    "blind_verification_high_calls": 14,
+    "conditional_greek_correction_cap": 14,
+    "conditional_semantic_or_source_shared_cap": 8,
+    "primary_calls": 42,
+    "replacements": 2,
+    "retry_cap": 8,
+    "rows": 14,
+    "solution_high_calls": 14
+  },
+  "execution": {
+    "automatic_xhigh": false,
+    "default_effort": "high",
+    "launched": false,
+    "max_workers": 8,
+    "runner_copy_byte_identical": true,
+    "runner_source": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_scale_preparation/stage1/run_queue.py",
+    "runner_source_sha256": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005"
+  },
+  "notes": [
+    "Reference solutions are stored only for later human comparison and are absent from all queued payloads.",
+    "Every queued row is MATH train; no development or final-confirmation content is materialized.",
+    "The repair_math5_77 family remains quarantined and is absent from selection."
+  ],
+  "scope": "fourteen train-only C_complete_stage1 source families",
+  "source_files": {
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/candidate_register/family_resolution/dispositions.jsonl": {
+      "rows": 44,
+      "sha256": "eb28306f867381bcdae30889bdcf3808e2d965c5c90bd6ae88fe1e20cf191cd2"
+    },
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_scale_preparation/math7500_family_inventory.jsonl": {
+      "rows": 7492,
+      "sha256": "5e21b80967bd49bf8482e8ee38691de4e9571b42f37a6df8bf7c600b92059b41"
+    },
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_scale_preparation/proposed_family_splits.jsonl": {
+      "rows": 133,
+      "sha256": "e3ab829b1cfa8f4e548f3c1c96e10ccb57508f59325d6507e48a6df3a2e9ec44"
+    },
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_scale_preparation/stage1/phaseB_selection_delta.jsonl": {
+      "rows": 4,
+      "sha256": "ec9bbff9d77199b5de4c777b364e571ce84d98b6e3298f35d48b807bdb42912e"
+    },
+    "/Users/foivoskarounos-zamparloukos/sft_annot/math_src/math_train.jsonl": {
+      "rows": 7500,
+      "sha256": "7c2b6be1ff20ece021d27e68103bcaa27935489247f179a1810ca72d54b379bf"
+    }
+  },
+  "status": "prepared_unlaunched_root_review_required",
+  "version": 1
+}

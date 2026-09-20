@@ -1,0 +1,56 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_355",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "greek_language",
+          "severity": "minor",
+          "quote": "Η μετατροπή σε Κελσίου και η πρώτη στρογγυλοποίηση δίνουν",
+          "explanation": "Η διατύπωση «σε Κελσίου» είναι ελλειπτική και μη φυσική στα ελληνικά. Χρειάζεται ουσιαστικό, όπως «σε βαθμούς Κελσίου». Δεν επηρεάζεται η μαθηματική ορθότητα.",
+          "suggested_action": "Σε ενδεχόμενη γλωσσική διόρθωση, να αντικατασταθεί με «Η μετατροπή σε βαθμούς Κελσίου…»."
+        }
+      ],
+      "provenance_note": "Το κείμενο του προβλήματος χαρακτηρίζεται σταθερό. Η επιλεγμένη λύση είναι μία από δύο εγγραφές λύσεων, χωρίς ένδειξη ασυμβατότητας με το συγκεκριμένο πρόβλημα.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_699",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχουν πολλαπλές αποθηκευμένες ελληνικές εκδοχές και η ιστορική αντιστοίχιση της τελευταίας λύσης με την τελευταία εκδοχή δεν είναι αποδεδειγμένη. Ωστόσο, οι δύο παρεχόμενες εκδοχές είναι μαθηματικά ισοδύναμες και δεν προκύπτει σημασιολογική ασυμβατότητα με την επιλεγμένη λύση.",
+      "verification_needed": [
+        "Αν απαιτείται βεβαιότητα προέλευσης, να επαληθευτεί από τα αρχικά αρχεία η ιστορική αντιστοίχιση προβλήματος και λύσης."
+      ]
+    },
+    {
+      "row_id": "gsm_1412",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική εγγραφή προβλήματος και λύσης· δεν προκύπτει αβεβαιότητα ιστορικής αντιστοίχισης.",
+      "verification_needed": []
+    }
+  ]
+}

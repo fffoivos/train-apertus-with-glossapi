@@ -1,0 +1,14 @@
+{
+  "created_at": "2026-09-13T14:27:17.900060+00:00",
+  "parent_sha256": "d02ebae2681c99fc20a31a7b9c7547ea8c3cd980ba8cdccf2fd1e9f4a0b73d7c",
+  "candidate_sha256": "a0571cfbda289edfe528b207d5ae4ef206cee0e33b632b50e1b09d398c18b432",
+  "status": "accepted_scope_revision_actual_reader_mask_pass",
+  "rows": 32,
+  "changed_contexts": 4,
+  "changed_decisions": 2,
+  "changed_targets": 0,
+  "model_calls": 0,
+  "token_gate": "pass",
+  "token_inventory_sha256": "c6dbcfd35010fede658a5e08e9fdf1d3af0b974a8147104fe75c5cae8318b952",
+  "independent_delta_review_sha256": "6dd712dbab9c4aa8c8eea8679811c3ee3c21846f7c19a5d9fdb224e1490969d4"
+}

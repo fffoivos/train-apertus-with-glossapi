@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_118_0",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example assessed on its own terms. The actual AFTER target matches the supplied training record exactly. The problem supports the exact division 1,008 ÷ 8 = 126, and the €25 hammer price is correctly identified as irrelevant. The editor changed only an awkward sentence into a more natural and precise Greek formulation without changing its meaning.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_3907",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The AFTER target is unchanged from BEFORE and matches the actual training record exactly. Under the ordinary independent-trials classroom convention, the binomial calculation is correct: C(5,2)(2/5)^2(3/5)^3 = 1080/3125 = 216/625. The periods in 1.080 and 3.125 are readable as Greek thousands separators. Renaming Jeff as Δημήτρης preserves the task, while the translated Magic 8 Ball context remains coherent and does not affect the mathematics.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

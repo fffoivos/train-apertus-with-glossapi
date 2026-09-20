@@ -1,0 +1,48 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_3826",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The candidate problem and solution come from a single recorded problem version. The solution consistently follows the supplied reference convention that 858 feet at six-foot spacing requires 143 poles per side.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_738",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "There are two saved Greek problem versions, so the historical association of the selected solution with the last problem record is unproven. The variants differ only between «διακριτές» and «διακεκριμένες» and are mathematically equivalent; the selected solution fully matches both.",
+      "verification_needed": [
+        "Historical pairing of the selected solution with its original saved problem version remains unverified."
+      ]
+    },
+    {
+      "row_id": "gsm_1360",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The candidate problem and solution come from a single recorded problem version. Changing the subject’s name from Aisha to Alexandra is a permitted, internally consistent adaptation and does not alter the mathematical task.",
+      "verification_needed": []
+    }
+  ]
+}

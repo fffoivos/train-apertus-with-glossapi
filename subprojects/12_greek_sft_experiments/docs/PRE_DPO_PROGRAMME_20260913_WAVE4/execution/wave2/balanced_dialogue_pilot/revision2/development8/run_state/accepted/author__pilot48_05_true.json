@@ -1,0 +1,68 @@
+{
+  "job_id": "author__pilot48_05_true",
+  "row_id": "pilot48_05_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "1684356ec582f7f005bfa3e99c4d8cac21ba298cafef4ce9a25931a2e68856d5",
+  "input_record_sha256": "e83b98e47346727659d0b2d8b4fb64ea1b862d688c3c15fd569c5ab83e647aaa",
+  "payload_sha256": "4db378e91929acbd1692dde1efb2f9be8ba456b6568f606376884038e6ee9eba",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "e860cfeeebdcf13f12ba16387b07efc6ce2ce9b4d95392a8d72137858e77075f",
+  "result": {
+    "row_id": "pilot48_05_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_05_true.u_context",
+        "role": "user",
+        "content": "Στο πρόχειρο της παραγγελίας, η τρέχουσα καταχώριση είναι μεσαίος ντεκαφεϊνέ χωρίς ζάχαρη.",
+        "train": false
+      },
+      {
+        "id": "pilot48_05_true.u_decision",
+        "role": "user",
+        "content": "Σε παρακαλώ — Στο πρόχειρο της παραγγελίας, η καταχώριση είναι μεσαίος ντεκαφεϊνέ χωρίς ζάχαρη. Πρόσθεσε τώρα λίγο γάλα.",
+        "train": false
+      },
+      {
+        "id": "pilot48_05_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά. Πρόσθεσα λίγο γάλα στο πρόχειρο της παραγγελίας· τώρα γράφει μεσαίος ντεκαφεϊνέ χωρίς ζάχαρη, με λίγο γάλα.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_05_true.u_decision",
+        "claim": "Η καταχώριση στο πρόχειρο είναι μεσαίος ντεκαφεϊνέ χωρίς ζάχαρη και ζητείται να προστεθεί λίγο γάλα.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "pilot48_05_true.u_context",
+          "pilot48_05_true.u_decision"
+        ],
+        "expected_response_behaviour": [
+          "Να αναγνωρίσει ότι η περιγραφή της τρέχουσας καταχώρισης είναι σωστή.",
+          "Να προσθέσει λίγο γάλα μόνο στο πρόχειρο της παραγγελίας.",
+          "Να αναφέρει συνοπτικά το νέο κειμενικό αποτέλεσμα χωρίς να υπονοεί εξωτερική ενέργεια."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "πρόχειρο παραγγελίας",
+        "before_json": "{\"coffee\":\"ντεκαφεϊνέ\",\"size\":\"μεσαίος\",\"sugar\":0}",
+        "after_json": "{\"coffee\":\"ντεκαφεϊνέ\",\"size\":\"μεσαίος\",\"sugar\":0,\"milk\":\"λίγο\"}",
+        "evidence_ids": [
+          "pilot48_05_true.u_context",
+          "pilot48_05_true.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

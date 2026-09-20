@@ -1,0 +1,61 @@
+{
+  "job_id": "adapt__scaleB_math_line_2400",
+  "row_id": "scaleB_math_line_2400",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "9f0bce8b001ccc90665728e856bc2e1f933dd92015a8de8d4ed125ed3cd32c30",
+  "input_record_sha256": "eea7739cc2764e4175281a04cc148cc00cffcac6efcb7bea0d8cacaf697686e3",
+  "payload_sha256": "b72e5204ba6afcabf9a882bce8e8cf018e5effecf6d40c7220883c6d69ee9a16",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "df6b5d29bcd13ef1c141652ee2284077283333a08498d520e4fe8408a853de92",
+  "result": {
+    "row_id": "scaleB_math_line_2400",
+    "status": "candidate",
+    "problem_text": "Απλοποιήστε την παράσταση $$\\frac{11!}{9! + 2\\cdot 8!}$$",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Simplify",
+        "target_span": "Απλοποιήστε την παράσταση",
+        "reason": "Φυσική απόδοση της οδηγίας στα ελληνικά, χωρίς μεταβολή της μαθηματικής εργασίας."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "11!",
+          "role": "αριθμητής του κλάσματος",
+          "unit": null
+        },
+        {
+          "value": "9!",
+          "role": "πρώτος προσθετέος του παρονομαστή",
+          "unit": null
+        },
+        {
+          "value": "2",
+          "role": "συντελεστής του 8! στον παρονομαστή",
+          "unit": null
+        },
+        {
+          "value": "8!",
+          "role": "παραγοντική παράσταση στον δεύτερο προσθετέο του παρονομαστή",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Η παράσταση παραμένει ακριβώς το κλάσμα 11!/(9! + 2·8!).",
+        "Οι παραγοντικές, η πρόσθεση και ο πολλαπλασιασμός διατηρούνται αμετάβλητα."
+      ],
+      "required_outputs": [
+        "Η απλοποιημένη μορφή ή τιμή της δοσμένης παράστασης."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

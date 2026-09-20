@@ -1,0 +1,306 @@
+{
+  "schema_version": "dolci_three_role_mismatches_v1",
+  "rows": [
+    {
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_320364",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 136,
+        "row_in_group": 718
+      },
+      "messages_sha256": "be4471c39bbd4b0f3841a4260a6784400b9f85eb33f6dd159fa524b0495ec7b1",
+      "turn_count": 3,
+      "implicated_turns": [
+        {
+          "turn_index": 1,
+          "turn": {
+            "content": "Provide me with the current stock price of Tesla.",
+            "function_calls": "null",
+            "functions": null,
+            "role": "user"
+          }
+        }
+      ],
+      "turn_summaries": [
+        {
+          "turn_index": 0,
+          "role": "system",
+          "content_type": "str",
+          "content_chars": 339,
+          "content_preview": "You are a helpful function-calling AI assistant. You are provided with function signatures within <functions></functions> XML tags. You may call one or more functions to assist with the user query. Output any function calls within <function",
+          "tool_fields": {
+            "functions": "[{\"type\": \"function\", \"function\": {\"name\": \"securities.getlistbysecuritiescode\", \"description\": \"Fetches the securities report data for a specified company using its securities code.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"securities_code\": {\"description\": \"The securities code of the company whose report data is to be fetched.\", \"type\": \"integer\", \"default\": \"7203\"}}}}}, {\"type\": \"function\", \"function\": {\"name\": \"stocks.get_3_month_historical_daily_prices\", \"description\": \"Fetches 3 months of historical daily stock prices for the given ticker.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"ticker\": {\"description\": \"The stock ticker symbol to fetch historical prices for.\", \"type\": \"string\", \"default\": \"AAPL\"}}}}}, {\"type\": \"function\", \"function\": {\"name\": \"stocks.market_aggressive_small_caps\", \"description\": \"Fetch data for aggressive small cap stocks with earnings growth rates greater than 25% using the mboum-finance API.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"start\": {\"description\": \"The starting index for fetching the data. Defaults to 0.\", \"type\": \"integer\", \"default\": \"0\"}}}}}, {\"type\": \"function\", \"function\": {\"name\": \"blockchain.account_transaction_history\", \"description\": \"Retrieves an array of all transactions associated with a specific address on the Optimism blockchain.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"address\": {\"description\": \"The blockchain address to query for transaction history.\", \"type\": \"string\", \"default\": \"0x0000000000000000000000000000000000000123\"}, \"network\": {\"description\": \"The network to query, either 'mainnet' or 'testnet'. Defaults to None.\", \"type\": \"string\", \"default\": \"\"}}}}}]"
+          }
+        },
+        {
+          "turn_index": 1,
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 49,
+          "content_preview": "Provide me with the current stock price of Tesla.",
+          "tool_fields": {
+            "function_calls": "null"
+          }
+        },
+        {
+          "turn_index": 2,
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 255,
+          "content_preview": "I'm sorry, but I can't provide current stock prices. Based on the available API, I can only fetch historical daily stock prices for a given ticker or securities report data using a securities code. Let me know if you'd like help with one of",
+          "tool_fields": {
+            "function_calls": "null"
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_478855",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 3,
+        "row_in_group": 15
+      },
+      "messages_sha256": "d6173b39d88e49280f450aef7a5b78269d56e8c67dc38e7f2edaef8dcce2640b",
+      "turn_count": 20,
+      "implicated_turns": [
+        {
+          "turn_index": 1,
+          "turn": {
+            "content": "Can you do two things in parallel: 1) Assess diabetes risk for someone who is 210 lbs, 70 inches tall, and \"lightly active\". 2) Project the investment growth for $10,000 principal, $2,000 annual addition, over 15 years at a 6% return rate, with annual inflation rates of 3%. Use inflation adjustment. Show results for both.",
+            "function_calls": "assess_diabetes_risk(weight_lbs=210, height_inches=70, activity=\"lightly active\")\nproject_investment_growth(principal=10000, annual_addition=2000, years=15, return_rate=0.06, inflation=[0.03]*15, inflation_adjusted=True)",
+            "functions": null,
+            "role": "user"
+          }
+        }
+      ],
+      "turn_summaries": [
+        {
+          "turn_index": 0,
+          "role": "system",
+          "content_type": "str",
+          "content_chars": 339,
+          "content_preview": "You are a helpful function-calling AI assistant. You are provided with function signatures within <functions></functions> XML tags. You may call one or more functions to assist with the user query. Output any function calls within <function",
+          "tool_fields": {
+            "functions": "[{\"type\": \"function\", \"function\": {\"name\": \"assess_diabetes_risk\", \"description\": \"Assesses the risk of developing type 2 diabetes based on body mass index (BMI) and physical activity level.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"weight_lbs\": {\"description\": \"Body weight in pounds.\", \"type\": \"integer\"}, \"height_inches\": {\"description\": \"Height in inches.\", \"type\": \"integer\"}, \"activity\": {\"description\": \"Physical activity level. Allowed values: \\\"sedentary\\\", \\\"lightly active\\\", \\\"moderately active\\\", or \\\"very active\\\".\", \"type\": \"string\"}}}}}, {\"type\": \"function\", \"function\": {\"name\": \"project_investment_growth\", \"description\": \"Projects the growth of an investment over a specified number of years.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"principal\": {\"description\": \"The initial investment amount.\", \"type\": \"number\", \"default\": true}, \"annual_addition\": {\"description\": \"The amount added to the investment annually.\", \"type\": \"number\", \"default\": true}, \"years\": {\"description\": \"The number of years to project the investment growth.\", \"type\": \"integer\"}, \"return_rate\": {\"description\": \"The annual return rate as a decimal (e.g., 0.07 for 7%).\", \"type\": \"number\"}, \"inflation\": {\"description\": \"A list of annual inflation rates as decimals.\", \"type\": \"array\", \"items\": {\"type\": \"number\"}}, \"inflation_adjusted\": {\"description\": \"Whether to adjust the final value for inflation. Defaults to True.\", \"type\": \"boolean\"}}}}}, {\"type\": \"function\", \"function\": {\"name\": \"get_ip_zipcode\", \"description\": \"Retrieves the ZIP code of a given IP address using the ip-api.com API.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"ip\": {\"description\": \"The IP address to locate.\", \"type\": \"string\"}}}}}]"
+          }
+        },
+        {
+          "turn_index": 1,
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 323,
+          "content_preview": "Can you do two things in parallel: 1) Assess diabetes risk for someone who is 210 lbs, 70 inches tall, and \"lightly active\". 2) Project the investment growth for $10,000 principal, $2,000 annual addition, over 15 years at a 6% return rate, ",
+          "tool_fields": {
+            "function_calls": "assess_diabetes_risk(weight_lbs=210, height_inches=70, activity=\"lightly active\")\nproject_investment_growth(principal=10000, annual_addition=2000, years=15, return_rate=0.06, inflation=[0.03]*15, inflation_adjusted=True)"
+          }
+        },
+        {
+          "turn_index": 2,
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 432,
+          "content_preview": "{\"results\": {\"bmi\": 30.1, \"risk_level\": \"moderate\", \"risk_description\": \"Moderate risk of developing type 2 diabetes due to above-average BMI and lightly active lifestyle.\"}}\n{\"results\": {\"future_value\": 49394.11, \"inflation_adjusted_value\"",
+          "tool_fields": {}
+        },
+        {
+          "turn_index": 3,
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 483,
+          "content_preview": "Here are both results:\n\n1. Diabetes Risk Assessment:\n- BMI: 30.1\n- Risk Level: Moderate\n- Description: You have a moderate risk of developing type 2 diabetes due to above-average BMI and a lightly active lifestyle.\n\n2. Investment Projection",
+          "tool_fields": {}
+        },
+        {
+          "turn_index": 4,
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 196,
+          "content_preview": "Can you repeat both calculations but for a person who is 155 lbs, 65 inches, \"very active\" and for an investment of $20,000, $3,500 annual addition, 20 years, 7% return, use 2.5% annual inflation?",
+          "tool_fields": {}
+        },
+        {
+          "turn_index": 5,
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 4,
+          "content_preview": "null",
+          "tool_fields": {
+            "function_calls": "assess_diabetes_risk(weight_lbs=155, height_inches=65, activity=\"very active\")\nproject_investment_growth(principal=20000, annual_addition=3500, years=20, return_rate=0.07, inflation=[0.025]*20, inflation_adjusted=True)"
+          }
+        },
+        {
+          "turn_index": 6,
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 434,
+          "content_preview": "{\"results\": {\"bmi\": 25.8, \"risk_level\": \"low\", \"risk_description\": \"Low risk of developing type 2 diabetes based on healthy BMI and very active lifestyle.\"}}\n{\"results\": {\"future_value\": 175380.77, \"inflation_adjusted_value\": 107748.81, \"su",
+          "tool_fields": {}
+        },
+        {
+          "turn_index": 7,
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 455,
+          "content_preview": "Here are the results for your new inputs:\n\n1. Diabetes Risk Assessment:\n- BMI: 25.8\n- Risk Level: Low\n- Description: Low risk of developing type 2 diabetes based on healthy BMI and a very active lifestyle.\n\n2. Investment Projection:\n- After",
+          "tool_fields": {}
+        },
+        {
+          "turn_index": 8,
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 84,
+          "content_preview": "Can you get the ZIP code for these two IPs in parallel: 8.8.8.8 and 123.123.123.123?",
+          "tool_fields": {}
+        },
+        {
+          "turn_index": 9,
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 4,
+          "content_preview": "null",
+          "tool_fields": {
+            "function_calls": "get_ip_zipcode(ip=\"8.8.8.8\")\nget_ip_zipcode(ip=\"123.123.123.123\")"
+          }
+        },
+        {
+          "turn_index": 10,
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 109,
+          "content_preview": "{\"results\": {\"ip\": \"8.8.8.8\", \"zipcode\": \"94035\"}}\n{\"results\": {\"ip\": \"123.123.123.123\", \"zipcode\": \"57001\"}}",
+          "tool_fields": {}
+        },
+        {
+          "turn_index": 11,
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 74,
+          "content_preview": "The ZIP code for IP 8.8.8.8 is 94035, and for 123.123.123.123 it is 57001.",
+          "tool_fields": {}
+        },
+        {
+          "turn_index": 12,
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 215,
+          "content_preview": "Now, compare diabetes risk for a 250 lb, 72 inch person who is sedentary, and for someone 120 lb, 63 inches, moderately active. Also project investment: $15,000, $1,500 annually, 10 years, 5% return, 3.2% inflation.",
+          "tool_fields": {}
+        },
+        {
+          "turn_index": 13,
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 4,
+          "content_preview": "null",
+          "tool_fields": {
+            "function_calls": "assess_diabetes_risk(weight_lbs=250, height_inches=72, activity=\"sedentary\")\nassess_diabetes_risk(weight_lbs=120, height_inches=63, activity=\"moderately active\")\nproject_investment_growth(principal=15000, annual_addition=1500, years=10, return_rate=0.05, inflation=[0.032]*10, inflation_adjusted=True)"
+          }
+        },
+        {
+          "turn_index": 14,
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 547,
+          "content_preview": "{\"results\": {\"bmi\": 33.9, \"risk_level\": \"high\", \"risk_description\": \"High risk of developing type 2 diabetes due to obese BMI and sedentary lifestyle.\"}}\n{\"results\": {\"bmi\": 21.3, \"risk_level\": \"very low\", \"risk_description\": \"Very low risk",
+          "tool_fields": {}
+        },
+        {
+          "turn_index": 15,
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 586,
+          "content_preview": "Here are the results for your requests:\n\n1. Diabetes Risk Comparison:\n- Person 1: 250 lbs, 72 inches, sedentary\n    - BMI: 33.9\n    - Risk: High – High risk of developing type 2 diabetes due to obese BMI and sedentary lifestyle.\n- Person 2:",
+          "tool_fields": {}
+        },
+        {
+          "turn_index": 16,
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 211,
+          "content_preview": "For a new query: assess diabetes risk for 190 lbs, 68 inches, \"moderately active\" and 135 lbs, 63 inches, \"sedentary\". Get ZIP for 55.66.77.88. Also project $5,000, $500/yr, 8 years, 4.5% return, 2.8% inflation.",
+          "tool_fields": {}
+        },
+        {
+          "turn_index": 17,
+          "role": "assistant",
+          "content_type": "NoneType",
+          "content_chars": 4,
+          "content_preview": "null",
+          "tool_fields": {
+            "function_calls": "assess_diabetes_risk(weight_lbs=190, height_inches=68, activity=\"moderately active\")\nassess_diabetes_risk(weight_lbs=135, height_inches=63, activity=\"sedentary\")\nget_ip_zipcode(ip=\"55.66.77.88\")\nproject_investment_growth(principal=5000, annual_addition=500, years=8, return_rate=0.045, inflation=[0.028]*8, inflation_adjusted=True)"
+          }
+        },
+        {
+          "turn_index": 18,
+          "role": "environment",
+          "content_type": "str",
+          "content_chars": 565,
+          "content_preview": "{\"results\": {\"bmi\": 28.9, \"risk_level\": \"mild\", \"risk_description\": \"Mild risk of developing type 2 diabetes; BMI above normal but mitigated by moderate activity.\"}}\n{\"results\": {\"bmi\": 23.9, \"risk_level\": \"moderate\", \"risk_description\": \"M",
+          "tool_fields": {}
+        },
+        {
+          "turn_index": 19,
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 575,
+          "content_preview": "Here are your requested results:\n\n1. Diabetes Risk Assessments:\n- 190 lbs, 68 inches, moderately active:\n    - BMI: 28.9\n    - Risk: Mild – Above normal BMI, but moderate activity lowers overall risk.\n- 135 lbs, 63 inches, sedentary:\n    - ",
+          "tool_fields": {}
+        }
+      ]
+    },
+    {
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_294907",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 72,
+        "row_in_group": 726
+      },
+      "messages_sha256": "68d5b69a695acec21df1aec1b1a2d1a797304a16197fd1096bbf19b614f9acd3",
+      "turn_count": 3,
+      "implicated_turns": [
+        {
+          "turn_index": 1,
+          "turn": {
+            "content": "Calculate the total interest on my mortgage over 30 years if I have a loan of $200,000 at a 3.5% annual interest rate.",
+            "function_calls": "null",
+            "functions": null,
+            "role": "user"
+          }
+        }
+      ],
+      "turn_summaries": [
+        {
+          "turn_index": 0,
+          "role": "system",
+          "content_type": "str",
+          "content_chars": 339,
+          "content_preview": "You are a helpful function-calling AI assistant. You are provided with function signatures within <functions></functions> XML tags. You may call one or more functions to assist with the user query. Output any function calls within <function",
+          "tool_fields": {
+            "functions": "[{\"type\": \"function\", \"function\": {\"name\": \"finance.monthly_mortgage_payment\", \"description\": \"Calculates the monthly mortgage payment based on the loan amount, annual interest rate, and loan term.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"loan_amount\": {\"description\": \"The total amount of the loan.\", \"type\": \"number\"}, \"annual_interest_rate\": {\"description\": \"The annual interest rate as a decimal (e.g., 0.05 for 5%).\", \"type\": \"number\"}, \"loan_term_years\": {\"description\": \"The loan term in years.\", \"type\": \"integer\"}}}}}, {\"type\": \"function\", \"function\": {\"name\": \"physics.wire_resistance\", \"description\": \"Calculates the resistance of a wire based on its length, cross-sectional area, and material resistivity.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"length_m\": {\"description\": \"The length of the wire in meters.\", \"type\": \"integer\", \"default\": \"copper\"}, \"area_sq_m\": {\"description\": \"The cross-sectional area of the wire in square meters.\", \"type\": \"number\", \"default\": \"copper\"}, \"material\": {\"description\": \"The material of the wire. Allowed values: \\\"copper\\\" (default) or \\\"aluminum\\\".\", \"type\": \"string\"}}}}}, {\"type\": \"function\", \"function\": {\"name\": \"math.prime_factorization\", \"description\": \"Computes the prime factorization of a positive integer.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"number\": {\"description\": \"The positive integer to factorize.\", \"type\": \"integer\"}}}}}, {\"type\": \"function\", \"function\": {\"name\": \"games.draw_cards\", \"description\": \"Shuffles a standard deck of 52 cards and draws a specified number of cards from the top.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"num_draw\": {\"description\": \"The number of cards to be drawn. Defaults to 1.\", \"type\": \"integer\", \"default\": 1}}}}}, {\"type\": \"function\", \"function\": {\"name\": \"math.fibonacci_numbers\", \"description\": \"Generates the first n Fibonacci numbers.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"n\": {\"description\": \"The number of Fibonacci numbers to generate.\", \"type\": \"integer\"}}}}}, {\"type\": \"function\", \"function\": {\"name\": \"finance.compound_interest\", \"description\": \"Calculates the compound interest of an investment.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"principal\": {\"description\": \"The initial investment amount.\", \"type\": \"number\", \"default\": 1}, \"rate\": {\"description\": \"The annual interest rate expressed as a decimal.\", \"type\": \"number\", \"default\": 1}, \"time\": {\"description\": \"The time in years for which the investment is held.\", \"type\": \"number\"}, \"n\": {\"description\": \"The number of times interest is compounded per year. Defaults to 1.\", \"type\": \"integer\"}}}}}, {\"type\": \"function\", \"function\": {\"name\": \"algorithms.find_pairs_with_sum\", \"description\": \"Finds all pairs of integers in a list that sum up to a target value.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"nums\": {\"description\": \"The list of integers.\", \"type\": \"array\", \"items\": {\"type\": \"integer\"}}, \"target\": {\"description\": \"The target sum value.\", \"type\": \"integer\"}}}}}]"
+          }
+        },
+        {
+          "turn_index": 1,
+          "role": "user",
+          "content_type": "str",
+          "content_chars": 118,
+          "content_preview": "Calculate the total interest on my mortgage over 30 years if I have a loan of $200,000 at a 3.5% annual interest rate.",
+          "tool_fields": {
+            "function_calls": "null"
+          }
+        },
+        {
+          "turn_index": 2,
+          "role": "assistant",
+          "content_type": "str",
+          "content_chars": 210,
+          "content_preview": "I'm sorry, but I can't calculate the total interest directly. However, I can help you calculate the monthly mortgage payment based on the loan amount, interest rate, and term. Would you like to do that instead?",
+          "tool_fields": {
+            "function_calls": "null"
+          }
+        }
+      ]
+    }
+  ]
+}

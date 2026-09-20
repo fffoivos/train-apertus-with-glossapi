@@ -1,0 +1,62 @@
+{
+  "job_id": "author__pilot48_09_true",
+  "row_id": "pilot48_09_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "c5b3083702f5a823937a8cf140ee313ba1a8e7f450f5b8719476837cfebe3ff7",
+  "input_record_sha256": "7f05a5cfd55317b8c3eadbdc22bd7e76f580bb2254b4aa8cc70452a112ac3f7f",
+  "payload_sha256": "d26f68891bcd4740d9c2749ba030145badc39a0b0cc732e9a1933826daeed1dc",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "17e8ffc6dbddae9f8523c002b78a5e365b137da5517c0c19c0435b6587ebc9e8",
+  "result": {
+    "row_id": "pilot48_09_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_09_true.u_context",
+        "role": "user",
+        "content": "Υπάρχουν 3 αντίτυπα: 2 είναι δανεισμένα και το τρίτο δεσμευμένο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_09_true.a_context",
+        "role": "assistant",
+        "content": "Άρα και τα τρία αντίτυπα είναι ήδη δεσμευμένα με κάποιον τρόπο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_09_true.u_decision",
+        "role": "user",
+        "content": "Νομίζω. Δεν υπάρχει διαθέσιμο αντίτυπο αυτή τη στιγμή.",
+        "train": false
+      },
+      {
+        "id": "pilot48_09_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά. Με δύο αντίτυπα δανεισμένα και το τρίτο δεσμευμένο, δεν υπάρχει διαθέσιμο αντίτυπο τώρα.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_09_true.u_decision",
+        "claim": "Δεν υπάρχει διαθέσιμο αντίτυπο αυτή τη στιγμή.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "pilot48_09_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "acknowledge_valid_claim",
+          "state_result_concisely"
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

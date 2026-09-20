@@ -1,0 +1,106 @@
+{
+  "schema": "training_cost_envelope_v1",
+  "created_at": "2026-09-13T20:05:00+03:00",
+  "status": "planning_only_no_launch_authority",
+  "source_bindings": [
+    {
+      "path": "EXECUTION_LOG.md",
+      "sha256": "90770d9ad2abff2982c3ec182c3c7036f84c286066d7bcd4f8b752af7bfc095a",
+      "use": "actual historical node-hours"
+    },
+    {
+      "path": "docs/R4_PLAN_20260913.md",
+      "sha256": "7abc9343a9e597988a7cd3d493663d593a1619dff68ebaf33f271b5697055203",
+      "use": "adopted experiment sequence and earlier 3-4 node-hour pair estimate"
+    },
+    {
+      "path": "docs/PRE_DPO_PROGRAMME_20260913_WAVE4/PLAN.md",
+      "sha256": "9eea6b283844e0a753e5c2878f68315ebf7158b3f967649762bc02e7dd66d7c5",
+      "use": "current controlled-pair contract and conservative planning ranges"
+    },
+    {
+      "path": "docs/PRE_DPO_PROGRAMME_20260913_WAVE4/execution/wave2/CURRENT.md",
+      "sha256": "8863807af8e9dc63c68d51bc38f276d551fc0503fa0f63224cb40f8510c8b2f4",
+      "use": "latest file-backed cumulative spend and headroom"
+    }
+  ],
+  "budget": {
+    "cap_chf": 230,
+    "used_chf": 164.0810556,
+    "headroom_chf": 65.9189444,
+    "tariff_chf_per_node_hour": 2.69,
+    "headroom_node_hours": 24.50518379182156133828996283,
+    "note": "This uses the latest receipt-backed amount present in CURRENT.md. Refresh from the accounting ledger and queue immediately before any submission."
+  },
+  "control_reuse_assessment": {
+    "existing_checkpoint": "R3_passB",
+    "existing_parent": "R3",
+    "required_parent": "same pinned G2F1P0 checkpoint for both new arms",
+    "verdict": "incompatible_as_control_for_competition_coverage_pair",
+    "consequence": "price and run two fresh arms"
+  },
+  "telemetry_anchor": {
+    "main_training_node_hours": 7.023,
+    "finishing_training_node_hours": 1.698,
+    "runtime_multiplier": 1.2,
+    "reserved_final_training_node_hours": 10.4652,
+    "selected_candidate_eval_components_node_hours": {
+      "checkpoint_eval_native_ilsp_dev_interviews": 0.623,
+      "native_suite": 0.965,
+      "greekmmlu_and_retention": 0.922,
+      "half_of_paired_four_benchmark_window": 0.4465,
+      "hostile_dialogue_window": 0.359
+    },
+    "reserved_final_evaluation_node_hours": 3.9786,
+    "limitations": [
+      "Historical R3 telemetry is a pricing anchor, not a guarantee for a differently sized final mix.",
+      "Half of a paired benchmark window is an allocation assumption and must be replaced by a measured manifest estimate.",
+      "The final battery manifest must preserve separately reported Greek, maths, instruction-following, dialogue, termination and foreign-language-retention endpoints."
+    ]
+  },
+  "scenarios": [
+    {
+      "name": "pair_at_four_node_hours",
+      "components_node_hours": {
+        "competition_coverage_pair_and_targeted_checks": 4,
+        "selected_main_and_finish_with_20pct_runtime_multiplier": 10.4652,
+        "selected_candidate_battery_with_20pct_runtime_multiplier": 3.9786,
+        "shared_retry_setup_reserve": 4
+      },
+      "total_node_hours": 22.4438,
+      "total_chf": 60.373822,
+      "remaining_node_hours": 2.06138379182156133828996283,
+      "remaining_chf": 5.5451224,
+      "operational_read": "fits conditionally; exact manifests and current accounting must confirm every component"
+    },
+    {
+      "name": "pair_at_six_node_hours",
+      "components_node_hours": {
+        "competition_coverage_pair_and_targeted_checks": 6,
+        "selected_main_and_finish_with_20pct_runtime_multiplier": 10.4652,
+        "selected_candidate_battery_with_20pct_runtime_multiplier": 3.9786,
+        "shared_retry_setup_reserve": 4
+      },
+      "total_node_hours": 24.4438,
+      "total_chf": 65.753822,
+      "remaining_node_hours": 0.06138379182156133828996283,
+      "remaining_chf": 0.1651224,
+      "operational_read": "arithmetically under cap but operationally unsafe"
+    }
+  ],
+  "decision": {
+    "maximum_pair_launch_envelope_node_hours": 4,
+    "maximum_pair_launch_envelope_chf": 10.76,
+    "launch_authorized": false,
+    "required_before_launch": [
+      "both frozen arm manifests start from the identical pinned G2F1P0 checkpoint",
+      "same learning rate, schedule, seed, updates, batch geometry and non-maths replay",
+      "rendered and supervised token counts demonstrate matched exposure",
+      "candidate changes only the equal-token elementary-versus-competition allocation",
+      "targeted evaluation manifest includes family-disjoint maths by language/topic/difficulty, MGSM, termination, compact dialogue and multilingual retention",
+      "canonical runner test-only receipt and fresh scheduler/accounting receipt price the complete pair at no more than 4 node-hours",
+      "owner authorizes the launch"
+    ],
+    "if_pair_exceeds_four_node_hours": "do not submit; reprice the end-to-end programme without silently shrinking the final battery or contingency"
+  }
+}

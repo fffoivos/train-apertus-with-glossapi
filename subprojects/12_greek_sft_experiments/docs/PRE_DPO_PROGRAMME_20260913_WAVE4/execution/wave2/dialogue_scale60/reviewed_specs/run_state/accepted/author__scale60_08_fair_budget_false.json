@@ -1,0 +1,62 @@
+{
+  "job_id": "author__scale60_08_fair_budget_false",
+  "row_id": "scale60_08_fair_budget_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "f2d8fe59430bb96709939d5a7b5978680c26258ceab3ae6dbeae6d274c55b74a",
+  "input_record_sha256": "5c79e49bfce5e78f5962f542f3b7f837abd1214d7fe621e991a63164c1d1706d",
+  "payload_sha256": "e9dbf65e8fad2f857794061fd8edb04ca959bc6ebf177051fd676d2e844b2af5",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "6835eaf100662d39eb0a8cd0b46a349ec9170a30700ef02f545165e2b627a7a8",
+  "result": {
+    "row_id": "scale60_08_fair_budget_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_08_fair_budget_false.u_context",
+        "role": "user",
+        "content": "Ο πρόχειρος προϋπολογισμός δείχνει αρχικό ποσό 120 ευρώ, από το οποίο πληρώθηκαν 35 ευρώ για τραπέζια και άλλα 15 ευρώ για πινακίδες. Δεν υπάρχει καταγεγραμμένη δωρεά.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_false.a_context",
+        "role": "assistant",
+        "content": "Θα υπολογίσω το υπόλοιπο από τα καταγεγραμμένα ποσά, χωρίς να προσθέσω έσοδο που δεν φαίνεται.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_false.u_decision",
+        "role": "user",
+        "content": "Με βάση τα καταγεγραμμένα ποσά, το υπόλοιπο είναι 80 ευρώ.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_false.a_target",
+        "role": "assistant",
+        "content": "Το υπόλοιπο είναι 70 ευρώ, όχι 80: 120 − 35 − 15 = 70.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_08_fair_budget_false.u_decision",
+        "claim": "Με βάση τα καταγεγραμμένα ποσά, το υπόλοιπο είναι 80 ευρώ.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_08_fair_budget_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "correct_unsupported_claim_briefly",
+          "continue_the_requested_reasoning_or_summary"
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

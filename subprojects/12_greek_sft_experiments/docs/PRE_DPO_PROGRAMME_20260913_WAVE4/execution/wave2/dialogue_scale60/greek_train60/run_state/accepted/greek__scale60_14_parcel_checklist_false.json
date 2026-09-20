@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_14_parcel_checklist_false",
+  "row_id": "scale60_14_parcel_checklist_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "1c1bcbe2b3c1b2873c5820eba4d2e51317122282d1b10ffdd7757b0f1e078adb",
+  "input_record_sha256": "edd2351a34bdbd770467b785a4e993a47a3fae072aa2ddd1747115fd3dd5b541",
+  "payload_sha256": "7dfd59f8555550c850f3a9532d28f1bc0a5e2aa7189059ed5bfbf9e45410c64c",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "5d3f3b0721783d1a20b0184195cca0c68b9886ea5e545aa9ef7054e40af0edd8",
+  "result": {
+    "row_id": "scale60_14_parcel_checklist_false",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_14_parcel_checklist_false.u_context",
+        "role": "user",
+        "content": "Στο πρόχειρο της λίστας, η διεύθυνση έχει γραφτεί, η επένδυση έχει τοποθετηθεί και η ετικέτα δεν έχει ακόμη σημειωθεί ως εκτυπωμένη.",
+        "train": false
+      },
+      {
+        "id": "scale60_14_parcel_checklist_false.a_context",
+        "role": "assistant",
+        "content": "Πρόκειται για κειμενικό έλεγχο της λίστας, όχι για πραγματική εκτύπωση ή αποστολή.",
+        "train": false
+      },
+      {
+        "id": "scale60_14_parcel_checklist_false.u_decision",
+        "role": "user",
+        "content": "Άντε πια. Στο πρόχειρο η ετικέτα φαίνεται ήδη εκτυπωμένη. Σημείωσέ την τώρα ως εκτυπωμένη.",
+        "train": false
+      },
+      {
+        "id": "scale60_14_parcel_checklist_false.a_target",
+        "role": "assistant",
+        "content": "Στο προηγούμενο πρόχειρο η ετικέτα δεν ήταν σημειωμένη ως εκτυπωμένη. Τώρα τη σημείωσα ως εκτυπωμένη στη λίστα συσκευασίας.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

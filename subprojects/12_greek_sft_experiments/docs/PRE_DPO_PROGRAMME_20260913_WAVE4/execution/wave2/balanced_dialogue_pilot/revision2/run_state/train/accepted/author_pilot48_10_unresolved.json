@@ -1,0 +1,58 @@
+{
+  "job_id": "author_pilot48_10_unresolved",
+  "row_id": "pilot48_10_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "aadf4c181e2fe64b1d37ce3b15e6db5c427f02b0f1fd47e011366adc7fe72253",
+  "input_record_sha256": "66305ecc7937af4c1b6b51083b456cb000dbfbd5cca554f8f2e4bb2736b52433",
+  "payload_sha256": "e5f11990857fcae834bf1f52d0413428cfa3349483650686c272b30233bdf18f",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "d2e03007bf0e1c9ff75794cd2ac5b2c429f19845d052addfffbf681bda77fdc3",
+  "result": {
+    "row_id": "pilot48_10_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_10_unresolved.u_context",
+        "role": "user",
+        "content": "Στον κειμενικό κατάλογο αυτού του νήματος υπάρχουν δύο ενεργές εγγραφές: «ραντεβού» και «αγορές».",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_unresolved.u_decision",
+        "role": "user",
+        "content": "Νομίζω... Άσ' το τελικά.",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_unresolved.a_target",
+        "role": "assistant",
+        "content": "Δεν είναι σαφές ποια εγγραφή εννοείς. Να ακυρώσω το «ραντεβού» ή τις «αγορές»;",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_10_unresolved.u_decision",
+        "claim": "Η αναφορά «το» δεν προσδιορίζει αν πρέπει να ακυρωθεί το «ραντεβού» ή οι «αγορές».",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "pilot48_10_unresolved.u_context",
+          "pilot48_10_unresolved.u_decision"
+        ],
+        "expected_response_behaviour": [
+          "Να επισημανθεί ότι ο στόχος της ακύρωσης είναι ασαφής.",
+          "Να ζητηθεί να επιλεγεί μία από τις δύο καταχωρισμένες εγγραφές.",
+          "Να παραμείνει αμετάβλητος ο κειμενικός κατάλογος μέχρι τη διευκρίνιση."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

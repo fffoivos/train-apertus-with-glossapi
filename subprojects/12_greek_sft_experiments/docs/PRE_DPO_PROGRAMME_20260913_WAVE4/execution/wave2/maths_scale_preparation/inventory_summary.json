@@ -1,0 +1,213 @@
+{
+  "math_train": {
+    "rows": 7500,
+    "normalized_families": 7492,
+    "normalized_duplicate_rows": 8,
+    "levels": {
+      "Level 5": 2304,
+      "Level 3": 1592,
+      "Level 4": 1690,
+      "Level 1": 564,
+      "Level 2": 1348,
+      "Level ?": 2
+    },
+    "subjects": {
+      "Algebra": 1744,
+      "Counting & Probability": 771,
+      "Geometry": 870,
+      "Intermediate Algebra": 1295,
+      "Number Theory": 869,
+      "Prealgebra": 1205,
+      "Precalculus": 746
+    }
+  },
+  "current_greek_math_source": {
+    "rows": 14215,
+    "by_source": {
+      "gsm8k": 5823,
+      "math": 3284,
+      "native": 5108
+    },
+    "math_rows_by_actual_assembly_status": {
+      "gradient_train": 3241,
+      "development": 40,
+      "assembly_excluded": 3
+    },
+    "unmapped_math_rows": [],
+    "actual_arm_config_counts": {
+      "train": 14070,
+      "dev": 142
+    },
+    "assembly_receipt": {
+      "block": "greek_math",
+      "status": "ok",
+      "target": 15000,
+      "weight": 1,
+      "available": 14215,
+      "exact_duplicates_dropped": 0,
+      "content_duplicates_dropped": 0,
+      "id_collisions_suffixed": 0,
+      "contaminated": 3,
+      "too_long": 0,
+      "identity_backstop": 0,
+      "lexicon_mannerism": 0,
+      "tone_dropped": 0,
+      "taken": 14212,
+      "tokens": 3190595,
+      "unique_input_rows": 14215,
+      "unique_taken": 14212,
+      "dev_rows": 142,
+      "train_unique_rows": 14070,
+      "copies": 1,
+      "train_rows_effective": 14070,
+      "tokens_train_unique": 3158982,
+      "tokens_train_effective": 3158982,
+      "supervised_tokens_unique": 1309083,
+      "supervised_tokens_effective": 1309083,
+      "masked_context_turns": 0,
+      "content_sha256": "1b074845a0a0b28e622a19b5f850679b2e7bdc56a07c8bf76d9f6bb195737b0f",
+      "export_file": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut1/edited/rows_edited.jsonl",
+      "export_sha256": "4063b575c26583f2b7a321f851b3c598fe22c863869f6cda4b29188c472f8bc4",
+      "export_mtime": "2026-09-09T20:54:36.277006"
+    }
+  },
+  "english_import": {
+    "rows": 100000,
+    "problem_source_counts": {
+      "gsm8k": 100000
+    },
+    "exact_math_family_matches": 0,
+    "assembly_receipt": {
+      "block": "openmath_gsm",
+      "status": "ok",
+      "target": 100000,
+      "weight": 1,
+      "available": 99971,
+      "exact_duplicates_dropped": 0,
+      "content_duplicates_dropped": 0,
+      "id_collisions_suffixed": 0,
+      "contaminated": 29,
+      "too_long": 0,
+      "identity_backstop": 0,
+      "lexicon_mannerism": 0,
+      "tone_dropped": 0,
+      "taken": 99942,
+      "tokens": 27659965,
+      "unique_input_rows": 99971,
+      "unique_taken": 99942,
+      "dev_rows": 999,
+      "train_unique_rows": 98943,
+      "copies": 1,
+      "train_rows_effective": 98943,
+      "tokens_train_unique": 27380323,
+      "tokens_train_effective": 27380323,
+      "supervised_tokens_unique": 15332053,
+      "supervised_tokens_effective": 15332053,
+      "masked_context_turns": 0,
+      "content_sha256": "a52511f756e94b6a4e741f4fdc2928e3da154b3f00fb759e3f7e7ec8968d24af",
+      "export_file": "/Users/foivoskarounos-zamparloukos/sft_annot/core_export/openmath_gsm_raw.jsonl",
+      "export_sha256": "54e86bd359380db1edba1192c4392a8c410968c59b80c9b23f730ea94551895e",
+      "export_mtime": "2026-09-04T22:02:49.680614"
+    }
+  },
+  "family_status_counts_nonexclusive": {
+    "gradient_train": 3240,
+    "development": 40,
+    "math500_gate_reject": 180,
+    "maths_generation_pilot": 29,
+    "assembly_excluded": 3
+  },
+  "cut2_level5_assets": {
+    "candidate_ids": 1500,
+    "problem_output_ids": 1457,
+    "solution_output_ids": 1168,
+    "paired_ids": 1168,
+    "paired_mechanically_clean_nonconflicting_ids": 104,
+    "paired_ids_requiring_attempt_reconciliation_or_control_repair": 1064,
+    "problem_only_ids": 289,
+    "source_only_ids": 43
+  },
+  "eligible_families_after_current_train_dev_pilot_and_math500_gates": 4052,
+  "eligible_families_by_subject_level": {
+    "Algebra": {
+      "Level 1": 48,
+      "Level 2": 101,
+      "Level 3": 112,
+      "Level 4": 141,
+      "Level 5": 430
+    },
+    "Intermediate Algebra": {
+      "Level 1": 29,
+      "Level 2": 58,
+      "Level 3": 117,
+      "Level 4": 129,
+      "Level 5": 420
+    },
+    "Prealgebra": {
+      "Level 1": 38,
+      "Level 2": 110,
+      "Level 3": 88,
+      "Level 4": 84,
+      "Level 5": 247
+    },
+    "Geometry": {
+      "Level 1": 26,
+      "Level 2": 69,
+      "Level 3": 82,
+      "Level 4": 101,
+      "Level 5": 385
+    },
+    "Number Theory": {
+      "Level 1": 13,
+      "Level 2": 42,
+      "Level 3": 52,
+      "Level 4": 46,
+      "Level 5": 310
+    },
+    "Counting & Probability": {
+      "Level 1": 14,
+      "Level 2": 30,
+      "Level 3": 55,
+      "Level 4": 58,
+      "Level 5": 252
+    },
+    "Precalculus": {
+      "Level 1": 23,
+      "Level 2": 41,
+      "Level 3": 68,
+      "Level 4": 68,
+      "Level 5": 165
+    }
+  },
+  "eligible_mechanically_clean_cut2_level5_by_subject": {
+    "Algebra": 16,
+    "Intermediate Algebra": 19,
+    "Prealgebra": 14,
+    "Geometry": 11,
+    "Number Theory": 19,
+    "Counting & Probability": 10,
+    "Precalculus": 7
+  },
+  "proposed_counts": {
+    "final_confirmation": 14,
+    "development": 14,
+    "train_stage1": 35,
+    "train_stage2": 70
+  },
+  "proposed_old_asset_counts": {
+    "development": {
+      "not_in_cut2_candidate_set": 14
+    },
+    "final_confirmation": {
+      "not_in_cut2_candidate_set": 14
+    },
+    "train_stage1": {
+      "not_in_cut2_candidate_set": 28,
+      "paired_mechanically_clean_nonconflicting": 7
+    },
+    "train_stage2": {
+      "not_in_cut2_candidate_set": 56,
+      "paired_mechanically_clean_nonconflicting": 14
+    }
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "row_id": {
+            "type": "string"
+          },
+          "overall": {
+            "type": "string",
+            "enum": [
+              "no_defect_found",
+              "issues",
+              "uncertain"
+            ]
+          },
+          "final_result": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "issue",
+              "uncertain"
+            ]
+          },
+          "derivation": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "issue",
+              "uncertain"
+            ]
+          },
+          "problem_fidelity": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "issue",
+              "uncertain"
+            ]
+          },
+          "units_and_rounding": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "issue",
+              "uncertain"
+            ]
+          },
+          "completeness": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "issue",
+              "uncertain"
+            ]
+          },
+          "greek_language": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "issue",
+              "uncertain"
+            ]
+          },
+          "cultural_adaptation": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "issue",
+              "uncertain"
+            ]
+          },
+          "findings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "dimension": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "minor",
+                    "major",
+                    "critical"
+                  ]
+                },
+                "quote": {
+                  "type": "string"
+                },
+                "explanation": {
+                  "type": "string"
+                },
+                "suggested_action": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "dimension",
+                "severity",
+                "quote",
+                "explanation",
+                "suggested_action"
+              ]
+            }
+          },
+          "provenance_note": {
+            "type": "string"
+          },
+          "verification_needed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "editor_effect": {
+            "type": "string",
+            "enum": [
+              "unchanged",
+              "language_improvement",
+              "semantic_improvement",
+              "introduced_damage",
+              "mixed",
+              "uncertain"
+            ]
+          },
+          "recommended_action": {
+            "type": "string",
+            "enum": [
+              "keep",
+              "language_correction",
+              "repair_solution",
+              "readapt_problem_and_resolve",
+              "rebuild_scenario",
+              "needs_source_evidence"
+            ]
+          }
+        },
+        "required": [
+          "row_id",
+          "overall",
+          "final_result",
+          "derivation",
+          "problem_fidelity",
+          "units_and_rounding",
+          "completeness",
+          "greek_language",
+          "cultural_adaptation",
+          "findings",
+          "provenance_note",
+          "verification_needed",
+          "editor_effect",
+          "recommended_action"
+        ]
+      }
+    }
+  },
+  "required": [
+    "rows"
+  ]
+}

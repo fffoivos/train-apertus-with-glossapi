@@ -1,0 +1,64 @@
+{
+  "job_id": "adapt__scaleB_math_line_2630",
+  "row_id": "scaleB_math_line_2630",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "42f5b293635e4e10681c94c07529b6ef5ea37b219871547a5e2952ce3ae12ba8",
+  "input_record_sha256": "0a82df27994c086a3d7fd31a3219cfe0cb46d4161b11239fd64fab4089647273",
+  "payload_sha256": "e3865e7c25717e74cd36e572f10a0cdc0b7304b1947010e0fbf34ac50e1e7912",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "6336de90f5d1a8495027a707ff5a20269d3f4b877fd90dcef7cf74d97470b80a",
+  "result": {
+    "row_id": "scaleB_math_line_2630",
+    "status": "candidate",
+    "problem_text": "Δύο πλευρές ενός τριγώνου έχουν μήκος 4 cm και 9 cm. Ποιος είναι ο μεγαλύτερος ακέραιος αριθμός εκατοστών που θα μπορούσε να είναι το μήκος της τρίτης πλευράς αυτού του τριγώνου;",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Two sides of a triangle measure 4 cm and 9 cm.",
+        "target_span": "Δύο πλευρές ενός τριγώνου έχουν μήκος 4 cm και 9 cm.",
+        "reason": "Πιστή απόδοση στα ελληνικά, με διατήρηση των μηκών και της γεωμετρικής σχέσης."
+      },
+      {
+        "source_span": "What is the greatest integer number of centimeters that could be the third side of this triangle?",
+        "target_span": "Ποιος είναι ο μεγαλύτερος ακέραιος αριθμός εκατοστών που θα μπορούσε να είναι το μήκος της τρίτης πλευράς αυτού του τριγώνου;",
+        "reason": "Πιστή απόδοση του ζητουμένου, με διατήρηση της απαίτησης για τη μέγιστη ακέραια τιμή σε εκατοστά."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "4",
+          "role": "μήκος της πρώτης δεδομένης πλευράς",
+          "unit": "cm"
+        },
+        {
+          "value": "9",
+          "role": "μήκος της δεύτερης δεδομένης πλευράς",
+          "unit": "cm"
+        },
+        {
+          "value": "ακέραιος",
+          "role": "πεδίο επιτρεπτών αριθμητικών τιμών για το ζητούμενο μήκος",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Τα τρία μήκη πρέπει να μπορούν να αποτελούν πλευρές τριγώνου.",
+        "Το ζητούμενο μήκος είναι εκείνο της τρίτης πλευράς.",
+        "Ζητείται η μεγαλύτερη δυνατή ακέραια τιμή του μήκους σε εκατοστά."
+      ],
+      "required_outputs": [
+        "Ο μεγαλύτερος ακέραιος αριθμός εκατοστών που μπορεί να είναι το μήκος της τρίτης πλευράς."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": [
+      "Έλεγχος ότι διατηρούνται αυστηρά οι ανισότητες τριγώνου και η απαίτηση για τη μεγαλύτερη ακέραια τιμή."
+    ]
+  }
+}

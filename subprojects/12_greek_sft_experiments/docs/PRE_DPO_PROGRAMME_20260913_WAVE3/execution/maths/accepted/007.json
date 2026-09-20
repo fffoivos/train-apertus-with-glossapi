@@ -1,0 +1,54 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_992",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "greek_language",
+          "severity": "minor",
+          "quote": "«Πόσο λιγότερη βροχή έζησε ο Γρηγόρης» / «ο Γρηγόρης έζησε 12 mm λιγότερη βροχή»",
+          "explanation": "Η χρήση του ρήματος «ζω» με αντικείμενο τη «βροχή» είναι κατανοητή αλλά αφύσικη στα ελληνικά και αποτελεί κατά λέξη μεταφορά του αγγλικού «experience rain».",
+          "suggested_action": "Σε ξεχωριστή γλωσσική διόρθωση, να χρησιμοποιηθεί φυσικότερη διατύπωση, όπως «Πόση λιγότερη βροχή δέχτηκε ο Γρηγόρης στο κάμπινγκ;», χωρίς αλλαγή των δεδομένων ή της λύσης."
+        }
+      ],
+      "provenance_note": "Υπάρχει ένα μόνο καταγεγραμμένο πρόβλημα και μία λύση· δεν προκύπτει αβεβαιότητα ιστορικής αντιστοίχισης. Η αριθμητική λύση συμφωνεί με το πλήρες ελληνικό πρόβλημα.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_354",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το κείμενο του προβλήματος είναι σταθερό και δεν παρέχονται εναλλακτικές εκδοχές, παρότι υπάρχουν δύο εγγραφές λύσης. Η επιλεγμένη λύση ελέγχθηκε έναντι του εμφανιζόμενου προβλήματος. Η αγγλική λύση αναφοράς περιέχει κακοδιατυπωμένη συνθήκη με «or», αλλά η ελληνική υποψήφια λύση δίνει τη σωστή λογική: αποκλείει όσα ζεύγη περιέχουν 1 και κατόπιν το (2,2).",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_2899",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχει ένα μόνο καταγεγραμμένο πρόβλημα και μία λύση· δεν προκύπτει αβεβαιότητα ιστορικής αντιστοίχισης. Η προσαρμογή των ονομάτων είναι συνεπής και δεν μεταβάλλει το μαθηματικό περιεχόμενο.",
+      "verification_needed": []
+    }
+  ]
+}

@@ -1,0 +1,354 @@
+{
+  "schema": "openmath_root_candidate_token_inventory_v1",
+  "status": "pass_exact_reader_tokenizer_and_target_mask",
+  "training_eligible": false,
+  "eligibility_note": "Token/mask passage does not replace independent mathematical and Greek-language review.",
+  "inputs": {
+    "root_selected_sound.v1.jsonl": "e0c8f5f2176a69adf646d98031ccc79f15c4e77feffcb78e34de03f9a25fdc97",
+    "root_repairs.v1.jsonl": "3c31618967c7fa181da1cba4f8861fc61239ec9a8b379112c682e42e366a08b4"
+  },
+  "rows": 33,
+  "families": 33,
+  "totals": {
+    "input_tokens": 12128,
+    "assistant_supervised_tokens": 7693
+  },
+  "ranges": {
+    "input_tokens": {
+      "min": 157,
+      "max": 984
+    },
+    "assistant_supervised_tokens": {
+      "min": 70,
+      "max": 527
+    }
+  },
+  "environment": {
+    "python": "3.14.6",
+    "torch": "2.14.0",
+    "transformers": "5.17.0",
+    "tokenizers": "0.23.2",
+    "trl": "1.12.0"
+  },
+  "tokenizer": {
+    "resolved_revision": "c7f806e268083c64ce831bc46483bf98e5ddcee1",
+    "tokenizer_json_sha256": "acf4d5c6a8aa0cc64c9c781c203fd6dbb4581b0124cca0a76a9e10322fd81092",
+    "tokenizer_config_sha256": "ea64a17b41e1deaa7469212f413676129f33977ca3a48767f0ca68dc346df502",
+    "template_tokenizer_config_sha256": "b89e07508603d6e1f2c8642f366c2469063c3eddae0585f1e67934ee98498ab1",
+    "canonical_sft_train_sha256": "f8de43b1f8b99959741e6c4a9158ad99fd31ffc5b3b1636c1ac07a925df39b4d",
+    "vocab_size": 148992,
+    "control_token_ids": {
+      "<|system_start|>": 61,
+      "<|system_end|>": 62,
+      "<|developer_start|>": 63,
+      "<|developer_end|>": 64,
+      "<|user_start|>": 65,
+      "<|user_end|>": 66,
+      "<|assistant_start|>": 67,
+      "<|assistant_end|>": 68,
+      "<|inner_prefix|>": 69,
+      "<|inner_suffix|>": 70,
+      "<|tools_prefix|>": 71,
+      "<|tools_suffix|>": 72
+    }
+  },
+  "items": [
+    {
+      "row_id": "openmath1m_158596",
+      "family_sha256": "b7481a168b5f1752f6934d962a2296f84f9528ba1a2f0897dd324b6ab379ff91",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 252,
+      "assistant_supervised_tokens": 171,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_252121",
+      "family_sha256": "b677cdb1fd3801527797c4b24c07606a17ee8b501ec5f026a8f3983425a43b73",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 261,
+      "assistant_supervised_tokens": 166,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_133742",
+      "family_sha256": "44a598312c89bb259a0407d80346ef3ea143c754d41de8fb77785388c9921e0f",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 470,
+      "assistant_supervised_tokens": 359,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_225484",
+      "family_sha256": "1fbb5c1560c4c5ccf3d713f23ea4d41ef1778bf34b3764a880121ff3ec4b7df2",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 366,
+      "assistant_supervised_tokens": 279,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_290627",
+      "family_sha256": "31ef277df0dcf7c9b177280653a449faca97e3e7d29da06aab3838071387f2e9",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 517,
+      "assistant_supervised_tokens": 418,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_86976",
+      "family_sha256": "82ce6efaaec86b0b9cf0f0876f2f46183e423039f0338e8af97541429b1a9ff8",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 244,
+      "assistant_supervised_tokens": 168,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_50590",
+      "family_sha256": "c7ea3e9c30500d25ed38fdd8dfc10cd40a5ef2a4de4eaba8d840bb694adff872",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 264,
+      "assistant_supervised_tokens": 183,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_185389",
+      "family_sha256": "b5a8da09bd89da138d72efa90e2f3ae5dafcf230e17622dbc17b835040513b85",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 403,
+      "assistant_supervised_tokens": 296,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_185803",
+      "family_sha256": "9263477ba9f85262f22f3be4fd775b9ea58234c0e9a50c56814a7177f8037917",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 535,
+      "assistant_supervised_tokens": 418,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_254970",
+      "family_sha256": "6a4e7e5a64cfd281a5a0652ea25ee87739aca54126ac5d247985adfc652c5edd",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 263,
+      "assistant_supervised_tokens": 166,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_229878",
+      "family_sha256": "239f206f7ba32b56581b6b6bd7a6e8937cc0778403b1b7e95c2aec90d06f4bda",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 338,
+      "assistant_supervised_tokens": 211,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_128251",
+      "family_sha256": "67bf3ce5c686b08f8076ba1ca606114042a3e79d106c1033e20513657e0bcc56",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 189,
+      "assistant_supervised_tokens": 76,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_288162",
+      "family_sha256": "56ef33fd82962e06922200264ba7e122bca1f46751285df8354303dd660532fc",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 274,
+      "assistant_supervised_tokens": 151,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_219704",
+      "family_sha256": "61e14ff2f5d1eedc3332895066c223b4760d53ca889f0e45ce19d1a506415b83",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 984,
+      "assistant_supervised_tokens": 108,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_146368",
+      "family_sha256": "bdd93d129a4b09866a6a2bc53819f1805ec413f302f0cc93555f90e3774b812a",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 529,
+      "assistant_supervised_tokens": 423,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_13081",
+      "family_sha256": "0b1901a2b37f4b4ed77b87d631319d862bafbc57a2188f5ed2686cd440ec0d64",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 320,
+      "assistant_supervised_tokens": 215,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_74263",
+      "family_sha256": "65ce3daa7a90884846364e5a5ac58d0e07a14be282b25d36e555953e10cbfa12",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 629,
+      "assistant_supervised_tokens": 507,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_273575",
+      "family_sha256": "7218d5d5c63096bf135b619ce35e0c3c3ce9ad522cb83b0e2285d93bf22df4e2",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 284,
+      "assistant_supervised_tokens": 188,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_232974",
+      "family_sha256": "954e7f527a5e025e351847a8616dfd4512a527fc31d40e27620af9fe92b6e834",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 188,
+      "assistant_supervised_tokens": 109,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_110342",
+      "family_sha256": "9f7dc350227353f25a7e47cac81f353205c32088d1b8115f26336e14065bd8ca",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 360,
+      "assistant_supervised_tokens": 262,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_175948",
+      "family_sha256": "834b04c3c1e9836f4c09f52c77a995345c047827ae599d8c17fee73fd404717f",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 393,
+      "assistant_supervised_tokens": 302,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_189409",
+      "family_sha256": "549e5a3904999ea78b338c891c569c719e3f3a6a14e6ef05a633e435e29c425d",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 186,
+      "assistant_supervised_tokens": 80,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_313628",
+      "family_sha256": "cc6148e17f11d9579a928df6304b66c150b22d7d28678053c90069060bb7214f",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 273,
+      "assistant_supervised_tokens": 162,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_186913",
+      "family_sha256": "f3659f22adf2cd84a3290b67d47eb7315eb382c0c8b0a3efc5d90eee0a64ceca",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 353,
+      "assistant_supervised_tokens": 261,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_118533",
+      "family_sha256": "761af13986d1253e3305c84bd11f930d2d689da5c0dc3c964dad4cccc72f7bd1",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 305,
+      "assistant_supervised_tokens": 209,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_192040",
+      "family_sha256": "f068b5ae2f19eeb9c1dec4584dc2cb584197421e67c34f672d6400095f628cd2",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 682,
+      "assistant_supervised_tokens": 527,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_297522",
+      "family_sha256": "1c8415f1d731148c98306385357d49a567067d7923a76d7f7ee6c7e6a9699ae7",
+      "status": "unreviewed_source_candidate",
+      "input_tokens": 556,
+      "assistant_supervised_tokens": 473,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_45587.root_repair_v1",
+      "family_sha256": "67414d57c184cbe9506a6865255739d4493a8548ffb99609bcbb556bb5667645",
+      "status": "root_repaired_independent_review_pending",
+      "input_tokens": 263,
+      "assistant_supervised_tokens": 86,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_13542.root_repair_v1",
+      "family_sha256": "163c78decead9541fe448d0c4e86be545d9befd7ad042e0737f9a087304287e6",
+      "status": "root_repaired_independent_review_pending",
+      "input_tokens": 406,
+      "assistant_supervised_tokens": 245,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_272973.root_repair_v1",
+      "family_sha256": "8777d0214e39cc93c3c98ffc1dbdd720f3cd7673bb5bdde2c2a35fa6ef163172",
+      "status": "root_repaired_independent_review_pending",
+      "input_tokens": 157,
+      "assistant_supervised_tokens": 70,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_61134.root_repair_v1",
+      "family_sha256": "748314a2d284aaf0c323e0e8ce7677a317fbcbc86ad600692ed5c72b18323833",
+      "status": "root_repaired_independent_review_pending",
+      "input_tokens": 254,
+      "assistant_supervised_tokens": 123,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_98805.root_repair_v1",
+      "family_sha256": "5a050304e0c59c4e1f50bf9490dc54574b8234798940ca5da1b54d4da8db809e",
+      "status": "root_repaired_independent_review_pending",
+      "input_tokens": 391,
+      "assistant_supervised_tokens": 125,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    },
+    {
+      "row_id": "openmath1m_178865.root_repair_v1",
+      "family_sha256": "942c57b9094759cae84f36d9e095c9f8e05a94b3f0da064e1bb9d51da4b4bf23",
+      "status": "root_repaired_independent_review_pending",
+      "input_tokens": 239,
+      "assistant_supervised_tokens": 156,
+      "within_4096": true,
+      "decoded_supervision_nonempty": true
+    }
+  ]
+}

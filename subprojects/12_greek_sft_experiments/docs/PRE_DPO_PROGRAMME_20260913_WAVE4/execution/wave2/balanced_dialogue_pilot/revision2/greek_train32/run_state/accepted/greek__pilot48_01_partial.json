@@ -1,0 +1,48 @@
+{
+  "job_id": "greek__pilot48_01_partial",
+  "row_id": "pilot48_01_partial",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "0de683b9a86fb6b07bad7fbccea77ace512b8eee1ae52e415d74b455d30afe83",
+  "input_record_sha256": "af8169dba3518d3fadb9eba41cdadbcaa45291a160991fa76522287225dcc5f9",
+  "payload_sha256": "d9c7586d0db6c97b7556314848ac70e408609e7aad4355dfe849d36a4f13be06",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "8699106a493026f5457cd764c59904dc8175506e3ed360bc478ad3b991aa45df",
+  "result": {
+    "row_id": "pilot48_01_partial",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "pilot48_01_partial.u_context",
+        "role": "user",
+        "content": "Η αρχική λίστα είχε ένα γάλα, ψωμί και μήλα. Έπειτα τα γάλατα έγιναν δύο και τα μήλα αντικαταστάθηκαν από πορτοκάλια.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_partial.u_decision",
+        "role": "user",
+        "content": "Η τελευταία λίστα είχε δύο γάλατα και μήλα. Βγάλε τώρα το ψωμί.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_partial.a_target",
+        "role": "assistant",
+        "content": "Τα δύο γάλατα είναι σωστά, αλλά τα φρούτα ήταν πορτοκάλια, όχι μήλα. Έβγαλα το ψωμί από τη λίστα· τώρα έχει δύο γάλατα και πορτοκάλια.",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "pilot48_01_partial.a_target",
+        "before": "Τα δύο γάλατα είναι σωστά, αλλά το φρούτο ήταν πορτοκάλια, όχι μήλα. Έβγαλα το ψωμί από τη λίστα· τώρα έχει δύο γάλατα και πορτοκάλια.",
+        "after": "Τα δύο γάλατα είναι σωστά, αλλά τα φρούτα ήταν πορτοκάλια, όχι μήλα. Έβγαλα το ψωμί από τη λίστα· τώρα έχει δύο γάλατα και πορτοκάλια.",
+        "error": "Ασυμφωνία αριθμού μεταξύ του ενικού «το φρούτο» και του πληθυντικού κατηγορουμένου «πορτοκάλια».",
+        "reason": "Η μετατροπή του υποκειμένου σε πληθυντικό αποκαθιστά τη γραμματική συμφωνία χωρίς να αλλάζει το περιεχόμενο της λίστας."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

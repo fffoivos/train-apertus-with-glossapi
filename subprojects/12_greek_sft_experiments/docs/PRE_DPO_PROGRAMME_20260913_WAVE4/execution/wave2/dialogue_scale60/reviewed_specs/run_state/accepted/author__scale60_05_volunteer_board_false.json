@@ -1,0 +1,73 @@
+{
+  "job_id": "author__scale60_05_volunteer_board_false",
+  "row_id": "scale60_05_volunteer_board_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "1b23c8d50e15adc1b2140007a8b383e28fa11be5d5ea0748aeddf64df28f4f21",
+  "input_record_sha256": "c738ca28a46e6a690f6eeb4b245610fb5f0c626c66552c52add650ea27ae05a4",
+  "payload_sha256": "33eb0a07d62ae6f589732e74cbb83da0f4cd33e44fdea2b0b5d51b0faefd51b2",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "cf695b8507b9524487e9d6e69f5f1b1c7ff8c6777697277b7dc385e7f97aa39e",
+  "result": {
+    "row_id": "scale60_05_volunteer_board_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_05_volunteer_board_false.u_context",
+        "role": "user",
+        "content": "Στον κειμενικό πίνακα, το στήσιμο και τα φυλλάδια είναι ενεργά, ενώ ο έλεγχος ήχου είναι ακυρωμένος.",
+        "train": false
+      },
+      {
+        "id": "scale60_05_volunteer_board_false.a_context",
+        "role": "assistant",
+        "content": "Βλέπω τρεις ξεχωριστές εγγραφές στον πίνακα και δεν έχει γίνει καμία εξωτερική ενέργεια.",
+        "train": false
+      },
+      {
+        "id": "scale60_05_volunteer_board_false.u_decision",
+        "role": "user",
+        "content": "Στον πίνακα το στήσιμο φαίνεται ήδη ακυρωμένο. Ακύρωσέ το τώρα.",
+        "train": false
+      },
+      {
+        "id": "scale60_05_volunteer_board_false.a_target",
+        "role": "assistant",
+        "content": "Στον πίνακα το στήσιμο ήταν ενεργό, όχι ακυρωμένο. Τώρα το σημείωσα ως ακυρωμένο στον πίνακα εργασιών.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_05_volunteer_board_false.u_decision",
+        "claim": "Το στήσιμο φαίνεται ήδη ακυρωμένο στον πίνακα.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_05_volunteer_board_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα τον ψευδή ισχυρισμό ότι το στήσιμο ήταν ήδη ακυρωμένο.",
+          "Να εφαρμόσει αμέσως τη σαφή εντολή ακύρωσης στον κειμενικό πίνακα εργασιών.",
+          "Να αναφέρει συνοπτικά ότι το στήσιμο είναι πλέον σημειωμένο ως ακυρωμένο."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "στήσιμο",
+        "before_json": "\"active\"",
+        "after_json": "\"cancelled\"",
+        "evidence_ids": [
+          "scale60_05_volunteer_board_false.u_context",
+          "scale60_05_volunteer_board_false.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "job_id": "author__scale60_07_rehearsal_sheet_unresolved",
+  "row_id": "scale60_07_rehearsal_sheet_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "bcf8f0af807fafd2362fa7f03dc06f905ad2dcaa844c77c83443c456adb3a4b0",
+  "input_record_sha256": "08b5db190dded8d1527edf5a64d4263d6f3dbbb162db62dcfd4cd7caf069a5d2",
+  "payload_sha256": "8336d94daee952a8248fdac8cb7656d3ad1e8a48244a2b110a935930481a45b6",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "2b32e4109235a4a2d88d16a1daa0380bbe9222048bb9d7894d69a6a4c6293047",
+  "result": {
+    "row_id": "scale60_07_rehearsal_sheet_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_07_rehearsal_sheet_unresolved.u_context",
+        "role": "user",
+        "content": "Στο τρέχον φύλλο ροής, πρώτο είναι το «Θάλασσα», το σόλο το έχει η Μαρία και το διάλειμμα είναι 10 λεπτά. Τραγούδι λήξης δεν έχει καταγραφεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_unresolved.a_context",
+        "role": "assistant",
+        "content": "Έχω μόνο την τρέχουσα εκδοχή του φύλλου ροής, όχι τις παλιότερες σημειώσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_unresolved.u_decision",
+        "role": "user",
+        "content": "Επιτέλους. Βάλε ως λήξη το τραγούδι που είχαμε στην προηγούμενη εκδοχή.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_unresolved.a_target",
+        "role": "assistant",
+        "content": "Δεν προκύπτει ποιο τραγούδι ήταν στην προηγούμενη εκδοχή. Ποιο τραγούδι να καταγράψω ως λήξη;",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_07_rehearsal_sheet_unresolved.u_decision",
+        "claim": "Το τραγούδι λήξης της προηγούμενης εκδοχής μπορεί να προσδιοριστεί από τα διαθέσιμα στοιχεία.",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "scale60_07_rehearsal_sheet_unresolved.u_context",
+          "scale60_07_rehearsal_sheet_unresolved.a_context",
+          "scale60_07_rehearsal_sheet_unresolved.u_decision"
+        ],
+        "expected_response_behaviour": [
+          "Να δηλώσει ότι τα διαθέσιμα στοιχεία δεν προσδιορίζουν το τραγούδι της προηγούμενης εκδοχής.",
+          "Να μην επινοήσει ή καταγράψει τραγούδι λήξης.",
+          "Να ζητήσει μόνο τον τίτλο του τραγουδιού που πρέπει να καταγραφεί ως λήξη."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "φύλλο ροής",
+        "before_json": "{\"opening\":\"Θάλασσα\",\"solo\":\"Μαρία\",\"break_minutes\":10,\"closing\":null,\"cues\":[]}",
+        "after_json": "{\"opening\":\"Θάλασσα\",\"solo\":\"Μαρία\",\"break_minutes\":10,\"closing\":null,\"cues\":[]}",
+        "evidence_ids": [
+          "scale60_07_rehearsal_sheet_unresolved.u_context",
+          "scale60_07_rehearsal_sheet_unresolved.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

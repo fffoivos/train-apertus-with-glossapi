@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_802_0",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The actual AFTER training pair is complete and byte-equivalent to the supplied after record. The arithmetic sequence is correctly advanced by 3 from 8 through the sixth term, yielding 23. BEFORE and AFTER are identical, so no editor intervention occurred.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_584_3",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The actual AFTER training pair is complete and byte-equivalent to the supplied after record. One flour package supplies 4 cakes and one chocolate package supplies 3, so the minimum feasible number is ΕΚΠ(4,3)=12; this requires 3 and 4 packages respectively and costs 5,40 € + 9,60 € = 15 €. The editor only replaced two understandable but less explicit phrases with fluent, precise wording; the mathematical content and task remained unchanged. The earlier second solve agrees but was not treated as independent proof.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    }
+  ]
+}

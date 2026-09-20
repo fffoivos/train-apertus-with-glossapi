@@ -1,0 +1,91 @@
+{
+  "job_id": "adapt__fresh_math5_line_4646",
+  "row_id": "fresh_math5_line_4646",
+  "stage": "adaptation",
+  "attempt": 2,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "cc02fe6b96315f430edd782dd40f46f32573e9fedf2579292ec7dc814be3559d",
+  "input_record_sha256": "015fb97203eb462fa9fd0ba8362be5a8c93243067318d8c71b4fb903b9663723",
+  "payload_sha256": "c6db7ab81330920ca968b4e6f55b8658bc02f729f1f08f60a264d7772bbc3ea1",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "4f7376207e0eb104bb4e6e9113434133ef405bb54693d3e3f3d01987ed26af39",
+  "result": {
+    "row_id": "fresh_math5_line_4646",
+    "status": "candidate",
+    "problem_text": "Στο καρτεσιανό επίπεδο, η καμπύλη $xy = 1$ τέμνει έναν κύκλο σε τέσσερα σημεία, τρία από τα οποία είναι τα $\\left(2, \\frac{1}{2}\\right)$, $\\left(-5, -\\frac{1}{5}\\right)$ και $\\left(\\frac{1}{3}, 3\\right)$. Να βρεθεί το τέταρτο σημείο τομής.",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "In the coordinate plane",
+        "target_span": "Στο καρτεσιανό επίπεδο",
+        "reason": "Φυσική και ακριβής απόδοση του μαθηματικού πλαισίου στα ελληνικά."
+      },
+      {
+        "source_span": "the curve $xy = 1$ intersects a circle at four points",
+        "target_span": "η καμπύλη $xy = 1$ τέμνει έναν κύκλο σε τέσσερα σημεία",
+        "reason": "Μετάφραση με διατήρηση της εξίσωσης, του πλήθους των τομών και της γεωμετρικής σχέσης."
+      },
+      {
+        "source_span": "three of which are ...",
+        "target_span": "τρία από τα οποία είναι τα ...",
+        "reason": "Διατηρούνται ακριβώς τα τρία δεδομένα σημεία και οι συντεταγμένες τους."
+      },
+      {
+        "source_span": "Find the fourth point of intersection.",
+        "target_span": "Να βρεθεί το τέταρτο σημείο τομής.",
+        "reason": "Διατηρείται ακριβώς το ζητούμενο χωρίς προσθήκη υπόδειξης ή λύσης."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "$xy = 1$",
+          "role": "εξίσωση της καμπύλης",
+          "unit": null
+        },
+        {
+          "value": "4",
+          "role": "συνολικό πλήθος σημείων τομής της καμπύλης με τον κύκλο",
+          "unit": null
+        },
+        {
+          "value": "3",
+          "role": "πλήθος δοσμένων σημείων τομής",
+          "unit": null
+        },
+        {
+          "value": "$\\left(2, \\frac{1}{2}\\right)$",
+          "role": "πρώτο δοσμένο σημείο τομής",
+          "unit": null
+        },
+        {
+          "value": "$\\left(-5, -\\frac{1}{5}\\right)$",
+          "role": "δεύτερο δοσμένο σημείο τομής",
+          "unit": null
+        },
+        {
+          "value": "$\\left(\\frac{1}{3}, 3\\right)$",
+          "role": "τρίτο δοσμένο σημείο τομής",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Το σχήμα εξετάζεται στο καρτεσιανό επίπεδο.",
+        "Η καμπύλη ορίζεται από την εξίσωση $xy=1$.",
+        "Η καμπύλη και ο κύκλος έχουν τέσσερα σημεία τομής.",
+        "Και τα τρία δοσμένα σημεία είναι σημεία τομής της καμπύλης με τον ίδιο κύκλο."
+      ],
+      "required_outputs": [
+        "Το τέταρτο σημείο τομής της καμπύλης $xy=1$ με τον κύκλο."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": [
+      "Έλεγχος ότι η ελληνική διατύπωση διατηρεί ακριβώς όλες τις μαθηματικές συνθήκες και το μοναδικό ζητούμενο.",
+      "Έλεγχος μορφοποίησης LaTeX των συντεταγμένων."
+    ]
+  }
+}

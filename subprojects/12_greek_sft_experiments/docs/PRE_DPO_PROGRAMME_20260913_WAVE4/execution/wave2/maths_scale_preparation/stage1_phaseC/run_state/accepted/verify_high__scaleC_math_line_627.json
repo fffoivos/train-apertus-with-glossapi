@@ -1,0 +1,30 @@
+{
+  "job_id": "verify_high__scaleC_math_line_627",
+  "row_id": "scaleC_math_line_627",
+  "stage": "verification_blind_high",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "1bd88a8e3fb5677d60092726c7898d95d4553ed0ed6329c71839f33008e3d16b",
+  "input_record_sha256": "c5c802841e37b51f85a946c6d116e86a5f408d714fe105bbc5abe5b3cfeb3d63",
+  "payload_sha256": "d5084b3d94b85c3a5cbd34a01e85d90377b02d6ce35dcebd78d720456690b71d",
+  "template_sha256": "67a04cee918f227aa582da70a6fcb66cc7eca7093bc64ae9c067ec87a3b4b1de",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "f4cf50b259753c05f6ab43b6bf106eee4939475b1cd1ef21aaa0f42830d8ca7d",
+  "result": {
+    "row_id": "scaleC_math_line_627",
+    "status": "candidate",
+    "solution_text": "Αν αφήσουμε να πέσουν \\(n\\) φρουντ, η βαθμολογία είναι\n\\[\n1+2+\\cdots+n=\\frac{n(n+1)}{2}.\n\\]\nΑν τα φάμε, η βαθμολογία είναι \\(10n\\). Επειδή το \\(n\\) είναι θετικός ακέραιος, αναζητούμε το μικρότερο \\(n\\) για το οποίο\n\\[\n\\frac{n(n+1)}{2}>10n.\n\\]\nΔιαιρώντας και τα δύο μέλη με \\(n>0\\), παίρνουμε\n\\[\n\\frac{n+1}{2}>10 \\iff n+1>20 \\iff n>19.\n\\]\nΟ μικρότερος θετικός ακέραιος που ικανοποιεί την ανισότητα είναι \\(n=20\\). Πράγματι, αν πέσουν 20 φρουντ, κερδίζουμε\n\\[\n\\frac{20\\cdot21}{2}=210\n\\]\nπόντους, ενώ αν τα φάμε, κερδίζουμε \\(10\\cdot20=200\\) πόντους. Για \\(n=19\\), οι δύο βαθμολογίες είναι ίσες με 190, οπότε δεν αρκεί.\n\nΑπάντηση: \\(20\\) φρουντ.",
+    "final_answers": [
+      {
+        "part": "Μικρότερος αριθμός φρουντ",
+        "expression": "20",
+        "unit": "φρουντ",
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "job_id": "solve_high__scaleC_math_line_5094",
+  "row_id": "scaleC_math_line_5094",
+  "stage": "solution_high",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "f6f0e6c2ab848c934721f080b1023eb325aa37aba8540474f80ff78e6fa0c2a7",
+  "input_record_sha256": "2586c93afb136e5f52748588c84f1195c483d6b6ff2ba3728f7c2d2701aa6b0f",
+  "payload_sha256": "5185a6f59a694e222a4f7573a39f0109b1a2a1f513c1c20c6b2cda9065280f76",
+  "template_sha256": "ea1afd16c4910e9930760e3f22b232e0d14451f207ea4290ea79cc2d231e6a45",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "1609006d85caade940e07ea23d7d133234a47ea8e14d989c0f7338fcb4c0a09a",
+  "result": {
+    "row_id": "scaleC_math_line_5094",
+    "status": "candidate",
+    "solution_text": "Έστω ότι ο θετικός ακέραιος \\(n\\) διαιρείται με τρεις διαφορετικούς πρώτους αριθμούς \\(p<q<r\\). Επειδή οι \\(p,q,r\\) είναι διαφορετικοί πρώτοι, είναι ανά δύο πρώτοι μεταξύ τους, άρα το γινόμενό τους \\(pqr\\) διαιρεί τον \\(n\\). Οι τρεις μικρότεροι διαφορετικοί πρώτοι αριθμοί είναι οι \\(2,3,5\\), επομένως\n\\[\npqr\\ge 2\\cdot 3\\cdot 5=30.\n\\]\nΆρα \\(n\\ge 30\\). Ο αριθμός \\(30=2\\cdot 3\\cdot 5\\) διαιρείται πράγματι με τους τρεις διαφορετικούς πρώτους \\(2,3,5\\), οπότε το κάτω φράγμα επιτυγχάνεται.\n\nΑπάντηση: \\(30\\).",
+    "final_answers": [
+      {
+        "part": "Μικρότερος θετικός ακέραιος",
+        "expression": "30",
+        "unit": null,
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

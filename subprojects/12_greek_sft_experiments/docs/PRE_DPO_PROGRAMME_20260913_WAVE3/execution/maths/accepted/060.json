@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_2482",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record and single solution record; the Greek problem and candidate solution are consistently paired. The name adaptation from Bethany to Βασιλική preserves the teaching objective and all premises.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_1069",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The record reports two solution records but stable problem text and no alternative problem variants. The selected solution matches the displayed problem; no historical problem–solution pairing uncertainty is indicated by the supplied provenance.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_2774",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record and single solution record. The systematic adaptation from feet to metres preserves every numerical ratio, the required head-start time, and the teaching objective.",
+      "verification_needed": []
+    }
+  ]
+}

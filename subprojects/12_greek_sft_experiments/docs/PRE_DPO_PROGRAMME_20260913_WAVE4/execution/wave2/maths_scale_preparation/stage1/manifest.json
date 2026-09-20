@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "status": "prepared_unlaunched_root_review_required",
+  "built_at": "2026-09-13T17:04:09+03:00",
+  "scope": "seven phase-A full adjudications and fourteen train-only phase-B source generation rows",
+  "counts": {
+    "phaseA_rows": 7,
+    "phaseA_keep": 6,
+    "phaseA_repair": 1,
+    "phaseA_regenerate": 0,
+    "phaseA_hold": 0,
+    "phaseB_rows": 14,
+    "adaptation_calls": 14,
+    "solution_high_calls": 14,
+    "blind_verification_high_calls": 14,
+    "primary_calls": 42,
+    "conditional_greek_correction_cap": 14,
+    "conditional_source_or_repair_shared_cap": 8,
+    "retry_cap": 8,
+    "absolute_call_cap": 72
+  },
+  "execution": {
+    "launched": false,
+    "default_effort": "high",
+    "automatic_xhigh": false,
+    "xhigh_gate": "Only a separately reviewed conditional job for an observed unresolved case may use xhigh, inside the shared eight-call source/repair pool.",
+    "max_workers": 8,
+    "runner_source": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_queue.py",
+    "runner_source_sha256": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005",
+    "runner_copy_byte_identical": true
+  },
+  "source_files": {
+    "/Users/foivoskarounos-zamparloukos/sft_annot/math_src/math_train.jsonl": {
+      "sha256": "7c2b6be1ff20ece021d27e68103bcaa27935489247f179a1810ca72d54b379bf",
+      "rows": 7500
+    },
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_scale_preparation/proposed_family_splits.jsonl": {
+      "sha256": "e3ab829b1cfa8f4e548f3c1c96e10ccb57508f59325d6507e48a6df3a2e9ec44",
+      "rows": 133
+    },
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_scale_preparation/math7500_family_inventory.jsonl": {
+      "sha256": "5e21b80967bd49bf8482e8ee38691de4e9571b42f37a6df8bf7c600b92059b41",
+      "rows": 7492
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut2/prep/level5_candidates_en.jsonl": {
+      "sha256": "edbf18c7cf8281312224300a9c1bf2461e31df022ab73b3c8aad23e40d98daf7"
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut2/out/level5_problems_el.jsonl": {
+      "sha256": "1cbc89051c3f8446699f13728dcdf0e13c1b30e8475ede27102fd8df2f579c26"
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/math/cut2/out/level5_solutions_el.jsonl": {
+      "sha256": "edc8f35278c7c310f6476fb058c38952c01720ecbd63a67bfb8548741f0dfddf"
+    }
+  },
+  "artifact_sha256": {
+    "inputs.jsonl": "455819d5000e4341bb7b763f0adc5c6529240231027442f8eb1eb636db60225c",
+    "queue.jsonl": "813e342fd7068d212ec695ea3e60e0c70a1d805f5a6dd42e977a7514b7f6ded9",
+    "run_queue.py": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005",
+    "conditional_jobs.json": "fcdc82ca3e007a2120f889c9c7614a11c8febdc9727b655a3e013e965ca8f3d9",
+    "payload_bindings.jsonl": "13f585ede35c697f76a6f7862f53eb38c7573bbb5f29462aa05a406c9b1084c6",
+    "phaseB_selection_delta.jsonl": "ec9bbff9d77199b5de4c777b364e571ce84d98b6e3298f35d48b807bdb42912e",
+    "partition_receipt.json": "9e33772e164b22c0fd2ae1d758f1eee54f802d77932a8082b4f6ac6b28780907",
+    "phaseA_bound_pairs.jsonl": "27782a3392d1a80b2376d50c7b4b75fabe187c3417c42e6e73ad5b2714a2ebee",
+    "phaseA_adjudications.jsonl": "70fae653aa50251215d0f182e3403193aafba727409026ca204b6b4113e3129f",
+    "phaseA_candidate_rows.jsonl": "5a69701a7ff75d2bb3bf40c71c5c35f7175efdd7a9fde1eeda902333d775e02d",
+    "prompts/adaptation.txt": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+    "prompts/solution_blind.txt": "ea1afd16c4910e9930760e3f22b232e0d14451f207ea4290ea79cc2d231e6a45",
+    "prompts/verification_blind.txt": "67a04cee918f227aa582da70a6fcb66cc7eca7093bc64ae9c067ec87a3b4b1de",
+    "prompts/greek_correction.txt": "acd8856f464c2cab4269749f0df96fc211c8e76b23d9ebe75e2d0707aa2b7ff4",
+    "prompts/source_review.txt": "c7001e87bbec4a18f42055eb36c48a86ffe368db66c9483af2c2849cd98fe240",
+    "schemas/adaptation.schema.json": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+    "schemas/solution.schema.json": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+    "schemas/greek_correction.schema.json": "cac89525ac699c70071e5020cc6e5ba4828aea543a27af1fa23c88ec621618b3",
+    "schemas/source_review.schema.json": "2b72795c67af05520c0f49c0db359cc6505feeb5a21955b0dbf3b9aa4bc19724",
+    "verify_stage1.py": "f0eb8e6be7f2c46b9db19e0d940c740e3fb9f0303fc0922e00186b42376821ee",
+    "report.md": "662d41b5b2a03cb127bb484ac825131c455e067bf53fe2c18dd85baba5f490b9"
+  },
+  "notes": [
+    "Reference solutions are frozen in inputs for post-solve human comparison but absent from every queued payload.",
+    "Solve and verification are independent high-effort jobs depending only on the accepted Greek problem adaptation.",
+    "Four train-only phase-B identities were replaced within the same subject/level cells because their source problems trigger the existing pilot diagram/figure dependency gate.",
+    "Development and final-confirmation identities are preserved; no final-confirmation problem or solution content is present here."
+  ]
+}

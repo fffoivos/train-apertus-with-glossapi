@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_132_0",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The after-correction training target is complete and matches the recorded actual training messages. The proportional calculation is correct: 4/32 = 0.125 litres per m² and 0.125 × 70 = 8.75 litres. The editor only replaced a slightly less natural phrase with a clearer Greek formulation, without changing meaning, reasoning, quantities, or answer.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_1343",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem faithfully preserves the supplied English functional inequality and teaching objective. The proof is valid at every substantive step: substituting x=y=z=1 forces f(1)=1; then y=z=1 gives f(x)≥1; the zero substitutions force f(0)=1 and subsequently f(t)≤1 for every real t, since every real t can occur as yz. Thus f is identically 1, and direct substitution verifies it. Before and after records are identical and match the actual training messages.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

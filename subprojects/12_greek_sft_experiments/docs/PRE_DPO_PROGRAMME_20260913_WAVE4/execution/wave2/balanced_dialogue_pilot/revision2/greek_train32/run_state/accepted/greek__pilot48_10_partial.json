@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__pilot48_10_partial",
+  "row_id": "pilot48_10_partial",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "0c8570c115d7caaac179079c59fbf679c6856fa4519d63f4f5f071c2fdc355a7",
+  "input_record_sha256": "7033faa9a07b75d4d313dd56a9d09dba0f44e02ad1e412c59b8dae579118e247",
+  "payload_sha256": "75ce3a96ba595b6839ee30024f86dd75a814c44341799cc10afd57ec8d6df21c",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "d80b7823da3b6ac238fb603118fae5296497f712de0828851391ae330a691c83",
+  "result": {
+    "row_id": "pilot48_10_partial",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_10_partial.u_context",
+        "role": "user",
+        "content": "Στον κειμενικό κατάλογο αυτού του νήματος υπάρχουν δύο ενεργές εγγραφές: «ραντεβού» και «αγορές».",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_partial.a_context",
+        "role": "assistant",
+        "content": "Ο κειμενικός κατάλογος δείχνει δύο ενεργές εγγραφές: «ραντεβού» και «αγορές».",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_partial.u_decision",
+        "role": "user",
+        "content": "Το ξαναλέω: Στον κειμενικό κατάλογο που μόλις μου έδειξες, η εγγραφή «ραντεβού» φαίνεται ενεργή και η εγγραφή «αγορές» φαίνεται ακυρωμένη. Ακύρωσε τώρα την εγγραφή «ραντεβού» στον κατάλογο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_partial.a_target",
+        "role": "assistant",
+        "content": "Στον κατάλογο, η εγγραφή «ραντεβού» ήταν πράγματι ενεργή, αλλά η εγγραφή «αγορές» δεν ήταν ακυρωμένη· ήταν ενεργή. Ο κειμενικός κατάλογος αυτού του νήματος έχει πλέον την εγγραφή «ραντεβού» ακυρωμένη και την εγγραφή «αγορές» ενεργή.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

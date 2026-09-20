@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_math_1218",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The actual AFTER record is complete and matches the supplied English source in objective and mathematical content. The domain exclusions, common-denominator reduction, factorization, positivity argument, sign analysis, and interval answer are all correct. The editor only made the opening sentence syntactically more complete; no semantic content changed.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_324_4",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "This is a native Greek example and therefore has no English source to compare. Its premises are coherent: 2/5 of 12.5 kg is 5 kg, total use is 8.25 kg, and 4.25 kg remains. The glove price is an intentional irrelevant datum consistent with the stated teaching structure and is correctly ignored. BEFORE and AFTER are identical.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "job_id": "author__scale60_10_sorting_card_true",
+  "row_id": "scale60_10_sorting_card_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "b0598e4bc8f07e008ad7d856716139e6d5496f7d3372e26a74128b386e2ee2e9",
+  "input_record_sha256": "aa6f271260005bab719052a9d7d9df0efd03c554fb41dfd691f1a723b101d292",
+  "payload_sha256": "dc96c75b582593a18cbb9c63642eaab5aed51e8eed20b6b3f49c4c3d55d6dc06",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "94b04630788ca949a3d8088491e9de8129792aba5215ec8a9a427b60dd08c11b",
+  "result": {
+    "row_id": "scale60_10_sorting_card_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_10_sorting_card_true.u_context",
+        "role": "user",
+        "content": "Η κάρτα κανόνων λέει: κάθε μπλε κιβώτιο πάει στο πάνω ράφι· κάθε εύθραυστο κιβώτιο μπαίνει σε θήκη με επένδυση. Το κιβώτιο Κ είναι μπλε και εύθραυστο. Δεν δίνεται το βάρος του.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_true.a_context",
+        "role": "assistant",
+        "content": "Θα εφαρμόσω τους κανόνες της κάρτας στο κιβώτιο Κ, χωρίς εξωτερικές υποθέσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_true.u_decision",
+        "role": "user",
+        "content": "Με τους κανόνες της κάρτας, το κιβώτιο Κ πάει στο πάνω ράφι και σε θήκη με επένδυση.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά. Εφόσον το κιβώτιο Κ είναι μπλε, πάει στο πάνω ράφι, και εφόσον είναι εύθραυστο, μπαίνει σε θήκη με επένδυση.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_10_sorting_card_true.u_decision",
+        "claim": "Το κιβώτιο Κ πάει στο πάνω ράφι και σε θήκη με επένδυση.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "scale60_10_sorting_card_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να αναγνωρίσει ότι και τα δύο συμπεράσματα υποστηρίζονται από τους ορατούς κανόνες.",
+          "Να συνδέσει συνοπτικά το μπλε χρώμα με το πάνω ράφι και την ευθραυστότητα με τη θήκη με επένδυση."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

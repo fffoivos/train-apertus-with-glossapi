@@ -1,0 +1,15 @@
+{
+  "alternating_sum": true,
+  "calculator_parity": true,
+  "circle_radical_axis_slope": true,
+  "cosine": true,
+  "distance": true,
+  "frood_boundary": true,
+  "gcd_three": true,
+  "inverse_proportion": true,
+  "parallelogram_ratio": true,
+  "powers_11_minimality": true,
+  "similar_triangle": true,
+  "three_dice_probability": true,
+  "two_dice_probability": true
+}

@@ -1,0 +1,51 @@
+{
+  "job_id": "adapt__scaleB_math_line_5815",
+  "row_id": "scaleB_math_line_5815",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "4a7511b152263cdb3767c30998c946adb45b90d1f6d5184645e4446efdeca448",
+  "input_record_sha256": "bb9d6731143539992c888623f6ad1ad08e8efc24da54124758e443b8157e9b8e",
+  "payload_sha256": "b3497b2e40c08d39e114042e2f4c5db5c652badd3b8d90e0a50373be6eaf744a",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "cb3d42467a043136589d07f86a1c1ec15b9fad686538e86fec29414337595d1e",
+  "result": {
+    "row_id": "scaleB_math_line_5815",
+    "status": "candidate",
+    "problem_text": "Ποια είναι η τιμή της παράστασης $\\frac{1}{4} + \\frac{3}{8}$;",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "What is the value of",
+        "target_span": "Ποια είναι η τιμή της παράστασης",
+        "reason": "Φυσική και μαθηματικά ακριβής απόδοση στα ελληνικά."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "1/4",
+          "role": "πρώτος προσθετέος",
+          "unit": null
+        },
+        {
+          "value": "3/8",
+          "role": "δεύτερος προσθετέος",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Να υπολογιστεί το άθροισμα των δύο κλασμάτων.",
+        "Η πράξη είναι πρόσθεση."
+      ],
+      "required_outputs": [
+        "Η τιμή της παράστασης $\\frac{1}{4} + \\frac{3}{8}$."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

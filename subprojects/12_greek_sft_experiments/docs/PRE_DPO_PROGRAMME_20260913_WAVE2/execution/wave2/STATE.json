@@ -1,0 +1,35 @@
+{
+  "updated": "2026-09-13T13:07:33.461692+00:00",
+  "status": "running",
+  "goal": "../../GOAL.md",
+  "trained_maths": {
+    "rows": 122,
+    "primary_calls": 61,
+    "cap": 140,
+    "probe_complete": true,
+    "workers": 8,
+    "raw_complete": true,
+    "returned_rows": 122,
+    "actual_calls": 63,
+    "adjudication": "running"
+  },
+  "sol_agents": [
+    "trained_maths_adjudication",
+    "maths_generation_pilot_preparation",
+    "peer_readiness"
+  ],
+  "completed_agent_reports": [
+    "instruction_following",
+    "fairness_and_release",
+    "adapted_core",
+    "personality"
+  ],
+  "new_cscs_node_hours": 0,
+  "data_promoted": false,
+  "if_pilot": {
+    "current_version": 3,
+    "checker_pass": 20,
+    "source_reviews": 4,
+    "independent_review": "pending"
+  }
+}

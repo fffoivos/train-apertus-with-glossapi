@@ -1,0 +1,72 @@
+{
+  "schema_version": "dolci_tool200_allocation_free_inventory_receipt_v1",
+  "status": "passed",
+  "execution_target": "clariden-ln004 login node",
+  "allocation_or_job_id": null,
+  "mutations": [],
+  "source": {
+    "dataset": "allenai/Dolci-Instruct-SFT",
+    "revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+    "snapshot": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/datasets--allenai--Dolci-Instruct-SFT/snapshots/bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+    "parquet_shards": 15,
+    "rows": 2152112,
+    "tool_use_rows": 227579,
+    "tool_use_shards": {
+      "data/train-00013-of-00015.parquet": 84105,
+      "data/train-00014-of-00015.parquet": 143474
+    }
+  },
+  "native_schema": {
+    "top_level_fields": [
+      "id",
+      "messages",
+      "source_dataset",
+      "domain"
+    ],
+    "message_fields": [
+      "content",
+      "function_calls",
+      "functions",
+      "role"
+    ],
+    "absent_native_fields": [
+      "tool_calls",
+      "tool_call_id",
+      "name"
+    ]
+  },
+  "redacted_shape_probe": {
+    "rows": 8,
+    "schema_strings": 8,
+    "json_parseable_schema_strings": 8,
+    "function_call_strings": 19,
+    "json_parseable_function_call_strings": 0,
+    "legacy_python_call_parseable_strings": 19,
+    "parsed_calls": 29
+  },
+  "deterministic_selection": {
+    "rows": 200,
+    "per_shard": {
+      "data/train-00013-of-00015.parquet": 100,
+      "data/train-00014-of-00015.parquet": 100
+    },
+    "unique_typed_source_ids": 200,
+    "unique_locators": 200,
+    "selected_locator_sha256": "41b0c7bca817986ac0bfb79a822678dad52427530308b590bb02b0cdf51a5302"
+  },
+  "evidence": {
+    "source_inventory": {
+      "path": "source_inventory.json",
+      "sha256": "ee76456f63a7921a2311d45ad7a33cfea2f41dff58b539d4670b27584d47924e"
+    },
+    "schema_inventory": {
+      "path": "upstream_schema_inventory.json",
+      "sha256": "abb37e1dd16fb7cef2ba540443890df8470bce0d4e1605469f41d3d2a575d80d"
+    },
+    "shape_probe": {
+      "path": "upstream_shape_probe.json",
+      "sha256": "eaf7b9f320ddd235943187d0b8331f597df88def1702dd20665f8fb0527d7a70"
+    }
+  },
+  "boundary": "The probes read metadata, domain/source_dataset columns, typed IDs and content-redacted message shapes. They did not emit source message text or write to the source snapshot."
+}

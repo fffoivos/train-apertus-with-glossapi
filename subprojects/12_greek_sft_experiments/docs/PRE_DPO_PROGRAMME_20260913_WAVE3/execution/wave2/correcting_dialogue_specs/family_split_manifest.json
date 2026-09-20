@@ -1,0 +1,179 @@
+{
+  "name": "correcting_dialogue_family_split_v1",
+  "frozen_at": "2026-09-13T16:15:01+03:00",
+  "count_unit": "labelled assistant decision",
+  "pilot": {
+    "decisions": 48,
+    "truth_counts": {
+      "true": 12,
+      "false": 12,
+      "partial": 12,
+      "unresolved": 12
+    },
+    "families": 12,
+    "split_decisions": {
+      "train": 32,
+      "dev": 8,
+      "final_confirmation": 8
+    },
+    "diagnostic_balance": "12 decisions in each truth category"
+  },
+  "scale_target": {
+    "decisions": 600,
+    "truth_counts": {
+      "false": 200,
+      "true": 200,
+      "partial": 100,
+      "unresolved": 100
+    },
+    "families": 200,
+    "four_label_families": 100,
+    "true_false_only_families": 100,
+    "split_plan": {
+      "train": {
+        "families": 140,
+        "four_label_families": 70,
+        "true_false_only_families": 70,
+        "decisions": {
+          "true": 140,
+          "false": 140,
+          "partial": 70,
+          "unresolved": 70,
+          "total": 420
+        }
+      },
+      "dev": {
+        "families": 30,
+        "four_label_families": 15,
+        "true_false_only_families": 15,
+        "decisions": {
+          "true": 30,
+          "false": 30,
+          "partial": 15,
+          "unresolved": 15,
+          "total": 90
+        }
+      },
+      "final_confirmation": {
+        "families": 30,
+        "four_label_families": 15,
+        "true_false_only_families": 15,
+        "decisions": {
+          "true": 30,
+          "false": 30,
+          "partial": 15,
+          "unresolved": 15,
+          "total": 90
+        }
+      }
+    }
+  },
+  "pilot_families": [
+    {
+      "family_id": "cf01_grocery_note",
+      "split": "train",
+      "oracle_kind": "version_edit",
+      "skill": "version_editing",
+      "setting": "Λίστα αγορών για κοινό σπίτι"
+    },
+    {
+      "family_id": "cf02_volunteer_roster",
+      "split": "train",
+      "oracle_kind": "version_edit",
+      "skill": "version_editing",
+      "setting": "Κατάλογος εθελοντών γειτονικής δράσης"
+    },
+    {
+      "family_id": "cf03_workshop_schedule",
+      "split": "train",
+      "oracle_kind": "version_edit",
+      "skill": "version_editing",
+      "setting": "Πρόγραμμα εργαστηρίου κεραμικής"
+    },
+    {
+      "family_id": "cf04_trip_packing",
+      "split": "train",
+      "oracle_kind": "version_edit",
+      "skill": "state_update",
+      "setting": "Λίστα αποσκευών για διήμερο"
+    },
+    {
+      "family_id": "cf05_cafe_order",
+      "split": "train",
+      "oracle_kind": "version_edit",
+      "skill": "new_user_state",
+      "setting": "Παραγγελία σε καφέ"
+    },
+    {
+      "family_id": "cf06_plant_log",
+      "split": "train",
+      "oracle_kind": "state_inference",
+      "skill": "state_inference",
+      "setting": "Ημερολόγιο ποτίσματος"
+    },
+    {
+      "family_id": "cf07_bus_route",
+      "split": "train",
+      "oracle_kind": "state_inference",
+      "skill": "state_inference",
+      "setting": "Διαδρομή τοπικού λεωφορείου"
+    },
+    {
+      "family_id": "cf08_storeroom_inventory",
+      "split": "train",
+      "oracle_kind": "state_inference",
+      "skill": "state_inference",
+      "setting": "Αποθήκη πολιτιστικού συλλόγου"
+    },
+    {
+      "family_id": "cf09_library_hold",
+      "split": "dev",
+      "oracle_kind": "state_inference",
+      "skill": "state_inference",
+      "setting": "Κράτηση βιβλίου δημοτικής βιβλιοθήκης"
+    },
+    {
+      "family_id": "cf10_reminder_cancel",
+      "split": "dev",
+      "oracle_kind": "cancellation",
+      "skill": "cancellation",
+      "setting": "Υπενθυμίσεις στο ίδιο νήμα"
+    },
+    {
+      "family_id": "cf11_recipe_revision",
+      "split": "final_confirmation",
+      "oracle_kind": "version_edit",
+      "skill": "version_editing",
+      "setting": "Τρέχουσα εκδοχή συνταγής"
+    },
+    {
+      "family_id": "cf12_delivery_cancel",
+      "split": "final_confirmation",
+      "oracle_kind": "cancellation",
+      "skill": "cancellation",
+      "setting": "Δύο ενεργές εργασίες για παράδοση"
+    }
+  ],
+  "remaining_family_slots": {
+    "train": {
+      "four_label": 62,
+      "true_false_only": 70
+    },
+    "dev": {
+      "four_label": 13,
+      "true_false_only": 15
+    },
+    "final_confirmation": {
+      "four_label": 13,
+      "true_false_only": 15
+    }
+  },
+  "leakage_rules": [
+    "family_id belongs to exactly one split",
+    "same entities, state graph, evidence table, paraphrase, or numeric template remain in that split",
+    "no public benchmark-derived prompts or lightly paraphrased benchmark tasks",
+    "final_confirmation families are sealed after specification and cannot guide prompt tuning",
+    "decision totals are counted from supervised labelled assistant decisions, never conversations or raw turns"
+  ],
+  "authoring_boundary": "This freezes specifications only. It does not authorize or contain the bulk 600 conversations."
+}

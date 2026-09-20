@@ -1,0 +1,90 @@
+{
+  "job_id": "author__scale60_04_park_map_excerpt_unresolved",
+  "row_id": "scale60_04_park_map_excerpt_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "627eae179047f745c658d476df4c588aa6d48ba596f70e95bfa42936a89309f7",
+  "input_record_sha256": "35d393ef10438a1723e2b3b0399475c59daa0a2a82311805989caf1c6bd01e6a",
+  "payload_sha256": "6427b91964e5147b99dd07faaa1b0f252d447a0c2b0a7bfb4f4ab617a1d92046",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "f53866258a8ac6abd2dbe6d067cf9d4e38d295c0a3f5cdce1d2ba051bbdaee7c",
+  "result": {
+    "row_id": "scale60_04_park_map_excerpt_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_04_park_map_excerpt_unresolved.u_context",
+        "role": "user",
+        "content": "Στο απόσπασμα του χάρτη φαίνονται μόνο τα μονοπάτια Πεύκο–Λίμνη, Λίμνη–Κήπος και Κήπος–Πύργος.",
+        "train": false
+      },
+      {
+        "id": "scale60_04_park_map_excerpt_unresolved.a_context",
+        "role": "assistant",
+        "content": "Θα μιλήσω μόνο για ό,τι φαίνεται στο συγκεκριμένο απόσπασμα.",
+        "train": false
+      },
+      {
+        "id": "scale60_04_park_map_excerpt_unresolved.u_decision",
+        "role": "user",
+        "content": "Τέλος πάντων. Με βάση μόνο το απόσπασμα, δεν υπάρχει κανένα άλλο μονοπάτι έξω από αυτό.",
+        "train": false
+      },
+      {
+        "id": "scale60_04_park_map_excerpt_unresolved.a_target",
+        "role": "assistant",
+        "content": "Το απόσπασμα δείχνει μόνο ποια μονοπάτια περιλαμβάνει· δεν αρκεί για να συμπεράνουμε αν υπάρχουν άλλα έξω από αυτό. Για να το κρίνουμε, χρειάζεται ο πλήρης χάρτης ή ρητή επιβεβαίωση ότι το απόσπασμα είναι εξαντλητικό.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_04_park_map_excerpt_unresolved.u_decision",
+        "claim": "Με βάση μόνο το απόσπασμα, δεν υπάρχει κανένα άλλο μονοπάτι έξω από αυτό.",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "scale60_04_park_map_excerpt_unresolved.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να εξηγήσει ότι το απόσπασμα δεν παρέχει πληροφορίες για μονοπάτια έξω από αυτό.",
+          "Να διατηρήσει το συμπέρασμα ανεπίλυτο.",
+          "Να προσδιορίσει ότι απαιτείται πλήρης χάρτης ή ρητή επιβεβαίωση πληρότητας."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "outside_excerpt",
+        "before_json": "null",
+        "after_json": "null",
+        "evidence_ids": [
+          "scale60_04_park_map_excerpt_unresolved.u_context"
+        ]
+      },
+      {
+        "field": "pine_tower_direct",
+        "before_json": "false",
+        "after_json": "false",
+        "evidence_ids": [
+          "scale60_04_park_map_excerpt_unresolved.u_context"
+        ]
+      },
+      {
+        "field": "pine_tower_reachable",
+        "before_json": "true",
+        "after_json": "true",
+        "evidence_ids": [
+          "scale60_04_park_map_excerpt_unresolved.u_context"
+        ]
+      }
+    ],
+    "checks_needed": [
+      "Πλήρης χάρτης ή ρητή επιβεβαίωση ότι το απόσπασμα καταγράφει όλα τα μονοπάτια."
+    ],
+    "issues": []
+  }
+}

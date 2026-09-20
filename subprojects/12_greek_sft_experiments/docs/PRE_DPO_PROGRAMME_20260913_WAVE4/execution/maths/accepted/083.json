@@ -1,0 +1,63 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_1373",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The single Greek problem record and single selected solution are consistently paired. The adaptation from Joe to Γιώργος preserves the teaching objective and all mathematical premises.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_1228",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "issue",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "problem_fidelity",
+          "severity": "major",
+          "quote": "Έστω $\u0000mathcal{R}$ ... Η ευθεία $\u0000ell$ ... ως $m\u0000sqrt {n}$",
+          "explanation": "Null control characters have replaced the backslashes in three LaTeX commands. Consequently, the region symbol, line symbol and radical notation may be missing or malformed when the Greek problem is rendered. The underlying mathematical premises otherwise agree with the English problem.",
+          "suggested_action": "Remove the control characters and restore the intended LaTeX commands \\mathcal{R}, \\ell and \\sqrt{n} in the problem record."
+        },
+        {
+          "dimension": "derivation",
+          "severity": "minor",
+          "quote": "\\frac{TT'}{h}=\\frac{UN'}{NN'}=...=\\frac{\\sqrt3}{9}, οπότε TT'=\\frac{\\sqrt3}{9}h",
+          "explanation": "Since T' is the perpendicular projection of T onto AB, TT' is the vertical rectangle height h. The similar-triangle relation instead gives the horizontal displacement UT'=\\frac{\\sqrt3}{9}h. The following expression for TC uses this horizontal displacement and is numerically correct, so the final value 69 remains valid, but the displayed segment labels make this substantive step internally contradictory.",
+          "suggested_action": "Relabel the computed segment as UT' throughout this step and retain TT'=h; then write TC=UB-UT'."
+        }
+      ],
+      "provenance_note": "There are two saved Greek problem versions, and the historical association of the last solution with the last problem is unproven. The supplied versions have no substantive mathematical difference, although both contain corrupted control characters in mathematical commands (the earlier version also uses an ESC-corrupted form of \\mathcal{R}). The mathematical audit follows the displayed last-problem/last-solution convention without treating that convention as proven provenance.",
+      "verification_needed": [
+        "Confirm the historical problem–solution association before any dataset deduplication or provenance-sensitive repair."
+      ]
+    },
+    {
+      "row_id": "gsm_3444",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The single Greek problem record and selected solution are consistently paired and preserve the proportional-capacity teaching objective.",
+      "verification_needed": []
+    }
+  ]
+}

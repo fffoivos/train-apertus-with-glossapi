@@ -1,0 +1,54 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_3116",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "minor",
+          "quote": "«Όλιβερ Τουίστ» — «12 πόδια επί 4 πόδια» — «3 € ανά τετραγωνικό πόδι»",
+          "explanation": "Η αριθμητική προσαρμογή από δολάρια σε ευρώ διατηρεί σωστά τη δομή του προβλήματος, αλλά ο συνδυασμός ευρωπαϊκού νομίσματος με αυτοκρατορικές μονάδες και αγγλόφωνο θεατρικό πλαίσιο αποτελεί υβριδική, ελλιπώς εξελληνισμένη πολιτισμική προσαρμογή. Δεν επηρεάζει τη μαθηματική ορθότητα.",
+          "suggested_action": "Να καταγραφεί για πολιτισμική επιμέλεια σε μεταγενέστερο στάδιο· καμία αλλαγή στο πλαίσιο ή στις μονάδες δεν επιτρέπεται στο παρόν audit."
+        }
+      ],
+      "provenance_note": "Υπάρχει μία καταγεγραμμένη λύση και ένα μοναδικό κείμενο προβλήματος, οπότε δεν προκύπτει αβεβαιότητα ιστορικής αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_1555",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχει μία καταγεγραμμένη λύση και ένα μοναδικό κείμενο προβλήματος, οπότε δεν προκύπτει αβεβαιότητα ιστορικής αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_645",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Η επιλεγμένη λύση είναι μία από τέσσερις καταγεγραμμένες λύσεις, αλλά το κείμενο του προβλήματος δηλώνεται σταθερό και δεν παρέχονται διαφορετικές problem_variants. Δεν διαπιστώνεται μαθηματική ασυμβατότητα με το εμφανιζόμενο πρόβλημα.",
+      "verification_needed": []
+    }
+  ]
+}

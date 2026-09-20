@@ -1,0 +1,71 @@
+{
+  "job_id": "adapt__scaleC_math_line_2758",
+  "row_id": "scaleC_math_line_2758",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "a622103dd6c8400bcab4ededbdb4d986afc7628668b336ed2f4a8cf90e7d507e",
+  "input_record_sha256": "e7bb154c8b564e4c2b66a4e341740de36e0db437916eef07f97c9d539426b050",
+  "payload_sha256": "3bf0bb6316228629071377025464f41a5b550457e09512150fa30cb6288339db",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "19250c00a57b234fecc155f29e30ba1c7c97abfe3f56c3d16c58501dd3f3bfe6",
+  "result": {
+    "row_id": "scaleC_math_line_2758",
+    "status": "candidate",
+    "problem_text": "Τα μήκη των πλευρών ενός τριγώνου είναι 6 cm, 7 cm και 9 cm. Σε ένα όμοιο τρίγωνο με περίμετρο 110 cm, ποιο είναι το μήκος της μεγαλύτερης πλευράς, σε εκατοστά;",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "The lengths of the sides of a triangle are 6 cm, 7 cm and 9 cm.",
+        "target_span": "Τα μήκη των πλευρών ενός τριγώνου είναι 6 cm, 7 cm και 9 cm.",
+        "reason": "Πιστή απόδοση στα ελληνικά με διατήρηση όλων των μηκών και των μονάδων."
+      },
+      {
+        "source_span": "In a similar triangle whose perimeter is 110 cm",
+        "target_span": "Σε ένα όμοιο τρίγωνο με περίμετρο 110 cm",
+        "reason": "Ακριβής απόδοση της σχέσης ομοιότητας και της δεδομένης περιμέτρου."
+      },
+      {
+        "source_span": "what is the length of the longest side, in centimeters?",
+        "target_span": "ποιο είναι το μήκος της μεγαλύτερης πλευράς, σε εκατοστά;",
+        "reason": "Διατήρηση του ζητούμενου μεγέθους και της απαιτούμενης μονάδας απάντησης."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "6",
+          "role": "μήκος πλευράς του αρχικού τριγώνου",
+          "unit": "cm"
+        },
+        {
+          "value": "7",
+          "role": "μήκος πλευράς του αρχικού τριγώνου",
+          "unit": "cm"
+        },
+        {
+          "value": "9",
+          "role": "μήκος πλευράς του αρχικού τριγώνου",
+          "unit": "cm"
+        },
+        {
+          "value": "110",
+          "role": "περίμετρος του όμοιου τριγώνου",
+          "unit": "cm"
+        }
+      ],
+      "conditions": [
+        "Το δεύτερο τρίγωνο είναι όμοιο με το τρίγωνο που έχει πλευρές 6 cm, 7 cm και 9 cm.",
+        "Η περίμετρος του δεύτερου τριγώνου είναι 110 cm."
+      ],
+      "required_outputs": [
+        "Το μήκος της μεγαλύτερης πλευράς του όμοιου τριγώνου, σε εκατοστά."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "applied_at": "2026-09-13T12:39:35.767783+00:00",
+  "files": [
+    {
+      "path": "data/export_core.py",
+      "sha256": "d508a4e9b4b94406e82ab20adb7bf92a9c03ece1ef323a354f28aa3c55f2b39f",
+      "syntax": "pass"
+    },
+    {
+      "path": "data/benchmarks_el/ifbench/score.py",
+      "sha256": "fc88199b80085158c1b97b969127e06d9fa30d1e02e1f115074d6dc913fdcab9",
+      "syntax": "pass"
+    },
+    {
+      "path": "data/math/mathlib.py",
+      "sha256": "11f420979238e6a385027db905f2a0f0955528fdaab9f451f92d778ee7b48b94",
+      "syntax": "pass"
+    },
+    {
+      "path": "data/benchmarks_el/bench_lib.py",
+      "sha256": "458e6ed8d38a2d269789989a93418055594c08db5c07780671726cf6b9b5d8e7",
+      "syntax": "pass"
+    },
+    {
+      "path": "data/math/cut2/run_batches.py",
+      "sha256": "c140c5f6586258a092377985d9d36e56f76eb4c8cd118c7a5571ce0b6e1413e0",
+      "syntax": "pass"
+    }
+  ],
+  "data_reexported": false,
+  "historical_scores_recomputed": false,
+  "validation": "10 isolated exporter checks passed including actual assembler; upstream empty-response guard only; domain protocol decisions remain unresolved",
+  "math_guard_tests": 11,
+  "updated": "2026-09-13T12:42:56.907231+00:00",
+  "limitations": [
+    "Legacy generation prompts still require replacement and their own pilot before bulk reuse.",
+    "Worker bound is per process; the active task policy limits global concurrency to the measured 8\u201312 workers.",
+    "No historical provenance is inferred; no datasets or scores recomputed."
+  ]
+}

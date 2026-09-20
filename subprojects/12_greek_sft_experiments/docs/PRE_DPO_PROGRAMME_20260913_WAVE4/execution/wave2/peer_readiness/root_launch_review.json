@@ -1,0 +1,18 @@
+{
+  "reviewed_at": "2026-09-13T13:43:34.409799+00:00",
+  "reviewer": "root",
+  "status": "approved_single_bounded_attempt",
+  "bundle": "edf6f76fa34cf4a362b258a250259ce7d03029a7f2a739a2c9631caa1777b9dc",
+  "science_manifest_sha256": "911181d1abd995b167e5cce93fe8b9fe7e9ca1b37edc735b7469e9f216e8534a",
+  "budget_node_hours_max": 1.4166666666666667,
+  "estimated_chf_max": 3.81,
+  "shared_measurement_envelope_node_hours": 4,
+  "authority": "owner standing goal and bounded measurement plan; no increase to cumulative SFT cap",
+  "conditions": [
+    "exact tested bundle and debug script",
+    "same new attempt output",
+    "no automatic retries or partition/scope changes",
+    "retain context exclusions and diagnostic-only MultiChallenge label",
+    "report actual allocated hours and cost"
+  ]
+}

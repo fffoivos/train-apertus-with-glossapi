@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "row_id",
+    "status",
+    "solution_text",
+    "final_answers",
+    "reference_corrections",
+    "issues",
+    "checks_needed"
+  ],
+  "properties": {
+    "row_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "candidate",
+        "needs_review"
+      ],
+      "type": "string"
+    },
+    "solution_text": {
+      "type": "string"
+    },
+    "final_answers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "part",
+          "expression",
+          "unit",
+          "approximation"
+        ],
+        "properties": {
+          "part": {
+            "type": "string"
+          },
+          "expression": {
+            "type": "string"
+          },
+          "unit": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "approximation": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "reference_corrections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "checks_needed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_math_3039",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete before and after records are identical. Direct verification gives f(2)=4, f(4)=16, and f(16)=4, so the actual training target is correct, complete, and faithful to the English source. No units, rounding, cultural substitutions, or dialogue-state issues arise.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_904",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The after-correction target correctly sets x=30 and y=40/30=4/3 in f(xy)=f(x)/y, yielding f(40)=20/(4/3)=15. The problem faithfully preserves the source relation and quantities. The editor changed only the awkward phrase «Για να μετατραπεί το 30 σε 40» to the more natural «Για να προκύψει το 40 από το 30», without altering the mathematics or task.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    }
+  ]
+}

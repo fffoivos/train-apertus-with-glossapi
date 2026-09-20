@@ -1,0 +1,134 @@
+{
+  "status": "pass",
+  "checks": {
+    "repair_math5_139": {
+      "u": 2.0938363213560542,
+      "ratio": 5.828427124746189,
+      "p_plus_q_plus_r": 7
+    },
+    "repair_math5_77": {
+      "ten_cycles": 362880,
+      "two_five_cycles": 72576,
+      "probability": "3/25",
+      "m_plus_n": 28
+    },
+    "repair_math5_537": {
+      "families": {
+        "1": [],
+        "3": [
+          "150"
+        ],
+        "4": [
+          "225/2",
+          "315/2"
+        ],
+        "5": [
+          "126",
+          "162",
+          "198"
+        ]
+      },
+      "unique_solution_count": 6,
+      "sum_degrees": 906
+    },
+    "repair_math5_1014": {
+      "arm_endpoint_fraction_of_side": 0.09999999999999998,
+      "blue_fraction": 0.01999999999999999,
+      "blue_percent": 1.9999999999999991
+    },
+    "repair_math5_630": {
+      "critical_AC": 2.8284271247461903,
+      "denominator": 7.5147186257614305,
+      "maximum": 0.6519178866886671
+    },
+    "repair_gsm_1253": {
+      "one_way_feet": 3600,
+      "round_trip_minutes": 18
+    },
+    "repair_math5_436": {
+      "valid_orientation_count": 9,
+      "metal_orders": 70,
+      "arrangements": 630
+    },
+    "repair_gm_math_2231": {
+      "checked_starts": [
+        -1000,
+        1000
+      ],
+      "universal_divisor": 24,
+      "witness": 24
+    },
+    "controls": {
+      "control_gm_gsm_3835": 920,
+      "control_gm_gsm_3096": 40,
+      "control_gm_math_2731": 8,
+      "control_gm_math_1054": 0,
+      "control_gm_math_1745": 100,
+      "control_gm_math_837": 42,
+      "control_gm_math_3507": "3/2",
+      "control_gm_math_3924": 90
+    },
+    "selected_bindings": {
+      "repair_math5_139": {
+        "stage": "solve_high",
+        "job_id": "solve_high__repair_math5_139",
+        "prompt_sha256": "413a8ed6200f57729aff544044d24fa2d447272d99ddc4b86b79effaed4ad35c",
+        "input_record_sha256": "bb8da3713546e437629947d85e42315a15cf97f80b3ca6c5aa3240a9ba4bcb29"
+      },
+      "repair_math5_77": {
+        "stage": "solve_high",
+        "job_id": "solve_high__repair_math5_77",
+        "prompt_sha256": "30edfa75f6dc4e2b475fc761c51bd169e184e6f1a45de1856950e1650d85940b",
+        "input_record_sha256": "cc6a89e005bb9a25c87718508b65f166b8c1b66266537726ec27ea9be5a7197c"
+      },
+      "repair_math5_537": {
+        "stage": "solve_high",
+        "job_id": "solve_high__repair_math5_537",
+        "prompt_sha256": "be46d315bac01a2ce0b0c4c0ff6c408f252a1237ea2af675c2e7a66db15a7f6f",
+        "input_record_sha256": "248f9b2b91c0db03cbce99b559dfd5f030cdbc15f3a192a948fab772ae8f0e4f"
+      },
+      "repair_math5_1014": {
+        "stage": "solve_xhigh",
+        "job_id": "solve_xhigh__repair_math5_1014",
+        "prompt_sha256": "b06e7ccc7a63eb9581d46d71f6b6e43f6c6a16577e5c47e1b6d26b507e5fb6df",
+        "input_record_sha256": "19635a333c4a9b608950fabc6904d52fa4315e6b572d3854b76b1123c139906c"
+      },
+      "repair_math5_630": {
+        "stage": "solve_xhigh",
+        "job_id": "solve_xhigh__repair_math5_630",
+        "prompt_sha256": "436037183ce1f785a44175623612594b9efc2f8abf9bc48c844627fcd1d7416a",
+        "input_record_sha256": "e3d0e0eecd6508b8c2118eae2db3c5a8a0cf357d192febb372bfb366e2ad5167"
+      },
+      "repair_gsm_1253": {
+        "stage": "solve_high",
+        "job_id": "solve_high__repair_gsm_1253",
+        "prompt_sha256": "93fa1b6d7966b6263056552e1e865cf74e15193907e9385f397fd642808b7d69",
+        "input_record_sha256": "87d513e79a5dc74cf78970be7dbf56fa6d09b3109a43d1f449c5a599f7c8371a"
+      },
+      "repair_math5_436": {
+        "stage": "solve_xhigh",
+        "job_id": "solve_xhigh__repair_math5_436",
+        "prompt_sha256": "d29acc77e1d83e14141d694470ec025f24ac9386d1d9cc977bfe190bf6445aa1",
+        "input_record_sha256": "290833f30881b12d39020095ed35cbcf247223a8d97932ef92f9facf0bb240cf"
+      },
+      "repair_gm_math_2231": {
+        "stage": "solve_high",
+        "job_id": "solve_high__repair_gm_math_2231",
+        "prompt_sha256": "9144b31a0c2973254523f67b0c03f9254a2526abfb58e439090a100cf9ad7bc2",
+        "input_record_sha256": "47307709af22ab36cbf4d26a02f94cebe9bc6614fadab777a110c24644e142c5"
+      }
+    },
+    "rejected_solve_high_repair_math5_1014_controls": [
+      {
+        "path": "$.result.solution_text",
+        "offset": 896,
+        "codepoint": "U+000C"
+      },
+      {
+        "path": "$.result.solution_text",
+        "offset": 933,
+        "codepoint": "U+000C"
+      }
+    ]
+  }
+}

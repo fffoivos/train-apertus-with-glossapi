@@ -1,0 +1,39 @@
+{
+  "created_at": "2026-09-13T14:28:11.760401+00:00",
+  "status": "prepared_not_launched",
+  "scope": "60 train decisions only; six-case probe before continuation",
+  "counts": {
+    "primary_authoring": 60,
+    "retry_cap": 12,
+    "absolute_call_cap": 72
+  },
+  "combined_stage_ceiling": 144,
+  "future_greek_and_repair_allowance": 72,
+  "global_budget_rule": "All author, Greek and semantic repair attempts count toward 144; no automatic xhigh. No unbounded reset through a new state directory.",
+  "probe_ids": [
+    "scale60_08_fair_budget_false",
+    "scale60_04_park_map_excerpt_unresolved",
+    "scale60_02_studio_booking_false",
+    "scale60_01_recipe_draft_partial",
+    "scale60_06_key_handover_unresolved",
+    "scale60_12_seedling_trays_true"
+  ],
+  "max_workers": 8,
+  "root_source_review": true,
+  "independent_source_delta_review": "pending",
+  "final_materialized": false,
+  "artifact_sha256": {
+    "root_review.md": "6ce26cefe44892be926040ae580063a89d9508d3b783777466f6a5bc62b210a2",
+    "inputs.jsonl": "c268ffefe66bc2cc48f3b2ef59248b980007cf40f00ae4e12fce3cb9c5a9f530",
+    "queue_author60.jsonl": "88edba9c3f4a146d271442525b12faacdafc19a5466f9f7a08a19156cf7001b8",
+    "run_queue.py": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005",
+    "source_changes.jsonl": "357a7b32a39ed96230780c22fecbeb2df49313967756aec4179d61c6b5c94d20",
+    "receipt.json": "a41d186bd5b2e8e29b38697bea660cdebf3938e14b5f8c30a25d7ab7c9c3591a",
+    "schemas/semantic_repair.schema.json": "595e4ef89653892710759a52853c29920372c5599870931b57c73c8cc2922761",
+    "schemas/author_dialogue.schema.json": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+    "schemas/greek_correction.schema.json": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+    "prompts/author_dialogue.txt": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+    "prompts/semantic_repair.txt": "d0a0d83e714325427d29fdbe8a76137c7822b0a23962c5ba63940172b716d7cf",
+    "prompts/greek_correction.txt": "3c22769c35578fc96b2158f92b697c8726e91f0f1e209f604cdee419452ecd4f"
+  }
+}

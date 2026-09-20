@@ -1,0 +1,50 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_1080",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The displayed problem and solution come from a single problem record; no pairing ambiguity is indicated.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_587",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Historical pairing remains unproven because four solution records and multiple saved Greek problem versions exist. The supplied variants differ only lexically («αντίθετη» versus «απέναντι») and have no mathematical difference; the displayed solution is coherent with the last variant.",
+      "verification_needed": [
+        "Verify the historical problem–solution association if exact source-line provenance is required."
+      ]
+    },
+    {
+      "row_id": "math5_750",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Historical pairing remains unproven because four solution records and multiple saved Greek problem versions exist. The variants change the adapted name from «Γιάννης» to «Γιώργος» but do not change the mathematics; the displayed solution is coherent with the last variant. The first stored variant also shows doubled LaTeX escaping, without affecting the selected displayed problem.",
+      "verification_needed": [
+        "Verify the historical problem–solution association if exact source-line provenance is required."
+      ]
+    }
+  ]
+}

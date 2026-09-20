@@ -1,0 +1,69 @@
+{
+  "checks": {
+    "all14_simple_reference_checks": true,
+    "all_selected_exposure_and_contamination_gates": true,
+    "all_selected_problem_text_is_self_contained_by_gate": true,
+    "call_envelope": true,
+    "development_final_preserved_without_content": true,
+    "fourteen_unique_train_rows": true,
+    "independent_solve_verify_dependencies": true,
+    "manifest_artifact_hashes": true,
+    "math5_77_quarantine_preserved": true,
+    "payload_bindings_complete": true,
+    "prepared_not_launched": true,
+    "queue_has_42_unique_jobs": true,
+    "queue_high_only_no_automatic_xhigh": true,
+    "queue_stage_counts": true,
+    "references_absent_from_payloads": true,
+    "replacement_disjoint_all_reserved": true,
+    "replacement_disjoint_phaseB_replacements": true,
+    "replacement_lines_exact": true,
+    "replacement_same_subject_level": true,
+    "runner_known_proven_digest": true,
+    "source_line_record_and_family_bindings": true,
+    "source_read_all14_bound": true,
+    "stage1_assets_byte_identical": true,
+    "twelve_original_plus_two_replacements": true
+  },
+  "explicit_quarantine_family_ids": [
+    "mathfam_f91a56318d28452a3d95"
+  ],
+  "mathematical_checks": {
+    "line_1202": true,
+    "line_2042": true,
+    "line_2462": true,
+    "line_2758": true,
+    "line_3264": true,
+    "line_3416": true,
+    "line_4273": true,
+    "line_5074": true,
+    "line_5094": true,
+    "line_6052": true,
+    "line_627": true,
+    "line_6668": true,
+    "line_7065": true,
+    "line_7319": true
+  },
+  "ok": true,
+  "replacement_family_ids": [
+    "mathfam_04ddd666f872ac74269b",
+    "mathfam_131bb8f4a0363696e7ad"
+  ],
+  "selected_family_ids": [
+    "mathfam_04ddd666f872ac74269b",
+    "mathfam_060baac2bc8ca89c8432",
+    "mathfam_09d13e8fc4fc2b1df1f8",
+    "mathfam_0bd322d5038043b57ce7",
+    "mathfam_131bb8f4a0363696e7ad",
+    "mathfam_195dd0ca0406930d3633",
+    "mathfam_3291037c997c2711bdbd",
+    "mathfam_6e4141aec85bb3f92ad1",
+    "mathfam_83da386b8472a2d3ffca",
+    "mathfam_8db5379b88e5d24a4fe2",
+    "mathfam_9d32ce4ba01eb326ecfb",
+    "mathfam_9fc992637718e0921eb3",
+    "mathfam_e7a01618550da42ec0da",
+    "mathfam_f2d5fceb6fa010cab396"
+  ],
+  "verified_at": "2026-09-13T17:47:18+03:00"
+}

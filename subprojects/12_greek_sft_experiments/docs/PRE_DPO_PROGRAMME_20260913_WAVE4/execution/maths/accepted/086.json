@@ -1,0 +1,69 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_2212",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "issue",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "units_and_rounding",
+          "severity": "minor",
+          "quote": "\\[\\boxed{10}\\]",
+          "explanation": "The numerical result is correct, but the boxed final answer omits the euro unit, even though the requested quantity is an amount of money.",
+          "suggested_action": "State the final answer explicitly as 10 €."
+        }
+      ],
+      "provenance_note": "The row has a single problem record and a single solution record; no historical pairing uncertainty is indicated.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_1103",
+      "overall": "issues",
+      "final_result": "issue",
+      "derivation": "pass",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "issue",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "units_and_rounding",
+          "severity": "major",
+          "quote": "Επειδή \\(\\$1=100\\) λεπτά",
+          "explanation": "The arithmetic difference of $0.99 is correct, but «λεπτά» conventionally denotes euro cents in this Greek context. The source asks for cents of a dollar, whose unambiguous Greek designation is «σεντ». Thus the central requested unit is mistranslated even though its numerical magnitude is unchanged.",
+          "suggested_action": "Use «σεντ» consistently in the question, conversion statement, and final answer: $0.99 = 99 σεντ."
+        },
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "minor",
+          "quote": "«Μεγάλες Οικονομίες» … «Κάθε Λεπτό Μετράει» … \\(\\$39{,}96\\)",
+          "explanation": "The store names are localized while the prices remain in US dollars. This is not a mathematical error, but together with the euro-associated term «λεπτά» it produces a culturally mixed and potentially confusing setting.",
+          "suggested_action": "Retain the dollar setting but use dollar-appropriate terminology («σεντ»); no change to the amounts is needed."
+        }
+      ],
+      "provenance_note": "The problem text is marked stable. Although two solution records exist, no problem variants are supplied, and the selected candidate matches the displayed problem mathematically.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_2600",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The row has a single problem record and a single solution record; no historical pairing uncertainty is indicated. The fictional premise of owning 3,500 cars is preserved appropriately and is not treated as a factual claim requiring support.",
+      "verification_needed": []
+    }
+  ]
+}

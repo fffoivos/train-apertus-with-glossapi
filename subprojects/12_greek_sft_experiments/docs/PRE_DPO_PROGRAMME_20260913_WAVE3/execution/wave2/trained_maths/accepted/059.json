@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_101_4",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The BEFORE and AFTER records are identical, and the actual training messages match the AFTER record. Independent verification confirms 15·32=480 €, an 18% discount of 86,40 €, reduced net value 393,60 €, VAT of 94,464 €, product value with VAT 488,064 €, and total 512,864 €, correctly rounded to 512,86 €. Shipping is correctly added only once because its stated price already includes VAT.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_gsm_2342",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The BEFORE and AFTER records are identical, and the actual training messages match the AFTER record. The localized names are culturally coherent and the added word «πλέον» validly clarifies that the half is calculated after the gift without changing the mathematical structure. The ordinary word-problem convention that the requested half is transferred is inherited from the source and consistently applied: 3·14=42, 14+42=56, and half of 56 leaves 28 buttons.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

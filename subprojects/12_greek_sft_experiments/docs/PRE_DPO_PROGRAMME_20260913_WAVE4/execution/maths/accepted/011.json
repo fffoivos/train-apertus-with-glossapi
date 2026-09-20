@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_241",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχουν δύο αποθηκευμένες λύσεις, αλλά το problem text χαρακτηρίζεται stable_problem_text και δεν παρέχονται εναλλακτικές problem_variants. Η αξιολόγηση αφορά το πλήρες εμφανιζόμενο ζεύγος προβλήματος και τελευταίας λύσης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_127",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική εγγραφή προβλήματος και λύσης. Η προσαρμογή από quarter/δολάρια σε 0,25 €/ευρώ είναι συνεπής σε όλο το ελληνικό πρόβλημα και τη λύση και διατηρεί τον ίδιο αριθμητικό συλλογισμό.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_1135",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχουν τέσσερις αποθηκευμένες λύσεις, αλλά το problem text χαρακτηρίζεται stable_problem_text και δεν παρέχονται εναλλακτικές problem_variants. Η αξιολόγηση αφορά το πλήρες εμφανιζόμενο ζεύγος προβλήματος και τελευταίας λύσης.",
+      "verification_needed": []
+    }
+  ]
+}

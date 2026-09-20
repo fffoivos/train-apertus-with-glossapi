@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_963",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το ελληνικό πρόβλημα είναι πιστή απόδοση του αγγλικού και δηλώνεται σταθερό κείμενο προβλήματος χωρίς άλλες παραλλαγές. Η επιλεγμένη λύση είναι πλήρως συμβατή με αυτό. Η συνεπαγόμενη ιδιότητα n>0 δεν διατυπώνεται ξεχωριστά, αλλά προκύπτει αναγκαστικά από το deg(h)=6 και δεν δημιουργεί ουσιαστικό κενό.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_644",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το ελληνικό πρόβλημα είναι πιστή απόδοση του αγγλικού και δηλώνεται σταθερό κείμενο προβλήματος χωρίς άλλες παραλλαγές. Η λύση χρησιμοποιεί σωστά την τηλεσκοπική ταυτότητα και, σε αντίθεση με την ανακριβή τελευταία διατύπωση της αγγλικής αναφοράς, διαιρεί με τον πράγματι κοινό μη μηδενικό παράγοντα 2^{2^{2008}-1}-1.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_495",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχει μία καταγεγραμμένη λύση, σταθερό κείμενο προβλήματος και καμία άλλη παραλλαγή. Η ελληνική εκφώνηση και η λύση αντιστοιχούν πλήρως στο παρεχόμενο αγγλικό πρόβλημα.",
+      "verification_needed": []
+    }
+  ]
+}

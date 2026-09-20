@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_math_3924",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete BEFORE, AFTER, and actual training messages are identical. Independently checking the rational equation gives 100 numerator roots (1 through 100), of which exactly the 10 perfect squares 1² through 10² also make the denominator zero; therefore 90 admissible roots remain. The Greek problem faithfully preserves the source structure and the dialogue has correct speaker ownership.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_gsm_3530",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete BEFORE, AFTER, and actual training messages are identical. The two appointments occupy 2×3=6 hours, leaving 8−6=2 hours; at 50 applications per hour, the result is 2×50=100 applications. Units, requested quantity, Greek phrasing, localized name, workplace context, and speaker ownership are coherent.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

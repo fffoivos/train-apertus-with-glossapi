@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_611_3",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The BEFORE and AFTER records are identical. Independently verified: 3·4=12, 2·4=8, and 12+8=20 right angles. The actual training messages preserve the problem, solution, roles, and teaching objective.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_gsm_2155",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The BEFORE and AFTER records are identical. The adaptation changes the names and central Texas to central Thessaly while preserving the rate–time arithmetic and teaching objective. Retaining miles is an explicitly documented permitted exception. Independently verified distances are 5·7=35, 6·6=36, (6/2)·3=9, and 7·5=35 miles, totaling 115 miles. The actual training messages preserve speaker ownership and contain the complete problem and solution.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

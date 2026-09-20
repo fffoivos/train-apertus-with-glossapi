@@ -1,0 +1,16 @@
+{
+  "time": "2026-09-13T13:03:16.977081+00:00",
+  "source_sha256": "2b1ce8623d12f1b8c17aed50dd6cdbb7546f7d8ccf074732bb25f11cfc4af827",
+  "output_sha256": "d3068b3aa1c4b473cf4579361cf7083fd96adcee332d6c66b32d35cbb7d8739e",
+  "rows": 20,
+  "checker_pass": 20,
+  "held_for_source_verification": 4,
+  "not_promoted": 20,
+  "lexical_protocol_controls": {
+    "original": true,
+    "accent_variant": true,
+    "missing": false
+  },
+  "benchmark_changes": 0,
+  "original_pilot_preserved": true
+}

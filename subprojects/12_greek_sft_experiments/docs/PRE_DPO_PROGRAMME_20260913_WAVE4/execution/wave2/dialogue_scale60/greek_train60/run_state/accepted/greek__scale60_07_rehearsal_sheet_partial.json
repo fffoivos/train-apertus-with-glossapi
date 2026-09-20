@@ -1,0 +1,54 @@
+{
+  "job_id": "greek__scale60_07_rehearsal_sheet_partial",
+  "row_id": "scale60_07_rehearsal_sheet_partial",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "034636ec87b03ed5b750301bc7d0c85fd4a745493d2cc6ebe799d26aebbd1897",
+  "input_record_sha256": "4e849abd4b97cee152381de5a95503423704af56293e9c7790943e3b8dde602f",
+  "payload_sha256": "b280d00719efebf396df8dc5832f79291d15b171ea08aef69090a60e1a589b80",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "5a18e75163f3334f30f40183f2e21c96214709d64f411599f47fc370567f3f94",
+  "result": {
+    "row_id": "scale60_07_rehearsal_sheet_partial",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "scale60_07_rehearsal_sheet_partial.u_context",
+        "role": "user",
+        "content": "Στο τρέχον φύλλο ροής, πρώτο είναι το «Θάλασσα», το σόλο το έχει η Μαρία και το διάλειμμα είναι 10 λεπτά. Τραγούδι λήξης δεν έχει καταγραφεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_partial.a_context",
+        "role": "assistant",
+        "content": "Έχω μόνο την τρέχουσα εκδοχή του φύλλου ροής, όχι τις παλιότερες σημειώσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_partial.u_decision",
+        "role": "user",
+        "content": "Στο φύλλο πρώτο είναι το «Θάλασσα» και το διάλειμμα 15 λεπτά. Κάνε τώρα το διάλειμμα 12 λεπτά.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_partial.a_target",
+        "role": "assistant",
+        "content": "Σωστά, πρώτο είναι το «Θάλασσα». Το διάλειμμα ήταν 10, όχι 15 λεπτά· το άλλαξα τώρα σε 12 λεπτά στο φύλλο ροής.",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "scale60_07_rehearsal_sheet_partial.a_target",
+        "before": "Σωστά, πρώτο είναι το «Θάλασσα». Το διάλειμμα ήταν 10, όχι 15 λεπτά· το ενημέρωσα τώρα σε 12 λεπτά στο φύλλο ροής.",
+        "after": "Σωστά, πρώτο είναι το «Θάλασσα». Το διάλειμμα ήταν 10, όχι 15 λεπτά· το άλλαξα τώρα σε 12 λεπτά στο φύλλο ροής.",
+        "error": "Αφύσικη σύνταξη και λεξική σύναψη του «ενημέρωσα … σε 12 λεπτά».",
+        "reason": "Το «άλλαξα … σε 12 λεπτά» αποδίδει φυσικά στα ελληνικά τη μεταβολή της διάρκειας, χωρίς αλλαγή της ενέργειας ή των δεδομένων."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

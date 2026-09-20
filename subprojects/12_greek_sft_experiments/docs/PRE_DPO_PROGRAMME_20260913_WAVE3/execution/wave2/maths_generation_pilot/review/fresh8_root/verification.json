@@ -1,0 +1,16 @@
+{
+  "root_rows": 8,
+  "accept_high": 6,
+  "source_repair_candidates": 2,
+  "arithmetic_checks": {
+    "2429": true,
+    "2507": true,
+    "4821": true,
+    "6029": true,
+    "1950": true,
+    "5324": true,
+    "7113": true
+  },
+  "trig_ambiguity_proof": "For x=pi/2+k*pi,cos5x=0; therefore adding/removing/repeating cosx andcos5x preserves the union with cos2x zeros. This is a symbolic argument, not a floating-point grid.",
+  "production_promoted": false
+}

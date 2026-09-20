@@ -1,0 +1,9 @@
+{
+  "reviewed": "2026-09-13T13:02:10.632492+00:00",
+  "batch": "025",
+  "source_sha256": "e85a0f734adf039c9fb13a044f389b664a14ed24fd0486b83af9821f6e72ecd8",
+  "action": "manual_accept_existing_response",
+  "reviewer": "root",
+  "reason": "No current defect is claimed. The original incorrect term συγγραμμική for coterminal angles was replaced by ισοδύναμη. -300+360=60, sec60=2. Second row is 8*3=24 children. BEFORE and editor_delta findings describe the repaired terminology, not current damage. Original failed receipts remain unchanged.",
+  "new_model_calls": 0
+}

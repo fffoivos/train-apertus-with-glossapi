@@ -1,0 +1,57 @@
+{
+  "job_id": "author__pilot48_09_unresolved",
+  "row_id": "pilot48_09_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "2a627cbe0fadab30de994c00517ed2c7a2d61148d9872035d086d4883b305807",
+  "input_record_sha256": "93db161ee1a0dadddf38e8ae1fe8bdba0cdf891b61eb9c205c26596f83ba2b81",
+  "payload_sha256": "81222163f5eb4ea9e77700e9cdfe26575600332273a96533c1d72edec9f2c38c",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "e90a4a56d441718f342562763eea05e7d63227bc24adc328875439396895d73c",
+  "result": {
+    "row_id": "pilot48_09_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_09_unresolved.u_context",
+        "role": "user",
+        "content": "Υπάρχουν 3 αντίτυπα: 2 είναι δανεισμένα και το τρίτο δεσμευμένο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_09_unresolved.u_decision",
+        "role": "user",
+        "content": "Ουφ, πάλι. Με βάση μόνο αυτή την καταγραφή, συμπεραίνω ότι ένα αντίτυπο θα επιστραφεί την Παρασκευή.",
+        "train": false
+      },
+      {
+        "id": "pilot48_09_unresolved.a_target",
+        "role": "assistant",
+        "content": "Η καταγραφή δεν αναφέρει ημέρα επιστροφής, οπότε αυτό δεν μπορεί να συναχθεί. Ποια ημερομηνία επιστροφής αναγράφεται για καθένα από τα δύο δανεισμένα αντίτυπα;",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_09_unresolved.u_decision",
+        "claim": "Με βάση μόνο αυτή την καταγραφή, συμπεραίνω ότι ένα αντίτυπο θα επιστραφεί την Παρασκευή.",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "pilot48_09_unresolved.u_context"
+        ],
+        "expected_response_behaviour": [
+          "state_missing_or_ambiguous_evidence",
+          "ask_one_targeted_clarifying_question",
+          "do_not_invent_state"
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

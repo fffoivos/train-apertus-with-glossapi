@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_602_0",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. BEFORE, AFTER, and the actual training pair are identical. The solution correctly ignores the stated irrelevant passenger count, applies five decreases from the first sign to the sixth, and obtains 175 − 5·25 = 50 χλμ. Speaker ownership and training structure are intact.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_gsm_5402",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "BEFORE, AFTER, and the actual training pair are identical. The Greek adaptation preserves the source relationships while deliberately localizing names, currency, and number formatting. From 1.800 € = 3 shares, one share is 600 €, Stella pays 3.000 €, and the total is 5.400 €, consistent with the supplied reference. Dialogue ownership and training structure are intact.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

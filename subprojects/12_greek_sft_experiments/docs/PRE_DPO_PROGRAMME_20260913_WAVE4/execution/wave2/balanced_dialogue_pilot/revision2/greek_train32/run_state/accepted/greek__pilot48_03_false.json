@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__pilot48_03_false",
+  "row_id": "pilot48_03_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "d546578ef5a2ecea28b4bff967dce064cecfecaf39f42bf495cdc4819c5832b4",
+  "input_record_sha256": "c433a361f3c6842f55cb59b162886a214b48527337670be99f619d52e129ec53",
+  "payload_sha256": "fc7d02218ac10b4a46cc05bc88e32fdc5b5ca5c359feab054d68f68a75fe6f00",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "03a06e7749659b65e55f96045a7003ebc83422a233d8a63f6a027ff4ac52267b",
+  "result": {
+    "row_id": "pilot48_03_false",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_03_false.u_context",
+        "role": "user",
+        "content": "Στην καταχώριση του προγράμματος: Αρχικά το εργαστήριο ήταν Δευτέρα στις 17:00 στην αίθουσα Α, χωρίς καταγραμμένη διάρκεια. Έπειτα μεταφέρθηκε την Τρίτη στις 18:00 στην αίθουσα Β.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_false.a_context",
+        "role": "assistant",
+        "content": "Η τρέχουσα καταχώριση είναι Τρίτη στις 18:00 στην αίθουσα Β.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_false.u_decision",
+        "role": "user",
+        "content": "Η τρέχουσα καταχώριση λέει Δευτέρα στις 17:00. Πρόσθεσε τώρα ότι χρειαζόμαστε προβολέα.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_false.a_target",
+        "role": "assistant",
+        "content": "Η τρέχουσα καταχώριση είναι Τρίτη στις 18:00 στην αίθουσα Β, όχι Δευτέρα στις 17:00. Τώρα αναφέρει επίσης ότι χρειαζόμαστε προβολέα.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

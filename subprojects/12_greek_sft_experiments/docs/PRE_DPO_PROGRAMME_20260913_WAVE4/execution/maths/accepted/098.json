@@ -1,0 +1,69 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_535",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The stable Greek problem text is paired with a single solution record; no pairing uncertainty is indicated.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_2294",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "problem_fidelity",
+          "severity": "minor",
+          "quote": "Ο Ιησούς βάζει 12 μπουκάλια σε κάθε κιβώτιο.",
+          "explanation": "The English personal name “Joshua” is rendered as «Ιησούς», which in ordinary modern Greek primarily denotes Jesus. Although historically related to the biblical rendering of Joshua, this unqualified form changes or at least obscures the identity of the actor. The numerical premises and teaching objective remain intact.",
+          "suggested_action": "In a permitted correction stage, use an unambiguous rendering such as «Ο Τζόσουα» consistently in the problem and solution."
+        },
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "minor",
+          "quote": "Ο Ιησούς",
+          "explanation": "For an otherwise ordinary contemporary word problem, this name choice carries a strong religious association absent from the source and sounds culturally incongruous.",
+          "suggested_action": "Review the intended name-localization policy and select a culturally coherent, unambiguous equivalent."
+        }
+      ],
+      "provenance_note": "The Greek problem has one associated solution record, so there is no historical pairing ambiguity.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_676",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "issue",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "derivation",
+          "severity": "minor",
+          "quote": "η παράσταση είναι μη αρνητική για $x\\leq 1$ ή $x\\geq 5$ και αρνητική για $1\\leq x\\leq 5$.",
+          "explanation": "At x=1 and x=5 the quadratic equals zero, so it is not negative throughout the stated closed interval. It is negative only for 1<x<5, or nonpositive on [1,5]. This does not alter the solution because both absolute-value formulas agree at the endpoints, and neither endpoint solves the second equation.",
+          "suggested_action": "In a permitted correction stage, replace «αρνητική για $1\\leq x\\leq 5$» with «αρνητική για $1<x<5$» or «μη θετική για $1\\leq x\\leq 5$»."
+        }
+      ],
+      "provenance_note": "Two saved Greek problem versions are supplied, and the historical association of the selected last problem with the selected solution is unproven. The variants are mathematically equivalent: «συντεταγμένων x» and «τετμημένων x» both request the sum of the x-coordinates. Thus the pairing uncertainty is provenance-only and does not create a mathematical defect.",
+      "verification_needed": []
+    }
+  ]
+}

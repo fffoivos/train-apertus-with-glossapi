@@ -1,0 +1,32 @@
+{
+  "schema_version": "equiv500_v2_validation_v1",
+  "status": "pass_candidate_only",
+  "tests": {
+    "command": "python3 test_equiv500_v2.py",
+    "returncode": 0,
+    "passes": [
+      "PASS test_categorical_content_is_not_erased",
+      "PASS test_final_answer_phrase",
+      "PASS test_missing_values_and_symbolic_basics",
+      "PASS test_real_units_are_still_removed",
+      "PASS test_separators_have_one_locale_specific_reading"
+    ]
+  },
+  "bindings": {
+    "equiv500_v2.py": "a0d38a5580097937d361ec1d5d51674571a32128c1f73869ba50ae3523294331",
+    "score_math500_v2.py": "53f8643ea7cf62e3fa626961dedb2db124244101d2035c0c87c297785db7f761",
+    "test_equiv500_v2.py": "e8dc7198e64bff664622b31951004cec9b5f5baea70176eff3d3d52d78c7ac4e",
+    "audit_historical_outputs.py": "40da7302fcb894cbfbf683b182d73485d862a18684bbe6c988100c7562e18419",
+    "complete_audit_final.json": "42139a67de8621910ff48946a2bdf48f81fb0ac2fd41c9f6748fca0bf4aac590",
+    "REPORT.md": "4ae3a684547fcdd0895439a42b4029b343696b1ad73dee4742c701c4f3fb8ebb"
+  },
+  "coverage": {
+    "model_columns": 11,
+    "language_cells": 22,
+    "responses": 11000,
+    "exact_rows_per_cell": 500,
+    "changed_decisions_recorded": 152
+  },
+  "historical_artifacts_modified": false,
+  "publication_gate": "Candidate implementation requires scientific review before adoption. Preserve old results under the frozen scorer label; publish adjusted comparisons only after selecting and pinning one scorer version for every model."
+}

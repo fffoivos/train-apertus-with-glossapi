@@ -1,0 +1,93 @@
+{
+  "content_emitted": false,
+  "first_failure_in_frozen_order": {
+    "audit_rule_attempts_tag_parse": true,
+    "export_rule_renders_tag": false,
+    "field": "function_calls",
+    "ordinal": 15,
+    "role": "user",
+    "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_320364",
+    "source_id_type": "str",
+    "source_locator": {
+      "file": "data/train-00013-of-00015.parquet",
+      "row_group": 136,
+      "row_in_group": 718
+    },
+    "turn_index": 1,
+    "value_length": 4,
+    "value_type": "str"
+  },
+  "mismatch_count": 3,
+  "mismatches": [
+    {
+      "audit_rule_attempts_tag_parse": true,
+      "export_rule_renders_tag": false,
+      "field": "function_calls",
+      "ordinal": 15,
+      "role": "user",
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_320364",
+      "source_id_type": "str",
+      "source_locator": {
+        "file": "data/train-00013-of-00015.parquet",
+        "row_group": 136,
+        "row_in_group": 718
+      },
+      "turn_index": 1,
+      "value_length": 4,
+      "value_type": "str"
+    },
+    {
+      "audit_rule_attempts_tag_parse": true,
+      "export_rule_renders_tag": false,
+      "field": "function_calls",
+      "ordinal": 177,
+      "role": "user",
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_S2_478855",
+      "source_id_type": "str",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 3,
+        "row_in_group": 15
+      },
+      "turn_index": 1,
+      "value_length": 220,
+      "value_type": "str"
+    },
+    {
+      "audit_rule_attempts_tag_parse": true,
+      "export_rule_renders_tag": false,
+      "field": "function_calls",
+      "ordinal": 196,
+      "role": "user",
+      "source_id": "olmo-toolu-sft-mix-T2-S2-f2-bfclv3-decontaminated_T2_294907",
+      "source_id_type": "str",
+      "source_locator": {
+        "file": "data/train-00014-of-00015.parquet",
+        "row_group": 72,
+        "row_in_group": 726
+      },
+      "turn_index": 1,
+      "value_length": 4,
+      "value_type": "str"
+    }
+  ],
+  "role_field_counts": [
+    {
+      "count": 588,
+      "field": "function_calls",
+      "role": "assistant"
+    },
+    {
+      "count": 200,
+      "field": "functions",
+      "role": "system"
+    },
+    {
+      "count": 3,
+      "field": "function_calls",
+      "role": "user"
+    }
+  ],
+  "schema_version": "dolci_function_call_role_diagnostic_v1",
+  "selected_rows_read": 200
+}

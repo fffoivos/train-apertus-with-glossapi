@@ -1,0 +1,27 @@
+{
+  "absolute_call_cap": 72,
+  "created_at": "2026-09-13T17:36:16+03:00",
+  "hashes": {
+    "inputs.jsonl": "570a53516a57aafeb339ce14faa247aeee0a6481f7d0f2ace4d99a6b500506e4",
+    "manifest.json": "a2f7eb9d147d6c82f422f8df22dd2a1bac653f0ef9ea294840f488684b1bf3fe",
+    "payload_bindings.jsonl": "e6be34a614acb169dd31c0871ef97d13c7633ecccc5b0634a5b40a429968730b",
+    "queue.jsonl": "71ace16b73bda964238150d67254e0d46504d60908c40aeaedd113ccb08bc181",
+    "replacement_delta.jsonl": "d11cc5dc0a5f54310c5dd0b09c134776afb4f9f13fd6e9c305c10fa8c7f703ad",
+    "report.md": "d12626733c820840749084df6de458d381d22ec03b7bb0392a85c20220b88f90",
+    "run_queue.py": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005",
+    "source_read_receipt.jsonl": "8bb32f8285d1e2aa84a3e42cd40926854b90531df486157beb7eb938b7cafbf8",
+    "verification.json": "d0f0b71c6079280a80d2d652e97c9118d81b0e8445eb50852060e17036964aa3"
+  },
+  "max_workers": 8,
+  "model_calls": 0,
+  "primary_jobs": 42,
+  "repair_math5_77_status": "explicitly_excluded_quarantined_by_frozen_13gram_gate",
+  "replacements": {
+    "2670": 2758,
+    "63": 627
+  },
+  "schema_version": "maths_scale_stage1_phaseC_ready_receipt_v1",
+  "selected_train_rows": 14,
+  "status": "ready_for_root_review_not_launched",
+  "verification_ok": true
+}

@@ -1,0 +1,66 @@
+{
+  "job_id": "adapt__fresh_math5_line_7113",
+  "row_id": "fresh_math5_line_7113",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "960c51bf81b9b24a38a9bc617f5ecbfe27d5fe822a01a1e309e1516ceda9992b",
+  "input_record_sha256": "e978348d5f72670cddcf340142608f9e65c880c728003da94eec4a2ed7c36be0",
+  "payload_sha256": "252bf41f369494f2886ccbdd8e02a89097c02f9876ceae9dcf2b69e7acd61f33",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "6cc76d6cdfa6d56515413e05d86546b6787a847983c8056836023cee68ebeb99",
+  "result": {
+    "row_id": "fresh_math5_line_7113",
+    "status": "candidate",
+    "problem_text": "Να βρείτε το σημείο της ευθείας που ορίζεται από\n\\[\\begin{pmatrix} 4 \\\\ 0 \\\\ 1 \\end{pmatrix} + t \\begin{pmatrix} -2 \\\\ 6 \\\\ -3 \\end{pmatrix}\\]\nκαι βρίσκεται πλησιέστερα στο σημείο $(2,3,4)$.",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Find the point on the line defined by",
+        "target_span": "Να βρείτε το σημείο της ευθείας που ορίζεται από",
+        "reason": "Πιστή απόδοση της εντολής και του γεωμετρικού αντικειμένου στα ελληνικά."
+      },
+      {
+        "source_span": "that is closest to the point $(2,3,4).$",
+        "target_span": "και βρίσκεται πλησιέστερα στο σημείο $(2,3,4)$.",
+        "reason": "Φυσική ελληνική διατύπωση που διατηρεί ακριβώς το κριτήριο της ελάχιστης απόστασης."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "(4,0,1)",
+          "role": "σταθερό διάνυσμα θέσης σημείου της ευθείας",
+          "unit": null
+        },
+        {
+          "value": "t",
+          "role": "παράμετρος της ευθείας",
+          "unit": null
+        },
+        {
+          "value": "(-2,6,-3)",
+          "role": "διάνυσμα διεύθυνσης της ευθείας",
+          "unit": null
+        },
+        {
+          "value": "(2,3,4)",
+          "role": "σημείο αναφοράς ως προς το οποίο ελαχιστοποιείται η απόσταση",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Το ζητούμενο σημείο ανήκει στην ευθεία που παραμετροποιείται από το $(4,0,1)+t(-2,6,-3)$.",
+        "Το ζητούμενο σημείο έχει την ελάχιστη απόσταση από το $(2,3,4)$ μεταξύ όλων των σημείων της ευθείας."
+      ],
+      "required_outputs": [
+        "Το σημείο της δοσμένης ευθείας που είναι πλησιέστερο στο $(2,3,4)$."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

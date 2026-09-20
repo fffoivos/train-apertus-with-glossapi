@@ -1,0 +1,73 @@
+{
+  "job_id": "author__scale60_11_playlist_order_false",
+  "row_id": "scale60_11_playlist_order_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "00eaf85578c7fb41c5d274828f4c59e029efdb4a1e26ad49745b20286a1baf8a",
+  "input_record_sha256": "191604a3e50b021795fd926822db985eada9b6c2c58fdb2a16bef9e79f101f2e",
+  "payload_sha256": "81937676b6787acebc339e97696cea069c4a52ab2f6de5f06ea0de5f8f8d1d16",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "3dc604f7aaf1945e9e160550cad863ee3c0f844ab4c6f756ffb23fc01fb12250",
+  "result": {
+    "row_id": "scale60_11_playlist_order_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_11_playlist_order_false.u_context",
+        "role": "user",
+        "content": "Στην τρέχουσα λίστα αναπαραγωγής η σειρά είναι «Αστέρι», «Βροχή», «Κύμα».",
+        "train": false
+      },
+      {
+        "id": "scale60_11_playlist_order_false.a_context",
+        "role": "assistant",
+        "content": "Βλέπω αυτή τη σειρά των τριών κομματιών στο πρόχειρο.",
+        "train": false
+      },
+      {
+        "id": "scale60_11_playlist_order_false.u_decision",
+        "role": "user",
+        "content": "Στην τρέχουσα λίστα τελευταίο είναι το κομμάτι «Βροχή». Μετέφερέ το τώρα στην αρχή.",
+        "train": false
+      },
+      {
+        "id": "scale60_11_playlist_order_false.a_target",
+        "role": "assistant",
+        "content": "Στην τρέχουσα λίστα τελευταίο είναι το «Κύμα», όχι το «Βροχή». Μετέφερα όμως το «Βροχή» στην αρχή: «Βροχή», «Αστέρι», «Κύμα».",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_11_playlist_order_false.u_decision",
+        "claim": "Στην τρέχουσα λίστα τελευταίο είναι το κομμάτι «Βροχή».",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_11_playlist_order_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα τον ψευδή ισχυρισμό.",
+          "Να εφαρμόσει την έγκυρη τρέχουσα εντολή στη λίστα αναπαραγωγής.",
+          "Να δηλώσει συνοπτικά τη νέα σειρά."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "tracks",
+        "before_json": "[\"Αστέρι\",\"Βροχή\",\"Κύμα\"]",
+        "after_json": "[\"Βροχή\",\"Αστέρι\",\"Κύμα\"]",
+        "evidence_ids": [
+          "scale60_11_playlist_order_false.u_context",
+          "scale60_11_playlist_order_false.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

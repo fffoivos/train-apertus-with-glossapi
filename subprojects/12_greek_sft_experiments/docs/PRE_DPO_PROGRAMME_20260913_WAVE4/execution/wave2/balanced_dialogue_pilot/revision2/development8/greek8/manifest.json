@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "status": "prepared_pending_independent_two_delta_review",
+  "counts": {
+    "primary_calls": 8,
+    "retry_cap": 2,
+    "absolute_call_cap": 10
+  },
+  "cumulative_budget": {
+    "dialogue_calls_before": 76,
+    "max_after": 86,
+    "globalcap": 118,
+    "development_package_calls_before": 8,
+    "development_package_max_after": 18,
+    "development_package_cap": 20
+  },
+  "candidate_sha256": "b0efd01053ec17cf273e78ddc42e9e727180827ef10ff7bf8eb0982f5e3af89a",
+  "artifact_sha256": {
+    "inputs.jsonl": "393e6a6d06f8e398ce9c253880d167686b6d346647df7e53150f2fd78f116765",
+    "queue.jsonl": "69f063ec1ff3c669454b5dd30494e0da0b603dc3d65fea4551228fdf03c5fd32",
+    "run_queue.py": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005",
+    "schemas/greek_correction.schema.json": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+    "prompts/greek_correction.txt": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_07_rehearsal_sheet_false",
+  "row_id": "scale60_07_rehearsal_sheet_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "3783326ac8bb1c0d8fac38834e4596e58108536738921509aeb6fb932f22c5ec",
+  "input_record_sha256": "35bbd361e6950ac731b6884481024c18aad61b0434d663b15ce8c1dc128bd0c6",
+  "payload_sha256": "8e3a6ee0d32ce6b1751b38a93dcee1f5beb8b2878d7bd325a2c86e254cf8f7b0",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "0fd68f7ff92977ae17d82b9ff372566f96b524af1b7ff2dc8d79cd24d5813d62",
+  "result": {
+    "row_id": "scale60_07_rehearsal_sheet_false",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_07_rehearsal_sheet_false.u_context",
+        "role": "user",
+        "content": "Στο τρέχον φύλλο ροής, πρώτο είναι το «Θάλασσα», το σόλο το έχει η Μαρία και το διάλειμμα είναι 10 λεπτά. Τραγούδι λήξης δεν έχει καταγραφεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_false.a_context",
+        "role": "assistant",
+        "content": "Έχω μόνο την τρέχουσα εκδοχή του φύλλου ροής, όχι τις παλιότερες σημειώσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_false.u_decision",
+        "role": "user",
+        "content": "Στο τρέχον φύλλο το σόλο το έχει ο Νίκος. Δώσ' το τώρα στον Νίκο.",
+        "train": false
+      },
+      {
+        "id": "scale60_07_rehearsal_sheet_false.a_target",
+        "role": "assistant",
+        "content": "Στο φύλλο ροής το σόλο το είχε η Μαρία. Τώρα το έδωσα στον Νίκο.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

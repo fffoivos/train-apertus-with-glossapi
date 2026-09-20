@@ -1,0 +1,51 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_1092_4",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The before and after records are identical and match the actual training messages. The solution correctly ignores the irrelevant sandwich price, computes ΕΚΠ(12, 18) = 36, and adds 36 minutes to 10:00 to obtain 10:36.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_550",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "issue",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "issue",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "after/derivation",
+          "severity": "minor",
+          "quote": "Με πέντε ψηφία, το μικρότερο δυνατό άθροισμα είναι: 5 · 2 = 10",
+          "explanation": "The solution starts with five digits without explicitly proving that five is the maximum possible digit count. It should state that six digits would have sum at least 6·2 = 12 > 11, while a five-digit construction is possible. The stated answer remains correct.",
+          "suggested_action": "Add the missing bound: at most five digits are possible because six digits have minimum sum 12; five digits are preferable to any shorter number."
+        },
+        {
+          "dimension": "after/completeness",
+          "severity": "minor",
+          "quote": "Για άθροισμα 11, ένα ψηφίο πρέπει να είναι 3 και τα άλλα τέσσερα να είναι 2.",
+          "explanation": "This correctly characterizes the five-digit candidates, but the argument does not expressly compare them with all shorter admissible numbers. Since every five-digit positive integer exceeds every number with fewer digits, 32222 is indeed globally maximal.",
+          "suggested_action": "Explicitly note that any five-digit candidate is larger than every admissible number with fewer digits before maximizing the digit order."
+        }
+      ],
+      "provenance_note": "The Greek problem faithfully preserves the English source and its mathematical objective. Before and after are identical and match the actual training messages, so the proof gap is inherited rather than editor-introduced. Independent verification confirms that 32222 has digit sum 11 and is the largest admissible number.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "repair_solution"
+    }
+  ]
+}

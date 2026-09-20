@@ -1,0 +1,19 @@
+{
+  "model": {"repo_id":"ilsp/Llama-Krikri-8B-Instruct","revision":"06d813157ba5f19deb17d70c3862ce64035431ec"},
+  "artifacts": [
+    {"endpoint":"ILSP IFEval Greek + MGSM Greek","path":"results/peer_krikri/ilsp/.../results_2026-09-04T12-21-32.714904.json","sha256":"162d29765e7392296275e901ed80635d2dc3e7a8ed467e7f2e3d07bcfa3e6c0f","counts":{"ifeval":541,"mgsm":250},"scores":{"ifeval_prompt_strict":0.6136783734,"ifeval_instruction_strict":0.7230215827,"mgsm_exact_match":0.676}},
+    {"endpoint":"Native GreekMMLU","path":"results/greekmmlu/peer_krikri_native_mcq_headline.json","sha256":"ab7040e0117e701d74b48af669b440176534621bf32313f274b65b0d70f61313","counts":{"full":16632,"clean":16159},"scores":{"full_accuracy":0.5200817701,"clean_accuracy":0.5197}},
+    {"endpoint":"MATH-500 Greek","path":"results/peers_20260913/bench_krikri/math500_el_score.json","sha256":"6aad86d13149f97358bc6aab29677f6b860d1348d2d0757bf16575b1cbfe897f","count":500,"score":{"equiv500_accuracy":0.322,"truncated":0}},
+    {"endpoint":"MATH-500 English","path":"results/peers_20260913/bench_krikri/math500_en_score.json","sha256":"6f7bfae176915e4edadfc6af9d7f64dab7d9a19b25e25f4c9e8bc0138594daad","count":500,"score":{"equiv500_accuracy":0.312,"truncated":2}},
+    {"endpoint":"IFBench Greek","path":"results/peers_20260913/bench_krikri/ifbench_el_score.jsonl","sha256":"bc5fd936333435d315ca087388ddc323482d86284388c427cd45ab763d06f8d6","count":300,"score":{"prompt_strict":0.0866666667,"prompt_loose":0.1,"instruction_strict":0.0997067449,"instruction_loose":0.1143695015}},
+    {"endpoint":"IFBench English","path":"results/peers_20260913/bench_krikri/ifbench_en_score.jsonl","sha256":"dc19365a85cb2c6ace047208f8a5ea85698228ecdcb0110fb086c441799c616d","count":300,"score":{"prompt_strict":0.1966666667,"prompt_loose":0.26,"instruction_strict":0.219941349,"instruction_loose":0.2903225806}},
+    {"endpoint":"XSTest Greek judged","path":"results/peers_20260913/bench_krikri/xstest_el_judged_sol.jsonl","sha256":"602f3b135f583706ea8c2067385ae6984fcb25f98ddeaee19dfcf29c86ab0924","count":450},
+    {"endpoint":"MultiChallenge Greek judged","path":"results/peers_20260913/bench_krikri/multichallenge_el_judged_sol.jsonl","sha256":"01f8e29af7a13612fce85635100d1c2c04c4ff6f9d4e452dcc180e82ce50bb96","count":262},
+    {"endpoint":"Mixed-profile dialogue","path":"results/peers_20260913/r_krikri/krikri_summary.json","sha256":"46215e985a695cefb67973d2bc4cb7577bb2f9603e1deb26ec090022932c5161","counts":{"dialogues":60,"turns":808}}
+  ],
+  "limitations": [
+    "English XSTest and MultiChallenge generations exist but have no corresponding judged artifact.",
+    "IFBench Greek words-family checker validation remains open; do not promote the aggregate to a final claim yet.",
+    "Native GreekMMLU uses a local protocol whose 52.01% result has not been reconciled with the 66.47% published result."
+  ]
+}

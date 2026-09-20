@@ -1,0 +1,182 @@
+{
+  "status": "PASS",
+  "strict_parity_probes": 35,
+  "historical_scores_modified": false,
+  "results": [
+    {
+      "name": "alphabet_positive",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "vowel_positive",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "consonants_positive",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "prime_positive",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "verb_positive",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "repeats_positive",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "syllables_positive",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "last_first_positive",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "paragraph_positive",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "no_consecutive_positive",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "position_positive",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "alphabet_negative",
+      "strict": false,
+      "loose": false
+    },
+    {
+      "name": "consonants_negative",
+      "strict": false,
+      "loose": false
+    },
+    {
+      "name": "prime_negative",
+      "strict": false,
+      "loose": false
+    },
+    {
+      "name": "verb_negative",
+      "strict": false,
+      "loose": false
+    },
+    {
+      "name": "repeats_negative",
+      "strict": false,
+      "loose": false
+    },
+    {
+      "name": "syllables_negative",
+      "strict": false,
+      "loose": false
+    },
+    {
+      "name": "last_first_negative",
+      "strict": false,
+      "loose": false
+    },
+    {
+      "name": "paragraph_negative",
+      "strict": false,
+      "loose": false
+    },
+    {
+      "name": "no_consecutive_negative",
+      "strict": false,
+      "loose": false
+    },
+    {
+      "name": "empty_consonants",
+      "strict": false,
+      "loose": false
+    },
+    {
+      "name": "empty_prime",
+      "strict": false,
+      "loose": false
+    },
+    {
+      "name": "empty_syllables",
+      "strict": false,
+      "loose": false
+    },
+    {
+      "name": "empty_last_first",
+      "strict": false,
+      "loose": false
+    },
+    {
+      "name": "empty_paragraph",
+      "strict": false,
+      "loose": false
+    },
+    {
+      "name": "empty_no_consecutive",
+      "strict": false,
+      "loose": false
+    },
+    {
+      "name": "latin_vowels_protocol",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "digits_as_words_protocol",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "slash_word_boundary_protocol",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "clitic_first_verb_phrase_protocol",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "interjection_is_not_verb",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "echo_verb_positive_regression",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "echo_noun_ambiguity",
+      "strict": true,
+      "loose": true
+    },
+    {
+      "name": "hyphen_letter_count_protocol",
+      "strict": false,
+      "loose": false
+    },
+    {
+      "name": "punctuation_only_protocol",
+      "strict": true,
+      "loose": true
+    }
+  ]
+}

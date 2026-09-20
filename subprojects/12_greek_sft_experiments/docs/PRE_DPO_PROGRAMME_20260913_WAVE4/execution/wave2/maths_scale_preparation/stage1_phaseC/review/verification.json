@@ -1,0 +1,41 @@
+{
+  "arithmetic_checks": {
+    "alternating_sum": true,
+    "calculator_parity": true,
+    "circle_radical_axis_slope": true,
+    "cosine": true,
+    "distance": true,
+    "frood_boundary": true,
+    "gcd_three": true,
+    "inverse_proportion": true,
+    "parallelogram_ratio": true,
+    "powers_11_minimality": true,
+    "similar_triangle": true,
+    "three_dice_probability": true,
+    "two_dice_probability": true
+  },
+  "checks": {
+    "all14_full_source_adaptation_primary_blind_reference_read": true,
+    "all14_mathematically_correct_complete": true,
+    "all14_source_family_gates_preserved": true,
+    "all14_teaching_preserved": true,
+    "blind_and_reference_absent_from_greek_payloads": true,
+    "development_final_content_absent": true,
+    "generic_runner_control_character_rejection_not_assumed": true,
+    "greek_queue_train_only": true,
+    "no_corpus_mutation": true,
+    "no_model_calls": true,
+    "one_primary_control_character_found_and_repaired_in_candidate": true,
+    "repaired_candidate_control_scan_clean": true
+  },
+  "counts": {
+    "greek_jobs": 14,
+    "hold": 0,
+    "keep": 13,
+    "regenerate": 0,
+    "repair": 1,
+    "rows": 14
+  },
+  "schema_version": "maths_phaseC14_independent_review_verification_v1",
+  "verified_at": "2026-09-13T17:51:27+03:00"
+}

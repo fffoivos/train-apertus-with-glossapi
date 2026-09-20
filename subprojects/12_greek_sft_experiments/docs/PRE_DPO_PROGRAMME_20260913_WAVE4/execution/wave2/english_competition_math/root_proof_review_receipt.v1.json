@@ -1,0 +1,32 @@
+{
+  "inputs": {
+    "proof_review_queue.v1.jsonl": "a6b3b1831d6fc9611da703639fb242a47604c0e4b70e2e83929ce560aae48964",
+    "root_proof_review_v1.json": "62539d886728d88652aca7c843aa5fbdb94a214a45a92c79ce175d572f30b8a1"
+  },
+  "nonselected_rows": 17,
+  "output": {
+    "root_selected_sound.v1.jsonl": "e0c8f5f2176a69adf646d98031ccc79f15c4e77feffcb78e34de03f9a25fdc97"
+  },
+  "reason_classes": {
+    "duplicate_of_repair_family": 1,
+    "reject_contaminated": 1,
+    "reject_invalid": 4,
+    "repair_required": 6,
+    "sound_duplicate": 4,
+    "sound_duplicate_with_notation_defect": 1
+  },
+  "remaining_gates": [
+    "independent proof review of all root selections and rejected/repair dispositions",
+    "repair or hold the eight unselected families without expanding the source",
+    "Greek adaptation decision and review for selected competition rows",
+    "actual tokenizer length and target-mask checks",
+    "equal-supervised-token arm assembly and full decontamination"
+  ],
+  "reviewed_families": 35,
+  "reviewed_rows": 44,
+  "root_selected_families": 27,
+  "root_selected_rows": 27,
+  "schema": "openmath_root_proof_review_receipt_v1",
+  "status": "root_review_complete_independent_review_pending",
+  "training_eligible": false
+}

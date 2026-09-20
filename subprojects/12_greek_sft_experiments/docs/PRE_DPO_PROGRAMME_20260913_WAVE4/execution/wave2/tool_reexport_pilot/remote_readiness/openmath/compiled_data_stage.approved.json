@@ -1,0 +1,464 @@
+{
+  "batches": [
+    {
+      "batch_id": "w01-cpu-debug",
+      "resource_profile_id": "cpu-debug",
+      "task_ids": [
+        "intake-openmath-original"
+      ],
+      "wave": 1
+    }
+  ],
+  "code_bundle": {
+    "files": [
+      {
+        "bytes": 6903,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/AGENTS.md",
+        "relative_path": "AGENTS.md",
+        "sha256": "8c0fca4e0adf0147e408f2bb25a5dba21dcaa133b96bb8a256a53e19a56b95a4"
+      },
+      {
+        "bytes": 2269,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/bin/apertus-campaign",
+        "relative_path": "bin/apertus-campaign",
+        "sha256": "528126f742ae1b5a1aa0bdf09c0e992d4197717ae97042908c81e38507788867"
+      },
+      {
+        "bytes": 1779,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/bin/apertus-campaign-uenv-exec",
+        "relative_path": "bin/apertus-campaign-uenv-exec",
+        "sha256": "82dfce9f051723b6cc4f6732f3c032ce7f6c706be93c369893656166d27a06da"
+      },
+      {
+        "bytes": 1499,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/pyproject.toml",
+        "relative_path": "pyproject.toml",
+        "sha256": "a5f9cc208d2f69f2dea1c82737c569b5a8bf821dff59e68e7047c5a0eccce4ab"
+      },
+      {
+        "bytes": 887,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/schemas/campaign-v1.schema.json",
+        "relative_path": "schemas/campaign-v1.schema.json",
+        "sha256": "a94034efbb493ee1dd3d5abb38133ce311b9a1f769fa61724c2ec9ddc340ed9a"
+      },
+      {
+        "bytes": 8830,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/schemas/campaign-v2.schema.json",
+        "relative_path": "schemas/campaign-v2.schema.json",
+        "sha256": "6deb7bb8c59194620a6d6df9c78a3ceb24f546fefbcc65135348dcf6950eb9e0"
+      },
+      {
+        "bytes": 6240,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/schemas/campaign-v3.schema.json",
+        "relative_path": "schemas/campaign-v3.schema.json",
+        "sha256": "a4ec4fc20b80bcf9f159b29edeca816d50ba743850e40e9214fbbd5adfd617c4"
+      },
+      {
+        "bytes": 2806,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/schemas/campaign-watcher-v1.schema.json",
+        "relative_path": "schemas/campaign-watcher-v1.schema.json",
+        "sha256": "b65d4513b1947a30acf6afb01b2305ece1799f2b84d971f61a0ecef92dd6d41a"
+      },
+      {
+        "bytes": 7941,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/schemas/cscs-skill-guidance-v1.schema.json",
+        "relative_path": "schemas/cscs-skill-guidance-v1.schema.json",
+        "sha256": "51f12802bb73fb1f5fd25dcf58bc5ee86798afcf8882ddd60aa75089634d7517"
+      },
+      {
+        "bytes": 6864,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/schemas/data-stage-v1.schema.json",
+        "relative_path": "schemas/data-stage-v1.schema.json",
+        "sha256": "97898b54552408380bfad82234598dcfa5bfdaa0a20fe0d9a166d209c68d4d3b"
+      },
+      {
+        "bytes": 444,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/schemas/evaluation-plan-v1.schema.json",
+        "relative_path": "schemas/evaluation-plan-v1.schema.json",
+        "sha256": "186f979a0b5394d40509be093537fb0369f7b970b1078bba47b73156b200c893"
+      },
+      {
+        "bytes": 2807,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/schemas/evaluation-plan-v2.schema.json",
+        "relative_path": "schemas/evaluation-plan-v2.schema.json",
+        "sha256": "040b51de87e32ac8066086985dbb5bce0f3f2c6d92739b4ef6e18fdf6bb5cbe2"
+      },
+      {
+        "bytes": 594,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/schemas/runtime-profile-v1.schema.json",
+        "relative_path": "schemas/runtime-profile-v1.schema.json",
+        "sha256": "72abd9a833eeb345502dd2939d6325049cd456c0a9144905cdbe531c13d75334"
+      },
+      {
+        "bytes": 4307,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/schemas/runtime-profile-v2.schema.json",
+        "relative_path": "schemas/runtime-profile-v2.schema.json",
+        "sha256": "1312c64baa73d47739353c31bf7d263cca246eb875eed78511cba521e3029e86"
+      },
+      {
+        "bytes": 3189,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/analyze_checkpoint_pause.py",
+        "relative_path": "scripts/analyze_checkpoint_pause.py",
+        "sha256": "54de7bfef7a96962267e3cdfa4af145c6246a9b0bf5076c7aa26bb3d72e90ae4"
+      },
+      {
+        "bytes": 2135,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/capture_runtime_versions.py",
+        "relative_path": "scripts/capture_runtime_versions.py",
+        "sha256": "9fff2c58017e0937b6f89c83f25ad3b08136166517b4a62fbb29b5ce9b59d53d"
+      },
+      {
+        "bytes": 1980,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/check_runtime_capabilities.py",
+        "relative_path": "scripts/check_runtime_capabilities.py",
+        "sha256": "61cfe06a6177443fddbbd29d288e0fa5705d2edd17ad8c687782909bcbd9334f"
+      },
+      {
+        "bytes": 1334,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/check_torch_dist_metadata_compat.py",
+        "relative_path": "scripts/check_torch_dist_metadata_compat.py",
+        "sha256": "8c9d540a80d2a24bd69032d03689d4dca9fea093966d58d8949928bcab9d913b"
+      },
+      {
+        "bytes": 5487,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/discover_checkpoint_reference.py",
+        "relative_path": "scripts/discover_checkpoint_reference.py",
+        "sha256": "ca310d03197fd60a1db48048348462b47278f092603fc3b140e6709049f10ca6"
+      },
+      {
+        "bytes": 2013,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/forecast.py",
+        "relative_path": "scripts/forecast.py",
+        "sha256": "ef08ede3909cd04d7df653072cd3642d2810ae19aa46ee7b2ea30aaef40ded44"
+      },
+      {
+        "bytes": 4813,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/forecast_critical_path.py",
+        "relative_path": "scripts/forecast_critical_path.py",
+        "sha256": "e0250589f153c748233f8a2e390740c44225c0db4c3f811e4dffd03ef2028747"
+      },
+      {
+        "bytes": 7593,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/gpu_smoke.py",
+        "relative_path": "scripts/gpu_smoke.py",
+        "sha256": "a1659e3a5c37f1f668163cd15790d82395c8f27f0b885b193036279bbc82b3fa"
+      },
+      {
+        "bytes": 10949,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/install_skills.py",
+        "relative_path": "scripts/install_skills.py",
+        "sha256": "224b34817f2b0ccb92efa628a9994ba4d59c4e4235e7f2f48a30535a5b9f47c9"
+      },
+      {
+        "bytes": 13326,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/materialize_intermediate_checkpoint_reference.py",
+        "relative_path": "scripts/materialize_intermediate_checkpoint_reference.py",
+        "sha256": "fe197f78d9efd500eff9b6d0da2634d25f2a60810ab2b69963df54c3e1305ca7"
+      },
+      {
+        "bytes": 2206,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/parse_megatron_log.py",
+        "relative_path": "scripts/parse_megatron_log.py",
+        "sha256": "39783924bf86d8856b8a54004246740e948830412fb835a4e43d6dd0d9a6d34f"
+      },
+      {
+        "bytes": 40907,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/plan_experiment.py",
+        "relative_path": "scripts/plan_experiment.py",
+        "sha256": "eee777c26349e25d105f9d44ca78b23629712c62d7888a8143a0407b0d6e3637"
+      },
+      {
+        "bytes": 16071,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/preflight.py",
+        "relative_path": "scripts/preflight.py",
+        "sha256": "63ab3e28e2e3e5d6ff0141e03338d7d4b4783195ece137ef3048c6b299bc78af"
+      },
+      {
+        "bytes": 16510,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/preflight_evaluator.py",
+        "relative_path": "scripts/preflight_evaluator.py",
+        "sha256": "bc24ae97314f7f48893aafc2bd6c5aa451b5f42c07fcef2270f2f4d1f54f6ee9"
+      },
+      {
+        "bytes": 545,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/probe_clariden_capacity.sh",
+        "relative_path": "scripts/probe_clariden_capacity.sh",
+        "sha256": "871d06fa790aebcf3e35de6a9de7fe7b88b886b4fedcb5fd3908d056d2c34a87"
+      },
+      {
+        "bytes": 37876,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/recover_terminal_checkpoint.py",
+        "relative_path": "scripts/recover_terminal_checkpoint.py",
+        "sha256": "008057cd9ec486a959240795599ae550dbdf1b9a952c251a2999c9cee8154e31"
+      },
+      {
+        "bytes": 41243,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/skill_guidance.py",
+        "relative_path": "scripts/skill_guidance.py",
+        "sha256": "a1c27a3e49676b6a5b7c62e3b809d30544142c4cdeb481f0ff5b04aab6e1d96b"
+      },
+      {
+        "bytes": 5709,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/scripts/verify_replay_xfer_runtime.py",
+        "relative_path": "scripts/verify_replay_xfer_runtime.py",
+        "sha256": "92bab2cc114a2fbe7d9b901381be471cd8d9a9500b4723c9432cee36969526bd"
+      },
+      {
+        "bytes": 1522,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/slurm/campaign/control.sbatch",
+        "relative_path": "slurm/campaign/control.sbatch",
+        "sha256": "643750e074a036648c797123ea37946bc3bdcaf3da9513282a69b734411be904"
+      },
+      {
+        "bytes": 1944,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/slurm/campaign/holder.sbatch",
+        "relative_path": "slurm/campaign/holder.sbatch",
+        "sha256": "14995caaa2bf3240d9e6b0a4e45086067cd0a91fb574127c51abea8291804d76"
+      },
+      {
+        "bytes": 1773,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/slurm/campaign/qualify_and_train.sbatch",
+        "relative_path": "slurm/campaign/qualify_and_train.sbatch",
+        "sha256": "33daa2ddeb9a717c75df1c0683da26795a7a136b0a184068bfc06054859979e8"
+      },
+      {
+        "bytes": 1933,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/slurm/campaign/train.sbatch",
+        "relative_path": "slurm/campaign/train.sbatch",
+        "sha256": "12a54eada6dc26e4f5eb1357068cb2f616b9969ee20a6d5f03ae1b46fc30c62c"
+      },
+      {
+        "bytes": 2359,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/slurm/checkpoint/promote_model_repository_xfer.sbatch",
+        "relative_path": "slurm/checkpoint/promote_model_repository_xfer.sbatch",
+        "sha256": "f3c6f165019ab4f13b4bdcbdf7f99e64ccdb4f2415c917c39087eb60ddba7d20"
+      },
+      {
+        "bytes": 2303,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/slurm/checkpoint/publish_model_checkpoint_xfer.sbatch",
+        "relative_path": "slurm/checkpoint/publish_model_checkpoint_xfer.sbatch",
+        "sha256": "715ab0ce33019c91419a61b497dad939a18f31150a1761b540a641a419f31084"
+      },
+      {
+        "bytes": 1207,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/slurm/data_stage/worker.sbatch",
+        "relative_path": "slurm/data_stage/worker.sbatch",
+        "sha256": "585d3eb4fcb21c6890f3ea0cd923b841833d917199c66c1e1d2a764320986b28"
+      },
+      {
+        "bytes": 98,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_campaign/__init__.py",
+        "relative_path": "src/apertus_cscs_campaign/__init__.py",
+        "sha256": "73d0c6318d121c73049c887e13a4c566f55c04bc22b0667d0664f99c2ba28ce6"
+      },
+      {
+        "bytes": 48,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_campaign/__main__.py",
+        "relative_path": "src/apertus_cscs_campaign/__main__.py",
+        "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+      },
+      {
+        "bytes": 16023,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_campaign/bundle.py",
+        "relative_path": "src/apertus_cscs_campaign/bundle.py",
+        "sha256": "0f8eae574d189be6cc417a09b48ac198a6832d24cce02b95a823160975f028b6"
+      },
+      {
+        "bytes": 29061,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_campaign/cli.py",
+        "relative_path": "src/apertus_cscs_campaign/cli.py",
+        "sha256": "2822b79f742685e7324b1a1a3868be13509ed9b101a86b94455d19df2eff9bc8"
+      },
+      {
+        "bytes": 3068,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_campaign/completion_adapter.py",
+        "relative_path": "src/apertus_cscs_campaign/completion_adapter.py",
+        "sha256": "1efe8d646f4ecb0a549b00ceab0ddcccd639d5e2565f0012e84f1691dac2eedc"
+      },
+      {
+        "bytes": 58636,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_campaign/contracts.py",
+        "relative_path": "src/apertus_cscs_campaign/contracts.py",
+        "sha256": "ff66cecadc162e513abd43f3bd3f054c6892db2fa630f87b7fb93e1c4ffe1a2c"
+      },
+      {
+        "bytes": 12347,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_campaign/data_manifest.py",
+        "relative_path": "src/apertus_cscs_campaign/data_manifest.py",
+        "sha256": "b00329a0dd4a06f4a2aa65294847858aa1f94962a2caa809b3fcb64b36a2a25d"
+      },
+      {
+        "bytes": 153495,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_campaign/engine.py",
+        "relative_path": "src/apertus_cscs_campaign/engine.py",
+        "sha256": "85533445ca1813c9bf9d6b2383d0da8daaf5a149da9b06b68d00193a8e6dfee2"
+      },
+      {
+        "bytes": 7662,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_campaign/gates.py",
+        "relative_path": "src/apertus_cscs_campaign/gates.py",
+        "sha256": "247f0ec4caf1b33a62c60dd2a918986b02a355b5837d57245927e77f8814f42b"
+      },
+      {
+        "bytes": 7148,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_campaign/inventory.py",
+        "relative_path": "src/apertus_cscs_campaign/inventory.py",
+        "sha256": "52b4527b4c3715428e66553510d5d812b9a4f68070579495029cf5f8b89e6102"
+      },
+      {
+        "bytes": 6263,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_campaign/readiness.py",
+        "relative_path": "src/apertus_cscs_campaign/readiness.py",
+        "sha256": "c75c550cb0a435414965fec095401913cfa3be65bd3e7ac61b3d71db868c2222"
+      },
+      {
+        "bytes": 13326,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_campaign/receipts.py",
+        "relative_path": "src/apertus_cscs_campaign/receipts.py",
+        "sha256": "9f43b820652df2be80bff7b3407b98846e53dde1f4c651c5e7cdb4128859c4eb"
+      },
+      {
+        "bytes": 42072,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_campaign/slurm.py",
+        "relative_path": "src/apertus_cscs_campaign/slurm.py",
+        "sha256": "bf49e78dc736e74da9dc59bf49920edbf4cf6ffa84f30172c5ffad4e654c4be8"
+      },
+      {
+        "bytes": 5836,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_campaign/smoke_workload.py",
+        "relative_path": "src/apertus_cscs_campaign/smoke_workload.py",
+        "sha256": "a941fdd8e4b67bc6273bf2bc0cbbea44692d8cc78be404de90ae4c0fafa0a349"
+      },
+      {
+        "bytes": 7058,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_campaign/state.py",
+        "relative_path": "src/apertus_cscs_campaign/state.py",
+        "sha256": "a9fbb9880f90228070abde4c011ddc895d9dd9e29224e3f86400bdc3b70f0a97"
+      },
+      {
+        "bytes": 77,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_readiness/__init__.py",
+        "relative_path": "src/apertus_cscs_readiness/__init__.py",
+        "sha256": "0cb90f2e4d1a225f89acb9ca9228fe80f2dc1bb7455898c5be3cb455928875d7"
+      },
+      {
+        "bytes": 45182,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_readiness/checkpoint.py",
+        "relative_path": "src/apertus_cscs_readiness/checkpoint.py",
+        "sha256": "8c173726b51b0e31fd50be4ef13fc85822990ffc8815e7806fbd8227fe388775"
+      },
+      {
+        "bytes": 35055,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_readiness/data_stage.py",
+        "relative_path": "src/apertus_cscs_readiness/data_stage.py",
+        "sha256": "f414c16fda11fdf6339acd8648dfb7b7ab1a1dbb475c076258542f936c003bd5"
+      },
+      {
+        "bytes": 24465,
+        "path": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200/src/apertus_cscs_readiness/watcher.py",
+        "relative_path": "src/apertus_cscs_readiness/watcher.py",
+        "sha256": "f6bcc22f04a0d23f86a81a71c4c38e756b514325f4fcd16de608f9ca725d2221"
+      }
+    ],
+    "guidance": {
+      "catalog_revision": "2026-08-15.3",
+      "projection_sha256": "8075bf73339b32f95b0622824a17a28357df6fe4c491632fcb4d12519f097a99",
+      "relative_path": "guidance/cscs-skills.json"
+    },
+    "root": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200",
+    "root_entries": [
+      ".github",
+      ".gitignore",
+      "AGENTS.md",
+      "CLAUDE.md",
+      "LICENSE",
+      "README.md",
+      "bin",
+      "compat",
+      "configs",
+      "docs",
+      "evidence",
+      "examples",
+      "guidance",
+      "kernels",
+      "pyproject.toml",
+      "schemas",
+      "scripts",
+      "skills",
+      "slurm",
+      "src",
+      "templates",
+      "tests",
+      "uv.lock"
+    ],
+    "schema_version": "apertus_campaign_code_bundle_v2",
+    "tree_sha256": "6a444277d60a09b0d7e517d7973c7b6204a76513cf80c38b22a650fad095a1d7"
+  },
+  "contract": {
+    "approval": {
+      "allow_preparation_submission": true,
+      "approved_at": "2026-09-13T14:43:41Z",
+      "approved_by": "root-review-2026-09-13",
+      "scope_sha256": "7f39b5521321664086e43c381245367b70788de81044a8b78337753d6f1fc837"
+    },
+    "code_root": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200",
+    "execution_target": {
+      "kind": "clariden",
+      "name": "clariden"
+    },
+    "live_cluster_receipt": {
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/live_cluster_receipt.json"
+    },
+    "resource_profiles": {
+      "cpu-debug": {
+        "account": "a0140",
+        "cpus_per_task": 8,
+        "gpus_per_node": 0,
+        "max_array_parallel": 1,
+        "memory_mb": 64000,
+        "nodes": 1,
+        "partition": "debug",
+        "resource_class": "debug",
+        "time_limit_seconds": 1800
+      }
+    },
+    "run_root": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/run",
+    "schema_version": "apertus_data_stage_v1",
+    "stage_id": "openmath-original-pilot",
+    "tasks": [
+      {
+        "argv": [
+          "uenv",
+          "run",
+          "--view=default",
+          "pytorch/v2.9.1:v2",
+          "--",
+          "/iopsstor/scratch/cscs/fffoivos/venvs/sft5/bin/python",
+          "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/code/pilot_intake.py",
+          "--contract",
+          "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/code/pilot_contract.json",
+          "--expected-contract-sha256",
+          "1cf73a4038a0ca55b8b5a9b2ea69686edb775e9404f4defc06dfbf66f72031ed"
+        ],
+        "depends_on": [],
+        "expected_receipt": {
+          "accepted_status": [
+            "passed"
+          ],
+          "path": "receipts/openmath.json",
+          "schema_version": "openmath_original_pilot_v1"
+        },
+        "id": "intake-openmath-original",
+        "max_attempts": 1,
+        "resource_profile_id": "cpu-debug",
+        "stage": "validate"
+      }
+    ]
+  },
+  "contract_digest": "462a925790a5dbd76d0b4a627ea90e8ebe69c92f480a7141ac98fa10257b9c1d",
+  "input": {
+    "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/data_stage_contract.approved.json"
+  },
+  "schema_version": "apertus_compiled_data_stage_v1",
+  "stage_id": "openmath-original-pilot"
+}

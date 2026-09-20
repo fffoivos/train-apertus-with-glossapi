@@ -1,0 +1,90 @@
+{
+  "job_id": "semantic_repair_r2_pilot48_01_true",
+  "row_id": "pilot48_01_true",
+  "stage": "dialogue_semantic_repair",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "4d9880c1e47f9b78aecc94067b00714ee5e93b740402569df8f357b49c4a2fbe",
+  "input_record_sha256": "6bdcad88577266a336a5ebfe778fb17b4c02c7eadff98a22d9075f42014000d6",
+  "payload_sha256": "1c666633ed5c9a2570268661a65bf6f7d9c3f6e9bfda91f0be1ffa62878a0cc9",
+  "template_sha256": "d0a0d83e714325427d29fdbe8a76137c7822b0a23962c5ba63940172b716d7cf",
+  "schema_sha256": "595e4ef89653892710759a52853c29920372c5599870931b57c73c8cc2922761",
+  "prompt_sha256": "e059dd357c7c9e9e1091324aa6ea0f227b9967368880bebff0893e34031708a8",
+  "result": {
+    "row_id": "pilot48_01_true",
+    "disposition": "repair_proposed",
+    "findings": [
+      {
+        "domain": "visible_evidence_contract",
+        "exact_span": "Τι έχουμε τώρα στη λίστα αγορών;",
+        "severity": "major",
+        "evidence": [
+          "The authoritative state history appeared only in the subsequent assistant assertion.",
+          "The required user context core must appear verbatim in a user turn before the decision."
+        ],
+        "proposed_action": "Replace the context user message with the required authoritative history verbatim."
+      },
+      {
+        "domain": "decision_surface_contract",
+        "exact_span": "Σωστά είχαμε βάλει πορτοκάλια αντί για μήλα και δύο γάλατα. Μήπως μπορείς να κάνεις τα γάλατα τρία;",
+        "severity": "major",
+        "evidence": [
+          "The frozen core must appear verbatim.",
+          "The original wording replaced the frozen imperative «Κάνε τα γάλατα τρία.» with a question."
+        ],
+        "proposed_action": "Restore the complete frozen core verbatim and place a fact-neutral cooperative cue outside it."
+      }
+    ],
+    "candidate_messages": [
+      {
+        "id": "pilot48_01_true.u_context",
+        "role": "user",
+        "content": "Η αρχική λίστα είχε ένα γάλα, ψωμί και μήλα. Έπειτα τα γάλατα έγιναν δύο και τα μήλα αντικαταστάθηκαν από πορτοκάλια.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_true.a_context",
+        "role": "assistant",
+        "content": "Έχουμε δύο γάλατα, ψωμί και πορτοκάλια.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_true.u_decision",
+        "role": "user",
+        "content": "Σε παρακαλώ. Σωστά είχαμε βάλει πορτοκάλια αντί για μήλα και δύο γάλατα. Κάνε τα γάλατα τρία.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά· η λίστα έχει πλέον τρία γάλατα, ψωμί και πορτοκάλια.",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "pilot48_01_true.u_context",
+        "before": "Τι έχουμε τώρα στη λίστα αγορών;",
+        "after": "Η αρχική λίστα είχε ένα γάλα, ψωμί και μήλα. Έπειτα τα γάλατα έγιναν δύο και τα μήλα αντικαταστάθηκαν από πορτοκάλια.",
+        "reason": "Moves the authoritative history into the required prior user turn and includes required_user_context_core_el verbatim."
+      },
+      {
+        "message_id": "pilot48_01_true.u_decision",
+        "before": "Σωστά είχαμε βάλει πορτοκάλια αντί για μήλα και δύο γάλατα. Μήπως μπορείς να κάνεις τα γάλατα τρία;",
+        "after": "Σε παρακαλώ. Σωστά είχαμε βάλει πορτοκάλια αντί για μήλα και δύο γάλατα. Κάνε τα γάλατα τρία.",
+        "reason": "Restores frozen_core_el verbatim without changing its punctuation or declarative/imperative form; «Σε παρακαλώ.» supplies only the cooperative tone cue and adds no fact, value, referent, or operation."
+      }
+    ],
+    "checks_executed": [
+      "Verified that required_user_context_core_el appears verbatim in the user context turn before the decision.",
+      "Verified that frozen_core_el appears verbatim in the decision user turn.",
+      "Verified that the tone wrapper adds no fact, value, referent, or operation.",
+      "Verified that the assistant target describes only the resulting in-conversation list state.",
+      "Verified preservation of row ID, message IDs, roles, masks, truth category, oracle state, and exactly one train:true assistant target.",
+      "No language-only preferences were used to broaden the repair."
+    ],
+    "checks_needed": [],
+    "unresolved": []
+  }
+}

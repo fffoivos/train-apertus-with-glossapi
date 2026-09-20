@@ -1,0 +1,152 @@
+--- a/data/export_core.py
++++ b/data/export_core.py
+@@ -2,16 +2,28 @@
+ """Export (1) a ground-truth candidate pool and (2) the core annotation subset as jsonl, one row = {source, bucket, id, user, assistant, meta}.
+ Reads evenly spaced parquet shards (source-ordered datasets) and streaming splits. CPU only.
+ Usage: python3 export_core.py <out_dir>"""
+-import json, sys, os, random, time, collections
++import json, sys, os, random, time, collections, re
+ import pyarrow.parquet as pq
+ from huggingface_hub import HfApi, hf_hub_download
+ from datasets import load_dataset
+ 
+ HERE = os.path.dirname(os.path.abspath(__file__))
+ src = open(os.path.join(HERE, 'vantage_scan.py')).read(); exec(src[:src.index('SOURCES = [')])  # text_of, assistant_text, user_text
+-OUT = sys.argv[1]; os.makedirs(OUT, exist_ok=True); random.seed(2026); api = HfApi()
++OUT = sys.argv[1]; random.seed(2026); api = HfApi()
+ ONLY = set(os.environ.get('ONLY', '').split(',')) - {''}  # re-export only these blocks, then rebuild gt_pool
+ THIN = float(os.environ.get('THIN', '0.6'))  # keep probability per matching row; 1.0 takes rows in shard order until the target
++REVISION_FILE = os.environ.get('SOURCE_REVISIONS_FILE')
++if not REVISION_FILE:
++    raise SystemExit('SOURCE_REVISIONS_FILE is required (JSON object: dataset repo -> immutable 40-hex commit)')
++with open(REVISION_FILE, encoding='utf-8') as _rf:
++    SOURCE_REVISIONS = json.load(_rf)
++if not isinstance(SOURCE_REVISIONS, dict):
++    raise SystemExit('SOURCE_REVISIONS_FILE must contain a JSON object')
++def revision_for(repo):
++    revision = SOURCE_REVISIONS.get(repo)
++    if not isinstance(revision, str) or not re.fullmatch(r'[0-9a-f]{40}', revision):
++        raise SystemExit(f'missing immutable 40-hex revision for {repo}')
++    return revision
+ 
+ # block -> (repo, bucket column, wanted bucket values, target rows, shards to read)
+ BLOCKS = {
+@@ -34,7 +46,53 @@
+  'nemotron_chat': ('nvidia/Nemotron-SFT-Instruction-Following-Chat-v3', 'default', 'chat', 150000),
+  'smoltalk2_multilingual': ('HuggingFaceTB/smoltalk2', 'SFT', 'smoltalk_multilingual_8languages_lang_5_no_think', 25000),
+ }
+-def emit(fh, label, bucket, rid, row):
++
++TOOL_FIELDS = ('functions', 'function_calls', 'tool_calls', 'tool_call_id', 'name')
++def _json_text(value):
++    if isinstance(value, str): return value
++    return json.dumps(value, ensure_ascii=False, separators=(',', ':'))
++def _tag(name, value):
++    return f'<{name}>\n{_json_text(value)}\n</{name}>'
++def _export_turn(m):
++    role = m.get('role'); original_content = m.get('content'); c = text_of(original_content)
++    turn = dict(role=role, content=c)
++    for field in TOOL_FIELDS:
++        if field in m: turn[field] = m[field]
++    if original_content is not None and not isinstance(original_content, str):
++        turn['native_content'] = original_content
++    if role in ('tool', 'environment'):
++        result = {'content': original_content}
++        for field in ('tool_call_id', 'name'):
++            if field in m: result[field] = m[field]
++        turn['content'] = _json_text(result)
++    if role == 'system' and m.get('functions'):
++        turn['content'] = (c.rstrip() + '\n' + _tag('functions', m['functions'])).lstrip()
++    rendered_calls = {}
++    if role == 'assistant' and m.get('function_calls'):
++        rendered_calls['function_calls'] = m['function_calls']
++    if role == 'assistant' and m.get('tool_calls'):
++        rendered_calls['tool_calls'] = m['tool_calls']
++    if role == 'assistant' and isinstance(original_content, dict) and original_content.get('blocks'):
++        calls = [b for b in original_content['blocks'] if isinstance(b, dict) and b.get('calls')]
++        if calls:
++            turn['block_calls'] = calls
++            rendered_calls['block_calls'] = calls
++    if rendered_calls:
++        turn['content'] = (c.rstrip() + '\n' + _tag('function_calls', rendered_calls)).lstrip()
++    return turn
++def _source_id(row, fallback):
++    for field in ('id', 'conversation_id'):
++        if field in row and row[field] is not None and row[field] != '': return row[field]
++    return fallback
++def _prepare_output(path):
++    if os.path.exists(path):
++        if os.listdir(path): raise SystemExit(f'output directory must be new or empty: {path}')
++    else: os.makedirs(path)
++def _export_row(label, bucket, rid, u, a, turns, source_revision, source_locator):
++    return dict(source=label, bucket=bucket, id=str(rid), source_id=rid,
++                source_revision=source_revision, source_locator=source_locator,
++                user=u, assistant=a, turns=turns, n_turns=len(turns) or 1)
++def emit(fh, label, bucket, rid, row, source_revision, source_locator):
+     u, a = user_text(row), assistant_text(row)
+     msgs = row.get('messages')
+     if isinstance(msgs, str):
+@@ -43,48 +101,47 @@
+     turns = []
+     if isinstance(msgs, list):
+         for m in msgs:
+-            if not isinstance(m, dict): continue
+-            c = text_of(m.get('content'))
+-            if m.get('role') == 'system' and m.get('functions'): c = (c + '\n<functions> ' + str(m['functions'])[:1500] + ' </functions>').strip()
+-            if m.get('role') == 'assistant' and not c.strip() and m.get('function_calls'): c = 'TOOL_CALLS: ' + str(m['function_calls'])[:1500]
+-            if m.get('role') == 'assistant' and not c.strip() and m.get('tool_calls'): c = 'TOOL_CALLS: ' + json.dumps(m.get('tool_calls'), ensure_ascii=False)[:1500]
+-            if m.get('role') == 'assistant' and isinstance(m.get('content'), dict) and m['content'].get('blocks'):
+-                calls = [b for b in m['content']['blocks'] if isinstance(b, dict) and b.get('calls')]
+-                if calls and not c.strip(): c = 'TOOL_CALLS: ' + json.dumps(calls, ensure_ascii=False)[:1500]
+-            turns.append(dict(role=m.get('role'), content=c))
++            if isinstance(m, dict): turns.append(_export_turn(m))
+     if turns and not next((t['content'] for t in turns if t['role'] == 'user'), '').strip(): return False  # first user prompt missing (Nemotron chat: seed prompts withheld, 41%)
+     if not a.strip(): a = next((t['content'] for t in reversed(turns) if t['role'] == 'assistant' and t['content'].strip()), '')
+     if not u.strip(): u = next((t['content'] for t in turns if t['role'] == 'user' and t['content'].strip()), '')
+     if not a.strip() or not u.strip(): return False
+-    fh.write(json.dumps(dict(source=label, bucket=bucket, id=str(rid), user=u, assistant=a, turns=turns, n_turns=len(turns) or 1), ensure_ascii=False) + '\n'); return True
++    out = _export_row(label, bucket, rid, u, a, turns, source_revision, source_locator)
++    fh.write(json.dumps(out, ensure_ascii=False) + '\n'); return True
+ 
+ # parquet blocks, grouped per repo so each shard is read once
+ by_repo = collections.defaultdict(list)
+ if ONLY: BLOCKS = {k: v for k, v in BLOCKS.items() if k in ONLY}; STREAMS = {k: v for k, v in STREAMS.items() if k in ONLY}
++selected_repos = {spec[0] for spec in BLOCKS.values()} | {spec[0] for spec in STREAMS.values()}
++PINNED_REVISIONS = {repo: revision_for(repo) for repo in sorted(selected_repos)}
++_prepare_output(OUT)
+ for label, (repo, col, vals, target, k) in BLOCKS.items(): by_repo[repo].append((label, col, vals, target, k))
+ counts = collections.Counter(); files_h = {label: open(f'{OUT}/{label}.jsonl', 'w') for label in BLOCKS}
+ for repo, specs in by_repo.items():
+-    files = sorted(f for f in api.list_repo_files(repo, repo_type='dataset') if f.endswith('.parquet') and 'train' in f)
++    revision = PINNED_REVISIONS[repo]
++    files = sorted(f for f in api.list_repo_files(repo, repo_type='dataset', revision=revision) if f.endswith('.parquet') and 'train' in f)
+     k = min(max(s[4] for s in specs), len(files)); pick = sorted(set(files[int(i * (len(files) - 1) / max(1, k - 1))] for i in range(k)))  # evenly spaced over ALL shards
+     print(f'{repo}: {len(files)} files, reading {len(pick)}', flush=True); t0 = time.time()
+     for f in pick:
+         if all(counts[s[0]] >= s[3] for s in specs): break
+-        path = hf_hub_download(repo, f, repo_type='dataset'); pf = pq.ParquetFile(path)
++        path = hf_hub_download(repo, f, repo_type='dataset', revision=revision); pf = pq.ParquetFile(path)
+         for rg in range(pf.num_row_groups):
+-            for row in pf.read_row_group(rg).to_pylist():
++            for row_in_group, row in enumerate(pf.read_row_group(rg).to_pylist()):
+                 for label, col, vals, target, _ in specs:
+                     if counts[label] < target and row.get(col) in vals:
+                         # thin uniformly so the target spreads across shards
+-                        if random.random() < THIN and emit(files_h[label], label, row.get(col), row.get('id') or row.get('conversation_id') or rg, row): counts[label] += 1
++                        locator = dict(file=f, row_group=rg, row_in_group=row_in_group)
++                        if random.random() < THIN and emit(files_h[label], label, row.get(col), _source_id(row, f'{f}:rg{rg}:row{row_in_group}'), row, revision, locator): counts[label] += 1
+         print(f'  {f}: ' + ', '.join(f'{s[0]}={counts[s[0]]}' for s in specs) + f' ({round(time.time()-t0)}s)', flush=True)
+ for fh in files_h.values(): fh.close()
+ for label, (repo, cfg, split, target) in STREAMS.items():
+     t0 = time.time(); n = 0
+     with open(f'{OUT}/{label}.jsonl', 'w') as fh:
+         try:
+-            for i, row in enumerate(load_dataset(repo, cfg, split=split, streaming=True)):
++            revision = PINNED_REVISIONS[repo]
++            for i, row in enumerate(load_dataset(repo, cfg, split=split, streaming=True, revision=revision)):
+                 if n >= target: break
+-                if random.random() < 0.5 and emit(fh, label, split, i, row): n += 1
++                if random.random() < 0.5 and emit(fh, label, split, _source_id(row, i), row, revision, dict(split=split, source_index=i)): n += 1
+         except Exception as e: print(label, 'ERROR', str(e)[:200], flush=True)
+     print(f'{label}: {n} rows in {round(time.time()-t0)}s', flush=True)
+ # ground-truth candidate pool: 30 random rows per block, disjoint ids written to gt_pool.jsonl

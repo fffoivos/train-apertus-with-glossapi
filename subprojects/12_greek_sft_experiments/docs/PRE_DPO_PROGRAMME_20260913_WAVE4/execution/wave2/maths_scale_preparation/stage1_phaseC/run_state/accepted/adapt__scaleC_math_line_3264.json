@@ -1,0 +1,43 @@
+{
+  "job_id": "adapt__scaleC_math_line_3264",
+  "row_id": "scaleC_math_line_3264",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "69f1b797c37f8614f29663077cb4f5cfb431bca213445217b4151d97afc9d123",
+  "input_record_sha256": "7175c7700bc59ceef0c4f91ad0b63192664451d21a021b897fe0bd3f595342c6",
+  "payload_sha256": "9bc6e1406a73a716da50952087345d35e8cc354e5c332da90bb40b419cb40ef1",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "855a50565e8d2b5434a7fac3aa3933b39e679ee42f2120fedcf17866724ccffb",
+  "result": {
+    "row_id": "scaleC_math_line_3264",
+    "status": "candidate",
+    "problem_text": "Να υπολογίσετε το $\\cos 135^\\circ$.",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Compute",
+        "target_span": "Να υπολογίσετε",
+        "reason": "Φυσική απόδοση της προστακτικής στα ελληνικά, με διατήρηση του ίδιου ζητούμενου."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "135",
+          "role": "μέτρο της γωνίας για την οποία ζητείται το συνημίτονο",
+          "unit": "μοίρες"
+        }
+      ],
+      "conditions": [],
+      "required_outputs": [
+        "Η ακριβής τιμή του $\\cos 135^\\circ$."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "job_id": "author__scale60_01_recipe_draft_unresolved",
+  "row_id": "scale60_01_recipe_draft_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "89793b132f8d8dc0550eeea12bf70e8eb1fe56c8c89a3ae049c6eb276dec94e1",
+  "input_record_sha256": "60e6d912358a73c195bd3c01638e7e8052927f8b87488f089ff1c2132c7ac906",
+  "payload_sha256": "5c5a227fef4d7bd07c3ef2963030f4c5ac66823ad6e7991272d359f1654b997a",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "62672fb5cb38a0281fc78db793a420d5711112114d987c675117f944d1fc2cd4",
+  "result": {
+    "row_id": "scale60_01_recipe_draft_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_01_recipe_draft_unresolved.u_context",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο της συνταγής γράφει: 4 μερίδες, 1 κουταλιά λάδι, φούρνος στους 180 βαθμούς και γαρνίρισμα με μαϊντανό.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_unresolved.a_context",
+        "role": "assistant",
+        "content": "Βλέπω το τρέχον πρόχειρο· οι παλιότερες εκδοχές δεν εμφανίζονται εδώ.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_unresolved.u_decision",
+        "role": "user",
+        "content": "Άντε, λοιπόν. Με βάση μόνο το τρέχον πρόχειρο, βάλε ξανά το μυρωδικό που είχαμε στην παλιότερη εκδοχή.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_unresolved.a_target",
+        "role": "assistant",
+        "content": "Στο τρέχον πρόχειρο αναφέρεται μόνο ο μαϊντανός· δεν προκύπτει ποιο μυρωδικό υπήρχε στην παλιότερη εκδοχή. Ποιο μυρωδικό να βάλω;",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_01_recipe_draft_unresolved.u_decision",
+        "claim": "Το μυρωδικό της παλιότερης εκδοχής μπορεί να προσδιοριστεί από το τρέχον πρόχειρο.",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "scale60_01_recipe_draft_unresolved.u_context",
+          "scale60_01_recipe_draft_unresolved.u_decision"
+        ],
+        "expected_response_behaviour": [
+          "Να δηλώσει ότι το παλιότερο μυρωδικό δεν προκύπτει από τα ορατά στοιχεία.",
+          "Να μην επινοήσει ή εφαρμόσει τιμή στο πρόχειρο συνταγής.",
+          "Να ζητήσει μόνο να διευκρινιστεί ποιο μυρωδικό πρέπει να προστεθεί."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "πρόχειρο συνταγής",
+        "before_json": "{\"servings\":4,\"oil_spoons\":1,\"oven_c\":180,\"garnish\":\"μαϊντανός\",\"notes\":[]}",
+        "after_json": "{\"servings\":4,\"oil_spoons\":1,\"oven_c\":180,\"garnish\":\"μαϊντανός\",\"notes\":[]}",
+        "evidence_ids": [
+          "scale60_01_recipe_draft_unresolved.u_context",
+          "scale60_01_recipe_draft_unresolved.u_decision",
+          "scale60_01_recipe_draft_unresolved.a_target"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

@@ -1,0 +1,423 @@
+{
+ "plan": "EXECUTION_PLAN_20260904.md",
+ "protocol": "CLUSTER_PROTOCOL.md",
+ "cap_chf": 230.0,
+ "rate_chf_per_nh": 2.69,
+ "nh_used": 60.602,
+ "chf_used": 163.02,
+ "cursor": "R3_single: GO 2026-09-11; probe20 → sbatch → batteries (new ckpt + arm B) → four Greek benchmarks → picky-user run",
+ "steps": {
+  "WP0_data": {
+   "status": "done (green 02:45: --check OK; 5 GreekMMLU-overlapping rows removed; E1 6.18M CPT-tokenizer tokens, E2 9.36M, E3 8.97M, E3prime 10.47M)",
+   "deps": [],
+   "executor": "sol",
+   "acceptance": "python3 data/build_sft_mix.py --check"
+  },
+  "WP2_trainer": {
+   "status": "done (green 02:50: dry run OK; local test: mask, packing, reload max_abs_diff=0, dry-run, heartbeat)",
+   "deps": [],
+   "executor": "sol",
+   "acceptance": "python3 cluster/sft_train.py --dry-run --config cluster/configs/E1_lr1e-5.yaml && python3 cluster/test_trainer_local.py"
+  },
+  "WP1b_greek_eval": {
+   "status": "done (green 02:06; cluster GreekMMLU/native run via cluster/eval_jobs with the frozen copies)",
+   "deps": [],
+   "executor": "sol",
+   "acceptance": "bash evals/greek/run.sh --dry-run"
+  },
+  "WP1c_dev": {
+   "status": "done (green 02:14)",
+   "deps": [
+    "WP0_data"
+   ],
+   "executor": "sol",
+   "acceptance": "python3 evals/dev/test_dev_harness.py"
+  },
+  "WP1f_interviews": {
+   "status": "done (green 02:12; seeds are Sol drafts, owner/Claude to replace)",
+   "deps": [],
+   "executor": "sol",
+   "acceptance": "python3 evals/interviews/test_driver.py"
+  },
+  "WP3_knownness": {
+   "status": "done (green 02:24; Sol question generation still to run by Claude)",
+   "deps": [],
+   "executor": "sol",
+   "acceptance": "python3 evals/knownness/score_claims.py --dry-run"
+  },
+  "WP1a_retention": {
+   "status": "pending",
+   "deps": [],
+   "executor": "sol",
+   "acceptance": "bash evals/retention/run.sh --dry-run"
+  },
+  "WP1d_ifeval_el": {
+   "status": "done (green 02:40; 17 tests, dry run OK)",
+   "deps": [],
+   "executor": "sol",
+   "acceptance": "python -m pytest evals/ilsp/tests -q && bash evals/ilsp/run.sh x y --dry-run",
+   "note": "SUPERSEDES the build: ilsp/ifeval_greek (541, IFEval schema) and ilsp/mgsm_greek (250) exist publicly — wrap them as lm-eval tasks with Greek-aware checkers"
+  },
+  "R1_review": {
+   "status": "done: R1 BLOCKERS 0 HIGH 2 → fixed → R1b BLOCKERS 0 HIGH 0 (claude-fable-5 asserted); data + trainer CERTIFIED 04:35; LOW doc drift fixed",
+   "deps": [
+    "WP0_data",
+    "WP2_trainer"
+   ],
+   "executor": "claude-p fable",
+   "acceptance": "BLOCKERS: 0 | HIGH: 0",
+   "checkpoint": "before the first GPU minute"
+  },
+  "E0_baselines": {
+   "status": "partial: E0b card numbers pulled; E0b dev50 format-gate baseline + reading40 generations done (results/E0b/dev); E0b ILSP killed at 259/791 (rerun with batch 32 later); E0a Greek/retention lost to the watcher bug (rerun batched); known-ness scorer pending questions",
+   "deps": [
+    "R1_review",
+    "WP1b_greek_eval",
+    "WP1c_dev"
+   ],
+   "executor": "claude",
+   "nh": 3.0,
+   "gate": "G1"
+  },
+  "smoke": {
+   "status": "probe20 GREEN 04:21 UTC (job 3286621): 20 steps, loss 1.75→1.69, 1.30M tokens in 179 s ≈ 7.3k tok/s/node ≈ 26M tokens/node-hour, per-config eval + epoch snapshot written; 30-step smoke SKIPPED (redundant) → G2 passed on the probe",
+   "deps": [
+    "E0_baselines"
+   ],
+   "executor": "claude",
+   "nh": 0.5,
+   "gate": "G2"
+  },
+  "R2_review": {
+   "status": "pending",
+   "deps": [
+    "smoke"
+   ],
+   "executor": "claude-p fable",
+   "checkpoint": "after smoke: trainer behaviour + throughput + re-budget"
+  },
+  "gridA": {
+   "status": "DONE 04:20: run 1 (lr 1e-5) and run 2 (lr 5e-6), 3 epochs each, ~32 min training each on one node",
+   "deps": [
+    "R2_review"
+   ],
+   "executor": "claude",
+   "nh": 8.0,
+   "runs": [
+    "E1_lr1e-5_3ep",
+    "E1_lr5e-6_3ep"
+   ]
+  },
+  "gridA_evals": {
+   "status": "light evals DONE for all six (ILSP, gate, voice, 40 interviews each) 05:20; native for the two candidates running; GreekMMLU morning",
+   "deps": [
+    "gridA"
+   ],
+   "executor": "claude",
+   "nh": 5.0
+  },
+  "pickA": {
+   "status": "PROVISIONAL 05:20, interviews consistent (tie within noise; voice + dev loss favour it): lr 1e-5, 2 epochs — owner confirms (G3)",
+   "pick": {
+    "lr": 1e-05,
+    "epochs": 2
+   },
+   "evidence": "lowest dev loss (no_robots 1.452, mean-el 1.350), best stop rate 0.90, voice Delta 0.853 (closest to no_robots-el; others 1.00–1.08), ifeval 0.479/mgsm 0.400 vs (5e-6,ep3) 0.486/0.416 and (1e-5,ep3) 0.512/0.392 — ties on ILSP, ep3@1e-5 shows dev-loss overfitting; interviews/reading pending",
+   "gate": "G3"
+  },
+  "replicate+E1last": {
+   "status": "E1_cos DONE 05:41, E1last_cos DONE 05:45 (mean Greek dev loss 1.364 vs 1.374); light evals of both epoch2 running",
+   "deps": [
+    "pickA"
+   ],
+   "executor": "claude",
+   "nh": 5.0
+  },
+  "R3_review": {
+   "status": "pending",
+   "deps": [
+    "replicate+E1last"
+   ],
+   "executor": "claude-p fable",
+   "checkpoint": "before phase-B spend"
+  },
+  "phaseB": {
+   "status": "DONE 07:58: E2, E3, E3prime trained and light-evaluated; adaptation verdict written",
+   "deps": [
+    "R3_review"
+   ],
+   "executor": "claude",
+   "nh": 9.0,
+   "runs": [
+    "E2",
+    "E3",
+    "E3prime"
+   ]
+  },
+  "readout": {
+   "status": "published (living): https://claude.ai/code/artifact/162f6fc7-9d5d-4203-b379-701758d35257",
+   "gate": "G4 owner"
+  },
+  "reading2": {
+   "status": "done 12:15",
+   "artifact": "https://claude.ai/code/artifact/fa8d4fa7-f210-4a1f-8ae5-9bb6d2814e97",
+   "summary": "results/reading2/summary.md"
+  },
+  "peer_ilsp": {
+   "status": "done 13:05",
+   "job": 3291238,
+   "nh": 0.945
+  },
+  "greekmmlu_min": {
+   "status": "done 14:27 (scorers); finalizer path missing -> clean-subset accuracy recomputed from predictions + manifest; workbench idled to timeout (~1.9 nh lost)",
+   "job": 3292398
+  },
+  "peer_qwen35": {
+   "status": "done 14:07",
+   "job": 3293001,
+   "model": "Qwen/Qwen3.5-9B @c2022362",
+   "thinking": "off (enable_thinking=False; assistant prompt ends with an empty <think> block)",
+   "env": "sft5 transformers 5.16.1 first on PYTHONPATH, then lm_eval 0.4.11"
+  },
+  "round2_plan": {
+   "status": "draft 1 published, owner decisions pending (name/identity facts, tier, backbone, Aya, Qwen-generated rows, cap)"
+  }
+ },
+ "decisions": [
+  {
+   "date": "2026-09-04 01:55",
+   "what": "WP1d/WP1e replaced by wrapping ILSP's public Greek IFEval (541) and MGSM (250) — no adaptation build needed; gsm8k_el-250 := mgsm_greek",
+   "evidence": "HfApi.dataset_info: ilsp/ifeval_greek public, schema key/prompt/instruction_id_list/kwargs/prompt_en; ilsp/mgsm_greek public test+train",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 01:50",
+   "what": "Retention harness = evals-post-train with the shared infra01 vLLM image (/capstor/store/cscs/swissai/infra01/container-images/vllm_container_0221.sqsh, world-readable); Greek/native scorer = the subproject-09 stack on Clariden",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 02:24",
+   "what": "Native-Greek suite NOT run on Apertus-8B-Instruct: the frozen scorer's model contract pins the CPT vocab/tokenizer (vocab_size/rope/max_pos/tokenizer sha checks) — by design; E0a gets GreekMMLU + retention only. SFT checkpoints keep the CPT tokenizer so the contract holds for them.",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 02:30",
+   "what": "E0a GreekMMLU stopped: the frozen fp32 evaluator ran at ~100 q/min on one GPU (16,632 q → ~166 min) vs 84 min left on the debug workbench; low-value number for the Instruct contrast. Consequence for the grid: GreekMMLU per checkpoint must be row-sharded over 4 GPUs (suite runner --row-shard-*) or run in a normal-partition workbench; decide at E0b.",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 02:45",
+   "what": "Token budget corrected: the CPT tokenizer (148,992 vocab) tokenizes the Greek data ~34% shorter than the Instruct tokenizer I used in §5a′ (E1 6.18M vs 9.34M) — training cost per epoch is a third lower than planned",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 03:05",
+   "what": "GreekMMLU cannot be row-sharded: the frozen suite runner's contract has no 'greekmmlu' benchmark id and the native runner has no shard flags → ~2.8 h per model on one GPU (fp32). Plan: GreekMMLU only for the grid's epoch-3 endpoints, the replicate, E1-last and the winner epoch, one model per GPU in ONE normal-partition workbench (~3 h, ~3 nh ≈ CHF 8) — a >2 h job, so it waits for the owner's morning notice per CLUSTER_PROTOCOL §6. The native suite (sharded over 4 GPUs, ~40 min) and the ILSP/dev/interview evals run per checkpoint in debug workbenches.",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 03:20",
+   "what": "Batch unit = 16 packed 4096-token sequences per optimizer step (accum 4 × 4 GPUs), ~95 steps/epoch on E1; smoke = 30 steps",
+   "why": "R1 F2: 64 packed seqs gave 24 steps/epoch; 64 rows would be ~9 packed; chose the middle, in the range of Apertus (8) and Tülu 3 (~128k tokens/step)",
+   "by": "claude",
+   "doc": "reviews/R1_data_trainer.md"
+  },
+  {
+   "date": "2026-09-04 03:20",
+   "what": "no_robots_en_pov dev split := the no_robots dev twins (R1 F1); arms rebuilt",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 04:25",
+   "what": "G2 passed on probe20; smoke skipped. Measured 26M tokens/node-hour → an E1 3-epoch grid run ≈ 18.5M tokens ≈ 45 min + overhead → fits a debug workbench; grid launched (run 1 on the probe's workbench, run 2 on a fresh one) while R1b is still certifying the R1 fixes (risk accepted: R1 passed in substance)",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 04:40",
+   "what": "R1 ask 4 (fp32 master under ZeRO-3): base vs probe20/epoch1 bitwise delta in bf16 = 14.85% of 8.20B elements changed after 20 steps at lr 1e-5 (the rl-study bf16-only failure mode showed 2.35%; fp32 control 7.19% at 5e-6) → consistent with fp32 master weights; norm weights changed most (up to 96%), xIELU scalars 0%",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 03:45",
+   "what": "Debug QoS = MaxSubmitJobsPerUser 2, MaxJobsPerUser 1 → only ONE debug workbench runs at a time. Consequence: grid runs are sequential in debug (run 2 starts when run 1's workbench ends); per-checkpoint evals reuse the training workbench's leftover time (EVAL_JOB=<id>, SKIP_NATIVE=1) or go to the normal partition (1:30 workbench, tried at 03:43); the native suite is batched two checkpoints per normal workbench",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 04:06",
+   "what": "Format gate reading (run 1 epoch 3): ended_on_stop 0.88 / single_turn 0.88 / language_ok 0.94 vs base 0.00/0.00/0.86 — the 6 non-stops are max-length hits (3 English no_robots_en_pov prompts E1 never trained on, 1 apertus_en math, 1 fr, 1 Greek); Greek-only stop rate 13/14. The gate's 512-token cap conflates long legitimate answers with non-stopping → read the Greek subset and the trend across epochs, not the 0.95 threshold alone",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 04:25",
+   "what": "Dev-loss read of the grid: lr 1e-5 bottoms at epoch 2 (no_robots 1.452, oasst 1.397, personas_if 1.370, everyday 1.182) and rises at epoch 3 (overfitting onset); lr 5e-6 still improving at epoch 3 (no_robots 1.457) ≈ 1e-5's epoch 2. Candidates for the pick: (1e-5, ep2) vs (5e-6, ep3); vibes/ILSP/guards decide, provisional = (1e-5, ep2) if tied (cheaper)",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 04:27",
+   "what": "Rehearsal probe20_ep1 closed: native suite ran on an SFT eval copy (19/21 shards with metrics before close — the frozen scorer accepts eval copies), interviews 3 rounds with the Opus interviewer, dev/ILSP lanes OOM'd next to native (fixed: light vs native split), two drivers were corrupted by live edits (fixed: per-label exec copies). Rehearsal purpose met; its numbers are not used.",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 06:10",
+   "what": "Replicate (seed 43 + cosine) vs grid winner (seed 42, constant, ep2): ifeval 0.460 vs 0.479, mgsm 0.416 vs 0.400, voice Delta 1.000 vs 0.853, interview mean 2.61 vs 2.83, mean Greek dev loss 1.374 vs 1.350 → the readability bar for phase B is about ±0.02 on ifeval, ±0.15 on voice Delta, ±0.2 on the interview mean (seed+schedule confounded; seed-44 run isolates seed)",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 06:15",
+   "what": "E1-last (terminal CPT checkpoint, same recipe) vs the replicate on the averaged base: ifeval 0.429 vs 0.460, mgsm 0.328 vs 0.416 (−0.09, well beyond the ~0.02 bar), voice 0.895 vs 1.000, interviews 2.57 vs 2.61, dev loss slightly better. The averaged checkpoint stays the base; the terminal one loses Greek math and instruction following after SFT despite equal dev loss. Native/GreekMMLU guards for E1-last pending",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 06:36",
+   "what": "Seed-only floor on dev loss (cosine, 2 ep): mean Greek 1.374 vs 1.365, max per-config gap 0.052",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-04 07:58",
+   "what": "ADAPTATION VERDICT (provisional): E3 (Greek-POV adapted slices) beats E3′ (raw) on interviews 2.91 vs 2.63 (floor 0.02), voice 0.959 vs 1.109 (floor 0.05), stop 0.90 vs 0.80, ifeval 0.497 vs 0.470 (floor 0.01); MGSM within floor. Adapting the imported data to the Greek point of view is worth it.",
+   "by": "claude"
+  }
+ ],
+ "results": {
+  "E1_lr1e-5_ep3": {
+   "ifeval_greek_prompt_strict": 0.512,
+   "ifeval_greek_inst_strict": 0.6115,
+   "mgsm_greek": 0.392,
+   "format_gate": {
+    "stop": 0.88,
+    "lang": 0.94,
+    "single": 0.88
+   },
+   "voice_delta": 1.081,
+   "dev_loss_no_robots": 1.476
+  },
+  "E1_cos_ep2": {
+   "ifeval_strict": 0.46,
+   "mgsm": 0.416,
+   "gate_stop": 0.88,
+   "voice_delta": 1.0,
+   "int_mean": 2.61,
+   "dev_mean_el": 1.374
+  },
+  "E1_lr1e-5_ep2_native": {
+   "macro8": 0.5738,
+   "card_macro": 0.499
+  },
+  "E1last_ep2": {
+   "ifeval_strict": 0.429,
+   "mgsm": 0.328,
+   "gate_stop": 0.88,
+   "voice_delta": 0.895,
+   "int_mean": 2.57,
+   "dev_mean_el": 1.364
+  },
+  "E2_cos_ep2": {
+   "ifeval_strict": 0.473,
+   "mgsm": 0.404,
+   "gate_stop": 0.92,
+   "voice_delta": 0.943,
+   "int_mean": 2.56
+  },
+  "E3_cos_ep2_partial": {
+   "ifeval_strict": 0.497,
+   "mgsm": 0.384,
+   "gate_stop": 0.9,
+   "voice_delta": 0.959
+  },
+  "E3_cos_ep2": {
+   "ifeval_strict": 0.497,
+   "mgsm": 0.384,
+   "gate_stop": 0.9,
+   "voice_delta": 0.959,
+   "int_mean": 2.91,
+   "int_language": 4.08
+  },
+  "knownness_base": {
+   "claims": 10388,
+   "known": 970,
+   "weakly": 239,
+   "unknown": 9179,
+   "caveat": "base-model QA-format probe; unknown is an upper bound"
+  },
+  "E3prime_cos_ep2": {
+   "ifeval_strict": 0.47,
+   "mgsm": 0.408,
+   "gate_stop": 0.8,
+   "voice_delta": 1.109,
+   "int_mean": 2.63
+  },
+  "E1_cos_ep2_native": {
+   "macro8": 0.5733
+  },
+  "E1last_ep2_native": {
+   "macro8": 0.5,
+   "nli": 0.388,
+   "wic": 0.737,
+   "metaphor": 0.339
+  },
+  "peer_ilsp": {
+   "krikri": {
+    "ifeval_strict_avg": 0.668,
+    "mgsm": 0.676
+   },
+   "apertus_instruct": {
+    "ifeval_strict_avg": 0.56,
+    "mgsm": 0.532
+   },
+   "gemma3_12b": {
+    "ifeval_strict_avg": 0.719,
+    "mgsm": 0.908
+   },
+   "meltemi": {
+    "ifeval_strict_avg": 0.326,
+    "mgsm": 0.208
+   },
+   "harness_check": "Krikri 66.8 vs card 67.5, Meltemi 32.6 vs card 32.7: harnesses agree",
+   "qwen35_9b_nothink": {
+    "ifeval_strict_avg": 0.694,
+    "mgsm": 0.876
+   }
+  },
+  "greekmmlu_clean16159": {
+   "cpt_base_18avg_card": 0.5678,
+   "E1_lr1e-5_ep2": 0.5602,
+   "E3_cos_ep2": 0.5518,
+   "peer_apertus_instruct": 0.5486,
+   "peer_krikri": 0.5197
+  }
+ },
+ "artifacts": {
+  "blind_reading": "https://claude.ai/code/artifact/690e0be1-dff4-4d25-ac8e-d49b861ab19c",
+  "round_one_readout": "https://claude.ai/code/artifact/162f6fc7-9d5d-4203-b379-701758d35257",
+  "evaluation_plan": "https://claude.ai/code/artifact/662e2918-13a6-4068-93aa-85f42732a996",
+  "reading_round_two": "https://claude.ai/code/artifact/fa8d4fa7-f210-4a1f-8ae5-9bb6d2814e97",
+  "greek_ifeval_deck": "https://claude.ai/code/artifact/f83dfe8a-eda3-4488-8818-72a3a198c6fc",
+  "greek_bench_browser": "https://claude.ai/code/artifact/06b69da8-3533-4f94-9a4b-fd2bcf810dde",
+  "sft_round2_plan": "https://claude.ai/code/artifact/69cb3de6-2feb-4997-af94-381629e3aba2",
+  "sft_data_candidates_deck": "https://claude.ai/code/artifact/89c261c7-052a-4b44-ae7f-6cc2e7182da8"
+ },
+ "followups": [
+  "ILSP harness: language:response_language scores 0 for every model (langdetect missing on the cluster); 31 instructions / 17 single-instruction prompts auto-fail; rescore saved samples offline after installing langdetect (up to +3.5 strict avg for all)"
+ ],
+ "cap_note": "raised 90→100 on 2026-09-08 by the owner's instruction 'OK run 2 and 4 and see the results' (identity dose ladder A ×2 / B ×4 + probes ≈ CHF 9)",
+ "cap_history": [
+  {
+   "when": "2026-09-09T09:09",
+   "from_chf": 100.0,
+   "to_chf": 105.0,
+   "why": "owner 2026-09-09 09:50: 'run dialogues in parallel' after being told the arm-B window needs ~CHF 4 over the CHF 100 cap; raised by Claude to 105 for that one debug window, disclosed in the report"
+  },
+  {
+   "when": "2026-09-11T16:20",
+   "from_chf": 105.0,
+   "to_chf": 160.0,
+   "why": "owner 2026-09-11 ~16:15: 'OK run the training and benchmarking' after the disclosed budget of 19.0-20.8 nh ≈ CHF 51-56 on top of CHF 102.71 used (docs/RLHF_PLAN_20260911.md §0); cap set to 160 to cover it"
+  },
+  {
+   "when": "2026-09-13T07:40",
+   "from_chf": 160.0,
+   "to_chf": 230.0,
+   "why": "owner 2026-09-13 07:30: 'first run all the evaluations' then (a)-(d); the plan (docs/R4_PLAN_20260913.md §6) prices the peer window, the A/B passes and R4 at ≈ CHF 70 over the 160 cap; set to 230 and disclosed"
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+  "status": "prepared_not_launched",
+  "runner": "run_queue.py",
+  "shared_runner_sha256": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005",
+  "probe": {
+    "order": 1,
+    "split": "train",
+    "queue": "queues/probe_train4.jsonl",
+    "inputs": "inputs/train.jsonl",
+    "state_dir": "run_state/train",
+    "max_workers": 4,
+    "limit_new_calls": 4,
+    "call_cap": 76,
+    "gate": "Review all four complete outputs for oracle agreement, state, ownership, mask, naturalness, and new damage before any further call."
+  },
+  "train_remainder": {
+    "order": 2,
+    "queue": "queues/train.jsonl",
+    "inputs": "inputs/train.jsonl",
+    "state_dir": "run_state/train",
+    "max_workers": 8,
+    "call_cap": 76,
+    "gate": "Proceed only after the four-call probe passes; accepted probe outputs are reused by bound job IDs."
+  },
+  "development": {
+    "order": 3,
+    "queue": "queues/dev.jsonl",
+    "inputs": "inputs/dev.jsonl",
+    "state_dir": "run_state/dev",
+    "max_workers": 8,
+    "call_cap": 22,
+    "gate": "Use only for the declared development checks after the authoring prompt is frozen."
+  },
+  "final_confirmation": {
+    "order": 4,
+    "queue": "sealed/final_confirmation/queue.jsonl",
+    "inputs": "sealed/final_confirmation/inputs.jsonl",
+    "state_dir": "run_state/final_confirmation",
+    "max_workers": 8,
+    "call_cap": 20,
+    "gate": "Run only after authoring, semantic, Greek, oracle, and assembly rules are frozen. Do not use content to tune or select; expose aggregate gate summaries to root."
+  },
+  "execution_acknowledgement": "PREPARED_PAYLOAD_REVIEWED",
+  "authorization_note": "The active goal authorizes later execution after these gates; no additional blanket authorization is required. This preparation task itself does not launch calls."
+}

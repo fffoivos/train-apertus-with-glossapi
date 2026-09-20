@@ -1,0 +1,20 @@
+{
+  "created_at": "2026-09-13T14:51:12.420740+00:00",
+  "rows": 60,
+  "editor_status_counts": {
+    "unchanged": 42,
+    "edited": 18
+  },
+  "accepted_language_edits": 6,
+  "optional_edits_declined": 12,
+  "actual_author_calls": 60,
+  "actual_greek_calls": 60,
+  "combined_actual_calls": 120,
+  "combined_cap": 144,
+  "retries": 0,
+  "status": "semantic_and_greek_accepted_pending_runtime",
+  "candidate_sha256": "69b2f100c6d5619d5adc2d8f962ad2a4fa068f4e64640e092271501ff2305fc9",
+  "projection_sha256": "cdf06725532c669afb591cc46cc4a62c2ad3979cafadc2ad90b8c36bd5daa642",
+  "actual_family_count": 20,
+  "coverage_note": "20 settings with repeated reasoning structures; not completion of all dialogue lanes."
+}

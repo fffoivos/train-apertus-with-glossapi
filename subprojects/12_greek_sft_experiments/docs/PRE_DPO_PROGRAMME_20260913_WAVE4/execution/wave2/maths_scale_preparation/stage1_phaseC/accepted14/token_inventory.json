@@ -1,0 +1,168 @@
+{
+  "status": "pass_exact_reader_tokenizer_and_target_mask",
+  "rows": 14,
+  "input_tokens": 4566,
+  "supervised_tokens": 2898,
+  "max_row_tokens": 773,
+  "all_within_4096": true,
+  "decoded_supervision_matches_final_assistant_plus_eot": 14,
+  "projection_sha256": "e72abb688f96dbb28f56ace053c6ca2ff94ea55a79da1c84c920919235f9361e",
+  "canonical_trainer_sha256": "f8de43b1f8b99959741e6c4a9158ad99fd31ffc5b3b1636c1ac07a925df39b4d",
+  "tokenizer_reference": "../../../maths_generation_pilot/final_candidates/token_inventory.json",
+  "items": [
+    {
+      "row_id": "scaleC_math_line_1202",
+      "input_tokens": 209,
+      "supervised_tokens": 103,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scaleC_math_line_627",
+      "input_tokens": 433,
+      "supervised_tokens": 232,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scaleC_math_line_2042",
+      "input_tokens": 260,
+      "supervised_tokens": 169,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scaleC_math_line_2462",
+      "input_tokens": 359,
+      "supervised_tokens": 271,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scaleC_math_line_2758",
+      "input_tokens": 245,
+      "supervised_tokens": 134,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scaleC_math_line_3264",
+      "input_tokens": 163,
+      "supervised_tokens": 89,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scaleC_math_line_3416",
+      "input_tokens": 256,
+      "supervised_tokens": 155,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scaleC_math_line_4273",
+      "input_tokens": 298,
+      "supervised_tokens": 158,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scaleC_math_line_5094",
+      "input_tokens": 234,
+      "supervised_tokens": 153,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scaleC_math_line_5074",
+      "input_tokens": 324,
+      "supervised_tokens": 232,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scaleC_math_line_6052",
+      "input_tokens": 464,
+      "supervised_tokens": 209,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scaleC_math_line_6668",
+      "input_tokens": 292,
+      "supervised_tokens": 188,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scaleC_math_line_7065",
+      "input_tokens": 256,
+      "supervised_tokens": 172,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant"
+      ]
+    },
+    {
+      "row_id": "scaleC_math_line_7319",
+      "input_tokens": 773,
+      "supervised_tokens": 633,
+      "only_final_assistant_supervised": true,
+      "assistant_end_supervised": true,
+      "message_roles": [
+        "user",
+        "assistant"
+      ]
+    }
+  ]
+}

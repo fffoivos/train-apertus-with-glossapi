@@ -1,0 +1,30 @@
+{
+  "job_id": "verify_high__scaleB_math_line_50",
+  "row_id": "scaleB_math_line_50",
+  "stage": "verification_blind_high",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "0f1bac50c0354bcb117d5244d1a7c7504427d20dae59ed8a81c578ac855e4672",
+  "input_record_sha256": "2469d7880360dcf1e3a08483ada333397f759f8019d039bbb18d126a2a9079c0",
+  "payload_sha256": "72e69a21f867ec06b1a5bcfad7e7b341280d01ed6cd6564978f3cba75dfbb5c3",
+  "template_sha256": "67a04cee918f227aa582da70a6fcb66cc7eca7093bc64ae9c067ec87a3b4b1de",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "3369fb4daa0542bfe9c9c6e6795e612494fec65f3d32d5d67588ed6b9f3e74ea",
+  "result": {
+    "row_id": "scaleB_math_line_50",
+    "status": "candidate",
+    "solution_text": "Οι συντελεστές έχουν μέγιστο κοινό διαιρέτη\n\\[\n\\operatorname{ΜΚΔ}(58,203)=29,\n\\]\nαφού \\(58=29\\cdot2\\) και \\(203=29\\cdot7\\). Επίσης, ο κοινός παράγοντας των \\(x^5\\) και \\(x^{11}\\) με τη μικρότερη δύναμη είναι το \\(x^5\\). Επομένως,\n\\[\n58x^5-203x^{11}=29x^5\\bigl(2-7x^6\\bigr).\n\\]\nΠράγματι, αναπτύσσοντας το γινόμενο παίρνουμε\n\\[\n29x^5\\cdot2-29x^5\\cdot7x^6=58x^5-203x^{11}.\n\\]\n\nΑπάντηση: \\(\\boxed{29x^5(2-7x^6)}\\).",
+    "final_answers": [
+      {
+        "part": "Παραγοντοποίηση",
+        "expression": "29x^5(2-7x^6)",
+        "unit": null,
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

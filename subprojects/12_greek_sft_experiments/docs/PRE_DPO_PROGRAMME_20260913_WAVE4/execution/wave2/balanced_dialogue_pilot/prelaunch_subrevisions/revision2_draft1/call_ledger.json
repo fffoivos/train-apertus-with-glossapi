@@ -1,0 +1,38 @@
+{
+  "cumulative_absolute_call_cap": 118,
+  "consumed_before_revision2": {
+    "primary_authoring": 4,
+    "retry": 0,
+    "semantic_repair": 0,
+    "greek_correction": 0,
+    "total": 4
+  },
+  "revision2_runner_additional_call_cap": 114,
+  "reserved_next_probe": {
+    "semantic_repair": 4,
+    "total": 4
+  },
+  "remaining_work_caps_after_probe": {
+    "primary_authoring": 43,
+    "retry": 12,
+    "semantic_repair": 8,
+    "greek_correction": 47,
+    "total": 110
+  },
+  "cumulative_projection_at_all_caps": 118,
+  "no_cap_reset": true,
+  "primary_accounting": {
+    "original_total": 47,
+    "already_consumed_probe": 4,
+    "remaining": 43
+  },
+  "semantic_repair_accounting": {
+    "original_total_cap": 12,
+    "probe_reserved": 4,
+    "remaining_after_probe": 8
+  },
+  "retry_cap": 12,
+  "greek_correction_cap": 47,
+  "max_workers": 8,
+  "note": "The isolated revision2 runner is capped at 114 additional calls because four primary calls are already present in the immutable revision1 receipts. Run only the four-job semantic repair probe first."
+}

@@ -1,0 +1,63 @@
+{
+  "job_id": "author__scale60_08_fair_budget_unresolved",
+  "row_id": "scale60_08_fair_budget_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "b5e6a8bf74bfe55d47c8ba92072b6e2e2c5b124e4c99d38eb56e39c8c4c73f2a",
+  "input_record_sha256": "d17dc359f48e0b8eaaaa1e37641feaf974ccbb578cf8ef577ed346efa1306994",
+  "payload_sha256": "eedef225b04e6709a8b2053f667198d511c75ba3e95eea31e70fdf0ba8d36311",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "2790fd6f054c1eb8e12c1a65093b6600b58521d52ca6fc09bc689b5e0595dca5",
+  "result": {
+    "row_id": "scale60_08_fair_budget_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_08_fair_budget_unresolved.u_context",
+        "role": "user",
+        "content": "Ο πρόχειρος προϋπολογισμός δείχνει αρχικό ποσό 120 ευρώ, από το οποίο πληρώθηκαν 35 ευρώ για τραπέζια και άλλα 15 ευρώ για πινακίδες. Δεν υπάρχει καταγεγραμμένη δωρεά.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_unresolved.a_context",
+        "role": "assistant",
+        "content": "Θα υπολογίσω το υπόλοιπο από τα καταγεγραμμένα ποσά, χωρίς να προσθέσω έσοδο που δεν φαίνεται.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_unresolved.u_decision",
+        "role": "user",
+        "content": "Μα πια! Με βάση μόνο τον πρόχειρο προϋπολογισμό, η δωρεά ήταν 20 ευρώ.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_unresolved.a_target",
+        "role": "assistant",
+        "content": "Ο πρόχειρος προϋπολογισμός δεν καταγράφει ποσό δωρεάς, επομένως δεν τεκμηριώνεται ότι ήταν 20 ευρώ. Από τα καταγεγραμμένα ποσά προκύπτει μόνο υπόλοιπο 70 ευρώ.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_08_fair_budget_unresolved.u_decision",
+        "claim": "Με βάση μόνο τον πρόχειρο προϋπολογισμό, η δωρεά ήταν 20 ευρώ.",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "scale60_08_fair_budget_unresolved.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να επισημάνει ότι το ποσό της δωρεάς δεν είναι καταγεγραμμένο.",
+          "Να διευκρινίσει ότι τα διαθέσιμα στοιχεία δεν τεκμηριώνουν δωρεά 20 ευρώ.",
+          "Να αναφέρει ότι από τα καταγεγραμμένα ποσά προκύπτει υπόλοιπο 70 ευρώ."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

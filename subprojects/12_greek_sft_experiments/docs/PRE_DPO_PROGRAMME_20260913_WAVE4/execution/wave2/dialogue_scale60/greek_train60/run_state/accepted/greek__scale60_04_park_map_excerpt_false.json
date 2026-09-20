@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_04_park_map_excerpt_false",
+  "row_id": "scale60_04_park_map_excerpt_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "09465253c35c7a18ba502564ebda7b2d89628bb5bd22aece4d787651f29acc19",
+  "input_record_sha256": "90e2bac09406e037edb983c97e009f5ab2385bed58f58ef4b2530500211bc349",
+  "payload_sha256": "ff8f6e978b7064e8d4b1cddc122f058ad6fc22cdc47788c024f803c85309dcf4",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "9e0afcb8a5f7c3a31607cf4b2a0fff4dbf436b82085eef0f87c06f6fdefbc04d",
+  "result": {
+    "row_id": "scale60_04_park_map_excerpt_false",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_04_park_map_excerpt_false.u_context",
+        "role": "user",
+        "content": "Στο απόσπασμα του χάρτη φαίνονται μόνο τα μονοπάτια Πεύκο–Λίμνη, Λίμνη–Κήπος και Κήπος–Πύργος.",
+        "train": false
+      },
+      {
+        "id": "scale60_04_park_map_excerpt_false.a_context",
+        "role": "assistant",
+        "content": "Θα μιλήσω μόνο για ό,τι φαίνεται στο συγκεκριμένο απόσπασμα.",
+        "train": false
+      },
+      {
+        "id": "scale60_04_park_map_excerpt_false.u_decision",
+        "role": "user",
+        "content": "Στο απόσπασμα φαίνεται απευθείας μονοπάτι Πεύκο–Πύργος.",
+        "train": false
+      },
+      {
+        "id": "scale60_04_park_map_excerpt_false.a_target",
+        "role": "assistant",
+        "content": "Όχι· στο απόσπασμα δεν φαίνεται απευθείας μονοπάτι Πεύκο–Πύργος. Φαίνεται όμως διαδρομή από το Πεύκο στον Πύργο μέσω της Λίμνης και του Κήπου.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

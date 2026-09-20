@@ -1,0 +1,565 @@
+{
+  "schema_version": "krikri_v15_allocation_free_preflight_v1",
+  "status": "failed",
+  "model": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2",
+  "inputs": 31,
+  "token_gate": {
+    "counts": {
+      "math500_el": 500,
+      "math500_en": 500,
+      "ifbench_el": 300,
+      "ifbench_en": 300,
+      "xstest_el": 450,
+      "xstest_en": 450,
+      "multichallenge_el": 262,
+      "multichallenge_en": 262
+    },
+    "max_input_tokens": {
+      "math500_el": 845,
+      "math500_en": 803,
+      "ifbench_el": 383,
+      "ifbench_en": 400,
+      "xstest_el": 65,
+      "xstest_en": 54,
+      "multichallenge_el": 11078,
+      "multichallenge_en": 8364
+    },
+    "max_model_len": 4096,
+    "overlength": [
+      {
+        "task": "multichallenge_el",
+        "id": "67455bc84f79e78f4a63c837",
+        "input_tokens": 4120,
+        "requested_output_tokens": 1024,
+        "total": 5144
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "67455d0615a226420ab2cd0b",
+        "input_tokens": 4536,
+        "requested_output_tokens": 1024,
+        "total": 5560
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "67455ecc4f79e78f4a63c95e",
+        "input_tokens": 5085,
+        "requested_output_tokens": 1024,
+        "total": 6109
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "674567d00c7ee4114a170162",
+        "input_tokens": 3390,
+        "requested_output_tokens": 1024,
+        "total": 4414
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "674564fd8a92036a0c145ca5",
+        "input_tokens": 3310,
+        "requested_output_tokens": 1024,
+        "total": 4334
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "67455ecd538d78476d827be2",
+        "input_tokens": 3279,
+        "requested_output_tokens": 1024,
+        "total": 4303
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "674567d0ca4c4fe026e3425b",
+        "input_tokens": 3802,
+        "requested_output_tokens": 1024,
+        "total": 4826
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "674564fc60eec303420ae606",
+        "input_tokens": 5901,
+        "requested_output_tokens": 1024,
+        "total": 6925
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6745621c36ef48ba06006265",
+        "input_tokens": 6913,
+        "requested_output_tokens": 1024,
+        "total": 7937
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "674567d0ec557fa45f219ebe",
+        "input_tokens": 4670,
+        "requested_output_tokens": 1024,
+        "total": 5694
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "674567d37d8d6ad2277bd5bc",
+        "input_tokens": 3403,
+        "requested_output_tokens": 1024,
+        "total": 4427
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "67456857e4a3a4bc5def0471",
+        "input_tokens": 3108,
+        "requested_output_tokens": 1024,
+        "total": 4132
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765f1c85ce567b42838a31f",
+        "input_tokens": 3571,
+        "requested_output_tokens": 1024,
+        "total": 4595
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765f4894421592a0e41c049",
+        "input_tokens": 3139,
+        "requested_output_tokens": 1024,
+        "total": 4163
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765f489f1e735f0958ee630",
+        "input_tokens": 3703,
+        "requested_output_tokens": 1024,
+        "total": 4727
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765f83a080ef69783e42884",
+        "input_tokens": 3093,
+        "requested_output_tokens": 1024,
+        "total": 4117
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765fc5e4421592a0e41c302",
+        "input_tokens": 3132,
+        "requested_output_tokens": 1024,
+        "total": 4156
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765f83af1e735f0958ee912",
+        "input_tokens": 3816,
+        "requested_output_tokens": 1024,
+        "total": 4840
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765fc5e0af93a24e8fbe4ee",
+        "input_tokens": 6061,
+        "requested_output_tokens": 1024,
+        "total": 7085
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765f83a9308c5a618275136",
+        "input_tokens": 5717,
+        "requested_output_tokens": 1024,
+        "total": 6741
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765fcd4fd98ca5aac5e729a",
+        "input_tokens": 3118,
+        "requested_output_tokens": 1024,
+        "total": 4142
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765fc5ec794f0de7ce718ad",
+        "input_tokens": 5259,
+        "requested_output_tokens": 1024,
+        "total": 6283
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765fc5e7e4dcd5e214337c8",
+        "input_tokens": 6412,
+        "requested_output_tokens": 1024,
+        "total": 7436
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765fca3a02fd129919ef2c5",
+        "input_tokens": 4849,
+        "requested_output_tokens": 1024,
+        "total": 5873
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765fca79308c5a618275196",
+        "input_tokens": 3998,
+        "requested_output_tokens": 1024,
+        "total": 5022
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765fc5eef494d11e9e1075c",
+        "input_tokens": 5613,
+        "requested_output_tokens": 1024,
+        "total": 6637
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765fcd4d19c1caaffcdbd37",
+        "input_tokens": 4051,
+        "requested_output_tokens": 1024,
+        "total": 5075
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765fcbbd0cf10a192c5a702",
+        "input_tokens": 6322,
+        "requested_output_tokens": 1024,
+        "total": 7346
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781aa53fc48f01aa67bab7a",
+        "input_tokens": 3191,
+        "requested_output_tokens": 1024,
+        "total": 4215
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781aa53a73754153f69ca1c",
+        "input_tokens": 3956,
+        "requested_output_tokens": 1024,
+        "total": 4980
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781aad80e0faa4fa7cadf99",
+        "input_tokens": 3621,
+        "requested_output_tokens": 1024,
+        "total": 4645
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781aad819cf84439e50c47b",
+        "input_tokens": 4123,
+        "requested_output_tokens": 1024,
+        "total": 5147
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781ad8b6700d6a29d028e86",
+        "input_tokens": 3215,
+        "requested_output_tokens": 1024,
+        "total": 4239
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781aad8f8fb0ce53a7be2cb",
+        "input_tokens": 3865,
+        "requested_output_tokens": 1024,
+        "total": 4889
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781aad80d4cc96eee989711",
+        "input_tokens": 4073,
+        "requested_output_tokens": 1024,
+        "total": 5097
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781ad8bbacd5cfcbbb376bb",
+        "input_tokens": 3096,
+        "requested_output_tokens": 1024,
+        "total": 4120
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781ad8bec8b2f94d989103a",
+        "input_tokens": 3121,
+        "requested_output_tokens": 1024,
+        "total": 4145
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781ad8be134b042b2017500",
+        "input_tokens": 3461,
+        "requested_output_tokens": 1024,
+        "total": 4485
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781ad8bd2b793f40a8cd743",
+        "input_tokens": 4444,
+        "requested_output_tokens": 1024,
+        "total": 5468
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781ad8b9a6c7b7b243c772a",
+        "input_tokens": 4315,
+        "requested_output_tokens": 1024,
+        "total": 5339
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781aad8ec8b2f94d9891002",
+        "input_tokens": 5678,
+        "requested_output_tokens": 1024,
+        "total": 6702
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781adc592c79eaae6b4cd8b",
+        "input_tokens": 3310,
+        "requested_output_tokens": 1024,
+        "total": 4334
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781aad8ba6672cf895d1344",
+        "input_tokens": 6877,
+        "requested_output_tokens": 1024,
+        "total": 7901
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781aad81acc7401a3fe95cc",
+        "input_tokens": 7529,
+        "requested_output_tokens": 1024,
+        "total": 8553
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781adc504333c7c6164b011",
+        "input_tokens": 4571,
+        "requested_output_tokens": 1024,
+        "total": 5595
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781ad8b7d5d4b7679627100",
+        "input_tokens": 6615,
+        "requested_output_tokens": 1024,
+        "total": 7639
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781adc5d2b793f40a8cd766",
+        "input_tokens": 11078,
+        "requested_output_tokens": 1024,
+        "total": 12102
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6765f839a02fd129919ef243",
+        "input_tokens": 4866,
+        "requested_output_tokens": 1024,
+        "total": 5890
+      },
+      {
+        "task": "multichallenge_el",
+        "id": "6781ad8b92c79eaae6b4cd68",
+        "input_tokens": 4024,
+        "requested_output_tokens": 1024,
+        "total": 5048
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "67455bc84f79e78f4a63c837",
+        "input_tokens": 3272,
+        "requested_output_tokens": 1024,
+        "total": 4296
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "67455d0615a226420ab2cd0b",
+        "input_tokens": 3512,
+        "requested_output_tokens": 1024,
+        "total": 4536
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "67455ecc4f79e78f4a63c95e",
+        "input_tokens": 3873,
+        "requested_output_tokens": 1024,
+        "total": 4897
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "674564fc60eec303420ae606",
+        "input_tokens": 4381,
+        "requested_output_tokens": 1024,
+        "total": 5405
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6745621c36ef48ba06006265",
+        "input_tokens": 5094,
+        "requested_output_tokens": 1024,
+        "total": 6118
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "674567d0ec557fa45f219ebe",
+        "input_tokens": 3627,
+        "requested_output_tokens": 1024,
+        "total": 4651
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6765fc5e0af93a24e8fbe4ee",
+        "input_tokens": 4700,
+        "requested_output_tokens": 1024,
+        "total": 5724
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6765f83a9308c5a618275136",
+        "input_tokens": 4355,
+        "requested_output_tokens": 1024,
+        "total": 5379
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6765fc5ec794f0de7ce718ad",
+        "input_tokens": 4048,
+        "requested_output_tokens": 1024,
+        "total": 5072
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6765fc5e7e4dcd5e214337c8",
+        "input_tokens": 5275,
+        "requested_output_tokens": 1024,
+        "total": 6299
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6765fca3a02fd129919ef2c5",
+        "input_tokens": 3860,
+        "requested_output_tokens": 1024,
+        "total": 4884
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6765fc5eef494d11e9e1075c",
+        "input_tokens": 4348,
+        "requested_output_tokens": 1024,
+        "total": 5372
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6765fcd4d19c1caaffcdbd37",
+        "input_tokens": 3230,
+        "requested_output_tokens": 1024,
+        "total": 4254
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6765fcbbd0cf10a192c5a702",
+        "input_tokens": 4892,
+        "requested_output_tokens": 1024,
+        "total": 5916
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6781aa53a73754153f69ca1c",
+        "input_tokens": 3109,
+        "requested_output_tokens": 1024,
+        "total": 4133
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6781aad819cf84439e50c47b",
+        "input_tokens": 3510,
+        "requested_output_tokens": 1024,
+        "total": 4534
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6781aad8f8fb0ce53a7be2cb",
+        "input_tokens": 3117,
+        "requested_output_tokens": 1024,
+        "total": 4141
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6781aad80d4cc96eee989711",
+        "input_tokens": 3235,
+        "requested_output_tokens": 1024,
+        "total": 4259
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6781ad8bd2b793f40a8cd743",
+        "input_tokens": 3439,
+        "requested_output_tokens": 1024,
+        "total": 4463
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6781ad8b9a6c7b7b243c772a",
+        "input_tokens": 3414,
+        "requested_output_tokens": 1024,
+        "total": 4438
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6781aad8ec8b2f94d9891002",
+        "input_tokens": 4524,
+        "requested_output_tokens": 1024,
+        "total": 5548
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6781aad8ba6672cf895d1344",
+        "input_tokens": 5144,
+        "requested_output_tokens": 1024,
+        "total": 6168
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6781aad81acc7401a3fe95cc",
+        "input_tokens": 6362,
+        "requested_output_tokens": 1024,
+        "total": 7386
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6781adc504333c7c6164b011",
+        "input_tokens": 3629,
+        "requested_output_tokens": 1024,
+        "total": 4653
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6781ad8b7d5d4b7679627100",
+        "input_tokens": 5123,
+        "requested_output_tokens": 1024,
+        "total": 6147
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6781adc5d2b793f40a8cd766",
+        "input_tokens": 8364,
+        "requested_output_tokens": 1024,
+        "total": 9388
+      },
+      {
+        "task": "multichallenge_en",
+        "id": "6765f839a02fd129919ef243",
+        "input_tokens": 3498,
+        "requested_output_tokens": 1024,
+        "total": 4522
+      }
+    ],
+    "count_drift": {},
+    "status": "failed"
+  }
+}

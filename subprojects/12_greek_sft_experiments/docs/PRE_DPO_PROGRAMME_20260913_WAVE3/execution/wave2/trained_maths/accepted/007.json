@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_714_1",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The complete AFTER record is identical to the actual training record and occurs once. The solution correctly identifies the opening time as irrelevant, models equal distribution with 4·x=28, and obtains 7 cheese pies per tray. The editor only replaced an awkward variable definition with a natural, semantically equivalent formulation.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_44_0",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The complete AFTER record is identical to the actual training record and occurs once. Under the ordinary classroom convention that a random draw from the box makes its 15 tiles equally likely, the solution correctly counts 5 favorable outcomes and computes 5/15=1/3. The €450 purchase value is irrelevant but does not need to be used or explicitly discussed. The earlier second solve agrees but was not treated as independent proof. The editor made only a natural, meaning-preserving language improvement.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    }
+  ]
+}

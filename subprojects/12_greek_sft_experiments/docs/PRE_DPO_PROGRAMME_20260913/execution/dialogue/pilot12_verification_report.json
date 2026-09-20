@@ -1,0 +1,26 @@
+{
+  "verified_at": "2026-09-13T15:37:01+03:00",
+  "command": "python3 outputs/parallel_improvement_plan/execution/dialogue/pilot12_verifier.py",
+  "status": "PASS",
+  "rows": 12,
+  "truth_counts": {"true":3,"false":3,"partial":3,"unresolved":3},
+  "supervised_assistant_turns": 19,
+  "masked_assistant_turns": 6,
+  "checks": [
+    "Derived every truth category from evidence values and user claim atoms.",
+    "Computed arithmetic totals, products, remainders and list differences; checked exact-output turns byte-for-byte.",
+    "Counted prior user messages from the actual message sequence.",
+    "Validated required state values and clarification questions in target answers.",
+    "Validated stable message IDs, alternating roles, speaker-linked decision IDs, non-empty content and assistant-only train:false flags.",
+    "Validated that every invalid earlier assistant state is train:false.",
+    "Validated exactly three rows in each of the four truth classes."
+  ],
+  "source_sha256": "7cadb839631d7646da8d4e430484e445d2e82acc6200312fa8da5f8cdc053dfe",
+  "evidence_sha256": "62b472d8c36b46e6af02072a10d0983f5cd2ecbf212f4d87b72d2738ba6a6b9d",
+  "verifier_sha256": "f9fbe7af4e473d9235a3cd2b17587c199dbecbf5a087b346c742d4bb2fcef4ac",
+  "limitations": [
+    "This verifier establishes only the declared arithmetic, state, list, exact-output, ownership and masking properties.",
+    "Substring inclusion checks cannot prove complete semantics, naturalness, or the correctness of every unenumerated target claim.",
+    "Greek language correction and independent semantic review have not yet been performed."
+  ]
+}

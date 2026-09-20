@@ -1,0 +1,51 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_math_841",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The English source, Greek problem, complete before/after dialogue, and actual training messages are supplied. The Greek problem faithfully preserves the original objective and data. Independently checking the geometry confirms that the three pairwise-threshold regions have area ratios (1/6)^2, (1/3)^2, and (1/2)^2; their only all-three overlap is the zero-area point (1/2,1/3,1/6), so the ratio is 7/18. The editor made only a slight wording refinement from «μένει» to «απομένει» and did not alter the mathematics.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_1372",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "issue",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "issue",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "after/units_and_rounding",
+          "severity": "minor",
+          "quote": "ν < 71 / 7\nν < 10,14",
+          "explanation": "The exact value is 71/7 = 10.142857…, so «ν < 10,14» is presented as an exact inequality even though 10,14 is only a truncated decimal approximation. The integer conclusion ν=10 and final answer 73 remain correct, but the approximation should be marked or the exact fraction retained.",
+          "suggested_action": "Use «ν < 71/7 ≈ 10,14» or proceed directly from «ν < 71/7» to the largest integer ν=10."
+        },
+        {
+          "dimension": "before/units_and_rounding",
+          "severity": "minor",
+          "quote": "ν < 71 / 7\nν < 10,14",
+          "explanation": "The same unmarked decimal approximation was already present before editing, so this is an inherited defect rather than editor-introduced damage.",
+          "suggested_action": "Repair the mathematical notation in the solution while leaving the problem and correct final answer unchanged."
+        }
+      ],
+      "provenance_note": "The English source, Greek problem, complete before/after dialogue, and actual training messages are supplied. Independent modular-arithmetic verification gives 73 as the largest integer below 74 congruent to 3 modulo 7. The editor only removed the optional article in «είναι το 10»; this improved concision but neither caused nor repaired the inherited approximation issue.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "repair_solution"
+    }
+  ]
+}

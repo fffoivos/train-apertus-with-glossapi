@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "status": "root_reviewed_ready",
+  "counts": {
+    "primary_calls": 14,
+    "retry_cap": 4,
+    "absolute_call_cap": 18
+  },
+  "cumulative_budget": {
+    "model_calls_so_far": 42,
+    "additional_max": 18,
+    "cumulative_max": 60,
+    "programme_cap": 72,
+    "source_repair_cap_remaining": 8,
+    "local_initialization_failures_separate": 22
+  },
+  "parent_candidate_sha256": "325f49e089d607c7ea298cac3480db7c62f2ce27bd39fb70e9137cfd1d493e7c",
+  "artifact_sha256": {
+    "inputs.jsonl": "08955b93b0ede4d76d7dfef85f3c7bdad20b582336a9f80c3643493b657dc29c",
+    "queue.jsonl": "c345ee4ef3108d8cf39f3007502e1083de594cfa947fb576cdada850f7643b0f",
+    "run_queue.py": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005",
+    "schemas/greek_correction.schema.json": "cac89525ac699c70071e5020cc6e5ba4828aea543a27af1fa23c88ec621618b3",
+    "prompts/greek_correction.txt": "9edf7cecca4f94e4df6d84eda3441958e8dda60706d4ec86d011c30f759056a8"
+  }
+}

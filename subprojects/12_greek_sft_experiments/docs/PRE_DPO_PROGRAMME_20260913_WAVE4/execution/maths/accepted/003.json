@@ -1,0 +1,62 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_2440",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "minor",
+          "quote": "10 μίλια την ώρα ... άλλα 15 μίλια ... 20 μιλίων",
+          "explanation": "Η ελληνική εκδοχή διατηρεί το αγγλοσαξονικό σύστημα μιλίων. Αυτό δεν επηρεάζει την ορθότητα των υπολογισμών ούτε συνιστά mistranslation, αλλά παραμένει ατελής πολιτισμική προσαρμογή.",
+          "suggested_action": "Καταγραφή ως ζήτημα προσαρμογής μόνο· ενδεχόμενη μετατροπή σε χιλιόμετρα θα απαιτούσε συντονισμένη αλλαγή όλων των ποσοτήτων και της λύσης."
+        }
+      ],
+      "provenance_note": "Υπάρχει μία εγγραφή προβλήματος και μία εγγραφή λύσης· δεν προκύπτει αβεβαιότητα ιστορικής αντιστοίχισης. Η λύση ακολουθεί την προβλεπόμενη υπόθεση του reference ότι η ταχύτητα των 10 μιλίων/ώρα συνεχίζεται στα επόμενα τμήματα.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_357",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "greek_language",
+          "severity": "minor",
+          "quote": "Η γραφική παράσταση μιας συνάρτησης και της αντίστροφής της είναι συμμετρικές",
+          "explanation": "Η σύνταξη και η συμφωνία αριθμού είναι ελαττωματικές: το υποκείμενο αρχίζει στον ενικό, ενώ το κατηγορούμενο είναι στον πληθυντικό, και η δεύτερη γραφική παράσταση παραλείπεται με μη φυσικό τρόπο.",
+          "suggested_action": "Να διορθωθεί γλωσσικά σε «Οι γραφικές παραστάσεις μιας συνάρτησης και της αντίστροφής της είναι συμμετρικές ως προς την ευθεία y=x»."
+        }
+      ],
+      "provenance_note": "Το κείμενο του προβλήματος δηλώνεται σταθερό και δεν παρέχονται problem_variants. Υπάρχουν δύο εγγραφές λύσης, αλλά η αξιολόγηση αφορά αποκλειστικά την επιλεγμένη λύση της γραμμής 663· δεν προκύπτει μαθηματική αβεβαιότητα αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_1637",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχει μία εγγραφή προβλήματος και μία εγγραφή λύσης· δεν προκύπτει αβεβαιότητα ιστορικής αντιστοίχισης. Η αλλαγή του νομίσματος από δολάρια σε ευρώ είναι συνεπής πολιτισμική προσαρμογή και διατηρεί την αριθμητική δομή και το ζητούμενο.",
+      "verification_needed": []
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_980",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The last saved solution is paired by convention with the last saved problem, but the historical association is unproven. The two supplied Greek problem variants differ only by the addition of «άθροισμα» and are mathematically equivalent; the candidate solution fits both.",
+      "verification_needed": [
+        "Historical pairing of the selected solution with a particular saved Greek problem version remains unverified."
+      ]
+    },
+    {
+      "row_id": "math5_143",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The problem text is marked stable. The selected solution correctly addresses the supplied Greek and English problem.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_107",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single problem record. The name change from Brenda to Βάσω is a coherent permitted cultural adaptation and does not alter the quantities or reasoning.",
+      "verification_needed": []
+    }
+  ]
+}

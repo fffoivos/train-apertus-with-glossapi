@@ -1,0 +1,54 @@
+{
+  "job_id": "greek__scale60_05_volunteer_board_unresolved",
+  "row_id": "scale60_05_volunteer_board_unresolved",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "07c82b88a29e218735d7ab7492a56cbe9988a9cea0c29b6f2f1f6df42504298f",
+  "input_record_sha256": "db6fef242af06217dbe967ec76d5f83e317bcd0541a755e5cce87ce4359a347b",
+  "payload_sha256": "0a72c06f778ddec3d3df9eaf2e5003569e6f89a8105c653544569573f5d29fbf",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "7f3c61d8f81e8e963a1f411bee269cc2efa9fa2030bf7d34f97f5580930eb036",
+  "result": {
+    "row_id": "scale60_05_volunteer_board_unresolved",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "scale60_05_volunteer_board_unresolved.u_context",
+        "role": "user",
+        "content": "Στον πίνακα εργασιών, το στήσιμο και τα φυλλάδια είναι ενεργά, ενώ ο έλεγχος ήχου είναι ακυρωμένος.",
+        "train": false
+      },
+      {
+        "id": "scale60_05_volunteer_board_unresolved.a_context",
+        "role": "assistant",
+        "content": "Βλέπω τρεις ξεχωριστές εγγραφές στον πίνακα και δεν έχει γίνει καμία εξωτερική ενέργεια.",
+        "train": false
+      },
+      {
+        "id": "scale60_05_volunteer_board_unresolved.u_decision",
+        "role": "user",
+        "content": "Επιτέλους. Ακύρωσε εκείνη την ενεργή εργασία στον πίνακα.",
+        "train": false
+      },
+      {
+        "id": "scale60_05_volunteer_board_unresolved.a_target",
+        "role": "assistant",
+        "content": "Ποια από τις δύο ενεργές εργασίες να ακυρώσω στον πίνακα: το στήσιμο ή τα φυλλάδια;",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "scale60_05_volunteer_board_unresolved.u_context",
+        "before": "Στον κειμενικό πίνακα, το στήσιμο και τα φυλλάδια είναι ενεργά, ενώ ο έλεγχος ήχου είναι ακυρωμένος.",
+        "after": "Στον πίνακα εργασιών, το στήσιμο και τα φυλλάδια είναι ενεργά, ενώ ο έλεγχος ήχου είναι ακυρωμένος.",
+        "error": "Αφύσικη μεταφραστική διατύπωση",
+        "reason": "Το «κειμενικός πίνακας» δεν αποτελεί φυσική ελληνική ονομασία για πίνακα καταγραφής εργασιών· το «πίνακας εργασιών» αποδίδει φυσικά και χωρίς σημασιολογική μεταβολή το καθορισμένο είδος εγγραφής."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

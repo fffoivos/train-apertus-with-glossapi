@@ -1,0 +1,80 @@
+{
+  "job_id": "adapt__scaleB_math_line_1622",
+  "row_id": "scaleB_math_line_1622",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "cbc27ab10f561f3dfdad399be380298c622ceff941a4653c4346559d9526cd7d",
+  "input_record_sha256": "eeb1ffd5888f9dfb9ded5e90e74fbd681c03c7deae41e81582f478fab0b2a881",
+  "payload_sha256": "f6bbe85fd8e6cae56f585095fcb584fca603362c0c612d7b2c8544c368937980",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "f894067c0d11af9e906d8ea307580c006d603e53353554066d24dd1f39828563",
+  "result": {
+    "row_id": "scaleB_math_line_1622",
+    "status": "candidate",
+    "problem_text": "Η ακολουθία $2, 7, 12, a, b, 27$ είναι αριθμητική πρόοδος. Ποια είναι η τιμή του $a + b$;",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "The sequence",
+        "target_span": "Η ακολουθία",
+        "reason": "Πιστή μετάφραση στα ελληνικά."
+      },
+      {
+        "source_span": "is arithmetic",
+        "target_span": "είναι αριθμητική πρόοδος",
+        "reason": "Χρήση του καθιερωμένου ελληνικού μαθηματικού όρου."
+      },
+      {
+        "source_span": "What is the value of",
+        "target_span": "Ποια είναι η τιμή του",
+        "reason": "Πιστή και φυσική απόδοση του ζητουμένου στα ελληνικά."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "2",
+          "role": "πρώτος όρος της αριθμητικής προόδου",
+          "unit": null
+        },
+        {
+          "value": "7",
+          "role": "δεύτερος όρος της αριθμητικής προόδου",
+          "unit": null
+        },
+        {
+          "value": "12",
+          "role": "τρίτος όρος της αριθμητικής προόδου",
+          "unit": null
+        },
+        {
+          "value": "a",
+          "role": "τέταρτος άγνωστος όρος της αριθμητικής προόδου",
+          "unit": null
+        },
+        {
+          "value": "b",
+          "role": "πέμπτος άγνωστος όρος της αριθμητικής προόδου",
+          "unit": null
+        },
+        {
+          "value": "27",
+          "role": "έκτος όρος της αριθμητικής προόδου",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Η διατεταγμένη ακολουθία $2, 7, 12, a, b, 27$ είναι αριθμητική πρόοδος."
+      ],
+      "required_outputs": [
+        "Η τιμή του $a+b$."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

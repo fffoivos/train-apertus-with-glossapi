@@ -1,0 +1,69 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_1489",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The candidate is paired with a single problem record and one solution record. The adaptation of Matt to Μάνος preserves the teaching objective and remains culturally coherent.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_1037",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "issue",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "derivation",
+          "severity": "minor",
+          "quote": "\\frac{n(n-1)}{n-1}=n",
+          "explanation": "This displayed identity is undefined when n=1, although the problem ranges over every positive integer n. Consequently, the blanket claim about the guaranteed divisor n−1 does not rigorously cover the boundary case. The final answer remains correct, since n=1, 2, and 3 can be ruled out directly.",
+          "suggested_action": "In a future repair, handle n=1 separately and then use the stated quotient only for n>1, or directly verify that n=1, 2, and 3 fail before considering n=4 and n=5."
+        }
+      ],
+      "provenance_note": "The problem text is marked stable, with no supplied problem variants. Four solution records exist, and the selected solution is from line 2425; this does not itself establish a mathematical defect.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_139",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "issue",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "derivation",
+          "severity": "major",
+          "quote": "\\angle APC=\\angle DPB=\\angle DPO. Επομένως το τρίγωνο $ODP$ είναι ισοσκελές",
+          "explanation": "The equality ∠DPB=∠DPO is false under the point order later used in the solution, A–O–P–B: rays PB and PO are opposite, so these angles are supplementary rather than equal. The intended conclusion DP=OD can still be obtained, but it requires observing that ∠DOA and ∠DOP are supplementary and that ∠DPB and ∠DPO are supplementary; the already established equality ∠DOA=∠DPB then gives ∠DOP=∠DPO.",
+          "suggested_action": "In a future repair, establish the relevant point order and replace the false angle equality with the supplementary-angle argument before concluding that triangle ODP is isosceles."
+        },
+        {
+          "dimension": "derivation",
+          "severity": "minor",
+          "quote": "\\frac{AP}{BP}=\\frac{AO+OP}{BO-OP}",
+          "explanation": "These segment identities assume the order A–O–P–B, but the candidate never justifies that P lies on the B-side of O. This matters because the opposite placement would change both segment expressions. The premise that AP/BP has the form p+q√r with positive p and q implies AP/BP>1 and can be used to identify the intended side.",
+          "suggested_action": "In a future repair, explicitly justify that AP>BP and hence that P lies between O and B before using AP=AO+OP and BP=BO−OP."
+        }
+      ],
+      "provenance_note": "The problem text is marked stable, with one solution record and no supplied variants. The candidate agrees with the reference final value, but reproduces an implicit geometric argument that requires correction as described.",
+      "verification_needed": []
+    }
+  ]
+}

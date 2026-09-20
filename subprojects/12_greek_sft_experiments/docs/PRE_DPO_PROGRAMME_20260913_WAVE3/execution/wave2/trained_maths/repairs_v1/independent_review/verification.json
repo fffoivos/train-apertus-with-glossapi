@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "reviewed": 7,
+  "accepted": 7,
+  "held": 0,
+  "hash_and_role_checks": 7,
+  "arithmetic_checks": 6,
+  "general_proof_read": [
+    "gm_math_2231"
+  ],
+  "model_subprocess_calls": 0,
+  "production_writes": 0,
+  "candidate_file_sha256": "0b0b25893c822ca8de266ce783d5725caa07d41733b91aa6f88835962d6cff03",
+  "source_sample_sha256": "0933ad4e2bd6fa03dcfa6411a1f15750c73c6d082b1298560a62effa930f3442"
+}

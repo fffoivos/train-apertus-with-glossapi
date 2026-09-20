@@ -1,0 +1,20 @@
+{
+  "schema_version": "remote_output_ownership_v1",
+  "status": "verified_and_receipt_copied",
+  "checked_at_utc": "2026-09-13T14:23:40Z",
+  "host": "clariden",
+  "directory": "/iopsstor/scratch/cscs/fffoivos/sft_round1/evals/wave2_krikri_v15/attempt_001",
+  "directory_owner": "fffoivos",
+  "directory_group": "a0140",
+  "directory_mode": "drwxr-x---",
+  "destination_pre_copy": "absent",
+  "copied_file": "recovery_result_3390957.json",
+  "copied_owner": "fffoivos",
+  "copied_group": "a0140",
+  "copied_mode": "-rw-r-----",
+  "bytes": 5768,
+  "local_sha256": "c66c572b7b763b7f3180ca9fb095c9d6bfa40cd9d8ffd54c781a17d2e5b29bf1",
+  "remote_sha256": "c66c572b7b763b7f3180ca9fb095c9d6bfa40cd9d8ffd54c781a17d2e5b29bf1",
+  "overwrite": false,
+  "note": "The earlier automatic review rejection was resolved by proving exact destination ownership and absence before the explicitly authorized one-file copy."
+}

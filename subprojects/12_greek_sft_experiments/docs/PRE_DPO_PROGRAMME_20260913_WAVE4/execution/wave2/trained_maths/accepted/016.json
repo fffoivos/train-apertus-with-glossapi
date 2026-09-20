@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_1080_1",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The actual after-correction target is identical to the before-correction record. Independently checking the arithmetic gives tomato cost 2.5×2.40=€6, cheese cost €12.75, and cheese mass 12.75÷8.50=1.5 kg. The basil is correctly identified as irrelevant to the stated expenditure.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_121",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem preserves the source polynomial and requested symmetric expression. By Vieta's formulas, for 3x³−3x²+11x−8, the pairwise product sum is the coefficient ratio 11/3. The editor only clarified the Greek wording by explicitly naming this as a ratio; the mathematical content and correct result were unchanged.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    }
+  ]
+}

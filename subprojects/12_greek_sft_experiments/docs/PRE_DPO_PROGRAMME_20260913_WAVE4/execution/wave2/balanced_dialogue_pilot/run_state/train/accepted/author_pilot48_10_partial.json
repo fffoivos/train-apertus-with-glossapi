@@ -1,0 +1,79 @@
+{
+  "job_id": "author_pilot48_10_partial",
+  "row_id": "pilot48_10_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "9c77d32f51278512033e0740284dd93581c68a99c8e24cb324b820a6ab07754b",
+  "input_record_sha256": "0d2456a3d2f12f34fe8a9a6f921b23c238dca0be39920268ee5b9f3b35f325ea",
+  "payload_sha256": "c948ee86c336fdef9e202b8f811c195a42d5263ff04be54a269aa459e9746693",
+  "template_sha256": "706421a4b63e5cc4e7d80db634ba011698c336ade53060a5a6e45ea30fc47eba",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "4a6d59d19492ad2a354aea6464745deb885a54a6d3b93dd47b1d477b6234b1df",
+  "result": {
+    "row_id": "pilot48_10_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_10_partial.u_context",
+        "role": "user",
+        "content": "Ποιες υπενθυμίσεις είναι ενεργές αυτή τη στιγμή;",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_partial.a_context",
+        "role": "assistant",
+        "content": "Είναι ενεργές δύο υπενθυμίσεις: μία για το ραντεβού και μία για τα ψώνια.",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_partial.u_decision",
+        "role": "user",
+        "content": "Το ξαναλέω: η υπενθύμιση για το ραντεβού είναι ενεργή και εκείνη για τα ψώνια έχει ακυρωθεί. Ακύρωσε τώρα του ραντεβού.",
+        "train": false
+      },
+      {
+        "id": "pilot48_10_partial.a_target",
+        "role": "assistant",
+        "content": "Η υπενθύμιση για το ραντεβού ήταν πράγματι ενεργή, αλλά εκείνη για τα ψώνια δεν είχε ακυρωθεί· ήταν επίσης ενεργή. Ακύρωσα τώρα την υπενθύμιση για το ραντεβού. Τα ψώνια παραμένουν ενεργά.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_10_partial.a_target",
+        "claim": "Η υπενθύμιση για το ραντεβού είναι ενεργή και η υπενθύμιση για τα ψώνια έχει ακυρωθεί.",
+        "truth_category": "partial",
+        "evidence_ids": [
+          "evidence.claim_atoms[0]",
+          "evidence.claim_atoms[1]",
+          "evidence.initial.ραντεβού",
+          "evidence.initial.αγορές",
+          "current_request"
+        ],
+        "expected_response_behaviour": [
+          "Να επιβεβαιώσει ότι η υπενθύμιση για το ραντεβού ήταν ενεργή.",
+          "Να διορθώσει ότι η υπενθύμιση για τα ψώνια ήταν ενεργή και όχι ακυρωμένη.",
+          "Να ακυρώσει την υπενθύμιση για το ραντεβού.",
+          "Να δηλώσει συνοπτικά την τελική κατάσταση."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "ραντεβού",
+        "before_json": "\"active\"",
+        "after_json": "\"cancelled\"",
+        "evidence_ids": [
+          "oracle.state_before.ραντεβού",
+          "current_request",
+          "oracle.state_after.ραντεβού"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

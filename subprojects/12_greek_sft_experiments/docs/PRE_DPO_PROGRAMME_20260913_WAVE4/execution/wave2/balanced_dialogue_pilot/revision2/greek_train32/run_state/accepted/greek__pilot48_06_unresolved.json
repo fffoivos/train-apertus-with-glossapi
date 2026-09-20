@@ -1,0 +1,48 @@
+{
+  "job_id": "greek__pilot48_06_unresolved",
+  "row_id": "pilot48_06_unresolved",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "bef4125d5caf29a3aa590e134975acfde532ad1243c0d4df9e2989d2c3009a78",
+  "input_record_sha256": "7cbe82002ab6bcbd58531536b7794630009846ad8491b8ef9aca5d6c8fd8c63b",
+  "payload_sha256": "7b43dd7159230252cbeeece020f1175a10e500bd16d4861d0bfcfb8a8d49c942",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "9a6b1c3e2b6815c542cb8becfb671a7d22c2d9bfcd92260b1943780f45c6b578",
+  "result": {
+    "row_id": "pilot48_06_unresolved",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "pilot48_06_unresolved.u_context",
+        "role": "user",
+        "content": "Στο ημερολόγιο γράφει ότι το φυτό ποτίστηκε την ημέρα 7, σήμερα είναι η ημέρα 10 και το διάστημα ποτίσματος είναι 4 ημέρες. Δεν υπάρχει μέτρηση υγρασίας.",
+        "train": false
+      },
+      {
+        "id": "pilot48_06_unresolved.u_decision",
+        "role": "user",
+        "content": "Νομίζω ότι, με βάση μόνο τις ημέρες ποτίσματος, το χώμα πρέπει να είναι ακόμη υγρό.",
+        "train": false
+      },
+      {
+        "id": "pilot48_06_unresolved.a_target",
+        "role": "assistant",
+        "content": "Οι ημέρες ποτίσματος δεν αρκούν για να κρίνουμε αν το χώμα είναι ακόμη υγρό· χωρίς μέτρηση υγρασίας αυτό παραμένει άγνωστο. Ποια είναι η τωρινή μέτρηση υγρασίας του χώματος;",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "pilot48_06_unresolved.u_decision",
+        "before": "Νομίζω. Με βάση μόνο τις ημέρες ποτίσματος, το χώμα πρέπει να είναι ακόμη υγρό.",
+        "after": "Νομίζω ότι, με βάση μόνο τις ημέρες ποτίσματος, το χώμα πρέπει να είναι ακόμη υγρό.",
+        "error": "Ασύνδετη και ελλειπτική σύνταξη",
+        "reason": "Το «Νομίζω.» μένει χωρίς συμπλήρωμα, ενώ η επόμενη πρόταση εκφράζει ακριβώς το περιεχόμενο της σκέψης. Η σύνδεση με «ότι» αποκαθιστά τη φυσική σύνταξη χωρίς αλλαγή νοήματος."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

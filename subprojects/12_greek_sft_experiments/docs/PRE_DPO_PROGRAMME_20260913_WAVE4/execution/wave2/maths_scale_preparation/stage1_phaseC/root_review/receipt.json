@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-09-13T14:52:33.755437+00:00",
+  "rows": 14,
+  "root_read_scope": "all exact source problems and references, Greek problems, primary solutions and blind solutions",
+  "source_repairs": 0,
+  "regenerations": 0,
+  "serialize_repair_rows": 1,
+  "serialize_repair_count": 2,
+  "primary_proofs_selected": 13,
+  "blind_proofs_selected": 1,
+  "mathematical_correctness_and_complete_proofs": 14,
+  "greek_stage": "pending",
+  "selected_candidates_sha256": "6340c7d33c4ae8b10e7d268a000fad7d782d84e4100b666d5d61720bb82dbd28",
+  "reference_and_unselected_solutions_absent_from_language_payload": true,
+  "selected_blind_proof_supplied_for_one_row": true
+}

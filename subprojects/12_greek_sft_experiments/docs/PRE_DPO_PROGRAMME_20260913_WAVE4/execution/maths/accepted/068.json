@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_438",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem faithfully matches the stable English problem. Although two solution records are reported, no alternate problem variants are supplied, and the selected solution is mathematically consistent with the displayed problem.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_492",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem faithfully matches the stable English problem, and the single selected solution is consistent with it. The construction and computation support AB=9+√141 and hence p+q=150.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_553",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem faithfully matches the stable English problem. Although two solution records are reported, no alternate problem variants are supplied, and the selected counting argument is consistent with the displayed problem.",
+      "verification_needed": []
+    }
+  ]
+}

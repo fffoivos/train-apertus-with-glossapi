@@ -1,0 +1,22 @@
+{
+  "created_at": "2026-09-13T13:55:40.019255+00:00",
+  "rows": 32,
+  "labels": {
+    "true": 8,
+    "false": 8,
+    "partial": 8,
+    "unresolved": 8
+  },
+  "root_scope_repairs": 4,
+  "additional_model_calls_for_repairs": 0,
+  "cumulative_dialogue_calls": 36,
+  "absolute_call_cap": 118,
+  "nonassistant_train_flag_normalization": "Remove authoring annotation train:false from user messages in training projection only; canonical trainer masks all non-assistant tokens independently. Assistant context retains train:false; target retains train:true. Raw authoring remains immutable.",
+  "gate": "full_reader_and_tokenizer_pending; final_scope_review_pending; Greek_check_pending",
+  "files": {
+    "semantic_scope_repairs.jsonl": "f2c333410410b706bbe8371f79bf6ee4c4b0197fa7b284de396eabfbd25840c4",
+    "training_projection.jsonl": "8abc6f949b2cca206f38d431040ef6051f8d99a93dc57229f75916e34aa562cb",
+    "adjudications.jsonl": "fc6be6ac09bc64fdf180bb39dbb2cab9eb464fe328bf6635f695eba463b8ed80",
+    "candidate_rows.jsonl": "33c1e6bbf0ed65b02b5224cdfdfff549b3a9d6117b9b6bb268b9f6528e7a7dce"
+  }
+}

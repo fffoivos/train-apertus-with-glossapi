@@ -1,0 +1,31 @@
+{
+  "checks": {
+    "all_before_hashes_match_source": true,
+    "all_proposed_hashes_match": true,
+    "english_embedded_news_unchanged": true,
+    "english_relative_clause_and_truck": true,
+    "es_regression_distinctions": true,
+    "es_regression_formula": true,
+    "french_attribution_and_uncertainty": true,
+    "french_primary_source_number": true,
+    "italian_no_causal_superiority": true,
+    "italian_prompt_agreement": true,
+    "italian_welch_values_and_hypothesis": true,
+    "no_corpus_mutation_declared": true,
+    "personas_exactly_three_instrument_fields": true,
+    "personas_natural_greek_instruction": true,
+    "personas_no_invented_signature": true,
+    "personas_uppercase_emphasis_and_postscript": true,
+    "six_unique_candidates": true,
+    "story_required_opening_and_phrase_fix": true,
+    "story_rest_preserved_exactly": true,
+    "welch_arithmetic": true
+  },
+  "ok": true,
+  "verified_at": "2026-09-13T17:41:42+03:00",
+  "welch": {
+    "critical_one_sided_alpha_0_05_approx": 1.66,
+    "df": 147.9998793290696,
+    "t": 4.08248290463863
+  }
+}

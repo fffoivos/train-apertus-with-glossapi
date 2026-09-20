@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_140_4",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The actual AFTER target is complete and matches the supplied problem. The equation 2x+2(x+6)=52 correctly models the common €2 ticket price and gives x=10; substitution yields 20€+32€=52€. The editor changed only the awkward variable definition from «Έστω x οι λαχνοί» to the precise «Έστω x ο αριθμός των λαχνών», without altering the mathematics or task.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_3733",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem faithfully preserves the English source’s numbers, operation, and teaching objective. The AFTER target is unchanged from BEFORE. The computation 1+2+…+10=10·11/2=55 and division identity 55=8·6+7 are correct, complete, and establish remainder 7. No units or rounding are involved.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

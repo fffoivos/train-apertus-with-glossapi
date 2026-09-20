@@ -1,0 +1,30 @@
+{
+  "job_id": "solve_high__scaleC_math_line_3264",
+  "row_id": "scaleC_math_line_3264",
+  "stage": "solution_high",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "2f45363158cf50284dd9f4f658ae02ee358c022466cd2ba3629a65cf2ceaadf2",
+  "input_record_sha256": "7175c7700bc59ceef0c4f91ad0b63192664451d21a021b897fe0bd3f595342c6",
+  "payload_sha256": "00797ad790381adab64618e5aa43a3347871e1438fb3c5db91056f0b4b3e78c7",
+  "template_sha256": "ea1afd16c4910e9930760e3f22b232e0d14451f207ea4290ea79cc2d231e6a45",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "278885e2f3a5d153b5bc23e44640cc602a48a4454556ae5845d7106987df0b5f",
+  "result": {
+    "row_id": "scaleC_math_line_3264",
+    "status": "candidate",
+    "solution_text": "Έχουμε \\(135^\\circ=180^\\circ-45^\\circ\\). Από την ταυτότητα\n\\[\n\\cos(180^\\circ-\\theta)=-\\cos\\theta\n\\]\nπροκύπτει\n\\[\n\\cos135^\\circ=-\\cos45^\\circ=-\\frac{\\sqrt2}{2}.\n\\]\n\nΑπάντηση: \\(\\displaystyle \\cos135^\\circ=-\\frac{\\sqrt2}{2}\\).",
+    "final_answers": [
+      {
+        "part": "μοναδικό ερώτημα",
+        "expression": "-\\frac{\\sqrt{2}}{2}",
+        "unit": null,
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

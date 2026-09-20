@@ -1,0 +1,263 @@
+{
+  "files": [
+    {
+      "bytes": 1351,
+      "path": "tool_reexport_pilot/CANONICAL_ISSUE_DRAFT.md",
+      "sha256": "099305135c3f2190b8195e7cf9c9dba3e50b4d1b156d5717ef29710433ad7927"
+    },
+    {
+      "bytes": 1553,
+      "path": "tool_reexport_pilot/OPENMATH_INPUT_CLASSIFICATION.json",
+      "sha256": "76ba7b81602c11b873b60a35c9b2ae1f7ca0e1d3eb728cfd6794f77c9387181d"
+    },
+    {
+      "bytes": 4259,
+      "path": "tool_reexport_pilot/REMOTE_READINESS_REPORT.md",
+      "sha256": "8d00a85c2c830c69070806d40ee35c368fe1129034754f00b4f6066241ae8dd3"
+    },
+    {
+      "bytes": 2902,
+      "path": "tool_reexport_pilot/REMOTE_TEST_ONLY_HANDOFF.md",
+      "sha256": "cafe92f57499fcb958ef3945b52e9774aa3f8e27bd2e03c9b4e57c9df7545f54"
+    },
+    {
+      "bytes": 7195,
+      "path": "tool_reexport_pilot/REPORT.md",
+      "sha256": "ccaf2efe9dd4c3e1c20072474fd58f2e1af859145f1cdedbe045ceb1d33792d1"
+    },
+    {
+      "bytes": 1431,
+      "path": "tool_reexport_pilot/bind_data_stage.py",
+      "sha256": "54b4cdf449c526aa0fa7833a134e962261f1395b686be09cde0bd255425cdf01"
+    },
+    {
+      "bytes": 5710,
+      "path": "tool_reexport_pilot/build_contracts.py",
+      "sha256": "cd80d0cd2e1bc1bff80e25fa193df949d06f01b4db0f6c11bfe4ce839afa5cff"
+    },
+    {
+      "bytes": 2724,
+      "path": "tool_reexport_pilot/build_openmath_data_stage.py",
+      "sha256": "085ee98d7563976348e6e119d8d97c9d49e5861d55b00ad235a2ab5b026217e9"
+    },
+    {
+      "bytes": 21657,
+      "path": "tool_reexport_pilot/compiled_data_stage.local_validation.json",
+      "sha256": "4a9e36ea699cd51e91eca76af2953054dcab09ff0a0a4db799d83a509612c32a"
+    },
+    {
+      "bytes": 21682,
+      "path": "tool_reexport_pilot/compiled_openmath_data_stage.local_validation.json",
+      "sha256": "a84977082850106af5ae6158ecf4a25c4aa642faca7d8da4c72edfe890ba6683"
+    },
+    {
+      "bytes": 2110,
+      "path": "tool_reexport_pilot/data_stage_contract.local_validation.json",
+      "sha256": "23cd0937164777499866d1d8627918a3b101365fc4738579475cc6e416f3eedd"
+    },
+    {
+      "bytes": 2009,
+      "path": "tool_reexport_pilot/data_stage_contract.prebind.json",
+      "sha256": "a815bca1be78f7c3007a4b79f3a7e49b8611f875868ddc6045c955749c6b665e"
+    },
+    {
+      "bytes": 4387,
+      "path": "tool_reexport_pilot/inspect_selected_shapes.py",
+      "sha256": "df60e7adda51a2f56fb6b72c4d6034b9b8bf78d54db71634641ba3e821ef329b"
+    },
+    {
+      "bytes": 1618,
+      "path": "tool_reexport_pilot/inspect_upstream_schema.py",
+      "sha256": "e85114b04c72685652b1fab7de33c279014cc417bb173e8b54c837b228eed137"
+    },
+    {
+      "bytes": 2303,
+      "path": "tool_reexport_pilot/inventory_receipt.json",
+      "sha256": "2334c919131ea404297db6c0af833a8422edd268576eb4a3ad9a3cf8c3d3c214"
+    },
+    {
+      "bytes": 4826,
+      "path": "tool_reexport_pilot/inventory_source.py",
+      "sha256": "1eceb609b7a65fe191d8c9bfe3769fb070cf26d581c19440553401c2c2ba30bb"
+    },
+    {
+      "bytes": 2856,
+      "path": "tool_reexport_pilot/live_cluster_receipt.json",
+      "sha256": "bd2c565f4aad03bf9b4162779e586b786dcc4827c5405fff48f8f96d116b8e42"
+    },
+    {
+      "bytes": 2124,
+      "path": "tool_reexport_pilot/openmath_data_stage_contract.local_validation.json",
+      "sha256": "3d9ea262e0717699ace3b1f938d7666fd71ba1c26b6ab65d682ffc1aa271f812"
+    },
+    {
+      "bytes": 2027,
+      "path": "tool_reexport_pilot/openmath_data_stage_contract.prebind.json",
+      "sha256": "80f529ca4fb222d25321d5bd50856f2f21a64e8e777b1d337aba03cd111cd0aa"
+    },
+    {
+      "bytes": 22882,
+      "path": "tool_reexport_pilot/pilot_run.py",
+      "sha256": "ea86109a26829a61f7b7ec4c2ea277c3e9d2e96f7a1586cedd5fbe48a091aa79"
+    },
+    {
+      "bytes": 30854,
+      "path": "tool_reexport_pilot/remote_bundle/frozen_science/assemble_mix_r2.py",
+      "sha256": "36c0880a752aa0e6c6bd32aab8eaaea5b6a73edc735819d67e9fe28f808d8ec8"
+    },
+    {
+      "bytes": 9912,
+      "path": "tool_reexport_pilot/remote_bundle/frozen_science/export_core.py",
+      "sha256": "d508a4e9b4b94406e82ab20adb7bf92a9c03ece1ef323a354f28aa3c55f2b39f"
+    },
+    {
+      "bytes": 37212,
+      "path": "tool_reexport_pilot/remote_bundle/frozen_science/sft_train.py",
+      "sha256": "f8de43b1f8b99959741e6c4a9158ad99fd31ffc5b3b1636c1ac07a925df39b4d"
+    },
+    {
+      "bytes": 10935,
+      "path": "tool_reexport_pilot/remote_bundle/frozen_science/vantage_scan.py",
+      "sha256": "f77085ccfcdbef5a09cde9f02ccb035949728e7aee892484711171d0efc4e646"
+    },
+    {
+      "bytes": 3067,
+      "path": "tool_reexport_pilot/remote_bundle/pilot_contract.json",
+      "sha256": "d1ed83ff7049ccfa49a7e12d1492f20a2ef512330abc542b2bc5bc80a29b09e7"
+    },
+    {
+      "bytes": 22882,
+      "path": "tool_reexport_pilot/remote_bundle/pilot_run.py",
+      "sha256": "ea86109a26829a61f7b7ec4c2ea277c3e9d2e96f7a1586cedd5fbe48a091aa79"
+    },
+    {
+      "bytes": 93958,
+      "path": "tool_reexport_pilot/remote_bundle/source_inventory.json",
+      "sha256": "ee76456f63a7921a2311d45ad7a33cfea2f41dff58b539d4670b27584d47924e"
+    },
+    {
+      "bytes": 23480,
+      "path": "tool_reexport_pilot/remote_readiness/dolci/compiled_data_stage.json",
+      "sha256": "88c7918c070b5db04927447ad88eec6b7346fd8c6b4627ceb17de1f3a392c4d1"
+    },
+    {
+      "bytes": 2064,
+      "path": "tool_reexport_pilot/remote_readiness/dolci/data_stage_contract.bound.json",
+      "sha256": "055180919da0ac8634c65bb818cc129dfa49ef4fe4ed73bb62bffa4421733155"
+    },
+    {
+      "bytes": 3649,
+      "path": "tool_reexport_pilot/remote_readiness/dolci/scheduler_test_only.json",
+      "sha256": "026b93b791fbd01ade16ef26e1963f1bef96f7b782ea5ce238282ebf0386bc09"
+    },
+    {
+      "bytes": 3851,
+      "path": "tool_reexport_pilot/remote_readiness/dolci/scheduler_test_only_v2.json",
+      "sha256": "4072ea8658afbf4638e6cb0546524b0e5f364d7e8f2869be6a3a98f0c9328a06"
+    },
+    {
+      "bytes": 23504,
+      "path": "tool_reexport_pilot/remote_readiness/openmath/compiled_data_stage.json",
+      "sha256": "88ddd0202ce09e3189065c37c5fd94ac548389313abd4b7808da6ed6ce13c133"
+    },
+    {
+      "bytes": 2082,
+      "path": "tool_reexport_pilot/remote_readiness/openmath/data_stage_contract.bound.json",
+      "sha256": "a16e3cd4799dcb009e1d5b373dfab2fe654f2ef6aee2f6a027accbb8940e439a"
+    },
+    {
+      "bytes": 3687,
+      "path": "tool_reexport_pilot/remote_readiness/openmath/scheduler_test_only.json",
+      "sha256": "cd95a9a3a53e2bd5042043c6080791e6beb4de3d06f88e48fa5339493aa4b05a"
+    },
+    {
+      "bytes": 3889,
+      "path": "tool_reexport_pilot/remote_readiness/openmath/scheduler_test_only_v2.json",
+      "sha256": "ce4eb2daaf16cb66a94f7c6690e03dc64ac2d21178b7ea850e6d33fa9ee20883"
+    },
+    {
+      "bytes": 4931,
+      "path": "tool_reexport_pilot/remote_staging_receipt.json",
+      "sha256": "9108b0e4bdd88c07e74e79dd411900fce58d526f308235d4bc8ebedb989aa0ad"
+    },
+    {
+      "bytes": 3611,
+      "path": "tool_reexport_pilot/run_exact_test_only.py",
+      "sha256": "1f10d5d9d144075ea12ad86156495a5c570b02c977da00958cead44c4daef60d"
+    },
+    {
+      "bytes": 4513,
+      "path": "tool_reexport_pilot/smoke_test_pilot.py",
+      "sha256": "956ebaf7cdb5fbc1a8b90e416312442af0b6db0d88e9ca9aaa09014460efdf45"
+    },
+    {
+      "bytes": 93958,
+      "path": "tool_reexport_pilot/source_inventory.json",
+      "sha256": "ee76456f63a7921a2311d45ad7a33cfea2f41dff58b539d4670b27584d47924e"
+    },
+    {
+      "bytes": 1379,
+      "path": "tool_reexport_pilot/test_pilot_helpers.py",
+      "sha256": "9ea685a98c77a3d1215f90b73f0affcad09c4476252132ff77d1eb420bb23050"
+    },
+    {
+      "bytes": 6268,
+      "path": "tool_reexport_pilot/upstream_schema_inventory.json",
+      "sha256": "abb37e1dd16fb7cef2ba540443890df8470bce0d4e1605469f41d3d2a575d80d"
+    },
+    {
+      "bytes": 30313,
+      "path": "tool_reexport_pilot/upstream_shape_probe.json",
+      "sha256": "eaf7b9f320ddd235943187d0b8331f597df88def1702dd20665f8fb0527d7a70"
+    },
+    {
+      "bytes": 8624,
+      "path": "tool_reexport_pilot/validate_prepared_bundles.py",
+      "sha256": "a5603bc5109e0e45b1e70a99b801416c0ce09543213f0dbb4303b6e366f0d159"
+    },
+    {
+      "bytes": 3046,
+      "path": "tool_reexport_pilot/validation_receipt.json",
+      "sha256": "02c1c77cd42964faa95cfddf8f312dfcc562a9c7bd756b4a70da020bad69bea4"
+    },
+    {
+      "bytes": 6431,
+      "path": "english_competition_math/pilot_intake.py",
+      "sha256": "33505d07b73e596dceefe1a09c0d7f409eeec8608649f18d27b073ff209b95d2"
+    },
+    {
+      "bytes": 2888,
+      "path": "english_competition_math/pilot_contract.prebind.json",
+      "sha256": "1cf73a4038a0ca55b8b5a9b2ea69686edb775e9404f4defc06dfbf66f72031ed"
+    },
+    {
+      "bytes": 1383,
+      "path": "english_competition_math/INTAKE.md",
+      "sha256": "f8f0bea5c2752e0ed3f3d22eaeed08f4b0d93c38c34f7840c27bc1ef5d255c76"
+    },
+    {
+      "bytes": 6408,
+      "path": "english_competition_math/README.upstream.md",
+      "sha256": "8d0513c2f85e6ee1258f109017c2565f638cc10a72f1ffbee34ab8601c0dc199"
+    },
+    {
+      "bytes": 24334,
+      "path": "english_competition_math/hf_tree.json",
+      "sha256": "00a19dfd5188660e1a151b34de5812156c95c839830417cca5313eb095a51b45"
+    }
+  ],
+  "frozen_payloads": {
+    "dolci_pilot_contract_sha256": "d1ed83ff7049ccfa49a7e12d1492f20a2ef512330abc542b2bc5bc80a29b09e7",
+    "dolci_runner_sha256": "ea86109a26829a61f7b7ec4c2ea277c3e9d2e96f7a1586cedd5fbe48a091aa79",
+    "openmath_contract_sha256": "1cf73a4038a0ca55b8b5a9b2ea69686edb775e9404f4defc06dfbf66f72031ed",
+    "openmath_worker_sha256": "33505d07b73e596dceefe1a09c0d7f409eeec8608649f18d27b073ff209b95d2"
+  },
+  "launch_boundary": "approval false; rebind, recompile, and repeat test-only after root review before apply",
+  "remote_test_only": {
+    "dolci_receipt_sha256": "4072ea8658afbf4638e6cb0546524b0e5f364d7e8f2869be6a3a98f0c9328a06",
+    "openmath_receipt_sha256": "ce4eb2daaf16cb66a94f7c6690e03dc64ac2d21178b7ea850e6d33fa9ee20883",
+    "status": "passed_for_nonlaunching_manifests"
+  },
+  "schema_version": "wave2_tool_reexport_pilot_manifest_v1",
+  "status": "staged_compiled_scheduler_test_passed_nonlaunching"
+}

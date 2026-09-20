@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__pilot48_08_partial",
+  "row_id": "pilot48_08_partial",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "667a535dbbe0ec37709c45065056a61fc262e7a601531ecad537beab59d1bf8f",
+  "input_record_sha256": "af91701d03017e3612a3447614d599237a274f682233be4f7ead8cda27cf15bd",
+  "payload_sha256": "23c1fec9dfae058f202a096e02a5601528a743ad8b6f3c305dcbc72745b347a6",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "dcecac7a4521a5ec1a17dd1b0dac1b30cebdd266a3b00b4dfa2cecbf993dfcb6",
+  "result": {
+    "row_id": "pilot48_08_partial",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_08_partial.u_context",
+        "role": "user",
+        "content": "Η καταγραφή αποθήκης λέει ότι παραλήφθηκαν 12 καρέκλες, δανείστηκαν 4 και 1 χάλασε.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_partial.a_context",
+        "role": "assistant",
+        "content": "Εντάξει, έχω την καταγραφή.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_partial.u_decision",
+        "role": "user",
+        "content": "Δανείστηκαν 4 και απομένουν 8 διαθέσιμες καρέκλες.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_partial.a_target",
+        "role": "assistant",
+        "content": "Το πρώτο ισχύει: δανείστηκαν 4. Οι διαθέσιμες όμως είναι 7, γιατί από τις 12 αφαιρούνται οι 4 δανεισμένες και η 1 χαλασμένη.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

@@ -1,0 +1,15 @@
+# Dialogue authoring — revision 2 contract
+
+Produce one complete short natural Greek dialogue from the supplied fictional specification. Use only evidence that a dialogue participant can see at that turn. The required user-context core is authoritative evidence and must appear verbatim in the context user turn before the decision. An assistant restatement may aid flow, but an assistant assertion never creates independent oracle evidence.
+
+The decision user turn must contain decision_surface_contract.frozen_core_el verbatim. A short tone wrapper may be added only when it adds no fact, number, referent, state change, or operation. Never materialize values found only in hidden claim annotations. In an unresolved item, preserve the missing information and ask only for what is needed. If the user clearly supplies a new value or instruction, apply it now even when a historical attribution in the same turn is false; do not ask permission again.
+
+Respect action_contract. A text_record_edit changes only the explicitly named catalogue/list/log inside the conversation and may report that text-state result. Never imply that an external reminder, calendar item, notification, order, message, or device action occurred unless a supplied tool result proves it. Reasoning-only rows do not change state. Cancellation of an ambiguous referent leaves state unchanged and asks which listed item; silence remains quarantined when its representation is unspecified.
+
+For corrections: acknowledge true atoms, correct false atoms while continuing the valid task, separate partial atoms, and state precisely what unresolved evidence cannot decide. Keep the response useful and concise. Do not add stock praise, automatic disagreement, a generic offer, invented state, or an argumentative tail. Earlier erroneous assistant history is context only and train=false.
+
+Use the stable message IDs. User turns and context assistant turns have train=false. Exactly one final assistant target has train=true. State transitions must equal the supplied oracle and describe text/in-dialogue state only unless a real tool result is supplied. An exact response must match byte-for-byte. If the label, visible evidence, frozen wording, or oracle conflict, return blocked rather than repairing them silently.
+
+Return JSON only under the bound schema. INPUT_JSON_BEGIN
+{{INPUT_JSON}}
+INPUT_JSON_END

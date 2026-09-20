@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_gsm_3096",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Ελέγχθηκε ο πλήρης BEFORE/AFTER διάλογος και το πραγματικό training record. Δεν υπήρξε εκδοτική αλλαγή. Η μετατροπή 2 λεπτών σε 120 δευτερόλεπτα και η διαίρεση 120/3=40 είναι ορθές υπό τη συνήθη σχολική ερμηνεία του ρυθμού. Το όνομα προσαρμόστηκε συνεκτικά και διατηρήθηκαν ο διδακτικός στόχος, τα δεδομένα και οι μονάδες της πηγής.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_2885",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Ελέγχθηκε ο πλήρης BEFORE/AFTER διάλογος και το πραγματικό training record. Η τελεία χρησιμοποιείται συνεκτικά ως ελληνικό διαχωριστικό χιλιάδων: 6×61.660=369.960 και 369.963−369.960=3, άρα το υπόλοιπο είναι 3. Η αλλαγή «κοντινότερο» σε «πλησιέστερο» βελτιώνει μόνο τη φυσικότητα της ελληνικής διατύπωσης χωρίς σημασιολογική μεταβολή.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    }
+  ]
+}

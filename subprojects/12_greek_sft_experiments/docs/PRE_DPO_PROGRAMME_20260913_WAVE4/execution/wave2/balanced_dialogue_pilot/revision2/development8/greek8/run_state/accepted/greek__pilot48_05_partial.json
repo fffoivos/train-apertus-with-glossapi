@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__pilot48_05_partial",
+  "row_id": "pilot48_05_partial",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "a711039215146c984c1b00167d36eba47bd488731ad99a2be1268cd71674e469",
+  "input_record_sha256": "71bcadbcdcf7e54aa5f4192aaad35d4d67074b57dabee55a5ef7ba54e7e9742c",
+  "payload_sha256": "71bcadbcdcf7e54aa5f4192aaad35d4d67074b57dabee55a5ef7ba54e7e9742c",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "f383a723382d39a1f7e58afe83ba078dce88ba618115d259874165a7aead393f",
+  "result": {
+    "row_id": "pilot48_05_partial",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_05_partial.u_context",
+        "role": "user",
+        "content": "Στο πρόχειρο της παραγγελίας, η τρέχουσα καταχώριση είναι μεσαίος ντεκαφεϊνέ χωρίς ζάχαρη.",
+        "train": false
+      },
+      {
+        "id": "pilot48_05_partial.a_context",
+        "role": "assistant",
+        "content": "Βλέπω την τρέχουσα καταχώριση: μεσαίος ντεκαφεϊνέ χωρίς ζάχαρη.",
+        "train": false
+      },
+      {
+        "id": "pilot48_05_partial.u_decision",
+        "role": "user",
+        "content": "Στο πρόχειρο της παραγγελίας, η καταχώριση λέει μεγάλος καφές χωρίς ζάχαρη. Πρόσθεσε τώρα ένα νερό.",
+        "train": false
+      },
+      {
+        "id": "pilot48_05_partial.a_target",
+        "role": "assistant",
+        "content": "Το «χωρίς ζάχαρη» είναι σωστό, αλλά το μέγεθος στο πρόχειρο είναι μεσαίο, όχι μεγάλο. Πρόσθεσα ένα νερό στο πρόχειρο της παραγγελίας· τώρα περιλαμβάνει μεσαίο ντεκαφεϊνέ χωρίς ζάχαρη και ένα νερό.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

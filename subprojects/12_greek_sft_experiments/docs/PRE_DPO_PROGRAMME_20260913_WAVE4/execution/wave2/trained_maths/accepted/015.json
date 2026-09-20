@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_gsm_4482",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete before, after, and actual training messages are identical. The Greek problem preserves the source objective and data: 3 couples contribute 6 members, the 5 additional people give 11, and Romanos with his wife gives 13. Under the ordinary 52-week classroom convention, one turn every 13 weeks yields 52/13 = 4 turns per year. Speaker ownership and training structure are intact.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_62_1",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "This is a native Greek example, so no English-source fidelity comparison applies. The complete before, after, and actual training messages are identical. The solution correctly counts 45 unordered pairs, 15 all-white pairs, and 6 all-grey pairs, giving (15+6)/45 = 7/15. The random simultaneous-selection wording supports the standard equiprobable-pair classroom convention. Speaker ownership and training structure are intact; the earlier second solve agrees but was not treated as independent proof.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

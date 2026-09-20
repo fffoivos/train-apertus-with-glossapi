@@ -1,0 +1,250 @@
+{
+  "files": 15,
+  "rows": 2152112,
+  "schema_arrow": "id: string\nmessages: list<element: struct<content: string, function_calls: string, functions: string, role: string>>\n  child 0, element: struct<content: string, function_calls: string, functions: string, role: string>\n      child 0, content: string\n      child 1, function_calls: string\n      child 2, functions: string\n      child 3, role: string\nsource_dataset: string\ndomain: string\n-- schema metadata --\nhuggingface: '{\"info\": {\"features\": {\"id\": {\"dtype\": \"string\", \"_type\": \"' + 366",
+  "schema_fields": [
+    "id",
+    "messages",
+    "source_dataset",
+    "domain"
+  ],
+  "domain_counts": {
+    "Math": 269937,
+    "Science": 103825,
+    "Precise IF": 136833,
+    "Safety": 110295,
+    "Coding": 328614,
+    "Other": 254863,
+    "Multilingual": 99987,
+    "Chat": 309538,
+    "Hardcoded Data": 69,
+    "Reasoning": 310572,
+    "Tool Use": 227579
+  },
+  "source_dataset_counts": {
+    "Tulu 3 Persona MATH": 149958,
+    "Dolci Instruct OpenThoughts3+ Science": 99268,
+    "Dolci Instruct Precise IF": 136833,
+    "OpenMathInstruct 2": 50000,
+    "WildGuardMix": 49373,
+    "Tulu 3 Persona Python": 34999,
+    "Logic Puzzles": 159882,
+    "Dolci Instruct Python Algorithms": 186345,
+    "Evol CodeAlpaca": 107270,
+    "WildJailbreak": 49965,
+    "FLAN": 89981,
+    "CoCoNot": 10957,
+    "Aya": 99987,
+    "Tulu 3 Persona GSM": 49980,
+    "Tulu 3 Persona Algebra": 19999,
+    "OpenAssistant": 7132,
+    "SciRiff": 4557,
+    "TableGPT": 5000,
+    "Hardcoded Data": 69,
+    "Verifiable Reasoning": 310572,
+    "Wildchat": 302406,
+    "Dolci Instruct Tool Use": 227579
+  },
+  "per_file": [
+    {
+      "file": "data/train-00000-of-00015.parquet",
+      "rows": 143475,
+      "row_groups": 144,
+      "domain_counts": {
+        "Math": 29567,
+        "Science": 11377,
+        "Precise IF": 14933,
+        "Safety": 12168,
+        "Coding": 35866,
+        "Other": 27922,
+        "Multilingual": 10886,
+        "Chat": 756
+      }
+    },
+    {
+      "file": "data/train-00001-of-00015.parquet",
+      "rows": 143475,
+      "row_groups": 144,
+      "domain_counts": {
+        "Precise IF": 14883,
+        "Coding": 35710,
+        "Math": 29932,
+        "Other": 27841,
+        "Safety": 12036,
+        "Multilingual": 10913,
+        "Science": 11357,
+        "Chat": 802,
+        "Hardcoded Data": 1
+      }
+    },
+    {
+      "file": "data/train-00002-of-00015.parquet",
+      "rows": 143474,
+      "row_groups": 144,
+      "domain_counts": {
+        "Science": 11435,
+        "Math": 29601,
+        "Coding": 36008,
+        "Precise IF": 15105,
+        "Other": 27558,
+        "Safety": 12011,
+        "Multilingual": 10982,
+        "Chat": 773,
+        "Hardcoded Data": 1
+      }
+    },
+    {
+      "file": "data/train-00003-of-00015.parquet",
+      "rows": 143474,
+      "row_groups": 144,
+      "domain_counts": {
+        "Coding": 35881,
+        "Multilingual": 11119,
+        "Safety": 12186,
+        "Science": 11328,
+        "Other": 27690,
+        "Math": 29530,
+        "Precise IF": 14944,
+        "Chat": 796
+      }
+    },
+    {
+      "file": "data/train-00004-of-00015.parquet",
+      "rows": 143474,
+      "row_groups": 144,
+      "domain_counts": {
+        "Precise IF": 14885,
+        "Multilingual": 10866,
+        "Coding": 36049,
+        "Math": 29317,
+        "Science": 11452,
+        "Other": 28207,
+        "Safety": 11931,
+        "Chat": 766,
+        "Hardcoded Data": 1
+      }
+    },
+    {
+      "file": "data/train-00005-of-00015.parquet",
+      "rows": 143474,
+      "row_groups": 144,
+      "domain_counts": {
+        "Coding": 35859,
+        "Math": 29511,
+        "Other": 28104,
+        "Science": 11249,
+        "Safety": 12131,
+        "Precise IF": 14944,
+        "Multilingual": 10885,
+        "Chat": 788,
+        "Hardcoded Data": 3
+      }
+    },
+    {
+      "file": "data/train-00006-of-00015.parquet",
+      "rows": 143474,
+      "row_groups": 144,
+      "domain_counts": {
+        "Science": 11422,
+        "Other": 27797,
+        "Precise IF": 15075,
+        "Math": 29564,
+        "Coding": 36001,
+        "Safety": 11876,
+        "Chat": 782,
+        "Multilingual": 10957
+      }
+    },
+    {
+      "file": "data/train-00007-of-00015.parquet",
+      "rows": 143474,
+      "row_groups": 144,
+      "domain_counts": {
+        "Multilingual": 11023,
+        "Coding": 36112,
+        "Math": 29222,
+        "Other": 27957,
+        "Safety": 12098,
+        "Science": 11284,
+        "Precise IF": 15001,
+        "Chat": 775,
+        "Hardcoded Data": 2
+      }
+    },
+    {
+      "file": "data/train-00008-of-00015.parquet",
+      "rows": 143474,
+      "row_groups": 144,
+      "domain_counts": {
+        "Math": 29629,
+        "Precise IF": 14967,
+        "Coding": 35972,
+        "Science": 11355,
+        "Multilingual": 10763,
+        "Other": 27860,
+        "Safety": 12152,
+        "Chat": 775,
+        "Hardcoded Data": 1
+      }
+    },
+    {
+      "file": "data/train-00009-of-00015.parquet",
+      "rows": 143474,
+      "row_groups": 144,
+      "domain_counts": {
+        "Other": 3927,
+        "Science": 1566,
+        "Precise IF": 2096,
+        "Math": 4064,
+        "Coding": 5156,
+        "Safety": 1706,
+        "Multilingual": 1593,
+        "Chat": 119,
+        "Reasoning": 123247
+      }
+    },
+    {
+      "file": "data/train-00010-of-00015.parquet",
+      "rows": 143474,
+      "row_groups": 144,
+      "domain_counts": {
+        "Reasoning": 143474
+      }
+    },
+    {
+      "file": "data/train-00011-of-00015.parquet",
+      "rows": 143474,
+      "row_groups": 144,
+      "domain_counts": {
+        "Reasoning": 43851,
+        "Chat": 99623
+      }
+    },
+    {
+      "file": "data/train-00012-of-00015.parquet",
+      "rows": 143474,
+      "row_groups": 144,
+      "domain_counts": {
+        "Chat": 143474
+      }
+    },
+    {
+      "file": "data/train-00013-of-00015.parquet",
+      "rows": 143474,
+      "row_groups": 144,
+      "domain_counts": {
+        "Chat": 59309,
+        "Hardcoded Data": 60,
+        "Tool Use": 84105
+      }
+    },
+    {
+      "file": "data/train-00014-of-00015.parquet",
+      "rows": 143474,
+      "row_groups": 144,
+      "domain_counts": {
+        "Tool Use": 143474
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "job_id": "author__scale60_03_tool_checkout_unresolved",
+  "row_id": "scale60_03_tool_checkout_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "b23e566af56726f4928ebe77a8da6b48d8339c8ea719999aa26eeffedcaf316e",
+  "input_record_sha256": "3c3672930d8bbc1d08fc4c3e4c766fae461e49f3f7e099571663742b71c4a6c9",
+  "payload_sha256": "8a1809755b0c647e47960d01c1eb6aae6eae57372d60a71e8db33524d58d1a96",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "076b9fafa1c65b32cae333dc01f2279652eeafd14fc743fd70c66bda36fb1db2",
+  "result": {
+    "row_id": "scale60_03_tool_checkout_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_03_tool_checkout_unresolved.u_context",
+        "role": "user",
+        "content": "Το δελτίο γράφει 8 δράπανα συνολικά: 3 είναι δανεισμένα και 1 διαφορετικό δράπανο βρίσκεται για επισκευή.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_unresolved.a_context",
+        "role": "assistant",
+        "content": "Θα υπολογίσω τη διαθεσιμότητα μόνο από αυτές τις τρεις κατηγορίες.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_unresolved.u_decision",
+        "role": "user",
+        "content": "Ας τελειώνουμε: Με βάση μόνο το δελτίο, ένα από τα δανεισμένα δράπανα επιστρέφεται την Τρίτη.",
+        "train": false
+      },
+      {
+        "id": "scale60_03_tool_checkout_unresolved.a_target",
+        "role": "assistant",
+        "content": "Το δελτίο δεν αναφέρει ημέρα επιστροφής, επομένως δεν προκύπτει ότι κάποιο δανεισμένο δράπανο επιστρέφεται την Τρίτη. Από τα στοιχεία του προκύπτει μόνο ότι 4 δράπανα είναι διαθέσιμα.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_03_tool_checkout_unresolved.u_decision",
+        "claim": "Με βάση μόνο το δελτίο, ένα από τα δανεισμένα δράπανα επιστρέφεται την Τρίτη.",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "scale60_03_tool_checkout_unresolved.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να επισημάνει ότι το δελτίο δεν αναφέρει ημέρα επιστροφής.",
+          "Να μην αποδεχθεί την Τρίτη ως τεκμηριωμένη ημέρα επιστροφής.",
+          "Να συνεχίσει με το συμπέρασμα που πράγματι προκύπτει: 4 δράπανα είναι διαθέσιμα."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

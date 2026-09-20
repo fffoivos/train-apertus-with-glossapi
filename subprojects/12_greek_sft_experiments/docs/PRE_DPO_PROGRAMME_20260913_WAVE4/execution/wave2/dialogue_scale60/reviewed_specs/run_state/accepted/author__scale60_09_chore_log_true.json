@@ -1,0 +1,73 @@
+{
+  "job_id": "author__scale60_09_chore_log_true",
+  "row_id": "scale60_09_chore_log_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "fef4f6db343df0f9368af0d107549f2dfabdc0706d506146482a862283639876",
+  "input_record_sha256": "07da41dc2318df81061daad821296a4fdb239f5a6987ef6dbabe1c60e17b43da",
+  "payload_sha256": "df5f030480c75cc7ad798dec3989fc7c1eec652597a3c051a2cf7b07008a7975",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "b79259451eae756ab32b50e46d6e088649195be8fb4b7f22398fce017208bd73",
+  "result": {
+    "row_id": "scale60_09_chore_log_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_09_chore_log_true.u_context",
+        "role": "user",
+        "content": "Στο κειμενικό ημερολόγιο, τα πιάτα και τα ρούχα είναι ενεργές εργασίες, ενώ τα σκουπίδια έχουν ακυρωθεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_09_chore_log_true.a_context",
+        "role": "assistant",
+        "content": "Οι εγγραφές είναι μόνο μέσα στο ημερολόγιο αυτού του νήματος.",
+        "train": false
+      },
+      {
+        "id": "scale60_09_chore_log_true.u_decision",
+        "role": "user",
+        "content": "Συνεχίζουμε μαζί. Στο ημερολόγιο τα σκουπίδια είναι ήδη ακυρωμένα. Σταμάτα τώρα τα πιάτα.",
+        "train": false
+      },
+      {
+        "id": "scale60_09_chore_log_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά, τα σκουπίδια είναι ήδη ακυρωμένα. Στο ημερολόγιο εργασιών, τα πιάτα σημειώθηκαν ως σταματημένα· τα ρούχα παραμένουν ενεργά.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_09_chore_log_true.u_decision",
+        "claim": "Στο ημερολόγιο τα σκουπίδια είναι ήδη ακυρωμένα.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "scale60_09_chore_log_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να αναγνωρίσει ότι ο ισχυρισμός για τα σκουπίδια υποστηρίζεται από το ορατό ιστορικό.",
+          "Να εφαρμόσει αμέσως τη σαφή εντολή διακοπής για τα πιάτα στο ημερολόγιο εργασιών.",
+          "Να αναφέρει συνοπτικά το αποτέλεσμα της κειμενικής αλλαγής χωρίς να υπονοήσει εξωτερική ενέργεια."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "πιάτα",
+        "before_json": "\"active\"",
+        "after_json": "\"stopped\"",
+        "evidence_ids": [
+          "scale60_09_chore_log_true.u_context",
+          "scale60_09_chore_log_true.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

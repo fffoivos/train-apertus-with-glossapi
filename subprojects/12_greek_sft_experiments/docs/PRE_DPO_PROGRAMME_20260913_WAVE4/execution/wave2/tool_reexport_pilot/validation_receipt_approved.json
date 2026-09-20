@@ -1,0 +1,112 @@
+{
+  "billing_bounds_chf": {
+    "combined_only_if_both_separately_launched": 2.69,
+    "dolci_max": 1.345,
+    "openmath_max": 1.345
+  },
+  "checks": {
+    "approved_final_manifests": {
+      "dolci": {
+        "approval": {
+          "allow_preparation_submission": true,
+          "approved_at": "2026-09-13T14:43:41Z",
+          "approved_by": "root-review-2026-09-13",
+          "scope_sha256": "7fc4dd724994e22d0d616e6957999cddef809319eff48daf36fc4528c7076d01"
+        },
+        "contract_digest": "953b052353217ae9d53dfee34abf15c30d8231a75c3878a17789243e8f25d4c4",
+        "contract_sha256": "45f646258665067b814b3706ef580bc5669d3fb3462ea24d55e200544a54ea2d",
+        "manifest_sha256": "62670ea9d50284a5b758c21971faeace43c140bb9e1121fb2caf49177ca330fb",
+        "resource": {
+          "gpus_per_node": 0,
+          "max_attempts": 1,
+          "nodes": 1,
+          "time_limit_seconds": 1800
+        },
+        "scheduler_display_id": "3391276",
+        "scheduler_test_only_receipt_sha256": "b412c481dad7a93403eef845b13867aef03483066a60b6c20ccc78c858316596"
+      },
+      "openmath": {
+        "approval": {
+          "allow_preparation_submission": true,
+          "approved_at": "2026-09-13T14:43:41Z",
+          "approved_by": "root-review-2026-09-13",
+          "scope_sha256": "7f39b5521321664086e43c381245367b70788de81044a8b78337753d6f1fc837"
+        },
+        "contract_digest": "462a925790a5dbd76d0b4a627ea90e8ebe69c92f480a7141ac98fa10257b9c1d",
+        "contract_sha256": "def6b28bd300a5b0d9f316164a291edf98dd30f00fdc5348bdbbe42675505dd2",
+        "manifest_sha256": "53a0710412c799ad5bdafe05dae6e5b276d048058fca4b3692617646d3a631d6",
+        "resource": {
+          "gpus_per_node": 0,
+          "max_attempts": 1,
+          "nodes": 1,
+          "time_limit_seconds": 1800
+        },
+        "scheduler_display_id": "3391277",
+        "scheduler_test_only_receipt_sha256": "bfed866eb6354d1bfeb4323c0d40f3b5d2d40e949c043b162c31a969f261a24b"
+      }
+    },
+    "data_stages": {
+      "dolci": {
+        "cpus_per_task": 8,
+        "data_stage_contract_sha256": "a815bca1be78f7c3007a4b79f3a7e49b8611f875868ddc6045c955749c6b665e",
+        "gpus_per_node": 0,
+        "max_attempts": 1,
+        "memory_mb": 64000,
+        "payload_sha256": "d1ed83ff7049ccfa49a7e12d1492f20a2ef512330abc542b2bc5bc80a29b09e7",
+        "run_root": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/run",
+        "stage_id": "dolci-tool200-lossless",
+        "time_limit_seconds": 1800
+      },
+      "openmath": {
+        "cpus_per_task": 8,
+        "data_stage_contract_sha256": "80f529ca4fb222d25321d5bd50856f2f21a64e8e777b1d337aba03cd111cd0aa",
+        "gpus_per_node": 0,
+        "max_attempts": 1,
+        "memory_mb": 64000,
+        "payload_sha256": "1cf73a4038a0ca55b8b5a9b2ea69686edb775e9404f4defc06dfbf66f72031ed",
+        "run_root": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_openmath_original_pilot/run",
+        "stage_id": "openmath-original-pilot",
+        "time_limit_seconds": 1800
+      }
+    },
+    "dolci_contract_sha256": "d1ed83ff7049ccfa49a7e12d1492f20a2ef512330abc542b2bc5bc80a29b09e7",
+    "dolci_selection": {
+      "locator_sha256": "41b0c7bca817986ac0bfb79a822678dad52427530308b590bb02b0cdf51a5302",
+      "rows": 200,
+      "strata": {
+        "data/train-00013-of-00015.parquet": 100,
+        "data/train-00014-of-00015.parquet": 100
+      },
+      "unique_locators": 200,
+      "unique_typed_source_ids": 200
+    },
+    "json_files_parsed": 37,
+    "local_canonical_compile": {
+      "dolci": "passed",
+      "openmath": "passed"
+    },
+    "openmath_contract_sha256": "1cf73a4038a0ca55b8b5a9b2ea69686edb775e9404f4defc06dfbf66f72031ed",
+    "openmath_worker_sha256": "33505d07b73e596dceefe1a09c0d7f409eeec8608649f18d27b073ff209b95d2",
+    "python_files_ast_parsed": 17,
+    "remote_scheduler_test_only": {
+      "dolci": {
+        "contract_digest": "fb281d559d3657318c8028d7c074415ede1d532e26b0243b87573ed434fc1649",
+        "manifest_sha256": "88c7918c070b5db04927447ad88eec6b7346fd8c6b4627ceb17de1f3a392c4d1",
+        "receipt_sha256": "4072ea8658afbf4638e6cb0546524b0e5f364d7e8f2869be6a3a98f0c9328a06",
+        "status": "passed"
+      },
+      "openmath": {
+        "contract_digest": "9c51a08a74b5a437b775d65ec4b7bb49395ffdcf06d454ae9eec231188703ef4",
+        "manifest_sha256": "88ddd0202ce09e3189065c37c5fd94ac548389313abd4b7808da6ed6ce13c133",
+        "receipt_sha256": "ce4eb2daaf16cb66a94f7c6690e03dc64ac2d21178b7ea850e6d33fa9ee20883",
+        "status": "passed"
+      }
+    }
+  },
+  "remote_scheduler_test": {
+    "boundary": "The approved bytes are scheduler-valid, but this validation did not submit either job. Root retains the apply boundary.",
+    "status": "passed_for_approved_final_manifests"
+  },
+  "schema_version": "wave2_cpu_preparations_validation_v1",
+  "status": "approved_exact_test_only_passed_ready_for_root_apply_review"
+}

@@ -1,0 +1,78 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_1899",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The single Greek problem and solution are consistently paired. The adaptation of Janele to Ιωάννα preserves the teaching objective and all numerical premises.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_555",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The candidate correctly derives the three forbidden combinations as 3 cheese choices × 1 pepperoni choice × 1 pepper choice. The reference solution contains malformed arithmetic notation («1 cheese +1 meat *+1 vegetable»), but its intended count and final answer agree with the candidate. The adaptation of Denmark to Δημήτρης is permitted and culturally coherent.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_765",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "issue",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "problem_fidelity",
+          "severity": "major",
+          "quote": "Το πρόγραμμα Β απαιτεί εφάπαξ τέλος $\u001b$20$ ... / Στο Πρόγραμμα Β υπάρχει εφάπαξ χρέωση $20$ €",
+          "explanation": "The Greek problem states dollar-denominated charges, while the candidate solution silently changes the currency to euros. Although both currencies use 100 subunits and the numerical answer remains 401, the solution does not faithfully use the supplied premises.",
+          "suggested_action": "Keep all costs in cents and dollars throughout the solution, unless the repair scope explicitly permits changing the problem itself to euros."
+        },
+        {
+          "dimension": "units_and_rounding",
+          "severity": "major",
+          "quote": "$10$ λεπτά του δολαρίου ... $5$ λεπτών του δολαρίου / $10$ λεπτά του ευρώ ... $5$ λεπτών του ευρώ",
+          "explanation": "The monetary units in the solution contradict those in the selected problem. This is a unit-consistency defect, not merely a language preference. No rounding defect is present.",
+          "suggested_action": "Use a single currency consistently between problem and solution and retain the conversion of 20 currency units to 2,000 subunits."
+        },
+        {
+          "dimension": "greek_language",
+          "severity": "major",
+          "quote": "εφάπαξ τέλος $\u001b$20$",
+          "explanation": "A control character corrupts the mathematical markup for the 20-dollar fee, making the displayed monetary premise malformed. The surrounding Greek is otherwise understandable, though «λεπτά του δολαρίου» is less natural than «σεντς».",
+          "suggested_action": "Recover the intended valid markup for «20 δολάρια» from the source and remove the control character."
+        },
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "major",
+          "quote": "λεπτά του δολαρίου / λεπτά του ευρώ",
+          "explanation": "Changing Bob to Βασίλης is a permitted subject adaptation, but the record is culturally incoherent because the problem retains dollars while the solution switches to euros.",
+          "suggested_action": "Either retain the original dollar setting everywhere or, only with explicit permission to edit the problem, adapt every monetary premise consistently to euros."
+        }
+      ],
+      "provenance_note": "There are two saved Greek problem versions, and the association of the selected last solution with the selected last problem is unproven. The variants preserve the intended numerical rates and fee, but the earlier variant omits the currency after the amounts «10» and «5», making «λεπτά» ambiguous between cents and minutes; both variants also contain a control character near the 20-dollar markup. This historical pairing uncertainty is separate from the mathematically correct inequality and result.",
+      "verification_needed": [
+        "Recover the intended currency markup from the raw source because the supplied problem variants contain control characters.",
+        "Verify which saved Greek problem version was originally paired with the selected solution."
+      ]
+    }
+  ]
+}

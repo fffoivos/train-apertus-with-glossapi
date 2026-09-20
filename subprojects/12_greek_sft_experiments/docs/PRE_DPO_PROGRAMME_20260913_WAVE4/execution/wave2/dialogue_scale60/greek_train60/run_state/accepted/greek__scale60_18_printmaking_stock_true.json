@@ -1,0 +1,54 @@
+{
+  "job_id": "greek__scale60_18_printmaking_stock_true",
+  "row_id": "scale60_18_printmaking_stock_true",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "fe1ae4d97a748902bf4eebff1dc11e65df3ea133834f7ed935b8238fd8f35621",
+  "input_record_sha256": "8731c1c113cb874d4f7e2aa28ff1ae68d042bafb61adb2daa2cb504f181952ee",
+  "payload_sha256": "c9364084631829865f031bb54cc3e8fb5f921f057969ba5053df3e059402649e",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "24bb5d30b5756086c30bab3edaba8330b417bb32a580737c20a6d2ca2e92fd64",
+  "result": {
+    "row_id": "scale60_18_printmaking_stock_true",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "scale60_18_printmaking_stock_true.u_context",
+        "role": "user",
+        "content": "Η απογραφή έχει 10 πακέτα χαρτί: 3 χρησιμοποιήθηκαν και 2 άλλα έχουν δεσμευτεί για το αυριανό μάθημα.",
+        "train": false
+      },
+      {
+        "id": "scale60_18_printmaking_stock_true.a_context",
+        "role": "assistant",
+        "content": "Τα πακέτα που χρησιμοποιήθηκαν είναι διαφορετικά από εκείνα που έχουν δεσμευτεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_18_printmaking_stock_true.u_decision",
+        "role": "user",
+        "content": "Με βάση την απογραφή, μένουν 5 ελεύθερα πακέτα χαρτί.",
+        "train": false
+      },
+      {
+        "id": "scale60_18_printmaking_stock_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά: 10 − 3 − 2 = 5 ελεύθερα πακέτα.",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "scale60_18_printmaking_stock_true.a_context",
+        "before": "Οι χρησιμοποιημένες και οι δεσμευμένες ποσότητες είναι διαφορετικά πακέτα.",
+        "after": "Τα πακέτα που χρησιμοποιήθηκαν είναι διαφορετικά από εκείνα που έχουν δεσμευτεί.",
+        "error": "Αφύσικη κατηγοριακή σύνδεση του ουσιαστικού «ποσότητες» με το κατηγορούμενο «πακέτα».",
+        "reason": "Η αναδιατύπωση αποδίδει φυσικά στα ελληνικά ότι τα χρησιμοποιημένα και τα δεσμευμένα πακέτα είναι διαφορετικά, χωρίς αλλαγή του νοήματος."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

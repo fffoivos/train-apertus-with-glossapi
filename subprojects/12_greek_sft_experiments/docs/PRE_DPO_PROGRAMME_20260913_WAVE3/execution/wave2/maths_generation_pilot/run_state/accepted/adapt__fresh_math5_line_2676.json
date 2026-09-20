@@ -1,0 +1,71 @@
+{
+  "job_id": "adapt__fresh_math5_line_2676",
+  "row_id": "fresh_math5_line_2676",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "479778f0d99b2397abb26d18f2195a05ad41f15036f1ea293e214d8d2b2f10fd",
+  "input_record_sha256": "8ea1255e6d208394d9bccfcbc1747fb487730acf6318e436192e8cd87a5d5384",
+  "payload_sha256": "44e825c2f295f67a8e6501b7ab589caf679c9f98ce6306773aa129039ef1f37c",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "99381b0c22c4aa5dee662ec27a4122be477e19aa420ea0e8c694e81b4b4f7232",
+  "result": {
+    "row_id": "fresh_math5_line_2676",
+    "status": "candidate",
+    "problem_text": "Έστω $C$ ένα σημείο που δεν ανήκει στην ευθεία $AE$ και $D$ ένα σημείο της ευθείας $AE$, τέτοιο ώστε $CD \\perp AE$. Επίσης, το $B$ είναι σημείο της ευθείας $CE$, τέτοιο ώστε $AB \\perp CE$. Αν $AB = 4$, $CD = 8$ και $AE = 5$, ποιο είναι το μήκος του $CE$;",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Let $C$ be a point not on line $AE$ and $D$ a point on line $AE$ such that $CD \\perp AE$.",
+        "target_span": "Έστω $C$ ένα σημείο που δεν ανήκει στην ευθεία $AE$ και $D$ ένα σημείο της ευθείας $AE$, τέτοιο ώστε $CD \\perp AE$.",
+        "reason": "Πιστή απόδοση στα ελληνικά με την καθιερωμένη γεωμετρική ορολογία, χωρίς αλλαγή των σημείων ή των σχέσεων."
+      },
+      {
+        "source_span": "Meanwhile, $B$ is a point on line $CE$ such that $AB \\perp CE$.",
+        "target_span": "Επίσης, το $B$ είναι σημείο της ευθείας $CE$, τέτοιο ώστε $AB \\perp CE$.",
+        "reason": "Φυσική ελληνική σύνδεση των δεδομένων με διατήρηση της συνθήκης καθετότητας."
+      },
+      {
+        "source_span": "If $AB = 4,$ $CD = 8,$ and $AE = 5,$ then what is the length of $CE?$",
+        "target_span": "Αν $AB = 4$, $CD = 8$ και $AE = 5$, ποιο είναι το μήκος του $CE$;",
+        "reason": "Μετάφραση του ερωτήματος με αμετάβλητες ποσότητες, ζητούμενο και μαθηματικά αναγνωριστικά."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "4",
+          "role": "μήκος του ευθύγραμμου τμήματος $AB$",
+          "unit": null
+        },
+        {
+          "value": "8",
+          "role": "μήκος του ευθύγραμμου τμήματος $CD$",
+          "unit": null
+        },
+        {
+          "value": "5",
+          "role": "μήκος του ευθύγραμμου τμήματος $AE$",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Το σημείο $C$ δεν ανήκει στην ευθεία $AE$.",
+        "Το σημείο $D$ ανήκει στην ευθεία $AE$.",
+        "$CD \\perp AE$.",
+        "Το σημείο $B$ ανήκει στην ευθεία $CE$.",
+        "$AB \\perp CE$."
+      ],
+      "required_outputs": [
+        "Το μήκος του $CE$."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": [
+      "Έλεγχος ότι η ελληνική διατύπωση διατηρεί ακριβώς τις σχέσεις πρόσπτωσης και καθετότητας του πρωτοτύπου."
+    ]
+  }
+}

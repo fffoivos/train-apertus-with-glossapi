@@ -1,0 +1,37 @@
+{
+  "allocation_required": false,
+  "binding_comparison": null,
+  "bindings": [],
+  "env_integrity": [],
+  "extra_probe": null,
+  "imports": [
+    {
+      "module": "vllm",
+      "status": "passed",
+      "version": "0.28.0"
+    },
+    {
+      "module": "transformers",
+      "status": "passed",
+      "version": "5.16.1"
+    },
+    {
+      "module": "torch",
+      "status": "passed",
+      "version": "2.13.0+cu130"
+    }
+  ],
+  "recorded_at": "2026-09-13T13:30:48.496859+00:00",
+  "runtime_python": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_f4f540537f7f59bb/vllm_python",
+  "schema_version": "apertus_evaluator_preflight_v1",
+  "status": "passed",
+  "token_extrema": [],
+  "uenv_environment": {
+    "UENV_LABEL": "pytorch/v2.9.1:v2",
+    "UENV_MOUNT_LIST": "/iopsstor/scratch/cscs/fffoivos/.uenv-images/images/c05f143d5fbf092714650697c821ee9fcf3d00c3580d56dabeacb2370a824b0f/store.squashfs:/user-environment",
+    "UENV_REPO": "default:/iopsstor/scratch/cscs/fffoivos/.uenv-images",
+    "UENV_TELEMETRY": "[{\"digest\":\"c05f143d5fbf092714650697c821ee9fcf3d00c3580d56dabeacb2370a824b0f\",\"label\":\"pytorch/v2.9.1:v2@clariden%gh200\",\"mount\":\"/user-environment\",\"name\":\"pytorch\",\"sqfs\":\"/iopsstor/scratch/cscs/fffoivos/.uenv-images/images/c05f143d5fbf092714650697c821ee9fcf3d00c3580d56dabeacb2370a824b0f/store.squashfs\",\"views\":[\"default\"]}]",
+    "UENV_VIEW": "/user-environment:pytorch:default",
+    "UENV_WARN_MIGRATE": "1"
+  }
+}

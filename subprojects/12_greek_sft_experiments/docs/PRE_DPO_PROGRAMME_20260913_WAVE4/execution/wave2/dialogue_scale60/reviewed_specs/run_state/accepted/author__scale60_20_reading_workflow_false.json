@@ -1,0 +1,74 @@
+{
+  "job_id": "author__scale60_20_reading_workflow_false",
+  "row_id": "scale60_20_reading_workflow_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "0073f8be5adfc446135bcd58ca1c2596e006d2ee0be02b121bbd7b218b71e3c0",
+  "input_record_sha256": "5ddcb26ec46942e56792d0950ab22c0390c5a5a31015809232dcb6e386bf4a66",
+  "payload_sha256": "4adde561881bc85568dad56a637c146a4711df8cd812f330f8ab312c9f8eb3ed",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "620c812682a73023fe12a5155e0c92f8d49132d9b933fde8ed65815632b5cdb2",
+  "result": {
+    "row_id": "scale60_20_reading_workflow_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_20_reading_workflow_false.u_context",
+        "role": "user",
+        "content": "Στον πίνακα ανάγνωσης, η περίληψη και το γλωσσάρι είναι ενεργά, ενώ ο έλεγχος παραπομπών έχει ολοκληρωθεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_20_reading_workflow_false.a_context",
+        "role": "assistant",
+        "content": "Οι καταστάσεις αφορούν μόνο τον πίνακα αυτού του νήματος.",
+        "train": false
+      },
+      {
+        "id": "scale60_20_reading_workflow_false.u_decision",
+        "role": "user",
+        "content": "Άντε λοιπόν. Στον πίνακα η περίληψη φαίνεται ήδη σταματημένη. Σταμάτησέ την τώρα και πες ποια εργασία μένει ενεργή.",
+        "train": false
+      },
+      {
+        "id": "scale60_20_reading_workflow_false.a_target",
+        "role": "assistant",
+        "content": "Η περίληψη δεν ήταν ήδη σταματημένη στον πίνακα· ήταν ενεργή. Τώρα τη σημείωσα ως σταματημένη και ενεργό μένει το γλωσσάρι.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_20_reading_workflow_false.u_decision",
+        "claim": "Η περίληψη φαίνεται ήδη σταματημένη στον πίνακα.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_20_reading_workflow_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα τον ψευδή ισχυρισμό ότι η περίληψη ήταν ήδη σταματημένη.",
+          "Να εφαρμόσει αμέσως τη σαφή εντολή διακοπής στον κειμενικό πίνακα ανάγνωσης.",
+          "Να αναφέρει ότι το γλωσσάρι μένει ενεργό.",
+          "Να μην υπονοήσει καμία εξωτερική ενέργεια."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "πίνακας ανάγνωσης.περίληψη",
+        "before_json": "\"active\"",
+        "after_json": "\"stopped\"",
+        "evidence_ids": [
+          "scale60_20_reading_workflow_false.u_context",
+          "scale60_20_reading_workflow_false.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

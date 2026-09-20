@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_05_volunteer_board_false",
+  "row_id": "scale60_05_volunteer_board_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "369929577020ddf586f00e1d7d2c9f2d7350e3d7fa2e4d4384fedce4f2bf42f8",
+  "input_record_sha256": "e1e120a703f3527f9ebc75ace72ee3864e539ce69be75f4014cbcdc951b81c0f",
+  "payload_sha256": "6b32a92f5b2f0fc1f5200b99ec7109a65dc8aa69012d1bfc27ff130797e51938",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "f3956a06934a875d439bf23c372e428907a69a4b20ff102db75cd6242bfe02f1",
+  "result": {
+    "row_id": "scale60_05_volunteer_board_false",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_05_volunteer_board_false.u_context",
+        "role": "user",
+        "content": "Στον κειμενικό πίνακα, το στήσιμο και τα φυλλάδια είναι ενεργά, ενώ ο έλεγχος ήχου είναι ακυρωμένος.",
+        "train": false
+      },
+      {
+        "id": "scale60_05_volunteer_board_false.a_context",
+        "role": "assistant",
+        "content": "Βλέπω τρεις ξεχωριστές εγγραφές στον πίνακα και δεν έχει γίνει καμία εξωτερική ενέργεια.",
+        "train": false
+      },
+      {
+        "id": "scale60_05_volunteer_board_false.u_decision",
+        "role": "user",
+        "content": "Στον πίνακα το στήσιμο φαίνεται ήδη ακυρωμένο. Ακύρωσέ το τώρα.",
+        "train": false
+      },
+      {
+        "id": "scale60_05_volunteer_board_false.a_target",
+        "role": "assistant",
+        "content": "Στον πίνακα το στήσιμο ήταν ενεργό, όχι ακυρωμένο. Τώρα το σημείωσα ως ακυρωμένο στον πίνακα εργασιών.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

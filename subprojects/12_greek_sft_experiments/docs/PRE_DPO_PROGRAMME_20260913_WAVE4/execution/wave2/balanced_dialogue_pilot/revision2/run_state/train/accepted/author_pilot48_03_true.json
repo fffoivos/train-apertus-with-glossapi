@@ -1,0 +1,73 @@
+{
+  "job_id": "author_pilot48_03_true",
+  "row_id": "pilot48_03_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "40aacf4f34f0cf297d48ba0d5b069f030bf79fdb1987774fef0166df8d039706",
+  "input_record_sha256": "c657278a0d20b5c3d1385ed5439f3655854934fd8cad00057baeb594d70ebcb7",
+  "payload_sha256": "e195a2816d9257ab87c3735fa134b53482f72602c16b808390ef19a9d0a8d3a5",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "5a285642ab7a423c37d6f216216d025123623a3ad34c5975f1d2e0162fac320a",
+  "result": {
+    "row_id": "pilot48_03_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_03_true.u_context",
+        "role": "user",
+        "content": "Αρχικά το εργαστήριο ήταν Δευτέρα στις 17:00 στην αίθουσα Α, χωρίς καταγραμμένη διάρκεια. Έπειτα μεταφέρθηκε την Τρίτη στις 18:00 στην αίθουσα Β.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_true.a_context",
+        "role": "assistant",
+        "content": "Κατάλαβα: τα τρέχοντα στοιχεία είναι Τρίτη στις 18:00, στην αίθουσα Β, χωρίς καταγραμμένη διάρκεια.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_true.u_decision",
+        "role": "user",
+        "content": "Το εργαστήριο είναι Τρίτη στις 18:00 στην αίθουσα Β. Σημείωσε διάρκεια 90 λεπτά.",
+        "train": false
+      },
+      {
+        "id": "pilot48_03_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά. Η καταχώριση είναι πλέον: Τρίτη στις 18:00, αίθουσα Β, διάρκεια 90 λεπτά.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_03_true.u_decision",
+        "claim": "Το εργαστήριο είναι Τρίτη στις 18:00 στην αίθουσα Β.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "pilot48_03_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να επιβεβαιώσει συνοπτικά τον ορθό ισχυρισμό.",
+          "Να εφαρμόσει την οδηγία για διάρκεια 90 λεπτών στην καταχώριση.",
+          "Να αναφέρει το τελικό αποτέλεσμα χωρίς να υπονοήσει εξωτερική ενέργεια."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "workshop_schedule",
+        "before_json": "{\"day\":\"Τρίτη\",\"time\":\"18:00\",\"room\":\"Β\",\"duration\":null}",
+        "after_json": "{\"day\":\"Τρίτη\",\"time\":\"18:00\",\"room\":\"Β\",\"duration\":90}",
+        "evidence_ids": [
+          "pilot48_03_true.u_context",
+          "pilot48_03_true.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

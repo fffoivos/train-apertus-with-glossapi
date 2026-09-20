@@ -1,0 +1,14 @@
+{
+  "rows": 7,
+  "checks": "Explicit arithmetic checked; integer divisibility also sanity-checked for n=-100..100, with general proof in target. This range is not the proof.",
+  "candidate_sha256": "0b0b25893c822ca8de266ce783d5725caa07d41733b91aa6f88835962d6cff03",
+  "source_immutable": true,
+  "production_promoted": false,
+  "known_valid_rows_not_rewritten": [
+    "gm_nat_635_0",
+    "gm_gsm_4140",
+    "gm_math_550",
+    "gm_gsm_4161",
+    "gm_gsm_4519"
+  ]
+}

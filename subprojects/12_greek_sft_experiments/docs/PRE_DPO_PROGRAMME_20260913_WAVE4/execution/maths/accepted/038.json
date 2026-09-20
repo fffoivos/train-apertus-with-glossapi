@@ -1,0 +1,61 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_537",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "issue",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "derivation",
+          "severity": "major",
+          "quote": "\\cos x=0\\Rightarrow x=150",
+          "explanation": "Η συνεπαγωγή είναι λανθασμένη: σε μοίρες, \\(\\cos x=0\\) όταν \\(x=90+180k\\), άρα δεν δίνει καμία λύση στο ανοικτό διάστημα \\((100,200)\\). Το \\(150\\) είναι λύση της περίπτωσης \\(\\cos 3x=0\\), οπότε το τελικό σύνολο και το άθροισμα 906 παραμένουν σωστά παρά το εσφαλμένο ενδιάμεσο βήμα.",
+          "suggested_action": "Να δηλωθεί ότι η περίπτωση \\(\\cos x=0\\) δεν έχει λύσεις στο συγκεκριμένο διάστημα και να διατηρηθεί το \\(150\\) μόνο στην περίπτωση \\(\\cos 3x=0\\)."
+        },
+        {
+          "dimension": "problem_fidelity",
+          "severity": "major",
+          "quote": "\u0007cos^3 3x+ \u0007cos^3 5x = 8 \u0007cos^3 4x \u0007cos^3 x",
+          "explanation": "Στην ελληνική εκφώνηση οι εντολές \\(\\cos\\) έχουν αντικατασταθεί από τον χαρακτήρα ελέγχου U+0007 ακολουθούμενο από «cos». Αυτό καταστρέφει τη μαθηματική σήμανση, παρότι η επιδιωκόμενη εξίσωση μπορεί να συναχθεί από τα συμφραζόμενα και τη λύση.",
+          "suggested_action": "Να αντικατασταθούν αποκλειστικά οι τέσσερις εμφανίσεις του χαρακτήρα U+0007 πριν από το «cos» με έγκυρες εντολές LaTeX \\(\\backslash cos\\)."
+        }
+      ],
+      "provenance_note": "Η εκφώνηση χαρακτηρίζεται ως σταθερό κείμενο, δεν παρέχονται εναλλακτικές εκδοχές και υπάρχει μία εγγραφή λύσης· δεν προκύπτει αβεβαιότητα ιστορικής αντιστοίχισης.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_373",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχουν δύο εγγραφές λύσης, αλλά η εκφώνηση χαρακτηρίζεται ως σταθερή και δεν παρέχονται εναλλακτικές εκδοχές προβλήματος. Η επιλεγμένη λύση αντιστοιχεί πλήρως στην εμφανιζόμενη εκφώνηση.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_758",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική εγγραφή προβλήματος και μοναδική εγγραφή λύσης· δεν υπάρχει ένδειξη αβεβαιότητας αντιστοίχισης.",
+      "verification_needed": []
+    }
+  ]
+}

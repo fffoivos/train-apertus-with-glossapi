@@ -1,0 +1,54 @@
+{
+  "job_id": "greek__scale60_12_seedling_trays_false",
+  "row_id": "scale60_12_seedling_trays_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "c51df9f281bbe2d5489287b50a86d70bae7765ddb15badcec53224c12dce6cbd",
+  "input_record_sha256": "ec3cb9d6a5532d51216a1cea40024979ee58d1017b00c5c33d67568f7e7650a6",
+  "payload_sha256": "594530285edcdbe6998791b126285483b513e8244bf47b83ea2a3a615bdd0cd3",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "be6e6a686f2ac3aef5e1e8c1f4977fad9ae5e6ff127d230fea846b922bd29af2",
+  "result": {
+    "row_id": "scale60_12_seedling_trays_false",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "scale60_12_seedling_trays_false.u_context",
+        "role": "user",
+        "content": "Η καταγραφή λέει ότι φύτρωσαν 18 φυτάρια και από αυτά μεταφυτεύτηκαν 6.",
+        "train": false
+      },
+      {
+        "id": "scale60_12_seedling_trays_false.a_context",
+        "role": "assistant",
+        "content": "Θα βρω πόσα φυτρωμένα φυτάρια παραμένουν στο σπορείο.",
+        "train": false
+      },
+      {
+        "id": "scale60_12_seedling_trays_false.u_decision",
+        "role": "user",
+        "content": "Μα πια! Από αυτή την καταγραφή προκύπτει ότι παραμένουν 10 φυτρωμένα φυτάρια στο σπορείο.",
+        "train": false
+      },
+      {
+        "id": "scale60_12_seedling_trays_false.a_target",
+        "role": "assistant",
+        "content": "Παραμένουν 12 φυτρωμένα φυτάρια στο σπορείο, αφού 18 − 6 = 12, όχι 10.",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "scale60_12_seedling_trays_false.u_decision",
+        "before": "Μα πια. Από αυτή την καταγραφή προκύπτει ότι παραμένουν 10 φυτρωμένα φυτάρια στο σπορείο.",
+        "after": "Μα πια! Από αυτή την καταγραφή προκύπτει ότι παραμένουν 10 φυτρωμένα φυτάρια στο σπορείο.",
+        "error": "Ακατάλληλη στίξη σε επιφωνηματική έκφραση.",
+        "reason": "Η επιφωνηματική και αγανακτισμένη έκφραση «Μα πια» αποδίδεται φυσικά με θαυμαστικό."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

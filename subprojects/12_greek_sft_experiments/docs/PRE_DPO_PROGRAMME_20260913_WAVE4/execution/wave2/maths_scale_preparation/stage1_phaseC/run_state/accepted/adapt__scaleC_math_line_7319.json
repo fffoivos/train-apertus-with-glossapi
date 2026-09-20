@@ -1,0 +1,77 @@
+{
+  "job_id": "adapt__scaleC_math_line_7319",
+  "row_id": "scaleC_math_line_7319",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "0c9479a3b3243ebdb51750c380169f8749b281f297bcc5050bf701c07c1573e0",
+  "input_record_sha256": "fa784a31515558015c9fe4cd95c37399183707474109fba416def6e3d7420498",
+  "payload_sha256": "5144bb3bce5aaedc4dd1372322e0a671b0069c0fc60b327be18a5444a9188af4",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "e4d7fb377d2dd8d7632857f8db466c0e258a628ad15edb0a04c1c65d586ff890",
+  "result": {
+    "row_id": "scaleC_math_line_7319",
+    "status": "candidate",
+    "problem_text": "Στο παραλληλόγραμμο $ABCD$, έστω $O$ το σημείο τομής των διαγωνίων $\\overline{AC}$ και $\\overline{BD}$. Οι γωνίες $CAB$ και $DBC$ είναι καθεμία διπλάσια από τη γωνία $DBA$, ενώ η γωνία $ACB$ είναι $r$ φορές τη γωνία $AOB$. Να βρείτε το $r$.",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "In parallelogram $ABCD$",
+        "target_span": "Στο παραλληλόγραμμο $ABCD$",
+        "reason": "Πιστή απόδοση του γεωμετρικού πλαισίου στα ελληνικά, με διατήρηση των ετικετών."
+      },
+      {
+        "source_span": "let $O$ be the intersection of diagonals $\\overline{AC}$ and $\\overline{BD}$",
+        "target_span": "έστω $O$ το σημείο τομής των διαγωνίων $\\overline{AC}$ και $\\overline{BD}$",
+        "reason": "Χρήση της καθιερωμένης ελληνικής γεωμετρικής ορολογίας χωρίς αλλαγή της συνθήκης."
+      },
+      {
+        "source_span": "Angles $CAB$ and $DBC$ are each twice as large as angle $DBA$",
+        "target_span": "Οι γωνίες $CAB$ και $DBC$ είναι καθεμία διπλάσια από τη γωνία $DBA$",
+        "reason": "Διατηρείται η ίδια πολλαπλασιαστική σχέση και η εφαρμογή της χωριστά σε καθεμία από τις δύο γωνίες."
+      },
+      {
+        "source_span": "angle $ACB$ is $r$ times as large as angle $AOB$",
+        "target_span": "η γωνία $ACB$ είναι $r$ φορές τη γωνία $AOB$",
+        "reason": "Διατηρείται ακριβώς η εξάρτηση που ορίζει τον λόγο $r$."
+      },
+      {
+        "source_span": "Find $r.$",
+        "target_span": "Να βρείτε το $r$.",
+        "reason": "Φυσική ελληνική διατύπωση της ίδιας ζητούμενης εξόδου."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "2",
+          "role": "Πολλαπλασιαστής των γωνιών $CAB$ και $DBC$ ως προς τη γωνία $DBA$",
+          "unit": null
+        },
+        {
+          "value": "r",
+          "role": "Λόγος του μέτρου της γωνίας $ACB$ προς το μέτρο της γωνίας $AOB$ και ζητούμενη τιμή",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Το $ABCD$ είναι παραλληλόγραμμο.",
+        "Το $O$ είναι το σημείο τομής των διαγωνίων $\\overline{AC}$ και $\\overline{BD}$.",
+        "Η γωνία $CAB$ είναι διπλάσια από τη γωνία $DBA$.",
+        "Η γωνία $DBC$ είναι διπλάσια από τη γωνία $DBA$.",
+        "Η γωνία $ACB$ είναι $r$ φορές τη γωνία $AOB$."
+      ],
+      "required_outputs": [
+        "Η τιμή του $r$."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": [
+      "Να επιβεβαιωθεί ότι όλες οι ετικέτες κορυφών και γωνιών διατηρήθηκαν αμετάβλητες.",
+      "Να επιβεβαιωθεί ότι οι πολλαπλασιαστικές σχέσεις των γωνιών διατηρήθηκαν χωρίς μεταβολή."
+    ]
+  }
+}

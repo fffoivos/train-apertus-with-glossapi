@@ -1,0 +1,78 @@
+{
+  "date": "2026-09-13",
+  "status": "review_candidates_not_applied",
+  "counts": {
+    "deployment_replacements": 29,
+    "new_coverage_closures": 6,
+    "patch_accepted": 35,
+    "patch_held": 0,
+    "world_facts_accepted": 7,
+    "world_facts_held": 0,
+    "prior_drafts_reused": 18,
+    "prior_drafts_replaced_or_new": 17
+  },
+  "ids": {
+    "deployment": [
+      "v4_H07_07",
+      "v4_I00_00",
+      "v4_I00_01",
+      "v4_I00_02",
+      "v4_I00_03",
+      "v4_I00_04",
+      "v4_I00_05",
+      "v4_I00_06",
+      "v4_I00_07",
+      "v4_I00_08",
+      "v4_I00_09",
+      "v4_I00_10",
+      "v4_I00_11",
+      "v4_I01_00",
+      "v4_I01_01",
+      "v4_I01_02",
+      "v4_I01_03",
+      "v4_I01_04",
+      "v4_I01_05",
+      "v4_I01_06",
+      "v4_I01_07",
+      "v4_I01_08",
+      "v4_I01_09",
+      "v4_I01_10",
+      "v4_I01_11",
+      "v4_I02_00",
+      "v4_I02_07",
+      "v4_I02_11",
+      "v4_I03_10"
+    ],
+    "new_coverage": [
+      "v4_H07_00",
+      "v4_H07_02",
+      "v4_H07_03",
+      "v4_H07_05",
+      "v4_H07_06",
+      "v4_H07_08"
+    ],
+    "world_facts": [
+      "A14_09",
+      "A21_21",
+      "F05_03",
+      "A02_02",
+      "A01_22",
+      "G09_09",
+      "A12_20"
+    ]
+  },
+  "inputs": {
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/personality/personality_v3v4_final.jsonl": "ad13da57bab00a42cb3d67e7c511661f80979af9755daf7ac02ad74e1e77388b",
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/personality/v4/personality_rows_final.jsonl": "54a332cc586572604439b1e6ab034f144ad8ae02eb8f88113e2634cdc6ab0afb",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/personality/candidate_fixes.jsonl": "aa051ece608e644bc799207cb0847e16855900bec84771816e94224ecc6af0fc",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/personality/v4_full_audit.jsonl": "4bcb73016151c61d001b2d3fe9ec60cba4175a2c2ed62ef5d89f4deac636ad9f",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/personality/assembly_verification.json": "85666a8759e6c597ca0f3e529086e264cc203e7bc5ac38ca47d4c5efd059b54d"
+  },
+  "outputs": {
+    "deployment_and_closure_patch.jsonl": "77f676c35eca1fc6b9e6d950e791e558d91e49973f3ba8f5648e75286f410357",
+    "world_fact_verification.jsonl": "2958b3a87af2bb7a95d12d3a863f3fdc72bc2338470437dbfbaee984c859a274",
+    "source_evidence.json": "6b9624f7643110498109c2faa1ed25684ec92e615931ab0fb61a43a6151d6e12",
+    "build_closure.py": "47fe24a324937b3dd1f4dbd7e68465cd4d31d318d6d0b2806a688f0bd7f4c510",
+    "closure_report.md": "2a55506427bf4e9d131f81ff88001ccb069e0200a8bd47cd4f8790698b2cb717"
+  }
+}

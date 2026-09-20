@@ -1,0 +1,72 @@
+{
+  "job_id": "author__scale60_16_event_agenda_true",
+  "row_id": "scale60_16_event_agenda_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "f1fb214081fa1ccd0ff80c8c2d7b0ffe8d63f008baa56989b4a1733e12631b22",
+  "input_record_sha256": "b459e2b61ad394b591fd6c1a790b89bd5dc59f36332fc3d3fa9ed634a09bcc08",
+  "payload_sha256": "628e610b44ac6799daabb8f77094083556315bfbd1b627ec282914dd4f013453",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "877b01638bf14e077d2719e59d106bbd228d870d72480d175157ece19aea26a7",
+  "result": {
+    "row_id": "scale60_16_event_agenda_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_16_event_agenda_true.u_context",
+        "role": "user",
+        "content": "Στην κειμενική ατζέντα, το καλωσόρισμα και η ομιλία είναι ενεργά, ενώ οι ερωτήσεις έχουν ακυρωθεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_16_event_agenda_true.a_context",
+        "role": "assistant",
+        "content": "Μπορώ να αλλάξω μόνο τις εγγραφές αυτού του πρόχειρου.",
+        "train": false
+      },
+      {
+        "id": "scale60_16_event_agenda_true.u_decision",
+        "role": "user",
+        "content": "Στην ατζέντα οι ερωτήσεις είναι ήδη ακυρωμένες. Ακύρωσε τώρα και το καλωσόρισμα.",
+        "train": false
+      },
+      {
+        "id": "scale60_16_event_agenda_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά, οι ερωτήσεις είναι ήδη ακυρωμένες. Ακύρωσα και το καλωσόρισμα στην ατζέντα.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_16_event_agenda_true.u_decision",
+        "claim": "Οι ερωτήσεις είναι ήδη ακυρωμένες.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "scale60_16_event_agenda_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να αναγνωρίσει ότι ο ισχυρισμός για τις ερωτήσεις υποστηρίζεται από το ορατό ιστορικό.",
+          "Να ακυρώσει το καλωσόρισμα μόνο μέσα στην κειμενική ατζέντα.",
+          "Να αναφέρει συνοπτικά το αποτέλεσμα της αλλαγής."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "ατζέντα.καλωσόρισμα",
+        "before_json": "\"active\"",
+        "after_json": "\"cancelled\"",
+        "evidence_ids": [
+          "scale60_16_event_agenda_true.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

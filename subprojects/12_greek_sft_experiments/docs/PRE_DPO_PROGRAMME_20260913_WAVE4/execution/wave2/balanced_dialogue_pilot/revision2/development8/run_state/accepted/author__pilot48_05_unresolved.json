@@ -1,0 +1,60 @@
+{
+  "job_id": "author__pilot48_05_unresolved",
+  "row_id": "pilot48_05_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "9e8e72ead988ebb5481b7cebfc2e53c9026be1e7ad7791d3a83fe551794f9d8a",
+  "input_record_sha256": "ef350c10f83cbf4fcbcd709f65f77019d92447286ecc5275637af28d6a8eb57b",
+  "payload_sha256": "0dfeaea6fd6f487d659d5e71683c7bc25f7ce2ae35b13d89a8733be33b9f157b",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "97b9c33769c9b00094663c5e861971b05f7d7cbb740d7cfb518665cdfe80f354",
+  "result": {
+    "row_id": "pilot48_05_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_05_unresolved.u_context",
+        "role": "user",
+        "content": "Στο πρόχειρο της παραγγελίας, η τρέχουσα καταχώριση είναι μεσαίος ντεκαφεϊνέ χωρίς ζάχαρη.",
+        "train": false
+      },
+      {
+        "id": "pilot48_05_unresolved.u_decision",
+        "role": "user",
+        "content": "Άντε, λοιπόν. Στο πρόχειρο της παραγγελίας, κάν' τον όπως την άλλη φορά.",
+        "train": false
+      },
+      {
+        "id": "pilot48_05_unresolved.a_target",
+        "role": "assistant",
+        "content": "Δεν προκύπτει τι περιλάμβανε η παραγγελία «την άλλη φορά». Τι καφέ, μέγεθος και ποσότητα ζάχαρης θέλεις να γράψω στο πρόχειρο;",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_05_unresolved.u_decision",
+        "claim": "Η αναφορά «όπως την άλλη φορά» προσδιορίζει τις τιμές που πρέπει να καταχωριστούν στο πρόχειρο της παραγγελίας.",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "pilot48_05_unresolved.u_context",
+          "pilot48_05_unresolved.u_decision"
+        ],
+        "expected_response_behaviour": [
+          "Να δηλωθεί ότι δεν υπάρχουν ορατά στοιχεία για την παραγγελία της άλλης φοράς.",
+          "Να ζητηθούν μόνο ο καφές, το μέγεθος και η ποσότητα ζάχαρης που πρέπει να καταχωριστούν.",
+          "Να παραμείνει αμετάβλητο το πρόχειρο της παραγγελίας μέχρι τη διευκρίνιση."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [
+      "Να διευκρινιστούν ο καφές, το μέγεθος και η ποσότητα ζάχαρης της παραγγελίας που εννοεί ο χρήστης."
+    ],
+    "issues": []
+  }
+}

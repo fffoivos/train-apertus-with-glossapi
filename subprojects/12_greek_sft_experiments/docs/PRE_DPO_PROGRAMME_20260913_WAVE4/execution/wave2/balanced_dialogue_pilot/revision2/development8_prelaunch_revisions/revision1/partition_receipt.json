@@ -1,0 +1,37 @@
+{
+  "development": {
+    "rows": 8,
+    "families": {
+      "cf05_cafe_order": 4,
+      "cf09_library_hold": 4
+    },
+    "truth_categories": {
+      "true": 2,
+      "false": 2,
+      "partial": 2,
+      "unresolved": 2
+    },
+    "source_sha256": "d4f8270bd50a506ab3ef37cc0999a4babbdb283f664885694377994c7036936c"
+  },
+  "train": {
+    "accepted_rows": 32,
+    "accepted_receipt": "../accepted_train32/receipt.json",
+    "accepted_receipt_sha256": "51abf8287176f6f9c492579a1ef46a86d39b414a779ccde780a4e8ec57436db2",
+    "content_copied_into_development_package": false
+  },
+  "final_confirmation": {
+    "row_count": 8,
+    "dispatchable": 7,
+    "quarantined": 1,
+    "gate_summary": "../sealed/final_confirmation/gate_summary.json",
+    "gate_summary_sha256": "8e87f888a655eabf8011ca385c496f5db041b54872273ee86d5f32403f897ad4",
+    "content_read_or_materialized_by_this_builder": false
+  },
+  "silence_quarantine": {
+    "row_id": "pilot48_12_unresolved",
+    "count": 1,
+    "quarantine_receipt": "../quarantine/silence_unspecified.jsonl",
+    "quarantine_receipt_sha256": "3e0d566bb58beaa0692565b7beaa468a76a60b0bfcc54cae5e2ccf4dca36f29c"
+  },
+  "family_disjointness": "Inherited from frozen revision2 prelaunch verification; final identities remain sealed and were not independently reopened here."
+}

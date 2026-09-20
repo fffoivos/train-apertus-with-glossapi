@@ -1,0 +1,54 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_275",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Η λύση αντιστοιχεί στο μοναδικό καταγεγραμμένο ελληνικό πρόβλημα. Η προσαρμογή του ονόματος Janet σε Ιωάννα είναι συνεπής και δεν μεταβάλλει το μαθηματικό ζητούμενο.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_4074",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Η λύση αντιστοιχεί στο μοναδικό καταγεγραμμένο ελληνικό πρόβλημα. Η αλλαγή του ονόματος Nguyen σε Νίκος είναι επιτρεπτή πολιτισμική προσαρμογή· οι αυτοκρατορικές μονάδες διατηρούνται με συνοχή και μετατρέπονται σωστά.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_947",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "issue",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "derivation",
+          "severity": "minor",
+          "quote": "Άρα οι υπόλοιποι ήταν: 200-100=100. Επομένως, εκείνη τη στιγμή έτρωγαν σνακ 100 άτομα.",
+          "explanation": "Η αφαίρεση υπολογίζει τους 100 συμμετέχοντες που δεν επέλεξαν σνακ, όχι εκείνους που έτρωγαν. Ο αριθμός των ατόμων που έτρωγαν είναι επίσης 100, αλλά προκύπτει απευθείας από την εκφώνηση. Επομένως, η μετάβαση είναι λογικά άκυρη, παρότι λόγω της αριθμητικής σύμπτωσης δεν επηρεάζει τα επόμενα βήματα ή το σωστό τελικό αποτέλεσμα 20. Το ίδιο ελάττωμα υπάρχει και στην παρεχόμενη λύση αναφοράς.",
+          "suggested_action": "Σε ενδεχόμενη σημασιολογική επισκευή, να αφαιρεθεί η άσχετη αφαίρεση και να δηλωθεί απευθείας ότι αρχικά έτρωγαν σνακ 100 άτομα, διατηρώντας όλα τα επόμενα σωστά βήματα."
+        }
+      ],
+      "provenance_note": "Η λύση αντιστοιχεί στο μοναδικό καταγεγραμμένο ελληνικό πρόβλημα. Η εσφαλμένη αρχική αιτιολόγηση απαντά και στην αγγλική λύση αναφοράς, αλλά αξιολογείται αυτοτελώς ως ελάττωμα της υποψήφιας λύσης.",
+      "verification_needed": []
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"families": 12, "family_leakage": false, "records": 48, "scale_target": {"false": 200, "partial": 100, "true": 200, "unresolved": 100}, "status": "PASS", "truth_counts": {"false": 12, "partial": 12, "true": 12, "unresolved": 12}}

@@ -1,0 +1,112 @@
+{
+  "A14_09": [
+    {
+      "url": "https://www.ypes.gr/?ptype=faqs",
+      "publisher": "Υπουργείο Εσωτερικών",
+      "supports": "current official FAQ: 17th year, January 1 age convention, automatic municipal-list preparation",
+      "checked": "2026-09-13"
+    }
+  ],
+  "A21_21": [
+    {
+      "url": "https://www.europarl.europa.eu/news/el/press-room/20130610IPR11414/elections-2014-share-out-of-meps-seats-among-28-eu-countries",
+      "publisher": "European Parliament",
+      "supports": "official 2014 allocation: Greece 22 to 21",
+      "checked": "2026-09-13"
+    },
+    {
+      "url": "https://www.europarl.europa.eu/meps/en/search/advanced?countryCode=GR",
+      "publisher": "European Parliament",
+      "supports": "current official roster returns 21",
+      "checked": "2026-09-13"
+    }
+  ],
+  "F05_03": [
+    {
+      "url": "https://www.hellenicparliament.gr/Praktika/Synedriaseis-Olomeleias?sessionRecord=49d5e017-bb54-4ff5-9028-77483f53964d",
+      "publisher": "Hellenic Parliament",
+      "supports": "official parliamentary record explicitly dates recognition to Law 1285/1982",
+      "checked": "2026-09-13"
+    },
+    {
+      "url": "https://www.hellenicparliament.gr/UserFiles/c0d5184d-7550-4265-8e0b-078e1bc7375a/12106766.pdf",
+      "publisher": "Hellenic Parliament",
+      "supports": "official parliamentary record identifies Law 1863/1989 as the law on lifting the consequences of the 1944-1949 Civil War",
+      "checked": "2026-09-13"
+    },
+    {
+      "url": "https://www.hellenicparliament.gr/UserFiles/c0d5184d-7550-4265-8e0b-078e1bc7375a/11328128.pdf",
+      "publisher": "Hellenic Parliament",
+      "supports": "official parliamentary question documents the postwar public-employment loyalty regime and its repeal",
+      "checked": "2026-09-13"
+    },
+    {
+      "url": "https://www.e-nomothesia.gr/kat-nomothesia-genikou-endiapherontos/n-1285-1982.html",
+      "publisher": "FEK A 115/1982 legal text mirror",
+      "supports": "secondary cross-check of Law 1285/1982",
+      "checked": "2026-09-13"
+    },
+    {
+      "url": "https://www.e-nomothesia.gr/suntaksiodotika/nomos-1863-1989-fek-204a-18-11-1989.html",
+      "publisher": "FEK A 204/1989 legal text mirror",
+      "supports": "secondary cross-check of Law 1863/1989",
+      "checked": "2026-09-13"
+    }
+  ],
+  "A02_02": [
+    {
+      "url": "https://200years.mfa.gr/en/international-treaties-en/",
+      "publisher": "Hellenic Ministry of Foreign Affairs diplomatic archive",
+      "supports": "1830 independence and Acheloos-Spercheios boundary; 1832 Constantinople/Arta-Volos settlement",
+      "checked": "2026-09-13"
+    }
+  ],
+  "A01_22": [
+    {
+      "url": "https://www.hellenicparliament.gr/UserFiles/8c3e9046-78fb-48f4-bd82-bbba28ca1ef5/SYNTAGMATA.PDF",
+      "publisher": "Hellenic Parliament",
+      "supports": "official constitutional history: adoption 7 June and subsequent promulgation",
+      "checked": "2026-09-13"
+    },
+    {
+      "url": "https://www.presidency.gr/chairetismos-toy-proedroy-tis-dimokratias-konstantinoy-an-tasoyla-sta-egkainia-tis-ekthesis-to-diko-mas-syntagma-1975-2025-sti-voyli-ton-ellinon/",
+      "publisher": "Presidency of the Hellenic Republic",
+      "supports": "official chronology: voted 7 June, signed 9 June, published 11 June 1975",
+      "checked": "2026-09-13"
+    },
+    {
+      "url": "https://foundation.parliament.gr/el/ekthesi/dimopsifisma",
+      "publisher": "Hellenic Parliament Foundation",
+      "supports": "official exhibit: referendum date and 69.18 percent result for the republic",
+      "checked": "2026-09-13"
+    }
+  ],
+  "G09_09": [
+    {
+      "url": "https://www.ebooks.edu.gr/ebooks/v/html/8547/2009/Grammatiki_E-ST-Dimotikou_html-apli/index_B4e.html",
+      "publisher": "Greek Ministry education textbook portal",
+      "supports": "school final-n rule, including always retaining masculine τον/έναν and the conditional forms την/δεν/μην",
+      "checked": "2026-09-13"
+    },
+    {
+      "url": "https://ebooks.edu.gr/ebooks/d/8547/636/10-0138-02_Grammatiki_E-ST-Dimotikou.pdf",
+      "publisher": "Greek Ministry education textbook portal",
+      "supports": "official school grammar PDF version of the final-n rule",
+      "checked": "2026-09-13"
+    }
+  ],
+  "A12_20": [
+    {
+      "url": "https://www.aade.gr/sites/default/files/2026-01/odigos%20diadikasion_january%202026.pdf",
+      "publisher": "AADE",
+      "supports": "official registry guide: issue current registry certificate via myAADE",
+      "checked": "2026-09-13"
+    },
+    {
+      "url": "https://elib.aade.gr/elib/printview?d=%2Fgr%2Fact%2F2014%2F4308%2Fmain%2Fchp%2F3%2F",
+      "publisher": "AADE legal library",
+      "supports": "retail receipt mandatory AFM is the seller’s",
+      "checked": "2026-09-13"
+    }
+  ]
+}

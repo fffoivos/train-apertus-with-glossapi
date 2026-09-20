@@ -1,0 +1,56 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_134",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The stable Greek problem faithfully matches the supplied English problem, and there is one solution record with no historical pairing uncertainty. The diagonal multiplicities, Ptolemy equations, factorization, rational sum, and final choice 391 are consistent.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_4032",
+      "overall": "issues",
+      "final_result": "issue",
+      "derivation": "issue",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "premises_and_factual_support",
+          "severity": "major",
+          "quote": "Θεωρούμε ότι ένας μήνας αποτελείται από 4 εβδομάδες.",
+          "explanation": "Neither the English nor the Greek problem defines a month as four weeks. Calendar months have more than 28 days, and no particular month is specified, so 200 hours is not uniquely implied. The arithmetic is correct only under the explicitly introduced but unsupported four-week convention inherited from the reference.",
+          "suggested_action": "Record the answer as conditional on a four-week-month convention, or clarify the problem statement to define one month as four weeks. Because this is audit-only, do not alter the candidate here."
+        }
+      ],
+      "provenance_note": "The Greek problem and the sole selected solution are stably paired. The defect originates in an underspecified premise also present in the English source/reference, not in the Greek adaptation. The adaptation of Bob to Μπάμπης is permitted and culturally coherent.",
+      "verification_needed": [
+        "Evidence of a dataset-wide convention that one month means exactly four weeks, or clarification of the intended month length."
+      ]
+    },
+    {
+      "row_id": "gsm_63",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The Greek problem and its sole solution record are stably paired. Both consumption intervals are calculated from the stated 3,000 L full-tank capacity, summed correctly to 4,582 L, and expressed with appropriate units. The adaptation of the surname to Φωτιάδης is permitted and coherent.",
+      "verification_needed": []
+    }
+  ]
+}

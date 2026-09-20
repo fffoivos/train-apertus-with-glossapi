@@ -1,0 +1,54 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_364",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "problem_fidelity",
+          "severity": "major",
+          "quote": "οι $\u0000overline{AB}, \u0000overline{BC},$ και $\u0000overline{CD}$, ενώ η $\u0000overline{AD}$",
+          "explanation": "Οι τέσσερις εντολές τμημάτων έχουν αλλοιωθεί: αντί για έγκυρο LaTeX «\\overline» περιέχουν χαρακτήρα NUL πριν από το «overline». Η γεωμετρική πρόθεση παραμένει αναγνωρίσιμη, αλλά η εκφώνηση δεν αποδίδει σωστά τη σημειογραφία της πηγής και δεν είναι καθαρό εκπαιδευτικό δείγμα.",
+          "suggested_action": "Δρομολόγηση για διόρθωση μορφοποίησης ώστε κάθε εμφάνιση «\u0000overline» να αποκατασταθεί ως «\\overline», χωρίς αλλαγή της εκφώνησης ή της λύσης."
+        }
+      ],
+      "provenance_note": "Το μεταδεδομένο δηλώνει σταθερό κείμενο προβλήματος και δεν παρέχονται εναλλακτικές problem_variants. Η επιλεγμένη λύση είναι η τελευταία από δύο εγγραφές λύσης· δεν προκύπτει μαθηματική ασυμφωνία ζεύγους από τα παρεχόμενα στοιχεία.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_771",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Παρέχεται μία εγγραφή προβλήματος και μία λύση. Η προσαρμογή του ονόματος «Carl» σε «Κάρλος» είναι επιτρεπτή και δεν μεταβάλλει τα δεδομένα ή τον διδακτικό στόχο.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_904",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το μεταδεδομένο δηλώνει σταθερό κείμενο προβλήματος και δεν παρέχονται εναλλακτικές problem_variants. Η επιλεγμένη λύση είναι η τελευταία από τέσσερις εγγραφές λύσης και συμφωνεί πλήρως με την παρεχόμενη εκφώνηση.",
+      "verification_needed": []
+    }
+  ]
+}

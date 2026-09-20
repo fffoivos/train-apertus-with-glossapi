@@ -1,0 +1,50 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_607",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Η τελευταία αποθηκευμένη λύση έχει συνδεθεί συμβατικά με την τελευταία εκδοχή του προβλήματος, αλλά η ιστορική αντιστοίχιση δεν αποδεικνύεται. Οι δύο παρεχόμενες ελληνικές εκδοχές είναι μαθηματικά ισοδύναμες και η λύση ταιριάζει και στις δύο.",
+      "verification_needed": [
+        "Η ιστορική αντιστοίχιση της επιλεγμένης λύσης με συγκεκριμένη αποθηκευμένη εκδοχή του προβλήματος παραμένει ανεπιβεβαίωτη."
+      ]
+    },
+    {
+      "row_id": "gsm_1825",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Υπάρχει μία μόνο εγγραφή προβλήματος. Η επιτρεπτή προσαρμογή του ονόματος από Milly σε Μίνα δεν μεταβάλλει το διδακτικό ή μαθηματικό περιεχόμενο.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_1211",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Η τελευταία αποθηκευμένη λύση έχει συνδεθεί συμβατικά με την τελευταία εκδοχή του προβλήματος, αλλά η ιστορική αντιστοίχιση δεν αποδεικνύεται. Η διαφορά «κανονικά» έναντι «συνηθισμένα» στις δύο εκδοχές δεν επιφέρει μαθηματική διαφορά, και η λύση ταιριάζει και στις δύο.",
+      "verification_needed": [
+        "Η ιστορική αντιστοίχιση της επιλεγμένης λύσης με συγκεκριμένη αποθηκευμένη εκδοχή του προβλήματος παραμένει ανεπιβεβαίωτη."
+      ]
+    }
+  ]
+}

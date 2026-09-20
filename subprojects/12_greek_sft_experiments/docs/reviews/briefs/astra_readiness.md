@@ -1,0 +1,359 @@
+# Review brief: readiness to train — the FINAL assembled set and recipe (go / no-go)
+
+Yesterday you reviewed the pipeline description as a draft (docs/reviews/ASTRA_pipeline_completeness_20260910.md) and set three blockers (accounting receipt, masking through the real pipeline, final-snapshot decontamination) plus four highs. Since then: the three new sets were generated, edited, re-verified and individually reviewed by you (correcting set: docs/reviews/ASTRA_correcting_scale_20260911.md, dispositions in the design doc §11; suite: docs/reviews/ASTRA_convskills_scale_20260911.md, dispositions §8 with 433 rows filtered); the personality v4 rows were checked by Claude and by Sol; the mix was assembled with the new receipt; the trainer's per-turn masking was tested through template, packing and collator on real rows; the training config was derived. The full documents follow: the recipe disclosure (with the per-block receipt table and the launch sequence) and the updated description (§3.x final counts, §8 receipt table, §10 your previous dispositions).
+
+## What to judge
+1. Go / no-go for the single-stage run as disclosed, against your own blockers B1–B3 and highs H1–H4: which are satisfied by the evidence in these documents, which are not, and what exactly is still missing. Be concrete: name the receipt field or the missing artefact.
+2. The per-block table: anything wrong or surprising in the counts (unique vs effective rows, supervised-token shares, the contamination drops such as 1,348 ifeval-like rows against the extended cache, the 1,077 duplicates, the masked-turn counts, the 69-row personality holdout, the Greek/English balance by supervised tokens).
+3. The three flagged recipe changes (per-turn masking; the five new blocks and their weights; personality ×4 in one epoch instead of a separate two-epoch pass): any risk that should change a weight or the plan before launch, given the budget (7–9 node-hours) and that this is one run compared against arm B.
+4. The launch sequence and gates: is anything missing between "assembled" and "launched" (dry run, probe, preflight, battery plan, promotion floors)?
+5. Residual risks to state to the owner in one line each.
+
+## Disposition
+A BLOCKER stops the launch until fixed; a HIGH that concerns assembly or recipe is fixed before launch; everything else is logged. Answer with a clear verdict line first.
+
+---
+
+
+# DOCUMENT 1: recipe disclosure
+# Recipe disclosure: round three, single-stage run from the base (draft 2026-09-11, numbers filled from the R3_single receipt)
+
+Owner rule: every parameter tabled against the previous run, every change flagged, before any launch. Previous run = R2_stage1 (the broad mix, 1 epoch) followed by arm B (the Greek pass with personality ×4, 2 epochs, lr 1e-5). This run folds the Greek pass into one mix and trains once from the base, as decided after the identity ladder and endorsed by the completeness review as an experimental change to be compared against arm B.
+
+## 1. Data (from data/arms/R3_single/receipt.json)
+
+| block | unique train rows | copies | effective rows | rendered tokens | supervised tokens | dev rows | contaminated (dropped) | exact duplicates (dropped) | masked context turns | change vs R2_stage1 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| dolci_precise_if_20k | 4,116 | 1 | 4,116 | 2.3M | 1.3M | 41 | 79 | 0 | 0 | +5% tokens |
+| ifeval_like | 46,153 | 1 | 46,153 | 12.8M | 6.5M | 466 | 1348 | 0 | 0 | -1% tokens |
+| openmath_gsm | 98,943 | 1 | 98,943 | 27.4M | 15.3M | 999 | 29 | 0 | 0 | +8% tokens |
+| nemotron_chat_a | 23,017 | 1 | 23,017 | 35.4M | 30.9M | 232 | 15 | 0 | 0 | -1% tokens |
+| nemotron_chat_b | 23,262 | 1 | 23,262 | 36.4M | 31.7M | 234 | 15 | 0 | 0 | -1% tokens |
+| dolci_chat | 3,009 | 1 | 3,009 | 1.1M | 0.8M | 30 | 1 | 0 | 0 | -1% tokens |
+| dolci_code_algo_20k | 5,503 | 1 | 5,503 | 2.4M | 1.1M | 55 | 0 | 0 | 0 | +8% tokens |
+| dolci_reasoning | 29,654 | 1 | 29,654 | 16.7M | 6.8M | 299 | 0 | 0 | 0 | +8% tokens |
+| puzzles | 9,974 | 1 | 9,974 | 3.7M | 0.6M | 100 | 0 | 1068 | 0 | -11% tokens |
+| dolci_tooluse | 29,700 | 1 | 29,700 | 30.8M | 9.2M | 300 | 20 | 0 | 0 | +8% tokens |
+| dolci_science | 6,538 | 1 | 6,538 | 6.0M | 3.9M | 66 | 0 | 0 | 0 | +6% tokens |
+| smoltalk2_multilingual | 20,208 | 1 | 20,208 | 11.1M | 8.1M | 204 | 0 | 0 | 0 | -1% tokens |
+| dolci_safety | 6,194 | 1 | 6,194 | 1.8M | 1.1M | 62 | 0 | 0 | 0 | -1% tokens |
+| greek_rewrite | 1,980 | 1 | 1,980 | 1.2M | 0.4M | 20 | 0 | 0 | 0 | -1% tokens |
+| greek_ours | 19,800 | 2 | 39,600 | 15.4M | 8.8M | 200 | 8 | 0 | 0 | +98% tokens |
+| personality | 1,504 | 4 | 6,016 | 1.5M | 1.0M | 69 | 1 | 0 | 0 | new in the single mix (×4; was the arm-B pass) |
+| greek_if | 29,773 | 1 | 29,773 | 11.1M | 6.0M | 300 | 0 | 0 | 0 | new block |
+| greek_math | 14,070 | 1 | 14,070 | 3.2M | 1.3M | 142 | 3 | 0 | 0 | new block |
+| convskills | 2,813 | 2 | 5,626 | 6.8M | 4.5M | 28 | 0 | 9 | 756 | new block |
+| correcting | 565 | 2 | 1,130 | 1.5M | 0.9M | 5 | 0 | 0 | 431 | new block |
+Totals: 376,776 unique train rows → 404,466 effective rows, 228.6M rendered tokens, 140.2M supervised tokens (61%); dev 3,852 rows (2.15M tokens) incl. the 69 personality holdout rows; train∩dev = 0; rows without a supervised count: 0; post-assembly identity scan hits (exempt blocks: personality, convskills, correcting): 0; contamination drops 1,519 rows (8-gram containment ≥ 0.5 of a user turn against the evaluation cache); exact duplicates dropped 1,077; masked context turns 1,187. train.jsonl sha256 7784e89777fe92df…, dev 85e7e3bf3a1b6258…. Projected training cost at the measured stage-1 rate (32.5M tokens per node-hour): **7.0 node-hours**; the evaluation battery about 4.3 on top.
+ Dev: the stage-1 dev fraction per block plus the same 69 personality rows held out in round two. Train/dev intersection asserted 0. Decontamination: 8-gram/13-gram containment of user turns against the evaluation cache (Greek IFEval, Greek MMLU, GSM8K, the English originals of MMLU/ARC/HellaSwag/TruthfulQA, Greek MGSM, MATH-500-el, XSTest-el, IFBench-el, MultiChallenge-el, native ASEP/medical/GPCR/DemosQA); NOT yet covered: the OYXOY sets (NLI, WiC, WSD, metaphor), which need their frozen copy from the cluster (certificate).
+
+## 2. Training parameters (cluster/configs/R3_single.yaml vs R2_stage1.yaml)
+
+| parameter | R2_stage1 | R3_single | flag |
+|---|---|---|---|
+| base | fffoivos/apertus-8b-greek-cpt @ 18-avg-uniform5-tokens30B-50B | same | — |
+| epochs | 1 | 1 | — |
+| learning rate | 1e-5 | 1e-5 | — |
+| schedule | cosine_with_min_lr, min_lr_rate 0.1, warmup 3% | same | — |
+| weight decay / betas / grad clip | 0.0 / β2 0.99 / 1.0 | same | — |
+| packing | BFD, max_length 4,096, padding-free | same | — |
+| effective batch | 1 × 4 devices × 4 accumulation = 16 sequences | same | — |
+| loss | assistant-only | assistant-only **plus per-turn `train:false` masking** (context turns of planted failures and suite S4 tics; verified through template+packing+collator on real rows, label dump docs/receipts_label_dump_g2_pilot.json) | CHANGE |
+| data | 15 blocks, 334,383 rows, 197.9M tokens | 20 blocks, 404,466 effective rows, 228.6M tokens (140.2M supervised): the same 15 (deduplicated, re-decontaminated) + personality v3+v4 ×4 + Greek IF + Greek math + suite v2 ×2 + correcting ×2 | CHANGE |
+| personality dose | none in stage 1 (×4 in the later arm B pass, 2 epochs) | ×4 inside the single mix, 1 epoch | CHANGE (the ladder's dose, but spread over one epoch of the whole mix; the review calls this a provisional carry-over) |
+| seed | 42 | 42 | — |
+| saves | every 750 steps, keep 2 | same | — |
+| expected_train_tokens | 197,862,767 | 228,559,561 | CHANGE |
+
+Projected cost at the measured stage-1 rate (32.5M tokens per node-hour): 7.0 node-hours for training; the evaluation battery is about 4.3 node-hours on top (owner decides whether the budget includes it).
+
+## 3. Launch gates (completeness review)
+
+| gate | status |
+|---|---|
+| G1 receipt: unique rows, exclusions, copies, rendered and supervised tokens, hashes, provenance; personality holdout excluded before weighting; train∩dev = ∅ | PASSED: data/arms/R3_single/receipt.json (train∩dev 0; 69 personality dev rows; per-block hashes and export provenance; the invariant also caught 1,077 exact duplicate rows, 1,068 of them puzzles that round two trained on) |
+| G2 masking through the real pipeline | PASSED (cluster/test_mask_pipeline.py on 40 real rows; 20 decoded examples attached) |
+| G3 final-snapshot decontamination | PASSED for the cached inventory: 1,519 contaminated rows dropped at assembly (ifeval_like 1,348 with the new IFBench-el/English originals in the cache); OYXOY pending the cluster copy |
+| suite post-edit re-verification | PASSED: 3,284 of 3,437 (data/convskills/v2/reverify/manifest.json) |
+| correcting post-edit gate | PASSED: 3,691 supervised turns, 1 demoted |
+| dry run on the cluster (5% sample arm, DRY_RUN_OK) | pending the certificate |
+
+## 4. Promotion criteria proposed (against arm B under identical serving settings)
+GreekMMLU within 0.5 points of arm B; Greek IFEval strict average not more than 1 point below arm B; Greek MGSM not below arm B; improvement on the conversation instruments (picky-user R1 tail copy, coherence, standing-instruction persistence, self-observation) and on MultiChallenge-el; the four new benchmarks reported for both models.
+
+## 5. Launch sequence (runs only on the owner's go; nothing below has been executed)
+1. `cscs-key sign` (owner) — the certificate is expired.
+2. Transfer (tar-pipe, `-4`): `data/arms/R3_single/{train,dev}.jsonl` (about 1.1 GB), `cluster/configs/R3_single.yaml`, and the updated trainer `cluster/sft_train.py` (per-turn masking) → `$SCRATCH/sft_round1/`.
+3. Gate: the 5% sample arm dry run on the login node (`dryrun_<arm>.sh`, as for R2_stage1: DRY_RUN_OK, token estimate within 2% of the receipt), then the 20-step probe on a debug workbench if the trainer changed (it did: masking) — one node, about 0.3 node-hours.
+4. Preflight (`cluster/preflight.sh`) with the projected 7.0–8.8 node-hours against the cap the owner sets; then `cluster/train_sbatch.sh R3_single`.
+5. After training: the evaluation battery (`cluster/full_battery.sh`) on the new checkpoint AND on arm B where missing (GreekMMLU, native suite, retention), plus the four Greek benchmarks on both, with langdetect installed for the IFEval rescoring.
+
+
+# DOCUMENT 2: pipeline description (updated)
+# The Greek Apertus SFT pipeline: datasets, screening, adaptation, training runs and results
+
+Date: 2026-09-11 (draft written the evening of 10 September for the completeness review before the next training run). Status: description of everything built for the supervised fine-tuning of the Greek-CPT Apertus-8B up to this date, with the planned final training set in §8 and the known gaps in §9. Every number carries the file it comes from; "not recorded" marks a number no file holds.
+
+## 1. The base model and the goal
+
+**Base.** `fffoivos/apertus-8b-greek-cpt`, revision `18-avg-uniform5-tokens30B-50B`: the uniform average of 18 checkpoints of the Greek continued pre-training of `swiss-ai/Apertus-8B-2509` (the 30B to 50B token window). The averaged checkpoint was chosen over the terminal one in round one: same dev loss after SFT, but the terminal checkpoint fine-tunes to worse Greek math (MGSM 0.33 vs 0.42) and instruction following, and its native-suite deficit (NLI 0.39, metaphor 0.34) survives SFT (results/READOUT_provisional.md, "E1-last"). GreekMMLU of the base: 56.8% on the decontaminated subset (results/READOUT_provisional.md, GreekMMLU table). Native-Greek suite macro of eight: 0.499 (base), 0.434 (terminal) (same file, native-suite table).
+
+**Goal.** A Greek instruction model at 8B that (a) follows instructions and does math in Greek at least as well as the best Greek-tuned 8B peer (Llama-Krikri-8B-Instruct), (b) keeps the knowledge the CPT bought, (c) speaks as itself (a Greek adaptation of Apertus by GlossAPI at ΕΕΛΛΑΚ, no name of its own), and (d) is helpful, coherent, self-aware and pleasant over a whole conversation, which the round-two model is not yet (docs/CHAT_REVIEW_20260908.md; docs/RESPONSE_PATTERN_CATALOGUE_20260910.md).
+
+**Order of work set by the owner (10 September).** Finish the SFT datasets, write this description, have it reviewed for completeness, train once from the base, evaluate; preference optimisation only after that, and only if the evaluation says it is needed.
+
+## 2. Foreign datasets gathered (the stage-1 mix of round two)
+
+The stage-1 mix imports broad skills in any language, screened for foreign identity and foreign vantage, and carries our Greek sets at weight 2. Selection rules and the candidate survey: docs/SFT_DATA_REVIEW_20260904.md (Parts 1 to 4) and docs/ROUND2_DATA_PLAN_20260905.md §2. Recency rule: nothing generated by pre-2024 models except the safety block; wrong-rate rule: at most 2% wrong to enter unscreened, 2 to 10% needs a program check or a full Sol screen, above 10% is out (FLAN, 14.6% wrong, is out). Dropped under the recency rule: Magpie Ultra, OpenHermes, Tulu WildChat, EuroBlocks fr/de, Dolci persona math, Evol-CodeAlpaca, Tulu persona Python, TableGPT.
+
+Rows and tokens below are what went to the trainer (docs/HF_DATASET_CARD_greek-apertus-sft_20260907.md "round2_stage1: composition"; tokens per block in docs/receipts_R2_stage1_final_20260906.json). Total: 334,383 rows, 197.9M tokens (Greek-CPT tokenizer), dev 3,171 rows.
+
+| block | source | written by | licence (source card) | screen | rows | tokens | weight |
+|---|---|---|---|---|---:|---:|---:|
+| dolci_precise_if_20k | allenai/Dolci-Instruct-SFT, Precise IF | QwQ-32B, verifier-filtered (2025) | ODC-BY | source checkers verify format only; Sol spot-check of 300 found 27% unusable, so only a Sol-screened subset enters (survival 22% in the log entry; 3,934 rows taken) | 3,934 | 2.17M | 1 |
+| ifeval_like | argilla/ifeval-like-data (filtered) | Qwen2.5-72B (2024) | Qwen licence | our re-run of the IFEval checkers on all 56,339 rows: 47 fail; Sol content spot-check of 300: 5 unusable; decontamination removed 2.4% | 46,619 | 12.95M | 1 |
+| openmath_gsm | nvidia/OpenMathInstruct-2, GSM8K-style | Llama-3.1-405B (2024) | CC-BY-4.0 | final-answer match re-run on 100,000 rows: 29 mismatch | 91,458 | 25.31M | 1 |
+| nemotron_chat_a, nemotron_chat_b | nvidia/Nemotron-SFT-Instruction-Following-Chat-v3, chat split | GLM-5, best-of-n by a reward model (2026) | CC-BY-4.0 and ODC-By | withheld-prompt rows filtered (41% of the split); exact-length prefilter; EU-language gate (16.5% out); Luna light rubric; technical rows re-judged by Sol; survival 68% (half A) | 23,250 + 23,497 | 35.77M + 36.70M | 1 |
+| dolci_chat | OpenAssistant conversations via Dolci | human volunteers (2023) | ODC-BY (Dolci); Apache-2.0 (OASST) | Luna full rubric with Sol second opinion on wrong-answer drops (169 of 610 overturned); EU-language gate (459 out); mannerism rows dropped (19% of kept); survival 58% | 3,039 | 1.12M | 1 |
+| dolci_code_algo_20k | Dolci Python Algorithms | 2025 models | ODC-BY | Sol spot-check 20 of 300 wrong (6.7%), so Sol-screened; no executable tests exist | 5,084 | 2.24M | 1 |
+| dolci_reasoning | Dolci Verifiable Reasoning | 2025 models | ODC-BY | Sol spot-check 3 of 300 wrong, taken as clean | 27,445 | 15.46M | 1 |
+| puzzles | Dolci logic puzzles and word sorts | generator | ODC-BY | exact brute-force checker (data/zebra_check.py): 11,163 confirmed, 1,318 wrong excluded (20.9% of zebra puzzles); survival 89% | 11,139 | 4.16M | 1 |
+| dolci_tooluse | Dolci Tool Use | 2025 models | ODC-BY | regex identity and lexicon scan only (Luna's 3,000-row sample mislabelled API-irrelevance refusals as identity, so its verdicts were not applied); calls rendered as `<function_calls>` blocks, not the Apertus native tool format | 27,445 | 28.42M | 1 |
+| dolci_science | Dolci OpenThoughts3+ Science | 2025 models | ODC-BY | Sol screen with a 12,000-character window; survival 33% of the judged 12k | 6,176 | 5.66M | 1 |
+| smoltalk2_multilingual | HuggingFaceTB/smoltalk2 multilingual-8 (de, fr, es, pt, it) | Qwen3-32B (2025) | Apache-2.0 | Luna; multilingual identity patterns; survival 82% | 20,412 | 11.26M | 1 |
+| dolci_safety | Dolci WildGuardMix and CoCoNot | 2024 (the stated exception to the recency rule) | ODC-BY | Luna; mannerism rows dropped (39% of kept); survival 43% | 6,256 | 1.78M | 1 |
+| greek_rewrite | ours, §3.2 | Sol gpt-5.6 (2026) | project licence | Sol correction pass, Luna screen, owner blind read | 2,000 | 1.20M | 1 |
+| greek_ours | ours, §3.1 | Sol (2026), adapted | per source, see the card | round-one pipeline; Luna screen (survival 83%) | 20,000 | 7.80M | 2 |
+
+Survival rates are from EXECUTION_LOG.md (2026-09-05 20:04): Precise IF 22% of 20k with 6k judged, Nemotron A 68%, OpenAssistant 58%, science 33% of 20k with 12k judged, safety 43%, multilingual 82%, puzzles 89%, our Greek set 83%, tool use 99%, ifeval-like, OpenMath and reasoning about 100%. The receipt's per-block token sum (192.0M) is below the trainer total (197.9M); the difference is the chat-template overhead counted by the trainer and not by the receipt's per-block figures (not recorded separately).
+
+Licence decisions still with the owner (docs/ROUND2_DATA_PLAN_20260905.md §7): the Qwen-generated ifeval-like rows and OpenMathInstruct-2 (Llama-3.1-405B output, naming clause) are kept with attribution unless the owner says otherwise; the Dolci blocks carry Ai2's "research and educational use" note.
+
+Note added 2026-09-11 (G1 invariant): the puzzles export (`dolci_other.full.jsonl`, brute-force-verified zebra/word-sort puzzles) contains 1,180 exact duplicate rows among its 12,503 (11,323 distinct ids). Round two's stage-1 mix included them, so the puzzle block's effective size was overstated by about 10 percent and duplicate rows could fall on both sides of the train/dev split. The single-stage assembly drops exact duplicates per block and suffixes id collisions; per-block counts are in its receipt.
+
+## 3. Greek datasets
+
+### 3.1 greek_ours: the round-one Greek set (20,000 rows in stage 1; 19,800 in the Greek pass)
+Eleven configurations translated into Greek and adapted to the Greek point of view in the `natural-greek-sft` pipeline (HF `fffoivos/Greek-SFT-translated-and-adapted`, private): apertus_en, coconot, euroblocks_de, euroblocks_fr, everyday, no_robots, no_robots_en_pov, oasst, personas_if, smolcon, systemchats (the dev-set config names in results/READOUT_provisional.md). Round-one arms built from it: E1 17,602 train / 658 dev rows (6.2M tokens), E2 26,910 (E1 plus paired English rows), E3 22,919 (E1 plus skills and fr/de rows adapted to the Greek vantage), E3′ 22,910 (the same rows unadapted, the control) (docs/HF_DATASET_CARD_greek-apertus-sft_20260907.md, configs table). In round two the set was screened by Luna like every other block (survival 83%; the persona interviews were the main identity false positives, handled by the phrase rule in §4) and trained at weight 2 in stage 1 and again in every Greek pass.
+
+### 3.2 greek_rewrite: Greek rewriting and summarising (2,000 rows; 1,980 unique in the Greek pass)
+Written by Sol at high effort: for each row a realistic Greek passage in a Greek setting (20 genres, 40 topics, five lengths, a register), a user instruction from 15 task types, and the answer, under a prompt that forbids mannerisms and self-reference and requires vouched facts (institutions, services and procedures must exist or be plausible in Greece; only person names are invented) (docs/ROUND2_DATA_PLAN_20260905.md §4). A second Sol call applied the round-one Γ editing contract: 2,006 rows judged, 1,062 ok, 905 edited, 33 rewritten (~/sft_annot/greek_rewrite_2k.edit.jsonl); the corrected answer replaces the original at assembly. Luna screen: 1,999 keep, 1 drop (~/sft_annot/keep_lists/greek_rewrite.*). Owner blind read of 40 rows (artifact dc57edac). Known limit, recorded in the plan: the passages are plausible fiction anchored on real places with invented dates and figures; the next batch should use real public-sector texts.
+
+### 3.3 personality v3 (1,388 rows; trained at weight 1 in stage 2, ×2 in arm A, ×4 in arm B)
+Seven categories written natively by Opus 5 from a 110-fact Greece sheet with a source name per fact (data/personality/facts_greece.json), a 14-statement identity sheet (identity_facts.json) and a positions guide for sensitive topics (sensitive_guidance.md): A Greece-centric facts 660, B who am I 180, C identity under pressure 100, D limits 120, E refusals in our voice 120, F sensitive Greek topics 88, G register and conventions 120 (docs/PERSONALITY_SET_20260906.md). Version 3 (docs/PERSONALITY_SET_V3_20260906.md): every row restyled under the answer style guide (docs/STYLE_GUIDE_ANSWERS_20260906.md; 1,214 rewritten of 1,388), then an Opus editor pass framed as an editor who did not write the rows (252 rows changed, Greekness 4.87), then three gates (placeholders 0; size-and-borders rows always answer with the sea and the EEZ; forbidden wording 0). 243 multi-turn rows. Cost about $255. Astra review of 9 September (docs/reviews/ASTRA_personality_v3_20260909.md): seven factual targets to correct (11.7% of the sample), category-C rows that refuse legitimate operations, D scoping, over-stated identity assurances; per the owner's rule no change to the completed set, corrections registered for v4 (data/personality/FACT_CORRECTIONS_ASTRA_20260909.md). Trained: yes (stage 2, arms A and B); arm B answers every probed identity fact as written (docs/ROUND2_RESULTS_20260908.md, addendum).
+
+### 3.4 Greek instruction following (30,073 rows; not yet trained)
+Plan and pilots: docs/GREEK_IF_DATASET_PLAN_20260908.md. Generator: 880 subtopics × 12 question forms × 40 checkable constraint families (IFEval's plus Greek-specific ones: formal plural, no accents, greeklish only, all caps in Greek, numbered Greek lists, ano teleia, the Greek question mark), composition levels 1 to 5 at 25/30/25/12/8%, authored user requests (pilot E0 showed authored requests beat templates), Sol at medium effort, every answer verified by the checkers, failures retried once. Pilot (2,920 prompts): prompt-level pass 94.5% after checker fixes; level 1 97.4%, level 5 66.7%. Builds: v1 12,000 prompts → 11,015 verified rows; v2 11,000 → 9,894; v3 10,400 → 9,411 (data/greek_if/v{1,2,3}/out/summary.json). Merge (data/greek_if/merge_versions.py): exact-duplicate prompts dropped, a fidelity filter for rewrite, summarise and translate forms (244 rows dropped in v1+v2, 93 in v3), final 30,073 rows (v1 10,769, v2 9,894, v3 9,410) in data/greek_if/final/greek_if_sft.jsonl; 1,621 DPO pairs set aside (1,059 + 562, unused). Editor pass (data/edit_pass.py, Sol, kind `if`, constraints re-checked after every edit and edits reverted if any breaks): v1+v2 20,664 rows, 12,361 edited, 8,140 ok, 163 reverted, Greekness 4.78; v3 9,411 rows, 5,315 edited, 4,026 ok, 70 reverted, Greekness 4.81. Astra review of v1 (docs/reviews/ASTRA_greek_if_v1_20260909.md): 9 of 57 answers with constraint-driven padding, omissions or unsupported additions, 5 of 57 unnatural Greek; the HIGH fixes (invented dates in rewrites, entity insertion, checker gaps for final sigma and greeklish leaks, constraint incompatibilities) went into v3's recipe and the merge filter; v1 and v2 rows were left as generated beyond the filter (docs/reviews/DISPOSITION_ASTRA_20260909.md).
+
+### 3.5 Greek math, first cut (14,215 rows; not yet trained)
+Plan and pilots: docs/GREEK_MATH_DATASET_PLAN_20260909.md. Three sources: GSM8K train and MATH train translated and localised by Sol (names, currency, places; decimal comma; euro after the number) and kept only when a blind Greek solve reaches the reference answer (pilot fidelity 95.5%: GSM8K 98.7%, MATH 92.3%); native problems written by Sol over grade (Γ΄ Δημοτικού to Γ΄ Λυκείου) × topic × context × surface cells and kept when two independent solves (Sol high, Luna) agree (pilot agreement 97.8%). Cut 1 (data/math/cut1/out/summary.json): translated GSM8K 6,000 → 5,823, translated MATH 3,999 → 3,284, native 6,000 → 5,108 (892 disagreements dropped); verification: reference answer 9,107 rows, second solve 3,797, none 1,311; formatting: decimal comma 100%, answer line 100%, euro after the number 95.1%. Astra review (docs/reviews/ASTRA_math_cut1_20260909.md) found scorer artefacts (ratios, π, multi-part finals), [asy] diagram code in translated inputs and native rows verified only by grade; applied by data/math/postfix_cut1.py before the cut was rebuilt: 2,894 feature-routed native rows given an extra Sol second solve, 350 [asy] rows quarantined, multi-part finals required complete (EXECUTION_LOG.md 2026-09-09 19:00). Editor pass (kind `math`, final answers must stay equivalent): 14,215 rows, 876 edited, 13,339 ok, Greekness 4.97 (data/math/cut1/edited/summary.json). Held-out evaluation set: 300 native problems from a different seed (M5), never trained on. Difficulty calibration on arm B (M3): greedy 37.2%, pass@4 60.8%; weakest topics probability 8%, systems and quadratics 12%.
+
+### 3.6 Conversation-skills suite S1 to S5m (858 pilot rows; scale run of about 4,000 attempts planned)
+Design: docs/DIALOGUE_REVIEW_AND_SUITE_20260909.md §4 to §7; generator data/convskills/gen_suite.py (Sol, 24 workers, regex-verified lanes). Lanes: S1 the conversation as an object (quote turn N, count my messages, list my requests, what did I ask first), S2 standing instructions kept over later turns and revoked (seven checkable instruction types), S3 edit my previous answer (shorter, without a word, one item, list to prose and back, for a child), S3c chained edits in either order with cumulative constraints, S4 stop this habit (a tic planted in two earlier assistant turns as context only, `train: false`; later answers must lack it), S5m inference memory (facts stated at turn 1 and used several turns later). Pilot of 9 to 10 September: 974 dialogues generated (S1 150, S2 249, S3 250, S3c 100, S4 75, S5m 150), 858 verified (S1 84.7%, S2 75.5%, S3 92.0%, S3c 95.0%, S4 100%, S5m 95.3%); editor pass on the main lanes 620 rows (504 edited, 116 ok, Greekness 4.65) and on S3c+S5m 238 rows (214 edited, 24 ok, Greekness 4.38); final data/convskills/v1/rows_all.jsonl. Two astra reviews: the prompts (docs/reviews/ASTRA_convskills_prompts_20260909.md: S1 list targets were prefixes, planted tics would have been trained; both fixed before the pilot) and the pilot (docs/reviews/ASTRA_convskills_pilot_20260910.md: review export clipped, S3 edits lost qualifiers, half-length tolerance, diversity; fixes in §7 of the design doc and DATA_TODO 29 to 31, of which 31 and half of 30 are done on 10 September). Scale allocation for the training arm (design doc §7): S1 800, S2 1,000, S3 500, S3c 500, S4 400, S5m 800 attempts, expected about 3,500 verified rows.
+
+### 3.7 Correcting set (200-dialogue pilot done; 1,500 dialogues planned)
+Design: docs/CORRECTING_DATASET_DESIGN_20260910.md (dimensions D1 to D13 in §3; protocol §4; planted-failure revision §9) and docs/MULTITURN_FIXES_20260910.md §4 (D14 to D16 and four literature-derived rules). Evidence base: 15 live dialogues of arm B with a profiled responder (data/robustness/live/all15.jsonl) and the owner's 17 chats, catalogued as 24 response patterns over 196 answers (docs/RESPONSE_PATTERN_CATALOGUE_20260910.md). Generator data/robustness/build_correcting.py: a Sol-written user profile (intent, writing surface, temperament, goal, hidden facts, change of plan), an ideal WRITER for every assistant turn under a capability contract and a response policy, a RESPONDER that reacts to the previous answer and probes self-awareness, and planted failures at scheduled positions: assistant-role plants (verbatim repeat, rote frame, empty acknowledgement, wrong self-report, repeated error) in at most 20% of dialogues, kept as context only with `train: false`; all other failure kinds as misquotes the user attributes to the assistant, with the supervised target correcting the record. Typed checks per turn (question-only, rote opener, solicit closer, forbidden self-claim, at most one question to the user, 4-gram loop, reuse of planted or earlier text); selection in data/robustness/assemble_correcting.py. Pilot (10 September, seed 1): 200 dialogues, 7.5 turns each; 1,353 supervised turns (ideal 1,009, closing 198, recovery after a true confrontation 12, misquote recovery 132), 20 masked planted turns, 127 targets rejected (data/robustness/correcting/pilot/rows/summary.json); editor pass 94 edited, 103 ok, 3 reverted, Greekness 4.89. Reader page: artifact 6d0c2e0e. Astra review of the design (docs/reviews/ASTRA_correcting_dataset_20260910.md) applied before the pilot; the pilot's own review is next, then three shards of 500 dialogues (seeds 2 to 4).
+
+### 3.8 Personality v4 (planned, about 250 rows)
+docs/MULTITURN_FIXES_20260910.md §3: about 150 category-G rows for six style rules from the catalogue (contribute first, no choice-offers instead of answers, no steering closers, length matches the message, register stable within an answer, play answered with play then landed), about 60 B/D rows for the capability contract in short forms, about 40 tone rows, the seven fact corrections of the registry, and the category-C contrast rows the astra review asked for (legitimate operations completed under identity pressure).
+
+### 3.x Final counts of the three sets generated on 11 September (after editor passes and post-edit gates)
+
+| set | final rows | supervised turns | notes |
+|---|---:|---:|---|
+| correcting set (data/robustness/correcting/scale/rows/rows_final.jsonl) | 600 | 3691 | 226 masked plants (context only); genuine recoveries ≈ 166, misquote recoveries ≈ 200, 5 clarify, 20 targets after a false correction; editor pass (235 edited, 34 reverted by the guards), one turn demoted after editing; astra review docs/reviews/ASTRA_correcting_scale_20260911.md applied (design doc §11) |
+| conversation suite v2 (data/convskills/v2/reverify/rows_final.jsonl) | 3284 | 3284 (one target turn per row; S4 rows carry 2 masked context turns) | by lane: S1 661, S2 675, S3 414, S3c 447, S4 378, S5m 709; 4,000 attempts → 3,437 verified at generation → editor pass (2,987 edited) → re-verification kept 3284 (56 targets emptied by the editor and 97 constraint breaks dropped); astra review pending |
+| personality v4 (data/personality/v4/personality_rows_final.jsonl) | 192 | 192 (110 multi-turn, last turn supervised) | 12 response-manner angles (H, 144 rows) + 4 of 5 contract angles (I, 48 rows; the «user supplies current information» task timed out three times and is parked); Claude Opus check applied to all (15 edited, 6 role-confusion closings rewritten), Sol check on a 48-row sample applied (16 edits, 2 fact doubts recorded) |
+
+## 4. Annotation and filtering
+
+**The screen** (docs/ANNOTATION_HANDOFF_20260905.md §1 to §4). Every unverified row received one label before assembly, nothing edited: nine fields (vantage 0 to 3, frame type, skill, quality, mannerism, imperatives, disposition keep/adapt/drop, adapt note, why; schema data/annotation_schema.json; rubric v3 verbatim in the handoff §7.1). Judges routed by dataset first and by category second: a program wherever one exists (puzzle brute-force checker, IFEval checkers, OpenMath final-answer match); Sol (gpt-5.6-sol, medium, 24 workers) for correctness-heavy sources (science, coding, spot-checks, and every row Luna labels code, math or reasoning); Luna (gpt-5.6-luna, medium, 64 workers) for conversational sources (safety, Nemotron, multilingual, OpenAssistant, our Greek sets). Owner's rules applied: annotate first for task type; once a source is high quality and verifiable, trust the checker over the judge (the puzzle calibration: of 51 zebra puzzles Luna dropped 11, of which 6 were correct and 3 wrong ones were missed; Sol 10, 4 and 2; so puzzles went to the checker and correctness-heavy blocks to Sol in advance).
+
+**Measured judge performance** (handoff §3): against a 63-row ground truth labelled by the rubric's author, Luna agreed on 55 of 61 verdicts, found 4 of 4 identity rows with no false identity, recall 6 of 7 on rows to act on; identity cross-tab on OpenAssistant: the regex finds 101 self-descriptions, Luna 97 of them. Known weaknesses and mitigations (§4): noisy correctness (routed away from Luna), under-flagging of mild foreign framing (accepted, about 1% of rows), tool-use irrelevance refusals mislabelled as identity (verdicts not applied), identity over-firing under the light rubric (an identity drop is honoured only when a self-description phrase is present).
+
+**Judge window** (a recorded decision, handoff §6 and plan §3): Luna sees 3,000 characters per turn and 9,000 per conversation, Sol 12,000 and 24,000; this cuts 58% of Nemotron rows and hides 27% of their assistant text (the tails of long turns; 99% of turns have their opening seen); every other block is 97% or more seen. Completion is DATA_TODO 19.
+
+**Assembly filters** (data/assemble_mix_r2.py): the EU-language gate on chat blocks (data/lang_identity_filter.py); a full-text identity backstop over system and assistant turns in seven languages (data/identity_patterns.py) after the judges, with a post-scan of the written file that must show zero (receipt field `post_scan_identity_hits`: 0); a lexicon of chatbot openers and closers on the blocks no judge labelled; tone: mannerism-flagged rows dropped from chat, safety, multilingual, science and Greek blocks; a 4,096-token cap; Sol verdicts over Luna's; corrected Greek answers preferred; exact token budget solved over the blocks present; Greek blocks at weight 2.
+
+**Decontamination.** Training rows are checked against the evaluation prompts in data/cache/evals/ (Greek IFEval, Greek MGSM, GreekMMLU, and the English originals of MMLU, ARC, HellaSwag and TruthfulQA, 28,449 prompts) with the Tülu 3 rule: normalised text, distinct 8-grams, a row dropped when more than 50% of a prompt's 8-grams are contained in it (docs/ANNOTATION_HANDOFF_20260905.md §4a; assemble_mix_r2.py). At the dry run the list was 48,729 prompts and 1.1M distinct 8-grams and removed 1.4% of Precise IF and 2.4% of ifeval-like rows (docs/ROUND2_DATA_PLAN_20260905.md §2). The four new Greek benchmarks were checked the other way, item by item against the local SFT sets (data/benchmarks_el/decontam.py, 8-gram containment over 50% or any shared 13-gram): XSTest 0 of 450, IFBench 0 of 300, MultiChallenge 0 of 268, MATH-500 14 of 500 flagged, all template siblings of math cut-1 problems, kept and flagged (docs/GREEK_BENCHMARKS_BUILD_20260910.md §5). The Greek math pilot problems had no 5-gram Jaccard above 0.25 against Greek MGSM. Not yet done: the CPT-corpus contamination check of the benchmarks (DATA_TODO 32).
+
+**Language and Greekness edit passes** (data/edit_pass.py; personality's own editor in data/personality/v3/edit_rows.py). Rule of 10 September: nothing adapted or generated is called done without a Greek correction pass. Passes run and their summaries: greek_rewrite (§3.2), personality v3 (§3.3), Greek IF v1+v2 and v3 (§3.4), math cut 1 (§3.5), suite pilot (§3.6), correcting pilot (§3.7), and the four benchmarks (docs/GREEK_BENCHMARKS_BUILD_20260910.md §8). Not passed: the foreign blocks (not Greek) and greek_ours, which came edited from the round-one pipeline.
+
+## 5. Adaptation and corrections
+
+**The adaptation question, answered in round one.** E3 (imported skill rows and fr/de rows adapted to the Greek point of view) against E3′ (the same rows raw), same recipe (results/READOUT_provisional.md, "The adaptation question"):
+
+| metric | E3 adapted | E3′ raw | gap | seed floor |
+|---|---:|---:|---:|---:|
+| Greek IFEval strict | 0.497 | 0.470 | +0.027 | 0.01 |
+| Greek MGSM | 0.384 | 0.408 | −0.024 | 0.03 |
+| gate stop rate | 0.90 | 0.80 | +0.10 | 0.04 |
+| voice delta (lower is closer to the house voice) | 0.959 | 1.109 | −0.150 | 0.05 |
+| interview mean (1 to 5) | 2.91 | 2.63 | +0.28 | 0.02 |
+| interview identity / factuality | 2.85 / 2.27 | 2.60 / 1.85 | | |
+
+So the Greek vantage of a row matters and its language does not (E2, paired English, sat inside the seed floor). Round two therefore imports skills in any language and screens vantage rather than adapting the foreign blocks (docs/ROUND2_DATA_PLAN_20260905.md §1).
+
+**Correction passes.** Every Greek set has an editor who did not write it, with guards that revert an edit that breaks what the row is verified on (constraints for IF rows, the final answer for math rows, context turns and the one-question rule for dialogue rows). The personality set additionally had a restyle pass under the style guide. Fact corrections: the registry data/personality/FACT_CORRECTIONS_ASTRA_20260909.md holds seven rows (voting age wording, European Parliament seats since 2014, the 1982 recognition of the Resistance, 1830 versus 1832 borders, the 1975 constitution dates, the final-ν school rule, the AFM on receipts) to be confirmed against named primary sources before they become v4 targets.
+
+**The cross-vendor review cycle.** Owner's rule (9 September): one to three reviews with ChatGPT's astra model at xhigh after every build or experimentation phase, run by data/review_astra.py with the model asserted from the rollout; no drastic action on completed sets, corrections on queued ones. Reviews to date:
+
+| date | review (docs/reviews/) | verdict in one line | applied |
+|---|---|---|---|
+| 2026-09-05 | REVIEW_BRIEF_ROUND2_DATA, FEEDBACK_ROUND2_DATA (Fable), SONNET_CHECK | three rounds on the round-two data plan | plan v2 (docs/ROUND2_DATA_PLAN_20260905.md) |
+| 2026-09-06 | FEEDBACK_PERSONALITY_SET | scope, style guide, no-name decision, EEZ rule, editor model | personality v3 |
+| 2026-09-09 12:41 | ASTRA_greek_if_v1 | keep v1; 15.8% padding or omission, 8.8% unnatural Greek; fix v2 | v3 recipe, merge fidelity filter |
+| 2026-09-09 18:15 | ASTRA_convskills_prompts | two blockers (prefix targets, planted tics trained) | all applied before the pilot |
+| 2026-09-09 18:24 | ASTRA_math_cut1 | do not train cut 1 through the current checks | postfix, rebuild |
+| 2026-09-09 18:34 | ASTRA_robustness_r1 | clipped evidence export; key-noun flag unusable as a selector | simulator patched, DATA_TODO 26 to 27 |
+| 2026-09-09 18:44 | ASTRA_personality_v3 | keep v3; seven fact corrections; C and D scoping; identity assurances | registry for v4 and S8 |
+| 2026-09-09 22:19 | ASTRA_next_benchmarks | revise before bulk translation; MultiChallenge first | docs/NEXT_BENCHMARKS_RESEARCH_20260909.md §6 |
+| 2026-09-10 00:29 | ASTRA_benchmarks_worth | revise held-out definition and promotion rule | docs/BENCHMARKS_WORTH_RUNNING_20260910.md §7 |
+| 2026-09-10 01:44 | ASTRA_convskills_pilot | do not scale yet; repair gates | design doc §7, DATA_TODO 29 to 31 |
+| 2026-09-10 11:09 | ASTRA_benchmarks_programmatic | IFBench-el and MATH-500-el | fixes in docs/GREEK_BENCHMARKS_BUILD_20260910.md §7.1 |
+| 2026-09-10 11:22 | ASTRA_benchmarks_judged | hold both from arm decisions; scoring repairs | quarantines, re-translation, calibration, §7.2 |
+| 2026-09-10 12:53 | ASTRA_correcting_dataset | revise before the pilot | design §8 to §9 |
+
+Pending reviews: the correcting pilot, the multi-turn fixes doc, and this description.
+
+## 6. Training runs
+
+**Trainer** (cluster/sft_train.py; cluster/README.md). A single TRL entrypoint under Accelerate and DeepSpeed ZeRO-3 on one Clariden node (4 GH200): model loaded in fp32 with bf16 autocast (fp32 master weights and optimizer states), TRL best-fit-decreasing packing with padding-free collation and the FlashAttention-3 kernel, 4,096-token rows, assistant-only loss through a render-identical Apertus chat template with generation markers (the assistant-end token, id 68, is the one structural target so the model learns to stop), evaluation per dev config at every epoch end, epoch checkpoints reloadable and verified bit-exact locally. Added on 10 September: per-message `train` flags so that context-only assistant turns (planted failures, planted tics) get label −100 (cluster/test_loss_mask.py; DATA_TODO 26). Dry runs of every arm on a 5% sample gate the launch (DRY_RUN_OK).
+
+**Round one** (results/READOUT_provisional.md; results/grid_table.md; 3 to 4 September). Data: the Greek arms of §3.1. Recipe: warmup then constant learning rate (phase A), 4,096 tokens, assistant-only loss, one node; cosine schedule for the replicates and phase B; seeds 42, 43, 44.
+
+| arm | data | recipe | Greek IFEval prompt-strict / inst-strict | Greek MGSM | interviews mean |
+|---|---|---|---:|---:|---:|
+| E1 lr 1e-5, epoch 1 / 2 / 3 | E1 17,602 rows | constant lr | 0.468/0.578, 0.479/0.586, 0.512/0.612 | 0.380, 0.400, 0.392 | 2.53, 2.83, 2.86 |
+| E1 lr 5e-6, epoch 1 / 2 / 3 | E1 | constant lr | 0.386/0.516, 0.458/0.578, 0.486/0.584 | 0.332, 0.412, 0.416 | 2.15, 2.62, 2.80 |
+| E1_cos seed 43 / 44, epoch 2 | E1 | cosine | 0.460/0.577, 0.470/0.585 | 0.416, 0.444 | 2.61, 2.59 |
+| E1-last (terminal CPT checkpoint) | E1 | cosine | 0.429/0.540 | 0.328 | not recorded here |
+| E2 (paired English) | 26,910 | cosine | 0.473/0.568 | 0.404 | 2.56 |
+| E3 (adapted imports) | 22,919 | cosine | 0.497/0.601 | 0.384 | 2.91 |
+| E3′ (raw imports) | 22,910 | cosine | 0.470/0.579 | 0.408 | 2.63 |
+
+Pick: lr 1e-5, 2 epochs (lowest dev loss, best stop rate, voice delta 0.85). Guards: native-Greek suite macro-8 0.574 for the pick vs 0.499 base (WiC and metaphor +0.2, NLI flat, systematic across checkpoints); GreekMMLU pick 56.0%, E3 55.2% (base 56.8%). Cost: CHF 61.04 for 22.7 node-hours at CHF 2.69 per node-hour, including evaluations and peers (docs/ROUND2_DATA_PLAN_20260905.md §6; results/READOUT_provisional.md ledger).
+
+**Round two** (docs/ROUND2_RESULTS_20260908.md; configs in cluster/configs/). Base as in §1.
+
+| run | data | recipe | wall | node-hours | train loss | Greek IFEval strict avg | Greek MGSM |
+|---|---|---|---|---:|---:|---:|---:|
+| stage 1 (job 3317507) | the §2 mix, 334,383 rows / 197.9M tokens | 1 epoch, lr 1e-5, cosine to 0.1 of peak, warmup 3%, Adam β2 0.99, weight decay 0, grad clip 1.0, batch 1 × grad-accum 4 × 4 GPUs, seed 42 | 6:05 | 6.09 | 0.944 | 59.9% | 0.468 |
+| stage 2 (job 3323760) | Greek pass from stage 1: greek_ours 19,800 + greek_rewrite 1,980 + personality v3 1,319 (69 held out) + 10% replay of every other block = 52,379 rows / 27.35M tokens | 1 epoch, lr 5e-6 | 0:53 | 0.89 | 0.929 | 60.1% | 0.496 |
+| arm A (job 3328118) | from stage 1: personality ×2 + greek_ours + greek_rewrite + 5% replay = 39,059 rows | 1 epoch, lr 1e-5 | 0:37 | 0.62 | not recorded | 61.1% | 0.456 |
+| **arm B (job 3328119), the current model** | from stage 1: personality ×4 (5,276 rows) + greek_ours + greek_rewrite + 5% replay = 41,697 rows | 2 epochs, lr 1e-5, cosine to 0.1 | 1:13 | 1.22 | not recorded | **63.7%** | **0.524** |
+
+Dev losses per block (results/R2_stage{1,2}/dev_losses.json): after stage 1 greek_ours 1.323, ifeval_like 0.657, openmath 0.275, tooluse 0.231, nemotron 1.18; the personality held-out loss 1.852 after stage 2, 1.619 after arm A, 1.603 after arm B. Identity probe (40 fixed Greek prompts, greedy): arm B answers every probed fact as written; stage 2 still said «Ναι, είμαι το ChatGPT» (docs/ROUND2_RESULTS_20260908.md). Arm B is published as `fffoivos/greek-apertus-8b-sft-r2-idB` (public, gated); the stage-1 checkpoint waits for a fresh CSCS certificate.
+
+**Ledger.** After the identity ladder 34.7 node-hours, CHF 93.33 (docs/ROUND2_RESULTS_20260908.md addendum); after the picky-user runs R0 (2.0 nh) and R1 (1.485 nh) CHF 102.71 (EXECUTION_LOG.md, 2026-09-09 10:45). Node-hour rate CHF 2.69.
+
+## 7. Evaluation
+
+**Harness.** The ILSP `lm_eval` tasks for Greek IFEval (541 prompts; prompt- and instruction-level, strict and loose) and Greek MGSM (250 items, exact match), greedy, in the frozen cluster environment; the harness reproduces ILSP's published numbers (Krikri 66.8% here vs 67.5% on its card; Meltemi 32.6% vs 32.7%). GreekMMLU with the CPT card's frozen fp32 likelihood scorer on the decontaminated subset (16,159 questions). The native-Greek suite (eight likelihood benchmarks, 73,894 examples). Our own instruments: a 50-row format gate (stop rate, language), a stylometric voice score against no_robots-el, 40 unseen three-turn Greek interviews scored by an LLM judge, the 40-prompt identity probe, the picky-user benchmark (Sol simulator, 60 dialogues per model, judge fields), and the 300-problem Greek math held-out set. Full numbers and caveats: docs/PRELIMINARY_RESULTS_20260910.md.
+
+**Headline against peers** (all on our harness):
+
+| model | IFEval prompt-strict | inst-strict | strict avg | Greek MGSM | GreekMMLU |
+|---|---:|---:|---:|---:|---:|
+| Gemma-3-12B-it | 0.675 | 0.763 | 71.9% | 0.908 | not run |
+| Qwen3.5-9B, thinking off | 0.649 | 0.740 | 69.4% | 0.876 | not run |
+| Llama-Krikri-8B-Instruct | 0.614 | 0.723 | 66.8% | 0.676 | 52.0% |
+| ours, arm B | 0.586 | 0.688 | 63.7% | 0.524 | not run yet |
+| Apertus-8B-Instruct-2509 | 0.505 | 0.615 | 56.0% | 0.532 | 54.9% |
+| ours, round-one best (E1 epoch 3) / pick | 0.512 | 0.612 | 56.2% | 0.392 | 56.0% (pick) |
+| Meltemi-7B-Instruct-v1.5 | 0.277 | 0.375 | 32.6% | 0.208 | not run |
+| CPT base | | | | | 56.8% |
+
+Standard errors: IFEval prompt-level ±0.021, MGSM ±0.032; seed floor from round one: IFEval ±0.01, MGSM ±0.03, interviews ±0.02.
+
+**Conversation instruments.** Picky-user R0 (hostile profile, 60 dialogues per model; docs/ROBUSTNESS_PROGRAM_20260909.md §8): arm B leads on premise handling (1.34 of 2 vs Krikri 0.86, Apertus-Instruct 0.99), language slips (0.0%) and stop instructions honoured (92.5% vs 97.6% and 69.5%); it trails Krikri on tail copying (14.4% vs 0.7%), dead dialogues (20.0% vs 0.0%), coherence (71.2% vs 86.9%), requests honoured (47.5% vs 61.4%) and tone (55% fine vs 77%). R1 (arm B only, 120 dialogues, §9): on the benign profile tail copying 2.6% and 81% coherent turns; steering is the weak axis (standing instruction kept 67.6%, redirects landed 34.7%, self-observation correct 20.2%). Interviews (arm B): coherence 2.63, identity 2.75, language discipline 4.58, resists false correction 2.93, factuality 2.15. Owner's chats: 16 of 17 ended in a repetition or a stale copy (docs/CHAT_REVIEW_20260908.md).
+
+**The four new Greek benchmarks** (built 10 September, frozen, audited, polished, not yet run on any model; docs/GREEK_BENCHMARKS_BUILD_20260910.md; data/benchmarks_el/MANIFEST.json):
+
+| benchmark | items | protocol | licence |
+|---|---:|---|---|
+| MATH-500-el | 500 (486 primary after 14 template siblings flagged) | boxed-answer extraction and equivalence (upstream normalisation plus numeric and sympy, validated on the 500 references); by level and subject | MIT |
+| XSTest-el | 450 (250 safe, 200 unsafe, 18 types) | refusal taxonomy by a judge, safe and unsafe scored separately, plus adequacy | CC-BY-4.0 |
+| IFBench-el | 300 prompts, 58 constraint classes (core 238 with a faithful transfer, extension 62) | Greek verifier port (349 tests); strict and loose prompt- and instruction-level accuracy | code Apache-2.0, data ODC-BY-1.0 |
+| MultiChallenge-el | 273 conversations, 262 usable after quarantines | fixed-history continuation, upstream judge prompt verbatim, Claude judge calibrated (Greek rubric false-fail 2.3%, false-pass 4.7%) | unresolved: no licence file upstream; internal use only pending permission (docs/MULTICHALLENGE_PERMISSION_REQUEST.md) |
+
+Each was translated by Sol, cross-checked by Claude Opus (a different vendor) in one to four passes, repaired, decontaminated against the SFT sets, reviewed by astra (two reviews), given owner audit pages of 59 items each, and polished with a guarded language-only pass. Their role in the next evaluation: multi-turn (MultiChallenge-el), precise instruction following on unseen constraint classes (IFBench-el), safety over-refusal (XSTest-el) and harder math (MATH-500-el), beside Greek IFEval, MGSM, GreekMMLU, the native suite and the picky-user and live-dialogue instruments.
+
+## 8. The planned final training set
+
+One run from the base (no stages), as decided after the identity ladder (docs/ROUND2_RESULTS_20260908.md, "fold the personality set at weight 4 into the single stage-1 mix and train once from the base"), with the new Greek sets added. Weights for the new Greek sets are proposals for the reviewer and the owner; the recipe table with every parameter against the previous run is disclosed before launch (memory rule of 8 September).
+
+Assembled 2026-09-11 13:35 (data/arms/R3_single/receipt.json):
+
+| block | unique train rows | copies | effective rows | rendered tokens | supervised tokens | dev rows | contaminated (dropped) | exact duplicates (dropped) | masked context turns | change vs R2_stage1 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| dolci_precise_if_20k | 4,116 | 1 | 4,116 | 2.3M | 1.3M | 41 | 79 | 0 | 0 | +5% tokens |
+| ifeval_like | 46,153 | 1 | 46,153 | 12.8M | 6.5M | 466 | 1348 | 0 | 0 | -1% tokens |
+| openmath_gsm | 98,943 | 1 | 98,943 | 27.4M | 15.3M | 999 | 29 | 0 | 0 | +8% tokens |
+| nemotron_chat_a | 23,017 | 1 | 23,017 | 35.4M | 30.9M | 232 | 15 | 0 | 0 | -1% tokens |
+| nemotron_chat_b | 23,262 | 1 | 23,262 | 36.4M | 31.7M | 234 | 15 | 0 | 0 | -1% tokens |
+| dolci_chat | 3,009 | 1 | 3,009 | 1.1M | 0.8M | 30 | 1 | 0 | 0 | -1% tokens |
+| dolci_code_algo_20k | 5,503 | 1 | 5,503 | 2.4M | 1.1M | 55 | 0 | 0 | 0 | +8% tokens |
+| dolci_reasoning | 29,654 | 1 | 29,654 | 16.7M | 6.8M | 299 | 0 | 0 | 0 | +8% tokens |
+| puzzles | 9,974 | 1 | 9,974 | 3.7M | 0.6M | 100 | 0 | 1068 | 0 | -11% tokens |
+| dolci_tooluse | 29,700 | 1 | 29,700 | 30.8M | 9.2M | 300 | 20 | 0 | 0 | +8% tokens |
+| dolci_science | 6,538 | 1 | 6,538 | 6.0M | 3.9M | 66 | 0 | 0 | 0 | +6% tokens |
+| smoltalk2_multilingual | 20,208 | 1 | 20,208 | 11.1M | 8.1M | 204 | 0 | 0 | 0 | -1% tokens |
+| dolci_safety | 6,194 | 1 | 6,194 | 1.8M | 1.1M | 62 | 0 | 0 | 0 | -1% tokens |
+| greek_rewrite | 1,980 | 1 | 1,980 | 1.2M | 0.4M | 20 | 0 | 0 | 0 | -1% tokens |
+| greek_ours | 19,800 | 2 | 39,600 | 15.4M | 8.8M | 200 | 8 | 0 | 0 | +98% tokens |
+| personality | 1,504 | 4 | 6,016 | 1.5M | 1.0M | 69 | 1 | 0 | 0 | new in the single mix (×4; was the arm-B pass) |
+| greek_if | 29,773 | 1 | 29,773 | 11.1M | 6.0M | 300 | 0 | 0 | 0 | new block |
+| greek_math | 14,070 | 1 | 14,070 | 3.2M | 1.3M | 142 | 3 | 0 | 0 | new block |
+| convskills | 2,813 | 2 | 5,626 | 6.8M | 4.5M | 28 | 0 | 9 | 756 | new block |
+| correcting | 565 | 2 | 1,130 | 1.5M | 0.9M | 5 | 0 | 0 | 431 | new block |
+Totals: 376,776 unique train rows → 404,466 effective rows, 228.6M rendered tokens, 140.2M supervised tokens (61%); dev 3,852 rows (2.15M tokens) incl. the 69 personality holdout rows; train∩dev = 0; rows without a supervised count: 0; post-assembly identity scan hits (exempt blocks: personality, convskills, correcting): 0; contamination drops 1,519 rows (8-gram containment ≥ 0.5 of a user turn against the evaluation cache); exact duplicates dropped 1,077; masked context turns 1,187. train.jsonl sha256 7784e89777fe92df…, dev 85e7e3bf3a1b6258…. Projected training cost at the measured stage-1 rate (32.5M tokens per node-hour): **7.0 node-hours**; the evaluation battery about 4.3 on top.
+
+
+Estimated size: about 385,000 rows before weighting; tokens to be measured by the assembler with the exact tokenizer (the new Greek sets are not yet tokenised; stage 1 was 197.9M). Recipe to be disclosed: 1 epoch, lr 1e-5, cosine to 0.1 of peak, warmup 3%, packing at 4,096 tokens, assistant-only loss with the per-turn train flags, batch 1 × grad-accum 4 × 4 GPUs, Adam β2 0.99, weight decay 0, grad clip 1.0, bf16 autocast over fp32 master weights, seed 42; dev = the stage-1 dev slice plus the 69 held-out personality rows plus a held-out slice of each new set. Cost at the stage-1 rate (197.9M tokens in 6.09 node-hours): about 7 to 8 node-hours for about 230M to 260M tokens, plus the full battery (about 4.3 node-hours).
+
+Questions for the reviewer: (1) one stage versus stage 1 plus a Greek pass, given that the Greek pass gave +3.8 IFEval points on top of the mix; (2) the weight of the 30k Greek IF rows next to the 46k English ifeval-like rows (constraint following would be about a fifth of tokens); (3) whether 14k math rows can move MGSM (0.524 → Krikri's 0.676) at all, and whether OpenMath's 91k rows should shrink; (4) the dose of the conversation sets (about 8.5k rows of a 385k mix, within the literature's 1 to 2k behaviour-specific rows in 200 to 400k, docs/MULTITURN_FIXES_20260910.md §1.9); (5) anything in §2 to §5 that should stop the run.
+
+### 8.x Multiple-choice block — OPTIONAL, deferred (owner, 2026-09-10 evening: «make this optional for later»; not part of the Saturday training set)
+
+If taken up later: a small multiple-choice block, about 5,000 rows (≈1% of the mix), so that the model learns the answer format that likelihood-ranked tests such as GreekMMLU and the native-suite MCQ sets reward, and answers exam-style questions usefully (letter plus a one-line justification, never a bare letter). Sources: (a) about 3,000 native Greek exam-style items written by Sol over subject × grade cells as the math set was, kept only when two independent solves agree; (b) about 2,000 items adapted through the translate-and-localise pipeline from permissively licensed English sets (MMLU auxiliary train, MIT; ARC, CC-BY-SA 4.0; OpenBookQA, Apache-2.0; SciQ excluded as non-commercial). Guardrails: answer letters balanced across positions; 8/13-gram decontamination against GreekMMLU (Greek text and English originals), the native suite MCQ sets and the four new benchmarks; the editor pass; one astra review. Consequence for reading results: after this block, GreekMMLU measures knowledge plus format for us as it does for the peers; the clean base-versus-SFT knowledge comparison is the round-one one (56.8% → 56.0%).
+
+## 9. Known gaps and open items
+
+- DATA_TODO 19: the Nemotron rows judged under the 3,000-character window (27% of their assistant text unseen for quality and tone) are not re-judged.
+- DATA_TODO 27: the picky-user judge is not calibrated on hand-adjudicated turns; the key-noun heuristic is display-only.
+- DATA_TODO 28: the seven personality fact corrections are registered, not yet confirmed against primary sources or regenerated; the EEZ relevance-rule compromise waits for the owner.
+- DATA_TODO 29: the suite lacks the final manifest with per-row hashes and the post-correction re-verification script; needed before its rows enter the mix.
+- DATA_TODO 30: S5m fact updates and the base-exposure cap across lanes remain; S3c's second order is done.
+- DATA_TODO 32: the four benchmarks are decontaminated against the local SFT sets, not yet against the Greek CPT corpus.
+- DATA_TODO 33 to 35: deterministic checks beside the MultiChallenge judge, human-labelled judge validation before any unblinded arm decision, and the owner's native audits of the four benchmark pages.
+- MultiChallenge-el has no licence basis for redistribution or published scores; internal use only until the authors answer.
+- The stage-1 checkpoint is not on the Hub (CSCS certificate expired before the push); arm B is.
+- The ILSP IFEval `response_language` checker scores 0 for every model because `langdetect` is missing from the frozen environment; an offline rescore is pending.
+- Every round-two arm is a single seed; arm B has not had the full battery (GreekMMLU, native suite, retention).
+- The four new benchmarks have not been run on any model, and the correcting set and suite have not been trained, so their effect is untested.
+- Tool use is trained in an ad-hoc `<function_calls>` rendering, not the Apertus native tool format, with no benchmark measuring it (plan §7 decision 6, still open).
+- The Greek rewriting passages are plausible fiction anchored on real places; the next batch should use real public-sector texts.
+- No human-labelled ground truth exists for the annotation screen (the 63-row set is a model label).
+
+Sources: every file named inline; the running record is EXECUTION_LOG.md; the backlog is docs/DATA_TODO.md.
+
+## 10. Completeness review (2026-09-10 21:15, gpt-6-astra, xhigh; docs/reviews/ASTRA_pipeline_completeness_20260910.md) — disposition and launch gates
+
+Verdict: a substantial programme, not yet shown complete or ready; approve the run as a controlled SFT experiment once the launch gates pass, compared directly against arm B, not as a demonstrated recipe for reaching Krikri. Three blockers, four highs, three mediums. Completed sets stay intact; the blockers concern assembly, the training path and decontamination.
+
+| finding | disposition |
+|---|---|
+| B1 BLOCKER row/copy/token accounting (the 334,383 reconciles as 317,754 listed − 3,171 dev + one extra copy of 19,800 greek_ours; §8's 312,383 foreign rows overstated; personality holdout possibly re-exposed ×4) | LAUNCH GATE G1: the assembler's receipt gains, per block: unique input rows, dev and duplicate exclusions, effective copies, rendered tokens and supervised assistant tokens after weighting and masking, source revision and content hashes; train/dev intersection asserted zero after splitting before replication; the 69 personality holdout rows excluded before weighting (to verify in assemble_mix_r2.py). §2/§8 counts corrected from that receipt. |
+| B2 BLOCKER masking and verification not demonstrated through renderer, packer and collator | LAUNCH GATE G2: cluster/test_loss_mask.py extended to run rows with `train: false` through the actual pipeline (chat template, TRL packing, padding-free collator) and to decode every packed example's labels: masked turns and their end marker carry no loss, targets and their stop token do, no recovery target orphaned from its failure by length handling; 20 decoded examples attached to the recipe disclosure (DATA_TODO 40). Suite final manifest and post-edit re-verification (DATA_TODO 29) before the suite enters the mix. |
+| B3 BLOCKER decontamination of the final frozen mixture against the actual evaluation inventory (native suite, MGSM English sources, the four new benchmarks incl. English originals, MultiChallenge-el) | LAUNCH GATE G3: the evaluation cache gains the missing sets; the 8/13-gram check (Greek and English) runs on the assembled train.jsonl; source-id provenance for GSM8K/MATH split membership checked; 486-item MATH-500-el primary subset kept, the 14 flagged reported separately. The CPT-corpus audit (DATA_TODO 32) stays separate and does not block. |
+| H1 HIGH correcting set 11:1 misquote vs genuine recovery | applied tonight: masked-plant dialogues raised from 20% to 35% of dialogues (the masked turns never receive loss), misquote plants lowered (0/1/2 plants at 55/35/10% in non-plant dialogues); accepted targets counted by kind after assembly and editing; parity between genuine recoveries and misquote recoveries is the target, reported in the receipt. Genuine-error kinds covered: repeated answer, wrong self-report, rote frame, empty acknowledgement, repeated corrected error; dropped qualifiers and misunderstood requests remain uncovered (logged, DATA_TODO 42). |
+| H2 HIGH one-stage recipe and weights not validated; dose units mixed; budget arithmetic | weights frozen only after G1 gives supervised-token shares; personality ×4 kept as a provisional carry-over, not raised; Greek IF ×1, conversation sets ×2 provisional; the recipe table states tokens and the projected node-hours from the measured stage-1 rate (32.5M tokens per node-hour); owner question: is the CHF budget training only or training plus the ≈4.3 nh battery. The single-stage choice is recorded as an experimental change to be compared against arm B. |
+| H3 HIGH grounded usefulness thin (supplied-evidence answering, insufficient evidence, correction on a reliable source, memory updates, noisy Greek surfaces) | a coverage matrix of the queued sets (intent × surface × behaviour) computed at assembly from the accepted rows; the existing coverage noted: Greek IF summarise/rewrite forms on supplied text (about 1,700 rows each), suite S5m fact use, correcting-set surfaces (atonic, greeklish); the uncovered cells (supplied-source QA with citation, memory updates, insufficient-evidence answers) are logged as DATA_TODO 42 with an owner decision on whether to generate them before launch (about half a Sol day). v4 fact corrections verified against primary sources before those rows are used (DATA_TODO 28). |
+| H4 HIGH evaluation definitions (langdetect hole, judge without human calibration, missing arm B knowledge baseline) | in the battery: install langdetect and rescore the cached IFEval outputs for every model; arm B GreekMMLU and native suite; benchmark versions, prompts, decoding and primary subsets frozen (MANIFEST.json); blinded human adjudication of a stratified sample of the pivotal conversation judgements (owner, DATA_TODO 34); paired comparisons with dialogue-level clustering. Promotion criteria pre-declared (see the recipe disclosure). |
+| M1 MEDIUM screens are selection, not correctness assurance | logged; selection rates by task, difficulty, length and language added to the receipt; machine-verified vs judged properties distinguished per block. |
+| M2 MEDIUM adaptation claim too strong | §5 narrowed: E3 vs E3′ shows adaptation helped some measured behaviours in that experiment (IFEval +2.7, interviews up, MGSM −2.4, arms differ by nine rows, no replicated matched pairs); «Greek vantage matters and language does not» withdrawn; adaptation must respect the user's stated country or scenario. |
+| M3 MEDIUM large blocks (Nemotron + tool use = 52.5% of listed tokens) with unseen text or ad-hoc tool representation; licences without pinned versions | logged; revisions pinned in the receipt; tool competence not claimed (textual function-call demonstrations only); MultiChallenge distribution restriction kept. |
+
+Reviewer's open questions and the answers proposed to the owner: (1) budget: training alone about 7–8 nh at 230–260M tokens, battery about 4.3 nh on top; the owner decides the cap; (2) the assembler reconciliation and the holdout exclusion are verified in G1; (3) the scale run's dialogues are shorter than the pilot's by the 12-message cap; quotas as in H1; (4) native tool use is outside this release's claimed scope; (5) promotion over arm B: proposed floors, GreekMMLU within 0.5 points of arm B, Greek IFEval strict not below arm B minus 1 point, MGSM not below arm B, and improvements on the conversation instruments (R1 tail copy, coherence, standing-instruction persistence, self-observation) and MultiChallenge-el, all under identical serving settings; (6) primary-source fact checks and human adjudication are the owner's, on blinded samples prepared by me.
+

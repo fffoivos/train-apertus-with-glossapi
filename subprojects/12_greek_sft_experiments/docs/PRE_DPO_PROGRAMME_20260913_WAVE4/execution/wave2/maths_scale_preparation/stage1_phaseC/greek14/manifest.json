@@ -1,0 +1,43 @@
+{
+  "artifact_sha256": {
+    "inputs.jsonl": "69711a639b75da5cc065606a000b815a1265879b9c744373f1fc2eee807a090f",
+    "prompts/greek_correction.txt": "9edf7cecca4f94e4df6d84eda3441958e8dda60706d4ec86d011c30f759056a8",
+    "queue.jsonl": "092187ede76a8743617ab920c6e0693f538cb5fb05ee3a0da6224691d1007800",
+    "run_queue.py": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005",
+    "schemas/greek_correction.schema.json": "cac89525ac699c70071e5020cc6e5ba4828aea543a27af1fa23c88ec621618b3"
+  },
+  "built_at": "2026-09-13T17:51:27+03:00",
+  "counts": {
+    "absolute_call_cap": 22,
+    "primary_calls": 14,
+    "retry_cap": 8
+  },
+  "execution": {
+    "effort": "high",
+    "launched": false,
+    "max_workers": 8,
+    "model": "gpt-5.6-sol"
+  },
+  "isolation": {
+    "blind_verifier_content_in_payload": false,
+    "development_or_final_content_materialized": false,
+    "reference_content_in_payload": false,
+    "split": "train_only"
+  },
+  "parent_bindings": {
+    "independent_adjudications_sha256": "ae33f559349982ae43a1608abc7092a1c3522948ea861bb2522b15b7adcf9e34",
+    "phaseC_inputs_sha256": "570a53516a57aafeb339ce14faa247aeee0a6481f7d0f2ace4d99a6b500506e4",
+    "phaseC_run_summary_sha256": "e76a11cecc4489dbf8877740fe6683911c46e9bd227591d48b7866e164cdf565",
+    "selected_candidates_sha256": "d25b656e9373f9f4bc8658c78db5410e1f5456b1901ade28626caa098893fde0"
+  },
+  "phaseC_budget": {
+    "absolute_programme_cap": 72,
+    "completed_primary_calls": 42,
+    "greek_primary_cap": 14,
+    "retry_cap": 8,
+    "semantic_or_source_shared_cap": 8
+  },
+  "runner_byte_identical_to_stageB_proven_copy": true,
+  "schema_version": "maths_phaseC_greek14_manifest_v1",
+  "status": "prepared_unlaunched_root_review_required"
+}

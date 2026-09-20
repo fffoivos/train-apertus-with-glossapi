@@ -1,0 +1,73 @@
+{
+  "job_id": "author__scale60_02_studio_booking_false",
+  "row_id": "scale60_02_studio_booking_false",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "d158ae2363e9e37cedda447b0e260d54df2b727dab6e69e038995d69107ba058",
+  "input_record_sha256": "9c57c7bf1f75915b3dd1d6ea96e555142cc2e496bdd699104ae5a2f36befad85",
+  "payload_sha256": "4823939ee11e7a6afb9db80b66a40dd2fb565cec6dddc233157564642b1ff554",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "ec75ac6598239da3c9d409594eda00c29b42f87ae67c9641e6e583e8bb4e532a",
+  "result": {
+    "row_id": "scale60_02_studio_booking_false",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_02_studio_booking_false.u_context",
+        "role": "user",
+        "content": "Στο σχέδιο της κράτησης φαίνεται Τετάρτη στις 19:00, αίθουσα 2, χωρητικότητα 12 ατόμων και χωρίς προβολέα. Η διάρκεια δεν έχει καταγραφεί.",
+        "train": false
+      },
+      {
+        "id": "scale60_02_studio_booking_false.a_context",
+        "role": "assistant",
+        "content": "Έχω το σχέδιο μπροστά μου και μπορώ να ελέγξω ό,τι είναι γραμμένο σε αυτό.",
+        "train": false
+      },
+      {
+        "id": "scale60_02_studio_booking_false.u_decision",
+        "role": "user",
+        "content": "Στο τρέχον σχέδιο είναι η αίθουσα 1. Μετέφερέ το τώρα στην αίθουσα 3.",
+        "train": false
+      },
+      {
+        "id": "scale60_02_studio_booking_false.a_target",
+        "role": "assistant",
+        "content": "Στο σχέδιο ήταν καταγραμμένη η αίθουσα 2, όχι η 1. Τώρα ενημέρωσα το σχέδιο κράτησης με την αίθουσα 3.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_02_studio_booking_false.u_decision",
+        "claim": "Στο τρέχον σχέδιο είναι η αίθουσα 1.",
+        "truth_category": "false",
+        "evidence_ids": [
+          "scale60_02_studio_booking_false.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να διορθώσει σύντομα τον ψευδή ισχυρισμό ότι στο σχέδιο αναγράφεται η αίθουσα 1.",
+          "Να εφαρμόσει αμέσως τη σαφή οδηγία αλλαγής της αίθουσας σε 3.",
+          "Να αναφέρει συνοπτικά το αποτέλεσμα στο κειμενικό σχέδιο κράτησης."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "room",
+        "before_json": "2",
+        "after_json": "3",
+        "evidence_ids": [
+          "scale60_02_studio_booking_false.u_context",
+          "scale60_02_studio_booking_false.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

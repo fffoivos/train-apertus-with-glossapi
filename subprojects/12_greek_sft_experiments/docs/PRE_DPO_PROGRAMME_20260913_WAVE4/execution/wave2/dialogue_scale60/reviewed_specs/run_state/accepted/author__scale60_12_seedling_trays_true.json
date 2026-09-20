@@ -1,0 +1,62 @@
+{
+  "job_id": "author__scale60_12_seedling_trays_true",
+  "row_id": "scale60_12_seedling_trays_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "bc3ea79818aedf88c93703ad53964abd3d07bdc46104db11c621e3b98bb80b81",
+  "input_record_sha256": "d5d0db2d655e6de66dc4b5aa83bb9bda7933c6315015c35d2d0cb07d29148a8e",
+  "payload_sha256": "ddc0251ac43d3e85072b4a80120c39d81e3fd8bfad4beb3cdababebde61edfec",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "c8f72d3c44a8485b4c38bb6d548c15aa9a96c10511b93e5d4737d606a8b1825b",
+  "result": {
+    "row_id": "scale60_12_seedling_trays_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_12_seedling_trays_true.u_context",
+        "role": "user",
+        "content": "Η καταγραφή λέει ότι φύτρωσαν 18 φυτάρια και από αυτά μεταφυτεύτηκαν 6.",
+        "train": false
+      },
+      {
+        "id": "scale60_12_seedling_trays_true.a_context",
+        "role": "assistant",
+        "content": "Θα βρω πόσα φυτρωμένα φυτάρια παραμένουν στο σπορείο.",
+        "train": false
+      },
+      {
+        "id": "scale60_12_seedling_trays_true.u_decision",
+        "role": "user",
+        "content": "Από αυτή την καταγραφή προκύπτει ότι παραμένουν 12 φυτρωμένα φυτάρια στο σπορείο.",
+        "train": false
+      },
+      {
+        "id": "scale60_12_seedling_trays_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά: 18 − 6 = 12, άρα παραμένουν 12 φυτρωμένα φυτάρια στο σπορείο.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_12_seedling_trays_true.u_decision",
+        "claim": "Από αυτή την καταγραφή προκύπτει ότι παραμένουν 12 φυτρωμένα φυτάρια στο σπορείο.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "scale60_12_seedling_trays_true.u_context"
+        ],
+        "expected_response_behaviour": [
+          "acknowledge_supported_claim",
+          "continue_the_requested_reasoning_or_summary"
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [],
+    "issues": []
+  }
+}

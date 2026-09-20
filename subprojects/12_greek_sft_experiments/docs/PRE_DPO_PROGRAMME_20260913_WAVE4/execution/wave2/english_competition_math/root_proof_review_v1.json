@@ -1,0 +1,41 @@
+{
+  "schema": "openmath_root_proof_review_v1",
+  "review_scope": "all 44 structurally valid pilot solutions; one solution selected per family at most",
+  "selected_ids": [
+    "openmath1m_158596", "openmath1m_252121", "openmath1m_133742",
+    "openmath1m_225484", "openmath1m_290627", "openmath1m_86976",
+    "openmath1m_50590", "openmath1m_185389", "openmath1m_185803",
+    "openmath1m_254970", "openmath1m_229878", "openmath1m_128251",
+    "openmath1m_288162", "openmath1m_219704", "openmath1m_146368",
+    "openmath1m_13081", "openmath1m_74263", "openmath1m_273575",
+    "openmath1m_232974", "openmath1m_110342", "openmath1m_175948",
+    "openmath1m_189409", "openmath1m_313628", "openmath1m_186913",
+    "openmath1m_118533", "openmath1m_192040", "openmath1m_297522"
+  ],
+  "nonselected": {
+    "openmath1m_132485": "sound_duplicate; clearer solution selected for the same family",
+    "openmath1m_154318": "sound_duplicate; clearer conversion derivation selected for the same family",
+    "openmath1m_87582": "sound_duplicate; completing-square derivation selected for the same family",
+    "openmath1m_45587": "repair_required; computes 50 using a wrong rhombus formula and then boxes 100",
+    "openmath1m_13542": "repair_required; reaches the correct polyhedron tuple but does not prove uniqueness",
+    "openmath1m_254181": "reject_invalid; assumes planar face angles sum to 360 at a polyhedron vertex and uses false incidence algebra",
+    "openmath1m_299854": "reject_invalid; asserted partial fractions and terminal arithmetic do not establish the series sum",
+    "openmath1m_287332": "reject_invalid; false numerator factorization, claims divergence, then boxes 1",
+    "openmath1m_272973": "repair_required; gives the wrong numerical product 9999 times 999 although the digit-count conclusion is correct",
+    "openmath1m_131244": "reject_contaminated; correct modular derivation followed by unrelated garbage text",
+    "openmath1m_146563": "sound_duplicate; equivalent concise divisor-count solution selected",
+    "openmath1m_61134": "repair_required; first says the median for the correct candidate is not 92, then reverses itself",
+    "openmath1m_98805": "repair_required; reported square counts are correct but the stated line/intersection justification is inaccurate",
+    "openmath1m_220048": "duplicate_of_repair_family; asserts the same square counts without derivation",
+    "openmath1m_105577": "sound_duplicate_with_notation_defect; rigorous triple-product solution selected",
+    "openmath1m_178865": "repair_required; correct solution followed by an unrelated conversational prompt",
+    "openmath1m_132978": "reject_invalid; sign/incidence expansion is wrong and the dot product 4 is simply asserted"
+  },
+  "family_status": {
+    "selected_sound_families": 27,
+    "repairable_families": 6,
+    "held_invalid_families": 2
+  },
+  "training_eligible": false,
+  "review_independence": "root review only; independent proof review remains required"
+}

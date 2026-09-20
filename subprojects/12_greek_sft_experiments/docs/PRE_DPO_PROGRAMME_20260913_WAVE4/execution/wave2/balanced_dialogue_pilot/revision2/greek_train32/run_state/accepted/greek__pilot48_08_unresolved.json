@@ -1,0 +1,40 @@
+{
+  "job_id": "greek__pilot48_08_unresolved",
+  "row_id": "pilot48_08_unresolved",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "41e7d717ede719e1d300f1d2d0f75585e166819477ecd93c4e943ed8b016de1c",
+  "input_record_sha256": "095e0348e5949bc5f06d172553cad3dcb0ce796fab0bc17e7ba0615769f2d65f",
+  "payload_sha256": "017d12dfa0154cb0030f0501f9d6cf458b1fa9fdfb247b7b2415ce8d253ce4dd",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "6fc0fdab8fe13493992ab8871643a3ebe1da604642954cd970e525dc8cd1943e",
+  "result": {
+    "row_id": "pilot48_08_unresolved",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_08_unresolved.u_context",
+        "role": "user",
+        "content": "Η καταγραφή αποθήκης λέει ότι παραλήφθηκαν 12 καρέκλες, δανείστηκαν 4 και 1 χάλασε. Δεν περιλαμβάνει πρόγραμμα προμηθευτή.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_unresolved.u_decision",
+        "role": "user",
+        "content": "Με βάση μόνο τους αριθμούς της αποθήκης, η επόμενη παράδοση από τον προμηθευτή πρέπει να είναι αύριο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_unresolved.a_target",
+        "role": "assistant",
+        "content": "Οι αριθμοί δείχνουν μόνο ότι είναι διαθέσιμες 7 καρέκλες· δεν καθορίζουν πότε θα γίνει η επόμενη παράδοση. Υπάρχει πρόγραμμα ή επιβεβαίωση από τον προμηθευτή που να αναφέρει την ημερομηνία;",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

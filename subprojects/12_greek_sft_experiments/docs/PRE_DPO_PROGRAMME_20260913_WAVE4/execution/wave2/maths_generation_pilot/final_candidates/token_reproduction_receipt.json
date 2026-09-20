@@ -1,0 +1,88 @@
+{
+  "schema_version": "maths32_token_inventory_reproduction_v1",
+  "created_at": "2026-09-13T13:57:26.651657+00:00",
+  "status": "pass",
+  "correction": "The earlier bundled-runtime command pointer was incorrect; this receipt records the actual supported project environment used for reproduction.",
+  "command": [
+    "/Users/foivoskarounos-zamparloukos/venvs/sfttrain/bin/python",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/final_candidates/reproduce_token_inventory.py"
+  ],
+  "environment": {
+    "sys_executable": "/Users/foivoskarounos-zamparloukos/venvs/sfttrain/bin/python",
+    "python": "3.14.6",
+    "torch": "2.14.0",
+    "transformers": "5.17.0",
+    "tokenizers": "0.23.2",
+    "trl": "1.12.0"
+  },
+  "bindings": {
+    "candidate_rows_sha256": "c8f4df767951ec958fce46b47f61f75544400a2020563747a4293b8fb357e332",
+    "prior_token_inventory_sha256": "25f39a9dd0bdadc13ed3b879388ac811f0c5ce37da31748a16861140fb049ae0",
+    "canonical_sft_train_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/cluster/sft_train.py",
+    "canonical_sft_train_sha256": "f8de43b1f8b99959741e6c4a9158ad99fd31ffc5b3b1636c1ac07a925df39b4d",
+    "tokenizer_json_sha256": "acf4d5c6a8aa0cc64c9c781c203fd6dbb4581b0124cca0a76a9e10322fd81092",
+    "tokenizer_config_sha256": "ea64a17b41e1deaa7469212f413676129f33977ca3a48767f0ca68dc346df502",
+    "template_tokenizer_config_sha256": "b89e07508603d6e1f2c8642f366c2469063c3eddae0585f1e67934ee98498ab1"
+  },
+  "comparisons": {
+    "rows_match": true,
+    "items_match": true,
+    "totals_match": true,
+    "ranges_match": true,
+    "all_within_4096_match": true,
+    "control_token_ids_match": true,
+    "vocab_size_match": true
+  },
+  "measured": {
+    "rows": 32,
+    "totals": {
+      "input_tokens": 13681,
+      "assistant_supervised_tokens": 8741,
+      "user_chars": 9089,
+      "assistant_chars": 24706,
+      "user_whitespace_words": 1410,
+      "assistant_whitespace_words": 3381
+    },
+    "ranges": {
+      "input_tokens": {
+        "min": 123,
+        "max": 1003
+      },
+      "assistant_supervised_tokens": {
+        "min": 32,
+        "max": 606
+      },
+      "user_chars": {
+        "min": 91,
+        "max": 1230
+      },
+      "assistant_chars": {
+        "min": 57,
+        "max": 1958
+      },
+      "user_whitespace_words": {
+        "min": 9,
+        "max": 147
+      },
+      "assistant_whitespace_words": {
+        "min": 14,
+        "max": 285
+      }
+    },
+    "vocab_size": 148992,
+    "control_token_ids": {
+      "<|system_start|>": 61,
+      "<|system_end|>": 62,
+      "<|developer_start|>": 63,
+      "<|developer_end|>": 64,
+      "<|user_start|>": 65,
+      "<|user_end|>": 66,
+      "<|assistant_start|>": 67,
+      "<|assistant_end|>": 68,
+      "<|inner_prefix|>": 69,
+      "<|inner_suffix|>": 70,
+      "<|tools_prefix|>": 71,
+      "<|tools_suffix|>": 72
+    }
+  }
+}

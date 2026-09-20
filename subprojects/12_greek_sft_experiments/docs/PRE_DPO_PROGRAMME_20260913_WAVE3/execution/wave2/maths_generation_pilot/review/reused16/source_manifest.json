@@ -1,0 +1,352 @@
+{
+  "review": "reused16_independent_adjudication",
+  "reviewer": "Sol agent",
+  "completed_at": "2026-09-13T16:35:17+03:00",
+  "scope": {
+    "reviewed_count": 16,
+    "repair_count": 8,
+    "control_count": 8,
+    "excluded": "16 fresh rows are assigned to root"
+  },
+  "source_files": {
+    "inputs.jsonl": {
+      "sha256": "a138404a165fba063c2db0d27a4e8da8758ba57c11ecff63ebfe2ee49c261987",
+      "bytes": 78494
+    },
+    "manifest.json": {
+      "sha256": "f94812f0aa22cae38004887acb3fc0b4eb109562088d7378032a889136fdf363",
+      "bytes": 6495
+    },
+    "run_state/summary.json": {
+      "sha256": "e09aad1d8ef87fc4351a5d8a033332ed08f4c5d1c089f1764ce6acb8b762ef7c",
+      "bytes": 215
+    }
+  },
+  "accepted_envelopes": [
+    {
+      "path": "run_state/accepted/solve_high__control_gm_gsm_3096.json",
+      "row_id": "control_gm_gsm_3096",
+      "stage": "solution_high",
+      "job_id": "solve_high__control_gm_gsm_3096",
+      "sha256": "f6dbfb2fd53fdf25ca834e1142a5bb798ab902f3ddd515791a6dff26d889b498",
+      "prompt_sha256": "dca224269b5fbe2cc864c0d9241edb0f41f05446260aedd8c5311489f3b13e53",
+      "input_record_sha256": "ec529360053848cbaf260e93a3a9f42fb7cfa3a397ad89fd55edcd4fb307117c"
+    },
+    {
+      "path": "run_state/accepted/solve_high__control_gm_gsm_3835.json",
+      "row_id": "control_gm_gsm_3835",
+      "stage": "solution_high",
+      "job_id": "solve_high__control_gm_gsm_3835",
+      "sha256": "8bad42d3757b7ac3099348359ec0a9c7f38f68d20e09a4841e010009aa52b221",
+      "prompt_sha256": "8be45509052ae353d635b8ac94f43ca6faddbcf785753c72025410a3b51d5505",
+      "input_record_sha256": "75ca62d478bba93138aa7bd5ac6994a33308495feb71d17df836dc1c6171d2c5"
+    },
+    {
+      "path": "run_state/accepted/solve_high__control_gm_math_1054.json",
+      "row_id": "control_gm_math_1054",
+      "stage": "solution_high",
+      "job_id": "solve_high__control_gm_math_1054",
+      "sha256": "274a20dbcb425eb09ad53fd5909b2948d6ec678425f817f571cfb915575326f7",
+      "prompt_sha256": "4da0c64db48fddb25bfd1e562a29c6e47a6f0d337bd18a3219e294ed7d3f7c2f",
+      "input_record_sha256": "c0bd29ac9efe488ceaf213a46d758a479c7b7cc97e06f12cba6802eeb9809240"
+    },
+    {
+      "path": "run_state/accepted/solve_high__control_gm_math_1745.json",
+      "row_id": "control_gm_math_1745",
+      "stage": "solution_high",
+      "job_id": "solve_high__control_gm_math_1745",
+      "sha256": "1695b02c5321e3a22bd0380e881f358bf394c166830d5692fb59b4914f886046",
+      "prompt_sha256": "47f1a3b98e8493c6a1b2757c965cad28b916e4ebb86fe1a9c9d316316d12b233",
+      "input_record_sha256": "6a703dbf91b20c80abbe8620a60e7cb2593608cc6f84d38de1ef336d5c7d0590"
+    },
+    {
+      "path": "run_state/accepted/solve_high__control_gm_math_2731.json",
+      "row_id": "control_gm_math_2731",
+      "stage": "solution_high",
+      "job_id": "solve_high__control_gm_math_2731",
+      "sha256": "b4fa03c352e9e464ffc31af01c4185956ffb67d7a0babc64dc40f2dd1bc7231f",
+      "prompt_sha256": "d45a2266039ce674140efebc79bb7b9ddaec238fe0345a968c73f9f2fee87742",
+      "input_record_sha256": "b6f82a8e73b2eb4de57da3cac589e7fb01c595a8d466876a9ad6bf06425abc01"
+    },
+    {
+      "path": "run_state/accepted/solve_high__control_gm_math_3507.json",
+      "row_id": "control_gm_math_3507",
+      "stage": "solution_high",
+      "job_id": "solve_high__control_gm_math_3507",
+      "sha256": "5accd0f5343db960dfd8c20e0990864b1b99022d1ccf4935747e73118161ce37",
+      "prompt_sha256": "e63994f3906b386ae5a1b91616efa6df215d4fa7436dbc305df8a34264f03d4a",
+      "input_record_sha256": "0a5bfdf2b26e07822ba8a0bbe2beef6e62478285fed5d09f2ffeff70fc553331"
+    },
+    {
+      "path": "run_state/accepted/solve_high__control_gm_math_3924.json",
+      "row_id": "control_gm_math_3924",
+      "stage": "solution_high",
+      "job_id": "solve_high__control_gm_math_3924",
+      "sha256": "5ff8b73c29dbaa895414cd5f9a75dfcb63aea9d9a842bbe842cd0469a4065e29",
+      "prompt_sha256": "84596f608c0da397e60922dd8998678237358f6a6be72c4c2f122f7ef0279798",
+      "input_record_sha256": "596373c679910d50dbb3da2ae864b8c7a11d63a7c9c9b95f342439ea00864db9"
+    },
+    {
+      "path": "run_state/accepted/solve_high__control_gm_math_837.json",
+      "row_id": "control_gm_math_837",
+      "stage": "solution_high",
+      "job_id": "solve_high__control_gm_math_837",
+      "sha256": "db10378810fa2777e4dac38e3d1af7f6082c0b870cc85359255a7ad9455b0501",
+      "prompt_sha256": "67193f931d6d34c35dfdf5c60824bd632942dd8d871401444f54e00b96d90053",
+      "input_record_sha256": "d01aa3e568eaa54ffecf4bafda324584ba9c3cf858fae26cf23675da14783332"
+    },
+    {
+      "path": "run_state/accepted/solve_high__repair_gm_math_2231.json",
+      "row_id": "repair_gm_math_2231",
+      "stage": "solution_high",
+      "job_id": "solve_high__repair_gm_math_2231",
+      "sha256": "cf019b4f11433dc8244e89c53b96c70b2c1463a8d06e17aa518ccb0240b09cd8",
+      "prompt_sha256": "9144b31a0c2973254523f67b0c03f9254a2526abfb58e439090a100cf9ad7bc2",
+      "input_record_sha256": "47307709af22ab36cbf4d26a02f94cebe9bc6614fadab777a110c24644e142c5"
+    },
+    {
+      "path": "run_state/accepted/solve_high__repair_gsm_1253.json",
+      "row_id": "repair_gsm_1253",
+      "stage": "solution_high",
+      "job_id": "solve_high__repair_gsm_1253",
+      "sha256": "9e84a325662fb0a1cf6023fd719f2eed3e6bf9bb23b293a4c994af6e0003a0b9",
+      "prompt_sha256": "93fa1b6d7966b6263056552e1e865cf74e15193907e9385f397fd642808b7d69",
+      "input_record_sha256": "87d513e79a5dc74cf78970be7dbf56fa6d09b3109a43d1f449c5a599f7c8371a"
+    },
+    {
+      "path": "run_state/accepted/solve_high__repair_math5_1014.json",
+      "row_id": "repair_math5_1014",
+      "stage": "solution_high",
+      "job_id": "solve_high__repair_math5_1014",
+      "sha256": "7b792c6c283880844d502e9aea5f49fbd24b28fad5d0d51d600768fbed8025b4",
+      "prompt_sha256": "b06e7ccc7a63eb9581d46d71f6b6e43f6c6a16577e5c47e1b6d26b507e5fb6df",
+      "input_record_sha256": "19635a333c4a9b608950fabc6904d52fa4315e6b572d3854b76b1123c139906c"
+    },
+    {
+      "path": "run_state/accepted/solve_high__repair_math5_139.json",
+      "row_id": "repair_math5_139",
+      "stage": "solution_high",
+      "job_id": "solve_high__repair_math5_139",
+      "sha256": "0680ad1c4db2db66658b975937df92b8d1f101c9bb656c92323a7e07846261d1",
+      "prompt_sha256": "413a8ed6200f57729aff544044d24fa2d447272d99ddc4b86b79effaed4ad35c",
+      "input_record_sha256": "bb8da3713546e437629947d85e42315a15cf97f80b3ca6c5aa3240a9ba4bcb29"
+    },
+    {
+      "path": "run_state/accepted/solve_high__repair_math5_436.json",
+      "row_id": "repair_math5_436",
+      "stage": "solution_high",
+      "job_id": "solve_high__repair_math5_436",
+      "sha256": "f570ca6a2800367dea83909a7a332a7262964afa3e6dd830d992e56b1f03930d",
+      "prompt_sha256": "d29acc77e1d83e14141d694470ec025f24ac9386d1d9cc977bfe190bf6445aa1",
+      "input_record_sha256": "290833f30881b12d39020095ed35cbcf247223a8d97932ef92f9facf0bb240cf"
+    },
+    {
+      "path": "run_state/accepted/solve_high__repair_math5_537.json",
+      "row_id": "repair_math5_537",
+      "stage": "solution_high",
+      "job_id": "solve_high__repair_math5_537",
+      "sha256": "8a3c635ba33a12c5c329bf58398f9f040d2e0b12eb45d62c511c91fa2575fc04",
+      "prompt_sha256": "be46d315bac01a2ce0b0c4c0ff6c408f252a1237ea2af675c2e7a66db15a7f6f",
+      "input_record_sha256": "248f9b2b91c0db03cbce99b559dfd5f030cdbc15f3a192a948fab772ae8f0e4f"
+    },
+    {
+      "path": "run_state/accepted/solve_high__repair_math5_630.json",
+      "row_id": "repair_math5_630",
+      "stage": "solution_high",
+      "job_id": "solve_high__repair_math5_630",
+      "sha256": "4787eec20fe91f6b3aad5cc74bfac0997922f6496aebb26e661effb9be94ac13",
+      "prompt_sha256": "436037183ce1f785a44175623612594b9efc2f8abf9bc48c844627fcd1d7416a",
+      "input_record_sha256": "e3d0e0eecd6508b8c2118eae2db3c5a8a0cf357d192febb372bfb366e2ad5167"
+    },
+    {
+      "path": "run_state/accepted/solve_high__repair_math5_77.json",
+      "row_id": "repair_math5_77",
+      "stage": "solution_high",
+      "job_id": "solve_high__repair_math5_77",
+      "sha256": "e25f5bde85eac2c39580cd61ea37bda01aeec856206e1392f7058cd0428e3a85",
+      "prompt_sha256": "30edfa75f6dc4e2b475fc761c51bd169e184e6f1a45de1856950e1650d85940b",
+      "input_record_sha256": "cc6a89e005bb9a25c87718508b65f166b8c1b66266537726ec27ea9be5a7197c"
+    },
+    {
+      "path": "run_state/accepted/solve_xhigh__repair_math5_1014.json",
+      "row_id": "repair_math5_1014",
+      "stage": "solution_xhigh",
+      "job_id": "solve_xhigh__repair_math5_1014",
+      "sha256": "eee621a1ea281b572224081643eebdfee64dea97b9ed98f914f7e2567c203ad5",
+      "prompt_sha256": "b06e7ccc7a63eb9581d46d71f6b6e43f6c6a16577e5c47e1b6d26b507e5fb6df",
+      "input_record_sha256": "19635a333c4a9b608950fabc6904d52fa4315e6b572d3854b76b1123c139906c"
+    },
+    {
+      "path": "run_state/accepted/solve_xhigh__repair_math5_139.json",
+      "row_id": "repair_math5_139",
+      "stage": "solution_xhigh",
+      "job_id": "solve_xhigh__repair_math5_139",
+      "sha256": "82d38d488774461ce97e4d181106b8a5c8a53e21736403f4c6a07add8951bf72",
+      "prompt_sha256": "413a8ed6200f57729aff544044d24fa2d447272d99ddc4b86b79effaed4ad35c",
+      "input_record_sha256": "bb8da3713546e437629947d85e42315a15cf97f80b3ca6c5aa3240a9ba4bcb29"
+    },
+    {
+      "path": "run_state/accepted/solve_xhigh__repair_math5_436.json",
+      "row_id": "repair_math5_436",
+      "stage": "solution_xhigh",
+      "job_id": "solve_xhigh__repair_math5_436",
+      "sha256": "041b0d58b312654a513e77b47abfe59292817af189bc94c3041942867a2db2ab",
+      "prompt_sha256": "d29acc77e1d83e14141d694470ec025f24ac9386d1d9cc977bfe190bf6445aa1",
+      "input_record_sha256": "290833f30881b12d39020095ed35cbcf247223a8d97932ef92f9facf0bb240cf"
+    },
+    {
+      "path": "run_state/accepted/solve_xhigh__repair_math5_630.json",
+      "row_id": "repair_math5_630",
+      "stage": "solution_xhigh",
+      "job_id": "solve_xhigh__repair_math5_630",
+      "sha256": "09e5f9a709fe9b793ff9b5e8afd173c5da5b464f7c80500c34247983fcb51288",
+      "prompt_sha256": "436037183ce1f785a44175623612594b9efc2f8abf9bc48c844627fcd1d7416a",
+      "input_record_sha256": "e3d0e0eecd6508b8c2118eae2db3c5a8a0cf357d192febb372bfb366e2ad5167"
+    },
+    {
+      "path": "run_state/accepted/verify__control_gm_gsm_3096.json",
+      "row_id": "control_gm_gsm_3096",
+      "stage": "verification_blind",
+      "job_id": "verify__control_gm_gsm_3096",
+      "sha256": "1cfeb77428a857ea0a0700a063d986ec504f750a5fda3ab81ad0899bb32adda4",
+      "prompt_sha256": "ff48cc55e42e90a463a05edbe2e1bd88451bc7301a8d6acc652279b0bdf13120",
+      "input_record_sha256": "ec529360053848cbaf260e93a3a9f42fb7cfa3a397ad89fd55edcd4fb307117c"
+    },
+    {
+      "path": "run_state/accepted/verify__control_gm_gsm_3835.json",
+      "row_id": "control_gm_gsm_3835",
+      "stage": "verification_blind",
+      "job_id": "verify__control_gm_gsm_3835",
+      "sha256": "3bf0d20a95de7dcdfd98b8b6c8d91d06461a56bfd5777e0c602a7e040fe74a0b",
+      "prompt_sha256": "cbc1c106a462d78f235aba429447a290fcc38291de6bebde61ab48c52bcc8d84",
+      "input_record_sha256": "75ca62d478bba93138aa7bd5ac6994a33308495feb71d17df836dc1c6171d2c5"
+    },
+    {
+      "path": "run_state/accepted/verify__control_gm_math_1054.json",
+      "row_id": "control_gm_math_1054",
+      "stage": "verification_blind",
+      "job_id": "verify__control_gm_math_1054",
+      "sha256": "c848a1384778a2081a7e6218bc6f5d6290dc93da5257153bffb55e71056c7d2f",
+      "prompt_sha256": "0ada671f3a03f2bb425796cb0e74d949df113ffd5d9c61906daeb497962d7e65",
+      "input_record_sha256": "c0bd29ac9efe488ceaf213a46d758a479c7b7cc97e06f12cba6802eeb9809240"
+    },
+    {
+      "path": "run_state/accepted/verify__control_gm_math_1745.json",
+      "row_id": "control_gm_math_1745",
+      "stage": "verification_blind",
+      "job_id": "verify__control_gm_math_1745",
+      "sha256": "65f700bdc9ba865e3badd6ec7ce08515542f291347d0c6e1ef9254143392f15c",
+      "prompt_sha256": "001746ea8bdbc160eda6469728486c836340f5a486c96407a23f6576fb632476",
+      "input_record_sha256": "6a703dbf91b20c80abbe8620a60e7cb2593608cc6f84d38de1ef336d5c7d0590"
+    },
+    {
+      "path": "run_state/accepted/verify__control_gm_math_2731.json",
+      "row_id": "control_gm_math_2731",
+      "stage": "verification_blind",
+      "job_id": "verify__control_gm_math_2731",
+      "sha256": "557573e94e01b0543c8fa3daec342d3459523257d7650c0fa6c9691c6da04f6f",
+      "prompt_sha256": "5cbae1db380ccfb6740cf232741ee89d54b02fd4a026d11dea461923663aecf2",
+      "input_record_sha256": "b6f82a8e73b2eb4de57da3cac589e7fb01c595a8d466876a9ad6bf06425abc01"
+    },
+    {
+      "path": "run_state/accepted/verify__control_gm_math_3507.json",
+      "row_id": "control_gm_math_3507",
+      "stage": "verification_blind",
+      "job_id": "verify__control_gm_math_3507",
+      "sha256": "8a3b8aec63ae6d0b7a2d0da9306385f9814e2898c0b68d916f7a54e8b208f5c4",
+      "prompt_sha256": "fae0f4eaef3daeb4384b0b65423ed7135f4eb4bec8566f38d9e666367b61158e",
+      "input_record_sha256": "0a5bfdf2b26e07822ba8a0bbe2beef6e62478285fed5d09f2ffeff70fc553331"
+    },
+    {
+      "path": "run_state/accepted/verify__control_gm_math_3924.json",
+      "row_id": "control_gm_math_3924",
+      "stage": "verification_blind",
+      "job_id": "verify__control_gm_math_3924",
+      "sha256": "7b6534c9333ae805d901386275eca843c5969f7e1905767c226dff75c3e0caf1",
+      "prompt_sha256": "c4035cc4f004924aff4206b8f4388ed99165d3b6a5f019c26ddbbe8687113894",
+      "input_record_sha256": "596373c679910d50dbb3da2ae864b8c7a11d63a7c9c9b95f342439ea00864db9"
+    },
+    {
+      "path": "run_state/accepted/verify__control_gm_math_837.json",
+      "row_id": "control_gm_math_837",
+      "stage": "verification_blind",
+      "job_id": "verify__control_gm_math_837",
+      "sha256": "dd14312c07abf426289f52aabbb47c0f74faf5391c0d9d0986caec8ac69fb664",
+      "prompt_sha256": "81989794d2858bd8760e290042bf08b4deae4136c7aabf1bbbd4e42c47cdfc02",
+      "input_record_sha256": "d01aa3e568eaa54ffecf4bafda324584ba9c3cf858fae26cf23675da14783332"
+    },
+    {
+      "path": "run_state/accepted/verify__repair_gm_math_2231.json",
+      "row_id": "repair_gm_math_2231",
+      "stage": "verification_blind",
+      "job_id": "verify__repair_gm_math_2231",
+      "sha256": "401b6f526185c81155b9bad3595b450ac3be1c733f4a3346e5e41c859681660f",
+      "prompt_sha256": "c934bbbb2b94818089fb47fe4b11076036883ddd47cd8d22c24184ede1433b85",
+      "input_record_sha256": "47307709af22ab36cbf4d26a02f94cebe9bc6614fadab777a110c24644e142c5"
+    },
+    {
+      "path": "run_state/accepted/verify__repair_gsm_1253.json",
+      "row_id": "repair_gsm_1253",
+      "stage": "verification_blind",
+      "job_id": "verify__repair_gsm_1253",
+      "sha256": "84c10d4186dcccb07991c6f73ea9f2639e1e4705190d8402881a2776bff163ee",
+      "prompt_sha256": "b6b5d76683f58c2b758f42f794cbd5b1662deae63a9ff73405b4f06402b7d8ca",
+      "input_record_sha256": "87d513e79a5dc74cf78970be7dbf56fa6d09b3109a43d1f449c5a599f7c8371a"
+    },
+    {
+      "path": "run_state/accepted/verify__repair_math5_1014.json",
+      "row_id": "repair_math5_1014",
+      "stage": "verification_blind",
+      "job_id": "verify__repair_math5_1014",
+      "sha256": "653c2c8044159643a7e01c0bf410ef9abf547e57a3a318d4feeaf3df412db87f",
+      "prompt_sha256": "673a6e970ea1cf5c9cb368255c7b53dc8be1eec12561cfb46132e90130709a0f",
+      "input_record_sha256": "19635a333c4a9b608950fabc6904d52fa4315e6b572d3854b76b1123c139906c"
+    },
+    {
+      "path": "run_state/accepted/verify__repair_math5_139.json",
+      "row_id": "repair_math5_139",
+      "stage": "verification_blind",
+      "job_id": "verify__repair_math5_139",
+      "sha256": "87744c74d4d6473a58b9a14a153cb906b8145582af75e4278221fff3413147a4",
+      "prompt_sha256": "7361890a2a0e4beb9efd5e61df93fae3cf0ea8b7abe28ffa748f04438c573c5f",
+      "input_record_sha256": "bb8da3713546e437629947d85e42315a15cf97f80b3ca6c5aa3240a9ba4bcb29"
+    },
+    {
+      "path": "run_state/accepted/verify__repair_math5_436.json",
+      "row_id": "repair_math5_436",
+      "stage": "verification_blind",
+      "job_id": "verify__repair_math5_436",
+      "sha256": "41ea16ca9071b9b9cfaa0fd9baed6bd1dcee477efd9052cc3e8a0782eea08460",
+      "prompt_sha256": "a57c552aefa4aca9c24b4bec0eb554eb5f1728dcf2cccbb821cdcd632ede3c69",
+      "input_record_sha256": "290833f30881b12d39020095ed35cbcf247223a8d97932ef92f9facf0bb240cf"
+    },
+    {
+      "path": "run_state/accepted/verify__repair_math5_537.json",
+      "row_id": "repair_math5_537",
+      "stage": "verification_blind",
+      "job_id": "verify__repair_math5_537",
+      "sha256": "397affaf553d989f95f0515fcad6e20e1dfaf2da2479940148688cc6c537521f",
+      "prompt_sha256": "c26f9b8f817826df79da5597d1f5132a90a273e62fdcd0b1a531951cca363d37",
+      "input_record_sha256": "248f9b2b91c0db03cbce99b559dfd5f030cdbc15f3a192a948fab772ae8f0e4f"
+    },
+    {
+      "path": "run_state/accepted/verify__repair_math5_630.json",
+      "row_id": "repair_math5_630",
+      "stage": "verification_blind",
+      "job_id": "verify__repair_math5_630",
+      "sha256": "3d609916e0de11bc1bdacec422b1e229dedc69445b60afec9f01d51af5cc1aea",
+      "prompt_sha256": "1f6536d60619583d8a5be9b943d7cee33aefed0b9470ec171884aa780780916e",
+      "input_record_sha256": "e3d0e0eecd6508b8c2118eae2db3c5a8a0cf357d192febb372bfb366e2ad5167"
+    },
+    {
+      "path": "run_state/accepted/verify__repair_math5_77.json",
+      "row_id": "repair_math5_77",
+      "stage": "verification_blind",
+      "job_id": "verify__repair_math5_77",
+      "sha256": "b5c907490b1a8157373fc030b44b751f47c379da6327cf5c8c7188a76a2a6bd1",
+      "prompt_sha256": "1b674e0eac0f01b30adc583ef9960196a2cc51cfff251e94a77cc8b1cdd7dc0c",
+      "input_record_sha256": "cc6a89e005bb9a25c87718508b65f166b8c1b66266537726ec27ea9be5a7197c"
+    }
+  ],
+  "method_boundary": "Full semantic reading of the frozen Greek problem, prior target, reference, and every accepted high/xhigh/blind variant available for these rows. Deterministic calculations are independent; no generated code was executed and no additional model subprocess was called."
+}

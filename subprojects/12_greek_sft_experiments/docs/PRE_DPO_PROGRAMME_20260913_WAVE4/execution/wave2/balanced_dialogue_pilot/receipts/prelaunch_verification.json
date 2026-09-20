@@ -1,0 +1,29 @@
+{
+  "status": "PASS_PRELAUNCH",
+  "specifications": 48,
+  "dispatchable": 47,
+  "quarantined": 1,
+  "split_counts": {
+    "train": 32,
+    "dev": 8,
+    "final_confirmation": 8
+  },
+  "queue_counts": {
+    "train": 32,
+    "dev": 8,
+    "final_confirmation": 7
+  },
+  "probe": {
+    "calls": 4,
+    "truth_categories": 4,
+    "oracle_kinds": 3,
+    "train_only": true
+  },
+  "strict_schemas": 3,
+  "oracle_recomputations": 48,
+  "prompt_bindings_verified": 47,
+  "family_leakage": false,
+  "absolute_call_cap": 118,
+  "runner_sha256": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005",
+  "launched": false
+}

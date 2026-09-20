@@ -1,0 +1,135 @@
+--- a/data/math/mathlib.py
++++ b/data/math/mathlib.py
+@@ -6,12 +6,33 @@
+ TMP = os.environ.get('CLAUDE_JOB_DIR', tempfile.gettempdir()) + '/tmp'; os.makedirs(TMP, exist_ok=True)
+ 
+ 
++def reject_disallowed_controls(value, path: str = '$') -> None:
++    """Reject decoded C0 controls other than tab/newline/CR, plus DEL, in nested strings."""
++    if isinstance(value, str):
++        for i, char in enumerate(value):
++            code = ord(char)
++            if (code < 32 and code not in (9, 10, 13)) or code == 127:
++                raise ValueError(f'disallowed control U+{code:04X} at {path}[{i}]')
++    elif isinstance(value, list):
++        for i, item in enumerate(value): reject_disallowed_controls(item, f'{path}[{i}]')
++    elif isinstance(value, dict):
++        for key, item in value.items():
++            reject_disallowed_controls(key, f'{path}.<key>')
++            reject_disallowed_controls(item, f'{path}.{key}')
++
++
+ def codex_json(prompt: str, schema_path: str, model: str = 'gpt-5.6-sol', effort: str = 'medium', timeout: int = 1500) -> dict:
+     """One schema-enforced codex call; raises on failure (callers retry)."""
+-    out = tempfile.NamedTemporaryFile('w', suffix='.json', dir=TMP, delete=False).name
+-    subprocess.run(['codex', 'exec', '-m', model, '-c', f'model_reasoning_effort={effort}', '-c', 'project_doc_max_bytes=0', '-c', 'features.code_mode_host=false', '-c', 'features.remote_plugin=false', '-c', 'features.apps=false', '--skip-git-repo-check', '--sandbox', 'read-only', '--ephemeral', '--output-schema', schema_path, '-o', out, '-'],
+-                   input=prompt, capture_output=True, text=True, timeout=timeout, cwd=TMP)
+-    return json.load(open(out))
++    with tempfile.NamedTemporaryFile('w', suffix='.json', dir=TMP, delete=False) as output_file:
++        out = output_file.name
++    completed = subprocess.run(['codex', 'exec', '-m', model, '-c', f'model_reasoning_effort={effort}', '-c', 'project_doc_max_bytes=0', '-c', 'features.code_mode_host=false', '-c', 'features.remote_plugin=false', '-c', 'features.apps=false', '--skip-git-repo-check', '--sandbox', 'read-only', '--ephemeral', '--output-schema', schema_path, '-o', out, '-'],
++                               input=prompt, capture_output=True, text=True, timeout=timeout, cwd=TMP)
++    if completed.returncode != 0:
++        raise RuntimeError(f'codex exec failed with return code {completed.returncode}: {completed.stderr[-1000:]}')
++    with open(out, encoding='utf-8') as output_file:
++        result = json.load(output_file)
++    reject_disallowed_controls(result)
++    return result
+ 
+ 
+ def write_schema(name: str, schema: dict) -> str:
+--- a/data/benchmarks_el/bench_lib.py
++++ b/data/benchmarks_el/bench_lib.py
+@@ -7,6 +7,7 @@
+ HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(HERE, '..', 'math')); sys.path.insert(0, os.path.join(HERE, '..', 'greek_if'))
+ import mathlib as M
+ lock = threading.Lock()
++MAX_WORKERS = 100
+ 
+ 
+ def sol_json(prompt: str, schema: str, model: str = 'gpt-5.6-sol', effort: str = 'medium', timeout: int = 1500, tries: int = 3) -> dict | None:
+@@ -31,14 +32,34 @@
+     print(line, flush=True)
+ 
+ 
+-def run_jobs(items: list, fn, out_path: str, key: str = 'id', workers: int = int(os.environ.get('WORKERS', '24')), stage: str = ''):
++def _deduplicate_inputs(items: list, key: str) -> tuple[list, int]:
++    """Collapse structurally identical duplicates and reject one ID bound to different input."""
++    unique, seen, collapsed = [], {}, 0
++    for item in items:
++        item_id = item[key]
++        encoded = json.dumps(item, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')
++        if item_id in seen:
++            if seen[item_id] != encoded:
++                raise ValueError(f'conflicting duplicate input {key}={item_id!r}')
++            collapsed += 1
++        else:
++            seen[item_id] = encoded; unique.append(item)
++    return unique, collapsed
++
++
++def run_jobs(items: list, fn, out_path: str, key: str = 'id', workers: int | None = None, stage: str = ''):
+     """Resumable: rows already in out_path (by key) are skipped; fn(item) returns a dict (with key) or None."""
++    workers = int(os.environ.get('WORKERS', '24')) if workers is None else int(workers)
++    if not 1 <= workers <= MAX_WORKERS:
++        raise ValueError(f'workers must be between 1 and {MAX_WORKERS}, got {workers}')
++    items, collapsed = _deduplicate_inputs(items, key)
+     have = set()
+     if os.path.exists(out_path):
+-        for l in open(out_path):
+-            try: have.add(json.loads(l)[key])
+-            except Exception: pass
+-    todo = [x for x in items if x[key] not in have]; print(f'{stage}: {len(items)} items, {len(todo)} to do, {workers} workers', flush=True)
++        with open(out_path, encoding='utf-8') as existing:
++            for l in existing:
++                try: have.add(json.loads(l)[key])
++                except Exception: pass
++    todo = [x for x in items if x[key] not in have]; print(f'{stage}: {len(items)} unique items, {collapsed} identical duplicates collapsed, {len(todo)} to do, {workers} workers', flush=True)
+     before = codex_limit()
+     def one(x):
+         r = fn(x)
+--- a/data/math/cut2/run_batches.py
++++ b/data/math/cut2/run_batches.py
+@@ -1,7 +1,7 @@
+ #!/usr/bin/env python3
+ """Run the cut-2 Sol batches (resumable, parallel; flags per data/benchmarks_el/bench_lib.py). Stages: fidelity | solutions | level5_problems | level5_solutions.
+ Usage: WORKERS=48 python3 run_batches.py <stage> [--effort medium|high]   (level5_solutions needs level5_problems done: it translates the reference solution given the Greek problem)."""
+-import sys, os, json, argparse
++import sys, os, json, argparse, hashlib
+ HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(HERE, '..', '..', 'benchmarks_el')); sys.path.insert(0, os.path.join(HERE, '..'))
+ import bench_lib as B, mathlib as M
+ PREP = os.path.join(HERE, 'prep'); OUT = os.path.join(HERE, 'out'); os.makedirs(OUT, exist_ok=True)
+@@ -12,19 +12,29 @@
+ }
+ RULES = ("Greek conventions: decimal comma (3,5), thousands with a dot (2.000), euro after the number (40 €), natural modern Greek, no transliterated English. "
+          "Mathematical notation stays LaTeX exactly as in the source. Do not add or drop any number, condition or step.")
++MODEL = 'gpt-5.6-sol'
++
++
++def provenance(x, prompt, model, effort):
++    input_bytes = json.dumps(x, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')
++    return dict(input_sha256=hashlib.sha256(input_bytes).hexdigest(),
++                prompt_sha256=hashlib.sha256(prompt.encode('utf-8')).hexdigest(),
++                model=model, effort=effort)
++
++
+ def fidelity(x, effort):
+     p = (f"You compare a Greek translation of a math problem with the English original. Report faithful=true ONLY if every number, quantity, condition, unit and the question itself are preserved "
+          f"(localised names, currency and decimal notation are allowed). List every discrepancy in English, precisely.\n\nENGLISH:\n{x['problem_en']}\n\nGREEK:\n{x['problem_el']}")
+     r = B.sol_json(p, SCH['fidelity'], effort=effort); return None if r is None else dict(id=x['id'], faithful=r['faithful'], discrepancies=r['discrepancies'])
+-def solution(x, effort):
++def solution(x, effort, model=MODEL):
+     p = (f"Write a complete worked solution in Greek for this math problem, for a Greek student: chain-of-thought style, every step written out with its equation and its intermediate result, "
+          f"in the style of a full tutoring solution (typically 100 to 250 words; never a bare answer), and end with the final answer inside \\boxed{{}} exactly in the form of the reference answer. "
+          f"Use the English reference solution as the guide to the METHOD, but write out the reasoning fully even where the reference skips steps. {RULES}\n\n"
+          f"GREEK PROBLEM:\n{x['problem_el']}\n\nREFERENCE SOLUTION (English, method guide):\n{x['solution_en']}\n\nREFERENCE ANSWER: {x['ref']}")
+-    r = B.sol_json(p, SCH['solution'], effort=effort); return None if r is None else dict(id=x['id'], solution_el=r['solution_el'], ref=x['ref'], level=x.get('level'), src=x.get('src'))
+-def problem(x, effort):
++    r = B.sol_json(p, SCH['solution'], model=model, effort=effort); return None if r is None else dict(id=x['id'], solution_el=r['solution_el'], ref=x['ref'], level=x.get('level'), src=x.get('src'), generation=provenance(x, p, model, effort))
++def problem(x, effort, model=MODEL):
+     p = (f"Translate this competition math problem into natural Greek, preserving every number, condition and the question; localise names and currency only when that does not change the mathematics; keep LaTeX as is. {RULES}\n\nENGLISH:\n{x['problem_en']}")
+-    r = B.sol_json(p, SCH['problem'], effort=effort); return None if r is None else dict(id=x['id'], problem_el=r['problem_el'], changes=r['changes'], problem_en=x['problem_en'], solution_en=x['solution_en'], subject=x['subject'], level='Level 5')
++    r = B.sol_json(p, SCH['problem'], model=model, effort=effort); return None if r is None else dict(id=x['id'], problem_el=r['problem_el'], changes=r['changes'], problem_en=x['problem_en'], solution_en=x['solution_en'], subject=x['subject'], level='Level 5', generation=provenance(x, p, model, effort))
+ def main():
+     ap = argparse.ArgumentParser(); ap.add_argument('stage', choices=['fidelity', 'solutions', 'level5_problems', 'level5_solutions']); ap.add_argument('--effort', default='medium'); a = ap.parse_args()
+     if a.stage == 'fidelity': B.run_jobs(B.load(f'{PREP}/batch_fidelity_sample.jsonl'), lambda x: fidelity(x, 'high' if a.effort == 'medium' else a.effort), f'{OUT}/fidelity_sample.jsonl', stage='cut2 fidelity')

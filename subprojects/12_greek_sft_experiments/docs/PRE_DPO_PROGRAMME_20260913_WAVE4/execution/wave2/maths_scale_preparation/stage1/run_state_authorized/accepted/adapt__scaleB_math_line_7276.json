@@ -1,0 +1,46 @@
+{
+  "job_id": "adapt__scaleB_math_line_7276",
+  "row_id": "scaleB_math_line_7276",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "3eba8fbafe15050fd300e75710c3dbe17850299dd68198361ff18d94391822c5",
+  "input_record_sha256": "1a20a7c1b80d5b3c62372886a36abf262032c8c02bba4b0dcfc747252ecee19a",
+  "payload_sha256": "be07260de7d69db4342d7db4856d38cd66d5f2a5f7072156cd83de6adea910f2",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "df15fc631057909c1cde6b1934b2abd12e48930a0953745576b6e4cc25c16204",
+  "result": {
+    "row_id": "scaleB_math_line_7276",
+    "status": "candidate",
+    "problem_text": "Να υπολογίσετε το $\\cos \\left( \\arcsin \\frac{2}{3} \\right)$.",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "Compute",
+        "target_span": "Να υπολογίσετε",
+        "reason": "Φυσική απόδοση της προστακτικής μαθηματικής οδηγίας στα ελληνικά, χωρίς αλλαγή του ζητούμενου."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "2/3",
+          "role": "όρισμα της συνάρτησης arcsin",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Η μαθηματική έκφραση $\\cos\\left(\\arcsin\\frac{2}{3}\\right)$ διατηρείται ακριβώς.",
+        "Η σύνθεση των συναρτήσεων cos και arcsin διατηρείται με την ίδια σειρά και εξάρτηση."
+      ],
+      "required_outputs": [
+        "Η υπολογισμένη τιμή του $\\cos\\left(\\arcsin\\frac{2}{3}\\right)$."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": []
+  }
+}

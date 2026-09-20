@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_1992",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The record has one Greek problem and one solution, with single-problem provenance; no pairing uncertainty is indicated.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_1984",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The record has one Greek problem and one solution, with single-problem provenance; no pairing uncertainty is indicated. The personal name is deliberately adapted without changing the mathematical premises.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_804",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The record has one Greek problem and one solution, with single-problem provenance; no pairing uncertainty is indicated. The three personal names are consistently adapted throughout the problem and solution.",
+      "verification_needed": []
+    }
+  ]
+}

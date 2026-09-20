@@ -1,0 +1,54 @@
+{
+  "job_id": "greek__pilot48_08_false",
+  "row_id": "pilot48_08_false",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "fe9c9cc8ce256ce6c9426a1a66729232fa986746339ea346cbdb792509784e6f",
+  "input_record_sha256": "4f352f7273fd231ef7a6c62858516efefb05fafdc8b09f43c2936829f84d2605",
+  "payload_sha256": "570d8ec86442bb81c8171bb0baffbdfddcb83cf9b3d3297db2af52a2de73b929",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "c7f493a96f05cbe3a14112f34a73e807e27bc75a6d48028bc6f9292e6a36cc25",
+  "result": {
+    "row_id": "pilot48_08_false",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "pilot48_08_false.u_context",
+        "role": "user",
+        "content": "Η καταγραφή αποθήκης λέει ότι παραλήφθηκαν 12 καρέκλες, δανείστηκαν 4 και 1 χάλασε.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_false.a_context",
+        "role": "assistant",
+        "content": "Ας το υπολογίσουμε.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_false.u_decision",
+        "role": "user",
+        "content": "Νομίζω ότι απομένουν 8 διαθέσιμες καρέκλες.",
+        "train": false
+      },
+      {
+        "id": "pilot48_08_false.a_target",
+        "role": "assistant",
+        "content": "Όχι, απομένουν 7 διαθέσιμες καρέκλες: 12 − 4 − 1 = 7.",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "pilot48_08_false.u_decision",
+        "before": "Νομίζω. Απομένουν 8 διαθέσιμες καρέκλες.",
+        "after": "Νομίζω ότι απομένουν 8 διαθέσιμες καρέκλες.",
+        "error": "Αφύσικη κατάτμηση της σύνταξης",
+        "reason": "Το «Νομίζω» συνδέεται συντακτικά με την επόμενη πρόταση μέσω του «ότι», διατηρώντας αμετάβλητη την αβεβαιότητα και τον ισχυρισμό του χρήστη."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

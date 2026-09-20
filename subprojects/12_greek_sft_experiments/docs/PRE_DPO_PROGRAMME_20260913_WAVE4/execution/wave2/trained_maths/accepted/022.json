@@ -1,0 +1,44 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_math_3831",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete AFTER record is identical to the actual training record and occurs once. The editor made only a natural-language improvement. Independently verified: the known digits sum to 16, and because 16+A ranges from 16 to 25, the only attainable multiple of 9 is 18, so A=2.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_635_0",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "after/greek_language",
+          "severity": "minor",
+          "quote": "Το κατάστημα της έκανε έκπτωση 15%.",
+          "explanation": "The unaccented «της» is positioned like a possessive modifier and can be read as “her shop.” For the intended indirect object (“the shop gave her a discount”), standard disambiguation is «τής». This does not affect the solvability or arithmetic.",
+          "suggested_action": "Route for Greek correction only: write «Το κατάστημα τής έκανε έκπτωση 15%.»"
+        }
+      ],
+      "provenance_note": "This is a native example with no English source and was assessed on its own terms. BEFORE, AFTER, and the actual training record are identical and occur once. The fictional premises are coherent and need no external factual support. Independently verified: 15% of 240 € is 36 €, and 240 €−36 €=204 €; the 128 trees are irrelevant.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "language_correction"
+    }
+  ]
+}

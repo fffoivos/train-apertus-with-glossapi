@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_08_fair_budget_true",
+  "row_id": "scale60_08_fair_budget_true",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "53c3ec3a68f062efe3b04a6596de2bacef98ab7d04f5c386976ae29df1c9f46e",
+  "input_record_sha256": "952ca685703a45ecaccad43c5d3d33823060a15ccf84a85057298bb278ef0f1d",
+  "payload_sha256": "6615aab8aa7df0ca54e1fb7edfd46dfefd395f74ed3bf6bdc3df8648b914e2e1",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "4372b8bd82f57538e4b2ef89c94cac17269a0f7ceb793016dbc79bdfcb519e7a",
+  "result": {
+    "row_id": "scale60_08_fair_budget_true",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_08_fair_budget_true.u_context",
+        "role": "user",
+        "content": "Ο πρόχειρος προϋπολογισμός δείχνει αρχικό ποσό 120 ευρώ, από το οποίο πληρώθηκαν 35 ευρώ για τραπέζια και άλλα 15 ευρώ για πινακίδες. Δεν υπάρχει καταγεγραμμένη δωρεά.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_true.a_context",
+        "role": "assistant",
+        "content": "Θα υπολογίσω το υπόλοιπο από τα καταγεγραμμένα ποσά, χωρίς να προσθέσω έσοδο που δεν φαίνεται.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_true.u_decision",
+        "role": "user",
+        "content": "Με βάση τα καταγεγραμμένα ποσά, το υπόλοιπο είναι 70 ευρώ.",
+        "train": false
+      },
+      {
+        "id": "scale60_08_fair_budget_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά: 120 − 35 − 15 = 70 ευρώ.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

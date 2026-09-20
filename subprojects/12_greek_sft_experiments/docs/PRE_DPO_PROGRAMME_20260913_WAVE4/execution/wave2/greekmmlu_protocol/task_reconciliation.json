@@ -1,0 +1,1109 @@
+{
+  "schema_version": "greekmmlu_all_to_official_tasks_v1",
+  "status": "passed_not_launched",
+  "dataset": {
+    "repo_id": "dascim/GreekMMLU",
+    "revision": "6a03aa06b68beb932fb75edff3a34e50b3674649",
+    "all_config_test_rows": 16632,
+    "official_dataset_configs_excluding_all": 45
+  },
+  "official_code": {
+    "repo": "mersinkonomi/GreekMMLU",
+    "commit": "cd944748e860fda3e9dc21212c2f2710615ecdc5",
+    "task_yaml_files": 45
+  },
+  "reconciliation": {
+    "observed_subject_level_strata": 61,
+    "official_task_configs": 45,
+    "configs_with_multiple_observed_strata": 12,
+    "population_count_mismatches": 0,
+    "population_sum": 16632,
+    "selected_rows": 200,
+    "selected_configs": 45,
+    "explanation": "The official suite collapses every observed level for 17 unsplit subjects into one task, retains subject+level tasks for 12 declared split subjects, and adds the maritime task. The All config therefore has 61 raw subject-level strata but maps losslessly to 45 task configs."
+  },
+  "bindings": {
+    "parquet_sha256": "b77d269150c4c6e3441cfb20d52534f9aebd2c8c33883d0df7d61b3bc06129f5",
+    "selection_sha256": "58ab651789059df8f69c19b1fc5346f3a6bc8ed7a0c08d8951b090c1feb56978",
+    "official_generator_sha256": "a53092f2caabacd682fdb7160da33d308ef2c4a56383cb33f8e846c5835b8ba0",
+    "dataset_card_sha256": "b166a19deb7d034c90e5c2b3092dadf12f630e6bdc0b8b4d24c86bcb95329a1c",
+    "official_contents_sha256": "36959fd5491b97402a3076f6b628bcb47db41c9d7b8ed8c7f758bc19a43a6e7b"
+  },
+  "aggregation_gate": "For the fixed200 diagnostic, report paired item-level micro accuracy and protocol disagreement on identical IDs. The subset is not proportionally sampled within all 45 tasks, so do not label its aggregate an official full-suite reproduction.",
+  "measurement_launched": false,
+  "tasks": [
+    {
+      "official_dataset_config": "Accounting",
+      "official_task_file": "greekmmlu_accounting.yaml",
+      "population_rows": 184,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Accounting",
+          "Professional"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Accounting",
+          "Professional"
+        ]
+      ],
+      "groups": [
+        "Other"
+      ]
+    },
+    {
+      "official_dataset_config": "Agriculture_Professional",
+      "official_task_file": "greekmmlu_agriculture_professional.yaml",
+      "population_rows": 339,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Agriculture",
+          "Professional"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Agriculture",
+          "Professional"
+        ]
+      ],
+      "groups": [
+        "STEM"
+      ]
+    },
+    {
+      "official_dataset_config": "Agriculture_University",
+      "official_task_file": "greekmmlu_agriculture_university.yaml",
+      "population_rows": 70,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Agriculture",
+          "University"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Agriculture",
+          "University"
+        ]
+      ],
+      "groups": [
+        "STEM"
+      ]
+    },
+    {
+      "official_dataset_config": "Art_Professional",
+      "official_task_file": "greekmmlu_art_professional.yaml",
+      "population_rows": 600,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Art",
+          "Professional"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Art",
+          "Professional"
+        ]
+      ],
+      "groups": [
+        "Humanities"
+      ]
+    },
+    {
+      "official_dataset_config": "Art_Secondary_School",
+      "official_task_file": "greekmmlu_art_secondary_school.yaml",
+      "population_rows": 39,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Art",
+          "Secondary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Art",
+          "Secondary School"
+        ]
+      ],
+      "groups": [
+        "Humanities"
+      ]
+    },
+    {
+      "official_dataset_config": "Art_University",
+      "official_task_file": "greekmmlu_art_university.yaml",
+      "population_rows": 12,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Art",
+          "University"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Art",
+          "University"
+        ]
+      ],
+      "groups": [
+        "Humanities"
+      ]
+    },
+    {
+      "official_dataset_config": "Biology",
+      "official_task_file": "greekmmlu_biology.yaml",
+      "population_rows": 418,
+      "selected_rows": 9,
+      "all_config_subject_level_strata": [
+        [
+          "Biology",
+          "Primary School"
+        ],
+        [
+          "Biology",
+          "Professional"
+        ],
+        [
+          "Biology",
+          "Secondary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Biology",
+          "Primary School"
+        ],
+        [
+          "Biology",
+          "Professional"
+        ],
+        [
+          "Biology",
+          "Secondary School"
+        ]
+      ],
+      "groups": [
+        "STEM"
+      ]
+    },
+    {
+      "official_dataset_config": "Chemistry",
+      "official_task_file": "greekmmlu_chemistry.yaml",
+      "population_rows": 81,
+      "selected_rows": 5,
+      "all_config_subject_level_strata": [
+        [
+          "Chemistry",
+          "Primary School"
+        ],
+        [
+          "Chemistry",
+          "University"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Chemistry",
+          "Primary School"
+        ],
+        [
+          "Chemistry",
+          "University"
+        ]
+      ],
+      "groups": [
+        "STEM"
+      ]
+    },
+    {
+      "official_dataset_config": "Civil_Engineering",
+      "official_task_file": "greekmmlu_civil_engineering.yaml",
+      "population_rows": 769,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Civil Engineering",
+          "Professional"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Civil Engineering",
+          "Professional"
+        ]
+      ],
+      "groups": [
+        "STEM"
+      ]
+    },
+    {
+      "official_dataset_config": "Clinical_Knowledge",
+      "official_task_file": "greekmmlu_clinical_knowledge.yaml",
+      "population_rows": 633,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Clinical Knowledge",
+          "Professional"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Clinical Knowledge",
+          "Professional"
+        ]
+      ],
+      "groups": [
+        "STEM"
+      ]
+    },
+    {
+      "official_dataset_config": "Computer_Networks_and_Security",
+      "official_task_file": "greekmmlu_computer_networks_and_security.yaml",
+      "population_rows": 86,
+      "selected_rows": 6,
+      "all_config_subject_level_strata": [
+        [
+          "Computer Networks & Security",
+          "University"
+        ],
+        [
+          "Computer_Networks_and_Security",
+          "Secondary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Computer Networks & Security",
+          "University"
+        ],
+        [
+          "Computer_Networks_and_Security",
+          "Secondary School"
+        ]
+      ],
+      "groups": [
+        "STEM"
+      ]
+    },
+    {
+      "official_dataset_config": "Computer_Science_Professional",
+      "official_task_file": "greekmmlu_computer_science_professional.yaml",
+      "population_rows": 254,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Computer Science",
+          "Professional"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Computer Science",
+          "Professional"
+        ]
+      ],
+      "groups": [
+        "STEM"
+      ]
+    },
+    {
+      "official_dataset_config": "Computer_Science_University",
+      "official_task_file": "greekmmlu_computer_science_university.yaml",
+      "population_rows": 104,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Computer Science",
+          "University"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Computer Science",
+          "University"
+        ]
+      ],
+      "groups": [
+        "STEM"
+      ]
+    },
+    {
+      "official_dataset_config": "Driving_Rules",
+      "official_task_file": "greekmmlu_driving_rules.yaml",
+      "population_rows": 1658,
+      "selected_rows": 11,
+      "all_config_subject_level_strata": [
+        [
+          "Driving Rules",
+          "NA"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Driving Rules",
+          "NA"
+        ]
+      ],
+      "groups": [
+        "Other"
+      ]
+    },
+    {
+      "official_dataset_config": "Economics_Professional",
+      "official_task_file": "greekmmlu_economics_professional.yaml",
+      "population_rows": 196,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Economics",
+          "Professional"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Economics",
+          "Professional"
+        ]
+      ],
+      "groups": [
+        "Social Sciences"
+      ]
+    },
+    {
+      "official_dataset_config": "Economics_University",
+      "official_task_file": "greekmmlu_economics_university.yaml",
+      "population_rows": 86,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Economics",
+          "University"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Economics",
+          "University"
+        ]
+      ],
+      "groups": [
+        "Social Sciences"
+      ]
+    },
+    {
+      "official_dataset_config": "Education_Professional",
+      "official_task_file": "greekmmlu_education_professional.yaml",
+      "population_rows": 253,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Education",
+          "Professional"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Education",
+          "Professional"
+        ]
+      ],
+      "groups": [
+        "Social Sciences"
+      ]
+    },
+    {
+      "official_dataset_config": "Education_University",
+      "official_task_file": "greekmmlu_education_university.yaml",
+      "population_rows": 41,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Education",
+          "University"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Education",
+          "University"
+        ]
+      ],
+      "groups": [
+        "Social Sciences"
+      ]
+    },
+    {
+      "official_dataset_config": "Electrical_Engineering",
+      "official_task_file": "greekmmlu_electrical_engineering.yaml",
+      "population_rows": 552,
+      "selected_rows": 9,
+      "all_config_subject_level_strata": [
+        [
+          "Electrical Engineering",
+          "Professional"
+        ],
+        [
+          "Electrical Engineering",
+          "Secondary School"
+        ],
+        [
+          "Electrical Engineering",
+          "University"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Electrical Engineering",
+          "Professional"
+        ],
+        [
+          "Electrical Engineering",
+          "Secondary School"
+        ],
+        [
+          "Electrical Engineering",
+          "University"
+        ]
+      ],
+      "groups": [
+        "STEM"
+      ]
+    },
+    {
+      "official_dataset_config": "General_Knowledge",
+      "official_task_file": "greekmmlu_general_knowledge.yaml",
+      "population_rows": 351,
+      "selected_rows": 6,
+      "all_config_subject_level_strata": [
+        [
+          "General Knowledge",
+          "Professional"
+        ],
+        [
+          "General Knowledge",
+          "Secondary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "General Knowledge",
+          "Professional"
+        ],
+        [
+          "General Knowledge",
+          "Secondary School"
+        ]
+      ],
+      "groups": [
+        "Other"
+      ]
+    },
+    {
+      "official_dataset_config": "Geography_Primary_School",
+      "official_task_file": "greekmmlu_geography_primary_school.yaml",
+      "population_rows": 360,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Geography",
+          "Primary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Geography",
+          "Primary School"
+        ]
+      ],
+      "groups": [
+        "Social Sciences"
+      ]
+    },
+    {
+      "official_dataset_config": "Geography_Secondary_School",
+      "official_task_file": "greekmmlu_geography_secondary_school.yaml",
+      "population_rows": 62,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Geography",
+          "Secondary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Geography",
+          "Secondary School"
+        ]
+      ],
+      "groups": [
+        "Social Sciences"
+      ]
+    },
+    {
+      "official_dataset_config": "Government_and_Politics_Primary_School",
+      "official_task_file": "greekmmlu_government_and_politics_primary_school.yaml",
+      "population_rows": 280,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Government and Politics",
+          "Primary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Government and Politics",
+          "Primary School"
+        ]
+      ],
+      "groups": [
+        "Social Sciences"
+      ]
+    },
+    {
+      "official_dataset_config": "Government_and_Politics_Secondary_School",
+      "official_task_file": "greekmmlu_government_and_politics_secondary_school.yaml",
+      "population_rows": 75,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Government and Politics",
+          "Secondary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Government and Politics",
+          "Secondary School"
+        ]
+      ],
+      "groups": [
+        "Social Sciences"
+      ]
+    },
+    {
+      "official_dataset_config": "Greek_History_Primary_School",
+      "official_task_file": "greekmmlu_greek_history_primary_school.yaml",
+      "population_rows": 464,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Greek History",
+          "Primary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Greek History",
+          "Primary School"
+        ]
+      ],
+      "groups": [
+        "Humanities"
+      ]
+    },
+    {
+      "official_dataset_config": "Greek_History_Professional",
+      "official_task_file": "greekmmlu_greek_history_professional.yaml",
+      "population_rows": 117,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Greek History",
+          "Professional"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Greek History",
+          "Professional"
+        ]
+      ],
+      "groups": [
+        "Humanities"
+      ]
+    },
+    {
+      "official_dataset_config": "Greek_History_Secondary_School",
+      "official_task_file": "greekmmlu_greek_history_secondary_school.yaml",
+      "population_rows": 93,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Greek History",
+          "Secondary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Greek History",
+          "Secondary School"
+        ]
+      ],
+      "groups": [
+        "Humanities"
+      ]
+    },
+    {
+      "official_dataset_config": "Greek_Literature",
+      "official_task_file": "greekmmlu_greek_literature.yaml",
+      "population_rows": 14,
+      "selected_rows": 6,
+      "all_config_subject_level_strata": [
+        [
+          "Greek Literature",
+          "Secondary School"
+        ],
+        [
+          "Greek Literature",
+          "University"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Greek Literature",
+          "Secondary School"
+        ],
+        [
+          "Greek Literature",
+          "University"
+        ]
+      ],
+      "groups": [
+        "Humanities"
+      ]
+    },
+    {
+      "official_dataset_config": "Greek_Mythology",
+      "official_task_file": "greekmmlu_greek_mythology.yaml",
+      "population_rows": 238,
+      "selected_rows": 9,
+      "all_config_subject_level_strata": [
+        [
+          "Greek Mythology",
+          "Primary School"
+        ],
+        [
+          "Greek Mythology",
+          "Secondary School"
+        ],
+        [
+          "Greek Mythology",
+          "University"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Greek Mythology",
+          "Primary School"
+        ],
+        [
+          "Greek Mythology",
+          "Secondary School"
+        ],
+        [
+          "Greek Mythology",
+          "University"
+        ]
+      ],
+      "groups": [
+        "Humanities"
+      ]
+    },
+    {
+      "official_dataset_config": "Greek_Traditions",
+      "official_task_file": "greekmmlu_greek_traditions.yaml",
+      "population_rows": 376,
+      "selected_rows": 6,
+      "all_config_subject_level_strata": [
+        [
+          "Greek Traditions",
+          "Professional"
+        ],
+        [
+          "Greek Traditions",
+          "Secondary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Greek Traditions",
+          "Professional"
+        ],
+        [
+          "Greek Traditions",
+          "Secondary School"
+        ]
+      ],
+      "groups": [
+        "Social Sciences"
+      ]
+    },
+    {
+      "official_dataset_config": "Law",
+      "official_task_file": "greekmmlu_law.yaml",
+      "population_rows": 936,
+      "selected_rows": 6,
+      "all_config_subject_level_strata": [
+        [
+          "Law",
+          "Professional"
+        ],
+        [
+          "Law",
+          "Secondary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Law",
+          "Professional"
+        ],
+        [
+          "Law",
+          "Secondary School"
+        ]
+      ],
+      "groups": [
+        "Humanities"
+      ]
+    },
+    {
+      "official_dataset_config": "Management_Professional",
+      "official_task_file": "greekmmlu_management_professional.yaml",
+      "population_rows": 641,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Management",
+          "Professional"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Management",
+          "Professional"
+        ]
+      ],
+      "groups": [
+        "Social Sciences"
+      ]
+    },
+    {
+      "official_dataset_config": "Management_University",
+      "official_task_file": "greekmmlu_management_university.yaml",
+      "population_rows": 25,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Management",
+          "University"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Management",
+          "University"
+        ]
+      ],
+      "groups": [
+        "Social Sciences"
+      ]
+    },
+    {
+      "official_dataset_config": "Maritime_Safety_and_Rescue_Operations",
+      "official_task_file": "greekmmlu_qa_maritime_safety_and_rescue_operations.yaml",
+      "population_rows": 148,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Maritime Safety and Rescue Operations",
+          "Professional"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Maritime Safety and Rescue Operations",
+          "Professional"
+        ]
+      ],
+      "groups": [
+        "Other"
+      ]
+    },
+    {
+      "official_dataset_config": "Mathematics",
+      "official_task_file": "greekmmlu_mathematics.yaml",
+      "population_rows": 1118,
+      "selected_rows": 11,
+      "all_config_subject_level_strata": [
+        [
+          "Mathematics",
+          "Primary School"
+        ],
+        [
+          "Mathematics",
+          "Secondary School"
+        ],
+        [
+          "Mathematics",
+          "University"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Mathematics",
+          "Primary School"
+        ],
+        [
+          "Mathematics",
+          "Secondary School"
+        ],
+        [
+          "Mathematics",
+          "University"
+        ]
+      ],
+      "groups": [
+        "STEM"
+      ]
+    },
+    {
+      "official_dataset_config": "Medicine_Professional",
+      "official_task_file": "greekmmlu_medicine_professional.yaml",
+      "population_rows": 462,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Medicine",
+          "Professional"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Medicine",
+          "Professional"
+        ]
+      ],
+      "groups": [
+        "STEM"
+      ]
+    },
+    {
+      "official_dataset_config": "Medicine_University",
+      "official_task_file": "greekmmlu_medicine_university.yaml",
+      "population_rows": 72,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Medicine",
+          "University"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Medicine",
+          "University"
+        ]
+      ],
+      "groups": [
+        "STEM"
+      ]
+    },
+    {
+      "official_dataset_config": "Modern_Greek_Language_Primary_School",
+      "official_task_file": "greekmmlu_modern_greek_language_primary_school.yaml",
+      "population_rows": 1478,
+      "selected_rows": 9,
+      "all_config_subject_level_strata": [
+        [
+          "Modern Greek Language",
+          "Primary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Modern Greek Language",
+          "Primary School"
+        ]
+      ],
+      "groups": [
+        "Social Sciences"
+      ]
+    },
+    {
+      "official_dataset_config": "Modern_Greek_Language_Secondary_School",
+      "official_task_file": "greekmmlu_modern_greek_language_secondary_school.yaml",
+      "population_rows": 880,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Modern Greek Language",
+          "Secondary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Modern Greek Language",
+          "Secondary School"
+        ]
+      ],
+      "groups": [
+        "Social Sciences"
+      ]
+    },
+    {
+      "official_dataset_config": "Physics_Primary_School",
+      "official_task_file": "greekmmlu_physics_primary_school.yaml",
+      "population_rows": 427,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Physics",
+          "Primary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Physics",
+          "Primary School"
+        ]
+      ],
+      "groups": [
+        "STEM"
+      ]
+    },
+    {
+      "official_dataset_config": "Physics_Professional",
+      "official_task_file": "greekmmlu_physics_professional.yaml",
+      "population_rows": 1331,
+      "selected_rows": 7,
+      "all_config_subject_level_strata": [
+        [
+          "Physics",
+          "Professional"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Physics",
+          "Professional"
+        ]
+      ],
+      "groups": [
+        "STEM"
+      ]
+    },
+    {
+      "official_dataset_config": "Physics_University",
+      "official_task_file": "greekmmlu_physics_university.yaml",
+      "population_rows": 71,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Physics",
+          "University"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Physics",
+          "University"
+        ]
+      ],
+      "groups": [
+        "STEM"
+      ]
+    },
+    {
+      "official_dataset_config": "Prehistory",
+      "official_task_file": "greekmmlu_prehistory.yaml",
+      "population_rows": 63,
+      "selected_rows": 3,
+      "all_config_subject_level_strata": [
+        [
+          "Prehistory",
+          "Primary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "Prehistory",
+          "Primary School"
+        ]
+      ],
+      "groups": [
+        "Humanities"
+      ]
+    },
+    {
+      "official_dataset_config": "World_History",
+      "official_task_file": "greekmmlu_world_history.yaml",
+      "population_rows": 20,
+      "selected_rows": 4,
+      "all_config_subject_level_strata": [
+        [
+          "World History",
+          "Primary School"
+        ],
+        [
+          "World History",
+          "Secondary School"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "World History",
+          "Primary School"
+        ],
+        [
+          "World History",
+          "Secondary School"
+        ]
+      ],
+      "groups": [
+        "Humanities"
+      ]
+    },
+    {
+      "official_dataset_config": "World_Religions",
+      "official_task_file": "greekmmlu_world_religions.yaml",
+      "population_rows": 155,
+      "selected_rows": 6,
+      "all_config_subject_level_strata": [
+        [
+          "World Religions",
+          "Secondary School"
+        ],
+        [
+          "World Religions",
+          "University"
+        ]
+      ],
+      "selected_subject_level_strata": [
+        [
+          "World Religions",
+          "Secondary School"
+        ],
+        [
+          "World Religions",
+          "University"
+        ]
+      ],
+      "groups": [
+        "Humanities"
+      ]
+    }
+  ]
+}

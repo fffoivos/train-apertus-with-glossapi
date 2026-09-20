@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "family_leakage": false,
+  "train": {
+    "families": [
+      "cf01_grocery_note",
+      "cf02_volunteer_roster",
+      "cf03_workshop_schedule",
+      "cf04_trip_packing",
+      "cf06_plant_log",
+      "cf07_bus_route",
+      "cf08_storeroom_inventory",
+      "cf10_reminder_cancel"
+    ],
+    "specifications": 32
+  },
+  "dev": {
+    "families": [
+      "cf05_cafe_order",
+      "cf09_library_hold"
+    ],
+    "specifications": 8
+  },
+  "final_confirmation": {
+    "family_count": 2,
+    "specifications": 8,
+    "family_set_sha256": "bb2c4a5904b42978f268f9126bce66922aa65b63aa331209ab132d65c25b21ab",
+    "content_disclosed": false
+  }
+}

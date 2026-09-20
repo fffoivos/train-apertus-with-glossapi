@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_01_recipe_draft_true",
+  "row_id": "scale60_01_recipe_draft_true",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "c8fa7c478dd2bb37b6e7a9c3735b794c058e88bba79df83ca8992be82e1031e9",
+  "input_record_sha256": "16804f8ba5c0c572571c2384ea64c70fce0f55031c8ff1d9bfb3516175aa2673",
+  "payload_sha256": "75690c1d5e5349af3d3d6c3b76e5b7cfe1828ce3c976238cd7e217cefc7eb71c",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "fc8e96852bbaecd1dc04056f436f71bc85ada4d4463aff340483c0b88ad38f6b",
+  "result": {
+    "row_id": "scale60_01_recipe_draft_true",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_01_recipe_draft_true.u_context",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο της συνταγής γράφει: 4 μερίδες, 1 κουταλιά λάδι, φούρνος στους 180 βαθμούς και γαρνίρισμα με μαϊντανό.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_true.a_context",
+        "role": "assistant",
+        "content": "Βλέπω το τρέχον πρόχειρο· οι παλιότερες εκδοχές δεν εμφανίζονται εδώ.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_true.u_decision",
+        "role": "user",
+        "content": "Στο τρέχον πρόχειρο είναι 4 μερίδες και ο φούρνος στους 180 βαθμούς. Πρόσθεσε ξύσμα λεμονιού στις σημειώσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_01_recipe_draft_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά, αυτά ισχύουν στο τρέχον πρόχειρο. Πρόσθεσα στις σημειώσεις «ξύσμα λεμονιού».",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

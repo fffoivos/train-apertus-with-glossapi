@@ -1,0 +1,54 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_3500",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single supplied problem record and single solution record; the Greek candidate is coherently paired with the supplied problem. The substitutions Jared→Γιάννης and dollars→euros are consistent cultural adaptations and preserve all mathematical quantities and relations.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3169",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Single supplied problem record and single solution record; the Greek candidate is coherently paired with the supplied problem. The adapted names and currency are used consistently without changing the teaching objective or arithmetic.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_14",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "issue",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "derivation",
+          "severity": "minor",
+          "quote": "30:13=2,\\qquad 30-2\\cdot13=4.",
+          "explanation": "The same notation recurs throughout the long division. Read as an ordinary equality, 30÷13=2 is false; 2 is only the integer quotient and the remainder is 4. The separately computed remainders make the intended algorithm clear and lead to the correct repetend, so this is a notation defect rather than a wrong result.",
+          "suggested_action": "Express each step as a Euclidean-division identity, for example 30=2\\cdot13+4, or state verbally that 13 fits into 30 twice with remainder 4; apply the same correction to the subsequent steps."
+        }
+      ],
+      "provenance_note": "The metadata reports two solution records, but the supplied problem text is marked stable and no alternate problem variants are provided. The selected candidate was therefore assessed against the supplied stable problem; no mathematical pairing discrepancy is evident from the available record.",
+      "verification_needed": []
+    }
+  ]
+}

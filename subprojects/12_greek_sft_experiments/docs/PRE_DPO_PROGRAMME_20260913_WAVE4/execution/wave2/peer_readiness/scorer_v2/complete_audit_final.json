@@ -1,0 +1,2899 @@
+{
+  "schema_version": "equiv500_v2_historical_audit_v1",
+  "status": "candidate_only_not_comparable_adjusted_scores",
+  "frozen_scorer": {
+    "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/benchmarks_el/math500/equiv500.py",
+    "sha256": "8a8bd7a4b9fa796b22bf991dc60f21ea6e519384f9fd6c2ade10ff11da551f8a"
+  },
+  "candidate_scorer": {
+    "path": "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/peer_readiness/scorer_v2/equiv500_v2.py",
+    "sha256": "a0d38a5580097937d361ec1d5d51674571a32128c1f73869ba50ae3523294331"
+  },
+  "problems": {
+    "path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/benchmarks_el/math500/problems_el_final.jsonl",
+    "sha256": "248f1b5edec95e0fa2fe9098ddf0264b893a915542694652dab1926d98a4ce88",
+    "rows": 500
+  },
+  "scope": {
+    "response_files": 22,
+    "rows": 11000,
+    "additional_dir": "/private/tmp/krikri_v15_scorer_audit_3390957"
+  },
+  "totals": {
+    "rows": 11000,
+    "old_pass": 3112,
+    "v2_pass": 3226,
+    "old_only": 19,
+    "v2_only": 133,
+    "empty_collapse_old_true": 20,
+    "empty_collapse_old_only": 18,
+    "final_phrase_extraction_changed": 476,
+    "final_phrase_recovered": 124,
+    "separator_locale_sensitive": 1,
+    "separator_old_only": 1
+  },
+  "files": [
+    {
+      "path": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "sha256": "f41068da44947d5299655760be8aab050402e0c6d0b7b2d2a4484e3c7b9d1d25",
+      "rows": 500,
+      "locale": "el",
+      "old_pass": 61,
+      "v2_pass": 77,
+      "old_only": 0,
+      "v2_only": 16,
+      "empty_collapse_old_true": 0,
+      "empty_collapse_old_only": 0,
+      "final_phrase_extraction_changed": 71,
+      "final_phrase_recovered": 13,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.122,
+      "v2_candidate_accuracy": 0.154
+    },
+    {
+      "path": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "sha256": "26a2d32f475f893c8de1e3d57186a77bcd5cf7008c2ad5121772a06060e9e089",
+      "rows": 500,
+      "locale": "en",
+      "old_pass": 9,
+      "v2_pass": 120,
+      "old_only": 0,
+      "v2_only": 111,
+      "empty_collapse_old_true": 0,
+      "empty_collapse_old_only": 0,
+      "final_phrase_extraction_changed": 404,
+      "final_phrase_recovered": 111,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.018,
+      "v2_candidate_accuracy": 0.24
+    },
+    {
+      "path": "results/peers_20260913/bench_gemma/math500_el.jsonl",
+      "sha256": "e93352086e780763cc74f3c33a3f64a374d84939c2dad3b07b535a11a2e60c00",
+      "rows": 500,
+      "locale": "el",
+      "old_pass": 391,
+      "v2_pass": 392,
+      "old_only": 0,
+      "v2_only": 1,
+      "empty_collapse_old_true": 0,
+      "empty_collapse_old_only": 0,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.782,
+      "v2_candidate_accuracy": 0.784
+    },
+    {
+      "path": "results/peers_20260913/bench_gemma/math500_en.jsonl",
+      "sha256": "bfc12e0fd4f1314fc1863192c440cef677199f01e15fa7d4444d8c2dfbad4df8",
+      "rows": 500,
+      "locale": "en",
+      "old_pass": 405,
+      "v2_pass": 406,
+      "old_only": 0,
+      "v2_only": 1,
+      "empty_collapse_old_true": 0,
+      "empty_collapse_old_only": 0,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.81,
+      "v2_candidate_accuracy": 0.812
+    },
+    {
+      "path": "results/peers_20260913/bench_krikri/math500_el.jsonl",
+      "sha256": "312014a68e1b4d26e1d27e4bb65a4e323ec79eadffb8238c855ef2a9e936d2f3",
+      "rows": 500,
+      "locale": "el",
+      "old_pass": 161,
+      "v2_pass": 159,
+      "old_only": 2,
+      "v2_only": 0,
+      "empty_collapse_old_true": 1,
+      "empty_collapse_old_only": 1,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 1,
+      "separator_old_only": 1,
+      "old_accuracy": 0.322,
+      "v2_candidate_accuracy": 0.318
+    },
+    {
+      "path": "results/peers_20260913/bench_krikri/math500_en.jsonl",
+      "sha256": "e5afac7a049620a54e250f5311e90262fa2d314f184b2c13e6d8f05c3a28f36f",
+      "rows": 500,
+      "locale": "en",
+      "old_pass": 156,
+      "v2_pass": 153,
+      "old_only": 3,
+      "v2_only": 0,
+      "empty_collapse_old_true": 3,
+      "empty_collapse_old_only": 3,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.312,
+      "v2_candidate_accuracy": 0.306
+    },
+    {
+      "path": "results/peers_20260913/bench_meltemi/math500_el.jsonl",
+      "sha256": "9f4671e8dd331a0e89bb3e3a2575a3fc3a258ad506f9fd21a08c777844b3888c",
+      "rows": 500,
+      "locale": "el",
+      "old_pass": 42,
+      "v2_pass": 43,
+      "old_only": 0,
+      "v2_only": 1,
+      "empty_collapse_old_true": 0,
+      "empty_collapse_old_only": 0,
+      "final_phrase_extraction_changed": 1,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.084,
+      "v2_candidate_accuracy": 0.086
+    },
+    {
+      "path": "results/peers_20260913/bench_meltemi/math500_en.jsonl",
+      "sha256": "8c1a862eb57978f32c6d72880746ad29ab170000888ac16698dbe211bfa01b9a",
+      "rows": 500,
+      "locale": "en",
+      "old_pass": 44,
+      "v2_pass": 47,
+      "old_only": 0,
+      "v2_only": 3,
+      "empty_collapse_old_true": 0,
+      "empty_collapse_old_only": 0,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.088,
+      "v2_candidate_accuracy": 0.094
+    },
+    {
+      "path": "results/peers_20260913/bench_qwen/math500_el.jsonl",
+      "sha256": "852c9dea484f0a083f606c887c4c9a4bdef85fe991da4af68195d96ce6a02c01",
+      "rows": 500,
+      "locale": "el",
+      "old_pass": 394,
+      "v2_pass": 394,
+      "old_only": 0,
+      "v2_only": 0,
+      "empty_collapse_old_true": 0,
+      "empty_collapse_old_only": 0,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.788,
+      "v2_candidate_accuracy": 0.788
+    },
+    {
+      "path": "results/peers_20260913/bench_qwen/math500_en.jsonl",
+      "sha256": "ff27b772a22a4089ebb49a72d3aff2cab62af234910cf914a4438637aebd17d0",
+      "rows": 500,
+      "locale": "en",
+      "old_pass": 408,
+      "v2_pass": 408,
+      "old_only": 0,
+      "v2_only": 0,
+      "empty_collapse_old_true": 0,
+      "empty_collapse_old_only": 0,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.816,
+      "v2_candidate_accuracy": 0.816
+    },
+    {
+      "path": "results/R3_single/bench_B/math500_el.jsonl",
+      "sha256": "771b1a887b152d571ddd30145d2fae991eceb96eaafa5248f73f16a76e0a10e0",
+      "rows": 500,
+      "locale": "el",
+      "old_pass": 38,
+      "v2_pass": 37,
+      "old_only": 1,
+      "v2_only": 0,
+      "empty_collapse_old_true": 1,
+      "empty_collapse_old_only": 1,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.076,
+      "v2_candidate_accuracy": 0.074
+    },
+    {
+      "path": "results/R3_single/bench_B/math500_en.jsonl",
+      "sha256": "9ed01c4bb697a26ed19ae400d6bad506ff8244fdbd4c76f36d1ce9bd0d4751d9",
+      "rows": 500,
+      "locale": "en",
+      "old_pass": 79,
+      "v2_pass": 76,
+      "old_only": 3,
+      "v2_only": 0,
+      "empty_collapse_old_true": 3,
+      "empty_collapse_old_only": 3,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.158,
+      "v2_candidate_accuracy": 0.152
+    },
+    {
+      "path": "results/R3_single/bench_P/math500_el.jsonl",
+      "sha256": "7b4ee3c55e4bc29315117d3c29b51b18eb956108f9e6bdca4427053551685486",
+      "rows": 500,
+      "locale": "el",
+      "old_pass": 50,
+      "v2_pass": 50,
+      "old_only": 0,
+      "v2_only": 0,
+      "empty_collapse_old_true": 0,
+      "empty_collapse_old_only": 0,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.1,
+      "v2_candidate_accuracy": 0.1
+    },
+    {
+      "path": "results/R3_single/bench_P/math500_en.jsonl",
+      "sha256": "7f736f5c43be52fc1a7bea935352d98fd8ce75d21c10dd183bcaefbc7ae32b3b",
+      "rows": 500,
+      "locale": "en",
+      "old_pass": 79,
+      "v2_pass": 77,
+      "old_only": 2,
+      "v2_only": 0,
+      "empty_collapse_old_true": 2,
+      "empty_collapse_old_only": 2,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.158,
+      "v2_candidate_accuracy": 0.154
+    },
+    {
+      "path": "results/R3_single/bench_PB/math500_el.jsonl",
+      "sha256": "28dcd7b44ce83fd9b69aacad1c147f44dc049bd29c3a96aae2de65def465a620",
+      "rows": 500,
+      "locale": "el",
+      "old_pass": 56,
+      "v2_pass": 56,
+      "old_only": 0,
+      "v2_only": 0,
+      "empty_collapse_old_true": 0,
+      "empty_collapse_old_only": 0,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.112,
+      "v2_candidate_accuracy": 0.112
+    },
+    {
+      "path": "results/R3_single/bench_PB/math500_en.jsonl",
+      "sha256": "2d49e5d3cd83299704358f1253f05e547e8f11d4e19bdc9cd7c7d7e738221cee",
+      "rows": 500,
+      "locale": "en",
+      "old_pass": 68,
+      "v2_pass": 68,
+      "old_only": 0,
+      "v2_only": 0,
+      "empty_collapse_old_true": 1,
+      "empty_collapse_old_only": 0,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.136,
+      "v2_candidate_accuracy": 0.136
+    },
+    {
+      "path": "results/R3_single/bench_R3/math500_el.jsonl",
+      "sha256": "1d9e96c053be825c978b82185bb19d3acf346718473db2e342d2cc7c1b1eff6d",
+      "rows": 500,
+      "locale": "el",
+      "old_pass": 40,
+      "v2_pass": 40,
+      "old_only": 0,
+      "v2_only": 0,
+      "empty_collapse_old_true": 0,
+      "empty_collapse_old_only": 0,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.08,
+      "v2_candidate_accuracy": 0.08
+    },
+    {
+      "path": "results/R3_single/bench_R3/math500_en.jsonl",
+      "sha256": "b77f7d5cbc15a4fb124b1ac86e2adf9f84736a1d5a6c9be3b7106ceb2a78d05b",
+      "rows": 500,
+      "locale": "en",
+      "old_pass": 90,
+      "v2_pass": 89,
+      "old_only": 1,
+      "v2_only": 0,
+      "empty_collapse_old_true": 1,
+      "empty_collapse_old_only": 1,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.18,
+      "v2_candidate_accuracy": 0.178
+    },
+    {
+      "path": "results/R3_single/bench_S1/math500_el.jsonl",
+      "sha256": "590396e5533b8d6e8bee4355512f1162f7ba967a5c568c7954043e84d3b05cde",
+      "rows": 500,
+      "locale": "el",
+      "old_pass": 64,
+      "v2_pass": 63,
+      "old_only": 1,
+      "v2_only": 0,
+      "empty_collapse_old_true": 1,
+      "empty_collapse_old_only": 1,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.128,
+      "v2_candidate_accuracy": 0.126
+    },
+    {
+      "path": "results/R3_single/bench_S1/math500_en.jsonl",
+      "sha256": "1b8066f13948e3ef269379d49199d0d82688107b72c9347d8d80d434457ade73",
+      "rows": 500,
+      "locale": "en",
+      "old_pass": 82,
+      "v2_pass": 81,
+      "old_only": 1,
+      "v2_only": 0,
+      "empty_collapse_old_true": 1,
+      "empty_collapse_old_only": 1,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.164,
+      "v2_candidate_accuracy": 0.162
+    },
+    {
+      "path": "/private/tmp/krikri_v15_scorer_audit_3390957/math500_el.jsonl",
+      "sha256": "552408f4d00982325093f28e838b1405237a4ad87c8c6eb66140e87a4a9a4bc7",
+      "rows": 500,
+      "locale": "el",
+      "old_pass": 191,
+      "v2_pass": 189,
+      "old_only": 2,
+      "v2_only": 0,
+      "empty_collapse_old_true": 2,
+      "empty_collapse_old_only": 2,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.382,
+      "v2_candidate_accuracy": 0.378
+    },
+    {
+      "path": "/private/tmp/krikri_v15_scorer_audit_3390957/math500_en.jsonl",
+      "sha256": "d0e19f71577ac4567301ca462c7a3d918376d1f75e79a43a50928ec8ff3c68be",
+      "rows": 500,
+      "locale": "en",
+      "old_pass": 204,
+      "v2_pass": 201,
+      "old_only": 3,
+      "v2_only": 0,
+      "empty_collapse_old_true": 4,
+      "empty_collapse_old_only": 3,
+      "final_phrase_extraction_changed": 0,
+      "final_phrase_recovered": 0,
+      "separator_locale_sensitive": 0,
+      "separator_old_only": 0,
+      "old_accuracy": 0.408,
+      "v2_candidate_accuracy": 0.402
+    }
+  ],
+  "changed_decisions": [
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "id": "test/algebra/2584.json",
+      "locale": "el",
+      "reference": "\\frac{14}{3}",
+      "frozen_extracted": "Η τελική απάντηση είναι: $\\frac{14}{3}$",
+      "candidate_extracted": "$\\frac{14}{3}$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "id": "test/algebra/1035.json",
+      "locale": "el",
+      "reference": "3",
+      "frozen_extracted": "Η τελική απάντηση είναι 3.",
+      "candidate_extracted": "3.",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "id": "test/algebra/2253.json",
+      "locale": "el",
+      "reference": "\\frac{3\\sqrt{3}}{4}",
+      "frozen_extracted": "The final answer is: $\\frac{3\\sqrt{3}}{4}$[{\"display_answers\": {\"answers\": [\"\\\\frac{3\\\\sqrt{3}}{4}\"]}}]",
+      "candidate_extracted": "$\\frac{3\\sqrt{3}}{4}$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "id": "test/geometry/456.json",
+      "locale": "el",
+      "reference": "3",
+      "frozen_extracted": "The final answer is: $3$[{\"display_answers\": {\"answers\": [\"3\"]}}]",
+      "candidate_extracted": "$3$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "id": "test/algebra/2157.json",
+      "locale": "el",
+      "reference": "2",
+      "frozen_extracted": "Η τελική απάντηση είναι: $2$",
+      "candidate_extracted": "$2$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "id": "test/intermediate_algebra/894.json",
+      "locale": "el",
+      "reference": "2",
+      "frozen_extracted": "The final answer is: $2$[{\"display_answers\": {\"answers\": [\"2\"]}}]",
+      "candidate_extracted": "$2$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "id": "test/algebra/478.json",
+      "locale": "el",
+      "reference": "65",
+      "frozen_extracted": "Η τελική απάντηση είναι: $65$",
+      "candidate_extracted": "$65$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "id": "test/prealgebra/1686.json",
+      "locale": "el",
+      "reference": "4",
+      "frozen_extracted": "The final answer is: $4$[{\"display_answers\": {\"answers\": [\"4\"]}}]",
+      "candidate_extracted": "$4$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "id": "test/algebra/1214.json",
+      "locale": "el",
+      "reference": "1",
+      "frozen_extracted": "Η τελική απάντηση είναι $1$.",
+      "candidate_extracted": "$1$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "id": "test/prealgebra/1555.json",
+      "locale": "el",
+      "reference": "5",
+      "frozen_extracted": "The final answer is: $5$[{\"display_answers\": {\"answers\": [\"5\"]}}]",
+      "candidate_extracted": "$5$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "id": "test/algebra/2551.json",
+      "locale": "el",
+      "reference": "10",
+      "frozen_extracted": "The final answer is: $10$[{\"display_answers\": {\"answers\": [\"10\"]}}]",
+      "candidate_extracted": "$10$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "id": "test/prealgebra/1730.json",
+      "locale": "el",
+      "reference": "6",
+      "frozen_extracted": "The final answer is: $6$[{\"display_answers\": {\"answers\": [\"6\"]}}]",
+      "candidate_extracted": "$6$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "id": "test/algebra/251.json",
+      "locale": "el",
+      "reference": "2",
+      "frozen_extracted": "The final answer is: $2$[{\"display_answers\": {\"answers\": [\"2\"]}}]",
+      "candidate_extracted": "$2$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "id": "test/prealgebra/977.json",
+      "locale": "el",
+      "reference": "23",
+      "frozen_extracted": "Η τελική απάντηση είναι: $23$",
+      "candidate_extracted": "$23$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "id": "test/counting_and_probability/190.json",
+      "locale": "el",
+      "reference": "6",
+      "frozen_extracted": "Η τελική απάντηση είναι 6.",
+      "candidate_extracted": "6.",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+      "id": "test/algebra/1814.json",
+      "locale": "el",
+      "reference": "143",
+      "frozen_extracted": "Η τελική απάντηση είναι: $143$",
+      "candidate_extracted": "$143$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/1098.json",
+      "locale": "en",
+      "reference": "6+9i",
+      "frozen_extracted": "The final answer is: $6 + 9i$[{\"display_answers\": {\"answers\": [\"6 + 9i\"]}}]",
+      "candidate_extracted": "$6 + 9i$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/number_theory/572.json",
+      "locale": "en",
+      "reference": "9",
+      "frozen_extracted": "The final answer is: $9$[{\"display_answers\": {\"answers\": [\"9\"]}}]",
+      "candidate_extracted": "$9$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1622.json",
+      "locale": "en",
+      "reference": "42",
+      "frozen_extracted": "The final answer is: $42$[{\"display_answers\": {\"answers\": [\"42\"]}}]",
+      "candidate_extracted": "$42$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/geometry/248.json",
+      "locale": "en",
+      "reference": "5",
+      "frozen_extracted": "The final answer is: $5$[{\"display_answers\": {\"answers\": [\"5\"]}}]",
+      "candidate_extracted": "$5$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/precalculus/807.json",
+      "locale": "en",
+      "reference": "\\left( 3, \\frac{\\pi}{2} \\right)",
+      "frozen_extracted": "The final answer is: $(3, \\frac{\\pi}{2})$[{\"display_answers\": {\"answers\": [\"(3, \\\\frac{\\\\pi}{2})\"]}}]",
+      "candidate_extracted": "$(3, \\frac{\\pi}{2})$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/2214.json",
+      "locale": "en",
+      "reference": "4",
+      "frozen_extracted": "The final answer is: $4$[{\"display_answers\": {\"answers\": [\"4\"]}}]",
+      "candidate_extracted": "$4$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/769.json",
+      "locale": "en",
+      "reference": "11",
+      "frozen_extracted": "The final answer is: $11$[{\"display_answers\": {\"answers\": [\"11\"]}}]",
+      "candidate_extracted": "$11$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/24.json",
+      "locale": "en",
+      "reference": "2000",
+      "frozen_extracted": "The final answer is: $2000$[{\"display_answers\": {\"answers\": [\"2000\"]}}]",
+      "candidate_extracted": "$2000$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1388.json",
+      "locale": "en",
+      "reference": "83",
+      "frozen_extracted": "The final answer is: $83$[{\"display_answers\": {\"answers\": [\"83\"]}}]",
+      "candidate_extracted": "$83$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/number_theory/627.json",
+      "locale": "en",
+      "reference": "3",
+      "frozen_extracted": "The final answer is: $3$[{\"display_answers\": {\"answers\": [\"3\"]}}]",
+      "candidate_extracted": "$3$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/counting_and_probability/666.json",
+      "locale": "en",
+      "reference": "225",
+      "frozen_extracted": "The final answer is: $225$[{\"display_answers\": {\"answers\": [\"225\"]}}]",
+      "candidate_extracted": "$225$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/930.json",
+      "locale": "en",
+      "reference": "12",
+      "frozen_extracted": "The final answer is: $12$[{\"display_answers\": {\"answers\": [\"12\"]}}]",
+      "candidate_extracted": "$12$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/951.json",
+      "locale": "en",
+      "reference": "12",
+      "frozen_extracted": "The final answer is: $12$[{\"display_answers\": {\"answers\": [\"12\"]}}]",
+      "candidate_extracted": "$12$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/305.json",
+      "locale": "en",
+      "reference": "5",
+      "frozen_extracted": "The final answer is: $5$[{\"display_answers\": {\"answers\": [\"5\"]}}]",
+      "candidate_extracted": "$5$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1840.json",
+      "locale": "en",
+      "reference": "78",
+      "frozen_extracted": "The final answer is: $78$[{\"display_answers\": {\"answers\": [\"78\"]}}]",
+      "candidate_extracted": "$78$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/geometry/178.json",
+      "locale": "en",
+      "reference": "2",
+      "frozen_extracted": "The final answer is: $2$[{\"display_answers\": {\"answers\": [\"2\"]}}]",
+      "candidate_extracted": "$2$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/192.json",
+      "locale": "en",
+      "reference": "2",
+      "frozen_extracted": "The final answer is: $2$[{\"display_answers\": {\"answers\": [\"2\"]}}]",
+      "candidate_extracted": "$2$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1233.json",
+      "locale": "en",
+      "reference": "10",
+      "frozen_extracted": "The final answer is: $10$[{\"display_answers\": {\"answers\": [\"10\"]}}]",
+      "candidate_extracted": "$10$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1558.json",
+      "locale": "en",
+      "reference": "1.25",
+      "frozen_extracted": "The final answer is: $1.25$[{\"display_answers\": {\"answers\": [\"1.25\"]}}]",
+      "candidate_extracted": "$1.25$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/intermediate_algebra/623.json",
+      "locale": "en",
+      "reference": "0",
+      "frozen_extracted": "The final answer is: $0$[{\"display_answers\": {\"answers\": [\"0\"]}}]",
+      "candidate_extracted": "$0$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/2253.json",
+      "locale": "en",
+      "reference": "\\frac{3\\sqrt{3}}{4}",
+      "frozen_extracted": "The final answer is: $\\frac{3\\sqrt{3}}{4}$[{\"display_answers\": {\"answers\": [\"\\\\frac{3\\\\sqrt{3}}{4}\"]}}]",
+      "candidate_extracted": "$\\frac{3\\sqrt{3}}{4}$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/intermediate_algebra/1849.json",
+      "locale": "en",
+      "reference": "501",
+      "frozen_extracted": "The final answer is: $501$[{\"display_answers\": {\"answers\": [\"501\"]}}]",
+      "candidate_extracted": "$501$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/geometry/456.json",
+      "locale": "en",
+      "reference": "3",
+      "frozen_extracted": "The final answer is: $3$[{\"display_answers\": {\"answers\": [\"3\"]}}]",
+      "candidate_extracted": "$3$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/2023.json",
+      "locale": "en",
+      "reference": "1",
+      "frozen_extracted": "The final answer is: $1$[{\"display_answers\": {\"answers\": [\"1\"]}}]",
+      "candidate_extracted": "$1$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/counting_and_probability/23957.json",
+      "locale": "en",
+      "reference": "210",
+      "frozen_extracted": "The final answer is: $210$[{\"display_answers\": {\"answers\": [\"210\"]}}]",
+      "candidate_extracted": "$210$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/2157.json",
+      "locale": "en",
+      "reference": "2",
+      "frozen_extracted": "The final answer is: $2$[{\"display_answers\": {\"answers\": [\"2\"]}}]",
+      "candidate_extracted": "$2$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/2251.json",
+      "locale": "en",
+      "reference": "3",
+      "frozen_extracted": "The final answer is: $3$[{\"display_answers\": {\"answers\": [\"3\"]}}]",
+      "candidate_extracted": "$3$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/2232.json",
+      "locale": "en",
+      "reference": "-3",
+      "frozen_extracted": "The final answer is: $-3$[{\"display_answers\": {\"answers\": [\"-3\"]}}]",
+      "candidate_extracted": "$-3$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/2058.json",
+      "locale": "en",
+      "reference": "13",
+      "frozen_extracted": "The final answer is: $13$[{\"display_answers\": {\"answers\": [\"13\"]}}]",
+      "candidate_extracted": "$13$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/2593.json",
+      "locale": "en",
+      "reference": "8000",
+      "frozen_extracted": "The final answer is: $8000$[{\"display_answers\": {\"answers\": [\"8000\"]}}]",
+      "candidate_extracted": "$8000$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/972.json",
+      "locale": "en",
+      "reference": "\\frac{11}{2}",
+      "frozen_extracted": "The final answer is: $\\frac{11}{2}$[{\"display_answers\": {\"answers\": [\"\\\\frac{11}{2}\"]}}]",
+      "candidate_extracted": "$\\frac{11}{2}$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/661.json",
+      "locale": "en",
+      "reference": "36",
+      "frozen_extracted": "The final answer is: $36$[{\"display_answers\": {\"answers\": [\"36\"]}}]",
+      "candidate_extracted": "$36$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/1035.json",
+      "locale": "en",
+      "reference": "3",
+      "frozen_extracted": "The final answer is: $3$[{\"display_answers\": {\"answers\": [\"3\"]}}]",
+      "candidate_extracted": "$3$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1807.json",
+      "locale": "en",
+      "reference": "120",
+      "frozen_extracted": "The final answer is: $120$[{\"display_answers\": {\"answers\": [\"120\"]}}]",
+      "candidate_extracted": "$120$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/intermediate_algebra/894.json",
+      "locale": "en",
+      "reference": "2",
+      "frozen_extracted": "The final answer is: $2$[{\"display_answers\": {\"answers\": [\"2\"]}}]",
+      "candidate_extracted": "$2$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/1255.json",
+      "locale": "en",
+      "reference": "6",
+      "frozen_extracted": "The final answer is: $6$[{\"display_answers\": {\"answers\": [\"6\"]}}]",
+      "candidate_extracted": "$6$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/number_theory/612.json",
+      "locale": "en",
+      "reference": "2",
+      "frozen_extracted": "The final answer is: $2$[{\"display_answers\": {\"answers\": [\"2\"]}}]",
+      "candidate_extracted": "$2$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/478.json",
+      "locale": "en",
+      "reference": "65",
+      "frozen_extracted": "The final answer is: $65$[{\"display_answers\": {\"answers\": [\"65\"]}}]",
+      "candidate_extracted": "$65$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/number_theory/521.json",
+      "locale": "en",
+      "reference": "18",
+      "frozen_extracted": "The final answer is: $18$[{\"display_answers\": {\"answers\": [\"18\"]}}]",
+      "candidate_extracted": "$18$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1272.json",
+      "locale": "en",
+      "reference": "\\frac{13}{15}",
+      "frozen_extracted": "The final answer is: $\\frac{13}{15}$[{\"display_answers\": {\"answers\": [\"\\\\frac{13}{15}\"]}}]",
+      "candidate_extracted": "$\\frac{13}{15}$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1655.json",
+      "locale": "en",
+      "reference": "\\dfrac{17}{50}",
+      "frozen_extracted": "The final answer is: $\\frac{17}{50}$[{\"display_answers\": {\"answers\": [\"\\\\frac{17}{50}\"]}}]",
+      "candidate_extracted": "$\\frac{17}{50}$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1686.json",
+      "locale": "en",
+      "reference": "4",
+      "frozen_extracted": "The final answer is: $4$[{\"display_answers\": {\"answers\": [\"4\"]}}]",
+      "candidate_extracted": "$4$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1356.json",
+      "locale": "en",
+      "reference": "\\frac{4}{9}",
+      "frozen_extracted": "The final answer is: $\\frac{4}{9}$[{\"display_answers\": {\"answers\": [\"\\\\frac{4}{9}\"]}}]",
+      "candidate_extracted": "$\\frac{4}{9}$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/intermediate_algebra/1410.json",
+      "locale": "en",
+      "reference": "\\frac65",
+      "frozen_extracted": "The final answer is: $\\frac{6}{5}$[{\"display_answers\": {\"answers\": [\"\\\\frac{6}{5}\"]}}]",
+      "candidate_extracted": "$\\frac{6}{5}$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1113.json",
+      "locale": "en",
+      "reference": "60",
+      "frozen_extracted": "The final answer is: $60$[{\"display_answers\": {\"answers\": [\"60\"]}}]",
+      "candidate_extracted": "$60$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/2570.json",
+      "locale": "en",
+      "reference": "2107",
+      "frozen_extracted": "The final answer is: $2107$[{\"display_answers\": {\"answers\": [\"2107\"]}}]",
+      "candidate_extracted": "$2107$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/841.json",
+      "locale": "en",
+      "reference": "350",
+      "frozen_extracted": "The final answer is: $350$[{\"display_answers\": {\"answers\": [\"350\"]}}]",
+      "candidate_extracted": "$350$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/1275.json",
+      "locale": "en",
+      "reference": "\\frac{\\sqrt{3}}{3}",
+      "frozen_extracted": "The final answer is: $\\frac{\\sqrt{3}}{3}$[{\"display_answers\": {\"answers\": [\"\\\\frac{\\\\sqrt{3}}{3}\"]}}]",
+      "candidate_extracted": "$\\frac{\\sqrt{3}}{3}$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/1214.json",
+      "locale": "en",
+      "reference": "1",
+      "frozen_extracted": "The final answer is: $1$[{\"display_answers\": {\"answers\": [\"1\"]}}]",
+      "candidate_extracted": "$1$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1907.json",
+      "locale": "en",
+      "reference": "17",
+      "frozen_extracted": "The final answer is: $17$[{\"display_answers\": {\"answers\": [\"17\"]}}]",
+      "candidate_extracted": "$17$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/2199.json",
+      "locale": "en",
+      "reference": "7",
+      "frozen_extracted": "The final answer is: $7$[{\"display_answers\": {\"answers\": [\"7\"]}}]",
+      "candidate_extracted": "$7$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/109.json",
+      "locale": "en",
+      "reference": "0",
+      "frozen_extracted": "The final answer is: $0$[{\"display_answers\": {\"answers\": [\"0\"]}}]",
+      "candidate_extracted": "$0$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/geometry/221.json",
+      "locale": "en",
+      "reference": "30",
+      "frozen_extracted": "The final answer is: $30$[{\"display_answers\": {\"answers\": [\"30\"]}}]",
+      "candidate_extracted": "$30$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/351.json",
+      "locale": "en",
+      "reference": "2",
+      "frozen_extracted": "The final answer is: $2$[{\"display_answers\": {\"answers\": [\"2\"]}}]",
+      "candidate_extracted": "$2$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/number_theory/1201.json",
+      "locale": "en",
+      "reference": "1",
+      "frozen_extracted": "The final answer is: $1$[{\"display_answers\": {\"answers\": [\"1\"]}}]",
+      "candidate_extracted": "$1$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/intermediate_algebra/1837.json",
+      "locale": "en",
+      "reference": "34",
+      "frozen_extracted": "The final answer is: $34$[{\"display_answers\": {\"answers\": [\"34\"]}}]",
+      "candidate_extracted": "$34$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/intermediate_algebra/149.json",
+      "locale": "en",
+      "reference": "22",
+      "frozen_extracted": "The final answer is: $22$[{\"display_answers\": {\"answers\": [\"22\"]}}]",
+      "candidate_extracted": "$22$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/geometry/254.json",
+      "locale": "en",
+      "reference": "3",
+      "frozen_extracted": "The final answer is: $3$[{\"display_answers\": {\"answers\": [\"3\"]}}]",
+      "candidate_extracted": "$3$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1834.json",
+      "locale": "en",
+      "reference": "\\sqrt{53}",
+      "frozen_extracted": "The final answer is: $\\sqrt{53}$[{\"display_answers\": {\"answers\": [\"\\\\sqrt{53}\"]}}]",
+      "candidate_extracted": "$\\sqrt{53}$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1458.json",
+      "locale": "en",
+      "reference": "\\frac{1}{8}",
+      "frozen_extracted": "The final answer is: $\\frac{1}{8}$[{\"display_answers\": {\"answers\": [\"\\\\frac{1}{8}\"]}}]",
+      "candidate_extracted": "$\\frac{1}{8}$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1742.json",
+      "locale": "en",
+      "reference": "\\dfrac{33}{100}",
+      "frozen_extracted": "The final answer is: $\\frac{33}{100}$[{\"display_answers\": {\"answers\": [\"\\\\frac{33}{100}\"]}}]",
+      "candidate_extracted": "$\\frac{33}{100}$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/number_theory/466.json",
+      "locale": "en",
+      "reference": "1",
+      "frozen_extracted": "The final answer is: $1$[{\"display_answers\": {\"answers\": [\"1\"]}}]",
+      "candidate_extracted": "$1$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/993.json",
+      "locale": "en",
+      "reference": "1250",
+      "frozen_extracted": "The final answer is: $1250$[{\"display_answers\": {\"answers\": [\"1250\"]}}]",
+      "candidate_extracted": "$1250$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/346.json",
+      "locale": "en",
+      "reference": "7",
+      "frozen_extracted": "The final answer is: $7$[{\"display_answers\": {\"answers\": [\"7\"]}}]",
+      "candidate_extracted": "$7$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/geometry/686.json",
+      "locale": "en",
+      "reference": "18+2\\pi",
+      "frozen_extracted": "The final answer is: $18 + 2\\pi$[{\"display_answers\": {\"answers\": [\"18 + 2\\\\pi\"]}}]",
+      "candidate_extracted": "$18 + 2\\pi$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/geometry/473.json",
+      "locale": "en",
+      "reference": "864 \\mbox{ inches}^2",
+      "frozen_extracted": "The final answer is: $864$[{\"display_answers\": {\"answers\": [\"864\"]}}]",
+      "candidate_extracted": "$864$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/geometry/226.json",
+      "locale": "en",
+      "reference": "180^\\circ",
+      "frozen_extracted": "The final answer is: $180$[{\"display_answers\": {\"answers\": [\"180\"]}}]",
+      "candidate_extracted": "$180$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/geometry/73.json",
+      "locale": "en",
+      "reference": "4",
+      "frozen_extracted": "The final answer is: $4$[{\"display_answers\": {\"answers\": [\"4\"]}}]",
+      "candidate_extracted": "$4$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/1936.json",
+      "locale": "en",
+      "reference": "-1",
+      "frozen_extracted": "The final answer is: $-1$[{\"display_answers\": {\"answers\": [\"-1\"]}}]",
+      "candidate_extracted": "$-1$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/2592.json",
+      "locale": "en",
+      "reference": "26000",
+      "frozen_extracted": "The final answer is: $26000$[{\"display_answers\": {\"answers\": [\"26000\"]}}]",
+      "candidate_extracted": "$26000$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/counting_and_probability/216.json",
+      "locale": "en",
+      "reference": "1940",
+      "frozen_extracted": "The final answer is: $1940$[{\"display_answers\": {\"answers\": [\"1940\"]}}]",
+      "candidate_extracted": "$1940$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/425.json",
+      "locale": "en",
+      "reference": "-128",
+      "frozen_extracted": "The final answer is: $-128$[{\"display_answers\": {\"answers\": [\"-128\"]}}]",
+      "candidate_extracted": "$-128$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/2735.json",
+      "locale": "en",
+      "reference": "\\frac{11+9a}{20}",
+      "frozen_extracted": "The final answer is: $\\frac{11+9a}{20}$[{\"display_answers\": {\"answers\": [\"\\\\frac{11+9a}{20}\"]}}]",
+      "candidate_extracted": "$\\frac{11+9a}{20}$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/number_theory/368.json",
+      "locale": "en",
+      "reference": "4343_6",
+      "frozen_extracted": "The final answer is: $4343_6$[{\"display_answers\": {\"answers\": [\"4343_6\"]}}]",
+      "candidate_extracted": "$4343_6$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/intermediate_algebra/446.json",
+      "locale": "en",
+      "reference": "9",
+      "frozen_extracted": "The final answer is: $9$[{\"display_answers\": {\"answers\": [\"9\"]}}]",
+      "candidate_extracted": "$9$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/1457.json",
+      "locale": "en",
+      "reference": "-120",
+      "frozen_extracted": "The final answer is: $-120$[{\"display_answers\": {\"answers\": [\"-120\"]}}]",
+      "candidate_extracted": "$-120$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/251.json",
+      "locale": "en",
+      "reference": "2",
+      "frozen_extracted": "The final answer is: $2$[{\"display_answers\": {\"answers\": [\"2\"]}}]",
+      "candidate_extracted": "$2$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/number_theory/686.json",
+      "locale": "en",
+      "reference": "4",
+      "frozen_extracted": "The final answer is: $4$[{\"display_answers\": {\"answers\": [\"4\"]}}]",
+      "candidate_extracted": "$4$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/1199.json",
+      "locale": "en",
+      "reference": "1",
+      "frozen_extracted": "The final answer is: $1$[{\"display_answers\": {\"answers\": [\"1\"]}}]",
+      "candidate_extracted": "$1$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/geometry/106.json",
+      "locale": "en",
+      "reference": "31",
+      "frozen_extracted": "The final answer is: $31$[{\"display_answers\": {\"answers\": [\"31\"]}}]",
+      "candidate_extracted": "$31$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/precalculus/1289.json",
+      "locale": "en",
+      "reference": "-41",
+      "frozen_extracted": "The final answer is: $-41$[{\"display_answers\": {\"answers\": [\"-41\"]}}]",
+      "candidate_extracted": "$-41$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1743.json",
+      "locale": "en",
+      "reference": "3",
+      "frozen_extracted": "The final answer is: $3$[{\"display_answers\": {\"answers\": [\"3\"]}}]",
+      "candidate_extracted": "$3$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/849.json",
+      "locale": "en",
+      "reference": "18",
+      "frozen_extracted": "The final answer is: $18$[{\"display_answers\": {\"answers\": [\"18\"]}}]",
+      "candidate_extracted": "$18$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/number_theory/132.json",
+      "locale": "en",
+      "reference": "0",
+      "frozen_extracted": "The final answer is: $0$[{\"display_answers\": {\"answers\": [\"0\"]}}]",
+      "candidate_extracted": "$0$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/2680.json",
+      "locale": "en",
+      "reference": "5r^5",
+      "frozen_extracted": "The final answer is: $5r^5$[{\"display_answers\": {\"answers\": [\"5r^5\"]}}]",
+      "candidate_extracted": "$5r^5$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/114.json",
+      "locale": "en",
+      "reference": "4",
+      "frozen_extracted": "The final answer is: $4$[{\"display_answers\": {\"answers\": [\"4\"]}}]",
+      "candidate_extracted": "$4$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/977.json",
+      "locale": "en",
+      "reference": "23",
+      "frozen_extracted": "The final answer is: $23$[{\"display_answers\": {\"answers\": [\"23\"]}}]",
+      "candidate_extracted": "$23$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/1960.json",
+      "locale": "en",
+      "reference": "9",
+      "frozen_extracted": "The final answer is: $9$[{\"display_answers\": {\"answers\": [\"9\"]}}]",
+      "candidate_extracted": "$9$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/number_theory/928.json",
+      "locale": "en",
+      "reference": "3",
+      "frozen_extracted": "The final answer is: $3$[{\"display_answers\": {\"answers\": [\"3\"]}}]",
+      "candidate_extracted": "$3$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1227.json",
+      "locale": "en",
+      "reference": "60",
+      "frozen_extracted": "The final answer is: $60$[{\"display_answers\": {\"answers\": [\"60\"]}}]",
+      "candidate_extracted": "$60$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/65.json",
+      "locale": "en",
+      "reference": "6",
+      "frozen_extracted": "The final answer is: $6$[{\"display_answers\": {\"answers\": [\"6\"]}}]",
+      "candidate_extracted": "$6$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/number_theory/410.json",
+      "locale": "en",
+      "reference": ".35625",
+      "frozen_extracted": "The final answer is: $0.35625$[{\"display_answers\": {\"answers\": [\"0.35625\"]}}]",
+      "candidate_extracted": "$0.35625$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1865.json",
+      "locale": "en",
+      "reference": "12",
+      "frozen_extracted": "The final answer is: $12$[{\"display_answers\": {\"answers\": [\"12\"]}}]",
+      "candidate_extracted": "$12$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/668.json",
+      "locale": "en",
+      "reference": "45",
+      "frozen_extracted": "The final answer is: $45$[{\"display_answers\": {\"answers\": [\"45\"]}}]",
+      "candidate_extracted": "$45$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/2037.json",
+      "locale": "en",
+      "reference": "550",
+      "frozen_extracted": "The final answer is: $550$[{\"display_answers\": {\"answers\": [\"550\"]}}]",
+      "candidate_extracted": "$550$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/2743.json",
+      "locale": "en",
+      "reference": "29",
+      "frozen_extracted": "The final answer is: $29$[{\"display_answers\": {\"answers\": [\"29\"]}}]",
+      "candidate_extracted": "$29$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1640.json",
+      "locale": "en",
+      "reference": "32",
+      "frozen_extracted": "The final answer is: $32$[{\"display_answers\": {\"answers\": [\"32\"]}}]",
+      "candidate_extracted": "$32$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/1796.json",
+      "locale": "en",
+      "reference": "2\\sqrt{5}",
+      "frozen_extracted": "The final answer is: $2\\sqrt{5}$[{\"display_answers\": {\"answers\": [\"2\\\\sqrt{5}\"]}}]",
+      "candidate_extracted": "$2\\sqrt{5}$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/2080.json",
+      "locale": "en",
+      "reference": "14",
+      "frozen_extracted": "The final answer is: $14$[{\"display_answers\": {\"answers\": [\"14\"]}}]",
+      "candidate_extracted": "$14$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/number_theory/342.json",
+      "locale": "en",
+      "reference": "0",
+      "frozen_extracted": "The final answer is: $0$[{\"display_answers\": {\"answers\": [\"0\"]}}]",
+      "candidate_extracted": "$0$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/1425.json",
+      "locale": "en",
+      "reference": "2",
+      "frozen_extracted": "The final answer is: $2$[{\"display_answers\": {\"answers\": [\"2\"]}}]",
+      "candidate_extracted": "$2$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/2476.json",
+      "locale": "en",
+      "reference": "10",
+      "frozen_extracted": "The final answer is: $10$[{\"display_answers\": {\"answers\": [\"10\"]}}]",
+      "candidate_extracted": "$10$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/1814.json",
+      "locale": "en",
+      "reference": "143",
+      "frozen_extracted": "The final answer is: $143$[{\"display_answers\": {\"answers\": [\"143\"]}}]",
+      "candidate_extracted": "$143$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/precalculus/323.json",
+      "locale": "en",
+      "reference": "y = 2x + 3",
+      "frozen_extracted": "The final answer is: $y = 2x + 3$[{\"display_answers\": {\"answers\": [\"y = 2x + 3\"]}}]",
+      "candidate_extracted": "$y = 2x + 3$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1114.json",
+      "locale": "en",
+      "reference": "15\\mbox{ cm}^2",
+      "frozen_extracted": "The final answer is: $15$[{\"display_answers\": {\"answers\": [\"15\"]}}]",
+      "candidate_extracted": "$15$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/435.json",
+      "locale": "en",
+      "reference": "25",
+      "frozen_extracted": "The final answer is: $25$[{\"display_answers\": {\"answers\": [\"25\"]}}]",
+      "candidate_extracted": "$25$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/algebra/224.json",
+      "locale": "en",
+      "reference": "8",
+      "frozen_extracted": "The final answer is: $8$[{\"display_answers\": {\"answers\": [\"8\"]}}]",
+      "candidate_extracted": "$8$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/number_theory/239.json",
+      "locale": "en",
+      "reference": "2",
+      "frozen_extracted": "The final answer is: $2$[{\"display_answers\": {\"answers\": [\"2\"]}}]",
+      "candidate_extracted": "$2$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/prealgebra/1252.json",
+      "locale": "en",
+      "reference": "200",
+      "frozen_extracted": "The final answer is: $200$[{\"display_answers\": {\"answers\": [\"200\"]}}]",
+      "candidate_extracted": "$200$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/intermediate_algebra/752.json",
+      "locale": "en",
+      "reference": "3",
+      "frozen_extracted": "The final answer is: $3$[{\"display_answers\": {\"answers\": [\"3\"]}}]",
+      "candidate_extracted": "$3$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_apertus/math500_en.jsonl",
+      "id": "test/precalculus/1252.json",
+      "locale": "en",
+      "reference": "1",
+      "frozen_extracted": "The final answer is: $1$[{\"display_answers\": {\"answers\": [\"1\"]}}]",
+      "candidate_extracted": "$1$",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_gemma/math500_el.jsonl",
+      "id": "test/number_theory/417.json",
+      "locale": "el",
+      "reference": "11,\\! 111,\\! 111,\\! 100",
+      "frozen_extracted": "11111111100",
+      "candidate_extracted": "11111111100",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_gemma/math500_en.jsonl",
+      "id": "test/number_theory/417.json",
+      "locale": "en",
+      "reference": "11,\\! 111,\\! 111,\\! 100",
+      "frozen_extracted": "11111111100",
+      "candidate_extracted": "11111111100",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_krikri/math500_el.jsonl",
+      "id": "test/precalculus/452.json",
+      "locale": "el",
+      "reference": "\\text{(E)}",
+      "frozen_extracted": "\\text{E}",
+      "candidate_extracted": "\\text{E}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_krikri/math500_el.jsonl",
+      "id": "test/prealgebra/993.json",
+      "locale": "el",
+      "reference": "1250",
+      "frozen_extracted": "1,250",
+      "candidate_extracted": "1,250",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": true
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_krikri/math500_en.jsonl",
+      "id": "test/algebra/1349.json",
+      "locale": "en",
+      "reference": "\\text{Evelyn}",
+      "frozen_extracted": "\\text{Angela}",
+      "candidate_extracted": "\\text{Angela}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_krikri/math500_en.jsonl",
+      "id": "test/prealgebra/105.json",
+      "locale": "en",
+      "reference": "\\text{east}",
+      "frozen_extracted": "\\text{West}",
+      "candidate_extracted": "\\text{West}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_krikri/math500_en.jsonl",
+      "id": "test/precalculus/452.json",
+      "locale": "en",
+      "reference": "\\text{(E)}",
+      "frozen_extracted": "\\text{B}",
+      "candidate_extracted": "\\text{B}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_meltemi/math500_el.jsonl",
+      "id": "test/algebra/661.json",
+      "locale": "el",
+      "reference": "36",
+      "frozen_extracted": "Η τελική απάντηση είναι 36.",
+      "candidate_extracted": "36.",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_meltemi/math500_en.jsonl",
+      "id": "test/counting_and_probability/666.json",
+      "locale": "en",
+      "reference": "225",
+      "frozen_extracted": "The final answer is 225.",
+      "candidate_extracted": "225.",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_meltemi/math500_en.jsonl",
+      "id": "test/algebra/661.json",
+      "locale": "en",
+      "reference": "36",
+      "frozen_extracted": "Final answer: 36",
+      "candidate_extracted": "36",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/peers_20260913/bench_meltemi/math500_en.jsonl",
+      "id": "test/algebra/1303.json",
+      "locale": "en",
+      "reference": "4",
+      "frozen_extracted": "Final answer: 4.",
+      "candidate_extracted": "4.",
+      "frozen_pass": false,
+      "candidate_pass": true,
+      "flags": {
+        "empty_collapse": false,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/R3_single/bench_B/math500_el.jsonl",
+      "id": "test/intermediate_algebra/754.json",
+      "locale": "el",
+      "reference": "\\text{(B)}",
+      "frozen_extracted": "\\text{Δεν υπάρχει μοναδική μεγαλύτερη λύση}",
+      "candidate_extracted": "\\text{Δεν υπάρχει μοναδική μεγαλύτερη λύση}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/R3_single/bench_B/math500_en.jsonl",
+      "id": "test/algebra/1349.json",
+      "locale": "en",
+      "reference": "\\text{Evelyn}",
+      "frozen_extracted": "\\text{Carla}",
+      "candidate_extracted": "\\text{Carla}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/R3_single/bench_B/math500_en.jsonl",
+      "id": "test/intermediate_algebra/128.json",
+      "locale": "en",
+      "reference": "\\text{even}",
+      "frozen_extracted": "$$=",
+      "candidate_extracted": "$$=",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/R3_single/bench_B/math500_en.jsonl",
+      "id": "test/intermediate_algebra/860.json",
+      "locale": "en",
+      "reference": "\\text{ellipse}",
+      "frozen_extracted": "\\text{circle}",
+      "candidate_extracted": "\\text{circle}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/R3_single/bench_P/math500_en.jsonl",
+      "id": "test/prealgebra/105.json",
+      "locale": "en",
+      "reference": "\\text{east}",
+      "frozen_extracted": "\\text{North-East}",
+      "candidate_extracted": "\\text{North-East}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/R3_single/bench_P/math500_en.jsonl",
+      "id": "test/intermediate_algebra/860.json",
+      "locale": "en",
+      "reference": "\\text{ellipse}",
+      "frozen_extracted": "\\text{rotated ellipse}",
+      "candidate_extracted": "\\text{rotated ellipse}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/R3_single/bench_R3/math500_en.jsonl",
+      "id": "test/intermediate_algebra/860.json",
+      "locale": "en",
+      "reference": "\\text{ellipse}",
+      "frozen_extracted": "\\text{circle}",
+      "candidate_extracted": "\\text{circle}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/R3_single/bench_S1/math500_el.jsonl",
+      "id": "test/prealgebra/105.json",
+      "locale": "el",
+      "reference": "\\text{east}",
+      "frozen_extracted": "\\text{βορρά}",
+      "candidate_extracted": "\\text{βορρά}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "results/R3_single/bench_S1/math500_en.jsonl",
+      "id": "test/intermediate_algebra/860.json",
+      "locale": "en",
+      "reference": "\\text{ellipse}",
+      "frozen_extracted": "\\text{Circle}",
+      "candidate_extracted": "\\text{Circle}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "/private/tmp/krikri_v15_scorer_audit_3390957/math500_el.jsonl",
+      "id": "test/intermediate_algebra/128.json",
+      "locale": "el",
+      "reference": "\\text{even}",
+      "frozen_extracted": "\\text{άρτια}",
+      "candidate_extracted": "\\text{άρτια}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": true,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "/private/tmp/krikri_v15_scorer_audit_3390957/math500_el.jsonl",
+      "id": "test/intermediate_algebra/860.json",
+      "locale": "el",
+      "reference": "\\text{ellipse}",
+      "frozen_extracted": "\\text{Κύκλος}",
+      "candidate_extracted": "\\text{Κύκλος}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "/private/tmp/krikri_v15_scorer_audit_3390957/math500_en.jsonl",
+      "id": "test/intermediate_algebra/128.json",
+      "locale": "en",
+      "reference": "\\text{even}",
+      "frozen_extracted": "\\text{odd}",
+      "candidate_extracted": "\\text{odd}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "/private/tmp/krikri_v15_scorer_audit_3390957/math500_en.jsonl",
+      "id": "test/precalculus/819.json",
+      "locale": "en",
+      "reference": "\\text{(C)}",
+      "frozen_extracted": "\\text{C) Plane}",
+      "candidate_extracted": "\\text{C) Plane}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    },
+    {
+      "file": "/private/tmp/krikri_v15_scorer_audit_3390957/math500_en.jsonl",
+      "id": "test/precalculus/452.json",
+      "locale": "en",
+      "reference": "\\text{(E)}",
+      "frozen_extracted": "\\text{D}",
+      "candidate_extracted": "\\text{D}",
+      "frozen_pass": true,
+      "candidate_pass": false,
+      "flags": {
+        "empty_collapse": true,
+        "explicit_final_phrase": false,
+        "separator_locale_sensitive": false
+      }
+    }
+  ],
+  "examples": {
+    "empty_collapse_old_only": [
+      {
+        "file": "results/peers_20260913/bench_krikri/math500_el.jsonl",
+        "id": "test/precalculus/452.json",
+        "reference": "\\text{(E)}",
+        "old_extracted": "\\text{E}",
+        "v2_extracted": "\\text{E}"
+      },
+      {
+        "file": "results/peers_20260913/bench_krikri/math500_en.jsonl",
+        "id": "test/algebra/1349.json",
+        "reference": "\\text{Evelyn}",
+        "old_extracted": "\\text{Angela}",
+        "v2_extracted": "\\text{Angela}"
+      },
+      {
+        "file": "results/peers_20260913/bench_krikri/math500_en.jsonl",
+        "id": "test/prealgebra/105.json",
+        "reference": "\\text{east}",
+        "old_extracted": "\\text{West}",
+        "v2_extracted": "\\text{West}"
+      },
+      {
+        "file": "results/peers_20260913/bench_krikri/math500_en.jsonl",
+        "id": "test/precalculus/452.json",
+        "reference": "\\text{(E)}",
+        "old_extracted": "\\text{B}",
+        "v2_extracted": "\\text{B}"
+      },
+      {
+        "file": "results/R3_single/bench_B/math500_el.jsonl",
+        "id": "test/intermediate_algebra/754.json",
+        "reference": "\\text{(B)}",
+        "old_extracted": "\\text{Δεν υπάρχει μοναδική μεγαλύτερη λύση}",
+        "v2_extracted": "\\text{Δεν υπάρχει μοναδική μεγαλύτερη λύση}"
+      },
+      {
+        "file": "results/R3_single/bench_B/math500_en.jsonl",
+        "id": "test/algebra/1349.json",
+        "reference": "\\text{Evelyn}",
+        "old_extracted": "\\text{Carla}",
+        "v2_extracted": "\\text{Carla}"
+      },
+      {
+        "file": "results/R3_single/bench_B/math500_en.jsonl",
+        "id": "test/intermediate_algebra/128.json",
+        "reference": "\\text{even}",
+        "old_extracted": "$$=",
+        "v2_extracted": "$$="
+      },
+      {
+        "file": "results/R3_single/bench_B/math500_en.jsonl",
+        "id": "test/intermediate_algebra/860.json",
+        "reference": "\\text{ellipse}",
+        "old_extracted": "\\text{circle}",
+        "v2_extracted": "\\text{circle}"
+      },
+      {
+        "file": "results/R3_single/bench_P/math500_en.jsonl",
+        "id": "test/prealgebra/105.json",
+        "reference": "\\text{east}",
+        "old_extracted": "\\text{North-East}",
+        "v2_extracted": "\\text{North-East}"
+      },
+      {
+        "file": "results/R3_single/bench_P/math500_en.jsonl",
+        "id": "test/intermediate_algebra/860.json",
+        "reference": "\\text{ellipse}",
+        "old_extracted": "\\text{rotated ellipse}",
+        "v2_extracted": "\\text{rotated ellipse}"
+      },
+      {
+        "file": "results/R3_single/bench_R3/math500_en.jsonl",
+        "id": "test/intermediate_algebra/860.json",
+        "reference": "\\text{ellipse}",
+        "old_extracted": "\\text{circle}",
+        "v2_extracted": "\\text{circle}"
+      },
+      {
+        "file": "results/R3_single/bench_S1/math500_el.jsonl",
+        "id": "test/prealgebra/105.json",
+        "reference": "\\text{east}",
+        "old_extracted": "\\text{βορρά}",
+        "v2_extracted": "\\text{βορρά}"
+      }
+    ],
+    "final_phrase_recovered": [
+      {
+        "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+        "id": "test/algebra/2584.json",
+        "reference": "\\frac{14}{3}",
+        "old_extracted": "Η τελική απάντηση είναι: $\\frac{14}{3}$",
+        "v2_extracted": "$\\frac{14}{3}$"
+      },
+      {
+        "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+        "id": "test/algebra/2253.json",
+        "reference": "\\frac{3\\sqrt{3}}{4}",
+        "old_extracted": "The final answer is: $\\frac{3\\sqrt{3}}{4}$[{\"display_answers\": {\"answers\": [\"\\\\frac{3\\\\sqrt{3}}{4}\"]}}]",
+        "v2_extracted": "$\\frac{3\\sqrt{3}}{4}$"
+      },
+      {
+        "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+        "id": "test/geometry/456.json",
+        "reference": "3",
+        "old_extracted": "The final answer is: $3$[{\"display_answers\": {\"answers\": [\"3\"]}}]",
+        "v2_extracted": "$3$"
+      },
+      {
+        "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+        "id": "test/algebra/2157.json",
+        "reference": "2",
+        "old_extracted": "Η τελική απάντηση είναι: $2$",
+        "v2_extracted": "$2$"
+      },
+      {
+        "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+        "id": "test/intermediate_algebra/894.json",
+        "reference": "2",
+        "old_extracted": "The final answer is: $2$[{\"display_answers\": {\"answers\": [\"2\"]}}]",
+        "v2_extracted": "$2$"
+      },
+      {
+        "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+        "id": "test/algebra/478.json",
+        "reference": "65",
+        "old_extracted": "Η τελική απάντηση είναι: $65$",
+        "v2_extracted": "$65$"
+      },
+      {
+        "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+        "id": "test/prealgebra/1686.json",
+        "reference": "4",
+        "old_extracted": "The final answer is: $4$[{\"display_answers\": {\"answers\": [\"4\"]}}]",
+        "v2_extracted": "$4$"
+      },
+      {
+        "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+        "id": "test/prealgebra/1555.json",
+        "reference": "5",
+        "old_extracted": "The final answer is: $5$[{\"display_answers\": {\"answers\": [\"5\"]}}]",
+        "v2_extracted": "$5$"
+      },
+      {
+        "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+        "id": "test/algebra/2551.json",
+        "reference": "10",
+        "old_extracted": "The final answer is: $10$[{\"display_answers\": {\"answers\": [\"10\"]}}]",
+        "v2_extracted": "$10$"
+      },
+      {
+        "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+        "id": "test/prealgebra/1730.json",
+        "reference": "6",
+        "old_extracted": "The final answer is: $6$[{\"display_answers\": {\"answers\": [\"6\"]}}]",
+        "v2_extracted": "$6$"
+      },
+      {
+        "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+        "id": "test/algebra/251.json",
+        "reference": "2",
+        "old_extracted": "The final answer is: $2$[{\"display_answers\": {\"answers\": [\"2\"]}}]",
+        "v2_extracted": "$2$"
+      },
+      {
+        "file": "results/peers_20260913/bench_apertus/math500_el.jsonl",
+        "id": "test/prealgebra/977.json",
+        "reference": "23",
+        "old_extracted": "Η τελική απάντηση είναι: $23$",
+        "v2_extracted": "$23$"
+      }
+    ],
+    "separator_old_only": [
+      {
+        "file": "results/peers_20260913/bench_krikri/math500_el.jsonl",
+        "id": "test/prealgebra/993.json",
+        "reference": "1250",
+        "extracted": "1,250",
+        "declared_locale": "el"
+      }
+    ]
+  },
+  "interpretation_gate": "Historical scores are preserved. Candidate scores must not be compared across models until every selected model, including Krikri v1.5, is rescored from the same frozen responses."
+}

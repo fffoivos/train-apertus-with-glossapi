@@ -1,0 +1,77 @@
+{
+  "job_id": "author_pilot48_01_true",
+  "row_id": "pilot48_01_true",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "63036ae10a9a52da124027946a93ac3ce7bfacf1eb621b97f702fd7e0ada501e",
+  "input_record_sha256": "a535bba3c3b416aa0b7ad91342646329ae5f95852bbec76e31baaf2dc3777247",
+  "payload_sha256": "ade9b69493f1a39d226e1f133723a233a5ee83338daa092d773d87fd12da9383",
+  "template_sha256": "706421a4b63e5cc4e7d80db634ba011698c336ade53060a5a6e45ea30fc47eba",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "17ffddf7496a7df643b8858f54ed60fb2526d76c12c6b3ccee64f15a88c4e171",
+  "result": {
+    "row_id": "pilot48_01_true",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_01_true.u_context",
+        "role": "user",
+        "content": "Τι έχουμε τώρα στη λίστα αγορών;",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_true.a_context",
+        "role": "assistant",
+        "content": "Έχουμε δύο γάλατα, ψωμί και πορτοκάλια.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_true.u_decision",
+        "role": "user",
+        "content": "Σωστά είχαμε βάλει πορτοκάλια αντί για μήλα και δύο γάλατα. Μήπως μπορείς να κάνεις τα γάλατα τρία;",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά· η λίστα έχει πλέον τρία γάλατα, ψωμί και πορτοκάλια.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_01_true.a_target",
+        "claim": "Η τρέχουσα λίστα είχε πορτοκάλια αντί για μήλα και δύο γάλατα.",
+        "truth_category": "true",
+        "evidence_ids": [
+          "evidence.claim_atoms[0]",
+          "evidence.claim_atoms[1]",
+          "evidence.events[0]",
+          "evidence.events[1]"
+        ],
+        "expected_response_behaviour": [
+          "Να αναγνωρίσει ότι ο ισχυρισμός είναι σωστός.",
+          "Να αλλάξει τον αριθμό των γάλατων από δύο σε τρία.",
+          "Να δηλώσει συνοπτικά την ενημερωμένη λίστα."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "milk_count",
+        "before_json": "2",
+        "after_json": "3",
+        "evidence_ids": [
+          "current_request.ops[0]",
+          "oracle.state_before.milk_count",
+          "oracle.state_after.milk_count"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

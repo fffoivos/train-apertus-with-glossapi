@@ -1,0 +1,80 @@
+{
+  "job_id": "adapt__fresh_math5_line_6930",
+  "row_id": "fresh_math5_line_6930",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "c7b4be269411e0815952815be201fb15e093e70dcea52bc000870f526ff96ff5",
+  "input_record_sha256": "cf76f7ad4979df0d1d69a191f8659aac8f81ccd7498c9c033bdee498616a6e3f",
+  "payload_sha256": "0e65bd12dfda31f87cf3bfeba7c8469cdad38ba9f5d90539e42e0e53ac6114d5",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "9e70bc44b477916c33af9171e98655c5ff9ada488b4d453204932fcb6ea8f5b8",
+  "result": {
+    "row_id": "fresh_math5_line_6930",
+    "status": "candidate",
+    "problem_text": "Η εξίσωση $\\sin^2 x + \\sin^2 2x + \\sin^2 3x + \\sin^2 4x = 2$ μπορεί να αναχθεί στην ισοδύναμη εξίσωση\n\\[\\cos ax \\cos bx \\cos cx = 0,\\]\nγια κάποιους θετικούς ακεραίους $a$, $b$ και $c$. Να βρεθεί το $a+b+c$.",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "The equation ... can be reduced to the equivalent equation",
+        "target_span": "Η εξίσωση ... μπορεί να αναχθεί στην ισοδύναμη εξίσωση",
+        "reason": "Πιστή απόδοση της μαθηματικής διατύπωσης σε φυσικά ελληνικά, χωρίς αλλαγή της ισοδυναμίας."
+      },
+      {
+        "source_span": "for some positive integers $a,$ $b,$ and $c.$",
+        "target_span": "για κάποιους θετικούς ακεραίους $a$, $b$ και $c$.",
+        "reason": "Ακριβής μετάφραση του υπαρξιακού προσδιορισμού και του πεδίου των μεταβλητών."
+      },
+      {
+        "source_span": "Find $a + b + c.$",
+        "target_span": "Να βρεθεί το $a+b+c$.",
+        "reason": "Διατήρηση του ζητούμενου αποτελέσματος σε καθιερωμένη ελληνική μαθηματική διατύπωση."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "2",
+          "role": "δεξί μέλος της αρχικής εξίσωσης",
+          "unit": null
+        },
+        {
+          "value": "1, 2, 3, 4",
+          "role": "συντελεστές του $x$ στα ορίσματα των τεσσάρων ημιτόνων",
+          "unit": null
+        },
+        {
+          "value": "2",
+          "role": "εκθέτης κάθε όρου ημιτόνου",
+          "unit": null
+        },
+        {
+          "value": "0",
+          "role": "δεξί μέλος της ισοδύναμης εξίσωσης γινομένου",
+          "unit": null
+        },
+        {
+          "value": "a, b, c",
+          "role": "θετικοί ακέραιοι συντελεστές του $x$ στα ορίσματα των συνημιτόνων",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "$\\sin^2 x + \\sin^2 2x + \\sin^2 3x + \\sin^2 4x = 2$",
+        "Η παραπάνω εξίσωση είναι ισοδύναμη με την $\\cos ax\\cos bx\\cos cx=0$.",
+        "$a,b,c\\in\\mathbb{Z}_{>0}$."
+      ],
+      "required_outputs": [
+        "Η τιμή του $a+b+c$."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": [
+      "Να επαληθευτεί ότι η ελληνική διατύπωση διατηρεί την ισοδυναμία των δύο εξισώσεων και τον περιορισμό ότι τα $a$, $b$, $c$ είναι θετικοί ακέραιοι.",
+      "Να επαληθευτεί ανεξάρτητα η δηλωμένη τριγωνομετρική αναγωγή, χωρίς να προστεθεί λύση στο κείμενο του προβλήματος."
+    ]
+  }
+}

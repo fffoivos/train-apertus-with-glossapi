@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "row_id",
+    "status",
+    "problem_text",
+    "prompt_match",
+    "changes",
+    "mathematical_invariants",
+    "source_issues",
+    "remaining_foreign_context",
+    "checks_needed"
+  ],
+  "properties": {
+    "row_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "candidate",
+        "blocked"
+      ],
+      "type": "string"
+    },
+    "problem_text": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "prompt_match": {
+      "enum": [
+        "identical",
+        "analogous",
+        "regenerated"
+      ],
+      "type": "string"
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source_span": {
+            "type": "string"
+          },
+          "target_span": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_span",
+          "target_span",
+          "reason"
+        ]
+      }
+    },
+    "mathematical_invariants": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "quantities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "type": "string"
+              },
+              "role": {
+                "type": "string"
+              },
+              "unit": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "value",
+              "role",
+              "unit"
+            ]
+          }
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "required_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "quantities",
+        "conditions",
+        "required_outputs"
+      ]
+    },
+    "source_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "remaining_foreign_context": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "checks_needed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

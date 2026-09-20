@@ -1,0 +1,72 @@
+{
+  "date": "2026-09-13",
+  "status": "review_complete_not_applied",
+  "scope": {
+    "fresh_rows": [
+      "1334",
+      "1379",
+      "3775",
+      "4646",
+      "2676",
+      "3093",
+      "3125",
+      "5977"
+    ],
+    "root_source_repairs": [
+      "1950",
+      "6930"
+    ]
+  },
+  "counts": {
+    "fresh_rows_reviewed": 8,
+    "accepted_as_generated": 5,
+    "accepted_with_declared_source_typo_normalization": 1,
+    "adaptation_repairs_with_solution_accepted": 2,
+    "held": 0,
+    "root_source_repairs_accepted": 2,
+    "root_source_repairs_rejected": 0
+  },
+  "reviewed_inputs": {
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/inputs.jsonl": "a138404a165fba063c2db0d27a4e8da8758ba57c11ecff63ebfe2ee49c261987",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/review/fresh8_root/source_repairs.jsonl": "3c598d29cbb7b36cda945498eb5f97fffa8ae382c263f878583115fce411ea01",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_1334.json": "69364220f9400b9091b1d939444b08b6c7b70de95c1115e4e914316022aa2304",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_1334.json": "a354816378a811689379d02cd81b33db7c123f75053f815c84688237e2d33298",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_1334.json": "7710beade51501e57ce44bd40f17cc564938459fb8de150130b12d9c74f2fcbf",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_1379.json": "f760aaad7fea36849f26317b58b42be214cda42cecdd9f034930dc6548b72103",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_1379.json": "441f15b4c6299bfe4d3f1222607cceb699282673b9d5bc96ef015de2e4dfdd24",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_xhigh__fresh_math5_line_1379.json": "ac92f61f81cbbc42c986d9f825e64db5108acec11f430d5e1beff61743f4401e",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_1379.json": "fef5a1ea381c79dc54baada0a2aab6574fbe0d56f0c5756601e9f0c446a5c2eb",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_3775.json": "4fc709beaf2c7ecfa59bc2a6d29497dce50fbe66c11df278ec93636360ec3d49",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_3775.json": "4910c08ed01d9fb89c94772fc11e11dfdf092f26b373f7122fbc4448ca372875",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_xhigh__fresh_math5_line_3775.json": "64ff2c1e38382de228797baf69bca9cc2e4a9e552b968a93226c3422f9437d77",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_3775.json": "41d967e6ce36738f92c34bd2b40388f46204cffec11e285815fa32b087907f02",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_4646.json": "fe6b2c5064316ec6f3cd33a6c94b0f6c70041de0a84e14033aefcfe4256f1af5",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_4646.json": "154f3d4d701aa1b0e7ee51ddd9464245bf19ce4cc9328649a0ff7b96b63dbe3b",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_xhigh__fresh_math5_line_4646.json": "0e9f4cf3526c608a9c1fa908477bb8f189c3537d9496afe3f6c90cf5d0714fb0",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_4646.json": "ce091c58d43f6c1be8d6138fd2375477d0a7003b91ba2024a1ab2fa57c4ceb25",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_2676.json": "0e136b2ad734fee2128674d6f720a19c3202b9d758f0a74dea76d1bbd53053d1",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_2676.json": "7be8f35227b279abb9531ce2de37f1d72ca148c358a31699932917bfb43cac2d",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_2676.json": "30c67762bf2a25e8af621e79aedac8e9373e1347af334598a21a9fdc6b80eb81",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_3093.json": "bb26d1a868ba0b13cdbaa9ded2452b7b1721fb674a1d786d87f925683e9228e4",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_3093.json": "e81b5fdc95b332a66a0b8783fe9e933528f55f908f3d107cfb1251bf85723cf2",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_3093.json": "c277797d8ef739786d83fcf2f3d0a4f3044ef4669ddbcbe0e2f12f11278b3eb9",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_3125.json": "5619bf663dbc98949b985342e0930ff518d531923124827a31f6d2f360debfca",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_3125.json": "5ad8913c3277497c9b1b1fddc17e348ee9c50516e9fa820d5270852422df4424",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_3125.json": "d1d38b92c7c0912ce2a2ca1833191ffbf591d0a0139ba21754742fcf195018d7",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/adapt__fresh_math5_line_5977.json": "2534a2e275b28103be2995c278c186fe32b86d712147ef5a3248ccdd6cfe4d3f",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/solve_high__fresh_math5_line_5977.json": "af54141a98d1136f983b8882c051a9b69a8419e396b1f6814f2eadbb8fd6376b",
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/maths_generation_pilot/run_state/accepted/verify__fresh_math5_line_5977.json": "3b97d1b01d2fa865c67c37059bb763ca945f5df89f90232203fd95957625a453"
+  },
+  "outputs": {
+    "adjudication.jsonl": "b7fbf9c38870d5584f02617bd458727c8d641076b4f8c89c80b5a348bd3a374b",
+    "source_repair_review.jsonl": "5d0be62827ff39f65af68913eb7993cd03d71279721bb4dc07de3ad893ecae3b",
+    "REPORT.md": "2e87d0e9b2aedc6e5b9606fae1a4e4cc5ba23fdb54800b970e2b0ae6f898f677",
+    "independent_checks.py": "908bfe8cde7de5fbaf7185238271a8b5e48af904fe55b49abe040442a873ff88",
+    "independent_checks.txt": "1bef3db1f7b7b8333310bf57b17afb43624e2a0e180e61b8841ac4b3b2664a97",
+    "source_repair_checks.py": "9ebe66fa9c340d9eeae332134d8623474526c7082b5734d313eae52b9fe2a540",
+    "source_repair_checks.txt": "36702b75884ae5bc1e072703fee03fea7a160bc8cfae1a24d1b4239f0d9ac3ec",
+    "build_adjudication.py": "8bb81fe0067542cc5927267f191b3477589a4a0fc981e25055db4f24013841ae",
+    "build_source_repair_review.py": "cb52b1c4b153305449d1c745b9e456a437f83e54724fec6b890be8eee9879a8e",
+    "build_manifest.py": "611d61d2ea344c02be0905db833bcd3e453fe7014ebb054493aa1f96901087f1"
+  }
+}

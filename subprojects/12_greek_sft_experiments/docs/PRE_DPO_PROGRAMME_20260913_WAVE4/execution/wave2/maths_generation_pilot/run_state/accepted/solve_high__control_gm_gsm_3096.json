@@ -1,0 +1,30 @@
+{
+  "job_id": "solve_high__control_gm_gsm_3096",
+  "row_id": "control_gm_gsm_3096",
+  "stage": "solution_high",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "33462726f6f8bea82ecd6d4b48e9fe34003b00bb88af5b7c85555c94a96e486f",
+  "input_record_sha256": "ec529360053848cbaf260e93a3a9f42fb7cfa3a397ad89fd55edcd4fb307117c",
+  "payload_sha256": "7ead82c87cf5fc9fe02e0ae93271fc2be179cafa29ec2dcc8e7ff79de7e27bc8",
+  "template_sha256": "ea1afd16c4910e9930760e3f22b232e0d14451f207ea4290ea79cc2d231e6a45",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "dca224269b5fbe2cc864c0d9241edb0f41f05446260aedd8c5311489f3b13e53",
+  "result": {
+    "row_id": "control_gm_gsm_3096",
+    "status": "candidate",
+    "solution_text": "Μετατρέπουμε τα 2 λεπτά σε δευτερόλεπτα:\n\\[\n2\\cdot 60=120\\text{ δευτερόλεπτα}.\n\\]\nΑφού ο Γιάννης φτερνίζεται μία φορά κάθε 3 δευτερόλεπτα, ο συνολικός αριθμός των φτερνισμάτων είναι:\n\\[\n120\\div 3=40.\n\\]\n\nΑπάντηση: Ο Γιάννης φτερνίζεται συνολικά 40 φορές.",
+    "final_answers": [
+      {
+        "part": "Συνολικός αριθμός φτερνισμάτων",
+        "expression": "40",
+        "unit": "φορές",
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

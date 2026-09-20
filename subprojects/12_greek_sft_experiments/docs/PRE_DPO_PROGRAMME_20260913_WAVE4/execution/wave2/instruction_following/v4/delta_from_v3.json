@@ -1,0 +1,26 @@
+[
+  {
+    "row_id": "mixa_2026_05543",
+    "changes": [
+      "Aligned the active constraint metadata with the surfaced lexical-identity protocol; the response text is unchanged."
+    ],
+    "old_candidate_sha256": "b2d5cb5a1568a011718aef31a93b3c14ecbdbc128ae31ca0aaa9a2c7b03cbfc8",
+    "new_candidate_sha256": "03ef67ad1ac8ac274fc8398700b90b15403d3ca310c20f806adf4163f4a327fd"
+  },
+  {
+    "row_id": "mixa_2026_06199",
+    "changes": [
+      "Kept the cancellation-or-relocation recommendation and two highlights, verified both named official sources, and separated heat-exhaustion actions from suspected-heatstroke emergency escalation."
+    ],
+    "old_candidate_sha256": "99fadb300344751015f0e43cf3304015a3949d6ea5f1209954726d6ed66a378f",
+    "new_candidate_sha256": "85dcd65e992454e2fffbd316c99792cb3fce9b79d2ababcbe17fd95575fbe7ff"
+  },
+  {
+    "row_id": "mixa_2026_11688",
+    "changes": [
+      "Added one explicit plural reader address to the official version and one singular reader address to the friendly version; preserved the opinion content and ψ-bearing vocabulary."
+    ],
+    "old_candidate_sha256": "b43f628aac8466ad3b1ed20719a8ae26ddcc85fc8f78acf56a2319731b7c7e7c",
+    "new_candidate_sha256": "e956686624f2067cb7f3b2e1b46cfe7d5094c0549044d7d95d10f1c50f29cdda"
+  }
+]

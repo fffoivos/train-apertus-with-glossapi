@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_1285",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The record has a single problem and solution pairing. The grade-label adaptation preserves the original grouping and teaching objective.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_36",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Although two solution records exist, the problem text is marked stable and no competing problem variants are supplied. The selected solution correctly verifies the Euclidean-division conditions for x=2.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_3594",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The record has a single problem and solution pairing. Changing Jake to Γιάννης and dollars to euros is a coherent permitted cultural adaptation; the numerical structure is preserved.",
+      "verification_needed": []
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "created_at": "2026-09-13T14:05:40.993001+00:00",
+  "status": "root_reviewed_primary_queue_ready",
+  "manifest_sha256": "70e5bb80d52e2330474a29376c534928ab76fbbca1e4dda8209fee339d62c4ff",
+  "queue_sha256": "813e342fd7068d212ec695ea3e60e0c70a1d805f5a6dd42e977a7514b7f6ded9",
+  "runner_sha256": "c13862fd38c50facc721d385c9fcc3ea99a052719a52bf730d40490aa6b85005",
+  "review": "Root read all14 source problems, adaptation and both blind solution prompts; verified every bound artifact hash. Four new replacement IDs are absent from all133 original split identities. Solution payloads exclude references.",
+  "primary_jobs": 42,
+  "max_workers": 8,
+  "call_cap_this_dispatch": 50,
+  "programme_absolute_cap": 72,
+  "retry_cap": 8,
+  "automatic_xhigh": false,
+  "no_current_other_root_sol_queue": true,
+  "weekly_remaining_percent_observed": 44,
+  "source_rights_note": "Input licence strings are historical project metadata, not a cleared rights claim; publication remains subject to MATH_SOURCE_EVIDENCE.md and source-specific review."
+}

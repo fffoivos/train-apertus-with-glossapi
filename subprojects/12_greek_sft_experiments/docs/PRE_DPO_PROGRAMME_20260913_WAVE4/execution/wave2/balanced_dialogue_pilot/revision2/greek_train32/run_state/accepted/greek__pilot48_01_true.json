@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__pilot48_01_true",
+  "row_id": "pilot48_01_true",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "2e337264b1d24debafea543d482804f8de9028bbc442deef4018e1caee6d745e",
+  "input_record_sha256": "c23a86985a90c301535c4d0610ada7dd134facd846b178b1196cbd9e8bb11dd2",
+  "payload_sha256": "ab4273dc2c51149763a498dd2f8d7785c3b05c1b4b9e940845ac7eb4320247c0",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "b672a943699e7447f83d6f718b7eb29872be3fb1cfa3b01c4889159668a7a1ce",
+  "result": {
+    "row_id": "pilot48_01_true",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "pilot48_01_true.u_context",
+        "role": "user",
+        "content": "Η αρχική λίστα είχε ένα γάλα, ψωμί και μήλα. Έπειτα τα γάλατα έγιναν δύο και τα μήλα αντικαταστάθηκαν από πορτοκάλια.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_true.a_context",
+        "role": "assistant",
+        "content": "Έχουμε δύο γάλατα, ψωμί και πορτοκάλια.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_true.u_decision",
+        "role": "user",
+        "content": "Σε παρακαλώ. Σωστά είχαμε βάλει πορτοκάλια αντί για μήλα και δύο γάλατα. Κάνε τα γάλατα τρία.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_true.a_target",
+        "role": "assistant",
+        "content": "Σωστά· η λίστα έχει πλέον τρία γάλατα, ψωμί και πορτοκάλια.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

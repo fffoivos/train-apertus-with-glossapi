@@ -1,0 +1,68 @@
+{
+  "job_id": "author_pilot48_01_unresolved",
+  "row_id": "pilot48_01_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "034c9d099ae600c78e16d7a31b6be6996ec2dd2b8816326eecfd63773b3ad204",
+  "input_record_sha256": "f05f6fbc1b7330aa93a2b6ff69ab0d64690b45d6f1ef12d6658a6e3165f532f8",
+  "payload_sha256": "090daad133ffb006a4ffeb74922c0b01c8a9dfeea2c1d9441c6754d5110adb53",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "ee6c54d2539f2690971209979808f06660454dcf6c09d5eb69f303f711168fb7",
+  "result": {
+    "row_id": "pilot48_01_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_01_unresolved.u_context",
+        "role": "user",
+        "content": "Στην τρέχουσα λίστα υπάρχουν δύο γάλατα, ψωμί και πορτοκάλια. Δεν είναι διαθέσιμες οι παλιότερες εκδόσεις της.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_unresolved.u_decision",
+        "role": "user",
+        "content": "Άντε πια. Βάλε πάλι το προηγούμενο φρούτο.",
+        "train": false
+      },
+      {
+        "id": "pilot48_01_unresolved.a_target",
+        "role": "assistant",
+        "content": "Δεν μπορώ να προσδιορίσω ποιο ήταν το προηγούμενο φρούτο, αφού οι παλιότερες εκδόσεις δεν είναι διαθέσιμες. Ποιο φρούτο θέλεις να βάλω;",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_01_unresolved.u_decision",
+        "claim": "Η ταυτότητα του «προηγούμενου φρούτου» μπορεί να προσδιοριστεί από το διαθέσιμο ιστορικό.",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "pilot48_01_unresolved.u_context",
+          "pilot48_01_unresolved.u_decision"
+        ],
+        "expected_response_behaviour": [
+          "Να δηλώσει ότι το προηγούμενο φρούτο δεν μπορεί να προσδιοριστεί από τις διαθέσιμες εκδόσεις.",
+          "Να ζητήσει μόνο το όνομα του φρούτου που πρέπει να μπει.",
+          "Να αφήσει αμετάβλητη τη λίστα μέχρι να δοθεί η διευκρίνιση."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "λίστα αγορών",
+        "before_json": "{\"items\":[\"γάλα\",\"ψωμί\"],\"milk_count\":2,\"fruit\":\"πορτοκάλια\"}",
+        "after_json": "{\"items\":[\"γάλα\",\"ψωμί\"],\"milk_count\":2,\"fruit\":\"πορτοκάλια\"}",
+        "evidence_ids": [
+          "pilot48_01_unresolved.u_context",
+          "pilot48_01_unresolved.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

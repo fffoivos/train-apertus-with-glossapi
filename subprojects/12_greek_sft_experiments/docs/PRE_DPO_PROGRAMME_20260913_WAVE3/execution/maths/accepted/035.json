@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_877",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το ελληνικό πρόβλημα αντιστοιχεί στο σταθερό κείμενο του αγγλικού προβλήματος και δεν παρέχονται εναλλακτικές εκδοχές προβλήματος. Υπάρχουν δύο εγγραφές λύσης, αλλά η επιλεγμένη λύση είναι μαθηματικά συμβατή με το εμφανιζόμενο πρόβλημα.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_2068",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική εγγραφή προβλήματος και λύσης. Η προσαρμογή του ονόματος και του νομίσματος είναι συνεπής και δεν μεταβάλλει την αριθμητική δομή.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_4152",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Μοναδική εγγραφή προβλήματος και λύσης. Η προσαρμογή του ονόματος, του νομίσματος και της ελληνικής γραφής των χιλιάδων είναι συνεπής με το αρχικό πρόβλημα.",
+      "verification_needed": []
+    }
+  ]
+}

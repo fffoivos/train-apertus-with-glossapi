@@ -1,0 +1,49 @@
+{
+  "primary_authoring_calls": 47,
+  "quarantined_without_call": 1,
+  "probe_calls": 4,
+  "probe_is_subset_of_primary": true,
+  "retry_calls_cap": 12,
+  "retry_split_caps": {
+    "train": 4,
+    "dev": 4,
+    "final_confirmation": 4
+  },
+  "semantic_repair_calls_cap": 12,
+  "greek_correction_calls_cap": 47,
+  "absolute_call_cap": 118,
+  "max_attempts_per_primary_job": 2,
+  "max_workers": 8,
+  "split_runtime_caps": {
+    "train": 76,
+    "dev": 22,
+    "final_confirmation": 20
+  },
+  "token_planning_estimate": {
+    "primary": {
+      "calls": 47,
+      "input_tokens_per_call": 2500,
+      "output_tokens_per_call": 1000
+    },
+    "retry": {
+      "calls": 12,
+      "input_tokens_per_call": 2500,
+      "output_tokens_per_call": 1000
+    },
+    "semantic_repair": {
+      "calls": 12,
+      "input_tokens_per_call": 4000,
+      "output_tokens_per_call": 1500
+    },
+    "greek_correction": {
+      "calls": 47,
+      "input_tokens_per_call": 3500,
+      "output_tokens_per_call": 1200
+    },
+    "estimated_total_input_tokens": 360000,
+    "estimated_total_output_tokens": 133400,
+    "estimated_total_tokens": 493400,
+    "pricing_formula": "USD = 0.36 * current_input_USD_per_million + 0.1334 * current_output_USD_per_million",
+    "note": "Token counts are planning estimates, not measured usage. No dollar figure is asserted without the applicable contracted runtime rates."
+  }
+}

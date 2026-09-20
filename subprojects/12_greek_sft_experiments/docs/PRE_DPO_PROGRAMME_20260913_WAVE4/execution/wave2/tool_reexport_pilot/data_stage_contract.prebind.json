@@ -1,0 +1,63 @@
+{
+  "schema_version": "apertus_data_stage_v1",
+  "stage_id": "dolci-tool200-lossless",
+  "execution_target": {
+    "kind": "clariden",
+    "name": "clariden"
+  },
+  "code_root": "/iopsstor/scratch/cscs/fffoivos/orchestration/apertus-cscs-efficiency/01f4b7e21f39f346-dolci-tool200",
+  "run_root": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/run",
+  "live_cluster_receipt": {
+    "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/live_cluster_receipt.json",
+    "bytes": 0,
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "resource_profiles": {
+    "cpu-debug": {
+      "resource_class": "debug",
+      "account": "a0140",
+      "partition": "debug",
+      "nodes": 1,
+      "time_limit_seconds": 1800,
+      "max_array_parallel": 1,
+      "cpus_per_task": 8,
+      "memory_mb": 64000,
+      "gpus_per_node": 0
+    }
+  },
+  "tasks": [
+    {
+      "id": "export-validate-tool200",
+      "stage": "validate",
+      "resource_profile_id": "cpu-debug",
+      "argv": [
+        "uenv",
+        "run",
+        "--view=default",
+        "pytorch/v2.9.1:v2",
+        "--",
+        "/iopsstor/scratch/cscs/fffoivos/venvs/sft5/bin/python",
+        "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/code/pilot_run.py",
+        "--contract",
+        "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_tool_reexport_pilot/code/pilot_contract.json",
+        "--expected-contract-sha256",
+        "d1ed83ff7049ccfa49a7e12d1492f20a2ef512330abc542b2bc5bc80a29b09e7"
+      ],
+      "depends_on": [],
+      "max_attempts": 1,
+      "expected_receipt": {
+        "path": "receipts/tool200.json",
+        "schema_version": "dolci_tool200_pilot_receipt_v1",
+        "accepted_status": [
+          "passed"
+        ]
+      }
+    }
+  ],
+  "approval": {
+    "approved_by": "pending-root-review",
+    "approved_at": "2026-09-13T14:11:10.182667+00:00",
+    "scope_sha256": "",
+    "allow_preparation_submission": false
+  }
+}

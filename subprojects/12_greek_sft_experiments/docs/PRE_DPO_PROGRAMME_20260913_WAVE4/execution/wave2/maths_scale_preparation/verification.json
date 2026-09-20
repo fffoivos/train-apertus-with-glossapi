@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "checks": {
+    "math_rows_7500": true,
+    "all_cut1_math_originals_mapped": true,
+    "actual_greek_arm_counts_match_receipt": true,
+    "english_import_exhaustive": true,
+    "english_import_is_gsm8k_only": true,
+    "split_family_ids_unique": true,
+    "split_excludes_current_gradient_train": true,
+    "split_excludes_current_development": true,
+    "split_excludes_pilot": true,
+    "split_passes_math500_gate": true,
+    "final_manifest_contains_no_source_text": true,
+    "train_stage1_one_per_subject_level": true,
+    "train_stage2_two_per_subject_level": true
+  },
+  "gate_contract": {
+    "normalization": "NFD + lowercase + combining-mark removal + non-word replacement + whitespace collapse (exact pilot implementation)",
+    "exact": "reject complete normalized equality with a MATH-500 test item",
+    "13gram": "reject any shared normalized word 13-gram with MATH-500",
+    "8gram": "reject when more than 50% of the candidate MATH-train problem's distinct normalized word 8-grams occur in one MATH-500 item",
+    "denominator": "candidate MATH-train problem distinct 8-grams; not test-item 8-grams"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "job_id": "adapt__scaleC_math_line_2042",
+  "row_id": "scaleC_math_line_2042",
+  "stage": "adaptation",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "5dc9ef019e4fee02bfbb69f0e48bb4727afde6befcee56513c2dbf9e5049b2eb",
+  "input_record_sha256": "632a6fc0b662ba55a6fc9b528a7e4f78ef884508e819af1ac1633de0cc13ffa3",
+  "payload_sha256": "6e49cb9ca9193d02978667423b9095387c3f160d72b8024b2c86244ee7108a22",
+  "template_sha256": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+  "schema_sha256": "e5c49d636847dd9d83d65ea43bf9b7fb49a1be33b9fbf36de83cb5a36602575d",
+  "prompt_sha256": "f1f453cd795e63daff7fc3856da5447e14b97acbd8e58028a8f7abf53ca02068",
+  "result": {
+    "row_id": "scaleC_math_line_2042",
+    "status": "candidate",
+    "problem_text": "Όταν ρίχνουμε τρία κανονικά εξάεδρα ζάρια, προκύπτουν οι αριθμοί $a,b,c$. Να βρείτε την πιθανότητα να ισχύει $abc=1$.",
+    "prompt_match": "identical",
+    "changes": [
+      {
+        "source_span": "When three standard dice are tossed",
+        "target_span": "Όταν ρίχνουμε τρία κανονικά εξάεδρα ζάρια",
+        "reason": "Φυσική απόδοση στα ελληνικά· το «εξάεδρα» αποσαφηνίζει την καθιερωμένη μαθηματική έννοια των standard dice χωρίς να αλλάζει το ενδεχόμενο."
+      },
+      {
+        "source_span": "the numbers $a,b,c$ are obtained",
+        "target_span": "προκύπτουν οι αριθμοί $a,b,c$",
+        "reason": "Πιστή ελληνική διατύπωση με διατήρηση των μαθηματικών συμβόλων."
+      },
+      {
+        "source_span": "Find the probability that $abc = 1$.",
+        "target_span": "Να βρείτε την πιθανότητα να ισχύει $abc=1$.",
+        "reason": "Φυσική ελληνική προστακτική διατύπωση, με αμετάβλητη τη ζητούμενη πιθανότητα και τη συνθήκη."
+      }
+    ],
+    "mathematical_invariants": {
+      "quantities": [
+        {
+          "value": "3",
+          "role": "αριθμός κανονικών ζαριών",
+          "unit": "ζάρια"
+        },
+        {
+          "value": "$a,b,c$",
+          "role": "αποτελέσματα των τριών αντίστοιχων ρίψεων",
+          "unit": null
+        },
+        {
+          "value": "1",
+          "role": "απαιτούμενη τιμή του γινομένου $abc$",
+          "unit": null
+        }
+      ],
+      "conditions": [
+        "Ρίχνονται τρία κανονικά εξάεδρα ζάρια.",
+        "Τα αποτελέσματα συμβολίζονται με $a,b,c$.",
+        "Το εξεταζόμενο ενδεχόμενο είναι ακριβώς $abc=1$."
+      ],
+      "required_outputs": [
+        "Η πιθανότητα του ενδεχομένου $abc=1$."
+      ]
+    },
+    "source_issues": [],
+    "remaining_foreign_context": [],
+    "checks_needed": [
+      "Να επιβεβαιωθεί ότι ο όρος «κανονικά εξάεδρα ζάρια» αποδίδει την υπονοούμενη έννοια των δίκαιων standard dice."
+    ]
+  }
+}

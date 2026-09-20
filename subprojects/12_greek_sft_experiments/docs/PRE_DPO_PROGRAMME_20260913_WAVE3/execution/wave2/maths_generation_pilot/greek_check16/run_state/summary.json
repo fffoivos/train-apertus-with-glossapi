@@ -1,0 +1,11 @@
+{
+  "finished": "2026-09-13T13:47:37.481875+00:00",
+  "runner_pid": 28920,
+  "accepted": 16,
+  "queue_jobs": 16,
+  "calls_total": 16,
+  "retry_calls": 0,
+  "new_calls": 16,
+  "quota_stop": false,
+  "failures": {}
+}

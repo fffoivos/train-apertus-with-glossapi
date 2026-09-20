@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_math_3766",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete BEFORE, AFTER, and actual training records are identical. The Greek problem faithfully preserves the source teaching objective, premises, and algebraic expression. Substitution and arithmetic are correct, the answer is complete, speaker ownership and training structure are valid, and no units or rounding are involved.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_gsm_2700",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete BEFORE, AFTER, and actual training records are identical. The Greek problem preserves the source quantities, relationships, question, and elementary fraction reasoning. The calculations 48×2/3=32, 48−32=16, 16×1/8=2, and 16−2=14 are correct; the person-count unit is stated, no rounding is needed, and the dialogue and training structure are complete and coherent.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

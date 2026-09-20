@@ -1,0 +1,75 @@
+{
+  "job_id": "author_pilot48_02_partial",
+  "row_id": "pilot48_02_partial",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "13c3bea4a46321c8fd78072804fb8b1279f6c0f2dd5f833db9ffe0d66a32dae2",
+  "input_record_sha256": "f0e2139296118ac13e47bc7b99164f2292fccf5e2a00ba7cef86129a4319d0e6",
+  "payload_sha256": "f7f15a90b29f3901dc79bcd3ddec64d9e85cfe372b859d258e2cca3dd157778a",
+  "template_sha256": "1284d6bb4384913ad3bc49c8e30bfb6575c3b888822d173ae1e58920363f4705",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "82e2fe630f4d9d7eba531e7d2f489ddc457ab13422e6cd990f659a861cc4ab55",
+  "result": {
+    "row_id": "pilot48_02_partial",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "pilot48_02_partial.u_context",
+        "role": "user",
+        "content": "Ο αρχικός κατάλογος είχε την Άννα και τον Νίκο. Έπειτα προστέθηκε η Μαρία και αφαιρέθηκε ο Νίκος, οπότε τώρα έχει την Άννα και τη Μαρία.",
+        "train": false
+      },
+      {
+        "id": "pilot48_02_partial.a_context",
+        "role": "assistant",
+        "content": "Ο τρέχων κατάλογος εθελοντών περιλαμβάνει την Άννα και τη Μαρία.",
+        "train": false
+      },
+      {
+        "id": "pilot48_02_partial.u_decision",
+        "role": "user",
+        "content": "Επιτέλους. Στον κατάλογο που μόλις μου έδειξες, φαίνεται ότι η Μαρία και ο Νίκος είναι καταχωρισμένοι. Αφαίρεσε τώρα την Άννα.",
+        "train": false
+      },
+      {
+        "id": "pilot48_02_partial.a_target",
+        "role": "assistant",
+        "content": "Η Μαρία ήταν καταχωρισμένη, αλλά ο Νίκος είχε ήδη αφαιρεθεί. Αφαίρεσα τώρα την Άννα από τον κατάλογο· απομένει μόνο η Μαρία.",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "pilot48_02_partial.u_decision",
+        "claim": "Η Μαρία και ο Νίκος είναι καταχωρισμένοι στον κατάλογο που εμφανίστηκε.",
+        "truth_category": "partial",
+        "evidence_ids": [
+          "pilot48_02_partial.u_context",
+          "pilot48_02_partial.u_decision"
+        ],
+        "expected_response_behaviour": [
+          "Να επιβεβαιώσει ότι η Μαρία είναι καταχωρισμένη.",
+          "Να διορθώσει ότι ο Νίκος είχε ήδη αφαιρεθεί.",
+          "Να εφαρμόσει αμέσως την αφαίρεση της Άννας.",
+          "Να αναφέρει συνοπτικά ότι απομένει μόνο η Μαρία."
+        ]
+      }
+    ],
+    "state_transitions": [
+      {
+        "field": "members",
+        "before_json": "[\"Άννα\",\"Μαρία\"]",
+        "after_json": "[\"Μαρία\"]",
+        "evidence_ids": [
+          "pilot48_02_partial.u_context",
+          "pilot48_02_partial.u_decision"
+        ]
+      }
+    ],
+    "checks_needed": [],
+    "issues": []
+  }
+}

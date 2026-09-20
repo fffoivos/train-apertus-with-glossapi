@@ -1,0 +1,242 @@
+{
+  "allocation_required": false,
+  "binding_comparison": null,
+  "bindings": [
+    {
+      "at": "$.model.files[0]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/model-00001-of-00004.safetensors",
+      "status": "passed"
+    },
+    {
+      "at": "$.model.files[1]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/model-00002-of-00004.safetensors",
+      "status": "passed"
+    },
+    {
+      "at": "$.model.files[2]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/model-00003-of-00004.safetensors",
+      "status": "passed"
+    },
+    {
+      "at": "$.model.files[3]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/model-00004-of-00004.safetensors",
+      "status": "passed"
+    },
+    {
+      "at": "$.model.control_files[0]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/config.json",
+      "status": "passed"
+    },
+    {
+      "at": "$.model.control_files[1]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/generation_config.json",
+      "status": "passed"
+    },
+    {
+      "at": "$.model.control_files[2]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/tokenizer.json",
+      "status": "passed"
+    },
+    {
+      "at": "$.model.control_files[3]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/tokenizer_config.json",
+      "status": "passed"
+    },
+    {
+      "at": "$.model.control_files[4]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/special_tokens_map.json",
+      "status": "passed"
+    },
+    {
+      "at": "$.model.control_files[5]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/chat_template.jinja",
+      "status": "passed"
+    },
+    {
+      "at": "$.model.control_files[6]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2/model.safetensors.index.json",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[0]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/canonical/preflight_evaluator.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[1]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/canonical/src/apertus_cscs_campaign/__init__.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[2]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/canonical/src/apertus_cscs_campaign/receipts.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[3]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/bench_lib.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[4]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/generate.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[5]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/ifbench/instructions_el.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[6]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/ifbench/instructions_registry_el.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[7]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/ifbench/overlap_classes.json",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[8]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/ifbench/prompts_el_final.jsonl",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[9]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/ifbench/score.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[10]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/math500/equiv500.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[11]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/math500/problems_el_final.jsonl",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[12]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/math500/score_math500.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[13]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/math500/upstream_grader.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[14]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/math500/upstream_math_normalize.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[15]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/multichallenge/conversations_el_final.jsonl",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[16]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/data/benchmarks_el/xstest/prompts_el_final.jsonl",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[17]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/ifeval_greek/__init__.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[18]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/ifeval_greek/ifeval_greek.yaml",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[19]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/ifeval_greek/instructions.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[20]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/ifeval_greek/instructions_registry.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[21]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/ifeval_greek/utils.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[22]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/mgsm_greek/__init__.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[23]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/mgsm_greek/mgsm_greek.yaml",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[24]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/mgsm_greek/mgsm_greek_4shot.yaml",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[25]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/evals/ilsp/tasks/mgsm_greek/utils.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[26]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/multichallenge_context_exclusions.json",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[27]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/peer_eval_adapter.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[28]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/peer_eval_debug.sbatch",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[29]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/provenance/execution_state.json",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[30]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/verify_deployment.py",
+      "status": "passed"
+    },
+    {
+      "at": "$.inputs[31]",
+      "path": "/iopsstor/scratch/cscs/fffoivos/sft_round1/wave2_peer_eval/bundle_edf6f76fa34cf4a3/vllm_python",
+      "status": "passed"
+    }
+  ],
+  "env_integrity": [
+    {
+      "path": "/iopsstor/scratch/cscs/fffoivos/venvs/vllm",
+      "status": "passed"
+    }
+  ],
+  "extra_probe": null,
+  "imports": [],
+  "recorded_at": "2026-09-13T13:38:56.631043+00:00",
+  "runtime_python": null,
+  "schema_version": "apertus_evaluator_preflight_v1",
+  "status": "passed",
+  "token_extrema": [],
+  "uenv_environment": {
+    "UENV_LABEL": "pytorch/v2.9.1:v2",
+    "UENV_MOUNT_LIST": "/iopsstor/scratch/cscs/fffoivos/.uenv-images/images/c05f143d5fbf092714650697c821ee9fcf3d00c3580d56dabeacb2370a824b0f/store.squashfs:/user-environment",
+    "UENV_REPO": "default:/iopsstor/scratch/cscs/fffoivos/.uenv-images",
+    "UENV_TELEMETRY": "[{\"digest\":\"c05f143d5fbf092714650697c821ee9fcf3d00c3580d56dabeacb2370a824b0f\",\"label\":\"pytorch/v2.9.1:v2@clariden%gh200\",\"mount\":\"/user-environment\",\"name\":\"pytorch\",\"sqfs\":\"/iopsstor/scratch/cscs/fffoivos/.uenv-images/images/c05f143d5fbf092714650697c821ee9fcf3d00c3580d56dabeacb2370a824b0f/store.squashfs\",\"views\":[\"default\"]}]",
+    "UENV_VIEW": "/user-environment:pytorch:default",
+    "UENV_WARN_MIGRATE": "1"
+  }
+}

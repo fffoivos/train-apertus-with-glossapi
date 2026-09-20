@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_gsm_2737",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete after-correction messages are byte-equivalent to the actual training record and occur once. Before and after are identical. The adapted problem preserves the source teaching objective and arithmetic while localizing the name, currency symbol, and decimal notation. Independently verified: 3×12=36, 12+36+46+250=344, 344×0.25€=86€, and half is 43€. Speaker ownership and two-turn SFT structure are sound.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_1011_3",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "This is a native Greek example with no English source. The complete after-correction messages are byte-equivalent to the actual training record and occur once; before and after are identical. The premise and function directly support the computation 24.5 €/m² × 8 m² = 196 €, with a complete answer, coherent Greek context, correct dialogue roles, and valid two-turn SFT structure.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

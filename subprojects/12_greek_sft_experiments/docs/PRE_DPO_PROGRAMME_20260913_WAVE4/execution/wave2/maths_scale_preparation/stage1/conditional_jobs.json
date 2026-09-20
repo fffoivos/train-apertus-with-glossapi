@@ -1,0 +1,35 @@
+{
+  "status": "blueprints_only_not_in_primary_queue",
+  "shared_source_or_repair_pool": {
+    "cap": 8,
+    "triggers": [
+      "Adaptation reports blocked or a substantive source issue.",
+      "Human comparison finds an unresolved mathematical disagreement between the two independent high outputs.",
+      "A source-valid repair is frozen under a new problem hash before re-solving."
+    ],
+    "source_review": {
+      "template": "prompts/source_review.txt",
+      "schema": "schemas/source_review.schema.json",
+      "model": "gpt-5.6-sol",
+      "effort": "high"
+    },
+    "observed_case_escalation": {
+      "template": "prompts/solution_blind.txt",
+      "schema": "schemas/solution.schema.json",
+      "model": "gpt-5.6-sol",
+      "effort": "xhigh"
+    },
+    "automatic_xhigh_selection": false,
+    "continuation_gate": "Every conditional job is separately instantiated and human-reviewed; the shared eight-call pool cannot be exceeded."
+  },
+  "greek_correction": {
+    "cap": 14,
+    "trigger": "Human semantic comparison accepts the mathematics and identifies a language-only defect.",
+    "template": "prompts/greek_correction.txt",
+    "schema": "schemas/greek_correction.schema.json",
+    "model": "gpt-5.6-sol",
+    "effort": "high"
+  },
+  "retry_cap": 8,
+  "instantiation_rule": "Create a separate reviewed queue, preserve the same run-state call ledger, and add its hash to manifest.json before execution. Do not edit queue.jsonl or reset the 72-call cap."
+}

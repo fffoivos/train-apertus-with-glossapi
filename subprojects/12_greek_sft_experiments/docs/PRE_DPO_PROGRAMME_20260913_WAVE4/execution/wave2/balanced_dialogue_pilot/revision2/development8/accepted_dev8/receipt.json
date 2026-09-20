@@ -1,0 +1,17 @@
+{
+  "created_at": "2026-09-13T14:20:42.322445+00:00",
+  "status": "dev_candidate_semantics_greek_actual_reader_token_mask_pass",
+  "rows": 8,
+  "training_rows": 0,
+  "greek_calls": 8,
+  "editor_unchanged": 6,
+  "optional_proposals_declined": 2,
+  "cumulative_dialogue_pilot_model_calls": 84,
+  "pilot_cap": 118,
+  "dev_package_calls": 16,
+  "dev_package_cap": 20,
+  "candidate_sha256": "b0efd01053ec17cf273e78ddc42e9e727180827ef10ff7bf8eb0982f5e3af89a",
+  "independent_scope_receipt_sha256": "840e1f406c0d69fcf3d2f4cf2a7e1cbe6d370a5da1d985317f431b232dac694d",
+  "token_gate": "pass",
+  "token_inventory_sha256": "4c46e7788f5213abba8cf9a96d8cdc8690ac940aecb2d2f2bd7a636e5e710fb1"
+}

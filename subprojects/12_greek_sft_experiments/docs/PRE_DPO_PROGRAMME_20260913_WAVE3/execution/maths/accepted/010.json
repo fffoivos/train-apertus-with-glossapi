@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_946",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Η επιλεγμένη λύση έχει αβέβαιη ιστορική συσχέτιση με την τελευταία αποθηκευμένη εκδοχή του προβλήματος. Οι δύο παρεχόμενες ελληνικές εκδοχές είναι μαθηματικά ισοδύναμες και δεν δημιουργούν διαφορά ως προς την εγκυρότητα της λύσης.",
+      "verification_needed": [
+        "Επαλήθευση από τα αρχικά αρχεία για το ποια εκδοχή του προβλήματος συνόδευε ιστορικά την επιλεγμένη λύση."
+      ]
+    },
+    {
+      "row_id": "math5_1060",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "issue",
+      "cultural_adaptation": "pass",
+      "findings": [
+        {
+          "dimension": "greek_language",
+          "severity": "minor",
+          "quote": "για το固定 μοναδικό σωστό άτομο",
+          "explanation": "Η κινεζική ακολουθία χαρακτήρων «固定» παρεμβάλλεται σε ελληνική πρόταση, καθιστώντας τη διατύπωση αφύσικη και ακατάλληλη ως καθαρό ελληνικό εκπαιδευτικό δείγμα. Δεν επηρεάζει τον σωστό υπολογισμό των 216 τρόπων.",
+          "suggested_action": "Να αφαιρεθεί το «固定» ή να αντικατασταθεί με φυσική ελληνική λέξη, όπως «συγκεκριμένο»."
+        }
+      ],
+      "provenance_note": "Η επιλεγμένη λύση έχει αβέβαιη ιστορική συσχέτιση με την τελευταία αποθηκευμένη εκδοχή του προβλήματος. Οι δύο παρεχόμενες εκδοχές διαφέρουν μόνο μεταξύ των ισοδύναμων όρων «τύπους» και «είδη» και δεν έχουν μαθηματική διαφορά.",
+      "verification_needed": [
+        "Επαλήθευση από τα αρχικά αρχεία για το ποια εκδοχή του προβλήματος συνόδευε ιστορικά την επιλεγμένη λύση."
+      ]
+    },
+    {
+      "row_id": "math5_861",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το κείμενο του προβλήματος δηλώνεται σταθερό και δεν παρέχονται εναλλακτικές εκδοχές. Η λύση αντιστοιχεί πλήρως στο εμφανιζόμενο πρόβλημα.",
+      "verification_needed": []
+    }
+  ]
+}

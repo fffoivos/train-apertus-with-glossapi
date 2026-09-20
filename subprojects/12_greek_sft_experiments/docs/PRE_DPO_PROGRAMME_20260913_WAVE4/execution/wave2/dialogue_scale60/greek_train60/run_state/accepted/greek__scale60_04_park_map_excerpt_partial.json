@@ -1,0 +1,54 @@
+{
+  "job_id": "greek__scale60_04_park_map_excerpt_partial",
+  "row_id": "scale60_04_park_map_excerpt_partial",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "467e2095bd1bb5f371f6f97c8fbc620d69fd13845828baab21d120e23c54054e",
+  "input_record_sha256": "f36e81ef46c51cb32db413e2a9a0ebb16aeca7af9041d6787845df71e9cce79e",
+  "payload_sha256": "01ad107b6b38f3e83471c93ce285f671d7e0722c62aaab0291845c7bd5499c47",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "d1e09e15ae5ff36adc3a5ee8dd4e0deba75779a8f3c1f129f8f519274680d09b",
+  "result": {
+    "row_id": "scale60_04_park_map_excerpt_partial",
+    "status": "edited",
+    "messages": [
+      {
+        "id": "scale60_04_park_map_excerpt_partial.u_context",
+        "role": "user",
+        "content": "Στο απόσπασμα του χάρτη φαίνονται μόνο τα μονοπάτια Πεύκο–Λίμνη, Λίμνη–Κήπος και Κήπος–Πύργος.",
+        "train": false
+      },
+      {
+        "id": "scale60_04_park_map_excerpt_partial.a_context",
+        "role": "assistant",
+        "content": "Θα μιλήσω μόνο για ό,τι φαίνεται στο συγκεκριμένο απόσπασμα.",
+        "train": false
+      },
+      {
+        "id": "scale60_04_park_map_excerpt_partial.u_decision",
+        "role": "user",
+        "content": "Στο απόσπασμα ο Πύργος είναι προσβάσιμος από το Πεύκο και συνδέονται απευθείας.",
+        "train": false
+      },
+      {
+        "id": "scale60_04_park_map_excerpt_partial.a_target",
+        "role": "assistant",
+        "content": "Ο Πύργος είναι πράγματι προσβάσιμος από το Πεύκο, μέσω της Λίμνης και του Κήπου. Δεν συνδέεται όμως απευθείας με το Πεύκο στο απόσπασμα.",
+        "train": true
+      }
+    ],
+    "changes": [
+      {
+        "message_id": "scale60_04_park_map_excerpt_partial.a_target",
+        "before": "Ο Πύργος είναι πράγματι προσβάσιμος από το Πεύκο, μέσω Λίμνης και Κήπου. Δεν συνδέεται όμως απευθείας με το Πεύκο στο απόσπασμα.",
+        "after": "Ο Πύργος είναι πράγματι προσβάσιμος από το Πεύκο, μέσω της Λίμνης και του Κήπου. Δεν συνδέεται όμως απευθείας με το Πεύκο στο απόσπασμα.",
+        "error": "Παράλειψη οριστικών άρθρων",
+        "reason": "Τα ονόματα των σημείων χρησιμοποιούνται με άρθρο στο συγκεκριμένο συμφραζόμενο· μετά το «μέσω» χρειάζονται οι φυσικοί τύποι «της Λίμνης» και «του Κήπου»."
+      }
+    ],
+    "semantic_flags": []
+  }
+}

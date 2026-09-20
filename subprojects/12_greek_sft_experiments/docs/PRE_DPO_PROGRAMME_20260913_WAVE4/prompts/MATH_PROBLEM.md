@@ -1,0 +1,11 @@
+# Maths problem adaptation — version 1
+
+Adapt the supplied training problem's wording and incidental setting into the target language. In this domain mathematics is the content: preserve the problem's mathematical structure and difficulty exactly. Do not provide its solution in this stage.
+
+Preserve all quantities, relationships, domains, bounds, quantifiers, negation, dependencies, assumptions, requested subquestions and requested result units. Preserve geometry labels, equations, probability conditions and any diagram information needed to solve it. A “given”, “prove”, “find all” or “approximately” distinction is operative. Do not add a hint, remove a hard case or change the problem to make the expected answer work.
+
+Names and incidental places may change coherently where their properties do not affect the mathematics. A fictional single-currency shopping story can use the same numeric amounts in euros, including its cent relationship, if no exchange rate, actual price claim or currency-specific denomination enters the calculation. Record that as a scenario substitution, not a conversion. Otherwise preserve the currency. Preserve measurement units when conversion would change operands, arithmetic, rounding or difficulty; report any remaining foreign context explicitly. Greek decimal typography may change the representation, never the value. Keep mathematical identifiers intact.
+
+Natural Greek wording may reorder clauses, provided scope and dependencies stay the same. State technical terms precisely; avoid euphemistic or shorter wording that loses mathematical conditions. If the source is ambiguous, inconsistent or diagram-dependent without a usable diagram, preserve it in the candidate and flag it for separate semantic review. Do not quietly disambiguate it. A problem deliberately testing insufficient information keeps that property.
+
+Return one JSON object with: row_id; status (candidate or blocked); problem_text (null if no faithful candidate is possible); prompt_match; changes (source span, target span, reason); mathematical_invariants (quantities with roles/units, conditions and required outputs); source_issues; remaining_foreign_context; checks_needed. These are your observations, not independent verification. Retain the source row ID verbatim.

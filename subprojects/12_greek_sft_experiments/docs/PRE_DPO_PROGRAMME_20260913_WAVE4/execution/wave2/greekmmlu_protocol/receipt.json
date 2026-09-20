@@ -1,0 +1,26 @@
+{
+  "repository": "mersinkonomi/GreekMMLU",
+  "revision": "cd944748e860fda3e9dc21212c2f2710615ecdc5",
+  "files": [
+    {
+      "path": "run_eval.sh",
+      "url": "https://raw.githubusercontent.com/mersinkonomi/GreekMMLU/cd944748e860fda3e9dc21212c2f2710615ecdc5/run_eval.sh",
+      "sha256": "97350d919a8695385b923ca465f22dafccc092b2e8717e35197fc2a06802b8fb"
+    },
+    {
+      "path": "lm-evaluation-harness/lm_eval/tasks/greekmmlu/_default_greekmmlu_template_yaml",
+      "url": "https://raw.githubusercontent.com/mersinkonomi/GreekMMLU/cd944748e860fda3e9dc21212c2f2710615ecdc5/lm-evaluation-harness/lm_eval/tasks/greekmmlu/_default_greekmmlu_template_yaml",
+      "sha256": "445a69d3d71dcf7b920153adc4bc70e1a91860929057923570caf2b0a2a8efb6"
+    },
+    {
+      "path": "lm-evaluation-harness/lm_eval/tasks/greekmmlu/utils.py",
+      "url": "https://raw.githubusercontent.com/mersinkonomi/GreekMMLU/cd944748e860fda3e9dc21212c2f2710615ecdc5/lm-evaluation-harness/lm_eval/tasks/greekmmlu/utils.py",
+      "sha256": "881461e72ebbc77de8094aea90693440fb721382f3491146c57c3182ddd7d86c"
+    },
+    {
+      "path": "lm-evaluation-harness/lm_eval/tasks/greekmmlu/_greekmmlu.yaml",
+      "url": "https://raw.githubusercontent.com/mersinkonomi/GreekMMLU/cd944748e860fda3e9dc21212c2f2710615ecdc5/lm-evaluation-harness/lm_eval/tasks/greekmmlu/_greekmmlu.yaml",
+      "sha256": "463ba6de7f71ad4448cbc8473b221aef6dc425254e28d744e6bbdacc1abde6b0"
+    }
+  ]
+}

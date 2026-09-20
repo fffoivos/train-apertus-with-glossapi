@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "seed": "maths-generation-pilot-v1-20260913",
+  "status": "prepared_not_launched",
+  "source_files": {
+    "/Users/foivoskarounos-zamparloukos/sft_annot/math_src/math_train.jsonl": {
+      "sha256": "7c2b6be1ff20ece021d27e68103bcaa27935489247f179a1810ca72d54b379bf",
+      "rows": 7500
+    },
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/benchmarks_el/math500/source/test.jsonl": {
+      "sha256": "35dc41080a3680858b27fa7e0533d2d547825316fc5dafe5d316f4ccc5a06132",
+      "rows": 500
+    },
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/wave2/trained_maths/sample.jsonl": {
+      "sha256": "0933ad4e2bd6fa03dcfa6411a1f15750c73c6d082b1298560a62effa930f3442",
+      "rows": 122
+    },
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/maths/adjudication_packet.jsonl": {
+      "sha256": "388510113165955094bb985819ce0aad3815083dbe5127010055d3f1b87a583f",
+      "rows": 16
+    },
+    "/Users/foivoskarounos-zamparloukos/Documents/Codex/2026-09-13/rea/outputs/parallel_improvement_plan/execution/maths/adjudication_supplement.jsonl": {
+      "sha256": "19b6d84d83a6dca7c5fd790d25397c73b2ee9c01be7f8bdc68d8d8048d4b0b43",
+      "rows": 3
+    }
+  },
+  "selection": {
+    "fresh_quotas": {
+      "Algebra": 2,
+      "Intermediate Algebra": 2,
+      "Prealgebra": 2,
+      "Geometry": 3,
+      "Number Theory": 2,
+      "Counting & Probability": 3,
+      "Precalculus": 2
+    },
+    "fresh_exclusions": {
+      "diagram_or_figure_dependency": 269,
+      "math500_ngram_rule": 50,
+      "prior_wave_exact_normalized": 10
+    },
+    "fresh_ids": [
+      "fresh_math5_line_1379",
+      "fresh_math5_line_1334",
+      "fresh_math5_line_3775",
+      "fresh_math5_line_4646",
+      "fresh_math5_line_5977",
+      "fresh_math5_line_6029",
+      "fresh_math5_line_3093",
+      "fresh_math5_line_2676",
+      "fresh_math5_line_3125",
+      "fresh_math5_line_5324",
+      "fresh_math5_line_4821",
+      "fresh_math5_line_2429",
+      "fresh_math5_line_2507",
+      "fresh_math5_line_1950",
+      "fresh_math5_line_6930",
+      "fresh_math5_line_7113"
+    ],
+    "hard_xhigh_ids": [
+      "fresh_math5_line_3775",
+      "fresh_math5_line_1379",
+      "fresh_math5_line_4646",
+      "fresh_math5_line_6930",
+      "repair_math5_1014",
+      "repair_math5_630",
+      "repair_math5_139",
+      "repair_math5_436"
+    ],
+    "repair_ids": [
+      "math5_139",
+      "math5_77",
+      "math5_537",
+      "math5_1014",
+      "math5_630",
+      "gsm_1253",
+      "math5_436",
+      "gm_math_2231"
+    ],
+    "control_ids": [
+      "gm_gsm_3835",
+      "gm_gsm_3096",
+      "gm_math_2731",
+      "gm_math_1054",
+      "gm_math_1745",
+      "gm_math_837",
+      "gm_math_3507",
+      "gm_math_3924"
+    ]
+  },
+  "counts": {
+    "problems": 32,
+    "fresh": 16,
+    "repairs": 8,
+    "controls": 8,
+    "adaptation_calls": 16,
+    "solution_high_calls": 32,
+    "solution_xhigh_calls": 8,
+    "blind_verification_calls": 32,
+    "primary_calls": 88,
+    "conditional_source_review_cap": 8,
+    "conditional_greek_correction_cap": 16,
+    "retry_cap": 24,
+    "absolute_call_cap": 136
+  },
+  "provenance": {
+    "fresh": "Public MATH training split cached locally; MIT per project documentation.",
+    "repair_and_control": "Public MATH or GSM8K training problems plus project-generated Greek adaptations/solutions and local audit metadata.",
+    "outbound_fields": "Mathematical problem text, source metadata, Greek candidate where reused, and stage prompt. No private conversations or credentials."
+  },
+  "notes": [
+    "MATH-500 test rows are excluded by exact normalized equality and the project n-gram rule (>50% of one test item’s normalized 8-grams, or any 13-gram).",
+    "Reference solutions are frozen for later comparison but omitted from all solving and blind-verification prompts."
+  ],
+  "prompt_lengths": {
+    "adaptation.txt": {
+      "chars": 6064,
+      "words": 859
+    },
+    "solution_blind.txt": {
+      "chars": 2746,
+      "words": 394
+    },
+    "verification_blind.txt": {
+      "chars": 2808,
+      "words": 395
+    },
+    "source_review.txt": {
+      "chars": 6257,
+      "words": 883
+    },
+    "greek_correction.txt": {
+      "chars": 3766,
+      "words": 539
+    }
+  },
+  "artifact_sha256": {
+    "inputs.jsonl": "a138404a165fba063c2db0d27a4e8da8758ba57c11ecff63ebfe2ee49c261987",
+    "adaptation_receipts_reused.jsonl": "106eca12ac1361160fec2ad3ba32fc484ce4385b804b3bc5a6583dd489fe9650",
+    "queue.jsonl": "17ed53c2df6ab75e50363875b9f3f1f9a931d608864932d2c13dfdca960d7203",
+    "probe_queue.jsonl": "eef1e5903df3d409fb2cfa98281cb7bf34022818a9f81a588d8e8a6bf1a2d31f",
+    "probe_payloads.jsonl": "5db1d055f87ecc6361eb9ab14649432401911d9e70513e4de9357b6bd42ca0f9",
+    "batches.json": "0c3fb8caf79b9202ab875e13f9dd29c5b1d8f535ebeda98860ed2bd56e839756",
+    "build_pilot.py": "6e38bc357bb260dc8d356252a5d98c5c5d1c52098968914c6253d5cb8cb1a4e6",
+    "run_queue.py": "c3e9a2bf4f7808f841d9ec4466cab0afd2f2029387b44ee02a6a26cae9712c50",
+    "conditional_jobs.json": "a5e33dd69897d35ebf684fd94128a4dbab0092b598c64fa869248380b46d4e12",
+    "report.md": "b8ce6a1a3ca59e97e077bd0fc22af69747cdade1f8577b87eb710649476738f1",
+    "schemas/adaptation.schema.json": "bc4a0e40dc230f5692fa02fdd50c54fd7318fead03fa082fc1b352a6f00e9c15",
+    "schemas/greek_correction.schema.json": "3731955b7c1b439c86937277f2b09976d9bb1245d8cdf667cfe351e5c9381f0a",
+    "schemas/solution.schema.json": "d2e65033efe609723ffb59b4168295a27c7c043c8ed8af66241c7ea8c382b117",
+    "schemas/source_review.schema.json": "e4b5a0ec4814d4c17acb7bf3878bb530a712fa014ea648672080fbb44b63e892",
+    "prompts/adaptation.txt": "53b9d7ac76398f43673f9154120352b06f662c2f171f076a52dd67579beeb476",
+    "prompts/greek_correction.txt": "acd8856f464c2cab4269749f0df96fc211c8e76b23d9ebe75e2d0707aa2b7ff4",
+    "prompts/solution_blind.txt": "ea1afd16c4910e9930760e3f22b232e0d14451f207ea4290ea79cc2d231e6a45",
+    "prompts/source_review.txt": "c7001e87bbec4a18f42055eb36c48a86ffe368db66c9483af2c2849cd98fe240",
+    "prompts/verification_blind.txt": "67a04cee918f227aa582da70a6fcb66cc7eca7093bc64ae9c067ec87a3b4b1de"
+  }
+}

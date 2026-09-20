@@ -1,0 +1,30 @@
+{
+  "job_id": "verify__fresh_math5_line_5977",
+  "row_id": "fresh_math5_line_5977",
+  "stage": "verification_blind",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "d9b6aff1f6ec598ca6fd0b3dd87e48eb285e632cad421f8ce11a34f0719d30e4",
+  "input_record_sha256": "997a8f4a2445c9a76d76b489e903a24c2afebbcaa80ce9080529680e94f6d86f",
+  "payload_sha256": "0365e5bc4e0b7b53e7be186a6a34ea5e46378aea4d35f5d1705d307d5211fdf2",
+  "template_sha256": "67a04cee918f227aa582da70a6fcb66cc7eca7093bc64ae9c067ec87a3b4b1de",
+  "schema_sha256": "f07a44e377e3c120f8ef4193c999d8aa48fe390885044fbc478822f1778fee2a",
+  "prompt_sha256": "4bf1b62e1d8eb8ce91c93ee9824e7916c7c939c28cba30308e2168b7fa24c9ee",
+  "result": {
+    "row_id": "fresh_math5_line_5977",
+    "status": "candidate",
+    "solution_text": "Οι γωνίες $B$ και $C$ είναι ορθές, άρα $AB\\perp BC$ και $CD\\perp BC$. Επομένως, $AB\\parallel CD$.\n\nΕπειδή το $ABCD$ είναι τετράπλευρο με τις κορυφές στη δοσμένη σειρά, τα σημεία $A$ και $D$ βρίσκονται στην ίδια πλευρά της $BC$. Αφού $AB=5$ και $CD=20$, η διαφορά των κάθετων αποστάσεών τους από την $BC$ είναι\n\\[\n20-5=15.\n\\]\nΠαράλληλα, η απόσταση μεταξύ των παράλληλων ευθειών $AB$ και $CD$ είναι ίση με $BC=8$. Επομένως, το $AD$ είναι η υποτείνουσα ορθογωνίου τριγώνου με κάθετες πλευρές $8$ και $15$. Από το Πυθαγόρειο θεώρημα,\n\\[\nAD^2=8^2+15^2=64+225=289,\n\\]\nοπότε\n\\[\nAD=\\sqrt{289}=17.\n\\]\n\nΑπάντηση: $AD=17$ μονάδες.",
+    "final_answers": [
+      {
+        "part": "Μήκος του ευθύγραμμου τμήματος $AD$",
+        "expression": "17",
+        "unit": "μονάδες",
+        "approximation": false
+      }
+    ],
+    "reference_corrections": [],
+    "issues": [],
+    "checks_needed": []
+  }
+}

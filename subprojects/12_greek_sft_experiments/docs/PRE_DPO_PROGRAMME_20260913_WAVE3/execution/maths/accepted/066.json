@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_4007",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The candidate is paired with a single problem record. The adaptation of Wendi to Ευγενία preserves the teaching objective and all quantitative premises.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_211",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The problem text is marked stable. Although two solution records exist, the selected solution fully matches the supplied problem; no mathematical pairing discrepancy is evident.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_674",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The candidate is paired with a single problem record. The adapted names are culturally coherent, and the Greek thousands notation «1.200» correctly represents 1200.",
+      "verification_needed": []
+    }
+  ]
+}

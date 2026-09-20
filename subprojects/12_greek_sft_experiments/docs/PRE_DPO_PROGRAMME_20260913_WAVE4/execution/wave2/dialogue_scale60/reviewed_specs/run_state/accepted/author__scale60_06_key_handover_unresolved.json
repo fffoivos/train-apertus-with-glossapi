@@ -1,0 +1,65 @@
+{
+  "job_id": "author__scale60_06_key_handover_unresolved",
+  "row_id": "scale60_06_key_handover_unresolved",
+  "stage": "dialogue_authoring",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "bfe71e7e869467be452c53091f0ee0e59e7af6d169ed23874d866133dd4d973e",
+  "input_record_sha256": "b7e89f56e49a3021b38c425599489b1fc6a8a701e8602019cd490aee2af08c85",
+  "payload_sha256": "cecd802519b3aa3f095e9368669124352fc66a49be26a08a0cae80a91aa27d29",
+  "template_sha256": "a62fc6697cc32b4f859dc2e58fb6e1a9dc8c767984860693415d652e35ffe721",
+  "schema_sha256": "623f40f2bdfd74e7a59c399bfdb7002c4b0ec63155ba66564d01ba7f4bd9f4bb",
+  "prompt_sha256": "2a671057247e49a8057bc6be742ba63f81d4bdeba6fb9a3a04eb5c1f255c44c1",
+  "result": {
+    "row_id": "scale60_06_key_handover_unresolved",
+    "status": "candidate",
+    "messages": [
+      {
+        "id": "scale60_06_key_handover_unresolved.u_context",
+        "role": "user",
+        "content": "Στην καταγραφή, η Νίκη είπε «τα κλειδιά είναι στο συρτάρι», ο Πέτρος είπε «η πίσω πόρτα είναι κλειδωμένη» και η Ελένη είπε «λείπει ο κωδικός του συναγερμού».",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_unresolved.a_context",
+        "role": "assistant",
+        "content": "Θα κρατήσω χωριστά ποιος είπε καθεμία από τις τρεις φράσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_unresolved.u_decision",
+        "role": "user",
+        "content": "Λοιπόν: Με βάση μόνο την καταγραφή, εκείνη θα φέρει τελικά τα κλειδιά. Ποια ενέργεια μένει για εκείνη;",
+        "train": false
+      },
+      {
+        "id": "scale60_06_key_handover_unresolved.a_target",
+        "role": "assistant",
+        "content": "Η καταγραφή δεν προσδιορίζει ποια είναι η «εκείνη» ούτε αναφέρει ότι κάποια θα φέρει τα κλειδιά, οπότε δεν προκύπτει ποια ενέργεια της μένει. Ποια εννοείς με το «εκείνη», τη Νίκη ή την Ελένη;",
+        "train": true
+      }
+    ],
+    "adaptation_record": null,
+    "decisions": [
+      {
+        "turn_id": "scale60_06_key_handover_unresolved.u_decision",
+        "claim": "Με βάση την καταγραφή, μπορεί να προσδιοριστεί ποια είναι η «εκείνη», ότι θα φέρει τα κλειδιά και ποια ενέργεια της μένει.",
+        "truth_category": "unresolved",
+        "evidence_ids": [
+          "scale60_06_key_handover_unresolved.u_context"
+        ],
+        "expected_response_behaviour": [
+          "Να επισημάνει ότι η ταυτότητα της «εκείνης» δεν προσδιορίζεται από την καταγραφή.",
+          "Να διευκρινίσει ότι η καταγραφή δεν αναθέτει σε κάποια να φέρει τα κλειδιά ούτε καθορίζει εναπομένουσα ενέργεια.",
+          "Να ζητήσει στοχευμένα να διευκρινιστεί αν εννοείται η Νίκη ή η Ελένη."
+        ]
+      }
+    ],
+    "state_transitions": [],
+    "checks_needed": [
+      "Χρειάζεται διευκρίνιση για το αν η «εκείνη» αναφέρεται στη Νίκη ή στην Ελένη."
+    ],
+    "issues": []
+  }
+}

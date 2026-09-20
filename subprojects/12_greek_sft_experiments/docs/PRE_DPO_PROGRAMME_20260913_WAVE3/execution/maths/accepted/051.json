@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_321",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The stable Greek problem text is faithful to the English problem. Although two solution records exist, the supplied metadata identifies a stable problem text and provides no competing problem variants; no mathematical pairing discrepancy is evident.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_851",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The stable Greek problem text preserves the original geometry and data. Although two solution records exist, no competing problem variants are supplied and no mathematical pairing discrepancy is evident.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_59",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The candidate comes from a single problem record. The substitution of euros for dollars is a coherent cultural adaptation that leaves every quantity and the required calculation unchanged.",
+      "verification_needed": []
+    }
+  ]
+}

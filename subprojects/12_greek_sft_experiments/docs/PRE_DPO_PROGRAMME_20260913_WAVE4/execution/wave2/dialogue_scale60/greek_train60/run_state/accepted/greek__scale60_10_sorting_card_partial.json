@@ -1,0 +1,46 @@
+{
+  "job_id": "greek__scale60_10_sorting_card_partial",
+  "row_id": "scale60_10_sorting_card_partial",
+  "stage": "greek_correction",
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "job_spec_sha256": "2243f58644cfe7ea6be99ee6655e47936919eba483da13057e6833a60534a871",
+  "input_record_sha256": "efc48dfda8d1164f786a66cfb485b981adecec7bb93225c301762c42b1cba437",
+  "payload_sha256": "7039ff36a33653995f4b10f7cef9e78159b3412858a4c30dc0245f88906134c3",
+  "template_sha256": "adf624b1eca49c415f33fa9a1f03b874d825fb6dd758c91a12224cc4f3d39929",
+  "schema_sha256": "37ac0c3550502400fbbc124522b6aed3e436d6e0bf36bff2619a98d0f7719a5e",
+  "prompt_sha256": "4de36b5a49acaff8d6f32f939847daa3308b115a84cce1ad33ee82fa417f4158",
+  "result": {
+    "row_id": "scale60_10_sorting_card_partial",
+    "status": "unchanged",
+    "messages": [
+      {
+        "id": "scale60_10_sorting_card_partial.u_context",
+        "role": "user",
+        "content": "Η κάρτα κανόνων λέει: κάθε μπλε κιβώτιο πάει στο πάνω ράφι· κάθε εύθραυστο κιβώτιο μπαίνει σε θήκη με επένδυση. Το κιβώτιο Κ είναι μπλε και εύθραυστο. Δεν δίνεται το βάρος του.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_partial.a_context",
+        "role": "assistant",
+        "content": "Θα εφαρμόσω τους κανόνες της κάρτας στο κιβώτιο Κ, χωρίς εξωτερικές υποθέσεις.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_partial.u_decision",
+        "role": "user",
+        "content": "Με τους κανόνες της κάρτας, το κιβώτιο Κ πάει στο πάνω ράφι αλλά χωρίς επένδυση.",
+        "train": false
+      },
+      {
+        "id": "scale60_10_sorting_card_partial.a_target",
+        "role": "assistant",
+        "content": "Το πάνω ράφι είναι σωστό. Το «χωρίς επένδυση» είναι λάθος: αφού το κιβώτιο Κ είναι εύθραυστο, μπαίνει σε θήκη με επένδυση.",
+        "train": true
+      }
+    ],
+    "changes": [],
+    "semantic_flags": []
+  }
+}

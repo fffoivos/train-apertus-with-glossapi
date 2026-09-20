@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-09-13T16:22:04+03:00",
+  "rows": 20,
+  "accepted": 20,
+  "held": 0,
+  "checker_pass": 20,
+  "changed_candidate_rows_from_v3": 3,
+  "changed_row_ids": [
+    "mixa_2026_05543",
+    "mixa_2026_06199",
+    "mixa_2026_11688"
+  ],
+  "reviewer": "Sol agent",
+  "checker_path": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/greek_if/constraints.py",
+  "checker_sha256": "998c253d3416cfc9f1b864987fd7addc727ab940cdcc4aa98b9c85c6f3705a3f",
+  "input_v3_sha256": "be05e51923a9085f10833ea618305a30837d2688daefdd1a75a145d9156b67de",
+  "output_sha256": "da5b9d81d3969cdc442abd8d093d789b24bbcdc93a459eeaa0b6e1a1edf67431",
+  "source_review_sha256": "53c7048e30336d069793351309fb89ad1888b49ff001baed39ad335f6b946ce3",
+  "production_promoted": 0,
+  "model_subprocess_calls": 0
+}

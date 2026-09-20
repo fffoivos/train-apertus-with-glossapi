@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "row_id": "math5_292",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το ελληνικό πρόβλημα δηλώνεται ως σταθερό, δεν παρέχονται εναλλακτικές εκδοχές προβλήματος και η επιλεγμένη λύση αντιστοιχεί μαθηματικά στο εμφανιζόμενο πρόβλημα. Υπάρχουν δύο αρχεία λύσης, αλλά δεν προκύπτει από τα παρεχόμενα στοιχεία αβεβαιότητα ως προς το κείμενο του προβλήματος.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_971",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Το ελληνικό πρόβλημα δηλώνεται ως σταθερό, δεν παρέχονται εναλλακτικές εκδοχές προβλήματος και η επιλεγμένη λύση αντιστοιχεί πλήρως στο εμφανιζόμενο πρόβλημα. Υπάρχουν τέσσερα αρχεία λύσης, χωρίς παρεχόμενη ένδειξη διαφορετικών ιστορικών εκδοχών του προβλήματος.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_2695",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Πρόκειται για μοναδικό αρχείο προβλήματος και λύσης. Η επιτρεπτή προσαρμογή του ονόματος James σε Γιάννης διατηρεί συνεκτικό τον χαρακτήρα και δεν μεταβάλλει τα δεδομένα ή τον διδακτικό στόχο.",
+      "verification_needed": []
+    }
+  ]
+}

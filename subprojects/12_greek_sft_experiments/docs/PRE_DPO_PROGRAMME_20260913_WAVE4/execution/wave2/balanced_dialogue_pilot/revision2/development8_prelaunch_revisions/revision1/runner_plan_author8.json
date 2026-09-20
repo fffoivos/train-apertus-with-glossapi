@@ -1,0 +1,17 @@
+{
+  "mode": "plan",
+  "queue": "queue_author8.jsonl",
+  "jobs": 8,
+  "accepted": 0,
+  "pending": 8,
+  "stage_counts": {
+    "dialogue_authoring": 8
+  },
+  "max_workers": 8,
+  "manifest_call_cap": 20,
+  "runtime_call_cap": 20,
+  "global_retry_cap": 2,
+  "prior_calls": 0,
+  "limit_new_calls": 8,
+  "max_attempts_per_job": 2
+}

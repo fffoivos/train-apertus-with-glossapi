@@ -1,0 +1,32 @@
+{
+  "schema_version": "krikri_v15_terminal_failure_v1",
+  "job_id": "3390957",
+  "slurm_state": "FAILED",
+  "exit_code": "1:0",
+  "start": "2026-09-13T13:44:05Z",
+  "end": "2026-09-13T14:06:22Z",
+  "elapsed_seconds": 1337,
+  "nodes": 1,
+  "allocated_cpus": 288,
+  "allocated_gpus": 4,
+  "energy_joules": 1290110,
+  "conservative_node_hours": 0.3713888889,
+  "conservative_cost_chf": 0.9990361111,
+  "failure_phase": "post_inference_lm_eval_terminal_table_formatting",
+  "inference_completed": {
+    "fixed_generations": 2926,
+    "ilsp_generations": 791,
+    "ilsp_progress": "791/791",
+    "ilsp_aggregate_written": true,
+    "ilsp_samples_written": true
+  },
+  "exception": {
+    "type": "AttributeError",
+    "message": "module 'chardet' has no attribute 'detect'",
+    "stack": "lm_eval.utils.make_table -> pytablewriter -> dataproperty -> typepy -> mbstrdecoder"
+  },
+  "adapter_result_written": false,
+  "automatic_retry": false,
+  "partition_change": false,
+  "interpretation": "The scheduler attempt remains FAILED. Scientific outputs are accepted only through the separate allocation-free recovery receipt after exact validation."
+}

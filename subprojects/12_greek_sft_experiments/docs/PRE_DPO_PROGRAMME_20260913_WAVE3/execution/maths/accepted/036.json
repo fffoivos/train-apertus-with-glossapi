@@ -1,0 +1,71 @@
+{
+  "rows": [
+    {
+      "row_id": "gsm_334",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The record has one problem and one solution record; the supplied provenance indicates an unambiguous pairing.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "gsm_4022",
+      "overall": "issues",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "minor",
+          "quote": "4 πόδια ταινίας συσκευασίας",
+          "explanation": "The Greek adaptation changes Debbie to Δήμητρα but retains the source's imperial measurement in feet. The mathematics and source fidelity remain correct, but feet are culturally atypical in a Greek setting and constitute a remaining Anglosphere element.",
+          "suggested_action": "Record the retained imperial unit as an adaptation concern. Do not convert or alter it in audit mode; any later localization should preserve equivalent quantities and be explicitly authorized."
+        }
+      ],
+      "provenance_note": "The record has one problem and one solution record; the supplied provenance indicates an unambiguous pairing.",
+      "verification_needed": []
+    },
+    {
+      "row_id": "math5_269",
+      "overall": "issues",
+      "final_result": "uncertain",
+      "derivation": "pass",
+      "problem_fidelity": "issue",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "issue",
+      "findings": [
+        {
+          "dimension": "problem_fidelity",
+          "severity": "major",
+          "quote": "Θεωρούμε ότι χρησιμοποιούνται τα $26$ γράμματα του αλφαβήτου.",
+          "explanation": "The Greek problem does not specify the English/Latin alphabet. In a Greek-language problem featuring Γιάννης, «το αλφάβητο» naturally permits or suggests the 24-letter Greek alphabet, so the candidate's assumption of 26 letters is unsupported by the displayed problem. The counting method is internally correct, but the numerical result depends on this unresolved premise: 26^3 = 17576, whereas 24^3 = 13824.",
+          "suggested_action": "Clarify in the problem that the English alphabet is intended, or explicitly authorize changing the numerical answer and dependent calculations to use the Greek alphabet. Do not silently change the problem to validate the reference answer."
+        },
+        {
+          "dimension": "cultural_adaptation",
+          "severity": "major",
+          "quote": "Ο Γιάννης θέλει να βρει όλες τις λέξεις τεσσάρων γραμμάτων",
+          "explanation": "Changing Joe to Γιάννης while omitting the source solution's implicit 26-letter English-alphabet context creates a culturally incoherent adaptation: the localized framing and the assumed alphabet point in different directions.",
+          "suggested_action": "Choose and state a coherent alphabet as part of an authorized repair; preserve the combinatorial teaching objective."
+        }
+      ],
+      "provenance_note": "Two solution records are reported, but the problem text is marked stable and no alternative problem variants are supplied. The audit therefore uses the displayed problem-solution pairing; there is no supplied evidence of competing saved problem versions.",
+      "verification_needed": [
+        "Clarify whether the intended alphabet is the 26-letter English alphabet or the 24-letter Greek alphabet."
+      ]
+    }
+  ]
+}

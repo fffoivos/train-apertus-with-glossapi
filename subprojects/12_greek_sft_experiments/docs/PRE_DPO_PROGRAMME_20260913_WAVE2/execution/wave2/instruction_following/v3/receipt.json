@@ -1,0 +1,9 @@
+{
+  "source_sha256": "d3068b3aa1c4b473cf4579361cf7083fd96adcee332d6c66b32d35cbb7d8739e",
+  "output_sha256": "be05e51923a9085f10833ea618305a30837d2688daefdd1a75a145d9156b67de",
+  "rows": 20,
+  "checker_pass": 20,
+  "new_source_reviews": 4,
+  "production_promoted": 0,
+  "note": "Full semantic independent review still required. Original and v2 pilots remain immutable."
+}

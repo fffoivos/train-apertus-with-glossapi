@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_nat_1095_0",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The actual AFTER target is complete and matches the supplied after-record exactly. Independent verification gives α₈ = 18 + 7·3 = 39, S₈ = 8·(18 + 39)/2 = 228 τελάρα, and 228·7 € = 1.596 €. The editor changed only «Οι αριθμοί των τελάρων» to the more precise «Τα πλήθη των τελάρων», without changing the problem, reasoning, or result.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_nat_185_2",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "Native Greek example with no English source. The actual AFTER target is complete and unchanged from BEFORE. Independent verification gives walking time 1/5 = 0,2 h, bus time 6/30 = 0,2 h, total distance 7 km, total time 0,4 h, and average speed 7/0,4 = 17,5 km/h. The ticket price and shopping money are irrelevant distractors but do not undermine the well-posed calculation or its teaching objective.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    }
+  ]
+}

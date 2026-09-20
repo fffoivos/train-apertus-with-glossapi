@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "row_id": "gm_gsm_429",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The complete before and after records are identical and match the actual training pair. The solution independently follows the supplied premises: Tuesday's 6 loaves plus Monday's 3 give 9 loaves, requiring 9 × 4 = 36 bananas. The translated setting preserves the teaching objective, and the permitted name adaptation from Elois to Ελένη is coherent.",
+      "verification_needed": [],
+      "editor_effect": "unchanged",
+      "recommended_action": "keep"
+    },
+    {
+      "row_id": "gm_math_2996",
+      "overall": "no_defect_found",
+      "final_result": "pass",
+      "derivation": "pass",
+      "problem_fidelity": "pass",
+      "units_and_rounding": "pass",
+      "completeness": "pass",
+      "greek_language": "pass",
+      "cultural_adaptation": "pass",
+      "findings": [],
+      "provenance_note": "The after-correction target correctly states the domain restriction x ≠ 3 and simplifies the inequality to (5 − x)/(x − 3) ≥ 0. Sign analysis at the critical points 3 and 5 yields exactly (3, 5]. The editor only repaired the compact Greek phrase «Πρέπει x ≠ 3.» to the grammatically complete «Πρέπει να ισχύει x ≠ 3.» without changing the mathematics or training structure.",
+      "verification_needed": [],
+      "editor_effect": "language_improvement",
+      "recommended_action": "keep"
+    }
+  ]
+}
