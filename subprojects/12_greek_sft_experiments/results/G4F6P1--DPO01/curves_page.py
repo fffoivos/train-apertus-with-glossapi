@@ -18,6 +18,7 @@ FULL = (_load('greekmmlu_full_partial.json', {}) or {}).get('models', {})
 OFFICIAL = _load('greekmmlu_official_paired.json', {}) or {}
 DATES = _load('run_dates.json', {}) or {}
 FROZEN = _load('frozen_results.json', {}) or {}
+CALIB = _load('../greekmmlu_official/label_calibration.json', {}) or {}
 ALPHA_CI = _load('alpha_interval.json', {}) or {}
 EV  = _load('evidence_bundle.json', {})
 GMP = _load('greekmmlu_paired.json', {})
@@ -425,6 +426,36 @@ def gmmlu_full_table():
             + f"<tr><th>parent</th><td>{p['raw_acc']:.4f}</td><td class=w>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>"
             + ''.join(rows) + "</tbody></table></div>")
 
+def calibration_table():
+    """Q4: the label-position correction under five estimators. The page cites the spread between them,
+    so the table must SHOW it -- the model-specific ones remove the deficit, the parent-derived one does
+    not. Reads label_calibration.json; nothing is typed here (R-DPO15 ask 2)."""
+    if not CALIB or 'parent' not in CALIB: return ''
+    P = CALIB['parent']
+    if 'out_of_fold' not in P:        # produced by the pre-R-DPO15 tool: refuse rather than show one estimator as if it were the finding
+        return ("<div class='callout bad'><b>Calibration table withheld.</b> <code>label_calibration.json</code> "
+                "predates the robustness estimators; re-run <code>cluster/eval_jobs/label_calibration.py</code>.</div>")
+    NICE = {'arm01_ep3': 'plain DPO &alpha;=0', 'arm05_ep3': 'anchored &alpha;=0.25', 'armBAL_ep3': 'length-balanced'}
+    EST = [('raw', 'as scored'), ('in_sample', 'centered<br><span class=w>in-sample</span>'),
+           ('out_of_fold', 'centered<br><span class=w>5-fold OOF</span>'),
+           ('out_of_fold_stratified', 'centered<br><span class=w>OOF, by choice count</span>'),
+           ('parent_bias', "centered<br><span class=w>by the PARENT's bias</span>")]
+    rows = ["<tr><th>parent</th>" + ''.join("<td>%.2f%%</td>" % P[e] for e, _ in EST) + "</tr>"]
+    for k, n in NICE.items():
+        v = CALIB.get(k)
+        if not v: continue
+        rows.append("<tr><th>%s</th>%s</tr>" % (n, ''.join(
+            "<td>%.2f%%<br><span class='%s'>%+.2f</span></td>" % (v[e], 'k' if abs(v[e] - P[e]) * 1 > 0.1 else 'w', v[e] - P[e])
+            for e, _ in EST)))
+    n = P.get('n'); cc = P.get('choice_counts', {})
+    foot = ("<p class='note'>%s items (%s). Each cell is accuracy; the second line is the difference from the "
+            "parent under that same estimator. Only the last column uses a correction that is not fitted per "
+            "model, and it is the only one under which the deficit survives.</p>"
+            % (f"{n:,}" if n else '', ' / '.join("%s&times;%s-choice" % (f"{c:,}", k) for k, c in sorted(cc.items()))))
+    return ("<div style='overflow-x:auto'><table><thead><tr><th>model</th>"
+            + ''.join("<th>%s</th>" % t for _, t in EST) + "</tr></thead><tbody>"
+            + ''.join(rows) + "</tbody></table></div>" + foot)
+
 def gmmlu_official_table():
     """Official label protocol against the custom one, same models, same 16,632 items. Every number
     is read from greekmmlu_official_paired.json / greekmmlu_full_partial.json; none is typed here."""
@@ -651,8 +682,8 @@ code {{ font-family:"IBM Plex Mono",monospace; font-size:.9em; }}
 <div class="callout good"><b>Every arm is above the parent on both generated benchmarks.</b> The spread after each mean is across-run dispersion; on MGSM the plain arm's +8.48 pp carries an item-bootstrap interval of [+2.24, +14.72]. The best arm is the length-balanced subset, at +5.48 IFEval and +11.20 MGSM.</div>
 <div class="callout"><b>Four things this does not say, each of which we got wrong before.</b>
 <br>&middot; <b>It is not "maths-free tuning improved maths".</b> 24 dedicated mathematics tasks were excluded from the pair set, but <b>66 pairs keep embedded quantitative content</b> (56 training, 10 held out) &mdash; prices, wages, schedules, quantities, explicit calculations. This page said "no mathematics" repeatedly. That was wrong.
-<br>&middot; <b>The IFEval gain concentrates where answers were being cut off.</b> Splitting one arm's items by whether either answer hit the 1,280-token cap: where neither did, +1.98 pp (p=0.34); where one did, +13.79 pp. <b>57% of the net improvement sits in the cap-affected stratum</b> of 87 items; the parent hits the cap on 81 of 541, the arm on 26. Termination behaviour is a plausible contributor, not a measured half: stratum membership depends on the outputs themselves, this is one checkpoint, and stopping at the right point can itself be what an instruction asked for.
-<br>&middot; <b>Greek knowledge went the other way.</b> Under the official GreekMMLU protocol the arms are <b>0.26 to 0.43 pp below</b> the parent, and those are the most statistically solid numbers on this page (p &le; 0.0065 on 16,632 items). See section 10.
+<br>&middot; <b>The IFEval gain is not produced by the 1,280-token cutoff.</b> It concentrates where answers were being cut off &mdash; 57% of the net improvement sits in the 87 cap-affected items, and the parent hits the 1,280-token wall on 81 of 541 against the arms' 26. So we re-scored at 3,500 tokens, 2.7&times; the room and as much as a 4,096-token context allows. The parent used it, doubling its mean output from 330 to 661 tokens, and <b>no item changed its prompt-level strict outcome for any model</b>: the gap is +3.88 and +5.73 pp at either cap. Two items (parent 95, arm01 161) did change instruction-level results while still failing overall. This rules out sensitivity of the headline score to the 1,280 cutoff <em>within the tested range</em> &mdash; not output-length effects in general: 78 of the parent's 83 extended outputs, and 25 of each arm's 27, still ran into the 3,500 wall, so unrestricted-length behaviour is unresolved and cap-affected status may mark a correlated failure to terminate rather than a cause of failing.
+<br>&middot; <b>The Greek-knowledge deficit is protocol-sensitive, but it is not shown to be zero.</b> The arms score 0.32 to 0.43 pp below the parent on official GreekMMLU, very consistently, and that <em>is</em> a real multiple-choice performance cost. It is consistent with a label-position score shift: it disappears under model-specific batch log-score centering (including five-fold out-of-fold estimation, so it is not in-sample fitting), and a separate full-text scorer does not detect it. But neither result establishes zero knowledge loss &mdash; the full-text scorer also changes the prompt, and its confidence intervals are wide enough to contain the raw deficit. This page previously called it a settled artefact with "zero" cost. That was an overclaim; section 10 now carries the limits.
 <br>&middot; <b>The last row never used IPO.</b> The trainer hardcoded the sigmoid objective, so a configuration asking for IPO trained sigmoid anyway and said nothing. Those two runs are anchored sigmoid DPO at &beta;=10. Every IPO conclusion this page carried &mdash; a pre-registered falsification, a gate that went unmet, an argument about &beta; scaling the gradient &mdash; was about a loss function that never ran.</div>
 <p>MGSM is the one that survives scrutiny best. Response lengths are unchanged (121.1 tokens for both parent and plain arm), the gained answers are <em>longer</em> rather than shorter, in only 4 of 48 gains did the parent's text hold the right number anywhere &mdash; four <em>possible</em> extraction cases, not four proven ones, and the items that change replicate across runs (gain-set Jaccard 0.646 / 0.702 / 0.717 for the plain, anchored and balanced groups; loss-set 0.594 / 0.609 / 0.662, and lower again at 0.533 / 0.375 for the &beta;=10 pair). It is a real change in the answers. <b>What produces it is unknown</b>, and 79 of 250 items move to net +17, which is a great deal of churn for a set of 343 training pairs.</p>
 <div class="vstat"><b>Verification status.</b> Thirteen independent cross-vendor reviews (gpt-5.6-sol, gpt-6-astra) have now examined this work. The most recent re-derived the training-time geometry, confirmed all fifteen arms resolve to distinct intended weight hashes, checked 3,191 benchmark documents for contamination against the pair set at 8, 13 and 20 tokens (none), and re-ran 540 Global-MMLU comparisons. Its verdict on the result was <b>real</b>, with three corrections &mdash; the four bullets above are theirs, not ours. What is still <b>not</b> established: the mechanism behind the MGSM gain, and whether any of this transfers beyond these protocols.</div>
@@ -749,10 +780,60 @@ all three differences are significant</b> (Holm-adjusted p = 0.0004, 0.0001 and 
 16,382 held-out items and on the 16,159-item clean subset, and on the original 250-item slice the sign
 flips from +2.0 to between &minus;1.6 and &minus;2.0. The official protocol is also the quieter
 instrument: about 330 items change answer under it against about 1,130 under the custom one.</div>
-<p>So the GreekMMLU story on this page has now been wrong three ways: a +2 pp gain read off a lucky
+<h3>And the decline is not knowledge — it is which letter the model reaches for</h3>
+<p>The official protocol ranks four bare labels, &Alpha;/&Beta;/&Gamma;/&Delta;. The parent is already
+miscalibrated over them: it picks &Beta; on 34.3% of items where the gold answer is &Beta; only 29.5% of
+the time, and under-picks &Alpha; (28.0% against 35.1%) and &Delta; (9.8% against 13.9%). <b>Every arm
+pushes further the same way</b>, and the size of the loss tracks the size of the shift across all four
+recipes &mdash; &Beta;-shift +1.06 / +0.96 / +0.85 / +0.81 against losses &minus;0.38 / &minus;0.38 /
+&minus;0.32 / &minus;0.25.</p>
+<p>Two ways of re-ranking that remove the label prior, on the same 16,632 items and the same weights.
+They are <b>not independent confirmations of each other</b>, and the first is not a clean isolation of
+the scoring form &mdash; see the limits below. First, score the <em>content</em> of each answer instead
+of the letter:</p>
+<div style="overflow-x:auto"><table><thead><tr><th>model</th><th>ranking bare labels</th><th>ranking answer content</th><th>content-scorer 95% CI</th></tr></thead><tbody>
+<tr><th>plain DPO &alpha;=0</th><td>&minus;0.41 pp &nbsp;<span class=w>p=0.00018</span></td><td>&minus;0.04 pp &nbsp;<span class=w>p=0.82</span></td><td>[&minus;0.30, +0.22]</td></tr>
+<tr><th>anchored &alpha;=0.25</th><td>&minus;0.43 pp &nbsp;<span class=w>p=0.000038</span></td><td>+0.02 pp &nbsp;<span class=w>p=0.89</span></td><td>[&minus;0.24, +0.29]</td></tr>
+<tr><th>length-balanced</th><td>&minus;0.32 pp &nbsp;<span class=w>p=0.00059</span></td><td>&minus;0.09 pp &nbsp;<span class=w>p=0.41</span></td><td>[&minus;0.29, +0.10]</td></tr>
+<tr><th>Holm-adjusted</th><td>all &le; 0.0006</td><td><b>all 1.0</b></td><td><span class=w>paired item bootstrap, 4,000 resamples</span></td></tr>
+</tbody></table></div>
+<div class="callout bad"><b>Holm p = 1.0 here is a failure to reject, not a demonstration of equality.</b>
+No equivalence margin was declared in advance, and every one of those confidence intervals is wide
+enough to contain the raw label-protocol deficit it is being used to dismiss. The honest reading is
+that the content scorer <em>does not detect</em> a deficit, at a precision of about &plusmn;0.3 pp.</div>
+<p>Second, keep the label protocol but subtract each model's own mean log-score per label position,
+estimated from its own scores &mdash; <b>model-specific batch log-score centering</b>. The page called
+this "contextual calibration"; it is not that, and the name mattered because it implied a standard
+correction rather than a per-model one. Alongside it, the robustness rows that decide how much work
+the per-model part is doing:</p>
+{calibration_table()}
+<div class="callout"><b>Under every model-specific estimator the deficit disappears and slightly
+reverses; under a common correction about half of it survives.</b> Centering out-of-fold &mdash; the
+bias estimated on four fifths of the items and applied to the held-out fifth &mdash; leaves
++0.05 / +0.05 / +0.06 pp, so this is <em>not</em> an artefact of fitting the correction on the
+evaluation set, which was the obvious worry. Doing it within choice-count strata, so position &Delta;
+is never estimated from a population that position &Alpha; does not share, leaves
++0.05 / +0.08 / +0.11 pp. But holding the correction fixed at the <em>parent's</em> bias instead of
+each model's own leaves <b>&minus;0.16 / &minus;0.25 / &minus;0.15 pp</b> &mdash; roughly half the raw
+deficit. A per-model correction can absorb a genuine difference in ability along with prior drift, and
+that is exactly what distinguishes the two readings.</div>
+<div class="callout bad"><b>The content scorer is not a clean intervention, and we described it as one.</b>
+It does not change only the answer representation. <code>custom_full_text</code> and
+<code>official_label</code> differ in the prompt text (a bare instruction against the official
+subject-framed template), the answer cue, the candidate continuation (full choice text against a bare
+letter) <em>and</em> the ranking statistic (mean against summed log-probability) &mdash;
+<code>greekmmlu_official.py:46</code> versus <code>:124</code>. The parent scores 54.28% under one and
+69.41% under the other; these are substantially different instruments, not one instrument with the
+letters swapped. A clean test holds the official prompt byte-identical and changes only the
+continuation; a stronger one permutes the choice order. Neither has been run.</div>
+<p>The pair set contains <em>no multiple-choice items at all</em>, so nothing anchors the label prior and
+preference training is free to drift it as a side effect. That still suggests a cheap thing to try &mdash;
+put a small slice of label-answer pairs in the next round &mdash; but on this evidence it is a
+hypothesis to test, not a diagnosis to act on.</p>
+
+<p>So the GreekMMLU story on this page has now been wrong four ways: a +2 pp gain read off a lucky
 slice, then a withdrawal argued from a false premise, then a small positive effect measured with the
-wrong ruler. <b>The supportable statement is that the three trained checkpoints evaluated score 0.26 to 0.43 points
-below the parent under official-label GreekMMLU</b> &mdash; and after the re-score it is no longer the only correctly loaded contrast, but it remains the one that points downward. These are item-level
+wrong ruler, then a decline that was the ruler again. <b>The supportable statement is narrower than any of them: official bare-label GreekMMLU falls by 0.32&ndash;0.43 pp, the fall is protocol-sensitive and consistent with a label-position shift, and no alternative scorer we have run detects a knowledge deficit &mdash; at a precision that could not have detected one this small anyway.</b> After the re-score it is no longer the only correctly loaded contrast, but it remains the one that points downward. These are item-level
 tests on one checkpoint per recipe, so they establish the difference for these models, not its
 reproducibility across training seeds.</p>
 <p>Why the two results disagree in sign is not established, and they differ in more than protocol: the custom runner used the environment that mis-loads the arms' rotary settings (section 6) and the official one did not. That is a concrete, untested candidate. Another, equally untested: preference training shifts

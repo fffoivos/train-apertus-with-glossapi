@@ -37,7 +37,7 @@ benchmark**, because MGSM's 250 items are now thoroughly looked at and cannot co
 
 ## Q2 — Is the IFEval gain compliance, or is it just terminating?
 
-*(partly answered 20 Sept — see the bottom of this section)*
+*(answered 20 Sept for the tested range; see the bottom of this section. Narrowed by R-DPO15.)*
 
 IFEval allows **1,280 generated tokens with no stop strings at all** (`until: []`), so generation ends
 only at EOS or the wall. The parent hits that wall on **81 of 541 items (15%)**; the arms on ~26 (5%).
@@ -51,9 +51,30 @@ Evidence so far that it is a real fix, not gaming:
   phrase" cannot succeed under truncation.
 - On those 81 items the arm stops in time on 61 and passes 50 against the parent's 38.
 
-**Attack (running, job 3452746): re-score at a 4,096-token cap.** Parent, arm01, armBAL, IFEval+MGSM.
-If the parent recovers most of the gap the wall was doing the work; if it does not, the parent simply
-does not terminate and the gain is a genuine behavioural improvement.
+**Attack (DONE 20 Sept): re-scored at a 3,500-token cap** — 2.7x the room, and as much as the model's
+4,096-token context allows (the first attempt asked for 4,096 generated tokens and died on the context
+assertion). Parent, arm01, armBAL, IFEval.
+
+**Result: zero prompt-level strict pass/fail flips for any model.** Parent 326/541 at both caps,
+arm01 347/541, armBAL 357/541; the gaps are +3.88 and +5.73 pp at either cap. The parent genuinely
+used the room, doubling mean output from 330 to 661 tokens.
+
+Run authenticity is not in doubt: R-DPO15 checked every response and found each old one is a strict
+*prefix* of the new one — the fingerprint of deterministic decoding with a raised wall. Parent 458
+byte-identical / 83 extended; arm01 and armBAL 514 / 27.
+
+**What this does and does not support** (R-DPO15, HIGH; the page's "the output cap is irrelevant" and
+"not one item changed outcome" are withdrawn):
+- It **rules out** sensitivity of the headline score to the 1,280 cutoff *within the tested range*.
+- It does **not** rule out output-length effects in general: 78 of the parent's 83 extended outputs,
+  and 25 of each arm's 27, still ran into the 3,500 wall. The experiment usually *moves* the
+  truncation point rather than observing natural completion. Unrestricted-length behaviour is
+  unresolved.
+- "Not one item changed outcome" was true only of prompt-level strict results. Parent item 95 and
+  arm01 item 161 changed *instruction-level* strict and loose outcomes while still failing overall.
+- Cap-affected status may therefore mark a correlated failure-to-terminate phenotype (nontermination,
+  repetition, verbosity) rather than a cause of failing. Length can correlate with failure without
+  causing it; supplying 2,220 more tokens does not repair it.
 
 Note: a different cap is a different measurement. `rlhf.evals` records `gen_kwargs` in the manifest
 and will refuse to compare across caps — the valid contrast is parent-vs-arm *within* each cap.
@@ -78,36 +99,85 @@ is the one question from the original round design that remains genuinely open.
 
 ---
 
-## Q4 — Can a few label-format pairs remove the only measured cost? *(new, 20 Sept)*
+## Q4 — Is the GreekMMLU deficit a label-position shift? *(new, 20 Sept; ANSWERED, narrowly, 20 Sept)*
 
-The Greek MMLU "knowledge loss" is not knowledge loss. On the **same 16,632 items, same weights, same
-environment**, changing only the scoring form:
+**Status: measured, then narrowed by R-DPO15 (Sol, xhigh). The earlier heading here — "the Greek MMLU
+knowledge loss is not knowledge loss" — was an overclaim and is withdrawn.**
 
-| | bare labels Α/Β/Γ/Δ | answer content |
-|---|---|---|
-| plain DPO | −0.41 pp, p = 0.00018 | −0.04 pp, p = 0.82 |
-| anchored | −0.43 pp, p = 0.000038 | +0.02 pp, p = 0.89 |
-| length-balanced | −0.32 pp, p = 0.00059 | −0.09 pp, p = 0.41 |
-| Holm-adjusted | all ≤ 0.0006 | **all 1.0** |
+### What was run
 
-The mechanism: DPO amplifies a label bias the parent already has. The parent over-picks Β (34.3% vs
-29.5% gold) and under-picks Α and Δ; every arm pushes further the same way, and **the size of the
-loss tracks the size of the shift monotonically across all four recipes** (Β-shift +1.06 / +0.96 /
-+0.85 / +0.81 against losses −0.38 / −0.38 / −0.32 / −0.25).
+All 16,632 items, same weights, same environment. Two families of evidence.
 
-The pairs contain **no multiple-choice items at all**, so nothing anchors the label prior and DPO is
-free to drift it as a side effect.
+**(a) A second scorer that ranks answer content instead of bare letters:**
 
-**Attack, cheapest first:**
-1. Calibrate the label prior at inference (free, no training) and see whether the deficit disappears.
-2. Add a small slice of label-answer pairs to round 2 and check the drift does not recur.
+| | bare labels Α/Β/Γ/Δ | answer content | content-scorer 95% CI |
+|---|---|---|---|
+| plain DPO | −0.41 pp, p = 0.00018 | −0.04 pp, p = 0.82 | [−0.30, +0.22] |
+| anchored | −0.43 pp, p = 0.000038 | +0.02 pp, p = 0.89 | [−0.24, +0.29] |
+| length-balanced | −0.32 pp, p = 0.00059 | −0.09 pp, p = 0.41 | [−0.29, +0.10] |
+| Holm-adjusted | all ≤ 0.0006 | **all 1.0** | paired item bootstrap, 4,000 resamples |
 
-If either works, the knowledge cost of preference training here is **zero**, and we should say so.
+**(b) Model-specific batch log-score centering** (`cluster/eval_jobs/label_calibration.py`), five
+estimators, delta vs parent in pp:
 
----
+| estimator | plain | anchored | length-balanced |
+|---|---|---|---|
+| raw | −0.415 | −0.433 | −0.325 |
+| centered, in-sample | +0.036 | +0.060 | +0.006 |
+| centered, 5-fold out-of-fold | +0.054 | +0.054 | +0.060 |
+| centered, OOF within choice-count strata | +0.054 | +0.078 | +0.108 |
+| **centered by the PARENT's bias** | **−0.162** | **−0.247** | **−0.150** |
+
+The mechanism still looks right: the parent over-picks Β (34.3% vs 29.5% gold) and under-picks Α and
+Δ; every arm pushes further the same way, and the size of the loss tracks the size of the shift
+monotonically across all four recipes (Β-shift +1.06 / +0.96 / +0.85 / +0.81 against losses −0.38 /
+−0.38 / −0.32 / −0.25).
+
+### What R-DPO15 established, and I confirmed firsthand
+
+1. **"Knowledge cost is zero" does not follow.** Holm p = 1.0 is a failure to reject; no equivalence
+   margin was predeclared, and every content-scorer CI above is wide enough to contain the raw deficit
+   it was being used to dismiss. Precision is about ±0.3 pp — too coarse to detect a 0.4 pp effect.
+2. **The two families are not independent confirmations, and (a) is not a clean intervention.**
+   `custom_full_text` uses `old_prompt()`, `official_label` uses `official_prompt()`
+   (`greekmmlu_official.py:46` vs `:124`): they differ in prompt text, subject framing, answer cue,
+   candidate continuation (full choice vs bare letter) **and** ranking statistic (`avg_logprob` vs
+   `sum_logprob`). Parent scores 54.28% under one and 69.41% under the other — different instruments.
+3. **The correction is model-specific and that does material work.** Out-of-fold estimation rules out
+   in-sample fitting (the obvious worry, and it is genuinely ruled out). But a common parent-derived
+   correction leaves roughly half the deficit. A per-model correction can absorb genuine ability
+   differences along with prior drift.
+4. **Doc/code mismatch, fixed.** The old docstring described two estimators (probability-marginal and
+   additive) and implemented only the additive one, and called it "contextual calibration". Renamed to
+   *model-specific batch log-score centering*; the tool now emits all five rows above.
+
+One place I did **not** accept R-DPO15 as written: it attributed part of the sensitivity to pooling
+the 2-/3-/4-choice populations (3,152 / 3,478 / 10,002). Cross-fitting *within* choice-count strata
+leaves the deficit removed (+0.054 / +0.078 / +0.108), so stratification is not the lever — the
+**estimator form** is.
+
+### Supportable statement
+
+> Official bare-label GreekMMLU falls by 0.32–0.43 pp after preference training. The deficit is
+> protocol-sensitive and consistent with a model-specific label-position score shift: it disappears
+> under model-specific batch log-score centering including out-of-fold estimation, and a separate
+> full-text scorer does not detect it. This does not establish zero Greek-knowledge loss — the
+> full-text scorer also changes the prompt, and the raw official-label degradation remains a real
+> multiple-choice performance cost.
+
+### What would actually settle it (not run)
+
+1. **A clean scoring-form isolation:** hold `official_prompt` byte-identical and change *only* the
+   candidate continuation (bare letter → full choice text), keeping the ranking statistic fixed.
+   This is the experiment we claimed to have run and did not.
+2. **A choice-permutation experiment**, predefined: if the deficit is positional, permuting the
+   presentation order of the choices moves it in a predictable way; if it is knowledge, it does not.
+   Stronger than any post-hoc correction because nothing is fitted.
+3. **Add a small slice of label-answer pairs to round 2** and check the drift does not recur — now a
+   hypothesis to test, not a diagnosis to act on.
 
 ## Sequencing
 
-Q2 is running. Q4(1) is free and can be done from existing prediction files. Q1 is the one that
+Q2 is running. Q4(1) needs one 45-minute re-run to persist the per-choice scores first. Q1 is the one that
 decides round 2's design and costs 2 training runs. Q3 costs 2 training runs and closes the original
 round's unfinished business.

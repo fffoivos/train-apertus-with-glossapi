@@ -240,3 +240,27 @@ now opens with a correction banner pointing here:
 | | MEDIUM `CANCELLED by 123` + RUNNING accepted | **fixed** — `sacct -P` parsed per record, every record must be terminal. Simulated: terminal → 0; CANCELLED+RUNNING → 1; `CANCELLED by 123`+RUNNING → 1; ssh failure → 1; live → 1 |
 | | ledger E2 scope | **fixed** — scoped to "the nominal generation-config axis is inert in this lm_eval setup"; says explicitly it does not establish serving-environment equivalence |
 | | `parent_ckptgen` refused by compare() | **as designed** — its effective identity equals `parent`, so it is not a comparison; it is read as an equality check on matching manifests and per-item outcomes |
+
+---
+
+## Spend, 19–20 September
+
+Owner raised the cap by CHF 500 on 20 Sept with standing authorisation to spend without asking,
+against a record. Measured at the CSCS rate used by `cluster/ledger.sh`.
+
+| run | what it bought | node-h | ~CHF |
+|---|---|---|---|
+| config 2×2 cell (3443153) | the missing off-diagonal cell; showed the "configuration effect" was the date | 1.3 | 4 |
+| custom GreekMMLU full, 8 models (3443296) | the 250-item slice was too small to decide anything | 1.8 | 5 |
+| official GreekMMLU, parent + 3 arms | the protocol that is comparable to a published number | 0.8 | 2 |
+| **frozen re-score, 19 models (3444789)** | **the round's real result: geometry repaired, date frozen, weights the only difference** | 2.7 | 8 |
+| official GreekMMLU, remaining 12 | seed spread on the Greek lane; all 15 arms | 2.5 | 7 |
+| dual-protocol test, 4 models | **Q4: the Greek "knowledge loss" is a label-position artefact** | 0.8 | 2 |
+| cap3500 truncation test (3453314) | Q2: whether the IFEval gain is compliance or termination | ~0.5 | ~2 |
+| Q4 scores re-run (3453470) | per-choice log-probs, so the label prior can be calibrated | ~0.8 | ~2 |
+
+Two launches cost nothing because they failed closed in seconds: the first cap4096 attempt (OUT_DIR
+not honoured, so every model was correctly skipped as already-scored) and the second (4096 generated
+tokens against a 4096 context — lm_eval refused). Both were my errors; neither reached a GPU.
+
+Running total for the correction work: roughly **11 node-hours, ~CHF 32**, against a raised cap.

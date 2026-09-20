@@ -3,8 +3,8 @@
  "protocol": "CLUSTER_PROTOCOL.md",
  "cap_chf": 525.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 87.374,
- "chf_used": 235.04,
+ "nh_used": 88.234,
+ "chf_used": 237.35,
  "cursor": "OVERNIGHT 18->19 Sept: sbatch 3439455 (dpo01_night2) runs T1 replication (10 arms: 01s44/45/46, 05s44/45/46 -> n=5 per alpha; IPO42/43 at the corrected beta 10; BALs43/44) then the four eval lanes (lm_eval, served, greekmmlu-250, gencfg control). Plan: docs/RLHF_COORDINATION/OVERNIGHT_20260918.md. ON RESUME: harvest, compute the noise floor (within-arm sd across 5 seeds on IFEval + the same-seed floor arm05_ep3 vs arm07_ep3), restate every 18 Sept claim as survives/inside-floor/withdrawn, then run review R-DPO6 (blocking on conclusions, max 2 cycles). Artifact + docs/DPO01_CURVES_20260918.html regenerate from results/G4F6P1--DPO01/curves_page.py.",
  "steps": {
   "WP0_data": {

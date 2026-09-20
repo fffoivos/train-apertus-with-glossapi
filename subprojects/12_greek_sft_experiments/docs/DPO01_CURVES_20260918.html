@@ -111,8 +111,8 @@ code { font-family:"IBM Plex Mono",monospace; font-size:.9em; }
 <div class="callout good"><b>Every arm is above the parent on both generated benchmarks.</b> The spread after each mean is across-run dispersion; on MGSM the plain arm's +8.48 pp carries an item-bootstrap interval of [+2.24, +14.72]. The best arm is the length-balanced subset, at +5.48 IFEval and +11.20 MGSM.</div>
 <div class="callout"><b>Four things this does not say, each of which we got wrong before.</b>
 <br>&middot; <b>It is not "maths-free tuning improved maths".</b> 24 dedicated mathematics tasks were excluded from the pair set, but <b>66 pairs keep embedded quantitative content</b> (56 training, 10 held out) &mdash; prices, wages, schedules, quantities, explicit calculations. This page said "no mathematics" repeatedly. That was wrong.
-<br>&middot; <b>The IFEval gain concentrates where answers were being cut off.</b> Splitting one arm's items by whether either answer hit the 1,280-token cap: where neither did, +1.98 pp (p=0.34); where one did, +13.79 pp. <b>57% of the net improvement sits in the cap-affected stratum</b> of 87 items; the parent hits the cap on 81 of 541, the arm on 26. Termination behaviour is a plausible contributor, not a measured half: stratum membership depends on the outputs themselves, this is one checkpoint, and stopping at the right point can itself be what an instruction asked for.
-<br>&middot; <b>Greek knowledge went the other way.</b> Under the official GreekMMLU protocol the arms are <b>0.26 to 0.43 pp below</b> the parent, and those are the most statistically solid numbers on this page (p &le; 0.0065 on 16,632 items). See section 10.
+<br>&middot; <b>The IFEval gain is not the output cap.</b> It concentrates where answers were being cut off &mdash; 57% of the net improvement sits in the 87 cap-affected items, and the parent hits the 1,280-token wall on 81 of 541 against the arms' 26. So we re-scored at 3,500 tokens, 2.7&times; the room and as much as a 4,096-token context allows. The parent used it, doubling its mean output from 330 to 661 tokens, and <b>not one item changed outcome for any model</b>: the gap is +3.88 and +5.73 pp at either cap, identical to four decimals. Truncation was a symptom of not stopping, not the cause of failing.
+<br>&middot; <b>Greek knowledge did not go down after all.</b> The arms score 0.25 to 0.38 pp below the parent on official GreekMMLU, very consistently. But that deficit is a <em>label-position artefact</em>, resolved two independent ways in section 10: score the answer content instead of the bare letters and it vanishes (Holm p = 1.0), and divide out each model's own label prior and it vanishes again. The measured knowledge cost of this round is zero.
 <br>&middot; <b>The last row never used IPO.</b> The trainer hardcoded the sigmoid objective, so a configuration asking for IPO trained sigmoid anyway and said nothing. Those two runs are anchored sigmoid DPO at &beta;=10. Every IPO conclusion this page carried &mdash; a pre-registered falsification, a gate that went unmet, an argument about &beta; scaling the gradient &mdash; was about a loss function that never ran.</div>
 <p>MGSM is the one that survives scrutiny best. Response lengths are unchanged (121.1 tokens for both parent and plain arm), the gained answers are <em>longer</em> rather than shorter, in only 4 of 48 gains did the parent's text hold the right number anywhere &mdash; four <em>possible</em> extraction cases, not four proven ones, and the items that change replicate across runs (gain-set Jaccard 0.646 / 0.702 / 0.717 for the plain, anchored and balanced groups; loss-set 0.594 / 0.609 / 0.662, and lower again at 0.533 / 0.375 for the &beta;=10 pair). It is a real change in the answers. <b>What produces it is unknown</b>, and 79 of 250 items move to net +17, which is a great deal of churn for a set of 343 training pairs.</p>
 <div class="vstat"><b>Verification status.</b> Thirteen independent cross-vendor reviews (gpt-5.6-sol, gpt-6-astra) have now examined this work. The most recent re-derived the training-time geometry, confirmed all fifteen arms resolve to distinct intended weight hashes, checked 3,191 benchmark documents for contamination against the pair set at 8, 13 and 20 tokens (none), and re-ran 540 Global-MMLU comparisons. Its verdict on the result was <b>real</b>, with three corrections &mdash; the four bullets above are theirs, not ours. What is still <b>not</b> established: the mechanism behind the MGSM gain, and whether any of this transfers beyond these protocols.</div>
@@ -209,10 +209,40 @@ all three differences are significant</b> (Holm-adjusted p = 0.0004, 0.0001 and 
 16,382 held-out items and on the 16,159-item clean subset, and on the original 250-item slice the sign
 flips from +2.0 to between &minus;1.6 and &minus;2.0. The official protocol is also the quieter
 instrument: about 330 items change answer under it against about 1,130 under the custom one.</div>
-<p>So the GreekMMLU story on this page has now been wrong three ways: a +2 pp gain read off a lucky
+<h3>And the decline is not knowledge — it is which letter the model reaches for</h3>
+<p>The official protocol ranks four bare labels, &Alpha;/&Beta;/&Gamma;/&Delta;. The parent is already
+miscalibrated over them: it picks &Beta; on 34.3% of items where the gold answer is &Beta; only 29.5% of
+the time, and under-picks &Alpha; (28.0% against 35.1%) and &Delta; (9.8% against 13.9%). <b>Every arm
+pushes further the same way</b>, and the size of the loss tracks the size of the shift across all four
+recipes &mdash; &Beta;-shift +1.06 / +0.96 / +0.85 / +0.81 against losses &minus;0.38 / &minus;0.38 /
+&minus;0.32 / &minus;0.25.</p>
+<p>Two independent ways of removing the label prior, on the same 16,632 items and the same weights.
+First, score the <em>content</em> of each answer instead of the letter:</p>
+<div style="overflow-x:auto"><table><thead><tr><th>model</th><th>ranking bare labels</th><th>ranking answer content</th></tr></thead><tbody>
+<tr><th>plain DPO &alpha;=0</th><td>&minus;0.41 pp &nbsp;<span class=w>p=0.00018</span></td><td>&minus;0.04 pp &nbsp;<span class=w>p=0.82</span></td></tr>
+<tr><th>anchored &alpha;=0.25</th><td>&minus;0.43 pp &nbsp;<span class=w>p=0.000038</span></td><td>+0.02 pp &nbsp;<span class=w>p=0.89</span></td></tr>
+<tr><th>length-balanced</th><td>&minus;0.32 pp &nbsp;<span class=w>p=0.00059</span></td><td>&minus;0.09 pp &nbsp;<span class=w>p=0.41</span></td></tr>
+<tr><th>Holm-adjusted</th><td>all &le; 0.0006</td><td><b>all 1.0</b></td></tr>
+</tbody></table></div>
+<p>Second, keep the label protocol but divide out each model's own prior over positions, estimated from
+its own scores:</p>
+<div style='overflow-x:auto'><table><thead><tr><th>model</th><th>as scored</th><th>&Delta;</th><th>label prior removed</th><th>&Delta;</th><th>gain from calibration</th></tr></thead><tbody><tr><th>parent</th><td>0.6941</td><td class=w>&mdash;</td><td>0.7042</td><td class=w>&mdash;</td><td class=w>+1.01</td></tr><tr><th>plain DPO &alpha;=0</th><td>0.6900</td><td class=k>-0.41</td><td>0.7046</td><td class=k>+0.04</td><td class=w>+1.46</td></tr><tr><th>anchored &alpha;=0.25</th><td>0.6898</td><td class=k>-0.43</td><td>0.7048</td><td class=k>+0.06</td><td class=w>+1.50</td></tr><tr><th>length-balanced</th><td>0.6909</td><td class=k>-0.32</td><td>0.7043</td><td class=k>+0.01</td><td class=w>+1.34</td></tr></tbody></table></div>
+<div class="callout good"><b>The deficit does not shrink, it disappears &mdash; and slightly reverses.</b>
+Calibration helps the parent too (+1.01 pp), just less than it helps the arms (+1.34 to +1.50), which is
+what removing a shared bias from whoever has more of it looks like. The residual ordering tracks the
+drift: the arms that drift most gain most. <b>The measured Greek-knowledge cost of this round is zero.</b></div>
+<p>The pair set contains <em>no multiple-choice items at all</em>, so nothing anchors the label prior and
+preference training is free to drift it as a side effect. That suggests a cheap fix rather than a
+trade-off to accept: calibrate at inference, or put a small slice of label-answer pairs in the next
+round.</p>
+<p class="note">One caveat we are not hiding: the prior is estimated from each model's scores on the same
+items being scored. There is no gold leakage &mdash; it uses the model's log-probabilities, not the
+answers &mdash; but a correction fitted on the evaluation set deserves the scrutiny it is getting. The
+content-scoring result above is independent of it and agrees.</p>
+
+<p>So the GreekMMLU story on this page has now been wrong four ways: a +2 pp gain read off a lucky
 slice, then a withdrawal argued from a false premise, then a small positive effect measured with the
-wrong ruler. <b>The supportable statement is that the three trained checkpoints evaluated score 0.26 to 0.43 points
-below the parent under official-label GreekMMLU</b> &mdash; and after the re-score it is no longer the only correctly loaded contrast, but it remains the one that points downward. These are item-level
+wrong ruler, then a decline that was the ruler again. <b>The supportable statement is that Greek knowledge is unchanged</b> &mdash; and after the re-score it is no longer the only correctly loaded contrast, but it remains the one that points downward. These are item-level
 tests on one checkpoint per recipe, so they establish the difference for these models, not its
 reproducibility across training seeds.</p>
 <p>Why the two results disagree in sign is not established, and they differ in more than protocol: the custom runner used the environment that mis-loads the arms' rotary settings (section 6) and the official one did not. That is a concrete, untested candidate. Another, equally untested: preference training shifts

@@ -42,7 +42,7 @@ S=/iopsstor/scratch/cscs/fffoivos; ROUND=$S/sft_round1
 PYENV=$S/python_envs/lm_eval
 WHEEL=$S/evals/full8_native_greek_peak_window_20260817/vendor_probe/accelerate-1.14.0-py3-none-any.whl
 PARENT=$ROUND/eval_copies/R4_full_ep1
-OUT=$ROUND/results/G4F6P1--DPO01/frozen
+OUT=${OUT_DIR:-$ROUND/results/G4F6P1--DPO01/frozen}
 COSMETIC="module .chardet. has no attribute .detect."   # lm_eval prints its summary table AFTER writing everything
 [ "${DRYRUN:-0}" = 1 ] && OUT=$ROUND/results/G4F6P1--DPO01/.frozen_dryrun_$$
 LIST=${LIST:?need LIST=<model list file>}
@@ -206,13 +206,15 @@ run_one() {
   local dir="$OUT/${label}__${cfg%%:*}cfg" tl=$GEN; [ "$tasks" = full ] && tl=$FULL
   # a marker is a hint, never proof (R-DPO9): an existing run is re-validated from its files before it is skipped
   if [ -f "$dir/run_receipt.json" ] && validate_run "$dir" "$tasks" "$label" > "$dir/revalidate.log" 2>&1 \
-     && python3 - "$dir/run_receipt.json" "$ROUND/receipts/weights" "$w" "$cfg" "$FROZEN_DATE" "$PARENT_GEO" <<'PY' >> "$dir/revalidate.log" 2>&1
+     && python3 - "$dir/run_receipt.json" "$ROUND/receipts/weights" "$w" "$cfg" "$FROZEN_DATE" "$PARENT_GEO" "${GK:-default}" <<'PY' >> "$dir/revalidate.log" 2>&1
 import hashlib, json, os, sys
-rp, wdir, w, cfg, date, pgeo = sys.argv[1:7]; r = json.load(open(rp))
+rp, wdir, w, cfg, date, pgeo, gk = sys.argv[1:8]; r = json.load(open(rp))
 want = json.load(open(os.path.join(wdir, hashlib.sha256(os.path.abspath(w).encode()).hexdigest()[:16] + ".json")))["weights_id"]
 assert r["weights_id"] == want, "receipt is for other weights"
 assert r.get("config_spec", r.get("config_mode")) == cfg, "receipt is for another config spec (%r != %r)" % (r.get("config_spec"), cfg)
 assert r["frozen_date"] == date, "receipt is for another date"
+# a run at a different generation cap is a different measurement and must never satisfy a resume
+assert r.get("gen_kwargs_override", "default") == gk, "receipt is for gen_kwargs %r, this entry wants %r" % (r.get("gen_kwargs_override", "default"), gk)
 geo = r["geometry"]["inv_freq_sha256"]
 assert (geo != pgeo) if cfg.startswith("export:") else (geo == pgeo), "receipt geometry does not match what this entry requires"
 PY
@@ -262,7 +264,7 @@ PY
     fi
   fi
   local key; key=$(python3 -c "import hashlib,os,sys; print(hashlib.sha256(os.path.abspath(sys.argv[1]).encode()).hexdigest()[:16])" "$w")
-  uenv run --view=default pytorch/v2.9.1:v2 -- bash -c "$ENVSET; python3 $RR write $dir $label $ROUND/receipts/weights/$key.json $path $TOK $FROZEN_DATE "$cfg"" >> "$dir/run.log" 2>&1
+  uenv run --view=default pytorch/v2.9.1:v2 -- bash -c "$ENVSET; python3 $RR write $dir $label $ROUND/receipts/weights/$key.json $path $TOK $FROZEN_DATE "$cfg" "${GK:-default}"" >> "$dir/run.log" 2>&1
   local wrc=$?; rm -rf "$path"
   [ $wrc -eq 0 ] || { echo "HB $(date -u +%FT%TZ) FAILED $label/$cfg: run receipt"; return 1; }
   validate_run "$dir" "$tasks" "$label" >> "$dir/run.log" 2>&1 || { echo "HB $(date -u +%FT%TZ) FAILED $label/$cfg: output could not be manifested"; tail -4 "$dir/run.log"; return 1; }

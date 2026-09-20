@@ -162,6 +162,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--parquet", type=Path, required=True); parser.add_argument("--model", required=True, help="LABEL=/absolute/model/path")
     parser.add_argument("--output", type=Path, required=True); parser.add_argument("--protocols", default="official_label,custom_full_text", help="comma list of official_label, custom_full_text, chat_official, chat_instructed")
+    parser.add_argument("--save-choice-scores", action="store_true", help="persist per-choice sum/avg logprobs; needed to calibrate the label prior. Off by default: it changes the output shape validate_official_result.py pins.")
     parser.add_argument("--max-input-tokens", type=int, default=3072); parser.add_argument("--candidate-batch-size", type=int, default=16); parser.add_argument("--limit", type=int, default=None)
     args = parser.parse_args()
     if args.output.exists(): raise FileExistsError(args.output)
@@ -182,7 +183,7 @@ def main():
                    model_config_sha256=sha(model_path / "config.json"), items=len(rows), dtype="float32", chat_template_applied=any(p.startswith("chat_") for p in args.protocols.split(",")), max_input_tokens=args.max_input_tokens,
                    accuracy={p: sum(r["correct"] for r in out) / len(rows) for p, out in results.items()}, by_subject=by_subject,
                    protocol_disagreements=(sum(a["pred_index"] != b["pred_index"] for a, b in zip(*results.values())) if len(results) == 2 else None),
-                   rows=[dict(example_id=r["example_id"], subject=r["subject"], level=r["level"], answer_index=r["answer"], **{p: dict(pred_index=o["pred_index"], correct=o["correct"]) for p, o in zip(results, [results[p][i] for p in results])}) for i, r in enumerate(rows)])
+                   rows=[dict(example_id=r["example_id"], subject=r["subject"], level=r["level"], answer_index=r["answer"], **{p: dict(pred_index=o["pred_index"], correct=o["correct"], **({"choice_scores": o["choice_scores"]} if args.save_choice_scores else {})) for p, o in zip(results, [results[p][i] for p in results])}) for i, r in enumerate(rows)])
     tmp = args.output.with_suffix(args.output.suffix + ".partial"); tmp.write_text(json.dumps(payload, ensure_ascii=False) + "\n", encoding="utf-8"); tmp.replace(args.output)
     print(json.dumps(dict(model=label, items=len(rows), accuracy=payload["accuracy"], protocol_disagreements=payload["protocol_disagreements"]), sort_keys=True))
 

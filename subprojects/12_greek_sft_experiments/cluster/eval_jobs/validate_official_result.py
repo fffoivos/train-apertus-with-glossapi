@@ -35,7 +35,11 @@ correct = 0
 for r in rows:
     if set(r) != ROW_KEYS: die("row %s has keys %s; only the official protocol may be present" % (r.get("example_id"), sorted(r)))
     o = r["official_label"]
-    if not (isinstance(o, dict) and set(o) == {"pred_index", "correct"} and isinstance(o["correct"], bool) and isint(o["pred_index"]) and isint(r["answer_index"])):
+    # choice_scores is an OPTIONAL additive field (--save-choice-scores): it records the per-choice
+    # log-probs the scorer already computed. It cannot change pred_index or correct, both of which are
+    # still checked against the pinned gold below, so allowing it does not weaken the contract.
+    if not (isinstance(o, dict) and set(o) <= {"pred_index", "correct", "choice_scores"} and {"pred_index", "correct"} <= set(o)
+            and isinstance(o["correct"], bool) and isint(o["pred_index"]) and isint(r["answer_index"])):
         die("row %s malformed" % r.get("example_id"))
     gold, nch = GOLD[str(r["example_id"])]
     if r["answer_index"] != gold: die("row %s: gold answer %r is not the pinned %r" % (r["example_id"], r["answer_index"], gold))

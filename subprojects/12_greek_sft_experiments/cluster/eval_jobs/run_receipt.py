@@ -41,14 +41,14 @@ def _sha(path):
         for b in iter(lambda: fh.read(1 << 22), b""): h.update(b)
     return h.hexdigest()
 
-def write(run_dir, label, weights_receipt, scored_dir, tok_dir, date, cfg_spec):
+def write(run_dir, label, weights_receipt, scored_dir, tok_dir, date, cfg_spec, gen_kwargs="default"):
     with open(weights_receipt) as fh: w = json.load(fh)
     with open(os.path.join(scored_dir, "config.json")) as fh: cfg = json.load(fh)
     outs = sorted(glob.glob(os.path.join(run_dir, "**", "results_*.json"), recursive=True)
                   + glob.glob(os.path.join(run_dir, "**", "samples_*.jsonl"), recursive=True))
     if not outs: raise SystemExit("no outputs under %s" % run_dir)
     import lm_eval
-    r = {"schema": "rlhf-run-receipt-v1", "label": label, "config_spec": cfg_spec, "config_mode": cfg_spec.split(":")[0], "frozen_date": date,
+    r = {"schema": "rlhf-run-receipt-v1", "label": label, "config_spec": cfg_spec, "gen_kwargs_override": gen_kwargs, "config_mode": cfg_spec.split(":")[0], "frozen_date": date,
          "weights_id": w["weights_id"], "weights_files": w["files"],
          "gen_config": effective_generation(scored_dir, tok_dir),
          "nominal_config_fields": {k: cfg.get(k) for k in ("eos_token_id", "pad_token_id", "bos_token_id", "use_cache")},
@@ -65,5 +65,5 @@ def write(run_dir, label, weights_receipt, scored_dir, tok_dir, date, cfg_spec):
 if __name__ == "__main__":
     if sys.argv[1] == "geometry": print(json.dumps(geometry(sys.argv[2]), sort_keys=True))
     elif sys.argv[1] == "generation": print(json.dumps(effective_generation(sys.argv[2], sys.argv[3]), sort_keys=True))
-    elif sys.argv[1] == "write": write(*sys.argv[2:9])
+    elif sys.argv[1] == "write": write(*sys.argv[2:10])
     else: raise SystemExit(__doc__)
