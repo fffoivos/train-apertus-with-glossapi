@@ -1,11 +1,11 @@
 {
  "plan": "EXECUTION_PLAN_20260904.md",
  "protocol": "CLUSTER_PROTOCOL.md",
- "cap_chf": 230.0,
+ "cap_chf": 525.0,
  "rate_chf_per_nh": 2.69,
- "nh_used": 58.642,
- "chf_used": 157.75,
- "cursor": "R3_single: GO 2026-09-11; probe20 → sbatch → batteries (new ckpt + arm B) → four Greek benchmarks → picky-user run",
+ "nh_used": 87.374,
+ "chf_used": 235.04,
+ "cursor": "OVERNIGHT 18->19 Sept: sbatch 3439455 (dpo01_night2) runs T1 replication (10 arms: 01s44/45/46, 05s44/45/46 -> n=5 per alpha; IPO42/43 at the corrected beta 10; BALs43/44) then the four eval lanes (lm_eval, served, greekmmlu-250, gencfg control). Plan: docs/RLHF_COORDINATION/OVERNIGHT_20260918.md. ON RESUME: harvest, compute the noise floor (within-arm sd across 5 seeds on IFEval + the same-seed floor arm05_ep3 vs arm07_ep3), restate every 18 Sept claim as survives/inside-floor/withdrawn, then run review R-DPO6 (blocking on conclusions, max 2 cycles). Artifact + docs/DPO01_CURVES_20260918.html regenerate from results/G4F6P1--DPO01/curves_page.py.",
  "steps": {
   "WP0_data": {
    "status": "done (green 02:45: --check OK; 5 GreekMMLU-overlapping rows removed; E1 6.18M CPT-tokenizer tokens, E2 9.36M, E3 8.97M, E3prime 10.47M)",
@@ -276,6 +276,16 @@
    "date": "2026-09-04 07:58",
    "what": "ADAPTATION VERDICT (provisional): E3 (Greek-POV adapted slices) beats E3′ (raw) on interviews 2.91 vs 2.63 (floor 0.02), voice 0.959 vs 1.109 (floor 0.05), stop 0.90 vs 0.80, ifeval 0.497 vs 0.470 (floor 0.01); MGSM within floor. Adapting the imported data to the Greek point of view is worth it.",
    "by": "claude"
+  },
+  {
+   "date": "2026-09-14 10:20",
+   "what": "ledger += 0.471 nh (CHF 1.27) for astra's six debug-node jobs of 13 Sept (3390957 krikri_v15_peer 22:17 FAILED, 3391297/3391500 dolci-tool200 1:44 FAILED, 3391298 openmath pilot 0:23, 3391450/3391458 gmmlu200_protocol 3:50); sacct-verified 14 Sept 10:20; matches astra's budget.json (164.29)",
+   "by": "claude"
+  },
+  {
+   "date": "2026-09-19 01:02",
+   "what": "DPO01 18 Sept: 39 models on full batteries. No checkpoint beats the parent on IFEval/MGSM/Global-MMLU; served lanes +0.91pp mean (44 pos / 3 neg, p<1e-4). Damage tracks total update r=+0.92-0.97 and recedes with training; length predicts MGSM r=+0.952; the anchor controls displacement (-11.2 to +0.5 nats) but does nothing on any benchmark. NOISE FLOOR IS LARGE: seed 42->43 moves dev accuracy 5.4pp, and two runs with the SAME seed diverge at optimiser step 3 (ZeRO-3 + bf16, set_seed does not fix reduction order) giving 1.0-1.4pp on the served lanes. 'alpha 0.25 is best' is therefore provisional pending tonight's n=5 replication. R-DPO5 BLOCKER discharged: TRL ipo_delta is PER TOKEN, beta 0.1 would have targeted 5.0 vs the 0.135 train / 0.008 dev actually reached; beta 10 verified by 2 fixtures through the installed _compute_loss.",
+   "by": "claude"
   }
  ],
  "results": {
@@ -399,7 +409,7 @@
  "followups": [
   "ILSP harness: language:response_language scores 0 for every model (langdetect missing on the cluster); 31 instructions / 17 single-instruction prompts auto-fail; rescore saved samples offline after installing langdetect (up to +3.5 strict avg for all)"
  ],
- "cap_note": "raised 90→100 on 2026-09-08 by the owner's instruction 'OK run 2 and 4 and see the results' (identity dose ladder A ×2 / B ×4 + probes ≈ CHF 9)",
+ "cap_note": "18 Sept: cap raised 240 -> 275 for the four-arm DPO screen; used CHF 223.39 (83.045 nh) at that point",
  "cap_history": [
   {
    "when": "2026-09-09T09:09",
@@ -418,6 +428,18 @@
    "from_chf": 160.0,
    "to_chf": 230.0,
    "why": "owner 2026-09-13 07:30: 'first run all the evaluations' then (a)-(d); the plan (docs/R4_PLAN_20260913.md §6) prices the peer window, the A/B passes and R4 at ≈ CHF 70 over the 160 cap; set to 230 and disclosed"
+  },
+  {
+   "when": "2026-09-18T09:27",
+   "from_chf": 240,
+   "to_chf": 275.0,
+   "why": "owner 18 Sept: run the four-arm DPO comparison (DPO_EXPERIMENT_COMPARISON_20260918.md): 2 learning rates x 2 objectives, 3 epochs, 12 checkpoints, 750-item screen each, full battery on finalists; forecast 8-14 node-hours = CHF 22-38"
+  },
+  {
+   "when": "2026-09-18T22:15",
+   "from_chf": 275.0,
+   "to_chf": 525.0,
+   "why": "owner 18 Sept evening, relayed via the data-generation session: \"just get another 250 of budget from me\". For the DPO01 follow-up programme: IPO beta 0.1, extension arm 07 (5 epochs, fresh), seed replicates of arm05 and arm01, 4e-6 movement arm, IPO beta 0.25, plus the outstanding GreekMMLU 250 lane and the generation_config control. Forecast ~CHF 10 against ~CHF 259 available."
   }
  ]
 }

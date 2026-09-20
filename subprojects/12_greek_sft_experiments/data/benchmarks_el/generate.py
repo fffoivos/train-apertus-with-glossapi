@@ -16,6 +16,8 @@ def load(p): return [json.loads(l) for l in open(p) if l.strip()]
 def items(s, lang):
     if s == 'math500':
         for r in load(f'{HERE}/math500/problems_el_final.jsonl'): yield r['id'], [dict(role='user', content=(r['problem_el'] if lang == 'el' else r['problem_en']) + BOX[lang])], 2048
+    if s == 'math200':   # one-use confirmation set (R4 plan §5); same instruction and budget as math500
+        for r in load(f'{HERE}/math200_confirm/problems_el_final.jsonl'): yield r['id'], [dict(role='user', content=(r['problem_el'] if lang == 'el' else r['problem_en']) + BOX[lang])], 2048
     elif s == 'ifbench':
         for r in load(f'{HERE}/ifbench/prompts_el_final.jsonl'): yield r['id'], [dict(role='user', content=r['prompt_el'] if lang == 'el' else r['prompt_en'])], 1024
     elif s == 'xstest':

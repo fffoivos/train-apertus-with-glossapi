@@ -7,6 +7,7 @@ from concurrent.futures import ThreadPoolExecutor
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(HERE, '..', 'math')); sys.path.insert(0, os.path.join(HERE, '..', 'greek_if'))
 import mathlib as M
 lock = threading.Lock()
+MAX_WORKERS = 100
 
 
 def sol_json(prompt: str, schema: str, model: str = 'gpt-5.6-sol', effort: str = 'medium', timeout: int = 1500, tries: int = 3) -> dict | None:
@@ -31,14 +32,34 @@ def log_cost(stage: str, before: float | None, after: float | None, n: int):
     print(line, flush=True)
 
 
-def run_jobs(items: list, fn, out_path: str, key: str = 'id', workers: int = int(os.environ.get('WORKERS', '24')), stage: str = ''):
+def _deduplicate_inputs(items: list, key: str) -> tuple[list, int]:
+    """Collapse structurally identical duplicates and reject one ID bound to different input."""
+    unique, seen, collapsed = [], {}, 0
+    for item in items:
+        item_id = item[key]
+        encoded = json.dumps(item, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')
+        if item_id in seen:
+            if seen[item_id] != encoded:
+                raise ValueError(f'conflicting duplicate input {key}={item_id!r}')
+            collapsed += 1
+        else:
+            seen[item_id] = encoded; unique.append(item)
+    return unique, collapsed
+
+
+def run_jobs(items: list, fn, out_path: str, key: str = 'id', workers: int | None = None, stage: str = ''):
     """Resumable: rows already in out_path (by key) are skipped; fn(item) returns a dict (with key) or None."""
+    workers = int(os.environ.get('WORKERS', '24')) if workers is None else int(workers)
+    if not 1 <= workers <= MAX_WORKERS:
+        raise ValueError(f'workers must be between 1 and {MAX_WORKERS}, got {workers}')
+    items, collapsed = _deduplicate_inputs(items, key)
     have = set()
     if os.path.exists(out_path):
-        for l in open(out_path):
-            try: have.add(json.loads(l)[key])
-            except Exception: pass
-    todo = [x for x in items if x[key] not in have]; print(f'{stage}: {len(items)} items, {len(todo)} to do, {workers} workers', flush=True)
+        with open(out_path, encoding='utf-8') as existing:
+            for l in existing:
+                try: have.add(json.loads(l)[key])
+                except Exception: pass
+    todo = [x for x in items if x[key] not in have]; print(f'{stage}: {len(items)} unique items, {collapsed} identical duplicates collapsed, {len(todo)} to do, {workers} workers', flush=True)
     before = codex_limit()
     def one(x):
         r = fn(x)

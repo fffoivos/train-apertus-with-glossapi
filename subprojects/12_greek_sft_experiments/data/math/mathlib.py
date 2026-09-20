@@ -1,17 +1,44 @@
 """Shared helpers for the Greek math set: answer extraction, Greek number formats, answer equivalence, formatting checks, one codex JSON call."""
 from __future__ import annotations
+import os, sys
 import json, os, re, subprocess, tempfile, unicodedata
 from fractions import Fraction
 
 TMP = os.environ.get('CLAUDE_JOB_DIR', tempfile.gettempdir()) + '/tmp'; os.makedirs(TMP, exist_ok=True)
 
 
+def reject_disallowed_controls(value, path: str = '$') -> None:
+    """Reject decoded C0 controls other than tab/newline/CR, plus DEL, in nested strings."""
+    if isinstance(value, str):
+        for i, char in enumerate(value):
+            code = ord(char)
+            if (code < 32 and code not in (9, 10, 13)) or code == 127:
+                raise ValueError(f'disallowed control U+{code:04X} at {path}[{i}]')
+        if '\t' in value or '\r' in value:   # 14 Sept: TAB+'heta' / CR+'ho' are '\\theta' / '\\rho' whose JSON escape was decoded (astra gate-1 finding); reject so the call is retried
+            sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'cut2')); from repair_escapes import repair
+            _, ev = repair(value, '')
+            bad = [e for e in ev if e['kind'].startswith('repaired')]
+            if bad: raise ValueError(f'decoded LaTeX escape at {path}: {bad[0]}')
+    elif isinstance(value, list):
+        for i, item in enumerate(value): reject_disallowed_controls(item, f'{path}[{i}]')
+    elif isinstance(value, dict):
+        for key, item in value.items():
+            reject_disallowed_controls(key, f'{path}.<key>')
+            reject_disallowed_controls(item, f'{path}.{key}')
+
+
 def codex_json(prompt: str, schema_path: str, model: str = 'gpt-5.6-sol', effort: str = 'medium', timeout: int = 1500) -> dict:
     """One schema-enforced codex call; raises on failure (callers retry)."""
-    out = tempfile.NamedTemporaryFile('w', suffix='.json', dir=TMP, delete=False).name
-    subprocess.run(['codex', 'exec', '-m', model, '-c', f'model_reasoning_effort={effort}', '-c', 'project_doc_max_bytes=0', '-c', 'features.code_mode_host=false', '-c', 'features.remote_plugin=false', '-c', 'features.apps=false', '--skip-git-repo-check', '--sandbox', 'read-only', '--ephemeral', '--output-schema', schema_path, '-o', out, '-'],
-                   input=prompt, capture_output=True, text=True, timeout=timeout, cwd=TMP)
-    return json.load(open(out))
+    with tempfile.NamedTemporaryFile('w', suffix='.json', dir=TMP, delete=False) as output_file:
+        out = output_file.name
+    completed = subprocess.run(['codex', 'exec', '-m', model, '-c', f'model_reasoning_effort={effort}', '-c', 'project_doc_max_bytes=0', '-c', 'features.code_mode_host=false', '-c', 'features.remote_plugin=false', '-c', 'features.apps=false', '--skip-git-repo-check', '--sandbox', 'read-only', '--ephemeral', '--output-schema', schema_path, '-o', out, '-'],
+                               input=prompt, capture_output=True, text=True, timeout=timeout, cwd=TMP)
+    if completed.returncode != 0:
+        raise RuntimeError(f'codex exec failed with return code {completed.returncode}: {completed.stderr[-1000:]}')
+    with open(out, encoding='utf-8') as output_file:
+        result = json.load(output_file)
+    reject_disallowed_controls(result)
+    return result
 
 
 def write_schema(name: str, schema: dict) -> str:

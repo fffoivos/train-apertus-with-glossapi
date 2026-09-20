@@ -17,7 +17,16 @@ def limits(path):
     return {(k, w): float(v) for k, v, w in m}
 
 
-def latest_rollout(): return max(glob.glob(f'{HOME}/.codex/sessions/*/*/*/rollout-*.jsonl'), key=os.path.getmtime)
+def latest_rollout(marker=None):
+    """The rollout of THIS review: with dozens of concurrent Sol calls the newest rollout is almost never ours, so locate it by a marker string
+    from the brief (14 Sept fix); fall back to mtime only when no marker is given."""
+    files = sorted(glob.glob(f'{HOME}/.codex/sessions/*/*/*/rollout-*.jsonl'), key=os.path.getmtime, reverse=True)
+    if marker:
+        for f in files[:400]:
+            try:
+                if marker in open(f, errors='ignore').read(): return f
+            except OSError: pass
+    return files[0]
 
 
 def main():
@@ -27,10 +36,10 @@ def main():
         rows = [json.loads(l) for l in open(a.rows)]; rng = random.Random(a.seed); pick = rng.sample(rows, min(a.n, len(rows))); fields = a.fields.split(',') if a.fields else None
         def show(r): return json.dumps({k: v for k, v in r.items() if not fields or k in fields}, ensure_ascii=False)[:a.max_chars]
         sample = f'\n\n=== SAMPLE: {len(pick)} of {len(rows)} rows, seed {a.seed} ===\n' + '\n'.join(show(r) for r in pick)
-    prompt = HEAD + brief + sample
-    before = limits(latest_rollout()); t0 = time.time(); outp = tempfile.NamedTemporaryFile('w', suffix='.md', delete=False).name
+    t0 = time.time(); prompt = HEAD + brief + sample + f'\n\n[REVIEW-MARKER {a.name} {int(t0)}]'
+    before = limits(latest_rollout()); outp = tempfile.NamedTemporaryFile('w', suffix='.md', delete=False).name
     p = subprocess.run([a.codex_bin if os.path.exists(a.codex_bin) else 'codex', 'exec', '-m', a.model, '-c', f'model_reasoning_effort={a.effort}', '-c', 'project_doc_max_bytes=0', '-c', 'features.code_mode_host=false', '-c', 'features.remote_plugin=false', '-c', 'features.apps=false', '--skip-git-repo-check', '--sandbox', 'read-only', '-o', outp, '-'], input=prompt, capture_output=True, text=True, timeout=7200, cwd=tempfile.gettempdir())
-    roll = latest_rollout(); models = set(re.findall(r'"model":"([^"]*)"', open(roll, errors='ignore').read())); after = limits(roll); el = time.time() - t0
+    marker = f'REVIEW-MARKER {a.name} {int(t0)}'; roll = latest_rollout(marker); models = set(re.findall(r'"model":"([^"]*)"', open(roll, errors='ignore').read())); after = limits(roll); el = time.time() - t0
     text = open(outp).read() if os.path.exists(outp) else ''
     if p.returncode != 0 or not text.strip(): sys.exit(f'review failed rc={p.returncode}: {p.stderr[-400:]}')
     if a.model not in models: sys.exit(f'MODEL ASSERTION FAILED: rollout models {models}, wanted {a.model}')

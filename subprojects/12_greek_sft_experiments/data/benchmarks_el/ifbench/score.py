@@ -15,7 +15,11 @@ def loose_variants(resp):
 
 def check(iid, kw, resp):
     inst = REG.INSTRUCTION_DICT[iid](iid); inst.build_description(**kw)
-    strict = bool(inst.check_following(resp)); loose = strict or any(bool(inst.check_following(v)) for v in loose_variants(resp)); return strict, loose
+    # Match upstream evaluation_lib.py: a checker is never allowed to pass an
+    # empty or whitespace-only response/loose variant.
+    strict = bool(resp.strip()) and bool(inst.check_following(resp))
+    loose = strict or any(bool(v.strip()) and bool(inst.check_following(v)) for v in loose_variants(resp))
+    return strict, loose
 
 
 def main():

@@ -1,46 +1,35 @@
 {
- "E1_lr1e-5_ep2": {
-  "oyxoy_wic": 0.7747016618403821,
-  "oyxoy_wsd_definition": 0.38983898389838983,
-  "asep_mcqa": 0.614406779661017,
-  "gpcr": 0.654639175257732,
-  "medical_mcqa": 0.4892601431980907,
-  "oyxoy_metaphor": 0.5519098922624878,
-  "oyxoy_nli": 0.6428299008390541,
-  "oyxoy_nli_exact_set": 0.018306636155606407,
-  "demosqa": 0.4724540901502504
+ "R4_full_ep1": {
+  "oyxoy_wic": 0.6866480993046461,
+  "oyxoy_wsd_definition": 0.38843884388438843,
+  "asep_mcqa": 0.5949152542372881,
+  "gpcr": 0.6494845360824743,
+  "medical_mcqa": 0.4701670644391408,
+  "oyxoy_metaphor": 0.4931439764936337,
+  "oyxoy_nli": 0.6115560640732265,
+  "oyxoy_nli_exact_set": 0.2465675057208238,
+  "demosqa": 0.4707846410684474
  },
- "E1_lr5e-6_ep3": {
-  "oyxoy_wic": 0.7749783278307542,
-  "oyxoy_wsd_definition": 0.39163916391639164,
-  "asep_mcqa": 0.6127118644067797,
-  "gpcr": 0.6443298969072165,
-  "medical_mcqa": 0.49403341288782815,
-  "oyxoy_metaphor": 0.5812928501469148,
-  "oyxoy_nli": 0.6418764302059496,
-  "oyxoy_nli_exact_set": 0.009725400457665904,
-  "demosqa": 0.4774624373956594
+ "R2_idB_ep2": {
+  "oyxoy_wic": 0.6691259199144179,
+  "oyxoy_wsd_definition": 0.39643964396439646,
+  "asep_mcqa": 0.6016949152542372,
+  "gpcr": 0.6649484536082474,
+  "medical_mcqa": 0.48448687350835323,
+  "oyxoy_metaphor": 0.5401567091087169,
+  "oyxoy_nli": 0.5804729214340199,
+  "oyxoy_nli_exact_set": 0.2322654462242563,
+  "demosqa": 0.4557595993322204
  },
- "E1_cos_ep2": {
-  "oyxoy_wic": 0.7753472158179169,
-  "oyxoy_wsd_definition": 0.3913391339133913,
-  "asep_mcqa": 0.6161016949152542,
-  "gpcr": 0.6391752577319587,
-  "medical_mcqa": 0.48687350835322196,
-  "oyxoy_metaphor": 0.5680705190989226,
-  "oyxoy_nli": 0.6418764302059496,
-  "oyxoy_nli_exact_set": 0.005720823798627002,
-  "demosqa": 0.4674457429048414
- },
- "E1last_ep2": {
-  "oyxoy_wic": 0.7374070863382334,
-  "oyxoy_wsd_definition": 0.38393839383938394,
-  "asep_mcqa": 0.6008474576271187,
-  "gpcr": 0.6237113402061856,
-  "medical_mcqa": 0.4630071599045346,
-  "oyxoy_metaphor": 0.3388834476003918,
-  "oyxoy_nli": 0.38844393592677345,
-  "oyxoy_nli_exact_set": 0.02631578947368421,
-  "demosqa": 0.46410684474123537
+ "R3_single_ep1": {
+  "oyxoy_wic": 0.7065127174133574,
+  "oyxoy_wsd_definition": 0.39683968396839686,
+  "asep_mcqa": 0.5966101694915255,
+  "gpcr": 0.6649484536082474,
+  "medical_mcqa": 0.4797136038186158,
+  "oyxoy_metaphor": 0.45396669931439765,
+  "oyxoy_nli": 0.6580854309687262,
+  "oyxoy_nli_exact_set": 0.2219679633867277,
+  "demosqa": 0.4691151919866444
  }
 }

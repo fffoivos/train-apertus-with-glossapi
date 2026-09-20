@@ -33,7 +33,8 @@ def judge(prompt, response, model):
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('responses'); ap.add_argument('out'); ap.add_argument('--model', default=None); ap.add_argument('--backend', default='sol', choices=['sol', 'claude']); ap.add_argument('--workers', type=int, default=24); a = ap.parse_args()
-    bench = {str(r['id']): r for r in B.load(os.path.join(HERE, 'prompts_el.jsonl'))}; resp = B.load(a.responses)
+    # 14 Sept: judge against the SAME file generate.py serves (prompts_el_final.jsonl); the older prompts_el.jsonl caused a known mismatch
+    bench = {str(r['id']): r for r in B.load(os.path.join(HERE, 'prompts_el_final.jsonl'))}; resp = B.load(a.responses)
     def one(x):
         b = bench[str(x['id'])]; model = a.model or ('gpt-5.6-sol' if a.backend == 'sol' else 'claude-opus-5'); v = judge_sol(b['prompt_el'], x['response'], model) if a.backend == 'sol' else judge(b['prompt_el'], x['response'], model)
         return dict(id=x['id'], label=b['label'], type=b['type'], transfer=b['transfer'], response=x['response'], **v)

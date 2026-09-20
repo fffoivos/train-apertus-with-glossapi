@@ -172,3 +172,52 @@ Cap: CHF 90 ≈ 33.5 node-hours at CHF 2.69/nh (owner, 2026-09-04). Rate to be c
 | 2026-09-09 04:07 | greek_if v1 | Sol, 24 workers | claude | Greek instruction-following dataset v1 BUILT: 12,000 prompts (880 subtopics × 12 forms × 40 checkable families, levels 25/30/25/12/8) → first-try pass 86.9% (levels 97/91/82/78/66%), retry pass recovered 588 of 1,573 failures → 11,015 verified SFT rows (data/greek_if/v1/out/greek_if_sft.jsonl), 588 DPO pairs, 985 rejected-only; mean answer 118 words; weakest families greeklish_only 69%, postscript 80%, formal_and_informal 81%. Codex weekly window 23% at 03:56. | — | 98.72 |
 | 2026-09-09 10:45 | R1 | job 3335815 | claude | picky-user R1: arm B, mixed profiles (120) + repetition penalty 1.1 (60) | —/1.485 | 102.71 |
 2026-09-09 19:00 astra reviews ×5 dispositioned (docs/reviews/DISPOSITION_ASTRA_20260909.md): math postfix running (2,894 extra second solves, 350 asy quarantines) with the queue held at build.log.hold; suite S1–S4 patched + S3c/S5m lanes, queue 2 relaunched at 975-dialogue pilot; simulate.py patched for S12; personality corrections registry written; DATA_TODO 26–28
+| 2026-09-11 21:20 | R3_resume_test | job 3361080 | claude | resume test A (10 steps, saves at 5 and 10) + failed resume | —/0.163 | 103.15 |
+| 2026-09-11 21:20 | R3_resume_test | job 3361132 | claude | resume test B: resume from checkpoint-5 to 10 PASSED | —/0.151 | 103.56 |
+| 2026-09-11 21:20 | R3_probe | job 3358449 | claude | 20-step probe PASSED | —/0.916 | 106.02 |
+| 2026-09-12 04:00 | R3_single | job 3358874 | claude | training | —/7.023 | 124.92 |
+| 2026-09-12 04:38 | eval_R3_single_ep1 | job 3363951 | claude | checkpoint evals (native/ILSP/dev/interviews) | —/0.623 | 126.59 |
+| 2026-09-12 04:49 | light_evals_R3 | job 3363951 | claude | light evals + interviews R3_single_ep1 | —/0.623 | 128.27 |
+| 2026-09-12 05:43 | bench_early | job 3364288 | claude | four Greek benchmarks, both models, el+en | —/0.893 | 130.67 |
+| 2026-09-12 06:02 | native_R3_single_ep1 | job 3363954 | claude | native suite | —/0.965 | 133.27 |
+| 2026-09-12 06:04 | native_R2_idB_ep2 | job 3363956 | claude | native suite | —/0.986 | 135.92 |
+| 2026-09-12 07:18 | bench_stage1 | job 3364616 | claude | four Greek benchmarks, both models, el+en | —/0.229 | 136.53 |
+| 2026-09-12 07:25 | battery_R3_single_ep1 | job 3364517 | claude | GreekMMLU + retention | —/0.922 | 139.01 |
+| 2026-09-12 07:28 | battery_R2_idB_ep2 | job 3364519 | claude | GreekMMLU + retention | —/0.979 | 141.65 |
+| 2026-09-12 07:39 | r0_R3 | job 3364631 | claude | picky-user hostile 60 dialogues on R3 | —/0.359 | 142.61 |
+| 2026-09-12 08:57 | R3_pass | job 3364632 | claude | Greek pass on R3 + suite/correcting (2 ep) | —/1.698 | 147.18 |
+| 2026-09-12 08:57 | R3_passB | job 3364769 | claude | exact arm-B pass on R3 (2 ep) | —/1.238 | 150.51 |
+| 2026-09-12 09:14 | bench_pass | job 3365000 | claude | four Greek benchmarks, both models, el+en | —/0.249 | 151.18 |
+| 2026-09-12 09:42 | r0_pass | job 3365141 | claude | hostile 60 dialogues on R3_pass and R3_passB | —/0.449 | 152.39 |
+| 2026-09-13 01:13 | ev_R3_pass | job 3364633 | claude | eval chain R3_pass (native, retention, ILSP, dev, interviews r1; GreekMMLU failed fast) | —/1.321 | 155.94 |
+| 2026-09-13 01:13 | ev_R3_passB | job 3364770 | claude | eval chain R3_passB trimmed | —/0.366 | 156.93 |
+| 2026-09-13 01:37 | interviews_pass | job 3376432 | claude | interview rounds 2-3 for R3_pass and R3_passB | —/0.305 | 157.75 |
+| 2026-09-13 11:13 | peers1 | job 3388900 | claude | four peers: benchmarks + mixed picky-user | —/1.201 | 160.98 |
+| 2026-09-13 11:59 | peers2 | job 3389089 | claude | gemma: benchmarks + mixed picky-user | —/0.759 | 163.02 |
+| 2026-09-14 12:44 | gmmlu_official_dirty | job 3396957 | claude | GreekMMLU official: node nid006573 had orphaned sglang processes (78 GB/GPU, not ours); closed, relaunched | —/0.156 | 164.71 |
+| 2026-09-14 14:09 | gmmlu_official | job 3396998 | claude | GreekMMLU official+custom protocols: krikri=/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct/snapshots/06d813157ba5f19deb17d70c3862ce64035431ec krikri15=/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2 armB=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R2_idB_ep2 G3F2P1=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R3_single_ep1 | —/1.379 | 168.42 |
+| 2026-09-14 15:31 | gmmlu_official_bases | job 3397457 | claude | GreekMMLU official: bases 1/2 raw + 1-G1F0P0/2-G1F0P0 | —/0.917 | 170.88 |
+| 2026-09-14 16:31 | retention_chat | job 3398177 | claude | retention chat-template mode: G2F1P1=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R2_idB_ep2 apertus_instruct=/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--swiss-ai--Apertus-8B-Instruct-2509/snapshots/b946d40447b2b597999b9c86d44bee0b452c919f | —/0.564 | 172.40 |
+| 2026-09-14 17:16 | gmmlu_official | job 3398133 | claude | GreekMMLU official+custom protocols: krikri=/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct/snapshots/06d813157ba5f19deb17d70c3862ce64035431ec krikri15=/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct-v1.5/snapshots/326e2c0ea90d771c19fcf06225fe87dc922b51b2 G2F1P1=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R2_idB_ep2 G3F2P1=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R3_single_ep1 | —/1.321 | 175.95 |
+| 2026-09-14 18:06 | native_chat | job 3398173 | claude | native suite, instruct-adapted protocol: G2F1P1=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R2_idB_ep2 G3F2P1=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R3_single_ep1 krikri=/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--ilsp--Llama-Krikri-8B-Instruct/snapshots/06d813157ba5f19deb17d70c3862ce64035431ec | —/2.002 | 181.34 |
+| 2026-09-14 22:44 | pilot_M0 | job 3401188 | claude | training | —/0.915 | 183.80 |
+| 2026-09-14 22:47 | pilot_M1 | job 3401189 | claude | training | —/0.948 | 186.35 |
+| 2026-09-14 22:51 | pilot_M2 | job 3401190 | claude | training | —/0.981 | 188.99 |
+| 2026-09-14 23:14 | eval_M0_ep1 | job 3401438 | claude | checkpoint evals (native/ILSP/dev/interviews) | —/0.37 | 189.98 |
+| 2026-09-14 23:16 | eval_M1_ep1 | job 3401448 | claude | checkpoint evals (native/ILSP/dev/interviews) | —/0.375 | 190.99 |
+| 2026-09-14 23:17 | eval_M2_ep1 | job 3401454 | claude | checkpoint evals (native/ILSP/dev/interviews) | —/0.375 | 192.00 |
+| 2026-09-14 23:37 | pilot_bench | job 3401812 | claude | MATH-500 window for M0 M1 M2 | —/0.104 | 192.28 |
+| 2026-09-16 01:55 | R4_full | job 3409558 | claude | training | —/6.65 | 210.17 |
+| 2026-09-16 02:27 | eval_R4_full_ep1 | job 3412496 | claude | checkpoint evals (native/ILSP/dev/interviews) | —/0.521 | 211.57 |
+| 2026-09-16 02:54 | native_R4_full_ep1 | job 3412505 | claude | native suite | —/0.951 | 214.13 |
+| 2026-09-16 03:24 | bench_R4_full_ep1 | job 3412652 | claude | four benchmarks + math200 + dialogues | —/0.693 | 215.99 |
+| 2026-09-16 03:26 | retention_chat | job 3412688 | claude | retention chat-template mode: R4_full_ep1=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R4_full_ep1 | —/0.527 | 217.41 |
+| 2026-09-16 06:09 | gmmlu_official | job 3412962 | claude | GreekMMLU official+custom protocols: R4_full=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R4_full_ep1 apertus=/iopsstor/scratch/cscs/fffoivos/sft_round1/hf_home/hub/models--swiss-ai--Apertus-8B-Instruct-2509/snapshots/b946d40447b2b597999b9c86d44bee0b452c919f | —/1.987 | 222.76 |
+| 2026-09-16 14:13 | rlhf_sample | job 3413738 | claude | RLHF sampling window | —/0.031 | 222.84 |
+| 2026-09-16 14:55 | rlhf_sample | job 3413816 | claude | RLHF sampling window | —/0.029 | 222.92 |
+| 2026-09-17 17:52 | rlhf_sample | job 3420778 | claude | RLHF sampling window | —/0.176 | 223.39 |
+| 2026-09-19 16:23 | gmmlu_official | job 3443959 | claude | GreekMMLU official+custom protocols: parent=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R4_full_ep1 arm01_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_arm01_ep3 arm05_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_arm05_ep3 armIPO42_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_armIPO42_ep3 | —/0.841 | 225.65 |
+| 2026-09-19 23:27 | gmmlu_official | job 3446340 | claude | GreekMMLU official_label: arm01s43_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_arm01s43_ep3 arm01s44_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_arm01s44_ep3 arm01s45_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_arm01s45_ep3 arm01s46_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_arm01s46_ep3 | —/0.852 | 227.95 |
+| 2026-09-20 00:20 | gmmlu_official | job 3446557 | claude | GreekMMLU official_label: arm05s43_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_arm05s43_ep3 arm05s44_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_arm05s44_ep3 arm05s45_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_arm05s45_ep3 arm05s46_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_arm05s46_ep3 | —/0.847 | 230.22 |
+| 2026-09-20 01:13 | gmmlu_official | job 3448045 | claude | GreekMMLU official_label: armBAL_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_armBAL_ep3 armBALs43_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_armBALs43_ep3 armBALs44_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_armBALs44_ep3 armIPO43_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_armIPO43_ep3 | —/0.85 | 232.51 |
+| 2026-09-20 02:21 | gmmlu_official | job 3448598 | claude | GreekMMLU custom_full_text: parent=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R4_full_ep1 arm01_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_arm01_ep3 arm05_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_arm05_ep3 armBAL_ep3=/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/official_stage_armBAL_ep3 | —/0.939 | 235.04 |
