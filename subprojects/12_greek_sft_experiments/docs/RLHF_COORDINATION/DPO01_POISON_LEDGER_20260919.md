@@ -255,7 +255,7 @@ against a record. Measured at the CSCS rate used by `cluster/ledger.sh`.
 | official GreekMMLU, parent + 3 arms | the protocol that is comparable to a published number | 0.8 | 2 |
 | **frozen re-score, 19 models (3444789)** | **the round's real result: geometry repaired, date frozen, weights the only difference** | 2.7 | 8 |
 | official GreekMMLU, remaining 12 | seed spread on the Greek lane; all 15 arms | 2.5 | 7 |
-| dual-protocol test, 4 models | **Q4: the Greek "knowledge loss" is a label-position artefact** | 0.8 | 2 |
+| dual-protocol test, 4 models | Q4: the Greek deficit is protocol-sensitive (the stronger "artefact" reading was withdrawn by R-DPO15) | 0.8 | 2 |
 | cap3500 truncation test (3453314) | Q2: whether the IFEval gain is compliance or termination | ~0.5 | ~2 |
 | Q4 scores re-run (3453470) | per-choice log-probs, so the label prior can be calibrated | ~0.8 | ~2 |
 
@@ -263,4 +263,15 @@ Two launches cost nothing because they failed closed in seconds: the first cap40
 not honoured, so every model was correctly skipped as already-scored) and the second (4096 generated
 tokens against a 4096 context — lm_eval refused). Both were my errors; neither reached a GPU.
 
-Running total for the correction work: roughly **11 node-hours, ~CHF 32**, against a raised cap.
+| Q1/Q3 training, 6 runs (3455469) | the 56-pair ablation + its random-cut control, and IPO actually running | ~0.8 | ~2 |
+| Q1/Q3 frozen re-score, 7 models (queued) | IFEval + MGSM + Global-MMLU-Lite on the six new arms | ~1.2 | ~4 |
+
+Running total for the correction work: roughly **13 node-hours, ~CHF 38**, against a raised cap of
+CHF 500. Reviews (Sol/Astra, cross-vendor) run on the owner's ChatGPT subscription and are not
+metered here; R-DPO15 was one xhigh review.
+
+## Review outcomes
+
+| review | scope | verdict |
+|---|---|---|
+| R-DPO15 (Sol, xhigh) | Q4 calibration soundness, Q2 cap rerun | Q4 unsound as stated, Q2 qualified; 1 BLOCKER + 3 HIGH, all confirmed firsthand and applied (artifact v23) |

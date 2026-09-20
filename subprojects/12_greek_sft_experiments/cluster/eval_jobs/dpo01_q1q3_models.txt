@@ -1,0 +1,22 @@
+# Q1/Q3 arms, frozen-date + geometry-repaired re-score. Launch:
+#   LIST=<this file> EXPECT=7 sbatch cluster/eval_jobs/dpo01_frozen_rescore.sh
+#
+# Q1 - does the MGSM gain come from the 56 embedded-quantitative pairs?
+#   NM42/43/44  anchored alpha=0.25, dpo01_nomaths   (those 56 pairs removed; 287 train)
+#   RC42        anchored alpha=0.25, dpo01_randomcut (56 RANDOM pairs removed; 287 train) - the
+#               "less data" control, so a drop in NM is only attributable to the maths content if
+#               RC does not drop the same way.
+# Q3 - the objective the round thought it had tested.
+#   TRUEIPO42/43  loss_type: ipo, beta 10, full dpo01 (343 train)
+#
+# parent is listed so the comparison baseline is in the same job; its 19 Sept run is reused when the
+# prompt digest matches, so it costs nothing to name it.
+#
+# Checkpoint arithmetic: 287 train pairs -> 108 steps at 3 epochs; 343 -> 129. Hence the split below.
+parent|/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R4_full_ep1|own|full
+armNM42_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--NM42/checkpoint-108|own|full
+armNM43_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--NM43/checkpoint-108|own|full
+armNM44_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--NM44/checkpoint-108|own|full
+armRC42_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--RC42/checkpoint-108|own|full
+armTRUEIPO42_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--TRUEIPO42/checkpoint-129|own|full
+armTRUEIPO43_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--TRUEIPO43/checkpoint-129|own|full
