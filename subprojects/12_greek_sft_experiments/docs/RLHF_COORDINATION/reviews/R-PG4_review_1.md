@@ -1,0 +1,25 @@
+VERDICT: HOLD
+
+1. **Blocking — difficulty labels are not realised.** In `prompts.jsonl`, records R3-0005, R3-0057, R3-0064, R3-0184, R3-0210, R3-0308, R3-0376 and R3-0412 contradict the frozen definitions at `docs/SEED_LABEL_SPEC_20260917.md:112-116`. Examples include `routine` multi-constraint/conditional tasks and `routine` or `compositional` tasks with explicitly missing or ambiguous inputs. Moreover, `generate.py:202-204` and `:221-222` omit `difficulty` from renderer and reviewer items, so the recorded reviewer passes never checked it. This defeats the stage goal of realising frozen labels. Fix: add subtype/difficulty compatibility rules, include difficulty in both payloads, and regenerate these slots.
+
+2. **Blocking — maths metadata is incorrect.** `prompts.jsonl`, record R3-0087, requests calculation of a fatal amount from body weight but records `instance_maths_content="none"` and `maths_content=null`, contrary to T5 at `docs/SEED_LABEL_SPEC_20260917.md:132-145` and `:268-269`. Records R3-0064 and R3-0216 also export non-mathematical safety/medical ambiguity as `maths_ambiguity`; `generate.py:245-249` blindly copies the general instance ambiguity into that field. Mathematical material can therefore escape or be incorrectly held by specialist review. Fix: validate explicit calculations independently of purpose, introduce a maths-specific ambiguity field, and regenerate/re-export the affected records.
+
+3. **Blocking — R3-0099 changes the task.** In `prompts.jsonl`, record R3-0099, the instance and private conditions concern zero values omitted from an Excel **chart**, but the accepted message says “Excel omits zeros from numeric cells,” which reasonably describes hidden zero display in worksheet cells. This changes the diagnostic path and makes reply judging unfair. Fix: regenerate with wording such as “Excel chart omits zeros despite numeric cells…” and include `chart` among the checked values.
+
+4. **Blocking — R3-0004 contains prohibited evaluation framing.** `prompts.jsonl`, record R3-0004, begins “Using product information available by June 2025,” exactly the kind of knowledge/time-scope instruction prohibited by `generate.py:83-85`. It violates criterion 2 and is not natural user framing. Fix: keep the evidence cutoff private rather than in givens/check values, then regenerate the prompt.
+
+5. **Blocking — R3-0005 does not realise Greeklish.** In `prompts.jsonl`, record R3-0005, the user-authored portion contains Greek-script `λέξεις`; the pasted packet exemption does not apply to that word. This conflicts with the Greeklish definition at `docs/SEED_LABEL_SPEC_20260917.md:106-110` and the all-Latin rendering rule at `generate.py:83-85`. Fix the check value to Latin-script Greek and regenerate; tighten the check so any Greek letters outside a packet fail Greeklish.
+
+6. **Major — six slots are held for defects they do not have.** In `renderings.jsonl`, final records R3-0104/round 2, R3-0219/round 2, R3-0279/round 2, R3-0383/round 2 and R3-0434/round 2 contain respectively 11, 11, 29, 11 and 12 user words under the current tokenizer at `generate.py:47`, all within their ceilings; their final reviews pass. R3-0273/round 2 has no code issue and uses three sentences, which is permitted for `short` by `docs/SEED_LABEL_SPEC_20260917.md:149-156`; the reviewer invented an “exactly two sentences” constraint. These inaccurate holds violate criterion 6 and distort yield. Fix: rerun these six through the corrected checker/reviewer and export valid results as active.
+
+7. **Major — the receipt does not identify the code now under review.** `receipt.json:17` and `CURRENT_VERSIONS.md:30` name code sha16 `dab615c231fb4b89`, while the current `generate.py` bytes hash to `aa64f8170374b293`. The source changed after the receipt, and the exact receipt-bound source is not present as a reviewable artifact. Therefore this run cannot validate the current generator or substantiate that remaining slots use “the same code.” Fix: freeze/archive the exact executed source, stop mixing outputs across hashes, and rerun the validation under the code intended for the remaining slots.
+
+Verified as correct:
+
+- The 50 output IDs exactly match the validation list; counts are 41 active and 9 held, with repairs 34/6/1.
+- Manifest labels match the exported rows; instance keys recompute exactly.
+- All active bare/terse prompts meet their ceilings when packets are excluded.
+- Packet presence, exact pasted spans, checked values, and reservation states are internally consistent.
+- All 41 accepted rows trace to a passing final review with no recorded code issues.
+- No accepted pair describes the same scenario; the run-wide similarity check also returns no active pair.
+- Manifest, glossary and task-kind hashes match the receipt, and all reservations match their accepted or rejected instances.

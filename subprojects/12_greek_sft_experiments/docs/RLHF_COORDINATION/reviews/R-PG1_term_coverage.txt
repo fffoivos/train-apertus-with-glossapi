@@ -1,0 +1,1 @@
+Term coverage check over 5 plan files and 69 terms; missing in spec: none

@@ -1,0 +1,19 @@
+{
+ "run": "fake1",
+ "slots": 12,
+ "active": 7,
+ "held": 5,
+ "repairs_used": {
+  "0": 7
+ },
+ "sol_calls": {
+  "instance": 7,
+  "render": 7,
+  "review": 4
+ },
+ "glossary_sha16": "1002cdf2bc105e33",
+ "code_sha16": "f85320f7a172aebd",
+ "manifest_sha16": "2e965750b36e9a46",
+ "task_kinds_sha16": "51ee22248edf194d",
+ "finished": 1789643750.930739
+}

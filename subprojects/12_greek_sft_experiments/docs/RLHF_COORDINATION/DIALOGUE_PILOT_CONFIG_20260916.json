@@ -1,0 +1,123 @@
+{
+  "version": "dialogue-quality-depth-v1",
+  "status": "plan_not_executed",
+  "seed": 9162602,
+  "smoke": {
+    "trajectories": 6,
+    "languages": {
+      "el": 4,
+      "en": 2
+    },
+    "max_assistant_turns": 3,
+    "include_in_measurement": false
+  },
+  "measurement": {
+    "target_trajectories": 35,
+    "admission_sizes": [
+      35,
+      28,
+      21,
+      14
+    ],
+    "max_assistant_turns": 8,
+    "raw_samples_per_turn": 1,
+    "languages": {
+      "el": 25,
+      "en": 5,
+      "fr": 1,
+      "de": 1,
+      "es": 1,
+      "it": 1,
+      "pt": 1
+    },
+    "task_language_counts": {
+      "everyday": {
+        "el": 12,
+        "en": 3,
+        "fr": 1,
+        "de": 1,
+        "es": 1
+      },
+      "instruction": {
+        "el": 6,
+        "en": 1,
+        "it": 1,
+        "pt": 1
+      },
+      "factual": {
+        "el": 3,
+        "en": 1
+      },
+      "safety": {
+        "el": 2
+      },
+      "math": {
+        "el": 2
+      }
+    },
+    "interaction": {
+      "followup": 10,
+      "revision": 8,
+      "constraint_retention": 8,
+      "recall": 5,
+      "uncertainty": 4
+    },
+    "attitude": {
+      "cooperative": 25,
+      "frustrated": 4,
+      "skeptical": 5,
+      "playful": 1
+    },
+    "register": {
+      "standard": 21,
+      "informal": 7,
+      "formal": 5,
+      "greeklish": 2
+    },
+    "difficulty": {
+      "routine": 11,
+      "compositional": 17,
+      "challenging": 7
+    },
+    "quality_triggered_stopping": false
+  },
+  "inference": {
+    "temperature": 0.8,
+    "top_p": 0.95,
+    "max_new_tokens": 1500,
+    "checkpoint_receipt_required": true
+  },
+  "annotation": {
+    "prefix_only": true,
+    "max_short_packets": 8,
+    "max_long_packets": 4,
+    "max_estimated_input_tokens_per_call": 24000,
+    "overlapping_same_trajectory_packets": false,
+    "calibration_minimum": 24
+  },
+  "selection": {
+    "max_prefixes": 24,
+    "control_share": 0.25,
+    "error_allocation": "eligible_trajectory_proportional",
+    "max_per_trajectory": 2,
+    "candidates_including_original": 3,
+    "max_exported_pairs_per_prefix": 1
+  },
+  "budget": {
+    "prime_intellect_total_eur": 5,
+    "operational_stop_eur": 4,
+    "reserve_eur": 1,
+    "max_new_sol_calls": 120,
+    "sol_reservations": {
+      "smoke": 6,
+      "openings": 10,
+      "user_continuation": 38,
+      "annotation": 40,
+      "adjudication": 10,
+      "candidate_review": 8,
+      "repairs": 8
+    },
+    "smoke_cost_forecast_required": true,
+    "training_authorized_by_plan": false
+  }
+}

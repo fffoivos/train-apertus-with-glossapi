@@ -1,0 +1,1551 @@
+{
+ "spec": "SEED_LABEL_SPEC_20260917.md",
+ "rubric_sha16": "8aa32f266afd08b4",
+ "E": 209,
+ "E_by_cell": {
+  "everyday/el": 116,
+  "everyday/en": 6,
+  "instruction/el": 18,
+  "instruction/en": 8,
+  "factual/el": 44,
+  "factual/en": 2,
+  "safety/el": 13,
+  "safety/en": 2
+ },
+ "A_forum_unused_gate_accepted": {
+  "everyday/el": 731,
+  "factual/el": 395,
+  "math/el": 39
+ },
+ "A_by_forum": {
+  "astrovox": 78,
+  "e_steki_general": 98,
+  "e_steki_history_philosophy": 87,
+  "lexilogia": 103,
+  "mathematica": 40,
+  "michanikos_private_questions": 107,
+  "phorum_general": 76,
+  "phorum_linguistics": 80,
+  "taxheaven_forum": 92,
+  "thelab": 97,
+  "translatum": 96,
+  "wordreference_greek": 120,
+  "myphone": 91
+ },
+ "yield_by_cell": {
+  "dialogue/el": {
+   "estimate": null,
+   "low": null,
+   "high": null,
+   "basis": "no evidence (dialogue: separate model)"
+  },
+  "dialogue/en": {
+   "estimate": null,
+   "low": null,
+   "high": null,
+   "basis": "no evidence (dialogue: separate model)"
+  },
+  "dialogue/fr": {
+   "estimate": null,
+   "low": null,
+   "high": null,
+   "basis": "no evidence (dialogue: separate model)"
+  },
+  "dialogue/de": {
+   "estimate": null,
+   "low": null,
+   "high": null,
+   "basis": "no evidence (dialogue: separate model)"
+  },
+  "dialogue/es": {
+   "estimate": null,
+   "low": null,
+   "high": null,
+   "basis": "no evidence (dialogue: separate model)"
+  },
+  "dialogue/it": {
+   "estimate": null,
+   "low": null,
+   "high": null,
+   "basis": "no evidence (dialogue: separate model)"
+  },
+  "dialogue/pt": {
+   "estimate": null,
+   "low": null,
+   "high": null,
+   "basis": "no evidence (dialogue: separate model)"
+  },
+  "everyday/el": {
+   "estimate": 0.491869918699187,
+   "low": 0.45120898835933226,
+   "high": 0.532638695203629,
+   "basis": "measured 121/246"
+  },
+  "everyday/en": {
+   "estimate": 0.5,
+   "low": 0.3379796965467768,
+   "high": 0.6620203034532232,
+   "basis": "measured 7/14"
+  },
+  "everyday/fr": {
+   "estimate": 0.49230769230769234,
+   "low": 0.33955863561407834,
+   "high": 0.5319671162742162,
+   "basis": "provisional pooled everyday 128/260, low widened by 25%"
+  },
+  "everyday/de": {
+   "estimate": 0.49230769230769234,
+   "low": 0.33955863561407834,
+   "high": 0.5319671162742162,
+   "basis": "provisional pooled everyday 128/260, low widened by 25%"
+  },
+  "everyday/es": {
+   "estimate": 0.49230769230769234,
+   "low": 0.33955863561407834,
+   "high": 0.5319671162742162,
+   "basis": "provisional pooled everyday 128/260, low widened by 25%"
+  },
+  "everyday/it": {
+   "estimate": 0.49230769230769234,
+   "low": 0.33955863561407834,
+   "high": 0.5319671162742162,
+   "basis": "provisional pooled everyday 128/260, low widened by 25%"
+  },
+  "everyday/pt": {
+   "estimate": 0.49230769230769234,
+   "low": 0.33955863561407834,
+   "high": 0.5319671162742162,
+   "basis": "provisional pooled everyday 128/260, low widened by 25%"
+  },
+  "instruction/el": {
+   "estimate": 0.5,
+   "low": 0.39822479319434956,
+   "high": 0.6017752068056504,
+   "basis": "measured 19/38"
+  },
+  "instruction/en": {
+   "estimate": 0.6666666666666666,
+   "low": 0.48180614578834047,
+   "high": 0.8113952778664185,
+   "basis": "measured 8/12"
+  },
+  "instruction/fr": {
+   "estimate": 0.54,
+   "low": 0.33737585084113114,
+   "high": 0.6276211184351111,
+   "basis": "provisional pooled instruction 27/50, low widened by 25%"
+  },
+  "instruction/de": {
+   "estimate": 0.54,
+   "low": 0.33737585084113114,
+   "high": 0.6276211184351111,
+   "basis": "provisional pooled instruction 27/50, low widened by 25%"
+  },
+  "instruction/es": {
+   "estimate": 0.54,
+   "low": 0.33737585084113114,
+   "high": 0.6276211184351111,
+   "basis": "provisional pooled instruction 27/50, low widened by 25%"
+  },
+  "instruction/it": {
+   "estimate": 0.54,
+   "low": 0.33737585084113114,
+   "high": 0.6276211184351111,
+   "basis": "provisional pooled instruction 27/50, low widened by 25%"
+  },
+  "instruction/pt": {
+   "estimate": 0.54,
+   "low": 0.33737585084113114,
+   "high": 0.6276211184351111,
+   "basis": "provisional pooled instruction 27/50, low widened by 25%"
+  },
+  "factual/el": {
+   "estimate": 0.4423076923076923,
+   "low": 0.38126936898985725,
+   "high": 0.5051399817584634,
+   "basis": "measured 46/104"
+  },
+  "factual/en": {
+   "estimate": 0.4485981308411215,
+   "low": 0.29116322203301276,
+   "high": 0.5105328582697556,
+   "basis": "provisional pooled factual 48/107, low widened by 25%"
+  },
+  "factual/fr": {
+   "estimate": 0.4485981308411215,
+   "low": 0.29116322203301276,
+   "high": 0.5105328582697556,
+   "basis": "provisional pooled factual 48/107, low widened by 25%"
+  },
+  "factual/de": {
+   "estimate": 0.4485981308411215,
+   "low": 0.29116322203301276,
+   "high": 0.5105328582697556,
+   "basis": "provisional pooled factual 48/107, low widened by 25%"
+  },
+  "factual/es": {
+   "estimate": 0.4485981308411215,
+   "low": 0.29116322203301276,
+   "high": 0.5105328582697556,
+   "basis": "provisional pooled factual 48/107, low widened by 25%"
+  },
+  "factual/it": {
+   "estimate": 0.4485981308411215,
+   "low": 0.29116322203301276,
+   "high": 0.5105328582697556,
+   "basis": "provisional pooled factual 48/107, low widened by 25%"
+  },
+  "factual/pt": {
+   "estimate": 0.4485981308411215,
+   "low": 0.29116322203301276,
+   "high": 0.5105328582697556,
+   "basis": "provisional pooled factual 48/107, low widened by 25%"
+  },
+  "safety/el": {
+   "estimate": 0.7222222222222222,
+   "low": 0.5727934532375103,
+   "high": 0.834486708986414,
+   "basis": "measured 13/18"
+  },
+  "safety/en": {
+   "estimate": 0.75,
+   "low": 0.45767907662535684,
+   "high": 0.8518150911804018,
+   "basis": "provisional pooled safety 15/20, low widened by 25%"
+  },
+  "safety/fr": {
+   "estimate": 0.75,
+   "low": 0.45767907662535684,
+   "high": 0.8518150911804018,
+   "basis": "provisional pooled safety 15/20, low widened by 25%"
+  },
+  "safety/de": {
+   "estimate": 0.75,
+   "low": 0.45767907662535684,
+   "high": 0.8518150911804018,
+   "basis": "provisional pooled safety 15/20, low widened by 25%"
+  },
+  "safety/es": {
+   "estimate": 0.75,
+   "low": 0.45767907662535684,
+   "high": 0.8518150911804018,
+   "basis": "provisional pooled safety 15/20, low widened by 25%"
+  },
+  "safety/it": {
+   "estimate": 0.75,
+   "low": 0.45767907662535684,
+   "high": 0.8518150911804018,
+   "basis": "provisional pooled safety 15/20, low widened by 25%"
+  },
+  "safety/pt": {
+   "estimate": 0.75,
+   "low": 0.45767907662535684,
+   "high": 0.8518150911804018,
+   "basis": "provisional pooled safety 15/20, low widened by 25%"
+  },
+  "math/el": {
+   "estimate": 0.6,
+   "low": 0.47204053041450017,
+   "high": 0.7156295557352577,
+   "basis": "measured 15/25"
+  },
+  "math/en": {
+   "estimate": 0.5925925925925926,
+   "low": 0.352125169600364,
+   "high": 0.7050655502954285,
+   "basis": "provisional pooled math 16/27, low widened by 25%"
+  },
+  "math/fr": {
+   "estimate": 0.5925925925925926,
+   "low": 0.352125169600364,
+   "high": 0.7050655502954285,
+   "basis": "provisional pooled math 16/27, low widened by 25%"
+  },
+  "math/de": {
+   "estimate": 0.5925925925925926,
+   "low": 0.352125169600364,
+   "high": 0.7050655502954285,
+   "basis": "provisional pooled math 16/27, low widened by 25%"
+  },
+  "math/es": {
+   "estimate": 0.5925925925925926,
+   "low": 0.352125169600364,
+   "high": 0.7050655502954285,
+   "basis": "provisional pooled math 16/27, low widened by 25%"
+  },
+  "math/it": {
+   "estimate": 0.5925925925925926,
+   "low": 0.352125169600364,
+   "high": 0.7050655502954285,
+   "basis": "provisional pooled math 16/27, low widened by 25%"
+  },
+  "math/pt": {
+   "estimate": 0.5925925925925926,
+   "low": 0.352125169600364,
+   "high": 0.7050655502954285,
+   "basis": "provisional pooled math 16/27, low widened by 25%"
+  }
+ },
+ "frontier": {
+  "500": {
+   "cells": {
+    "dialogue/el": {
+     "target": 123,
+     "E": 0,
+     "A": 0,
+     "deficit": 123,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/en": {
+     "target": 35,
+     "E": 0,
+     "A": 0,
+     "deficit": 35,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/fr": {
+     "target": 4,
+     "E": 0,
+     "A": 0,
+     "deficit": 4,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/de": {
+     "target": 4,
+     "E": 0,
+     "A": 0,
+     "deficit": 4,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/es": {
+     "target": 3,
+     "E": 0,
+     "A": 0,
+     "deficit": 3,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/it": {
+     "target": 3,
+     "E": 0,
+     "A": 0,
+     "deficit": 3,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/pt": {
+     "target": 3,
+     "E": 0,
+     "A": 0,
+     "deficit": 3,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "everyday/el": {
+     "target": 88,
+     "E": 116,
+     "A": 731,
+     "deficit_expected": 0,
+     "deficit_conservative": 0,
+     "new_prompts_expected": 0,
+     "new_prompts_conservative": 0,
+     "yield_basis": "measured 121/246"
+    },
+    "everyday/en": {
+     "target": 25,
+     "E": 6,
+     "A": 0,
+     "deficit_expected": 19.0,
+     "deficit_conservative": 19.0,
+     "new_prompts_expected": 38,
+     "new_prompts_conservative": 57,
+     "yield_basis": "measured 7/14"
+    },
+    "everyday/fr": {
+     "target": 3,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 3.0,
+     "deficit_conservative": 3.0,
+     "new_prompts_expected": 7,
+     "new_prompts_conservative": 9,
+     "yield_basis": "provisional pooled everyday 128/260, low widened by 25%"
+    },
+    "everyday/de": {
+     "target": 3,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 3.0,
+     "deficit_conservative": 3.0,
+     "new_prompts_expected": 7,
+     "new_prompts_conservative": 9,
+     "yield_basis": "provisional pooled everyday 128/260, low widened by 25%"
+    },
+    "everyday/es": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 5,
+     "new_prompts_conservative": 6,
+     "yield_basis": "provisional pooled everyday 128/260, low widened by 25%"
+    },
+    "everyday/it": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 5,
+     "new_prompts_conservative": 6,
+     "yield_basis": "provisional pooled everyday 128/260, low widened by 25%"
+    },
+    "everyday/pt": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 5,
+     "new_prompts_conservative": 6,
+     "yield_basis": "provisional pooled everyday 128/260, low widened by 25%"
+    },
+    "instruction/el": {
+     "target": 53,
+     "E": 18,
+     "A": 0,
+     "deficit_expected": 35.0,
+     "deficit_conservative": 35.0,
+     "new_prompts_expected": 70,
+     "new_prompts_conservative": 88,
+     "yield_basis": "measured 19/38"
+    },
+    "instruction/en": {
+     "target": 15,
+     "E": 8,
+     "A": 0,
+     "deficit_expected": 7.0,
+     "deficit_conservative": 7.0,
+     "new_prompts_expected": 11,
+     "new_prompts_conservative": 15,
+     "yield_basis": "measured 8/12"
+    },
+    "instruction/fr": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 4,
+     "new_prompts_conservative": 6,
+     "yield_basis": "provisional pooled instruction 27/50, low widened by 25%"
+    },
+    "instruction/de": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 4,
+     "new_prompts_conservative": 6,
+     "yield_basis": "provisional pooled instruction 27/50, low widened by 25%"
+    },
+    "instruction/es": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled instruction 27/50, low widened by 25%"
+    },
+    "instruction/it": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled instruction 27/50, low widened by 25%"
+    },
+    "instruction/pt": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled instruction 27/50, low widened by 25%"
+    },
+    "factual/el": {
+     "target": 35,
+     "E": 44,
+     "A": 395,
+     "deficit_expected": 0,
+     "deficit_conservative": 0,
+     "new_prompts_expected": 0,
+     "new_prompts_conservative": 0,
+     "yield_basis": "measured 46/104"
+    },
+    "factual/en": {
+     "target": 10,
+     "E": 2,
+     "A": 0,
+     "deficit_expected": 8.0,
+     "deficit_conservative": 8.0,
+     "new_prompts_expected": 18,
+     "new_prompts_conservative": 28,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "factual/fr": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 3,
+     "new_prompts_conservative": 4,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "factual/de": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 3,
+     "new_prompts_conservative": 4,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "factual/es": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 3,
+     "new_prompts_conservative": 4,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "factual/it": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 3,
+     "new_prompts_conservative": 4,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "factual/pt": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 3,
+     "new_prompts_conservative": 4,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "safety/el": {
+     "target": 35,
+     "E": 13,
+     "A": 0,
+     "deficit_expected": 22.0,
+     "deficit_conservative": 22.0,
+     "new_prompts_expected": 31,
+     "new_prompts_conservative": 39,
+     "yield_basis": "measured 13/18"
+    },
+    "safety/en": {
+     "target": 10,
+     "E": 2,
+     "A": 0,
+     "deficit_expected": 8.0,
+     "deficit_conservative": 8.0,
+     "new_prompts_expected": 11,
+     "new_prompts_conservative": 18,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "safety/fr": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "safety/de": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "safety/es": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "safety/it": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "safety/pt": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "math/el": {
+     "target": 18,
+     "E": 0,
+     "A": 39,
+     "deficit_expected": 0,
+     "deficit_conservative": 0,
+     "new_prompts_expected": 0,
+     "new_prompts_conservative": 0,
+     "yield_basis": "measured 15/25"
+    },
+    "math/en": {
+     "target": 5,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 5.0,
+     "deficit_conservative": 5.0,
+     "new_prompts_expected": 9,
+     "new_prompts_conservative": 15,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    },
+    "math/fr": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    },
+    "math/de": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    },
+    "math/es": {
+     "target": 0,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 0,
+     "deficit_conservative": 0,
+     "new_prompts_expected": 0,
+     "new_prompts_conservative": 0,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    },
+    "math/it": {
+     "target": 0,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 0,
+     "deficit_conservative": 0,
+     "new_prompts_expected": 0,
+     "new_prompts_conservative": 0,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    },
+    "math/pt": {
+     "target": 0,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 0,
+     "deficit_conservative": 0,
+     "new_prompts_expected": 0,
+     "new_prompts_conservative": 0,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    }
+   },
+   "single_turn_new_prompts_expected": 260,
+   "single_turn_new_prompts_conservative": 358,
+   "dialogue_pairs_target": 175
+  },
+  "750": {
+   "cells": {
+    "dialogue/el": {
+     "target": 184,
+     "E": 0,
+     "A": 0,
+     "deficit": 184,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/en": {
+     "target": 53,
+     "E": 0,
+     "A": 0,
+     "deficit": 53,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/fr": {
+     "target": 6,
+     "E": 0,
+     "A": 0,
+     "deficit": 6,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/de": {
+     "target": 5,
+     "E": 0,
+     "A": 0,
+     "deficit": 5,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/es": {
+     "target": 5,
+     "E": 0,
+     "A": 0,
+     "deficit": 5,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/it": {
+     "target": 5,
+     "E": 0,
+     "A": 0,
+     "deficit": 5,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/pt": {
+     "target": 5,
+     "E": 0,
+     "A": 0,
+     "deficit": 5,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "everyday/el": {
+     "target": 131,
+     "E": 116,
+     "A": 731,
+     "deficit_expected": 0,
+     "deficit_conservative": 0,
+     "new_prompts_expected": 0,
+     "new_prompts_conservative": 0,
+     "yield_basis": "measured 121/246"
+    },
+    "everyday/en": {
+     "target": 37,
+     "E": 6,
+     "A": 0,
+     "deficit_expected": 31.0,
+     "deficit_conservative": 31.0,
+     "new_prompts_expected": 62,
+     "new_prompts_conservative": 92,
+     "yield_basis": "measured 7/14"
+    },
+    "everyday/fr": {
+     "target": 4,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 4.0,
+     "deficit_conservative": 4.0,
+     "new_prompts_expected": 9,
+     "new_prompts_conservative": 12,
+     "yield_basis": "provisional pooled everyday 128/260, low widened by 25%"
+    },
+    "everyday/de": {
+     "target": 4,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 4.0,
+     "deficit_conservative": 4.0,
+     "new_prompts_expected": 9,
+     "new_prompts_conservative": 12,
+     "yield_basis": "provisional pooled everyday 128/260, low widened by 25%"
+    },
+    "everyday/es": {
+     "target": 4,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 4.0,
+     "deficit_conservative": 4.0,
+     "new_prompts_expected": 9,
+     "new_prompts_conservative": 12,
+     "yield_basis": "provisional pooled everyday 128/260, low widened by 25%"
+    },
+    "everyday/it": {
+     "target": 4,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 4.0,
+     "deficit_conservative": 4.0,
+     "new_prompts_expected": 9,
+     "new_prompts_conservative": 12,
+     "yield_basis": "provisional pooled everyday 128/260, low widened by 25%"
+    },
+    "everyday/pt": {
+     "target": 4,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 4.0,
+     "deficit_conservative": 4.0,
+     "new_prompts_expected": 9,
+     "new_prompts_conservative": 12,
+     "yield_basis": "provisional pooled everyday 128/260, low widened by 25%"
+    },
+    "instruction/el": {
+     "target": 79,
+     "E": 18,
+     "A": 0,
+     "deficit_expected": 61.0,
+     "deficit_conservative": 61.0,
+     "new_prompts_expected": 122,
+     "new_prompts_conservative": 154,
+     "yield_basis": "measured 19/38"
+    },
+    "instruction/en": {
+     "target": 23,
+     "E": 8,
+     "A": 0,
+     "deficit_expected": 15.0,
+     "deficit_conservative": 15.0,
+     "new_prompts_expected": 23,
+     "new_prompts_conservative": 32,
+     "yield_basis": "measured 8/12"
+    },
+    "instruction/fr": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 4,
+     "new_prompts_conservative": 6,
+     "yield_basis": "provisional pooled instruction 27/50, low widened by 25%"
+    },
+    "instruction/de": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 4,
+     "new_prompts_conservative": 6,
+     "yield_basis": "provisional pooled instruction 27/50, low widened by 25%"
+    },
+    "instruction/es": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 4,
+     "new_prompts_conservative": 6,
+     "yield_basis": "provisional pooled instruction 27/50, low widened by 25%"
+    },
+    "instruction/it": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 4,
+     "new_prompts_conservative": 6,
+     "yield_basis": "provisional pooled instruction 27/50, low widened by 25%"
+    },
+    "instruction/pt": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 4,
+     "new_prompts_conservative": 6,
+     "yield_basis": "provisional pooled instruction 27/50, low widened by 25%"
+    },
+    "factual/el": {
+     "target": 53,
+     "E": 44,
+     "A": 395,
+     "deficit_expected": 0,
+     "deficit_conservative": 0,
+     "new_prompts_expected": 0,
+     "new_prompts_conservative": 0,
+     "yield_basis": "measured 46/104"
+    },
+    "factual/en": {
+     "target": 15,
+     "E": 2,
+     "A": 0,
+     "deficit_expected": 13.0,
+     "deficit_conservative": 13.0,
+     "new_prompts_expected": 29,
+     "new_prompts_conservative": 45,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "factual/fr": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 5,
+     "new_prompts_conservative": 7,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "factual/de": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 5,
+     "new_prompts_conservative": 7,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "factual/es": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 3,
+     "new_prompts_conservative": 4,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "factual/it": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 3,
+     "new_prompts_conservative": 4,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "factual/pt": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 3,
+     "new_prompts_conservative": 4,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "safety/el": {
+     "target": 53,
+     "E": 13,
+     "A": 0,
+     "deficit_expected": 40.0,
+     "deficit_conservative": 40.0,
+     "new_prompts_expected": 56,
+     "new_prompts_conservative": 70,
+     "yield_basis": "measured 13/18"
+    },
+    "safety/en": {
+     "target": 15,
+     "E": 2,
+     "A": 0,
+     "deficit_expected": 13.0,
+     "deficit_conservative": 13.0,
+     "new_prompts_expected": 18,
+     "new_prompts_conservative": 29,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "safety/fr": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 3,
+     "new_prompts_conservative": 5,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "safety/de": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 3,
+     "new_prompts_conservative": 5,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "safety/es": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "safety/it": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "safety/pt": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "math/el": {
+     "target": 26,
+     "E": 0,
+     "A": 39,
+     "deficit_expected": 2.6,
+     "deficit_conservative": 7.6,
+     "new_prompts_expected": 5,
+     "new_prompts_conservative": 17,
+     "yield_basis": "measured 15/25"
+    },
+    "math/en": {
+     "target": 7,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 7.0,
+     "deficit_conservative": 7.0,
+     "new_prompts_expected": 12,
+     "new_prompts_conservative": 20,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    },
+    "math/fr": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    },
+    "math/de": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    },
+    "math/es": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    },
+    "math/it": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    },
+    "math/pt": {
+     "target": 0,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 0,
+     "deficit_conservative": 0,
+     "new_prompts_expected": 0,
+     "new_prompts_conservative": 0,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    }
+   },
+   "single_turn_new_prompts_expected": 431,
+   "single_turn_new_prompts_conservative": 606,
+   "dialogue_pairs_target": 263
+  },
+  "1000": {
+   "cells": {
+    "dialogue/el": {
+     "target": 245,
+     "E": 0,
+     "A": 0,
+     "deficit": 245,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/en": {
+     "target": 70,
+     "E": 0,
+     "A": 0,
+     "deficit": 70,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/fr": {
+     "target": 7,
+     "E": 0,
+     "A": 0,
+     "deficit": 7,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/de": {
+     "target": 7,
+     "E": 0,
+     "A": 0,
+     "deficit": 7,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/es": {
+     "target": 7,
+     "E": 0,
+     "A": 0,
+     "deficit": 7,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/it": {
+     "target": 7,
+     "E": 0,
+     "A": 0,
+     "deficit": 7,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "dialogue/pt": {
+     "target": 7,
+     "E": 0,
+     "A": 0,
+     "deficit": 7,
+     "new_prompts_expected": null,
+     "new_prompts_conservative": null,
+     "note": "dialogue: reserved starting seeds; yield from the dialogue track"
+    },
+    "everyday/el": {
+     "target": 175,
+     "E": 116,
+     "A": 731,
+     "deficit_expected": 0,
+     "deficit_conservative": 0,
+     "new_prompts_expected": 0,
+     "new_prompts_conservative": 0,
+     "yield_basis": "measured 121/246"
+    },
+    "everyday/en": {
+     "target": 50,
+     "E": 6,
+     "A": 0,
+     "deficit_expected": 44.0,
+     "deficit_conservative": 44.0,
+     "new_prompts_expected": 88,
+     "new_prompts_conservative": 131,
+     "yield_basis": "measured 7/14"
+    },
+    "everyday/fr": {
+     "target": 5,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 5.0,
+     "deficit_conservative": 5.0,
+     "new_prompts_expected": 11,
+     "new_prompts_conservative": 15,
+     "yield_basis": "provisional pooled everyday 128/260, low widened by 25%"
+    },
+    "everyday/de": {
+     "target": 5,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 5.0,
+     "deficit_conservative": 5.0,
+     "new_prompts_expected": 11,
+     "new_prompts_conservative": 15,
+     "yield_basis": "provisional pooled everyday 128/260, low widened by 25%"
+    },
+    "everyday/es": {
+     "target": 5,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 5.0,
+     "deficit_conservative": 5.0,
+     "new_prompts_expected": 11,
+     "new_prompts_conservative": 15,
+     "yield_basis": "provisional pooled everyday 128/260, low widened by 25%"
+    },
+    "everyday/it": {
+     "target": 5,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 5.0,
+     "deficit_conservative": 5.0,
+     "new_prompts_expected": 11,
+     "new_prompts_conservative": 15,
+     "yield_basis": "provisional pooled everyday 128/260, low widened by 25%"
+    },
+    "everyday/pt": {
+     "target": 5,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 5.0,
+     "deficit_conservative": 5.0,
+     "new_prompts_expected": 11,
+     "new_prompts_conservative": 15,
+     "yield_basis": "provisional pooled everyday 128/260, low widened by 25%"
+    },
+    "instruction/el": {
+     "target": 105,
+     "E": 18,
+     "A": 0,
+     "deficit_expected": 87.0,
+     "deficit_conservative": 87.0,
+     "new_prompts_expected": 174,
+     "new_prompts_conservative": 219,
+     "yield_basis": "measured 19/38"
+    },
+    "instruction/en": {
+     "target": 30,
+     "E": 8,
+     "A": 0,
+     "deficit_expected": 22.0,
+     "deficit_conservative": 22.0,
+     "new_prompts_expected": 33,
+     "new_prompts_conservative": 46,
+     "yield_basis": "measured 8/12"
+    },
+    "instruction/fr": {
+     "target": 3,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 3.0,
+     "deficit_conservative": 3.0,
+     "new_prompts_expected": 6,
+     "new_prompts_conservative": 9,
+     "yield_basis": "provisional pooled instruction 27/50, low widened by 25%"
+    },
+    "instruction/de": {
+     "target": 3,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 3.0,
+     "deficit_conservative": 3.0,
+     "new_prompts_expected": 6,
+     "new_prompts_conservative": 9,
+     "yield_basis": "provisional pooled instruction 27/50, low widened by 25%"
+    },
+    "instruction/es": {
+     "target": 3,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 3.0,
+     "deficit_conservative": 3.0,
+     "new_prompts_expected": 6,
+     "new_prompts_conservative": 9,
+     "yield_basis": "provisional pooled instruction 27/50, low widened by 25%"
+    },
+    "instruction/it": {
+     "target": 3,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 3.0,
+     "deficit_conservative": 3.0,
+     "new_prompts_expected": 6,
+     "new_prompts_conservative": 9,
+     "yield_basis": "provisional pooled instruction 27/50, low widened by 25%"
+    },
+    "instruction/pt": {
+     "target": 3,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 3.0,
+     "deficit_conservative": 3.0,
+     "new_prompts_expected": 6,
+     "new_prompts_conservative": 9,
+     "yield_basis": "provisional pooled instruction 27/50, low widened by 25%"
+    },
+    "factual/el": {
+     "target": 70,
+     "E": 44,
+     "A": 395,
+     "deficit_expected": 0,
+     "deficit_conservative": 0,
+     "new_prompts_expected": 0,
+     "new_prompts_conservative": 0,
+     "yield_basis": "measured 46/104"
+    },
+    "factual/en": {
+     "target": 20,
+     "E": 2,
+     "A": 0,
+     "deficit_expected": 18.0,
+     "deficit_conservative": 18.0,
+     "new_prompts_expected": 41,
+     "new_prompts_conservative": 62,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "factual/fr": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 5,
+     "new_prompts_conservative": 7,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "factual/de": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 5,
+     "new_prompts_conservative": 7,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "factual/es": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 5,
+     "new_prompts_conservative": 7,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "factual/it": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 5,
+     "new_prompts_conservative": 7,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "factual/pt": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 5,
+     "new_prompts_conservative": 7,
+     "yield_basis": "provisional pooled factual 48/107, low widened by 25%"
+    },
+    "safety/el": {
+     "target": 70,
+     "E": 13,
+     "A": 0,
+     "deficit_expected": 57.0,
+     "deficit_conservative": 57.0,
+     "new_prompts_expected": 79,
+     "new_prompts_conservative": 100,
+     "yield_basis": "measured 13/18"
+    },
+    "safety/en": {
+     "target": 20,
+     "E": 2,
+     "A": 0,
+     "deficit_expected": 18.0,
+     "deficit_conservative": 18.0,
+     "new_prompts_expected": 24,
+     "new_prompts_conservative": 40,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "safety/fr": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 3,
+     "new_prompts_conservative": 5,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "safety/de": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 3,
+     "new_prompts_conservative": 5,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "safety/es": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 3,
+     "new_prompts_conservative": 5,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "safety/it": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 3,
+     "new_prompts_conservative": 5,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "safety/pt": {
+     "target": 2,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 2.0,
+     "deficit_conservative": 2.0,
+     "new_prompts_expected": 3,
+     "new_prompts_conservative": 5,
+     "yield_basis": "provisional pooled safety 15/20, low widened by 25%"
+    },
+    "math/el": {
+     "target": 35,
+     "E": 0,
+     "A": 39,
+     "deficit_expected": 11.6,
+     "deficit_conservative": 16.6,
+     "new_prompts_expected": 20,
+     "new_prompts_conservative": 36,
+     "yield_basis": "measured 15/25"
+    },
+    "math/en": {
+     "target": 10,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 10.0,
+     "deficit_conservative": 10.0,
+     "new_prompts_expected": 17,
+     "new_prompts_conservative": 29,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    },
+    "math/fr": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    },
+    "math/de": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    },
+    "math/es": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    },
+    "math/it": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    },
+    "math/pt": {
+     "target": 1,
+     "E": 0,
+     "A": 0,
+     "deficit_expected": 1.0,
+     "deficit_conservative": 1.0,
+     "new_prompts_expected": 2,
+     "new_prompts_conservative": 3,
+     "yield_basis": "provisional pooled math 16/27, low widened by 25%"
+    }
+   },
+   "single_turn_new_prompts_expected": 611,
+   "single_turn_new_prompts_conservative": 858,
+   "dialogue_pairs_target": 350
+  }
+ }
+}

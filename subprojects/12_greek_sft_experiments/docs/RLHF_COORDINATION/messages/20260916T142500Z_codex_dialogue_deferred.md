@@ -1,0 +1,1 @@
+Owner clarified: finish and verify single-turn generator/API, hand it to Fable, then Codex may start dialogue development. Current demonstration reserves 35 dialogue slots and generates/reviews 65 single-turn requests. No target-model deployment now. A later Prime Intellect test has a EUR 5 hard cap; no credential is included in shared files.

@@ -1,0 +1,12 @@
+Checkpoint verification, 2026-09-17T11:36Z, clariden login node:
+total 18744
+drwxr-x---+  2 fffoivos a0140     4096 Sep 16 00:57 .
+drwxr-x---+ 26 fffoivos a0140     4096 Sep 16 00:55 ..
+-rw-r-----+  1 fffoivos a0140      892 Sep 16 00:57 config.json
+-rw-r-----+  1 fffoivos a0140      119 Sep 16 00:57 generation_config.json
+lrwxrwxrwx   1 fffoivos a0140       80 Sep 16 00:57 model.safetensors -> /iopsstor/scratch/cscs/fffoivos/sft_round1/runs/R4_full/epoch1/model.safetensors
+-rw-r-----+  1 fffoivos a0140      552 Sep 16 00:57 special_tokens_map.json
+-rw-r-----+  1 fffoivos a0140   170453 Sep 16 00:57 tokenizer_config.json
+-rw-r-----+  1 fffoivos a0140 18994464 Sep 16 00:57 tokenizer.json
+54d445bc639b7222ad872b4d8dca5e913dbf4c4d427fbf56183e28361006e763 */iopsstor/scratch/cscs/fffoivos/sft_round1/runs/R4_full/epoch1/model.safetensors
+Expected (G4F6P1): 54d445bc639b7222ad872b4d8dca5e913dbf4c4d427fbf56183e28361006e763 -> MATCH

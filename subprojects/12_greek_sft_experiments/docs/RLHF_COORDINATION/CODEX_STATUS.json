@@ -1,0 +1,44 @@
+{
+  "owner": "Codex",
+  "updated_utc": "2026-09-16T14:54:54.474703+00:00",
+  "phase": "Single-turn API handoff ready",
+  "work": "Implementation and reviewed 65-request pilot delivered; dialogue deferred until handoff",
+  "owned_paths": [
+    "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/rlhf/prompt_generator"
+  ],
+  "next_checkpoint": "Implement separate dialogue schemas, raw rollout, annotation and selection; six-chat smoke only after budget preflight",
+  "eta": "Single-turn release available now. Dialogue ETA awaits checkpoint and provider-cost verification.",
+  "fable_can_work_on": [
+    "forum pipeline",
+    "RLHF runner",
+    "target-model dialogue integration"
+  ],
+  "release_ready": true,
+  "production_execution_owner": "Fable 5.1",
+  "target_model_access": "Not used; dialogue deferred. Later Prime Intellect cap EUR5 total, no credential stored.",
+  "pilot": {
+    "slots": 100,
+    "max_sol_calls": 48,
+    "concurrency": 3,
+    "dialogue_slots": 35,
+    "dialogue_completion": "DEFERRED by user: after single-turn API handoff to Fable",
+    "single_turn_requests": 65
+  },
+  "later_dialogue_budget": "Prime Intellect <= EUR 5 total; not started; credential not stored here",
+  "release_scope": "bounded single-turn development pilot; not production-scale or training eligible",
+  "release": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/rlhf/prompt_generator/RELEASE.json",
+  "handoff": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/rlhf/prompt_generator/IMPLEMENTATION_HANDOFF_20260916.md",
+  "validation": {
+    "regression_tests": 34,
+    "http_checks": 9,
+    "accepted_single_turn": 65,
+    "deferred_dialogue": 35,
+    "sol_calls": 36,
+    "benchmark_hits": 0
+  },
+  "fable_board_acknowledgement": "Read FABLE_STATUS.md and 20260916T141830Z acknowledgement; release consumption still unconfirmed",
+  "dialogue_design": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/docs/RLHF_COORDINATION/DIALOGUE_SAMPLING_QUALITY_DEPTH_20260916.md",
+  "dialogue_plan": "/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/docs/RLHF_COORDINATION/DIALOGUE_EXPERIMENT_PLAN_20260916.md",
+  "dialogue_plan_status": "Written and checked; not executed",
+  "fable_release_consumption": "FABLE_STATUS.md reports prompt-generator-0.1 consumed; round1_121 launched at 14:48Z"
+}

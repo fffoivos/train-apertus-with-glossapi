@@ -1,0 +1,20 @@
+VERDICT: HOLD
+
+1. **BLOCKING — DPO log probabilities and loss run in BF16.** `cluster/dpo_train.py:113-126`; installed TRL `dpo_trainer.py:1374-1380,1414-1418`; `utils.py:507-519`; record `runs/G4F6P1--DPO01--00/checkpoint-43/trainer_state.json`, `log_history.step=1`. TRL receives BF16 logits and never upcasts them before log-softmax, sequence summation, or sigmoid loss. With zero initial margins, production records loss `0.69140625` instead of `log(2)=0.693147…`; summed log probabilities and rewards are visibly BF16-quantized. This violates the specified FP32 log-probability/loss path and means every arm using trainer hash `30ab7b2a4bc878e4` trained a different numerical objective. **Fix:** compute policy/reference selective log-softmax, sequence sums, ratios, sigmoid loss, and chosen NLL in FP32 under BF16 forward autocast; add a production-autocast fixture checking FP32 outputs, zero margins, and FP32 `log(2)`; reinitialize and rerun every affected arm.
+
+2. **BLOCKING — the trainer does not reliably refuse truncation.** `cluster/dpo_train.py:67-73,88-92,113-115`; installed TRL `dpo_trainer.py:160-167`. The precheck estimates length as rendered prompt plus separately tokenized raw completion plus two tokens. It does not tokenize the exact `prompt + chosen/rejected` rendering that TRL consumes. TRL then silently slices sequences at `max_length`. The current estimator reports a comfortable maximum of 1,086, so I found no evidence that these particular rows were truncated, but the required fail-closed invariant is absent. **Fix:** tokenize both complete conversational sequences with the production template, assert each exact length is at most 4,096 and ends in token 68, then disable collator truncation or replace it with a collator that raises. Add a boundary fixture that would expose estimator/rendering disagreement.
+
+3. **MAJOR — criterion 8 is incomplete for the four-arm checkpoint.** Records `G4F6P1--DPO01--02` and `G4F6P1--DPO01--03`. At inspection time, receipts existed only for arms 00 and 01; arm 02 was still training and arm 03 had no log or receipt. Therefore not every arm is bound to its config, data, and trainer hash. **Fix:** after applying the blocking objective fix and rerunning, produce one valid receipt per arm. Have only world rank zero write it atomically; include full config, train/dev, trainer, launcher, ZeRO-config, template/tokenizer, and parent-checkpoint hashes.
+
+4. **MINOR — anchored component metrics are rank-local and do not reconcile with total loss.** `cluster/dpo_train.py:39-42`; `logs/dpo01_02.out`, optimizer step 1. The code appends local Python floats without distributed gathering. The log reports total `1.16`, DPO `0.6914`, and chosen NLL `0.5391`; the components do not sum to the reported total. This does not establish a gradient error, but it prevents the required objective diagnostics from validating what was optimized. **Fix:** gather component numerators and denominators across ranks and gradient-accumulation microbatches, then assert `total ≈ dpo + alpha × chosen_nll`.
+
+Verified correct:
+
+- Chosen/rejected contain exactly one latest assistant completion; earlier turns remain in the shared prompt.
+- TRL masks prompt and padding tokens, includes assistant-end token 68, and uses summed completion log probabilities for DPO.
+- Policy and frozen reference load independently from the same parent path; reference parameters are frozen, and initialization margins are zero.
+- The update path is full parameter ZeRO-3 with BF16 forward compute and FP32 optimizer/master-state evidence; no LoRA or quantization path is present.
+- The anchored reduction is structurally per-example chosen-token mean followed by batch mean; `alpha=0` bypasses it.
+- After removing identifiers, output paths, learning rate, and alpha, all four arm configs are byte-identical. Seed, data, batch, schedule, template, reference, and optimizer settings match.
+- Arms 00 and 01 saved epoch-prefix checkpoints at steps 43, 86, and 129; their receipts’ config, train, dev, and trainer hashes match the inspected files.
+

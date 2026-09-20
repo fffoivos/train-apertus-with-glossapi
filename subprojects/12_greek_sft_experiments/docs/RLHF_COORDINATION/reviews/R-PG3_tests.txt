@@ -1,0 +1,11 @@
+/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/rlhf/generator_v02/test_generator.py:9: ResourceWarning: unclosed file <_io.TextIOWrapper name='/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/rlhf/generator_v02/task_kinds.json' mode='r' encoding='UTF-8'>
+  sub = M.lr(a['everyday'], {s: 1 for s in json.load(open(HERE / 'task_kinds.json'))['everyday']}); self.assertEqual(sum(sub.values()), a['everyday'])
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.../Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/rlhf/generator_v02/test_generator.py:11: ResourceWarning: unclosed file <_io.TextIOWrapper name='/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/rlhf/generator_v02/manifest_round3.json' mode='r' encoding='UTF-8'>
+  m = json.load(open(HERE / 'manifest_round3.json'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+..
+----------------------------------------------------------------------
+Ran 5 tests in 0.006s
+
+OK

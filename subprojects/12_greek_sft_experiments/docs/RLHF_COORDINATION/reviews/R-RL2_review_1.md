@@ -1,0 +1,21 @@
+VERDICT: HOLD
+
+1. **BLOCKING — eligibility invariants are not enforced.** `data/rlhf/maths_judge/maths_judge.py:32,68-77` accepts the model’s `eligible_positive` and `verdict` values and only applies reference/ambiguity holds. It does not reject or correct positives with an incorrect outcome, invalid reasoning, incomplete task, or omitted requested explanation. Existing rows happen to satisfy these invariants, but new prompts are not protected, violating criterion 2’s “never” requirement. Fix: add deterministic cross-field validation, synchronize `verdict` with eligibility, fail closed on inconsistent output, and add regression fixtures for invalid derivations and short correct answers.
+
+2. **MAJOR — the v1.1 ambiguity contract is internally contradictory.** `data/rlhf/maths_judge/rubric_maths_v1.txt:17,20,45` still says ambiguous items remain held and that reinforcement requires a verified reference, contradicting lines 35-36 and the v1.1 rule. `maths_judge.py:70-76` can only remove eligibility; it cannot establish a positive when an agreed ambiguous reference is handled correctly. This prevents reliable application of the intended rule to new prompts. Fix: remove the blanket ambiguous hold, distinguish ambiguous-and-agreed from unresolved, and deterministically compute eligibility for correct, complete, ambiguity-aware replies.
+
+3. **MAJOR — the zero-pair conclusion is not established independently of judge strictness.** `data/rlhf/maths_judge/calibration_report.md:31-32` says all 15 ambiguity-aware replies were still wrong. Record `g2:R2B11_009`, candidate `k=1` in `rejudge_preexisting/judged_v11.jsonl:35`, is instead marked `outcome=correct`, `reasoning=valid`, `handled_ambiguity=yes`, with no errors; it is excluded solely as `task_completion=partial` for omitting reference-added details not explicitly requested by the user. Because it ranks above discouraged candidates, accepting it would create a pair and invalidate “0 of 41.” Fix: independently reassess this candidate against the actual request and owner’s T5 definition, re-review all 15 ambiguity-aware candidates under the corrected rubric, and report forum and seeded yields separately before retaining the source-quality conclusion.
+
+4. **MINOR — the v1/v1.1 comparison does not isolate the rule change.** `calibration_report.md:10,25-27` compares independently regenerated judgements. Across the calibration set, 18 outcomes, 21 completion labels, and 10 of 40 batch rankings changed; four verified-reference positives disappeared, while no positive was added. Fix: apply the v1.1 eligibility rule to a fixed set of candidate assessments or publish a candidate-level diff separating rule effects from judge rerun variance.
+
+5. **MINOR — the v1 backup is not reproducible.** `maths_judge_v1_backup.py:11,64-71` reads the mutable current `rubric_maths_v1.txt` while hard-coding the label `maths-v1`. The archived v1 records use rubric hash `6e438e50ca065dd6`, whereas the current file hashes to `9a7fc9bdebf63375`; rerunning the backup would therefore produce mislabeled non-v1 records. Fix: preserve the original rubric under a versioned filename and bind the backup runner to it.
+
+Verified as correct:
+
+- Reference solvers receive only the user conversation; candidates enter only at the judging stage. All 61 prompts contain user-only messages.
+- All reference hashes recompute correctly, and every v1.1 record carries the current rubric and matching reference hashes.
+- Reported aggregate counts reproduce exactly: 160 calibration replies with 23 positives, and 176 pre-existing replies with zero recorded positives.
+- `g2:R2B1_006` candidate `k=3` has the false equality chain, is discouraged, and ranks below clean solutions. All `g2:R2B12_005` candidates are ineligible.
+- No ambiguous reply with `handled_ambiguity=no`, and no solver-disagreement record, is eligible.
+- No calibration candidate changed from ineligible under v1 to eligible under v1.1.
+- The old round-one and round-two judgement files retain their previously recorded hashes (`6d2c3f72f8beb03c…` and `440b5958e1caf169…`); specialist outputs are separate files.
