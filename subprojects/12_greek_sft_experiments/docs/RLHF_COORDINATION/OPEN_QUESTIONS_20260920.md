@@ -269,6 +269,54 @@ leaves the deficit removed (+0.054 / +0.078 / +0.108), so stratification is not 
 3. **Add a small slice of label-answer pairs to round 2** and check the drift does not recur — now a
    hypothesis to test, not a diagnosis to act on.
 
+## Q5 — Did the pairs teach a reasoning *skill* rather than content?  *(new, 20 Sept, owner's hypothesis)*
+
+Q1 eliminated the two content explanations for the MGSM gain. The owner's question — *"did the pairs
+reinforce correct reasoning?"* — proposes a skill explanation instead, and it fits the evidence
+better than anything else considered.
+
+**What the pairs are made of.** 35% of the 343 training pairs are labelled `compositional`
+difficulty and a further 11% `challenging`. Task types include `conditional_answer` (17),
+`multi_constraint_composition` (12), `edit_preserving_values` (20), `strict_format` (14) — tasks
+that require holding several stated conditions simultaneously and not contradicting them.
+
+**What a pair actually rewards.** In R3-0404 the request was a vegan family meal. The *rejected*
+answer proposed *gigot d'agneau* — leg of lamb. The *chosen* answer listed only plant dishes. The
+preference signal is constraint tracking and internal consistency, not style.
+
+**Why this beats every other candidate: it predicts the whole benchmark ordering, not just maths.**
+
+| benchmark | demand | change vs parent |
+|---|---|---|
+| MGSM | multi-step, carry quantities to a final answer | **+9** |
+| IFEval | track and satisfy stated constraints | **+4** |
+| Global-MMLU | knowledge recall | +1.1 … +1.8 |
+| GreekMMLU, bare label | pure recall, no chain | **−0.4** |
+
+Gains scale with how much multi-step constraint-tracking a task needs and vanish or reverse where it
+is pure recall. This also makes MGSM and IFEval **one** finding rather than two unrelated ones, which
+no content-based explanation does.
+
+### The test
+
+Same shape as Q1's ablation, and better powered: remove the **120 compositional pairs** against a
+random control of equal size. That is 35% of the data against Q1's 16%, so if constraint-tracking is
+the mechanism the drop should exceed the ~4 pp this design resolves — unlike the 2 pp Q1 could not
+pin down. Reuse `data/rlhf/dpo01_nomaths/build.py` (swap the selector), the seed-matched
+item-level McNemar primary, and the same RC-style control drawn from non-compositional pairs.
+
+**Note the difference in kind.** Q1 asked whether *content* transferred. Q5 asks whether a *skill*
+transferred. For 343 examples, the second is the more plausible thing to have taught.
+
+### Caveat recorded 20 Sept
+
+The `embedded_maths` label used for Q1 effectively required **digits**: all 56 flagged pairs contain
+digits and none was word-only. Of the 287 kept pairs, 26 contain a number-word with no digit, but
+only **2** contain any arithmetic term (`σύνολο`, `ποσοστό`); the rest are incidental counting
+("two theories", "two neurons", "two sides"). So the digit-based selector was a real limitation but
+did not leave meaningful quantitative content in the ablated set. A `compositional` selector for Q5
+is label-based rather than regex-based and does not inherit this problem.
+
 ## Sequencing
 
 Q2 is running. Q4(1) needs one 45-minute re-run to persist the per-choice scores first. Q1 is the one that
