@@ -156,6 +156,25 @@ Two things this establishes, both from artefacts rather than from reading the tr
 TRUEIPO vs armIPO is therefore a clean isolation of the *objective* at matched β = 10, which is what
 Q3 needed and never had. Checkpoint arithmetic confirmed: 343 pairs → step 129.
 
+It is cleaner still than that: `G4F6P1_DPO01_IPO42.yaml` and `G4F6P1_DPO01_TRUEIPO42.yaml` are
+**identical apart from `run_name` and `output_dir`** — `loss_type: ipo` was already in the original
+IPO config, and the trainer ignored it. So the pair is a natural experiment in which the *same
+configuration file* was run by two trainer builds, and the objective that was actually optimised is
+read from TRL's saved `DPOConfig` rather than from the YAML. Nothing else about the run differs:
+same data, same lr, same α, same β, same epochs, same parent.
+
+### Config premises, verified by diff (20 Sept)
+
+| comparison | differs in |
+|---|---|
+| NM42 vs arm05 | `run_name`, `train_file`, `output_dir` — nothing else |
+| RC42 vs NM42 | `run_name`, `train_file`, `output_dir` — nothing else |
+| TRUEIPO42 vs arm05 | the above, plus `beta: 10.0` and `loss_type: ipo` |
+| TRUEIPO42 vs IPO42 | `run_name`, `output_dir` only (the objective differs in the *trainer*) |
+
+So NM and RC are matched in every hyperparameter; the only thing separating them is which 56 pairs
+were removed. That is what makes Q1's NM − RC contrast interpretable.
+
 ## Q4 — Is the GreekMMLU deficit a label-position shift? *(new, 20 Sept; ANSWERED, narrowly, 20 Sept)*
 
 **Status: measured, then narrowed by R-DPO15 (Sol, xhigh). The earlier heading here — "the Greek MMLU
