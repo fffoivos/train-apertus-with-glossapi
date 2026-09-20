@@ -1,11 +1,13 @@
 # Q1/Q3 arms, frozen-date + geometry-repaired re-score. Launch:
-#   LIST=<this file> EXPECT=7 sbatch cluster/eval_jobs/dpo01_frozen_rescore.sh
+#   LIST=<this file> EXPECT=9 sbatch cluster/eval_jobs/dpo01_frozen_rescore.sh
 #
 # Q1 - does the MGSM gain come from the 56 embedded-quantitative pairs?
 #   NM42/43/44  anchored alpha=0.25, dpo01_nomaths   (those 56 pairs removed; 287 train)
-#   RC42        anchored alpha=0.25, dpo01_randomcut (56 RANDOM pairs removed; 287 train) - the
+#   RC42/43/44  anchored alpha=0.25, dpo01_randomcut (56 RANDOM pairs removed; 287 train) - the
 #               "less data" control, so a drop in NM is only attributable to the maths content if
-#               RC does not drop the same way.
+#               RC does not drop the same way. Three seeds, matching NM: MGSM's between-seed spread
+#               on this round was +4.40..+13.20 across individual checkpoints, so a single control
+#               run could not have established the baseline the contrast depends on.
 # Q3 - the objective the round thought it had tested.
 #   TRUEIPO42/43  loss_type: ipo, beta 10, full dpo01 (343 train)
 #
@@ -18,5 +20,7 @@ armNM42_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--NM42/
 armNM43_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--NM43/checkpoint-108|own|full
 armNM44_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--NM44/checkpoint-108|own|full
 armRC42_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--RC42/checkpoint-108|own|full
+armRC43_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--RC43/checkpoint-108|own|full
+armRC44_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--RC44/checkpoint-108|own|full
 armTRUEIPO42_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--TRUEIPO42/checkpoint-129|own|full
 armTRUEIPO43_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--TRUEIPO43/checkpoint-129|own|full
