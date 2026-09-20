@@ -99,6 +99,31 @@ is the one question from the original round design that remains genuinely open.
 
 ---
 
+---
+
+### Verified 20 Sept: IPO has now actually run
+
+The Q1/Q3 training gate checks that the *plan* says `ipo`. That is the input, not the behaviour, and
+"a config that asked for IPO and trained sigmoid" is exactly the bug that created this question — so
+the gate alone is not evidence. The decisive artefact is `training_args.bin`, the `DPOConfig` object
+TRL actually constructed, saved inside each checkpoint:
+
+| arm | `loss_type` | `beta` | `label_smoothing` |
+|---|---|---|---|
+| **TRUEIPO42** | **`['ipo']`** | 10.0 | 0.0 |
+| armIPO42 (the round's "IPO" arm) | `['sigmoid']` | 10.0 | 0.0 |
+| arm05 (reference) | `['sigmoid']` | 0.1 | 0.0 |
+
+Two things this establishes, both from artefacts rather than from reading the trainer source:
+
+1. **TRUEIPO42 genuinely optimised the IPO objective.** First time in this round.
+2. **armIPO42's own checkpoint confirms it trained sigmoid**, independently of the code inspection
+   that first caught the hardcode. Every "IPO" conclusion the page carried was about sigmoid at
+   β = 10.
+
+TRUEIPO vs armIPO is therefore a clean isolation of the *objective* at matched β = 10, which is what
+Q3 needed and never had. Checkpoint arithmetic confirmed: 343 pairs → step 129.
+
 ## Q4 — Is the GreekMMLU deficit a label-position shift? *(new, 20 Sept; ANSWERED, narrowly, 20 Sept)*
 
 **Status: measured, then narrowed by R-DPO15 (Sol, xhigh). The earlier heading here — "the Greek MMLU
