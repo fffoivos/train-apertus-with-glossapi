@@ -22,6 +22,11 @@ FROZEN = _load('frozen_results.json', {}) or {}
 Q1Q3   = _load('q1q3_results.json', {}) or {}
 CALIB  = _load('../greekmmlu_official/label_calibration.json', {}) or {}
 
+# The trajectories are NOT redrawn here. curves_page.py owns them; this page imports its chart
+# builders so both pages plot the identical curves from the identical data.
+sys.path.insert(0, str(HERE))
+import curves_page as CP
+
 STYLE = re.search(r'<style>.*?</style>', (HERE / 'curves_page.py').read_text(), re.S)
 STYLE = STYLE.group(0) if STYLE else '<style></style>'
 # curves_page.py holds that block inside an f-string, so its braces are DOUBLED in the source. Inserting
@@ -160,6 +165,24 @@ def ipo_table():
             "<th>seeds</th></tr></thead><tbody>" + ''.join(rows) + "</tbody></table></div>")
 
 
+def loss_curve():
+    return CP.line_chart(['loss'], 'Training loss per optimizer update',
+        'Measured inside training, on the training batches. Nothing here depends on the benchmark harness, '
+        'so none of it was touched by the loading fault.')
+
+def margin_curve():
+    return CP.line_chart(['rewards/margins'],
+        'Reward margin: how far the chosen reply sits above the rejected one',
+        'This is the quantity the objective actually maximises. It rises in every arm that trains at all.',
+        zero=True)
+
+def displacement_panels():
+    return "<div class='grid2'>%s</div>" % ''.join(CP.small_multiple(a, lr, kind) for a, lr, kind in CP.ARMS)
+
+def anchor_curve():
+    return CP.dose_response()
+
+
 # ============================================================================ page
 body = f"""<title>A Round Read Backwards</title>
 {STYLE}
@@ -222,7 +245,32 @@ and &ldquo;this check could not run, which is an environment fault and <em>not</
 </section>
 
 <section>
-<h2>3. What the round actually did</h2>
+<h2>3. The training curves were never wrong</h2>
+<p>Before the corrected scores, it is worth separating two things that got conflated for a day. The
+loading fault was in the <em>evaluation</em> path: checkpoints written by one library version, read by
+another. Training itself never went through that path. Everything measured <em>inside</em> the training
+loop &mdash; the loss, the reward margin, how far each reply moved from the parent &mdash; was correct
+all along, on the mis-loaded day and after.</p>
+{loss_curve()}
+{margin_curve()}
+<div class="callout"><b>This is why the damage reading was believable for as long as it was.</b> The
+training signal looked like success from the inside and the benchmarks said harm, and the obvious
+reading of that pair is &ldquo;it optimised the objective and the objective was wrong&rdquo; &mdash;
+reward hacking, over-optimisation, a preference set that taught the wrong thing. That story is
+coherent, it is a real phenomenon, and it was wrong here. The curves were telling the truth and the
+ruler was broken.</div>
+<p>What the loss cannot see is the other half. The objective only cares about the <em>gap</em> between
+the two replies, so it is satisfied by pushing the rejected reply down even if the good reply goes
+down too. The quantity that exposes that is displacement from the parent: solid is chosen, dashed is
+rejected, measured on the same batch against the frozen reference.</p>
+{displacement_panels()}
+<p class="note">Plain DPO at 2e-6 (arm 01) drives the rejected reply far down and takes the chosen
+reply with it. The anchored arms hold the chosen reply up. This is a training-time measurement and is
+unaffected by anything in section 2.</p>
+</section>
+
+<section>
+<h2>4. What the round actually did</h2>
 {corrected_table()}
 <p>Re-measured with the prompt date frozen, the rotary settings restored, and every comparison passed
 through a guard that <em>refuses</em> any pair differing in more than the one declared variable: a cell
@@ -236,18 +284,18 @@ never ran IPO.</div>
 </section>
 
 <section>
-<h2>4. The hypotheses that died</h2>
+<h2>5. The hypotheses that died</h2>
 <p>A result is only as good as the explanations you have eliminated. Nine were tested here. Each entry
 gives the claim, what was actually done to it, and &mdash; the part usually missing &mdash; <em>why</em>
 the answer comes out that way.</p>
 
-<h3 style="margin-top:18px">4.1 &ldquo;Maths-free tuning improved maths&rdquo;</h3>
+<h3 style="margin-top:18px">5.1 &ldquo;Maths-free tuning improved maths&rdquo;</h3>
 <div class="callout bad"><b>Refuted &mdash; the premise was false.</b> The pair set was described as
 containing no mathematics. 24 dedicated maths tasks were indeed excluded, but <b>66 pairs keep embedded
 quantitative content</b> (56 in training): prices, wages, schedules, quantities, explicit calculations.
 The phrase &ldquo;no mathematics&rdquo; was repeated for days and was simply wrong.</div>
 
-<h3>4.2 &ldquo;Then it must be those 56 quantitative pairs&rdquo;</h3>
+<h3>5.2 &ldquo;Then it must be those 56 quantitative pairs&rdquo;</h3>
 <p>This is the obvious successor hypothesis, and testing it needs a control, because removing 56 of 343
 pairs also removes 16% of the training signal. So two ablations were trained: one with the 56
 quantitative pairs removed, one with <b>56 random pairs removed instead</b>. Identical hyperparameters,
@@ -269,7 +317,7 @@ zero, so it was never a 5% test. With three paired observations an exact sign te
 p&nbsp;=&nbsp;0.25, so <em>no</em> run-level test here could have reached significance. The primary was
 moved to the item level, where the 250 individual problems give real power.</p>
 
-<h3>4.3 &ldquo;It is a grading artefact &mdash; the model knew the answer and formatted it badly&rdquo;</h3>
+<h3>5.3 &ldquo;It is a grading artefact &mdash; the model knew the answer and formatted it badly&rdquo;</h3>
 <div class="callout bad"><b>Refuted.</b> Mathematics here is graded by exact match on a final number, so
 a model can know an answer and still score zero for presenting it wrongly. If that were the mechanism,
 the parent should have the right number buried in its text and simply not surfaced. That is true in
@@ -277,7 +325,7 @@ the parent should have the right number buried in its text and simply not surfac
 response length is also <em>unchanged</em> (121.1 tokens for parent and arm alike), and the items that
 flip replicate across seeds. It is a real change in the answers.</div>
 
-<h3>4.4 &ldquo;The instruction-following gain is just the output cap&rdquo;</h3>
+<h3>5.4 &ldquo;The instruction-following gain is just the output cap&rdquo;</h3>
 <p>Instruction following allows 1,280 generated tokens with no stop strings, so generation ends only at
 end-of-sequence or the wall. The parent hits that wall on 81 of 541 items; the arms on about 26. And
 57% of the net improvement sits in the items affected by the cap. That is a serious objection.</p>
@@ -291,7 +339,7 @@ wall, so the experiment mostly <em>moved</em> the truncation point rather than o
 completion. Hitting the cap is probably a symptom of not terminating rather than the cause of failing
 &mdash; a model asked for brevity that emits 1,280 tokens has failed on merit at any cap.</p>
 
-<h3>4.5 &ldquo;Greek knowledge was lost&rdquo; &mdash; and then &ldquo;no it wasn't, the cost is zero&rdquo;</h3>
+<h3>5.5 &ldquo;Greek knowledge was lost&rdquo; &mdash; and then &ldquo;no it wasn't, the cost is zero&rdquo;</h3>
 <p>On the official protocol the arms score 0.32 to 0.43 points below the parent, very consistently. That
 protocol ranks the bare letters &Alpha;/&Beta;/&Gamma;/&Delta;. The parent already over-picks &Beta;
 (34.3% against 29.5% of the gold answers) and under-picks &Alpha; and &Delta;; every arm pushes further
@@ -314,7 +362,7 @@ was used to dismiss.</p>
 The fall is protocol-sensitive and consistent with a positional shift. No alternative scorer we have run
 detects a knowledge deficit &mdash; at a precision that could not have detected one this small anyway.</p>
 
-<h3>4.6 &ldquo;IPO was tested and failed&rdquo;</h3>
+<h3>5.6 &ldquo;IPO was tested and failed&rdquo;</h3>
 <div class="callout bad"><b>Refuted &mdash; it never ran.</b> Two runs were configured with
 <code>loss_type: ipo</code>, and the trainer passed the sigmoid objective to the library as a hard-coded
 literal. Everything the project said about IPO &mdash; a pre-registered falsification, a gate that went
@@ -332,7 +380,7 @@ seeds per arm, a paired interval is the range of two numbers, so no significance
 it &mdash; the mathematics deficit is stated because it is large relative to the spread on that lane,
 not because the arithmetic says so.</p></div>
 
-<h3>4.7 &ldquo;There was a configuration effect on instruction following&rdquo;</h3>
+<h3>5.7 &ldquo;There was a configuration effect on instruction following&rdquo;</h3>
 <div class="callout bad"><b>Refuted &mdash; it was the date.</b> A 2&times;2 was built to isolate whether
 re-serialised checkpoint configurations cost anything. The cells were run on different days, and the
 evaluation prompt contains the current date, so every contrast changed the weights <em>and</em> the
@@ -340,20 +388,23 @@ prompt text. The pattern was exactly crossed, which is what makes it a clean con
 vague worry. The differences-in-differences cannot be assigned to configuration. Every score was
 retained; only the causal reading was withdrawn.</div>
 
-<h3>4.8 &ldquo;The anchor was pointless&rdquo;</h3>
+<h3>5.8 &ldquo;The anchor was pointless&rdquo;</h3>
 <p>An earlier reading said the &alpha; anchor controlled displacement monotonically while the benchmark
 contrast stayed unresolved, and concluded the anchor did not help. <b>That argument does not work.</b>
 An interval crossing zero leaves an effect unresolved; it does not demonstrate equivalence. The
 replicated contrast also does not test the hypothesis: &alpha;=0.25 still leaves &minus;4.77 nats of
 held-out displacement, and the setting that actually removes it &mdash; &alpha;=1.0, at +0.49 nats
 &mdash; was never part of the comparison.</p>
+{anchor_curve()}
+<p class="note">Held-out displacement against the anchor weight. The anchor does exactly what it was
+designed to do; what remains unresolved is whether that buys anything on the benchmarks.</p>
 
-<h3>4.9 &ldquo;The environment rebuild changed the results&rdquo;</h3>
+<h3>5.9 &ldquo;The environment rebuild changed the results&rdquo;</h3>
 <p>Halfway through the final scoring job, a storage cleanup gutted the scoring environment. It was
 rebuilt from the surviving version pins &mdash; but twelve of those were ambiguous, so the rebuilt
 environment could not be <em>asserted</em> identical to the one that produced the earlier numbers. This
 matters more than it sounds: one ablation was scored before the rebuild and its control after it, so the
-central comparison of section 4.2 crosses the boundary.</p>
+central comparison of section 5.2 crosses the boundary.</p>
 <div class="callout good"><b>Refuted by measurement, not by argument.</b> A model already scored under the
 old environment was re-scored under the new one. The two agree on <b>every one of 3,191 items</b> &mdash;
 541 instruction-following, 250 mathematics, 2,400 multilingual across 36 subject lanes. Not the same
@@ -361,7 +412,7 @@ average: the same items, one by one. The comparison stands.</div>
 </section>
 
 <section>
-<h2>5. What is left standing</h2>
+<h2>6. What is left standing</h2>
 <p>Stripping out everything that did not survive, this is the whole of what the round supports:</p>
 <ul>
 <li><b>Preference training on 343 pairs improves instruction following and mathematics</b>, across
@@ -376,7 +427,7 @@ protocol-sensitive and too small for the available instruments to characterise c
 </section>
 
 <section>
-<h2>6. The hypothesis that is still alive</h2>
+<h2>7. The hypothesis that is still alive</h2>
 <p>If the gain is not the quantitative content and not the quantity of data, the remaining candidate is
 that the pairs taught a <em>skill</em> rather than a subject. 35% of the training pairs are labelled
 compositional and a further 11% challenging; the task types include multi-constraint composition,
@@ -392,24 +443,24 @@ The gains scale with how much multi-step constraint-tracking a benchmark demands
 where the task is pure recall. It also makes mathematics and instruction following <em>one</em> finding
 rather than two unrelated ones &mdash; which no content-based explanation does.</div>
 <p><b>It is a hypothesis, and it has not been tested.</b> The test is the same shape as the ablation in
-4.2 and better powered: remove the 120 compositional pairs against a random control of equal size. That
+5.2 and better powered: remove the 120 compositional pairs against a random control of equal size. That
 is 35% of the data against the earlier 16%, so if constraint-tracking is the mechanism the effect should
 comfortably exceed what this design can resolve &mdash; unlike the two points that could not be pinned
 down. Until that runs, it is the best available story and nothing more.</p>
 </section>
 
 <section>
-<h2>7. What this round was actually worth</h2>
+<h2>8. What this round was actually worth</h2>
 <p>The result is a modest one: a small preference dataset moved two benchmarks and left a third slightly
 down. The expensive and transferable part is the list in section 2. Every fault there produced a
 plausible number that passed a gate, and the ones that hurt most were not the loud failures &mdash; a
 job that dies is cheap. They were the quiet ones: a library that silently dropped a setting, a trainer
 that ignored its own configuration, a p-value read as proof, a directory mistaken for a model, and a
 guard that answered a question it had not asked.</p>
-<div class="callout"><b>What has not been done.</b> The constraint-tracking hypothesis in section 6
-is untested. The Greek-knowledge deficit in 4.5 would be settled by holding the official prompt
+<div class="callout"><b>What has not been done.</b> The constraint-tracking hypothesis in section 7
+is untested. The Greek-knowledge deficit in 5.5 would be settled by holding the official prompt
 byte-identical and changing only the candidate answer, or by permuting the order of the choices &mdash;
-neither has been run, because both would sharpen a 0.4-point effect. The output-cap result in 4.4 is
+neither has been run, because both would sharpen a 0.4-point effect. The output-cap result in 5.4 is
 bounded by the model's 4,096-token context and cannot be pushed further without a longer-context model.
 And the machinery that produced every number here &mdash; the launchers, the staging, the path from a
 plan to a trainer &mdash; has never itself been reviewed, which is where three of this round's nine

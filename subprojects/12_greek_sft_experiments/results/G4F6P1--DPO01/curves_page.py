@@ -957,9 +957,13 @@ STANDALONE = """<!doctype html>
 </body>
 </html>
 """
-out = pathlib.Path(sys.argv[1])
-body = page
-if '--standalone' in sys.argv[2:]:
-    body = STANDALONE.format(body=page)
-out.write_text(body)
-print('wrote', out, len(body), 'chars', '(standalone)' if '--standalone' in sys.argv[2:] else '(artifact body)')
+# Guarded so corrections_page.py can import the chart builders (line_chart, small_multiple,
+# dose_response) and render the SAME trajectories rather than drawing its own. Running this file
+# directly is unchanged.
+if __name__ == '__main__':
+    out = pathlib.Path(sys.argv[1])
+    body = page
+    if '--standalone' in sys.argv[2:]:
+        body = STANDALONE.format(body=page)
+    out.write_text(body)
+    print('wrote', out, len(body), 'chars', '(standalone)' if '--standalone' in sys.argv[2:] else '(artifact body)')
