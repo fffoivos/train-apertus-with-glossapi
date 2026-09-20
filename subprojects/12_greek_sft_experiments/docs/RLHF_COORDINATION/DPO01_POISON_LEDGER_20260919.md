@@ -413,11 +413,23 @@ A rebuilt environment cannot be asserted a priori to be byte-identical to the on
 19 Sept baseline and wave 1 — the 12 ambiguous pins make that claim unprovable from metadata alone.
 
 It does not need to be asserted, because it can be measured. The retry list carries
-`armNM44VERIFY_ep3`, pointing at weights already scored in wave 1 under the OLD environment. Its
-IFEval, MGSM and Global-MMLU rows must match `armNM44_ep3` exactly. If they do, the rebuilt
-environment is the same instrument and every cross-day comparison stands. If they do not, the
-instrument changed, and the response is to re-score the baseline in the new environment rather than
-to compare across it.
+`armNM44VERIFY_ep3`, pointing at weights already scored in wave 1 under the OLD environment.
+
+**Measured 20 Sept 17:32, and it matches item-for-item** (`cluster/eval_jobs/verify_instrument.py`,
+comparing per item rather than on summary accuracy, since two runs can agree on a mean while
+disagreeing about which items they got right):
+
+| lane | result |
+|---|---|
+| `ifeval_greek` | identical on all **541** items, acc 0.6377 |
+| `mgsm_greek` | identical on all **250** items, acc 0.4880 |
+| `global_mmlu` | 36 leaves, **2,400** items, 0 leaves disagree |
+
+3,191 items, zero disagreements. The rebuilt environment is the same instrument; the twelve ambiguous
+pins did not matter. **Every cross-environment comparison in this round stands** — which is
+load-bearing and not merely reassuring, because Q1's primary contrast crosses the rebuild: NM42/43/44
+were scored under the old environment in job 3456396, RC42/43/44 under the rebuilt one in 3456967.
+Without this check, NM − RC would have been uninterpretable rather than merely noisy.
 
 **Poisoned:** nothing. Every existing result was written to disk before the cleanup, by a process
 that ran to completion and passed its output validation. No number was computed under a degraded
