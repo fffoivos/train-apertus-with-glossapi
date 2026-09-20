@@ -1,0 +1,60 @@
+{
+  "checked_utc": "2026-09-16T14:41:55.428500+00:00",
+  "checks": [
+    {
+      "path": "/health",
+      "method": "GET",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "/openapi.json",
+      "method": "GET",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "/v1/runs/pilot100_v2",
+      "method": "GET",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "path": "/v1/runs/pilot100_v2",
+      "method": "GET",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "/v1/runs/pilot100_v2/seeds?limit=3",
+      "method": "GET",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "/v1/runs/pilot100_v2",
+      "method": "GET",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "path": "/v1/runs",
+      "method": "POST",
+      "status": 400,
+      "passed": true
+    },
+    {
+      "path": "/v1/runs/pilot100_v2/generate",
+      "method": "POST",
+      "status": 403,
+      "passed": true
+    },
+    {
+      "path": "/v1/runs/pilot100_v2/export",
+      "method": "POST",
+      "status": 200,
+      "passed": true
+    }
+  ],
+  "model_calls_added": 0
+}

@@ -1,0 +1,40 @@
+{
+ "built": "2026-09-16",
+ "source": "forum_gated_v3.jsonl (accepted, request+social, pilot urls excluded)",
+ "candidates": 1553,
+ "targets": {
+  "everyday": 53,
+  "factual": 21
+ },
+ "taken": {
+  "everyday": 53,
+  "factual": 21
+ },
+ "per_forum": {
+  "astrovox": 7,
+  "e_steki_general": 6,
+  "e_steki_history_philosophy": 6,
+  "lexilogia": 6,
+  "mathematica": 6,
+  "michanikos_private_questions": 6,
+  "myphone": 6,
+  "phorum_general": 6,
+  "phorum_linguistics": 5,
+  "taxheaven_forum": 5,
+  "thelab": 5,
+  "translatum": 5,
+  "wordreference_greek": 5
+ },
+ "task_types": {
+  "other": 3,
+  "opinion": 14,
+  "advice": 21,
+  "translation": 10,
+  "share": 5,
+  "question": 13,
+  "explanation": 7,
+  "calculation": 1
+ },
+ "false_premise": 7,
+ "sha256": "ac261b24643f1ceb"
+}

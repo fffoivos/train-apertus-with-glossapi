@@ -1,0 +1,21 @@
+{
+  "key": "831fc5b61e9473decce4ee7c5c23533e58b603d4b484cfa977730219b3b96900",
+  "stage": "generate",
+  "attempt": 0,
+  "ids": [
+    "S0008"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 7.94,
+  "prompt_sha256": "918873049d73b18a390525c3d7eb9153fca2a8583fd448002e2ab507ce2d4d08",
+  "response": {
+    "items": [
+      {
+        "id": "S0008",
+        "request": "Schreibe eine kleine Python-Funktion `open_places(record)`, die den im angehängten Inhalt beschriebenen Datensatz validiert. Falls die Werte keine nichtnegativen Ganzzahlen sind oder die zulässige Beziehung zwischen ihnen verletzt ist, soll sie `ValueError` auslösen. Andernfalls soll sie die Zahl der noch freien Plätze zurückgeben. Füge zwei kurze Beispiele hinzu: eines mit einem gültigen und eines mit einem ungültigen Datensatz."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:28:35.699314+00:00"
+}

@@ -1,0 +1,56 @@
+{
+  "key": "10faec6034fb6ea64d61be0c85b3d8632ef9b4e7ce956c23f04a603adc6420b6",
+  "stage": "generate",
+  "attempt": 0,
+  "ids": [
+    "S0006",
+    "S0027",
+    "S0039",
+    "S0042",
+    "S0044",
+    "S0047",
+    "S0055",
+    "S0056"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 18.34,
+  "prompt_sha256": "63fa6a900ba732fa8cf22d57d225e193aff2b5a23b2652cadcee47b50640b62c",
+  "response": {
+    "items": [
+      {
+        "id": "S0006",
+        "request": "Please write a short, suspenseful exchange for the fictional radio drama described below, ending at exactly the specified moment."
+      },
+      {
+        "id": "S0027",
+        "request": "Extract the date, time, and number of open places from the notice below. Return exactly three numbered lines, with no introduction or additional fields."
+      },
+      {
+        "id": "S0039",
+        "request": "I need a 180–240-word fictional story using every element in the brief below. Please stick to the word limit."
+      },
+      {
+        "id": "S0042",
+        "request": "Using only the fictional notice below, determine how many places remain and the total cost for two attendees. Show both calculations."
+      },
+      {
+        "id": "S0044",
+        "request": "Please solve the equation below over the real numbers and give the complete solution set. Make sure any interval endpoints are correct, and include a short explanation using the discriminant or the signs."
+      },
+      {
+        "id": "S0047",
+        "request": "How can I regain access to the shared photo account described below?"
+      },
+      {
+        "id": "S0055",
+        "request": "Extract only the date, time, and number of open places from the notice below as a two-column table. Do not include an introduction or any extra fields."
+      },
+      {
+        "id": "S0056",
+        "request": "Can you help me carry out the account access described below?"
+      }
+    ]
+  },
+  "created": "2026-09-16T14:28:06.394955+00:00"
+}

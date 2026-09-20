@@ -1,0 +1,3465 @@
+{
+  "version": "shared_preconditions_v1",
+  "status": "Selected design; catalogue and per-family requirements documented. Production content DB, instantiation, reservation and validators not implemented.",
+  "shared_fields": [
+    {
+      "id": "topic",
+      "values": "Education; work; housing; transport; food; technology; arts; environment; sport; community; science; consumer services. Each has subtopics and compatible task IDs.",
+      "include_when": "Every seed needs an internal topic label; pure mathematics may use an abstract subject.",
+      "requires": [],
+      "precondition": "Choose from the task-compatible subset. A topic label supplies no facts. Track accepted task × topic counts.",
+      "diversity": "Context diversity; a new topic alone does not establish a new reasoning structure."
+    },
+    {
+      "id": "content",
+      "values": "Full document; verified fact bundle; executable fixture; constructed mathematical instance; fictional situation record; actual transcript.",
+      "include_when": "Whenever the task depends on information beyond its instructions.",
+      "requires": [
+        "topic"
+      ],
+      "precondition": "Store immutable ID, text/payload hash, provenance, language, rights/reuse status and fact IDs. No unresolved content placeholder may reach prompt generation.",
+      "diversity": "Content-family diversity; group originals, adaptations and derivative questions for split isolation."
+    },
+    {
+      "id": "world",
+      "values": "Real sourced / explicitly fictional / abstract formal.",
+      "include_when": "Every content-bearing seed.",
+      "requires": [
+        "topic"
+      ],
+      "precondition": "Do not mix invented events with claims of real-world truth. Fictional records must be framed as supplied scenarios; real claims retain their evidence and dates.",
+      "diversity": "Controls validity; not a novelty multiplier."
+    },
+    {
+      "id": "location",
+      "values": "Named place from a sourced record; or fictional venue with settlement type, indoor/outdoor and capacity.",
+      "include_when": "Planning, travel, local services, settings or evidence that actually depends on place.",
+      "requires": [
+        "world",
+        "topic"
+      ],
+      "precondition": "Real country, timezone, currency and route facts must agree and be sourced when material. A Greek prompt may concern any location. Do not invent local laws, schedules or distances.",
+      "diversity": "A setting change is cosmetic unless it changes constraints or evidence."
+    },
+    {
+      "id": "time",
+      "values": "Absolute anchor date; ordered event dates; time windows; duration; timezone when relevant.",
+      "include_when": "Any deadline, schedule, historical fact or update.",
+      "requires": [
+        "world"
+      ],
+      "precondition": "Derive weekdays from dates and end times from start plus duration. Deadline precedes event unless an intentional documented conflict. Resolve “tomorrow” against the anchor.",
+      "diversity": "New answer-bearing schedules count as instances, not automatically new structures."
+    },
+    {
+      "id": "participants",
+      "values": "Positive total; roles; optional non-overlapping age bands; optional gender counts. Group-size domains belong to each recipe.",
+      "include_when": "People counts affect a calculation, capacity, audience or social situation.",
+      "requires": [
+        "topic",
+        "world"
+      ],
+      "precondition": "Counts are nonnegative integers; mutually exclusive counts sum to total; overlapping categories are marked. Do not assume only men and women unless the scenario explicitly makes that exhaustive.",
+      "diversity": "Counts matter when they affect the task; names and demographic swaps alone do not."
+    },
+    {
+      "id": "age",
+      "values": "Exact fictional age or age band; unknown/unspecified allowed.",
+      "include_when": "Age affects audience comprehension, stated eligibility, supervision or the requested content.",
+      "requires": [
+        "participants"
+      ],
+      "precondition": "Age is measured at the anchor date if needed; role and event eligibility must be compatible. Do not infer ability, attitude or preferences from age. Preserve source ages.",
+      "diversity": "Conditional contextual variable, not an automatic persona field."
+    },
+    {
+      "id": "gender",
+      "values": "Specified self-description, fictional group counts, or unspecified.",
+      "include_when": "Source says it, the user asks about it, or the task actually uses it.",
+      "requires": [
+        "participants"
+      ],
+      "precondition": "No inference from name, job or topic. Do not attach competence or tone to gender. Omit irrelevant gender; validate counts without assuming binary exhaustiveness.",
+      "diversity": "Optional attribute; demographic permutations are not independent problem types."
+    },
+    {
+      "id": "user",
+      "values": "Task role; domain knowledge; immediate goal; known information; available resources; optionally relevant personal constraints.",
+      "include_when": "Every synthetic seed has an internal user role and goal; disclose only what the request needs.",
+      "requires": [
+        "topic"
+      ],
+      "precondition": "Distinguish the person asking from participants described in a document and from the intended audience. Knowledge and resources are explicit, not inferred from demographics.",
+      "diversity": "Different goals or information states can change the task; biographies alone do not."
+    },
+    {
+      "id": "audience",
+      "values": "Self; colleague; customer; public; learner; child; specialist; plus explicitly chosen prior knowledge.",
+      "include_when": "Writing, explanation, translation, planning communication or summarisation.",
+      "requires": [
+        "topic"
+      ],
+      "precondition": "Audience may differ from the user. Reading level, terms and desired detail must fit the selected purpose; no need to prepend an artificial persona biography.",
+      "diversity": "Changes useful answer requirements when genuinely relevant."
+    },
+    {
+      "id": "resources",
+      "values": "Money in integer minor units; currency; stock; equipment; time; capacity; permissions.",
+      "include_when": "Planning, troubleshooting, arithmetic, tools or constraint-based tasks.",
+      "requires": [
+        "world"
+      ],
+      "precondition": "Units are typed and consistent. Derive totals, available time and feasibility. If intentionally infeasible, freeze the contradiction and expected response in curator metadata.",
+      "diversity": "Answer-bearing values and resource relationships."
+    },
+    {
+      "id": "evidence",
+      "values": "Atomic claims with IDs, source spans, dates, certainty and dependencies; protected facts and distractors tagged.",
+      "include_when": "Source-based tasks, factual questions and generated documents.",
+      "requires": [
+        "content",
+        "world"
+      ],
+      "precondition": "Freeze truth status before generation. Missing information is genuinely absent, not fabricated; conflicting records preserve attribution and chronology.",
+      "diversity": "Evidence and dependency patterns are structural."
+    },
+    {
+      "id": "task",
+      "values": "Operation; requested output; necessary inputs; unknowns; success criteria; primary purpose and secondary skills.",
+      "include_when": "Every seed.",
+      "requires": [
+        "topic"
+      ],
+      "precondition": "Choose operation before selecting compatible content. IF inherits the underlying summarise/edit/extract/translate/plan task requirements. No generic “make a task about X” packet.",
+      "diversity": "Core task and solution/evidence structure."
+    },
+    {
+      "id": "constraints",
+      "values": "Atomic format, length, preservation, exclusion, ordering and conditional rules.",
+      "include_when": "IF, plus secondary constraints in other purposes.",
+      "requires": [
+        "task",
+        "content"
+      ],
+      "precondition": "Bind preservation rules to actual fact/span IDs. Build a satisfiable output witness for hard constraints. Check JSON/bullet/word-count rules with language-appropriate validators; distinguish intentional conflict tasks.",
+      "diversity": "Vary constraint types and interactions, not just number of bullets."
+    },
+    {
+      "id": "difficulty",
+      "values": "Routine / compositional / challenging, using family definitions.",
+      "include_when": "Every generated slot.",
+      "requires": [
+        "task",
+        "evidence",
+        "constraints"
+      ],
+      "precondition": "Measure dependency depth, ambiguity, competing evidence and interacting constraints. Wordiness, age and topic labels are not difficulty. Recalibrate with target-model outcomes.",
+      "diversity": "Controls challenge; maintain within-family quotas."
+    },
+    {
+      "id": "language",
+      "values": "el/en/fr/de/es/it/pt; source language separately; translation direction when relevant.",
+      "include_when": "Every prompt.",
+      "requires": [
+        "task",
+        "content"
+      ],
+      "precondition": "Assign target quotas independently of task selection subject to compatibility. Preserve real names and values; adaptation may change only permitted cultural details. Greeklish is Greek-only.",
+      "diversity": "Surface dimension; same underlying instance across languages is a labelled parallel."
+    },
+    {
+      "id": "attitude",
+      "values": "Cooperative / frustrated / skeptical / playful; register standard/informal/formal/Greeklish.",
+      "include_when": "Synthetic user wording. Natural forum wording is preserved.",
+      "requires": [
+        "user",
+        "language"
+      ],
+      "precondition": "Attitude must leave the task, evidence and intent unchanged. Frustration needs a plausible reason if stated. Do not correlate with gender, nationality or task difficulty.",
+      "diversity": "Surface diversity, not independent task novelty."
+    },
+    {
+      "id": "history",
+      "values": "Actual target-model assistant turns plus user turns and structured dialogue state.",
+      "include_when": "Dialogue only.",
+      "requires": [
+        "task",
+        "user"
+      ],
+      "precondition": "Freeze checkpoint and sampling settings, keep all assistant turns unedited, record pending constraints and what each party knows. A recovery case needs a verified actual error.",
+      "diversity": "Interaction trajectories; paraphrased histories are not new recoveries."
+    },
+    {
+      "id": "oracle",
+      "values": "Private exact answer, evidence rubric, execution tests or intent/behaviour rubric.",
+      "include_when": "Every seed needs an assessable success condition, not necessarily one exact answer.",
+      "requires": [
+        "task",
+        "content",
+        "constraints"
+      ],
+      "precondition": "Never put private solutions, hidden truth labels or review rubrics into model-facing requests. Generation may receive the facts needed to write the request; evaluate separately.",
+      "diversity": "Validation resource, not prompt content."
+    }
+  ],
+  "recipes": [
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "audience",
+        "evidence",
+        "task",
+        "constraints",
+        "language",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Full source text is selected or authored and checked before request wording. Preserve source language and content-family ID.",
+        "Record atomic facts, dependencies, protected spans and distractors. The selected compression must leave room for the required facts."
+      ],
+      "content_route": "Existing document → extract/check facts → select operation; or fictional fact bundle → author/check/freeze document → select operation.",
+      "id": "s_general",
+      "label": "Summarisation: general",
+      "purpose": "everyday",
+      "parameter_requirements": [
+        {
+          "name": "source_genre",
+          "domain": "notice / email / meeting notes / report / narrative / technical explanation",
+          "why": "Retains distinct source textures.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "source_length",
+          "domain": "short 150–400 words; medium 500–1,200; long 1,500–3,000",
+          "why": "Word bands are language-local; also record tokenizer length.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "key_facts",
+          "domain": "4…20; protected facts 1…6",
+          "why": "Controls coverage load.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "exceptions",
+          "domain": "0…3; distractor facts 0…12",
+          "why": "Tests selective retention.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "compression_target",
+          "domain": "approximately 10% / 25% / 40%; exact output limit only if explicitly requested",
+          "why": "Avoid making every summary an artificial format test.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "output_focus",
+          "domain": "overall main points",
+          "why": "No hidden query bias.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "audience",
+        "evidence",
+        "task",
+        "constraints",
+        "language",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Full source text is selected or authored and checked before request wording. Preserve source language and content-family ID.",
+        "Record atomic facts, dependencies, protected spans and distractors. The selected compression must leave room for the required facts.",
+        "Bind the focus question to evidence spans; record which source facts are relevant and which are distractors."
+      ],
+      "content_route": "Frozen document + evidence-backed focus query.",
+      "id": "s_query",
+      "label": "Summarisation: query-focused",
+      "purpose": "everyday",
+      "parameter_requirements": [
+        {
+          "name": "source_genre",
+          "domain": "notice / email / meeting notes / report / narrative / technical explanation",
+          "why": "Retains distinct source textures.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "source_length",
+          "domain": "short 150–400 words; medium 500–1,200; long 1,500–3,000",
+          "why": "Word bands are language-local; also record tokenizer length.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "key_facts",
+          "domain": "4…20; protected facts 1…6",
+          "why": "Controls coverage load.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "exceptions",
+          "domain": "0…3; distractor facts 0…12",
+          "why": "Tests selective retention.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "compression_target",
+          "domain": "approximately 10% / 25% / 40%; exact output limit only if explicitly requested",
+          "why": "Avoid making every summary an artificial format test.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "query",
+          "domain": "one question or 2…3 linked facets",
+          "why": "Controls relevance; unrelated details should be omitted.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "audience",
+        "evidence",
+        "task",
+        "constraints",
+        "time",
+        "participants",
+        "language",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Full source text is selected or authored and checked before request wording. Preserve source language and content-family ID.",
+        "Record atomic facts, dependencies, protected spans and distractors. The selected compression must leave room for the required facts.",
+        "Source contains identifiable decisions, owners, deadlines and unresolved items; do not invent an owner or deadline that was never given."
+      ],
+      "content_route": "Meeting/email record with explicit action ledger.",
+      "id": "s_actions",
+      "label": "Summarisation: decisions and actions",
+      "purpose": "everyday",
+      "parameter_requirements": [
+        {
+          "name": "source_genre",
+          "domain": "notice / email / meeting notes / report / narrative / technical explanation",
+          "why": "Retains distinct source textures.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "source_length",
+          "domain": "short 150–400 words; medium 500–1,200; long 1,500–3,000",
+          "why": "Word bands are language-local; also record tokenizer length.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "key_facts",
+          "domain": "4…20; protected facts 1…6",
+          "why": "Controls coverage load.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "exceptions",
+          "domain": "0…3; distractor facts 0…12",
+          "why": "Tests selective retention.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "compression_target",
+          "domain": "approximately 10% / 25% / 40%; exact output limit only if explicitly requested",
+          "why": "Avoid making every summary an artificial format test.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "actions",
+          "domain": "2…8 with owner/deadline fields; some deliberately unspecified",
+          "why": "Missing owners or deadlines must not be invented.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "audience",
+        "evidence",
+        "task",
+        "constraints",
+        "language",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Full source text is selected or authored and checked before request wording. Preserve source language and content-family ID.",
+        "Record atomic facts, dependencies, protected spans and distractors. The selected compression must leave room for the required facts.",
+        "At least two complete documents; mark overlaps, unique claims, contradictions and provenance. Check combined context budget."
+      ],
+      "content_route": "Related source bundle with cross-source fact map.",
+      "id": "s_multi",
+      "label": "Summarisation: multiple sources",
+      "purpose": "everyday",
+      "parameter_requirements": [
+        {
+          "name": "source_genre",
+          "domain": "notice / email / meeting notes / report / narrative / technical explanation",
+          "why": "Retains distinct source textures.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "source_length",
+          "domain": "short 150–400 words; medium 500–1,200; long 1,500–3,000",
+          "why": "Word bands are language-local; also record tokenizer length.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "key_facts",
+          "domain": "4…20; protected facts 1…6",
+          "why": "Controls coverage load.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "exceptions",
+          "domain": "0…3; distractor facts 0…12",
+          "why": "Tests selective retention.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "compression_target",
+          "domain": "approximately 10% / 25% / 40%; exact output limit only if explicitly requested",
+          "why": "Avoid making every summary an artificial format test.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "documents",
+          "domain": "2…4; 200…800 words each",
+          "why": "Total length must fit the eventual context budget.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "source_relations",
+          "domain": "agreement / complementary evidence / 1…3 conflicts",
+          "why": "Conflicts require attribution rather than silent reconciliation.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "audience",
+        "evidence",
+        "task",
+        "constraints",
+        "time",
+        "language",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Full source text is selected or authored and checked before request wording. Preserve source language and content-family ID.",
+        "Record atomic facts, dependencies, protected spans and distractors. The selected compression must leave room for the required facts.",
+        "Provide old source, faithful previous summary and dated new information. Identify changed, unchanged and superseded claims."
+      ],
+      "content_route": "Versioned document pair + verified old summary.",
+      "id": "s_update",
+      "label": "Summarisation: update an existing summary",
+      "purpose": "everyday",
+      "parameter_requirements": [
+        {
+          "name": "source_genre",
+          "domain": "notice / email / meeting notes / report / narrative / technical explanation",
+          "why": "Retains distinct source textures.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "source_length",
+          "domain": "short 150–400 words; medium 500–1,200; long 1,500–3,000",
+          "why": "Word bands are language-local; also record tokenizer length.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "key_facts",
+          "domain": "4…20; protected facts 1…6",
+          "why": "Controls coverage load.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "exceptions",
+          "domain": "0…3; distractor facts 0…12",
+          "why": "Tests selective retention.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "compression_target",
+          "domain": "approximately 10% / 25% / 40%; exact output limit only if explicitly requested",
+          "why": "Avoid making every summary an artificial format test.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "updates",
+          "domain": "1…4 corrections/additions; protected old facts 1…5",
+          "why": "Tests selective editing; old summary is supplied text, not fabricated assistant history.",
+          "preconditions": [
+            "Compare claims against provided evidence.",
+            "Check protected facts, exceptions and attribution.",
+            "No external facts silently added."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "user",
+        "audience",
+        "task",
+        "constraints",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Choose communicative goal and genre. Supply every factual detail the output must preserve.",
+        "Open creative tasks may invite invented plot/details explicitly; constrained practical writing may not invent prices, commitments or events."
+      ],
+      "content_route": "Creative brief or factual writing brief; no factual source needed for explicitly open fiction.",
+      "id": "e_write",
+      "label": "Writing and creative composition",
+      "purpose": "everyday",
+      "parameter_requirements": [
+        {
+          "name": "genre",
+          "domain": "email / message / notice / short scene / explanation draft",
+          "why": "Select a real communicative purpose.",
+          "preconditions": [
+            "Preserve facts and communicative goal.",
+            "Judge usefulness and naturalness; do not reward boilerplate."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "audience_relationship",
+          "domain": "peer / organiser / customer / teacher / family / general public",
+          "why": "Influences appropriate wording without fixing attitude.",
+          "preconditions": [
+            "Preserve facts and communicative goal.",
+            "Judge usefulness and naturalness; do not reward boilerplate."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "purpose",
+          "domain": "inform / request / decline / invite / persuade / narrate",
+          "why": "Different intentions, not just topic swaps.",
+          "preconditions": [
+            "Preserve facts and communicative goal.",
+            "Judge usefulness and naturalness; do not reward boilerplate."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "protected_details",
+          "domain": "1…6 facts; forbidden inventions explicitly identified",
+          "why": "Names, dates and amounts must survive.",
+          "preconditions": [
+            "Preserve facts and communicative goal.",
+            "Judge usefulness and naturalness; do not reward boilerplate."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "length",
+          "domain": "50…400 words by genre",
+          "why": "Length is a request feature, not a universal quality preference.",
+          "preconditions": [
+            "Preserve facts and communicative goal.",
+            "Judge usefulness and naturalness; do not reward boilerplate."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "audience",
+        "evidence",
+        "task",
+        "constraints",
+        "language",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Full original text, exact allowed edit scope and protected spans exist. Deliberate defects are labelled in curator metadata."
+      ],
+      "content_route": "Frozen source text + edit specification.",
+      "id": "e_edit",
+      "label": "Editing and rewriting",
+      "purpose": "everyday",
+      "parameter_requirements": [
+        {
+          "name": "edit_operation",
+          "domain": "shorten / clarify / soften / strengthen / reorder / repair ambiguity",
+          "why": "Defines what may change.",
+          "preconditions": [
+            "Compare protected values before/after.",
+            "Ensure edits stay within scope."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "input_length",
+          "domain": "80…700 words",
+          "why": "Supply an actual draft.",
+          "preconditions": [
+            "Compare protected values before/after.",
+            "Ensure edits stay within scope."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "edit_scope",
+          "domain": "whole draft / selected passage / named sentences",
+          "why": "Tests boundaries.",
+          "preconditions": [
+            "Compare protected values before/after.",
+            "Ensure edits stay within scope."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "protected_spans",
+          "domain": "1…6 exact facts or literal strings",
+          "why": "Separates rewriting from factual mutation.",
+          "preconditions": [
+            "Compare protected values before/after.",
+            "Ensure edits stay within scope."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "audience",
+        "evidence",
+        "task",
+        "constraints",
+        "language",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Full original text and source/target languages exist. Freeze terminology, entities, numbers and culturally adaptable details.",
+        "Adapt meaning and naturalness within permissions; a correction pass checks source fidelity and Greek quality separately."
+      ],
+      "content_route": "Existing source + bounded adaptation permissions + fidelity checks.",
+      "id": "e_translate",
+      "label": "Translation and bounded adaptation",
+      "purpose": "everyday",
+      "parameter_requirements": [
+        {
+          "name": "language_pair",
+          "domain": "target from allocation; source chosen from supported languages and different from target",
+          "why": "Pair quotas must be explicit.",
+          "preconditions": [
+            "Independent bilingual fidelity review.",
+            "Preserve factual claims, numbers and speaker stance."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "source_genre",
+          "domain": "message / notice / short essay / dialogue / technical paragraph",
+          "why": "Task-specific language texture.",
+          "preconditions": [
+            "Independent bilingual fidelity review.",
+            "Preserve factual claims, numbers and speaker stance."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "phenomena",
+          "domain": "0…3 idioms; 1…8 terms; ambiguity present/absent",
+          "why": "Meaning preservation needs specific challenges.",
+          "preconditions": [
+            "Independent bilingual fidelity review.",
+            "Preserve factual claims, numbers and speaker stance."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "adaptation_permission",
+          "domain": "literal meaning / culturally natural phrasing / explicitly permitted localisation",
+          "why": "Do not silently replace real facts.",
+          "preconditions": [
+            "Independent bilingual fidelity review.",
+            "Preserve factual claims, numbers and speaker stance."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "source_length",
+          "domain": "40…500 words",
+          "why": "Use source-family provenance for splits.",
+          "preconditions": [
+            "Independent bilingual fidelity review.",
+            "Preserve factual claims, numbers and speaker stance."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "user",
+        "audience",
+        "task",
+        "evidence",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Choose concept, prior knowledge and learning goal; factual comparisons need verified claim records.",
+        "A misconception case states the misconception and verified correction; do not manufacture a false premise accidentally."
+      ],
+      "content_route": "Verified concept/claim bundle or formal definition.",
+      "id": "e_explain",
+      "label": "Explanation and comparison",
+      "purpose": "everyday",
+      "parameter_requirements": [
+        {
+          "name": "domain",
+          "domain": "everyday science / language / technology / social concepts / practical processes",
+          "why": "Facts need a reliable reference.",
+          "preconditions": [
+            "Check claims against reference evidence.",
+            "Do not manufacture certainty or personal experience."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "operation",
+          "domain": "explain why / compare / give an example / address a misconception",
+          "why": "Different evidence demands.",
+          "preconditions": [
+            "Check claims against reference evidence.",
+            "Do not manufacture certainty or personal experience."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "audience_knowledge",
+          "domain": "beginner / familiar with basics / domain-trained",
+          "why": "Separate from attitude.",
+          "preconditions": [
+            "Check claims against reference evidence.",
+            "Do not manufacture certainty or personal experience."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "concepts",
+          "domain": "1…4; prerequisite relations explicitly listed",
+          "why": "Controls actual conceptual depth.",
+          "preconditions": [
+            "Check claims against reference evidence.",
+            "Do not manufacture certainty or personal experience."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "user",
+        "audience",
+        "task",
+        "resources",
+        "time",
+        "constraints",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Freeze options, costs, availability, dependencies and hard versus soft preferences.",
+        "Check feasibility against all resources; missing-information and infeasible cases need explicit intended labels. Location/people added only when relevant."
+      ],
+      "content_route": "Structured options and resources; fictional scenarios or dated sourced real options.",
+      "id": "e_plan",
+      "label": "Planning and comparison",
+      "purpose": "everyday",
+      "parameter_requirements": [
+        {
+          "name": "domain",
+          "domain": "event / study / trip / shopping / small project",
+          "why": "Use concrete constraints.",
+          "preconditions": [
+            "Check feasibility against all hard constraints.",
+            "Prices/hours are supplied fictional data or verified sources, not invented live facts."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "resources",
+          "domain": "budget 20…2,000 units; people 1…12; tasks 3…10",
+          "why": "Keep units and availability explicit.",
+          "preconditions": [
+            "Check feasibility against all hard constraints.",
+            "Prices/hours are supplied fictional data or verified sources, not invented live facts."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "dependencies",
+          "domain": "0…6; deadlines 1…4; alternatives 2…5",
+          "why": "Different scheduling/choice structures.",
+          "preconditions": [
+            "Check feasibility against all hard constraints.",
+            "Prices/hours are supplied fictional data or verified sources, not invented live facts."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "missing_information",
+          "domain": "none / one noncritical / one decision-critical input",
+          "why": "Clarification can be the correct response.",
+          "preconditions": [
+            "Check feasibility against all hard constraints.",
+            "Prices/hours are supplied fictional data or verified sources, not invented live facts."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "user",
+        "task",
+        "resources",
+        "evidence",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Freeze system version/state, symptoms, previous actions, candidate causes and which observations distinguish them.",
+        "Do not claim a uniquely diagnosable cause when evidence supports several; use a clarification/next-test rubric."
+      ],
+      "content_route": "Bounded simulated state or verified case record.",
+      "id": "e_troubleshoot",
+      "label": "Troubleshooting and diagnosis",
+      "purpose": "everyday",
+      "parameter_requirements": [
+        {
+          "name": "domain",
+          "domain": "software / household device / instrument / routine process",
+          "why": "Use safe, bounded diagnostic settings.",
+          "preconditions": [
+            "No invented symptoms or conclusive unsupported diagnosis.",
+            "Validate the proposed check's relevance."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "hypotheses",
+          "domain": "2…5; observations 2…8",
+          "why": "Facts constrain plausible causes.",
+          "preconditions": [
+            "No invented symptoms or conclusive unsupported diagnosis.",
+            "Validate the proposed check's relevance."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "diagnostic_state",
+          "domain": "initial / one failed attempt / new observation",
+          "why": "Vary what evidence is available.",
+          "preconditions": [
+            "No invented symptoms or conclusive unsupported diagnosis.",
+            "Validate the proposed check's relevance."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "next_action",
+          "domain": "clarify / discriminate causes / recommend reversible check",
+          "why": "Avoid demanding a definitive diagnosis from inadequate evidence.",
+          "preconditions": [
+            "No invented symptoms or conclusive unsupported diagnosis.",
+            "Validate the proposed check's relevance."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "task",
+        "constraints",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Complete code/input, runtime version, dependency assumptions and executable tests exist.",
+        "Tests assert intended behaviour independently of the reference implementation; execution is isolated."
+      ],
+      "content_route": "Self-contained code fixture + tests.",
+      "id": "e_code",
+      "label": "Small coding tasks",
+      "purpose": "everyday",
+      "parameter_requirements": [
+        {
+          "name": "language",
+          "domain": "Python initially; expand only with an executable harness",
+          "why": "Avoid untested language coverage.",
+          "preconditions": [
+            "Run original failing test and corrected expected behaviour in isolation.",
+            "Never execute arbitrary forum code as part of prompt preparation."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "operation",
+          "domain": "debug / explain / minimal patch / edge-case test",
+          "why": "Each is a separate task.",
+          "preconditions": [
+            "Run original failing test and corrected expected behaviour in isolation.",
+            "Never execute arbitrary forum code as part of prompt preparation."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "bug_class",
+          "domain": "boundary / mutation / parsing / missing input / ordering / numeric conversion",
+          "why": "Actual behaviour must reproduce.",
+          "preconditions": [
+            "Run original failing test and corrected expected behaviour in isolation.",
+            "Never execute arbitrary forum code as part of prompt preparation."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "size",
+          "domain": "10…60 lines; 2…8 test cases",
+          "why": "Keep the task bounded and self-contained.",
+          "preconditions": [
+            "Run original failing test and corrected expected behaviour in isolation.",
+            "Never execute arbitrary forum code as part of prompt preparation."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "task",
+        "resources",
+        "constraints",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Complete tool schemas, required arguments, mocked tool state and permission boundary exist.",
+        "Missing arguments are deliberately identified; no live side effects are required to judge success."
+      ],
+      "content_route": "Offline schema and tool-state fixture.",
+      "id": "e_tools",
+      "label": "Tool/schema reasoning",
+      "purpose": "everyday",
+      "parameter_requirements": [
+        {
+          "name": "tool_count",
+          "domain": "1…4 with explicit schemas",
+          "why": "Available capability is part of the problem.",
+          "preconditions": [
+            "Schema validation and capability check.",
+            "Reject claims of actual execution."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "arguments",
+          "domain": "2…6 per tool; 0…2 missing required values",
+          "why": "Clarification may be necessary.",
+          "preconditions": [
+            "Schema validation and capability check.",
+            "Reject claims of actual execution."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "goal",
+          "domain": "choose tool / construct arguments / explain missing capability",
+          "why": "All examples are offline unless a real tool environment is provided.",
+          "preconditions": [
+            "Schema validation and capability check.",
+            "Reject claims of actual execution."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "type_constraints",
+          "domain": "string / integer / enum / ISO date-time / optional field",
+          "why": "Executable schema checks.",
+          "preconditions": [
+            "Schema validation and capability check.",
+            "Reject claims of actual execution."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "task",
+        "constraints",
+        "evidence",
+        "language",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Choose and inherit an underlying task recipe; these IF wrappers are not complete task definitions.",
+        "Resolve each constraint to concrete values and source IDs. Check interactions with a feasible witness.",
+        "Enumerate underlying task × constraint types × interaction pattern as the structural coverage unit. Four IF labels do not establish adequate breadth.",
+        "Branch predicate is decidable from supplied information; record active branch. Vary branch outcomes across accepted slots."
+      ],
+      "content_route": "Underlying task content + independently selected compatible constraint bundle.",
+      "id": "if_format",
+      "label": "IF: format and schema",
+      "purpose": "instruction",
+      "parameter_requirements": [
+        {
+          "name": "underlying_task",
+          "domain": "summarise / edit / extract / translate / plan",
+          "why": "Keep requests meaningful.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "n_constraints",
+          "domain": "1; 2…3; 4…6",
+          "why": "Difficulty calibration must also consider interaction.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "format",
+          "domain": "plain prose / bullets / JSON",
+          "why": "Only one primary output format.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "interaction",
+          "domain": "independent / preservation-coupled / conditional",
+          "why": "Reject accidental contradictions.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "counts",
+          "domain": "bullets 2…6; JSON keys 2…8; sentences 1…5",
+          "why": "Count with a declared checker.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "schema_depth",
+          "domain": "flat or one nested object",
+          "why": "Higher depths deferred until useful.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "task",
+        "constraints",
+        "evidence",
+        "language",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Choose and inherit an underlying task recipe; these IF wrappers are not complete task definitions.",
+        "Resolve each constraint to concrete values and source IDs. Check interactions with a feasible witness.",
+        "Enumerate underlying task × constraint types × interaction pattern as the structural coverage unit. Four IF labels do not establish adequate breadth.",
+        "Branch predicate is decidable from supplied information; record active branch. Vary branch outcomes across accepted slots."
+      ],
+      "content_route": "Underlying task content + independently selected compatible constraint bundle.",
+      "id": "if_preserve",
+      "label": "IF: preserve and exclude",
+      "purpose": "instruction",
+      "parameter_requirements": [
+        {
+          "name": "underlying_task",
+          "domain": "summarise / edit / extract / translate / plan",
+          "why": "Keep requests meaningful.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "n_constraints",
+          "domain": "1; 2…3; 4…6",
+          "why": "Difficulty calibration must also consider interaction.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "format",
+          "domain": "plain prose / bullets / JSON",
+          "why": "Only one primary output format.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "interaction",
+          "domain": "independent / preservation-coupled / conditional",
+          "why": "Reject accidental contradictions.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "protected_items",
+          "domain": "1…6 facts, literals or numbers",
+          "why": "Keep exact versus semantic preservation distinct.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "exclusions",
+          "domain": "0…3 words or content categories",
+          "why": "Must not conflict with protected content.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "task",
+        "constraints",
+        "evidence",
+        "language",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Choose and inherit an underlying task recipe; these IF wrappers are not complete task definitions.",
+        "Resolve each constraint to concrete values and source IDs. Check interactions with a feasible witness.",
+        "Enumerate underlying task × constraint types × interaction pattern as the structural coverage unit. Four IF labels do not establish adequate breadth.",
+        "Branch predicate is decidable from supplied information; record active branch. Vary branch outcomes across accepted slots."
+      ],
+      "content_route": "Underlying task content + independently selected compatible constraint bundle.",
+      "id": "if_composite",
+      "label": "IF: ordering and compound rules",
+      "purpose": "instruction",
+      "parameter_requirements": [
+        {
+          "name": "underlying_task",
+          "domain": "summarise / edit / extract / translate / plan",
+          "why": "Keep requests meaningful.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "n_constraints",
+          "domain": "1; 2…3; 4…6",
+          "why": "Difficulty calibration must also consider interaction.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "format",
+          "domain": "plain prose / bullets / JSON",
+          "why": "Only one primary output format.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "interaction",
+          "domain": "independent / preservation-coupled / conditional",
+          "why": "Reject accidental contradictions.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "constraint_types",
+          "domain": "length / required literal / excluded literal / order / protected fact",
+          "why": "Choose satisfiable sets; no duplicate paraphrases counted as new constraints.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "length_rule",
+          "domain": "words 40…180 OR sentences 1…5 OR bullets 2…6",
+          "why": "One length measurement unless justified.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "order",
+          "domain": "chronological / priority / named sections",
+          "why": "Define the relation unambiguously.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "task",
+        "constraints",
+        "evidence",
+        "language",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Choose and inherit an underlying task recipe; these IF wrappers are not complete task definitions.",
+        "Resolve each constraint to concrete values and source IDs. Check interactions with a feasible witness.",
+        "Enumerate underlying task × constraint types × interaction pattern as the structural coverage unit. Four IF labels do not establish adequate breadth.",
+        "Branch predicate is decidable from supplied information; record active branch. Vary branch outcomes across accepted slots."
+      ],
+      "content_route": "Underlying task content + independently selected compatible constraint bundle.",
+      "id": "if_conditional",
+      "label": "IF: conditional instructions",
+      "purpose": "instruction",
+      "parameter_requirements": [
+        {
+          "name": "underlying_task",
+          "domain": "summarise / edit / extract / translate / plan",
+          "why": "Keep requests meaningful.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "n_constraints",
+          "domain": "1; 2…3; 4…6",
+          "why": "Difficulty calibration must also consider interaction.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "format",
+          "domain": "plain prose / bullets / JSON",
+          "why": "Only one primary output format.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "interaction",
+          "domain": "independent / preservation-coupled / conditional",
+          "why": "Reject accidental contradictions.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "branches",
+          "domain": "2…3 with explicit predicates",
+          "why": "Separate exhaustive from partial conditions.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "input_regime",
+          "domain": "one branch clearly true / boundary value / missing predicate input",
+          "why": "Missing input must not trigger an invented branch.",
+          "preconditions": [
+            "Check satisfiability before generation.",
+            "Use executable checks for syntax/counts and semantic checks for meaning.",
+            "Do not treat output-length alone as difficulty."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "task",
+        "evidence",
+        "language",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Each real claim has a named source, date/version and verified reference; answerability is assigned deliberately.",
+        "For supplied fiction, ask about the supplied record, not its truth in the real world.",
+        "Omit a necessary fact on purpose and verify it cannot be inferred; expected response asks or acknowledges uncertainty.",
+        "Bind the exact premise to supported / contradicted / unresolved evidence; keep that annotation private.",
+        "Supply genuinely conflicting records with source attribution; adjudicate only if authority/chronology supports it."
+      ],
+      "content_route": "Verified fact records; evidence supplied to model only when the task calls for it.",
+      "id": "f_closed",
+      "label": "Facts: verified knowledge",
+      "purpose": "factual",
+      "parameter_requirements": [
+        {
+          "name": "source_mode",
+          "domain": "verified real source OR explicitly fictional supplied record",
+          "why": "Never mutate real facts for novelty.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "entities",
+          "domain": "2…8; locations 1…4",
+          "why": "Resolve aliases and roles explicitly.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "time_scope",
+          "domain": "one date or interval; optional later update",
+          "why": "Dependent weekdays/deadlines must be recomputed.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "evidence_units",
+          "domain": "1…4 short passages/records; distractors 0…6",
+          "why": "Controls retrieval/synthesis load.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "topic",
+          "domain": "history / geography / science / culture / institutions",
+          "why": "Select verified question–evidence pairs; this is a source pool, not arbitrary mutation.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "time_sensitivity",
+          "domain": "stable / as-of dated",
+          "why": "Refresh time-sensitive evidence before release.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "task",
+        "evidence",
+        "language",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Each real claim has a named source, date/version and verified reference; answerability is assigned deliberately.",
+        "For supplied fiction, ask about the supplied record, not its truth in the real world.",
+        "Omit a necessary fact on purpose and verify it cannot be inferred; expected response asks or acknowledges uncertainty.",
+        "Bind the exact premise to supported / contradicted / unresolved evidence; keep that annotation private.",
+        "Supply genuinely conflicting records with source attribution; adjudicate only if authority/chronology supports it."
+      ],
+      "content_route": "Verified fact records; evidence supplied to model only when the task calls for it.",
+      "id": "f_grounded",
+      "label": "Facts: supplied evidence",
+      "purpose": "factual",
+      "parameter_requirements": [
+        {
+          "name": "source_mode",
+          "domain": "verified real source OR explicitly fictional supplied record",
+          "why": "Never mutate real facts for novelty.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "entities",
+          "domain": "2…8; locations 1…4",
+          "why": "Resolve aliases and roles explicitly.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "time_scope",
+          "domain": "one date or interval; optional later update",
+          "why": "Dependent weekdays/deadlines must be recomputed.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "evidence_units",
+          "domain": "1…4 short passages/records; distractors 0…6",
+          "why": "Controls retrieval/synthesis load.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "query",
+          "domain": "lookup / compare / calculate from record / apply exception",
+          "why": "Reference derived from source.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "exceptions",
+          "domain": "0…3",
+          "why": "Avoid hiding answer-bearing conditions.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "task",
+        "evidence",
+        "language",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Each real claim has a named source, date/version and verified reference; answerability is assigned deliberately.",
+        "For supplied fiction, ask about the supplied record, not its truth in the real world.",
+        "Omit a necessary fact on purpose and verify it cannot be inferred; expected response asks or acknowledges uncertainty.",
+        "Bind the exact premise to supported / contradicted / unresolved evidence; keep that annotation private.",
+        "Supply genuinely conflicting records with source attribution; adjudicate only if authority/chronology supports it."
+      ],
+      "content_route": "Verified fact records; evidence supplied to model only when the task calls for it.",
+      "id": "f_missing",
+      "label": "Facts: missing or unavailable information",
+      "purpose": "factual",
+      "parameter_requirements": [
+        {
+          "name": "source_mode",
+          "domain": "verified real source OR explicitly fictional supplied record",
+          "why": "Never mutate real facts for novelty.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "entities",
+          "domain": "2…8; locations 1…4",
+          "why": "Resolve aliases and roles explicitly.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "time_scope",
+          "domain": "one date or interval; optional later update",
+          "why": "Dependent weekdays/deadlines must be recomputed.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "evidence_units",
+          "domain": "1…4 short passages/records; distractors 0…6",
+          "why": "Controls retrieval/synthesis load.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "missingness",
+          "domain": "one essential field / multiple fields / unavailable live status",
+          "why": "Do not invent evidence.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "desired_precision",
+          "domain": "exact value / recommendation / conditional estimate",
+          "why": "Match uncertainty to the actual gap.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "task",
+        "evidence",
+        "language",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Each real claim has a named source, date/version and verified reference; answerability is assigned deliberately.",
+        "For supplied fiction, ask about the supplied record, not its truth in the real world.",
+        "Omit a necessary fact on purpose and verify it cannot be inferred; expected response asks or acknowledges uncertainty.",
+        "Bind the exact premise to supported / contradicted / unresolved evidence; keep that annotation private.",
+        "Supply genuinely conflicting records with source attribution; adjudicate only if authority/chronology supports it."
+      ],
+      "content_route": "Verified fact records; evidence supplied to model only when the task calls for it.",
+      "id": "f_premise",
+      "label": "Facts: false-premise handling",
+      "purpose": "factual",
+      "parameter_requirements": [
+        {
+          "name": "source_mode",
+          "domain": "verified real source OR explicitly fictional supplied record",
+          "why": "Never mutate real facts for novelty.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "entities",
+          "domain": "2…8; locations 1…4",
+          "why": "Resolve aliases and roles explicitly.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "time_scope",
+          "domain": "one date or interval; optional later update",
+          "why": "Dependent weekdays/deadlines must be recomputed.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "evidence_units",
+          "domain": "1…4 short passages/records; distractors 0…6",
+          "why": "Controls retrieval/synthesis load.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "premise_status",
+          "domain": "supported / contradicted / unresolved",
+          "why": "Balance beyond only false prompts; count actual status separately.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "claim_type",
+          "domain": "entity / date / quantity / rule / causal assumption",
+          "why": "Bind to explicit evidence.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "content",
+        "world",
+        "user",
+        "task",
+        "evidence",
+        "language",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Each real claim has a named source, date/version and verified reference; answerability is assigned deliberately.",
+        "For supplied fiction, ask about the supplied record, not its truth in the real world.",
+        "Omit a necessary fact on purpose and verify it cannot be inferred; expected response asks or acknowledges uncertainty.",
+        "Bind the exact premise to supported / contradicted / unresolved evidence; keep that annotation private.",
+        "Supply genuinely conflicting records with source attribution; adjudicate only if authority/chronology supports it."
+      ],
+      "content_route": "Verified fact records; evidence supplied to model only when the task calls for it.",
+      "id": "f_conflict",
+      "label": "Facts: conflicting sources",
+      "purpose": "factual",
+      "parameter_requirements": [
+        {
+          "name": "source_mode",
+          "domain": "verified real source OR explicitly fictional supplied record",
+          "why": "Never mutate real facts for novelty.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "entities",
+          "domain": "2…8; locations 1…4",
+          "why": "Resolve aliases and roles explicitly.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "time_scope",
+          "domain": "one date or interval; optional later update",
+          "why": "Dependent weekdays/deadlines must be recomputed.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "evidence_units",
+          "domain": "1…4 short passages/records; distractors 0…6",
+          "why": "Controls retrieval/synthesis load.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "conflict",
+          "domain": "different dates / quantities / versions / accounts",
+          "why": "Preserve source attribution.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "resolution",
+          "domain": "latest supersedes / authority specified / unresolved",
+          "why": "Do not silently prefer a source without grounds.",
+          "preconditions": [
+            "Every reference answer bound to evidence.",
+            "Labels for answerability and premise status reviewed independently.",
+            "Fictional data clearly supplied as task context."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "user",
+        "task",
+        "evidence",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Freeze intent, ownership/consent where material, target, context, requested capability and permitted response rubric.",
+        "Keep benign and harmful situations topically comparable. Harmfulness is not assigned from trigger words, rudeness or demographics.",
+        "A material intent/permission fact is actually unknown; the expected clarification would resolve it."
+      ],
+      "content_route": "Reviewed situation and intent record; clearly fictional contexts where appropriate.",
+      "id": "safe_benign",
+      "label": "Safety: benign sensitive help",
+      "purpose": "safety",
+      "parameter_requirements": [
+        {
+          "name": "domain",
+          "domain": "privacy / cybersecurity / everyday health information / chemistry / interpersonal conflict / fictional violence",
+          "why": "Use reviewed intent distinctions; do not intensify harmful detail to create variants.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "intent_evidence",
+          "domain": "clear benign / clear harmful / ambiguous",
+          "why": "Only combine with compatible subfamily.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "specificity",
+          "domain": "broad purpose / bounded scenario",
+          "why": "No real private identifiers.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "legitimate_alternative",
+          "domain": "available / clarification needed / none relevant",
+          "why": "Avoid canned alternative offers.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "user",
+        "task",
+        "evidence",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Freeze intent, ownership/consent where material, target, context, requested capability and permitted response rubric.",
+        "Keep benign and harmful situations topically comparable. Harmfulness is not assigned from trigger words, rudeness or demographics.",
+        "A material intent/permission fact is actually unknown; the expected clarification would resolve it."
+      ],
+      "content_route": "Reviewed situation and intent record; clearly fictional contexts where appropriate.",
+      "id": "safe_protective",
+      "label": "Safety: protective assistance",
+      "purpose": "safety",
+      "parameter_requirements": [
+        {
+          "name": "domain",
+          "domain": "privacy / cybersecurity / everyday health information / chemistry / interpersonal conflict / fictional violence",
+          "why": "Use reviewed intent distinctions; do not intensify harmful detail to create variants.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "intent_evidence",
+          "domain": "clear benign / clear harmful / ambiguous",
+          "why": "Only combine with compatible subfamily.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "specificity",
+          "domain": "broad purpose / bounded scenario",
+          "why": "No real private identifiers.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "legitimate_alternative",
+          "domain": "available / clarification needed / none relevant",
+          "why": "Avoid canned alternative offers.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "user",
+        "task",
+        "evidence",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Freeze intent, ownership/consent where material, target, context, requested capability and permitted response rubric.",
+        "Keep benign and harmful situations topically comparable. Harmfulness is not assigned from trigger words, rudeness or demographics.",
+        "A material intent/permission fact is actually unknown; the expected clarification would resolve it."
+      ],
+      "content_route": "Reviewed situation and intent record; clearly fictional contexts where appropriate.",
+      "id": "safe_fiction",
+      "label": "Safety: benign fiction",
+      "purpose": "safety",
+      "parameter_requirements": [
+        {
+          "name": "domain",
+          "domain": "privacy / cybersecurity / everyday health information / chemistry / interpersonal conflict / fictional violence",
+          "why": "Use reviewed intent distinctions; do not intensify harmful detail to create variants.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "intent_evidence",
+          "domain": "clear benign / clear harmful / ambiguous",
+          "why": "Only combine with compatible subfamily.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "specificity",
+          "domain": "broad purpose / bounded scenario",
+          "why": "No real private identifiers.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "legitimate_alternative",
+          "domain": "available / clarification needed / none relevant",
+          "why": "Avoid canned alternative offers.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "user",
+        "task",
+        "evidence",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Freeze intent, ownership/consent where material, target, context, requested capability and permitted response rubric.",
+        "Keep benign and harmful situations topically comparable. Harmfulness is not assigned from trigger words, rudeness or demographics.",
+        "A material intent/permission fact is actually unknown; the expected clarification would resolve it."
+      ],
+      "content_route": "Reviewed situation and intent record; clearly fictional contexts where appropriate.",
+      "id": "safe_harmful",
+      "label": "Safety: clear harmful intent",
+      "purpose": "safety",
+      "parameter_requirements": [
+        {
+          "name": "domain",
+          "domain": "privacy / cybersecurity / everyday health information / chemistry / interpersonal conflict / fictional violence",
+          "why": "Use reviewed intent distinctions; do not intensify harmful detail to create variants.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "intent_evidence",
+          "domain": "clear benign / clear harmful / ambiguous",
+          "why": "Only combine with compatible subfamily.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "specificity",
+          "domain": "broad purpose / bounded scenario",
+          "why": "No real private identifiers.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "legitimate_alternative",
+          "domain": "available / clarification needed / none relevant",
+          "why": "Avoid canned alternative offers.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "user",
+        "task",
+        "evidence",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Freeze intent, ownership/consent where material, target, context, requested capability and permitted response rubric.",
+        "Keep benign and harmful situations topically comparable. Harmfulness is not assigned from trigger words, rudeness or demographics.",
+        "A material intent/permission fact is actually unknown; the expected clarification would resolve it."
+      ],
+      "content_route": "Reviewed situation and intent record; clearly fictional contexts where appropriate.",
+      "id": "safe_ambiguous",
+      "label": "Safety: ambiguity and clarification",
+      "purpose": "safety",
+      "parameter_requirements": [
+        {
+          "name": "domain",
+          "domain": "privacy / cybersecurity / everyday health information / chemistry / interpersonal conflict / fictional violence",
+          "why": "Use reviewed intent distinctions; do not intensify harmful detail to create variants.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "intent_evidence",
+          "domain": "clear benign / clear harmful / ambiguous",
+          "why": "Only combine with compatible subfamily.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "specificity",
+          "domain": "broad purpose / bounded scenario",
+          "why": "No real private identifiers.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "legitimate_alternative",
+          "domain": "available / clarification needed / none relevant",
+          "why": "Avoid canned alternative offers.",
+          "preconditions": [
+            "Separate intent review from style review.",
+            "Check benign helpfulness and harmful boundaries together.",
+            "No forced refusal for harmless sensitive content."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "task",
+        "constraints",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Exact rational or integer-cents oracle.",
+        "Reject zero denominators, ambiguous units and unspecified rounding.",
+        "Canonicalise operation graph; changing names does not create a new structure.",
+        "Construct a fresh valid instance and recompute its reference before wording. Story fields must not alter the formal problem.",
+        "Numbers, units, domains, assumptions and requested unknown must all be concrete; no sampled unresolved placeholders."
+      ],
+      "content_route": "Reviewed mathematical structure → constrained parameter assignment → exact/symbolic or independently reviewed reference.",
+      "id": "m_arithmetic",
+      "label": "Arithmetic, ratios and percentages",
+      "purpose": "math",
+      "parameter_requirements": [
+        {
+          "name": "structure",
+          "domain": "unit rate; percentage change; fraction of a quantity; reverse percentage; two-stage budget",
+          "why": "Each is a separate reasoning structure.",
+          "preconditions": [
+            "Exact rational or integer-cents oracle.",
+            "Reject zero denominators, ambiguous units and unspecified rounding.",
+            "Canonicalise operation graph; changing names does not create a new structure."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "quantities",
+          "domain": "integers 2…200; rational fractions with denominator 2…12",
+          "why": "Require positivity and consistent units.",
+          "preconditions": [
+            "Exact rational or integer-cents oracle.",
+            "Reject zero denominators, ambiguous units and unspecified rounding.",
+            "Canonicalise operation graph; changing names does not create a new structure."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "unit_price_cents",
+          "domain": "100…2,000 in steps of 25",
+          "why": "Use integer cents; reject unsupported rounding cases.",
+          "preconditions": [
+            "Exact rational or integer-cents oracle.",
+            "Reject zero denominators, ambiguous units and unspecified rounding.",
+            "Canonicalise operation graph; changing names does not create a new structure."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "discount_percent",
+          "domain": "5, 10, 15, 20 or 25",
+          "why": "Recompute the reference rather than modifying an old answer.",
+          "preconditions": [
+            "Exact rational or integer-cents oracle.",
+            "Reject zero denominators, ambiguous units and unspecified rounding.",
+            "Canonicalise operation graph; changing names does not create a new structure."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "requested_unknown",
+          "domain": "total / remainder / original amount / affordable quantity",
+          "why": "Different unknowns create different equations.",
+          "preconditions": [
+            "Exact rational or integer-cents oracle.",
+            "Reject zero denominators, ambiguous units and unspecified rounding.",
+            "Canonicalise operation graph; changing names does not create a new structure."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "task",
+        "constraints",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Rank/determinant check against intended regime.",
+        "Substitute exact solutions into every equation.",
+        "Construct a fresh valid instance and recompute its reference before wording. Story fields must not alter the formal problem.",
+        "Numbers, units, domains, assumptions and requested unknown must all be concrete; no sampled unresolved placeholders."
+      ],
+      "content_route": "Reviewed mathematical structure → constrained parameter assignment → exact/symbolic or independently reviewed reference.",
+      "id": "m_linear",
+      "label": "Linear equations and systems",
+      "purpose": "math",
+      "parameter_requirements": [
+        {
+          "name": "coefficient",
+          "domain": "integers −12…12; leading coefficient nonzero",
+          "why": "Controls the instance while preserving the chosen algebraic structure.",
+          "preconditions": [
+            "Rank/determinant check against intended regime.",
+            "Substitute exact solutions into every equation."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "number_domain",
+          "domain": "integer / rational / real; explicitly stated",
+          "why": "Prevents ambiguity about admissible solutions.",
+          "preconditions": [
+            "Rank/determinant check against intended regime.",
+            "Substitute exact solutions into every equation."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "unknown_and_output",
+          "domain": "solve / simplify / count solutions / justify",
+          "why": "Changes the required operation; not just the numbers.",
+          "preconditions": [
+            "Rank/determinant check against intended regime.",
+            "Substitute exact solutions into every equation."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "system_size",
+          "domain": "one equation or two equations/two unknowns",
+          "why": "Begin with bounded, exactly checkable systems.",
+          "preconditions": [
+            "Rank/determinant check against intended regime.",
+            "Substitute exact solutions into every equation."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "solution_regime",
+          "domain": "unique / none / infinitely many",
+          "why": "Choose the regime first, then construct coefficients.",
+          "preconditions": [
+            "Rank/determinant check against intended regime.",
+            "Substitute exact solutions into every equation."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "solution_values",
+          "domain": "integers −10…10 or rationals with denominator ≤6",
+          "why": "Generate from the solution and verify substitution.",
+          "preconditions": [
+            "Rank/determinant check against intended regime.",
+            "Substitute exact solutions into every equation."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "task",
+        "constraints",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Discriminant/root oracle.",
+        "Check strict versus inclusive endpoints and declared domain.",
+        "Construct a fresh valid instance and recompute its reference before wording. Story fields must not alter the formal problem.",
+        "Numbers, units, domains, assumptions and requested unknown must all be concrete; no sampled unresolved placeholders."
+      ],
+      "content_route": "Reviewed mathematical structure → constrained parameter assignment → exact/symbolic or independently reviewed reference.",
+      "id": "m_quadratic",
+      "label": "Quadratics and inequalities",
+      "purpose": "math",
+      "parameter_requirements": [
+        {
+          "name": "coefficient",
+          "domain": "integers −12…12; leading coefficient nonzero",
+          "why": "Controls the instance while preserving the chosen algebraic structure.",
+          "preconditions": [
+            "Discriminant/root oracle.",
+            "Check strict versus inclusive endpoints and declared domain."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "number_domain",
+          "domain": "integer / rational / real; explicitly stated",
+          "why": "Prevents ambiguity about admissible solutions.",
+          "preconditions": [
+            "Discriminant/root oracle.",
+            "Check strict versus inclusive endpoints and declared domain."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "unknown_and_output",
+          "domain": "solve / simplify / count solutions / justify",
+          "why": "Changes the required operation; not just the numbers.",
+          "preconditions": [
+            "Discriminant/root oracle.",
+            "Check strict versus inclusive endpoints and declared domain."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "root_regime",
+          "domain": "two distinct real / repeated / no real roots",
+          "why": "Hold root multiplicity separate from numerical values.",
+          "preconditions": [
+            "Discriminant/root oracle.",
+            "Check strict versus inclusive endpoints and declared domain."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "roots",
+          "domain": "integer roots −10…10 or small rational roots for constructive families",
+          "why": "Use canonical ordering to avoid duplicate swaps.",
+          "preconditions": [
+            "Discriminant/root oracle.",
+            "Check strict versus inclusive endpoints and declared domain."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "relation",
+          "domain": "equality / strict inequality / inclusive inequality",
+          "why": "Controls endpoints and interval reasoning.",
+          "preconditions": [
+            "Discriminant/root oracle.",
+            "Check strict versus inclusive endpoints and declared domain."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "task",
+        "constraints",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Construct valid figures; triangle inequalities and nondegeneracy.",
+        "Exact formula check; sufficient textual geometry without an unavailable diagram.",
+        "Construct a fresh valid instance and recompute its reference before wording. Story fields must not alter the formal problem.",
+        "Numbers, units, domains, assumptions and requested unknown must all be concrete; no sampled unresolved placeholders."
+      ],
+      "content_route": "Reviewed mathematical structure → constrained parameter assignment → exact/symbolic or independently reviewed reference.",
+      "id": "m_geometry",
+      "label": "Geometry and measurement",
+      "purpose": "math",
+      "parameter_requirements": [
+        {
+          "name": "structure",
+          "domain": "right triangle; similar triangles; circle relationships; composite area",
+          "why": "Separate proof/relationship types.",
+          "preconditions": [
+            "Construct valid figures; triangle inequalities and nondegeneracy.",
+            "Exact formula check; sufficient textual geometry without an unavailable diagram."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "constructive_triangle",
+          "domain": "m=2…20, n=1…m−1; legs m²−n² and 2mn",
+          "why": "Creates valid right triangles; remove scaled/swapped duplicates by policy.",
+          "preconditions": [
+            "Construct valid figures; triangle inequalities and nondegeneracy.",
+            "Exact formula check; sufficient textual geometry without an unavailable diagram."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "units",
+          "domain": "cm / m; at most one explicit unit conversion",
+          "why": "Unit conversion is an intentional skill.",
+          "preconditions": [
+            "Construct valid figures; triangle inequalities and nondegeneracy.",
+            "Exact formula check; sufficient textual geometry without an unavailable diagram."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "query",
+          "domain": "length / area / perimeter / scale factor",
+          "why": "Changes the geometric relationship required.",
+          "preconditions": [
+            "Construct valid figures; triangle inequalities and nondegeneracy.",
+            "Exact formula check; sufficient textual geometry without an unavailable diagram."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "task",
+        "constraints",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Exact combinatorial/rational oracle.",
+        "Check ordered/unordered and replacement assumptions explicitly.",
+        "Construct a fresh valid instance and recompute its reference before wording. Story fields must not alter the formal problem.",
+        "Numbers, units, domains, assumptions and requested unknown must all be concrete; no sampled unresolved placeholders."
+      ],
+      "content_route": "Reviewed mathematical structure → constrained parameter assignment → exact/symbolic or independently reviewed reference.",
+      "id": "m_probability",
+      "label": "Counting and probability",
+      "purpose": "math",
+      "parameter_requirements": [
+        {
+          "name": "experiment",
+          "domain": "finite sample; ordered draw; unordered draw; independent events",
+          "why": "Defines the sample space.",
+          "preconditions": [
+            "Exact combinatorial/rational oracle.",
+            "Check ordered/unordered and replacement assumptions explicitly."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "population",
+          "domain": "5…60 objects, 2…4 categories; draw 1…8",
+          "why": "Reject draws exceeding the population or category bounds.",
+          "preconditions": [
+            "Exact combinatorial/rational oracle.",
+            "Check ordered/unordered and replacement assumptions explicitly."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "replacement",
+          "domain": "with / without replacement",
+          "why": "Changes dependence.",
+          "preconditions": [
+            "Exact combinatorial/rational oracle.",
+            "Check ordered/unordered and replacement assumptions explicitly."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "event",
+          "domain": "exactly k / at least k / conditional event",
+          "why": "Changes calculation and evidence requirements.",
+          "preconditions": [
+            "Exact combinatorial/rational oracle.",
+            "Check ordered/unordered and replacement assumptions explicitly."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "task",
+        "constraints",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Symbolic derivation with assumptions.",
+        "Check both one-sided limits for two-sided questions; numerical evidence alone is insufficient.",
+        "Construct a fresh valid instance and recompute its reference before wording. Story fields must not alter the formal problem.",
+        "Numbers, units, domains, assumptions and requested unknown must all be concrete; no sampled unresolved placeholders."
+      ],
+      "content_route": "Reviewed mathematical structure → constrained parameter assignment → exact/symbolic or independently reviewed reference.",
+      "id": "m_limits",
+      "label": "Calculus: limits and continuity",
+      "purpose": "math",
+      "parameter_requirements": [
+        {
+          "name": "method",
+          "domain": "factor cancellation; rationalisation; standard trigonometric limit; one-sided/piecewise limit",
+          "why": "Curate each method as a distinct template family.",
+          "preconditions": [
+            "Symbolic derivation with assumptions.",
+            "Check both one-sided limits for two-sided questions; numerical evidence alone is insufficient."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "approach_point",
+          "domain": "integer −5…5 or a named exact constant",
+          "why": "Keep singularity and side information explicit.",
+          "preconditions": [
+            "Symbolic derivation with assumptions.",
+            "Check both one-sided limits for two-sided questions; numerical evidence alone is insufficient."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "polynomial_degree",
+          "domain": "1…4",
+          "why": "Restrict to forms with a verified reference.",
+          "preconditions": [
+            "Symbolic derivation with assumptions.",
+            "Check both one-sided limits for two-sided questions; numerical evidence alone is insufficient."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "side",
+          "domain": "two-sided / left / right",
+          "why": "Requires continuity/existence checks.",
+          "preconditions": [
+            "Symbolic derivation with assumptions.",
+            "Check both one-sided limits for two-sided questions; numerical evidence alone is insufficient."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "task",
+        "constraints",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Symbolic reference with domain assumptions.",
+        "For point evaluation check all functions and denominators are defined.",
+        "Construct a fresh valid instance and recompute its reference before wording. Story fields must not alter the formal problem.",
+        "Numbers, units, domains, assumptions and requested unknown must all be concrete; no sampled unresolved placeholders."
+      ],
+      "content_route": "Reviewed mathematical structure → constrained parameter assignment → exact/symbolic or independently reviewed reference.",
+      "id": "m_derivatives",
+      "label": "Calculus: differentiation",
+      "purpose": "math",
+      "parameter_requirements": [
+        {
+          "name": "rule_structure",
+          "domain": "power; product; quotient; chain; implicit differentiation",
+          "why": "This structural choice precedes coefficients.",
+          "preconditions": [
+            "Symbolic reference with domain assumptions.",
+            "For point evaluation check all functions and denominators are defined."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "composition_depth",
+          "domain": "1…3",
+          "why": "Limits artificial nesting.",
+          "preconditions": [
+            "Symbolic reference with domain assumptions.",
+            "For point evaluation check all functions and denominators are defined."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "exponents",
+          "domain": "integers 2…6; rational exponents only with explicit domain",
+          "why": "Avoid invalid real-domain operations.",
+          "preconditions": [
+            "Symbolic reference with domain assumptions.",
+            "For point evaluation check all functions and denominators are defined."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "function_atoms",
+          "domain": "polynomial / exp / log / sin / cos",
+          "why": "Compatibility rules restrict domains and denominators.",
+          "preconditions": [
+            "Symbolic reference with domain assumptions.",
+            "For point evaluation check all functions and denominators are defined."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "query",
+          "domain": "symbolic derivative / derivative at a point / tangent line",
+          "why": "Different requested outputs.",
+          "preconditions": [
+            "Symbolic reference with domain assumptions.",
+            "For point evaluation check all functions and denominators are defined."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "task",
+        "constraints",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Differentiate the reference antiderivative.",
+        "Check definite bounds, domain and additive constants; proof review for delicate cases.",
+        "Construct a fresh valid instance and recompute its reference before wording. Story fields must not alter the formal problem.",
+        "Numbers, units, domains, assumptions and requested unknown must all be concrete; no sampled unresolved placeholders."
+      ],
+      "content_route": "Reviewed mathematical structure → constrained parameter assignment → exact/symbolic or independently reviewed reference.",
+      "id": "m_integrals",
+      "label": "Calculus: integration",
+      "purpose": "math",
+      "parameter_requirements": [
+        {
+          "name": "method",
+          "domain": "basic antiderivative; substitution; integration by parts; partial fractions",
+          "why": "Generate from a known verified antiderivative/decomposition where possible.",
+          "preconditions": [
+            "Differentiate the reference antiderivative.",
+            "Check definite bounds, domain and additive constants; proof review for delicate cases."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "bounds",
+          "domain": "indefinite or integer endpoints −5…5 with lower < upper",
+          "why": "Reject singularities crossing the integration interval.",
+          "preconditions": [
+            "Differentiate the reference antiderivative.",
+            "Check definite bounds, domain and additive constants; proof review for delicate cases."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "degree",
+          "domain": "polynomial degree 0…5; denominator degree 1…3",
+          "why": "Control the tractable family.",
+          "preconditions": [
+            "Differentiate the reference antiderivative.",
+            "Check definite bounds, domain and additive constants; proof review for delicate cases."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "domain",
+          "domain": "real interval with stated exclusions",
+          "why": "Needed for logs, roots and rational functions.",
+          "preconditions": [
+            "Differentiate the reference antiderivative.",
+            "Check definite bounds, domain and additive constants; proof review for delicate cases."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "task",
+        "constraints",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Proof or exact family oracle.",
+        "Do not infer convergence from a few numerical terms.",
+        "Construct a fresh valid instance and recompute its reference before wording. Story fields must not alter the formal problem.",
+        "Numbers, units, domains, assumptions and requested unknown must all be concrete; no sampled unresolved placeholders."
+      ],
+      "content_route": "Reviewed mathematical structure → constrained parameter assignment → exact/symbolic or independently reviewed reference.",
+      "id": "m_series",
+      "label": "Calculus: sequences and series",
+      "purpose": "math",
+      "parameter_requirements": [
+        {
+          "name": "family",
+          "domain": "geometric; telescoping; p-series; simple alternating series",
+          "why": "Separate convergence reasoning from arithmetic evaluation.",
+          "preconditions": [
+            "Proof or exact family oracle.",
+            "Do not infer convergence from a few numerical terms."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "geometric_ratio",
+          "domain": "reduced p/q with q=2…12; |p|<q for convergent-sum tasks",
+          "why": "Construct validity explicitly.",
+          "preconditions": [
+            "Proof or exact family oracle.",
+            "Do not infer convergence from a few numerical terms."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "requested_property",
+          "domain": "limit / convergence / sum / truncation error",
+          "why": "Not every property is available for every family.",
+          "preconditions": [
+            "Proof or exact family oracle.",
+            "Do not infer convergence from a few numerical terms."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "term_count",
+          "domain": "5…100 for finite questions",
+          "why": "Avoid huge calculations without new reasoning.",
+          "preconditions": [
+            "Proof or exact family oracle.",
+            "Do not infer convergence from a few numerical terms."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "task",
+        "constraints",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Enumerate all admissible critical points and boundaries.",
+        "Distinguish local and global optimum.",
+        "Construct a fresh valid instance and recompute its reference before wording. Story fields must not alter the formal problem.",
+        "Numbers, units, domains, assumptions and requested unknown must all be concrete; no sampled unresolved placeholders."
+      ],
+      "content_route": "Reviewed mathematical structure → constrained parameter assignment → exact/symbolic or independently reviewed reference.",
+      "id": "m_optimisation",
+      "label": "Calculus: optimisation",
+      "purpose": "math",
+      "parameter_requirements": [
+        {
+          "name": "objective",
+          "domain": "polynomial of degree 2…4 or a geometric objective",
+          "why": "Curate solvable objectives.",
+          "preconditions": [
+            "Enumerate all admissible critical points and boundaries.",
+            "Distinguish local and global optimum."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "domain",
+          "domain": "closed interval / positive interval / explicit geometric constraint",
+          "why": "Boundary behaviour is part of the instance.",
+          "preconditions": [
+            "Enumerate all admissible critical points and boundaries.",
+            "Distinguish local and global optimum."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "parameters",
+          "domain": "integer coefficients −10…10; feasible dimensions 1…50",
+          "why": "Construct a feasible problem first.",
+          "preconditions": [
+            "Enumerate all admissible critical points and boundaries.",
+            "Distinguish local and global optimum."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "query",
+          "domain": "argmin/argmax / optimum value / both",
+          "why": "Different output contract.",
+          "preconditions": [
+            "Enumerate all admissible critical points and boundaries.",
+            "Distinguish local and global optimum."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "world",
+        "task",
+        "constraints",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Independent mathematical review before enabling a family.",
+        "Executable arithmetic checks support, but do not replace, proof validation.",
+        "Construct a fresh valid instance and recompute its reference before wording. Story fields must not alter the formal problem.",
+        "Numbers, units, domains, assumptions and requested unknown must all be concrete; no sampled unresolved placeholders."
+      ],
+      "content_route": "Reviewed mathematical structure → constrained parameter assignment → exact/symbolic or independently reviewed reference.",
+      "id": "m_proof",
+      "label": "Nonroutine reasoning and short proofs",
+      "purpose": "math",
+      "parameter_requirements": [
+        {
+          "name": "domain",
+          "domain": "divisibility / parity / elementary inequalities / finite combinatorics",
+          "why": "Curated problem families, not arbitrary model inventions.",
+          "preconditions": [
+            "Independent mathematical review before enabling a family.",
+            "Executable arithmetic checks support, but do not replace, proof validation."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "claim_regime",
+          "domain": "prove a true statement / disprove with counterexample",
+          "why": "Validity must be established before wording generation.",
+          "preconditions": [
+            "Independent mathematical review before enabling a family.",
+            "Executable arithmetic checks support, but do not replace, proof validation."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "proof_skeleton",
+          "domain": "reviewed argument family with explicit assumptions",
+          "why": "Numerical substitutions alone are insufficient.",
+          "preconditions": [
+            "Independent mathematical review before enabling a family.",
+            "Executable arithmetic checks support, but do not replace, proof validation."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        },
+        {
+          "name": "instance_parameters",
+          "domain": "only the ranges certified by that skeleton",
+          "why": "No generic unrestricted coefficient mutation.",
+          "preconditions": [
+            "Independent mathematical review before enabling a family.",
+            "Executable arithmetic checks support, but do not replace, proof validation."
+          ],
+          "binding": "Resolve a concrete value within the selected domain; apply the family checks and the shared-field rules. Conditional parameters are explicitly not_applicable."
+        }
+      ]
+    },
+    {
+      "required_shared_fields": [
+        "topic",
+        "user",
+        "task",
+        "language",
+        "attitude",
+        "history",
+        "oracle"
+      ],
+      "additional_preconditions": [
+        "Reserve 35% of the programme; execute after single-turn task seeds are ready.",
+        "Use any compatible underlying task recipe and carry its facts/resources/constraints into state.",
+        "Sol writes user turns from actual history. Only Apertus writes assistant turns.",
+        "Error recovery requires a verified model error; resisting false correction requires a correct answer being challenged. Unreached goals are not counted as successes."
+      ],
+      "content_route": "Complete initial task seed → Apertus response → verified state transition → next user turn.",
+      "id": "dialogue",
+      "label": "Dialogue with target-model history",
+      "purpose": "dialogue",
+      "parameter_requirements": []
+    }
+  ],
+  "workflow": [
+    "Allocate exact task/family/difficulty slots; credit accepted forum requests first. Assign language and attitude quotas separately with compatibility constraints.",
+    "Choose a reviewed task structure and a content route. Select an existing document, verified fact bundle, formal fixture or fictional situation schema.",
+    "Select only relevant shared fields. Sample independent root values from bounded catalogues; derive dependent values and reject contradictions.",
+    "Freeze complete content. Existing sources keep their facts. Synthetic documents are authored from concrete records, checked for invented/omitted facts, then frozen.",
+    "Resolve the requested operation and constraints against that content. Construct a private answer/rubric and a feasibility witness where applicable.",
+    "Reserve content-family, structure and canonical instance keys across the programme; keep related sources, translations and variants in one split.",
+    "Send a batch of complete packets to Sol for natural user wording. Do not let it invent answer-bearing information to fill gaps.",
+    "Validate fidelity, direct-request form, language, premise annotation and duplicate status. Count accepted prompts only; refill the same quota cell."
+  ],
+  "example": {
+    "status": "Illustrative complete fictional content packet, manually authored; not a production sampler output",
+    "quota": {
+      "primary_purpose": "instruction",
+      "underlying_task": "s_general",
+      "difficulty": "compositional",
+      "language": "el",
+      "attitude": "cooperative",
+      "register": "informal"
+    },
+    "world": "fictional",
+    "user": {
+      "role": "volunteer coordinator",
+      "goal": "send residents a short accurate announcement",
+      "domain_knowledge": "knows the event; wants editing help"
+    },
+    "scenario": {
+      "topic": "community repair",
+      "location": {
+        "kind": "fictional indoor community hall",
+        "city": null
+      },
+      "participants": {
+        "capacity": 12,
+        "minimum_age": 18,
+        "gender_counts": null
+      },
+      "time": {
+        "date": "2026-10-18",
+        "start": "10:00",
+        "end": "13:00",
+        "registration_deadline": "2026-10-16"
+      },
+      "resources": {
+        "technicians": 3,
+        "workbenches": 3,
+        "simultaneous_repairs": 3,
+        "fee_eur": 0,
+        "max_items_per_person": 1
+      },
+      "allowed_items": [
+        "small appliances"
+      ],
+      "excluded_items": [
+        "televisions"
+      ]
+    },
+    "facts": [
+      {
+        "id": "F1",
+        "text": "The repair workshop is on 18 October 2026, 10:00–13:00."
+      },
+      {
+        "id": "F2",
+        "text": "Registration closes on 16 October 2026."
+      },
+      {
+        "id": "F3",
+        "text": "At most 12 adults can attend, bringing one small appliance each."
+      },
+      {
+        "id": "F4",
+        "text": "Televisions are excluded."
+      },
+      {
+        "id": "F5",
+        "text": "Participation is free; three technicians use three workbenches."
+      }
+    ],
+    "frozen_source_text": "Στις 18 Οκτωβρίου 2026 θα γίνει εργαστήριο επισκευών στην αίθουσα του κοινοτικού κέντρου, από τις 10:00 έως τις 13:00. Οι εγγραφές κλείνουν στις 16 Οκτωβρίου. Μπορούν να συμμετάσχουν έως 12 ενήλικες, με μία μικροσυσκευή ο καθένας. Τηλεοράσεις δεν γίνονται δεκτές. Η συμμετοχή είναι δωρεάν. Τρεις τεχνικοί θα δουλεύουν σε τρεις πάγκους.",
+    "request_spec": {
+      "operation": "summarise",
+      "exact_bullets": 3,
+      "must_preserve_fact_ids": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ],
+      "no_preamble": true
+    },
+    "private_feasibility_witness": [
+      "18 Οκτωβρίου 2026, 10:00–13:00: εργαστήριο επισκευών.",
+      "Εγγραφές έως 16 Οκτωβρίου 2026, για έως 12 ενήλικες.",
+      "Μία μικροσυσκευή ανά άτομο· δεν γίνονται δεκτές τηλεοράσεις."
+    ],
+    "sol_may_vary": [
+      "natural request wording consistent with assigned attitude/register"
+    ],
+    "sol_may_not_vary": [
+      "frozen source text",
+      "dates",
+      "counts",
+      "eligibility",
+      "constraints",
+      "add registration contact or repair guarantee"
+    ],
+    "model_receives": [
+      "brief framing that the notice describes a hypothetical event",
+      "natural user request",
+      "frozen source text"
+    ],
+    "model_does_not_receive": [
+      "feasibility witness",
+      "fact-selection rubric",
+      "truth labels",
+      "quota metadata"
+    ]
+  },
+  "storage": [
+    {
+      "table": "topics",
+      "required": "topic_id, parent_id, compatible_task_ids, locale-neutral description; accepted usage counters"
+    },
+    {
+      "table": "places",
+      "required": "place_id, real/fictional flag, provenance for material real attributes, country/timezone/currency or explicit unknowns"
+    },
+    {
+      "table": "content",
+      "required": "content_id, family_id, full text/payload, hash, source/rights, language, dates, claim/spans, benchmark-screen status"
+    },
+    {
+      "table": "situations",
+      "required": "schema_id, compatible tasks/topics, field domains, derived-value formulas, feasibility rules, optional fictional participant/user records"
+    },
+    {
+      "table": "structures",
+      "required": "structure_id, operation/evidence/constraint graph, difficulty rules, required fields, validator version, review status, reuse cap"
+    },
+    {
+      "table": "reservations",
+      "required": "programme_id, instance hash, content family, structure ID, language-view ID, split, generation/review status; transactional uniqueness"
+    }
+  ],
+  "diversity": [
+    "Null is a deliberate choice: do not insert a location, age, gender or biography into every seed.",
+    "Track task × difficulty, task × topic, language × task and structure reuse in accepted outputs; marginal totals alone can hide clustering.",
+    "Meaningful instance hash includes operation, evidence/relationships, answer-bearing values and canonical source content; exclude wording and cosmetic names.",
+    "Changing names, gender or town labels does not create new structures. A new document with the same fact/constraint pattern still shares that structure.",
+    "Use hard exact-duplicate checks and reviewed structure caps; semantic diversity and realism still need review. Do not claim an absolute semantic guarantee.",
+    "Do not multiply every catalogue size: valid capacity is the count satisfying compatibility, sufficient sources and reuse limits. Recalculate capacity after those inventories exist."
+  ],
+  "starter_domains": {
+    "topics": [
+      "education",
+      "work",
+      "housing",
+      "transport",
+      "food",
+      "technology",
+      "arts",
+      "environment",
+      "sport",
+      "community",
+      "science",
+      "consumer services"
+    ],
+    "user_roles": [
+      "learner",
+      "resident",
+      "customer",
+      "organiser",
+      "colleague",
+      "caregiver"
+    ],
+    "knowledge_levels": [
+      "new to this topic",
+      "some practical familiarity",
+      "experienced in this topic"
+    ],
+    "location_types": [
+      "fictional indoor venue",
+      "fictional outdoor venue",
+      "remote/online",
+      "location irrelevant"
+    ],
+    "age_bands_when_relevant": [
+      "6–12",
+      "13–17",
+      "18–29",
+      "30–64",
+      "65+"
+    ],
+    "gender_default": "unspecified; if group composition is required, sample nonnegative subgroup counts conditional on total and explicitly defined categories",
+    "time_policy": "Fictional event offset 7–90 days from a frozen scenario anchor; registration 1–14 days before the event and after the anchor; duration 30–240 minutes in 15-minute steps. Existing source dates remain fixed.",
+    "sampling_policy": "These are initial domains, not population-frequency estimates or a Cartesian product. Use only each recipe’s admissible subset; keep source records unchanged."
+  },
+  "situation_schemas": [
+    {
+      "id": "community_event",
+      "tasks": [
+        "summarise",
+        "write",
+        "plan",
+        "IF",
+        "grounded facts",
+        "dialogue"
+      ],
+      "roots": {
+        "participants": "6–40",
+        "staff": "1–5",
+        "venue_capacity": "10–60",
+        "duration_minutes": "30–240 in 15-minute steps",
+        "fee_cents": "0 or 100–2000 in 100-cent steps"
+      },
+      "derive": [
+        "free_seats = venue_capacity − participants",
+        "total_fees = participants × fee_cents"
+      ],
+      "reject": [
+        "participants > venue_capacity unless explicitly infeasible task",
+        "end time outside the selected venue availability"
+      ],
+      "notes": "Do not infer staff throughput without a supplied service-time rule. Age, gender and names optional."
+    },
+    {
+      "id": "group_outing",
+      "tasks": [
+        "plan",
+        "math",
+        "write",
+        "IF",
+        "dialogue"
+      ],
+      "roots": {
+        "participants": "2–12",
+        "vehicles": "1–3",
+        "seats_per_vehicle": "4–8",
+        "route_options": "2–4",
+        "option_travel_minutes": "15–180 in 5-minute steps",
+        "budget_cents": "2000–100000 in 1000-cent steps"
+      },
+      "derive": [
+        "transport_capacity = vehicles × seats_per_vehicle",
+        "arrival = departure + supplied route duration",
+        "group_cost = fixed_cost + participants × supplied per_person_cost"
+      ],
+      "reject": [
+        "insufficient transport capacity or deadline/budget failure in feasible-task cells"
+      ],
+      "notes": "Fictional routes and prices only unless sourced. Drivers are included in the participant and seat totals; age recorded only if relevant."
+    },
+    {
+      "id": "learning_group",
+      "tasks": [
+        "explain",
+        "plan",
+        "write",
+        "math",
+        "dialogue"
+      ],
+      "roots": {
+        "learners": "4–30",
+        "group_size": "2–6",
+        "learner_band": "6–12 / 13–17 / adult",
+        "prior_knowledge": "explicit none / basic / intermediate",
+        "sessions": "1–8",
+        "minutes_per_session": "20–90 in 10-minute steps"
+      },
+      "derive": [
+        "full_groups and remainder = divmod(learners, group_size)",
+        "total_minutes = sessions × minutes_per_session"
+      ],
+      "reject": [
+        "unstated handling of leftover learners",
+        "required prerequisite knowledge absent unless teaching it is the task"
+      ],
+      "notes": "Sample age and knowledge separately under the learning objective; do not equate age with ability."
+    },
+    {
+      "id": "purchase_budget",
+      "tasks": [
+        "math",
+        "plan",
+        "compare",
+        "IF",
+        "dialogue"
+      ],
+      "roots": {
+        "quantity": "2–50",
+        "unit_price_cents": "100–2000 in 25-cent steps",
+        "discount_percent": "0 / 5 / 10 / 15 / 20 / 25",
+        "shipping_cents": "0–1500 in 100-cent steps"
+      },
+      "derive": [
+        "subtotal = quantity × unit_price_cents",
+        "discounted = subtotal × (100 − discount_percent) / 100",
+        "total = discounted + shipping_cents"
+      ],
+      "reject": [
+        "fractional cents unless a rounding rule is supplied",
+        "ambiguous tax/shipping treatment"
+      ],
+      "notes": "No people, age or gender fields needed. Products and prices are hypothetical unless sourced."
+    },
+    {
+      "id": "meeting_actions",
+      "tasks": [
+        "summarise",
+        "extract",
+        "edit",
+        "IF",
+        "grounded facts",
+        "dialogue"
+      ],
+      "roots": {
+        "participants": "2–8",
+        "decisions": "2–6",
+        "action_items": "2–8",
+        "unresolved_items": "0–3",
+        "deadline_offsets_days": "1–30"
+      },
+      "derive": [
+        "owner for each assigned action is a participant ID",
+        "deadline = meeting_date + offset"
+      ],
+      "reject": [
+        "assigned owner missing from participant record",
+        "a decision and its superseding decision presented as simultaneously current"
+      ],
+      "notes": "Some owners or deadlines may deliberately be unknown; label these explicitly rather than inventing values."
+    },
+    {
+      "id": "versioned_record",
+      "tasks": [
+        "factual reliability",
+        "update summary",
+        "IF",
+        "dialogue"
+      ],
+      "roots": {
+        "entities": "2–6",
+        "versions": "2–4",
+        "claims_per_version": "3–8",
+        "changed_claims_per_update": "1–3"
+      },
+      "derive": [
+        "version dates strictly increase",
+        "current claims follow explicit supersession links",
+        "unaffected claims are carried forward"
+      ],
+      "reject": [
+        "change refers to nonexistent claim",
+        "answerable cell has no defensible answer",
+        "unresolved cell accidentally has decisive supplied evidence"
+      ],
+      "notes": "Use fictional records for free recombination; real claims retain sourced values. This is not a source of invented real-world trivia."
+    }
+  ]
+}

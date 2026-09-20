@@ -1,0 +1,59 @@
+{
+  "admission_status": "admitted",
+  "basis": "upper bound: provisioning counted as billed; setup from three pilot sessions + 2.5 min; collection = six turns x (target p90 x3 + Sol user-step max latency from the dry run + 25% repair allowance + troubleshooting actions and resolver max latency) x 1.3 for the slowest of ten concurrent conversations; branch session samples 64 replies with 16 concurrent requests; VAT/FX: EUR/USD 0.95 as in the pilot ledger",
+  "branch_completions_upper": 3584,
+  "case_set": "c60",
+  "concurrent_conversations": 24,
+  "conversations": 60,
+  "created_utc": "2026-09-18T10:37:36.448692+00:00",
+  "eur_per_usd": 0.95,
+  "measured_inputs": {
+    "provisioning_minutes_observed": [
+      6.6,
+      4.6,
+      2.5
+    ],
+    "setup_minutes_observed": [
+      3.5,
+      3.4,
+      3.5
+    ],
+    "target_reply_seconds_p90_pilot": 5.8,
+    "teardown_minutes": 1.5
+  },
+  "price_cap_usd_hr": 1.99,
+  "programme_spent_eur": 3.0295390474104167,
+  "remaining_before_operational_stop_eur": 5.970460952589583,
+  "safety_margin_eur": 0.25,
+  "session1_collect_minutes": 56.5,
+  "session1_upper_eur": 1.781,
+  "session2_branch_minutes": 81.1,
+  "session2_upper_eur": 2.5541,
+  "session_caps_minutes": {
+    "branch": 121.6,
+    "collect": 84.8
+  },
+  "shortfall_eur": 0.0,
+  "sol": "no call cap (owner); calls recorded, not a gate",
+  "sol_latency_dry_run": {
+    "user_actions": {
+      "max": 10.3,
+      "median": 9.7,
+      "n": 2,
+      "p90": 10.3
+    },
+    "user_simulation": {
+      "max": 21.7,
+      "median": 9.9,
+      "n": 20,
+      "p90": 15.7
+    },
+    "world_resolver": {
+      "max": 8.6,
+      "median": 6.8,
+      "n": 2,
+      "p90": 8.6
+    }
+  },
+  "total_upper_eur": 4.335
+}

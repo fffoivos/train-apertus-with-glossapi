@@ -1,0 +1,357 @@
+{
+  "created_utc": "2026-09-17T11:06:33.841290+00:00",
+  "held_out_evaluation_exclusion": "source families dvi:* are development-only and reserved from formal evaluation",
+  "seed_set": "dialogue_v2_improvements_d1_v1",
+  "seeds": [
+    {
+      "case_id": "DVI001",
+      "category": "existing_type",
+      "d1_kind": "ME021-like creative writing",
+      "development_family": "creative writing: short story from supplied elements with a dialogue-reveal constraint (same development family as pilot ME021, e_write/story_brief)",
+      "evaluator_reference": {
+        "checkable_constraints": [
+          "Το κείμενο πρέπει να είναι πρωτότυπο διήγημα 220–280 λέξεων.",
+          "Η υπόθεση πρέπει να αφορά έναν παλιό σιδηροδρομικό σταθμό που κλείνει.",
+          "Πρέπει να υπάρχουν δύο πρόσωπα: ένας συνταξιούχος σταθμάρχης και μια νεαρή επιβάτισσα.",
+          "Πρέπει να υπάρχει ένα παλιό εισιτήριο.",
+          "Η σημασία του εισιτηρίου πρέπει να αποκαλυφθεί μέσα από διάλογο και όχι από αφήγηση."
+        ],
+        "maths_content": false,
+        "supplied_facts": [
+          "Ο τόπος της ιστορίας είναι ένας παλιός σιδηροδρομικός σταθμός που κλείνει.",
+          "Οι χαρακτήρες είναι ένας συνταξιούχος σταθμάρχης και μια νεαρή επιβάτισσα.",
+          "Το αντικείμενο είναι ένα παλιό εισιτήριο."
+        ],
+        "what_a_good_first_reply_does": "Παραδίδει απευθείας ένα συνεκτικό διήγημα εντός του ορίου, όπου ο διάλογος αποκαλύπτει φυσικά τη σημασία του εισιτηρίου."
+      },
+      "executor_repairs": [
+        {
+          "change": "word range 450–550 -> 220–280",
+          "field": "opening, disclosed_preferences, checkable_constraints",
+          "reason": "A 550-word Greek story is about 1,000 tokens: with the 1,024-token reply cap and the 4,096-token served context it would truncate and cut the conversation off after two or three revisions, defeating a multi-turn revision diagnostic. 220–280 matches the ME021 family (240–300).",
+          "seed_sha256_before": "80ac518f2bf6a98b996762ec8aec200be075aad5ba0b8fc975a48713b55bd6a1",
+          "utc": "2026-09-17T11:07:59.723112+00:00"
+        }
+      ],
+      "experiment_credit": 0,
+      "labels": {
+        "attitude": "cooperative",
+        "detail": "short",
+        "difficulty": "compositional",
+        "interaction": "revision",
+        "register": "standard",
+        "task": "everyday"
+      },
+      "language": "el",
+      "maths_content": false,
+      "max_assistant_turns": 6,
+      "opening": "Γράψε ένα πρωτότυπο διήγημα 220–280 λέξεων για έναν παλιό σιδηροδρομικό σταθμό που κλείνει, με δύο πρόσωπα: έναν συνταξιούχο σταθμάρχη και μια νεαρή επιβάτισσα, καθώς και ένα παλιό εισιτήριο. Η σημασία του εισιτηρίου πρέπει να αποκαλυφθεί μέσα από τον διάλογό τους και όχι από την αφήγηση.",
+      "opening_story_private": "Μια συνταξιούχος φιλόλογος στον Βόλο μόλις είδε την προκήρυξη ενός διαγωνισμού και αναζητά μια πρώτη αφηγηματική βάση, όχι έτοιμο κείμενο για άμεση υποβολή. Γράφει συστηματικά για τοπικό περιοδικό και γνωρίζει καλά τη δομή του διηγήματος, αλλά δυσκολεύεται να συνδέσει φυσικά το αντικείμενο με τους δύο χαρακτήρες. Μπροστά της έχει ένα κενό αρχείο και μια σημείωση με την εικόνα του τελευταίου απογευματινού δρομολογίου. Θέλει ένα προσχέδιο που θα μπορέσει ύστερα να ξαναγράψει με τη δική της φωνή.",
+      "opening_writer": {
+        "call_id": "sol:openings:dvi:24f80cbd4785908e",
+        "glossary_sha16": "e249b0deaaf6bec0",
+        "version": "dvi-opening-writer-v1"
+      },
+      "primary_purpose": "dialogue",
+      "purpose": "development_demo",
+      "related_pilot_trajectory": "ME021",
+      "run": "D1",
+      "seed_spec": {
+        "person": "συνταξιούχος φιλόλογος από τον Βόλο, 66, γράφει διηγήματα για ένα τοπικό λογοτεχνικό περιοδικό",
+        "situation": "ετοιμάζει συμμετοχή σε διαγωνισμό διηγήματος και θέλει ένα πρώτο προσχέδιο για να δουλέψει πάνω του",
+        "specific": "δύο πρόσωπα, ένα αντικείμενο και μια απαίτηση: η σημασία του αντικειμένου να φανεί μέσα από διάλογο και όχι από αφήγηση· όριο λέξεων",
+        "task": "everyday: γράψε ένα σύντομο πρωτότυπο διήγημα από δοσμένα στοιχεία",
+        "topic": "ένας παλιός σιδηροδρομικός σταθμός που κλείνει"
+      },
+      "source_family": "dvi:DVI001",
+      "split": "development",
+      "training_eligible": false,
+      "user_state": {
+        "disclosed_preferences": [
+          "Το διήγημα να έχει 220–280 λέξεις.",
+          "Να περιλαμβάνει ακριβώς τα δύο δοσμένα πρόσωπα και το παλιό εισιτήριο.",
+          "Η σημασία του εισιτηρίου να φανεί μέσα από διάλογο και όχι από αφήγηση."
+        ],
+        "expertise": "expert",
+        "goal": "Να αποκτήσει ένα σύντομο, πρωτότυπο πρώτο προσχέδιο διηγήματος που να τηρεί τη σύνθεση και το όριο λέξεων και να μπορεί να το επεξεργαστεί η ίδια.",
+        "helping_ability": "can_give_example",
+        "helping_ability_note": "An experienced amateur writer: can name what is wrong and write two short lines of dialogue as an example of what she means.",
+        "known_facts": [
+          "Ο σταθμός κλείνει οριστικά μετά το τελευταίο δρομολόγιο.",
+          "Οι μόνοι χαρακτήρες πρέπει να είναι ο συνταξιούχος σταθμάρχης και η νεαρή επιβάτισσα.",
+          "Το κεντρικό αντικείμενο είναι ένα παλιό εισιτήριο.",
+          "Μπορεί, αν χρειαστεί, να δώσει δικό της σύντομο παράδειγμα διαλόγου."
+        ],
+        "misconception": "",
+        "patience": "medium",
+        "private_preferences": [
+          {
+            "id": "P1",
+            "reveal_when": "Θα το αναφέρει αν το πρώτο προσχέδιο της φανεί υπερβολικά δραματικό ή συναισθηματικά έντονο.",
+            "text": "Προτιμά χαμηλόφωνο, μελαγχολικό τόνο χωρίς μελοδραματισμό."
+          },
+          {
+            "id": "P2",
+            "reveal_when": "Θα το ζητήσει σε αναθεώρηση αν το πρώτο τέλος εξηγεί ή κλείνει τα πάντα.",
+            "text": "Θα ήθελε το τέλος να παραμένει ελαφρώς ανοιχτό."
+          }
+        ]
+      },
+      "user_view_extras": {}
+    },
+    {
+      "case_id": "DVI002",
+      "category": "existing_type",
+      "d1_kind": "constrained planning",
+      "development_family": "everyday planning: weekly schedule under fixed commitments",
+      "evaluator_reference": {
+        "checkable_constraints": [
+          "Το πρόγραμμα πρέπει να καλύπτει τη Δευτέρα έως και την Κυριακή.",
+          "Πρέπει να περιλαμβάνει Αλγορίθμους, Βάσεις Δεδομένων και Δίκτυα.",
+          "Οι Αλγόριθμοι πρέπει να λάβουν περισσότερο χρόνο.",
+          "Δεν επιτρέπεται μελέτη Δευτέρα, Τετάρτη ή Παρασκευή 16:00–22:00.",
+          "Δεν επιτρέπεται μελέτη Σάββατο 09:00–15:00.",
+          "Δεν επιτρέπεται μελέτη Τρίτη ή Πέμπτη 19:00–20:30.",
+          "Το πρόγραμμα πρέπει να έχει σαφείς ώρες και διαλείμματα."
+        ],
+        "maths_content": false,
+        "supplied_facts": [
+          "Η εξέταση των Αλγορίθμων είναι τη Δευτέρα στις 09:00.",
+          "Οι βάρδιες είναι Δευτέρα, Τετάρτη και Παρασκευή 16:00–22:00 και Σάββατο 09:00–15:00.",
+          "Το γυμναστήριο είναι Τρίτη και Πέμπτη 19:00–20:30.",
+          "Οι Αλγόριθμοι απαιτούν περισσότερο χρόνο από τα άλλα μαθήματα."
+        ],
+        "what_a_good_first_reply_does": "Δίνει άμεσα ένα ευανάγνωστο εβδομαδιαίο πρόγραμμα με συγκεκριμένα μπλοκ μελέτης και διαλείμματα, χωρίς καμία σύγκρουση και με εμφανή προτεραιότητα στους Αλγορίθμους."
+      },
+      "experiment_credit": 0,
+      "labels": {
+        "attitude": "frustrated",
+        "detail": "medium",
+        "difficulty": "compositional",
+        "interaction": "constraint_retention",
+        "register": "informal",
+        "task": "everyday"
+      },
+      "language": "el",
+      "maths_content": false,
+      "max_assistant_turns": 6,
+      "opening": "Έχω μπερδευτεί τελείως και η εξεταστική έφτασε. Θέλω πρόγραμμα διαβάσματος από Δευτέρα μέχρι Κυριακή για Αλγορίθμους, Βάσεις Δεδομένων και Δίκτυα, με περισσότερο χρόνο στους Αλγορίθμους γιατί γράφω τη Δευτέρα στις 09:00. Δουλεύω Δευτέρα, Τετάρτη και Παρασκευή 16:00–22:00 και Σάββατο 09:00–15:00, ενώ έχω γυμναστήριο Τρίτη και Πέμπτη 19:00–20:30. Βάλ’ το σε καθαρό πρόγραμμα με ώρες, χωρίς διάβασμα πάνω στις βάρδιες ή στο γυμναστήριο, και άσε και λίγα διαλείμματα γιατί δεν βγαίνει αλλιώς.",
+      "opening_story_private": "Ένας φοιτητής πληροφορικής δουλεύει αρκετές βάρδιες αυτή την εβδομάδα και έχει αρχίσει να ανοίγει όποιο μάθημα του φαίνεται πιο επείγον χωρίς σταθερή σειρά. Έχει σημειώσει τις βάρδιες, το γυμναστήριο και την πρώτη εξέταση στο κινητό του, αλλά δύο πρόχειρα προγράμματα που έφτιαξε είχαν επικαλύψεις. Ξέρει ότι οι Αλγόριθμοι χρειάζονται περισσότερη δουλειά από τα άλλα δύο μαθήματα. Ζητά τώρα ένα εφαρμόσιμο εβδομαδιαίο πρόγραμμα επειδή η εξεταστική πλησιάζει και δεν θέλει να ξαναστήσει μόνος του τον πίνακα.",
+      "opening_writer": {
+        "call_id": "sol:openings:dvi:24f80cbd4785908e",
+        "glossary_sha16": "e249b0deaaf6bec0",
+        "version": "dvi-opening-writer-v1"
+      },
+      "primary_purpose": "dialogue",
+      "purpose": "development_demo",
+      "related_pilot_trajectory": null,
+      "run": "D1",
+      "seed_spec": {
+        "person": "φοιτητής πληροφορικής στα Ιωάννινα, 20, δουλεύει μερική απασχόληση σε καφέ",
+        "situation": "η εξεταστική πλησιάζει και έχει μπερδευτεί με το πότε να διαβάσει τι",
+        "specific": "συγκεκριμένες μέρες και ώρες βάρδιας, μια μέρα εξέτασης, ένα μάθημα που θέλει περισσότερο χρόνο",
+        "task": "everyday: σχεδίασε/οργάνωσε ένα εβδομαδιαίο πρόγραμμα με σταθερούς περιορισμούς",
+        "topic": "πρόγραμμα διαβάσματος για τρία μαθήματα γύρω από βάρδιες και ένα γυμναστήριο"
+      },
+      "source_family": "dvi:DVI002",
+      "split": "development",
+      "training_eligible": false,
+      "user_state": {
+        "disclosed_preferences": [
+          "Το πρόγραμμα να καλύπτει τη Δευτέρα έως και την Κυριακή.",
+          "Να δοθεί περισσότερος χρόνος στους Αλγορίθμους.",
+          "Να παρουσιαστεί καθαρά με ώρες.",
+          "Να μην υπάρχει διάβασμα κατά τις βάρδιες ή το γυμναστήριο.",
+          "Να περιλαμβάνει διαλείμματα."
+        ],
+        "expertise": "intermediate",
+        "goal": "Να αποκτήσει ένα καθαρό και εφαρμόσιμο πρόγραμμα μελέτης για ολόκληρη την εβδομάδα, χωρίς συγκρούσεις με τις υποχρεώσεις του και με προτεραιότητα στους Αλγορίθμους.",
+        "helping_ability": "can_point_defect",
+        "helping_ability_note": "Can notice when a slot clashes with his shifts and say so, but will not rebuild the plan himself.",
+        "known_facts": [
+          "Τα τρία μαθήματα είναι Αλγόριθμοι, Βάσεις Δεδομένων και Δίκτυα.",
+          "Η εξέταση των Αλγορίθμων είναι την επόμενη Δευτέρα στις 09:00.",
+          "Οι Αλγόριθμοι χρειάζονται περισσότερο χρόνο από τα άλλα δύο μαθήματα.",
+          "Οι βάρδιες και οι ώρες του γυμναστηρίου είναι αμετακίνητες.",
+          "Μπορεί να εντοπίσει μια σύγκρουση ώρας, αλλά δεν θα ανακατασκευάσει μόνος του το πρόγραμμα."
+        ],
+        "misconception": "",
+        "patience": "low",
+        "private_preferences": [
+          {
+            "id": "P1",
+            "reveal_when": "Θα το αναφέρει αν το πρώτο πρόγραμμα περιλαμβάνει βραδινή μελέτη μετά τις 23:00.",
+            "text": "Δεν του αρέσει να διαβάζει μετά τις 23:00, επειδή δεν συγκεντρώνεται."
+          }
+        ]
+      },
+      "user_view_extras": {}
+    },
+    {
+      "case_id": "DVI003",
+      "category": "existing_type",
+      "d1_kind": "editing / format retention",
+      "development_family": "instruction: edit pasted notes keeping exact values and a fixed format",
+      "evaluator_reference": {
+        "checkable_constraints": [
+          "The response must contain at most five bullet points.",
+          "The names Sarah and Imran must remain exactly as written.",
+          "The dates Monday 12 October, Wednesday 14 October and Friday 16 October must remain exactly as written.",
+          "The time 6:30 pm must remain exactly as written.",
+          "The result must be a clear update for volunteers."
+        ],
+        "maths_content": false,
+        "supplied_facts": [
+          "Sarah can cover the welcome desk instead of her usual stockroom shift on Monday 12 October.",
+          "The delivery will arrive on Wednesday 14 October, not Friday 16 October.",
+          "Imran will meet the driver and check the chilled items.",
+          "The side gate needs to be opened at 6:30 pm for the delivery.",
+          "Volunteers must use the rear entrance while the front ramp is repaired.",
+          "Sarah will update the printed rota, and Imran will place the delivery notice by the sign-in sheet."
+        ],
+        "what_a_good_first_reply_does": "It consolidates the notes into no more than five readable bullets without altering any supplied name, date, time or operational detail."
+      },
+      "experiment_credit": 0,
+      "labels": {
+        "attitude": "cooperative",
+        "detail": "detailed",
+        "difficulty": "compositional",
+        "interaction": "constraint_retention",
+        "register": "standard",
+        "task": "instruction"
+      },
+      "language": "en",
+      "maths_content": false,
+      "max_assistant_turns": 6,
+      "opening": "Please turn the meeting notes below into a clear update for volunteers. Use at most five bullet points, and keep every name, date and time exactly as written.\n\nMeeting notes:\n- rota issue for Monday 12 October — Sarah can cover the welcome desk instead of the usual stockroom shift\n- delivery moved: it will now arrive on Wednesday 14 October, not Friday 16 October\n- Imran agreed to meet the driver and check the chilled items\n- side gate needs opening at 6:30 pm for the delivery\n- remind volunteers to use the rear entrance while the front ramp is being repaired\n- Sarah to update the printed rota; Imran to put the delivery notice by the sign-in sheet",
+      "opening_story_private": "The volunteer coordinator has just finished a rushed planning meeting and needs to send an accurate update before volunteers make travel arrangements. They have a page of fragmented notes containing a rota change, a rescheduled delivery, and a reminder about access. They already tried condensing it but became concerned that they might alter a date or omit who had agreed to cover each duty. The notes are open in front of them, and they want a short update that can be copied directly into the volunteer group message.",
+      "opening_writer": {
+        "call_id": "sol:openings:dvi:24f80cbd4785908e",
+        "glossary_sha16": "e249b0deaaf6bec0",
+        "version": "dvi-opening-writer-v1"
+      },
+      "primary_purpose": "dialogue",
+      "purpose": "development_demo",
+      "related_pilot_trajectory": null,
+      "run": "D1",
+      "seed_spec": {
+        "person": "volunteer coordinator at a community food bank in Leeds, 38",
+        "situation": "has messy meeting notes that must go out to volunteers tonight",
+        "specific": "pasted notes containing three dates, two names and one time that must stay exactly as written; at most five bullets",
+        "task": "instruction: turn pasted notes into a short bulleted update keeping names, dates and times exactly as written",
+        "topic": "changes to the volunteer rota and a delivery day"
+      },
+      "source_family": "dvi:DVI003",
+      "split": "development",
+      "training_eligible": false,
+      "user_state": {
+        "disclosed_preferences": [
+          "Use no more than five bullet points.",
+          "Keep all names, dates and times exactly as written.",
+          "Make the update clear for volunteers."
+        ],
+        "expertise": "intermediate",
+        "goal": "To convert the messy meeting notes into a concise, accurate volunteer update that can be sent tonight.",
+        "helping_ability": "can_point_defect",
+        "helping_ability_note": "Careful reader: can point to a changed date or an extra bullet precisely.",
+        "known_facts": [
+          "The rota change affects Sarah's duty on Monday 12 October.",
+          "The delivery is now on Wednesday 14 October rather than Friday 16 October.",
+          "Imran will meet the driver and check the chilled items.",
+          "The side gate must be opened at 6:30 pm.",
+          "Volunteers should use the rear entrance while the front ramp is repaired."
+        ],
+        "misconception": "",
+        "patience": "high",
+        "private_preferences": [
+          {
+            "id": "P1",
+            "reveal_when": "They will request it after reviewing the bulleted update if they decide to send the information by SMS as well.",
+            "text": "They would also like a plain-text version without bullets for an SMS channel."
+          }
+        ]
+      },
+      "user_view_extras": {}
+    },
+    {
+      "case_id": "DVI004",
+      "category": "existing_type",
+      "d1_kind": "grounded information",
+      "development_family": "factual: answers grounded in a pasted notice",
+      "evaluator_reference": {
+        "checkable_constraints": [
+          "Η απάντηση πρέπει να βασιστεί στην επικολλημένη ανακοίνωση.",
+          "Η ερώτηση αφορά ειδικά την Πέμπτη 24 Σεπτεμβρίου.",
+          "Πρέπει να δοθεί η ώρα αποχώρησης για το παιδί στο Β2 και για το παιδί στο Δ1."
+        ],
+        "maths_content": false,
+        "supplied_facts": [
+          "Το ένα παιδί φοιτά στο Β2 και το άλλο στο Δ1.",
+          "Από τη Δευτέρα 21 Σεπτεμβρίου έως και την Παρασκευή 2 Οκτωβρίου η γενική ώρα αποχώρησης είναι 12:25.",
+          "Το Δ1 αποχωρεί στις 13:15 κάθε Τρίτη και Πέμπτη λόγω θεατρικής αγωγής.",
+          "Κατά το προσωρινό διάστημα, όλοι οι μαθητές παραλαμβάνονται από την πλαϊνή είσοδο στην οδό Σολωμού 18.",
+          "Το κανονικό ωράριο και η παραλαβή από την κεντρική είσοδο επανέρχονται τη Δευτέρα 5 Οκτωβρίου."
+        ],
+        "what_a_good_first_reply_does": "Απαντά καθαρά ότι την Πέμπτη 24 Σεπτεμβρίου το παιδί στο Β2 σχολάει στις 12:25 και το παιδί στο Δ1 στις 13:15, συνδέοντας σύντομα τη διαφορά με την αναφερόμενη εξαίρεση."
+      },
+      "experiment_credit": 0,
+      "labels": {
+        "attitude": "cooperative",
+        "detail": "detailed",
+        "difficulty": "compositional",
+        "interaction": "recall",
+        "register": "standard",
+        "task": "factual"
+      },
+      "language": "el",
+      "maths_content": false,
+      "max_assistant_turns": 6,
+      "opening": "Τα παιδιά μου είναι στο Β2 και στο Δ1. Με βάση την ανακοίνωση, τι ώρα σχολάει το καθένα την Πέμπτη 24 Σεπτεμβρίου;\n\nΑΝΑΚΟΙΝΩΣΗ\nΛόγω εργασιών στο κεντρικό κτίριο, από τη Δευτέρα 21 Σεπτεμβρίου έως και την Παρασκευή 2 Οκτωβρίου όλα τα τμήματα θα προσέρχονται στις 08:30 και θα αποχωρούν στις 12:25. Εξαίρεση αποτελεί το τμήμα Δ1, το οποίο κάθε Τρίτη και Πέμπτη θα αποχωρεί στις 13:15 λόγω του προγράμματος θεατρικής αγωγής. Κατά το παραπάνω διάστημα, η παραλαβή όλων των μαθητών θα γίνεται από την πλαϊνή είσοδο, στην οδό Σολωμού 18. Από τη Δευτέρα 5 Οκτωβρίου επανέρχεται το κανονικό ωράριο και η παραλαβή από την κεντρική είσοδο.\nΗ Διεύθυνση του σχολείου",
+      "opening_story_private": "Μια μητέρα δύο παιδιών μόλις γύρισε από απογευματινή βάρδια και βρήκε στην τσάντα της κόρης της μια ανακοίνωση για προσωρινό σχολικό ωράριο. Έχει ήδη διαβάσει το κείμενο δύο φορές, αλλά η εξαίρεση για ένα συγκεκριμένο τμήμα την κάνει να αμφιβάλλει αν τα παιδιά σχολούν μαζί. Μπροστά της έχει την ανακοίνωση και το πρόγραμμα εργασίας της, επειδή πρέπει να κανονίσει ποιος θα τα παραλαμβάνει. Ξέρει τα τμήματα των παιδιών της, αλλά θέλει μια σαφή απάντηση βασισμένη μόνο σε όσα γράφει το σχολείο.",
+      "opening_writer": {
+        "call_id": "sol:openings:dvi:24f80cbd4785908e",
+        "glossary_sha16": "e249b0deaaf6bec0",
+        "version": "dvi-opening-writer-v1"
+      },
+      "primary_purpose": "dialogue",
+      "purpose": "development_demo",
+      "related_pilot_trajectory": null,
+      "run": "D1",
+      "seed_spec": {
+        "person": "μητέρα δύο παιδιών στο Περιστέρι, 43, δουλεύει βάρδιες σε σούπερ μάρκετ",
+        "situation": "πήρε από το σχολείο ανακοίνωση για προσωρινή αλλαγή ωραρίου λόγω εργασιών και δεν είναι σίγουρη τι ισχύει για τα δικά της παιδιά",
+        "specific": "ένα απόσπασμα που έχει μπροστά της και το επικολλά, με ημερομηνίες, μια εξαίρεση για μια τάξη και ένα σημείο παραλαβής",
+        "task": "factual: απαντήσεις με βάση κείμενο που επικολλά",
+        "topic": "σχολική ανακοίνωση για προσωρινή αλλαγή ωραρίου και σημείου παραλαβής"
+      },
+      "source_family": "dvi:DVI004",
+      "split": "development",
+      "training_eligible": false,
+      "user_state": {
+        "disclosed_preferences": [
+          "Η απάντηση να βασιστεί στην επικολλημένη ανακοίνωση."
+        ],
+        "expertise": "novice",
+        "goal": "Να μάθει τις ώρες αποχώρησης των δύο παιδιών της τη συγκεκριμένη Πέμπτη και, σε επόμενο μήνυμα, να επιβεβαιώσει το σημείο παραλαβής χωρίς να επικολλήσει ξανά την ανακοίνωση.",
+        "helping_ability": "restate_only",
+        "helping_ability_note": "Busy parent: can say which child is in which class and ask again, but will not analyse the notice herself.",
+        "known_facts": [
+          "Το ένα παιδί είναι στο Β2 και το άλλο στο Δ1.",
+          "Η Πέμπτη 24 Σεπτεμβρίου βρίσκεται μέσα στο προσωρινό διάστημα της ανακοίνωσης.",
+          "Η μητέρα σκοπεύει αργότερα να ρωτήσει «Από πού πρέπει να τα παραλάβω εκείνη την ημέρα;» χωρίς να επαναλάβει την ανακοίνωση.",
+          "Μπορεί να επαναλάβει τα τμήματα των παιδιών αν της ζητηθούν, αλλά δεν θα αναλύσει μόνη της την εξαίρεση."
+        ],
+        "misconception": "Υποψιάζεται ότι ίσως και τα δύο παιδιά σχολούν την ίδια ώρα, παρότι η ανακοίνωση προβλέπει εξαίρεση για το Δ1.",
+        "patience": "medium",
+        "private_preferences": [
+          {
+            "id": "P1",
+            "reveal_when": "Θα το ζητήσει αν η πρώτη απάντηση είναι πυκνή ή δυσκολεύεται να ξεχωρίσει τις δύο ώρες.",
+            "text": "Θα τη βοηθούσε να εμφανίζεται κάθε παιδί σε ξεχωριστή σύντομη γραμμή."
+          }
+        ]
+      },
+      "user_view_extras": {}
+    }
+  ]
+}

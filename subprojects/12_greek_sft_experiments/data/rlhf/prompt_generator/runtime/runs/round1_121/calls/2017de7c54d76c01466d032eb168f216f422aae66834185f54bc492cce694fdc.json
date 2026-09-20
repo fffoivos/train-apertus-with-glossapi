@@ -1,0 +1,27 @@
+{
+  "key": "2017de7c54d76c01466d032eb168f216f422aae66834185f54bc492cce694fdc",
+  "stage": "review",
+  "attempt": 1,
+  "ids": [
+    "S0001"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 12.71,
+  "prompt_sha256": "d4569d39d24446dfa9aca5bfe0f114fa462168884ce9f3dd931cde84a72cd6e1",
+  "response": {
+    "items": [
+      {
+        "id": "S0001",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "en",
+        "observed_register": "standard",
+        "observed_attitude": "frustrated",
+        "rationale": "The request directly asks for the specified constrained extraction: two numbered, one-sentence items containing the required facts, followed by the exact supplied instruction. Every answer-bearing fact is present in the appended fictional notice, the formatting constraints are clear and compatible, the terse frustrated tone is natural, and no hidden reference data, rubric language, or answer beyond the provided source is leaked."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:51:48.582089+00:00"
+}

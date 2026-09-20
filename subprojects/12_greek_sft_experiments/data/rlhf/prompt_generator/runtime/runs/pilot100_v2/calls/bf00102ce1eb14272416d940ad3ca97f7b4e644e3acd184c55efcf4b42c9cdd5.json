@@ -1,0 +1,21 @@
+{
+  "key": "bf00102ce1eb14272416d940ad3ca97f7b4e644e3acd184c55efcf4b42c9cdd5",
+  "stage": "generate",
+  "attempt": 0,
+  "ids": [
+    "S0010"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 10.22,
+  "prompt_sha256": "5bf1c4c6589972d3af5d696c6d1a643b4608b61eda439420ce17f045213628cf",
+  "response": {
+    "items": [
+      {
+        "id": "S0010",
+        "request": "Réécrivez le brouillon d’e-mail ci-dessous dans un français formel, clair et concis. Veillez bien à conserver exactement toutes les dates, heures, indications de prix et de capacité, ainsi que la condition de réservation, tout en supprimant les répétitions."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:28:14.018501+00:00"
+}

@@ -1,0 +1,18 @@
+{
+  "changed_pointer_files": {
+    "docs/RLHF_COORDINATION/CURRENT_VERSIONS.md": {
+      "after": "5dff4707660952b798446d239537a4eed0c4433dbfb6ab8572339b656bf6424d",
+      "before": "455ac55a3bbd4ae3b0629d47ec07c7423d65c3108500be411caea6cf1e35942e",
+      "rows_after": null,
+      "rows_before": null
+    }
+  },
+  "checked_utc": "2026-09-17T12:14:45.035711+00:00",
+  "conclusion": "development rows are absent from every experiment pool file; pointer files that changed were changed by the orchestrator (prompt generation track), not by this workstream",
+  "development_ids_or_paths_found_in_experiment_files": {
+    "data/rlhf/dialogue_quality_depth/runtime/measurement/preferences.jsonl": [],
+    "data/rlhf/pool/inventory.jsonl": [],
+    "data/rlhf/pool/round1_all.jsonl": [],
+    "data/rlhf/pool/round2_all.jsonl": []
+  }
+}

@@ -1,0 +1,377 @@
+{
+  "actual_counts": {
+    "attitude": {
+      "cooperative": 6
+    },
+    "difficulty": {
+      "compositional": 6
+    },
+    "interaction": {
+      "constraint_retention": 1,
+      "followup": 2,
+      "revision": 2,
+      "uncertainty": 1
+    },
+    "language": {
+      "el": 4,
+      "en": 2
+    },
+    "register": {
+      "standard": 6
+    },
+    "task": {
+      "everyday": 2,
+      "factual": 1,
+      "instruction": 2,
+      "math": 1
+    }
+  },
+  "annotation_prompt_sha256": "523b8fb4bcab21cc3d3ec49157abbf0a3c3187f96c7a28f102aeab3238371736",
+  "calibration_review": {
+    "boundary_set_stable": true,
+    "change_share": 0.06666666666666667,
+    "effective_boundary_ids": [
+      "SM001:a2",
+      "SM001:a3",
+      "SM002:a2",
+      "SM002:a3",
+      "SM003:a1",
+      "SM003:a2",
+      "SM003:a3",
+      "SM004:a1",
+      "SM004:a2",
+      "SM004:a3",
+      "SM005:a1",
+      "SM005:a2"
+    ],
+    "mandatory_boundaries": 12,
+    "required": 15,
+    "reviewed": 15,
+    "substantive_severity_changes": 1
+  },
+  "call_ledger": {
+    "calls": [
+      {
+        "count": 6,
+        "phase": "smoke",
+        "provider": "sol",
+        "status": "complete"
+      },
+      {
+        "count": 1,
+        "phase": "preflight",
+        "provider": "target",
+        "status": "complete"
+      },
+      {
+        "count": 15,
+        "phase": "raw_rollout",
+        "provider": "target",
+        "status": "complete"
+      }
+    ],
+    "sol_reserved_attempts": 6
+  },
+  "caveats": [
+    "No-error means no serious error observed within this trajectory's ending.",
+    "Cells with fewer than five trajectories are descriptive only.",
+    "Correlated turns are not treated as independent statistical units."
+  ],
+  "context_length_bins": {
+    "0-2k": {
+      "descriptive_only": false,
+      "quality": {
+        "good": 4,
+        "minor": 5,
+        "serious": 6
+      },
+      "trajectories": 6,
+      "turns": 15
+    },
+    "2k-4k": {
+      "descriptive_only": true,
+      "quality": {},
+      "trajectories": 0,
+      "turns": 0
+    },
+    "4k+": {
+      "descriptive_only": true,
+      "quality": {},
+      "trajectories": 0,
+      "turns": 0
+    }
+  },
+  "created_utc": "2026-09-16T17:05:54.824790+00:00",
+  "ending_reasons": {
+    "completed": 2,
+    "horizon": 4
+  },
+  "first_serious_distribution": {
+    "1": 3,
+    "no_observed_error": 3
+  },
+  "gpu_ledger": {
+    "active": [],
+    "completed_sessions": 3,
+    "spent_eur": 0.865101212199861
+  },
+  "new_failure_risk": {
+    "1": {
+      "at_risk": 6,
+      "new_serious": 3,
+      "risk": 0.5
+    },
+    "2": {
+      "at_risk": 2,
+      "new_serious": 0,
+      "risk": 0.0
+    },
+    "3": {
+      "at_risk": 2,
+      "new_serious": 0,
+      "risk": 0.0
+    },
+    "4": {
+      "at_risk": 0,
+      "new_serious": 0,
+      "risk": null
+    },
+    "5": {
+      "at_risk": 0,
+      "new_serious": 0,
+      "risk": null
+    },
+    "6": {
+      "at_risk": 0,
+      "new_serious": 0,
+      "risk": null
+    },
+    "7": {
+      "at_risk": 0,
+      "new_serious": 0,
+      "risk": null
+    },
+    "8": {
+      "at_risk": 0,
+      "new_serious": 0,
+      "risk": null
+    }
+  },
+  "no_failure_endings": {
+    "natural_completion": 1,
+    "observed_censored": 2
+  },
+  "observed_turns": 15,
+  "planned_counts": {},
+  "quality_by_depth": {
+    "1": {
+      "denominator_reached": 6,
+      "quality": {
+        "good": 1,
+        "minor": 2,
+        "serious": 3
+      }
+    },
+    "2": {
+      "denominator_reached": 5,
+      "quality": {
+        "good": 1,
+        "minor": 2,
+        "serious": 2
+      }
+    },
+    "3": {
+      "denominator_reached": 4,
+      "quality": {
+        "good": 2,
+        "minor": 1,
+        "serious": 1
+      }
+    },
+    "4": {
+      "denominator_reached": 0,
+      "quality": {}
+    },
+    "5": {
+      "denominator_reached": 0,
+      "quality": {}
+    },
+    "6": {
+      "denominator_reached": 0,
+      "quality": {}
+    },
+    "7": {
+      "denominator_reached": 0,
+      "quality": {}
+    },
+    "8": {
+      "denominator_reached": 0,
+      "quality": {}
+    }
+  },
+  "recovery_summary": {
+    "mean_delay": 1.5,
+    "recovery_delays": [
+      2,
+      1
+    ],
+    "repeated_serious_errors": 3,
+    "successful_repairs": 2,
+    "trajectories_with_opportunity": 3
+  },
+  "stage": "smoke",
+  "statistical_unit": "trajectory",
+  "trajectory_bootstrap": {
+    "draws": 200,
+    "resampling_unit": "trajectory",
+    "serious_rate_95pct": {
+      "1": [
+        0.16666666666666666,
+        0.8333333333333334
+      ],
+      "2": [
+        0.0,
+        0.8
+      ],
+      "3": [
+        0.0,
+        0.75
+      ]
+    }
+  },
+  "trajectory_count": 6,
+  "trajectory_state": {
+    "SM001": {
+      "first_serious_turn": null,
+      "no_failure_kind": "observed_censored",
+      "no_failure_observed": true,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "SM002": {
+      "first_serious_turn": null,
+      "no_failure_kind": "observed_censored",
+      "no_failure_observed": true,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "SM003": {
+      "first_serious_turn": 1,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [
+        2,
+        3
+      ],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [
+        2,
+        3
+      ],
+      "unjudgeable_turns": []
+    },
+    "SM004": {
+      "first_serious_turn": 1,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 2,
+      "recovery_opportunity_turns": [
+        2,
+        3
+      ],
+      "recovery_success_turn": 3,
+      "repeated_serious_turns": [
+        2
+      ],
+      "unjudgeable_turns": []
+    },
+    "SM005": {
+      "first_serious_turn": 1,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 1,
+      "recovery_opportunity_turns": [
+        2
+      ],
+      "recovery_success_turn": 2,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "SM006": {
+      "first_serious_turn": null,
+      "no_failure_kind": "natural_completion",
+      "no_failure_observed": true,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    }
+  },
+  "uncertain_trajectories": 0,
+  "user_policy_sha256": "c58372b0c8a2bc79b57cf98a5278b0e23fdd056404f608ba55cc66d218dea6ba",
+  "version": "dialogue-quality-depth-v1",
+  "views": {
+    "language": {
+      "el": {
+        "descriptive_only": true,
+        "quality": {
+          "good": 2,
+          "minor": 5,
+          "serious": 5
+        },
+        "trajectories": 4
+      },
+      "en": {
+        "descriptive_only": true,
+        "quality": {
+          "good": 2,
+          "serious": 1
+        },
+        "trajectories": 2
+      }
+    },
+    "task": {
+      "everyday": {
+        "descriptive_only": true,
+        "quality": {
+          "good": 2,
+          "minor": 2,
+          "serious": 1
+        },
+        "trajectories": 2
+      },
+      "factual": {
+        "descriptive_only": true,
+        "quality": {
+          "good": 1
+        },
+        "trajectories": 1
+      },
+      "instruction": {
+        "descriptive_only": true,
+        "quality": {
+          "good": 1,
+          "minor": 2,
+          "serious": 3
+        },
+        "trajectories": 2
+      },
+      "math": {
+        "descriptive_only": true,
+        "quality": {
+          "minor": 1,
+          "serious": 2
+        },
+        "trajectories": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+ "per_forum": 50,
+ "max_words": 0,
+ "seed": 916,
+ "stats": {
+  "astrovox": {
+   "gated": 150,
+   "kind_request": 109,
+   "accepted": 112,
+   "kind_advertisement": 3,
+   "kind_social": 3,
+   "rejected": 32,
+   "false_premise": 7,
+   "kind_declaration_or_announcement": 3,
+   "selected": 50
+  },
+  "e_steki_general": {
+   "gated": 150,
+   "kind_social": 8,
+   "false_premise": 11,
+   "accepted": 123,
+   "kind_request": 115,
+   "kind_declaration_or_announcement": 12,
+   "rejected": 15,
+   "selected": 50
+  },
+  "e_steki_history_philosophy": {
+   "gated": 134,
+   "kind_request": 94,
+   "accepted": 111,
+   "kind_social": 17,
+   "false_premise": 17,
+   "rejected": 15,
+   "kind_declaration_or_announcement": 8,
+   "selected": 50
+  },
+  "lexilogia": {
+   "gated": 150,
+   "rejected": 20,
+   "kind_request": 126,
+   "accepted": 128,
+   "kind_social": 2,
+   "false_premise": 4,
+   "kind_advertisement": 1,
+   "kind_declaration_or_announcement": 1,
+   "selected": 50
+  },
+  "mathematica": {
+   "gated": 150,
+   "kind_request": 125,
+   "accepted": 127,
+   "false_premise": 12,
+   "rejected": 20,
+   "kind_social": 2,
+   "kind_advertisement": 1,
+   "kind_declaration_or_announcement": 2,
+   "selected": 50
+  },
+  "michanikos_private_questions": {
+   "gated": 150,
+   "kind_request": 140,
+   "accepted": 141,
+   "false_premise": 7,
+   "rejected": 9,
+   "kind_social": 1,
+   "selected": 50
+  },
+  "phorum_general": {
+   "gated": 150,
+   "rejected": 29,
+   "kind_request": 91,
+   "false_premise": 22,
+   "accepted": 104,
+   "kind_social": 13,
+   "kind_declaration_or_announcement": 17,
+   "selected": 50
+  },
+  "phorum_linguistics": {
+   "gated": 144,
+   "kind_request": 99,
+   "accepted": 113,
+   "rejected": 13,
+   "kind_declaration_or_announcement": 18,
+   "false_premise": 32,
+   "kind_social": 14,
+   "selected": 50
+  },
+  "taxheaven_forum": {
+   "gated": 150,
+   "kind_request": 116,
+   "accepted": 116,
+   "false_premise": 4,
+   "rejected": 33,
+   "kind_advertisement": 1,
+   "selected": 50
+  },
+  "thelab": {
+   "gated": 150,
+   "kind_request": 115,
+   "accepted": 117,
+   "rejected": 32,
+   "false_premise": 11,
+   "kind_declaration_or_announcement": 1,
+   "kind_social": 2,
+   "selected": 50
+  },
+  "translatum": {
+   "gated": 150,
+   "kind_request": 108,
+   "accepted": 119,
+   "rejected": 20,
+   "false_premise": 4,
+   "kind_social": 11,
+   "kind_declaration_or_announcement": 11,
+   "selected": 50
+  },
+  "wordreference_greek": {
+   "gated": 150,
+   "kind_request": 138,
+   "accepted": 138,
+   "false_premise": 6,
+   "rejected": 9,
+   "kind_declaration_or_announcement": 3,
+   "selected": 50
+  },
+  "myphone": {
+   "gated": 150,
+   "kind_request": 107,
+   "accepted": 115,
+   "kind_social": 8,
+   "kind_advertisement": 3,
+   "rejected": 23,
+   "kind_declaration_or_announcement": 9,
+   "false_premise": 3,
+   "selected": 50
+  }
+ }
+}

@@ -1,0 +1,93 @@
+{
+  "key": "40e0831622b07e160c261ea3c742dbb53a672247940c9f497e1a8f94cb2e2245",
+  "stage": "review",
+  "attempt": 0,
+  "ids": [
+    "S0100",
+    "S0103",
+    "S0104",
+    "S0107",
+    "S0108",
+    "S0112",
+    "S0115"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 31.13,
+  "prompt_sha256": "19c62de541b9a7f019b1ac8bf210ed0aa34a4ca40e2cf2d929f8534026d0812e",
+  "response": {
+    "items": [
+      {
+        "id": "S0100",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "en",
+        "observed_register": "standard",
+        "observed_attitude": "skeptical",
+        "rationale": "The request directly asks for the retrieval call, the evidential limits of its returned fields, and the required statement that the tool has no booking or payment side effects. The fictional schema and record make the task answerable without leaking hidden evaluation material."
+      },
+      {
+        "id": "S0103",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "factual",
+        "observed_language": "en",
+        "observed_register": "standard",
+        "observed_attitude": "frustrated",
+        "rationale": "The request clearly limits the answer to Magnesium’s atomic number. It is answerable, and neither the request nor the appended source reveals the answer."
+      },
+      {
+        "id": "S0104",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "en",
+        "observed_register": "informal",
+        "observed_attitude": "cooperative",
+        "rationale": "The request correctly requires feasibility checks for seats, travel time, and total budget, followed by minimum cost and the specified tie-breaker. It also appropriately requests explanations for rejected options."
+      },
+      {
+        "id": "S0107",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "en",
+        "observed_register": "formal",
+        "observed_attitude": "skeptical",
+        "rationale": "The primary operation is an English-to-Greek translation, with preservation constraints matching the specification. The notice supplies all content needed, and the caution against assumptions naturally supports the skeptical attitude."
+      },
+      {
+        "id": "S0108",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "en",
+        "observed_register": "informal",
+        "observed_attitude": "cooperative",
+        "rationale": "The request precisely specifies a two-sentence rewrite, preservation of every number and the participant instruction, and omission of the coordinator’s name. These constraints are compatible and fully answerable from the notice."
+      },
+      {
+        "id": "S0112",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "en",
+        "observed_register": "informal",
+        "observed_attitude": "cooperative",
+        "rationale": "The request directly specifies the numbered format, ordering, sentence-level content, exact final instruction, and absence of a preamble. The supplied notice contains every required fact."
+      },
+      {
+        "id": "S0115",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "en",
+        "observed_register": "informal",
+        "observed_attitude": "cooperative",
+        "rationale": "The requested operation is a concise email edit that removes repetition while preserving the supplied date, time, price, place count, and reply-based reservation condition. No unsupported fact or hidden answer is introduced."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:52:42.180331+00:00"
+}

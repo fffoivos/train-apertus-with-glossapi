@@ -1,0 +1,95 @@
+{
+ "per_forum": 50,
+ "max_words": 120,
+ "seed": 916,
+ "stats": {
+  "astrovox": {
+   "gated": 150,
+   "accepted": 107,
+   "rejected": 43,
+   "selected": 50
+  },
+  "e_steki_general": {
+   "gated": 150,
+   "rejected": 33,
+   "accepted": 113,
+   "too_long": 4,
+   "selected": 50
+  },
+  "e_steki_history_philosophy": {
+   "gated": 134,
+   "accepted": 100,
+   "rejected": 32,
+   "too_long": 2,
+   "selected": 50
+  },
+  "lexilogia": {
+   "gated": 150,
+   "rejected": 24,
+   "accepted": 125,
+   "too_long": 1,
+   "selected": 50
+  },
+  "mathematica": {
+   "gated": 150,
+   "accepted": 122,
+   "rejected": 26,
+   "too_long": 2,
+   "selected": 50
+  },
+  "michanikos_private_questions": {
+   "gated": 150,
+   "accepted": 127,
+   "too_long": 9,
+   "rejected": 14,
+   "selected": 50
+  },
+  "phorum_general": {
+   "gated": 150,
+   "rejected": 58,
+   "accepted": 91,
+   "too_long": 1,
+   "selected": 50
+  },
+  "phorum_linguistics": {
+   "gated": 144,
+   "accepted": 100,
+   "rejected": 43,
+   "too_long": 1,
+   "selected": 50
+  },
+  "taxheaven_forum": {
+   "gated": 150,
+   "accepted": 113,
+   "rejected": 35,
+   "too_long": 2,
+   "selected": 50
+  },
+  "thelab": {
+   "gated": 150,
+   "accepted": 107,
+   "rejected": 38,
+   "too_long": 5,
+   "selected": 50
+  },
+  "translatum": {
+   "gated": 150,
+   "accepted": 105,
+   "rejected": 44,
+   "too_long": 1,
+   "selected": 50
+  },
+  "wordreference_greek": {
+   "gated": 150,
+   "accepted": 133,
+   "rejected": 17,
+   "selected": 50
+  },
+  "myphone": {
+   "gated": 150,
+   "accepted": 117,
+   "rejected": 33,
+   "selected": 50
+  }
+ }
+}

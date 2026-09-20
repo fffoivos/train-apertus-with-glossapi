@@ -1,0 +1,38 @@
+{
+  "key": "edc78c77eb617e6a4dfb64733a7bf5fd0a69b8fe3ee4fcb95ba20108e474776d",
+  "stage": "review",
+  "attempt": 0,
+  "ids": [
+    "S0025",
+    "S0101"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 17.07,
+  "prompt_sha256": "440f92b12d37f3105d01bcb214df45c9ba972bddf9b866cbe444480b3e171b31",
+  "response": {
+    "items": [
+      {
+        "id": "S0025",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "Italian",
+        "observed_register": "standard",
+        "observed_attitude": "skeptical",
+        "rationale": "La richiesta è diretta, pienamente rispondibile dalla fonte e rispetta tutti i vincoli di struttura: risposta numerata, una frase per ciascuno dei primi due punti, nessun preambolo e istruzione finale esatta. Non rivela dati privati né la risposta attesa oltre al contenuto sorgente necessario."
+      },
+      {
+        "id": "S0101",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "Italian",
+        "observed_register": "formal",
+        "observed_attitude": "cooperative",
+        "rationale": "La richiesta corrisponde all’operazione specificata: selezionare il percorso praticabile meno costoso verificando posti, durata e budget, con spareggio sulla durata. La clausola «se pertinente» evita di presupporre che le opzioni scartate siano necessariamente impraticabili; la fonte contiene tutti i dati necessari e non trapela la soluzione privata."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:53:43.606480+00:00"
+}

@@ -1,0 +1,9 @@
+{
+  "artifacts": {
+    "forecast.json": {
+      "created_utc": "2026-09-18T10:37:36.449350+00:00",
+      "frozen": true,
+      "sha256": "4d13563e683d38c53abb604299e09248203a400866a9df32181bc630dec53355"
+    }
+  }
+}

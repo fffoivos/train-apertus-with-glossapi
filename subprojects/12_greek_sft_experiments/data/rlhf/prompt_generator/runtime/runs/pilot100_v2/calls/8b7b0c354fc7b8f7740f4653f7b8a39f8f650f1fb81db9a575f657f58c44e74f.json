@@ -1,0 +1,21 @@
+{
+  "key": "8b7b0c354fc7b8f7740f4653f7b8a39f8f650f1fb81db9a575f657f58c44e74f",
+  "stage": "generate",
+  "attempt": 0,
+  "ids": [
+    "S0025"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 13.13,
+  "prompt_sha256": "9a9c8eb3ee87338bb336a0abd548deb51dbf05cbd638c7e8a0793b0368d5e99f",
+  "response": {
+    "items": [
+      {
+        "id": "S0025",
+        "request": "Com base no aviso comunitário fictício anexado, verifique cuidadosamente a disponibilidade: se o número de vagas abertas for positivo, informe apenas a quantidade exata de vagas e a taxa por participante; caso contrário, diga apenas que o evento está lotado. Não apresente as duas alternativas."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:29:14.669546+00:00"
+}

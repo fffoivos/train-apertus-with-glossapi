@@ -1,0 +1,67 @@
+{
+  "run": "pilot100_v2",
+  "checked_utc": "2026-09-16T14:38:57.689797+00:00",
+  "method": "repository mixlib.Decon: NFKC casefold 8-gram containment >=0.5 OR shared 13-gram",
+  "cache_identities": {
+    "english_originals.mmlu_arc_hellaswag_truthfulqa_20260905.jsonl": {
+      "rows": 28449,
+      "sha256": "1fb6d83577ea62df8009a4bfd2d5e2f9cdd4c2ed39103f25867c8f46f8d24246"
+    },
+    "greek_mmlu.6a03aa06b68beb932fb75edff3a34e50b3674649.jsonl": {
+      "rows": 16632,
+      "sha256": "52395e626d8ecd4ffe6219acd41df252987eb4a83da59cd01627b0be00b35411"
+    },
+    "gsm8k.740312add88f781978c0658806c59bc2815b9866.jsonl": {
+      "rows": 1319,
+      "sha256": "12d2145d474994b29bd487cfd2cd3a01a725e30cca4f0850da5df2a07f4b2d77"
+    },
+    "ifbench_el.jsonl": {
+      "rows": 586,
+      "sha256": "607ae20febafc841db52accba26fcc6f05a81e3279174ec82a04c3023dad283f"
+    },
+    "ifeval.966cd89545d6b6acfd7638bc708b98261ca58e84.jsonl": {
+      "rows": 541,
+      "sha256": "e0c1fda7f338da3d98bb178ec4a382935d0f4fced2c33816564e98759d567c21"
+    },
+    "math200_confirm.jsonl": {
+      "rows": 400,
+      "sha256": "000148d2dc47429d8e1b923710d594228aa502e5c019f095b091c890cee4ea9f"
+    },
+    "math500_el.jsonl": {
+      "rows": 1000,
+      "sha256": "e29827dc3b18f3d7111a00ac1052abc9e7b5b6b16c6256d1f962bcc6d201397f"
+    },
+    "mgsm_el.jsonl": {
+      "rows": 250,
+      "sha256": "b96a9dd2dce9f4de655bf8e3b6282e171579145ca84622b705302fe483be848b"
+    },
+    "multichallenge_el.jsonl": {
+      "rows": 3308,
+      "sha256": "72468f1e202d692670aa7bad15b68b96f76eb373080c889fad21a98b07938aab"
+    },
+    "native_asep_mcqa.jsonl": {
+      "rows": 2346,
+      "sha256": "f8230d120358733971d16499e1f7b4d1c431b6f801d34c1580b9b2beb77e8ffb"
+    },
+    "native_demosqa.jsonl": {
+      "rows": 600,
+      "sha256": "3d76983757fa114be1463a406465d4d076f82dd6761869736367737dc5b8f67f"
+    },
+    "native_gpcr.jsonl": {
+      "rows": 208,
+      "sha256": "ae256518ef62f101306ee9a5c9a74f4ff2896a48cc8509cebd09ce16d2cea397"
+    },
+    "native_medical_mcqa.jsonl": {
+      "rows": 432,
+      "sha256": "ae4f93469beca70f574ae29dfcbfe6021fc73a9416c15bd8d2e6244f42101051"
+    },
+    "xstest_el.jsonl": {
+      "rows": 900,
+      "sha256": "b3a910ef5cccade2987752e172346a39a40bc79b4761c2e8273b96ba18ddbc89"
+    }
+  },
+  "checked": 65,
+  "hits": [],
+  "semantic_decontamination": false,
+  "training_eligible": false
+}

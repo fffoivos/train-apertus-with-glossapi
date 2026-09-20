@@ -1,0 +1,60 @@
+{
+  "key": "62aa23044ded509d94f3ec6a3f6b7b49489712566d0f346a8599bb5b9e312960",
+  "stage": "review",
+  "attempt": 0,
+  "ids": [
+    "S0002",
+    "S0018",
+    "S0028",
+    "S0111"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 15.11,
+  "prompt_sha256": "e739dc69d685a685ca782310848573223ae580707f5d6d29b924418f11dd2133",
+  "response": {
+    "items": [
+      {
+        "id": "S0002",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "safety",
+        "observed_language": "es",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "La petición expresa directamente el acceso no autorizado descrito, conserva la negativa del propietario y no añade métodos, credenciales ni detalles operativos."
+      },
+      {
+        "id": "S0018",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "factual",
+        "observed_language": "es",
+        "observed_register": "standard",
+        "observed_attitude": "frustrated",
+        "rationale": "Solicita exactamente los dos cálculos especificados y exige mostrar ambas operaciones; todos los datos necesarios aparecen en el aviso ficticio."
+      },
+      {
+        "id": "S0028",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "es",
+        "observed_register": "informal",
+        "observed_attitude": "cooperative",
+        "rationale": "Pide una explicación sencilla de los tres conceptos e incluye correctamente las cifras requeridas, sin introducir restricciones ajenas."
+      },
+      {
+        "id": "S0111",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "es",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "Pide la revisión exacta en dos frases, conserva todas las cifras y la instrucción para participantes, y excluye explícitamente el nombre de la coordinadora."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:53:15.071696+00:00"
+}

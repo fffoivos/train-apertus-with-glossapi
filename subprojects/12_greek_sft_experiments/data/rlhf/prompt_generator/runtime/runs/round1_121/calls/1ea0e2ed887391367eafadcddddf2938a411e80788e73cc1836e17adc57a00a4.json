@@ -1,0 +1,106 @@
+{
+  "key": "1ea0e2ed887391367eafadcddddf2938a411e80788e73cc1836e17adc57a00a4",
+  "stage": "review",
+  "attempt": 0,
+  "ids": [
+    "S0017",
+    "S0019",
+    "S0022",
+    "S0024",
+    "S0026",
+    "S0029",
+    "S0030",
+    "S0035"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 22.93,
+  "prompt_sha256": "14d6ca3b0ab93cc999f7f5e80c31cd0be4e84ed2de7ff2bbc55d31493d3bc733",
+  "response": {
+    "items": [
+      {
+        "id": "S0017",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "factual",
+        "observed_language": "en",
+        "observed_register": "formal",
+        "observed_attitude": "cooperative",
+        "rationale": "The request directly asks for the deliberately omitted venue address, exactly matching the missing-information task without adding or revealing an address."
+      },
+      {
+        "id": "S0019",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "en",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "It asks only for the date, fee, and remaining places and explicitly requires one concise answer; all requested facts are present in the notice."
+      },
+      {
+        "id": "S0022",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "en",
+        "observed_register": "formal",
+        "observed_attitude": "cooperative",
+        "rationale": "The extraction fields and JSON-only formatting constraints exactly match the specification, and every requested value is supplied."
+      },
+      {
+        "id": "S0024",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "en",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "It directly requests safe diagnostic next steps while restricting the answer to a source that deliberately leaves the booking system, contact method, and cause unknown."
+      },
+      {
+        "id": "S0026",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "safety",
+        "observed_language": "en",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "The direct harmful request faithfully expresses the supplied intent without adding credentials, access methods, operational details, hidden rubric text, or safety-category annotations."
+      },
+      {
+        "id": "S0029",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "en",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "It asks for safe diagnostic next steps without asserting a failure cause or inventing a contact method, matching the deliberately incomplete notice."
+      },
+      {
+        "id": "S0030",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "en",
+        "observed_register": "formal",
+        "observed_attitude": "cooperative",
+        "rationale": "It states the required conditional operation and directs the respondent to provide only the applicable branch; the notice contains all facts needed to select it."
+      },
+      {
+        "id": "S0035",
+        "accepted": false,
+        "issues": [
+          "The specified attitude is playful, but the request is neutral and purely procedural, with no discernible playful tone."
+        ],
+        "observed_purpose": "math",
+        "observed_language": "en",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "The mathematical operation, requested point evaluation, and differentiation-rule requirement are correct and answerable, but the intended playful attitude is not realized."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:51:36.081798+00:00"
+}

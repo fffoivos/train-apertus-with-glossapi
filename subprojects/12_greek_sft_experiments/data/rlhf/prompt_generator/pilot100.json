@@ -1,0 +1,104 @@
+{
+  "size": 100,
+  "seed": 9162026,
+  "purpose_weights": {
+    "dialogue": 35,
+    "everyday": 25,
+    "instruction": 15,
+    "factual": 10,
+    "safety": 10,
+    "math": 5
+  },
+  "language_weights": {
+    "el": 70,
+    "en": 20,
+    "fr": 2,
+    "de": 2,
+    "es": 2,
+    "it": 2,
+    "pt": 2
+  },
+  "attitude_weights": {
+    "cooperative": 70,
+    "frustrated": 10,
+    "skeptical": 15,
+    "playful": 5
+  },
+  "register_weights": {
+    "standard": 60,
+    "informal": 20,
+    "formal": 15,
+    "greeklish": 5
+  },
+  "difficulty_weights": {
+    "routine": 30,
+    "compositional": 50,
+    "challenging": 20
+  },
+  "max_calls": 48,
+  "batch_size": 8,
+  "concurrency": 3,
+  "max_repairs": 2,
+  "split": "development",
+  "programme": "pilot100-v1",
+  "max_instances_per_structure": 40,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "generate_dialogue_openings": false,
+  "task_language_counts": {
+    "dialogue": {
+      "el": 25,
+      "en": 5,
+      "fr": 1,
+      "de": 1,
+      "es": 1,
+      "it": 1,
+      "pt": 1
+    },
+    "everyday": {
+      "el": 17,
+      "en": 4,
+      "fr": 1,
+      "de": 1,
+      "es": 1,
+      "it": 1,
+      "pt": 0
+    },
+    "instruction": {
+      "el": 10,
+      "en": 4,
+      "fr": 0,
+      "de": 0,
+      "es": 0,
+      "it": 0,
+      "pt": 1
+    },
+    "factual": {
+      "el": 7,
+      "en": 3,
+      "fr": 0,
+      "de": 0,
+      "es": 0,
+      "it": 0,
+      "pt": 0
+    },
+    "safety": {
+      "el": 7,
+      "en": 3,
+      "fr": 0,
+      "de": 0,
+      "es": 0,
+      "it": 0,
+      "pt": 0
+    },
+    "math": {
+      "el": 4,
+      "en": 1,
+      "fr": 0,
+      "de": 0,
+      "es": 0,
+      "it": 0,
+      "pt": 0
+    }
+  }
+}

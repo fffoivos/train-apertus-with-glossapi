@@ -1,0 +1,17 @@
+{
+  "by_stage": {
+    "branch": 1.2791745258075,
+    "collect": 0.4363547051533333
+  },
+  "operational_stop_eur": 9.0,
+  "pilot_active": [],
+  "pilot_sessions": 8,
+  "pilot_spent_eur": 1.9483674086334721,
+  "programme_spent_eur": 3.6638966395943053,
+  "remaining_before_operational_stop_eur": 5.336103360405694,
+  "total_cap_eur": 10.0,
+  "updated_utc": "2026-09-18T11:03:13.067548+00:00",
+  "v2_active": [],
+  "v2_sessions": 6,
+  "v2_spent_eur": 1.7155292309608332
+}

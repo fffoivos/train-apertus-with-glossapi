@@ -1,0 +1,116 @@
+{
+  "version": "prompt-generator-0.1",
+  "run_id": "round1_121",
+  "exported_utc": "2026-09-16T14:55:12.141662+00:00",
+  "config": {
+    "attitude_weights": {
+      "cooperative": 70,
+      "frustrated": 10,
+      "playful": 5,
+      "skeptical": 15
+    },
+    "batch_size": 8,
+    "concurrency": 3,
+    "difficulty_weights": {
+      "challenging": 20,
+      "compositional": 50,
+      "routine": 30
+    },
+    "effort": "high",
+    "generate_dialogue_openings": false,
+    "language_weights": {
+      "de": 5,
+      "el": 63,
+      "en": 39,
+      "es": 4,
+      "fr": 6,
+      "it": 2,
+      "pt": 2
+    },
+    "max_calls": 80,
+    "max_instances_per_structure": 40,
+    "max_repairs": 2,
+    "model": "gpt-5.6-sol",
+    "programme": "round1-single-turn-v1",
+    "purpose_weights": {
+      "dialogue": 0,
+      "everyday": 22,
+      "factual": 9,
+      "instruction": 45,
+      "math": 15,
+      "safety": 30
+    },
+    "register_weights": {
+      "formal": 15,
+      "greeklish": 5,
+      "informal": 20,
+      "standard": 60
+    },
+    "seed": 3016,
+    "size": 121,
+    "split": "train",
+    "task_language_counts": {
+      "dialogue": {
+        "de": 0,
+        "el": 0,
+        "en": 0,
+        "es": 0,
+        "fr": 0,
+        "it": 0,
+        "pt": 0
+      },
+      "everyday": {
+        "de": 2,
+        "el": 0,
+        "en": 15,
+        "es": 1,
+        "fr": 2,
+        "it": 1,
+        "pt": 1
+      },
+      "factual": {
+        "de": 1,
+        "el": 0,
+        "en": 6,
+        "es": 1,
+        "fr": 1,
+        "it": 0,
+        "pt": 0
+      },
+      "instruction": {
+        "de": 1,
+        "el": 31,
+        "en": 9,
+        "es": 1,
+        "fr": 1,
+        "it": 1,
+        "pt": 1
+      },
+      "math": {
+        "de": 0,
+        "el": 11,
+        "en": 3,
+        "es": 0,
+        "fr": 1,
+        "it": 0,
+        "pt": 0
+      },
+      "safety": {
+        "de": 1,
+        "el": 21,
+        "en": 6,
+        "es": 1,
+        "fr": 1,
+        "it": 0,
+        "pt": 0
+      }
+    }
+  },
+  "sha256": {
+    "revision_history.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "dialogue_openings.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "curator.jsonl": "c21a1c3a635dc19512e4f5ff9fbe45b1e16eff52b861dd1f7e2cad007ff261f9",
+    "model_requests.jsonl": "e0f6c3375b7c1a8001b4f29e5f09d710aaf87ac9d5491bc90a62dd7997ed9963"
+  },
+  "training_eligible": false
+}

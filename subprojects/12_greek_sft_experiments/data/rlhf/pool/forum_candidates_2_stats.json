@@ -1,0 +1,18 @@
+{
+ "seed": 916,
+ "per_forum": 150,
+ "stats": {
+  "myphone": {
+   "discussions": 23769,
+   "with_reply": 20747,
+   "candidates": 11135,
+   "taken": 150
+  },
+  "ylikonet": {
+   "discussions": 2269,
+   "with_reply": 2006,
+   "candidates": 0,
+   "taken": 0
+  }
+ }
+}

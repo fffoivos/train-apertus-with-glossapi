@@ -1,0 +1,27 @@
+{
+  "key": "024204878adb8cf5454f5d0353766b14d59f472897690fd1cbc7745a31000551",
+  "stage": "review",
+  "attempt": 2,
+  "ids": [
+    "S0025"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 9.07,
+  "prompt_sha256": "395c6e6152b684ea1ec46f57cce8c3c7d844b8bde5756b0b54031fac256e9fe9",
+  "response": {
+    "items": [
+      {
+        "id": "S0025",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "it",
+        "observed_register": "standard",
+        "observed_attitude": "skeptical",
+        "rationale": "La richiesta è diretta, naturale e pienamente rispondibile dalla fonte allegata. Specifica correttamente la struttura numerata, il limite di una frase per ciascuno dei primi due punti, l’assenza di preamboli e la riproduzione esatta dell’istruzione finale, senza introdurre vincoli estranei né rivelare dati privati o la risposta."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:54:32.152122+00:00"
+}

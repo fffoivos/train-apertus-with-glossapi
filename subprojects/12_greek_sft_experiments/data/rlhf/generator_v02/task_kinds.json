@@ -1,0 +1,42 @@
+{
+ "version": "task-kinds-v1",
+ "note": "Category quotas are drawn first, then subtypes evenly within a category (largest remainder), so category frequencies never depend on subtype counts. 'packet' = the user must paste material (a text, records, a draft); pasted material is excluded from the detail word ceilings, and packet subtypes cannot draw detail 'short' (defined as nothing pasted).",
+ "everyday": {
+  "write_or_rewrite_message": {"packet": false, "requires": "goal, recipient and relationship, facts that must appear, tone constraints"},
+  "rewrite_supplied_draft": {"packet": true, "requires": "the user's own draft text in the user's language, what is wrong with it, facts that must be kept"},
+  "plan_or_organise": {"packet": false, "requires": "goal, dates or durations, resources, at least two concrete constraints"},
+  "explain_simply": {"packet": false, "requires": "the concept or mechanism, what the user already knows, the misconception if any"},
+  "translate_or_adapt": {"packet": true, "requires": "a concrete source text, source and target language, audience or register of the target"},
+  "summarise_supplied_text": {"packet": true, "requires": "a concrete source text of 80–250 words, purpose and audience of the summary"},
+  "troubleshoot": {"packet": false, "requires": "device or system, symptom, what the user already tried, observations available"},
+  "recommend_or_compare": {"packet": false, "requires": "options or criteria, budget or limits, the user's priorities"}
+ },
+ "instruction": {
+  "strict_format": {"packet": false, "requires": "base task, 2–4 checkable format constraints with type and parameters (table columns, JSON keys, exact word or item count, forbidden word, required ending)"},
+  "edit_preserving_values": {"packet": true, "requires": "a concrete text with numbers/names/dates, the edit to make, the exact values that must survive unchanged"},
+  "conditional_answer": {"packet": true, "requires": "a concrete record or notice, an explicit if/else rule, the facts that decide the branch"},
+  "multi_constraint_composition": {"packet": false, "requires": "base writing task, 3–5 interacting checkable constraints (length, structure, inclusion/exclusion, order)"}
+ },
+ "factual": {
+  "general_knowledge": {"packet": false, "requires": "bound subject and entities, time scope, a determinate answer knowable by mid-2025"},
+  "false_premise": {"packet": false, "requires": "the mistaken belief stated as fact, the correct fact, why the premise matters to the answer"},
+  "grounded_in_supplied_text": {"packet": true, "requires": "a concrete supplied text, a question answerable only from it"},
+  "missing_information": {"packet": true, "requires": "a concrete supplied text that lacks the fact asked for, the exact gap"}
+ },
+ "safety": {
+  "benign_sensitive": {"packet": false, "requires": "concrete legitimate purpose, the sensitive vocabulary that makes it look risky, what help is appropriate"},
+  "protective": {"packet": false, "requires": "the threat or risk to the user or someone else, the protective action sought"},
+  "fiction": {"packet": false, "requires": "creative request touching a risky theme, the in-story need, what must stay non-operational"},
+  "harmful": {"packet": false, "requires": "a concrete harmful intent and requested action (serious harm, weapons, exploitation of minors, hate), plausible real-user framing; the right response declines and redirects"},
+  "ambiguous": {"packet": false, "requires": "a request whose purpose could be benign or harmful, the missing purpose, the clearly safe part"}
+ },
+ "math": {
+  "calculation": {"packet": false, "requires": "actual values and units, the quantity asked, rounding or tolerance, deliverable: result only or show the calculation"},
+  "solving": {"packet": false, "requires": "the equation, inequality, system or optimisation problem with its domain, deliverable: solution set or all optimal solutions, with or without working"},
+  "proof_and_justification": {"packet": false, "requires": "the exact claim, its assumptions, the level expected (school or university)"},
+  "construction_and_counterexamples": {"packet": false, "requires": "the conditions an object must satisfy or the claim to disprove"},
+  "explanation_and_learning": {"packet": false, "requires": "the concept or result, the learner's current understanding or misconception"},
+  "checking_and_correction": {"packet": true, "requires": "a proposed solution containing a specific error (supplied by the user as their own attempt), the original problem"},
+  "modelling": {"packet": false, "requires": "a described real situation with quantities, what must be decided or predicted, assumptions left for the solver to state"}
+ }
+}

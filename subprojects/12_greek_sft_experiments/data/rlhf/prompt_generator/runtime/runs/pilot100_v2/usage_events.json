@@ -1,0 +1,170 @@
+[
+  {
+    "threadId": "01a0aaa1-caee-7f73-8043-c2b0a8bec871",
+    "turnId": "01a0aaa1-d1ee-7f10-9cf8-b4747fac475a",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 18939,
+        "inputTokens": 18785,
+        "cachedInputTokens": 0,
+        "outputTokens": 154,
+        "reasoningOutputTokens": 51
+      },
+      "last": {
+        "totalTokens": 18939,
+        "inputTokens": 18785,
+        "cachedInputTokens": 0,
+        "outputTokens": 154,
+        "reasoningOutputTokens": 51
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aaa1-e6cf-7d90-8e44-b2a7185b9126",
+    "turnId": "01a0aaa1-ed8b-7f80-9393-71fc13a08a4e",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19330,
+        "inputTokens": 19103,
+        "cachedInputTokens": 0,
+        "outputTokens": 227,
+        "reasoningOutputTokens": 91
+      },
+      "last": {
+        "totalTokens": 19330,
+        "inputTokens": 19103,
+        "cachedInputTokens": 0,
+        "outputTokens": 227,
+        "reasoningOutputTokens": 91
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aaa7-0c8c-7491-90d8-712f813cf25b",
+    "turnId": "01a0aaa7-1344-7863-b36d-c89b873f289f",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 18936,
+        "inputTokens": 18736,
+        "cachedInputTokens": 17280,
+        "outputTokens": 200,
+        "reasoningOutputTokens": 132
+      },
+      "last": {
+        "totalTokens": 18936,
+        "inputTokens": 18736,
+        "cachedInputTokens": 17280,
+        "outputTokens": 200,
+        "reasoningOutputTokens": 132
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aaa7-0c6b-79c3-93ef-add63cb957e4",
+    "turnId": "01a0aaa7-1459-7c43-a1d8-b8bcac7c015e",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 20043,
+        "inputTokens": 19558,
+        "cachedInputTokens": 17280,
+        "outputTokens": 485,
+        "reasoningOutputTokens": 204
+      },
+      "last": {
+        "totalTokens": 20043,
+        "inputTokens": 19558,
+        "cachedInputTokens": 17280,
+        "outputTokens": 485,
+        "reasoningOutputTokens": 204
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aaa7-2a70-7750-9fd0-24e479b62277",
+    "turnId": "01a0aaa7-3122-7fb2-b5ff-fd79841d4e2e",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19313,
+        "inputTokens": 19006,
+        "cachedInputTokens": 0,
+        "outputTokens": 307,
+        "reasoningOutputTokens": 132
+      },
+      "last": {
+        "totalTokens": 19313,
+        "inputTokens": 19006,
+        "cachedInputTokens": 0,
+        "outputTokens": 307,
+        "reasoningOutputTokens": 132
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aaa7-3bf7-77a2-beac-dbf451565226",
+    "turnId": "01a0aaa7-4284-7523-a2e1-2d0b5e4cae10",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 21316,
+        "inputTokens": 20502,
+        "cachedInputTokens": 0,
+        "outputTokens": 814,
+        "reasoningOutputTokens": 409
+      },
+      "last": {
+        "totalTokens": 21316,
+        "inputTokens": 20502,
+        "cachedInputTokens": 0,
+        "outputTokens": 814,
+        "reasoningOutputTokens": 409
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aaa7-7bbc-7690-83d7-702616d6a769",
+    "turnId": "01a0aaa7-8242-7e61-9538-b30f19b9353d",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 18720,
+        "inputTokens": 18603,
+        "cachedInputTokens": 17280,
+        "outputTokens": 117,
+        "reasoningOutputTokens": 62
+      },
+      "last": {
+        "totalTokens": 18720,
+        "inputTokens": 18603,
+        "cachedInputTokens": 17280,
+        "outputTokens": 117,
+        "reasoningOutputTokens": 62
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aaa7-9f9a-7971-baf3-f387e148b467",
+    "turnId": "01a0aaa7-a621-73a0-b079-40090ec3b04e",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19009,
+        "inputTokens": 18805,
+        "cachedInputTokens": 17408,
+        "outputTokens": 204,
+        "reasoningOutputTokens": 94
+      },
+      "last": {
+        "totalTokens": 19009,
+        "inputTokens": 18805,
+        "cachedInputTokens": 17408,
+        "outputTokens": 204,
+        "reasoningOutputTokens": 94
+      },
+      "modelContextWindow": 258400
+    }
+  }
+]

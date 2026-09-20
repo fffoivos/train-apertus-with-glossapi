@@ -1,0 +1,11 @@
+{
+  "worker.py": "290ab29f45f344db0274b3de1b646a230f0cb443e3d6fe942ba2561c24682b14",
+  "test_core.py": "21fb05708bc856ada25178b9184664cf630cd71e7bdcee706d465964e845d338",
+  "core.py": "3670c6782028167e7d3a7829fe623920181e6b04b7ce30dc59d8a52a47a83aaa",
+  "api.py": "02756f1832283cdf547d79a9df1bd1ccad30b3569755e0d5411bfa3eeb94b6af",
+  "test_worker.py": "3ce3ea9637a4be966da66043a214a1b6d5a3957e00debbc4d93b7881b164a90e",
+  "sources.py": "ffc1d30cea392f39e0c46c3b83c6eb33aea50638e2ce7de6c0e2bf592e2438b6",
+  "test_sources.py": "eab745260a76e96db63db73d7e599cbf069614eb8fbd4ffe2f338400b0702f24",
+  "test_fixtures.py": "32ba584cd25d485de23f6915063c2d493380e5bca8087edfd70d4585d3d6d55f",
+  "fixtures.py": "d7f98d7f4c6d2b4d22bffb37cad4b899be2160d9d73f8f9fcd67dd86d8ae16e9"
+}

@@ -1,0 +1,218 @@
+{
+  "bounds": {
+    "D1_branch_replies_max": 64,
+    "D1_raw_replies_max": 24,
+    "D2_raw_replies_max": 36,
+    "branch_points_per_D1_conversation_max": 2,
+    "candidates_per_point": "4 judged first, up to 8"
+  },
+  "budgets": {
+    "operational_stop_eur": 4.0,
+    "prime_intellect_total_cap_eur": 5.0,
+    "reserve_eur": 1.0,
+    "sol": "no call cap (owner, 17 Sept); all calls recorded"
+  },
+  "cases": [
+    {
+      "case_id": "DVI001",
+      "kind": "ME021-like creative writing",
+      "labels": {
+        "attitude": "cooperative",
+        "detail": "short",
+        "difficulty": "compositional",
+        "interaction": "revision",
+        "register": "standard",
+        "task": "everyday"
+      },
+      "language": "el",
+      "run": "D1",
+      "source_family": "dvi:DVI001"
+    },
+    {
+      "case_id": "DVI002",
+      "kind": "constrained planning",
+      "labels": {
+        "attitude": "frustrated",
+        "detail": "medium",
+        "difficulty": "compositional",
+        "interaction": "constraint_retention",
+        "register": "informal",
+        "task": "everyday"
+      },
+      "language": "el",
+      "run": "D1",
+      "source_family": "dvi:DVI002"
+    },
+    {
+      "case_id": "DVI003",
+      "kind": "editing / format retention",
+      "labels": {
+        "attitude": "cooperative",
+        "detail": "detailed",
+        "difficulty": "compositional",
+        "interaction": "constraint_retention",
+        "register": "standard",
+        "task": "instruction"
+      },
+      "language": "en",
+      "run": "D1",
+      "source_family": "dvi:DVI003"
+    },
+    {
+      "case_id": "DVI004",
+      "kind": "grounded information",
+      "labels": {
+        "attitude": "cooperative",
+        "detail": "detailed",
+        "difficulty": "compositional",
+        "interaction": "recall",
+        "register": "standard",
+        "task": "factual"
+      },
+      "language": "el",
+      "run": "D1",
+      "source_family": "dvi:DVI004"
+    },
+    {
+      "case_id": "RGD001",
+      "kind": "writing",
+      "labels": {
+        "attitude": "cooperative",
+        "detail": "short",
+        "difficulty": "compositional",
+        "interaction": "revision",
+        "register": "standard",
+        "task": "everyday"
+      },
+      "language": "el",
+      "maths_content": false,
+      "run": "D2",
+      "source_family": "rgd:RGD001-seminar-absence-email"
+    },
+    {
+      "case_id": "RGD002",
+      "kind": "writing",
+      "labels": {
+        "attitude": "cooperative",
+        "detail": "medium",
+        "difficulty": "compositional",
+        "interaction": "revision",
+        "register": "standard",
+        "task": "everyday"
+      },
+      "language": "en",
+      "maths_content": false,
+      "run": "D2",
+      "source_family": "rgd:RGD002-seed-swap-newsletter"
+    },
+    {
+      "case_id": "RGD003",
+      "kind": "troubleshooting",
+      "labels": {
+        "attitude": "cooperative",
+        "detail": "short",
+        "difficulty": "compositional",
+        "interaction": "uncertainty",
+        "register": "standard",
+        "task": "everyday"
+      },
+      "language": "el",
+      "maths_content": false,
+      "run": "D2",
+      "source_family": "rgd:RGD003-printer-guest-network"
+    },
+    {
+      "case_id": "RGD004",
+      "kind": "troubleshooting",
+      "labels": {
+        "attitude": "cooperative",
+        "detail": "short",
+        "difficulty": "compositional",
+        "interaction": "uncertainty",
+        "register": "standard",
+        "task": "everyday"
+      },
+      "language": "en",
+      "maths_content": false,
+      "run": "D2",
+      "source_family": "rgd:RGD004-python-venv-requests"
+    },
+    {
+      "case_id": "RGD005",
+      "kind": "learning",
+      "labels": {
+        "attitude": "cooperative",
+        "detail": "short",
+        "difficulty": "compositional",
+        "interaction": "followup",
+        "register": "standard",
+        "task": "math"
+      },
+      "language": "el",
+      "maths_content": true,
+      "run": "D2",
+      "source_family": "rgd:RGD005-fraction-division-why-larger"
+    },
+    {
+      "case_id": "RGD006",
+      "kind": "learning",
+      "labels": {
+        "attitude": "cooperative",
+        "detail": "short",
+        "difficulty": "compositional",
+        "interaction": "followup",
+        "register": "standard",
+        "task": "everyday"
+      },
+      "language": "el",
+      "maths_content": false,
+      "run": "D2",
+      "source_family": "rgd:RGD006-summary-vs-paraphrase"
+    }
+  ],
+  "counts": {
+    "D1": 4,
+    "D1_languages": {
+      "el": 3,
+      "en": 1
+    },
+    "D2": 6,
+    "D2_categories": {
+      "learning": 2,
+      "troubleshooting": 2,
+      "writing": 2
+    },
+    "D2_languages": {
+      "el": 4,
+      "en": 2
+    }
+  },
+  "created_utc": "2026-09-17T11:05:28.921725+00:00",
+  "experiment_credit": 0,
+  "generator_version": "0.3-dev",
+  "max_assistant_turns": 6,
+  "model": {
+    "alias": "G4F6P1",
+    "repo": "fffoivos/greek-apertus-8b-sft-r4-full",
+    "revision": "3a557e0842b146ccb6d24427e20b08c52fb368d5",
+    "sha256": "54d445bc639b7222ad872b4d8dca5e913dbf4c4d427fbf56183e28361006e763"
+  },
+  "no_pool_import": true,
+  "no_training": true,
+  "outputs": {
+    "D1": "data/rlhf/dialogue_v2/runtime",
+    "D2": "data/rlhf/reference_guided_dialogue_demo/runtime",
+    "gpu_ledger": "data/rlhf/dialogue_v2/runtime/gpu_ledger.jsonl",
+    "review": "data/rlhf/dialogue_v2/review/"
+  },
+  "protocol_version": "dialogue-v2-dev-0.1",
+  "purpose": "development_demo",
+  "sampling": {
+    "max_tokens": 1024,
+    "n": 1,
+    "temperature": 0.8,
+    "top_p": 0.95
+  },
+  "source_family_reservation": "dvi:* and rgd:* families are development-only, reserved from formal evaluation; later variants stay on the development side",
+  "training_eligible": false
+}

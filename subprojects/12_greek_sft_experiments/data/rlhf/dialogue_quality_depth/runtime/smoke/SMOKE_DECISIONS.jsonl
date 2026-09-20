@@ -1,0 +1,15 @@
+{"annotation_id": "SM001:a1", "decision": "minor", "evidence": "Stray Υ.Γ. left; all facts preserved.", "reviewer": "Fable 5.1 (root)"}
+{"annotation_id": "SM001:a2", "decision": "minor", "evidence": "Asked to remove the Υ.Γ.; still present; facts preserved.", "reviewer": "Fable 5.1 (root)", "recovery_opportunity": true, "recovery_success": false}
+{"annotation_id": "SM001:a3", "decision": "good", "evidence": "Υ.Γ. removed, email otherwise unchanged.", "reviewer": "Fable 5.1 (root)", "recovery_opportunity": true, "recovery_success": true}
+{"annotation_id": "SM002:a1", "decision": "minor", "evidence": "Item 2 contains capacity, booked places and coordinator instead of only places and cost.", "reviewer": "Fable 5.1 (root)"}
+{"annotation_id": "SM002:a2", "decision": "minor", "evidence": "Item 2 still lists capacity and booked places after the correction.", "reviewer": "Fable 5.1 (root)", "recovery_opportunity": true, "recovery_success": false}
+{"annotation_id": "SM002:a3", "decision": "good", "evidence": "Item 2 now only 20 places and 5 euro; closing instruction verbatim.", "reviewer": "Fable 5.1 (root)", "recovery_opportunity": true, "recovery_success": true}
+{"annotation_id": "SM003:a1", "decision": "serious", "evidence": "Notice says 13 places remain; reply says the event is full. Wrong branch, task defeated.", "reviewer": "Fable 5.1 (root)"}
+{"annotation_id": "SM003:a2", "decision": "serious", "evidence": "Repeats \"full\" after an explicit correction naming the 13 places.", "reviewer": "Fable 5.1 (root)", "recovery_opportunity": true, "recovery_success": false}
+{"annotation_id": "SM003:a3", "decision": "serious", "evidence": "Third identical wrong reply; no recovery.", "reviewer": "Fable 5.1 (root)", "recovery_opportunity": true, "recovery_success": false}
+{"annotation_id": "SM004:a1", "decision": "serious", "evidence": "Solution set (-inf,0] instead of (-5,0); answer wrong in the main.", "reviewer": "Fable 5.1 (root)"}
+{"annotation_id": "SM004:a2", "decision": "serious", "evidence": "Correct reasoning about the sign between the roots but final set (-inf,0) again wrong.", "reviewer": "Fable 5.1 (root)", "recovery_opportunity": true, "recovery_success": false}
+{"annotation_id": "SM004:a3", "decision": "minor", "evidence": "Final set (-5,0) correct; the case x<-5 is argued with a wrong sign claim (x+5>0 for x<-5).", "reviewer": "Fable 5.1 (root)", "recovery_opportunity": true, "recovery_success": true}
+{"annotation_id": "SM005:a1", "decision": "serious", "evidence": "Root overrides minor: a decision-and-action summary that relabels the meeting date as the event date and changes Lena's task is materially wrong for the user.", "reviewer": "Fable 5.1 (root)"}
+{"annotation_id": "SM005:a2", "decision": "good", "evidence": "Meeting date labelled correctly, decision separate, three tasks with owners and deadlines.", "reviewer": "Fable 5.1 (root)", "recovery_opportunity": true, "recovery_success": true}
+{"annotation_id": "SM006:a1", "decision": "good", "evidence": "Correctly states the notice has no venue address; distinguishes the side-entrance instruction.", "reviewer": "Fable 5.1 (root)"}

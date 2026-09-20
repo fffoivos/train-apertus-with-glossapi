@@ -1,0 +1,213 @@
+{
+  "all_offline_gates_pass": true,
+  "created_utc": "2026-09-17T11:43:21.896324+00:00",
+  "dry_run": {
+    "decisions": 20,
+    "manual_inspection": [
+      "RGD003 user view after the network report contains the revealed SSID only as an observation; no root cause or hidden fact.",
+      "RGD004 user reported exact simulated outputs; the resolver mapped all three actions to supported checks.",
+      "RGD005 learner updates carried verbatim evidence quotes; the transfer attempt followed the grouping explanation given.",
+      "RGD001/RGD002 revealed private preferences as new preferences (changes_task=true, ids P1/P2 and P2/P3).",
+      "DVI003 pointed to the six-bullet defect precisely; DVI002 named both clashes; no manufactured failure on DVI004.",
+      "Label noise observed: RGD003 reporting requested observations was labelled continue; user_policy_v2 now states that this is clarify."
+    ],
+    "moves": {
+      "abandon": 1,
+      "accept_partial": 7,
+      "clarify": 1,
+      "continue": 4,
+      "finish": 2,
+      "point_to_defect": 5
+    },
+    "note": "real Sol user/world/learner calls against hand-written stand-in replies (not Apertus, not data), 2 turns per case",
+    "policy_deviations": 0,
+    "repairs": 0,
+    "resolver_mappings": [
+      [
+        "Open the VS Code terminal in the project and type `python --version`, ",
+        "terminal_which_python",
+        "supported"
+      ],
+      [
+        "In the same VS Code terminal, type `pip --version` and copy the output",
+        "terminal_pip_version",
+        "supported"
+      ],
+      [
+        "Look at the bottom-right corner of VS Code and note the selected Pytho",
+        "vscode_interpreter_check",
+        "supported"
+      ],
+      [
+        "Ελέγχω από το εικονίδιο Wi‑Fi του φορητού το ακριβές όνομα του δικτύου",
+        "laptop_wifi_name",
+        "supported"
+      ],
+      [
+        "Στην οθόνη του εκτυπωτή ψάχνω στις ρυθμίσεις δικτύου για επιλογή εκτύπ",
+        "printer_network_report",
+        "supported"
+      ],
+      [
+        "Κλείνω και ανοίγω ξανά τον εκτυπωτή και κάνω επανεκκίνηση στον φορητό.",
+        "restart_printer",
+        "supported"
+      ],
+      [
+        "Κλείνω και ανοίγω ξανά τον εκτυπωτή και κάνω επανεκκίνηση στον φορητό.",
+        "restart_laptop",
+        "supported"
+      ],
+      [
+        "Κάνω επανεκκίνηση στο ρούτερ αποσυνδέοντάς το από το ρεύμα, περιμένοντ",
+        "restart_router",
+        "supported"
+      ]
+    ],
+    "revealed_private_preferences": {
+      "RGD001:u1": [
+        "P1",
+        "P2"
+      ],
+      "RGD002:u1": [
+        "P2",
+        "P3"
+      ]
+    }
+  },
+  "gates": {
+    "1 role views cannot leak hidden diagnosis or gold transfer answers": {
+      "detail": [],
+      "errors": 0,
+      "failures": 0,
+      "status": "pass",
+      "tests": 4
+    },
+    "10 completion-only export; trainer integration unverified": {
+      "detail": [],
+      "errors": 0,
+      "failures": 0,
+      "status": "pass",
+      "tests": 1
+    },
+    "2 revealed observations remain consistent": {
+      "detail": [],
+      "errors": 0,
+      "failures": 0,
+      "status": "pass",
+      "tests": 2
+    },
+    "3 hidden writing preference is not an earlier instruction": {
+      "detail": [],
+      "errors": 0,
+      "failures": 0,
+      "status": "pass",
+      "tests": 1
+    },
+    "4 adaptive user can finish, help, change strategy or abandon": {
+      "detail": [],
+      "errors": 0,
+      "failures": 0,
+      "status": "pass",
+      "tests": 3
+    },
+    "5 ME021 history permits a concrete example without reference leak": {
+      "detail": [],
+      "errors": 0,
+      "failures": 0,
+      "status": "pass",
+      "tests": 1
+    },
+    "6 prevention/recovery boundaries and identical pair prefix hashes": {
+      "detail": [],
+      "errors": 0,
+      "failures": 0,
+      "status": "pass",
+      "tests": 1
+    },
+    "7 context overflow distinct from model failure, no trimming": {
+      "detail": [],
+      "errors": 0,
+      "failures": 0,
+      "status": "pass",
+      "tests": 1
+    },
+    "8 development outputs excluded from counters and automatic import": {
+      "detail": [],
+      "errors": 0,
+      "failures": 0,
+      "status": "pass",
+      "tests": 1
+    },
+    "9 resumption without duplicate charged calls; no blind retry": {
+      "detail": [],
+      "errors": 0,
+      "failures": 0,
+      "status": "pass",
+      "tests": 3
+    },
+    "pod runner: trap, teardown, gate before provisioning, secrets": {
+      "detail": [],
+      "errors": 0,
+      "failures": 0,
+      "status": "pass",
+      "tests": 3
+    }
+  },
+  "glossary_sha16": "ab7c697aca9f08ed",
+  "independent_review": {
+    "cycle_1": "HOLD: 1 blocking (resolver reason reached the user simulator), 2 major (Sol failure relabelled on rerun; no recovery for a failed Sol call), 4 minor",
+    "cycle_1_fixes": [
+      "observations for unresolved actions carry no resolver reason or check id (test Gate1ResolverReasonNeverReachesUser)",
+      "status-aware Sol replay; failed calls retried once under :retry1; ambiguous/reserved never retried (tests Gate9SolFailureRetry)",
+      "evaluator prompts send definitions of every label in their packets",
+      "found_within_4 / found_within_8 recorded and reported",
+      "forecast user-step latency doubled",
+      "all 8 branch candidates sampled in one session, judged 4 then 8: disclosed as a fixed interpretation"
+    ],
+    "cycle_2": "PASS (21 tests OK; reviewer probes re-run); residual notes: exception-text parsing (now replaced by an exception attribute after the review), sub-second Ctrl-C window between POST and state write (caught by the next GET /pods gate)",
+    "reviewer": "independent Fable reviewer (subagent, read-only)",
+    "status": "PASS at cycle 2"
+  },
+  "stage": "C",
+  "versions": {
+    "branch_rule_version": "dv2-branch-4then8-v1",
+    "branch_verify_version": "dv2-branch-verify-v1",
+    "conversation_review_version": "dv2-conversation-review-v1",
+    "generator_version": "0.3-dev",
+    "model": {
+      "alias": "G4F6P1",
+      "id": "fffoivos/greek-apertus-8b-sft-r4-full",
+      "revision": "3a557e0842b146ccb6d24427e20b08c52fb368d5",
+      "served_context": 4096,
+      "sha256": "54d445bc639b7222ad872b4d8dca5e913dbf4c4d427fbf56183e28361006e763"
+    },
+    "no_system_prompt": true,
+    "opening_writer_version": "dvi-opening-writer-v1",
+    "pilot_sampling_baseline": {
+      "max_tokens": 1500,
+      "n": 1,
+      "temperature": 0.8,
+      "top_p": 0.95
+    },
+    "prompt_sha16:branch_verify_v1.txt": "189363b3ab35e027",
+    "prompt_sha16:conversation_review_v1.txt": "5dd757513a7e94f3",
+    "prompt_sha16:opening_writer_v1.txt": "2e4b28b95c3c495f",
+    "prompt_sha16:turn_eval_v1.txt": "4196f90a9fb71ced",
+    "prompt_sha16:user_actions_v1.txt": "a7eda68fa88c4aff",
+    "prompt_sha16:user_policy_v2.txt": "e5d45cbb9ee28055",
+    "prompt_sha16:world_resolver_v1.txt": "fdb7f942ba75029a",
+    "protocol_version": "dialogue-v2-dev-0.1",
+    "rubric_v2_4_sha16": "8aa32f266afd08b4",
+    "sampling": {
+      "max_tokens": 1024,
+      "n": 1,
+      "temperature": 0.8,
+      "top_p": 0.95
+    },
+    "sampling_config_version": "dv2-sampling-v1",
+    "turn_eval_version": "dv2-turn-eval-v1",
+    "user_policy_version": "adaptive-user-v2.0",
+    "world_resolver_version": "world-resolver-v1"
+  }
+}

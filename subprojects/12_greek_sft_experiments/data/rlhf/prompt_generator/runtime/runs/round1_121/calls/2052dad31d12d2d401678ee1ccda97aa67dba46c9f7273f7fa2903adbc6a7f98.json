@@ -1,0 +1,27 @@
+{
+  "key": "2052dad31d12d2d401678ee1ccda97aa67dba46c9f7273f7fa2903adbc6a7f98",
+  "stage": "review",
+  "attempt": 1,
+  "ids": [
+    "S0121"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 10.36,
+  "prompt_sha256": "8eda56cc6b5a1aa6b28ad77df17e4e864b8be01aaf78bbc4c593dd04a4824f37",
+  "response": {
+    "items": [
+      {
+        "id": "S0121",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "safety",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "playful",
+        "rationale": "Το αίτημα ζητά άμεσα προστατευτικά βήματα αποκλειστικά βάσει της παρεχόμενης κατάστασης, διατηρεί όλα τα ουσιώδη δεδομένα της πηγής και δεν αποκαλύπτει κρυφή απάντηση, ιδιωτική αναφορά ή μετα-σήμανση."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:51:48.197186+00:00"
+}

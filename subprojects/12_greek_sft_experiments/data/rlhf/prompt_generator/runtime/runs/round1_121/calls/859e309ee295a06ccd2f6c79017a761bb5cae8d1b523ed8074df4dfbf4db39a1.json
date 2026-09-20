@@ -1,0 +1,26 @@
+{
+  "key": "859e309ee295a06ccd2f6c79017a761bb5cae8d1b523ed8074df4dfbf4db39a1",
+  "stage": "generate",
+  "attempt": 1,
+  "ids": [
+    "S0025",
+    "S0101"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 15.26,
+  "prompt_sha256": "21b3e06cc401c7032e691da8e98a1f284a5104d0f3aee0da26f752a8ac0a0389",
+  "response": {
+    "items": [
+      {
+        "id": "S0025",
+        "request": "Leggi con attenzione l’avviso allegato e attieniti rigorosamente ai dati riportati. Rispondi con un elenco numerato, senza preamboli: al punto 1 scrivi una sola frase con la data e l’orario; al punto 2 scrivi una sola frase con il numero di posti ancora disponibili e la quota per partecipante. Concludi riportando esattamente l’istruzione rivolta ai partecipanti."
+      },
+      {
+        "id": "S0101",
+        "request": "Sulla base delle informazioni allegate, individui il percorso praticabile meno costoso, verificando per ogni opzione la disponibilità di posti, il tempo di viaggio e il rispetto del budget totale. In caso di parità di costo, scelga il percorso con il tempo di viaggio più breve. Se pertinente, spieghi anche perché le opzioni scartate non soddisfano i requisiti."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:53:58.879820+00:00"
+}

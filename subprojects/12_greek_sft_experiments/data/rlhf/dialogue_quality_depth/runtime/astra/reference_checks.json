@@ -1,0 +1,31 @@
+{
+  "reviewer": "astra (root by delegation)",
+  "created_utc": "2026-09-16T18:23:35.275509+00:00",
+  "checks": {
+    "ME004": {
+      "remaining": 10,
+      "two_attendees_eur": 16
+    },
+    "ME012": {
+      "remaining": 12
+    },
+    "ME015": {
+      "symbol": "Cu",
+      "source": "https://www.nist.gov/document/periodic-table-2024",
+      "verification": "Live NIST PDF retrieved; copper Cu, atomic number 29."
+    },
+    "ME016": {
+      "area_cm2": 84.0
+    },
+    "ME017": {
+      "total_pairs": 55,
+      "favourable_pairs": 28,
+      "gcd": 1,
+      "probability": "28/55"
+    }
+  },
+  "early_observations": [
+    "ME017 user continuation switches from Greek to Spanish at turn 4; retain history, report simulator language drift rather than changing the frozen policy.",
+    "No DPO/preference loader implementation or validation receipt located in project; external Fable gate remains unverified."
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "key": "5864492db70deee5de710bcdcacc25dae48e9befa00e381b126ff595fed4495e",
+  "stage": "review",
+  "attempt": 0,
+  "ids": [
+    "S0110",
+    "S0113",
+    "S0114",
+    "S0116",
+    "S0119",
+    "S0120",
+    "S0121"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 37.19,
+  "prompt_sha256": "60566ed1e966534556f8e998b5209f58c5c7f307b384f7d464a82d43f0583f01",
+  "response": {
+    "items": [
+      {
+        "id": "S0110",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "Ζητά ακριβώς την προβλεπόμενη αριθμημένη εξαγωγή, με τις σωστές ενότητες, χωρίς πρόλογο και με αυτούσια την οδηγία. Όλα τα αναγκαία στοιχεία περιέχονται στην ανακοίνωση."
+      },
+      {
+        "id": "S0113",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "safety",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "Ζητά άμεσα μια σταθερή και ευγενική διατύπωση ορίου, λαμβάνοντας υπόψη την ιδιωτικότητα και την αποφυγή καβγά. Δεν αποκαλύπτει ιδιωτικές επισημάνσεις ή κρυφή απάντηση."
+      },
+      {
+        "id": "S0114",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "frustrated",
+        "rationale": "Ζητά μόνο τα τρία προβλεπόμενα πεδία σε πίνακα δύο στηλών και αποκλείει εισαγωγή και πρόσθετα πεδία. Η ελαφρώς απότομη έμφαση αποδίδει φυσικά τη ζητούμενη απογοήτευση."
+      },
+      {
+        "id": "S0116",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "el",
+        "observed_register": "formal",
+        "observed_attitude": "cooperative",
+        "rationale": "Η επίσημη διατύπωση ζητά ακριβώς την προβλεπόμενη αριθμημένη απάντηση, τις δύο συγκεκριμένες προτάσεις και την αυτούσια οδηγία στο τέλος."
+      },
+      {
+        "id": "S0119",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "el",
+        "observed_register": "greeklish",
+        "observed_attitude": "playful",
+        "rationale": "Ζητά την προβλεπόμενη αναδιατύπωση σε ακριβώς δύο προτάσεις, με διατήρηση όλων των αριθμών και της οδηγίας και παράλειψη του συντονιστή. Το Greeklish και το παιχνιδιάρικο ύφος είναι φυσικά και σκόπιμα."
+      },
+      {
+        "id": "S0120",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "math",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "Το αίτημα ζητά το ακριβές τελικό κόστος σε λεπτά και σύντομο υπολογισμό. Τα δεδομένα επαρκούν και οδηγούν μονοσήμαντα στο αποτέλεσμα."
+      },
+      {
+        "id": "S0121",
+        "accepted": false,
+        "issues": [
+          "Η φράση «ας μη χαρίσουμε τον κωδικό» αποκαλύπτει εκ των προτέρων ένα ουσιώδες μέρος της ζητούμενης απάντησης.",
+          "Ο χαρακτηρισμός «στους απατεώνες» μετατρέπει το ύποπτο μήνυμα της πηγής σε βεβαιωμένη απάτη, ενισχύοντας αδικαιολόγητα την προκείμενη.",
+          "Η απαίτηση για «πρακτικές και σύντομες οδηγίες» προσθέτει περιορισμό μορφής που δεν υπάρχει στην παγωμένη προδιαγραφή."
+        ],
+        "observed_purpose": "safety",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "playful",
+        "rationale": "Παρότι το βασικό αίτημα αφορά σωστά άμεσα προστατευτικά βήματα, η διατύπωση διαρρέει μέρος της απάντησης, παρουσιάζει ως βέβαιη μια μόνο ύποπτη απάτη και προσθέτει μη προβλεπόμενο περιορισμό."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:51:28.008576+00:00"
+}

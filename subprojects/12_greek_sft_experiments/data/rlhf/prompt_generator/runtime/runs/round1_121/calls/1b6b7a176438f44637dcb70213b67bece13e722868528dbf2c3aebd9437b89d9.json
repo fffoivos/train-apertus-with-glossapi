@@ -1,0 +1,82 @@
+{
+  "key": "1b6b7a176438f44637dcb70213b67bece13e722868528dbf2c3aebd9437b89d9",
+  "stage": "review",
+  "attempt": 0,
+  "ids": [
+    "S0058",
+    "S0080",
+    "S0094",
+    "S0095",
+    "S0109",
+    "S0118"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 24.07,
+  "prompt_sha256": "082f73a17bd14f511a0899bf6d0af02975817ff4777290db1df81d64259c9435",
+  "response": {
+    "items": [
+      {
+        "id": "S0058",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "fr",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "La demande correspond exactement à la fusion attendue, exige la suppression des doublons et conserve explicitement les quatre catégories d’informations requises. La source contient tous les éléments nécessaires sans divulguer de réponse cachée."
+      },
+      {
+        "id": "S0080",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "safety",
+        "observed_language": "fr",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "La demande exprime directement l’intention nuisible fournie, y compris l’absence de consentement, le refus et l’urgence, sans ajouter de méthode, d’identifiants ni d’autres détails opérationnels. Aucune annotation privée de sécurité ou réponse attendue n’est révélée."
+      },
+      {
+        "id": "S0094",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "fr",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "La demande porte bien sur la révision du courriel, non sur une autre opération, et exige la clarté, la concision, la suppression des répétitions et la conservation de toutes les informations imposées. La source permet entièrement cette révision."
+      },
+      {
+        "id": "S0095",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "fr",
+        "observed_register": "informal",
+        "observed_attitude": "cooperative",
+        "rationale": "La demande cible exactement la date, l’heure et les places disponibles, avec la sortie JSON seule et sans champs supplémentaires. Toutes les valeurs sont présentes explicitement dans la source."
+      },
+      {
+        "id": "S0109",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "factual",
+        "observed_language": "fr",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "La question demande précisément l’adresse du lieu et interdit raisonnablement de l’inventer. L’absence d’adresse dans la source est une prémisse délibérée et permet une réponse indiquant que l’information n’est pas fournie."
+      },
+      {
+        "id": "S0118",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "math",
+        "observed_language": "fr",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "La demande sollicite directement l’ensemble complet des solutions réelles et l’explication requise par discriminant ou signe. La mention conditionnelle des bornes d’intervalles n’impose rien d’inapplicable, et l’équation contient toutes les données nécessaires."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:53:10.672605+00:00"
+}

@@ -1,0 +1,124 @@
+{
+  "all_terminated": true,
+  "full_lifecycle_compute_upper_eur": 2.349166808333333,
+  "invoice_status": "not retrieved; no claim of final billed amount",
+  "method": "Full createdAt-to-terminatedAt lifetime at the higher quoted compute/provisioning hourly rate and frozen EUR/USD 0.95. Deliberately includes zero-price provisioning at compute rate as a conservative bound. No attached billable resources listed. Final invoice, exchange-rate settlement, taxes and other unlisted fees remain unmeasured.",
+  "pods": [
+    {
+      "attachedResources": [],
+      "createdAt": "2026-09-16T16:10:00.300000",
+      "full_lifecycle_compute_upper_eur": 0.5280975213888889,
+      "gpuCount": 1,
+      "id": "4d4fe67f108b4a528d8f494fa7a93466",
+      "lifecycle_seconds": 1005.634,
+      "priceHr": 1.99,
+      "providerType": "lambdalabs",
+      "provisioningPriceHr": 0.0,
+      "resources": {
+        "disk": 512,
+        "memory": 200,
+        "shared_disk": null,
+        "vcpus": 30
+      },
+      "runtime_ledger_eur": 0.3194592479515277,
+      "status": "TERMINATED",
+      "stoppedPriceHr": null,
+      "terminatedAt": "2026-09-16T16:26:45.934000",
+      "updatedAt": "2026-09-16T16:26:45.934000"
+    },
+    {
+      "attachedResources": [],
+      "createdAt": "2026-09-16T16:28:05.768000",
+      "full_lifecycle_compute_upper_eur": 0.6061310597222221,
+      "gpuCount": 1,
+      "id": "330f8c4ae4864a3cac7a3d1abd8169f8",
+      "lifecycle_seconds": 1154.23,
+      "priceHr": 1.99,
+      "providerType": "lambdalabs",
+      "provisioningPriceHr": 0.0,
+      "resources": {
+        "disk": 512,
+        "memory": 200,
+        "shared_disk": null,
+        "vcpus": 30
+      },
+      "runtime_ledger_eur": 0.39783815017680557,
+      "status": "TERMINATED",
+      "stoppedPriceHr": null,
+      "terminatedAt": "2026-09-16T16:47:19.998000",
+      "updatedAt": "2026-09-16T16:47:19.998000"
+    },
+    {
+      "attachedResources": [],
+      "createdAt": "2026-09-16T16:49:02.396000",
+      "full_lifecycle_compute_upper_eur": 0.29142635152777774,
+      "gpuCount": 1,
+      "id": "8c034ef994094a2d859277b0c6bbedc4",
+      "lifecycle_seconds": 554.951,
+      "priceHr": 1.99,
+      "providerType": "lambdalabs",
+      "provisioningPriceHr": 0.0,
+      "resources": {
+        "disk": 512,
+        "memory": 200,
+        "shared_disk": null,
+        "vcpus": 30
+      },
+      "runtime_ledger_eur": 0.14780381407152776,
+      "status": "TERMINATED",
+      "stoppedPriceHr": null,
+      "terminatedAt": "2026-09-16T16:58:17.347000",
+      "updatedAt": "2026-09-16T16:58:17.347000"
+    },
+    {
+      "attachedResources": [],
+      "createdAt": "2026-09-16T17:52:53.242000",
+      "full_lifecycle_compute_upper_eur": 0.1961929391666666,
+      "gpuCount": 1,
+      "id": "27bd2cbb87904a27874cd0d6f6d64cc3",
+      "lifecycle_seconds": 373.602,
+      "priceHr": 1.99,
+      "providerType": "lambdalabs",
+      "provisioningPriceHr": 0.0,
+      "resources": {
+        "disk": 512,
+        "memory": 200,
+        "shared_disk": null,
+        "vcpus": 30
+      },
+      "runtime_ledger_eur": 0.015043622241666665,
+      "status": "TERMINATED",
+      "stoppedPriceHr": null,
+      "terminatedAt": "2026-09-16T17:59:06.844000",
+      "updatedAt": "2026-09-16T17:59:18.228000"
+    },
+    {
+      "attachedResources": [],
+      "createdAt": "2026-09-16T18:04:16.568000",
+      "full_lifecycle_compute_upper_eur": 0.7273189365277777,
+      "gpuCount": 1,
+      "id": "647ab6639c4a4b308ce32467ab7d0ae5",
+      "lifecycle_seconds": 1385.003,
+      "priceHr": 1.99,
+      "providerType": "lambdalabs",
+      "provisioningPriceHr": 0.0,
+      "resources": {
+        "disk": 512,
+        "memory": 200,
+        "shared_disk": null,
+        "vcpus": 30
+      },
+      "runtime_ledger_eur": 0.5218643454366666,
+      "status": "TERMINATED",
+      "stoppedPriceHr": null,
+      "terminatedAt": "2026-09-16T18:27:21.571000",
+      "updatedAt": "2026-09-16T18:27:21.571000"
+    }
+  ],
+  "queried_utc": "2026-09-16T18:29:50.179754+00:00",
+  "runtime_ledger": {
+    "active": [],
+    "completed_sessions": 5,
+    "spent_eur": 1.4020091798781942
+  }
+}

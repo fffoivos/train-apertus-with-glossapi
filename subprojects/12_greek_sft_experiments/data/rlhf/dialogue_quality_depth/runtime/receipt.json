@@ -1,0 +1,65 @@
+{
+  "artifacts": {
+    "forecast.json": {
+      "created_utc": "2026-09-16T21:32:50+00:00",
+      "frozen": true,
+      "sha256": "6b53e08b66af1da76a9e43c2964219d0c2925ff3d01a6dcad5c1ee6e6a716805"
+    },
+    "generator_registry_check.json": {
+      "created_utc": "2026-09-16T18:14:15.009986+00:00",
+      "frozen": false,
+      "sha256": "42300abd3f59d8a685517e2cfbd65cb8ba62ec063d7d527fe538a135bc752298"
+    },
+    "manifest.json": {
+      "created_utc": "2026-09-16T16:08:56.675446+00:00",
+      "frozen": true,
+      "sha256": "99d26f8c72e1fb138c581a20187fdea03870039657049e2b9ddf9ac882be8d7f"
+    },
+    "measurement/preferences.jsonl": {
+      "created_utc": "2026-09-16T22:32:09.238095+00:00",
+      "frozen": true,
+      "pair_rule_version": "owner-pair-rule-2026-09-16-evening-v2",
+      "resample_protocol": "escalating-resample-2026-09-17-v1",
+      "sha256": "dea6cb6598f2d302362798a72a23bae1f7d719c3670e80fd8de5195e985507fa"
+    },
+    "measurement/quality_depth_report.html": {
+      "created_utc": "2026-09-16T18:47:11.382950+00:00",
+      "frozen": true,
+      "sha256": "10f11b0fc20ff516f4da6d42a64225dab5acf10858d77a5dbac62f5d6f6bc563"
+    },
+    "measurement/quality_depth_report.json": {
+      "created_utc": "2026-09-16T18:47:11.382924+00:00",
+      "frozen": true,
+      "sha256": "26d67c82f0ce91fcc0ca968375c524ae1e3952428043bf726637678f9fceb792"
+    },
+    "measurement/rejected_pairs.jsonl": {
+      "created_utc": "2026-09-16T22:32:09.238095+00:00",
+      "frozen": true,
+      "pair_rule_version": "owner-pair-rule-2026-09-16-evening-v2",
+      "resample_protocol": "escalating-resample-2026-09-17-v1",
+      "sha256": "9a1aa7d6729e8eb02913b41af4fc7ba688d6a23f8a7f528240d0da3b4c3e1d35"
+    },
+    "measurement/resample_report.json": {
+      "created_utc": "2026-09-16T22:32:09.238095+00:00",
+      "frozen": true,
+      "pair_rule_version": "owner-pair-rule-2026-09-16-evening-v2",
+      "resample_protocol": "escalating-resample-2026-09-17-v1",
+      "sha256": "332243cc9a1f9700207a1676bed582a0222e01f271b85030abb346ea094c61b4"
+    },
+    "runtime_config.json": {
+      "created_utc": "2026-09-16T16:57:01.971380+00:00",
+      "frozen": true,
+      "sha256": "50ac4af7b85519d55e526a9840103b101f463a60b37fac4eb10cab7364b74725"
+    },
+    "smoke/quality_depth_report.html": {
+      "created_utc": "2026-09-16T17:05:54.827109+00:00",
+      "frozen": true,
+      "sha256": "4f4e5edc13230b277e8cf56f53e417d59e8c4720b552499cefb28de00be60593"
+    },
+    "smoke/quality_depth_report.json": {
+      "created_utc": "2026-09-16T17:05:54.827098+00:00",
+      "frozen": true,
+      "sha256": "96103ebe14d879fc383bf74a973490176717b58c4aafdc9ec82265e3f17dbde2"
+    }
+  }
+}

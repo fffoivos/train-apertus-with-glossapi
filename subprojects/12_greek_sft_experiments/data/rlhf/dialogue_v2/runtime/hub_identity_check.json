@@ -1,0 +1,40 @@
+{
+  "repo": "fffoivos/greek-apertus-8b-sft-r4-full",
+  "sha_revision": "3a557e0842b146ccb6d24427e20b08c52fb368d5",
+  "lastModified": "2026-09-16T10:43:46.000Z",
+  "private": false,
+  "files": {
+    ".gitattributes": {
+      "size": 1570,
+      "lfs_sha256": null
+    },
+    "README.md": {
+      "size": 1648,
+      "lfs_sha256": null
+    },
+    "config.json": {
+      "size": 892,
+      "lfs_sha256": null
+    },
+    "generation_config.json": {
+      "size": 119,
+      "lfs_sha256": null
+    },
+    "model.safetensors": {
+      "size": 16400327688,
+      "lfs_sha256": "54d445bc639b7222ad872b4d8dca5e913dbf4c4d427fbf56183e28361006e763"
+    },
+    "special_tokens_map.json": {
+      "size": 552,
+      "lfs_sha256": null
+    },
+    "tokenizer.json": {
+      "size": 18994464,
+      "lfs_sha256": "acf4d5c6a8aa0cc64c9c781c203fd6dbb4581b0124cca0a76a9e10322fd81092"
+    },
+    "tokenizer_config.json": {
+      "size": 170453,
+      "lfs_sha256": null
+    }
+  }
+}

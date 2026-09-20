@@ -1,0 +1,22 @@
+{
+  "created_utc": "2026-09-16T18:22:41.367391+00:00",
+  "files": {
+    "ASTRA_EXECUTION_BRIEF.md": "bdcd0bcfee481f795656d70f53970d936d82c62c5d7162182d25b61b099d3cfd",
+    "user_policy.txt": "c58372b0c8a2bc79b57cf98a5278b0e23fdd056404f608ba55cc66d218dea6ba",
+    "turn_quality.txt": "523b8fb4bcab21cc3d3ec49157abbf0a3c3187f96c7a28f102aeab3238371736",
+    "runtime/manifest.json": "99d26f8c72e1fb138c581a20187fdea03870039657049e2b9ddf9ac882be8d7f",
+    "runtime/runtime_config.json": "50ac4af7b85519d55e526a9840103b101f463a60b37fac4eb10cab7364b74725",
+    "runtime/forecast.json": "f235c9a19ce4a562b2689f27c6a2cd8c617ec08bef63d21be5523ccb4e92317a",
+    "/Users/foivoskarounos-zamparloukos/Projects/greek-page-ocr/scripts/prime_provision.py": "218dff7e3677222138a1d293bfde49ad502f4bc8c841ee7c16470a75be628df0"
+  },
+  "tests": {
+    "passed": 50,
+    "command": "python3 -m unittest discover -p 'test_*.py'"
+  },
+  "decisions": [
+    "Execute the owner-authorized 28-trajectory admitted plan through Phase 6 with root adjudication delegated to Astra.",
+    "Existing measurement runner PID 17513 and watchdog PID 20726 verified live; do not duplicate.",
+    "Preserve frozen inference and simulator policies; all smoke data excluded from measurement.",
+    "Treat training-loader validation as an external gate requiring concrete evidence; no training authorized."
+  ]
+}

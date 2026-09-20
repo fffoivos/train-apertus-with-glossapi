@@ -1,0 +1,93 @@
+{
+  "version": "prompt-generator-0.1",
+  "run_id": "round1_121",
+  "size": 121,
+  "state": {
+    "status": "single_turn_ready",
+    "worker_claim": null
+  },
+  "planned": {
+    "purpose": {
+      "instruction": 45,
+      "safety": 30,
+      "factual": 9,
+      "math": 15,
+      "everyday": 22
+    },
+    "language": {
+      "en": 39,
+      "es": 4,
+      "el": 63,
+      "de": 5,
+      "it": 2,
+      "pt": 2,
+      "fr": 6
+    },
+    "attitude": {
+      "frustrated": 12,
+      "cooperative": 85,
+      "playful": 6,
+      "skeptical": 18
+    },
+    "register": {
+      "standard": 73,
+      "formal": 18,
+      "informal": 24,
+      "greeklish": 6
+    },
+    "difficulty": {
+      "challenging": 24,
+      "compositional": 61,
+      "routine": 36
+    }
+  },
+  "accepted": {
+    "purpose": {
+      "instruction": 45,
+      "safety": 30,
+      "factual": 9,
+      "math": 15,
+      "everyday": 22
+    },
+    "language": {
+      "en": 39,
+      "es": 4,
+      "el": 63,
+      "de": 5,
+      "it": 2,
+      "pt": 2,
+      "fr": 6
+    },
+    "attitude": {
+      "frustrated": 12,
+      "cooperative": 85,
+      "playful": 6,
+      "skeptical": 18
+    },
+    "register": {
+      "standard": 73,
+      "formal": 18,
+      "informal": 24,
+      "greeklish": 6
+    },
+    "difficulty": {
+      "challenging": 24,
+      "compositional": 61,
+      "routine": 36
+    }
+  },
+  "status_counts": {
+    "accepted": 121
+  },
+  "calls": {
+    "complete": 58
+  },
+  "accepted_openings_and_single_turn": 121,
+  "accepted_single_turn": 121,
+  "all_non_dialogue_accepted": true,
+  "completed_dialogues": 0,
+  "all_slots_reviewed": true,
+  "full_dialogue_distribution_realised": true,
+  "training_eligible": false,
+  "worker_errors": []
+}

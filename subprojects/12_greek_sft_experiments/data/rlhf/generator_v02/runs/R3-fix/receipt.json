@@ -1,0 +1,21 @@
+{
+ "run": "R3-fix",
+ "slots": 16,
+ "active": 12,
+ "held": 4,
+ "repairs_used": {
+  "0": 9,
+  "1": 2,
+  "2": 1
+ },
+ "sol_calls": {
+  "instance": 10,
+  "render": 8,
+  "review": 6
+ },
+ "glossary_sha16": "ecdc0ec9ef56b184",
+ "code_sha16": "a6d125f67f1f3124",
+ "manifest_sha16": "e95dd2b512bcf9b1",
+ "task_kinds_sha16": "51ee22248edf194d",
+ "finished": 1789647430.0268989
+}

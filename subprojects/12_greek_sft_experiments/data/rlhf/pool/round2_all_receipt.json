@@ -1,0 +1,32 @@
+{
+ "size": 407,
+ "forum": 240,
+ "generated": 167,
+ "by_slice": {
+  "forum": 240,
+  "if": 50,
+  "factual": 17,
+  "math_el": 18,
+  "everyday": 60,
+  "safety": 20,
+  "math_en": 2
+ },
+ "by_cell": {
+  "factual/el": 114,
+  "everyday/el": 186,
+  "instruction/el": 38,
+  "factual/en": 3,
+  "instruction/en": 12,
+  "math/el": 18,
+  "everyday/en": 14,
+  "safety/en": 2,
+  "safety/el": 18,
+  "math/en": 2
+ },
+ "samples_planned": 1908,
+ "forum_tilt": "question 70, advice 70, opinion 40, explanation 20, translation 15, share 10, calculation 10, other 5",
+ "generated_tilt": "instruction 38%, everyday 19%, factual 15%, math 15%, safety 13%; detail bare 30/terse 20/short 20/medium 20/detailed 5/rambling 5",
+ "near_dup_dropped": 0,
+ "language_dropped": 1,
+ "sha256": "661443a62e8b375a"
+}

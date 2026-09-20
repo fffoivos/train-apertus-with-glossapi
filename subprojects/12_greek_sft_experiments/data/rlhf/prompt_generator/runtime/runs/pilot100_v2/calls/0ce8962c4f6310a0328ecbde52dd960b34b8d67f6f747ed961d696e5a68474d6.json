@@ -1,0 +1,27 @@
+{
+  "key": "0ce8962c4f6310a0328ecbde52dd960b34b8d67f6f747ed961d696e5a68474d6",
+  "stage": "review",
+  "attempt": 0,
+  "ids": [
+    "S0008"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 13.51,
+  "prompt_sha256": "6c852ca963087e9f28fb8f37070f76a60b6fcbf2005d2aa749a59a3d9770bbcf",
+  "response": {
+    "items": [
+      {
+        "id": "S0008",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "de",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "The request directly matches the specified coding task: validate nonnegative integer capacity and booked values, enforce booked ≤ capacity, raise ValueError on invalid input, return capacity minus booked, and provide one valid and one invalid example. The appended source contains all necessary schema facts, and the German wording is natural, answerable, and free of hidden rubric or private-reference leakage."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:28:49.214362+00:00"
+}

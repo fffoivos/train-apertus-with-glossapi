@@ -1,0 +1,60 @@
+{
+  "byte_identical_to_target_ledger": true,
+  "calls": {
+    "calls": [
+      {
+        "count": 4,
+        "phase": "openings",
+        "provider": "sol",
+        "status": "complete"
+      },
+      {
+        "count": 6,
+        "phase": "smoke",
+        "provider": "sol",
+        "status": "complete"
+      },
+      {
+        "count": 17,
+        "phase": "user_continuation",
+        "provider": "sol",
+        "status": "complete"
+      },
+      {
+        "count": 1,
+        "phase": "preflight",
+        "provider": "target",
+        "status": "complete"
+      },
+      {
+        "count": 126,
+        "phase": "raw_rollout",
+        "provider": "target",
+        "status": "complete"
+      },
+      {
+        "count": 4,
+        "phase": "raw_rollout",
+        "provider": "target",
+        "status": "failed"
+      }
+    ],
+    "sol_reserved_attempts": 27
+  },
+  "endings": {
+    "completed": 21,
+    "context_limit": 4,
+    "horizon": 2,
+    "truncated_output": 1
+  },
+  "gate": "PASS",
+  "gpu": {
+    "active": [],
+    "completed_sessions": 5,
+    "spent_eur": 1.4020091798781942
+  },
+  "raw_log_sha256": "b7a1eb3c6684ff32fd6536e36f4472c284dd9a539b761f20ddb26d2fcb774ebf",
+  "trajectories": 28,
+  "turns": 111,
+  "user_events_sha256": "8fa9875ac406b2fefb3ee04a353221fdbf41ee06fba8d5ff616f8f7f9e305559"
+}

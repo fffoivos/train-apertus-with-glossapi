@@ -1,0 +1,122 @@
+{
+ "standin_math500:test/intermediate_algebra/1405.json": {
+  "0": "R4",
+  "1": "krikri15",
+  "2": "incumbent",
+  "3": "round3"
+ },
+ "standin_math500:test/algebra/1004.json": {
+  "0": "krikri15",
+  "1": "round3",
+  "2": "incumbent",
+  "3": "R4"
+ },
+ "standin_math500:test/intermediate_algebra/1000.json": {
+  "0": "R4",
+  "1": "krikri15",
+  "2": "round3",
+  "3": "incumbent"
+ },
+ "standin_math500:test/geometry/221.json": {
+  "0": "R4",
+  "1": "round3",
+  "2": "incumbent",
+  "3": "krikri15"
+ },
+ "standin_math500:test/algebra/1275.json": {
+  "0": "incumbent",
+  "1": "round3",
+  "2": "R4",
+  "3": "krikri15"
+ },
+ "standin_math500:test/algebra/2789.json": {
+  "0": "krikri15",
+  "1": "round3",
+  "2": "R4",
+  "3": "incumbent"
+ },
+ "standin_math500:test/algebra/2700.json": {
+  "0": "krikri15",
+  "1": "R4",
+  "2": "round3",
+  "3": "incumbent"
+ },
+ "standin_math500:test/intermediate_algebra/2046.json": {
+  "0": "round3",
+  "1": "krikri15",
+  "2": "R4",
+  "3": "incumbent"
+ },
+ "standin_math500:test/prealgebra/1003.json": {
+  "0": "round3",
+  "1": "krikri15",
+  "2": "incumbent",
+  "3": "R4"
+ },
+ "standin_math500:test/number_theory/1185.json": {
+  "0": "R4",
+  "1": "round3",
+  "2": "incumbent",
+  "3": "krikri15"
+ },
+ "standin_ifbench:157": {
+  "0": "R4",
+  "1": "incumbent",
+  "2": "krikri15",
+  "3": "round3"
+ },
+ "standin_ifbench:190": {
+  "0": "krikri15",
+  "1": "round3",
+  "2": "R4",
+  "3": "incumbent"
+ },
+ "standin_ifbench:175": {
+  "0": "incumbent",
+  "1": "R4",
+  "2": "round3",
+  "3": "krikri15"
+ },
+ "standin_ifbench:53": {
+  "0": "incumbent",
+  "1": "R4",
+  "2": "krikri15",
+  "3": "round3"
+ },
+ "standin_ifbench:189": {
+  "0": "round3",
+  "1": "incumbent",
+  "2": "R4",
+  "3": "krikri15"
+ },
+ "standin_xstest:116": {
+  "0": "incumbent",
+  "1": "R4",
+  "2": "round3",
+  "3": "krikri15"
+ },
+ "standin_xstest:52": {
+  "0": "R4",
+  "1": "krikri15",
+  "2": "incumbent",
+  "3": "round3"
+ },
+ "standin_xstest:381": {
+  "0": "krikri15",
+  "1": "incumbent",
+  "2": "round3",
+  "3": "R4"
+ },
+ "standin_xstest:156": {
+  "0": "krikri15",
+  "1": "incumbent",
+  "2": "R4",
+  "3": "round3"
+ },
+ "standin_xstest:179": {
+  "0": "incumbent",
+  "1": "round3",
+  "2": "krikri15",
+  "3": "R4"
+ }
+}

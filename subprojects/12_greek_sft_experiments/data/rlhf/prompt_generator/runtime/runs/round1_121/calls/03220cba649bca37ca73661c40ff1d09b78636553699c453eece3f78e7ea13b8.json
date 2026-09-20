@@ -1,0 +1,21 @@
+{
+  "key": "03220cba649bca37ca73661c40ff1d09b78636553699c453eece3f78e7ea13b8",
+  "stage": "generate",
+  "attempt": 2,
+  "ids": [
+    "S0025"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 9.8,
+  "prompt_sha256": "0c337fddcb65b6a75ca72ab48a51997ceec60aff7876c7e19a257349d81a9760",
+  "response": {
+    "items": [
+      {
+        "id": "S0025",
+        "request": "Voglio verificare che dall’avviso allegato si ricavino davvero questi dati senza supposizioni. Rispondi senza preamboli con un elenco numerato: al punto 1 inserisci una sola frase che indichi la data e l’orario; al punto 2 inserisci una sola frase che indichi quanti posti sono ancora disponibili e la quota per partecipante. Concludi riportando esattamente l’istruzione rivolta ai partecipanti."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:54:23.077358+00:00"
+}

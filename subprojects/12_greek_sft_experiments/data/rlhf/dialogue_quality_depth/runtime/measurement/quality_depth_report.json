@@ -1,0 +1,1057 @@
+{
+  "actual_counts": {
+    "attitude": {
+      "cooperative": 24,
+      "frustrated": 2,
+      "skeptical": 2
+    },
+    "difficulty": {
+      "challenging": 5,
+      "compositional": 14,
+      "routine": 9
+    },
+    "interaction": {
+      "constraint_retention": 7,
+      "followup": 8,
+      "recall": 2,
+      "revision": 8,
+      "uncertainty": 3
+    },
+    "language": {
+      "de": 1,
+      "el": 19,
+      "en": 4,
+      "es": 1,
+      "fr": 1,
+      "it": 1,
+      "pt": 1
+    },
+    "register": {
+      "formal": 3,
+      "greeklish": 1,
+      "informal": 5,
+      "standard": 19
+    },
+    "task": {
+      "everyday": 14,
+      "factual": 3,
+      "instruction": 8,
+      "math": 2,
+      "safety": 1
+    }
+  },
+  "annotation_prompt_sha256": "523b8fb4bcab21cc3d3ec49157abbf0a3c3187f96c7a28f102aeab3238371736",
+  "calibration_review": {
+    "boundary_set_stable": true,
+    "change_share": 0.010638297872340425,
+    "effective_boundary_ids": [
+      "ME001:a2",
+      "ME001:a3",
+      "ME001:a4",
+      "ME001:a5",
+      "ME001:a6",
+      "ME001:a7",
+      "ME002:a1",
+      "ME002:a2",
+      "ME002:a3",
+      "ME002:a4",
+      "ME002:a5",
+      "ME003:a2",
+      "ME003:a3",
+      "ME003:a4",
+      "ME003:a5",
+      "ME005:a1",
+      "ME005:a2",
+      "ME005:a3",
+      "ME005:a4",
+      "ME005:a5",
+      "ME005:a6",
+      "ME011:a2",
+      "ME011:a3",
+      "ME012:a1",
+      "ME012:a2",
+      "ME013:a2",
+      "ME013:a3",
+      "ME013:a4",
+      "ME013:a5",
+      "ME013:a6",
+      "ME013:a7",
+      "ME013:a8",
+      "ME014:a2",
+      "ME014:a3",
+      "ME014:a4",
+      "ME017:a1",
+      "ME017:a2",
+      "ME017:a3",
+      "ME017:a4",
+      "ME019:a2",
+      "ME019:a3",
+      "ME019:a4",
+      "ME020:a2",
+      "ME020:a3",
+      "ME020:a4",
+      "ME020:a5",
+      "ME020:a6",
+      "ME020:a7",
+      "ME020:a8",
+      "ME021:a1",
+      "ME021:a2",
+      "ME021:a3",
+      "ME021:a4",
+      "ME021:a5",
+      "ME022:a1",
+      "ME022:a2",
+      "ME022:a3",
+      "ME022:a4",
+      "ME022:a5",
+      "ME022:a6",
+      "ME022:a7",
+      "ME023:a1",
+      "ME023:a2",
+      "ME023:a3",
+      "ME023:a4",
+      "ME023:a5",
+      "ME024:a2",
+      "ME025:a1",
+      "ME025:a2",
+      "ME026:a2",
+      "ME026:a3",
+      "ME026:a4",
+      "ME027:a2",
+      "ME027:a3",
+      "ME027:a4",
+      "ME027:a5",
+      "ME028:a2",
+      "ME030:a1",
+      "ME030:a2",
+      "ME030:a3",
+      "ME030:a4",
+      "ME031:a2",
+      "ME031:a3",
+      "ME031:a4",
+      "ME032:a2",
+      "ME032:a3",
+      "ME032:a4",
+      "ME033:a1",
+      "ME033:a2",
+      "ME033:a3",
+      "ME034:a1",
+      "ME034:a2",
+      "ME034:a3",
+      "ME034:a4"
+    ],
+    "mandatory_boundaries": 94,
+    "required": 94,
+    "reviewed": 94,
+    "substantive_severity_changes": 1
+  },
+  "call_ledger": {
+    "calls": [
+      {
+        "count": 21,
+        "phase": "annotation",
+        "provider": "sol",
+        "status": "complete"
+      },
+      {
+        "count": 4,
+        "phase": "openings",
+        "provider": "sol",
+        "status": "complete"
+      },
+      {
+        "count": 6,
+        "phase": "smoke",
+        "provider": "sol",
+        "status": "complete"
+      },
+      {
+        "count": 17,
+        "phase": "user_continuation",
+        "provider": "sol",
+        "status": "complete"
+      },
+      {
+        "count": 1,
+        "phase": "preflight",
+        "provider": "target",
+        "status": "complete"
+      },
+      {
+        "count": 126,
+        "phase": "raw_rollout",
+        "provider": "target",
+        "status": "complete"
+      },
+      {
+        "count": 4,
+        "phase": "raw_rollout",
+        "provider": "target",
+        "status": "failed"
+      }
+    ],
+    "sol_reserved_attempts": 48
+  },
+  "caveats": [
+    "No-error means no serious error observed within this trajectory's ending.",
+    "Cells with fewer than five trajectories are descriptive only.",
+    "Correlated turns are not treated as independent statistical units."
+  ],
+  "context_length_bins": {
+    "0-2k": {
+      "descriptive_only": false,
+      "quality": {
+        "good": 20,
+        "minor": 31,
+        "serious": 51
+      },
+      "trajectories": 28,
+      "turns": 102
+    },
+    "2k-4k": {
+      "descriptive_only": false,
+      "quality": {
+        "serious": 9
+      },
+      "trajectories": 5,
+      "turns": 9
+    },
+    "4k+": {
+      "descriptive_only": true,
+      "quality": {},
+      "trajectories": 0,
+      "turns": 0
+    }
+  },
+  "created_utc": "2026-09-16T18:47:11.372257+00:00",
+  "ending_reasons": {
+    "completed": 21,
+    "context_limit": 4,
+    "horizon": 2,
+    "truncated_output": 1
+  },
+  "first_serious_distribution": {
+    "1": 11,
+    "2": 8,
+    "3": 1,
+    "6": 1,
+    "no_observed_error": 7
+  },
+  "gpu_ledger": {
+    "active": [],
+    "completed_sessions": 5,
+    "spent_eur": 1.4020091798781942
+  },
+  "new_failure_risk": {
+    "1": {
+      "at_risk": 28,
+      "new_serious": 11,
+      "risk": 0.39285714285714285
+    },
+    "2": {
+      "at_risk": 13,
+      "new_serious": 8,
+      "risk": 0.6153846153846154
+    },
+    "3": {
+      "at_risk": 3,
+      "new_serious": 1,
+      "risk": 0.3333333333333333
+    },
+    "4": {
+      "at_risk": 1,
+      "new_serious": 0,
+      "risk": 0.0
+    },
+    "5": {
+      "at_risk": 1,
+      "new_serious": 0,
+      "risk": 0.0
+    },
+    "6": {
+      "at_risk": 1,
+      "new_serious": 1,
+      "risk": 1.0
+    },
+    "7": {
+      "at_risk": 0,
+      "new_serious": 0,
+      "risk": null
+    },
+    "8": {
+      "at_risk": 0,
+      "new_serious": 0,
+      "risk": null
+    }
+  },
+  "no_failure_endings": {
+    "natural_completion": 7
+  },
+  "observed_turns": 111,
+  "planned_counts": {
+    "attitude": {
+      "cooperative": 24,
+      "frustrated": 2,
+      "skeptical": 2
+    },
+    "difficulty": {
+      "challenging": 5,
+      "compositional": 14,
+      "routine": 9
+    },
+    "interaction": {
+      "constraint_retention": 7,
+      "followup": 8,
+      "recall": 2,
+      "revision": 8,
+      "uncertainty": 3
+    },
+    "language": {
+      "de": 1,
+      "el": 19,
+      "en": 4,
+      "es": 1,
+      "fr": 1,
+      "it": 1,
+      "pt": 1
+    },
+    "language__register": {
+      "de|informal": 1,
+      "el|formal": 2,
+      "el|greeklish": 1,
+      "el|informal": 3,
+      "el|standard": 13,
+      "en|standard": 4,
+      "es|standard": 1,
+      "fr|informal": 1,
+      "it|formal": 1,
+      "pt|standard": 1
+    },
+    "register": {
+      "formal": 3,
+      "greeklish": 1,
+      "informal": 5,
+      "standard": 19
+    },
+    "task": {
+      "everyday": 14,
+      "factual": 3,
+      "instruction": 8,
+      "math": 2,
+      "safety": 1
+    },
+    "task__interaction": {
+      "everyday|constraint_retention": 6,
+      "everyday|recall": 2,
+      "everyday|revision": 4,
+      "everyday|uncertainty": 2,
+      "factual|followup": 3,
+      "instruction|constraint_retention": 1,
+      "instruction|followup": 2,
+      "instruction|revision": 4,
+      "instruction|uncertainty": 1,
+      "math|followup": 2,
+      "safety|followup": 1
+    },
+    "task__language": {
+      "everyday|de": 1,
+      "everyday|el": 9,
+      "everyday|en": 2,
+      "everyday|es": 1,
+      "everyday|fr": 1,
+      "factual|el": 2,
+      "factual|en": 1,
+      "instruction|el": 5,
+      "instruction|en": 1,
+      "instruction|it": 1,
+      "instruction|pt": 1,
+      "math|el": 2,
+      "safety|el": 1
+    },
+    "task__language__interaction__attitude__register__difficulty": {
+      "everyday|de|constraint_retention|cooperative|informal|compositional": 1,
+      "everyday|el|constraint_retention|cooperative|informal|challenging": 1,
+      "everyday|el|constraint_retention|cooperative|informal|compositional": 1,
+      "everyday|el|constraint_retention|cooperative|standard|compositional": 2,
+      "everyday|el|revision|cooperative|formal|routine": 1,
+      "everyday|el|revision|cooperative|greeklish|challenging": 1,
+      "everyday|el|revision|cooperative|standard|challenging": 1,
+      "everyday|el|uncertainty|cooperative|standard|challenging": 1,
+      "everyday|el|uncertainty|cooperative|standard|routine": 1,
+      "everyday|en|constraint_retention|cooperative|standard|routine": 1,
+      "everyday|en|recall|frustrated|standard|routine": 1,
+      "everyday|es|revision|cooperative|standard|compositional": 1,
+      "everyday|fr|recall|cooperative|informal|compositional": 1,
+      "factual|el|followup|cooperative|standard|compositional": 1,
+      "factual|el|followup|cooperative|standard|routine": 1,
+      "factual|en|followup|cooperative|standard|compositional": 1,
+      "instruction|el|followup|cooperative|informal|routine": 1,
+      "instruction|el|followup|cooperative|standard|routine": 1,
+      "instruction|el|revision|cooperative|standard|routine": 1,
+      "instruction|el|revision|skeptical|standard|compositional": 1,
+      "instruction|el|uncertainty|cooperative|formal|compositional": 1,
+      "instruction|en|revision|frustrated|standard|compositional": 1,
+      "instruction|it|constraint_retention|cooperative|formal|compositional": 1,
+      "instruction|pt|revision|cooperative|standard|routine": 1,
+      "math|el|followup|cooperative|standard|compositional": 1,
+      "math|el|followup|skeptical|standard|compositional": 1,
+      "safety|el|followup|cooperative|standard|challenging": 1
+    }
+  },
+  "quality_by_depth": {
+    "1": {
+      "denominator_reached": 28,
+      "quality": {
+        "good": 4,
+        "minor": 13,
+        "serious": 11
+      }
+    },
+    "2": {
+      "denominator_reached": 24,
+      "quality": {
+        "good": 4,
+        "minor": 3,
+        "serious": 17
+      }
+    },
+    "3": {
+      "denominator_reached": 20,
+      "quality": {
+        "good": 2,
+        "minor": 7,
+        "serious": 11
+      }
+    },
+    "4": {
+      "denominator_reached": 18,
+      "quality": {
+        "good": 6,
+        "minor": 4,
+        "serious": 8
+      }
+    },
+    "5": {
+      "denominator_reached": 10,
+      "quality": {
+        "good": 3,
+        "minor": 3,
+        "serious": 4
+      }
+    },
+    "6": {
+      "denominator_reached": 5,
+      "quality": {
+        "minor": 1,
+        "serious": 4
+      }
+    },
+    "7": {
+      "denominator_reached": 4,
+      "quality": {
+        "good": 1,
+        "serious": 3
+      }
+    },
+    "8": {
+      "denominator_reached": 2,
+      "quality": {
+        "serious": 2
+      }
+    }
+  },
+  "recovery_summary": {
+    "mean_delay": 1.9333333333333333,
+    "recovery_delays": [
+      1,
+      4,
+      3,
+      1,
+      1,
+      1,
+      3,
+      1,
+      1,
+      1,
+      3,
+      2,
+      2,
+      2,
+      3
+    ],
+    "repeated_serious_errors": 39,
+    "successful_repairs": 15,
+    "trajectories_with_opportunity": 21
+  },
+  "stage": "measurement",
+  "statistical_unit": "trajectory",
+  "trajectory_bootstrap": {
+    "draws": 200,
+    "resampling_unit": "trajectory",
+    "serious_rate_95pct": {
+      "1": [
+        0.17857142857142858,
+        0.5714285714285714
+      ],
+      "2": [
+        0.5416666666666666,
+        0.8695652173913043
+      ],
+      "3": [
+        0.3181818181818182,
+        0.7333333333333333
+      ],
+      "4": [
+        0.2,
+        0.6842105263157895
+      ],
+      "5": [
+        0.1,
+        0.7
+      ],
+      "6": [
+        0.3333333333333333,
+        1.0
+      ],
+      "7": [
+        0.3333333333333333,
+        1.0
+      ],
+      "8": [
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "trajectory_count": 28,
+  "trajectory_state": {
+    "ME001": {
+      "first_serious_turn": 2,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 1,
+      "recovery_opportunity_turns": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "recovery_success_turn": 3,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "ME002": {
+      "first_serious_turn": 1,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 4,
+      "recovery_opportunity_turns": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "recovery_success_turn": 5,
+      "repeated_serious_turns": [
+        2,
+        4
+      ],
+      "unjudgeable_turns": []
+    },
+    "ME003": {
+      "first_serious_turn": 2,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 3,
+      "recovery_opportunity_turns": [
+        3,
+        4,
+        5
+      ],
+      "recovery_success_turn": 5,
+      "repeated_serious_turns": [
+        3,
+        4
+      ],
+      "unjudgeable_turns": []
+    },
+    "ME004": {
+      "first_serious_turn": null,
+      "no_failure_kind": "natural_completion",
+      "no_failure_observed": true,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "ME005": {
+      "first_serious_turn": 1,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "unjudgeable_turns": []
+    },
+    "ME006": {
+      "first_serious_turn": null,
+      "no_failure_kind": "natural_completion",
+      "no_failure_observed": true,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "ME011": {
+      "first_serious_turn": null,
+      "no_failure_kind": "natural_completion",
+      "no_failure_observed": true,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "ME012": {
+      "first_serious_turn": 1,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 1,
+      "recovery_opportunity_turns": [
+        2
+      ],
+      "recovery_success_turn": 2,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "ME013": {
+      "first_serious_turn": 2,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 1,
+      "recovery_opportunity_turns": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "recovery_success_turn": 3,
+      "repeated_serious_turns": [
+        6,
+        7,
+        8
+      ],
+      "unjudgeable_turns": []
+    },
+    "ME014": {
+      "first_serious_turn": 3,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 1,
+      "recovery_opportunity_turns": [
+        4
+      ],
+      "recovery_success_turn": 4,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "ME015": {
+      "first_serious_turn": null,
+      "no_failure_kind": "natural_completion",
+      "no_failure_observed": true,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "ME016": {
+      "first_serious_turn": null,
+      "no_failure_kind": "natural_completion",
+      "no_failure_observed": true,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "ME017": {
+      "first_serious_turn": 1,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 3,
+      "recovery_opportunity_turns": [
+        2,
+        3,
+        4
+      ],
+      "recovery_success_turn": 4,
+      "repeated_serious_turns": [
+        2,
+        3
+      ],
+      "unjudgeable_turns": []
+    },
+    "ME019": {
+      "first_serious_turn": 2,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 1,
+      "recovery_opportunity_turns": [
+        3,
+        4
+      ],
+      "recovery_success_turn": 3,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "ME020": {
+      "first_serious_turn": 6,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [
+        7,
+        8
+      ],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [
+        7,
+        8
+      ],
+      "unjudgeable_turns": []
+    },
+    "ME021": {
+      "first_serious_turn": 1,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "unjudgeable_turns": []
+    },
+    "ME022": {
+      "first_serious_turn": 1,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "unjudgeable_turns": []
+    },
+    "ME023": {
+      "first_serious_turn": 1,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "unjudgeable_turns": []
+    },
+    "ME024": {
+      "first_serious_turn": null,
+      "no_failure_kind": "natural_completion",
+      "no_failure_observed": true,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "ME025": {
+      "first_serious_turn": 1,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 1,
+      "recovery_opportunity_turns": [
+        2
+      ],
+      "recovery_success_turn": 2,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "ME026": {
+      "first_serious_turn": 2,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 1,
+      "recovery_opportunity_turns": [
+        3,
+        4
+      ],
+      "recovery_success_turn": 3,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "ME027": {
+      "first_serious_turn": 2,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 3,
+      "recovery_opportunity_turns": [
+        3,
+        4,
+        5
+      ],
+      "recovery_success_turn": 5,
+      "repeated_serious_turns": [
+        3,
+        4
+      ],
+      "unjudgeable_turns": []
+    },
+    "ME028": {
+      "first_serious_turn": null,
+      "no_failure_kind": "natural_completion",
+      "no_failure_observed": true,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "ME030": {
+      "first_serious_turn": 1,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": null,
+      "recovery_opportunity_turns": [
+        2,
+        3,
+        4
+      ],
+      "recovery_success_turn": null,
+      "repeated_serious_turns": [
+        2,
+        3,
+        4
+      ],
+      "unjudgeable_turns": []
+    },
+    "ME031": {
+      "first_serious_turn": 2,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 2,
+      "recovery_opportunity_turns": [
+        3,
+        4
+      ],
+      "recovery_success_turn": 4,
+      "repeated_serious_turns": [
+        3
+      ],
+      "unjudgeable_turns": []
+    },
+    "ME032": {
+      "first_serious_turn": 2,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 2,
+      "recovery_opportunity_turns": [
+        3,
+        4
+      ],
+      "recovery_success_turn": 4,
+      "repeated_serious_turns": [],
+      "unjudgeable_turns": []
+    },
+    "ME033": {
+      "first_serious_turn": 1,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 2,
+      "recovery_opportunity_turns": [
+        2,
+        3
+      ],
+      "recovery_success_turn": 3,
+      "repeated_serious_turns": [
+        2
+      ],
+      "unjudgeable_turns": []
+    },
+    "ME034": {
+      "first_serious_turn": 1,
+      "no_failure_kind": null,
+      "no_failure_observed": false,
+      "recovery_delay": 3,
+      "recovery_opportunity_turns": [
+        2,
+        3,
+        4
+      ],
+      "recovery_success_turn": 4,
+      "repeated_serious_turns": [
+        2,
+        3
+      ],
+      "unjudgeable_turns": []
+    }
+  },
+  "uncertain_trajectories": 0,
+  "user_policy_sha256": "c58372b0c8a2bc79b57cf98a5278b0e23fdd056404f608ba55cc66d218dea6ba",
+  "version": "dialogue-quality-depth-v1",
+  "views": {
+    "language": {
+      "de": {
+        "descriptive_only": true,
+        "quality": {
+          "serious": 5
+        },
+        "trajectories": 1
+      },
+      "el": {
+        "descriptive_only": false,
+        "quality": {
+          "good": 14,
+          "minor": 20,
+          "serious": 47
+        },
+        "trajectories": 19
+      },
+      "en": {
+        "descriptive_only": true,
+        "quality": {
+          "good": 3,
+          "minor": 4,
+          "serious": 4
+        },
+        "trajectories": 4
+      },
+      "es": {
+        "descriptive_only": true,
+        "quality": {
+          "minor": 3,
+          "serious": 1
+        },
+        "trajectories": 1
+      },
+      "fr": {
+        "descriptive_only": true,
+        "quality": {
+          "good": 1,
+          "minor": 1
+        },
+        "trajectories": 1
+      },
+      "it": {
+        "descriptive_only": true,
+        "quality": {
+          "good": 1,
+          "minor": 2,
+          "serious": 1
+        },
+        "trajectories": 1
+      },
+      "pt": {
+        "descriptive_only": true,
+        "quality": {
+          "good": 1,
+          "minor": 1,
+          "serious": 2
+        },
+        "trajectories": 1
+      }
+    },
+    "task": {
+      "everyday": {
+        "descriptive_only": false,
+        "quality": {
+          "good": 6,
+          "minor": 21,
+          "serious": 38
+        },
+        "trajectories": 14
+      },
+      "factual": {
+        "descriptive_only": true,
+        "quality": {
+          "good": 3,
+          "serious": 1
+        },
+        "trajectories": 3
+      },
+      "instruction": {
+        "descriptive_only": false,
+        "quality": {
+          "good": 9,
+          "minor": 5,
+          "serious": 15
+        },
+        "trajectories": 8
+      },
+      "math": {
+        "descriptive_only": true,
+        "quality": {
+          "good": 2,
+          "serious": 3
+        },
+        "trajectories": 2
+      },
+      "safety": {
+        "descriptive_only": true,
+        "quality": {
+          "minor": 5,
+          "serious": 3
+        },
+        "trajectories": 1
+      }
+    }
+  }
+}

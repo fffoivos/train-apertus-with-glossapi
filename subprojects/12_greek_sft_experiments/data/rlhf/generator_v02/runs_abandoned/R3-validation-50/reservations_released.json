@@ -1,0 +1,505 @@
+{
+ "reason": "abandoned 17 Sept 2026: instances built without detail level (bare/terse slots got rich instances); renderer marked whole message as pasted_span on non-packet slots",
+ "reservations": [
+  {
+   "slot_id": "R3-0001",
+   "attempt": 1,
+   "instance_key": "e3fd18526e341e2c09659d6d1dc1b81ffc5627a393f8efb0f14b32b96134d730",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643884.7888
+  },
+  {
+   "slot_id": "R3-0006",
+   "attempt": 1,
+   "instance_key": "1e64bf6173cd0e61e521044546806ce83ea20a139bf0986186ee8e9a879c3203",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643884.790551
+  },
+  {
+   "slot_id": "R3-0362",
+   "attempt": 1,
+   "instance_key": "38e3219f60d0467df69a91b544bfffe145175f938be39c558f4d874036a21a77",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643884.792564
+  },
+  {
+   "slot_id": "R3-0016",
+   "attempt": 1,
+   "instance_key": "54fa022600e4c79b96b59a3f43c4d9b8e2e38c9d36b5eb2aca069a0f1355759a",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643884.793835
+  },
+  {
+   "slot_id": "R3-0019",
+   "attempt": 1,
+   "instance_key": "956d18172684bcde16086dee5bab330e704b3db2620f094852e5bc12f526b90c",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643894.113143
+  },
+  {
+   "slot_id": "R3-0026",
+   "attempt": 1,
+   "instance_key": "b7bcafe83ddd2944a5c3414194da9f5b34b88536b87ebf208dfd5148a2d9bb15",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643894.116066
+  },
+  {
+   "slot_id": "R3-0202",
+   "attempt": 1,
+   "instance_key": "6c5147bf9de3c3578c32c856e4d67f1af99ab8edd6508ae774d913fa644d6c7b",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643894.11762
+  },
+  {
+   "slot_id": "R3-0216",
+   "attempt": 1,
+   "instance_key": "ea78c203cf2c52fb1014e50f36475c6c7474cf0d1d1d12986aa3c6f2f856c282",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643894.119025
+  },
+  {
+   "slot_id": "R3-0022",
+   "attempt": 1,
+   "instance_key": "45d6fb7a73f37d2c7fbcbeef1ce49f9d20f8d642803ad10bc58345ef1cdb744a",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.153507
+  },
+  {
+   "slot_id": "R3-0032",
+   "attempt": 1,
+   "instance_key": "acb6de4a9281d2bf8f5cc0a2fe27233c56c18367c5de3584e42dd6020b8542a8",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.155426
+  },
+  {
+   "slot_id": "R3-0155",
+   "attempt": 1,
+   "instance_key": "7aacfaa44ea7c630dab5c8332eb42f70d6301b8752758fc3b99d60c444244126",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.156597
+  },
+  {
+   "slot_id": "R3-0325",
+   "attempt": 1,
+   "instance_key": "946d8f02b95597b26d05be846dae76b003c2b0c3d7396b8a6817586dbac7b918",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.158102
+  },
+  {
+   "slot_id": "R3-0024",
+   "attempt": 1,
+   "instance_key": "9d9e287ad7dd0e2ca82698dc37e721b70fb9f1b2e9084bf3ab1e2348c7c30d59",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.1593652
+  },
+  {
+   "slot_id": "R3-0045",
+   "attempt": 1,
+   "instance_key": "436909431070767c3a4138cddabbc7bb0c17affebc406b771381b154cb6dc543",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.1603992
+  },
+  {
+   "slot_id": "R3-0055",
+   "attempt": 1,
+   "instance_key": "eec7f4b206d7281c7fc010d71a30f51503cc28a056479b9e5a62c57da756551f",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.163357
+  },
+  {
+   "slot_id": "R3-0316",
+   "attempt": 1,
+   "instance_key": "5fc754dd1d6059791ebdd05bc8809037a175cbb43b632bfcd6c5fbaf93258558",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.164812
+  },
+  {
+   "slot_id": "R3-0091",
+   "attempt": 1,
+   "instance_key": "cf5f7c0b9eaf800e95e111baaa9bb48b385f96d51fe83dbc63f05dbac07a5ea7",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.165969
+  },
+  {
+   "slot_id": "R3-0178",
+   "attempt": 1,
+   "instance_key": "ccde57fcc32cd0d0136073f38f9f69fae65132bfeae3b004faa1d3d81994737a",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.1668448
+  },
+  {
+   "slot_id": "R3-0315",
+   "attempt": 1,
+   "instance_key": "0c6761f7bdf6a4d7438fb160226f4dfe2daaaf0c37681df5127a668dd867f7cf",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.167951
+  },
+  {
+   "slot_id": "R3-0099",
+   "attempt": 1,
+   "instance_key": "f0f511ae3d715d8667d52fd52b1bbe75391d3e7f2fafbcf72b399bd1c644399d",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.168867
+  },
+  {
+   "slot_id": "R3-0111",
+   "attempt": 1,
+   "instance_key": "7e68edcfc93a01d5ba2d7c72ccb7415e43a12e62f09db96ccf9466a413f23de5",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.1696582
+  },
+  {
+   "slot_id": "R3-0295",
+   "attempt": 1,
+   "instance_key": "760f19aac5063773de076dac09da7b72fb652da2b8596ca053e235c679e08717",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.170676
+  },
+  {
+   "slot_id": "R3-0118",
+   "attempt": 1,
+   "instance_key": "9a5a474cc2e53b79f25f9977552a1917294c6b82146a1a35b01962d077f060ea",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.172432
+  },
+  {
+   "slot_id": "R3-0251",
+   "attempt": 1,
+   "instance_key": "21aa760eb229f4f11dde1252667042e7bf82920715b52292e7beca689470fab1",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.173978
+  },
+  {
+   "slot_id": "R3-0342",
+   "attempt": 1,
+   "instance_key": "aea05098d8fa7196ac290f3c095d9d0bd2a5b1420c39c9d41308b680c436facd",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.175314
+  },
+  {
+   "slot_id": "R3-0368",
+   "attempt": 1,
+   "instance_key": "90ba1b549d8a0ccc077cbeb9d2a19924ee6f1f45e7fb1f396a5b20b7876b9ae4",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.176425
+  },
+  {
+   "slot_id": "R3-0157",
+   "attempt": 1,
+   "instance_key": "bff82e261a780e1aeb9c23d1b51a4320858b921f33017ae63d7c5b722a11b423",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.177296
+  },
+  {
+   "slot_id": "R3-0159",
+   "attempt": 1,
+   "instance_key": "cc55f88d793b75745471e84e7ba6830c7919cdb0545315ddc83c2c610d17f08c",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.178592
+  },
+  {
+   "slot_id": "R3-0272",
+   "attempt": 1,
+   "instance_key": "f6340dd27a41b8b6820e2e258b55c49b5f7376b17cb9730ec9527494b362a8ae",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.1797671
+  },
+  {
+   "slot_id": "R3-0299",
+   "attempt": 1,
+   "instance_key": "bca7ef8457e8b566b12c0e2776e29a569e7df2e9d0e35bafb725a9f7003040d5",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.181112
+  },
+  {
+   "slot_id": "R3-0185",
+   "attempt": 1,
+   "instance_key": "3ff52faf4cce3b3072a25df2366de8b02c99de1db826da0ac0f875169433b154",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.182525
+  },
+  {
+   "slot_id": "R3-0203",
+   "attempt": 1,
+   "instance_key": "41da94c184327e9b113eed6e189c5822bce01d752e5ad880e5ecee6cb28f07ec",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.183787
+  },
+  {
+   "slot_id": "R3-0223",
+   "attempt": 1,
+   "instance_key": "84cb1e4f0de0f3d7d00d8f2255138c7a17c8d9abc865f849e9145da1d02ba608",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.185031
+  },
+  {
+   "slot_id": "R3-0326",
+   "attempt": 1,
+   "instance_key": "8cd20400c0a39656b71f5db4ebf5be0aee3f36d64eed40d6589d79a3627d3ea1",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.185958
+  },
+  {
+   "slot_id": "R3-0252",
+   "attempt": 1,
+   "instance_key": "46f4b3baf919720abe41ad3f3ac49e0c45f930f2954668227992809e9b8ffd48",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.186937
+  },
+  {
+   "slot_id": "R3-0268",
+   "attempt": 1,
+   "instance_key": "546fa1b19f9980cd9476b8194df02e8e451d55303281b6dddb1582f85ed6feeb",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.188192
+  },
+  {
+   "slot_id": "R3-0254",
+   "attempt": 1,
+   "instance_key": "1e840480093d59a8f48f4d73ed602d655aa8e8182b25b4c8234a0456250c5a45",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.189014
+  },
+  {
+   "slot_id": "R3-0336",
+   "attempt": 1,
+   "instance_key": "6dd6dfa1d9b5f38356137bdd63935dced6c96e534b1750cc44fe58ddfa201b93",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.1897652
+  },
+  {
+   "slot_id": "R3-0255",
+   "attempt": 1,
+   "instance_key": "3bd20492b5a1549f7a5cf64baaa450f3a17a569304ac6957c29ee6dd4fe2f545",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.1905248
+  },
+  {
+   "slot_id": "R3-0258",
+   "attempt": 1,
+   "instance_key": "9dd5821cfe6185d7b1fa49a424b7d6153be5e5a8655caf26414c6a678e954bff",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.191316
+  },
+  {
+   "slot_id": "R3-0310",
+   "attempt": 1,
+   "instance_key": "0ae861a4e8a3eda203567921700b6aea585f9c2045d3354b11a053155771cc19",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.192109
+  },
+  {
+   "slot_id": "R3-0276",
+   "attempt": 1,
+   "instance_key": "65a8d77cdce1b7622b31d430273f984132e3341dd59b31927f5b380f4a500842",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.1927738
+  },
+  {
+   "slot_id": "R3-0278",
+   "attempt": 1,
+   "instance_key": "454830b7cb9c42848afccbf2b0ceb67440ce760e83d3b1135cb4b4a6100035ca",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.193464
+  },
+  {
+   "slot_id": "R3-0280",
+   "attempt": 1,
+   "instance_key": "34dc1837a5f32310518ea5d9a77641ad779a8860521638fd64adaf18d5c306f1",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.194127
+  },
+  {
+   "slot_id": "R3-0330",
+   "attempt": 1,
+   "instance_key": "c5ffd8b6308d00e3ac1b094c6c9934d32405e116a27125b4d34ecbcfaf27f07c",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.194737
+  },
+  {
+   "slot_id": "R3-0284",
+   "attempt": 1,
+   "instance_key": "7eca8c0a9a284034a094cadf9cf31da624b89b4a3fe594a0c810bf9880f1694a",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.1954072
+  },
+  {
+   "slot_id": "R3-0304",
+   "attempt": 1,
+   "instance_key": "ac64251e48d73b3920b4104ed82b7fbc3476797b3b83c4365c51da5957d4c491",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.19604
+  },
+  {
+   "slot_id": "R3-0297",
+   "attempt": 1,
+   "instance_key": "191aecdda13b408148e5d04b6711b118180241a3f31694497802f5c8287a44ba",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.196737
+  },
+  {
+   "slot_id": "R3-0305",
+   "attempt": 1,
+   "instance_key": "4ec07d00935db1a5fa4ead7414d4eb9de94210185f6b14ec51c4a473cee7dbd6",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.197376
+  },
+  {
+   "slot_id": "R3-0324",
+   "attempt": 1,
+   "instance_key": "81bc8fbe439af8d222d24034cffeecfdae233c6b5da0241875d6a47f2e2a49f6",
+   "rendering_key": null,
+   "run": "R3-validation-50",
+   "status": "pending",
+   "retry_of": null,
+   "created": 1789643945.199001
+  }
+ ]
+}

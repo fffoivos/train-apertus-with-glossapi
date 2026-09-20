@@ -1,0 +1,104 @@
+{
+  "key": "2b30aac492cb5cd7bcd0c9204378b05d66b7e9dc70f1ea10137a7cc01e4a27c1",
+  "stage": "review",
+  "attempt": 0,
+  "ids": [
+    "S0078",
+    "S0079",
+    "S0081",
+    "S0082",
+    "S0083",
+    "S0087",
+    "S0088",
+    "S0091"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 28.4,
+  "prompt_sha256": "db3d16a7b9d23c983160ac8ae3f8feeaf275800a50839becb87853a54778c082",
+  "response": {
+    "items": [
+      {
+        "id": "S0078",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "Η αίτηση αντιστοιχεί ακριβώς στην προδιαγραφή: ζητά αναδιατύπωση σε δύο προτάσεις, διατήρηση όλων των αριθμών και της οδηγίας, και παράλειψη του ονόματος του συντονιστή. Η πηγή είναι πλήρης και η εργασία απαντήσιμη."
+      },
+      {
+        "id": "S0079",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "Ζητά ακριβώς τα τρία προβλεπόμενα πεδία σε JSON, αποκλείοντας εισαγωγή και πρόσθετα πεδία. Όλες οι ζητούμενες τιμές δίνονται σαφώς στην πηγή."
+      },
+      {
+        "id": "S0081",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "el",
+        "observed_register": "informal",
+        "observed_attitude": "playful",
+        "rationale": "Η μετάφραση προς τα αγγλικά και οι απαιτήσεις πιστής διατήρησης ονομάτων, ημερομηνιών, ποσοτήτων και πιθανής αβεβαιότητας συμφωνούν με την προδιαγραφή. Η εμφατική διατύπωση υποστηρίζει τον σκόπιμα παιχνιδιάρικο τόνο."
+      },
+      {
+        "id": "S0082",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "Ζητά απλή εξήγηση ακριβώς των τριών εννοιών και απαιτεί τους πραγματικούς αριθμούς της ανακοίνωσης. Η πηγή παρέχει συνεπή και επαρκή στοιχεία."
+      },
+      {
+        "id": "S0083",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "factual",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "skeptical",
+        "rationale": "Η αίτηση καλύπτει ακριβώς τον υπολογισμό των εναπομενουσών θέσεων και του κόστους για δύο άτομα, περιορίζεται στην πηγή και ζητά να παρουσιαστούν και οι δύο πράξεις. Τα δεδομένα είναι επαρκή και συνεπή."
+      },
+      {
+        "id": "S0087",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "playful",
+        "rationale": "Ορίζει σωστά τη συνθήκη, τα στοιχεία που πρέπει να δοθούν στον θετικό κλάδο και την εναλλακτική για πλήρη εκδήλωση, ενώ απαιτεί μόνο τον ισχύοντα κλάδο. Η πηγή καθιστά τη συνθήκη μονοσήμαντη."
+      },
+      {
+        "id": "S0088",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "factual",
+        "observed_language": "el",
+        "observed_register": "formal",
+        "observed_attitude": "skeptical",
+        "rationale": "Η εσφαλμένη υπόθεση των 7 θέσεων είναι σκόπιμη και ζητείται ρητά να ελεγχθεί, να διορθωθεί και να αιτιολογηθεί με αφαίρεση. Η επίσημη προσφώνηση και ο ελεγκτικός τόνος ταιριάζουν στην προδιαγραφή."
+      },
+      {
+        "id": "S0091",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "math",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "Ζητά ακριβώς το συνολικό κόστος σε λεπτά και έναν σύντομο υπολογισμό. Το πλαίσιο καταστήματος αποσαφηνίζει ότι τα «λεπτά» είναι νομισματική μονάδα και η πηγή περιέχει όλα τα αναγκαία δεδομένα."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:28:02.577229+00:00"
+}

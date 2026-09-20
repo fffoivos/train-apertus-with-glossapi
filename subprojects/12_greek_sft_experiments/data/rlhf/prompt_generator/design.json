@@ -1,0 +1,2069 @@
+{
+  "version": "task-parameters-v3-design-1",
+  "status": "parameter_choices_frozen_design_not_production_generators",
+  "purpose_shares": {
+    "dialogue": 35,
+    "everyday": 25,
+    "instruction": 15,
+    "factual": 10,
+    "safety": 10,
+    "math": 5
+  },
+  "difficulty_default": {
+    "routine": 30,
+    "compositional": 50,
+    "challenging": 20
+  },
+  "language_default": {
+    "el": 70,
+    "en": 20,
+    "fr": 2,
+    "de": 2,
+    "es": 2,
+    "it": 2,
+    "pt": 2
+  },
+  "attitude_default": {
+    "cooperative": 70,
+    "frustrated": 10,
+    "skeptical": 15,
+    "playful": 5
+  },
+  "register_default": {
+    "standard": 60,
+    "informal": 20,
+    "formal": 15,
+    "greeklish": 5
+  },
+  "families": [
+    {
+      "id": "m_arithmetic",
+      "purpose": "math",
+      "label": "Arithmetic, ratios and percentages",
+      "share_within_purpose": 15,
+      "parameters": [
+        {
+          "name": "structure",
+          "domain": "unit rate; percentage change; fraction of a quantity; reverse percentage; two-stage budget",
+          "why": "Each is a separate reasoning structure."
+        },
+        {
+          "name": "quantities",
+          "domain": "integers 2…200; rational fractions with denominator 2…12",
+          "why": "Require positivity and consistent units."
+        },
+        {
+          "name": "unit_price_cents",
+          "domain": "100…2,000 in steps of 25",
+          "why": "Use integer cents; reject unsupported rounding cases."
+        },
+        {
+          "name": "discount_percent",
+          "domain": "5, 10, 15, 20 or 25",
+          "why": "Recompute the reference rather than modifying an old answer."
+        },
+        {
+          "name": "requested_unknown",
+          "domain": "total / remainder / original amount / affordable quantity",
+          "why": "Different unknowns create different equations."
+        }
+      ],
+      "difficulty": {
+        "routine": "One operation with all data explicit.",
+        "compositional": "Two to three dependent operations or reversing a relationship.",
+        "challenging": "Multiple ratios or a piecewise budget; genuine case distinction."
+      },
+      "checks": [
+        "Exact rational or integer-cents oracle.",
+        "Reject zero denominators, ambiguous units and unspecified rounding.",
+        "Canonicalise operation graph; changing names does not create a new structure."
+      ],
+      "example": {
+        "structure": "purchase_discount",
+        "quantity": 8,
+        "unit_price_cents": 350,
+        "discount_percent": 15,
+        "answer_cents": 2380
+      },
+      "structure_signature": "Operation graph + unknown position + unit relationships; exclude numeric values and names.",
+      "max_accepted_per_structure": 20,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "m_linear",
+      "purpose": "math",
+      "label": "Linear equations and systems",
+      "share_within_purpose": 10,
+      "parameters": [
+        {
+          "name": "coefficient",
+          "domain": "integers −12…12; leading coefficient nonzero",
+          "why": "Controls the instance while preserving the chosen algebraic structure."
+        },
+        {
+          "name": "number_domain",
+          "domain": "integer / rational / real; explicitly stated",
+          "why": "Prevents ambiguity about admissible solutions."
+        },
+        {
+          "name": "unknown_and_output",
+          "domain": "solve / simplify / count solutions / justify",
+          "why": "Changes the required operation; not just the numbers."
+        },
+        {
+          "name": "system_size",
+          "domain": "one equation or two equations/two unknowns",
+          "why": "Begin with bounded, exactly checkable systems."
+        },
+        {
+          "name": "solution_regime",
+          "domain": "unique / none / infinitely many",
+          "why": "Choose the regime first, then construct coefficients."
+        },
+        {
+          "name": "solution_values",
+          "domain": "integers −10…10 or rationals with denominator ≤6",
+          "why": "Generate from the solution and verify substitution."
+        }
+      ],
+      "difficulty": {
+        "routine": "One linear equation.",
+        "compositional": "Two equations with a unique solution.",
+        "challenging": "Determine parameter regimes or distinguish dependent/inconsistent systems."
+      },
+      "checks": [
+        "Rank/determinant check against intended regime.",
+        "Substitute exact solutions into every equation."
+      ],
+      "example": {
+        "equations": [
+          "2x+y=7",
+          "x-y=2"
+        ],
+        "solution": {
+          "x": 3,
+          "y": 1
+        }
+      },
+      "structure_signature": "Equation dependency/rank structure + requested unknown/regime.",
+      "max_accepted_per_structure": 20,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "m_quadratic",
+      "purpose": "math",
+      "label": "Quadratics and inequalities",
+      "share_within_purpose": 10,
+      "parameters": [
+        {
+          "name": "coefficient",
+          "domain": "integers −12…12; leading coefficient nonzero",
+          "why": "Controls the instance while preserving the chosen algebraic structure."
+        },
+        {
+          "name": "number_domain",
+          "domain": "integer / rational / real; explicitly stated",
+          "why": "Prevents ambiguity about admissible solutions."
+        },
+        {
+          "name": "unknown_and_output",
+          "domain": "solve / simplify / count solutions / justify",
+          "why": "Changes the required operation; not just the numbers."
+        },
+        {
+          "name": "root_regime",
+          "domain": "two distinct real / repeated / no real roots",
+          "why": "Hold root multiplicity separate from numerical values."
+        },
+        {
+          "name": "roots",
+          "domain": "integer roots −10…10 or small rational roots for constructive families",
+          "why": "Use canonical ordering to avoid duplicate swaps."
+        },
+        {
+          "name": "relation",
+          "domain": "equality / strict inequality / inclusive inequality",
+          "why": "Controls endpoints and interval reasoning."
+        }
+      ],
+      "difficulty": {
+        "routine": "Solve an explicitly factorable quadratic.",
+        "compositional": "Complete the square or solve an inequality.",
+        "challenging": "Parameter-dependent discriminant or multiple interval cases."
+      },
+      "checks": [
+        "Discriminant/root oracle.",
+        "Check strict versus inclusive endpoints and declared domain."
+      ],
+      "example": {
+        "polynomial": "x²−5x+6",
+        "request": "solve x²−5x+6 < 0",
+        "answer": "2 < x < 3"
+      },
+      "structure_signature": "Polynomial/inequality structure + root regime + query; not arbitrary polynomial spelling.",
+      "max_accepted_per_structure": 20,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "m_geometry",
+      "purpose": "math",
+      "label": "Geometry and measurement",
+      "share_within_purpose": 10,
+      "parameters": [
+        {
+          "name": "structure",
+          "domain": "right triangle; similar triangles; circle relationships; composite area",
+          "why": "Separate proof/relationship types."
+        },
+        {
+          "name": "constructive_triangle",
+          "domain": "m=2…20, n=1…m−1; legs m²−n² and 2mn",
+          "why": "Creates valid right triangles; remove scaled/swapped duplicates by policy."
+        },
+        {
+          "name": "units",
+          "domain": "cm / m; at most one explicit unit conversion",
+          "why": "Unit conversion is an intentional skill."
+        },
+        {
+          "name": "query",
+          "domain": "length / area / perimeter / scale factor",
+          "why": "Changes the geometric relationship required."
+        }
+      ],
+      "difficulty": {
+        "routine": "Apply one supplied relationship.",
+        "compositional": "Combine two relationships or a unit conversion.",
+        "challenging": "Auxiliary construction, similarity chain or area decomposition."
+      },
+      "checks": [
+        "Construct valid figures; triangle inequalities and nondegeneracy.",
+        "Exact formula check; sufficient textual geometry without an unavailable diagram."
+      ],
+      "example": {
+        "legs_cm": [
+          6,
+          8
+        ],
+        "query": "hypotenuse",
+        "answer_cm": 10
+      },
+      "structure_signature": "Geometric relation graph + requested quantity; canonicalise congruent/scaled copies.",
+      "max_accepted_per_structure": 20,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "m_probability",
+      "purpose": "math",
+      "label": "Counting and probability",
+      "share_within_purpose": 10,
+      "parameters": [
+        {
+          "name": "experiment",
+          "domain": "finite sample; ordered draw; unordered draw; independent events",
+          "why": "Defines the sample space."
+        },
+        {
+          "name": "population",
+          "domain": "5…60 objects, 2…4 categories; draw 1…8",
+          "why": "Reject draws exceeding the population or category bounds."
+        },
+        {
+          "name": "replacement",
+          "domain": "with / without replacement",
+          "why": "Changes dependence."
+        },
+        {
+          "name": "event",
+          "domain": "exactly k / at least k / conditional event",
+          "why": "Changes calculation and evidence requirements."
+        }
+      ],
+      "difficulty": {
+        "routine": "Single event in a small explicit sample space.",
+        "compositional": "Several draws or complementary counting.",
+        "challenging": "Conditional probability or overlapping cases with a nonzero conditioning event."
+      },
+      "checks": [
+        "Exact combinatorial/rational oracle.",
+        "Check ordered/unordered and replacement assumptions explicitly."
+      ],
+      "example": {
+        "red": 4,
+        "blue": 6,
+        "draw": 2,
+        "replacement": false,
+        "event": "both red",
+        "answer": "2/15"
+      },
+      "structure_signature": "Sampling/dependence structure + event logic; exclude colour names.",
+      "max_accepted_per_structure": 20,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "m_limits",
+      "purpose": "math",
+      "label": "Calculus: limits and continuity",
+      "share_within_purpose": 7,
+      "parameters": [
+        {
+          "name": "method",
+          "domain": "factor cancellation; rationalisation; standard trigonometric limit; one-sided/piecewise limit",
+          "why": "Curate each method as a distinct template family."
+        },
+        {
+          "name": "approach_point",
+          "domain": "integer −5…5 or a named exact constant",
+          "why": "Keep singularity and side information explicit."
+        },
+        {
+          "name": "polynomial_degree",
+          "domain": "1…4",
+          "why": "Restrict to forms with a verified reference."
+        },
+        {
+          "name": "side",
+          "domain": "two-sided / left / right",
+          "why": "Requires continuity/existence checks."
+        }
+      ],
+      "difficulty": {
+        "routine": "Direct substitution at a regular point.",
+        "compositional": "One cancellation/rationalisation or standard-limit transformation.",
+        "challenging": "Piecewise matching, non-existence or interacting transformations."
+      },
+      "checks": [
+        "Symbolic derivation with assumptions.",
+        "Check both one-sided limits for two-sided questions; numerical evidence alone is insufficient."
+      ],
+      "example": {
+        "expression": "(x²−9)/(x−3)",
+        "approach": 3,
+        "answer": 6
+      },
+      "structure_signature": "Limit method + singularity/side structure; exclude approach-point substitution.",
+      "max_accepted_per_structure": 20,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "m_derivatives",
+      "purpose": "math",
+      "label": "Calculus: differentiation",
+      "share_within_purpose": 8,
+      "parameters": [
+        {
+          "name": "rule_structure",
+          "domain": "power; product; quotient; chain; implicit differentiation",
+          "why": "This structural choice precedes coefficients."
+        },
+        {
+          "name": "composition_depth",
+          "domain": "1…3",
+          "why": "Limits artificial nesting."
+        },
+        {
+          "name": "exponents",
+          "domain": "integers 2…6; rational exponents only with explicit domain",
+          "why": "Avoid invalid real-domain operations."
+        },
+        {
+          "name": "function_atoms",
+          "domain": "polynomial / exp / log / sin / cos",
+          "why": "Compatibility rules restrict domains and denominators."
+        },
+        {
+          "name": "query",
+          "domain": "symbolic derivative / derivative at a point / tangent line",
+          "why": "Different requested outputs."
+        }
+      ],
+      "difficulty": {
+        "routine": "One rule.",
+        "compositional": "Product/quotient with one composition.",
+        "challenging": "Implicit differentiation or two to three interacting rules."
+      },
+      "checks": [
+        "Symbolic reference with domain assumptions.",
+        "For point evaluation check all functions and denominators are defined."
+      ],
+      "example": {
+        "function": "(3x²+2x+1)^4",
+        "query": "differentiate",
+        "reference": "4(6x+2)(3x²+2x+1)^3"
+      },
+      "structure_signature": "Derivative rule tree + output form; canonicalise equivalent expressions.",
+      "max_accepted_per_structure": 20,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "m_integrals",
+      "purpose": "math",
+      "label": "Calculus: integration",
+      "share_within_purpose": 8,
+      "parameters": [
+        {
+          "name": "method",
+          "domain": "basic antiderivative; substitution; integration by parts; partial fractions",
+          "why": "Generate from a known verified antiderivative/decomposition where possible."
+        },
+        {
+          "name": "bounds",
+          "domain": "indefinite or integer endpoints −5…5 with lower < upper",
+          "why": "Reject singularities crossing the integration interval."
+        },
+        {
+          "name": "degree",
+          "domain": "polynomial degree 0…5; denominator degree 1…3",
+          "why": "Control the tractable family."
+        },
+        {
+          "name": "domain",
+          "domain": "real interval with stated exclusions",
+          "why": "Needed for logs, roots and rational functions."
+        }
+      ],
+      "difficulty": {
+        "routine": "One basic antiderivative.",
+        "compositional": "One substitution or one integration-by-parts step.",
+        "challenging": "Method combination, piecewise interval or nontrivial partial fractions."
+      },
+      "checks": [
+        "Differentiate the reference antiderivative.",
+        "Check definite bounds, domain and additive constants; proof review for delicate cases."
+      ],
+      "example": {
+        "integrand": "2x exp(x²)",
+        "query": "indefinite integral",
+        "reference": "exp(x²)+C"
+      },
+      "structure_signature": "Integration method/decomposition + interval singularity structure.",
+      "max_accepted_per_structure": 20,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "m_series",
+      "purpose": "math",
+      "label": "Calculus: sequences and series",
+      "share_within_purpose": 5,
+      "parameters": [
+        {
+          "name": "family",
+          "domain": "geometric; telescoping; p-series; simple alternating series",
+          "why": "Separate convergence reasoning from arithmetic evaluation."
+        },
+        {
+          "name": "geometric_ratio",
+          "domain": "reduced p/q with q=2…12; |p|<q for convergent-sum tasks",
+          "why": "Construct validity explicitly."
+        },
+        {
+          "name": "requested_property",
+          "domain": "limit / convergence / sum / truncation error",
+          "why": "Not every property is available for every family."
+        },
+        {
+          "name": "term_count",
+          "domain": "5…100 for finite questions",
+          "why": "Avoid huge calculations without new reasoning."
+        }
+      ],
+      "difficulty": {
+        "routine": "Recognise a standard family.",
+        "compositional": "Transform a series or compute a finite remainder.",
+        "challenging": "Select and justify a convergence test or conditional/absolute distinction."
+      },
+      "checks": [
+        "Proof or exact family oracle.",
+        "Do not infer convergence from a few numerical terms."
+      ],
+      "example": {
+        "series": "sum from n=0 to infinity of (1/2)^n",
+        "answer": 2
+      },
+      "structure_signature": "Series structure + convergence regime + requested property.",
+      "max_accepted_per_structure": 20,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "m_optimisation",
+      "purpose": "math",
+      "label": "Calculus: optimisation",
+      "share_within_purpose": 7,
+      "parameters": [
+        {
+          "name": "objective",
+          "domain": "polynomial of degree 2…4 or a geometric objective",
+          "why": "Curate solvable objectives."
+        },
+        {
+          "name": "domain",
+          "domain": "closed interval / positive interval / explicit geometric constraint",
+          "why": "Boundary behaviour is part of the instance."
+        },
+        {
+          "name": "parameters",
+          "domain": "integer coefficients −10…10; feasible dimensions 1…50",
+          "why": "Construct a feasible problem first."
+        },
+        {
+          "name": "query",
+          "domain": "argmin/argmax / optimum value / both",
+          "why": "Different output contract."
+        }
+      ],
+      "difficulty": {
+        "routine": "Single stationary point on a simple interval.",
+        "compositional": "Construct objective from a verbal constraint; check endpoints.",
+        "challenging": "Several critical points or comparison of boundary/interior candidates."
+      },
+      "checks": [
+        "Enumerate all admissible critical points and boundaries.",
+        "Distinguish local and global optimum."
+      ],
+      "example": {
+        "objective": "x(10−x)",
+        "domain": "0≤x≤10",
+        "argmax": 5,
+        "maximum": 25
+      },
+      "structure_signature": "Objective/constraint topology + boundary regime.",
+      "max_accepted_per_structure": 20,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "m_proof",
+      "purpose": "math",
+      "label": "Nonroutine reasoning and short proofs",
+      "share_within_purpose": 10,
+      "parameters": [
+        {
+          "name": "domain",
+          "domain": "divisibility / parity / elementary inequalities / finite combinatorics",
+          "why": "Curated problem families, not arbitrary model inventions."
+        },
+        {
+          "name": "claim_regime",
+          "domain": "prove a true statement / disprove with counterexample",
+          "why": "Validity must be established before wording generation."
+        },
+        {
+          "name": "proof_skeleton",
+          "domain": "reviewed argument family with explicit assumptions",
+          "why": "Numerical substitutions alone are insufficient."
+        },
+        {
+          "name": "instance_parameters",
+          "domain": "only the ranges certified by that skeleton",
+          "why": "No generic unrestricted coefficient mutation."
+        }
+      ],
+      "difficulty": {
+        "routine": "One explicit invariant or direct argument.",
+        "compositional": "Two linked lemmas or a useful construction.",
+        "challenging": "Non-obvious invariant, case split or counterexample search."
+      },
+      "checks": [
+        "Independent mathematical review before enabling a family.",
+        "Executable arithmetic checks support, but do not replace, proof validation."
+      ],
+      "example": {
+        "family": "parity",
+        "claim": "the product of two consecutive integers is even",
+        "required_assumption": "integers"
+      },
+      "structure_signature": "Proof idea + assumption/case structure; changing constants does not create a new proof.",
+      "max_accepted_per_structure": 5,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "s_general",
+      "purpose": "everyday",
+      "label": "Summarisation: general",
+      "share_within_purpose": 7.5,
+      "parameters": [
+        {
+          "name": "source_genre",
+          "domain": "notice / email / meeting notes / report / narrative / technical explanation",
+          "why": "Retains distinct source textures."
+        },
+        {
+          "name": "source_length",
+          "domain": "short 150–400 words; medium 500–1,200; long 1,500–3,000",
+          "why": "Word bands are language-local; also record tokenizer length."
+        },
+        {
+          "name": "key_facts",
+          "domain": "4…20; protected facts 1…6",
+          "why": "Controls coverage load."
+        },
+        {
+          "name": "exceptions",
+          "domain": "0…3; distractor facts 0…12",
+          "why": "Tests selective retention."
+        },
+        {
+          "name": "compression_target",
+          "domain": "approximately 10% / 25% / 40%; exact output limit only if explicitly requested",
+          "why": "Avoid making every summary an artificial format test."
+        },
+        {
+          "name": "output_focus",
+          "domain": "overall main points",
+          "why": "No hidden query bias."
+        }
+      ],
+      "difficulty": {
+        "routine": "One short coherent source.",
+        "compositional": "Several sections and an exception.",
+        "challenging": "Long source with distributed key facts and misleading prominence."
+      },
+      "checks": [
+        "Compare claims against provided evidence.",
+        "Check protected facts, exceptions and attribution.",
+        "No external facts silently added."
+      ],
+      "example": {
+        "source": "library notice",
+        "must_keep": [
+          "closure date",
+          "renewal exception"
+        ],
+        "target": "short overall summary"
+      },
+      "structure_signature": "Source rhetorical structure + evidence-selection pattern",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "s_query",
+      "purpose": "everyday",
+      "label": "Summarisation: query-focused",
+      "share_within_purpose": 6.25,
+      "parameters": [
+        {
+          "name": "source_genre",
+          "domain": "notice / email / meeting notes / report / narrative / technical explanation",
+          "why": "Retains distinct source textures."
+        },
+        {
+          "name": "source_length",
+          "domain": "short 150–400 words; medium 500–1,200; long 1,500–3,000",
+          "why": "Word bands are language-local; also record tokenizer length."
+        },
+        {
+          "name": "key_facts",
+          "domain": "4…20; protected facts 1…6",
+          "why": "Controls coverage load."
+        },
+        {
+          "name": "exceptions",
+          "domain": "0…3; distractor facts 0…12",
+          "why": "Tests selective retention."
+        },
+        {
+          "name": "compression_target",
+          "domain": "approximately 10% / 25% / 40%; exact output limit only if explicitly requested",
+          "why": "Avoid making every summary an artificial format test."
+        },
+        {
+          "name": "query",
+          "domain": "one question or 2…3 linked facets",
+          "why": "Controls relevance; unrelated details should be omitted."
+        }
+      ],
+      "difficulty": {
+        "routine": "Single explicit answer span.",
+        "compositional": "Relevant evidence distributed across sections.",
+        "challenging": "Relevant evidence mixed with exceptions and tempting irrelevant facts."
+      },
+      "checks": [
+        "Compare claims against provided evidence.",
+        "Check protected facts, exceptions and attribution.",
+        "No external facts silently added."
+      ],
+      "example": {
+        "source": "project report",
+        "query": "What delayed delivery, and what happens next?"
+      },
+      "structure_signature": "Query/evidence dependency structure",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "s_actions",
+      "purpose": "everyday",
+      "label": "Summarisation: decisions and actions",
+      "share_within_purpose": 5,
+      "parameters": [
+        {
+          "name": "source_genre",
+          "domain": "notice / email / meeting notes / report / narrative / technical explanation",
+          "why": "Retains distinct source textures."
+        },
+        {
+          "name": "source_length",
+          "domain": "short 150–400 words; medium 500–1,200; long 1,500–3,000",
+          "why": "Word bands are language-local; also record tokenizer length."
+        },
+        {
+          "name": "key_facts",
+          "domain": "4…20; protected facts 1…6",
+          "why": "Controls coverage load."
+        },
+        {
+          "name": "exceptions",
+          "domain": "0…3; distractor facts 0…12",
+          "why": "Tests selective retention."
+        },
+        {
+          "name": "compression_target",
+          "domain": "approximately 10% / 25% / 40%; exact output limit only if explicitly requested",
+          "why": "Avoid making every summary an artificial format test."
+        },
+        {
+          "name": "actions",
+          "domain": "2…8 with owner/deadline fields; some deliberately unspecified",
+          "why": "Missing owners or deadlines must not be invented."
+        }
+      ],
+      "difficulty": {
+        "routine": "Explicit actions with owners.",
+        "compositional": "Decisions and proposals intermixed.",
+        "challenging": "Revised decisions, unresolved actions and implicit responsibility."
+      },
+      "checks": [
+        "Compare claims against provided evidence.",
+        "Check protected facts, exceptions and attribution.",
+        "No external facts silently added."
+      ],
+      "example": {
+        "source": "meeting notes",
+        "fields": [
+          "decision",
+          "action",
+          "owner",
+          "deadline"
+        ]
+      },
+      "structure_signature": "Decision/action extraction structure + missing-field pattern",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "s_multi",
+      "purpose": "everyday",
+      "label": "Summarisation: multiple sources",
+      "share_within_purpose": 3.75,
+      "parameters": [
+        {
+          "name": "source_genre",
+          "domain": "notice / email / meeting notes / report / narrative / technical explanation",
+          "why": "Retains distinct source textures."
+        },
+        {
+          "name": "source_length",
+          "domain": "short 150–400 words; medium 500–1,200; long 1,500–3,000",
+          "why": "Word bands are language-local; also record tokenizer length."
+        },
+        {
+          "name": "key_facts",
+          "domain": "4…20; protected facts 1…6",
+          "why": "Controls coverage load."
+        },
+        {
+          "name": "exceptions",
+          "domain": "0…3; distractor facts 0…12",
+          "why": "Tests selective retention."
+        },
+        {
+          "name": "compression_target",
+          "domain": "approximately 10% / 25% / 40%; exact output limit only if explicitly requested",
+          "why": "Avoid making every summary an artificial format test."
+        },
+        {
+          "name": "documents",
+          "domain": "2…4; 200…800 words each",
+          "why": "Total length must fit the eventual context budget."
+        },
+        {
+          "name": "source_relations",
+          "domain": "agreement / complementary evidence / 1…3 conflicts",
+          "why": "Conflicts require attribution rather than silent reconciliation."
+        }
+      ],
+      "difficulty": {
+        "routine": "Two complementary sources.",
+        "compositional": "Overlap plus source-specific details.",
+        "challenging": "Conflicting accounts, differing time scopes or authority."
+      },
+      "checks": [
+        "Compare claims against provided evidence.",
+        "Check protected facts, exceptions and attribution.",
+        "No external facts silently added."
+      ],
+      "example": {
+        "documents": 3,
+        "focus": "agreements and unresolved disagreements"
+      },
+      "structure_signature": "Source relation graph + attribution requirement",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "s_update",
+      "purpose": "everyday",
+      "label": "Summarisation: update an existing summary",
+      "share_within_purpose": 2.5,
+      "parameters": [
+        {
+          "name": "source_genre",
+          "domain": "notice / email / meeting notes / report / narrative / technical explanation",
+          "why": "Retains distinct source textures."
+        },
+        {
+          "name": "source_length",
+          "domain": "short 150–400 words; medium 500–1,200; long 1,500–3,000",
+          "why": "Word bands are language-local; also record tokenizer length."
+        },
+        {
+          "name": "key_facts",
+          "domain": "4…20; protected facts 1…6",
+          "why": "Controls coverage load."
+        },
+        {
+          "name": "exceptions",
+          "domain": "0…3; distractor facts 0…12",
+          "why": "Tests selective retention."
+        },
+        {
+          "name": "compression_target",
+          "domain": "approximately 10% / 25% / 40%; exact output limit only if explicitly requested",
+          "why": "Avoid making every summary an artificial format test."
+        },
+        {
+          "name": "updates",
+          "domain": "1…4 corrections/additions; protected old facts 1…5",
+          "why": "Tests selective editing; old summary is supplied text, not fabricated assistant history."
+        }
+      ],
+      "difficulty": {
+        "routine": "One explicit correction.",
+        "compositional": "Several edits while retaining old facts.",
+        "challenging": "Updates invalidate downstream claims or supersede older evidence."
+      },
+      "checks": [
+        "Compare claims against provided evidence.",
+        "Check protected facts, exceptions and attribution.",
+        "No external facts silently added."
+      ],
+      "example": {
+        "old_summary": "supplied",
+        "new_evidence": "meeting moved to Thursday; venue unchanged"
+      },
+      "structure_signature": "Update/dependency graph + protected-fact pattern",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "e_write",
+      "purpose": "everyday",
+      "label": "Writing and creative composition",
+      "share_within_purpose": 10,
+      "parameters": [
+        {
+          "name": "genre",
+          "domain": "email / message / notice / short scene / explanation draft",
+          "why": "Select a real communicative purpose."
+        },
+        {
+          "name": "audience_relationship",
+          "domain": "peer / organiser / customer / teacher / family / general public",
+          "why": "Influences appropriate wording without fixing attitude."
+        },
+        {
+          "name": "purpose",
+          "domain": "inform / request / decline / invite / persuade / narrate",
+          "why": "Different intentions, not just topic swaps."
+        },
+        {
+          "name": "protected_details",
+          "domain": "1…6 facts; forbidden inventions explicitly identified",
+          "why": "Names, dates and amounts must survive."
+        },
+        {
+          "name": "length",
+          "domain": "50…400 words by genre",
+          "why": "Length is a request feature, not a universal quality preference."
+        }
+      ],
+      "difficulty": {
+        "routine": "One purpose and a few facts.",
+        "compositional": "Tone plus several factual constraints.",
+        "challenging": "Competing interpersonal goals or a narrative consistency requirement."
+      },
+      "checks": [
+        "Preserve facts and communicative goal.",
+        "Judge usefulness and naturalness; do not reward boilerplate."
+      ],
+      "example": {
+        "genre": "decline invitation",
+        "preserve": "offer a Sunday phone call",
+        "avoid": "inventing an excuse"
+      },
+      "structure_signature": "Genre + communicative goal + protected-information pattern.",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "e_edit",
+      "purpose": "everyday",
+      "label": "Editing and rewriting",
+      "share_within_purpose": 15,
+      "parameters": [
+        {
+          "name": "edit_operation",
+          "domain": "shorten / clarify / soften / strengthen / reorder / repair ambiguity",
+          "why": "Defines what may change."
+        },
+        {
+          "name": "input_length",
+          "domain": "80…700 words",
+          "why": "Supply an actual draft."
+        },
+        {
+          "name": "edit_scope",
+          "domain": "whole draft / selected passage / named sentences",
+          "why": "Tests boundaries."
+        },
+        {
+          "name": "protected_spans",
+          "domain": "1…6 exact facts or literal strings",
+          "why": "Separates rewriting from factual mutation."
+        }
+      ],
+      "difficulty": {
+        "routine": "One local rewrite.",
+        "compositional": "Several requirements with protected facts.",
+        "challenging": "Subtle tone change, ambiguous wording or long-range consistency."
+      },
+      "checks": [
+        "Compare protected values before/after.",
+        "Ensure edits stay within scope."
+      ],
+      "example": {
+        "operation": "firm but civil reminder",
+        "preserve": [
+          "180 euros",
+          "5 October"
+        ],
+        "scope": "final paragraph"
+      },
+      "structure_signature": "Edit operation + scope + preservation/conflict pattern.",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "e_translate",
+      "purpose": "everyday",
+      "label": "Translation and bounded adaptation",
+      "share_within_purpose": 10,
+      "parameters": [
+        {
+          "name": "language_pair",
+          "domain": "target from allocation; source chosen from supported languages and different from target",
+          "why": "Pair quotas must be explicit."
+        },
+        {
+          "name": "source_genre",
+          "domain": "message / notice / short essay / dialogue / technical paragraph",
+          "why": "Task-specific language texture."
+        },
+        {
+          "name": "phenomena",
+          "domain": "0…3 idioms; 1…8 terms; ambiguity present/absent",
+          "why": "Meaning preservation needs specific challenges."
+        },
+        {
+          "name": "adaptation_permission",
+          "domain": "literal meaning / culturally natural phrasing / explicitly permitted localisation",
+          "why": "Do not silently replace real facts."
+        },
+        {
+          "name": "source_length",
+          "domain": "40…500 words",
+          "why": "Use source-family provenance for splits."
+        }
+      ],
+      "difficulty": {
+        "routine": "Direct unambiguous prose.",
+        "compositional": "Idioms or domain terminology.",
+        "challenging": "Ambiguity, implicit register or competing preservation requirements."
+      },
+      "checks": [
+        "Independent bilingual fidelity review.",
+        "Preserve factual claims, numbers and speaker stance."
+      ],
+      "example": {
+        "source_language": "en",
+        "target_language": "el",
+        "genre": "library notice",
+        "preserve": [
+          "18:30",
+          "Friday"
+        ]
+      },
+      "structure_signature": "Translation phenomena + meaning/register constraints; group parallel translations.",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "e_explain",
+      "purpose": "everyday",
+      "label": "Explanation and comparison",
+      "share_within_purpose": 10,
+      "parameters": [
+        {
+          "name": "domain",
+          "domain": "everyday science / language / technology / social concepts / practical processes",
+          "why": "Facts need a reliable reference."
+        },
+        {
+          "name": "operation",
+          "domain": "explain why / compare / give an example / address a misconception",
+          "why": "Different evidence demands."
+        },
+        {
+          "name": "audience_knowledge",
+          "domain": "beginner / familiar with basics / domain-trained",
+          "why": "Separate from attitude."
+        },
+        {
+          "name": "concepts",
+          "domain": "1…4; prerequisite relations explicitly listed",
+          "why": "Controls actual conceptual depth."
+        }
+      ],
+      "difficulty": {
+        "routine": "Explain one concept.",
+        "compositional": "Link two concepts or contrast alternatives.",
+        "challenging": "Resolve a misconception or explain a mechanism with conditions."
+      },
+      "checks": [
+        "Check claims against reference evidence.",
+        "Do not manufacture certainty or personal experience."
+      ],
+      "example": {
+        "phenomenon": "metal and wood feel different at the same temperature",
+        "audience": "beginner"
+      },
+      "structure_signature": "Causal/comparison graph + misconception pattern.",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "e_plan",
+      "purpose": "everyday",
+      "label": "Planning and comparison",
+      "share_within_purpose": 10,
+      "parameters": [
+        {
+          "name": "domain",
+          "domain": "event / study / trip / shopping / small project",
+          "why": "Use concrete constraints."
+        },
+        {
+          "name": "resources",
+          "domain": "budget 20…2,000 units; people 1…12; tasks 3…10",
+          "why": "Keep units and availability explicit."
+        },
+        {
+          "name": "dependencies",
+          "domain": "0…6; deadlines 1…4; alternatives 2…5",
+          "why": "Different scheduling/choice structures."
+        },
+        {
+          "name": "missing_information",
+          "domain": "none / one noncritical / one decision-critical input",
+          "why": "Clarification can be the correct response."
+        }
+      ],
+      "difficulty": {
+        "routine": "Few independent constraints.",
+        "compositional": "Dependencies and a resource trade-off.",
+        "challenging": "Conflicting preferences, uncertain inputs or multiple feasible compromises."
+      },
+      "checks": [
+        "Check feasibility against all hard constraints.",
+        "Prices/hours are supplied fictional data or verified sources, not invented live facts."
+      ],
+      "example": {
+        "budget_eur": 120,
+        "participants": 8,
+        "constraints": [
+          "vegetarian option",
+          "no disposable cups"
+        ]
+      },
+      "structure_signature": "Dependency/resource-conflict graph + missing-information pattern.",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "e_troubleshoot",
+      "purpose": "everyday",
+      "label": "Troubleshooting and diagnosis",
+      "share_within_purpose": 10,
+      "parameters": [
+        {
+          "name": "domain",
+          "domain": "software / household device / instrument / routine process",
+          "why": "Use safe, bounded diagnostic settings."
+        },
+        {
+          "name": "hypotheses",
+          "domain": "2…5; observations 2…8",
+          "why": "Facts constrain plausible causes."
+        },
+        {
+          "name": "diagnostic_state",
+          "domain": "initial / one failed attempt / new observation",
+          "why": "Vary what evidence is available."
+        },
+        {
+          "name": "next_action",
+          "domain": "clarify / discriminate causes / recommend reversible check",
+          "why": "Avoid demanding a definitive diagnosis from inadequate evidence."
+        }
+      ],
+      "difficulty": {
+        "routine": "One clear cause and check.",
+        "compositional": "Several causes with discriminating evidence.",
+        "challenging": "Incomplete or apparently conflicting observations."
+      },
+      "checks": [
+        "No invented symptoms or conclusive unsupported diagnosis.",
+        "Validate the proposed check's relevance."
+      ],
+      "example": {
+        "device": "guitar",
+        "observations": [
+          "buzz only on middle frets",
+          "open strings clear"
+        ],
+        "request": "next check"
+      },
+      "structure_signature": "Diagnostic hypothesis/evidence graph.",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "e_code",
+      "purpose": "everyday",
+      "label": "Small coding tasks",
+      "share_within_purpose": 5,
+      "parameters": [
+        {
+          "name": "language",
+          "domain": "Python initially; expand only with an executable harness",
+          "why": "Avoid untested language coverage."
+        },
+        {
+          "name": "operation",
+          "domain": "debug / explain / minimal patch / edge-case test",
+          "why": "Each is a separate task."
+        },
+        {
+          "name": "bug_class",
+          "domain": "boundary / mutation / parsing / missing input / ordering / numeric conversion",
+          "why": "Actual behaviour must reproduce."
+        },
+        {
+          "name": "size",
+          "domain": "10…60 lines; 2…8 test cases",
+          "why": "Keep the task bounded and self-contained."
+        }
+      ],
+      "difficulty": {
+        "routine": "One local bug.",
+        "compositional": "Bug depends on input/state across calls.",
+        "challenging": "Interacting edge cases while preserving behaviour elsewhere."
+      },
+      "checks": [
+        "Run original failing test and corrected expected behaviour in isolation.",
+        "Never execute arbitrary forum code as part of prompt preparation."
+      ],
+      "example": {
+        "bug": "mutable default argument",
+        "constraint": "smallest change preserving the API"
+      },
+      "structure_signature": "Program/data-flow structure + bug class; ignore variable renaming.",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "e_tools",
+      "purpose": "everyday",
+      "label": "Tool/schema reasoning",
+      "share_within_purpose": 5,
+      "parameters": [
+        {
+          "name": "tool_count",
+          "domain": "1…4 with explicit schemas",
+          "why": "Available capability is part of the problem."
+        },
+        {
+          "name": "arguments",
+          "domain": "2…6 per tool; 0…2 missing required values",
+          "why": "Clarification may be necessary."
+        },
+        {
+          "name": "goal",
+          "domain": "choose tool / construct arguments / explain missing capability",
+          "why": "All examples are offline unless a real tool environment is provided."
+        },
+        {
+          "name": "type_constraints",
+          "domain": "string / integer / enum / ISO date-time / optional field",
+          "why": "Executable schema checks."
+        }
+      ],
+      "difficulty": {
+        "routine": "One tool with all arguments supplied.",
+        "compositional": "Choose between tools or identify missing values.",
+        "challenging": "Multi-step dependency or unavailable capability."
+      },
+      "checks": [
+        "Schema validation and capability check.",
+        "Reject claims of actual execution."
+      ],
+      "example": {
+        "available_tool": "search_catalog",
+        "user_goal": "purchase a book",
+        "correct_boundary": "search possible; purchase tool absent"
+      },
+      "structure_signature": "Capability/dependency graph + missing-argument pattern.",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "if_format",
+      "purpose": "instruction",
+      "label": "IF: format and schema",
+      "share_within_purpose": 30,
+      "parameters": [
+        {
+          "name": "underlying_task",
+          "domain": "summarise / edit / extract / translate / plan",
+          "why": "Keep requests meaningful."
+        },
+        {
+          "name": "n_constraints",
+          "domain": "1; 2…3; 4…6",
+          "why": "Difficulty calibration must also consider interaction."
+        },
+        {
+          "name": "format",
+          "domain": "plain prose / bullets / JSON",
+          "why": "Only one primary output format."
+        },
+        {
+          "name": "interaction",
+          "domain": "independent / preservation-coupled / conditional",
+          "why": "Reject accidental contradictions."
+        },
+        {
+          "name": "counts",
+          "domain": "bullets 2…6; JSON keys 2…8; sentences 1…5",
+          "why": "Count with a declared checker."
+        },
+        {
+          "name": "schema_depth",
+          "domain": "flat or one nested object",
+          "why": "Higher depths deferred until useful."
+        }
+      ],
+      "difficulty": {
+        "routine": "One format requirement.",
+        "compositional": "Format plus two explicit requirements.",
+        "challenging": "Nested/conditional fields or several interacting requirements."
+      },
+      "checks": [
+        "Check satisfiability before generation.",
+        "Use executable checks for syntax/counts and semantic checks for meaning.",
+        "Do not treat output-length alone as difficulty."
+      ],
+      "example": {
+        "format": "JSON",
+        "keys": [
+          "date",
+          "time",
+          "place"
+        ],
+        "extra_keys": false
+      },
+      "structure_signature": "Format/schema shape + constraint dependencies",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "if_preserve",
+      "purpose": "instruction",
+      "label": "IF: preserve and exclude",
+      "share_within_purpose": 25,
+      "parameters": [
+        {
+          "name": "underlying_task",
+          "domain": "summarise / edit / extract / translate / plan",
+          "why": "Keep requests meaningful."
+        },
+        {
+          "name": "n_constraints",
+          "domain": "1; 2…3; 4…6",
+          "why": "Difficulty calibration must also consider interaction."
+        },
+        {
+          "name": "format",
+          "domain": "plain prose / bullets / JSON",
+          "why": "Only one primary output format."
+        },
+        {
+          "name": "interaction",
+          "domain": "independent / preservation-coupled / conditional",
+          "why": "Reject accidental contradictions."
+        },
+        {
+          "name": "protected_items",
+          "domain": "1…6 facts, literals or numbers",
+          "why": "Keep exact versus semantic preservation distinct."
+        },
+        {
+          "name": "exclusions",
+          "domain": "0…3 words or content categories",
+          "why": "Must not conflict with protected content."
+        }
+      ],
+      "difficulty": {
+        "routine": "One protected value.",
+        "compositional": "Rewrite while preserving several facts.",
+        "challenging": "Preservation, brevity and exclusions interact."
+      },
+      "checks": [
+        "Check satisfiability before generation.",
+        "Use executable checks for syntax/counts and semantic checks for meaning.",
+        "Do not treat output-length alone as difficulty."
+      ],
+      "example": {
+        "edit": "shorten",
+        "preserve": [
+          "18:30",
+          "8 euros"
+        ],
+        "exclude": "introductory heading"
+      },
+      "structure_signature": "Preservation/exclusion/length dependency graph",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "if_composite",
+      "purpose": "instruction",
+      "label": "IF: ordering and compound rules",
+      "share_within_purpose": 30,
+      "parameters": [
+        {
+          "name": "underlying_task",
+          "domain": "summarise / edit / extract / translate / plan",
+          "why": "Keep requests meaningful."
+        },
+        {
+          "name": "n_constraints",
+          "domain": "1; 2…3; 4…6",
+          "why": "Difficulty calibration must also consider interaction."
+        },
+        {
+          "name": "format",
+          "domain": "plain prose / bullets / JSON",
+          "why": "Only one primary output format."
+        },
+        {
+          "name": "interaction",
+          "domain": "independent / preservation-coupled / conditional",
+          "why": "Reject accidental contradictions."
+        },
+        {
+          "name": "constraint_types",
+          "domain": "length / required literal / excluded literal / order / protected fact",
+          "why": "Choose satisfiable sets; no duplicate paraphrases counted as new constraints."
+        },
+        {
+          "name": "length_rule",
+          "domain": "words 40…180 OR sentences 1…5 OR bullets 2…6",
+          "why": "One length measurement unless justified."
+        },
+        {
+          "name": "order",
+          "domain": "chronological / priority / named sections",
+          "why": "Define the relation unambiguously."
+        }
+      ],
+      "difficulty": {
+        "routine": "One independently checkable rule.",
+        "compositional": "Two to three compatible rules.",
+        "challenging": "Four to six rules with genuine interactions."
+      },
+      "checks": [
+        "Check satisfiability before generation.",
+        "Use executable checks for syntax/counts and semantic checks for meaning.",
+        "Do not treat output-length alone as difficulty."
+      ],
+      "example": {
+        "request": "three checklist items",
+        "rules": [
+          "start each with a verb",
+          "no preamble",
+          "retain the deadline"
+        ]
+      },
+      "structure_signature": "Set and interaction graph of constraint types",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "if_conditional",
+      "purpose": "instruction",
+      "label": "IF: conditional instructions",
+      "share_within_purpose": 15,
+      "parameters": [
+        {
+          "name": "underlying_task",
+          "domain": "summarise / edit / extract / translate / plan",
+          "why": "Keep requests meaningful."
+        },
+        {
+          "name": "n_constraints",
+          "domain": "1; 2…3; 4…6",
+          "why": "Difficulty calibration must also consider interaction."
+        },
+        {
+          "name": "format",
+          "domain": "plain prose / bullets / JSON",
+          "why": "Only one primary output format."
+        },
+        {
+          "name": "interaction",
+          "domain": "independent / preservation-coupled / conditional",
+          "why": "Reject accidental contradictions."
+        },
+        {
+          "name": "branches",
+          "domain": "2…3 with explicit predicates",
+          "why": "Separate exhaustive from partial conditions."
+        },
+        {
+          "name": "input_regime",
+          "domain": "one branch clearly true / boundary value / missing predicate input",
+          "why": "Missing input must not trigger an invented branch."
+        }
+      ],
+      "difficulty": {
+        "routine": "Two explicit branches.",
+        "compositional": "Branch plus format/preservation rule.",
+        "challenging": "Boundary case or insufficient predicate evidence."
+      },
+      "checks": [
+        "Check satisfiability before generation.",
+        "Use executable checks for syntax/counts and semantic checks for meaning.",
+        "Do not treat output-length alone as difficulty."
+      ],
+      "example": {
+        "rule": "If stock is zero, state unavailable; otherwise return item and quantity",
+        "stock": 0
+      },
+      "structure_signature": "Predicate/branch graph + evidence regime",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "f_closed",
+      "purpose": "factual",
+      "label": "Facts: verified knowledge",
+      "share_within_purpose": 20,
+      "parameters": [
+        {
+          "name": "source_mode",
+          "domain": "verified real source OR explicitly fictional supplied record",
+          "why": "Never mutate real facts for novelty."
+        },
+        {
+          "name": "entities",
+          "domain": "2…8; locations 1…4",
+          "why": "Resolve aliases and roles explicitly."
+        },
+        {
+          "name": "time_scope",
+          "domain": "one date or interval; optional later update",
+          "why": "Dependent weekdays/deadlines must be recomputed."
+        },
+        {
+          "name": "evidence_units",
+          "domain": "1…4 short passages/records; distractors 0…6",
+          "why": "Controls retrieval/synthesis load."
+        },
+        {
+          "name": "topic",
+          "domain": "history / geography / science / culture / institutions",
+          "why": "Select verified question–evidence pairs; this is a source pool, not arbitrary mutation."
+        },
+        {
+          "name": "time_sensitivity",
+          "domain": "stable / as-of dated",
+          "why": "Refresh time-sensitive evidence before release."
+        }
+      ],
+      "difficulty": {
+        "routine": "One stable fact.",
+        "compositional": "Relate two verified facts.",
+        "challenging": "Disambiguation or explicit temporal scope."
+      },
+      "checks": [
+        "Every reference answer bound to evidence.",
+        "Labels for answerability and premise status reviewed independently.",
+        "Fictional data clearly supplied as task context."
+      ],
+      "example": {
+        "question_type": "identify an entity from two verified properties",
+        "evidence": "required before generation"
+      },
+      "structure_signature": "Knowledge relation/query graph + verified source family",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "f_grounded",
+      "purpose": "factual",
+      "label": "Facts: supplied evidence",
+      "share_within_purpose": 35,
+      "parameters": [
+        {
+          "name": "source_mode",
+          "domain": "verified real source OR explicitly fictional supplied record",
+          "why": "Never mutate real facts for novelty."
+        },
+        {
+          "name": "entities",
+          "domain": "2…8; locations 1…4",
+          "why": "Resolve aliases and roles explicitly."
+        },
+        {
+          "name": "time_scope",
+          "domain": "one date or interval; optional later update",
+          "why": "Dependent weekdays/deadlines must be recomputed."
+        },
+        {
+          "name": "evidence_units",
+          "domain": "1…4 short passages/records; distractors 0…6",
+          "why": "Controls retrieval/synthesis load."
+        },
+        {
+          "name": "query",
+          "domain": "lookup / compare / calculate from record / apply exception",
+          "why": "Reference derived from source."
+        },
+        {
+          "name": "exceptions",
+          "domain": "0…3",
+          "why": "Avoid hiding answer-bearing conditions."
+        }
+      ],
+      "difficulty": {
+        "routine": "Direct lookup.",
+        "compositional": "Combine fields or apply one exception.",
+        "challenging": "Several records, time scopes or interacting exceptions."
+      },
+      "checks": [
+        "Every reference answer bound to evidence.",
+        "Labels for answerability and premise status reviewed independently.",
+        "Fictional data clearly supplied as task context."
+      ],
+      "example": {
+        "record": {
+          "Monday": "closed",
+          "Wednesday": "free"
+        },
+        "query": "cost on Wednesday",
+        "answer": 0
+      },
+      "structure_signature": "Evidence/query dependency graph",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "f_missing",
+      "purpose": "factual",
+      "label": "Facts: missing or unavailable information",
+      "share_within_purpose": 20,
+      "parameters": [
+        {
+          "name": "source_mode",
+          "domain": "verified real source OR explicitly fictional supplied record",
+          "why": "Never mutate real facts for novelty."
+        },
+        {
+          "name": "entities",
+          "domain": "2…8; locations 1…4",
+          "why": "Resolve aliases and roles explicitly."
+        },
+        {
+          "name": "time_scope",
+          "domain": "one date or interval; optional later update",
+          "why": "Dependent weekdays/deadlines must be recomputed."
+        },
+        {
+          "name": "evidence_units",
+          "domain": "1…4 short passages/records; distractors 0…6",
+          "why": "Controls retrieval/synthesis load."
+        },
+        {
+          "name": "missingness",
+          "domain": "one essential field / multiple fields / unavailable live status",
+          "why": "Do not invent evidence."
+        },
+        {
+          "name": "desired_precision",
+          "domain": "exact value / recommendation / conditional estimate",
+          "why": "Match uncertainty to the actual gap."
+        }
+      ],
+      "difficulty": {
+        "routine": "Clearly missing input.",
+        "compositional": "Some useful conditional answer is possible.",
+        "challenging": "Plausible but unsupported inference must be resisted."
+      },
+      "checks": [
+        "Every reference answer bound to evidence.",
+        "Labels for answerability and premise status reviewed independently.",
+        "Fictional data clearly supplied as task context."
+      ],
+      "example": {
+        "known": "210 kWh",
+        "missing": [
+          "tariff",
+          "fixed charges"
+        ],
+        "query": "exact bill"
+      },
+      "structure_signature": "Missing-information pattern + requested inference",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "f_premise",
+      "purpose": "factual",
+      "label": "Facts: false-premise handling",
+      "share_within_purpose": 15,
+      "parameters": [
+        {
+          "name": "source_mode",
+          "domain": "verified real source OR explicitly fictional supplied record",
+          "why": "Never mutate real facts for novelty."
+        },
+        {
+          "name": "entities",
+          "domain": "2…8; locations 1…4",
+          "why": "Resolve aliases and roles explicitly."
+        },
+        {
+          "name": "time_scope",
+          "domain": "one date or interval; optional later update",
+          "why": "Dependent weekdays/deadlines must be recomputed."
+        },
+        {
+          "name": "evidence_units",
+          "domain": "1…4 short passages/records; distractors 0…6",
+          "why": "Controls retrieval/synthesis load."
+        },
+        {
+          "name": "premise_status",
+          "domain": "supported / contradicted / unresolved",
+          "why": "Balance beyond only false prompts; count actual status separately."
+        },
+        {
+          "name": "claim_type",
+          "domain": "entity / date / quantity / rule / causal assumption",
+          "why": "Bind to explicit evidence."
+        }
+      ],
+      "difficulty": {
+        "routine": "Direct contradiction.",
+        "compositional": "Subtle qualifier or date mismatch.",
+        "challenging": "Mixed true/false claims or incomplete evidence."
+      },
+      "checks": [
+        "Every reference answer bound to evidence.",
+        "Labels for answerability and premise status reviewed independently.",
+        "Fictional data clearly supplied as task context."
+      ],
+      "example": {
+        "record": "renewal allowed twice",
+        "user_assumption": "renewal is forbidden"
+      },
+      "structure_signature": "Claim/evidence relationship + correction scope",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "f_conflict",
+      "purpose": "factual",
+      "label": "Facts: conflicting sources",
+      "share_within_purpose": 10,
+      "parameters": [
+        {
+          "name": "source_mode",
+          "domain": "verified real source OR explicitly fictional supplied record",
+          "why": "Never mutate real facts for novelty."
+        },
+        {
+          "name": "entities",
+          "domain": "2…8; locations 1…4",
+          "why": "Resolve aliases and roles explicitly."
+        },
+        {
+          "name": "time_scope",
+          "domain": "one date or interval; optional later update",
+          "why": "Dependent weekdays/deadlines must be recomputed."
+        },
+        {
+          "name": "evidence_units",
+          "domain": "1…4 short passages/records; distractors 0…6",
+          "why": "Controls retrieval/synthesis load."
+        },
+        {
+          "name": "conflict",
+          "domain": "different dates / quantities / versions / accounts",
+          "why": "Preserve source attribution."
+        },
+        {
+          "name": "resolution",
+          "domain": "latest supersedes / authority specified / unresolved",
+          "why": "Do not silently prefer a source without grounds."
+        }
+      ],
+      "difficulty": {
+        "routine": "Explicit supersession.",
+        "compositional": "Reconcile dates and scope.",
+        "challenging": "Unresolvable disagreement requires qualified reporting."
+      },
+      "checks": [
+        "Every reference answer bound to evidence.",
+        "Labels for answerability and premise status reviewed independently.",
+        "Fictional data clearly supplied as task context."
+      ],
+      "example": {
+        "sources": 2,
+        "relation": "new notice supersedes old opening hours"
+      },
+      "structure_signature": "Conflict/authority/time graph",
+      "max_accepted_per_structure": 40,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "safe_benign",
+      "purpose": "safety",
+      "label": "Safety: benign sensitive help",
+      "share_within_purpose": 30,
+      "parameters": [
+        {
+          "name": "domain",
+          "domain": "privacy / cybersecurity / everyday health information / chemistry / interpersonal conflict / fictional violence",
+          "why": "Use reviewed intent distinctions; do not intensify harmful detail to create variants."
+        },
+        {
+          "name": "intent_evidence",
+          "domain": "clear benign / clear harmful / ambiguous",
+          "why": "Only combine with compatible subfamily."
+        },
+        {
+          "name": "specificity",
+          "domain": "broad purpose / bounded scenario",
+          "why": "No real private identifiers."
+        },
+        {
+          "name": "legitimate_alternative",
+          "domain": "available / clarification needed / none relevant",
+          "why": "Avoid canned alternative offers."
+        }
+      ],
+      "difficulty": {
+        "routine": "Clearly benign educational request.",
+        "compositional": "Sensitive wording with legitimate context.",
+        "challenging": "Benign request resembles a disallowed task superficially."
+      },
+      "checks": [
+        "Separate intent review from style review.",
+        "Check benign helpfulness and harmful boundaries together.",
+        "No forced refusal for harmless sensitive content."
+      ],
+      "example": {
+        "intent": "explain classroom vinegar/baking-soda bubbles"
+      },
+      "structure_signature": "Benign goal + boundary-disambiguating evidence",
+      "max_accepted_per_structure": 20,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "safe_protective",
+      "purpose": "safety",
+      "label": "Safety: protective assistance",
+      "share_within_purpose": 20,
+      "parameters": [
+        {
+          "name": "domain",
+          "domain": "privacy / cybersecurity / everyday health information / chemistry / interpersonal conflict / fictional violence",
+          "why": "Use reviewed intent distinctions; do not intensify harmful detail to create variants."
+        },
+        {
+          "name": "intent_evidence",
+          "domain": "clear benign / clear harmful / ambiguous",
+          "why": "Only combine with compatible subfamily."
+        },
+        {
+          "name": "specificity",
+          "domain": "broad purpose / bounded scenario",
+          "why": "No real private identifiers."
+        },
+        {
+          "name": "legitimate_alternative",
+          "domain": "available / clarification needed / none relevant",
+          "why": "Avoid canned alternative offers."
+        }
+      ],
+      "difficulty": {
+        "routine": "Recognise a common risk.",
+        "compositional": "Choose a safe next action from incomplete observations.",
+        "challenging": "Avoid both harmful escalation and blanket refusal."
+      },
+      "checks": [
+        "Separate intent review from style review.",
+        "Check benign helpfulness and harmful boundaries together.",
+        "No forced refusal for harmless sensitive content."
+      ],
+      "example": {
+        "intent": "verify suspicious bank SMS without opening its link"
+      },
+      "structure_signature": "Protective goal + evidence/action boundary",
+      "max_accepted_per_structure": 20,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "safe_fiction",
+      "purpose": "safety",
+      "label": "Safety: benign fiction",
+      "share_within_purpose": 10,
+      "parameters": [
+        {
+          "name": "domain",
+          "domain": "privacy / cybersecurity / everyday health information / chemistry / interpersonal conflict / fictional violence",
+          "why": "Use reviewed intent distinctions; do not intensify harmful detail to create variants."
+        },
+        {
+          "name": "intent_evidence",
+          "domain": "clear benign / clear harmful / ambiguous",
+          "why": "Only combine with compatible subfamily."
+        },
+        {
+          "name": "specificity",
+          "domain": "broad purpose / bounded scenario",
+          "why": "No real private identifiers."
+        },
+        {
+          "name": "legitimate_alternative",
+          "domain": "available / clarification needed / none relevant",
+          "why": "Avoid canned alternative offers."
+        }
+      ],
+      "difficulty": {
+        "routine": "Non-graphic fictional scene.",
+        "compositional": "Maintain genre and tone constraints.",
+        "challenging": "Distinguish fictional narration from operational instruction."
+      },
+      "checks": [
+        "Separate intent review from style review.",
+        "Check benign helpfulness and harmful boundaries together.",
+        "No forced refusal for harmless sensitive content."
+      ],
+      "example": {
+        "intent": "write a non-graphic fantasy guard scene"
+      },
+      "structure_signature": "Fictional communicative goal + content boundary",
+      "max_accepted_per_structure": 20,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "safe_harmful",
+      "purpose": "safety",
+      "label": "Safety: clear harmful intent",
+      "share_within_purpose": 30,
+      "parameters": [
+        {
+          "name": "domain",
+          "domain": "privacy / cybersecurity / everyday health information / chemistry / interpersonal conflict / fictional violence",
+          "why": "Use reviewed intent distinctions; do not intensify harmful detail to create variants."
+        },
+        {
+          "name": "intent_evidence",
+          "domain": "clear benign / clear harmful / ambiguous",
+          "why": "Only combine with compatible subfamily."
+        },
+        {
+          "name": "specificity",
+          "domain": "broad purpose / bounded scenario",
+          "why": "No real private identifiers."
+        },
+        {
+          "name": "legitimate_alternative",
+          "domain": "available / clarification needed / none relevant",
+          "why": "Avoid canned alternative offers."
+        }
+      ],
+      "difficulty": {
+        "routine": "Clearly harmful goal.",
+        "compositional": "Benign framing around an explicitly harmful purpose.",
+        "challenging": "Boundary must be maintained while responding usefully where possible."
+      },
+      "checks": [
+        "Separate intent review from style review.",
+        "Check benign helpfulness and harmful boundaries together.",
+        "No forced refusal for harmless sensitive content."
+      ],
+      "example": {
+        "intent": "falsify a reimbursement receipt",
+        "real_identifiers": false
+      },
+      "structure_signature": "Harmful goal + requested assistance type; not surface wording",
+      "max_accepted_per_structure": 20,
+      "implementation": "specified_not_production_implemented"
+    },
+    {
+      "id": "safe_ambiguous",
+      "purpose": "safety",
+      "label": "Safety: ambiguity and clarification",
+      "share_within_purpose": 10,
+      "parameters": [
+        {
+          "name": "domain",
+          "domain": "privacy / cybersecurity / everyday health information / chemistry / interpersonal conflict / fictional violence",
+          "why": "Use reviewed intent distinctions; do not intensify harmful detail to create variants."
+        },
+        {
+          "name": "intent_evidence",
+          "domain": "clear benign / clear harmful / ambiguous",
+          "why": "Only combine with compatible subfamily."
+        },
+        {
+          "name": "specificity",
+          "domain": "broad purpose / bounded scenario",
+          "why": "No real private identifiers."
+        },
+        {
+          "name": "legitimate_alternative",
+          "domain": "available / clarification needed / none relevant",
+          "why": "Avoid canned alternative offers."
+        }
+      ],
+      "difficulty": {
+        "routine": "One missing intent detail.",
+        "compositional": "Several plausible benign/harmful readings.",
+        "challenging": "A narrow safe response or targeted clarification is needed."
+      },
+      "checks": [
+        "Separate intent review from style review.",
+        "Check benign helpfulness and harmful boundaries together.",
+        "No forced refusal for harmless sensitive content."
+      ],
+      "example": {
+        "request_type": "access recovery",
+        "ownership_evidence": "not supplied"
+      },
+      "structure_signature": "Intent ambiguity + safe-information boundary",
+      "max_accepted_per_structure": 20,
+      "implementation": "specified_not_production_implemented"
+    }
+  ],
+  "maximum_lengths": {
+    "single_request_tokens": 4096,
+    "input_plus_candidate_context": "must be checked against the actual training context budget before scheduling",
+    "dialogue": "deferred; Apertus-generated assistant turns only"
+  },
+  "capacity": {
+    "current": {
+      "tested_seed_batch_sizes": [
+        50,
+        100
+      ],
+      "v2_input_guard": 5000,
+      "v2_catalogue_parameterisations": 708033,
+      "v2_structural_tuples": 3286,
+      "v2_without_audience": 1552,
+      "persistent_uniqueness": false,
+      "new_parameter_generators": false,
+      "new_prompt_quality_qualified": false
+    },
+    "design": {
+      "initial_programme_target": 10000,
+      "next_programme_target": 20000,
+      "beyond": "50,000+ only after expanding reviewed structures and source pools; not currently qualified",
+      "forum_pool_request_labels": 611,
+      "forum_capacity_status": "upstream request-labelled pool; task allocation and acceptance must be reconciled",
+      "dialogue_fraction": 0.35
+    },
+    "examples": [
+      {
+        "name": "Purchase/discount parameters",
+        "raw": 18865,
+        "valid": 12367,
+        "formula": "49 quantities × 77 unit prices × 5 discounts; accept only an integer-cent result",
+        "counts": "Numerical instances of one structure, not independent skills.",
+        "structure_cap": 20
+      },
+      {
+        "name": "IF constraint-type sets",
+        "raw": 96,
+        "valid": null,
+        "formula": "3 primary formats × all subsets of 5 optional constraint types",
+        "counts": "96 candidate type sets before task-specific satisfiability and checker validation; not 96 validated templates.",
+        "structure_cap": 40
+      }
+    ]
+  },
+  "source_policy": {
+    "forums": "Preserve existing requests; subtract accepted per-purpose/language counts before synthetic allocation.",
+    "dialogue": "Reserve 35% now; generate last. Every assistant turn from the designated Apertus checkpoint.",
+    "real_facts": "Select verified source records; do not change real dates/locations to manufacture variation.",
+    "fictional_facts": "Generate consistent records; derive answers and dependent dates/relations from those records."
+  },
+  "uniqueness": {
+    "instance": "Canonical task structure + answer-bearing parameter values + source record; exclude wording, language, attitude and cosmetic names.",
+    "structure": "Reviewed solution/evidence/constraint graph; cap repeat instances across the full programme, not per batch.",
+    "registry": "Transactional persistent reservations and UNIQUE instance keys required before parallel production; not implemented in v2.",
+    "text": "After Sol, check exact and semantic near-duplicates, parameter fidelity and quota labels; refill rejected cells.",
+    "parallel_languages": "Explicit parallel-set ID; shared problem family stays in one data split."
+  },
+  "decisions": [
+    "These are selected design defaults, not measured SFT/user frequencies.",
+    "The previous source_preserved label becomes provenance; it is not a user attitude or register.",
+    "Task-specific difficulty is assigned from the listed features and later calibrated against Apertus performance.",
+    "Do not multiply audience/language/style changes into a claim of independent task diversity.",
+    "Capacity caps are editorial limits for this programme, not measured universal thresholds.",
+    "Large-batch generation remains blocked on reviewed structures, parameter generators, references/checkers and persistent uniqueness."
+  ],
+  "batch_policy": {
+    "generator_requests_per_call": 8,
+    "complex_or_long_requests_per_call": 4,
+    "group_by": [
+      "language",
+      "compatible task family"
+    ],
+    "review": "separate review pass; repair or replace only failed slots",
+    "model_calls_now": 0
+  }
+}

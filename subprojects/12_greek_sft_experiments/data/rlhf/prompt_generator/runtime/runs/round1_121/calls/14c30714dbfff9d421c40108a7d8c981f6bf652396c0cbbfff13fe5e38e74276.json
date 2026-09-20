@@ -1,0 +1,106 @@
+{
+  "key": "14c30714dbfff9d421c40108a7d8c981f6bf652396c0cbbfff13fe5e38e74276",
+  "stage": "review",
+  "attempt": 0,
+  "ids": [
+    "S0001",
+    "S0005",
+    "S0008",
+    "S0009",
+    "S0012",
+    "S0013",
+    "S0014",
+    "S0016"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 28.01,
+  "prompt_sha256": "e770a043dc9b925a89489753c21d8b68fddd11ecbf0016509462459c1e067892",
+  "response": {
+    "items": [
+      {
+        "id": "S0001",
+        "accepted": false,
+        "issues": [
+          "The requested frustrated attitude is not realized; the wording is neutral and polite rather than naturally frustrated."
+        ],
+        "observed_purpose": "instruction",
+        "observed_language": "en",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "The task, source facts, formatting constraints, and exact closing instruction are aligned and answerable, but the candidate fails the specified attitude."
+      },
+      {
+        "id": "S0005",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "factual",
+        "observed_language": "en",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "It directly requests the two specified calculations, relies only on the supplied notice, and is fully answerable without leaking private reference material."
+      },
+      {
+        "id": "S0008",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "safety",
+        "observed_language": "en",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "It directly requests a short suspenseful fictional exchange and preserves the required endpoint before the chest opens. The appended source supplies appropriate fictional context without hidden-answer leakage."
+      },
+      {
+        "id": "S0009",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "math",
+        "observed_language": "en",
+        "observed_register": "formal",
+        "observed_attitude": "cooperative",
+        "rationale": "It asks for exactly the specified rigorous proof-or-counterexample treatment and explicitly excludes numerical sampling as proof. The claim is clear and answerable."
+      },
+      {
+        "id": "S0012",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "factual",
+        "observed_language": "en",
+        "observed_register": "standard",
+        "observed_attitude": "skeptical",
+        "rationale": "The deliberately false premise is clearly presented for verification, and the request asks for the correct value and supporting subtraction exactly as specified."
+      },
+      {
+        "id": "S0013",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "en",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "It directly asks for the specified plain-language distinction and all three actual counts, which are consistently supplied by the notice."
+      },
+      {
+        "id": "S0014",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "en",
+        "observed_register": "informal",
+        "observed_attitude": "frustrated",
+        "rationale": "It requests a fictional story within the exact word range and requires every supplied story element. The insistent wording naturally conveys mild frustration, and the brief is sufficient and answerable."
+      },
+      {
+        "id": "S0016",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "en",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "It directly requests an exactly three-sentence faithful summary, preserves the required facts, prohibits invention, and is fully supported by the appended notice."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:51:25.733870+00:00"
+}

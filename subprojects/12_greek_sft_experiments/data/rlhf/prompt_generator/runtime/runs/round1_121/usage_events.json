@@ -1,0 +1,1220 @@
+[
+  {
+    "threadId": "01a0aab0-a7b9-7892-a8f9-8d93fb673d07",
+    "turnId": "01a0aab0-ae6d-7100-8ffd-7092c780fb44",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 20487,
+        "inputTokens": 19752,
+        "cachedInputTokens": 17280,
+        "outputTokens": 735,
+        "reasoningOutputTokens": 116
+      },
+      "last": {
+        "totalTokens": 20487,
+        "inputTokens": 19752,
+        "cachedInputTokens": 17280,
+        "outputTokens": 735,
+        "reasoningOutputTokens": 116
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab0-a799-77e2-b1e8-c050016c4368",
+    "turnId": "01a0aab0-ae60-76f3-b697-72fcf618512e",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 20507,
+        "inputTokens": 19738,
+        "cachedInputTokens": 0,
+        "outputTokens": 769,
+        "reasoningOutputTokens": 219
+      },
+      "last": {
+        "totalTokens": 20507,
+        "inputTokens": 19738,
+        "cachedInputTokens": 0,
+        "outputTokens": 769,
+        "reasoningOutputTokens": 219
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab0-a7ec-7bd1-8c42-a38d50286911",
+    "turnId": "01a0aab0-ae44-70b0-b68c-f7350585ffad",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 20936,
+        "inputTokens": 19707,
+        "cachedInputTokens": 17280,
+        "outputTokens": 1229,
+        "reasoningOutputTokens": 698
+      },
+      "last": {
+        "totalTokens": 20936,
+        "inputTokens": 19707,
+        "cachedInputTokens": 17280,
+        "outputTokens": 1229,
+        "reasoningOutputTokens": 698
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab0-e14c-7ae0-88ef-97c01a451da8",
+    "turnId": "01a0aab0-e7de-7d92-9592-e3e79c50129e",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 23437,
+        "inputTokens": 22526,
+        "cachedInputTokens": 17408,
+        "outputTokens": 911,
+        "reasoningOutputTokens": 296
+      },
+      "last": {
+        "totalTokens": 23437,
+        "inputTokens": 22526,
+        "cachedInputTokens": 17408,
+        "outputTokens": 911,
+        "reasoningOutputTokens": 296
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab0-f053-7082-bc14-d6cbf4d5053c",
+    "turnId": "01a0aab0-f6d9-74e0-8952-fad10dc98c5f",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 23840,
+        "inputTokens": 22296,
+        "cachedInputTokens": 0,
+        "outputTokens": 1544,
+        "reasoningOutputTokens": 870
+      },
+      "last": {
+        "totalTokens": 23840,
+        "inputTokens": 22296,
+        "cachedInputTokens": 0,
+        "outputTokens": 1544,
+        "reasoningOutputTokens": 870
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab1-25a1-7232-a941-494fe92a9fa7",
+    "turnId": "01a0aab1-2c9a-7dd0-abc6-be97e9206f22",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 20933,
+        "inputTokens": 20018,
+        "cachedInputTokens": 17280,
+        "outputTokens": 915,
+        "reasoningOutputTokens": 236
+      },
+      "last": {
+        "totalTokens": 20933,
+        "inputTokens": 20018,
+        "cachedInputTokens": 17280,
+        "outputTokens": 915,
+        "reasoningOutputTokens": 236
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab0-fb68-70b2-8a63-53ac882550f8",
+    "turnId": "01a0aab1-01de-7712-9d99-b96807b04da1",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 24109,
+        "inputTokens": 22216,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1893,
+        "reasoningOutputTokens": 1293
+      },
+      "last": {
+        "totalTokens": 24109,
+        "inputTokens": 22216,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1893,
+        "reasoningOutputTokens": 1293
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab1-5313-7d13-88bf-da0343a161cb",
+    "turnId": "01a0aab1-59aa-78b1-a1ba-fb3bfd5c5f01",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19122,
+        "inputTokens": 18781,
+        "cachedInputTokens": 17280,
+        "outputTokens": 341,
+        "reasoningOutputTokens": 198
+      },
+      "last": {
+        "totalTokens": 19122,
+        "inputTokens": 18781,
+        "cachedInputTokens": 17280,
+        "outputTokens": 341,
+        "reasoningOutputTokens": 198
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab1-8052-7fc3-81ae-463aa81ee37c",
+    "turnId": "01a0aab1-86d3-7ab1-9a2a-d5c3d58a0536",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19337,
+        "inputTokens": 18966,
+        "cachedInputTokens": 0,
+        "outputTokens": 371,
+        "reasoningOutputTokens": 168
+      },
+      "last": {
+        "totalTokens": 19337,
+        "inputTokens": 18966,
+        "cachedInputTokens": 0,
+        "outputTokens": 371,
+        "reasoningOutputTokens": 168
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab1-86ff-7831-8c18-a4e9d5ed0298",
+    "turnId": "01a0aab1-8dd6-7dd1-86ff-5c1215bbcb44",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19420,
+        "inputTokens": 19175,
+        "cachedInputTokens": 9984,
+        "outputTokens": 245,
+        "reasoningOutputTokens": 122
+      },
+      "last": {
+        "totalTokens": 19420,
+        "inputTokens": 19175,
+        "cachedInputTokens": 9984,
+        "outputTokens": 245,
+        "reasoningOutputTokens": 122
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab1-667a-7a60-bf53-5c1f74874718",
+    "turnId": "01a0aab1-6dae-7171-bddb-22589fa83fba",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 24404,
+        "inputTokens": 23280,
+        "cachedInputTokens": 0,
+        "outputTokens": 1124,
+        "reasoningOutputTokens": 509
+      },
+      "last": {
+        "totalTokens": 24404,
+        "inputTokens": 23280,
+        "cachedInputTokens": 0,
+        "outputTokens": 1124,
+        "reasoningOutputTokens": 509
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab1-af50-7152-a752-ce3d4b32cd09",
+    "turnId": "01a0aab1-b5e2-7f42-8b1e-19dd49cedc43",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19925,
+        "inputTokens": 19604,
+        "cachedInputTokens": 17408,
+        "outputTokens": 321,
+        "reasoningOutputTokens": 140
+      },
+      "last": {
+        "totalTokens": 19925,
+        "inputTokens": 19604,
+        "cachedInputTokens": 17408,
+        "outputTokens": 321,
+        "reasoningOutputTokens": 140
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab1-bda5-7052-8ca7-fa6f6b469163",
+    "turnId": "01a0aab1-c477-7ab1-a339-759517ed63dc",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19017,
+        "inputTokens": 18720,
+        "cachedInputTokens": 17280,
+        "outputTokens": 297,
+        "reasoningOutputTokens": 169
+      },
+      "last": {
+        "totalTokens": 19017,
+        "inputTokens": 18720,
+        "cachedInputTokens": 17280,
+        "outputTokens": 297,
+        "reasoningOutputTokens": 169
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab1-afa0-7de0-a7b1-f52b7df3d43f",
+    "turnId": "01a0aab1-b6e4-7633-931e-48c3b78ca555",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 20640,
+        "inputTokens": 19847,
+        "cachedInputTokens": 17280,
+        "outputTokens": 793,
+        "reasoningOutputTokens": 281
+      },
+      "last": {
+        "totalTokens": 20640,
+        "inputTokens": 19847,
+        "cachedInputTokens": 17280,
+        "outputTokens": 793,
+        "reasoningOutputTokens": 281
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab1-eb58-7600-896e-296e5dee7999",
+    "turnId": "01a0aab1-f1ef-7a13-a990-4cc95f970a27",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19374,
+        "inputTokens": 19030,
+        "cachedInputTokens": 17408,
+        "outputTokens": 344,
+        "reasoningOutputTokens": 199
+      },
+      "last": {
+        "totalTokens": 19374,
+        "inputTokens": 19030,
+        "cachedInputTokens": 17408,
+        "outputTokens": 344,
+        "reasoningOutputTokens": 199
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab1-e894-7313-9273-c93f3e44b43a",
+    "turnId": "01a0aab1-ef32-7be1-8802-027291c2975c",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 20580,
+        "inputTokens": 19780,
+        "cachedInputTokens": 17280,
+        "outputTokens": 800,
+        "reasoningOutputTokens": 164
+      },
+      "last": {
+        "totalTokens": 20580,
+        "inputTokens": 19780,
+        "cachedInputTokens": 17280,
+        "outputTokens": 800,
+        "reasoningOutputTokens": 164
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab1-fee6-7370-a4e2-c25f2639c9a3",
+    "turnId": "01a0aab2-05c6-7cd0-a976-839b84db1bd2",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 23548,
+        "inputTokens": 22512,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1036,
+        "reasoningOutputTokens": 404
+      },
+      "last": {
+        "totalTokens": 23548,
+        "inputTokens": 22512,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1036,
+        "reasoningOutputTokens": 404
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab2-1ac0-7003-9d00-9d8b2103a461",
+    "turnId": "01a0aab2-2128-7520-be28-16190f29bb04",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 20637,
+        "inputTokens": 19786,
+        "cachedInputTokens": 17280,
+        "outputTokens": 851,
+        "reasoningOutputTokens": 262
+      },
+      "last": {
+        "totalTokens": 20637,
+        "inputTokens": 19786,
+        "cachedInputTokens": 17280,
+        "outputTokens": 851,
+        "reasoningOutputTokens": 262
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab2-6231-7d41-9cfe-224a0d5dfdc3",
+    "turnId": "01a0aab2-68ab-79a3-90e8-d25c72331576",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 18959,
+        "inputTokens": 18748,
+        "cachedInputTokens": 17280,
+        "outputTokens": 211,
+        "reasoningOutputTokens": 125
+      },
+      "last": {
+        "totalTokens": 18959,
+        "inputTokens": 18748,
+        "cachedInputTokens": 17280,
+        "outputTokens": 211,
+        "reasoningOutputTokens": 125
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab2-37db-72c1-8c8b-018e06d02dcd",
+    "turnId": "01a0aab2-3e4e-7350-93b2-51610e605e22",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 23925,
+        "inputTokens": 22625,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1300,
+        "reasoningOutputTokens": 689
+      },
+      "last": {
+        "totalTokens": 23925,
+        "inputTokens": 22625,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1300,
+        "reasoningOutputTokens": 689
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab2-887d-7800-b580-46baa04025ad",
+    "turnId": "01a0aab2-9005-7763-af74-1cfe10d9c94e",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19451,
+        "inputTokens": 19046,
+        "cachedInputTokens": 17408,
+        "outputTokens": 405,
+        "reasoningOutputTokens": 289
+      },
+      "last": {
+        "totalTokens": 19451,
+        "inputTokens": 19046,
+        "cachedInputTokens": 17408,
+        "outputTokens": 405,
+        "reasoningOutputTokens": 289
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab2-6f20-7750-847f-a3af99aeedde",
+    "turnId": "01a0aab2-75c4-7363-bb92-d2d7dd4ad392",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 23656,
+        "inputTokens": 22509,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1147,
+        "reasoningOutputTokens": 516
+      },
+      "last": {
+        "totalTokens": 23656,
+        "inputTokens": 22509,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1147,
+        "reasoningOutputTokens": 516
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab2-bf47-76d1-bc39-b061e26be23f",
+    "turnId": "01a0aab2-c5a3-7893-b4ba-d99ece636a17",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 18937,
+        "inputTokens": 18712,
+        "cachedInputTokens": 17280,
+        "outputTokens": 225,
+        "reasoningOutputTokens": 122
+      },
+      "last": {
+        "totalTokens": 18937,
+        "inputTokens": 18712,
+        "cachedInputTokens": 17280,
+        "outputTokens": 225,
+        "reasoningOutputTokens": 122
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab2-ae6c-7701-af07-986a739afdff",
+    "turnId": "01a0aab2-b4b9-7e21-a1bb-ce926133af8f",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 20384,
+        "inputTokens": 19674,
+        "cachedInputTokens": 17280,
+        "outputTokens": 710,
+        "reasoningOutputTokens": 147
+      },
+      "last": {
+        "totalTokens": 20384,
+        "inputTokens": 19674,
+        "cachedInputTokens": 17280,
+        "outputTokens": 710,
+        "reasoningOutputTokens": 147
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab2-d984-7da1-a2c2-c1a1b4a88a1a",
+    "turnId": "01a0aab2-e08f-7d11-a351-55fabc8c9070",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19902,
+        "inputTokens": 19448,
+        "cachedInputTokens": 17280,
+        "outputTokens": 454,
+        "reasoningOutputTokens": 100
+      },
+      "last": {
+        "totalTokens": 19902,
+        "inputTokens": 19448,
+        "cachedInputTokens": 17280,
+        "outputTokens": 454,
+        "reasoningOutputTokens": 100
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab2-e954-7a42-960c-859b39b508eb",
+    "turnId": "01a0aab2-efa8-7e42-a803-5386f4f9e520",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19383,
+        "inputTokens": 19080,
+        "cachedInputTokens": 17408,
+        "outputTokens": 303,
+        "reasoningOutputTokens": 129
+      },
+      "last": {
+        "totalTokens": 19383,
+        "inputTokens": 19080,
+        "cachedInputTokens": 17408,
+        "outputTokens": 303,
+        "reasoningOutputTokens": 129
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab3-15a1-7322-bd45-512e24c2c216",
+    "turnId": "01a0aab3-1c3d-7fd3-9052-c1baaf87449d",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 20013,
+        "inputTokens": 19540,
+        "cachedInputTokens": 17280,
+        "outputTokens": 473,
+        "reasoningOutputTokens": 176
+      },
+      "last": {
+        "totalTokens": 20013,
+        "inputTokens": 19540,
+        "cachedInputTokens": 17280,
+        "outputTokens": 473,
+        "reasoningOutputTokens": 176
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab3-1344-7bc2-a6d2-48ed4594659e",
+    "turnId": "01a0aab3-1a4b-7001-a547-dce25cdf4c28",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 22612,
+        "inputTokens": 21476,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1136,
+        "reasoningOutputTokens": 516
+      },
+      "last": {
+        "totalTokens": 22612,
+        "inputTokens": 21476,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1136,
+        "reasoningOutputTokens": 516
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab2-f847-7b11-8bcf-8572f940e30d",
+    "turnId": "01a0aab2-feab-7751-8bbf-23dcf4270ddb",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 23997,
+        "inputTokens": 22250,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1747,
+        "reasoningOutputTokens": 883
+      },
+      "last": {
+        "totalTokens": 23997,
+        "inputTokens": 22250,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1747,
+        "reasoningOutputTokens": 883
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab3-80be-78a1-bcb3-83de9eca0110",
+    "turnId": "01a0aab3-8743-7db1-9413-a2278fb5829b",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 18930,
+        "inputTokens": 18680,
+        "cachedInputTokens": 17280,
+        "outputTokens": 250,
+        "reasoningOutputTokens": 157
+      },
+      "last": {
+        "totalTokens": 18930,
+        "inputTokens": 18680,
+        "cachedInputTokens": 17280,
+        "outputTokens": 250,
+        "reasoningOutputTokens": 157
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab3-4f89-7772-9357-058d79e1c553",
+    "turnId": "01a0aab3-562c-7432-a182-c0e322639722",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 22576,
+        "inputTokens": 21646,
+        "cachedInputTokens": 17408,
+        "outputTokens": 930,
+        "reasoningOutputTokens": 327
+      },
+      "last": {
+        "totalTokens": 22576,
+        "inputTokens": 21646,
+        "cachedInputTokens": 17408,
+        "outputTokens": 930,
+        "reasoningOutputTokens": 327
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab3-899f-72c2-9ac5-22d905117fb6",
+    "turnId": "01a0aab3-9037-79c1-b50f-2da9738d7023",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 18977,
+        "inputTokens": 18783,
+        "cachedInputTokens": 17280,
+        "outputTokens": 194,
+        "reasoningOutputTokens": 123
+      },
+      "last": {
+        "totalTokens": 18977,
+        "inputTokens": 18783,
+        "cachedInputTokens": 17280,
+        "outputTokens": 194,
+        "reasoningOutputTokens": 123
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab3-a91c-7ff2-b546-a334708dd837",
+    "turnId": "01a0aab3-af75-71d0-afcb-f57cd5ae4716",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 18757,
+        "inputTokens": 18598,
+        "cachedInputTokens": 17280,
+        "outputTokens": 159,
+        "reasoningOutputTokens": 98
+      },
+      "last": {
+        "totalTokens": 18757,
+        "inputTokens": 18598,
+        "cachedInputTokens": 17280,
+        "outputTokens": 159,
+        "reasoningOutputTokens": 98
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab3-afed-7eb2-b930-6528dd41b8ae",
+    "turnId": "01a0aab3-b670-7de3-b1fd-a26bbc727115",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19072,
+        "inputTokens": 18849,
+        "cachedInputTokens": 17408,
+        "outputTokens": 223,
+        "reasoningOutputTokens": 90
+      },
+      "last": {
+        "totalTokens": 19072,
+        "inputTokens": 18849,
+        "cachedInputTokens": 17408,
+        "outputTokens": 223,
+        "reasoningOutputTokens": 90
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab3-a846-7952-8c88-9a603b2fc14f",
+    "turnId": "01a0aab3-af14-7141-b244-077e422be400",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19302,
+        "inputTokens": 18957,
+        "cachedInputTokens": 17408,
+        "outputTokens": 345,
+        "reasoningOutputTokens": 209
+      },
+      "last": {
+        "totalTokens": 19302,
+        "inputTokens": 18957,
+        "cachedInputTokens": 17408,
+        "outputTokens": 345,
+        "reasoningOutputTokens": 209
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab3-c9cf-79d1-aea5-eb94a4c6c9ea",
+    "turnId": "01a0aab3-d071-7071-a817-c80b32a1f8ed",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 18970,
+        "inputTokens": 18749,
+        "cachedInputTokens": 17408,
+        "outputTokens": 221,
+        "reasoningOutputTokens": 102
+      },
+      "last": {
+        "totalTokens": 18970,
+        "inputTokens": 18749,
+        "cachedInputTokens": 17408,
+        "outputTokens": 221,
+        "reasoningOutputTokens": 102
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab3-d878-7671-a1e0-812aa4f381bb",
+    "turnId": "01a0aab3-df15-7bc0-bd68-008d4b9e31da",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19979,
+        "inputTokens": 19404,
+        "cachedInputTokens": 17280,
+        "outputTokens": 575,
+        "reasoningOutputTokens": 292
+      },
+      "last": {
+        "totalTokens": 19979,
+        "inputTokens": 19404,
+        "cachedInputTokens": 17280,
+        "outputTokens": 575,
+        "reasoningOutputTokens": 292
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab3-d9f6-77e0-8d53-6fc756aa067e",
+    "turnId": "01a0aab3-e07d-7302-8984-f44c5aad36aa",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 20277,
+        "inputTokens": 19519,
+        "cachedInputTokens": 17280,
+        "outputTokens": 758,
+        "reasoningOutputTokens": 425
+      },
+      "last": {
+        "totalTokens": 20277,
+        "inputTokens": 19519,
+        "cachedInputTokens": 17280,
+        "outputTokens": 758,
+        "reasoningOutputTokens": 425
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab3-ee32-7250-a0aa-83dd8c881655",
+    "turnId": "01a0aab3-f4bf-7e70-ae9c-da8ead19533a",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 20096,
+        "inputTokens": 19477,
+        "cachedInputTokens": 17280,
+        "outputTokens": 619,
+        "reasoningOutputTokens": 284
+      },
+      "last": {
+        "totalTokens": 20096,
+        "inputTokens": 19477,
+        "cachedInputTokens": 17280,
+        "outputTokens": 619,
+        "reasoningOutputTokens": 284
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab4-1e74-77d0-b75b-89b52a583293",
+    "turnId": "01a0aab4-256d-7d90-9f16-5ea2041a6fdc",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 22244,
+        "inputTokens": 21201,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1043,
+        "reasoningOutputTokens": 427
+      },
+      "last": {
+        "totalTokens": 22244,
+        "inputTokens": 21201,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1043,
+        "reasoningOutputTokens": 427
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab4-31b3-72c3-b761-66ec72323c76",
+    "turnId": "01a0aab4-382b-7211-b412-937a252c08bd",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 22798,
+        "inputTokens": 21371,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1427,
+        "reasoningOutputTokens": 829
+      },
+      "last": {
+        "totalTokens": 22798,
+        "inputTokens": 21371,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1427,
+        "reasoningOutputTokens": 829
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab4-26ec-7463-ae4d-db648ab7566c",
+    "turnId": "01a0aab4-2dae-7370-9368-b86142c52e57",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 23156,
+        "inputTokens": 21530,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1626,
+        "reasoningOutputTokens": 1034
+      },
+      "last": {
+        "totalTokens": 23156,
+        "inputTokens": 21530,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1626,
+        "reasoningOutputTokens": 1034
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab4-7de8-72a3-b559-dd23c9f07e00",
+    "turnId": "01a0aab4-848b-7b50-a2ab-cec2add739fd",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19753,
+        "inputTokens": 19283,
+        "cachedInputTokens": 17280,
+        "outputTokens": 470,
+        "reasoningOutputTokens": 160
+      },
+      "last": {
+        "totalTokens": 19753,
+        "inputTokens": 19283,
+        "cachedInputTokens": 17280,
+        "outputTokens": 470,
+        "reasoningOutputTokens": 160
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab4-ab5d-7d01-8324-0e6622f41e09",
+    "turnId": "01a0aab4-b295-7e20-999e-7bd3bc6ed6dc",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19630,
+        "inputTokens": 19117,
+        "cachedInputTokens": 17280,
+        "outputTokens": 513,
+        "reasoningOutputTokens": 203
+      },
+      "last": {
+        "totalTokens": 19630,
+        "inputTokens": 19117,
+        "cachedInputTokens": 17280,
+        "outputTokens": 513,
+        "reasoningOutputTokens": 203
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab4-b341-74d0-919c-176509a68964",
+    "turnId": "01a0aab4-ba0a-76d1-9cd4-c87d968713de",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19567,
+        "inputTokens": 19004,
+        "cachedInputTokens": 17280,
+        "outputTokens": 563,
+        "reasoningOutputTokens": 362
+      },
+      "last": {
+        "totalTokens": 19567,
+        "inputTokens": 19004,
+        "cachedInputTokens": 17280,
+        "outputTokens": 563,
+        "reasoningOutputTokens": 362
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab4-bc94-7970-9bd4-d351d360f9a0",
+    "turnId": "01a0aab4-c36a-7d10-8c85-b3e1e306e1bf",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 21988,
+        "inputTokens": 20951,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1037,
+        "reasoningOutputTokens": 463
+      },
+      "last": {
+        "totalTokens": 21988,
+        "inputTokens": 20951,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1037,
+        "reasoningOutputTokens": 463
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab4-f0b7-7970-bfbe-f5c7c447818e",
+    "turnId": "01a0aab4-f77c-79e1-90df-4b2736d88cf0",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 20667,
+        "inputTokens": 20138,
+        "cachedInputTokens": 17408,
+        "outputTokens": 529,
+        "reasoningOutputTokens": 221
+      },
+      "last": {
+        "totalTokens": 20667,
+        "inputTokens": 20138,
+        "cachedInputTokens": 17408,
+        "outputTokens": 529,
+        "reasoningOutputTokens": 221
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab4-e931-7e71-a6ad-bb6fcef9d7c8",
+    "turnId": "01a0aab4-f038-77b1-bd40-71359dac46d4",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 21759,
+        "inputTokens": 20534,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1225,
+        "reasoningOutputTokens": 798
+      },
+      "last": {
+        "totalTokens": 21759,
+        "inputTokens": 20534,
+        "cachedInputTokens": 17408,
+        "outputTokens": 1225,
+        "reasoningOutputTokens": 798
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab5-1aa9-7c92-86d1-a1f6b41a337d",
+    "turnId": "01a0aab5-2164-77e1-9837-747e0b5160cc",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19100,
+        "inputTokens": 18748,
+        "cachedInputTokens": 17280,
+        "outputTokens": 352,
+        "reasoningOutputTokens": 140
+      },
+      "last": {
+        "totalTokens": 19100,
+        "inputTokens": 18748,
+        "cachedInputTokens": 17280,
+        "outputTokens": 352,
+        "reasoningOutputTokens": 140
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab5-2bd7-7231-a833-c7c9e6b0267f",
+    "turnId": "01a0aab5-3276-75d0-a380-ee7cf109b03d",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19073,
+        "inputTokens": 18744,
+        "cachedInputTokens": 17280,
+        "outputTokens": 329,
+        "reasoningOutputTokens": 179
+      },
+      "last": {
+        "totalTokens": 19073,
+        "inputTokens": 18744,
+        "cachedInputTokens": 17280,
+        "outputTokens": 329,
+        "reasoningOutputTokens": 179
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab5-5ac9-7123-a872-1d3fb5540bff",
+    "turnId": "01a0aab5-615d-79b1-ae74-eb4bd33ac6c0",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19814,
+        "inputTokens": 19464,
+        "cachedInputTokens": 17408,
+        "outputTokens": 350,
+        "reasoningOutputTokens": 128
+      },
+      "last": {
+        "totalTokens": 19814,
+        "inputTokens": 19464,
+        "cachedInputTokens": 17408,
+        "outputTokens": 350,
+        "reasoningOutputTokens": 128
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab5-57db-7c60-a938-2411b007f278",
+    "turnId": "01a0aab5-5e7a-75e1-a835-ec633c2e2205",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19287,
+        "inputTokens": 18869,
+        "cachedInputTokens": 17280,
+        "outputTokens": 418,
+        "reasoningOutputTokens": 261
+      },
+      "last": {
+        "totalTokens": 19287,
+        "inputTokens": 18869,
+        "cachedInputTokens": 17280,
+        "outputTokens": 418,
+        "reasoningOutputTokens": 261
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab5-588c-79f2-b10d-63c2e5e27da8",
+    "turnId": "01a0aab5-5f1b-7d42-8d36-c27a72f9f235",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 20028,
+        "inputTokens": 19515,
+        "cachedInputTokens": 17408,
+        "outputTokens": 513,
+        "reasoningOutputTokens": 260
+      },
+      "last": {
+        "totalTokens": 20028,
+        "inputTokens": 19515,
+        "cachedInputTokens": 17408,
+        "outputTokens": 513,
+        "reasoningOutputTokens": 260
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab5-8c21-7d70-ba62-6919cf1c4beb",
+    "turnId": "01a0aab5-92c5-7d60-9e44-e8b2031d0564",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19636,
+        "inputTokens": 19219,
+        "cachedInputTokens": 17408,
+        "outputTokens": 417,
+        "reasoningOutputTokens": 222
+      },
+      "last": {
+        "totalTokens": 19636,
+        "inputTokens": 19219,
+        "cachedInputTokens": 17408,
+        "outputTokens": 417,
+        "reasoningOutputTokens": 222
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab5-9b48-7fd2-b099-4861433bfeef",
+    "turnId": "01a0aab5-a1f3-7e42-b933-797280ee5fda",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19258,
+        "inputTokens": 18951,
+        "cachedInputTokens": 17280,
+        "outputTokens": 307,
+        "reasoningOutputTokens": 97
+      },
+      "last": {
+        "totalTokens": 19258,
+        "inputTokens": 18951,
+        "cachedInputTokens": 17280,
+        "outputTokens": 307,
+        "reasoningOutputTokens": 97
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab5-d821-7e31-9d9a-5646e54f336a",
+    "turnId": "01a0aab5-decf-7561-8139-c388ab69b8ce",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19981,
+        "inputTokens": 19511,
+        "cachedInputTokens": 17408,
+        "outputTokens": 470,
+        "reasoningOutputTokens": 246
+      },
+      "last": {
+        "totalTokens": 19981,
+        "inputTokens": 19511,
+        "cachedInputTokens": 17408,
+        "outputTokens": 470,
+        "reasoningOutputTokens": 246
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab6-1086-7370-a587-2f03cef7755f",
+    "turnId": "01a0aab6-1758-7710-ae07-ca6d7ec9c12c",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19001,
+        "inputTokens": 18731,
+        "cachedInputTokens": 9984,
+        "outputTokens": 270,
+        "reasoningOutputTokens": 148
+      },
+      "last": {
+        "totalTokens": 19001,
+        "inputTokens": 18731,
+        "cachedInputTokens": 9984,
+        "outputTokens": 270,
+        "reasoningOutputTokens": 148
+      },
+      "modelContextWindow": 258400
+    }
+  },
+  {
+    "threadId": "01a0aab6-3574-7503-b63b-2b45392fe1c0",
+    "turnId": "01a0aab6-3c1b-78f1-a215-1c4493ae344f",
+    "tokenUsage": {
+      "total": {
+        "totalTokens": 19259,
+        "inputTokens": 19029,
+        "cachedInputTokens": 17408,
+        "outputTokens": 230,
+        "reasoningOutputTokens": 87
+      },
+      "last": {
+        "totalTokens": 19259,
+        "inputTokens": 19029,
+        "cachedInputTokens": 17408,
+        "outputTokens": 230,
+        "reasoningOutputTokens": 87
+      },
+      "modelContextWindow": 258400
+    }
+  }
+]

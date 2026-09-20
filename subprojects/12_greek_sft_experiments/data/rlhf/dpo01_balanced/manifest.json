@@ -1,0 +1,5 @@
+{
+ "source": "data/rlhf/dpo01",
+ "method": "greedy magnitude matching on (chosen words - rejected words); every chosen-longer pair kept, each matched to the nearest unused chosen-shorter pair by absolute gap",
+ "purpose": "control arm isolating the length signal; same recipe, same seed, fewer pairs"
+}

@@ -1,0 +1,21 @@
+{
+ "run": "R3-main",
+ "slots": 403,
+ "active": 345,
+ "held": 58,
+ "repairs_used": {
+  "0": 265,
+  "1": 65,
+  "2": 15
+ },
+ "sol_calls": {
+  "instance": 123,
+  "render": 155,
+  "review": 104
+ },
+ "glossary_sha16": "ab7c697aca9f08ed",
+ "code_sha16": "aa64f8170374b293",
+ "manifest_sha16": "e95dd2b512bcf9b1",
+ "task_kinds_sha16": "51ee22248edf194d",
+ "finished": 1789646755.85317
+}

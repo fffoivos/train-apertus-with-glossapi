@@ -1,0 +1,107 @@
+[
+ {
+  "trajectory_id": "ME001",
+  "kind": "P",
+  "depth": 2,
+  "turn_quality": "serious",
+  "already_paired": false
+ },
+ {
+  "trajectory_id": "ME001",
+  "kind": "R",
+  "depth": 3,
+  "turn_quality": "minor",
+  "already_paired": false
+ },
+ {
+  "trajectory_id": "ME003",
+  "kind": "P",
+  "depth": 2,
+  "turn_quality": "serious",
+  "already_paired": false
+ },
+ {
+  "trajectory_id": "ME003",
+  "kind": "R",
+  "depth": 3,
+  "turn_quality": "serious",
+  "already_paired": false
+ },
+ {
+  "trajectory_id": "ME013",
+  "kind": "P",
+  "depth": 2,
+  "turn_quality": "serious",
+  "already_paired": false
+ },
+ {
+  "trajectory_id": "ME013",
+  "kind": "R",
+  "depth": 3,
+  "turn_quality": "minor",
+  "already_paired": false
+ },
+ {
+  "trajectory_id": "ME014",
+  "kind": "P",
+  "depth": 3,
+  "turn_quality": "serious",
+  "already_paired": false
+ },
+ {
+  "trajectory_id": "ME020",
+  "kind": "P",
+  "depth": 6,
+  "turn_quality": "serious",
+  "already_paired": false
+ },
+ {
+  "trajectory_id": "ME020",
+  "kind": "R",
+  "depth": 7,
+  "turn_quality": "serious",
+  "already_paired": false
+ },
+ {
+  "trajectory_id": "ME026",
+  "kind": "P",
+  "depth": 2,
+  "turn_quality": "serious",
+  "already_paired": false
+ },
+ {
+  "trajectory_id": "ME026",
+  "kind": "R",
+  "depth": 3,
+  "turn_quality": "minor",
+  "already_paired": false
+ },
+ {
+  "trajectory_id": "ME027",
+  "kind": "P",
+  "depth": 2,
+  "turn_quality": "serious",
+  "already_paired": false
+ },
+ {
+  "trajectory_id": "ME027",
+  "kind": "R",
+  "depth": 3,
+  "turn_quality": "serious",
+  "already_paired": false
+ },
+ {
+  "trajectory_id": "ME031",
+  "kind": "P",
+  "depth": 2,
+  "turn_quality": "serious",
+  "already_paired": false
+ },
+ {
+  "trajectory_id": "ME031",
+  "kind": "R",
+  "depth": 3,
+  "turn_quality": "serious",
+  "already_paired": false
+ }
+]

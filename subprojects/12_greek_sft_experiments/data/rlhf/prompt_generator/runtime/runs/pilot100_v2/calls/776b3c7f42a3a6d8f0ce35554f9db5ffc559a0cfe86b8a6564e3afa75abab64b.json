@@ -1,0 +1,27 @@
+{
+  "key": "776b3c7f42a3a6d8f0ce35554f9db5ffc559a0cfe86b8a6564e3afa75abab64b",
+  "stage": "review",
+  "attempt": 0,
+  "ids": [
+    "S0063"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 8.95,
+  "prompt_sha256": "1632d1d3783c74f0e79a28c5d937352392bfb5edc5df97877d195e248bc371f2",
+  "response": {
+    "items": [
+      {
+        "id": "S0063",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "es",
+        "observed_register": "formal",
+        "observed_attitude": "cooperative",
+        "rationale": "La solicitud pide exactamente la fecha, la tarifa y las plazas restantes del aviso, exige una única respuesta concisa y es plenamente contestable a partir de la fuente adjunta, sin filtrar datos privados ni respuestas ocultas."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:29:01.530908+00:00"
+}

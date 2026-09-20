@@ -1,0 +1,14 @@
+{
+  "queried_utc": "2026-09-16T18:26:00.378282+00:00",
+  "local_created_at": 1789581856.696047,
+  "metadata": {
+    "id": "647ab6639c4a4b308ce32467ab7d0ae5",
+    "status": "ACTIVE",
+    "createdAt": "2026-09-16T18:04:16.568000",
+    "updatedAt": "2026-09-16T18:10:25.880000",
+    "terminatedAt": null,
+    "priceHr": 1.99,
+    "gpuCount": 1,
+    "installationStatus": "FINISHED"
+  }
+}

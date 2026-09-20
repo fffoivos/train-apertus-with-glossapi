@@ -1,0 +1,132 @@
+{
+ "plan": "docs/RLHF_COORDINATION/DPO01_EXECUTION_PLAN_20260918.md",
+ "experiment": "G4F6P1--DPO01",
+ "created_utc": "2026-09-18T07:05:10.982292+00:00",
+ "rows": {
+  "train": 343,
+  "dev": 54,
+  "total": 397
+ },
+ "groups": {
+  "total": 397,
+  "dev": 54
+ },
+ "split_algorithm": "dev if int(sha256(\"20260918|\"+group_key),16) % 10 == 0, group-frozen, topped up to ten dev groups by lowest hash",
+ "exclusions": {
+  "round1_excluded_by_owner": 26,
+  "no_pair:held:superseded_after_verification": 5,
+  "no_pair:no_batch_meets_pair_rule": 207,
+  "maths_task_excluded": 24
+ },
+ "by_purpose": {
+  "everyday": 165,
+  "factual": 78,
+  "instruction": 96,
+  "safety": 58
+ },
+ "by_language": {
+  "el": 235,
+  "en": 90,
+  "pt": 14,
+  "it": 19,
+  "fr": 14,
+  "es": 12,
+  "de": 13
+ },
+ "by_round": {
+  "round2": 183,
+  "round3": 214
+ },
+ "by_source": {
+  "registry": 183,
+  "round3": 214
+ },
+ "purpose_by_language": {
+  "everyday/el": 97,
+  "factual/el": 37,
+  "instruction/el": 64,
+  "everyday/en": 43,
+  "instruction/en": 13,
+  "safety/en": 11,
+  "safety/el": 37,
+  "factual/en": 23,
+  "everyday/pt": 4,
+  "instruction/it": 6,
+  "factual/fr": 3,
+  "factual/it": 4,
+  "instruction/fr": 6,
+  "instruction/pt": 4,
+  "instruction/es": 2,
+  "safety/pt": 2,
+  "everyday/es": 4,
+  "everyday/fr": 4,
+  "factual/pt": 4,
+  "safety/fr": 1,
+  "safety/it": 3,
+  "everyday/it": 6,
+  "instruction/de": 1,
+  "factual/de": 3,
+  "safety/de": 2,
+  "everyday/de": 7,
+  "factual/es": 4,
+  "safety/es": 2
+ },
+ "embedded_maths": 66,
+ "maths_excluded": 24,
+ "round1_excluded": 26,
+ "multi_turn": 0,
+ "lengths": {
+  "prompt_words": 62,
+  "chosen_words_median": 86,
+  "rejected_words_median": 95,
+  "chosen_over_rejected_ratio": 0.785
+ },
+ "sources": {
+  "data/rlhf/registry/registry.sqlite": "9fbb52b5bd708df6b6bbe0abefe0dc9a384876368bb22d3a5a54ad32b321715b",
+  "data/rlhf/dpo01/export.py": "4a4c68a9cf8e6b4b11f50b58078d1b4a195f0e9ad374f594c8bd0b367527bccd",
+  "data/rlhf/round3/round3_pairs.jsonl": "8d34928fcfab7161f59ae0a29d27d64e96076fe73a7cb42f38146f363e75eb6d",
+  "data/rlhf/round3/round3_all.jsonl": "0ea2aacdaf00dd2d27d71f052ac56b486f66c20eabd370d1d79fd29e312c01af",
+  "data/rlhf/round3/round3_samples.jsonl": "52bfbcad0397673ac1172317d142582665f1cc9f8474891bc89418836d896e0a",
+  "data/rlhf/pool/round1_all.jsonl": "afb42b543c621768e83024ffb7c33fe9944e4fb90397c6454cf448f0458b1d34",
+  "data/rlhf/pool/round1_all_judged.jsonl": "6d2c3f72f8beb03c0693ebf421187c13f8e70b14fcfbf12f40b6a5f785504007",
+  "data/rlhf/pool/round1_all_samples.jsonl": "92ab09a2357e569caef352934e6a8c2993b84f90fdb28830d390563a40aead33",
+  "data/rlhf/pool/round2_all.jsonl": "661443a62e8b375abcce4dd511f7c3ac4e1a169e18e47559504bc032b407b1a8",
+  "data/rlhf/pool/round2_all_judged.jsonl": "440b5958e1caf169dad69d4fd2b3816cdea03a639648a907bd0038c44f8ea646",
+  "data/rlhf/pool/round2_all_samples.jsonl": "c3b290153c43fcc1f62c27ad3af18c497965f30764f6babace775179fa76d30d",
+  "data/rlhf/round3/judged_general_s1.jsonl": "a31c11d19a835c8d958f3cfb9b4f0f91379e560c42fa78e48043e2c6fcb4e48a",
+  "data/rlhf/round3/judged_general_s2.jsonl": "08f4d6b8aa8d631d604047613c72f1a85ca8a58f28be50a1cc0fd5105886aa27",
+  "data/rlhf/round3/judged_general_s3.jsonl": "55b94c1b4d64fe7d277194a28397d2fad5270840931bb319ad0e6975d890c0e9",
+  "data/rlhf/round3/judged_maths_s1.jsonl": "1703240cf65e70db4f178bafa47d06fc6a7629f7e13affdb34b73688b1322447",
+  "data/rlhf/round3/judged_maths_s2.jsonl": "e74f40d2fe36b49a964086208ad99de10ba4ea963a83ed35b8cfd9287b5f8947",
+  "data/rlhf/round3/judged_maths_s3.jsonl": "fc4ea2997b714830bab868f1ab10e65f238ecb49859c24deb261f317058e17a8"
+ },
+ "decisions": [
+  "round 1 excluded (owner, 18 Sept: round 1 was not considered good; round 2 carried the improvements)",
+  "maths task excluded (plan §1): purpose=math, task_type=math, maths-route pairs, maths_content=maths; embedded maths kept and counted",
+  "dialogue development pairs excluded (training_eligible=false)",
+  "one pair per logical prompt and per normalised prefix; round 3 wins a tie as the active sampled version"
+ ],
+ "outputs": {
+  "train.jsonl": "f9e8f661bcd49d90e3880e5de69a749ca32f8f9fea949907cdb17f5d0434f9b0",
+  "dev.jsonl": "253438dee659985bfc0157cf373a42ff68676c608c54ef5e395c5d28789a23de",
+  "provenance.jsonl": "0ebc6fcc387e02a5838a5ef56a8da3d1695c33f9cc4fb6183f2299b290aeafaa",
+  "exclusions.jsonl": "882724dc8d62a172924da32321445fce1ad3b60e0e0fc95755c21d73576d0e4c"
+ },
+ "by_output_language": {
+  "el": 234,
+  "non-el": 163
+ },
+ "split_check": {
+  "dev_rounds": {
+   "round2": 25,
+   "round3": 29
+  },
+  "dev_purposes": {
+   "factual": 14,
+   "everyday": 21,
+   "safety": 10,
+   "instruction": 9
+  },
+  "groups_spanning_both_splits": 0
+ }
+}

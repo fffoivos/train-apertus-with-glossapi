@@ -1,0 +1,19 @@
+{
+  "checkpoint_sha256": "54d445bc639b7222ad872b4d8dca5e913dbf4c4d427fbf56183e28361006e763",
+  "endpoint": "http://127.0.0.1:8000/v1",
+  "model_revision": "3a557e0842b146ccb6d24427e20b08c52fb368d5",
+  "no_system_prompt": true,
+  "recorded_utc": "2026-09-17T16:51:15.309099+00:00",
+  "requested_model": "fffoivos/greek-apertus-8b-sft-r4-full",
+  "sampling": {
+    "max_tokens": 1024,
+    "n": 1,
+    "temperature": 0.8,
+    "top_p": 0.95
+  },
+  "served_models": [
+    "fffoivos/greek-apertus-8b-sft-r4-full"
+  ],
+  "sha_verified_on_pod_by": "dv2_pod_setup.sh (DV2_MODEL_SHA_OK before serving)",
+  "stage": "collect"
+}

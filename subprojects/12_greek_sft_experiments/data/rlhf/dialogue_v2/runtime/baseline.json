@@ -1,0 +1,212 @@
+{
+  "coordination": {
+    "board_state": "orchestrator (Fable) owns prompt generation PG1-PG6 and CURRENT_VERSIONS.md rows other than dialogue v2; no other executor writes data/rlhf/dialogue_v2 or reference_guided_dialogue_demo",
+    "other_executor_active_files_in_owned_paths": []
+  },
+  "created_utc": "2026-09-17T11:05:28.561367+00:00",
+  "experiment_credit": 0,
+  "first_experiment_quota_pointers_sha256": {
+    "data/rlhf/dialogue_quality_depth/runtime/manifest.json": {
+      "bytes": 106137,
+      "sha256": "99d26f8c72e1fb138c581a20187fdea03870039657049e2b9ddf9ac882be8d7f"
+    },
+    "data/rlhf/dialogue_quality_depth/runtime/measurement/preferences.jsonl": {
+      "bytes": 107099,
+      "rows": 24,
+      "sha256": "dea6cb6598f2d302362798a72a23bae1f7d719c3670e80fd8de5195e985507fa"
+    },
+    "data/rlhf/pool/inventory.jsonl": {
+      "bytes": 318582,
+      "rows": 630,
+      "sha256": "d4cbeab06058fca3c873b223fae2988d091826b34558a27d9b7b6cfdfe7c0926"
+    },
+    "data/rlhf/pool/inventory_summary.json": {
+      "bytes": 3389,
+      "sha256": "7a5cbaa2e6fa35d7fdc7d229c5c6bf10332b027d2d8afcf7e90097a8a9a170e3"
+    },
+    "data/rlhf/pool/round1_all.jsonl": {
+      "bytes": 329005,
+      "rows": 195,
+      "sha256": "afb42b543c621768e83024ffb7c33fe9944e4fb90397c6454cf448f0458b1d34"
+    },
+    "data/rlhf/pool/round2_all.jsonl": {
+      "bytes": 912772,
+      "rows": 407,
+      "sha256": "661443a62e8b375abcce4dd511f7c3ac4e1a169e18e47559504bc032b407b1a8"
+    },
+    "data/rlhf/target_distribution_v1.json": {
+      "bytes": 1308,
+      "sha256": "4c02f11e351e25a01b63b84e401db08b0264710b06f4756bbc9ba9744b31edc1"
+    },
+    "docs/RLHF_COORDINATION/CURRENT_VERSIONS.md": {
+      "bytes": 12106,
+      "sha256": "455ac55a3bbd4ae3b0629d47ec07c7423d65c3108500be411caea6cf1e35942e"
+    }
+  },
+  "glossary": {
+    "note": "the glossary was re-synced to spec v0.5 during the run; each call records the sha16 it read",
+    "path": "data/rlhf/prompts/seed_label_definitions_v1.md",
+    "sha16_at_stage_a": "e249b0deaaf6bec0",
+    "sha16_in_brief": "84b30fabd02a15cc"
+  },
+  "me021": {
+    "assistant_consecutive_similarity": [
+      0.422,
+      0.904,
+      0.994,
+      1.0
+    ],
+    "assistant_turns": 5,
+    "context_arithmetic": "2,597 prompt tokens + 1,500 reserved output tokens = 4,097 > 4,096 served context: the sixth reply was never generated",
+    "finding": "Reproduced: repeated requests and exclusions for four user turns, useful concrete detail only at user turn 6, and the next assistant call stopped by the context reservation. That unobserved reply is not a model failure.",
+    "pilot_annotation_quality_by_turn": [
+      [
+        1,
+        "serious"
+      ],
+      [
+        2,
+        "serious"
+      ],
+      [
+        3,
+        "serious"
+      ],
+      [
+        4,
+        "serious"
+      ],
+      [
+        5,
+        "serious"
+      ]
+    ],
+    "snapshots_in_append_only_log": 12,
+    "terminal_code": "context_limit",
+    "terminal_detail_excerpt": "{\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 1500 output tokens and your prompt contains at least 2597 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, val",
+    "used": "latest snapshot (not the first line)",
+    "user_turn_6_excerpt": "Δεν ακολούθησες τις ρητές απαγορεύσεις και επανέλαβες πάλι την ίδια πλοκή. Γράψε από την αρχή μια ιστορία 240–300 λέξεων χωρίς καμία αναφορά σε αρχοντικό, έπαυλη, πατέρα ή κρυφό πέρασμα: ο ήσυχος βιβλιοθηκάριος βρίσκει έναν διπλωμένο χάρτη μέσα στο θερμοκήπιο της ταράτσας και ένας δεύτερος χαρακτήρας εξηγεί εκεί, μέσα από ουσιαστικό διάλογο, ότι ο χάρτης καταγράφει τις θέσεις σπάνιων φυτών που πρέ",
+    "user_turn_readings": [
+      {
+        "reading": "restatement of the dialogue requirement (no new information)",
+        "user_turn": 2
+      },
+      {
+        "reading": "points to the defect (significance still narrated, not shown in dialogue); asks for an entirely new version",
+        "user_turn": 3
+      },
+      {
+        "reading": "adds an exclusion: drop the manor and the old plot",
+        "user_turn": 4
+      },
+      {
+        "reading": "repeats the exclusion with explicit banned words (manor, mansion, father, hidden passage)",
+        "user_turn": 5
+      },
+      {
+        "reading": "first concrete alternative: a second character explains that the map records rare plants to be saved before demolition",
+        "user_turn": 6
+      }
+    ]
+  },
+  "model_identity": {
+    "alias": "G4F6P1",
+    "chat_template_overhead_tokens": "prompt_tokens = content tokens + 59 + 2 x messages (measured on 126 pilot replies)",
+    "expected_model_safetensors_sha256": "54d445bc639b7222ad872b4d8dca5e913dbf4c4d427fbf56183e28361006e763",
+    "hub_api_lfs_sha256_now": "54d445bc639b7222ad872b4d8dca5e913dbf4c4d427fbf56183e28361006e763",
+    "hub_repo": "fffoivos/greek-apertus-8b-sft-r4-full",
+    "hub_revision_now": "3a557e0842b146ccb6d24427e20b08c52fb368d5",
+    "hub_revision_pinned": "3a557e0842b146ccb6d24427e20b08c52fb368d5",
+    "prior_serving_evidence": [
+      "pilot pod logs DQP_MODEL_SHA_OK on 3 sessions (2026-09-16 18:14Z, 18:57Z, 21:57Z)",
+      "round 2 pod sha256 match (logs/prime_round2.log 17:58Z)"
+    ],
+    "served_context_tokens": 4096,
+    "serving_verification_this_run": "dv2_pod_setup.sh downloads the pinned revision and refuses to serve unless sha256(model.safetensors) matches"
+  },
+  "prime_intellect": {
+    "programme": {
+      "by_stage": {},
+      "operational_stop_eur": 4.0,
+      "pilot_active": [],
+      "pilot_sessions": 8,
+      "pilot_spent_eur": 1.9483674086334721,
+      "programme_spent_eur": 1.9483674086334721,
+      "remaining_before_operational_stop_eur": 2.051632591366528,
+      "total_cap_eur": 5.0,
+      "v2_active": [],
+      "v2_sessions": 0,
+      "v2_spent_eur": 0
+    },
+    "provider_state": {
+      "active_pods": [],
+      "checked_utc": "2026-09-17T11:05:28.911309+00:00",
+      "count": 0
+    }
+  },
+  "protocol_version": "dialogue-v2-dev-0.1",
+  "purpose": "development_demo",
+  "quota_rule": "development rows never decrement these; the same hashes are re-checked before the review package",
+  "sampling_baseline": {
+    "change": "max_tokens 1500 -> 1024 for every D1/D2 reply and branch candidate (context fit); recorded as dv2-sampling-v1",
+    "pilot": {
+      "max_tokens": 1500,
+      "n": 1,
+      "system_prompt": null,
+      "temperature": 0.8,
+      "top_p": 0.95
+    },
+    "this_run": {
+      "max_tokens": 1024,
+      "n": 1,
+      "system_prompt": null,
+      "temperature": 0.8,
+      "top_p": 0.95
+    }
+  },
+  "sol": {
+    "access": "data/math/codex_server.py, gpt-5.6-sol, codex-cli 0.154.0",
+    "astra": "not used",
+    "cap_for_this_work": "none (owner, 17 Sept); every call recorded",
+    "pilot_calls_recorded": 753
+  },
+  "stage": "A",
+  "training_eligible": false,
+  "versions": {
+    "branch_rule_version": "dv2-branch-4then8-v1",
+    "branch_verify_version": "dv2-branch-verify-v1",
+    "conversation_review_version": "dv2-conversation-review-v1",
+    "generator_version": "0.3-dev",
+    "model": {
+      "alias": "G4F6P1",
+      "id": "fffoivos/greek-apertus-8b-sft-r4-full",
+      "revision": "3a557e0842b146ccb6d24427e20b08c52fb368d5",
+      "served_context": 4096,
+      "sha256": "54d445bc639b7222ad872b4d8dca5e913dbf4c4d427fbf56183e28361006e763"
+    },
+    "no_system_prompt": true,
+    "opening_writer_version": "dvi-opening-writer-v1",
+    "pilot_sampling_baseline": {
+      "max_tokens": 1500,
+      "n": 1,
+      "temperature": 0.8,
+      "top_p": 0.95
+    },
+    "prompt_sha16:opening_writer_v1.txt": "2e4b28b95c3c495f",
+    "prompt_sha16:user_actions_v1.txt": "a7eda68fa88c4aff",
+    "prompt_sha16:user_policy_v2.txt": "4764028915074cd5",
+    "prompt_sha16:world_resolver_v1.txt": "fdb7f942ba75029a",
+    "protocol_version": "dialogue-v2-dev-0.1",
+    "rubric_v2_4_sha16": "8aa32f266afd08b4",
+    "sampling": {
+      "max_tokens": 1024,
+      "n": 1,
+      "temperature": 0.8,
+      "top_p": 0.95
+    },
+    "sampling_config_version": "dv2-sampling-v1",
+    "turn_eval_version": "dv2-turn-eval-v1",
+    "user_policy_version": "adaptive-user-v2.0",
+    "world_resolver_version": "world-resolver-v1"
+  }
+}

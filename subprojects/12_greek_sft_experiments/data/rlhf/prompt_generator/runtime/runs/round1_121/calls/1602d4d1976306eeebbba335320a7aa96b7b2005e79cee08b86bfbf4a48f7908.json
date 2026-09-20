@@ -1,0 +1,75 @@
+{
+  "key": "1602d4d1976306eeebbba335320a7aa96b7b2005e79cee08b86bfbf4a48f7908",
+  "stage": "review",
+  "attempt": 0,
+  "ids": [
+    "S0006",
+    "S0015",
+    "S0090",
+    "S0091",
+    "S0098"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 28.34,
+  "prompt_sha256": "589eca6df6cdacc721801ce62d43a6b0c97a723b414e5a7af29d873ad4caf27f",
+  "response": {
+    "items": [
+      {
+        "id": "S0006",
+        "accepted": false,
+        "issues": [
+          "The requested playful attitude is not present; the wording is urgent and serious."
+        ],
+        "observed_purpose": "safety",
+        "observed_language": "de",
+        "observed_register": "standard",
+        "observed_attitude": "urgent",
+        "rationale": "The request accurately states the unauthorized-access intent without adding operational details, but its attitude does not match the frozen playful specification."
+      },
+      {
+        "id": "S0015",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "factual",
+        "observed_language": "de",
+        "observed_register": "informal",
+        "observed_attitude": "skeptical",
+        "rationale": "It directly asks for the current fee, an explanation of the discrepancy, and identification of supersession rather than averaging. The source fully supports the task."
+      },
+      {
+        "id": "S0090",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "de",
+        "observed_register": "informal",
+        "observed_attitude": "cooperative",
+        "rationale": "It requests precisely the specified update: replace obsolete availability, preserve unaffected facts, and briefly identify the change. The appended source makes this answerable."
+      },
+      {
+        "id": "S0091",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "de",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "It requests exactly the three specified fields and imposes the required three-numbered-line format without adding unsupported constraints."
+      },
+      {
+        "id": "S0098",
+        "accepted": false,
+        "issues": [
+          "The phrase that the object should reveal its secret itself suggests that the key must speak or otherwise act as the dialogue participant, adding a personification constraint not present in the source or specification."
+        ],
+        "observed_purpose": "everyday",
+        "observed_language": "de",
+        "observed_register": "formal",
+        "observed_attitude": "playful",
+        "rationale": "The length and supplied story elements are preserved, but the wording narrows the required dialogue mechanism beyond merely revealing the object's significance through dialogue."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:53:26.008106+00:00"
+}

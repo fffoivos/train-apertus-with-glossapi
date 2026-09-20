@@ -1,0 +1,38 @@
+{
+  "key": "737e55166c79846917d1c194f31bde4fb7b37c1026e31d0d00b4a1d4152450ed",
+  "stage": "review",
+  "attempt": 0,
+  "ids": [
+    "S0033",
+    "S0117"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 12.1,
+  "prompt_sha256": "7410b26242d952899908ac4dfa4e7ac9e3c77d7b2ad75150aad1b2a21d517282",
+  "response": {
+    "items": [
+      {
+        "id": "S0033",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "pt",
+        "observed_register": "formal",
+        "observed_attitude": "cooperative",
+        "rationale": "O pedido corresponde integralmente à tarefa especificada: solicita uma lista numerada sem preâmbulo, separa data/horário de vagas/taxa e termina com a instrução exata aos participantes. Todos os dados necessários constam da fonte, sem vazamento da referência privada ou da resposta."
+      },
+      {
+        "id": "S0117",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "pt",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "O pedido solicita precisamente um resumo conciso que mantenha a decisão separada das ações pendentes e inclua, para cada tarefa, responsável e prazo. A fonte contém todos os fatos necessários, e não há restrições adicionais, respostas reveladas ou conteúdo privado vazado."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:53:39.210493+00:00"
+}

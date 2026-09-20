@@ -1,0 +1,21 @@
+{
+ "run": "C60-openings-retry3",
+ "slots": 3,
+ "active": 2,
+ "held": 1,
+ "repairs_used": {
+  "1": 1,
+  "2": 1
+ },
+ "sol_calls": {
+  "instance": 3,
+  "render": 3,
+  "review": 3
+ },
+ "glossary_sha16": "ecdc0ec9ef56b184",
+ "code_sha16": "43d3fc6e9efe4fae",
+ "manifest": "data/rlhf/dialogue_v2/collection60/manifest.json",
+ "manifest_sha16": "4d99a68e1c0b2bfa",
+ "task_kinds_sha16": "51ee22248edf194d",
+ "finished": 1789662132.9608629
+}

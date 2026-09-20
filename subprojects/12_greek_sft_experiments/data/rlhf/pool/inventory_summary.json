@@ -1,0 +1,171 @@
+{
+ "target": "target-distribution-v1",
+ "size_for_deficits": 500,
+ "rows": 630,
+ "excluded": 19,
+ "by_source": {
+  "forum / forum-gate-v3": 314,
+  "seeded / 0.1": 102,
+  "seeded / 0.2": 167,
+  "dialogue / dialogue-quality-depth-v1 (0.1 seeds)": 28
+ },
+ "keepable_by_purpose": {
+  "dialogue": {
+   "prompts": 0,
+   "prompts_share": 0.0,
+   "with_pair": 0,
+   "target_share": 35,
+   "target_pairs_at_size": 175,
+   "deficit_pairs": 175
+  },
+  "everyday": {
+   "prompts": 253,
+   "prompts_share": 52.6,
+   "with_pair": 131,
+   "target_share": 25,
+   "target_pairs_at_size": 125,
+   "deficit_pairs": 0
+  },
+  "instruction": {
+   "prompts": 50,
+   "prompts_share": 10.4,
+   "with_pair": 27,
+   "target_share": 15,
+   "target_pairs_at_size": 75,
+   "deficit_pairs": 48
+  },
+  "factual": {
+   "prompts": 138,
+   "prompts_share": 28.7,
+   "with_pair": 59,
+   "target_share": 10,
+   "target_pairs_at_size": 50,
+   "deficit_pairs": 0
+  },
+  "safety": {
+   "prompts": 20,
+   "prompts_share": 4.2,
+   "with_pair": 15,
+   "target_share": 10,
+   "target_pairs_at_size": 50,
+   "deficit_pairs": 35
+  },
+  "math": {
+   "prompts": 20,
+   "prompts_share": 4.2,
+   "with_pair": 14,
+   "target_share": 5,
+   "target_pairs_at_size": 25,
+   "deficit_pairs": 11
+  }
+ },
+ "keepable_by_language": {
+  "el": {
+   "prompts": 448,
+   "prompts_share": 93.1,
+   "with_pair": 225,
+   "target_share": 70,
+   "target_pairs_at_size": 350,
+   "deficit_pairs": 125
+  },
+  "en": {
+   "prompts": 33,
+   "prompts_share": 6.9,
+   "with_pair": 21,
+   "target_share": 20,
+   "target_pairs_at_size": 100,
+   "deficit_pairs": 79
+  },
+  "fr": {
+   "prompts": 0,
+   "prompts_share": 0.0,
+   "with_pair": 0,
+   "target_share": 2,
+   "target_pairs_at_size": 10,
+   "deficit_pairs": 10
+  },
+  "de": {
+   "prompts": 0,
+   "prompts_share": 0.0,
+   "with_pair": 0,
+   "target_share": 2,
+   "target_pairs_at_size": 10,
+   "deficit_pairs": 10
+  },
+  "es": {
+   "prompts": 0,
+   "prompts_share": 0.0,
+   "with_pair": 0,
+   "target_share": 2,
+   "target_pairs_at_size": 10,
+   "deficit_pairs": 10
+  },
+  "it": {
+   "prompts": 0,
+   "prompts_share": 0.0,
+   "with_pair": 0,
+   "target_share": 2,
+   "target_pairs_at_size": 10,
+   "deficit_pairs": 10
+  },
+  "pt": {
+   "prompts": 0,
+   "prompts_share": 0.0,
+   "with_pair": 0,
+   "target_share": 2,
+   "target_pairs_at_size": 10,
+   "deficit_pairs": 10
+  }
+ },
+ "including_defunct_by_purpose": {
+  "dialogue": {
+   "prompts": 28,
+   "prompts_share": 4.6,
+   "with_pair": 16,
+   "target_share": 35,
+   "target_pairs_at_size": 175,
+   "deficit_pairs": 159
+  },
+  "everyday": {
+   "prompts": 268,
+   "prompts_share": 43.9,
+   "with_pair": 141,
+   "target_share": 25,
+   "target_pairs_at_size": 125,
+   "deficit_pairs": 0
+  },
+  "instruction": {
+   "prompts": 90,
+   "prompts_share": 14.7,
+   "with_pair": 45,
+   "target_share": 15,
+   "target_pairs_at_size": 75,
+   "deficit_pairs": 30
+  },
+  "factual": {
+   "prompts": 144,
+   "prompts_share": 23.6,
+   "with_pair": 64,
+   "target_share": 10,
+   "target_pairs_at_size": 50,
+   "deficit_pairs": 0
+  },
+  "safety": {
+   "prompts": 47,
+   "prompts_share": 7.7,
+   "with_pair": 38,
+   "target_share": 10,
+   "target_pairs_at_size": 50,
+   "deficit_pairs": 12
+  },
+  "math": {
+   "prompts": 34,
+   "prompts_share": 5.6,
+   "with_pair": 21,
+   "target_share": 5,
+   "target_pairs_at_size": 25,
+   "deficit_pairs": 4
+  }
+ },
+ "maths_rejudge_required": 77
+}

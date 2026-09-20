@@ -1,0 +1,115 @@
+{
+  "version": "prompt-generator-0.1",
+  "run_id": "pilot100_v1",
+  "exported_utc": "2026-09-16T14:23:02.172658+00:00",
+  "config": {
+    "attitude_weights": {
+      "cooperative": 70,
+      "frustrated": 10,
+      "playful": 5,
+      "skeptical": 15
+    },
+    "batch_size": 8,
+    "concurrency": 3,
+    "difficulty_weights": {
+      "challenging": 20,
+      "compositional": 50,
+      "routine": 30
+    },
+    "effort": "high",
+    "generate_dialogue_openings": false,
+    "language_weights": {
+      "de": 2,
+      "el": 70,
+      "en": 20,
+      "es": 2,
+      "fr": 2,
+      "it": 2,
+      "pt": 2
+    },
+    "max_calls": 48,
+    "max_instances_per_structure": 40,
+    "max_repairs": 2,
+    "model": "gpt-5.6-sol",
+    "programme": "pilot100-v1",
+    "purpose_weights": {
+      "dialogue": 35,
+      "everyday": 25,
+      "factual": 10,
+      "instruction": 15,
+      "math": 5,
+      "safety": 10
+    },
+    "register_weights": {
+      "formal": 15,
+      "greeklish": 5,
+      "informal": 20,
+      "standard": 60
+    },
+    "seed": 9162026,
+    "size": 100,
+    "split": "development",
+    "task_language_counts": {
+      "dialogue": {
+        "de": 1,
+        "el": 25,
+        "en": 5,
+        "es": 1,
+        "fr": 1,
+        "it": 1,
+        "pt": 1
+      },
+      "everyday": {
+        "de": 1,
+        "el": 17,
+        "en": 4,
+        "es": 1,
+        "fr": 1,
+        "it": 1,
+        "pt": 0
+      },
+      "factual": {
+        "de": 0,
+        "el": 7,
+        "en": 3,
+        "es": 0,
+        "fr": 0,
+        "it": 0,
+        "pt": 0
+      },
+      "instruction": {
+        "de": 0,
+        "el": 10,
+        "en": 4,
+        "es": 0,
+        "fr": 0,
+        "it": 0,
+        "pt": 1
+      },
+      "math": {
+        "de": 0,
+        "el": 4,
+        "en": 1,
+        "es": 0,
+        "fr": 0,
+        "it": 0,
+        "pt": 0
+      },
+      "safety": {
+        "de": 0,
+        "el": 7,
+        "en": 3,
+        "es": 0,
+        "fr": 0,
+        "it": 0,
+        "pt": 0
+      }
+    }
+  },
+  "sha256": {
+    "dialogue_openings.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "curator.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "model_requests.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "training_eligible": false
+}

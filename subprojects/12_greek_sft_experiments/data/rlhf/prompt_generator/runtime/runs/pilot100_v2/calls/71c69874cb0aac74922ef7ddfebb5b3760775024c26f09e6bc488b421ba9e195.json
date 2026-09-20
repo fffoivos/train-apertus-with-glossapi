@@ -1,0 +1,104 @@
+{
+  "key": "71c69874cb0aac74922ef7ddfebb5b3760775024c26f09e6bc488b421ba9e195",
+  "stage": "review",
+  "attempt": 0,
+  "ids": [
+    "S0064",
+    "S0067",
+    "S0068",
+    "S0069",
+    "S0071",
+    "S0074",
+    "S0075",
+    "S0076"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 34.44,
+  "prompt_sha256": "f6a277b157da76561a45f8ce62df5c1fa471c7c88d4aa66d3ff40695b1d02328",
+  "response": {
+    "items": [
+      {
+        "id": "S0064",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "el",
+        "observed_register": "formal",
+        "observed_attitude": "frustrated",
+        "rationale": "Ζητά άμεσα τη σαφή και σύντομη επιμέλεια του δοθέντος email, με αφαίρεση επαναλήψεων και ρητή διατήρηση όλων των απαιτούμενων στοιχείων, συμπεριλαμβανομένης της προθεσμίας απάντησης."
+      },
+      {
+        "id": "S0067",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "safety",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "skeptical",
+        "rationale": "Διατυπώνει ευθέως την περιγραφόμενη πρόθεση μη εξουσιοδοτημένης πρόσβασης χωρίς να προσθέτει μέθοδο, διαπιστευτήρια, κρυφή απάντηση ή άλλη επιχειρησιακή λεπτομέρεια."
+      },
+      {
+        "id": "S0068",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "safety",
+        "observed_language": "el",
+        "observed_register": "informal",
+        "observed_attitude": "cooperative",
+        "rationale": "Ζητά αποκλειστικά άμεσα προστατευτικά βήματα βάσει της παρεχόμενης κατάστασης και διατηρεί όλα τα κρίσιμα δεδομένα χωρίς να προδικάζει τι έχει συμβεί."
+      },
+      {
+        "id": "S0069",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "Ζητά ασφαλή διαγνωστικά επόμενα βήματα και περιλαμβάνει ακριβώς τις απαγορεύσεις περί συγκεκριμένης βλάβης και επινοημένου τηλεφωνικού αριθμού. Η έλλειψη συστήματος και τρόπου επικοινωνίας δηλώνεται καθαρά."
+      },
+      {
+        "id": "S0071",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "safety",
+        "observed_language": "el",
+        "observed_register": "formal",
+        "observed_attitude": "cooperative",
+        "rationale": "Ζητά την προβλεπόμενη σταθερή και ευγενική διατύπωση ορίου, λαμβάνοντας υπόψη τόσο την ιδιωτικότητα όσο και την αποφυγή κλιμάκωσης."
+      },
+      {
+        "id": "S0074",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "Ζητά πιστή σύνοψη δύο προτάσεων, επιβάλλει τη διατήρηση της ημερομηνίας, της ώρας και των πέντε διαθέσιμων θέσεων και αποκλείει επινοημένες λεπτομέρειες."
+      },
+      {
+        "id": "S0075",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "safety",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "Η αίτηση αντιστοιχεί ακριβώς στη δημιουργία σταθερής και ευγενικής διατύπωσης για το όριο στα ιδιωτικά μηνύματα, με στόχο την αποφυγή καβγά."
+      },
+      {
+        "id": "S0076",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "el",
+        "observed_register": "informal",
+        "observed_attitude": "cooperative",
+        "rationale": "Καθορίζει σωστά την αριθμημένη δομή, τη σειρά των ζητούμενων πληροφοριών, την απουσία εισαγωγής και την κατά λέξη παράθεση της τελικής οδηγίας. Όλα τα αναγκαία στοιχεία υπάρχουν στην πηγή."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:28:03.786473+00:00"
+}

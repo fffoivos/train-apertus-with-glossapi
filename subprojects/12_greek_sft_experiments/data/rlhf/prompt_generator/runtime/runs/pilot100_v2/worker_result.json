@@ -1,0 +1,95 @@
+{
+  "version": "prompt-generator-0.1",
+  "run_id": "pilot100_v2",
+  "size": 100,
+  "state": {
+    "status": "single_turn_ready",
+    "worker_claim": null
+  },
+  "planned": {
+    "purpose": {
+      "dialogue": 35,
+      "everyday": 25,
+      "instruction": 15,
+      "safety": 10,
+      "math": 5,
+      "factual": 10
+    },
+    "language": {
+      "en": 20,
+      "el": 70,
+      "it": 2,
+      "de": 2,
+      "fr": 2,
+      "pt": 2,
+      "es": 2
+    },
+    "attitude": {
+      "cooperative": 70,
+      "playful": 5,
+      "skeptical": 15,
+      "frustrated": 10
+    },
+    "register": {
+      "standard": 60,
+      "informal": 20,
+      "formal": 15,
+      "greeklish": 5
+    },
+    "difficulty": {
+      "routine": 30,
+      "challenging": 20,
+      "compositional": 50
+    }
+  },
+  "accepted": {
+    "purpose": {
+      "everyday": 25,
+      "instruction": 15,
+      "safety": 10,
+      "math": 5,
+      "factual": 10
+    },
+    "language": {
+      "el": 45,
+      "en": 15,
+      "de": 1,
+      "fr": 1,
+      "pt": 1,
+      "es": 1,
+      "it": 1
+    },
+    "attitude": {
+      "playful": 4,
+      "cooperative": 45,
+      "skeptical": 9,
+      "frustrated": 7
+    },
+    "register": {
+      "standard": 41,
+      "formal": 10,
+      "informal": 12,
+      "greeklish": 2
+    },
+    "difficulty": {
+      "challenging": 12,
+      "compositional": 31,
+      "routine": 22
+    }
+  },
+  "status_counts": {
+    "planned": 35,
+    "accepted": 65
+  },
+  "calls": {
+    "complete": 36
+  },
+  "accepted_openings_and_single_turn": 65,
+  "accepted_single_turn": 65,
+  "all_non_dialogue_accepted": true,
+  "completed_dialogues": 0,
+  "all_slots_reviewed": false,
+  "full_dialogue_distribution_realised": false,
+  "training_eligible": false,
+  "worker_errors": []
+}

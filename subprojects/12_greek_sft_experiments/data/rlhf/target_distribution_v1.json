@@ -1,0 +1,16 @@
+{
+  "version": "target-distribution-v1",
+  "status": "agreed by the owner (shares); first-run size not fixed",
+  "source": "Codex REVIEW_HANDOFF_20260916.md §2 'Distribution currently specified' and design.json (= task_parameters_v3.json); owner 17 Sept: agreed, and the foreign-language share must actually be generated",
+  "unit": "accepted preference pairs (eligible pairs), not raw prompts",
+  "cell": "primary purpose x language; joint targets assume the two shares are independent",
+  "primary_purpose_shares_percent": {"dialogue": 35, "everyday": 25, "instruction": 15, "factual": 10, "safety": 10, "math": 5},
+  "language_shares_percent": {"el": 70, "en": 20, "fr": 2, "de": 2, "es": 2, "it": 2, "pt": 2},
+  "within_seeded_defaults_percent": {
+    "difficulty": {"routine": 30, "compositional": 50, "challenging": 20},
+    "attitude": {"cooperative": 70, "frustrated": 10, "skeptical": 15, "playful": 5},
+    "register": {"standard": 60, "informal": 20, "formal": 15, "greeklish": 5},
+    "note": "design defaults, not measured frequencies; greeklish is Greek-only; round 2's seed script used different weights (and 'anxious') and its detail distribution bare 30 / terse 20 / short 20 / medium 20 / detailed 5 / rambling 5"
+  },
+  "forum_constraints": {"astrovox_max_percent_of_forum_prompts": 3}
+}

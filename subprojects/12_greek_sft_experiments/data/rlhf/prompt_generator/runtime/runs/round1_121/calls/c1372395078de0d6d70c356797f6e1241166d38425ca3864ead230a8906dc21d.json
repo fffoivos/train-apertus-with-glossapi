@@ -1,0 +1,56 @@
+{
+  "key": "c1372395078de0d6d70c356797f6e1241166d38425ca3864ead230a8906dc21d",
+  "stage": "generate",
+  "attempt": 0,
+  "ids": [
+    "S0001",
+    "S0005",
+    "S0008",
+    "S0009",
+    "S0012",
+    "S0013",
+    "S0014",
+    "S0016"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 14.77,
+  "prompt_sha256": "377eebe8cba2367a311cbe6b9e611a1ae097675f9ff490269b98db3ab192a50a",
+  "response": {
+    "items": [
+      {
+        "id": "S0001",
+        "request": "Give me a numbered response with no preamble. In item 1, write one sentence stating the workshop’s date and time. In item 2, write one sentence stating how many places are open and the fee per attendee. Please keep it precise and end with this exact instruction: Participants should register in advance."
+      },
+      {
+        "id": "S0005",
+        "request": "Using only the fictional notice below, calculate how many places remain and the total cost for two attendees. State both calculations explicitly."
+      },
+      {
+        "id": "S0008",
+        "request": "Write a short, suspenseful exchange for the fictional stage play described below, making sure the scene ends at the stated point."
+      },
+      {
+        "id": "S0009",
+        "request": "Provide either a short, rigorous proof of the statement below or an explicit counterexample. Do not treat numerical sampling as proof."
+      },
+      {
+        "id": "S0012",
+        "request": "The premise says that 11 places remain, but is that actually correct? Check it against the fictional notice below, give the correct number, and explain the subtraction clearly."
+      },
+      {
+        "id": "S0013",
+        "request": "Using the fictional notice below, explain in plain language the difference between total capacity, booked places, and open places. Include the actual count for each."
+      },
+      {
+        "id": "S0014",
+        "request": "Write a fictional story of 180–240 words using every element in the brief below. Please stick to the word limit and don’t leave anything out."
+      },
+      {
+        "id": "S0016",
+        "request": "Summarize the fictional notice below faithfully in exactly three sentences. Preserve the date, time, and number of remaining places, and do not invent any details."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:50:57.716486+00:00"
+}

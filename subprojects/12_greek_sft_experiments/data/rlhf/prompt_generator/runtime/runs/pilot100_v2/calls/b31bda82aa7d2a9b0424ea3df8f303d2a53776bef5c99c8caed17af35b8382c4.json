@@ -1,0 +1,21 @@
+{
+  "key": "b31bda82aa7d2a9b0424ea3df8f303d2a53776bef5c99c8caed17af35b8382c4",
+  "stage": "generate",
+  "attempt": 0,
+  "ids": [
+    "S0070"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 7.95,
+  "prompt_sha256": "b59aae528e3a908b428d3959cd2602316ab630b2a401071a3b0bb9e10814e281",
+  "response": {
+    "items": [
+      {
+        "id": "S0070",
+        "request": "Fammi un riepilogo conciso e chiaro del contenuto allegato: separa la decisione già presa dalle attività ancora da svolgere e, per ciascuna attività, indica senza giri di parole il responsabile e la scadenza."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:28:57.175220+00:00"
+}

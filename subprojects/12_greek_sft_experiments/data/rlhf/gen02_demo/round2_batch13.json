@@ -1,0 +1,221 @@
+{
+ "seed": 3013,
+ "axes_sizes": {
+  "person": 25,
+  "situation": 16,
+  "task": 12,
+  "topic": 30,
+  "specific": 6,
+  "detail": 20,
+  "register": 6,
+  "attitude": 7,
+  "language": 7
+ },
+ "prompt_sha16": "8b9bb1733b5d6834",
+ "items": [
+  {
+   "seed": {
+    "person": "μπασκετμπολίστας τοπικής ομάδας, 24",
+    "situation": "θέλει να ελέγξει αν κάτι που διάβασε στο ίντερνετ ισχύει",
+    "task": "everyday: σχεδίασε/οργάνωσε (βήματα, πρόγραμμα, λίστα)",
+    "topic": "ΕΦΚΑ/εφορία",
+    "specific": "ένας συγκεκριμένος αριθμός (ποσό, ημερομηνία, μέτρα)",
+    "detail": "bare: only the ask itself, one line, no context, no names, no story, maybe no accents or punctuation",
+    "register": "standard",
+    "attitude": "playful",
+    "language": "el",
+    "id": "R2B13_001",
+    "seed_hash": "33e4fbfdb4c0"
+   },
+   "story": "Ο νεαρός είδε σε μια ανάρτηση ότι για οφειλή έως 10.000 ευρώ μπορεί να τακτοποιήσει μαζί ΕΦΚΑ και εφορία. Δεν είναι βέβαιος ότι ισχύει και θέλει να το ελέγξει πριν κάνει οποιαδήποτε αίτηση. Ζητά μια σύντομη σειρά ενεργειών που να μπορεί να ακολουθήσει από το κινητό του.",
+   "message": "Φτιάξε μου μια γρήγορη λίστα βημάτων για να τσεκάρω αν όντως ρυθμίζονται μαζί χρέη έως 10.000 ευρώ σε ΕΦΚΑ και εφορία, να μη φάμε τάπα 😄"
+  },
+  {
+   "seed": {
+    "person": "ηλεκτρολόγος αυτοαπασχολούμενος, Ξάνθη, 40",
+    "situation": "βοηθάει παιδί/εγγόνι με σχολική εργασία",
+    "task": "math: πρόβλημα με αριθμούς από την καθημερινότητα",
+    "topic": "καλλιέργεια ντομάτας στο μπαλκόνι",
+    "specific": "ένα διαφορετικό πράγμα που του είπε κάποιος άλλος",
+    "detail": "short: two or three sentences, one concrete detail, nothing pasted",
+    "register": "greeklish",
+    "attitude": "frustrated",
+    "language": "el",
+    "id": "R2B13_002",
+    "seed_hash": "816f54d5bf75"
+   },
+   "story": "Ο ηλεκτρολόγος προσπαθεί να βοηθήσει την κόρη του σε μια εργασία μαθηματικών με θέμα τις ντοματιές. Ένας γεωπόνος τού είπε ότι κάθε φυτό μπορεί να δώσει περίπου 2 κιλά ντομάτες, αλλά εκείνος μπερδεύτηκε όταν προσπάθησε να υπολογίσει τη συνολική παραγωγή. Θέλει μια καθαρή λύση για οκτώ γλάστρες με τρία φυτά στην καθεμία.",
+   "message": "Exoume 8 glastres me 3 ntomaties se kathe mia kai o geoponos eipe oti kathe fyto dinei 2 kila. Posa kila tha vgoun synolika; Exigise mou ton ypologismo giati exo mperdeutei."
+  },
+  {
+   "seed": {
+    "person": "αγρότης με ελαιώνα στη Μεσσηνία, 59",
+    "situation": "βαριέται και θέλει να μάθει κάτι περίεργο",
+    "task": "everyday: εξήγησέ μου κάτι απλά",
+    "topic": "λογαριασμός ρεύματος",
+    "specific": "μια προσπάθεια που ήδη έκανε και απέτυχε",
+    "detail": "bare: only the ask itself, one line, no context, no names, no story, maybe no accents or punctuation",
+    "register": "standard",
+    "attitude": "anxious",
+    "language": "el",
+    "id": "R2B13_003",
+    "seed_hash": "cdeda3ca4857"
+   },
+   "story": "Ο αγρότης κοιτάζει έναν λογαριασμό ρεύματος και δεν καταλαβαίνει γιατί το πληρωτέο ποσό είναι πολύ μεγαλύτερο από την αξία της κατανάλωσης. Προσπάθησε να προσθέσει μόνος του τις χρεώσεις, αλλά το αποτέλεσμα δεν συμφωνεί με το σύνολο. Ανησυχεί μήπως υπάρχει κάποιο λάθος ή οφειλή που δεν πρόσεξε.",
+   "message": "Εξήγησέ μου απλά γιατί δεν μου βγαίνει το σύνολο στον λογαριασμό ρεύματος όσο κι αν προσπαθώ να προσθέσω τις χρεώσεις"
+  },
+  {
+   "seed": {
+    "person": "ιερέας σε χωριό της Ηπείρου, 61",
+    "situation": "ανακάλυψε ότι κάτι που πίστευε είναι λάθος",
+    "task": "everyday: γράψε/ξαναγράψε ένα μήνυμα ή email",
+    "topic": "παιδικό πάρτι",
+    "specific": "ένα απόσπασμα που έχει μπροστά του και το επικολλά",
+    "detail": "terse: one or two lines, the ask plus at most one fact the assistant needs, no names",
+    "register": "standard",
+    "attitude": "frustrated",
+    "language": "el",
+    "id": "R2B13_004",
+    "seed_hash": "7092e3fb5ceb"
+   },
+   "story": "Ο ιερέας είχε αναλάβει να ενημερώσει μερικές οικογένειες για ένα παιδικό πάρτι. Μόλις έμαθε ότι η ημερομηνία που έγραψε στο πρώτο μήνυμα ήταν λάθος και εκνευρίστηκε με την αναστάτωση. Θέλει μια σύντομη και ευγενική διόρθωση που να μην προκαλέσει άλλη σύγχυση.",
+   "message": "Ξαναγράψε ευγενικά αυτό, γιατί τελικά το πάρτι είναι Σάββατο: «Σας περιμένουμε στο παιδικό πάρτι την Κυριακή 20 Ιουνίου στις 6 το απόγευμα στην αίθουσα του χωριού.»"
+  },
+  {
+   "seed": {
+    "person": "φοιτητής Erasmus από τη Γαλλία που μαθαίνει ελληνικά, 21",
+    "situation": "παίρνει μια απόφαση με ρίσκο (δουλειά, σπίτι, υγεία)",
+    "task": "factual: ερώτηση με λανθασμένη προϋπόθεση",
+    "topic": "γάμος σε χωριό",
+    "specific": "μια λεπτομέρεια που τον/την ντρέπεται",
+    "detail": "bare: only the ask itself, one line, no context, no names, no story, maybe no accents or punctuation",
+    "register": "informal",
+    "attitude": "cooperative",
+    "language": "el",
+    "id": "R2B13_005",
+    "seed_hash": "95c253271774"
+   },
+   "story": "Ο φοιτητής σκέφτεται να νοικιάσει ένα φθηνό σπίτι δίπλα στην πλατεία ενός ελληνικού χωριού. Διάβασε ότι οι γάμοι εκεί διαρκούν υποχρεωτικά τρεις ημέρες και φοβάται ότι ο θόρυβος θα είναι συνεχής. Ντρέπεται να παραδεχτεί ότι τον αγχώνει πολύ το πλήθος και θέλει να αποφασίσει αν θα υπογράψει το συμβόλαιο.",
+   "message": "Οι γάμοι στα ελληνικά χωριά κρατάνε υποχρεωτικά τρεις μέρες; το ρωτάω πριν νοικιάσω σπίτι στην πλατεία γιατί ντρέπομαι λίγο αλλά με αγχώνει ο πολύς κόσμος"
+  },
+  {
+   "seed": {
+    "person": "μπασκετμπολίστας τοπικής ομάδας, 24",
+    "situation": "βοηθάει παιδί/εγγόνι με σχολική εργασία",
+    "task": "factual: ερώτηση με λανθασμένη προϋπόθεση",
+    "topic": "Βυζάντιο",
+    "specific": "ένα διαφορετικό πράγμα που του είπε κάποιος άλλος",
+    "detail": "bare: only the ask itself, one line, no context, no names, no story, maybe no accents or punctuation",
+    "register": "standard",
+    "attitude": "anxious",
+    "language": "el",
+    "id": "R2B13_006",
+    "seed_hash": "87336666f121"
+   },
+   "story": "Ο αθλητής βοηθά τον μικρό του ανιψιό να ετοιμάσει μια σχολική εργασία για το Βυζάντιο. Ένας γνωστός τού είπε με βεβαιότητα ότι οι Βυζαντινοί μιλούσαν αποκλειστικά λατινικά. Τώρα φοβάται ότι θα δώσει στο παιδί λανθασμένη πληροφορία, αλλά διατυπώνει την απορία του θεωρώντας τον ισχυρισμό σωστό.",
+   "message": "Αφού μου είπαν ότι οι Βυζαντινοί μιλούσαν μόνο λατινικά, πότε έμαθαν ελληνικά;"
+  },
+  {
+   "seed": {
+    "person": "φοιτητής Erasmus από τη Γαλλία που μαθαίνει ελληνικά, 21",
+    "situation": "θέλει να ελέγξει αν κάτι που διάβασε στο ίντερνετ ισχύει",
+    "task": "everyday: μετάφρασε/προσάρμοσε κείμενο",
+    "topic": "ασφάλεια αυτοκινήτου",
+    "specific": "ένας συγκεκριμένος αριθμός (ποσό, ημερομηνία, μέτρα)",
+    "detail": "short: two or three sentences, one concrete detail, nothing pasted",
+    "register": "formal",
+    "attitude": "cooperative",
+    "language": "en",
+    "id": "R2B13_007",
+    "seed_hash": "d8ad614aea68"
+   },
+   "story": "The student found an online post claiming that a €100 insurance deductible always applies after a car accident in Greece. He wants to contact his insurer rather than rely on the post, but his Greek is not strong enough for formal correspondence. He asks for a polite Greek formulation that checks the claim without sounding accusatory.",
+   "message": "Could you translate into formal Greek a brief message asking my car insurer whether the €100 deductible applies to every accident claim? I would like the wording to be polite and suitable for an email."
+  },
+  {
+   "seed": {
+    "person": "ιερέας σε χωριό της Ηπείρου, 61",
+    "situation": "βοηθάει παιδί/εγγόνι με σχολική εργασία",
+    "task": "everyday: εξήγησέ μου κάτι απλά",
+    "topic": "διατροφή πριν από αγώνα",
+    "specific": "ένας συγκεκριμένος αριθμός (ποσό, ημερομηνία, μέτρα)",
+    "detail": "medium: a paragraph with the situation and what they want",
+    "register": "standard",
+    "attitude": "cooperative",
+    "language": "en",
+    "id": "R2B13_008",
+    "seed_hash": "bd63fb6fab6f"
+   },
+   "story": "Ο ιερέας βοηθά τον εγγονό του να γράψει μια σχολική εργασία για τη διατροφή πριν από έναν ποδοσφαιρικό αγώνα. Το παιδί έχει σημειώσει ότι το γεύμα πρέπει να τρώγεται δύο ώρες πριν, αλλά δεν μπορεί να εξηγήσει τον λόγο. Ο παππούς θέλει μια απλή αγγλική εξήγηση, κατάλληλη για μαθητή και χωρίς δύσκολους επιστημονικούς όρους.",
+   "message": "I am helping my grandson with a school assignment about what an athlete should eat before a football match. His notes say that the main meal should be eaten 2 hours before the game, but he does not understand why eating immediately before playing can cause problems. Please explain this simply, in language that a school student can use in his assignment."
+  },
+  {
+   "seed": {
+    "person": "γιατρός αγροτικού σε νησί, 28",
+    "situation": "ακούγεται από ειδικούς αντιφατικές συμβουλές",
+    "task": "everyday: μετάφρασε/προσάρμοσε κείμενο",
+    "topic": "μικρή επιχείρηση στο ίντερνετ",
+    "specific": "ένα απόσπασμα που έχει μπροστά του και το επικολλά",
+    "detail": "bare: only the ask itself, one line, no context, no names, no story, maybe no accents or punctuation",
+    "register": "formal",
+    "attitude": "cooperative",
+    "language": "el",
+    "id": "R2B13_009",
+    "seed_hash": "954f2968461a"
+   },
+   "story": "Η γιατρός ετοιμάζει ένα μικρό ηλεκτρονικό κατάστημα για χειροποίητα προϊόντα και επεξεργάζεται το κείμενο της σελίδας επιστροφών. Δύο σύμβουλοι της έδωσαν διαφορετικές οδηγίες για το ύφος και τη σαφήνεια των όρων. Έχει μπροστά της μια αγγλική πρόταση και ζητά επίσημη ελληνική απόδοση.",
+   "message": "Παρακαλώ αποδώστε επίσημα στα ελληνικά: «Customers may request a return within 14 days of receiving the product, provided that it is unused and remains in its original packaging.»"
+  },
+  {
+   "seed": {
+    "person": "νηπιαγωγός, Ρόδος, 31",
+    "situation": "βαριέται και θέλει να μάθει κάτι περίεργο",
+    "task": "math: πρόβλημα με αριθμούς από την καθημερινότητα",
+    "topic": "κληρονομιά χωραφιού",
+    "specific": "ένα όνομα προσώπου ή μαγαζιού",
+    "detail": "bare: only the ask itself, one line, no context, no names, no story, maybe no accents or punctuation",
+    "register": "informal",
+    "attitude": "cooperative",
+    "language": "el",
+    "id": "R2B13_010",
+    "seed_hash": "6d6394203e94"
+   },
+   "story": "Η νηπιαγωγός χαζεύει παλιά οικογενειακά έγγραφα και αναρωτιέται πώς θα μοιραζόταν μαθηματικά ένα χωράφι. Μετατρέπει την απορία σε ένα απλό αριθμητικό πρόβλημα με συγκεκριμένα μερίδια. Χρησιμοποιεί το όνομα Μαρία για να ακούγεται σαν καθημερινό παράδειγμα.",
+   "message": "Η Μαρία κληρονόμησε χωράφι 18 στρεμμάτων, έδωσε το 1/3 στον αδελφό της και μοίρασε τα υπόλοιπα εξίσου στις δύο κόρες της· πόσα στρέμματα πήρε η καθεμία;"
+  },
+  {
+   "seed": {
+    "person": "Έλληνας μετανάστης στο Μόναχο, οδηγός λεωφορείου, 38",
+    "situation": "έχει προθεσμία σε 2 ώρες",
+    "task": "instruction: επεξεργασία κειμένου διατηρώντας ακριβώς συγκεκριμένα στοιχεία",
+    "topic": "ελαιόλαδο",
+    "specific": "μια λεπτομέρεια που τον/την ντρέπεται",
+    "detail": "bare: only the ask itself, one line, no context, no names, no story, maybe no accents or punctuation",
+    "register": "informal",
+    "attitude": "playful",
+    "language": "el",
+    "id": "R2B13_011",
+    "seed_hash": "b51799516f2f"
+   },
+   "story": "Ο οδηγός πρέπει μέσα στις επόμενες δύο ώρες να στείλει μια μικρή γερμανική αγγελία για οικογενειακό ελαιόλαδο. Ντρέπεται επειδή ξέρει ότι τα γερμανικά του είναι γεμάτα λάθη, αλλά το αντιμετωπίζει με χιούμορ. Θέλει διόρθωση χωρίς να αλλάξουν η ποσότητα, η τιμή και ο τόπος προέλευσης.",
+   "message": "Σώσε τα γερμανικά μου γιατί είναι για κλάματα 😅 Διόρθωσε το «Ich verkaufe sehr gute Olivenöl von Kalamata, 5 Liter kostet 65 €» κρατώντας ακριβώς «Kalamata», «5 Liter» και «65 €»"
+  },
+  {
+   "seed": {
+    "person": "μητέρα δύο παιδιών που δουλεύει από το σπίτι, Χαλάνδρι, 41",
+    "situation": "ακούγεται από ειδικούς αντιφατικές συμβουλές",
+    "task": "math: άσκηση σχολικού επιπέδου με πλήρη λύση",
+    "topic": "ηλεκτρικό ποδήλατο",
+    "specific": "ένας συγκεκριμένος αριθμός (ποσό, ημερομηνία, μέτρα)",
+    "detail": "medium: a paragraph with the situation and what they want",
+    "register": "formal",
+    "attitude": "cooperative",
+    "language": "el",
+    "id": "R2B13_012",
+    "seed_hash": "f3a2bf7881ac"
+   },
+   "story": "Η μητέρα βοηθά το μεγαλύτερο παιδί της σε μια σχολική άσκηση με ποσοστά και ηλεκτρικά ποδήλατα. Έχει ακούσει διαφορετικές εκτιμήσεις από δύο πωλητές για το πόσο γρήγορα αδειάζει η μπαταρία και θέλει να μείνει στα δεδομένα της άσκησης. Χρειάζεται πλήρη λύση, ώστε να μπορεί να εξηγήσει κάθε βήμα στο παιδί.",
+   "message": "Βοηθώ το παιδί μου σε μια άσκηση, ενώ δύο πωλητές μάς έχουν δώσει εντελώς διαφορετικές εκτιμήσεις για την αυτονομία ενός ηλεκτρικού ποδηλάτου. Η άσκηση λέει ότι η μπαταρία ξεκινά στο 90% και καταναλώνει 8 ποσοστιαίες μονάδες ανά 5 χιλιόμετρα: αν το ποδήλατο διανύσει 25 χιλιόμετρα, σε ποιο ποσοστό θα βρίσκεται η μπαταρία; Παρακαλώ δώστε πλήρη λύση με όλες τις πράξεις."
+  }
+ ]
+}

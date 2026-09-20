@@ -1,0 +1,15 @@
+{
+  "checkpoint_sha256": "54d445bc639b7222ad872b4d8dca5e913dbf4c4d427fbf56183e28361006e763",
+  "endpoint": "http://127.0.0.1:8000/v1",
+  "no_system_prompt": true,
+  "preflight_call_id": "target:preflight:ba29111355647bbd",
+  "recorded_utc": "2026-09-16T16:57:01.970467+00:00",
+  "requested_model": "fffoivos/greek-apertus-8b-sft-r4-full",
+  "sampling": {
+    "max_tokens": 1500,
+    "n": 1,
+    "temperature": 0.8,
+    "top_p": 0.95
+  },
+  "served_model_id": "fffoivos/greek-apertus-8b-sft-r4-full"
+}

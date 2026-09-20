@@ -1,0 +1,205 @@
+{
+ "prompts": 450,
+ "superseded_after_verification": 5,
+ "eligible_pairs": 238,
+ "held": 5,
+ "with_positive": 243,
+ "by_status": {
+  "eligible": 238,
+  "held:superseded_after_verification": 5,
+  "no_batch_meets_pair_rule": 207
+ },
+ "by_cell": {
+  "everyday/de": {
+   "prompts": 10,
+   "with_positive": 7,
+   "eligible_pairs": 7,
+   "held": 0
+  },
+  "everyday/en": {
+   "prompts": 59,
+   "with_positive": 40,
+   "eligible_pairs": 37,
+   "held": 1
+  },
+  "everyday/es": {
+   "prompts": 10,
+   "with_positive": 4,
+   "eligible_pairs": 4,
+   "held": 0
+  },
+  "everyday/fr": {
+   "prompts": 6,
+   "with_positive": 4,
+   "eligible_pairs": 4,
+   "held": 0
+  },
+  "everyday/it": {
+   "prompts": 7,
+   "with_positive": 6,
+   "eligible_pairs": 6,
+   "held": 0
+  },
+  "everyday/pt": {
+   "prompts": 7,
+   "with_positive": 4,
+   "eligible_pairs": 4,
+   "held": 0
+  },
+  "factual/de": {
+   "prompts": 4,
+   "with_positive": 3,
+   "eligible_pairs": 3,
+   "held": 0
+  },
+  "factual/en": {
+   "prompts": 29,
+   "with_positive": 21,
+   "eligible_pairs": 21,
+   "held": 0
+  },
+  "factual/es": {
+   "prompts": 4,
+   "with_positive": 4,
+   "eligible_pairs": 4,
+   "held": 0
+  },
+  "factual/fr": {
+   "prompts": 4,
+   "with_positive": 4,
+   "eligible_pairs": 3,
+   "held": 1
+  },
+  "factual/it": {
+   "prompts": 4,
+   "with_positive": 4,
+   "eligible_pairs": 4,
+   "held": 0
+  },
+  "factual/pt": {
+   "prompts": 4,
+   "with_positive": 4,
+   "eligible_pairs": 4,
+   "held": 0
+  },
+  "instruction/de": {
+   "prompts": 4,
+   "with_positive": 1,
+   "eligible_pairs": 1,
+   "held": 0
+  },
+  "instruction/el": {
+   "prompts": 79,
+   "with_positive": 46,
+   "eligible_pairs": 46,
+   "held": 1
+  },
+  "instruction/en": {
+   "prompts": 14,
+   "with_positive": 5,
+   "eligible_pairs": 5,
+   "held": 0
+  },
+  "instruction/es": {
+   "prompts": 4,
+   "with_positive": 2,
+   "eligible_pairs": 2,
+   "held": 0
+  },
+  "instruction/fr": {
+   "prompts": 7,
+   "with_positive": 6,
+   "eligible_pairs": 6,
+   "held": 0
+  },
+  "instruction/it": {
+   "prompts": 7,
+   "with_positive": 6,
+   "eligible_pairs": 6,
+   "held": 0
+  },
+  "instruction/pt": {
+   "prompts": 7,
+   "with_positive": 5,
+   "eligible_pairs": 5,
+   "held": 0
+  },
+  "math/el": {
+   "prompts": 79,
+   "with_positive": 9,
+   "eligible_pairs": 9,
+   "held": 0
+  },
+  "math/en": {
+   "prompts": 23,
+   "with_positive": 11,
+   "eligible_pairs": 11,
+   "held": 0
+  },
+  "math/fr": {
+   "prompts": 5,
+   "with_positive": 2,
+   "eligible_pairs": 2,
+   "held": 0
+  },
+  "math/it": {
+   "prompts": 4,
+   "with_positive": 0,
+   "eligible_pairs": 0,
+   "held": 0
+  },
+  "math/pt": {
+   "prompts": 4,
+   "with_positive": 1,
+   "eligible_pairs": 1,
+   "held": 0
+  },
+  "safety/de": {
+   "prompts": 3,
+   "with_positive": 2,
+   "eligible_pairs": 2,
+   "held": 0
+  },
+  "safety/el": {
+   "prompts": 34,
+   "with_positive": 25,
+   "eligible_pairs": 24,
+   "held": 2
+  },
+  "safety/en": {
+   "prompts": 17,
+   "with_positive": 9,
+   "eligible_pairs": 9,
+   "held": 0
+  },
+  "safety/es": {
+   "prompts": 3,
+   "with_positive": 2,
+   "eligible_pairs": 2,
+   "held": 0
+  },
+  "safety/fr": {
+   "prompts": 2,
+   "with_positive": 1,
+   "eligible_pairs": 1,
+   "held": 0
+  },
+  "safety/it": {
+   "prompts": 3,
+   "with_positive": 3,
+   "eligible_pairs": 3,
+   "held": 0
+  },
+  "safety/pt": {
+   "prompts": 3,
+   "with_positive": 2,
+   "eligible_pairs": 2,
+   "held": 0
+  }
+ },
+ "by_stage": {
+  "2": 41,
+  "1": 170,
+  "3": 27
+ }
+}

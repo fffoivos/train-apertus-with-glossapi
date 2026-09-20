@@ -1,0 +1,10 @@
+{
+  "ME001:a1": {"decision":"minor","evidence":"A is correctly identified at EUR90 for four people and 75 minutes, so the requested choice remains usable. Independently 110/4=27.50, not 23.75; occupancy caveats and the statement that B remains cheaper are unsupported defects."},
+  "ME002:a1": {"decision":"serious","evidence":"A has 8 seats for exactly 8 people, 45<=60 minutes, and EUR20<=230, versus feasible C at EUR140. Rejecting A for insufficient seats and choosing C materially defeats the minimum-cost task."},
+  "ME003:a1": {"decision":"minor","evidence":"Two sentences preserve the date, times, 23/18/5 and EUR0, and omit Mira. Required advance registration is omitted. The notice remains largely useful, with one missing participant instruction."},
+  "ME004:a1": {"decision":"good","evidence":"Independent arithmetic: 23-13=10 places; 2*8=EUR16. Both requested calculations are explicit and grounded in the supplied fictional notice."},
+  "ME005:a1": {"decision":"serious","evidence":"254 whitespace-delimited words satisfy length, but the seaside archive and librarian identity are not established and dialogue does not reveal the postcard significance. Multiple central story constraints fail; a painted sea is not a seaside setting."},
+  "ME006:a1": {"decision":"minor","evidence":"All requested story elements appear. Independent whitespace count is 245 versus 180-240; the third/daughter letter is both blank and clue-bearing. Limited coherence and length defects leave a usable story."},
+  "ME011:a1": {"decision":"minor","evidence":"26 October 2026, 14:00, 15 places and free admission remain. Reply-to-reserve shifts to confirmation at an unspecified email placeholder. Minor editorial/reservation defect, not a wrong event notice."},
+  "ME012:a1": {"decision":"serious","evidence":"Independent 25-13=12. The reply gives both 18 and 12 remaining, contradicting its central answer; payment/cancellation speculation has no basis in the supplied notice."}
+}

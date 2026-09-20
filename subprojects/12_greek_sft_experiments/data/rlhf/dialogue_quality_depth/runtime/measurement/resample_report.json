@@ -1,0 +1,364 @@
+{
+  "aggregate": {
+    "by_kind": {
+      "P": {
+        "no_reinforce_at_32": 1,
+        "pairs_exported": 7,
+        "reinforce_found": 7,
+        "targets": 8
+      },
+      "R": {
+        "no_reinforce_at_32": 0,
+        "pairs_exported": 6,
+        "reinforce_found": 7,
+        "targets": 7
+      }
+    },
+    "cost": {
+      "fresh_target_completions": 480,
+      "gpu_spent_eur_total": 1.9483674086334721,
+      "sol_resample_calls_reserved": 40
+    },
+    "no_reinforce_at_32": 1,
+    "pairs_exported": 13,
+    "rejected_targets": 2,
+    "samples_needed_histogram": {
+      "12": 3,
+      "16": 3,
+      "4": 5,
+      "8": 3,
+      "no_reinforce_at_32": 1
+    },
+    "share_no_reinforce_at_32": 0.06666666666666667,
+    "target_count": 15
+  },
+  "created_utc": "2026-09-16T22:32:09.238095+00:00",
+  "protocol": "escalating-resample-2026-09-17-v1",
+  "source_sha256": "15c931d7a217c6d1db22628fc6658666a5be0554df27ed4bc508cb46fdeae3b2",
+  "targets": [
+    {
+      "batches_judged": 1,
+      "clear_margin": true,
+      "created_utc": "2026-09-16T22:23:05.183998+00:00",
+      "export_rejection_reason": null,
+      "kind": "P",
+      "lowest_ranked_candidate_id": "RS001:r04",
+      "pair_exported": true,
+      "protocol": "escalating-resample-2026-09-17-v1",
+      "ranking_call_ids": [
+        "sol:resample:measurement:RS001:b0"
+      ],
+      "samples_judged": 4,
+      "samples_needed": 4,
+      "selection_id": "RS001",
+      "status": "reinforce_found",
+      "trajectory_id": "ME001",
+      "winning_batch_index": 0,
+      "winning_candidate_id": "RS001:r03"
+    },
+    {
+      "batches_judged": 1,
+      "clear_margin": true,
+      "created_utc": "2026-09-16T22:23:16.294662+00:00",
+      "export_rejection_reason": null,
+      "kind": "R",
+      "lowest_ranked_candidate_id": "RS002:r02",
+      "pair_exported": true,
+      "protocol": "escalating-resample-2026-09-17-v1",
+      "ranking_call_ids": [
+        "sol:resample:measurement:RS002:b0"
+      ],
+      "samples_judged": 4,
+      "samples_needed": 4,
+      "selection_id": "RS002",
+      "status": "reinforce_found",
+      "trajectory_id": "ME001",
+      "winning_batch_index": 0,
+      "winning_candidate_id": "RS002:r03"
+    },
+    {
+      "batches_judged": 4,
+      "clear_margin": true,
+      "created_utc": "2026-09-16T22:23:54.256039+00:00",
+      "export_rejection_reason": null,
+      "kind": "P",
+      "lowest_ranked_candidate_id": "RS003:r16",
+      "pair_exported": true,
+      "protocol": "escalating-resample-2026-09-17-v1",
+      "ranking_call_ids": [
+        "sol:resample:measurement:RS003:b0",
+        "sol:resample:measurement:RS003:b1",
+        "sol:resample:measurement:RS003:b2",
+        "sol:resample:measurement:RS003:b3"
+      ],
+      "samples_judged": 16,
+      "samples_needed": 16,
+      "selection_id": "RS003",
+      "status": "reinforce_found",
+      "trajectory_id": "ME003",
+      "winning_batch_index": 3,
+      "winning_candidate_id": "RS003:r14"
+    },
+    {
+      "batches_judged": 2,
+      "clear_margin": true,
+      "created_utc": "2026-09-16T22:24:10.842260+00:00",
+      "export_rejection_reason": null,
+      "kind": "R",
+      "lowest_ranked_candidate_id": "RS004:r07",
+      "pair_exported": true,
+      "protocol": "escalating-resample-2026-09-17-v1",
+      "ranking_call_ids": [
+        "sol:resample:measurement:RS004:b0",
+        "sol:resample:measurement:RS004:b1"
+      ],
+      "samples_judged": 8,
+      "samples_needed": 8,
+      "selection_id": "RS004",
+      "status": "reinforce_found",
+      "trajectory_id": "ME003",
+      "winning_batch_index": 1,
+      "winning_candidate_id": "RS004:r06"
+    },
+    {
+      "batches_judged": 2,
+      "clear_margin": true,
+      "created_utc": "2026-09-16T22:24:44.873841+00:00",
+      "export_rejection_reason": null,
+      "kind": "P",
+      "lowest_ranked_candidate_id": "RS005:r06",
+      "pair_exported": true,
+      "protocol": "escalating-resample-2026-09-17-v1",
+      "ranking_call_ids": [
+        "sol:resample:measurement:RS005:b0",
+        "sol:resample:measurement:RS005:b1"
+      ],
+      "samples_judged": 8,
+      "samples_needed": 8,
+      "selection_id": "RS005",
+      "status": "reinforce_found",
+      "trajectory_id": "ME013",
+      "winning_batch_index": 1,
+      "winning_candidate_id": "RS005:r08"
+    },
+    {
+      "batches_judged": 1,
+      "clear_margin": true,
+      "created_utc": "2026-09-16T22:24:57.465469+00:00",
+      "export_rejection_reason": null,
+      "kind": "R",
+      "lowest_ranked_candidate_id": "RS006:r02",
+      "pair_exported": true,
+      "protocol": "escalating-resample-2026-09-17-v1",
+      "ranking_call_ids": [
+        "sol:resample:measurement:RS006:b0"
+      ],
+      "samples_judged": 4,
+      "samples_needed": 4,
+      "selection_id": "RS006",
+      "status": "reinforce_found",
+      "trajectory_id": "ME013",
+      "winning_batch_index": 0,
+      "winning_candidate_id": "RS006:r04"
+    },
+    {
+      "batches_judged": 1,
+      "clear_margin": true,
+      "created_utc": "2026-09-16T22:25:20.239238+00:00",
+      "export_rejection_reason": null,
+      "kind": "P",
+      "lowest_ranked_candidate_id": "RS007:r02",
+      "pair_exported": true,
+      "protocol": "escalating-resample-2026-09-17-v1",
+      "ranking_call_ids": [
+        "sol:resample:measurement:RS007:b0"
+      ],
+      "samples_judged": 4,
+      "samples_needed": 4,
+      "selection_id": "RS007",
+      "status": "reinforce_found",
+      "trajectory_id": "ME014",
+      "winning_batch_index": 0,
+      "winning_candidate_id": "RS007:r04"
+    },
+    {
+      "batches_judged": 3,
+      "clear_margin": true,
+      "created_utc": "2026-09-16T22:26:00.065555+00:00",
+      "export_rejection_reason": null,
+      "kind": "P",
+      "lowest_ranked_candidate_id": "RS008:r10",
+      "pair_exported": true,
+      "protocol": "escalating-resample-2026-09-17-v1",
+      "ranking_call_ids": [
+        "sol:resample:measurement:RS008:b0",
+        "sol:resample:measurement:RS008:b1",
+        "sol:resample:measurement:RS008:b2"
+      ],
+      "samples_judged": 12,
+      "samples_needed": 12,
+      "selection_id": "RS008",
+      "status": "reinforce_found",
+      "trajectory_id": "ME020",
+      "winning_batch_index": 2,
+      "winning_candidate_id": "RS008:r12"
+    },
+    {
+      "batches_judged": 4,
+      "clear_margin": true,
+      "created_utc": "2026-09-16T22:26:52.543323+00:00",
+      "export_rejection_reason": null,
+      "kind": "R",
+      "lowest_ranked_candidate_id": "RS009:r15",
+      "pair_exported": true,
+      "protocol": "escalating-resample-2026-09-17-v1",
+      "ranking_call_ids": [
+        "sol:resample:measurement:RS009:b0",
+        "sol:resample:measurement:RS009:b1",
+        "sol:resample:measurement:RS009:b2",
+        "sol:resample:measurement:RS009:b3"
+      ],
+      "samples_judged": 16,
+      "samples_needed": 16,
+      "selection_id": "RS009",
+      "status": "reinforce_found",
+      "trajectory_id": "ME020",
+      "winning_batch_index": 3,
+      "winning_candidate_id": "RS009:r13"
+    },
+    {
+      "batches_judged": 3,
+      "clear_margin": true,
+      "created_utc": "2026-09-16T22:27:59.766391+00:00",
+      "export_rejection_reason": null,
+      "kind": "P",
+      "lowest_ranked_candidate_id": "RS010:r10",
+      "pair_exported": true,
+      "protocol": "escalating-resample-2026-09-17-v1",
+      "ranking_call_ids": [
+        "sol:resample:measurement:RS010:b0",
+        "sol:resample:measurement:RS010:b1",
+        "sol:resample:measurement:RS010:b2"
+      ],
+      "samples_judged": 12,
+      "samples_needed": 12,
+      "selection_id": "RS010",
+      "status": "reinforce_found",
+      "trajectory_id": "ME026",
+      "winning_batch_index": 2,
+      "winning_candidate_id": "RS010:r11"
+    },
+    {
+      "batches_judged": 2,
+      "clear_margin": false,
+      "created_utc": "2026-09-16T22:28:45.280071+00:00",
+      "export_rejection_reason": "no_clear_margin",
+      "kind": "R",
+      "lowest_ranked_candidate_id": "RS011:r06",
+      "pair_exported": false,
+      "protocol": "escalating-resample-2026-09-17-v1",
+      "ranking_call_ids": [
+        "sol:resample:measurement:RS011:b0",
+        "sol:resample:measurement:RS011:b1"
+      ],
+      "samples_judged": 8,
+      "samples_needed": 8,
+      "selection_id": "RS011",
+      "status": "reinforce_found",
+      "trajectory_id": "ME026",
+      "winning_batch_index": 1,
+      "winning_candidate_id": "RS011:r05"
+    },
+    {
+      "batches_judged": 8,
+      "clear_margin": false,
+      "created_utc": "2026-09-16T22:30:42.328922+00:00",
+      "export_rejection_reason": "no_reinforce_at_32",
+      "kind": "P",
+      "lowest_ranked_candidate_id": "RS012:r29",
+      "pair_exported": false,
+      "protocol": "escalating-resample-2026-09-17-v1",
+      "ranking_call_ids": [
+        "sol:resample:measurement:RS012:b0",
+        "sol:resample:measurement:RS012:b1",
+        "sol:resample:measurement:RS012:b2",
+        "sol:resample:measurement:RS012:b3",
+        "sol:resample:measurement:RS012:b4",
+        "sol:resample:measurement:RS012:b5",
+        "sol:resample:measurement:RS012:b6",
+        "sol:resample:measurement:RS012:b7"
+      ],
+      "samples_judged": 32,
+      "samples_needed": "no_reinforce_at_32",
+      "selection_id": "RS012",
+      "status": "no_reinforce_at_32",
+      "trajectory_id": "ME027",
+      "winning_candidate_id": null
+    },
+    {
+      "batches_judged": 4,
+      "clear_margin": true,
+      "created_utc": "2026-09-16T22:31:28.083817+00:00",
+      "export_rejection_reason": null,
+      "kind": "R",
+      "lowest_ranked_candidate_id": "RS013:r01",
+      "pair_exported": true,
+      "protocol": "escalating-resample-2026-09-17-v1",
+      "ranking_call_ids": [
+        "sol:resample:measurement:RS013:b0",
+        "sol:resample:measurement:RS013:b1",
+        "sol:resample:measurement:RS013:b2",
+        "sol:resample:measurement:RS013:b3"
+      ],
+      "samples_judged": 16,
+      "samples_needed": 16,
+      "selection_id": "RS013",
+      "status": "reinforce_found",
+      "trajectory_id": "ME027",
+      "winning_batch_index": 3,
+      "winning_candidate_id": "RS013:r13"
+    },
+    {
+      "batches_judged": 1,
+      "clear_margin": true,
+      "created_utc": "2026-09-16T22:31:37.666258+00:00",
+      "export_rejection_reason": null,
+      "kind": "P",
+      "lowest_ranked_candidate_id": "RS014:r04",
+      "pair_exported": true,
+      "protocol": "escalating-resample-2026-09-17-v1",
+      "ranking_call_ids": [
+        "sol:resample:measurement:RS014:b0"
+      ],
+      "samples_judged": 4,
+      "samples_needed": 4,
+      "selection_id": "RS014",
+      "status": "reinforce_found",
+      "trajectory_id": "ME031",
+      "winning_batch_index": 0,
+      "winning_candidate_id": "RS014:r02"
+    },
+    {
+      "batches_judged": 3,
+      "clear_margin": true,
+      "created_utc": "2026-09-16T22:32:09.089470+00:00",
+      "export_rejection_reason": null,
+      "kind": "R",
+      "lowest_ranked_candidate_id": "RS015:r12",
+      "pair_exported": true,
+      "protocol": "escalating-resample-2026-09-17-v1",
+      "ranking_call_ids": [
+        "sol:resample:measurement:RS015:b0",
+        "sol:resample:measurement:RS015:b1",
+        "sol:resample:measurement:RS015:b2"
+      ],
+      "samples_judged": 12,
+      "samples_needed": 12,
+      "selection_id": "RS015",
+      "status": "reinforce_found",
+      "trajectory_id": "ME031",
+      "winning_batch_index": 2,
+      "winning_candidate_id": "RS015:r09"
+    }
+  ]
+}

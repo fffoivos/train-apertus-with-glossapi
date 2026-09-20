@@ -1,0 +1,123 @@
+{
+  "annotation": {
+    "calibration_minimum": 24,
+    "max_estimated_input_tokens_per_call": 24000,
+    "max_long_packets": 4,
+    "max_short_packets": 8,
+    "overlapping_same_trajectory_packets": false,
+    "prefix_only": true
+  },
+  "budget": {
+    "max_new_sol_calls": 120,
+    "operational_stop_eur": 4,
+    "prime_intellect_total_eur": 5,
+    "reserve_eur": 1,
+    "smoke_cost_forecast_required": true,
+    "sol_reservations": {
+      "adjudication": 10,
+      "annotation": 40,
+      "candidate_review": 8,
+      "openings": 10,
+      "repairs": 8,
+      "smoke": 6,
+      "user_continuation": 38
+    },
+    "training_authorized_by_plan": false
+  },
+  "inference": {
+    "checkpoint_receipt_required": true,
+    "max_new_tokens": 1500,
+    "temperature": 0.8,
+    "top_p": 0.95
+  },
+  "measurement": {
+    "admission_sizes": [
+      35,
+      28,
+      21,
+      14
+    ],
+    "attitude": {
+      "cooperative": 25,
+      "frustrated": 4,
+      "playful": 1,
+      "skeptical": 5
+    },
+    "difficulty": {
+      "challenging": 7,
+      "compositional": 17,
+      "routine": 11
+    },
+    "interaction": {
+      "constraint_retention": 8,
+      "followup": 10,
+      "recall": 5,
+      "revision": 8,
+      "uncertainty": 4
+    },
+    "languages": {
+      "de": 1,
+      "el": 25,
+      "en": 5,
+      "es": 1,
+      "fr": 1,
+      "it": 1,
+      "pt": 1
+    },
+    "max_assistant_turns": 8,
+    "quality_triggered_stopping": false,
+    "raw_samples_per_turn": 1,
+    "register": {
+      "formal": 5,
+      "greeklish": 2,
+      "informal": 7,
+      "standard": 21
+    },
+    "target_trajectories": 35,
+    "task_language_counts": {
+      "everyday": {
+        "de": 1,
+        "el": 12,
+        "en": 3,
+        "es": 1,
+        "fr": 1
+      },
+      "factual": {
+        "el": 3,
+        "en": 1
+      },
+      "instruction": {
+        "el": 6,
+        "en": 1,
+        "it": 1,
+        "pt": 1
+      },
+      "math": {
+        "el": 2
+      },
+      "safety": {
+        "el": 2
+      }
+    }
+  },
+  "seed": 9162602,
+  "selection": {
+    "candidates_including_original": 3,
+    "control_share": 0.25,
+    "error_allocation": "eligible_trajectory_proportional",
+    "max_exported_pairs_per_prefix": 1,
+    "max_per_trajectory": 2,
+    "max_prefixes": 24
+  },
+  "smoke": {
+    "include_in_measurement": false,
+    "languages": {
+      "el": 4,
+      "en": 2
+    },
+    "max_assistant_turns": 3,
+    "trajectories": 6
+  },
+  "status": "plan_not_executed",
+  "version": "dialogue-quality-depth-v1"
+}

@@ -1,0 +1,63 @@
+{
+  "version": "prompt-generator-0.1",
+  "run_id": "pilot100_v1",
+  "size": 100,
+  "state": {
+    "status": "planned",
+    "worker_claim": null
+  },
+  "planned": {
+    "purpose": {
+      "dialogue": 35,
+      "everyday": 25,
+      "instruction": 15,
+      "safety": 10,
+      "math": 5,
+      "factual": 10
+    },
+    "language": {
+      "en": 20,
+      "el": 70,
+      "it": 2,
+      "de": 2,
+      "fr": 2,
+      "pt": 2,
+      "es": 2
+    },
+    "attitude": {
+      "cooperative": 70,
+      "playful": 5,
+      "skeptical": 15,
+      "frustrated": 10
+    },
+    "register": {
+      "standard": 60,
+      "informal": 20,
+      "formal": 15,
+      "greeklish": 5
+    },
+    "difficulty": {
+      "routine": 30,
+      "challenging": 20,
+      "compositional": 50
+    }
+  },
+  "accepted": {
+    "purpose": {},
+    "language": {},
+    "attitude": {},
+    "register": {},
+    "difficulty": {}
+  },
+  "status_counts": {
+    "planned": 100
+  },
+  "calls": {},
+  "accepted_openings_and_single_turn": 0,
+  "accepted_single_turn": 0,
+  "all_non_dialogue_accepted": false,
+  "completed_dialogues": 0,
+  "all_slots_reviewed": false,
+  "full_dialogue_distribution_realised": false,
+  "training_eligible": false
+}

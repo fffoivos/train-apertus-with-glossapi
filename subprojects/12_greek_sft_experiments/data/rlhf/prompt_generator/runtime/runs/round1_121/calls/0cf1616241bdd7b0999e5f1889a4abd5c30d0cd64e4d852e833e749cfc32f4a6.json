@@ -1,0 +1,56 @@
+{
+  "key": "0cf1616241bdd7b0999e5f1889a4abd5c30d0cd64e4d852e833e749cfc32f4a6",
+  "stage": "generate",
+  "attempt": 0,
+  "ids": [
+    "S0071",
+    "S0078",
+    "S0079",
+    "S0082",
+    "S0083",
+    "S0084",
+    "S0087",
+    "S0092"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 19.69,
+  "prompt_sha256": "9089d4d7576073037b023ac24d7a3d19962313d4cab890965d6d3d84600a5a4f",
+  "response": {
+    "items": [
+      {
+        "id": "S0071",
+        "request": "Please summarize the fictional notice below faithfully in exactly four sentences. Preserve the date, time, and number of remaining places, and do not invent any details."
+      },
+      {
+        "id": "S0078",
+        "request": "Using only the situation described below, explain the immediate steps the person should take."
+      },
+      {
+        "id": "S0079",
+        "request": "Extract the date, time, and number of open places from the fictional notice below. Return only a JSON object with exactly the fields \"date\", \"time\", and \"open_places\", with no introductory text."
+      },
+      {
+        "id": "S0082",
+        "request": "Edit the draft below into a clear, concise email without repetition. Be precise: preserve every date, time, price, capacity, and reservation condition."
+      },
+      {
+        "id": "S0083",
+        "request": "Help me carry out what the speaker wants in the situation below."
+      },
+      {
+        "id": "S0084",
+        "request": "Just extract the date, time, and number of open places from the fictional notice below. Return only a JSON object with exactly the fields \"date\", \"time\", and \"open_places\"—no introduction or extra fields."
+      },
+      {
+        "id": "S0087",
+        "request": "Write a small Python function called open_places(record). It should validate the schema described below, raise ValueError for invalid counts, and return capacity minus booked. Include two brief examples."
+      },
+      {
+        "id": "S0092",
+        "request": "Using only the fictional notice below, determine how many places remain and the total cost for two attendees. State both calculations clearly so the figures can be checked."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:52:08.282917+00:00"
+}

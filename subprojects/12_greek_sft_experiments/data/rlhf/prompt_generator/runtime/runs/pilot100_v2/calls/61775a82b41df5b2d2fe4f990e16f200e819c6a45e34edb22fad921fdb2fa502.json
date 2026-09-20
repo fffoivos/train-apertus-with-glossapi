@@ -1,0 +1,27 @@
+{
+  "key": "61775a82b41df5b2d2fe4f990e16f200e819c6a45e34edb22fad921fdb2fa502",
+  "stage": "review",
+  "attempt": 0,
+  "ids": [
+    "S0010"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 13.73,
+  "prompt_sha256": "1e894721b3e5f6468dd049d713421d252929c158d7308ab0b2978f6fd3d273af",
+  "response": {
+    "items": [
+      {
+        "id": "S0010",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "fr",
+        "observed_register": "formal",
+        "observed_attitude": "skeptical",
+        "rationale": "La demande porte directement sur la réécriture concise et formelle du brouillon, exige la conservation de toutes les informations factuelles visées et la suppression des répétitions. Le contenu source rend la tâche entièrement réalisable, sans révéler de réponse cachée ni ajouter de contrainte substantielle étrangère."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:28:27.754395+00:00"
+}

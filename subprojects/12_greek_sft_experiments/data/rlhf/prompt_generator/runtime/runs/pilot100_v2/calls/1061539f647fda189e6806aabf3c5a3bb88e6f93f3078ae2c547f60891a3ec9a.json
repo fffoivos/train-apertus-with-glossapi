@@ -1,0 +1,104 @@
+{
+  "key": "1061539f647fda189e6806aabf3c5a3bb88e6f93f3078ae2c547f60891a3ec9a",
+  "stage": "review",
+  "attempt": 0,
+  "ids": [
+    "S0021",
+    "S0022",
+    "S0023",
+    "S0024",
+    "S0028",
+    "S0029",
+    "S0034",
+    "S0036"
+  ],
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "seconds": 31.46,
+  "prompt_sha256": "f12de69b19aec088669c4f9b42d43dd914d9ac14ba1934053eb61679bd0dd158",
+  "response": {
+    "items": [
+      {
+        "id": "S0021",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "factual",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "Η αίτηση ζητά άμεσα και τα δύο απαιτούμενα γνωρίσματα του στοιχείου Cl, είναι απαντήσιμη και δεν αποκαλύπτει την ιδιωτική απάντηση."
+      },
+      {
+        "id": "S0022",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "factual",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "Ζητά ακριβώς τους δύο προβλεπόμενους υπολογισμούς, περιορίζεται στη φανταστική ανακοίνωση και περιέχει όλα τα αναγκαία δεδομένα."
+      },
+      {
+        "id": "S0023",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "factual",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "skeptical",
+        "rationale": "Η διατύπωση ζητά έλεγχο και ρητό υπολογισμό των διαθέσιμων θέσεων και του κόστους δύο συμμετεχόντων, όπως ορίζει η προδιαγραφή."
+      },
+      {
+        "id": "S0024",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "el",
+        "observed_register": "greeklish",
+        "observed_attitude": "cooperative",
+        "rationale": "Η Greeklish οδηγία αποτυπώνει πιστά τη ζητούμενη αριθμημένη μορφή, τις δύο προτάσεις, την απουσία εισαγωγής και την ακριβή οδηγία συμμετεχόντων."
+      },
+      {
+        "id": "S0028",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "factual",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "cooperative",
+        "rationale": "Ζητά αποκλειστικά τον ατομικό αριθμό του φωσφόρου και αποκλείει πηγή, εξήγηση και υπόδειξη, χωρίς να διαρρέει την απάντηση."
+      },
+      {
+        "id": "S0029",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "everyday",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "frustrated",
+        "rationale": "Ζητά τη φθηνότερη εφικτή διαδρομή με έλεγχο θέσεων, χρόνου και προϋπολογισμού, περιλαμβάνει τον κανόνα ισοβαθμίας και αιτιολόγηση των μη εφικτών επιλογών."
+      },
+      {
+        "id": "S0034",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "el",
+        "observed_register": "greeklish",
+        "observed_attitude": "cooperative",
+        "rationale": "Η αίτηση αντιστοιχεί πλήρως στη σύνθετη προδιαγραφή μορφοποίησης και η ανακοίνωση παρέχει όλα τα ζητούμενα στοιχεία."
+      },
+      {
+        "id": "S0036",
+        "accepted": true,
+        "issues": [],
+        "observed_purpose": "instruction",
+        "observed_language": "el",
+        "observed_register": "standard",
+        "observed_attitude": "frustrated",
+        "rationale": "Ζητά μόνο ημερομηνία, ώρα και διαθέσιμες θέσεις σε ένα αντικείμενο JSON, χωρίς εισαγωγή ή πρόσθετα πεδία, ακριβώς εντός της καθορισμένης έκτασης."
+      }
+    ]
+  },
+  "created": "2026-09-16T14:27:12.903605+00:00"
+}
