@@ -24,6 +24,11 @@ CALIB  = _load('../greekmmlu_official/label_calibration.json', {}) or {}
 
 STYLE = re.search(r'<style>.*?</style>', (HERE / 'curves_page.py').read_text(), re.S)
 STYLE = STYLE.group(0) if STYLE else '<style></style>'
+# curves_page.py holds that block inside an f-string, so its braces are DOUBLED in the source. Inserting
+# it into another f-string substitutes the value verbatim and does not un-escape them, which would ship
+# a page whose every CSS rule reads `:root {{`. Un-double it here, and assert the result is real CSS.
+STYLE = STYLE.replace('{{', '{').replace('}}', '}')
+assert '{{' not in STYLE and ':root {' in STYLE, 'stylesheet did not survive extraction'
 
 G   = FROZEN.get('groups', {})
 ART = FROZEN.get('artefact', {})
@@ -137,6 +142,23 @@ def ordering_table():
             + "<p class='note'>Anchored &alpha;=0.25 group shown; the other groups order the same way. "
               "The GreekMMLU figure is the official bare-label protocol, the one lane that asks for no "
               "reasoning chain at all &mdash; and the only one that moves down.</p>")
+
+def ipo_table():
+    """Q3. The old mislabelled pair and the real one, side by side, at matched beta."""
+    spec = [('FULL  343 pairs (arm05)', 'best sigmoid <span class=w>&beta;=0.1</span>', False),
+            ('TRUEIPO  ipo, beta 10', '<b>real IPO</b> <span class=w>&beta;=10</span>', True),
+            ('armIPO   sigmoid, beta 10', 'the pair that <em>claimed</em> IPO <span class=w>sigmoid, &beta;=10</span>', False)]
+    rows = ["<tr><th>parent</th><td>%.4f</td><td>%.4f</td><td class=w>&mdash;</td></tr>"
+            % (parent('ifeval_greek') or 0, parent('mgsm_greek') or 0)]
+    for key, label, hi in spec:
+        mi, mm = mean_of(key, 'ifeval_greek'), mean_of(key, 'mgsm_greek')
+        if mm is None: continue
+        n = len(QG.get(key, {}).get('mgsm_greek', []))
+        rows.append("<tr><th>%s</th><td>%.4f</td><td%s>%.4f</td><td class=w>%d</td></tr>"
+                    % (label, mi, ' class=k' if hi else '', mm, n))
+    return ("<div style='overflow-x:auto'><table><thead><tr><th>arm</th><th>IFEval</th><th>MGSM</th>"
+            "<th>seeds</th></tr></thead><tbody>" + ''.join(rows) + "</tbody></table></div>")
+
 
 # ============================================================================ page
 body = f"""<title>A Round Read Backwards</title>
@@ -298,6 +320,7 @@ detects a knowledge deficit &mdash; at a precision that could not have detected 
 literal. Everything the project said about IPO &mdash; a pre-registered falsification, a gate that went
 unmet, an argument about &beta; scaling the gradient &mdash; described a loss function that was never
 optimised.</div>
+{ipo_table()}
 <p>It has since been run. The evidence that it ran <em>this</em> time is not the configuration file,
 which had already lied once: it is the library's own saved configuration object inside each checkpoint,
 which records <code>ipo</code> for the new runs and <code>sigmoid</code> for the old ones, at the same
@@ -383,7 +406,19 @@ plausible number that passed a gate, and the ones that hurt most were not the lo
 job that dies is cheap. They were the quiet ones: a library that silently dropped a setting, a trainer
 that ignored its own configuration, a p-value read as proof, a directory mistaken for a model, and a
 guard that answered a question it had not asked.</p>
-<div class="vstat"><b>Verification.</b> Sixteen independent cross-vendor reviews have examined this work.
+<div class="callout"><b>What has not been done.</b> The constraint-tracking hypothesis in section 6
+is untested. The Greek-knowledge deficit in 4.5 would be settled by holding the official prompt
+byte-identical and changing only the candidate answer, or by permuting the order of the choices &mdash;
+neither has been run, because both would sharpen a 0.4-point effect. The output-cap result in 4.4 is
+bounded by the model's 4,096-token context and cannot be pushed further without a longer-context model.
+And the machinery that produced every number here &mdash; the launchers, the staging, the path from a
+plan to a trainer &mdash; has never itself been reviewed, which is where three of this round's nine
+faults were found.</div>
+
+<div class="vstat"><b>Verification.</b> Eighteen independent cross-vendor reviews were commissioned on
+this work and <b>sixteen returned a verdict</b>; two returned nothing because a flag passed to the
+review harness silently removed the reviewer's ability to run commands, so they were asked to certify
+a repository they could not read. That failure is itself on the list in section 2.
 The most recent forced the withdrawal of the zero-knowledge-cost claim and the &ldquo;independent
 confirmation&rdquo; framing of the second scorer; its findings were checked firsthand and applied, with
 one of its sub-claims corrected in return. The corrections on this page are, for the most part, not ours.</div>
