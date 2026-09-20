@@ -10,62 +10,63 @@ measured cost is a drift in the label prior.
 
 ---
 
-## Q1 — Why did MGSM move 8 to 11 points?
+## Q1 — Why did MGSM move 8 to 11 points?  *(ANSWERED 20 Sept: not the maths pairs, not data volume)*
 
-**The biggest unknown, and the one that decides whether any of this transfers.**
+**Answer: the 56 embedded-quantitative pairs do not explain the gain. Neither does data volume. The
+mechanism is still unknown.**
 
-What we know: 79 of 250 items change for a net +17 on one arm. They are real answer changes, not
-extraction — only 4 of 48 gains had the gold number already in the parent's text. Response lengths
-are unchanged (121.1 tokens both sides) and the gained answers are *longer*, so it is not brevity.
-The changed items replicate across runs (gain-set Jaccard 0.646 / 0.702 / 0.717). Manual reading
-shows genuine arithmetic corrections **and** newly introduced arithmetic errors.
+Scored 20 Sept, frozen date, geometry repaired, nine models through the comparability guard.
 
-What makes it suspicious: 343 preference pairs should not move a third of a mathematics benchmark.
+| training set | seeds | IFEval | sd | MGSM | sd | gMMLU-Lite |
+|---|---|---|---|---|---|---|
+| parent | 1 | 0.6026 | – | 0.4240 | – | 0.6154 |
+| FULL 343 pairs (arm05) | 5 | 0.6421 | 0.46 | **0.5144** | 1.95 | 0.6303 |
+| NM 287, the 56 maths pairs removed | 3 | 0.6334 | 0.47 | **0.4960** | 1.06 | 0.6294 |
+| RC 287, 56 random pairs removed | 3 | 0.6451 | 0.32 | **0.5160** | 1.06 | 0.6282 |
 
-**Attack: ablate the 66 embedded-quantitative pairs.** The set is not maths-free — 24 dedicated
-maths tasks were excluded but 66 pairs keep embedded numerical content (56 train, 10 dev), recorded
-in `data/rlhf/dpo01/manifest.json` as `embedded_maths`. Retrain with exactly those removed, same
-seeds, same everything else.
-- gain survives → it is not the quantitative content; something general is happening and it is worth
-  chasing (preference training redistributing probability toward better existing solution behaviour).
-- gain collapses → we have found the lever, and round 2 gets a design instead of a guess.
+### The primary test is a null
 
-Cost: 2 training runs + 1 evaluation wave. Also worth: a **pre-registered held-out quantitative
-benchmark**, because MGSM's 250 items are now thoroughly looked at and cannot confirm themselves.
+Item-level, seed-matched, exact McNemar, Holm-corrected across the three pairs (MGSM, 250 items):
 
----
+| seed pair | NM − RC | p | Holm |
+|---|---|---|---|
+| 42 | +0.40 pp | 1.0000 | 1.0000 |
+| 43 | −3.20 pp | 0.2682 | 0.7676 |
+| 44 | −3.20 pp | 0.2559 | 0.7676 |
 
-### Dataset premise, verified 20 Sept (before the arms were scored)
+Nothing significant. Per the rule fixed before scoring, this means *no item-level difference
+detectable between these particular runs* — not that the pairs are irrelevant, and not equality.
 
-Q1 is only readable if the two ablations are what they claim, so this was checked against the files
-rather than the build script's intent:
+### What is nevertheless established
 
-* Both are exact 287-row **subsets** of the 343-row base; each removes exactly 56.
-* The two removed sets are **disjoint**.
-* `dev.jsonl` is byte-identical across all three configs, so dev metrics stay comparable.
+**The control worked, and that is the informative part.** Removing 56 *random* pairs cost
+**+0.16 pp [−1.73, +1.84]** on MGSM — nothing at all. So losing 16% of the training signal is not
+what moves this benchmark, which kills the "less data" explanation outright.
 
-The manipulation is strong and in the intended direction:
+Removing the 56 quantitative pairs cost −1.84 pp against FULL, and NM − RC is −2.00 pp
+[−3.20, +0.40]. Against a total gain of ~+9 pp over the parent, the point estimate attributes at
+most about a fifth of it to those pairs, and even that is unresolved. **Roughly 80% of the MGSM gain
+survives training with zero embedded-quantitative pairs.**
 
-| training set | digits/pair | embedded-maths pairs retained |
-|---|---|---|
-| FULL 343 | 26.6 | 56 |
-| **NM 287** | **19.5** | **0** |
-| **RC 287** | **28.2** | **56** |
+Within the predeclared power (4 pp detected 81% of the time, 6 pp 95%), a −2 pp effect is below what
+this design resolves. This is a bounded null, and it was forecast as the likely outcome before the
+runs were scored rather than explained afterwards.
 
-RC retains *every* embedded-maths pair while NM retains none, at identical row counts — row count
-held constant, quantitative content maximally varied. That is the contrast Q1 needs.
+### Where that leaves the mechanism
 
-One check worth recording because it nearly caused a wrong move: RC's removed pairs average 18.4
-digits/pair against the *whole* set's 26.6, which looks like an unusually maths-light draw (2.6th
-percentile) and would have biased NM−RC toward confirming the hypothesis. It is not. The builder
-samples `others`, the non-maths pairs only, so the correct null is draws from that pool — against
-which RC's cut sits at the **39.7th percentile**, entirely typical. The apparent anomaly was an
-artefact of comparing against a pool the control is defined to exclude.
+Unknown, and now more sharply so: the two obvious candidates are both eliminated or bounded. 343
+preference pairs containing no dedicated mathematics move Greek MGSM by about 9 points, and neither
+the quantitative content of 56 of them nor the sheer quantity of data accounts for it.
 
-Note on the seeds: RC42/43/44 vary the **training seed** over one fixed cut, so they measure
-optimisation variance, not which-56-were-removed variance. Cut variance is not estimated here. It
-matters less than it would otherwise, because the cut is drawn from non-maths pairs and so cannot
-change the maths content of what remains — which is the variable Q1 turns on.
+Next probes, in order of cost:
+1. **Bigger ablation**, sized to resolve 2 pp rather than 4 — needs more seeds *and* more cut
+   variants, since cut variance is currently unestimated (RC42/43/44 share one cut).
+2. **Formatting/verbosity hypothesis**: MGSM is exact-match on a final number. Check whether the
+   gained items change the *form* of the answer rather than the reasoning — the round already found
+   gained answers are longer, not shorter, and that only 4 of 48 gains had the right number present
+   in the parent's text.
+3. **Cross-benchmark check**: does the gain appear on a non-Greek maths benchmark? That separates
+   "Greek output discipline" from "mathematics".
 
 ## Q2 — Is the IFEval gain compliance, or is it just terminating?
 
@@ -113,23 +114,39 @@ and will refuse to compare across caps — the valid contrast is parent-vs-arm *
 
 ---
 
-## Q3 — IPO has still never been run
+## Q3 — IPO  *(ANSWERED 20 Sept: it ran, and it is not better)*
 
-The two runs labelled "IPO β=10" trained **anchored sigmoid DPO**: `cluster/dpo_train.py` passed
-`loss_type="sigmoid"` as a literal and silently ignored `loss_type: ipo` in the config. Everything
-this programme concluded about IPO — a pre-registered falsification, a dev-separation gate reported
-as unmet, an argument about β scaling the initial gradient by 1/β — described a loss that never ran.
+**Answer: real IPO at β=10 matches the best sigmoid arm on instruction following and is clearly
+worse on mathematics. Every "IPO" conclusion the round previously carried was about sigmoid at
+β=10.**
 
-The trainer now reads the objective from the config and refuses an unsupported value
-(`cluster/configs/G4F6P1_DPO01_IPO42.yaml` keeps its header saying what actually executed), so the
-test is unblocked.
+| arm | objective | IFEval | MGSM | gMMLU-Lite |
+|---|---|---|---|---|
+| parent | – | 0.6026 | 0.4240 | 0.6154 |
+| FULL (arm05) | sigmoid, β=0.1 | 0.6421 | **0.5144** | 0.6303 |
+| **TRUEIPO** | **ipo, β=10** | **0.6460** | **0.4620** | 0.6256 |
+| armIPO | sigmoid, β=10 *(the mislabelled pair)* | 0.6220 | 0.4740 | 0.6331 |
 
-**Attack: run it.** Two training runs at the corrected β. The point was to test whether held-out
-likelihood displacement is an artefact of summing over length: IPO normalises per token, so if the
-displacement is a length artefact IPO should not show it. That hypothesis is still untested, and it
-is the one question from the original round design that remains genuinely open.
+- **vs the best sigmoid (FULL):** IFEval +0.39 pp [−0.15, +0.92] — indistinguishable.
+  MGSM **−5.24 pp [−7.60, −2.88]** — worse.
+- **vs armIPO, which isolates the objective at matched β=10:** IFEval +2.40 pp, MGSM −1.20 pp.
+- TRUEIPO still beats the parent on both lanes (+4.34 IFEval, +3.80 MGSM).
 
----
+### The statistics here are weak and are not dressed up
+
+**TRUEIPO and armIPO have two seeds each.** A paired bootstrap over two observations produces an
+interval that is literally the range of the two numbers; it is not a test, and the "excludes zero"
+labels the tool prints for these rows carry its calibration warning for that reason. What can be
+said is only that the direction was consistent in 2 of 2 seeds. No significance is claimed for any
+Q3 contrast, and the MGSM deficit against FULL is large enough (−5.24 pp against a between-seed SD
+of ~1.9) that it is the one row worth believing on inspection rather than on arithmetic.
+
+### Why this was worth running at all
+
+Not for the ranking — it is for the retraction. The round reported a pre-registered IPO
+falsification, an unmet gate, and an argument about β scaling the gradient. All of it described runs
+that optimised the sigmoid objective. Those conclusions are withdrawn, and the objective they were
+supposed to be about has now actually been tested.
 
 ---
 
