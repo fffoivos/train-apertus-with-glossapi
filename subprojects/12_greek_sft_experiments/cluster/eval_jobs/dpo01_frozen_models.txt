@@ -1,0 +1,32 @@
+# Frozen-date, geometry-repaired re-score (poison ledger R1'). Launch:
+#   LIST=<this file> EXPECT=19 sbatch cluster/eval_jobs/dpo01_frozen_rescore.sh
+# No earlier lm_eval arm run is reused: each loaded the arm with the wrong RoPE base (E6).
+# There is NO parent-generation-config column (R-DPO10): lm_eval forces use_cache=True and the two EOS lists stop on
+# the same tokens, so that axis changes nothing that generation uses. The run receipt records the EFFECTIVE settings.
+#
+# Baselines, all lanes:
+#   parent            the comparison baseline
+#   parent_ckptgen    the parent's weights under the checkpoints' nominal generation files. Expected to score
+#                     IDENTICALLY to `parent`; it is the empirical check that the generation-config axis is inert
+#   parent_exportcfg  the parent's weights under an arm's config verbatim, NOT repaired: mis-loads exactly as the arms did.
+#                     parent_exportcfg vs parent_ckptgen measures the artefact on the parent's weights (policy: geometry)
+parent|/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R4_full_ep1|own|full
+parent_ckptgen|/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R4_full_ep1|verbatim:/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R4_full_ep1_ckptcfg|full
+parent_exportcfg|/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R4_full_ep1|export:/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--05/checkpoint-129|full
+# The 16 replicated arms + the same-seed repeat, geometry repaired, all lanes
+arm01_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--01/checkpoint-129|own|full
+arm01s43_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--01s43/checkpoint-129|own|full
+arm01s44_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--01s44/checkpoint-129|own|full
+arm01s45_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--01s45/checkpoint-129|own|full
+arm01s46_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--01s46/checkpoint-129|own|full
+arm05_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--05/checkpoint-129|own|full
+arm05s43_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--05s43/checkpoint-129|own|full
+arm05s44_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--05s44/checkpoint-129|own|full
+arm05s45_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--05s45/checkpoint-129|own|full
+arm05s46_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--05s46/checkpoint-129|own|full
+armBAL_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--BAL/checkpoint-105|own|full
+armBALs43_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--BALs43/checkpoint-105|own|full
+armBALs44_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--BALs44/checkpoint-105|own|full
+armIPO42_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--IPO42/checkpoint-129|own|full
+armIPO43_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--IPO43/checkpoint-129|own|full
+arm07_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--07/checkpoint-129|own|full
