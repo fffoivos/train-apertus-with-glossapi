@@ -60,7 +60,7 @@ Historical puzzle duplication warrants notes on affected R2 dev losses, not retr
 
 The claimed test on **40 real rows through template, packing and collator**, with **20 decoded examples**, is a substantial improvement. I have no evidence that it failed. However:
 
-- The named dump is `docs/receipts_label_dump_g2_pilot.json`; no supplied binding identifies the final R3 input hashes, trainer commit, template hash or package versions it tested.
+- The named dump is `docs/receipts/receipts_label_dump_g2_pilot.json`; no supplied binding identifies the final R3 input hashes, trainer commit, template hash or package versions it tested.
 - Correcting reports **226 masked plants** before assembly and **431 masked context turns** in a block replicated exactly ×2. **431 cannot be the effective training total of replicated masked turns** under that definition. It may count something else, including rejected targets; that definition is missing.
 - Suite masking is **756**, exactly the source S4 count of `378 × 2` planted turns. That coincidence does not prove recomputation after review filtering, splitting and replication.
 - Suite rows allegedly supervise only one target, and personality v4 supervises only the last assistant turn. Yet personality reports **zero masked context turns**, despite **110 multi-turn v4 rows**. The table may count only planted failures rather than all masked assistant context.

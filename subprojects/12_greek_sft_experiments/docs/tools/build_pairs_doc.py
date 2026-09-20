@@ -5,7 +5,7 @@ Source of truth is data/rlhf/dpo01/provenance.jsonl, which carries the texts AND
 (purpose, language, round, source alias, which sampled reply each side was, which judgement produced
 the pair, and the train/dev split). Nothing is truncated: this is the record of what we trained on.
 
-  python3 docs/build_pairs_doc.py [out.md]
+  python3 docs/tools/build_pairs_doc.py [out.md]
 """
 import collections, hashlib, json, pathlib, sys
 

@@ -101,7 +101,7 @@ Read-out planned: interviews rounds 2–3 + scoring on the Mac when back online;
 **Also running:** GreekMMLU + retention for R3 (wb 3364517) and arm B (wb 3364519), native suites done; hostile picky-user run on R3 (debug wb 3364631, pending behind the stage-1 benchmark window 3364616); masking test on 1,831 rows (Mac).
 ## 1b. Dataset registry: task type, language, repetitions (measured on the final train file, 2026-09-11)
 
-Global training settings for every block: learning rate 1e-5, cosine to a 0.1 floor, 3% warmup, one epoch, effective batch 16 sequences of ≤4,096 tokens, seed 42 (§2). "Copies" is the only per-block knob: the block is replicated that many times inside the single mix, so each of its rows is seen `copies` times in the one epoch. Language is MEASURED, not declared: Greek-script share of the assistant text over all unique rows of the block in data/arms/R3_single/train.jsonl; the Latin-script rows were classified with langdetect on a sample of up to 1,500 rows per block (data/language_by_block.py → docs/receipts_R3_single/language_by_block.json). "short" = answers with fewer than 20 letters (numeric or grid answers), not classified.
+Global training settings for every block: learning rate 1e-5, cosine to a 0.1 floor, 3% warmup, one epoch, effective batch 16 sequences of ≤4,096 tokens, seed 42 (§2). "Copies" is the only per-block knob: the block is replicated that many times inside the single mix, so each of its rows is seen `copies` times in the one epoch. Language is MEASURED, not declared: Greek-script share of the assistant text over all unique rows of the block in data/arms/R3_single/train.jsonl; the Latin-script rows were classified with langdetect on a sample of up to 1,500 rows per block (data/language_by_block.py → docs/receipts/R3_single/language_by_block.json). "short" = answers with fewer than 20 letters (numeric or grid answers), not classified.
 
 | block | task type | language of the answers (measured) | unique rows | copies | effective rows | supervised tokens |
 |---|---|---|---:|---:|---:|---:|
@@ -128,7 +128,7 @@ Global training settings for every block: learning rate 1e-5, cosine to a 0.1 fl
 
 Totals: 376,039 unique rows, 403,727 effective, 140.4M supervised tokens.
 
-**Language over the supervised spans (the readiness review's Q2 measure, 2026-09-11 15:40).** Assistant turns with `train` not false, on the EFFECTIVE rows (copies counted), weighted by letters (Greek, Latin and Cyrillic letters only; digits, punctuation and markup excluded). A span is `el` when at least 90% of its letters are Greek, `latin` at 90% Latin, `mixed` otherwise, `unknown` under 20 letters. Script: data/language_by_block.py (second mode) → docs/receipts_R3_single/language_supervised_spans.json.
+**Language over the supervised spans (the readiness review's Q2 measure, 2026-09-11 15:40).** Assistant turns with `train` not false, on the EFFECTIVE rows (copies counted), weighted by letters (Greek, Latin and Cyrillic letters only; digits, punctuation and markup excluded). A span is `el` when at least 90% of its letters are Greek, `latin` at 90% Latin, `mixed` otherwise, `unknown` under 20 letters. Script: data/language_by_block.py (second mode) → docs/receipts/R3_single/language_supervised_spans.json.
 
 | block | supervised letters | el % | latin % | mixed % | unknown % |
 |---|---:|---:|---:|---:|---:|
@@ -169,7 +169,7 @@ Two facts this table adds that the block names hid: dolci_chat is Spanish-majori
 | weight decay / betas / grad clip | 0.0 / β2 0.99 / 1.0 | same | — |
 | packing | BFD, max_length 4,096, padding-free | same | — |
 | effective batch | 1 × 4 devices × 4 accumulation = 16 sequences | same | — |
-| loss | assistant-only | assistant-only **plus per-turn `train:false` masking** (context turns of planted failures and suite S4 tics; verified through template+packing+collator on real rows, label dump docs/receipts_label_dump_g2_pilot.json) | CHANGE |
+| loss | assistant-only | assistant-only **plus per-turn `train:false` masking** (context turns of planted failures and suite S4 tics; verified through template+packing+collator on real rows, label dump docs/receipts/receipts_label_dump_g2_pilot.json) | CHANGE |
 | data | 15 blocks, 334,383 rows, 197.9M tokens | 20 blocks, 403,727 effective rows, 228.6M tokens (140.4M supervised): the same 15 (deduplicated, re-decontaminated) + personality v3+v4 ×4 + Greek IF + Greek math + suite v2 ×2 + correcting ×2 | CHANGE |
 | personality dose | none in stage 1; the arm-B pass then presented 1,319 rows ×4 for 2 epochs = 10,552 presentations after stage 1 | 1,504 rows ×4 for 1 epoch = 6,016 presentations inside the single mix (each v3 row seen 4 times instead of 8, plus 192 v4 rows) | CHANGE — a reduced-exposure, changed-schedule experiment, not the ladder's dose; not raised to ×8 on purpose (repetition alone would not recreate the two-stage schedule) |
 | seed | 42 | 42 | — |

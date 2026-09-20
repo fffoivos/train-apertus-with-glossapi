@@ -6,7 +6,7 @@ Owner go: "OK let's start by running the experiment" (2026-09-07 evening). Base:
 
 | stage | data | rows / tokens | recipe | job | wall | nh | train loss |
 |---|---|---:|---|---|---|---:|---:|
-| 1 | R2_stage1 mix (15 blocks, Greek sets at weight 2; receipt docs/receipts_R2_stage1_final_20260906.json) | 334,383 / 197.9M | 1 epoch, lr 1e-5, cosine to 0.1, packing 4,096, assistant-only loss, ZeRO-3, saves every 750 steps | 3317507 | 6:05 | 6.09 | 0.944 |
+| 1 | R2_stage1 mix (15 blocks, Greek sets at weight 2; receipt docs/receipts/receipts_R2_stage1_final_20260906.json) | 334,383 / 197.9M | 1 epoch, lr 1e-5, cosine to 0.1, packing 4,096, assistant-only loss, ZeRO-3, saves every 750 steps | 3317507 | 6:05 | 6.09 | 0.944 |
 | 2 | Greek pass: greek_ours 19,800 + greek_rewrite 1,980 unique + personality_v3 1,319 (69 held out) + 10% replay of every other block | 52,379 / 27.35M | 1 epoch, lr 5e-6, from the stage-1 checkpoint | 3323760 (3323435 failed at start: tokenizer revision on a local dir, fixed in sft_train.py) | 0:53 | 0.89 | 0.929 |
 
 Dev losses per block (results/R2_stage{1,2}/dev_losses.json): after stage 1 greek_ours 1.323, ifeval_like 0.657, openmath 0.275, tooluse 0.231, nemotron 1.18; after stage 2 greek_ours 1.317 and all other blocks unchanged within 0.01 (the replay held them), **personality_v3 1.852** on its 69 held-out rows.

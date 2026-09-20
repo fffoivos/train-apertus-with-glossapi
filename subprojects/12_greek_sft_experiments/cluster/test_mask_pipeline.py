@@ -26,7 +26,7 @@ import sft_train  # noqa: E402
 
 TOKENIZER = sys.argv[1] if len(sys.argv) > 1 else os.path.expanduser("~/models/greek-apertus-8b-sft-r2-idB-bf16")
 ROWS_FILE = sys.argv[2] if len(sys.argv) > 2 else None
-DUMP = Path(sys.argv[3]) if len(sys.argv) > 3 else Path(__file__).resolve().parents[1] / "docs" / "receipts_label_dump_g2.json"
+DUMP = Path(sys.argv[3]) if len(sys.argv) > 3 else Path(__file__).resolve().parents[1] / "docs" / "receipts" / "receipts_label_dump_g2.json"
 
 PLANT_A = "Γράψε ακριβώς την παραγγελία σου στην υπηρεσία που χρησιμοποιείς. Γράψε ακριβώς την παραγγελία σου στην υπηρεσία που χρησιμοποιείς."
 PLANT_B = "Δεν βλέπω τίποτα από πριν, κάθε συνομιλία ξεκινά από το μηδέν."

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Regenerate the per-block receipt table and totals in the recipe and description docs from data/arms/<arm>/receipt.json (between the
-markers '<!-- receipt-table -->' and '<!-- /receipt-table -->', inserted on first use). Usage: python3 docs/fill_recipe_tables.py R3_single"""
+markers '<!-- receipt-table -->' and '<!-- /receipt-table -->', inserted on first use). Usage: python3 docs/tools/fill_recipe_tables.py R3_single"""
 import json, re, sys
 from pathlib import Path
 HERE = Path(__file__).resolve().parent; arm = sys.argv[1]; r = json.load(open(HERE.parent / 'data' / 'arms' / arm / 'receipt.json')); prev = json.load(open(HERE / 'receipts_R2_stage1_final_20260906.json'))

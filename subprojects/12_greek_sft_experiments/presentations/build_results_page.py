@@ -154,7 +154,7 @@ ul{{padding-left:1.2rem;max-width:72ch}} li{{margin:.25rem 0}} a{{color:var(--ac
 <p>The rows below are the ones the trainer sees. Judged-out, adapt-flagged and dropped rows are not published.</p>
 <h3>round2_stage1: 334,383 training rows, 197.9M tokens, 3,171 dev rows</h3>
 {table(['block', 'source', 'rows taken', 'tokens (M)', 'weight'], BLOCKS, fmt=[None, None, lambda v: f'{v:,}', lambda v: f'{v:.2f}', lambda v: f'{v:d}'])}
-<p>Each block was judged row by row for task type and for foreign-identity or foreign-vantage assertions before assembly; contamination against our evaluation sets and over-long rows were removed; the Greek sets carry weight 2. One epoch, lr 1e-5 with a cosine schedule to a 0.1 floor, about 7.6 node-hours. Receipt: docs/receipts_R2_stage1_final_20260906.json.</p>
+<p>Each block was judged row by row for task type and for foreign-identity or foreign-vantage assertions before assembly; contamination against our evaluation sets and over-long rows were removed; the Greek sets carry weight 2. One epoch, lr 1e-5 with a cosine schedule to a 0.1 floor, about 7.6 node-hours. Receipt: docs/receipts/receipts_R2_stage1_final_20260906.json.</p>
 <h3>personality_v3: 1,388 Greek rows</h3>
 {table(['category', 'rows', 'content'], PERS, fmt=[None, lambda v: f'{v:,}', None])}
 <p>Written natively from a verified fact sheet and an identity sheet, restyled under the answer style guide (level of detail by question type), corrected by a separate editor pass, and gated: no unresolved placeholders, the size and borders of Greece always with the sea and the EEZ, the agreed identity wording. Not yet assembled into the mix; training is gated on its review.</p>

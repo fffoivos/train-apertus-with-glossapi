@@ -1,4 +1,4 @@
-# Measures the language of every block in data/arms/R3_single/train.jsonl (unique rows): Greek-script share of the user and assistant text on every row, langdetect on a sample of up to 1,500 Latin-script assistant texts per block. Run with ~/Projects/apertus-local-chat/.venv/bin/python (langdetect). Output: docs/receipts_R3_single/language_by_block.json
+# Measures the language of every block in data/arms/R3_single/train.jsonl (unique rows): Greek-script share of the user and assistant text on every row, langdetect on a sample of up to 1,500 Latin-script assistant texts per block. Run with ~/Projects/apertus-local-chat/.venv/bin/python (langdetect). Output: docs/receipts/R3_single/language_by_block.json
 import json, collections, re, random, sys
 from langdetect import detect, DetectorFactory
 DetectorFactory.seed = 0
@@ -40,7 +40,7 @@ for b,d in per.items():
             'latin_langdetect_sample':{'n':len(samp),'dist':dict(ld.most_common(12))},
             'id_prefixes':dict(d['idprefix'].most_common(15))}
     print(b, out[b], flush=True)
-json.dump(out, open('docs/receipts_R3_single/language_by_block.json','w'), ensure_ascii=False, indent=1)
+json.dump(out, open('docs/receipts/R3_single/language_by_block.json','w'), ensure_ascii=False, indent=1)
 print('DONE')
 
 
@@ -77,4 +77,4 @@ for b in sorted(chars):
     print(f"{b:24s} letters {n/1e6:7.2f}M  " + '  '.join(f"{k} {v/n*100:5.1f}%" for k,v in sorted(c.items(), key=lambda x:-x[1])), flush=True)
 n=sum(tot.values()); out['_ALL_effective']={'supervised_letters':n,'share_by_letters':{k:round(v/n,4) for k,v in tot.items()},'spans':dict(tots)}
 print('ALL (effective rows, supervised spans, letters):', {k:f"{v/n*100:.1f}%" for k,v in tot.items()}, 'spans', dict(tots))
-json.dump(out, open('docs/receipts_R3_single/language_supervised_spans.json','w'), ensure_ascii=False, indent=1); print('DONE')
+json.dump(out, open('docs/receipts/R3_single/language_supervised_spans.json','w'), ensure_ascii=False, indent=1); print('DONE')

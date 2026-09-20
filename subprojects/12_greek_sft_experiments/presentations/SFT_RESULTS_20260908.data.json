@@ -385,7 +385,7 @@
   "greekmmlu": "results/greekmmlu/greekmmlu_batch_summary.json",
   "native": "results/native_summary.json, results/E0b/greek.json",
   "interviews": "results/*/interviews/scores.json",
-  "receipt": "docs/receipts_R2_stage1_final_20260906.json",
+  "receipt": "docs/receipts/receipts_R2_stage1_final_20260906.json",
   "results_doc": "docs/ROUND2_RESULTS_20260908.md",
   "data": "https://huggingface.co/datasets/fffoivos/greek-apertus-sft"
  }

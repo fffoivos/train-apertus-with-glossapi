@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Build the companion document: how each Greek dataset was made, with real example rows from every block of the R4_full manifest.
-Usage: python3 docs/build_examples_doc.py [out.html]"""
+Usage: python3 docs/tools/build_examples_doc.py [out.html]"""
 import collections, html, json, pathlib, random, re, sys
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-OUT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else ROOT / 'docs' / 'SFT_DATASET_EXAMPLES_20260918.html')
+OUT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else ROOT / 'docs' / 'pages' / 'SFT_DATASET_EXAMPLES_20260918.html')
 E = lambda s: html.escape(str(s or ''))
 def clip(s, n):
     s = re.sub(r'\n{3,}', '\n\n', (s or '').strip())

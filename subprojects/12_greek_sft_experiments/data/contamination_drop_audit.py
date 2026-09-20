@@ -34,5 +34,5 @@ for _, row in r1.read_jsonl(export):
             hits.append({'block':block,'row_id':row.get('id'),'suite':s,'eval_id':e,'containment':round(len(h)/len(gs),3),'user_text':m['content'][:300],'eval_text':eval_text[(s,e)][:300]})
             break
 print(block, 'rows', n, 'hits', len(hits), dict(by_suite))
-json.dump({'block':block,'export':export,'rows':n,'hits':len(hits),'by_suite':dict(by_suite),'examples':hits[:40],'all_hits':hits}, open(f'docs/receipts_R3_single/contamination_audit_{block}.json','w'), ensure_ascii=False, indent=1)
+json.dump({'block':block,'export':export,'rows':n,'hits':len(hits),'by_suite':dict(by_suite),'examples':hits[:40],'all_hits':hits}, open(f'docs/receipts/R3_single/contamination_audit_{block}.json','w'), ensure_ascii=False, indent=1)
 print('DONE')

@@ -13,7 +13,7 @@ def stage():
     link(f'{R}/data/arms/R2_stage1/train.jsonl', f'{S}/round2_stage1/train.jsonl')
     link(f'{R}/data/arms/R2_stage1/dev.jsonl', f'{S}/round2_stage1/dev.jsonl')
     os.makedirs(f'{S}/receipts', exist_ok=True)
-    for src, dst in [(f'{R}/data/arms/R2_stage1/receipt.json', f'{S}/receipts/round2_stage1_receipt.json'), (f'{R}/docs/receipts_R2_stage1_final_20260906.json', f'{S}/receipts/receipts_R2_stage1_final_20260906.json')]:
+    for src, dst in [(f'{R}/data/arms/R2_stage1/receipt.json', f'{S}/receipts/round2_stage1_receipt.json'), (f'{R}/docs/receipts/receipts_R2_stage1_final_20260906.json', f'{S}/receipts/receipts_R2_stage1_final_20260906.json')]:
         open(dst, 'w').write(open(src).read())
     for a in ['E1', 'E2', 'E3', 'E3prime']:
         link(f'{R}/data/arms/{a}/train.jsonl', f'{S}/round1_arms/{a}_train.jsonl'); link(f'{R}/data/arms/{a}/dev.jsonl', f'{S}/round1_arms/{a}_dev.jsonl')

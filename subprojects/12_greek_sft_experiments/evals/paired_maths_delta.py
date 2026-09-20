@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Paired item comparison of Greek maths between two runs: exact McNemar + paired item bootstrap.
 
-Produces the intervals quoted in docs/SFT_RECIPE_SHAREABLE_20260918.html ("Mathematics, in both
+Produces the intervals quoted in docs/pages/SFT_RECIPE_SHAREABLE_20260918.html ("Mathematics, in both
 directions"). The R4 plan required "95% paired item-bootstrap interval (10,000 resamples, seed 42)"
 for every automatically scored task; it was never run for MGSM-el or MATH-500-el, so the reported
 -8.0 / +5.4 point differences were bare point estimates until now.
