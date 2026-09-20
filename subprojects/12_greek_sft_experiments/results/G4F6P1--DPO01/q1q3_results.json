@@ -1,0 +1,294 @@
+{
+ "contrasts": {
+  "FULL  343 pairs (arm05)|NM    287, maths removed|ifeval_greek": {
+   "B": 10000,
+   "ci_pp": [
+    -1.4417744916820685,
+    -0.30807147258163914
+   ],
+   "delta_pp": -0.8749229821318538,
+   "design": "unpaired",
+   "level": 0.95,
+   "n_a": 5,
+   "n_b": 3,
+   "unit": "training run"
+  },
+  "FULL  343 pairs (arm05)|NM    287, maths removed|mgsm_greek": {
+   "B": 10000,
+   "ci_pp": [
+    -3.7333333333333387,
+    -0.08000000000000229
+   ],
+   "delta_pp": -1.8399999999999972,
+   "design": "unpaired",
+   "level": 0.95,
+   "n_a": 5,
+   "n_b": 3,
+   "unit": "training run"
+  },
+  "FULL  343 pairs (arm05)|RC    287, random removed|ifeval_greek": {
+   "B": 10000,
+   "ci_pp": [
+    -0.1848428835489857,
+    0.7393715341959317
+   ],
+   "delta_pp": 0.29574861367837046,
+   "design": "unpaired",
+   "level": 0.95,
+   "n_a": 5,
+   "n_b": 3,
+   "unit": "training run"
+  },
+  "FULL  343 pairs (arm05)|RC    287, random removed|mgsm_greek": {
+   "B": 10000,
+   "ci_pp": [
+    -1.7333333333333312,
+    1.8400000000000027
+   ],
+   "delta_pp": 0.16000000000000458,
+   "design": "unpaired",
+   "level": 0.95,
+   "n_a": 5,
+   "n_b": 3,
+   "unit": "training run"
+  },
+  "FULL  343 pairs (arm05)|TRUEIPO  ipo, beta 10|ifeval_greek": {
+   "B": 10000,
+   "ci_pp": [
+    -0.14787430683917968,
+    0.9242144177449174
+   ],
+   "delta_pp": 0.3881700554528744,
+   "design": "unpaired",
+   "level": 0.95,
+   "n_a": 5,
+   "n_b": 2,
+   "unit": "training run"
+  },
+  "FULL  343 pairs (arm05)|TRUEIPO  ipo, beta 10|mgsm_greek": {
+   "B": 10000,
+   "ci_pp": [
+    -7.600000000000001,
+    -2.880000000000005
+   ],
+   "delta_pp": -5.24,
+   "design": "unpaired",
+   "level": 0.95,
+   "n_a": 5,
+   "n_b": 2,
+   "unit": "training run"
+  },
+  "RC    287, random removed|NM    287, maths removed|ifeval_greek": {
+   "B": 10000,
+   "ci_pp": [
+    -1.8484288354898348,
+    -0.7393715341959317
+   ],
+   "delta_pp": -1.170671595810228,
+   "design": "paired",
+   "diffs_pp": [
+    -0.7393715341959317,
+    -1.8484288354898348,
+    -0.9242144177449174
+   ],
+   "level": 0.95,
+   "n_pairs": 3,
+   "unit": "seed-matched pair of training runs"
+  },
+  "RC    287, random removed|NM    287, maths removed|mgsm_greek": {
+   "B": 10000,
+   "ci_pp": [
+    -3.200000000000003,
+    0.40000000000000036
+   ],
+   "delta_pp": -2.0000000000000018,
+   "design": "paired",
+   "diffs_pp": [
+    0.40000000000000036,
+    -3.200000000000003,
+    -3.200000000000003
+   ],
+   "level": 0.95,
+   "n_pairs": 3,
+   "unit": "seed-matched pair of training runs"
+  },
+  "armIPO   sigmoid, beta 10|TRUEIPO  ipo, beta 10|ifeval_greek": {
+   "B": 10000,
+   "ci_pp": [
+    1.6635859519408491,
+    3.1423290203327126
+   ],
+   "delta_pp": 2.402957486136781,
+   "design": "paired",
+   "diffs_pp": [
+    1.6635859519408491,
+    3.1423290203327126
+   ],
+   "level": 0.95,
+   "n_pairs": 2,
+   "unit": "seed-matched pair of training runs"
+  },
+  "armIPO   sigmoid, beta 10|TRUEIPO  ipo, beta 10|mgsm_greek": {
+   "B": 10000,
+   "ci_pp": [
+    -2.0000000000000018,
+    -0.40000000000000036
+   ],
+   "delta_pp": -1.200000000000001,
+   "design": "paired",
+   "diffs_pp": [
+    -0.40000000000000036,
+    -2.0000000000000018
+   ],
+   "level": 0.95,
+   "n_pairs": 2,
+   "unit": "seed-matched pair of training runs"
+  },
+  "itemlevel|NM - RC, per seed (the maths pairs, holding row count fixed)|ifeval_greek": [
+   {
+    "a": "armRC42_ep3",
+    "b": "armNM42_ep3",
+    "delta_pp": -0.7393715341959335,
+    "gained": 25,
+    "holm": 1.0,
+    "lost": 29,
+    "p": 0.6834892282353375
+   },
+   {
+    "a": "armRC43_ep3",
+    "b": "armNM43_ep3",
+    "delta_pp": -1.8484288354898337,
+    "gained": 23,
+    "holm": 0.6864166237030686,
+    "lost": 33,
+    "p": 0.22880554123435617
+   },
+   {
+    "a": "armRC44_ep3",
+    "b": "armNM44_ep3",
+    "delta_pp": -0.9242144177449169,
+    "gained": 24,
+    "holm": 1.0,
+    "lost": 29,
+    "p": 0.5831321542611763
+   }
+  ],
+  "itemlevel|NM - RC, per seed (the maths pairs, holding row count fixed)|mgsm_greek": [
+   {
+    "a": "armRC42_ep3",
+    "b": "armNM42_ep3",
+    "delta_pp": 0.4,
+    "gained": 22,
+    "holm": 1.0,
+    "lost": 21,
+    "p": 1.0
+   },
+   {
+    "a": "armRC43_ep3",
+    "b": "armNM43_ep3",
+    "delta_pp": -3.2,
+    "gained": 16,
+    "holm": 0.7676252386299893,
+    "lost": 24,
+    "p": 0.26818725105476915
+   },
+   {
+    "a": "armRC44_ep3",
+    "b": "armNM44_ep3",
+    "delta_pp": -3.2,
+    "gained": 15,
+    "holm": 0.7676252386299893,
+    "lost": 23,
+    "p": 0.2558750795433298
+   }
+  ]
+ },
+ "groups": {
+  "FULL  343 pairs (arm05)": {
+   "gmmlu_lite": [
+    0.6304166666666666,
+    0.6291666666666667,
+    0.6354166666666666,
+    0.6291666666666667,
+    0.6275000000000001
+   ],
+   "ifeval_greek": [
+    0.6358595194085028,
+    0.6414048059149723,
+    0.6414048059149723,
+    0.6487985212569316,
+    0.6432532347504621
+   ],
+   "mgsm_greek": [
+    0.504,
+    0.524,
+    0.504,
+    0.496,
+    0.544
+   ]
+  },
+  "NM    287, maths removed": {
+   "gmmlu_lite": [
+    0.6304166666666666,
+    0.6266666666666666,
+    0.63125
+   ],
+   "ifeval_greek": [
+    0.634011090573013,
+    0.6284658040665434,
+    0.6377079482439926
+   ],
+   "mgsm_greek": [
+    0.508,
+    0.492,
+    0.488
+   ]
+  },
+  "RC    287, random removed": {
+   "gmmlu_lite": [
+    0.63,
+    0.6266666666666666,
+    0.6279166666666667
+   ],
+   "ifeval_greek": [
+    0.6414048059149723,
+    0.6469500924214417,
+    0.6469500924214417
+   ],
+   "mgsm_greek": [
+    0.504,
+    0.524,
+    0.52
+   ]
+  },
+  "TRUEIPO  ipo, beta 10": {
+   "gmmlu_lite": [
+    0.6295833333333333,
+    0.6216666666666667
+   ],
+   "ifeval_greek": [
+    0.6432532347504621,
+    0.6487985212569316
+   ],
+   "mgsm_greek": [
+    0.476,
+    0.448
+   ]
+  },
+  "armIPO   sigmoid, beta 10": {
+   "gmmlu_lite": [
+    0.6354166666666666,
+    0.6308333333333334
+   ],
+   "ifeval_greek": [
+    0.6266173752310537,
+    0.6173752310536045
+   ],
+   "mgsm_greek": [
+    0.48,
+    0.468
+   ]
+  }
+ },
+ "refused": {}
+}

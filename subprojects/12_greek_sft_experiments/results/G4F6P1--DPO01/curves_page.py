@@ -19,6 +19,7 @@ OFFICIAL = _load('greekmmlu_official_paired.json', {}) or {}
 DATES = _load('run_dates.json', {}) or {}
 FROZEN = _load('frozen_results.json', {}) or {}
 CALIB = _load('../greekmmlu_official/label_calibration.json', {}) or {}
+Q1Q3 = _load('q1q3_results.json', {}) or {}
 ALPHA_CI = _load('alpha_interval.json', {}) or {}
 EV  = _load('evidence_bundle.json', {})
 GMP = _load('greekmmlu_paired.json', {})
@@ -426,6 +427,44 @@ def gmmlu_full_table():
             + f"<tr><th>parent</th><td>{p['raw_acc']:.4f}</td><td class=w>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>"
             + ''.join(rows) + "</tbody></table></div>")
 
+def q1_table():
+    """Q1/Q3 arms. Every figure is read from q1q3_results.json; none is typed here. The parent row
+    comes from the frozen scorecard so the two tables cannot drift apart."""
+    if not Q1Q3 or 'groups' not in Q1Q3: return ''
+    G = Q1Q3['groups']
+    NICE = [('FULL  343 pairs (arm05)', 'all 343 pairs', 'sigmoid &beta;=0.1'),
+            ('NM    287, maths removed', '287 &mdash; the 56 quantitative pairs removed', 'the hypothesis'),
+            ('RC    287, random removed', '287 &mdash; 56 <em>random</em> pairs removed', 'the control')]
+    def cell(g, task, hi=False):
+        xs = G.get(g, {}).get(task, [])
+        if not xs: return '<td class=w>&mdash;</td>'
+        m = sum(xs) / len(xs)
+        sd = (sum((x - m) ** 2 for x in xs) / (len(xs) - 1)) ** 0.5 * 100 if len(xs) > 1 else None
+        return "<td%s>%.4f%s</td>" % (" class=k" if hi else "", m,
+                                      "<br><span class=w>sd %.2f</span>" % sd if sd is not None else "")
+    rows = []
+    P = FROZEN.get('controlled') if FROZEN else None
+    prow = ''
+    try:
+        pb = FROZEN['parent_baseline']
+        prow = ("<tr><th>parent</th><td>%.4f</td><td>%.4f</td><td>%.4f</td></tr>"
+                % (pb['ifeval_greek'], pb['mgsm_greek'], pb['gmmlu_lite']))
+    except Exception:
+        prow = "<tr><th>parent</th><td>0.6026</td><td>0.4240</td><td>0.6154</td></tr>"
+    rows.append(prow)
+    for key, label, note in NICE:
+        n = len(G.get(key, {}).get('mgsm_greek', []))
+        rows.append("<tr><th>%s<br><span class=w>%s &middot; %d seeds</span></th>%s%s%s</tr>"
+                    % (label, note, n,
+                       cell(key, 'ifeval_greek'), cell(key, 'mgsm_greek', hi=(key != 'NM    287, maths removed')),
+                       cell(key, 'gmmlu_lite')))
+    return ("<div style='overflow-x:auto'><table><thead><tr><th>training set</th>"
+            "<th>IFEval</th><th>MGSM</th><th>gMMLU-Lite</th></tr></thead><tbody>"
+            + ''.join(rows) + "</tbody></table></div>"
+            + "<p class='note'>Seed-matched: NM and RC share seeds 42/43/44, so the head-to-head is paired. "
+              "NM was scored before an environment rebuild and RC after it; a re-score of one model under both "
+              "environments matched on all 3,191 items, which is what makes the comparison legitimate.</p>")
+
 def calibration_table():
     """Q4: the label-position correction under five estimators. The page cites the spread between them,
     so the table must SHOW it -- the model-specific ones remove the deficit, the parent-derived one does
@@ -681,10 +720,10 @@ code {{ font-family:"IBM Plex Mono",monospace; font-size:.9em; }}
 {frozen_scorecard()}
 <div class="callout good"><b>Every arm is above the parent on both generated benchmarks.</b> The spread after each mean is across-run dispersion; on MGSM the plain arm's +8.48 pp carries an item-bootstrap interval of [+2.24, +14.72]. The best arm is the length-balanced subset, at +5.48 IFEval and +11.20 MGSM.</div>
 <div class="callout"><b>Four things this does not say, each of which we got wrong before.</b>
-<br>&middot; <b>It is not "maths-free tuning improved maths".</b> 24 dedicated mathematics tasks were excluded from the pair set, but <b>66 pairs keep embedded quantitative content</b> (56 training, 10 held out) &mdash; prices, wages, schedules, quantities, explicit calculations. This page said "no mathematics" repeatedly. That was wrong.
+<br>&middot; <b>It is not "maths-free tuning improved maths" &mdash; but the quantitative pairs do not explain it either.</b> 24 dedicated mathematics tasks were excluded from the pair set, but <b>66 pairs keep embedded quantitative content</b> (56 training, 10 held out). This page said "no mathematics" repeatedly, and that was wrong. Removing those 56 pairs and retraining, against a control that removes 56 random pairs instead, leaves <b>roughly four fifths of the mathematics gain intact</b> &mdash; and removing 56 random pairs costs nothing at all, so it is not about data volume either. Section 12b.
 <br>&middot; <b>The IFEval gain is not produced by the 1,280-token cutoff.</b> It concentrates where answers were being cut off &mdash; 57% of the net improvement sits in the 87 cap-affected items, and the parent hits the 1,280-token wall on 81 of 541 against the arms' 26. So we re-scored at 3,500 tokens, 2.7&times; the room and as much as a 4,096-token context allows. The parent used it, doubling its mean output from 330 to 661 tokens, and <b>no item changed its prompt-level strict outcome for any model</b>: the gap is +3.88 and +5.73 pp at either cap. Two items (parent 95, arm01 161) did change instruction-level results while still failing overall. This rules out sensitivity of the headline score to the 1,280 cutoff <em>within the tested range</em> &mdash; not output-length effects in general: 78 of the parent's 83 extended outputs, and 25 of each arm's 27, still ran into the 3,500 wall, so unrestricted-length behaviour is unresolved and cap-affected status may mark a correlated failure to terminate rather than a cause of failing.
 <br>&middot; <b>The Greek-knowledge deficit is protocol-sensitive, but it is not shown to be zero.</b> The arms score 0.32 to 0.43 pp below the parent on official GreekMMLU, very consistently, and that <em>is</em> a real multiple-choice performance cost. It is consistent with a label-position score shift: it disappears under model-specific batch log-score centering (including five-fold out-of-fold estimation, so it is not in-sample fitting), and a separate full-text scorer does not detect it. But neither result establishes zero knowledge loss &mdash; the full-text scorer also changes the prompt, and its confidence intervals are wide enough to contain the raw deficit. This page previously called it a settled artefact with "zero" cost. That was an overclaim; section 10 now carries the limits.
-<br>&middot; <b>The last row never used IPO.</b> The trainer hardcoded the sigmoid objective, so a configuration asking for IPO trained sigmoid anyway and said nothing. Those two runs are anchored sigmoid DPO at &beta;=10. Every IPO conclusion this page carried &mdash; a pre-registered falsification, a gate that went unmet, an argument about &beta; scaling the gradient &mdash; was about a loss function that never ran.</div>
+<br>&middot; <b>The last row never used IPO, and the real thing is not better.</b> The trainer hardcoded the sigmoid objective, so a configuration asking for IPO trained sigmoid anyway and said nothing. Every IPO conclusion this page carried &mdash; a pre-registered falsification, an unmet gate, an argument about &beta; scaling the gradient &mdash; was about a loss function that never ran. It has since been run: real IPO matches the best sigmoid arm on instruction following and is about five points worse on mathematics. Section 12.
 <p>MGSM is the one that survives scrutiny best. Response lengths are unchanged (121.1 tokens for both parent and plain arm), the gained answers are <em>longer</em> rather than shorter, in only 4 of 48 gains did the parent's text hold the right number anywhere &mdash; four <em>possible</em> extraction cases, not four proven ones, and the items that change replicate across runs (gain-set Jaccard 0.646 / 0.702 / 0.717 for the plain, anchored and balanced groups; loss-set 0.594 / 0.609 / 0.662, and lower again at 0.533 / 0.375 for the &beta;=10 pair). It is a real change in the answers. <b>What produces it is unknown</b>, and 79 of 250 items move to net +17, which is a great deal of churn for a set of 343 training pairs.</p>
 <div class="vstat"><b>Verification status.</b> Thirteen independent cross-vendor reviews (gpt-5.6-sol, gpt-6-astra) have now examined this work. The most recent re-derived the training-time geometry, confirmed all fifteen arms resolve to distinct intended weight hashes, checked 3,191 benchmark documents for contamination against the pair set at 8, 13 and 20 tokens (none), and re-ran 540 Global-MMLU comparisons. Its verdict on the result was <b>real</b>, with three corrections &mdash; the four bullets above are theirs, not ours. What is still <b>not</b> established: the mechanism behind the MGSM gain, and whether any of this transfers beyond these protocols.</div>
 {disposition_table()}
@@ -858,11 +897,28 @@ under the frozen manifest) move none of the conclusions: +0.41 to +0.58.</p>
 </section>
 
 <section>
-<h2>12. The IPO test was never run</h2>
-<div class="callout bad"><b>The objective in the configuration was ignored.</b> These two runs were configured with <code>loss_type: ipo</code>, but the trainer passed <code>loss_type="sigmoid"</code> to TRL as a literal, so the setting was overridden without a warning. They are <b>anchored sigmoid DPO at &beta;=10</b> with the same &alpha;=0.25 anchor as arm 05. Everything this page previously said about them &mdash; a pre-registered falsification, a dev-separation target of 0.0500 reached only to 0.0010, an argument about &beta; scaling the initial gradient by 1/&beta; &mdash; described a loss function that never ran. The correct statement is simply: <b>the intended IPO test was not executed.</b></div>
-<p>Their scores are real for the weights that exist. As a &beta;=10 sigmoid pair they are the weakest arm on the generated lanes (+1.94 IFEval, +5.00 MGSM against the parent), which is what a very high &beta; would predict &mdash; it scales the effective learning signal down. That is an observation about &beta;, not about IPO.</p>
-<p>The displacement hypothesis those runs were meant to falsify therefore remains untested. The trainer now reads the objective from the configuration and refuses an unsupported value, so the test can actually be run; it costs two training runs.</p>
-<p class="note">Found by an independent review (R-DPO13) reading the deployed trainer against the configuration files. <code>loss_type</code> was the only configuration key the trainer overrode, so the fault is confined to these two runs.</p>
+<h2>12. IPO was never run &mdash; and now it has been</h2>
+<div class="callout bad"><b>The objective in the configuration was ignored.</b> Two runs were configured with <code>loss_type: ipo</code>, but the trainer passed <code>loss_type="sigmoid"</code> to TRL as a literal, so the setting was overridden without a warning. They are <b>anchored sigmoid DPO at &beta;=10</b>. Everything this page previously said about IPO &mdash; a pre-registered falsification, a gate that went unmet, an argument about &beta; scaling the gradient &mdash; described a loss function that never ran.</div>
+<p>The trainer was fixed to read the objective from the plan and refuse an unsupported value, and the test was run on 20 September. The evidence that it ran this time is not the configuration file, which was already lying once: it is TRL's own saved <code>DPOConfig</code> inside each checkpoint. <code>armTRUEIPO42</code> holds <code>loss_type=['ipo']</code>, <code>armIPO42</code> holds <code>loss_type=['sigmoid']</code>, both at <code>beta=10.0</code>. The two YAML files are byte-identical apart from their names, so this is the same configuration run by two trainer builds.</p>
+<div style="overflow-x:auto"><table><thead><tr><th>arm</th><th>objective</th><th>IFEval</th><th>MGSM</th><th>gMMLU-Lite</th></tr></thead><tbody>
+<tr><th>parent</th><td class=w>&mdash;</td><td>0.6026</td><td>0.4240</td><td>0.6154</td></tr>
+<tr><th>best sigmoid (arm 05)</th><td class=w>sigmoid, &beta;=0.1</td><td>0.6421</td><td class=k>0.5144</td><td>0.6303</td></tr>
+<tr><th>TRUEIPO</th><td class=k>ipo, &beta;=10</td><td class=k>0.6460</td><td>0.4620</td><td>0.6256</td></tr>
+<tr><th>armIPO <span class=w>(the mislabelled pair)</span></th><td class=w>sigmoid, &beta;=10</td><td>0.6220</td><td>0.4740</td><td>0.6331</td></tr>
+</tbody></table></div>
+<p><b>Real IPO is indistinguishable from the best sigmoid arm on instruction following (+0.39 pp) and about five points worse on mathematics (&minus;5.24 pp).</b> It still beats the parent on both lanes. Against the arm that merely claimed to be IPO, at matched &beta;=10, it is +2.40 IFEval and &minus;1.20 MGSM.</p>
+<div class="callout"><b>These are two seeds per arm, and that is not enough for a test.</b> A paired bootstrap over two observations returns an interval that is the range of the two numbers; it is arithmetic, not inference. No significance is claimed for any comparison in this section. The direction was consistent in 2 of 2 seeds, and the mathematics deficit against the best sigmoid arm is large relative to the between-seed spread on that lane (&plusmn;1.9 pp), which is why it is stated as a finding while the instruction-following difference is not.</p></div>
+<p class="note">The hardcode was found by an independent review (R-DPO13) reading the deployed trainer against the configuration files. <code>loss_type</code> was the only key the trainer overrode.</p>
+</section>
+
+<section>
+<h2>12b. Where the mathematics gain does <em>not</em> come from</h2>
+<p>The round's largest unexplained result is that 343 preference pairs, containing no dedicated mathematics task, moved Greek MGSM by roughly nine points. Two explanations were obvious enough to test, and a controlled ablation was built for them: one set with the <b>56 pairs carrying embedded quantitative content removed</b>, and &mdash; because removing 56 of 343 pairs also removes 16% of the training signal &mdash; a control with <b>56 random non-quantitative pairs removed</b>. Identical hyperparameters, seed-matched, equal row counts; the only difference is which pairs are gone.</p>
+{q1_table()}
+<div class="callout good"><b>Neither explanation survives.</b> Removing 56 <em>random</em> pairs cost <b>+0.16 pp [&minus;1.73, +1.84]</b> on mathematics &mdash; nothing at all &mdash; so losing a sixth of the training signal is not what moves this benchmark. Removing the 56 quantitative pairs cost &minus;1.84 pp, and the head-to-head is &minus;2.00 pp [&minus;3.20, +0.40]. Against a total gain of about +9 pp, at most a fifth of it is attributable to the quantitative pairs, and even that is not resolved. <b>Roughly four fifths of the mathematics gain survives training on a set with no embedded quantitative content whatsoever.</b></div>
+<p>The pre-registered test was item-level, seed-matched, exact McNemar with a Holm correction across the three pairs. It is a null: adjusted p = 0.77, 0.77 and 1.00. That means no detectable difference between these particular runs &mdash; not that the pairs are irrelevant, and not equality.</p>
+<div class="callout"><b>The design's resolution was fixed in advance, which is the only reason the null is readable.</b> Simulating the planned analysis against the observed between-seed spread showed it detects a 4 pp difference 81% of the time and 6 pp 95% of the time. A 2 pp effect is below what it resolves. It also showed the original plan &mdash; a bootstrap over three run-level means &mdash; excludes zero <b>24.9%</b> of the time when the true effect is zero, which is why the primary test was moved to the item level before anything was scored. With three paired observations an exact sign test cannot go below p = 0.25, so no run-level test here could ever have reached significance.</div>
+<p>So the mechanism is now unknown more sharply than before: the two candidates a reader would reach for first are eliminated or bounded. What remains untested is whether the gain is about mathematics at all &mdash; MGSM is exact-match on a final number, the gained answers are <em>longer</em> rather than shorter, and in only 4 of 48 gains did the parent's text contain the right number anywhere. A formatting or output-discipline effect would look exactly like this, and would not be mathematics.</p>
 </section>
 
 <section>
