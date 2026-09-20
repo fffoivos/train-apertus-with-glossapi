@@ -39,7 +39,9 @@
 set -uo pipefail
 FROZEN_DATE=2026-09-19
 S=/iopsstor/scratch/cscs/fffoivos; ROUND=$S/sft_round1
-PYENV=$S/python_envs/lm_eval
+PYENV=${PYENV_OVERRIDE:-$HOME/python_envs/lm_eval}   # PERMANENT storage, not scratch: on 20 Sept a scratch cleanup
+# stripped .py files from 65 of 85 package dirs in the old scratch copy WHILE A JOB WAS SCORING (poison ledger E8/E9).
+# Pins for a rebuild are in cluster/lm_eval_pins_20260920.txt; torch/transformers/tokenizers come from the container.
 WHEEL=$S/evals/full8_native_greek_peak_window_20260817/vendor_probe/accelerate-1.14.0-py3-none-any.whl
 PARENT=$ROUND/eval_copies/R4_full_ep1
 OUT=${OUT_DIR:-$ROUND/results/G4F6P1--DPO01/frozen}
@@ -91,7 +93,7 @@ PY
 # ---- 1b. canary: the frozen template must render EXACTLY what the real one renders, date aside.
 # If the literal substitution changed anything else (quoting, whitespace), every model below would be
 # scored on a subtly different prompt and the reuse of the existing 19-Sept runs would be invalid.
-uenv run --view=default pytorch/v2.9.1:v2 -- bash -c "
+CANARY_OUT=$(uenv run --view=default pytorch/v2.9.1:v2 -- bash -c "
   $ENVSET
   python3 - '$PARENT' '$TOK' '$FROZEN_DATE' <<'PY'
 import re, sys
@@ -110,7 +112,21 @@ for m in msgs:
         assert A(a)['input_ids'] == B(a)['input_ids'], 'tokenisation differs'
 print('HB canary ok: frozen template == real template, date aside; tokenisation identical')
 PY
-" || { echo "HB FATAL canary failed - the frozen tokenizer is not a faithful freeze"; exit 1; }
+") ; canary_rc=$?
+# A guard must not report a conclusion it did not reach. This used to run under `|| echo FATAL canary
+# failed - the frozen tokenizer is not a faithful freeze`, so ANY non-zero exit became a specific claim
+# about the tokenizer. On 20 Sept the canary died on `AttributeError: module 'dill' has no attribute
+# 'extend'` -- a gutted package, nothing to do with the freeze -- and the job announced the tokenizer
+# was unfaithful (E9). Separate the two outcomes explicitly.
+if printf '%s' "$CANARY_OUT" | grep -q 'HB canary ok'; then
+  printf '%s\n' "$CANARY_OUT" | tail -1
+elif printf '%s' "$CANARY_OUT" | grep -q 'AssertionError'; then
+  echo "HB FATAL canary FAILED - the frozen tokenizer is not a faithful freeze:"
+  printf '%s\n' "$CANARY_OUT" | grep 'AssertionError' | tail -2; exit 1
+else
+  echo "HB FATAL canary COULD NOT RUN (rc=$canary_rc) - this is an environment fault, NOT a verdict on the tokenizer:"
+  printf '%s\n' "$CANARY_OUT" | tail -4; exit 1
+fi
 
 # ---- 2. the model list, exact
 MODELS=(); while IFS= read -r line; do [ -n "$line" ] && [ "${line:0:1}" != "#" ] && MODELS+=("$line"); done < "$LIST"

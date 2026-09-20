@@ -362,3 +362,63 @@ scorer — the failure was loud, not silent.
 `subprojects/12_greek_sft_experiments/evals_code_backup/` (136 KB, committed with `git add -f`
 because `*.pyc` is gitignored). Nothing in the repo previously held a copy of the code that produces
 every benchmark number in this subproject.
+
+## E9 — a scratch cleanup gutted both Python environments mid-job
+
+**20 Sept, ~15:37 UTC.** E8 (the missing `ifeval_greek` modules) was not an isolated file loss. It
+was the visible edge of a scratch cleanup that stripped `.py` files from installed packages across
+`/iopsstor/scratch/cscs/fffoivos`, while re-score job 3456396 was between waves.
+
+| tree | state after | consequence |
+|---|---|---|
+| `venvs/sft5` (training) | 53 of 63 package dirs gutted | none — all 8 DPO runs had finished |
+| `python_envs/lm_eval` (scoring, on `PYTHONPATH`) | 65 of 85 gutted; `numpy` 0 files | blocked all scoring |
+| container `/user-environment` | intact | read-only, off scratch: torch, transformers, tokenizers |
+
+An emptied package directory does not disappear — it becomes an importable **namespace package**.
+That is why the symptom was `AttributeError: module 'dill' has no attribute 'extend'` rather than a
+clean `ModuleNotFoundError`, and it is the dangerous failure mode: a gutted package can shadow a
+working one.
+
+### The guard reported a conclusion it had not reached
+
+The retry job announced:
+
+```
+HB FATAL canary failed - the frozen tokenizer is not a faithful freeze
+```
+
+That was **false**. The frozen tokenizer was fine. The canary *process* died importing
+`torch.utils.data` through the gutted `dill`, and the shell wrapper turned any non-zero exit into a
+specific claim about the tokenizer. A guard that misattributes its own failure is worse than one
+that stays silent: it sends you to debug the wrong subsystem, and had the tokenizer genuinely been
+wrong on some later day, this message would have been indistinguishable.
+
+Fixed: the canary's output is captured and three outcomes are now distinguished — success, a real
+`AssertionError` (a genuine freeze failure), and any other exit, which is reported as
+`canary COULD NOT RUN ... this is an environment fault, NOT a verdict on the tokenizer`.
+
+### Recovery
+
+The `*.dist-info` directories survived and carry exact version pins; a 5 GB pip cache sits in `$HOME`
+and PyPI is reachable. 83 packages were resolved (12 had duplicate versions from layered installs and
+were taken at newest — `nltk` and `regex` among them, both of which can touch metric computation) and
+reinstalled into **`$HOME/python_envs/lm_eval`**, which is permanent storage, so a scratch cleanup
+cannot repeat this. `PYENV` in `dpo01_frozen_rescore.sh` now points there, with a `PYENV_OVERRIDE`
+escape hatch. Pins are committed at `cluster/lm_eval_pins_20260920.txt`.
+
+### Comparability, which is the part that actually matters
+
+A rebuilt environment cannot be asserted a priori to be byte-identical to the one that produced the
+19 Sept baseline and wave 1 — the 12 ambiguous pins make that claim unprovable from metadata alone.
+
+It does not need to be asserted, because it can be measured. The retry list carries
+`armNM44VERIFY_ep3`, pointing at weights already scored in wave 1 under the OLD environment. Its
+IFEval, MGSM and Global-MMLU rows must match `armNM44_ep3` exactly. If they do, the rebuilt
+environment is the same instrument and every cross-day comparison stands. If they do not, the
+instrument changed, and the response is to re-score the baseline in the new environment rather than
+to compare across it.
+
+**Poisoned:** nothing. Every existing result was written to disk before the cleanup, by a process
+that ran to completion and passed its output validation. No number was computed under a degraded
+environment — the degradation was loud at import time, not silent at compute time.
