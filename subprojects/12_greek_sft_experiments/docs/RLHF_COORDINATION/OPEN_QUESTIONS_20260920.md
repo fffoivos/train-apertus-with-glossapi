@@ -35,6 +35,38 @@ benchmark**, because MGSM's 250 items are now thoroughly looked at and cannot co
 
 ---
 
+### Dataset premise, verified 20 Sept (before the arms were scored)
+
+Q1 is only readable if the two ablations are what they claim, so this was checked against the files
+rather than the build script's intent:
+
+* Both are exact 287-row **subsets** of the 343-row base; each removes exactly 56.
+* The two removed sets are **disjoint**.
+* `dev.jsonl` is byte-identical across all three configs, so dev metrics stay comparable.
+
+The manipulation is strong and in the intended direction:
+
+| training set | digits/pair | embedded-maths pairs retained |
+|---|---|---|
+| FULL 343 | 26.6 | 56 |
+| **NM 287** | **19.5** | **0** |
+| **RC 287** | **28.2** | **56** |
+
+RC retains *every* embedded-maths pair while NM retains none, at identical row counts — row count
+held constant, quantitative content maximally varied. That is the contrast Q1 needs.
+
+One check worth recording because it nearly caused a wrong move: RC's removed pairs average 18.4
+digits/pair against the *whole* set's 26.6, which looks like an unusually maths-light draw (2.6th
+percentile) and would have biased NM−RC toward confirming the hypothesis. It is not. The builder
+samples `others`, the non-maths pairs only, so the correct null is draws from that pool — against
+which RC's cut sits at the **39.7th percentile**, entirely typical. The apparent anomaly was an
+artefact of comparing against a pool the control is defined to exclude.
+
+Note on the seeds: RC42/43/44 vary the **training seed** over one fixed cut, so they measure
+optimisation variance, not which-56-were-removed variance. Cut variance is not estimated here. It
+matters less than it would otherwise, because the cut is drawn from non-maths pairs and so cannot
+change the maths content of what remains — which is the variable Q1 turns on.
+
 ## Q2 — Is the IFEval gain compliance, or is it just terminating?
 
 *(answered 20 Sept for the tested range; see the bottom of this section. Narrowed by R-DPO15.)*
