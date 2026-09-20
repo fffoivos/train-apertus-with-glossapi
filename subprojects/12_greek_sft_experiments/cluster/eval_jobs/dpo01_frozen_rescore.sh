@@ -49,6 +49,12 @@ LIST=${LIST:?need LIST=<model list file>}
 JOB=${SLURM_JOB_ID:-$$}
 TOK=$ROUND/eval_copies/tok_frozen_${FROZEN_DATE}
 FULL=ifeval_greek,mgsm_greek,global_mmlu_en,global_mmlu_de,global_mmlu_es,global_mmlu_fr,global_mmlu_it,global_mmlu_pt
+# GEN_KWARGS raises the generation cap for the truncation experiment. IFEval allows 1280 tokens with NO
+# stop strings, so a model that will not terminate is cut off; the parent hits that wall on 81 of 541
+# items and the arms on ~26. Scoring at a larger cap says how much of the arms' advantage is the wall
+# and how much is the model. Runs at a different cap are a DIFFERENT measurement: rlhf.evals records
+# gen_kwargs in the manifest and will refuse to compare them with the 1280 runs, which is correct.
+GK=${GEN_KWARGS:-}
 GEN=ifeval_greek,mgsm_greek
 mkdir -p "$OUT"
 [ -f "$LIST" ] || { echo "HB FATAL no list at $LIST"; exit 1; }
@@ -241,6 +247,7 @@ PY
     cd $ROUND
     python3 -m lm_eval --model hf --model_args pretrained=$path,tokenizer=$TOK,dtype=bfloat16 \
       --tasks $tl --apply_chat_template --include_path evals_code/ilsp/tasks \
+      ${GK:+--gen_kwargs $GK} \
       --batch_size 16 --log_samples --output_path $dir
   " > "$dir/run.log" 2>&1
   local rc=$? el=$(( $(date +%s) - t0 ))

@@ -1,0 +1,5 @@
+# Truncation experiment: IFEval + MGSM at a 4096-token cap (default is 1280 with no stop strings).
+# Launch: OUT_DIR=$R/results/G4F6P1--DPO01/cap4096 GEN_KWARGS=max_gen_toks=4096 LIST=<this> EXPECT=3 sbatch ...
+parent|/iopsstor/scratch/cscs/fffoivos/sft_round1/eval_copies/R4_full_ep1|own|gen
+arm01_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--01/checkpoint-129|own|gen
+armBAL_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--BAL/checkpoint-105|own|gen
