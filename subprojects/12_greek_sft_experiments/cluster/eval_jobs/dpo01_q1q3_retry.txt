@@ -1,0 +1,14 @@
+# Retry of the five models lost when evals_code/ilsp/tasks/ifeval_greek's sourceless modules vanished
+# mid-job (poison ledger E8). Launch:
+#   LIST=<this file> EXPECT=6 sbatch cluster/eval_jobs/dpo01_frozen_rescore.sh
+#
+# The sixth entry is a VERIFICATION re-score of a model already scored in wave 1, under the RESTORED
+# scorer. Its numbers must match armNM44_ep3 exactly; if they do not, the restoration changed the
+# instrument and every number in this job is suspect. It costs no wall time - 5 models and 6 models
+# are both two waves of four.
+armRC42_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--RC42/checkpoint-108|own|full
+armRC43_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--RC43/checkpoint-108|own|full
+armRC44_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--RC44/checkpoint-108|own|full
+armTRUEIPO42_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--TRUEIPO42/checkpoint-129|own|full
+armTRUEIPO43_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--TRUEIPO43/checkpoint-129|own|full
+armNM44VERIFY_ep3|/iopsstor/scratch/cscs/fffoivos/sft_round1/runs/G4F6P1--DPO01--NM44/checkpoint-108|own|full

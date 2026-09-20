@@ -1,0 +1,24 @@
+task: mgsm_greek_screen
+process_docs: !function screen_filter.mgsm_screen
+dataset_path: ilsp/mgsm_greek
+dataset_name: null
+output_type: generate_until
+test_split: test
+num_fewshot: 0
+doc_to_text: "Λύσε το πρόβλημα βήμα-βήμα και δώσε την τελική απάντηση ως αριθμό στην τελευταία γραμμή με τη μορφή `Απάντηση: <αριθμός>`\n\n{{ question }}"
+doc_to_target: "{{ answer }}"
+generation_kwargs:
+  until:
+    - "</s>"
+    - "<|im_end|>"
+    - "<|assistant_end|>"
+  do_sample: false
+  temperature: 0.0
+  max_gen_toks: 1024
+process_results: !function utils.process_results
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0

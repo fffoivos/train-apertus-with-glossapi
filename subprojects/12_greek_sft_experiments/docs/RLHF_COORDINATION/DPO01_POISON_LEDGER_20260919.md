@@ -319,3 +319,46 @@ parent's. The relaunch is gated on that check passing.
 
 **Poisoned by this:** nothing. No published number depends on RC44. Q1's RC group is reported at
 n=2 until the retrain lands, and that is stated wherever the group mean appears.
+
+## E8 — the IFEval scorer partially disappeared from scratch mid-job
+
+**20 Sept, 15:37 UTC, during re-score job 3456396.** Wave 1 scored three models on the full lane
+without incident. Wave 2 launched one minute later and all four models failed in 45 s with:
+
+```
+ImportError: cannot import name 'instructions_registry' from 'ifeval_greek' (unknown location)
+```
+
+`evals_code/ilsp/tasks/ifeval_greek/` had lost `__init__.py`, `instructions.py` and
+`instructions_registry.py`. Their `__pycache__/*.cpython-312.pyc` (dated 4 Sept) survived, as did
+`utils.py`, `screen_filter.py` and both YAMLs. The directory's mtime was 15:37 UTC — the files went
+away *between the two waves of a running job*. A fifth model, `armTRUEIPO43_ep3`, then failed the
+geometry gate as collateral; its checkpoint is intact (16 GB, all files present).
+
+**Cause: not established.** Nothing in the harness deletes outside its own stage directories, and
+`rm -rf` there is always on `$path`/`$st`. The pattern is consistent with a scratch cleanup policy
+reaping files by access time — the `.py` sources were never *read* once their bytecode cache was
+current, so their atime stayed at 4 Sept while everything being imported stayed warm. That is a
+hypothesis, not a finding, and it is recorded as unexplained.
+
+**Restoration is exactness-preserving, not a rebuild.** Sourceless `.pyc` modules are how this
+environment already ships these helpers: lm_eval's own bundled `ifeval` directory contains
+`instructions.pyc`, `instructions_registry.pyc`, `instructions_util.pyc` and `utils.pyc` with no
+`.py` at all. The three missing modules were restored by copying their `__pycache__` entries to the
+top level. During the wave that succeeded, CPython was executing precisely those cached files, so
+the restored scorer is the *same code object*, not a re-derivation.
+
+**Verified rather than asserted.** The retry job (3456772) carries a sixth entry,
+`armNM44VERIFY_ep3`, pointing at weights already scored in wave 1. Its IFEval and MGSM rows must
+match `armNM44_ep3` exactly. If they do not, the restoration changed the instrument and every number
+scored after it is suspect. This costs no wall time: five models and six models are both two waves
+of four.
+
+**Poisoned:** nothing. The three wave-1 models were scored before the loss; the five lost models
+produced no output at all and are being re-scored. No published number was computed from a partial
+scorer — the failure was loud, not silent.
+
+**Fix carried forward:** the scorer is now archived in the repo at
+`subprojects/12_greek_sft_experiments/evals_code_backup/` (136 KB, committed with `git add -f`
+because `*.pyc` is gitignored). Nothing in the repo previously held a copy of the code that produces
+every benchmark number in this subproject.
