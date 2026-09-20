@@ -275,3 +275,47 @@ metered here; R-DPO15 was one xhigh review.
 | review | scope | verdict |
 |---|---|---|
 | R-DPO15 (Sol, xhigh) | Q4 calibration soundness, Q2 cap rerun | Q4 unsound as stated, Q2 qualified; 1 BLOCKER + 3 HIGH, all confirmed firsthand and applied (artifact v23) |
+
+## E7 — RC44's checkpoint save died mid-write, and my pre-spend check did not notice
+
+**20 Sept, during the Q1/Q3 round.** RC44 trained all 108 steps and then failed while writing the
+model shards:
+
+```
+[transformers] `rope_parameters`'s original_max_position_embeddings field must be less than
+max_position_embeddings, got 8192 and max_position_embeddings=4096
+```
+
+`checkpoint-108/` was left holding `config.json`, `generation_config.json` and a 16.4 GB
+`.tmpPKwsX9` — no `model.safetensors`, no tokenizer, no `trainer_state.json`, no `training_args.bin`.
+
+**Not systematic.** RC43 and RC44 have byte-identical `config.json`, and RC42/RC43 saved cleanly from
+the same config; scratch had 511 TB free. So this is a transient save failure, and a retrain is the
+right response rather than a config fix.
+
+**The part that is my error.** The chained launcher ran a "pre-spend check" over the model list and
+reported `ok armRC44_ep3 checkpoint-108` — because it tested only that the **directory existed**. A
+directory is a hint, not a model, which is the same lesson `dpo01_frozen_rescore.sh` already encodes
+for its own resume markers ("a marker is a hint, never proof", R-DPO9). The eval job was therefore
+launched with a known-broken model in its list.
+
+**Contained, and it cost nothing.** I first assumed the job would score the eight good models and
+tally RC44 as one failure, because the scoring loop runs in waves and only counts failures. That was
+wrong: the tokenizer check is part of the **up-front** validation loop, which `exit 1`s on the first
+bad entry. Job 3456234 therefore aborted before any GPU work —
+
+```
+HB FATAL armRC44_ep3: no tokenizer.json under .../G4F6P1--DPO01--RC44/checkpoint-108
+```
+
+— and spent essentially nothing. The guard refused the whole list rather than quietly producing a
+partial scorecard, which is the behaviour worth keeping. Recovery: delete the broken run, retrain
+RC44, verify, relaunch.
+
+**Fix, applied to the retrain launcher:** a check before spending asserts the weight files, not the
+directory — `model.safetensors`, `tokenizer.json`, `training_args.bin`, `trainer_state.json` and
+`config.json` all non-empty, no `.tmp*` left behind, and the tokenizer byte-compared against the
+parent's. The relaunch is gated on that check passing.
+
+**Poisoned by this:** nothing. No published number depends on RC44. Q1's RC group is reported at
+n=2 until the retrain lands, and that is stated wherever the group mean appears.
