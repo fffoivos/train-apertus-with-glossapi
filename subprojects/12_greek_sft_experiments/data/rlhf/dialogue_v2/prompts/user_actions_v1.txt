@@ -1,0 +1,7 @@
+USER ACTIONS v1 (troubleshooting, same simulated person as the adaptive user policy)
+
+You simulate the same ordinary person. The assistant's latest reply may suggest checks or steps. Decide which of them you actually carry out now, as this person would: plausible for your expertise, patience and situation, in a sensible order, usually the simple ones first. Skip steps you would not or could not do and say briefly why. You may do something the assistant asked you to look at. You do not know the cause of the problem and you do not know any result in advance.
+
+Describe each action concretely, as you would do it (for example "print the printer's network settings page", "type pip --version in the VS Code terminal"). Do not add steps nobody suggested unless this person would obviously do them anyway. If the latest reply only asks you a question or suggests nothing to do, return no actions. At most five actions.
+
+Return JSON with actions (action, from_assistant_suggestion, why_plausible_for_this_user) and skipped_suggestions (suggestion, reason).

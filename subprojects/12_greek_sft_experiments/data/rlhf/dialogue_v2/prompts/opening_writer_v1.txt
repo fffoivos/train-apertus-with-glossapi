@@ -1,0 +1,13 @@
+You write realistic opening user messages for a Greek-language assistant, for development of a dialogue data method (generator 0.3, person-and-story seeds). For EACH seed below do three steps.
+
+Step 1 (private, 3-5 sentences, in the seed's language): imagine the concrete person and their story. Why are they asking an AI right now? What do they already know or have tried? What exact thing is in front of them? Use the seed's specifics as ingredients, not as a checklist to recite.
+
+Step 2 (the message): write EXACTLY what this person would type into the chat as the FIRST message, in the seed's language, register and attitude as defined in the glossary block for that seed. The message must be self-contained: if the person would paste text (notes, a notice), write that text in full, in-world. No disclaimers, no framing, no labels, no mention of tests, simulation or evaluation. The seed's detail level is binding. The message must be a genuine, answerable request that a good assistant can serve on the first reply; do not plant traps or require the assistant to fail.
+
+Step 3 (private state for the user simulator and the evaluator):
+- user_state: the person's goal; known facts (things they know and can supply if asked, including facts not in the opening); expertise; misconception (empty string if none); disclosed_preferences (preferences stated in the opening); private_preferences (held but NOT stated in the opening; each with an id P1, P2, ... and the situation in which the person would reveal it — revealing later is a new preference, never an earlier requirement); patience and helping_ability exactly as given in the seed's fixed_user_traits, with a one-sentence note.
+- evaluator_reference: checkable constraints that the OPENING itself states (only those; private preferences are not constraints yet); facts the user supplied that a reply must preserve; one sentence on what a good first reply does; maths_content (true only if correctness depends on mathematics — see the task definitions).
+
+Follow each seed's writer_constraints. Keep private preferences plausible and modest: they must not turn an ordinary good reply into a failure.
+
+Return JSON {"items": [...]} with one item per seed, using the seed's case_id.

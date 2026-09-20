@@ -1,0 +1,24 @@
+CONVERSATION REVIEW v1 (dialogue v2, evaluator view with hindsight)
+
+You review one complete recorded development conversation between a simulated user and the target assistant. You see everything: the public transcript, the user's private state and its changes, the user's recorded move labels and metadata, the private reference (writing draft, hidden troubleshooting world with the resolver's decisions and the observations shown to the user, or learner state and evaluator-only subject knowledge), the per-turn evaluations, and the recorded ending. Your job is to separate failures of the TARGET ASSISTANT from failures of the SIMULATION (user, world resolver, learner).
+
+For each user turn after the opening:
+- reacts_to_visible_event: does the message react to something actually visible in the preceding assistant reply?
+- reacts_to_real_defect: when the user complains or corrects, is the defect real and visible to this user? (not_applicable when there is no complaint)
+- oracle_leak: does the user use information they could not have had (the hidden cause, unrevealed observations, a gold transfer answer, evaluator notes)? A writing user's own illustrative draft is theirs to draw on; pasting most of it is a supplied solution, not a leak.
+- move_label_correct / corrected_move and assistance_level_correct / corrected_assistance_level: check the recorded labels against the definitions.
+- genuinely_helpful: a real, usable help for the assistant (pointing to the precise defect, a short example, a smaller part, missing context, a narrower request, a clarification) rather than a restatement.
+- consistent_with_user_state: goal, known facts, expertise, patience and helping ability respected; a hidden preference revealed later is a new preference, not an earlier requirement.
+- simulator_error: describe any simulator error, else empty.
+
+Then:
+- world_consistency (troubleshooting): the resolver's mappings and the observations remained consistent with the fixed world across turns, including when the assistant went off-script; unsupported steps were left unresolved rather than turned into success.
+- learning: whether the learner's progress is supported by the actual teaching, whether a transfer attempt happened, whether it is mathematically or substantively sound, and whether the learner showed sudden unsupported expertise.
+- writing: whether a hidden preference was treated as an earlier instruction, and whether the reference draft was copied into the conversation.
+- hidden_information_leaked_to_assistant: whether private material reached the assistant other than through the user's legitimate messages.
+- target_errors and simulator_errors: short, specific lists.
+- positive_replies_with_incorrect_claims: replies that look acceptable but contain incorrect factual or mathematical claims.
+- ending_reason_agrees and task_result.
+- possible_sampling_points: prevention (prefix ending just before the first seriously erroneous assistant reply), supported recovery (prefix ending just after the first genuinely helpful user intervention that follows an error), healthy continuation (a deeper assistant turn with no earlier serious error where a meaningful next task exists). Give the assistant turn number that the prefix precedes. List only points that genuinely exist; never invent them to fill categories.
+
+Return the JSON object only.

@@ -1,0 +1,28 @@
+You receive up to six opening posts from ONE Greek public web forum, each with an id, a title and the post body (author names removed).
+
+PURPOSE. We are building a set of prompts that records how Greeks actually think, ask and express themselves online: their expressions, their concerns, how they present their situation and what they leave out, their hesitations and dispositions. The prompt we keep must be the poster's own request in the poster's own texture, minus only what makes sense on a forum and nowhere else. We are not shaping the request into a tidy assistant query; we are preserving it.
+
+STEP 0 — POST KIND. Classify the post: "request" (asks for an answer, help, an opinion, a recommendation, a solution); "social" (shares a situation, a feeling, a story or a thought and invites conversation without a specific question; also a personal update addressed to the group); "declaration_or_announcement" (states or announces something: a decision, a news item, a resource, an event, a fact, with no invitation to help or converse); "advertisement" (promotes a product, a service, a channel, a job, a business; also self-promotion). Only "request" and "social" continue to STEP 1; the other two are rejected here with self_contained = false and the kind as the reason.
+
+STEP 1 — CONTEXT GATE. Could a competent native Greek reader who is NOT a regular of this forum and has NO prior thread with this poster tell exactly what is being asked or shared, using only the post body? Three independent flags (true = reject):
+- forum_default: the post relies on a reading only regulars of this community would supply (jargon of the community, an unstated convention, a running topic of the forum) without stating it.
+- op_context: the post relies on the poster's own prior context (an earlier thread, a project, "my case" without saying what the case is, an attachment, something "above").
+- world_anchor: the post depends on a name, work, event, product, document or quotation that the body does not explain and a competent reader would not know (widely known things are NOT a reason to reject).
+self_contained = true only if all three are false. Do not repair by guessing.
+
+STEP 2 — THE PROMPT (only when self_contained is true). Produce the post as a message to a single interlocutor, preserving the poster's texture:
+- remove ONLY what belongs to the forum: greetings and thanks addressed to the group ("παιδιά", "συνάδελφοι", "καλησπέρα σε όλους"), requests to reply in the thread or by private message, references to the forum, signature lines, and back-story that bears on nothing in the request;
+- keep the poster's own wording, expressions, idiom, register, emotion and hedges; keep their spelling and punctuation as written (do not correct grammar, do not upgrade the register, do not translate greeklish words into Greek script); keep the order in which they present their situation and the selectivity of what they tell and what they omit;
+- keep EVERY condition, constraint, number, name, step and detail of the situation, in the poster's order; the logical structure of the request is preserved;
+- ADD NOTHING: no assumed details, no reformulated intent, no politeness of your own;
+- length follows the request: one to four sentences is usual, a context-dense situation keeps every load-bearing fact even if that takes a paragraph; never compress away a condition to hit a length;
+- test yourself: someone who reads only your rewrite must be able to answer exactly what the poster asked, under the same conditions, and would recognise the person behind it.
+
+ANNOTATIONS for every post that reaches STEP 1 (also when rejected there):
+- false_premise: does the request rest on a mistaken assumption that a correct answer would have to address (a wrong belief about a law, a product, a rule, a fact, a cause)? Give present true/false and, when true, one Greek sentence naming the premise. Uncertainty of the poster is not a false premise; a wrong belief stated as fact is.
+- task_type ∈ {question, advice, translation, explanation, calculation, opinion, share, other}.
+- kept_details: the specific details you preserved (numbers, names, terms, conditions), so the rewrite can be checked against the source.
+
+Return ONLY this JSON object:
+{"items": [{"id": "<copy>", "post_kind": "request"|"social"|"declaration_or_announcement"|"advertisement", "self_contained": true|false, "flags": {"forum_default": bool, "op_context": bool, "world_anchor": bool}, "reason_el": "<one Greek sentence: what the body alone asks or shares, or why it is rejected>", "prompt_el": "<the preserved message, or null when rejected>", "false_premise": {"present": bool, "what_el": "<one Greek sentence or null>"}, "task_type": "<type or null>", "kept_details": ["<detail>", ...]}]}
+Every input id must appear exactly once. No prose outside the JSON.

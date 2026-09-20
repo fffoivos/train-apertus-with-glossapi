@@ -1,0 +1,371 @@
+#!/usr/bin/env python3
+"""Builds the six reference-guided demo seed packets (RGD001–RGD006) verbatim from
+docs/RLHF_COORDINATION/REFERENCE_GUIDED_DIALOGUE_DEMO_20260917.md. Openings are copied verbatim from the spec.
+Output: rgd_seeds.json (development_demo rows; never training-eligible)."""
+from __future__ import annotations
+
+import json
+import pathlib
+
+HERE = pathlib.Path(__file__).resolve().parent
+DEV = {"purpose": "development_demo", "training_eligible": False, "experiment_credit": 0}
+COMMON = {"run": "D2", "primary_purpose": "dialogue", "split": "development", "max_assistant_turns": 6,
+          "spec": "docs/RLHF_COORDINATION/REFERENCE_GUIDED_DIALOGUE_DEMO_20260917.md", **DEV}
+
+RGD002_REFERENCE = (
+    "Seed swap at the community garden\n\n"
+    "On 12 October, from 3 to 5 pm, the community garden will host a seed-swap afternoon for the neighbourhood. "
+    "Bring any seeds you have saved or have left over, and take home some that other people have brought. If you have "
+    "no seeds to share, please come anyway: you are just as welcome to look around, swap tips with other growers and "
+    "pick something to try next season. Entry is free. It is a relaxed way to meet people from nearby streets, whether "
+    "you grow herbs in a few pots on a balcony or look after a full vegetable bed. We hope to see you there."
+)
+
+PRINTER_WORLD = {
+    "derive": "printer_network_v1",
+    "root_cause": "The printer is connected to the isolated guest network 'Home-Guest' while the laptop is on the main network 'Home'.",
+    "hidden_facts": [
+        "The laptop is connected to the main Wi-Fi network 'Home'.",
+        "The printer is connected to 'Home-Guest', a guest network with client isolation: devices on it cannot see or be seen by devices on 'Home'.",
+        "The printer is powered on, has no hardware fault and prints a local test page.",
+        "Printing from the laptop worked before the Wi-Fi change; nothing else is broken.",
+        "Connecting the printer to 'Home' (same network as the laptop) makes it discoverable and printing works.",
+        "A USB connection is a valid temporary workaround; the user has the USB cable that came with the printer.",
+        "The printer is a fictional home inkjet 'PrintPro 300' with a small touchscreen: Settings -> Network -> Wi-Fi Setup Wizard; Settings -> Reports -> Network Configuration.",
+    ],
+    "initial_state": {"printer_network": "Home-Guest", "laptop_network": "Home", "usb_connected": False},
+    "state_domains": {"printer_network": ["Home-Guest", "Home"], "laptop_network": ["Home", "Home-Guest"],
+                      "usb_connected": [False, True]},
+    "checks": {
+        "restart_printer": {"description": "Turn the printer off and on again (power button or unplugging it).",
+                            "observations": [
+                                {"when": {"reachable": True}, "text": "The printer restarts normally and its Wi-Fi light comes back on. The laptop lists the printer as ready."},
+                                {"text": "The printer restarts normally (about a minute) and its Wi-Fi light comes back on steadily. The laptop still does not find the printer."}]},
+        "restart_laptop": {"description": "Restart the laptop.",
+                           "observations": [
+                               {"when": {"reachable": True}, "text": "The laptop restarts and lists the printer as ready."},
+                               {"text": "The laptop restarts and reconnects to the same Wi-Fi as before. It still does not find the printer."}]},
+        "restart_router": {"description": "Restart the Wi-Fi router.",
+                           "observations": [
+                               {"when": {"reachable": True}, "text": "The router restarts (about three minutes). Afterwards the laptop reconnects and the printer appears on the laptop."},
+                               {"text": "The router restarts (about three minutes). Afterwards the laptop reconnects to the same Wi-Fi as before and the internet works. The printer still does not appear on the laptop."}]},
+        "printer_test_page": {"description": "Print a test or diagnostic page from the printer's own menu or buttons, without a computer.",
+                              "observations": [{"text": "A test page prints cleanly: the black text and the colour blocks look normal."}]},
+        "printer_network_report": {"description": "Print the printer's network configuration/status report, or read the network details (network name, IP address) in the printer's Settings -> Network screen.",
+                                   "observations": [
+                                       {"when": {"printer_network": "Home-Guest"}, "text": "The printer's 'Network Configuration' report says: Wireless status: Connected; Network name (SSID): Home-Guest; IP address: 192.168.2.17; Signal: Good."},
+                                       {"when": {"printer_network": "Home"}, "text": "The printer's 'Network Configuration' report says: Wireless status: Connected; Network name (SSID): Home; IP address: 192.168.1.23; Signal: Good."}]},
+        "printer_wifi_light": {"description": "Look at the Wi-Fi light or Wi-Fi icon on the printer.",
+                               "observations": [{"text": "The Wi-Fi light on the printer is lit steadily (connected)."}]},
+        "laptop_wifi_name": {"description": "Check which Wi-Fi network the laptop is connected to, or look at the list of visible networks.",
+                             "observations": [
+                                 {"when": {"laptop_network": "Home"}, "text": "The laptop's Wi-Fi settings show: Connected to 'Home'. The list of networks also shows 'Home-Guest'."},
+                                 {"when": {"laptop_network": "Home-Guest"}, "text": "The laptop's Wi-Fi settings show: Connected to 'Home-Guest'. The list of networks also shows 'Home'."}]},
+        "laptop_ip_address": {"description": "Look up the laptop's IP address (network properties or ipconfig).",
+                              "observations": [
+                                  {"when": {"laptop_network": "Home"}, "text": "The laptop's IPv4 address is 192.168.1.34; default gateway 192.168.1.1."},
+                                  {"when": {"laptop_network": "Home-Guest"}, "text": "The laptop's IPv4 address is 192.168.2.41; default gateway 192.168.2.1."}]},
+        "ping_printer": {"description": "Ping the printer's IP address from the laptop, or type the printer's IP address into a browser on the laptop.",
+                         "preconditions": "The user must already know the printer's IP address (for example from the network report).",
+                         "observations": [
+                             {"when": {"network_reachable": True}, "text": "Replies received from 192.168.1.23 (4 of 4); in a browser the printer's settings page opens."},
+                             {"when": {"printer_network": "Home"}, "text": "Request timed out: 4 of 4 packets lost to 192.168.1.23; the page does not open in a browser."},
+                             {"text": "Request timed out: 4 of 4 packets lost to 192.168.2.17; the page does not open in a browser."}]},
+        "add_printer_search": {"description": "Search for or add the printer in the laptop's printer settings (Add printer, Printers & scanners).",
+                               "observations": [
+                                   {"when": {"reachable": True}, "text": "The laptop finds 'PrintPro 300' and adds it; it shows as ready."},
+                                   {"text": "The search runs for a while and finds no printers."}]},
+        "print_document": {"description": "Try printing a document from the laptop.",
+                           "observations": [
+                               {"when": {"reachable": True}, "text": "The document prints."},
+                               {"text": "The print job stays in the queue with the status 'Printer offline'."}]},
+        "reinstall_driver": {"description": "Download or reinstall the printer driver or the manufacturer's app on the laptop.",
+                             "observations": [
+                                 {"when": {"reachable": True}, "text": "The driver installs and its setup finds the printer."},
+                                 {"text": "The driver installs, but its setup says that no printer was found on the network."}]},
+        "firewall_off": {"description": "Temporarily turn off the laptop's firewall or antivirus.",
+                         "observations": [
+                             {"when": {"reachable": True}, "text": "The printer is found (it was already reachable)."},
+                             {"text": "Nothing changes: the laptop still does not find the printer."}]},
+        "laptop_join_guest": {"description": "Connect the laptop to the 'Home-Guest' Wi-Fi network.",
+                              "effects": {"laptop_network": "Home-Guest"},
+                              "observations": [
+                                  {"when": {"usb_connected": True}, "text": "The laptop connects to 'Home-Guest' and the internet works. The printer is only available over the USB cable."},
+                                  {"text": "The laptop connects to 'Home-Guest' and the internet works, but the printer still does not show up when searching."}]},
+        "laptop_join_home": {"description": "Connect the laptop to the 'Home' Wi-Fi network.",
+                             "effects": {"laptop_network": "Home"},
+                             "observations": [
+                                 {"when": {"reachable": True}, "text": "The laptop is connected to 'Home' and the printer is available."},
+                                 {"text": "The laptop connects to 'Home' and the internet works. The printer still does not show up."}]},
+        "printer_join_home": {"description": "Connect the printer to the 'Home' Wi-Fi network using its touchscreen Wi-Fi setup (choose 'Home', enter the Home Wi-Fi password, e.g. from the router sticker).",
+                              "effects": {"printer_network": "Home"},
+                              "observations": [
+                                  {"when": {"laptop_network": "Home"}, "text": "The printer's screen shows 'Connected: Home'. On the laptop the printer now appears in the list of printers."},
+                                  {"text": "The printer's screen shows 'Connected: Home'. The laptop, which is on 'Home-Guest', does not see it."}]},
+        "printer_join_guest": {"description": "Connect the printer to the 'Home-Guest' Wi-Fi network.",
+                               "effects": {"printer_network": "Home-Guest"},
+                               "observations": [
+                                   {"when": {"usb_connected": True}, "text": "The printer's screen shows 'Connected: Home-Guest'. It still prints over the USB cable."},
+                                   {"text": "The printer's screen shows 'Connected: Home-Guest'. The laptop does not find it."}]},
+        "connect_usb": {"description": "Connect the printer to the laptop with a USB cable.",
+                        "preconditions": "The user has the USB cable that came with the printer (in a drawer).",
+                        "effects": {"usb_connected": True},
+                        "observations": [{"text": "The laptop recognises 'PrintPro 300 (USB)' and installs it automatically; it shows as ready and a test print works."}]},
+        "router_device_list": {"description": "Log in to the router's admin page (address and password printed on the sticker under the router) and look at the connected devices or the guest-network settings.",
+                               "observations": [
+                                   {"when": {"printer_network": "Home-Guest", "laptop_network": "Home"}, "text": "The router page lists devices in two groups. 'Home': LAPTOP (192.168.1.34) and a phone. 'Home-Guest': PrintPro300 (192.168.2.17). The guest-network settings show 'Allow guests to see each other and access the local network: Off'."},
+                                   {"when": {"printer_network": "Home", "laptop_network": "Home"}, "text": "The router page lists devices under 'Home': LAPTOP (192.168.1.34), a phone and PrintPro300 (192.168.1.23). Nothing is connected to 'Home-Guest'."},
+                                   {"when": {"printer_network": "Home-Guest", "laptop_network": "Home-Guest"}, "text": "The router page lists 'Home': a phone. 'Home-Guest': LAPTOP (192.168.2.41) and PrintPro300 (192.168.2.17). The guest-network settings show 'Allow guests to see each other and access the local network: Off'."},
+                                   {"when": {"printer_network": "Home", "laptop_network": "Home-Guest"}, "text": "The router page lists 'Home': a phone and PrintPro300 (192.168.1.23). 'Home-Guest': LAPTOP (192.168.2.41)."}]},
+        "check_phone": {"description": "Check whether another device, such as a phone connected to 'Home', can see or print to the printer.",
+                        "observations": [
+                            {"when": {"printer_network": "Home"}, "text": "The phone (on 'Home') sees the printer and prints a test page."},
+                            {"text": "The phone (on 'Home') does not see the printer either."}]},
+    },
+}
+
+PYTHON_WORLD = {
+    "derive": "python_env_v1",
+    "root_cause": "VS Code runs /project/.venv/bin/python, but requests was installed into a different (global) interpreter; the virtual environment lacks requests.",
+    "hidden_facts": [
+        "VS Code's selected interpreter is /project/.venv/bin/python (Python 3.12.1).",
+        "The user ran 'pip install requests' in a terminal where the virtual environment was not activated; pip belongs to the global Python 3.11.6 (/usr/bin/python3) and installed requests 2.31.0 into /home/sam/.local/lib/python3.11/site-packages.",
+        "The virtual environment /project/.venv does not contain requests.",
+        "No network, permission or disk problem exists.",
+        "Checking the active interpreter and where requests is installed reveals the mismatch.",
+        "Installing requests into the active virtual environment resolves the import. Selecting the global interpreter, which has requests, also works for this project (it has no other dependencies).",
+        "Repeating 'pip install requests' in the same non-activated terminal changes nothing.",
+        "This is a simulated scenario: no command is executed on any real machine.",
+    ],
+    "initial_state": {"vscode_interpreter": "venv", "venv_has_requests": False, "terminal_venv_active": False},
+    "state_domains": {"vscode_interpreter": ["venv", "global"], "venv_has_requests": [False, True],
+                      "terminal_venv_active": [False, True]},
+    "checks": {
+        "vscode_interpreter_check": {"description": "Check which Python interpreter VS Code uses (status bar, 'Python: Select Interpreter', or the interpreter path VS Code shows when running).",
+                                     "observations": [
+                                         {"when": {"vscode_interpreter": "venv"}, "text": "(simulated) The VS Code status bar shows: Python 3.12.1 ('.venv': venv). 'Python: Select Interpreter' marks ./.venv/bin/python as selected; the list also contains /usr/bin/python3 (Python 3.11.6)."},
+                                         {"when": {"vscode_interpreter": "global"}, "text": "(simulated) The VS Code status bar shows: Python 3.11.6 64-bit (/usr/bin/python3)."}]},
+        "terminal_which_python": {"description": "In the terminal run 'which python', 'which python3', 'python --version' or 'python3 --version'.",
+                                  "observations": [
+                                      {"when": {"terminal_venv_active": False}, "text": "(simulated terminal output) which python -> /usr/bin/python ; which python3 -> /usr/bin/python3 ; python --version -> Python 3.11.6"},
+                                      {"when": {"terminal_venv_active": True}, "text": "(simulated terminal output) which python -> /project/.venv/bin/python ; python --version -> Python 3.12.1"}]},
+        "terminal_pip_version": {"description": "In the terminal run 'pip --version', 'pip3 --version' or 'python -m pip --version'.",
+                                 "observations": [
+                                     {"when": {"terminal_venv_active": False}, "text": "(simulated terminal output) pip 23.3.1 from /usr/lib/python3/dist-packages/pip (python 3.11)"},
+                                     {"when": {"terminal_venv_active": True}, "text": "(simulated terminal output) pip 23.2.1 from /project/.venv/lib/python3.12/site-packages/pip (python 3.12)"}]},
+        "terminal_pip_show_requests": {"description": "In the terminal run 'pip show requests', 'pip list' or 'pip freeze' (with whatever pip the terminal uses).",
+                                       "observations": [
+                                           {"when": {"terminal_venv_active": False}, "text": "(simulated terminal output) Name: requests / Version: 2.31.0 / Location: /home/sam/.local/lib/python3.11/site-packages"},
+                                           {"when": {"terminal_venv_active": True, "venv_has_requests": False}, "text": "(simulated terminal output) WARNING: Package(s) not found: requests"},
+                                           {"when": {"terminal_venv_active": True, "venv_has_requests": True}, "text": "(simulated terminal output) Name: requests / Version: 2.32.3 / Location: /project/.venv/lib/python3.12/site-packages"}]},
+        "venv_pip_show_requests": {"description": "Ask the virtual environment's own pip explicitly, e.g. '/project/.venv/bin/python -m pip show requests' or '.venv/bin/pip list'.",
+                                   "observations": [
+                                       {"when": {"venv_has_requests": False}, "text": "(simulated terminal output) WARNING: Package(s) not found: requests"},
+                                       {"when": {"venv_has_requests": True}, "text": "(simulated terminal output) Name: requests / Version: 2.32.3 / Location: /project/.venv/lib/python3.12/site-packages"}]},
+        "print_sys_executable": {"description": "Make the script (run from VS Code) print sys.executable or sys.path, or run 'import sys; print(sys.executable)' with VS Code's selected interpreter.",
+                                 "observations": [
+                                     {"when": {"vscode_interpreter": "venv"}, "text": "(simulated output) /project/.venv/bin/python"},
+                                     {"when": {"vscode_interpreter": "global"}, "text": "(simulated output) /usr/bin/python3"}]},
+        "terminal_pip_install_requests": {"description": "In the terminal run 'pip install requests', 'pip3 install requests' or 'python -m pip install requests' (with whatever pip the terminal uses).",
+                                          "conditional_effects": [{"when": {"terminal_venv_active": True}, "set": {"venv_has_requests": True}}],
+                                          "observations": [
+                                              {"when_before": {"terminal_venv_active": False}, "text": "(simulated terminal output) Requirement already satisfied: requests in /home/sam/.local/lib/python3.11/site-packages (2.31.0)"},
+                                              {"when_before": {"terminal_venv_active": True, "venv_has_requests": True}, "text": "(simulated terminal output) Requirement already satisfied: requests in /project/.venv/lib/python3.12/site-packages (2.32.3)"},
+                                              {"when_before": {"terminal_venv_active": True, "venv_has_requests": False}, "text": "(simulated terminal output) Successfully installed certifi-2024.8.30 charset-normalizer-3.3.2 idna-3.10 requests-2.32.3 urllib3-2.2.3"}]},
+        "venv_pip_install_requests": {"description": "Install into the virtual environment explicitly, e.g. '/project/.venv/bin/python -m pip install requests' or '.venv/bin/pip install requests'.",
+                                      "effects": {"venv_has_requests": True},
+                                      "observations": [
+                                          {"when_before": {"venv_has_requests": True}, "text": "(simulated terminal output) Requirement already satisfied: requests in /project/.venv/lib/python3.12/site-packages (2.32.3)"},
+                                          {"text": "(simulated terminal output) Successfully installed certifi-2024.8.30 charset-normalizer-3.3.2 idna-3.10 requests-2.32.3 urllib3-2.2.3"}]},
+        "activate_venv": {"description": "Activate the virtual environment in the terminal ('source .venv/bin/activate').",
+                          "effects": {"terminal_venv_active": True},
+                          "observations": [{"text": "(simulated) The terminal prompt now starts with (.venv)."}]},
+        "run_script_vscode": {"description": "Run the script in VS Code (Run button / 'Run Python File').",
+                              "observations": [
+                                  {"when": {"vscode_import_works": True}, "text": "(simulated output) The script runs without the import error and prints its normal output."},
+                                  {"text": "(simulated output) Traceback (most recent call last): ... import requests ... ModuleNotFoundError: No module named 'requests'"}]},
+        "run_script_terminal": {"description": "Run the script from the terminal, e.g. 'python script.py' or 'python3 script.py'.",
+                                "observations": [
+                                    {"when": {"terminal_venv_active": False}, "text": "(simulated terminal output) The script runs without the import error and prints its normal output."},
+                                    {"when": {"terminal_venv_active": True, "venv_has_requests": True}, "text": "(simulated terminal output) The script runs without the import error and prints its normal output."},
+                                    {"text": "(simulated terminal output) ModuleNotFoundError: No module named 'requests'"}]},
+        "select_global_interpreter": {"description": "In VS Code select the global interpreter /usr/bin/python3 (Python 3.11.6) via 'Python: Select Interpreter'.",
+                                      "effects": {"vscode_interpreter": "global"},
+                                      "observations": [{"text": "(simulated) The VS Code status bar now shows Python 3.11.6 (/usr/bin/python3)."}]},
+        "select_venv_interpreter": {"description": "In VS Code select the virtual-environment interpreter ./.venv/bin/python.",
+                                    "effects": {"vscode_interpreter": "venv"},
+                                    "observations": [{"text": "(simulated) The VS Code status bar shows Python 3.12.1 ('.venv': venv)."}]},
+        "restart_vscode": {"description": "Restart or reload VS Code.",
+                           "observations": [{"text": "(simulated) VS Code reopens with the same interpreter selected; nothing else changes."}]},
+        "reinstall_python_extension": {"description": "Reinstall the VS Code Python extension or VS Code itself.",
+                                       "observations": [{"text": "(simulated) The extension reinstalls; the selected interpreter is unchanged."}]},
+    },
+}
+
+SEEDS = [
+    {**COMMON, "case_id": "RGD001", "category": "writing", "language": "el",
+     "source_family": "rgd:RGD001-seminar-absence-email",
+     "labels": {"task": "everyday", "interaction": "revision", "attitude": "cooperative", "register": "standard",
+                "difficulty": "compositional", "detail": "short"},
+     "opening": "Γράψε ένα σύντομο μήνυμα στον υπεύθυνο του σεμιναρίου: δεν μπορώ να παρευρεθώ την Παρασκευή και θέλω να ρωτήσω αν μπορώ να συμμετάσχω στην επόμενη συνάντηση. Δεν θέλω να εξηγήσω προσωπικούς λόγους.",
+     "user_state": {
+         "goal": "Send the seminar leader a short message: cannot attend on Friday; ask whether it is possible to join the next meeting; give no personal reasons.",
+         "known_facts": ["The seminar meets on Friday.", "You will not attend this Friday.", "You want to take part in the next meeting.", "You do not want to explain personal reasons."],
+         "expertise": "intermediate", "misconception": "",
+         "disclosed_preferences": ["short message", "no personal reasons"],
+         "private_preferences": [
+             {"id": "P1", "text": "Courteous and moderately formal (plural of politeness), neither ceremonious nor familiar.", "reveal_when": "when the reply is too ceremonious or too familiar"},
+             {"id": "P2", "text": "About 50–80 words.", "reveal_when": "when the length is clearly outside this range"},
+             {"id": "P3", "text": "A direct request, not a roundabout one.", "reveal_when": "when the request is buried or hedged"}],
+         "patience": "medium", "helping_ability": "can_give_example",
+         "helping_ability_note": "Ordinary patience. Can point to an unwanted phrase and may supply one short phrase in the tone wanted; would not write the whole message."},
+     "user_view_extras": {"reference_draft": "Καλησπέρα σας, δυστυχώς δεν θα μπορέσω να παρευρεθώ στο σεμινάριο της Παρασκευής. Θα ήθελα να ρωτήσω αν υπάρχει δυνατότητα να συμμετάσχω στην επόμενη συνάντηση και αν χρειάζεται κάποια ενέργεια από την πλευρά μου. Σας ευχαριστώ για την κατανόηση και παραμένω στη διάθεσή σας για την επιβεβαίωση της αλλαγής.",
+                          "reference_note": "Illustrative draft of the kind of message you want. It is not an exact answer; do not paste it to the assistant."},
+     "evaluator_reference": {
+         "facts_to_preserve": ["cannot attend on Friday", "asks whether they can join the next meeting", "no personal reasons given"],
+         "private_targets_not_hard_constraints": ["courteous, moderately formal", "about 50–80 words", "neither ceremonious nor familiar", "direct request"],
+         "reference_draft_is_illustrative": True,
+         "grading_rule": "The word range and tone are private preferences: an earlier reply cannot fail them before the user states them. Judge the first reply on the disclosed request (short, the two facts, no personal reasons).",
+         "maths_content": False}},
+    {**COMMON, "case_id": "RGD002", "category": "writing", "language": "en",
+     "source_family": "rgd:RGD002-seed-swap-newsletter",
+     "labels": {"task": "everyday", "interaction": "revision", "attitude": "cooperative", "register": "standard",
+                "difficulty": "compositional", "detail": "medium"},
+     "opening": "Write a short article for our neighbourhood newsletter inviting people to a seed-swap afternoon. It is on 12 October, 3–5 pm, at the community garden. Entry is free, and people can come even if they have no seeds to bring.",
+     "user_state": {
+         "goal": "A short newsletter article inviting neighbours to the seed-swap afternoon with the correct facts.",
+         "known_facts": ["Date 12 October", "Time 3–5 pm", "Place: the community garden", "Entry is free", "People can come without seeds"],
+         "expertise": "intermediate", "misconception": "",
+         "disclosed_preferences": ["short article", "for the neighbourhood newsletter", "an invitation"],
+         "private_preferences": [
+             {"id": "P1", "text": "Roughly 100–140 words.", "reveal_when": "when the length is clearly outside this range"},
+             {"id": "P2", "text": "Friendly factual prose, no advertising hype or exaggerated promises.", "reveal_when": "when a sentence reads like hype"},
+             {"id": "P3", "text": "No invented extras (refreshments, experts, equipment, accessible facilities) — nothing was promised.", "reveal_when": "when the reply adds such things"}],
+         "patience": "medium", "helping_ability": "can_give_example",
+         "helping_ability_note": "Can point to an exaggerated sentence and offer a plain replacement sentence as an example of the tone wanted."},
+     "user_view_extras": {"reference_draft": RGD002_REFERENCE,
+                          "reference_note": "Illustrative draft of the kind of article you want. It is not an exact answer; do not paste it to the assistant."},
+     "evaluator_reference": {
+         "facts_to_preserve": ["12 October", "3–5 pm", "community garden", "entry is free", "bringing seeds is optional"],
+         "forbidden_additions": ["refreshments", "experts or speakers", "equipment or tools provided", "accessible facilities", "any other promise not supplied"],
+         "private_targets_not_hard_constraints": ["about 100–140 words", "friendly factual prose, no hype"],
+         "reference_draft_is_illustrative": True,
+         "grading_rule": "Factual checks (supplied facts present, no invented promises) are separate from prose preferences. The length and tone preferences are private until stated.",
+         "maths_content": False}},
+    {**COMMON, "case_id": "RGD003", "category": "troubleshooting", "language": "el",
+     "source_family": "rgd:RGD003-printer-guest-network",
+     "labels": {"task": "everyday", "interaction": "uncertainty", "attitude": "cooperative", "register": "standard",
+                "difficulty": "compositional", "detail": "short"},
+     "opening": "Μετά την αλλαγή του Wi-Fi, ο φορητός μου δεν βρίσκει τον εκτυπωτή. Και οι δύο φαίνεται να έχουν ίντερνετ. Τι να ελέγξω;",
+     "user_state": {
+         "goal": "Print from the laptop again.",
+         "known_facts": ["Since the Wi-Fi change (the provider installed a new router last week) the laptop cannot find the printer.",
+                         "Both devices seem to have internet.", "Printing from the laptop used to work.",
+                         "A relative reconnected the printer to the Wi-Fi on the day of the change; you did not watch how.",
+                         "The printer is a home inkjet with a small touchscreen; the front says 'PrintPro 300'.",
+                         "The USB cable that came with the printer is in a drawer.",
+                         "The router has a sticker underneath with its Wi-Fi names and passwords."],
+         "expertise": "novice", "misconception": "",
+         "disclosed_preferences": [], "private_preferences": [],
+         "patience": "medium", "helping_ability": "restate_only",
+         "helping_ability_note": "Not an expert. Willing to do simple checks and report exactly what they see; cannot diagnose network problems or invent technical details."},
+     "user_view_extras": {},
+     "world": PRINTER_WORLD,
+     "evaluator_reference": {"root_cause": PRINTER_WORLD["root_cause"], "hidden_facts": PRINTER_WORLD["hidden_facts"],
+                             "valid_resolutions": ["connect the printer to 'Home' (same network as the laptop)", "temporary workaround: USB cable"],
+                             "grading_rule": "Advice is judged against the fixed world and the observations already revealed. Unknown device-specific menu paths are not automatically successful. Actions that cannot help (e.g. repeated restarts) are not errors by themselves, but ignoring revealed evidence is.",
+                             "maths_content": False}},
+    {**COMMON, "case_id": "RGD004", "category": "troubleshooting", "language": "en",
+     "source_family": "rgd:RGD004-python-venv-requests",
+     "labels": {"task": "everyday", "interaction": "uncertainty", "attitude": "cooperative", "register": "standard",
+                "difficulty": "compositional", "detail": "short"},
+     "opening": "My script says ‘ModuleNotFoundError: No module named requests’, but I already installed requests. I’m running it in VS Code. What should I check?",
+     "user_state": {
+         "goal": "Make the script run in VS Code without the import error.",
+         "known_facts": ["You run the script with VS Code's Run button.",
+                         "Yesterday you typed 'pip install requests' in VS Code's terminal and it said it installed successfully.",
+                         "Weeks ago a tutorial had you run 'python3 -m venv .venv' in the project folder /project; you do not really know what it does.",
+                         "The laptop runs Ubuntu 22.04; your user name is sam."],
+         "expertise": "novice", "misconception": "Installing a package once makes it available to every Python on the computer.",
+         "disclosed_preferences": [], "private_preferences": [],
+         "patience": "medium", "helping_ability": "restate_only",
+         "helping_ability_note": "Beginner: can copy a command into the terminal and paste back its output, but does not understand interpreter environments."},
+     "user_view_extras": {},
+     "world": PYTHON_WORLD,
+     "evaluator_reference": {"root_cause": PYTHON_WORLD["root_cause"], "hidden_facts": PYTHON_WORLD["hidden_facts"],
+                             "valid_resolutions": ["install requests into the active virtual environment", "select an interpreter that has requests, if compatible with the project"],
+                             "grading_rule": "Advice is judged against the fixed world and revealed outputs. Repeating the install in the same wrong interpreter cannot help. No real machine action occurred; the transcript is simulated.",
+                             "maths_content": False}},
+    {**COMMON, "case_id": "RGD005", "category": "learning", "language": "el",
+     "source_family": "rgd:RGD005-fraction-division-why-larger",
+     "labels": {"task": "math", "interaction": "followup", "attitude": "cooperative", "register": "standard",
+                "difficulty": "compositional", "detail": "short"},
+     "maths_content": True, "maths_kind": "explanation and learning",
+     "opening": "Ξέρω τον κανόνα «αντιστρέφω και πολλαπλασιάζω», αλλά δεν καταλαβαίνω γιατί όταν διαιρώ με ένα κλάσμα μπορεί να βγει μεγαλύτερος αριθμός.",
+     "user_state": {
+         "goal": "Understand why dividing by a fraction can give a larger number, not just apply the rule.",
+         "known_facts": [], "expertise": "novice",
+         "misconception": "Division necessarily makes a quantity smaller.",
+         "disclosed_preferences": ["wants an explanation, not just the rule"], "private_preferences": [],
+         "patience": "high", "helping_ability": "can_point_defect",
+         "helping_ability_note": "A learner: can say which part of an explanation they still do not follow and can attempt a small example, but does not automatically infer every consequence from one explanation."},
+     "learner": {
+         "knowledge_items": [
+             {"item_id": "K1", "text": "Halves and quarters as quantities (e.g. half a cup, a quarter of a pizza).", "status": "understood"},
+             {"item_id": "K2", "text": "Multiplying simple fractions mechanically.", "status": "understood"},
+             {"item_id": "K3", "text": "Applying the rule 'invert and multiply' mechanically.", "status": "understood"},
+             {"item_id": "K4", "text": "What dividing by a fraction means (an interpretation of the division, not just the rule).", "status": "not_understood"},
+             {"item_id": "K5", "text": "Why the result of dividing by a number smaller than 1 can be larger than the number divided.", "status": "not_understood"}],
+         "misconception": {"text": "Division necessarily makes a quantity smaller.", "status": "held"},
+         "transfer_question": "Πόσο κάνει δύο τρίτα διά ένα τρίτο, και γιατί;",
+         "transfer_note": "Attempt this only with what you currently understand. You do not know the answer in advance; do not look it up or compute it with knowledge the conversation has not given you."},
+     "user_view_extras": {},
+     "evaluator_reference": {
+         "subject_knowledge": ["Division can count how many groups of the divisor's size fit into the dividend (measurement division).",
+                               "Three-quarters of a cup contains 1.5 half-cup portions.",
+                               "Dividing by a positive number smaller than 1 gives a result larger than the dividend, because more than one such part fits."],
+         "transfer_check": {"question": "2/3 ÷ 1/3", "answer": "2", "what_to_check": "whether the learner applies the grouping interpretation (how many thirds fit into two thirds), not just repeats a supplied sentence or applies the rule without meaning"},
+         "grading_rule": "Accept any mathematically sound explanation of dividing by a fraction (grouping/measurement, reciprocal and scaling arguments, number lines, unit rates); do not require one wording. Mathematical claims and examples must be sound. A simulator saying 'I understand' is not evidence of learning.",
+         "maths_content": True}},
+    {**COMMON, "case_id": "RGD006", "category": "learning", "language": "el",
+     "source_family": "rgd:RGD006-summary-vs-paraphrase",
+     "labels": {"task": "everyday", "interaction": "followup", "attitude": "cooperative", "register": "standard",
+                "difficulty": "compositional", "detail": "short"},
+     "opening": "Όταν μου ζητούν περίληψη, συνήθως αλλάζω τις λέξεις κάθε πρότασης και πάλι βγαίνει σχεδόν το ίδιο μήκος. Τι κάνω λάθος;",
+     "user_state": {
+         "goal": "Learn how to write a real summary instead of paraphrasing every sentence.",
+         "known_facts": ["You have a short practice text at hand (a library notice) that you could paste if the assistant asks for an example or if you want to practise."],
+         "expertise": "novice", "misconception": "Summarising means rewriting every sentence in other words.",
+         "disclosed_preferences": [], "private_preferences": [],
+         "patience": "medium", "helping_ability": "can_point_defect",
+         "helping_ability_note": "A learner: can rewrite sentences but finds it hard to decide what to omit; can say what is still unclear and can attempt a summary."},
+     "learner": {
+         "knowledge_items": [
+             {"item_id": "K1", "text": "Rewriting a sentence in other words.", "status": "understood"},
+             {"item_id": "K2", "text": "A summary selects the central information for its purpose and leaves details out.", "status": "not_understood"},
+             {"item_id": "K3", "text": "Deciding which information to omit.", "status": "not_understood"},
+             {"item_id": "K4", "text": "Merging several sentences into one shorter statement.", "status": "not_understood"}],
+         "misconception": {"text": "Summarising means paraphrasing every sentence.", "status": "held"},
+         "practice_text": "Η δημοτική βιβλιοθήκη παρατείνει το ωράριό της για δύο εβδομάδες πριν από τις εξετάσεις. Θα κλείνει στις εννέα το βράδυ αντί στις έξι. Η αλλαγή έγινε μετά από αιτήματα μαθητών και φοιτητών. Η αίθουσα μελέτης θα παραμένει ανοιχτή, αλλά ο δανεισμός βιβλίων θα σταματά στις έξι.",
+         "transfer_question": "Try to summarise the practice text yourself (or a short new text the assistant gives you) using only what you currently understand.",
+         "transfer_note": "Your attempts must reflect your current skill; do not suddenly write an expert summary."},
+     "user_view_extras": {},
+     "evaluator_reference": {
+         "subject_knowledge": ["Summarising selects and compresses central information according to purpose.",
+                               "A summary of the notice should preserve the temporary extended study access (two weeks before exams, until 21:00 instead of 18:00) and, when relevant to the audience, that book lending still stops at 18:00.",
+                               "Several summaries are valid; there is no exact wording target."],
+         "supported_practice": "One attempt, specific feedback, then a revised attempt or a short transfer text.",
+         "grading_rule": "The learner must not suddenly produce an expert summary unsupported by the teaching. Feedback should be specific.",
+         "maths_content": False}},
+]
+
+
+def main() -> None:
+    out = HERE / "rgd_seeds.json"
+    out.write_text(json.dumps({"seed_set": "reference_guided_dialogue_demo_v1", "built_from": COMMON["spec"],
+                               "seeds": SEEDS}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    print(f"wrote {out} ({len(SEEDS)} seeds)")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,30 @@
+BRANCH VERIFICATION v2 (dialogue, evaluator view)
+
+Two replies to the same conversation prefix were proposed as a preference pair by the ranking judge: CHOSEN and REJECTED. Decide whether the pair is worth keeping.
+
+Judge the CHOSEN reply as a reply to THE LATEST USER TURN, not as a reply to the whole task. A conversation spreads one task over several turns; each reply is responsible for what the latest turn asks, plus the constraints still in force. Later turns narrow, correct and add to earlier ones.
+
+You receive the conversation prefix, the latest user turn on its own, the index of the assistant reply being judged, both replies, computed statistics (word and line counts), and reference facts.
+
+The reference facts describe a complete, correct treatment of the WHOLE task. They are there so you can tell whether the reply says anything FALSE. They are not a checklist of what this reply must contain. A reply that answers the latest turn correctly and briefly is fully acceptable even when it leaves out most of them.
+
+For every constraint you test, report:
+- constraint: what is required, in one clause.
+- source: "user_stated" if the user asked for it in words, "task_implied" if it follows from the request itself, "reference_derived" if only the reference facts suggest it.
+- applies_now: whether it governs THIS reply. It does not apply now if (a) it was addressed to an earlier reply, for example a word limit on the first reply, (b) the user has since withdrawn, narrowed or replaced it, or (c) it belongs to a part of the task the latest turn does not ask about.
+- satisfied: "yes", "no", "unclear" or "not_applicable". Use the computed statistics for anything countable rather than counting by eye.
+
+Never penalise the CHOSEN reply for obeying the latest instruction. If the user narrowed the task, the narrowed task is the task. If the user excluded an option, offering it anyway is the error, not omitting it.
+
+Then return:
+- chosen_responsive: does the reply do what the latest user turn asks?
+- chosen_truthful: no load-bearing claim contradicts the reference facts, and nothing load-bearing is invented.
+- chosen_violations: every constraint with applies_now true and satisfied "no", one clause each.
+- chosen_verdict:
+    "clean"             - responsive, truthful, and no constraint that applies now is violated.
+    "flawed_but_better" - responsive and truthful, but with a violation that applies now or another real weakness.
+    "unacceptable"      - not responsive to the latest turn, or untruthful in a load-bearing way.
+- rejected_meaningfully_worse: true only if a demanding user would clearly prefer the CHOSEN reply, for a reason beyond style.
+- notes: one sentence for each verdict that is not "clean", naming the decisive evidence.
+
+Return the JSON object only.

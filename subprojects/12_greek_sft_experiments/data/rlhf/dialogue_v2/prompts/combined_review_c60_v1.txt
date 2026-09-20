@@ -1,0 +1,27 @@
+COMBINED CONVERSATION REVIEW v1 (60-dialogue collection, evaluator view)
+
+You review one complete recorded development conversation between a simulated user and the target assistant, in a single pass. You see the public transcript, the user's recorded decisions (move, new information, whether the task changed, assistance level, what the user perceived), the private reference (troubleshooting world with the resolver's decisions and the observations shown to the user, or learner state and evaluator-only subject knowledge), per-reply facts computed by code, and the recorded ending. Your output replaces a separate per-turn evaluation and a separate hindsight review. Nothing you write is shown to the user simulator.
+
+A. Every assistant reply, judged PREFIX-LOCALLY. For reply N use only what was knowable when reply N was written: the conversation up to that reply, the requirements disclosed by then (listed per reply in the packet), and for troubleshooting the observations revealed before it. A preference or constraint the user states later is a new instruction, never a retroactive requirement for an earlier reply. Severity (local_quality):
+- good: serves this turn.
+- minor: a limited defect that leaves the reply useful.
+- serious: materially defeats the user's task at this turn: wrong in the main, a load-bearing false or invented fact, ignores or contradicts a disclosed requirement or a constraint that still applies, repeats an earlier reply the user already said did not work, advice that contradicts observations already revealed, or a consequential safety failure.
+- unjudgeable: the evidence cannot settle it; your uncertainty is not a model failure.
+Rules: undisclosed preferences never count against a reply (list the ones you set aside). A reference explanation is illustrative; accept any correct method or wording, and check every factual and mathematical claim. Troubleshooting: a reasonable check that does not happen to find the cause is not an error; ignoring evidence the user reported is; never reward invented menus or outputs stated as fact. Learning: judge whether the explanation is correct and whether it teaches. Quote decisive words in decisive_evidence. Use the computed facts (word counts, bullets, paragraphs) instead of recounting.
+When a user request is contradictory or impossible, a reply that names the conflict or asks for clarification is acceptable; literal compliance with an impossible request is not required.
+
+B. Every user turn after the opening:
+- reacts_to_visible_event, reacts_to_real_defect, oracle_leak (information the user could not have had).
+- instruction_change: true when the message changes what the assistant is asked to do or gives it something new to act on: a clarification, an example, a simplification or smaller part, a decomposition, a new constraint, a changed goal, or a supplied solution. A complaint alone, frustration alone, or a restatement is NOT an instruction change, however emphatic.
+- change_type: the kind of change (or complaint_only / restatement / none).
+- change_quality: helpful, unhelpful, contradictory (conflicts with the task or an earlier constraint), or not_applicable. Label it; do not drop an unhelpful or contradictory change.
+- simulator_defect: any error of the simulation at this turn (a miscount despite computed facts, a defect that is not there, an unexpected contradiction the user state does not motivate, an oracle leak), else empty.
+
+C. Whole conversation: world consistency (troubleshooting), learner-state consistency (learning: progress supported by the actual teaching, transfer attempt and its soundness, sudden unsupported expertise), hidden information reaching the assistant, target errors, simulator defects, task result, whether the recorded ending fits (silent departure, explicit abandonment, natural completion, turn cap and cutoffs are all valid endings).
+
+D. Sampling points, proposed (code recomputes them from your annotations; your proposal is kept for inspection):
+- A: the prefix ending immediately BEFORE the first seriously erroneous assistant reply (give that reply's number).
+- B: the prefix ending immediately AFTER the first user turn, following that first serious error, that is an instruction change in the sense above, whether or not it helped (give the user turn number).
+State exists=false when a point does not exist. Never invent a point.
+
+Return the JSON object only.

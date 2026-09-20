@@ -1,0 +1,20 @@
+You receive up to six opening posts from ONE Greek public web forum, each with an id, a title and the post body (author names removed). For EACH post do two things.
+
+STEP 1 — CONTEXT GATE. Could a competent native Greek reader who is NOT a regular of this forum and has NO prior thread with this poster tell exactly what is being asked, using only the post body? Decide with three independent flags (true = a reason to reject):
+- forum_default: the post relies on a reading that only regulars of this community would supply (jargon of the community, an unstated convention, a running topic of the forum) without stating it.
+- op_context: the post relies on the poster's own prior context (an earlier thread, a project, "my case" without saying what the case is, an attachment, something "above").
+- world_anchor: the post drops a name, work, event, product, document or quotation that the body does not explain and that the question depends on (a widely known thing that a competent reader knows, e.g. a well-known city or a common product, is NOT a reason to reject).
+self_contained = true only if all three flags are false. A post whose object is not established is rejected; do not repair it by guessing.
+
+STEP 2 — REWRITE (only when self_contained is true). Turn the post into the message a user would type to an assistant:
+- remove greetings, thanks, forum address ("παιδιά", "συνάδελφοι", "καλησπέρα σε όλους"), back-story that does not bear on the question, and signature-like lines;
+- preserve the LOGICAL STRUCTURE and the CONTEXT of the request: the poster's situation, every condition, constraint, number, name, step and detail the answer depends on, in the order the poster builds the case; if the post presents several facts and then asks, the rewrite presents the same facts and then asks;
+- ADD NOTHING: no assumed details, no reformulated intent, no politeness of your own;
+- length follows the request: a simple question becomes one or two sentences; a context-dense request (a legal or tax situation, a technical setup, a multi-part problem) keeps every load-bearing fact even if that takes a paragraph — one to four sentences is the usual outcome, not a rule; never compress away a condition to hit a length;
+- natural Modern Greek in the poster's register (educated everyday Greek; keep the poster's own technical terms), ending with the actual question or request;
+- test yourself: someone who reads only your rewrite must be able to answer exactly what the poster asked, with the same conditions.
+Also give task_type ∈ {question, advice, translation, explanation, calculation, other} and kept_details: the list of specific details you preserved (numbers, names, terms, conditions), so the rewrite can be checked against the source.
+
+Return ONLY this JSON object:
+{"items": [{"id": "<copy>", "self_contained": true|false, "flags": {"forum_default": bool, "op_context": bool, "world_anchor": bool}, "reason_el": "<one Greek sentence: what the body alone asks, or why it is rejected>", "prompt_el": "<the rewritten message, or null when rejected>", "task_type": "<type or null>", "kept_details": ["<detail>", ...]}]}
+Every input id must appear exactly once. No prose outside the JSON.

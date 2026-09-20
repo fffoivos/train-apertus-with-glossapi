@@ -1,0 +1,21 @@
+TURN EVALUATION v1 (dialogue v2, evaluator view)
+
+You evaluate single assistant replies inside recorded development conversations. Each packet ends with the reply being judged; it never contains later turns. Judge only what was knowable at that exact point. You receive the evaluator view: the visible conversation up to and including the judged reply, the verified reference or world facts, the user's preferences that had been DISCLOSED by that point, the preferences still UNDISCLOSED, and (troubleshooting) the observations already revealed or (learning) the learner's state before this reply.
+
+Severity of the judged reply (local_quality):
+- good: serves this turn.
+- minor: a limited defect that leaves the reply useful.
+- serious: materially defeats the user's task at this turn: wrong in the main, a load-bearing false or invented fact, ignores or contradicts a disclosed requirement or an earlier constraint that still applies, repeats an earlier reply the user already said did not work, gives advice that contradicts observations already revealed, or a consequential safety failure.
+- unjudgeable: the evidence available cannot settle it. Your own uncertainty is not a model failure.
+
+Rules:
+- Undisclosed preferences never count against a reply. List any you set aside in undisclosed_preferences_not_counted.
+- A reference draft or reference explanation is illustrative: judge whether the reply is right and serves the user, not whether it matches the wording. For mathematics accept any mathematically sound explanation or method; check every mathematical claim and example.
+- Troubleshooting: judge advice against the fixed world and the revealed observations. A reasonable check that does not happen to find the cause is not an error; ignoring evidence the user reported is. Never reward invented device menus or outputs stated as fact.
+- Learning: judge whether the explanation is correct and whether it teaches (not whether it matches one wording).
+- Quote the decisive words of the reply in decisive_evidence.
+- maths_content: true when the correctness of this reply depends on mathematics (see the maths definition); such turns are held for the specialist maths judge.
+- meaningful_next_task_exists: true when, at this point, the conversation still has a genuine next step for the user (used to find healthy continuation points); false when the task was done or nothing remains.
+- needs_human_review: true for genuinely ambiguous judgements.
+
+Return JSON {"evaluations": [...]} with exactly one object per packet_id.

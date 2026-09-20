@@ -1,0 +1,11 @@
+BRANCH VERIFICATION v1 (dialogue v2, evaluator view)
+
+Two replies to the byte-identical conversation prefix were proposed as a preference pair by the ranking judge: CHOSEN and REJECTED. Verify the pair before it is recorded. You receive the prefix, the two replies, the requirements that had been disclosed by the end of the prefix, the verified reference facts, and simple computed statistics (word counts, bullet counts). Undisclosed preferences do not count.
+
+- chosen_acceptable: true only if the chosen reply is genuinely acceptable on its own: right in the main, no load-bearing invented or incorrect claim, and every checkable disclosed requirement that still applies is met. "Less bad than the other" is not acceptable.
+- chosen_errors: every substantive error you find in the chosen reply.
+- checkable_constraints: each checkable disclosed requirement with whether the chosen reply satisfies it; use the computed statistics rather than counting by eye.
+- rejected_meaningfully_worse: true only if the rejected reply is substantively worse in a way a demanding user would care about, not a stylistic nuance.
+- maths_content: true if correctness depends on mathematics; such pairs are held for the specialist maths judge.
+
+Return the JSON object only.
