@@ -16,8 +16,22 @@ Q1 - does the MGSM gain come from the 56 embedded-quantitative pairs?
     (b) NM ~= RC, both below FULL                               -> data VOLUME, not maths content.
     (c) NM ~= RC ~= FULL                                        -> those pairs are not the lever at
         all, and the MGSM gain comes from something we have not identified.
-  "~=" means the 95% interval on the group difference contains zero. With 3 seeds a bootstrap
-  interval is wide; a null here is weak evidence, and is reported as such rather than as (c).
+  AMENDED 20 Sept, BEFORE any Q1 result was scored, because the original plan could not work:
+  a run-level test on 3 seeds cannot support significance at all. Simulating at arm05's observed
+  MGSM between-seed SD (1.95 pp, so ~2.76 pp per seed-matched difference), the 95% percentile
+  bootstrap excludes zero 24.9% of the time when the true effect is ZERO. That is not a 5% test.
+  The reason is structural: with 3 paired observations an exact sign/permutation test has minimum
+  two-sided p = 2/2^3 = 0.25, so no calibrated run-level test can reach 0.05 here.
+
+  Therefore:
+    PRIMARY   item-level, seed-matched: NM_s vs RC_s for s = 42, 43, 44 on MGSM's 250 items,
+              exact McNemar per pair, Holm-corrected across the three pairs. This is properly
+              calibrated and has real power, at the cost of treating each run as fixed.
+    SECONDARY run-level group means and every per-seed value, reported DESCRIPTIVELY with the
+              per-seed numbers shown. No significance is claimed from 3 runs, and the run-level
+              bootstrap interval is printed only as a dispersion summary, labelled as such.
+  A null on the primary means "no item-level difference detectable between these particular runs",
+  not "the pairs are irrelevant" and not equality.
   IFEval and Global-MMLU-Lite are reported alongside but are not what Q1 asks.
 
 Q3 - IPO, actually run this time.
@@ -91,26 +105,66 @@ def main():
         print("%-28s %5d %s %12s" % (name, len(g["mgsm_greek"]), " ".join(cells),
                                      "%.4f" % (sum(gm) / len(gm)) if gm else "-"))
 
-    def contrast(a, b, task, why):
+    def contrast(a, b, task, why, paired=False):
+        """paired=True only when the two groups are seed-matched run-for-run (NM42<->RC42, etc.);
+        stats.seed_bootstrap returns ci_pp as a [lo, hi] LIST, not lo_pp/hi_pp keys."""
         xa, xb = table.get(a, {}).get(task, []), table.get(b, {}).get(task, [])
-        if not xa or not xb:
+        if len(xa) < 2 or len(xb) < 2:
             print("  %-46s INCOMPLETE (%d vs %d runs)" % (why, len(xa), len(xb))); return
-        d = (sum(xb) / len(xb) - sum(xa) / len(xa)) * 100
-        ci = stats.seed_bootstrap(xa, xb)
-        lo, hi = ci["lo_pp"], ci["hi_pp"]
-        verdict = "contains zero" if lo <= 0 <= hi else "excludes zero"
-        res["contrasts"]["%s|%s|%s" % (a, b, task)] = {"delta_pp": d, "lo_pp": lo, "hi_pp": hi, "n_a": len(xa), "n_b": len(xb)}
-        print("  %-46s %+7.2f pp   95%% [%+.2f, %+.2f]  %s" % (why, d, lo, hi, verdict))
+        if paired and len(xa) != len(xb):
+            print("  %-46s NOT PAIRABLE (%d vs %d runs) - falling back to unpaired" % (why, len(xa), len(xb)))
+            paired = False
+        r = stats.paired_seed_bootstrap(xa, xb) if paired else stats.seed_bootstrap(xa, xb)
+        lo, hi = r["ci_pp"]
+        verdict = "contains zero" if lo <= 0 <= hi else "excludes zero (SEE CALIBRATION WARNING)"
+        res["contrasts"]["%s|%s|%s" % (a, b, task)] = dict(r, design=r["design"])
+        print("  %-46s %+7.2f pp   95%% [%+.2f, %+.2f]  %-13s %s"
+              % (why, r["delta_pp"], lo, hi, verdict, r["design"]))
 
+    def item_level(a_labels, b_labels, task, metric, why):
+        """Seed-matched item-level comparison: the only properly calibrated test available at n=3."""
+        print("  %s" % why)
+        pv, rows = [], []
+        for la, lb in zip(a_labels, b_labels):
+            try:
+                ra = from_lm_eval(rundir(root, la), task, metric); rb = from_lm_eval(rundir(root, lb), task, metric)
+                r = compare(ra, rb)
+            except (ComparabilityError, SystemExit) as e:
+                print("    %-22s REFUSED: %s" % (la + " vs " + lb, str(e).splitlines()[-1].strip(" -"))); continue
+            pv.append(r["p_mcnemar"]); rows.append((la, lb, r))
+        if not rows: return
+        adj = stats.holm(pv)
+        for (la, lb, r), q in zip(rows, adj):
+            print("    %-26s %+6.2f pp  %3d gained / %3d lost  p=%.4f  Holm=%.4f%s"
+                  % (la.replace("_ep3", "") + " vs " + lb.replace("_ep3", ""), r["delta_pp"], r["gained"],
+                     r["lost"], r["p_mcnemar"], q, "  *" if q < 0.05 else ""))
+        res["contrasts"]["itemlevel|%s|%s" % (why, task)] = [
+            {"a": la, "b": lb, "delta_pp": r["delta_pp"], "gained": r["gained"], "lost": r["lost"],
+             "p": r["p_mcnemar"], "holm": q} for (la, lb, r), q in zip(rows, adj)]
+
+    NMS = ["armNM42_ep3", "armNM43_ep3", "armNM44_ep3"]
+    RCS = ["armRC42_ep3", "armRC43_ep3", "armRC44_ep3"]
+    for task, metric, nice in GEN:
+        print("\n" + "=" * 100); print("Q1 PRIMARY on %s -- item level, seed-matched, exact McNemar + Holm" % nice); print("=" * 100)
+        item_level(RCS, NMS, task, metric, "NM - RC, per seed (the maths pairs, holding row count fixed)")
+
+    print("\n" + "=" * 100)
+    print("Q1 SECONDARY -- run-level means. DESCRIPTIVE ONLY: at n=3 the interval below excludes zero")
+    print("~25%% of the time under a true null, so it is a dispersion summary, not a test.")
+    print("=" * 100)
+    for name, labels in GROUPS:
+        for task, _, nice in GEN:
+            xs = table.get(name, {}).get(task, [])
+            if xs: print("  %-28s %-12s %s" % (name, nice, " ".join("%.4f" % x for x in xs)))
     for task, _, nice in GEN:
         print("\n" + "=" * 100); print("Q1 on %s  (the question is MGSM; IFEval is context)" % nice); print("=" * 100)
         contrast("FULL  343 pairs (arm05)", "NM    287, maths removed", task, "NM - FULL   (removing the 56 maths pairs)")
         contrast("FULL  343 pairs (arm05)", "RC    287, random removed", task, "RC - FULL   (removing 56 random pairs)")
-        contrast("RC    287, random removed", "NM    287, maths removed", task, "NM - RC     <- Q1's actual contrast")
+        contrast("RC    287, random removed", "NM    287, maths removed", task, "NM - RC     <- Q1 PRIMARY (seed-matched)", paired=True)
 
     print("\n" + "=" * 100); print("Q3  IPO, at matched beta"); print("=" * 100)
     for task, _, nice in GEN:
-        contrast("armIPO   sigmoid, beta 10", "TRUEIPO  ipo, beta 10", task, "%s: TRUEIPO - armIPO (objective)" % nice)
+        contrast("armIPO   sigmoid, beta 10", "TRUEIPO  ipo, beta 10", task, "%s: TRUEIPO - armIPO (objective)" % nice, paired=True)
         contrast("FULL  343 pairs (arm05)", "TRUEIPO  ipo, beta 10", task, "%s: TRUEIPO - FULL (vs the best sigmoid)" % nice)
 
     if res["refused"]:
