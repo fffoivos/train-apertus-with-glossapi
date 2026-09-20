@@ -1,0 +1,3 @@
+`ASTRA_EXECUTION_BRIEF.md` is missing from the current directory. Searching the repository and `Documents/Codex`, including hidden and ignored files, found no copy.
+
+Execution is blocked; I cannot determine the brief’s tasks or requested summary. I recorded the findings in [ASTRA_EXECUTION_STATUS.md](/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments/data/rlhf/dialogue_quality_depth/ASTRA_EXECUTION_STATUS.md).
