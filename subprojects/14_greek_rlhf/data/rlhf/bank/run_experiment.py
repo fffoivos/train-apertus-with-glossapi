@@ -28,9 +28,12 @@ def joint_needs(bank, plan, rng):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--id", required=True); ap.add_argument("--n", type=int, required=True)
     ap.add_argument("--fake", action="store_true"); ap.add_argument("--continue-from", default=""); ap.add_argument("--seed", type=int, default=20260921)
+    ap.add_argument("--with-dialogue", action="store_true", help="OFF by default (owner, 21 Sept: no dialogue here). Dialogue openings belong to the dialogue pipeline.")
+    ap.add_argument("--report-only", action="store_true", help="write report.json + PROMPTS.md for an existing experiment directory; generate nothing")
     ap.add_argument("--forum-share", type=float, default=1 / 3.0, help="forum's share of SINGLE-TURN prompts (legacy: 297 of 872)")
     a = ap.parse_args()
     T = json.load(open(RL / "target_distribution_v1.json")); out = HERE / "experiments" / a.id
+    if a.report_only: return report(a, PromptBank(out / "bank.sqlite"), "%s-n%d" % (a.id, a.n), out, [], {}, set(), {}, time.time())
     if out.exists(): raise SystemExit("%s exists; experiments are not overwritten" % out)
     out.mkdir(parents=True)
     src = (HERE / "experiments" / a.continue_from / "bank.sqlite") if a.continue_from else (HERE / "bank.sqlite")
@@ -39,10 +42,11 @@ def main():
         shutil.copytree(HERE / "experiments" / a.continue_from / "gen", out / "gen", symlinks=True)
     bank = PromptBank(out / "bank.sqlite"); rng = random.Random(a.seed + a.n); plan = "%s-n%d" % (a.id, a.n); t0 = time.time()
 
-    purpose_q = apportion(a.n, T["primary_purpose_shares_percent"])
+    purposes = {k: v for k, v in T["primary_purpose_shares_percent"].items() if a.with_dialogue or k != "dialogue"}   # renormalised by apportion()
+    purpose_q = apportion(a.n, purposes)
     n_forum = int(round(a.forum_share * (a.n - purpose_q.get("dialogue", 0))))
     caps = {"kind": {"forum": n_forum}, "forum": {"astrovox": int(n_forum * T["forum_constraints"]["astrovox_max_percent_of_forum_prompts"] / 100.0)}}
-    bank.plan(plan, a.n, shares={"purpose": T["primary_purpose_shares_percent"], "language": T["language_shares_percent"]}, caps=caps)
+    bank.plan(plan, a.n, shares={"purpose": purposes, "language": T["language_shares_percent"]}, caps=caps)
     asked = {(r["dimension"], r["key"]): r["maximum"] for r in bank.coverage(plan)}
     before = {r[0] for r in bank.db.execute("SELECT source_id FROM sources WHERE state='consumed'")}
     axes_before = slotlib.exhaustion(bank)
@@ -52,13 +56,16 @@ def main():
         needs = joint_needs(bank, plan, rng)
         if not needs: break
         slotlib.build(bank, needs, prefix="%s%d" % (a.id, rnd), seed=a.seed + rnd, target=T)
-        for kind in ("seed", "dialogue"):
+        for kind in (("seed", "dialogue") if a.with_dialogue else ("seed",)):
             k = sum(1 for x in needs if x[0] == kind)
             if k: steps.append(("%s round %d" % (kind, rnd), seeded.generate_into(
                 bank, plan, kind, k, run="%s-r%d" % (plan, rnd), workdir=out / "gen", fake=a.fake, max_rounds=2,
                 legacy_registry=RL / "dialogue_v2" / "collection60" / "registry.sqlite",
                 prior_runs=[RL / "dialogue_v2" / "collection60" / "runs", RL / "generator_v02" / "runs"])))
 
+    return report(a, bank, plan, out, steps, asked, before, axes_before, t0)
+
+def report(a, bank, plan, out, steps, asked, before, axes_before, t0):
     cov = bank.coverage(plan); audit = bank.audit()
     rows = [dict(r) for r in bank.db.execute("SELECT * FROM prompts WHERE plan_id=? ORDER BY kind, purpose, language, status", (plan,))]
     active = [r for r in rows if r["status"] == "active"]; held = [r for r in rows if r["status"] == "held"]

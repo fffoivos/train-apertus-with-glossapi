@@ -1,0 +1,146 @@
+{
+ "experiment": "E2",
+ "plan": "E2-n10",
+ "n": 10,
+ "fake_sol": false,
+ "continued_from": "E1",
+ "seconds": 240.4,
+ "asked": {
+  "forum=astrovox": 0,
+  "kind=forum": 3,
+  "language=el": 7,
+  "language=en": 2,
+  "language=de": 1,
+  "language=es": 0,
+  "language=fr": 0,
+  "language=it": 0,
+  "language=pt": 0,
+  "purpose=everyday": 4,
+  "purpose=factual": 2,
+  "purpose=instruction": 2,
+  "purpose=math": 1,
+  "purpose=safety": 1
+ },
+ "obtained_active": {
+  "forum=astrovox": 0,
+  "kind=forum": 3,
+  "language=el": 7,
+  "language=en": 2,
+  "language=de": 1,
+  "language=es": 0,
+  "language=fr": 0,
+  "language=it": 0,
+  "language=pt": 0,
+  "purpose=everyday": 4,
+  "purpose=factual": 2,
+  "purpose=instruction": 2,
+  "purpose=math": 1,
+  "purpose=safety": 1
+ },
+ "plan_met_exactly": true,
+ "unfilled": [],
+ "by_kind": {
+  "forum": 3,
+  "seed": 7
+ },
+ "held": 0,
+ "generator_slots_issued": 8,
+ "generator_held": 1,
+ "generator_hold_rate": 0.125,
+ "generator_hold_rate_baseline": 0.18,
+ "sources_reused_from_before_this_plan": [],
+ "axis_exhaustion_before": {
+  "person:el": {
+   "pool": 172,
+   "unused": 0,
+   "max_times_one_value_used": 2
+  },
+  "person:en": {
+   "pool": 70,
+   "unused": 0,
+   "max_times_one_value_used": 6
+  },
+  "person:fr": {
+   "pool": 30,
+   "unused": 3,
+   "max_times_one_value_used": 1
+  },
+  "person:de": {
+   "pool": 30,
+   "unused": 8,
+   "max_times_one_value_used": 1
+  },
+  "person:es": {
+   "pool": 30,
+   "unused": 8,
+   "max_times_one_value_used": 1
+  },
+  "person:it": {
+   "pool": 30,
+   "unused": 4,
+   "max_times_one_value_used": 1
+  },
+  "person:pt": {
+   "pool": 30,
+   "unused": 4,
+   "max_times_one_value_used": 1
+  },
+  "situation": {
+   "pool": 130,
+   "unused": 0,
+   "max_times_one_value_used": 11
+  },
+  "topic": {
+   "pool": 290,
+   "unused": 42,
+   "max_times_one_value_used": 6
+  }
+ },
+ "sol_calls": {
+  "instance": 8,
+  "render": 5,
+  "review": 5
+ },
+ "audit": {
+  "foreign_key_violations": 0,
+  "integrity": "ok",
+  "prompts_without_source": 0,
+  "sources_with_two_live_prompts": 0,
+  "duplicate_content": 0,
+  "consumed_sources_with_no_prompt": 0,
+  "live_prompts_on_unconsumed_source": 0,
+  "prompt_cell_disagrees_with_source_kind": 0,
+  "stale_claims_older_than_an_hour": 0,
+  "stale_claims_older_than_a_day": 0,
+  "quotas_overshot": []
+ },
+ "steps": [
+  [
+   "forum",
+   {
+    "registered": 3,
+    "skipped": {},
+    "stopped_because": "reached n"
+   }
+  ],
+  [
+   "seed round 1",
+   {
+    "registered_active": 7,
+    "registered_held": 0,
+    "skipped": {
+     "held_then_retried": 1
+    },
+    "sol_calls": {
+     "instance": 8,
+     "render": 5,
+     "review": 5
+    },
+    "asked_for": 7,
+    "slots_issued_to_generator": 8,
+    "generator_held": 1,
+    "generator_hold_rate": 0.125
+   }
+  ]
+ ]
+}
