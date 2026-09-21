@@ -21,3 +21,5 @@ __pycache__/
 
 # the prompt bank is derived: rebuild with  python -m rlhf.prompts migrate <legacy> <bank>
 data/rlhf/bank/*.sqlite*
+data/rlhf/bank/experiments/*/bank.sqlite*
+data/rlhf/bank/experiments/*/gen/

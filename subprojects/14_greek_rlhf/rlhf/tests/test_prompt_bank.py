@@ -184,6 +184,15 @@ class Distribution(Base):
             out = [b.claim("P", "forum", worker="w")["natural_key"] for _ in range(9)]; b.db.close(); return out
         self.assertEqual(order(os.path.join(self.dir.name, "one.sqlite")), order(os.path.join(self.dir.name, "two.sqlite")))
 
+    def test_a_held_prompt_keeps_its_source_but_does_not_fill_the_quota(self):
+        """Generator 0.2 holds ~18% of what it renders. If those counted, a plan would read full while part of it was unusable."""
+        self.bank.plan("P", 1, shares={"language": {"el": 1}})
+        a = self.forum(1); held = self.bank.submit(a, msg(TEXTS[0]), plan_id="P", run="r", generator="g", status="held", reason="failed review")
+        row = [r for r in self.bank.coverage("P") if r["key"] == "el"][0]; self.assertEqual((row["filled"], row["remaining"]), (0, 1))
+        with self.assertRaises(SourceError): self.bank.submit(a, msg(TEXTS[1]), plan_id="P", run="r", generator="g")     # the source is still taken
+        self.bank.supersede(held, msg(TEXTS[2]), run="r2", generator="g")                                                 # ...until the retry
+        row = [r for r in self.bank.coverage("P") if r["key"] == "el"][0]; self.assertEqual((row["filled"], row["remaining"]), (1, 0))
+
     def test_a_superseded_prompt_gives_its_place_to_the_retry(self):
         self.bank.plan("P", 1, shares={"language": {"el": 1}})
         p = self.bank.submit(self.forum(1), msg(TEXTS[0]), plan_id="P", run="r", generator="g")

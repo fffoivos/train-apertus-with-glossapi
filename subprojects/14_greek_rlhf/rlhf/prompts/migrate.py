@@ -33,7 +33,11 @@ def migrate(legacy_path, bank_path):
         seed_sid[r["seed_id"]] = bank.add_source(
             seed_kind(r["generator_version"]), r["seed_canonical"], purpose=(r["task"] or "unknown").split(":")[0].split("/")[0].strip(),
             language=r["language"] or "el", payload=dict(json.loads(r["seed_json"]), legacy_seed_id=r["seed_id"], legacy_status=r["status"]),
-            origin="generator-" + r["generator_version"])
+            origin="generator-" + r["generator_version"],
+            # A legacy seed that never became a prompt was HELD or deliberately UNSELECTED. Carrying it over as 'available'
+            # would offer it to the next round as if it were fresh supply (it did, in the first dry run). Retire it; submit()
+            # below flips the ones that do have a prompt to 'consumed'.
+            state="available" if r["status"] == "selected" else "retired", reason=None if r["status"] == "selected" else "legacy seed was %s" % r["status"])
     rep["sources_carried"] = {"forum": len(forum_sid), "seed_like": len(seed_sid)}
 
     rows = sorted(old.execute("SELECT * FROM prompts").fetchall(), key=lambda r: (ORDER[r["status"]], r["logical_id"]))

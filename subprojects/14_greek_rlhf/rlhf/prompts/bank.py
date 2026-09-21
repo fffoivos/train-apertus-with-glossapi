@@ -27,7 +27,10 @@ import contextlib, hashlib, json, re, sqlite3, time, unicodedata
 KINDS = ("seed", "forum", "template", "dialogue")
 SOURCE_STATES = ("available", "claimed", "consumed", "rejected", "retired")
 PROMPT_STATES = ("active", "held", "superseded", "rejected", "archived")
-LIVE = ("active", "held")                 # the states that occupy a quota slot and block duplicates
+LIVE = ("active", "held")                 # the states that OCCUPY A SOURCE and block duplicates.
+# Only 'active' fills a quota. A held prompt failed review and is waiting for a retry: it must keep its source
+# (so nobody re-draws it blind) but it must not count towards the distribution, or a plan could read "full"
+# while a fifth of it is unusable -- generator 0.2 holds about 18% of what it renders.
 NEAR_DUPLICATE_JACCARD = 0.5
 DIMENSIONS = ("purpose", "language", "kind", "forum")
 
@@ -193,10 +196,10 @@ class PromptBank:
         return plan_id
 
     def _usage(self, db, plan_id):
-        """{(dimension, key): (filled, claimed)} for one plan. Live prompts fill; outstanding claims reserve."""
+        """{(dimension, key): (filled, claimed)} for one plan. ACTIVE prompts fill; outstanding claims reserve."""
         use = {}
         for d in DIMENSIONS:
-            for k, c in db.execute("SELECT %s, COUNT(*) FROM prompts WHERE plan_id=? AND status IN ('active','held') GROUP BY 1" % d, (plan_id,)):
+            for k, c in db.execute("SELECT %s, COUNT(*) FROM prompts WHERE plan_id=? AND status='active' GROUP BY 1" % d, (plan_id,)):
                 use[(d, k)] = [c, 0]
             for k, c in db.execute("SELECT %s, COUNT(*) FROM sources WHERE claimed_plan=? AND state='claimed' GROUP BY 1" % d, (plan_id,)):
                 use.setdefault((d, k), [0, 0])[1] = c
@@ -257,7 +260,8 @@ class PromptBank:
     def _insert(self, db, source_id, messages, plan_id, run, generator, labels, purpose, language, status, reason, supersedes, allow_near):
         src = db.execute("SELECT * FROM sources WHERE source_id=?", (source_id,)).fetchone()
         if src is None: raise SourceError("no such source %r: a prompt must come from a registered source" % source_id)
-        if src["state"] in ("rejected", "retired"): raise SourceError("%s is %s (%s)" % (source_id, src["state"], src["state_reason"]))
+        if src["state"] in ("rejected", "retired") and status in LIVE:
+            raise SourceError("%s is %s (%s)" % (source_id, src["state"], src["state_reason"]))
         if src["state"] == "claimed" and plan_id != src["claimed_plan"]:
             raise SourceError("%s is claimed for plan %s, not %s" % (source_id, src["claimed_plan"], plan_id))
         sha = content_sha(messages)
@@ -272,7 +276,7 @@ class PromptBank:
                 if j >= NEAR_DUPLICATE_JACCARD:
                     raise NearDuplicateError("%.2f word-5-gram overlap with %s" % (j, other), other, j)
         cell = {"purpose": purpose or src["purpose"], "language": language or src["language"], "kind": src["kind"], "forum": src["forum"]}
-        if plan_id is not None and status in LIVE:
+        if plan_id is not None and status == "active":
             why = self._room(db, plan_id, cell, counting_claims=False)
             if why: raise QuotaError(why)
         pid = "p:" + sha[:16]
@@ -281,7 +285,8 @@ class PromptBank:
                     cell["purpose"], cell["language"], status, reason, supersedes, generator, run,
                     json.dumps(labels or {}, ensure_ascii=False, sort_keys=True), time.time()))
         db.executemany("INSERT INTO shingles VALUES (?,?)", [(pid, h) for h in sh])
-        db.execute("UPDATE sources SET state='consumed', claimed_plan=NULL, claimed_by=NULL, claimed_at=NULL WHERE source_id=?", (source_id,))
+        if src["state"] not in ("rejected", "retired"):    # recording HISTORY on a dead source does not bring it back to life
+            db.execute("UPDATE sources SET state='consumed', claimed_plan=NULL, claimed_by=NULL, claimed_at=NULL WHERE source_id=?", (source_id,))
         return pid
 
     def submit(self, source_id, messages, *, run, generator, plan_id=None, labels=None, purpose=None, language=None,
