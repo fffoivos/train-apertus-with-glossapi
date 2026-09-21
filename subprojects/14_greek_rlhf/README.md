@@ -25,15 +25,17 @@ subproject reaches for it explicitly (see *What is shared* below) rather than be
 | **The measurement record** | [`docs/pages/DPO01_CURVES_20260920.html`](docs/pages/DPO01_CURVES_20260920.html) |
 | **What is still open** | [`docs/RLHF_COORDINATION/OPEN_QUESTIONS_20260920.md`](docs/RLHF_COORDINATION/OPEN_QUESTIONS_20260920.md) — Q1–Q5 |
 | **Every fault found, and what each poisoned** | [`docs/RLHF_COORDINATION/DPO01_POISON_LEDGER_20260919.md`](docs/RLHF_COORDINATION/DPO01_POISON_LEDGER_20260919.md) |
+| **How prompts are made, and the structure that tracks them** | [`docs/PROMPT_BANK_20260921.md`](docs/PROMPT_BANK_20260921.md) |
 | **Current versions of everything** | [`docs/RLHF_COORDINATION/CURRENT_VERSIONS.md`](docs/RLHF_COORDINATION/CURRENT_VERSIONS.md) |
 
 ## Layout
 
 ```
 rlhf/                 the library
+  prompts/            the prompt bank: every prompt tied to one source; no duplicates; quotas enforced
   evals/              the comparison guard: sealed Results, compare(), weights receipts, stats
   sol.py              the one Sol client (effort is policy, not a parameter)
-  tests/              48 tests
+  tests/              81 tests
 data/rlhf/            the preference-data pipeline
   generator_v02/      seed-prompt generator          prompt_generator/   forum prompts (Codex-owned)
   dialogue_v2/        on-policy multi-turn           dialogue_quality_depth/
@@ -80,7 +82,7 @@ checkpoints all point at it. Only the local tree was reorganised.
 
 ## Known test state (2026-09-21)
 
-`rlhf/tests` 48/48, `maths_judge` 15/15, `generator_v02` 9/9, `prompt_generator` 34/34.
+`rlhf/tests` 81/81, `maths_judge` 15/15, `generator_v02` 9/9, `prompt_generator` 34/34.
 Two failures predate the split and were left alone: `dialogue_v2` has a deliberate tripwire
 (*"a DPO trainer now exists: inspect its masks"*) that has fired since the trainer was written, and
 `dialogue_quality_depth/select.py` shadows the stdlib `select` when pytest is run from inside that
