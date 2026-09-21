@@ -93,6 +93,36 @@ CREATE TABLE IF NOT EXISTS shingles(
   prompt_id TEXT NOT NULL REFERENCES prompts(prompt_id), h INTEGER NOT NULL, PRIMARY KEY(prompt_id, h)) WITHOUT ROWID;
 CREATE INDEX IF NOT EXISTS shingles_h ON shingles(h);
 
+-- What a seed slot is MADE OF, as rows rather than as strings buried in a JSON payload. Until 21 Sept the personas,
+-- situations and topics lived in loose JSON files and inside sources.payload, and "how often was this persona used" was
+-- answered by parsing every blob -- the same clean-by-discipline pattern the bank was built to replace.
+CREATE TABLE IF NOT EXISTS ingredients(
+  ingredient_id TEXT PRIMARY KEY,
+  axis     TEXT NOT NULL CHECK(axis IN ('person','situation','topic')),
+  language TEXT,                                   -- a persona belongs to a language; situations and topics do not
+  value    TEXT NOT NULL,
+  origin   TEXT NOT NULL,                          -- the pool file it came from, or 'legacy-slot'
+  retired  INTEGER NOT NULL DEFAULT 0 CHECK(retired IN (0,1)),
+  created  REAL NOT NULL,
+  UNIQUE(axis, value),
+  CHECK((axis = 'person') = (language IS NOT NULL)));
+
+CREATE TABLE IF NOT EXISTS slots(
+  source_id    TEXT PRIMARY KEY REFERENCES sources(source_id),
+  language     TEXT NOT NULL,
+  subtype      TEXT NOT NULL,
+  person_id    TEXT NOT NULL REFERENCES ingredients(ingredient_id),
+  situation_id TEXT NOT NULL REFERENCES ingredients(ingredient_id),
+  topic_id     TEXT NOT NULL REFERENCES ingredients(ingredient_id),
+  scene_enforced INTEGER NOT NULL DEFAULT 1 CHECK(scene_enforced IN (0,1)),
+  UNIQUE(person_id, situation_id, topic_id));      -- never the same triple twice. Legacy has 0 repeats, so this is unconditional.
+-- One situation is not issued twice for the same language + subtype (CP2 M1: E1 and E2 rendered near-paraphrases from the
+-- same scene at a lexical similarity of 0.000). Legacy already has 8 repeated scenes, so legacy rows are exempt.
+CREATE UNIQUE INDEX IF NOT EXISTS one_scene ON slots(language, subtype, situation_id) WHERE scene_enforced = 1;
+CREATE INDEX IF NOT EXISTS slots_person ON slots(person_id);
+CREATE INDEX IF NOT EXISTS slots_situation ON slots(situation_id);
+CREATE INDEX IF NOT EXISTS slots_topic ON slots(topic_id);
+
 CREATE TABLE IF NOT EXISTS aliases(
   alias TEXT PRIMARY KEY, prompt_id TEXT NOT NULL REFERENCES prompts(prompt_id), note TEXT);
 """
@@ -101,6 +131,7 @@ CREATE TABLE IF NOT EXISTS aliases(
 class BankError(Exception): pass
 class SourceError(BankError): pass
 class QuotaError(BankError): pass
+class SlotError(SourceError): pass          # this triple, or this scene, has already been issued
 class DuplicateError(BankError):
     def __init__(self, msg, existing, similarity=1.0):
         super().__init__(msg); self.existing, self.similarity = existing, similarity
@@ -129,6 +160,9 @@ def shingle_set(messages, k=5, short=8):
         t = " ".join(words); grams = ["c:" + t[i:i + 4] for i in range(max(1, len(t) - 3))]
     else: grams = [" ".join(words[i:i + k]) for i in range(len(words) - k + 1)]
     return {int.from_bytes(hashlib.blake2b(g.encode(), digest_size=8).digest(), "big") >> 1 for g in grams}
+
+def ingredient_id_for(axis, value):
+    return "%s:%s" % (axis[:3], hashlib.sha256(("%s\x00%s" % (axis, _norm(value))).encode()).hexdigest()[:16])
 
 def source_id_for(kind, natural_key):
     return "%s:%s" % (kind, hashlib.sha256(("%s\x00%s" % (kind, natural_key)).encode()).hexdigest()[:16])
@@ -203,19 +237,76 @@ class PromptBank:
             self.db.execute("ROLLBACK"); raise
 
     # ------------------------------------------------------------------ sources
-    def add_source(self, kind, natural_key, *, purpose, language, payload, origin, forum=None, state="available", reason=None):
-        """Idempotent on (kind, natural_key): adding a known source returns its id and changes nothing."""
+    def _add_source(self, db, kind, natural_key, purpose, language, payload, origin, forum, state, reason):
         if kind not in KINDS: raise SourceError("unknown kind %r" % kind)
         sid = source_id_for(kind, natural_key)
+        # NOT "INSERT OR IGNORE": in SQLite that also swallows CHECK and NOT NULL violations, so a malformed
+        # source would vanish silently while this returned an id for a row that does not exist.
+        if db.execute("SELECT 1 FROM sources WHERE source_id=?", (sid,)).fetchone(): return sid, False
+        db.execute("INSERT INTO sources(source_id,kind,natural_key,forum,purpose,language,payload,state,state_reason,origin,created)"
+                   " VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+                   (sid, kind, natural_key, forum, purpose, language, json.dumps(payload, ensure_ascii=False, sort_keys=True),
+                    state, reason, origin, time.time()))
+        return sid, True
+
+    def add_source(self, kind, natural_key, *, purpose, language, payload, origin, forum=None, state="available", reason=None):
+        """Idempotent on (kind, natural_key): adding a known source returns its id and changes nothing."""
         with self._tx() as db:
-            # NOT "INSERT OR IGNORE": in SQLite that also swallows CHECK and NOT NULL violations, so a malformed
-            # source would vanish silently while this returned an id for a row that does not exist.
-            if db.execute("SELECT 1 FROM sources WHERE source_id=?", (sid,)).fetchone(): return sid
-            db.execute("INSERT INTO sources(source_id,kind,natural_key,forum,purpose,language,payload,state,state_reason,origin,created)"
-                       " VALUES (?,?,?,?,?,?,?,?,?,?,?)",
-                       (sid, kind, natural_key, forum, purpose, language, json.dumps(payload, ensure_ascii=False, sort_keys=True),
-                        state, reason, origin, time.time()))
-        return sid
+            return self._add_source(db, kind, natural_key, purpose, language, payload, origin, forum, state, reason)[0]
+
+    # ------------------------------------------------------------------ ingredients and slots
+    def add_ingredients(self, axis, values, *, origin, language=None):
+        """Put a pool of personas / situations / topics into the bank. Idempotent on (axis, value). Returns how many were new."""
+        new = 0
+        with self._tx() as db:
+            for v in values:
+                iid = ingredient_id_for(axis, v)
+                if db.execute("SELECT 1 FROM ingredients WHERE ingredient_id=?", (iid,)).fetchone(): continue
+                db.execute("INSERT INTO ingredients(ingredient_id,axis,language,value,origin,created) VALUES (?,?,?,?,?,?)",
+                           (iid, axis, language if axis == "person" else None, _norm(v), origin, time.time())); new += 1
+        return new
+
+    def ingredient_usage(self, axis, language=None):
+        """[{ingredient_id, value, language, used}] for the live pool, least-used first: one SQL join, no JSON parsing."""
+        col = {"person": "person_id", "situation": "situation_id", "topic": "topic_id"}[axis]
+        sql = ("SELECT i.ingredient_id, i.value, i.language, COUNT(s.source_id) AS used FROM ingredients i "
+               "LEFT JOIN slots s ON s.%s = i.ingredient_id WHERE i.axis=? AND i.retired=0" % col)
+        args = [axis]
+        if language is not None: sql += " AND i.language=?"; args.append(language)
+        return [dict(r) for r in self.db.execute(sql + " GROUP BY i.ingredient_id ORDER BY used, i.ingredient_id", args)]
+
+    def exhaustion(self):
+        """Per axis (and per language for personas): pool size, how many are still unused, heaviest reuse. The supply of
+        things to build seeds FROM, which is as real a limit as the supply of forum threads."""
+        out = {}
+        langs = [r[0] for r in self.db.execute("SELECT DISTINCT language FROM ingredients WHERE axis='person' AND retired=0 ORDER BY 1")]
+        for name, axis, lang in [("person:" + l, "person", l) for l in langs] + [("situation", "situation", None), ("topic", "topic", None)]:
+            u = self.ingredient_usage(axis, lang)
+            out[name] = {"pool": len(u), "unused": sum(1 for r in u if r["used"] == 0), "max_times_one_value_used": max([r["used"] for r in u] or [0])}
+        return out
+
+    def add_slot(self, kind, slot, *, purpose, language, origin, scene_enforced=True, state="available", reason=None):
+        """Register a seed slot as a source AND record what it is made of, in one transaction.
+
+        `slot` carries person / situation / topic as TEXT; they must already be ingredients. Its identity is its content
+        (slot_id is a run-scoped label and is excluded). Raises SlotError if this person+situation+topic triple, or --
+        when scene_enforced -- this situation for this language+subtype, has been issued before."""
+        if kind not in ("seed", "dialogue", "template"): raise SourceError("a slot is a seed, dialogue or template source, not %r" % kind)
+        key = json.dumps({k: v for k, v in slot.items() if k != "slot_id"}, ensure_ascii=False, sort_keys=True)
+        with self._tx() as db:
+            ids = {}
+            for axis in ("person", "situation", "topic"):
+                iid = ingredient_id_for(axis, slot[axis])
+                if not db.execute("SELECT 1 FROM ingredients WHERE ingredient_id=?", (iid,)).fetchone():
+                    raise SlotError("%s %r is not in the ingredient pool" % (axis, slot[axis][:60]))
+                ids[axis] = iid
+            sid, fresh = self._add_source(db, kind, key, purpose, language, slot, origin, None, state, reason)
+            if not fresh: return sid
+            try:
+                db.execute("INSERT INTO slots VALUES (?,?,?,?,?,?,?)", (sid, slot["language"], slot["subtype"], ids["person"], ids["situation"], ids["topic"], int(scene_enforced)))
+            except sqlite3.IntegrityError as e:
+                raise SlotError("already issued: %s" % ("this person+situation+topic" if "person_id" in str(e) else "this situation for %s/%s" % (slot["language"], slot["subtype"])))
+            return sid
 
     def release(self, source_id):
         """Give a claimed source back unused."""
@@ -420,7 +511,10 @@ class PromptBank:
         if p is None: raise BankError("no such prompt %r" % prompt_id)
         p = dict(p); p["messages"] = json.loads(p["messages"]); p["labels"] = json.loads(p["labels"])
         hist = [dict(r) for r in self.db.execute("SELECT prompt_id, status, status_reason, run, created FROM prompts WHERE source_id=? ORDER BY created", (p["source_id"],))]
-        return {"prompt": p, "source": self.source(p["source_id"]), "attempts_on_this_source": hist,
+        made_of = {r["axis"]: {"ingredient_id": r["ingredient_id"], "value": r["value"], "used_by_slots": r["used"]} for r in self.db.execute(
+            "SELECT i.axis, i.ingredient_id, i.value, (SELECT COUNT(*) FROM slots x WHERE x.person_id=i.ingredient_id OR x.situation_id=i.ingredient_id OR x.topic_id=i.ingredient_id) AS used "
+            "FROM slots s JOIN ingredients i ON i.ingredient_id IN (s.person_id, s.situation_id, s.topic_id) WHERE s.source_id=?", (p["source_id"],))}
+        return {"prompt": p, "source": self.source(p["source_id"]), "made_of": made_of or None, "attempts_on_this_source": hist,
                 "aliases": [r[0] for r in self.db.execute("SELECT alias FROM aliases WHERE prompt_id=?", (prompt_id,))]}
 
     def coverage(self, plan_id):
@@ -481,6 +575,8 @@ class PromptBank:
                 "consumed_sources_with_no_prompt": one("SELECT COUNT(*) FROM sources s WHERE state='consumed' AND NOT EXISTS(SELECT 1 FROM prompts p WHERE p.source_id=s.source_id)"),
                 "live_prompts_on_unconsumed_source": one("SELECT COUNT(*) FROM prompts p JOIN sources s USING(source_id) WHERE p.status IN ('active','held') AND s.state!='consumed'"),
                 "prompt_cell_disagrees_with_source_kind": one("SELECT COUNT(*) FROM prompts p JOIN sources s USING(source_id) WHERE p.kind!=s.kind OR IFNULL(p.forum,'')!=IFNULL(s.forum,'')"),
+                "slot_sources_with_no_slot_row": one("SELECT COUNT(*) FROM sources s WHERE s.kind IN ('seed','dialogue') AND s.origin LIKE 'slots.build%' AND NOT EXISTS(SELECT 1 FROM slots x WHERE x.source_id=s.source_id)"),
+                "repeated_scenes_among_enforced_slots": one("SELECT COUNT(*) FROM (SELECT 1 FROM slots WHERE scene_enforced=1 GROUP BY language, subtype, situation_id HAVING COUNT(*)>1)"),
                 "stale_claims_older_than_an_hour": one("SELECT COUNT(*) FROM sources WHERE state='claimed' AND claimed_at < %f" % (time.time() - 3600)),
                 "stale_claims_older_than_a_day": one("SELECT COUNT(*) FROM sources WHERE state='claimed' AND claimed_at < %f" % (time.time() - 86400)),
                 "quotas_overshot": over}

@@ -16,6 +16,6 @@
 
 submit() raises SourceError, DuplicateError, NearDuplicateError or QuotaError. It never degrades quietly.
 """
-from .bank import (PromptBank, BankError, SourceError, QuotaError, DuplicateError, NearDuplicateError,
+from .bank import (PromptBank, BankError, SourceError, SlotError, ingredient_id_for, QuotaError, DuplicateError, NearDuplicateError,
                    content_sha, shingle_set, source_id_for, apportion, KINDS, DIMENSIONS, NEAR_DUPLICATE_JACCARD)
 from .flows import ingest_forum_gate, ingest_seeds, fill, forum_prompt

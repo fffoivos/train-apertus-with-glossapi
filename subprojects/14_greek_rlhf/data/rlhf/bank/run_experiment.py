@@ -30,6 +30,10 @@ def main():
     ap.add_argument("--fake", action="store_true"); ap.add_argument("--continue-from", default=""); ap.add_argument("--seed", type=int, default=20260921)
     ap.add_argument("--with-dialogue", action="store_true", help="OFF by default (owner, 21 Sept: no dialogue here). Dialogue openings belong to the dialogue pipeline.")
     ap.add_argument("--report-only", action="store_true", help="write report.json + PROMPTS.md for an existing experiment directory; generate nothing")
+    ap.add_argument("--max-dialogue", type=int, default=2, help="HARD cap on dialogue openings in this plan (owner, 21 Sept: 'you can run 2')")
+    ap.add_argument("--cumulative", action="store_true", help="apportion against the running total of earlier plans. OPT-IN: on E3 it silently turned a "
+                    "plan announced as '2 dialogue + 4 single-turn' into 6 dialogue, because E1's withdrawn dialogue places read as a deficit to catch up")
+    ap.add_argument("--dry-plan", action="store_true", help="print the quotas this would create and stop. Costs nothing; run it before anything that calls a model")
     ap.add_argument("--note", default="", help="a scope change or anything else a reader needs in order to score this experiment correctly")
     ap.add_argument("--forum-share", type=float, default=1 / 3.0, help="forum's share of SINGLE-TURN prompts (legacy: 297 of 872)")
     a = ap.parse_args()
@@ -45,11 +49,21 @@ def main():
 
     purposes = {k: v for k, v in T["primary_purpose_shares_percent"].items() if a.with_dialogue or k != "dialogue"}   # renormalised by apportion()
     purpose_q = apportion(a.n, purposes)
+    if purpose_q.get("dialogue", 0) > a.max_dialogue:                     # the cap is absolute; the places it frees go to the other purposes by their shares
+        rest = apportion(a.n - a.max_dialogue, {k: v for k, v in purposes.items() if k != "dialogue"})
+        purpose_q = dict(rest, dialogue=a.max_dialogue)
+    purposes = {k: v for k, v in purpose_q.items() if v}                  # integer weights summing to n: apportion() returns them unchanged
     n_forum = int(round(a.forum_share * (a.n - purpose_q.get("dialogue", 0))))
     caps = {"kind": {"forum": n_forum}, "forum": {"astrovox": int(n_forum * T["forum_constraints"]["astrovox_max_percent_of_forum_prompts"] / 100.0)}}
-    bank.plan(plan, a.n, after=[r[0] for r in bank.db.execute("SELECT plan_id FROM plans ORDER BY created")] if a.continue_from else (), shares={"purpose": purposes, "language": T["language_shares_percent"]}, caps=caps)
+    earlier = [r[0] for r in bank.db.execute("SELECT plan_id FROM plans ORDER BY created")] if (a.continue_from and a.cumulative) else ()
+    bank.plan(plan, a.n, after=() if a.cumulative and "dialogue" in purposes else earlier, shares={"purpose": purposes, "language": T["language_shares_percent"]}, caps=caps)
     asked = {(r["dimension"], r["key"]): r["maximum"] for r in bank.coverage(plan)}
+    print("QUOTAS for %s:" % plan, {"%s=%s" % k: v for k, v in asked.items() if v}, flush=True)      # always said BEFORE any model call
+    if asked.get(("purpose", "dialogue"), 0) > a.max_dialogue: raise SystemExit("refusing: %d dialogue places > --max-dialogue %d" % (asked[("purpose", "dialogue")], a.max_dialogue))
+    if a.dry_plan:
+        bank.db.close(); shutil.rmtree(out); print("dry plan only: nothing generated, %s removed" % out); return
     before = {r[0] for r in bank.db.execute("SELECT source_id FROM sources WHERE state='consumed'")}
+    backfilled = slotlib.backfill(bank)            # a bank copy from before the `slots` table existed gets its rows
     axes_before = slotlib.exhaustion(bank)
 
     steps = [("forum", fill(bank, plan, "forum", n_forum, run=plan + "-forum", generator="forum-gate-v3"))]

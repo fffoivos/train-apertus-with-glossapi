@@ -39,6 +39,21 @@ def migrate(legacy_path, bank_path):
             # would offer it to the next round as if it were fresh supply (it did, in the first dry run). Retire it; submit()
             # below flips the ones that do have a prompt to 'consumed'.
             state="available" if r["status"] == "selected" else "retired", reason=None if r["status"] == "selected" else "legacy seed was %s" % r["status"])
+    # What each legacy slot was MADE OF becomes rows: the pools first, then any persona/situation/topic a legacy slot used
+    # that is no longer in a pool file (origin 'legacy-slot'), then one `slots` row per slot. Legacy rows are exempt from
+    # the scene rule -- legacy already repeats 8 scenes -- but NOT from the triple rule, which legacy never broke.
+    from . import slots as slotlib
+    rep["ingredients_loaded_from_axes"] = slotlib.ingest_axes(bank); extra = collections.Counter(); linked = 0
+    for r in old.execute("SELECT * FROM seeds"):
+        slot = (json.loads(r["seed_json"]).get("slot") or {})
+        if not all(slot.get(a) for a in ("person", "situation", "topic")): continue
+        for axis in ("person", "situation", "topic"):
+            extra[axis] += bank.add_ingredients(axis, [slot[axis]], origin="legacy-slot", language=slot.get("language") or r["language"] or "el")
+        with bank._tx() as db:
+            from .bank import ingredient_id_for
+            db.execute("INSERT OR IGNORE INTO slots VALUES (?,?,?,?,?,?,0)", (seed_sid[r["seed_id"]], slot.get("language") or r["language"] or "el", slot.get("subtype") or "?",
+                       ingredient_id_for("person", slot["person"]), ingredient_id_for("situation", slot["situation"]), ingredient_id_for("topic", slot["topic"]))); linked += 1
+    rep["legacy_slots_linked_to_ingredients"] = linked; rep["ingredients_found_only_in_legacy_slots"] = dict(extra)
     rep["sources_carried"] = {"forum": len(forum_sid), "seed_like": len(seed_sid)}
 
     rows = sorted(old.execute("SELECT * FROM prompts").fetchall(), key=lambda r: (ORDER[r["status"]], r["logical_id"]))
@@ -86,4 +101,5 @@ def migrate(legacy_path, bank_path):
     n = sum(live_forum.values())
     rep["legacy_forum_shares_percent"] = {f: round(100.0 * c / n, 1) for f, c in live_forum.most_common()} if n else {}
     rep["supply_unused_forum_sources"] = sum(r["n"] for r in bank.supply("forum"))
+    rep["ingredient_exhaustion"] = bank.exhaustion()
     bank.db.close(); old.close(); return rep
