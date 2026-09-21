@@ -107,18 +107,19 @@ CREATE TABLE IF NOT EXISTS ingredients(
   UNIQUE(axis, value),
   CHECK((axis = 'person') = (language IS NOT NULL)));
 
+-- A SEED IS THE COMBINATION OF ALL ITS ELEMENTS (owner, 21 Sept). What must never repeat is that whole combination, and
+-- that is already the source's identity: sources.UNIQUE(kind, natural_key), where the key is the canonical JSON of every
+-- element. This table records what each seed is made of so the elements can be queried; it adds NO uniqueness rule of
+-- its own. (It briefly had two -- never the same person+situation+topic, never the same situation per language+subtype
+-- -- on the theory that a used persona or situation was "spent". It is not: Greek alone has ~52 billion possible seeds
+-- and 173 have been issued. A persona appearing in one seed says nothing about the other combinations it can be in.)
 CREATE TABLE IF NOT EXISTS slots(
   source_id    TEXT PRIMARY KEY REFERENCES sources(source_id),
   language     TEXT NOT NULL,
   subtype      TEXT NOT NULL,
   person_id    TEXT NOT NULL REFERENCES ingredients(ingredient_id),
   situation_id TEXT NOT NULL REFERENCES ingredients(ingredient_id),
-  topic_id     TEXT NOT NULL REFERENCES ingredients(ingredient_id),
-  scene_enforced INTEGER NOT NULL DEFAULT 1 CHECK(scene_enforced IN (0,1)),
-  UNIQUE(person_id, situation_id, topic_id));      -- never the same triple twice. Legacy has 0 repeats, so this is unconditional.
--- One situation is not issued twice for the same language + subtype (CP2 M1: E1 and E2 rendered near-paraphrases from the
--- same scene at a lexical similarity of 0.000). Legacy already has 8 repeated scenes, so legacy rows are exempt.
-CREATE UNIQUE INDEX IF NOT EXISTS one_scene ON slots(language, subtype, situation_id) WHERE scene_enforced = 1;
+  topic_id     TEXT NOT NULL REFERENCES ingredients(ingredient_id));
 CREATE INDEX IF NOT EXISTS slots_person ON slots(person_id);
 CREATE INDEX IF NOT EXISTS slots_situation ON slots(situation_id);
 CREATE INDEX IF NOT EXISTS slots_topic ON slots(topic_id);
@@ -131,7 +132,7 @@ CREATE TABLE IF NOT EXISTS aliases(
 class BankError(Exception): pass
 class SourceError(BankError): pass
 class QuotaError(BankError): pass
-class SlotError(SourceError): pass          # this triple, or this scene, has already been issued
+class SlotError(SourceError): pass          # an element is not in the pool, or this exact seed already exists and a new one was required
 class DuplicateError(BankError):
     def __init__(self, msg, existing, similarity=1.0):
         super().__init__(msg); self.existing, self.similarity = existing, similarity
@@ -275,22 +276,22 @@ class PromptBank:
         if language is not None: sql += " AND i.language=?"; args.append(language)
         return [dict(r) for r in self.db.execute(sql + " GROUP BY i.ingredient_id ORDER BY used, i.ingredient_id", args)]
 
-    def exhaustion(self):
-        """Per axis (and per language for personas): pool size, how many are still unused, heaviest reuse. The supply of
-        things to build seeds FROM, which is as real a limit as the supply of forum threads."""
-        out = {}
-        langs = [r[0] for r in self.db.execute("SELECT DISTINCT language FROM ingredients WHERE axis='person' AND retired=0 ORDER BY 1")]
-        for name, axis, lang in [("person:" + l, "person", l) for l in langs] + [("situation", "situation", None), ("topic", "topic", None)]:
-            u = self.ingredient_usage(axis, lang)
-            out[name] = {"pool": len(u), "unused": sum(1 for r in u if r["used"] == 0), "max_times_one_value_used": max([r["used"] for r in u] or [0])}
+    def seed_space(self, subtypes, label_combinations):
+        """Per language: how many seeds are POSSIBLE (personas x situations x topics x subtypes x label combinations) and how
+        many have been issued. This is the supply of seeds. Counting how often one persona has appeared is not."""
+        sit = self.db.execute("SELECT COUNT(*) FROM ingredients WHERE axis='situation' AND retired=0").fetchone()[0]
+        top = self.db.execute("SELECT COUNT(*) FROM ingredients WHERE axis='topic' AND retired=0").fetchone()[0]; out = {}
+        for lang, n in self.db.execute("SELECT language, COUNT(*) FROM ingredients WHERE axis='person' AND retired=0 GROUP BY 1 ORDER BY 1"):
+            issued = self.db.execute("SELECT COUNT(*) FROM slots WHERE language=?", (lang,)).fetchone()[0]
+            out[lang] = {"possible": n * sit * top * subtypes * label_combinations, "issued": issued}
         return out
 
-    def add_slot(self, kind, slot, *, purpose, language, origin, scene_enforced=True, state="available", reason=None):
-        """Register a seed slot as a source AND record what it is made of, in one transaction.
+    def add_slot(self, kind, slot, *, purpose, language, origin, must_be_new=False, state="available", reason=None):
+        """Register a seed as a source AND record what it is made of, in one transaction.
 
-        `slot` carries person / situation / topic as TEXT; they must already be ingredients. Its identity is its content
-        (slot_id is a run-scoped label and is excluded). Raises SlotError if this person+situation+topic triple, or --
-        when scene_enforced -- this situation for this language+subtype, has been issued before."""
+        The seed's identity is the combination of ALL its elements (slot_id is a run-scoped label and is excluded), so the
+        same combination offered twice is one source. must_be_new=True raises SlotError instead of returning the existing
+        id -- for a builder that wants a fresh seed and should draw again."""
         if kind not in ("seed", "dialogue", "template"): raise SourceError("a slot is a seed, dialogue or template source, not %r" % kind)
         key = json.dumps({k: v for k, v in slot.items() if k != "slot_id"}, ensure_ascii=False, sort_keys=True)
         with self._tx() as db:
@@ -301,11 +302,10 @@ class PromptBank:
                     raise SlotError("%s %r is not in the ingredient pool" % (axis, slot[axis][:60]))
                 ids[axis] = iid
             sid, fresh = self._add_source(db, kind, key, purpose, language, slot, origin, None, state, reason)
-            if not fresh: return sid
-            try:
-                db.execute("INSERT INTO slots VALUES (?,?,?,?,?,?,?)", (sid, slot["language"], slot["subtype"], ids["person"], ids["situation"], ids["topic"], int(scene_enforced)))
-            except sqlite3.IntegrityError as e:
-                raise SlotError("already issued: %s" % ("this person+situation+topic" if "person_id" in str(e) else "this situation for %s/%s" % (slot["language"], slot["subtype"])))
+            if not fresh:
+                if must_be_new: raise SlotError("this exact seed already exists as %s" % sid)
+                return sid
+            db.execute("INSERT INTO slots VALUES (?,?,?,?,?,?)", (sid, slot["language"], slot["subtype"], ids["person"], ids["situation"], ids["topic"]))
             return sid
 
     def release(self, source_id):
@@ -576,7 +576,6 @@ class PromptBank:
                 "live_prompts_on_unconsumed_source": one("SELECT COUNT(*) FROM prompts p JOIN sources s USING(source_id) WHERE p.status IN ('active','held') AND s.state!='consumed'"),
                 "prompt_cell_disagrees_with_source_kind": one("SELECT COUNT(*) FROM prompts p JOIN sources s USING(source_id) WHERE p.kind!=s.kind OR IFNULL(p.forum,'')!=IFNULL(s.forum,'')"),
                 "slot_sources_with_no_slot_row": one("SELECT COUNT(*) FROM sources s WHERE s.kind IN ('seed','dialogue') AND s.origin LIKE 'slots.build%' AND NOT EXISTS(SELECT 1 FROM slots x WHERE x.source_id=s.source_id)"),
-                "repeated_scenes_among_enforced_slots": one("SELECT COUNT(*) FROM (SELECT 1 FROM slots WHERE scene_enforced=1 GROUP BY language, subtype, situation_id HAVING COUNT(*)>1)"),
                 "stale_claims_older_than_an_hour": one("SELECT COUNT(*) FROM sources WHERE state='claimed' AND claimed_at < %f" % (time.time() - 3600)),
                 "stale_claims_older_than_a_day": one("SELECT COUNT(*) FROM sources WHERE state='claimed' AND claimed_at < %f" % (time.time() - 86400)),
                 "quotas_overshot": over}

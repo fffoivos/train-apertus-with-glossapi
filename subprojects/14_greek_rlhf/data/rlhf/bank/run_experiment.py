@@ -64,7 +64,7 @@ def main():
         bank.db.close(); shutil.rmtree(out); print("dry plan only: nothing generated, %s removed" % out); return
     before = {r[0] for r in bank.db.execute("SELECT source_id FROM sources WHERE state='consumed'")}
     backfilled = slotlib.backfill(bank)            # a bank copy from before the `slots` table existed gets its rows
-    axes_before = slotlib.exhaustion(bank)
+    axes_before = slotlib.seed_space(bank, T)
 
     steps = [("forum", fill(bank, plan, "forum", n_forum, run=plan + "-forum", generator="forum-gate-v3"))]
     for rnd in (1, 2, 3):
@@ -104,7 +104,7 @@ def report(a, bank, plan, out, steps, asked, before, axes_before, t0):
            "by_kind": dict(collections.Counter(r["kind"] for r in active)), "held": len(held),
            "generator_slots_issued": issued, "generator_held": gheld,
            "generator_hold_rate": round(gheld / float(issued), 3) if issued else None, "generator_hold_rate_baseline": 0.18,
-           "sources_reused_from_before_this_plan": reused, "axis_exhaustion_before": axes_before, "sol_calls": dict(calls), "audit": audit,
+           "sources_reused_from_before_this_plan": reused, "seed_space_before": axes_before, "sol_calls": dict(calls), "audit": audit,
            "steps": [(name, {k: v for k, v in s.items() if k not in ("prompt_ids", "held_ids")}) for name, s in steps]}
     json.dump(rep, open(out / "report.json", "w"), ensure_ascii=False, indent=1, default=str)
 

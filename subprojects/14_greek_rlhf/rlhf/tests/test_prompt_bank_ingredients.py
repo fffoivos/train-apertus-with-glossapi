@@ -27,29 +27,32 @@ class Structure(Base):
         self.add(person="P1", topic="T1"); self.add(person="P1", situation="S2", topic="T2")
         u = {r["value"]: r["used"] for r in self.bank.ingredient_usage("person", "el")}
         self.assertEqual(u, {"P1": 2, "P2": 0, "P3": 0}); self.assertEqual([r["value"] for r in self.bank.ingredient_usage("person", "el")][:2], ["P2", "P3"])
-        self.assertEqual(self.bank.exhaustion()["person:el"], {"pool": 3, "unused": 2, "max_times_one_value_used": 2})
 
     def test_a_slot_made_of_something_outside_the_pool_is_refused(self):
         with self.assertRaises(SlotError): self.add(person="someone nobody registered")
         self.assertEqual(self.bank.db.execute("SELECT COUNT(*) FROM sources").fetchone()[0], 0)        # and its source was rolled back with it
 
-    def test_the_same_triple_is_refused_even_with_different_labels(self):
-        self.add()
-        with self.assertRaises(SlotError): self.bank.add_slot("seed", slot(difficulty="challenging", subtype="solving"), purpose="math", language="el", origin="t")
+    def test_a_seed_is_the_combination_of_all_its_elements(self):
+        """Owner, 21 Sept: 'we are looking at combinations of all the elements, not if a persona has been used once.'"""
+        a = self.add()
+        self.assertEqual(self.bank.add_slot("seed", slot(), purpose="math", language="el", origin="t"), a)            # the same combination: one source
+        with self.assertRaises(SlotError): self.bank.add_slot("seed", slot(), purpose="math", language="el", origin="t", must_be_new=True)
+        others = [self.add(topic="T2"), self.add(situation="S2"), self.add(person="P2"), self.add(subtype="solving"),
+                  self.bank.add_slot("seed", slot(difficulty="challenging"), purpose="math", language="el", origin="t")]
+        self.assertEqual(len({a, *others}), 6)                                                                         # change ANY one element: a new seed
 
-    def test_the_same_scene_is_refused_for_one_language_and_subtype_only(self):
-        self.add(person="P1", topic="T1")
-        with self.assertRaises(SlotError): self.add(person="P2", topic="T2")                         # same situation, same el/calculation
-        self.add(person="P2", topic="T2", subtype="solving")                                        # another subtype: fine
-        self.add(person="Q1", topic="T3", language="en")                                            # another language: fine
+    def test_reusing_a_persona_or_a_situation_is_not_an_error(self):
+        for i, (sit, top) in enumerate([("S1", "T1"), ("S1", "T2"), ("S2", "T1"), ("S2", "T3")]): self.add(person="P1", situation=sit, topic=top)
+        self.assertEqual(self.bank.db.execute("SELECT COUNT(*) FROM slots").fetchone()[0], 4)
 
-    def test_raw_sql_cannot_repeat_a_triple_or_an_enforced_scene(self):
-        a = self.add(); row = self.bank.db.execute("SELECT * FROM slots WHERE source_id=?", (a,)).fetchone()
-        b = self.bank.add_source("seed", "other", purpose="math", language="el", payload={}, origin="t"); raw = sqlite3.connect(self.path)
-        with self.assertRaises(sqlite3.IntegrityError): raw.execute("INSERT INTO slots VALUES (?,?,?,?,?,?,1)", (b, "el", "solving", row["person_id"], row["situation_id"], row["topic_id"]))
-        other = self.bank.db.execute("SELECT ingredient_id FROM ingredients WHERE value='T2'").fetchone()[0]
-        with self.assertRaises(sqlite3.IntegrityError): raw.execute("INSERT INTO slots VALUES (?,?,?,?,?,?,1)", (b, "el", "calculation", row["person_id"], row["situation_id"], other))
-        raw.close()
+    def test_a_used_seed_is_never_handed_out_again(self):
+        a = self.add(); self.bank.plan("P", 2, shares={"language": {"el": 1}})
+        s1 = self.bank.claim("P", "seed", worker="w"); self.bank.submit(s1["source_id"], [{"role": "user", "content": "Πόσο κάνει δεκαπέντε τοις εκατό του διακόσια σαράντα και πώς το ελέγχω"}], plan_id="P", run="r", generator="g")
+        self.assertEqual(s1["source_id"], a); self.assertIsNone(self.bank.claim("P", "seed", worker="w"))
+
+    def test_the_seed_space_is_what_supply_means(self):
+        sp = self.bank.seed_space(subtypes=28, label_combinations=288); self.add()
+        self.assertEqual(sp["el"]["possible"], 3 * 2 * 3 * 28 * 288); self.assertEqual(self.bank.seed_space(28, 288)["el"]["issued"], 1)
 
     def test_re_adding_the_same_slot_under_a_new_label_is_the_same_source(self):
         a = self.add(); b = self.bank.add_slot("seed", slot(slot_id="Y-S77"), purpose="math", language="el", origin="again")
@@ -70,8 +73,8 @@ class RealPools(unittest.TestCase):
         ids = slotlib.build(b, [("seed", "math", "el")] * 12 + [("dialogue", "dialogue", "en")] * 3, prefix="T", seed=4, target=T)
         self.assertEqual(b.db.execute("SELECT COUNT(*) FROM slots").fetchone()[0], 15); self.assertEqual(len(set(ids)), 15)
         self.assertEqual(slotlib.ingest_axes(b), {k: 0 for k in slotlib.ingest_axes(b)})                 # idempotent
-        a = b.audit(); self.assertEqual((a["slot_sources_with_no_slot_row"], a["repeated_scenes_among_enforced_slots"]), (0, 0))
-        self.assertEqual(b.exhaustion()["person:el"]["max_times_one_value_used"], 1)                     # least-used first
+        self.assertEqual(b.audit()["slot_sources_with_no_slot_row"], 0)
+        self.assertEqual(max(r["used"] for r in b.ingredient_usage("person", "el")), 1)                  # spread: least-used first, a preference only
         b.db.close(); d.cleanup()
 
 

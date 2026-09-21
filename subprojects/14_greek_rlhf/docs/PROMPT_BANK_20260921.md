@@ -93,6 +93,21 @@ English by 100, `instruction` by 75, `safety` by 50, and the minor languages hav
 (figures recomputed after legacy leftovers were retired rather than offered as supply). For forums that is a hard limit. For seeds it means *generate seeds first* — seed
 supply is elastic, but only if someone makes it.
 
+## What a seed is, and what "used" means (owner's correction, 21 Sept)
+
+A seed is the **combination of all its elements**: purpose × subtype × language × difficulty / attitude / register /
+detail × person × situation × topic. The bank refuses the *same combination* twice — that is the source's identity,
+`UNIQUE(kind, natural_key)` over the canonical JSON of every element — and once a seed has a live prompt it is never
+handed out again. **That is the whole rule.**
+
+Elements are reused freely. I briefly treated a used persona or situation as "spent", reported the pools as exhausted,
+and added two hard constraints on top of that theory. It was wrong: Greek alone has about **52 billion** possible seeds
+and 173 have been issued. `bank.seed_space()` reports supply in those terms. Elements are still drawn least-used-first,
+purely for spread; it is a preference and never a refusal.
+
+The elements are rows (`ingredients`, `slots`), so "which seeds used this persona" and "what was this prompt made of"
+(`lineage()['made_of']`) are queries rather than JSON parsing.
+
 ## What is and is not guaranteed (after the independent review, R-PB1)
 
 - **Never overshoot: guaranteed.** Verified by the reviewer under 8 real processes. `submit()`, `supersede()` and

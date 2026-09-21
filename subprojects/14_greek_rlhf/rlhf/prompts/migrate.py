@@ -40,8 +40,7 @@ def migrate(legacy_path, bank_path):
             # below flips the ones that do have a prompt to 'consumed'.
             state="available" if r["status"] == "selected" else "retired", reason=None if r["status"] == "selected" else "legacy seed was %s" % r["status"])
     # What each legacy slot was MADE OF becomes rows: the pools first, then any persona/situation/topic a legacy slot used
-    # that is no longer in a pool file (origin 'legacy-slot'), then one `slots` row per slot. Legacy rows are exempt from
-    # the scene rule -- legacy already repeats 8 scenes -- but NOT from the triple rule, which legacy never broke.
+    # that is no longer in a pool file (origin 'legacy-slot'), then one `slots` row per slot.
     from . import slots as slotlib
     rep["ingredients_loaded_from_axes"] = slotlib.ingest_axes(bank); extra = collections.Counter(); linked = 0
     for r in old.execute("SELECT * FROM seeds"):
@@ -51,7 +50,7 @@ def migrate(legacy_path, bank_path):
             extra[axis] += bank.add_ingredients(axis, [slot[axis]], origin="legacy-slot", language=slot.get("language") or r["language"] or "el")
         with bank._tx() as db:
             from .bank import ingredient_id_for
-            db.execute("INSERT OR IGNORE INTO slots VALUES (?,?,?,?,?,?,0)", (seed_sid[r["seed_id"]], slot.get("language") or r["language"] or "el", slot.get("subtype") or "?",
+            db.execute("INSERT OR IGNORE INTO slots VALUES (?,?,?,?,?,?)", (seed_sid[r["seed_id"]], slot.get("language") or r["language"] or "el", slot.get("subtype") or "?",
                        ingredient_id_for("person", slot["person"]), ingredient_id_for("situation", slot["situation"]), ingredient_id_for("topic", slot["topic"]))); linked += 1
     rep["legacy_slots_linked_to_ingredients"] = linked; rep["ingredients_found_only_in_legacy_slots"] = dict(extra)
     rep["sources_carried"] = {"forum": len(forum_sid), "seed_like": len(seed_sid)}
@@ -101,5 +100,6 @@ def migrate(legacy_path, bank_path):
     n = sum(live_forum.values())
     rep["legacy_forum_shares_percent"] = {f: round(100.0 * c / n, 1) for f, c in live_forum.most_common()} if n else {}
     rep["supply_unused_forum_sources"] = sum(r["n"] for r in bank.supply("forum"))
-    rep["ingredient_exhaustion"] = bank.exhaustion()
+    from .slots import seed_space
+    rep["seed_space"] = seed_space(bank, json.load(open(slotlib.RL / "target_distribution_v1.json")))
     bank.db.close(); old.close(); return rep

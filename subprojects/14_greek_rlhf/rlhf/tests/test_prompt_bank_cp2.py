@@ -74,14 +74,10 @@ class M6_ChunkedRounds(unittest.TestCase):
 
 T = {"within_seeded_defaults_percent": {"difficulty": {"routine": 1}, "attitude": {"cooperative": 1}, "register": {"standard": 1}}}
 
-class M1_Scenes(Base):
-    def test_one_situation_is_not_issued_twice_for_the_same_language_and_subtype(self):
-        """E1 and E2 both drew 'an online application keeps rejecting a correctly formatted address' for el/plan_or_organise and
-        rendered near-paraphrases at a word-5-gram Jaccard of 0.000 -- invisible to the lexical fence."""
-        ids = slotlib.build(self.bank, [("seed", "math", "el")] * 40, prefix="A", seed=1, target=T)
-        ids += slotlib.build(self.bank, [("seed", "math", "el")] * 40, prefix="B", seed=2, target=T)
-        scenes = [(s["language"], s["subtype"], s["situation"]) for s in (self.bank.source(i)["payload"] for i in ids)]
-        self.assertEqual(len(set(scenes)), len(scenes))
+# CP2 M1 (a semantic near-paraphrase across plans) was first "fixed" with a hard rule: never the same situation twice for a
+# language + subtype. Withdrawn the same day at the owner's correction -- a seed is the combination of ALL its elements, and
+# reusing one element is not a duplicate. The real cause of M1 is that generate.py may DROP the topic, which is recorded for
+# the generator's owner; see rlhf/tests/test_prompt_bank_ingredients.py for what identity means now.
 
 
 if __name__ == "__main__": unittest.main()
