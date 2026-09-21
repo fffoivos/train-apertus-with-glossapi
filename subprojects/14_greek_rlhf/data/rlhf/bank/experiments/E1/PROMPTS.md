@@ -1,6 +1,8 @@
 # E1 — 30 prompts, real Sol
 
-Plan met exactly: **False** · active 19 · generator held 0 of 0 slots issued (0%; baseline 18%) · audit clean: **True**
+> **Note.** This plan was created WITH dialogue (11 of 30 places). The owner stopped dialogue generation mid-run on 21 Sept; the 10 openings already generated are marked rejected and the 11 dialogue places are deliberately unfilled. The shortfall shown below (purpose dialogue 11; language el 8 + en 2 + es 1 = 11) is exactly that withdrawal: every single-turn cell is filled exactly. Score E1 on its 19 single-turn prompts.
+
+Plan met exactly: **False** · active 19 · generator held 1 of 14 slots issued (7%; baseline 18%) · audit clean: **True**
 
 | dimension | key | asked | obtained |
 |---|---|---|---|

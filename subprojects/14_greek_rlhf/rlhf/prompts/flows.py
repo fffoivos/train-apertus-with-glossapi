@@ -11,12 +11,25 @@ submits; a duplicate or an unrenderable source is rejected for good and the loop
 so the count it returns is prompts actually registered. It stops when the plan is full, the supply is
 exhausted, or n is reached -- and says which.
 """
-import collections, json
-from .bank import DuplicateError, QuotaError, source_id_for
+import collections, json, re
+from .bank import BankError, DuplicateError, QuotaError, source_id_for
 from .migrate import FORUM_PURPOSE
 
-def ingest_forum_gate(bank, path, origin="forum-gate-v3"):
-    """One source per URL. A thread that was gated more than once is still one source (the first row wins, as before)."""
+# CP2 H2: the scraper wraps formulas as [MATH ...] and that went straight into the USER's text ("...είναι ακριβώς [MATH 12]
+# φόρες μικρότερα"). 86 gated prompts carry it, 68% of the usable mathematica rows -- i.e. most of the forum maths cell.
+_MATH = re.compile(r"\[MATH\s+([^\]]*)\]")
+_LEFTOVER = re.compile(r"\[(MATH|URL|EMAIL|IMG|QUOTE|CODE|LINK|ATTACH|TABLE)\b")
+
+def clean_forum_text(text):
+    """Unwrap [MATH x]: a bare number stays a number, anything else becomes $x$. Nothing is lost -- the marker only wraps."""
+    return _MATH.sub(lambda m: m.group(1).strip() if re.fullmatch(r"[\d.,\s]+", m.group(1)) else "$%s$" % m.group(1).strip(), text or "")
+
+def ingest_forum_gate(bank, path, origin="forum-gate-v3", accept_kinds=("request",)):
+    """One source per URL. A thread that was gated more than once is still one source (the first row wins, as before).
+
+    accept_kinds: CP2 H1. The legacy import accepted post_kind 'request' AND 'social'. Read, the social rows are stories,
+    rants and introductions with no request in them (74 of 81 are gate-typed `share`) -- one reached E1 as a prompt: a
+    "New Member Introductions" post. Excluded by default; pass ("request", "social") to get the old behaviour back."""
     by_url = collections.OrderedDict()
     for line in open(path):
         if line.strip():
@@ -24,7 +37,7 @@ def ingest_forum_gate(bank, path, origin="forum-gate-v3"):
     n = collections.Counter()
     for url, rs in by_url.items():
         r = rs[0]; g = r.get("gate") or {}
-        ok = g.get("post_kind") in ("request", "social") and str(g.get("self_contained")) == "True" and bool((g.get("prompt_el") or "").strip())
+        ok = g.get("post_kind") in accept_kinds and str(g.get("self_contained")) == "True" and bool((g.get("prompt_el") or "").strip())
         known = bank.db.execute("SELECT 1 FROM sources WHERE source_id=?", (source_id_for("forum", url),)).fetchone()
         bank.add_source("forum", url, forum=r["forum"], purpose=FORUM_PURPOSE.get(g.get("task_type"), "everyday"), language="el", origin=origin,
                         payload={"gated_ids": [x["id"] for x in rs], "task_type_v3": g.get("task_type"), "prompt_el": g.get("prompt_el"),
@@ -45,8 +58,12 @@ def ingest_seeds(bank, rows, origin, kind="seed"):
     return dict(n)
 
 def forum_prompt(source):
-    """The forum gate has already rewritten the post into a self-contained prompt."""
-    return [{"role": "user", "content": source["payload"]["prompt_el"]}]
+    """The forum gate has already rewritten the post into a self-contained prompt. Scraper markers are unwrapped, and a
+    prompt that still carries one is REFUSED -- fill() then spends the source with that reason instead of shipping it."""
+    text = clean_forum_text(source["payload"]["prompt_el"])
+    left = _LEFTOVER.search(text)
+    if left: raise BankError("scraper marker [%s ...] survives in the prompt text" % left.group(1))
+    return [{"role": "user", "content": text}]
 
 def fill(bank, plan_id, kind, n, *, run, generator, render=None, worker="fill", labels=None, **cell):
     """Register up to n prompts of `kind` into the plan. `cell` narrows the draw (purpose=, language=, forum=)."""

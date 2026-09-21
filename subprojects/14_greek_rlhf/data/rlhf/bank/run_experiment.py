@@ -30,10 +30,11 @@ def main():
     ap.add_argument("--fake", action="store_true"); ap.add_argument("--continue-from", default=""); ap.add_argument("--seed", type=int, default=20260921)
     ap.add_argument("--with-dialogue", action="store_true", help="OFF by default (owner, 21 Sept: no dialogue here). Dialogue openings belong to the dialogue pipeline.")
     ap.add_argument("--report-only", action="store_true", help="write report.json + PROMPTS.md for an existing experiment directory; generate nothing")
+    ap.add_argument("--note", default="", help="a scope change or anything else a reader needs in order to score this experiment correctly")
     ap.add_argument("--forum-share", type=float, default=1 / 3.0, help="forum's share of SINGLE-TURN prompts (legacy: 297 of 872)")
     a = ap.parse_args()
     T = json.load(open(RL / "target_distribution_v1.json")); out = HERE / "experiments" / a.id
-    if a.report_only: return report(a, PromptBank(out / "bank.sqlite"), "%s-n%d" % (a.id, a.n), out, [], {}, set(), {}, time.time())
+    if a.report_only: return report(a, PromptBank(out / "bank.sqlite"), "%s-n%d" % (a.id, a.n), out, None, None, None, None, None)
     if out.exists(): raise SystemExit("%s exists; experiments are not overwritten" % out)
     out.mkdir(parents=True)
     src = (HERE / "experiments" / a.continue_from / "bank.sqlite") if a.continue_from else (HERE / "bank.sqlite")
@@ -46,7 +47,7 @@ def main():
     purpose_q = apportion(a.n, purposes)
     n_forum = int(round(a.forum_share * (a.n - purpose_q.get("dialogue", 0))))
     caps = {"kind": {"forum": n_forum}, "forum": {"astrovox": int(n_forum * T["forum_constraints"]["astrovox_max_percent_of_forum_prompts"] / 100.0)}}
-    bank.plan(plan, a.n, shares={"purpose": purposes, "language": T["language_shares_percent"]}, caps=caps)
+    bank.plan(plan, a.n, after=[r[0] for r in bank.db.execute("SELECT plan_id FROM plans ORDER BY created")] if a.continue_from else (), shares={"purpose": purposes, "language": T["language_shares_percent"]}, caps=caps)
     asked = {(r["dimension"], r["key"]): r["maximum"] for r in bank.coverage(plan)}
     before = {r[0] for r in bank.db.execute("SELECT source_id FROM sources WHERE state='consumed'")}
     axes_before = slotlib.exhaustion(bank)
@@ -66,16 +67,23 @@ def main():
     return report(a, bank, plan, out, steps, asked, before, axes_before, t0)
 
 def report(a, bank, plan, out, steps, asked, before, axes_before, t0):
+    # CP2 H3: --report-only used to pass [] / {} / set() for what it had not observed, and the report then printed
+    # "0 held of 0 slots issued (0%)" and "sources reused: []" -- two of the plan's five failure criteria reading GREEN
+    # without having been measured. Unobserved is None, never zero. The generator's own receipts are read instead.
+    live = steps is not None
     cov = bank.coverage(plan); audit = bank.audit()
     rows = [dict(r) for r in bank.db.execute("SELECT * FROM prompts WHERE plan_id=? ORDER BY kind, purpose, language, status", (plan,))]
     active = [r for r in rows if r["status"] == "active"]; held = [r for r in rows if r["status"] == "held"]
-    reused = [r["source_id"] for r in rows if r["source_id"] in before]
-    issued = sum(s.get("slots_issued_to_generator", 0) for _, s in steps); gheld = sum(s.get("generator_held", 0) for _, s in steps)
-    calls = collections.Counter()
-    for _, s in steps:
-        for k, v in (s.get("sol_calls") or {}).items(): calls[k] += v
-    rep = {"experiment": a.id, "plan": plan, "n": a.n, "fake_sol": a.fake, "continued_from": a.continue_from or None, "seconds": round(time.time() - t0, 1),
-           "asked": {"%s=%s" % k: v for k, v in asked.items()},
+    reused = [r["source_id"] for r in rows if r["source_id"] in before] if live else None
+    issued = gheld = 0; calls = collections.Counter()
+    for rc in sorted((out / "gen" / "runs").glob("%s-*-seed-*/receipt.json" % plan)) + (sorted((out / "gen" / "runs").glob("%s-*-dialogue-*/receipt.json" % plan)) if a.with_dialogue else []):
+        r = json.load(open(rc)); issued += r.get("slots", 0); gheld += r.get("held", 0)
+        for k, v in (r.get("sol_calls") or {}).items(): calls[k] += v
+    steps = steps or []
+    rep = {"experiment": a.id, "plan": plan, "n": a.n, "fake_sol": a.fake, "continued_from": a.continue_from or None,
+           "written_by": "the live run" if live else "--report-only, after the fact: fields the run would have observed are null, generator figures come from its receipts",
+           "note": a.note or None, "seconds": round(time.time() - t0, 1) if live else None,
+           "asked": {"%s=%s" % (r["dimension"], r["key"]): r["maximum"] for r in cov},
            "obtained_active": {"%s=%s" % (r["dimension"], r["key"]): r["filled"] for r in cov},
            "plan_met_exactly": all(r["remaining"] == 0 for r in cov if r["mode"] == "share") and all(r["filled"] <= r["maximum"] for r in cov),
            "unfilled": [r for r in cov if r["mode"] == "share" and r["remaining"] > 0],
@@ -87,6 +95,7 @@ def report(a, bank, plan, out, steps, asked, before, axes_before, t0):
     json.dump(rep, open(out / "report.json", "w"), ensure_ascii=False, indent=1, default=str)
 
     md = ["# %s — %d prompts, %s Sol\n" % (a.id, a.n, "FAKE" if a.fake else "real"),
+          ("> **Note.** %s\n" % a.note) if a.note else "",
           "Plan met exactly: **%s** · active %d · generator held %d of %d slots issued (%.0f%%; baseline 18%%) · audit clean: **%s**\n" % (
            rep["plan_met_exactly"], len(active), gheld, issued, 100.0 * gheld / max(1, issued),
            audit["integrity"] == "ok" and not audit["quotas_overshot"] and all(v == 0 for k, v in audit.items() if k not in ("integrity", "quotas_overshot"))),

@@ -92,3 +92,20 @@ Four things surfaced on the way, none of them about the fake:
    own reason. The bank's `held` status stays, for a generator that does keep the text.
 4. **A held prompt must not fill a quota** — 0.2 holds ~18% of what it renders, so counting them would let a
    plan read "full" while part of it was unusable. Only `active` fills; `held` still occupies its source.
+
+## Outcome (21 Sept)
+
+| | result |
+|---|---|
+| **CP1** | 0 BLOCKER / 3 HIGH / 9 MEDIUM — all HIGH and 8 MEDIUM fixed before any model call. `reviews/R-PB1_CP1_disposition.md` |
+| **E1** | forum 6/6, seed 13/13, every single-turn cell exact, audit clean, generator held 1 of 14. **Dialogue stopped by the owner mid-run**; 10 openings marked rejected, the driver is now forum + seed by default. |
+| **E2** | n = 10 on E1's bank: **every cell exact**, zero sources reused, audit clean, 18 Sol calls, 4 minutes. |
+| **CP2** | 0 BLOCKER / 3 HIGH / 7 MEDIUM. Bank guarantees confirmed on real data; defects were in the content (social posts, `[MATH]` markers) and in my own `--report-only`. `reviews/R-PB2_CP2_disposition.md` |
+
+Against "what would count as failure": no prompt without a source, no source with two live prompts, no cell off its
+quota, E2 drew nothing E1 consumed, audit zeros throughout. One criterion was **not** cleanly met: a near-duplicate
+*did* get through across plans — semantically, at a lexical similarity of 0.000 — and the hold-rate criterion cannot be
+judged at n = 22. Both are stated rather than rounded up to a pass.
+
+Four findings belong to `generate.py`, which this work deliberately did not touch: the dropped topic axis, self-refuting
+safety/false-premise prompts, one reviewer miss, and persona self-introductions injected by the reviewer's own repairs.

@@ -22,9 +22,10 @@ def migrate(legacy_path, bank_path):
     old = sqlite3.connect("file:%s?mode=ro" % legacy_path, uri=True); old.row_factory = sqlite3.Row
     bank = PromptBank(bank_path); rep = collections.OrderedDict(); find = collections.defaultdict(list)
 
-    forum_sid, seed_sid = {}, {}
+    forum_sid, seed_sid, socials = {}, {}, []
     for r in old.execute("SELECT * FROM sources"):
         p = json.loads(r["payload"]); rejected = r["status"] != "gate_accepted"
+        if (not rejected) and p.get("post_kind") != "request": socials.append(r["source_id"])     # CP2 H1; handled AFTER history is replayed
         forum_sid[r["source_id"]] = bank.add_source(
             "forum", r["url"], forum=r["forum"], purpose=FORUM_PURPOSE.get(p.get("task_type_v3"), "everyday"), language="el",
             payload=dict(p, legacy_source_id=r["source_id"], file=r["file"], row_id=r["row_id"], content_sha=r["content_sha"]),
@@ -67,6 +68,16 @@ def migrate(legacy_path, bank_path):
     for a in old.execute("SELECT alias, logical_id, round FROM aliases"):
         if a["logical_id"] in new_id and a["alias"] != a["logical_id"]: bank.alias(a["alias"], new_id[a["logical_id"]], "legacy alias, %s" % a["round"])
 
+    # CP2 H1: 'social' posts are stories and introductions with no request in them. Withdraw the UNUSED ones from supply.
+    # The used ones keep their prompt -- history is never dropped to make a number look better -- and are reported. (The
+    # first version of this fix retired them up front, and the migration then refused 17 legacy active prompts.)
+    for legacy_id in socials:
+        sid = forum_sid[legacy_id]
+        if bank.source(sid)["state"] == "available": bank.reject_source(sid, "post_kind=social: a story or an introduction, not a request", state="retired")
+        else: find["legacy_live_prompt_sits_on_a_social_post"].append(sid)
+    marker = __import__("re").compile(r"\[(MATH|URL|EMAIL)\b")
+    for pid, m in bank.db.execute("SELECT prompt_id, messages FROM prompts WHERE kind='forum' AND status='active'").fetchall():
+        if marker.search(m): find["legacy_live_prompt_carries_a_scraper_marker"].append(pid)
     rep["prompts_in_legacy"] = len(rows); rep["prompts_carried"] = sum(done.values())
     rep["carried_by_kind_and_status"] = {"%s/%s" % k: v for k, v in sorted(done.items())}
     rep["findings"] = {k: {"count": len(v), "examples": v[:5]} for k, v in find.items()}

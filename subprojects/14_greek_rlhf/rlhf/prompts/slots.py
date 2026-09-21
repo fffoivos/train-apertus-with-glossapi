@@ -38,6 +38,7 @@ def _used(bank):
         for axis in ("person", "situation", "topic"):
             if slot.get(axis): used[axis][slot[axis]] += 1
         triples.add((slot.get("person"), slot.get("situation"), slot.get("topic")))
+        triples.add(("scene", slot.get("language"), slot.get("subtype"), slot.get("situation")))
     return used, triples
 
 def exhaustion(bank, languages=("el", "en", "fr", "de", "es", "it", "pt")):
@@ -76,11 +77,16 @@ def build(bank, needs, *, prefix, seed, target):
                      register=weighted(defaults["register"]), detail=weighted(DETAIL))
             if _compatible(s): break
         else: raise ValueError("no compatible label combination for %s/%s/%s" % (under, subtype, language))
-        for _ in range(50):
+        # CP2 M1: E1 and E2 each got "an online application keeps rejecting a correctly formatted address" for the same
+        # language and subtype, and rendered near-paraphrases with a word-5-gram Jaccard of 0.000. The topic axis cannot
+        # carry uniqueness -- the generator is licensed to drop it, and did in 11 of 20 -- so the SCENE must be unique too.
+        for _ in range(200):
             trip = (draw("person", people[language]), draw("situation", axes["situation"]), draw("topic", axes["topic"]))
-            if trip not in triples: break
-        else: raise ValueError("could not find an unissued person/situation/topic triple")
-        triples.add(trip)
+            scene = ("scene", language, subtype, trip[1])
+            if trip not in triples and scene not in triples: break
+            for axis, v in zip(("person", "situation", "topic"), trip): used[axis][v] -= 1      # not issued: give the draw back
+        else: raise ValueError("could not find an unissued person/situation/topic triple with a fresh scene")
+        triples.add(trip); triples.add(scene)
         s.update(slot_id="%s-%s%02d" % (prefix, "D" if kind == "dialogue" else "S", i + 1), person=trip[0], situation=trip[1], topic=trip[2])
         if kind == "dialogue": s.update(opens_a_dialogue=True)
         # CP1 M5: slot_id is a run-scoped LABEL. With it inside the key, the same seed under a new experiment prefix was a

@@ -133,8 +133,22 @@ def shingle_set(messages, k=5, short=8):
 def source_id_for(kind, natural_key):
     return "%s:%s" % (kind, hashlib.sha256(("%s\x00%s" % (kind, natural_key)).encode()).hexdigest()[:16])
 
-def apportion(n, shares):
-    """Largest-remainder rounding: integer quotas that sum to EXACTLY n. Ties break by key, so it is stable."""
+def apportion(n, shares, already=None):
+    """Largest-remainder rounding: integer quotas that sum to EXACTLY n. Ties break by key, so it is stable.
+
+    already={key: count from earlier plans}: apportion the CUMULATIVE total and hand out the difference. Without it, a
+    round issued as several small plans is biased for good: the five 2% languages tie on their remainder and the tie
+    breaks on key order, so 50 plans of n=10 give de 50 and fr/es/it/pt ZERO (CP2 M6, simulated). With it, the same 50
+    plans give 10 each."""
+    if already:
+        total = apportion(n + sum(already.values()), shares)
+        out = {k: max(0, total[k] - already.get(k, 0)) for k in shares}
+        while sum(out.values()) > n:                       # an over-served key cannot be un-served: trim the largest
+            k = max(out, key=lambda k: (out[k], k)); out[k] -= 1
+        for k in sorted(shares, key=lambda k: (-shares[k], k)):
+            if sum(out.values()) >= n: break
+            out[k] += 1
+        return out
     if any((not isinstance(v, (int, float))) or v != v or v in (float("inf"), float("-inf")) or v < 0 for v in shares.values()):
         raise BankError("weights must be finite and >= 0: %r" % (shares,))
     total = float(sum(shares.values()))
@@ -209,25 +223,31 @@ class PromptBank:
             n = db.execute("UPDATE sources SET state='available', claimed_plan=NULL, claimed_by=NULL, claimed_at=NULL WHERE source_id=? AND state='claimed'", (source_id,)).rowcount
         if not n: raise SourceError("%s is not claimed" % source_id)
 
-    def reject_source(self, source_id, reason):
-        """The source turned out unusable. It is never offered again."""
+    def reject_source(self, source_id, reason, state="rejected"):
+        """The source turned out unusable ('rejected'), or is being withdrawn from supply ('retired'). Never offered again."""
+        if state not in ("rejected", "retired"): raise BankError("a source is withdrawn as 'rejected' or 'retired', not %r" % state)
         with self._tx() as db:
             if db.execute("SELECT 1 FROM prompts WHERE source_id=? AND status IN ('active','held')", (source_id,)).fetchone():
                 raise SourceError("%s has a live prompt; retire that first" % source_id)
-            db.execute("UPDATE sources SET state='rejected', state_reason=?, claimed_plan=NULL, claimed_by=NULL, claimed_at=NULL WHERE source_id=?", (reason, source_id))
+            db.execute("UPDATE sources SET state=?, state_reason=?, claimed_plan=NULL, claimed_by=NULL, claimed_at=NULL WHERE source_id=?", (state, reason, source_id))
 
     # ------------------------------------------------------------------ plans
-    def plan(self, plan_id, n, *, shares, caps=None):
+    def plan(self, plan_id, n, *, shares, caps=None, after=()):
         """shares = {dimension: {key: weight}} -> closed quotas summing to n per dimension.
-        caps   = {dimension: {key: max_count}}  -> ceilings on an otherwise open dimension."""
+        caps   = {dimension: {key: max_count}}  -> ceilings on an otherwise open dimension.
+        after  = earlier plan ids this one CONTINUES: quotas are apportioned against the cumulative total, so a round
+                 issued in chunks converges on the target instead of repeating the same rounding bias every chunk."""
         caps = caps or {}
         for d in list(shares) + list(caps):
             if d not in DIMENSIONS: raise BankError("unknown dimension %r" % d)
         if set(shares) & set(caps): raise BankError("a dimension is either shared or capped, not both: %s" % (set(shares) & set(caps)))
         with self._tx() as db:
-            db.execute("INSERT INTO plans VALUES (?,?,?,?)", (plan_id, n, json.dumps({"shares": shares, "caps": caps}, sort_keys=True), time.time()))
+            db.execute("INSERT INTO plans VALUES (?,?,?,?)", (plan_id, n, json.dumps({"shares": shares, "caps": caps, "after": list(after)}, sort_keys=True), time.time()))
             for d, sh in shares.items():
-                for k, q in apportion(n, sh).items():
+                have = collections.Counter()
+                for pid in after:
+                    for k, c in db.execute("SELECT %s, COUNT(*) FROM prompts WHERE plan_id=? AND status='active' GROUP BY 1" % d, (pid,)): have[k] += c
+                for k, q in apportion(n, sh, {k: have[k] for k in sh} if after else None).items():
                     db.execute("INSERT INTO quotas VALUES (?,?,?,'share',?,?)", (plan_id, d, k, q, q))
             for d, cp in caps.items():
                 for k, m in cp.items():
