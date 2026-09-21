@@ -31,7 +31,7 @@ open questions were then attacked. This review is about whether the answers are 
 Cluster `clariden`, `/iopsstor/scratch/cscs/fffoivos/sft_round1`:
 - `results/G4F6P1--DPO01/frozen/<label>__<cfg>cfg/` — lm_eval outputs + `run_receipt.json` per model
 - `runs/G4F6P1--DPO01--<ARM>/checkpoint-*/` — checkpoints incl. `training_args.bin` (TRL's real config)
-- Local: `results/greekmmlu_official/*.json`, `label_calibration.json`
+- Local: `../12_greek_sft_experiments/results/greekmmlu_official/*.json` and `label_calibration.json` there (the GreekMMLU-official instrument is shared and stayed in subproject 12 when RLHF was split out on 21 Sept)
 
 ## The four claims under test
 

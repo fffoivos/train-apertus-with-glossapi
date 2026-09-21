@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments
+cd /Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/14_greek_rlhf
 python3 data/rlhf/maths_judge/maths_judge.py references data/rlhf/maths_judge/rejudge_preexisting/prompts.jsonl data/rlhf/maths_judge/rejudge_preexisting/references.jsonl && python3 data/rlhf/maths_judge/maths_judge.py judge data/rlhf/maths_judge/rejudge_preexisting/prompts.jsonl data/rlhf/maths_judge/rejudge_preexisting/samples.jsonl data/rlhf/maths_judge/rejudge_preexisting/references.jsonl data/rlhf/maths_judge/rejudge_preexisting/judged.jsonl && echo MATHS_REJUDGE_DONE

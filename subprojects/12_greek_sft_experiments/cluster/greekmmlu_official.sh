@@ -43,7 +43,7 @@ release(){   # $1 = job id. Returns 0 only when the SCHEDULER has said the job i
 }
 sshc(){ ssh -4 -o BatchMode=yes -o ConnectTimeout=30 -o ServerAliveInterval=30 clariden "$@" 2>/dev/null; }; say(){ echo "[$(date '+%m-%d %H:%M')] gmmlu_official: $*"; }
 scp -4 -q cluster/eval_jobs/greekmmlu_official.py clariden:$R/eval_jobs/greekmmlu_official.py || { say "upload failed"; exit 1; }
-cp rlhf/evals/weights.py /tmp/weights_receipt.$$.py && scp -4 -q /tmp/weights_receipt.$$.py clariden:$R/cluster/eval_jobs/weights_receipt.py && scp -4 -q cluster/eval_jobs/official_receipt.py clariden:$R/cluster/eval_jobs/ || { say "receipt tools upload failed"; exit 1; }; rm -f /tmp/weights_receipt.$$.py
+cp ../14_greek_rlhf/rlhf/evals/weights.py /tmp/weights_receipt.$$.py && scp -4 -q /tmp/weights_receipt.$$.py clariden:$R/cluster/eval_jobs/weights_receipt.py && scp -4 -q cluster/eval_jobs/official_receipt.py clariden:$R/cluster/eval_jobs/ || { say "receipt tools upload failed"; exit 1; }; rm -f /tmp/weights_receipt.$$.py
 bash cluster/preflight.sh $(python3 -c "h,m,s='$WALL'.split(':'); print(int(h)+int(m)/60)") "gmmlu_official" | tail -1 | grep -q '^OK' || { say "preflight refused"; exit 1; }
 W=$(sshc "bash $R/workbench.sh open gmmlu_off normal $WALL" | tail -1); [[ "$W" =~ ^[0-9]+$ ]] || { say "no workbench [$W]"; exit 1; }; say "workbench $W"
 # clean-GPU precheck (14 Sept: nid006573 carried orphaned sglang processes holding 78 GB per GPU from another job): refuse a dirty node and close it

@@ -1,0 +1,20 @@
+# Carried over from 12_greek_sft_experiments when the RLHF work was split out (2026-09-21), so the
+# same things stay out: bulk jsonl, raw harness output, reviewer transcripts, weights.
+data/*.jsonl
+data/**/*.jsonl
+results/**
+!results/.keep
+
+# The page generators are SOURCE that lives beside the data they read, and the small summary JSONs
+# are what the pages and the reviews are derived from. Per-item predictions, raw harness output and
+# manifests stay out (large, reproducible).
+!results/G4F6P1--DPO01/
+results/G4F6P1--DPO01/*
+!results/G4F6P1--DPO01/curves_page.py
+!results/G4F6P1--DPO01/corrections_page.py
+!results/G4F6P1--DPO01/*.json
+results/G4F6P1--DPO01/*.bak*
+*.codexlog
+*.pt
+*.safetensors
+__pycache__/

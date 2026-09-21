@@ -5,6 +5,10 @@
 > `fffoivos/Greek-SFT-translated-and-adapted` — no_robots-el plus the six wave-1 sources.
 > **Period:** opened 2026-09-03. **Status:** references gathered; recipes under examination; no run yet.
 
+> **2026-09-21:** the RLHF / DPO work that grew inside this subproject from 11 September was split
+> out into [`14_greek_rlhf`](../14_greek_rlhf/README.md). What remains here is SFT: data, recipes,
+> trainer, SFT-era evaluation, and the cluster infrastructure both subprojects share.
+
 ## Where the data comes from
 
 The training data is produced and documented in `fffoivos/Greek-SFT-translated-and-adapted` (private GitHub) and

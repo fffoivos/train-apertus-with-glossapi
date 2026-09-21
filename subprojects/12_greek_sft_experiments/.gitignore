@@ -3,14 +3,6 @@ data/**/*.jsonl
 results/**
 !results/.keep
 
-# The DPO01 artifact generator is SOURCE that happens to live beside its data, and the small summary
-# JSONs are what the page and the reviews are derived from. Per-item predictions, raw harness output
-# and manifests stay out (they are large and reproducible). Raw reviewer transcripts stay out too.
-!results/G4F6P1--DPO01/
-results/G4F6P1--DPO01/*
-!results/G4F6P1--DPO01/curves_page.py
-!results/G4F6P1--DPO01/*.json
-results/G4F6P1--DPO01/*.bak*
 *.codexlog
 evals/**/cache/
 *.pt

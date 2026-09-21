@@ -1,5 +1,11 @@
 # DPO01 — the open questions, and how to attack them
 
+> **Paths, since 2026-09-21.** This document moved with the RLHF work from `12_greek_sft_experiments` to
+> `14_greek_rlhf`. Paths written below are relative to the subproject root and still resolve here, with
+> three exceptions that stayed in 12 as shared infrastructure: `results/greekmmlu_official/`,
+> `cluster/greekmmlu_official.sh` (+ its scorer, validator, receipt tool and gold), and `evals_code_backup/`.
+
+
 20 September 2026. Written so these are not lost between sessions. The round's measurement is
 finished (`DPO01_POISON_LEDGER_20260919.md`, artifact v21). These are what it did **not** settle.
 

@@ -378,3 +378,14 @@ sequence stream while moving the existing 3,657-update WSD-10 cooldown to the
 milestones receive GreekMMLU and all 13 per-document panels, and the endpoint
 receives the frozen native-Greek suite. No data preparation or checkpoint
 averaging is performed.
+
+## `14_greek_rlhf/`
+
+Preference training on the SFT parent from `12_greek_sft_experiments`: the Greek preference-data
+pipeline (seed generator, forum prompts, on-policy dialogues, judges), the DPO trainer and its 31 arm
+configurations, and `rlhf/evals` — a comparison guard that refuses any pair of runs differing in more
+than one declared variable. Split out of subproject 12 on 2026-09-21 after ten days under the SFT
+umbrella. DPO round 1 is complete: all fifteen checkpoints sit above the parent on Greek IFEval and
+MGSM, after a checkpoint-loading fault had the round reported as damage for a day. Shares cluster
+infrastructure and the GreekMMLU-official instrument with 12 rather than copying them.
+Start at `14_greek_rlhf/README.md`.

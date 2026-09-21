@@ -10,7 +10,7 @@ from rlhf.evals import (from_lm_eval, from_official_greekmmlu, compare, comparab
 LOCAL = os.path.join(ROOT, "results/G4F6P1--DPO01/full_local")
 RAW, CFG, WDIR = os.path.join(LOCAL, "raw"), os.path.join(LOCAL, "model_configs.jsonl"), os.path.join(LOCAL, "weights")
 ITEMS250 = os.path.join(ROOT, "results/G4F6P1--DPO01/greekmmlu_items")
-OFFICIAL = os.path.join(ROOT, "results/greekmmlu_official")
+OFFICIAL = os.path.join(ROOT, "..", "12_greek_sft_experiments", "results", "greekmmlu_official")   # the GreekMMLU-official instrument and its results are shared infrastructure and stayed in the SFT subproject
 TOK = "acf4d5c6"   # tokenizer.json sha, byte-identical across the parent and all 68 checkpoints (R-DPO7b2)
 R = "/iopsstor/scratch/cscs/fffoivos/sft_round1"
 WEIGHTS_OF = {"parent": R + "/eval_copies/R4_full_ep1", "parent_ckptcfg": R + "/eval_copies/R4_full_ep1_ckptcfg",

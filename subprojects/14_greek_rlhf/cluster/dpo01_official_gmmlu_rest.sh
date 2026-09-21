@@ -4,7 +4,7 @@
 # the checkpoints' tokenizer_config names a class the container cannot load), then hands four models
 # at a time to cluster/greekmmlu_official.sh, which owns the workbench, the clean-GPU check and the
 # copy-back. The official runner applies NO chat template, so these prompts carry no date.
-set -u; cd ~/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments
+set -u; cd ~/Projects/train-apertus-with-glossapi/subprojects/14_greek_rlhf
 R=/iopsstor/scratch/cscs/fffoivos/sft_round1; P=$R/eval_copies/R4_full_ep1
 sshc(){ ssh -4 -o BatchMode=yes -o ConnectTimeout=30 clariden "$@" 2>/dev/null; }
 SPECS=(arm01s43_ep3:01s43:129 arm01s44_ep3:01s44:129 arm01s45_ep3:01s45:129 arm01s46_ep3:01s46:129
@@ -13,9 +13,9 @@ SPECS=(arm01s43_ep3:01s43:129 arm01s44_ep3:01s44:129 arm01s45_ep3:01s45:129 arm0
 ARGS=()
 for s in "${SPECS[@]}"; do IFS=: read -r L A STEP <<< "$s"
   # an existing file is a hint, never proof: it is re-validated against the staged config before it is skipped
-  if [ -s results/greekmmlu_official/$L.json ] && [ -s results/greekmmlu_official/$L.json.receipt.json ]; then cs=$(sshc "sha256sum $R/eval_copies/official_stage_$L/config.json 2>/dev/null" | cut -d" " -f1)
-    python3 cluster/eval_jobs/validate_official_result.py results/greekmmlu_official/$L.json $L $R/eval_copies/official_stage_$L "${cs:-none}" >/dev/null \
-      && python3 -c "import sys;sys.path.insert(0,'.');from rlhf.evals import from_official_greekmmlu as f;f('results/greekmmlu_official/$L.json')" >/dev/null 2>&1 \
+  if [ -s ../12_greek_sft_experiments/results/greekmmlu_official/$L.json ] && [ -s ../12_greek_sft_experiments/results/greekmmlu_official/$L.json.receipt.json ]; then cs=$(sshc "sha256sum $R/eval_copies/official_stage_$L/config.json 2>/dev/null" | cut -d" " -f1)
+    python3 ../12_greek_sft_experiments/cluster/eval_jobs/validate_official_result.py ../12_greek_sft_experiments/results/greekmmlu_official/$L.json $L $R/eval_copies/official_stage_$L "${cs:-none}" >/dev/null \
+      && python3 -c "import sys;sys.path.insert(0,'.');from rlhf.evals import from_official_greekmmlu as f;f('../12_greek_sft_experiments/results/greekmmlu_official/$L.json')" >/dev/null 2>&1 \
       && { echo "have $L (re-validated incl. evaluator receipt)"; continue; } || echo "existing $L did not re-validate: re-scoring"; fi
   out=$(sshc "SRC=$R/runs/G4F6P1--DPO01--$A/checkpoint-$STEP; ST=$R/eval_copies/official_stage_$L
     [ -f \$SRC/config.json ] || { echo NOSRC; exit 0; }
@@ -30,7 +30,7 @@ for s in "${SPECS[@]}"; do IFS=: read -r L A STEP <<< "$s"
 done
 echo "to score: ${#ARGS[@]}"; FAIL=0
 for ((i=0; i<${#ARGS[@]}; i+=4)); do
-  WALL=02:00:00 MAXWAIT=100 PROTOCOLS=official_label bash cluster/greekmmlu_official.sh "${ARGS[@]:i:4}" || { FAIL=1; echo "wave failed - stopping before another workbench is opened"; break; }
-  for spec in "${ARGS[@]:i:4}"; do L=${spec%%=*}; [ -s results/greekmmlu_official/$L.json ] || { echo "MISSING $L"; FAIL=1; }; done
+  WALL=02:00:00 MAXWAIT=100 PROTOCOLS=official_label bash ../12_greek_sft_experiments/cluster/greekmmlu_official.sh "${ARGS[@]:i:4}" || { FAIL=1; echo "wave failed - stopping before another workbench is opened"; break; }
+  for spec in "${ARGS[@]:i:4}"; do L=${spec%%=*}; [ -s ../12_greek_sft_experiments/results/greekmmlu_official/$L.json ] || { echo "MISSING $L"; FAIL=1; }; done
 done
 [ $FAIL -eq 0 ] && echo OFFICIAL_REST_DONE || { echo OFFICIAL_REST_INCOMPLETE; exit 1; }

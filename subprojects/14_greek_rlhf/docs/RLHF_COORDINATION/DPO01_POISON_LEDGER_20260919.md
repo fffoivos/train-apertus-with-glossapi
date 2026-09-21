@@ -1,5 +1,11 @@
 # DPO01 — what the errors poisoned, and what must be re-run
 
+> **Paths, since 2026-09-21.** This document moved with the RLHF work from `12_greek_sft_experiments` to
+> `14_greek_rlhf`. Paths written below are relative to the subproject root and still resolve here, with
+> three exceptions that stayed in 12 as shared infrastructure: `results/greekmmlu_official/`,
+> `cluster/greekmmlu_official.sh` (+ its scorer, validator, receipt tool and gold), and `evals_code_backup/`.
+
+
 > **RESULT, 19 September evening — the re-score is running and the first certified numbers reverse the round.**
 > Measured on the parent's OWN weights, correctly loaded vs mis-loaded exactly as every arm was
 > (`parent_ckptgen` vs `parent_exportcfg`, same weights, only the rotary settings differing):

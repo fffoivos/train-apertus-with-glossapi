@@ -3,7 +3,7 @@
 # Provisions an A100_40GB pod, serves the checkpoint from the Hub, tunnels port 8000, runs the stage's GPU commands through dqd.py,
 # then ALWAYS stops the ledger and tears the pod down (trap). Sol-only stages (openings, annotate, report, forecast) run outside this script.
 set -u
-STAGE=$1; TURNS=${2:-}; SUB=/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/12_greek_sft_experiments
+STAGE=$1; TURNS=${2:-}; SUB=/Users/foivoskarounos-zamparloukos/Projects/train-apertus-with-glossapi/subprojects/14_greek_rlhf
 DQD=$SUB/data/rlhf/dialogue_quality_depth; STATE=$SUB/logs/dqd_pod.json; LOG=$SUB/logs/dqd_pod_${STAGE}.log
 MODEL=fffoivos/greek-apertus-8b-sft-r4-full; SHA=54d445bc639b7222ad872b4d8dca5e913dbf4c4d427fbf56183e28361006e763; EUR_PER_USD=0.95
 KEY=$HOME/.ssh/prime_intellect_key; PP=/Users/foivoskarounos-zamparloukos/Projects/greek-page-ocr/scripts/prime_provision.py

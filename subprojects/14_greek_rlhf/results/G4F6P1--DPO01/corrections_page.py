@@ -20,7 +20,7 @@ def _load(name, default=None):
 
 FROZEN = _load('frozen_results.json', {}) or {}
 Q1Q3   = _load('q1q3_results.json', {}) or {}
-CALIB  = _load('../greekmmlu_official/label_calibration.json', {}) or {}
+CALIB  = _load('../../../12_greek_sft_experiments/results/greekmmlu_official/label_calibration.json', {}) or {}
 
 # The trajectories are NOT redrawn here. curves_page.py owns them; this page imports its chart
 # builders so both pages plot the identical curves from the identical data.
