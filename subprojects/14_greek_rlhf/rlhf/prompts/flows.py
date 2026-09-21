@@ -38,7 +38,7 @@ def ingest_seeds(bank, rows, origin, kind="seed"):
     so the same seed offered twice -- by a re-run, or by two generators -- is one source."""
     n = collections.Counter()
     for seed in rows:
-        key = json.dumps({k: v for k, v in seed.items() if not k.startswith("_")}, ensure_ascii=False, sort_keys=True)
+        key = json.dumps({k: v for k, v in seed.items() if not k.startswith("_") and k != "slot_id"}, ensure_ascii=False, sort_keys=True)
         known = bank.db.execute("SELECT 1 FROM sources WHERE source_id=?", (source_id_for(kind, key),)).fetchone()
         bank.add_source(kind, key, purpose=seed["purpose"], language=seed["language"], payload=seed, origin=origin)
         n["already_known" if known else "added"] += 1
@@ -68,7 +68,6 @@ def fill(bank, plan_id, kind, n, *, run, generator, render=None, worker="fill", 
             bank.reject_source(src["source_id"], "%s of %s (%.2f)" % (type(e).__name__, e.existing, e.similarity)); skipped[type(e).__name__] += 1
         except QuotaError:
             bank.release(src["source_id"]); skipped["lost_a_race_for_the_last_place"] += 1; break
-    left = bank.claim(plan_id, kind, worker=worker + ":probe", **cell)
-    if left: bank.release(left["source_id"])
+    left = bank.claim(plan_id, kind, worker=worker, peek=True, **cell)      # peek: asks, claims nothing (CP1 L5)
     why = "reached n" if len(made) >= n else ("no unused source fits the plan any more" if left is None else "stopped")
     return {"registered": len(made), "prompt_ids": made, "skipped": dict(skipped), "stopped_because": why}

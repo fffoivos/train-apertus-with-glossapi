@@ -4,7 +4,7 @@
  "n": 30,
  "fake_sol": true,
  "continued_from": null,
- "seconds": 1.9,
+ "seconds": 2.8,
  "asked": {
   "forum=astrovox": 0,
   "kind=forum": 6,
@@ -32,9 +32,9 @@
   "language=fr": 1,
   "language=it": 0,
   "language=pt": 0,
-  "purpose=dialogue": 3,
-  "purpose=everyday": 4,
-  "purpose=instruction": 1,
+  "purpose=dialogue": 2,
+  "purpose=everyday": 6,
+  "purpose=instruction": 0,
   "purpose=factual": 3,
   "purpose=safety": 0,
   "purpose=math": 1
@@ -67,9 +67,9 @@
    "mode": "share",
    "target": 11,
    "maximum": 11,
-   "filled": 3,
+   "filled": 2,
    "claimed": 0,
-   "remaining": 8
+   "remaining": 9
   },
   {
    "dimension": "purpose",
@@ -77,9 +77,9 @@
    "mode": "share",
    "target": 8,
    "maximum": 8,
-   "filled": 4,
+   "filled": 6,
    "claimed": 0,
-   "remaining": 4
+   "remaining": 2
   },
   {
    "dimension": "purpose",
@@ -87,9 +87,9 @@
    "mode": "share",
    "target": 4,
    "maximum": 4,
-   "filled": 1,
+   "filled": 0,
    "claimed": 0,
-   "remaining": 3
+   "remaining": 4
   },
   {
    "dimension": "purpose",
@@ -103,12 +103,15 @@
   }
  ],
  "by_kind": {
-  "dialogue": 3,
+  "dialogue": 2,
   "forum": 6,
-  "seed": 3
+  "seed": 4
  },
  "held": 0,
- "hold_rate_of_generated": 0.0,
+ "generator_slots_issued": 114,
+ "generator_held": 108,
+ "generator_hold_rate": 0.947,
+ "generator_hold_rate_baseline": 0.18,
  "sources_reused_from_before_this_plan": [],
  "axis_exhaustion_before": {
   "person:el": {
@@ -158,9 +161,9 @@
   }
  },
  "sol_calls": {
-  "instance": 204,
-  "render": 44,
-  "review": 36
+  "instance": 196,
+  "render": 50,
+  "review": 34
  },
  "audit": {
   "foreign_key_violations": 0,
@@ -171,6 +174,7 @@
   "consumed_sources_with_no_prompt": 0,
   "live_prompts_on_unconsumed_source": 0,
   "prompt_cell_disagrees_with_source_kind": 0,
+  "stale_claims_older_than_an_hour": 0,
   "stale_claims_older_than_a_day": 0,
   "quotas_overshot": []
  },
@@ -186,35 +190,41 @@
   [
    "seed round 1",
    {
-    "registered_active": 3,
+    "registered_active": 4,
     "registered_held": 0,
     "skipped": {
-     "held_then_retried": 10,
-     "held_and_spent": 10
+     "held_then_retried": 9,
+     "held_and_spent": 9
     },
     "sol_calls": {
-     "instance": 49,
+     "instance": 46,
      "render": 7,
-     "review": 6
+     "review": 4
     },
-    "asked_for": 13
+    "asked_for": 13,
+    "slots_issued_to_generator": 22,
+    "generator_held": 18,
+    "generator_hold_rate": 0.818
    }
   ],
   [
    "dialogue round 1",
    {
-    "registered_active": 3,
+    "registered_active": 2,
     "registered_held": 0,
     "skipped": {
-     "held_then_retried": 8,
-     "held_and_spent": 8
+     "held_then_retried": 9,
+     "held_and_spent": 9
     },
     "sol_calls": {
-     "instance": 23,
+     "instance": 26,
      "render": 7,
      "review": 6
     },
-    "asked_for": 11
+    "asked_for": 11,
+    "slots_issued_to_generator": 20,
+    "generator_held": 18,
+    "generator_hold_rate": 0.9
    }
   ],
   [
@@ -223,15 +233,18 @@
     "registered_active": 0,
     "registered_held": 0,
     "skipped": {
-     "held_then_retried": 10,
-     "held_and_spent": 10
+     "held_then_retried": 9,
+     "held_and_spent": 9
     },
     "sol_calls": {
-     "instance": 40,
+     "instance": 36,
      "render": 9,
      "review": 6
     },
-    "asked_for": 10
+    "asked_for": 9,
+    "slots_issued_to_generator": 18,
+    "generator_held": 18,
+    "generator_hold_rate": 1.0
    }
   ],
   [
@@ -240,15 +253,18 @@
     "registered_active": 0,
     "registered_held": 0,
     "skipped": {
-     "held_then_retried": 8,
-     "held_and_spent": 8
+     "held_then_retried": 9,
+     "held_and_spent": 9
     },
     "sol_calls": {
      "instance": 28,
-     "render": 6,
+     "render": 9,
      "review": 6
     },
-    "asked_for": 8
+    "asked_for": 9,
+    "slots_issued_to_generator": 18,
+    "generator_held": 18,
+    "generator_hold_rate": 1.0
    }
   ],
   [
@@ -257,15 +273,18 @@
     "registered_active": 0,
     "registered_held": 0,
     "skipped": {
-     "held_then_retried": 10,
-     "held_and_spent": 10
+     "held_then_retried": 9,
+     "held_and_spent": 9
     },
     "sol_calls": {
-     "instance": 40,
+     "instance": 36,
      "render": 9,
      "review": 6
     },
-    "asked_for": 10
+    "asked_for": 9,
+    "slots_issued_to_generator": 18,
+    "generator_held": 18,
+    "generator_hold_rate": 1.0
    }
   ],
   [
@@ -274,15 +293,18 @@
     "registered_active": 0,
     "registered_held": 0,
     "skipped": {
-     "held_then_retried": 8,
-     "held_and_spent": 8
+     "held_then_retried": 9,
+     "held_and_spent": 9
     },
     "sol_calls": {
      "instance": 24,
-     "render": 6,
+     "render": 9,
      "review": 6
     },
-    "asked_for": 8
+    "asked_for": 9,
+    "slots_issued_to_generator": 18,
+    "generator_held": 18,
+    "generator_hold_rate": 1.0
    }
   ]
  ]

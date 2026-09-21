@@ -1,6 +1,6 @@
 # E0 — 30 prompts, FAKE Sol
 
-Plan met exactly: **False** · active 12 · held 0 · audit clean: **True**
+Plan met exactly: **False** · active 12 · generator held 108 of 114 slots issued (95%; baseline 18%) · audit clean: **True**
 
 | dimension | key | asked | obtained |
 |---|---|---|---|
@@ -13,30 +13,23 @@ Plan met exactly: **False** · active 12 · held 0 · audit clean: **True**
 | language | fr | 1 | 1 |
 | language | it | 0 | 0 |
 | language | pt | 0 | 0 |
-| purpose | dialogue | 11 | 3 |
-| purpose | everyday | 8 | 4 |
-| purpose | instruction | 4 | 1 |
+| purpose | dialogue | 11 | 2 |
+| purpose | everyday | 8 | 6 |
+| purpose | instruction | 4 | 0 |
 | purpose | factual | 3 | 3 |
 | purpose | safety | 3 | 0 |
 | purpose | math | 1 | 1 |
 
 ---
-### `p:708494d0e3f8bdda` · dialogue · dialogue · el · **active**
-source `dialogue:13ae21c5a06adde2` ← slot E01-D02 · instruction/strict_format · routine · standard / cooperative / terse
-person: A 44-year-old humanitarian logistics officer from Crete working in Geneva who travels with minimal luggage. · situation: A freelance payment is overdue, and a reminder must stay professional. · topic: Designing science fair projects
+### `p:952a7a63596ea95a` · dialogue · dialogue · el · **active**
+source `dialogue:fd86eb2060e9b2a9` ← slot E01-D08 · everyday/explain_simply · routine · greeklish / frustrated / bare
+person: A 25-year-old sound engineer in Manchester who records independent Greek-language podcasts in a bedroom studio. · situation: A purchase seems tempting, but the discount may not be as good as it looks. · topic: Creating a pollinator garden
 
-> **user:** Χρειάζομαι βοήθεια με το 42 γρήγορα 02
-
----
-### `p:ebc60ff49286ce7e` · dialogue · dialogue · el · **active**
-source `dialogue:b4f59c4a6c8d56ad` ← slot E01-D04 · everyday/plan_or_organise · compositional · greeklish / cooperative / bare
-person: A 50-year-old postal worker in Nafplio who photographs unusual door knockers along his route. · situation: A vaccination record is required for enrollment, but the process is unclear. · topic: Greek residence permit documents
-
-> **user:** Xreiazomai voitheia me to 42 grigora 04
+> **user:** Xreiazomai voitheia me to 42 grigora 08
 
 ---
 ### `p:8f3ccddb94865da7` · dialogue · dialogue · es · **active**
-source `dialogue:f50e56bb845ffac6` ← slot E01-D06 · everyday/explain_simply · compositional · standard / cooperative / detailed
+source `dialogue:05fde9c09409f7fc` ← slot E01-D06 · everyday/explain_simply · compositional · standard / cooperative / detailed
 person: A 78-year-old widowed shopkeeper in Ponce, Puerto Rico, who still opens her stationery store three mornings a week and needs large-text guidance. · situation: A first date is approaching after a long break from dating. · topic: Comparing gym memberships
 
 > **user:** Necesito ayuda con 42 06
@@ -78,22 +71,29 @@ source `forum:fa4d10221e947af4` ← https://mathematica.gr/forum/viewtopic.php?t
 > **user:** Από σημείο [MATH S] εκτός κύκλου , φέρω τα εφαπτόμενα τμήματα [MATH SA , SB] . Μία χορδή [MATH PQ] διέρχεται από το μέσο [MATH M] της χορδής [MATH AB] . Για ποιά θέση του [MATH P] μεγιστοποιείται το άθροισμα [MATH SP+SQ] ;
 
 ---
+### `p:4a1789e3abaeef6a` · seed · everyday · el · **active**
+source `seed:00197c69bdce19ce` ← slot E01-S15 · everyday/plan_or_organise · routine · informal / cooperative / medium
+person: A 76-year-old retired librarian in Athens who indexes inscriptions found during neighborhood walks. · situation: An online application keeps rejecting a correctly formatted address. · topic: Building healthy work breaks
+
+> **user:** Χρειάζομαι βοήθεια με το 42 γρήγορα 15
+
+---
+### `p:c072026a0a22cee1` · seed · everyday · en · **active**
+source `seed:185419dcf37120b8` ← slot E01-S14 · everyday/recommend_or_compare · compositional · standard / cooperative / rambling
+person: A 29-year-old software tester in Bengaluru, India, who writes fluent but formal English and wants messages to sound more natural. · situation: A freelance payment is overdue, and a reminder must stay professional. · topic: Booking preventive screenings
+
+> **user:** I need help with 42 quickly 14
+
+---
 ### `p:9242788e30119b5d` · seed · factual · de · **active**
-source `seed:bbd332ba32046a0c` ← slot E01-S17 · factual/false_premise · challenging · formal / cooperative / detailed
+source `seed:5b63cdf5e47cb42a` ← slot E01-S17 · factual/false_premise · challenging · formal / cooperative / detailed
 person: A 33-year-old shipyard welder in Rostock, Germany, who works rotating shifts and is planning a low-budget camping trip with friends. · situation: A home craft needs a safe substitute for a missing material. · topic: Making soy wax candles
 
 > **user:** Ich brauche Hilfe mit 42 17
 
 ---
 ### `p:ad4a3ce71a29fb9c` · seed · factual · fr · **active**
-source `seed:eb6928879fecc8ea` ← slot E01-S16 · factual/general_knowledge · routine · standard / cooperative / bare
+source `seed:670382f9a4e7c4d1` ← slot E01-S16 · factual/general_knowledge · routine · standard / cooperative / bare
 person: A 59-year-old Inuit health liaison in Kuujjuaq, Québec, who travels between communities and often works with unreliable internet access. · situation: The landlord sent a lease renewal with several changed clauses. · topic: Writing believable dialogue
 
 > **user:** J’ai besoin d’aide avec 42 16
-
----
-### `p:73baa70584bc1325` · seed · instruction · en · **active**
-source `seed:39b2b61e0bebe29d` ← slot E01-S19 · instruction/multi_constraint_composition · compositional · standard / cooperative / terse
-person: A 33-year-old social worker in Glasgow, Scotland, who supports refugee families and uses a screen reader because of low vision. · situation: A phone has stopped backing up photos. · topic: Choosing professional certifications
-
-> **user:** I need help with 42 quickly 19

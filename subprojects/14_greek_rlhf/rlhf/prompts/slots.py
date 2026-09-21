@@ -83,6 +83,9 @@ def build(bank, needs, *, prefix, seed, target):
         triples.add(trip)
         s.update(slot_id="%s-%s%02d" % (prefix, "D" if kind == "dialogue" else "S", i + 1), person=trip[0], situation=trip[1], topic=trip[2])
         if kind == "dialogue": s.update(opens_a_dialogue=True)
-        out.append(bank.add_source(kind, json.dumps(s, ensure_ascii=False, sort_keys=True), purpose=purpose, language=language,
+        # CP1 M5: slot_id is a run-scoped LABEL. With it inside the key, the same seed under a new experiment prefix was a
+        # new source, which is exactly the duplicate the bank exists to refuse. Identity is the seed's content.
+        identity = {k: v for k, v in s.items() if k != "slot_id"}
+        out.append(bank.add_source(kind, json.dumps(identity, ensure_ascii=False, sort_keys=True), purpose=purpose, language=language,
                                    payload=s, origin="slots.build seed=%s" % seed))
     return out

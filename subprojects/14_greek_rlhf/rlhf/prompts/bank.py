@@ -10,19 +10,24 @@ cap without anything objecting.
 
 Here those three properties are structural:
 
-  provenance    prompts.source_id is NOT NULL and a FOREIGN KEY. A prompt with no source, or with a
-                source that does not exist, cannot be inserted.
+  provenance    prompts.source_id is NOT NULL (schema-level: no connection can insert a prompt with no
+                source) and a FOREIGN KEY. SQLite enforces foreign keys PER CONNECTION, so the FK is
+                unbreakable through PromptBank and merely DETECTABLE through a bare sqlite3 connection:
+                audit() counts such orphans. (CP1 review, M1: the first wording overclaimed this.)
   no duplicates sources are UNIQUE on (kind, natural_key) -- one row per forum URL, one per canonical
                 seed. prompts are UNIQUE on content_sha. A partial unique index allows at most ONE
                 active prompt per source, so a retry must supersede, never sit alongside. Near-
                 duplicates are refused by exact Jaccard over word 5-grams, found through an index.
   distribution  a plan turns target shares into integer quotas (largest remainder, so they sum to n
-                exactly). claim() hands out only sources whose cell still has room; submit() re-checks
-                inside the same transaction. A quota cannot be overshot, by any caller, in any order.
+                exactly). claim() hands out only sources whose cell still has room; submit(), supersede()
+                and set_status() re-check inside the same transaction. A quota cannot be OVERSHOT by any
+                caller in any order (verified under 8 processes). What is NOT guaranteed is COMPLETION:
+                claim() is greedy, so it can spend the one source a later joint cell needed.
+                feasibility() checks joint attainability by max-flow, so that dead end is at least visible.
 
 Standard library only. One writer at a time per transaction (BEGIN IMMEDIATE); safe across processes.
 """
-import contextlib, hashlib, json, re, sqlite3, time, unicodedata
+import collections, contextlib, hashlib, json, re, sqlite3, time, unicodedata
 
 KINDS = ("seed", "forum", "template", "dialogue")
 SOURCE_STATES = ("available", "claimed", "consumed", "rejected", "retired")
@@ -109,11 +114,20 @@ def content_sha(messages):
     return hashlib.sha256(json.dumps([[m["role"], _norm(m["content"])] for m in messages],
                                      ensure_ascii=False).encode()).hexdigest()
 
-def shingle_set(messages, k=5):
-    """Word k-grams of the USER turns, case- and punctuation-insensitive, as 63-bit ints."""
-    text = " ".join(_norm(m["content"]) for m in messages if m["role"] == "user").lower()
+def _fold(s):
+    """Lower-case and strip combining marks, so 'Πώς υπολογίζεται' and 'Πως υπολογιζεται' are the same words."""
+    return "".join(c for c in unicodedata.normalize("NFD", s.lower()) if not unicodedata.combining(c))
+
+def shingle_set(messages, k=5, short=8):
+    """Word k-grams of the USER turns -- case-, accent- and punctuation-insensitive -- as 63-bit ints.
+    Under `short` words a word k-gram is all-or-nothing (a 4-word prompt is ONE gram), so short prompts use
+    character 4-grams instead. A prompt with no user text gets a gram of its own content hash: no shared bucket."""
+    text = _fold(" ".join(_norm(m["content"]) for m in messages if m["role"] == "user"))
     words = re.sub(r"[^\w\s]", " ", text).split()
-    grams = [" ".join(words[i:i + k]) for i in range(max(1, len(words) - k + 1))]
+    if not words: grams = ["\x00empty:" + content_sha(messages)]
+    elif len(words) < short:
+        t = " ".join(words); grams = ["c:" + t[i:i + 4] for i in range(max(1, len(t) - 3))]
+    else: grams = [" ".join(words[i:i + k]) for i in range(len(words) - k + 1)]
     return {int.from_bytes(hashlib.blake2b(g.encode(), digest_size=8).digest(), "big") >> 1 for g in grams}
 
 def source_id_for(kind, natural_key):
@@ -121,12 +135,37 @@ def source_id_for(kind, natural_key):
 
 def apportion(n, shares):
     """Largest-remainder rounding: integer quotas that sum to EXACTLY n. Ties break by key, so it is stable."""
+    if any((not isinstance(v, (int, float))) or v != v or v in (float("inf"), float("-inf")) or v < 0 for v in shares.values()):
+        raise BankError("weights must be finite and >= 0: %r" % (shares,))
     total = float(sum(shares.values()))
     if total <= 0: raise BankError("shares sum to zero")
     exact = {k: n * v / total for k, v in shares.items()}
     out = {k: int(x) for k, x in exact.items()}
     for k in sorted(shares, key=lambda k: (-(exact[k] - out[k]), k))[: n - sum(out.values())]: out[k] += 1
     return out
+
+
+def _max_flow(need_p, need_l, cells):
+    """Places fillable when purpose p still needs need_p[p], language l needs need_l[l], and cells[(p,l)] sources exist.
+    Edmonds-Karp on  S -> purpose -> language -> T ; tiny graphs, stdlib only."""
+    S, T = ("S",), ("T",); cap = collections.defaultdict(lambda: collections.defaultdict(int))
+    for p, n in need_p.items(): cap[S][("p", p)] += n
+    for l, n in need_l.items(): cap[("l", l)][T] += n
+    for (p, l), n in cells.items():
+        if p in need_p and l in need_l: cap[("p", p)][("l", l)] += n
+    flow = 0
+    while True:
+        prev, queue = {S: None}, collections.deque([S])
+        while queue and T not in prev:
+            u = queue.popleft()
+            for v, c in list(cap[u].items()):
+                if c > 0 and v not in prev: prev[v] = u; queue.append(v)
+        if T not in prev: return flow
+        path, v = [], T
+        while prev[v] is not None: path.append((prev[v], v)); v = prev[v]
+        push = min(cap[u][v] for u, v in path)
+        for u, v in path: cap[u][v] -= push; cap[v][u] += push
+        flow += push
 
 
 class PromptBank:
@@ -220,7 +259,7 @@ class PromptBank:
                 return "%s=%r is full in plan %s (%d of %d)" % (d, k, plan_id, filled, q["maximum"])
         return None
 
-    def claim(self, plan_id, kind, *, worker, purpose=None, language=None, forum=None):
+    def claim(self, plan_id, kind, *, worker, purpose=None, language=None, forum=None, peek=False):
         """Reserve ONE unused source whose cell still has room in the plan, or return None if there is none.
 
         When no forum is named, the forum with the fewest prompts+claims so far in this plan goes first,
@@ -237,6 +276,7 @@ class PromptBank:
                                hashlib.sha256(("%s\x00%s" % (plan_id, r["source_id"])).encode()).hexdigest())
             for r in sorted(db.execute(sql, args).fetchall(), key=order):
                 if self._room(db, plan_id, dict(r), counting_claims=True, usage=usage) is None:
+                    if peek: return self.source(r["source_id"])      # "is anything claimable?" without touching state
                     db.execute("UPDATE sources SET state='claimed', claimed_plan=?, claimed_by=?, claimed_at=? WHERE source_id=?", (plan_id, worker, time.time(), r["source_id"]))
                     return self.source(r["source_id"])
         return None
@@ -257,11 +297,15 @@ class PromptBank:
             best = max(best, (c / float(len(sh) + n - c), pid))
         return best
 
-    def _insert(self, db, source_id, messages, plan_id, run, generator, labels, purpose, language, status, reason, supersedes, allow_near):
+    def _insert(self, db, source_id, messages, plan_id, run, generator, labels, purpose, language, status, reason, supersedes, allow_near, legacy=False):
         src = db.execute("SELECT * FROM sources WHERE source_id=?", (source_id,)).fetchone()
         if src is None: raise SourceError("no such source %r: a prompt must come from a registered source" % source_id)
         if src["state"] in ("rejected", "retired") and status in LIVE:
             raise SourceError("%s is %s (%s)" % (source_id, src["state"], src["state_reason"]))
+        if src["state"] == "consumed" and status in LIVE and not (legacy or supersedes):
+            # its live prompt may since have been archived, but the source was USED. A fresh live prompt on it is a
+            # reuse: go through supersede(). (CP1 M6. `legacy` exists for migrate.py, which replays history in order.)
+            raise SourceError("%s was already consumed; a new live prompt on it must go through supersede()" % source_id)
         if src["state"] == "claimed" and plan_id != src["claimed_plan"]:
             raise SourceError("%s is claimed for plan %s, not %s" % (source_id, src["claimed_plan"], plan_id))
         sha = content_sha(messages)
@@ -285,17 +329,19 @@ class PromptBank:
                     cell["purpose"], cell["language"], status, reason, supersedes, generator, run,
                     json.dumps(labels or {}, ensure_ascii=False, sort_keys=True), time.time()))
         db.executemany("INSERT INTO shingles VALUES (?,?)", [(pid, h) for h in sh])
-        if src["state"] not in ("rejected", "retired"):    # recording HISTORY on a dead source does not bring it back to life
+        # recording HISTORY neither revives a dead source nor burns a fresh one (CP1 M9): only a live prompt, or a
+        # legacy replay, consumes.
+        if src["state"] not in ("rejected", "retired") and (status in LIVE or legacy):
             db.execute("UPDATE sources SET state='consumed', claimed_plan=NULL, claimed_by=NULL, claimed_at=NULL WHERE source_id=?", (source_id,))
         return pid
 
     def submit(self, source_id, messages, *, run, generator, plan_id=None, labels=None, purpose=None, language=None,
-               status="active", reason=None, allow_near_duplicate=False):
+               status="active", reason=None, allow_near_duplicate=False, legacy=False):
         """Register the prompt made from `source_id`. Raises rather than degrade:
         SourceError (unknown / spent / rejected source), DuplicateError, NearDuplicateError, QuotaError."""
         if status not in PROMPT_STATES: raise BankError("unknown status %r" % status)
         with self._tx() as db:
-            return self._insert(db, source_id, messages, plan_id, run, generator, labels, purpose, language, status, reason, None, allow_near_duplicate)
+            return self._insert(db, source_id, messages, plan_id, run, generator, labels, purpose, language, status, reason, None, allow_near_duplicate, legacy)
 
     def supersede(self, prompt_id, messages, *, run, generator, labels=None, reason="retry", allow_near_duplicate=False):
         """A retry: the old prompt becomes 'superseded' and the new one takes its source, plan and cell, atomically."""
@@ -308,11 +354,34 @@ class PromptBank:
                                 "active", None, prompt_id, allow_near_duplicate)
 
     def set_status(self, prompt_id, status, reason):
-        """Retire or hold a prompt. Its source stays consumed: a rejected prompt does not make the source fresh again."""
+        """Retire, hold or approve a prompt, under the same rules as submit().
+
+        CP1 H1: this used to be a bare UPDATE, so held -> active (a reviewer approving a held prompt) walked straight
+        past the quota, and superseded -> active resurrected a prompt beside its own retry. Now:
+          * a prompt that is superseded / rejected / archived stays dead. A retry is supersede(), not a status flip.
+          * becoming 'active' re-checks the plan's room inside the transaction, exactly as submit() does.
+        A retired prompt's source stays consumed: rejecting a prompt does not make its source fresh again."""
         if status not in PROMPT_STATES: raise BankError("unknown status %r" % status)
         with self._tx() as db:
-            if not db.execute("UPDATE prompts SET status=?, status_reason=? WHERE prompt_id=?", (status, reason, prompt_id)).rowcount:
-                raise BankError("no such prompt %r" % prompt_id)
+            p = db.execute("SELECT * FROM prompts WHERE prompt_id=?", (prompt_id,)).fetchone()
+            if p is None: raise BankError("no such prompt %r" % prompt_id)
+            if p["status"] == status: return
+            if p["status"] not in LIVE:
+                raise BankError("%s is %s and stays that way; a new attempt on its source goes through supersede()" % (prompt_id, p["status"]))
+            if status == "active" and p["plan_id"] is not None:
+                why = self._room(db, p["plan_id"], {d: p[d] for d in DIMENSIONS}, counting_claims=False)
+                if why: raise QuotaError(why)
+            db.execute("UPDATE prompts SET status=?, status_reason=? WHERE prompt_id=?", (status, reason, prompt_id))
+
+    def release_stale(self, older_than_seconds=3600, plan_id=None):
+        """Give back claims nobody is going to honour (a worker died mid-call). Returns the source ids released.
+        CP1 H2: a stuck claim is worse than a lost source -- it reserves a place in the plan for ever."""
+        with self._tx() as db:
+            sql, args = "SELECT source_id FROM sources WHERE state='claimed' AND claimed_at < ?", [time.time() - older_than_seconds]
+            if plan_id: sql += " AND claimed_plan=?"; args.append(plan_id)
+            ids = [r[0] for r in db.execute(sql, args)]
+            db.executemany("UPDATE sources SET state='available', claimed_plan=NULL, claimed_by=NULL, claimed_at=NULL WHERE source_id=?", [(i,) for i in ids])
+        return ids
 
     def alias(self, alias, prompt_id, note=None):
         with self._tx() as db: db.execute("INSERT OR REPLACE INTO aliases VALUES (?,?,?)", (alias, prompt_id, note))
@@ -344,17 +413,27 @@ class PromptBank:
         return out
 
     def feasibility(self, plan_id):
-        """Can the unused supply still meet the plan? One row per SHARE quota with a shortfall. Empty means yes.
+        """Can the unused supply still meet the plan? Empty means yes.
 
-        Checked per dimension, so it is necessary rather than sufficient: a plan can pass here and still
-        fail on a joint cell (enough Greek, enough maths, not enough Greek maths). It exists to fail EARLY
-        on the common case -- a target nobody has sources for -- instead of at prompt 412 of 500."""
-        out = []
-        for r in self.coverage(plan_id):
+        Two checks. Per dimension: is there enough Greek, enough maths. Then JOINTLY over purpose x language, by
+        max-flow: enough Greek and enough maths is not enough Greek maths, and because claim() is greedy it can
+        itself create that dead end by spending the one source a later cell needed (CP1 M2 reproduced it with
+        three sources). The joint row reports how many places can no longer be filled by ANY assignment."""
+        out, cov = [], self.coverage(plan_id)
+        for r in cov:
             if r["mode"] != "share" or r["remaining"] <= 0: continue
             have = self.db.execute("SELECT COUNT(*) FROM sources WHERE state IN ('available','claimed') AND %s=?" % r["dimension"], (r["key"],)).fetchone()[0]
             if have < r["remaining"]:
                 out.append({"dimension": r["dimension"], "key": r["key"], "still_needed": r["remaining"], "unused_sources": have, "short_by": r["remaining"] - have})
+        need = {d: {r["key"]: r["remaining"] for r in cov if r["dimension"] == d and r["mode"] == "share" and r["remaining"] > 0} for d in ("purpose", "language")}
+        if need["purpose"] and need["language"]:
+            cells = {(r[0], r[1]): r[2] for r in self.db.execute(
+                "SELECT purpose, language, COUNT(*) FROM sources WHERE state IN ('available','claimed') GROUP BY 1,2")}
+            want = min(sum(need["purpose"].values()), sum(need["language"].values()))
+            got = _max_flow(need["purpose"], need["language"], cells)
+            if got < want:
+                out.append({"dimension": "purpose x language (joint)", "key": "*", "still_needed": want, "unused_sources": sum(cells.values()),
+                            "short_by": want - got, "note": "no assignment of the unused sources can fill these places"})
         return out
 
     def supply(self, kind=None):
@@ -382,5 +461,6 @@ class PromptBank:
                 "consumed_sources_with_no_prompt": one("SELECT COUNT(*) FROM sources s WHERE state='consumed' AND NOT EXISTS(SELECT 1 FROM prompts p WHERE p.source_id=s.source_id)"),
                 "live_prompts_on_unconsumed_source": one("SELECT COUNT(*) FROM prompts p JOIN sources s USING(source_id) WHERE p.status IN ('active','held') AND s.state!='consumed'"),
                 "prompt_cell_disagrees_with_source_kind": one("SELECT COUNT(*) FROM prompts p JOIN sources s USING(source_id) WHERE p.kind!=s.kind OR IFNULL(p.forum,'')!=IFNULL(s.forum,'')"),
+                "stale_claims_older_than_an_hour": one("SELECT COUNT(*) FROM sources WHERE state='claimed' AND claimed_at < %f" % (time.time() - 3600)),
                 "stale_claims_older_than_a_day": one("SELECT COUNT(*) FROM sources WHERE state='claimed' AND claimed_at < %f" % (time.time() - 86400)),
                 "quotas_overshot": over}

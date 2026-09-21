@@ -63,6 +63,7 @@ def main():
     rows = [dict(r) for r in bank.db.execute("SELECT * FROM prompts WHERE plan_id=? ORDER BY kind, purpose, language, status", (plan,))]
     active = [r for r in rows if r["status"] == "active"]; held = [r for r in rows if r["status"] == "held"]
     reused = [r["source_id"] for r in rows if r["source_id"] in before]
+    issued = sum(s.get("slots_issued_to_generator", 0) for _, s in steps); gheld = sum(s.get("generator_held", 0) for _, s in steps)
     calls = collections.Counter()
     for _, s in steps:
         for k, v in (s.get("sol_calls") or {}).items(): calls[k] += v
@@ -72,13 +73,15 @@ def main():
            "plan_met_exactly": all(r["remaining"] == 0 for r in cov if r["mode"] == "share") and all(r["filled"] <= r["maximum"] for r in cov),
            "unfilled": [r for r in cov if r["mode"] == "share" and r["remaining"] > 0],
            "by_kind": dict(collections.Counter(r["kind"] for r in active)), "held": len(held),
-           "hold_rate_of_generated": round(len(held) / float(max(1, len(held) + sum(1 for r in active if r["kind"] != "forum"))), 3),
+           "generator_slots_issued": issued, "generator_held": gheld,
+           "generator_hold_rate": round(gheld / float(issued), 3) if issued else None, "generator_hold_rate_baseline": 0.18,
            "sources_reused_from_before_this_plan": reused, "axis_exhaustion_before": axes_before, "sol_calls": dict(calls), "audit": audit,
            "steps": [(name, {k: v for k, v in s.items() if k not in ("prompt_ids", "held_ids")}) for name, s in steps]}
     json.dump(rep, open(out / "report.json", "w"), ensure_ascii=False, indent=1, default=str)
 
     md = ["# %s — %d prompts, %s Sol\n" % (a.id, a.n, "FAKE" if a.fake else "real"),
-          "Plan met exactly: **%s** · active %d · held %d · audit clean: **%s**\n" % (rep["plan_met_exactly"], len(active), len(held),
+          "Plan met exactly: **%s** · active %d · generator held %d of %d slots issued (%.0f%%; baseline 18%%) · audit clean: **%s**\n" % (
+           rep["plan_met_exactly"], len(active), gheld, issued, 100.0 * gheld / max(1, issued),
            audit["integrity"] == "ok" and not audit["quotas_overshot"] and all(v == 0 for k, v in audit.items() if k not in ("integrity", "quotas_overshot"))),
           "| dimension | key | asked | obtained |", "|---|---|---|---|"]
     md += ["| %s | %s | %s | %d |" % (r["dimension"], r["key"], r["maximum"] if r["mode"] == "share" else "≤ %d" % r["maximum"], r["filled"]) for r in cov]
@@ -93,7 +96,7 @@ def main():
         if s["kind"] != "forum": md += ["person: %s · situation: %s · topic: %s" % (s["payload"].get("person"), s["payload"].get("situation"), s["payload"].get("topic"))]
         for m in json.loads(r["messages"]) if isinstance(r["messages"], str) else r["messages"]: md += ["\n> **%s:** %s" % (m["role"], m["content"].replace("\n", "\n> "))]
     (out / "PROMPTS.md").write_text("\n".join(md) + "\n")
-    print(json.dumps({k: rep[k] for k in ("plan", "plan_met_exactly", "by_kind", "held", "hold_rate_of_generated", "sol_calls", "unfilled", "sources_reused_from_before_this_plan", "seconds")}, ensure_ascii=False, indent=1, default=str))
+    print(json.dumps({k: rep[k] for k in ("plan", "plan_met_exactly", "by_kind", "generator_slots_issued", "generator_held", "generator_hold_rate", "sol_calls", "unfilled", "sources_reused_from_before_this_plan", "seconds")}, ensure_ascii=False, indent=1, default=str))
     print("audit:", {k: v for k, v in audit.items() if v not in (0, "ok", [])} or "clean"); print("->", out)
 
 main()

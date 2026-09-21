@@ -1,6 +1,6 @@
 # The prompt bank — audit of prompt generation, and what replaced the registry
 
-21 September 2026. Code: `rlhf/prompts/` · tests: `rlhf/tests/test_prompt_bank.py` (33) ·
+21 September 2026. Code: `rlhf/prompts/` · tests: `rlhf/tests/test_prompt_bank.py` (34) + `test_prompt_bank_cp1.py` (26, regression tests from the independent review) ·
 built bank: `data/rlhf/bank/bank.sqlite` (derived; rebuild with `python -m rlhf.prompts migrate`).
 
 ## The question
@@ -89,9 +89,27 @@ registers the prompt or raises `SourceError` / `DuplicateError` / `NearDuplicate
 ## What the feasibility check says about the next round
 
 Planning 500 prompts at the target distribution fails before it starts: `dialogue` short by 175,
-English by 88, `instruction` by 62, `safety` by 42, and four of the five minor languages have 0–2
-unused sources. For forums that is a hard limit. For seeds it means *generate seeds first* — seed
+English by 100, `instruction` by 75, `safety` by 50, and the minor languages have no unused sources at all
+(figures recomputed after legacy leftovers were retired rather than offered as supply). For forums that is a hard limit. For seeds it means *generate seeds first* — seed
 supply is elastic, but only if someone makes it.
+
+## What is and is not guaranteed (after the independent review, R-PB1)
+
+- **Never overshoot: guaranteed.** Verified by the reviewer under 8 real processes. `submit()`, `supersede()` and
+  `set_status()` all re-check the quota inside the transaction. (`set_status()` did not, originally — the review's H1.)
+- **Completion: not guaranteed.** `claim()` is greedy and can spend the one source a later joint cell needed.
+  `feasibility()` now checks joint purpose×language attainability by max-flow, so the dead end is visible.
+- **Provenance:** `source_id NOT NULL` and one-live-prompt-per-source are schema-level and hold for any tool that opens
+  the file. The foreign key is enforced per connection, so through a bare `sqlite3` connection it is *detectable*
+  (`audit()` counts orphans), not unbreakable.
+- **Near-duplicates:** accent-, case- and punctuation-insensitive word 5-grams; character 4-grams under 8 words. Still
+  lexical: a paraphrase gets through.
+- **The migration's "zero refusals"** is narrower than it reads: only live prompts are near-duplicate-checked, so the
+  170 archived/rejected legacy prompts never were (including the known J = 0.53 template pair).
+- **66 of 1,042 legacy prompts (6.3%) were relabelled** to a purpose other than their source's. `supply()` and
+  `feasibility()` account on the source's cell, so they are off by about that rate for legacy data.
+- A direct `submit()` can take the last place in a cell while a claimed worker is mid-call. Correctness holds; the
+  worker's call is wasted. `fill()` and `generate_into()` release and stop.
 
 ## Not done, deliberately
 

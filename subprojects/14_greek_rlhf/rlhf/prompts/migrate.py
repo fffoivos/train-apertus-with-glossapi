@@ -52,7 +52,7 @@ def migrate(legacy_path, bank_path):
                                   payload={"synthesised_during_migration": True, "legacy_seed_id": r["seed_id"], "legacy_logical_id": r["logical_id"]},
                                   origin=r["generator_version"])
             find["source_missing_in_legacy_so_synthesised"].append(r["logical_id"])
-        kw = dict(run=r["round_first"] or "legacy", generator=r["generator_version"], purpose=r["primary_purpose"], language=r["language"],
+        kw = dict(legacy=True, run=r["round_first"] or "legacy", generator=r["generator_version"], purpose=r["primary_purpose"], language=r["language"],
                   status=STATUS[r["status"]], reason=r["status_reason"],
                   labels=dict(json.loads(r["labels"] or "{}"), task_type=r["task_type"], detail=r["detail"], register=r["register"],
                               attitude=r["attitude"], maths_content=r["maths_content"], keepable=r["keepable"], legacy_logical_id=r["logical_id"]))
