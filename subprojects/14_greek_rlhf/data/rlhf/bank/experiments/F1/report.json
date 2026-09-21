@@ -1,0 +1,77 @@
+{
+ "situations": [
+  "A thoughtful condolence message is needed for someone not known very well.",
+  "A board-game rule causes an argument halfway through playing.",
+  "A family gathering needs to accommodate several dietary preferences."
+ ],
+ "topics": [
+  "Designing science fair projects",
+  "Planning swimming workouts",
+  "Cyprus household recycling rules"
+ ],
+ "fixed": "el / everyday / plan_or_organise / compositional / cooperative / standard / medium",
+ "arms": {
+  "A_stock": {
+   "registered": 9,
+   "generator": {
+    "slots_issued_to_generator": 9,
+    "generator_held": 0,
+    "generator_hold_rate": 0.0,
+    "sol_calls": {
+     "instance": 3,
+     "render": 3,
+     "review": 2
+    },
+    "skipped": {}
+   },
+   "similarity": {
+    "same situation": {
+     "pairs": 9,
+     "mean": 0.1959,
+     "x_nothing": 2.67
+    },
+    "same topic": {
+     "pairs": 9,
+     "mean": 0.0723,
+     "x_nothing": 0.98
+    },
+    "share nothing": {
+     "pairs": 18,
+     "mean": 0.0734,
+     "x_nothing": 1.0
+    }
+   }
+  },
+  "B_roles": {
+   "registered": 9,
+   "generator": {
+    "slots_issued_to_generator": 9,
+    "generator_held": 0,
+    "generator_hold_rate": 0.0,
+    "sol_calls": {
+     "instance": 3,
+     "render": 4,
+     "review": 3
+    },
+    "skipped": {}
+   },
+   "similarity": {
+    "same situation": {
+     "pairs": 9,
+     "mean": 0.0948,
+     "x_nothing": 1.34
+    },
+    "same topic": {
+     "pairs": 9,
+     "mean": 0.1721,
+     "x_nothing": 2.43
+    },
+    "share nothing": {
+     "pairs": 18,
+     "mean": 0.071,
+     "x_nothing": 1.0
+    }
+   }
+  }
+ }
+}

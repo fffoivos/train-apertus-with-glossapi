@@ -36,7 +36,7 @@ def _still_claimed(bank, batch):
     return [r[0] for r in bank.db.execute("SELECT source_id FROM sources WHERE state='claimed' AND source_id IN (%s)" % ",".join("?" * len(ids)), ids)] if ids else []
 
 def generate_into(bank, plan_id, kind, n, *, run, workdir, legacy_registry, prior_runs, fake=False, workers=8, max_rounds=4,
-                  python=sys.executable, timeout=3600):
+                  python=sys.executable, timeout=3600, generator_script=None):
     """Register up to n ACTIVE prompts of `kind` ('seed' or 'dialogue') into the plan. Held prompts are registered too
     but do not count, so the loop keeps claiming until the quota is genuinely filled or nothing claimable is left."""
     reg, runs = prepare_workdir(workdir, legacy_registry, prior_runs)
@@ -50,7 +50,7 @@ def generate_into(bank, plan_id, kind, n, *, run, workdir, legacy_registry, prio
         if not batch: break
         name = "%s-%s-r%d" % (run, kind, rnd); manifest = pathlib.Path(workdir) / ("%s.manifest.json" % name)
         manifest.write_text(json.dumps({"version": "bank-plan:%s" % plan_id, "slots": [s["payload"] for s in batch]}, ensure_ascii=False, indent=1))
-        cmd = [python, str(GENERATE), "--run", name, "--manifest", str(manifest), "--slots", ",".join(s["payload"]["slot_id"] for s in batch),
+        cmd = [python, str(generator_script or GENERATE), "--run", name, "--manifest", str(manifest), "--slots", ",".join(s["payload"]["slot_id"] for s in batch),
                "--registry", str(reg), "--runs-dir", str(runs), "--workers", str(workers)] + (["--fake"] if fake else [])
         # CP1 H2: everything from here to the end of the batch used to be unguarded, so ONE bad row (malformed JSON, a
         # missing file, an unexpected submit error) left the whole batch 'claimed' -- and a stuck claim reserves its place
